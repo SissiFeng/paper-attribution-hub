@@ -1,0 +1,15 @@
+canonical_name,aliases,country,city,is_partner
+University of Toronto,"UofT; Univ Toronto; U Toronto; Univ. Toronto; University Toronto",Canada,Toronto,true
+University of British Columbia,"UBC; U British Columbia; Univ British Columbia",Canada,Vancouver,true
+Vector Institute,"Vector Inst.; Vector Institute for Artificial Intelligence",Canada,Toronto,true
+Massachusetts Institute of Technology,"MIT; Mass Inst Tech",United States,Cambridge,false
+ETH Zurich,"ETHZ; Eidgenössische Technische Hochschule Zürich; ETH Zürich",Switzerland,Zurich,false
+Stanford University,"Stanford; Stanford Univ.",United States,Stanford,false
+Max Planck Institute,"MPI; Max-Planck-Institut",Germany,Various,false
+University of Tokyo,"UTokyo; Univ Tokyo; Tokyo University",Japan,Tokyo,false
+KAIST,"Korea Advanced Institute of Science and Technology",South Korea,Daejeon,false
+TU Munich,"Technical University of Munich; TUM; Technische Universität München",Germany,Munich,false
+IIT Bombay,"Indian Institute of Technology Bombay; IITB",India,Mumbai,false
+Sanofi Research,"Sanofi",France,Paris,false
+Riken,"RIKEN",Japan,Wako,false
+University of Oslo,"UiO; Univ Oslo",Norway,Oslo,false

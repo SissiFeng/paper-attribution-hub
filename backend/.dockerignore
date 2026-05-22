@@ -1,0 +1,13 @@
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+tests/
+*.db
+*.db-journal
+*.sqlite3
+.env
+.env.local
+paper_attribution.db

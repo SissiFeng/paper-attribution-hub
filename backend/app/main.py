@@ -1,0 +1,67 @@
+from __future__ import annotations
+
+from contextlib import asynccontextmanager
+
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+
+from app import __version__
+from app.api import (
+    admin,
+    analytics,
+    discovery,
+    evaluation,
+    graph_explain,
+    networks,
+    papers,
+    propositions,
+    retrieval,
+    review_queue,
+    reviews,
+)
+from app.config import settings
+from app.db import init_database
+
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    init_database()
+    yield
+
+
+app = FastAPI(
+    title="Paper Attribution System",
+    version=__version__,
+    description=(
+        "Evidence-based paper attribution pipeline. "
+        "v0.1 ingests CSV metadata, normalizes entities, matches authors / "
+        "institutions / topics, and produces an explainable relevance label "
+        "with confidence and reasons."
+    ),
+    lifespan=lifespan,
+)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=settings.cors_origins,
+    allow_methods=["*"],
+    allow_headers=["*"],
+    allow_credentials=False,
+)
+
+app.include_router(papers.router)
+app.include_router(reviews.router)
+app.include_router(networks.router)
+app.include_router(retrieval.router)
+app.include_router(evaluation.router)
+app.include_router(analytics.router)
+app.include_router(graph_explain.router)
+app.include_router(propositions.router)
+app.include_router(admin.router)
+app.include_router(discovery.router)
+app.include_router(review_queue.router)
+
+
+@app.get("/health", tags=["meta"])
+def health() -> dict:
+    return {"status": "ok", "version": __version__}

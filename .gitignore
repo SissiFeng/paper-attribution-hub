@@ -1,0 +1,47 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+
+# SQLite database
+*.db
+*.db-journal
+*.sqlite3
+
+# Node
+node_modules/
+dist/
+.vite/
+
+# Editor / OS
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*~
+
+# Local overrides
+.env
+.env.local
+
+# Docs (developer-only internal notes — skip on GitHub)
+/docs/
+
+# All root-level markdown files (developer notes — not for GitHub)
+/*.md
+
+# Sensitive / large data files (keep config CSVs, skip raw data)
+/data/sample_papers.csv
+/data/eval_labels.csv
+/data/fulltexts/
+
+# Docker local state
+pgdata/
+
+# Claude Code / agent tooling
+.agents/
+.claude/
+skills-lock.json

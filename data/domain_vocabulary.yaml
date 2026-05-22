@@ -1,0 +1,53 @@
+# Domain-aware vocabulary used by the v0.4 retokenizer.
+#
+# - `protected_phrases`: multi-word units that the embedder / BM25 indexer
+#   should keep as a single token. Without this, "self-driving lab" tokenizes
+#   to ["self", "driving", "lab"] and loses precision.
+# - `canonical_synonyms`: map synonyms / surface variants onto a canonical
+#   concept. Searches for the canonical concept also retrieve the synonym.
+# - `negative_phrases`: phrases that LOOK like SDL signals but aren't.
+#   The evidence extractor flags these as low-confidence (e.g. "closed-loop
+#   control" usually means control theory, not autonomous chemistry).
+
+protected_phrases:
+  - self-driving lab
+  - self-driving laboratory
+  - autonomous laboratory
+  - closed-loop experimentation
+  - closed-loop optimization
+  - Bayesian optimization
+  - active learning
+  - high-throughput experimentation
+  - high-throughput screening
+  - workflow orchestration
+  - robotic synthesis
+  - robotic platform
+  - automated synthesis
+  - University of Toronto
+  - University of British Columbia
+  - Vector Institute
+  - Acceleration Consortium
+  - ChemOS
+  - Opentrons
+  - BayBE
+  - PHYSBO
+
+canonical_synonyms:
+  autonomous lab: self-driving laboratory
+  autonomous laboratory: self-driving laboratory
+  self-driving lab: self-driving laboratory
+  sdl: self-driving laboratory
+  robotic experimentation: lab automation
+  sequential optimization: Bayesian optimization
+  experiment planning agent: scientific agent
+  uoft: University of Toronto
+  univ. toronto: University of Toronto
+  ubc: University of British Columbia
+  ac: Acceleration Consortium
+
+negative_phrases:
+  - closed-loop control          # control theory, not SDL
+  - feedback control             # control theory
+  - factory automation           # industrial, not lab
+  - software testing automation  # CI/CD, not lab
+  - process control loop         # industrial control

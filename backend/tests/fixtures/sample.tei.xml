@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title level="a" type="main">Autonomous closed-loop discovery of organic laser materials</title>
+      </titleStmt>
+      <sourceDesc>
+        <biblStruct>
+          <analytic>
+            <author>
+              <persName>
+                <forename type="first">Alan</forename>
+                <surname>Aspuru-Guzik</surname>
+              </persName>
+              <idno type="ORCID">0000-0003-1024-3325</idno>
+              <affiliation>
+                <orgName type="department">Department of Chemistry</orgName>
+                <orgName type="institution">University of Toronto</orgName>
+                <address><country>Canada</country></address>
+              </affiliation>
+            </author>
+            <author>
+              <persName>
+                <forename type="first">Jane</forename>
+                <surname>Doe</surname>
+              </persName>
+              <affiliation>
+                <orgName type="institution">University of Toronto</orgName>
+              </affiliation>
+            </author>
+            <author>
+              <persName>
+                <forename type="first">Bo</forename>
+                <surname>Li</surname>
+              </persName>
+              <affiliation>
+                <orgName type="institution">Massachusetts Institute of Technology</orgName>
+              </affiliation>
+            </author>
+          </analytic>
+        </biblStruct>
+      </sourceDesc>
+    </fileDesc>
+    <profileDesc>
+      <abstract>
+        <p>We present a self-driving laboratory that combines robotic synthesis with Bayesian optimization to autonomously discover organic laser materials. The platform performs closed-loop experimentation across thousands of candidate molecules.</p>
+      </abstract>
+    </profileDesc>
+  </teiHeader>
+  <text>
+    <body>
+      <div><head>Introduction</head>
+        <p>The discovery of high-performance organic laser molecules has traditionally relied on intuition-driven synthesis followed by manual characterization. Closed-loop autonomous laboratories promise to compress this iteration cycle.</p>
+      </div>
+      <div><head>Methods</head>
+        <p>Our autonomous platform comprises a six-axis robotic arm, an on-line UV/Vis-fluorescence module, and a workflow orchestration layer based on the open-source ChemOS package. We integrate Bayesian optimization over a 12-dimensional reaction-condition space.</p>
+        <p>Each closed-loop experimentation cycle synthesizes one candidate, measures gain via amplified spontaneous emission, and updates the posterior.</p>
+      </div>
+      <div><head>Results</head>
+        <p>The closed-loop campaign converged within 482 experiments. We report six molecules with gain coefficients exceeding 80 cm^-1.</p>
+      </div>
+      <div><head>Discussion</head>
+        <p>This work demonstrates that closed-loop optimization combined with high-throughput experimentation can accelerate organic materials discovery by an order of magnitude.</p>
+      </div>
+      <figure>
+        <head>Figure 1</head>
+        <figDesc>Autonomous closed-loop platform for materials discovery. The schematic shows the integration of robotic synthesis, automated characterization, and Bayesian optimization in a self-driving laboratory configuration.</figDesc>
+      </figure>
+    </body>
+    <back>
+      <div type="acknowledgement">
+        <head>Acknowledgements</head>
+        <p>This work was supported by the Acceleration Consortium at the University of Toronto, the CIFAR Catalyst program, and the NSERC Discovery program. The authors thank the Vector Institute for compute access.</p>
+      </div>
+      <div type="references">
+        <listBibl>
+          <biblStruct xml:id="b0">
+            <analytic>
+              <title level="a">ChemOS: Orchestrating Autonomous Experimentation</title>
+              <author><persName><forename type="first">F</forename><surname>Häse</surname></persName></author>
+              <author><persName><forename type="first">L</forename><surname>Roch</surname></persName></author>
+              <author><persName><forename type="first">A</forename><surname>Aspuru-Guzik</surname></persName></author>
+              <idno type="DOI">10.1126/scirobotics.aax9876</idno>
+            </analytic>
+            <monogr>
+              <title level="j">Science Robotics</title>
+              <imprint><date type="published" when="2019">2019</date></imprint>
+            </monogr>
+          </biblStruct>
+          <biblStruct xml:id="b1">
+            <analytic>
+              <title level="a">Self-driving laboratory for accelerated discovery of thin-film materials</title>
+              <author><persName><forename type="first">B</forename><surname>MacLeod</surname></persName></author>
+              <author><persName><forename type="first">C</forename><surname>Berlinguette</surname></persName></author>
+              <idno type="DOI">10.1126/sciadv.aaz4244</idno>
+            </analytic>
+            <monogr>
+              <title level="j">Science Advances</title>
+              <imprint><date type="published" when="2020">2020</date></imprint>
+            </monogr>
+          </biblStruct>
+          <biblStruct xml:id="b2">
+            <analytic>
+              <title level="a">Bayesian optimization framework for autonomous chemistry</title>
+              <author><persName><forename type="first">A</forename><surname>Aspuru-Guzik</surname></persName></author>
+              <author><persName><forename type="first">F</forename><surname>Häse</surname></persName></author>
+              <idno type="DOI">10.1038/s41586-021-04157-z</idno>
+            </analytic>
+            <monogr>
+              <title level="j">Nature</title>
+              <imprint><date type="published" when="2021">2021</date></imprint>
+            </monogr>
+          </biblStruct>
+        </listBibl>
+      </div>
+    </back>
+  </text>
+</TEI>

@@ -1,0 +1,6 @@
+person_id,name,aliases,institution,department,lab,role,is_ac_member,orcid
+A001,Alan Aspuru-Guzik,"Alan; Aspuru-Guzik A.; Aspuru-Guzik Alan; Alán Aspuru Guzik; Aspuru-Guzik, Alán",University of Toronto,Chemistry,Aspuru-Guzik Lab,PI,true,0000-0003-1024-3325
+A002,Curtis Berlinguette,"Berlinguette C.; Curtis P. Berlinguette",University of British Columbia,Chemistry,Berlinguette Group,PI,true,0000-0001-6875-849X
+A003,Yiming Chen,"Y. Chen; Yiming, Chen",University of Toronto,Chemistry,Aspuru-Guzik Lab,Postdoc,true,
+A004,Helena García,"H. Garcia; Helena Garcia; H. García",University of Toronto,Materials Science,SDL Group,PhD Student,true,
+A005,Jane Doe,"J. Doe",University of Toronto,Computer Science,AI4Science Lab,PhD Student,false,

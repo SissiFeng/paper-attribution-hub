@@ -1,0 +1,39 @@
+version: "3.9"
+
+services:
+  db:
+    image: pgvector/pgvector:pg16
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: pas
+      POSTGRES_PASSWORD: pas
+      POSTGRES_DB: paper_attribution
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U pas -d paper_attribution"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      PAS_DATABASE_URL: postgresql://pas:pas@db:5432/paper_attribution
+      PAS_CORS_ORIGINS: '["http://localhost:5173","http://localhost:3000"]'
+    ports:
+      - "8000:8000"
+    volumes:
+      # Mount data dir so you can load papers without rebuilding the image
+      - ./data:/data
+
+volumes:
+  pgdata:

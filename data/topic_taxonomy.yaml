@@ -1,0 +1,89 @@
+# Topic taxonomy for AC / SDL / AI-for-science research.
+# Each topic has a description (used for embedding-based similarity)
+# and a list of keywords (token-boundary, phrase-aware match in v0.7).
+# Weight is used by the topic matcher to give some keywords more pull.
+# negative_keywords (v0.7) act as a blacklist: if the abstract / methods
+# section contains any of these, the topic score is dampened. Used by the
+# active learning loop to record reviewer-rejected vocabulary.
+
+core_topics:
+  self_driving_labs:
+    description: >
+      Autonomous laboratories that combine robotic experimentation with
+      closed-loop optimization to discover materials, molecules, or processes
+      without humans in the loop.
+    keywords:
+      - { term: "self-driving lab", weight: 1.0 }
+      - { term: "self-driving laboratory", weight: 1.0 }
+      - { term: "autonomous laboratory", weight: 1.0 }
+      - { term: "autonomous discovery", weight: 0.9 }
+      - { term: "closed-loop experimentation", weight: 0.9 }
+      - { term: "closed-loop optimization", weight: 0.9 }
+      - { term: "closed-loop", weight: 0.6 }
+      - { term: "autonomous platform", weight: 0.7 }
+      - { term: "autonomous synthesis", weight: 0.8 }
+      - { term: "materials acceleration platform", weight: 0.9 }
+    negative_keywords:
+      - "self-driving car"
+      - "autonomous vehicle"
+      - "autonomous driving"
+      - "self-driving automobile"
+
+  ai_for_science:
+    description: >
+      Machine learning methods applied to scientific discovery, including
+      Bayesian optimization, active learning, and surrogate models for
+      molecular or materials design.
+    keywords:
+      - { term: "Bayesian optimization", weight: 1.0 }
+      - { term: "active learning", weight: 0.9 }
+      - { term: "molecular design", weight: 0.8 }
+      - { term: "materials discovery", weight: 0.8 }
+      - { term: "ai for science", weight: 0.9 }
+      - { term: "AI4Science", weight: 0.9 }
+    negative_keywords:
+      - "active learning classroom"
+      - "active learning pedagogy"
+
+  lab_automation:
+    description: >
+      Robotic and software automation of experimental workflows, including
+      high-throughput screening, workflow orchestration, and instrument
+      integration.
+    keywords:
+      - { term: "lab automation", weight: 0.9 }
+      - { term: "workflow orchestration", weight: 0.9 }
+      - { term: "robotic synthesis", weight: 0.9 }
+      - { term: "robotic platform", weight: 0.8 }
+      - { term: "high-throughput experimentation", weight: 0.8 }
+      - { term: "high-throughput screening", weight: 0.7 }
+      - { term: "automated synthesis", weight: 0.8 }
+    negative_keywords: []
+
+  software_infrastructure:
+    description: >
+      Software, data, and infrastructure for scientific computing, including
+      reproducible pipelines and data platforms for labs.
+    keywords:
+      - { term: "scientific software", weight: 0.7 }
+      - { term: "data infrastructure", weight: 0.6 }
+      - { term: "reproducible automation", weight: 0.8 }
+    negative_keywords: []
+
+# Topics below are tracked but not part of the AC core mission.
+# They appear in classification results but contribute less weight.
+adjacent_topics:
+  generic_ml:
+    description: General machine learning not tied to scientific discovery.
+    keywords:
+      - { term: "graph neural network", weight: 0.4 }
+      - { term: "deep learning", weight: 0.3 }
+      - { term: "transformer", weight: 0.3 }
+    negative_keywords: []
+
+  generic_pharma:
+    description: Pharmaceutical R&D unrelated to SDL methodology.
+    keywords:
+      - { term: "compound screening", weight: 0.4 }
+      - { term: "pharma", weight: 0.3 }
+    negative_keywords: []

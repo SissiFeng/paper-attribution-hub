@@ -1,0 +1,6 @@
+core_id,doi,title,authors,year,venue,why_core
+AC_CORE_001,10.1126/scirobotics.aax9876,ChemOS: Orchestrating Autonomous Experimentation,"Häse, F.; Roch, L.; Aspuru-Guzik, A.",2019,Science Robotics,Foundational SDL software stack used by many AC labs
+AC_CORE_002,10.1126/sciadv.aaz4244,Self-driving laboratory for accelerated discovery of thin-film materials,"MacLeod, B.; Berlinguette, C.",2020,Science Advances,Landmark Berlinguette SDL paper for thin films
+AC_CORE_003,10.1038/s41586-021-04157-z,Bayesian optimization framework for autonomous chemistry,"Aspuru-Guzik, A.; Häse, F.",2021,Nature,Closed-loop Bayesian optimization framework cited by most SDL papers
+AC_CORE_004,10.1038/s41524-023-AC-flag,Workflow orchestration for autonomous chemistry labs,"Chen, Y.; Aspuru-Guzik, A.",2023,npj Computational Materials,Workflow layer underpinning multi-lab autonomous campaigns
+AC_CORE_005,10.1021/jacs.2022.10000,Closed-loop electrochemistry platform for the Acceleration Consortium,"Garcia, H.; Berlinguette, C.; Chen, Y.",2022,JACS,Reference platform for the AC electrochemistry working group
