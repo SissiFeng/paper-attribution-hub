@@ -19,8 +19,15 @@ config = context.config
 if config.config_file_name is not None:
     fileConfig(config.config_file_name)
 
-# Inject the live database URL so the ini file doesn't need it hardcoded
-config.set_main_option("sqlalchemy.url", settings.database_url)
+# Inject the live database URL so the ini file doesn't need it hardcoded.
+# For Supabase Transaction Pooler (port 6543 / PgBouncer), append
+# ?options=-c%20prepared_statements%3Doff if not already present to avoid
+# "prepared statement does not exist" errors during DDL migrations.
+_db_url = settings.database_url
+if ":6543/" in _db_url and "prepared_statements" not in _db_url:
+    _sep = "&" if "?" in _db_url else "?"
+    _db_url = f"{_db_url}{_sep}options=-c%20prepared_statements%3Doff"
+config.set_main_option("sqlalchemy.url", _db_url)
 
 target_metadata = Base.metadata
 

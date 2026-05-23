@@ -18,17 +18,27 @@ engine = create_engine(
     settings.database_url,
     echo=False,
     future=True,
+    pool_pre_ping=True,
     connect_args={"check_same_thread": False} if not _is_postgres else {},
 )
 
 # Register pgvector types so SQLAlchemy can read vector columns back as lists.
+# Wrapped in try/except: if the extension isn't enabled in this PostgreSQL instance
+# (e.g. Supabase free tier before the extension is activated), we degrade gracefully.
 if _is_postgres:
-    from pgvector.sqlalchemy import Vector  # noqa: F401 — side-effect: registers type
+    try:
+        from pgvector.sqlalchemy import Vector  # noqa: F401 — side-effect: registers type
 
-    @event.listens_for(engine, "connect")
-    def _register_vector(dbapi_conn, _):
-        from pgvector.psycopg2 import register_vector
-        register_vector(dbapi_conn)
+        @event.listens_for(engine, "connect")
+        def _register_vector(dbapi_conn, _):
+            try:
+                from pgvector.psycopg2 import register_vector
+                register_vector(dbapi_conn)
+            except Exception:
+                pass  # vector extension not installed; similarity search disabled
+
+    except ImportError:
+        pass  # pgvector package not available
 
 
 SessionLocal = sessionmaker(bind=engine, autoflush=False, expire_on_commit=False, future=True)
