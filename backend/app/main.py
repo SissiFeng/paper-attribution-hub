@@ -65,3 +65,16 @@ app.include_router(review_queue.router)
 @app.get("/health", tags=["meta"])
 def health() -> dict:
     return {"status": "ok", "version": __version__}
+
+
+@app.get("/debug/db", tags=["meta"])
+def debug_db() -> dict:
+    """Diagnostic: test DB connectivity and return first error encountered."""
+    from sqlalchemy import text
+    from app.db import engine
+    try:
+        with engine.connect() as conn:
+            conn.execute(text("SELECT 1"))
+        return {"db": "ok", "url_prefix": settings.database_url[:40] + "..."}
+    except Exception as exc:
+        return {"db": "error", "error": type(exc).__name__, "detail": str(exc)[:400]}
