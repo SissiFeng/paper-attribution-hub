@@ -1,9 +1,13 @@
+/* =========================================================================
+   Sidebar — Scientific Instrument Panel
+   ========================================================================= */
+
 .sidebar {
-  width: 220px;
-  min-width: 220px;
+  width: 228px;
+  min-width: 228px;
   height: 100vh;
   background: #ffffff;
-  border-right: 1px solid rgba(33, 60, 81, 0.10);
+  border-right: 1px solid rgba(33, 60, 81, 0.09);
   display: flex;
   flex-direction: column;
   overflow-y: auto;
@@ -11,136 +15,176 @@
   flex-shrink: 0;
   position: sticky;
   top: 0;
+  /* subtle inner-right shadow to separate from content */
+  box-shadow: 1px 0 0 rgba(33, 60, 81, 0.04), 4px 0 12px rgba(33, 60, 81, 0.03);
 }
 
-/* --- Logo --- */
+/* Hide default scrollbar, keep scroll */
+.sidebar::-webkit-scrollbar { width: 0; }
+
+/* ── Logo ─────────────────────────────────────────────────────────────── */
+
 .logo {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 18px 16px 14px;
-  border-bottom: 1px solid rgba(33, 60, 81, 0.08);
-  text-decoration: none;
+  gap: 11px;
+  padding: 16px 16px 14px;
+  border-bottom: 1px solid rgba(33, 60, 81, 0.07);
   flex-shrink: 0;
-}
-.logoIcon {
-  width: 28px;
-  height: 28px;
+  text-decoration: none;
   background: #213C51;
-  border-radius: 7px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle noise texture on logo area */
+.logo::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+}
+
+.logoIcon {
+  width: 30px;
+  height: 30px;
+  background: rgba(221, 174, 211, 0.20);
+  border: 1px solid rgba(221, 174, 211, 0.35);
+  border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  position: relative;
+  z-index: 1;
 }
 .logoIcon svg { display: block; }
+
 .logoText {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 13px;
+  font-size: 12.5px;
   font-weight: 600;
-  color: #213C51;
+  color: #ffffff;
   line-height: 1.2;
-  letter-spacing: -0.01em;
+  letter-spacing: 0em;
+  position: relative;
+  z-index: 1;
 }
 .logoSub {
   font-size: 10px;
   font-weight: 400;
-  color: #6594B1;
+  color: rgba(221, 174, 211, 0.85);
   margin-top: 1px;
+  position: relative;
+  z-index: 1;
+  letter-spacing: 0.02em;
 }
 
-/* --- Nav sections --- */
+/* ── Nav ─────────────────────────────────────────────────────────────── */
+
 .nav {
   flex: 1;
-  padding: 10px 8px;
+  padding: 8px 8px 4px;
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 1px;
 }
 
 .sectionLabel {
-  font-size: 10px;
-  font-weight: 600;
-  color: #9ab1c4;
+  font-size: 9.5px;
+  font-weight: 700;
+  color: #b3c5d4;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  padding: 8px 8px 4px;
-  margin-top: 4px;
+  letter-spacing: 0.10em;
+  padding: 10px 8px 3px;
+  margin-top: 2px;
+  user-select: none;
 }
-.sectionLabel:first-child { margin-top: 0; }
+.sectionLabel:first-child { margin-top: 0; padding-top: 6px; }
 
 .navItem {
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 6px 8px;
+  padding: 6px 8px 6px 10px;
   border-radius: 6px;
   font-family: 'JetBrains Mono', monospace;
-  font-size: 13px;
+  font-size: 12.5px;
   font-weight: 400;
-  color: #3d5a6f;
+  color: #4a6478;
   text-decoration: none;
   cursor: pointer;
-  transition: background 120ms, color 120ms;
+  transition: background 100ms ease, color 100ms ease;
   position: relative;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
 .navItem:hover {
   background: rgba(33, 60, 81, 0.05);
   color: #213C51;
 }
+
 .navItem.active {
-  background: rgba(101, 148, 177, 0.10);
+  background: rgba(221, 174, 211, 0.13);
   color: #213C51;
   font-weight: 500;
 }
+
+/* Pink left-bar on active item — the signature touch */
 .navItem.active::before {
   content: '';
   position: absolute;
   left: 0;
-  top: 4px;
-  bottom: 4px;
+  top: 5px;
+  bottom: 5px;
   width: 3px;
-  background: #6594B1;
+  background: #DDAED3;
   border-radius: 0 2px 2px 0;
 }
 
 .navIcon {
-  width: 16px;
-  height: 16px;
+  width: 15px;
+  height: 15px;
   flex-shrink: 0;
-  opacity: 0.65;
+  opacity: 0.55;
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: opacity 100ms;
 }
-.navItem.active .navIcon { opacity: 1; }
-.navItem:hover .navIcon  { opacity: 0.9; }
+.navItem.active .navIcon {
+  opacity: 1;
+  color: #DDAED3;
+}
+.navItem:hover .navIcon { opacity: 0.85; }
 
-/* --- Footer links --- */
+/* ── Footer ──────────────────────────────────────────────────────────── */
+
 .footer {
-  padding: 10px 8px 16px;
-  border-top: 1px solid rgba(33, 60, 81, 0.08);
+  padding: 8px 8px 14px;
+  border-top: 1px solid rgba(33, 60, 81, 0.07);
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 1px;
   flex-shrink: 0;
 }
+
 .footerLink {
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 5px 8px;
+  padding: 5px 8px 5px 10px;
   border-radius: 6px;
   font-family: 'JetBrains Mono', monospace;
-  font-size: 12px;
+  font-size: 11.5px;
   font-weight: 400;
   color: #9ab1c4;
   text-decoration: none;
   cursor: pointer;
-  transition: background 120ms, color 120ms;
+  transition: background 100ms, color 100ms;
 }
 .footerLink:hover {
   background: rgba(33, 60, 81, 0.04);
