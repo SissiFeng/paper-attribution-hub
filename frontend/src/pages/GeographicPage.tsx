@@ -46,6 +46,7 @@ interface GlobePoint {
   color: string;
   radius: number;
   altitude: number;
+  labelAlt: number;
 }
 
 interface GlobeArc {
@@ -62,15 +63,17 @@ function buildPoints(countries: GeoCountry[]): GlobePoint[] {
   return countries.map(c => {
     const [lat, lng] = latLng(c.country);
     const frac = c.paper_count / maxPapers;
+    const altitude = 0.02 + frac * 0.38;
     return {
       lat, lng,
       country: c.country,
       paper_count: c.paper_count,
       institution_count: c.institution_count,
       is_partner: c.is_partner,
-      color: c.is_partner ? "#DDAED3" : `rgba(101,148,177,${0.5 + frac * 0.5})`,
-      radius: 0.4 + frac * 1.2,
-      altitude: 0.005 + frac * 0.04,
+      color: c.is_partner ? "#DDAED3" : `rgba(101,148,177,${0.55 + frac * 0.45})`,
+      radius: 0.45 + frac * 0.85,
+      altitude,
+      labelAlt: altitude + 0.07,
     };
   });
 }
@@ -268,6 +271,26 @@ export default function GeographicPage() {
             }}
             pointResolution={8}
             onPointClick={handlePointClick}
+            // Country name labels above bars
+            labelsData={points}
+            labelLat="lat"
+            labelLng="lng"
+            labelText="country"
+            labelColor={(d: object) =>
+              (d as GlobePoint).is_partner ? "#DDAED3" : "rgba(101,148,177,0.9)"
+            }
+            labelSize={0.44}
+            labelDotRadius={0}
+            labelAltitude="labelAlt"
+            labelResolution={4}
+            // Selection ring
+            ringsData={selected ? points.filter(p => p.country === selected) : []}
+            ringLat="lat"
+            ringLng="lng"
+            ringColor={() => ["rgba(221,174,211,0.9)", "rgba(221,174,211,0)"]}
+            ringMaxRadius={4}
+            ringPropagationSpeed={2}
+            ringRepeatPeriod={900}
             // Arcs (collaborations)
             arcsData={arcs}
             arcStartLat="startLat"
