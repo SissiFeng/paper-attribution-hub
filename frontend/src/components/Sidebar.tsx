@@ -10,11 +10,12 @@ const RESEARCH_NAV = [
 ];
 
 const ANALYTICS_NAV = [
-  { to: "/insights",  label: "Insights"  },
-  { to: "/timeline",  label: "Timeline"  },
-  { to: "/sankey",    label: "Sankey"    },
-  { to: "/impact",    label: "Impact"    },
-  { to: "/drift",     label: "Drift"     },
+  { to: "/insights",  label: "Insights"   },
+  { to: "/growth",    label: "Net Growth" },
+  { to: "/timeline",  label: "Timeline"   },
+  { to: "/sankey",    label: "Sankey"     },
+  { to: "/impact",    label: "Impact"     },
+  { to: "/drift",     label: "Drift"      },
 ];
 
 const NETWORK_NAV = [
@@ -60,6 +61,12 @@ const ICONS: Record<string, JSX.Element> = {
   Insights: (
     <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.6">
       <polyline points="1,12 5,7 8,9 11,4 15,8" />
+    </svg>
+  ),
+  "Net Growth": (
+    <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.6">
+      <polyline points="1,13 4,9 7,10 10,5 15,2" />
+      <polyline points="11,2 15,2 15,6" />
     </svg>
   ),
   Timeline: (

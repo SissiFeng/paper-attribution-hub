@@ -7,10 +7,13 @@ import type {
   EvidenceGapReport,
   GeographicReport,
   GraphExplanation,
+  HubScorePayload,
   ImpactReport,
+  InstTopicHeatmapPayload,
   InstitutionNetworkPayload,
   MissedPaperGroup,
   MultiGraphPayload,
+  NetworkGrowthPayload,
   NetworkPayload,
   Paper,
   PeopleGrid,
@@ -20,6 +23,7 @@ import type {
   ReportResult,
   SankeyPayload,
   TimelinePayload,
+  TopicStreamPayload,
 } from "@/types";
 import * as mock from "@/lib/mock";
 
@@ -331,6 +335,45 @@ export function getGeographic(params: { year_from?: number; year_to?: number } =
   return withMock(
     () => request<GeographicReport>(`/analytics/geographic${qs ? `?${qs}` : ""}`),
     mock.MOCK_GEOGRAPHIC
+  );
+}
+
+export function getNetworkGrowth(params: { year_from?: number; year_to?: number } = {}) {
+  const sp = new URLSearchParams();
+  if (params.year_from != null) sp.set("year_from", String(params.year_from));
+  if (params.year_to != null) sp.set("year_to", String(params.year_to));
+  const qs = sp.toString();
+  return withMock(
+    () => request<NetworkGrowthPayload>(`/analytics/network-growth${qs ? `?${qs}` : ""}`),
+    mock.MOCK_NETWORK_GROWTH
+  );
+}
+
+export function getTopicStream(params: { year_from?: number; year_to?: number } = {}) {
+  const sp = new URLSearchParams();
+  if (params.year_from != null) sp.set("year_from", String(params.year_from));
+  if (params.year_to != null) sp.set("year_to", String(params.year_to));
+  const qs = sp.toString();
+  return withMock(
+    () => request<TopicStreamPayload>(`/analytics/topic-stream${qs ? `?${qs}` : ""}`),
+    mock.MOCK_TOPIC_STREAM
+  );
+}
+
+export function getInstTopicHeatmap(params: { year?: number } = {}) {
+  const sp = new URLSearchParams();
+  if (params.year != null) sp.set("year", String(params.year));
+  const qs = sp.toString();
+  return withMock(
+    () => request<InstTopicHeatmapPayload>(`/analytics/inst-topic-heatmap${qs ? `?${qs}` : ""}`),
+    mock.MOCK_INST_TOPIC_HEATMAP
+  );
+}
+
+export function getHubScore(institution: string = "uoft") {
+  return withMock(
+    () => request<HubScorePayload>(`/analytics/hub-score?institution=${institution}`),
+    mock.MOCK_HUB_SCORE
   );
 }
 

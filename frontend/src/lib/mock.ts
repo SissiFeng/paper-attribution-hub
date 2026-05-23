@@ -1538,3 +1538,143 @@ export function getMockGraphExplanation(paperId: string): GraphExplanation {
     cited_by_corpus: [],
   };
 }
+
+// ── Research Network Growth mock data ────────────────────────────────────────
+
+import type {
+  NetworkGrowthPayload,
+  TopicStreamPayload,
+  InstTopicHeatmapPayload,
+  HubScorePayload,
+} from "@/types";
+
+export const MOCK_NETWORK_GROWTH: NetworkGrowthPayload = {
+  yearly: [
+    { year: 2021, papers: 12,  authors: 18,  institutions: 5,  countries: 3,  collaborations: 8  },
+    { year: 2022, papers: 19,  authors: 28,  institutions: 7,  countries: 5,  collaborations: 15 },
+    { year: 2023, papers: 31,  authors: 48,  institutions: 12, countries: 8,  collaborations: 28 },
+    { year: 2024, papers: 44,  authors: 67,  institutions: 18, countries: 13, collaborations: 45 },
+    { year: 2025, papers: 28,  authors: 42,  institutions: 11, countries: 9,  collaborations: 31 },
+  ],
+  cumulative: [
+    { year: 2021, papers: 12,  authors: 18,  institutions: 5,  countries: 3,  collaborations: 8   },
+    { year: 2022, papers: 31,  authors: 46,  institutions: 12, countries: 8,  collaborations: 23  },
+    { year: 2023, papers: 62,  authors: 94,  institutions: 24, countries: 16, collaborations: 51  },
+    { year: 2024, papers: 106, authors: 161, institutions: 42, countries: 29, collaborations: 96  },
+    { year: 2025, papers: 134, authors: 203, institutions: 53, countries: 38, collaborations: 127 },
+  ],
+};
+
+const _TOPICS = [
+  "Self-Driving Labs",
+  "Closed-Loop Exp.",
+  "Automation",
+  "Materials Discovery",
+  "Software Research",
+] as const;
+
+// themeRiver format: [year_string, count, topic_name]
+export const MOCK_TOPIC_STREAM: TopicStreamPayload = {
+  topics: [..._TOPICS],
+  data: [
+    // 2021
+    ["2021", 2,  "Self-Driving Labs"],
+    ["2021", 1,  "Closed-Loop Exp."],
+    ["2021", 2,  "Automation"],
+    ["2021", 5,  "Materials Discovery"],
+    ["2021", 0.5,"Software Research"],
+    // 2022
+    ["2022", 5,  "Self-Driving Labs"],
+    ["2022", 3,  "Closed-Loop Exp."],
+    ["2022", 4,  "Automation"],
+    ["2022", 6,  "Materials Discovery"],
+    ["2022", 1,  "Software Research"],
+    // 2023
+    ["2023", 11, "Self-Driving Labs"],
+    ["2023", 8,  "Closed-Loop Exp."],
+    ["2023", 7,  "Automation"],
+    ["2023", 8,  "Materials Discovery"],
+    ["2023", 3,  "Software Research"],
+    // 2024
+    ["2024", 17, "Self-Driving Labs"],
+    ["2024", 14, "Closed-Loop Exp."],
+    ["2024", 10, "Automation"],
+    ["2024", 12, "Materials Discovery"],
+    ["2024", 7,  "Software Research"],
+    // 2025
+    ["2025", 12, "Self-Driving Labs"],
+    ["2025", 9,  "Closed-Loop Exp."],
+    ["2025", 6,  "Automation"],
+    ["2025", 7,  "Materials Discovery"],
+    ["2025", 5,  "Software Research"],
+  ],
+};
+
+const _INSTS = ["UofT", "ETH Zurich", "Imperial College", "Argonne", "NIMS", "Stanford", "MIT", "Oxford"];
+
+export const MOCK_INST_TOPIC_HEATMAP: InstTopicHeatmapPayload = {
+  institutions: _INSTS,
+  topics: [..._TOPICS],
+  year: null,
+  cells: [
+    // UofT
+    { institution: "UofT",             topic: "Self-Driving Labs",    count: 28 },
+    { institution: "UofT",             topic: "Closed-Loop Exp.",     count: 19 },
+    { institution: "UofT",             topic: "Automation",           count: 15 },
+    { institution: "UofT",             topic: "Materials Discovery",  count: 22 },
+    { institution: "UofT",             topic: "Software Research",    count: 12 },
+    // ETH Zurich
+    { institution: "ETH Zurich",       topic: "Self-Driving Labs",    count: 12 },
+    { institution: "ETH Zurich",       topic: "Closed-Loop Exp.",     count: 8  },
+    { institution: "ETH Zurich",       topic: "Automation",           count: 6  },
+    { institution: "ETH Zurich",       topic: "Materials Discovery",  count: 9  },
+    { institution: "ETH Zurich",       topic: "Software Research",    count: 5  },
+    // Imperial College
+    { institution: "Imperial College", topic: "Self-Driving Labs",    count: 9  },
+    { institution: "Imperial College", topic: "Closed-Loop Exp.",     count: 6  },
+    { institution: "Imperial College", topic: "Automation",           count: 4  },
+    { institution: "Imperial College", topic: "Materials Discovery",  count: 7  },
+    { institution: "Imperial College", topic: "Software Research",    count: 3  },
+    // Argonne
+    { institution: "Argonne",          topic: "Self-Driving Labs",    count: 6  },
+    { institution: "Argonne",          topic: "Closed-Loop Exp.",     count: 5  },
+    { institution: "Argonne",          topic: "Automation",           count: 8  },
+    { institution: "Argonne",          topic: "Materials Discovery",  count: 14 },
+    { institution: "Argonne",          topic: "Software Research",    count: 4  },
+    // NIMS
+    { institution: "NIMS",             topic: "Self-Driving Labs",    count: 4  },
+    { institution: "NIMS",             topic: "Closed-Loop Exp.",     count: 3  },
+    { institution: "NIMS",             topic: "Automation",           count: 5  },
+    { institution: "NIMS",             topic: "Materials Discovery",  count: 18 },
+    { institution: "NIMS",             topic: "Software Research",    count: 2  },
+    // Stanford
+    { institution: "Stanford",         topic: "Self-Driving Labs",    count: 7  },
+    { institution: "Stanford",         topic: "Closed-Loop Exp.",     count: 4  },
+    { institution: "Stanford",         topic: "Automation",           count: 3  },
+    { institution: "Stanford",         topic: "Materials Discovery",  count: 8  },
+    { institution: "Stanford",         topic: "Software Research",    count: 6  },
+    // MIT
+    { institution: "MIT",              topic: "Self-Driving Labs",    count: 8  },
+    { institution: "MIT",              topic: "Closed-Loop Exp.",     count: 5  },
+    { institution: "MIT",              topic: "Automation",           count: 5  },
+    { institution: "MIT",              topic: "Materials Discovery",  count: 10 },
+    { institution: "MIT",              topic: "Software Research",    count: 8  },
+    // Oxford
+    { institution: "Oxford",           topic: "Self-Driving Labs",    count: 5  },
+    { institution: "Oxford",           topic: "Closed-Loop Exp.",     count: 3  },
+    { institution: "Oxford",           topic: "Automation",           count: 2  },
+    { institution: "Oxford",           topic: "Materials Discovery",  count: 6  },
+    { institution: "Oxford",           topic: "Software Research",    count: 3  },
+  ],
+};
+
+export const MOCK_HUB_SCORE: HubScorePayload = {
+  institution: "University of Toronto",
+  data: [
+    { year: 2021, degree_centrality: 0.24, betweenness_centrality: 0.18, partner_count: 4,  intl_collab_count: 3,  hub_score: 0.22 },
+    { year: 2022, degree_centrality: 0.35, betweenness_centrality: 0.28, partner_count: 7,  intl_collab_count: 6,  hub_score: 0.34 },
+    { year: 2023, degree_centrality: 0.52, betweenness_centrality: 0.44, partner_count: 13, intl_collab_count: 11, hub_score: 0.50 },
+    { year: 2024, degree_centrality: 0.71, betweenness_centrality: 0.63, partner_count: 21, intl_collab_count: 18, hub_score: 0.68 },
+    { year: 2025, degree_centrality: 0.78, betweenness_centrality: 0.72, partner_count: 26, intl_collab_count: 22, hub_score: 0.76 },
+  ],
+};

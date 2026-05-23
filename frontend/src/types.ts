@@ -528,3 +528,54 @@ export interface PeopleGrid {
   max_papers: number;
   total_people: number;
 }
+
+// ── Research Network Growth ──────────────────────────────────────────────────
+
+export interface GrowthPoint {
+  year: number;
+  papers: number;
+  authors: number;
+  institutions: number;
+  countries: number;
+  collaborations: number;
+}
+
+export interface NetworkGrowthPayload {
+  yearly: GrowthPoint[];
+  cumulative: GrowthPoint[];
+}
+
+/** ECharts themeRiver format: [year_string, count, topic_name] */
+export type TopicStreamRow = [string, number, string];
+
+export interface TopicStreamPayload {
+  data: TopicStreamRow[];
+  topics: string[];
+}
+
+export interface InstTopicCell {
+  institution: string;
+  topic: string;
+  count: number;
+}
+
+export interface InstTopicHeatmapPayload {
+  institutions: string[];
+  topics: string[];
+  cells: InstTopicCell[];
+  year: number | null;
+}
+
+export interface HubYearPoint {
+  year: number;
+  degree_centrality: number;
+  betweenness_centrality: number;
+  partner_count: number;
+  intl_collab_count: number;
+  hub_score: number;
+}
+
+export interface HubScorePayload {
+  institution: string;
+  data: HubYearPoint[];
+}

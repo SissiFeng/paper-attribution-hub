@@ -19,6 +19,7 @@ import DiscoveryPage from "@/pages/DiscoveryPage";
 import ImpactPage from "@/pages/ImpactPage";
 import DriftPage from "@/pages/DriftPage";
 import ReportPage from "@/pages/ReportPage";
+import NetworkGrowthPage from "@/pages/NetworkGrowthPage";
 import "@/styles.css";
 
 function Layout({ children }: { children: React.ReactNode }) {
@@ -51,6 +52,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
           <Route path="/people" element={<PeopleGridPage />} />
           <Route path="/multi-graph" element={<MultiGraphPage />} />
           <Route path="/geographic" element={<GeographicPage />} />
+          <Route path="/growth" element={<NetworkGrowthPage />} />
         </Routes>
       </Layout>
     </BrowserRouter>
