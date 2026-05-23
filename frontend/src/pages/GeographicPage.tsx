@@ -250,7 +250,7 @@ export default function GeographicPage() {
             ref={globeRef}
             width={globeSize.w}
             height={globeSize.h}
-            globeImageUrl="//unpkg.com/three-globe/example/img/earth-blue-marble.jpg"
+            globeImageUrl="/earth-blue-marble.jpg"
             backgroundColor="rgba(0,0,0,0)"
             atmosphereColor="rgba(101,148,177,0.6)"
             atmosphereAltitude={0.25}
