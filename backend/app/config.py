@@ -4,15 +4,18 @@ from pathlib import Path
 
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
-REPO_ROOT = Path(__file__).resolve().parents[2]
+_here = Path(__file__).resolve()
+REPO_ROOT = _here.parents[2]
 DATA_DIR = REPO_ROOT / "data"
 BACKEND_ROOT = REPO_ROOT / "backend"
+# In Docker /backend doesn't exist; fall back to /tmp so SQLite can be created.
+_SQLITE_DIR = BACKEND_ROOT if BACKEND_ROOT.exists() else Path("/tmp")
 
 
 class Settings(BaseSettings):
     model_config = SettingsConfigDict(env_prefix="PAS_", env_file=".env", extra="ignore")
 
-    database_url: str = f"sqlite:///{BACKEND_ROOT / 'paper_attribution.db'}"
+    database_url: str = f"sqlite:///{_SQLITE_DIR / 'paper_attribution.db'}"
 
     papers_csv: Path = DATA_DIR / "sample_papers.csv"
     people_csv: Path = DATA_DIR / "ac_members.csv"
