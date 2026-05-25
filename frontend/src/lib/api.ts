@@ -24,6 +24,7 @@ import type {
   SankeyPayload,
   TimelinePayload,
   TopicStreamPayload,
+  WikiPage,
 } from "@/types";
 import * as mock from "@/lib/mock";
 
@@ -323,7 +324,7 @@ export function getMultiGraph(params: MultiGraphParams = {}) {
   const qs = sp.toString();
   return withMock(
     () => request<MultiGraphPayload>(`/analytics/multi-graph${qs ? `?${qs}` : ""}`),
-    mock.MOCK_MULTI_GRAPH
+    mock.getMockMultiGraph(params)
   );
 }
 
@@ -374,6 +375,41 @@ export function getHubScore(institution: string = "uoft") {
   return withMock(
     () => request<HubScorePayload>(`/analytics/hub-score?institution=${institution}`),
     mock.MOCK_HUB_SCORE
+  );
+}
+
+// ─── Wiki / Knowledge Digest ─────────────────────────────────────────────────
+
+const MOCK_WIKI_PAGE = (paperId: string): WikiPage => ({
+  id: `wiki_${paperId}`,
+  entity_type: "paper",
+  entity_id: paperId,
+  title: "Knowledge Digest — not yet compiled",
+  sections: [
+    {
+      key: "overview",
+      heading: "Overview",
+      body: "This paper has not yet been compiled into a wiki page. Click Compile to generate a knowledge digest from the paper's metadata, evidence, and classification signals.",
+      chips: [],
+    },
+  ],
+  generated_at: new Date().toISOString(),
+  model_version: "—",
+  prompt_version: "v0.1",
+  is_stale: true,
+});
+
+export function getWikiPage(paperId: string) {
+  return withMock(
+    () => request<WikiPage>(`/wiki/paper/${paperId}`),
+    MOCK_WIKI_PAGE(paperId)
+  );
+}
+
+export function compileWikiPage(paperId: string) {
+  return withMock(
+    () => request<WikiPage>(`/wiki/paper/${paperId}/compile`, { method: "POST" }),
+    MOCK_WIKI_PAGE(paperId)
   );
 }
 

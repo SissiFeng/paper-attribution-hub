@@ -579,3 +579,31 @@ export interface HubScorePayload {
   institution: string;
   data: HubYearPoint[];
 }
+
+// ─── Wiki / Knowledge Digest ──────────────────────────────────────────────────
+
+export type WikiEntityType = "paper" | "author" | "institution" | "topic";
+
+export interface WikiChip {
+  label: string;
+  kind: "author" | "institution" | "topic" | "paper" | "label" | "year";
+}
+
+export interface WikiSection {
+  key: string;
+  heading: string;
+  body: string;
+  chips?: WikiChip[];
+}
+
+export interface WikiPage {
+  id: string;
+  entity_type: WikiEntityType;
+  entity_id: string;
+  title: string;
+  sections: WikiSection[];
+  generated_at: string;
+  model_version: string;
+  prompt_version: string;
+  is_stale: boolean;
+}

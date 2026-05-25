@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 
 import { ClassificationBadge, ConfidenceBar } from "@/components/ClassificationBadge";
+import { WikiPanel } from "@/components/WikiPanel";
 import { getGraphExplanation, submitReview } from "@/lib/api";
 import type { FulltextEvidence, GraphExplanation, Paper } from "@/types";
 
@@ -90,8 +91,11 @@ interface Props {
 
 const HUMAN_LABELS = ["INCLUDE", "EXCLUDE", "UNCERTAIN"];
 
+type PanelTab = "evidence" | "wiki";
+
 export function EvidencePanel({ paper, onReviewed }: Props) {
   const c = paper.classification;
+  const [tab, setTab] = useState<PanelTab>("evidence");
   const [reviewer, setReviewer] = useState(paper.review?.reviewer ?? "");
   const [notes, setNotes] = useState(paper.review?.notes ?? "");
   const [status, setStatus] = useState<string>("");
@@ -128,9 +132,33 @@ export function EvidencePanel({ paper, onReviewed }: Props) {
   return (
     <section className="evidence-panel">
       <h2 style={{ marginBottom: "0.4rem" }}>{paper.title}</h2>
-      <div style={{ color: "var(--muted)", fontSize: "0.9rem" }}>
+      <div style={{ color: "var(--muted)", fontSize: "0.9rem", marginBottom: "0.8rem" }}>
         {paper.year} · {paper.venue ?? "—"} · DOI: {paper.doi ?? "—"}
       </div>
+
+      {/* Tab bar */}
+      <div className="v7-subtabs" style={{ marginBottom: "1rem" }}>
+        <button
+          className={tab === "evidence" ? "active" : ""}
+          onClick={() => setTab("evidence")}
+          type="button"
+        >
+          Evidence
+        </button>
+        <button
+          className={tab === "wiki" ? "active" : ""}
+          onClick={() => setTab("wiki")}
+          type="button"
+        >
+          ◈ Wiki
+        </button>
+      </div>
+
+      {/* Wiki tab */}
+      {tab === "wiki" && <WikiPanel paperId={paper.id} />}
+
+      {/* Evidence tab */}
+      {tab === "evidence" && (<>
 
       {c && (
         <>
@@ -286,6 +314,7 @@ export function EvidencePanel({ paper, onReviewed }: Props) {
           {paper.review.notes ? ` — ${paper.review.notes}` : ""}
         </div>
       )}
+      </>)}
     </section>
   );
 }

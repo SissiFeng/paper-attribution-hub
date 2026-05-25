@@ -13,6 +13,7 @@ from app.models.reference import AcCorePaper, PaperReference
 from app.models.proposition import PaperProposition
 from app.models.discovery import DiscoveryCandidate, ExternalCache
 from app.models.pipeline_run import PipelineRun
+from app.models.wiki import WikiPage
 
 all_models = (
     Paper,
@@ -31,6 +32,7 @@ all_models = (
     DiscoveryCandidate,
     ExternalCache,
     PipelineRun,
+    WikiPage,
 )
 
 __all__ = [
@@ -50,5 +52,6 @@ __all__ = [
     "DiscoveryCandidate",
     "ExternalCache",
     "PipelineRun",
+    "WikiPage",
     "all_models",
 ]

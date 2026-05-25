@@ -18,6 +18,7 @@ from app.api import (
     retrieval,
     review_queue,
     reviews,
+    wiki,
 )
 from app.config import settings
 from app.db import init_database
@@ -60,6 +61,7 @@ app.include_router(propositions.router)
 app.include_router(admin.router)
 app.include_router(discovery.router)
 app.include_router(review_queue.router)
+app.include_router(wiki.router)
 
 
 @app.get("/health", tags=["meta"])

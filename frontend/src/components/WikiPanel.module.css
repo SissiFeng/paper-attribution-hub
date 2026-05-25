@@ -1,0 +1,153 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* ── Meta bar ── */
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 0 14px;
+  border-bottom: 1px solid var(--border-subtle);
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+}
+
+.metaLabel {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.metaValue {
+  font-size: 0.72rem;
+  color: var(--muted);
+}
+
+.stale {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  border-radius: 100px;
+  background: rgba(245,158,11,0.10);
+  color: #b45309;
+  font-size: 0.68rem;
+  font-weight: 600;
+}
+
+.compileBtn {
+  margin-left: auto;
+  padding: 5px 14px;
+  border-radius: 7px;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  color: var(--color-navy);
+  font-family: inherit;
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+  white-space: nowrap;
+}
+
+.compileBtn:hover {
+  background: rgba(101,148,177,0.08);
+  border-color: var(--color-steel);
+}
+
+.compileBtn:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+/* ── Sections ── */
+.section {
+  margin-bottom: 20px;
+}
+
+.sectionHeading {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--color-navy);
+  margin: 0 0 7px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.sectionHeading::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--border-subtle);
+}
+
+.sectionBody {
+  font-size: 0.85rem;
+  line-height: 1.65;
+  color: var(--text);
+  margin: 0 0 8px;
+  white-space: pre-wrap;
+}
+
+/* ── Chips ── */
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 4px;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 9px;
+  border-radius: 100px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  border: 1px solid transparent;
+}
+
+.chip.author      { background: rgba(33,60,81,0.08);   color: var(--color-navy);  border-color: rgba(33,60,81,0.15); }
+.chip.institution { background: rgba(101,148,177,0.10); color: var(--color-steel); border-color: rgba(101,148,177,0.25); }
+.chip.topic       { background: rgba(221,174,211,0.15); color: #8e5a80;            border-color: rgba(221,174,211,0.40); }
+.chip.paper       { background: rgba(34,197,94,0.08);   color: #15803d;            border-color: rgba(34,197,94,0.20); }
+.chip.label       { background: rgba(33,60,81,0.06);   color: var(--color-navy);  border-color: rgba(33,60,81,0.12); }
+.chip.year        { background: rgba(101,148,177,0.08); color: var(--color-steel); border-color: rgba(101,148,177,0.18); }
+
+/* ── Empty / loading ── */
+.empty {
+  padding: 32px 0;
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.skeleton {
+  border-radius: 6px;
+  background: linear-gradient(90deg, var(--bg-3) 25%, var(--bg-card) 50%, var(--bg-3) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s infinite;
+}
+
+@keyframes shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.skLine {
+  height: 11px;
+  margin-bottom: 8px;
+}
+.skLine.wide  { width: 85%; }
+.skLine.mid   { width: 62%; }
+.skLine.short { width: 40%; }
