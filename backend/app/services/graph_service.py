@@ -10,6 +10,7 @@ records to display "why" panels — it never invents new edges.
 """
 from __future__ import annotations
 
+import math
 from collections.abc import Iterable
 from dataclasses import dataclass, field
 
@@ -196,14 +197,138 @@ def _build_ac_member_set(session: Session) -> set[str]:
     }
 
 
+def _add_normalized_weights(g: nx.Graph) -> None:
+    """Add normalized_weight = weight / min(paper_count_u, paper_count_v) in-place."""
+    for u, v, data in g.edges(data=True):
+        w = int(data.get("weight", 1))
+        deg_u = g.nodes[u].get("paper_count", 1)
+        deg_v = g.nodes[v].get("paper_count", 1)
+        data["normalized_weight"] = round(w / max(min(deg_u, deg_v), 1), 4)
+
+
+def _ppr_toward_ac(g: nx.Graph, ac_ids: set[str]) -> dict[str, float]:
+    """
+    AC-Personalized PageRank.
+
+    Solves π = α·p + (1−α)·W^T·π where p_i = 1/|AC| if i∈AC, else 0.
+
+    Interpretation: steady-state probability that a random walker, restarting
+    toward AC members with probability (1−α), is found at node i. Directly
+    models "how much AC influence structurally flows to this author."
+
+    Returns scores normalized to [0, 1] so the best-positioned AC-adjacent
+    author maps to 1.0 and distant authors approach 0.
+    """
+    ac_nodes = [n for n in g.nodes() if n in ac_ids]
+    if not ac_nodes or g.number_of_nodes() == 0:
+        return {n: 0.0 for n in g.nodes()}
+
+    personalization = {
+        node: (1.0 / len(ac_nodes) if node in ac_ids else 0.0)
+        for node in g.nodes()
+    }
+    try:
+        ppr = nx.pagerank(
+            g,
+            alpha=0.85,
+            personalization=personalization,
+            weight="normalized_weight",
+            max_iter=300,
+            tol=1e-9,
+        )
+    except nx.PowerIterationFailedConvergence:
+        return {n: 0.0 for n in g.nodes()}
+
+    max_val = max(ppr.values(), default=1.0)
+    return {n: v / max_val for n, v in ppr.items()} if max_val > 0 else ppr
+
+
+def _evans_chen_c_norm(g: nx.Graph) -> dict[str, float]:
+    """
+    Excess centrality from Evans & Chen (2022), extended to weighted networks.
+
+    Original result (unweighted trees):  1/c_r = −1/ln(z̄) · ln(k_r) + β
+    Our extension: replace degree k_r with weighted degree k_r^(w) = Σ_j w_{rj},
+    and compute harmonic centrality using 1/w as edge distance (Opsahl 2010).
+
+    c_norm(r) = c_r / c_r^(fit) where c_r^(fit) = 1 / (β − ln(k_r^w) / ln(z̄^w))
+
+    c_norm > 1 → node is MORE central than its weighted degree predicts
+                  (bridge author, interdisciplinary connector)
+    c_norm ≈ 1 → centrality fully explained by degree (Evans & Chen redundancy region)
+    c_norm < 1 → structurally peripheral relative to productivity
+    """
+    n = g.number_of_nodes()
+    if n < 4:
+        return {node: 1.0 for node in g.nodes()}
+
+    # Evans & Chen use degree k_r = number of distinct neighbors (unweighted),
+    # validated on coauthor-astro-ph with this definition.
+    # z̄ = mean degree of the graph.
+    degrees = {node: g.degree(node) for node in g.nodes()}
+    z_bar = sum(degrees.values()) / n
+
+    if z_bar <= 1.0:
+        return {node: 1.0 for node in g.nodes()}
+
+    ln_zbar = math.log(z_bar)
+
+    # Harmonic centrality on the weighted distance graph.
+    # Distance d(u,v) = 1/normalized_weight so stronger ties = shorter distance.
+    # This is our extension of Evans & Chen to weighted networks (Opsahl 2010).
+    g_dist = nx.Graph()
+    g_dist.add_nodes_from(g.nodes())
+    for u, v, data in g.edges(data=True):
+        w = data.get("normalized_weight", 0.01)
+        g_dist.add_edge(u, v, weight=1.0 / max(w, 1e-6))
+
+    harm = nx.harmonic_centrality(g_dist, distance="weight")
+    max_harm = max(harm.values(), default=1.0)
+    if max_harm > 0:
+        harm = {k: v / max_harm for k, v in harm.items()}
+
+    # Calibrate β: from 1/c = −ln(k)/ln(z̄) + β → β = mean(1/c + ln(k)/ln(z̄))
+    valid = [
+        (degrees[node], harm[node])
+        for node in g.nodes()
+        if degrees[node] > 0 and harm[node] > 1e-9
+    ]
+    if len(valid) < 3:
+        return {node: 1.0 for node in g.nodes()}
+
+    beta = sum(1.0 / h + math.log(k) / ln_zbar for k, h in valid) / len(valid)
+
+    c_norm: dict[str, float] = {}
+    for node in g.nodes():
+        k = degrees.get(node, 0)
+        c_actual = harm.get(node, 0.0)
+        if k <= 0 or c_actual <= 1e-9:
+            c_norm[node] = 1.0
+            continue
+        try:
+            denom = beta - math.log(k) / ln_zbar
+            c_fit = 1.0 / denom if denom > 1e-9 else c_actual
+            c_norm[node] = c_actual / c_fit
+        except (ValueError, ZeroDivisionError):
+            c_norm[node] = 1.0
+
+    return c_norm
+
+
 def compute_graph_signals(session: Session) -> dict[str, GraphSignals]:
     """For every paper, compute network_score + citation_score + supporting paths.
 
-    network_score:
-      1.0 if any paper author IS an AC member (also covered by author_score, but
-          we keep it consistent for the analytics layer)
-      0.5 * min(1.0, len(unique_second_degree_paths) / 2) when only second-degree
-      0.0 otherwise
+    network_score (v2 — PPR + Evans & Chen):
+      1.0  if any author IS an AC member (direct attribution)
+      otherwise: max over paper authors of
+          PPR_AC(author) × (1 + λ · max(0, c_norm(author) − 1))
+      where
+          PPR_AC  = AC-Personalized PageRank (α=0.85, weighted by normalized_weight)
+                    models how much AC influence flows to this author via the network
+          c_norm  = Evans & Chen (2022) excess centrality extended to weighted graphs:
+                    c_norm = c_actual / c_fit, c_fit = 1/(β − ln(k_w)/ln(z̄_w))
+                    captures authors who are MORE central than their degree predicts
+          λ = 0.25 (bridge-author bonus weight)
 
     citation_score:
       sum of 0.5 per cited AC core (capped at 1.0)
@@ -243,7 +368,20 @@ def compute_graph_signals(session: Session) -> dict[str, GraphSignals]:
         a.id: a.canonical_name for a in session.execute(select(Author)).scalars()
     }
 
-    # Citations: paper_id → list of (ac_core_id, ac_core_title, doi, raw_text)
+    # ── Build weighted coauthor graph for PPR + Evans & Chen ──────────────────
+    g = nx.Graph()
+    for author_id, papers_set in author_to_papers.items():
+        g.add_node(author_id, paper_count=len(papers_set))
+    for key, papers_list in author_pair_papers.items():
+        a, b = key
+        g.add_edge(a, b, weight=len(papers_list), papers=papers_list)
+    _add_normalized_weights(g)
+
+    ppr = _ppr_toward_ac(g, ac_member_ids)
+    c_norm = _evans_chen_c_norm(g)
+    _BRIDGE_LAMBDA = 0.25  # bonus weight for Evans & Chen excess centrality
+
+    # ── Citations ─────────────────────────────────────────────────────────────
     citations: dict[str, list[CitationSignal]] = {}
     cites_corpus: dict[str, list[str]] = {}
     ac_cores = {c.id: c for c in session.execute(select(AcCorePaper)).scalars()}
@@ -271,7 +409,6 @@ def compute_graph_signals(session: Session) -> dict[str, GraphSignals]:
         if not paper_has_ac_author:
             seen_ac_pairs: set[tuple[str, str]] = set()
             for aid in author_ids:
-                # Skip if this author IS an AC member (shouldn't happen here).
                 for partner in coauthor_of.get(aid, set()):
                     if partner not in ac_member_ids:
                         continue
@@ -287,6 +424,8 @@ def compute_graph_signals(session: Session) -> dict[str, GraphSignals]:
                     )
                     if not shared:
                         continue
+                    # second_degree strength now uses normalized edge weight
+                    edge_nw = g[aid][partner].get("normalized_weight", 0.0) if g.has_edge(aid, partner) else 0.0
                     paths.append(
                         SecondDegreePath(
                             paper_id=paper.id,
@@ -295,16 +434,21 @@ def compute_graph_signals(session: Session) -> dict[str, GraphSignals]:
                             ac_author_id=partner,
                             ac_author_name=author_names.get(partner, partner),
                             shared_papers=shared,
-                            strength=min(1.0, 0.5 + 0.2 * len(shared)),
+                            strength=min(1.0, edge_nw + 0.1 * (len(shared) - 1)),
                         )
                     )
 
         if paper_has_ac_author:
             network_score = 1.0
-        elif paths:
-            network_score = min(1.0, 0.5 + 0.15 * len(paths))
         else:
-            network_score = 0.0
+            # PPR_AC × (1 + λ · excess_centrality) — best author wins
+            best = 0.0
+            for aid in author_ids:
+                ppr_score = ppr.get(aid, 0.0)
+                excess = max(0.0, c_norm.get(aid, 1.0) - 1.0)
+                score = ppr_score * (1.0 + _BRIDGE_LAMBDA * excess)
+                best = max(best, score)
+            network_score = min(1.0, best)
 
         cite_signals = citations.get(paper.id, [])
         citation_score = min(1.0, 0.5 * len(cite_signals))
