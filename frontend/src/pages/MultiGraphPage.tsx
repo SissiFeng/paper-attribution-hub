@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 
 import { EChart } from "@/components/EChart";
@@ -91,6 +91,8 @@ export default function MultiGraphPage() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [yearFrom, yearTo, centerId]);
 
+  // Fetch the full year range once per structural change; year filtering is done client-side
+  // so the force layout doesn't restart when the TimeSlider moves.
   const load = useCallback(async () => {
     setLoading(true);
     try {
@@ -100,26 +102,64 @@ export default function MultiGraphPage() {
         group_by: "institution",
         center_id: centerId || undefined,
         hop_limit: hopLimit,
-        year_from: yearFrom,
-        year_to: yearTo,
+        year_from: 2021,
+        year_to: 2026,
       });
       setPayload(data);
     } finally {
       setLoading(false);
     }
-  }, [activeNodeTypes, activeEdgeTypes, centerId, hopLimit, yearFrom, yearTo]);
+  }, [activeNodeTypes, activeEdgeTypes, centerId, hopLimit]); // yearFrom/yearTo intentionally excluded
 
   useEffect(() => { void load(); }, [load]);
 
-  // ── Client-side filter (works correctly with mock data) ───────────────────
+  // A stable key that changes only on structural param changes — causes EChart to remount
+  // (fresh layout) for those, while year-only changes just merge into the live chart.
+  const layoutKey = useRef(0);
+  const prevStructural = useRef({ activeNodeTypes, activeEdgeTypes, centerId, hopLimit });
+  const prev = prevStructural.current;
+  if (
+    prev.centerId !== centerId ||
+    prev.hopLimit !== hopLimit ||
+    prev.activeNodeTypes.join() !== activeNodeTypes.join() ||
+    prev.activeEdgeTypes.join() !== activeEdgeTypes.join()
+  ) {
+    layoutKey.current += 1;
+    prevStructural.current = { activeNodeTypes, activeEdgeTypes, centerId, hopLimit };
+  }
+
+  // ── Client-side filter: year + type ──────────────────────────────────────
   const option = useMemo(() => {
     if (!payload) return null;
 
-    // Filter nodes by active types
-    const visibleNodes = payload.nodes.filter(n => activeNodeTypes.includes(n.type));
+    // Temporal reachability: start from papers in the year window, then derive
+    // authors/institutions/topics/methods that connect to those papers.
+    const paperInRange = new Set(
+      payload.nodes
+        .filter(n => n.type === "paper" &&
+          (n.metadata.year as number) >= yearFrom &&
+          (n.metadata.year as number) <= yearTo)
+        .map(n => n.id)
+    );
+
+    const yearReachable: Set<string> = new Set(paperInRange);
+    for (const e of payload.edges) {
+      if (e.type === "authored"      && paperInRange.has(e.target)) yearReachable.add(e.source);
+      if (e.type === "covers_topic"  && paperInRange.has(e.source)) yearReachable.add(e.target);
+      if (e.type === "uses_method"   && paperInRange.has(e.source)) yearReachable.add(e.target);
+    }
+    // Institutions reachable from visible authors
+    for (const e of payload.edges) {
+      if (e.type === "affiliated_with" && yearReachable.has(e.source)) yearReachable.add(e.target);
+    }
+
+    // Filter nodes: active type AND temporally reachable
+    const visibleNodes = payload.nodes.filter(n =>
+      activeNodeTypes.includes(n.type) && yearReachable.has(n.id)
+    );
     const visibleIds = new Set(visibleNodes.map(n => n.id));
 
-    // Filter edges: type must be active AND both endpoints must be visible
+    // Filter edges: type must be active AND both endpoints visible
     const visibleEdges = payload.edges.filter(e =>
       activeEdgeTypes.includes(e.type) &&
       visibleIds.has(e.source) &&
@@ -215,7 +255,7 @@ export default function MultiGraphPage() {
         },
       ],
     };
-  }, [payload, activeNodeTypes, activeEdgeTypes]); // ← deps include filter state
+  }, [payload, activeNodeTypes, activeEdgeTypes, yearFrom, yearTo]);
 
   const onChartEvent = useMemo(() => ({
     click: (params: unknown) => {
@@ -367,7 +407,9 @@ export default function MultiGraphPage() {
           </div>
         ) : option ? (
           <EChart
+            key={layoutKey.current}
             option={option}
+            notMerge={false}
             style={{ height: "100%", width: "100%" }}
             onEvents={onChartEvent}
           />

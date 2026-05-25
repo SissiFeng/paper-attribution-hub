@@ -5,6 +5,8 @@ interface Props {
   option: object;
   style?: CSSProperties;
   onEvents?: Record<string, (params: unknown) => void>;
+  /** When false, ECharts merges new option into the existing chart (preserves force-layout positions). Default true (full reset). */
+  notMerge?: boolean;
 }
 
 const DARK_BG_THEME = {
@@ -16,12 +18,12 @@ const DARK_BG_THEME = {
   tooltip: { backgroundColor: "#181b22", borderColor: "#2a2f3a", textStyle: { color: "#e7eaf0" } },
 };
 
-export function EChart({ option, style, onEvents }: Props) {
+export function EChart({ option, style, onEvents, notMerge = true }: Props) {
   const merged = { ...DARK_BG_THEME, ...option };
   return (
     <ReactECharts
       option={merged}
-      notMerge
+      notMerge={notMerge}
       lazyUpdate
       style={{ height: 520, width: "100%", ...style }}
       onEvents={onEvents}
