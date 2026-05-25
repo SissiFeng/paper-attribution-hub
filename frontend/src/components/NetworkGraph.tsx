@@ -7,6 +7,8 @@ interface LaidOutNode {
   label: string;
   is_ac_member: boolean;
   paper_count: number;
+  ppr_score: number;
+  c_norm: number;
   x: number;
   y: number;
   vx: number;
@@ -23,6 +25,8 @@ function layout(payload: NetworkPayload, width: number, height: number, iters = 
     label: n.label,
     is_ac_member: n.is_ac_member,
     paper_count: n.paper_count,
+    ppr_score: n.ppr_score ?? 0,
+    c_norm: n.c_norm ?? 1,
     x: width / 2 + Math.cos((i / payload.nodes.length) * Math.PI * 2) * 180,
     y: height / 2 + Math.sin((i / payload.nodes.length) * Math.PI * 2) * 180,
     vx: 0,
@@ -133,9 +137,33 @@ export function NetworkGraph({ payload }: Props) {
           );
         })}
         {placed.nodes.map((n) => {
-          const r = 6 + Math.min(n.paper_count, 6) * 1.5;
+          // Radius: AC members use max size; others scale with PPR_AC score.
+          // sqrt gives perceptually linear area scaling.
+          const r = n.is_ac_member
+            ? 15
+            : 5 + Math.sqrt(n.ppr_score) * 10;
+          // Bridge ring: shown when c_norm > 1.25 (more central than degree predicts)
+          const isBridge = !n.is_ac_member && n.c_norm > 1.25;
+          const tooltip = [
+            n.label,
+            `PPR score: ${(n.ppr_score * 100).toFixed(1)}%`,
+            `c_norm: ${n.c_norm.toFixed(2)}${isBridge ? " ★ bridge" : ""}`,
+            `Papers: ${n.paper_count}`,
+          ].join("\n");
           return (
             <g key={n.id}>
+              <title>{tooltip}</title>
+              {isBridge && (
+                <circle
+                  cx={n.x}
+                  cy={n.y}
+                  r={r + 4}
+                  fill="none"
+                  stroke="rgba(251, 191, 36, 0.55)"
+                  strokeWidth={2}
+                  strokeDasharray="4 3"
+                />
+              )}
               <circle
                 cx={n.x}
                 cy={n.y}
@@ -166,6 +194,15 @@ export function NetworkGraph({ payload }: Props) {
         <span style={{ display: "inline-flex", alignItems: "center", gap: 4 }}>
           <svg width={24} height={4}><line x1={0} y1={2} x2={24} y2={2} stroke="rgba(251,191,36,0.65)" strokeWidth={2}/></svg>
           AC–External
+        </span>
+        <span style={{ display: "inline-flex", alignItems: "center", gap: 4 }}>
+          <svg width={16} height={16}>
+            <circle cx={8} cy={8} r={6} fill="none" stroke="rgba(251,191,36,0.55)" strokeWidth={2} strokeDasharray="4 3"/>
+          </svg>
+          Bridge (c_norm&gt;1.25)
+        </span>
+        <span title="Node size = AC-Personalized PageRank score (structural proximity to AC core)">
+          Size = PPR score
         </span>
         <span style={{ marginLeft: "auto" }}>
           {payload.nodes.length} authors · {payload.edges.length} collaborations

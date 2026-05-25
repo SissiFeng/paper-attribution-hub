@@ -1025,18 +1025,20 @@ export const MOCK_TIMELINE_BY_LABEL: TimelinePayload = {
 
 export const MOCK_COAUTHOR_NETWORK: NetworkPayload = {
   nodes: [
-    { id: "ac001", label: "Sarah Chen", is_ac_member: true, institution: "University of Toronto", paper_count: 5 },
-    { id: "ac002", label: "Michael Schmidt", is_ac_member: true, institution: "ETH Zurich", paper_count: 4 },
-    { id: "ac003", label: "Elena Rodriguez", is_ac_member: true, institution: "Imperial College London", paper_count: 4 },
-    { id: "ac004", label: "Yuki Tanaka", is_ac_member: true, institution: "NIMS", paper_count: 5 },
-    { id: "ac005", label: "James Liu", is_ac_member: true, institution: "Argonne National Laboratory", paper_count: 3 },
-    { id: "ext001", label: "Wei Zhang", is_ac_member: false, institution: "Stanford University", paper_count: 2 },
-    { id: "ext002", label: "Priya Sharma", is_ac_member: false, institution: "Carnegie Mellon University", paper_count: 2 },
-    { id: "ext003", label: "Lars Eriksson", is_ac_member: false, institution: "Uppsala University", paper_count: 1 },
-    { id: "ext004", label: "Hana Kimura", is_ac_member: false, institution: "Toyota Central R&D", paper_count: 1 },
-    { id: "ext005", label: "Aiko Nakamura", is_ac_member: false, institution: "Kyoto University", paper_count: 1 },
-    { id: "ext006", label: "Carlos Mendes", is_ac_member: false, institution: "University of São Paulo", paper_count: 2 },
-    { id: "ext007", label: "Thomas Müller", is_ac_member: false, institution: "Max Planck Institute", paper_count: 1 },
+    // AC members: ppr_score=1.0 (max, by normalization), c_norm=1.0 (baseline)
+    { id: "ac001", label: "Sarah Chen",      is_ac_member: true,  institution: "University of Toronto",        paper_count: 5, ppr_score: 1.00, c_norm: 1.00 },
+    { id: "ac002", label: "Michael Schmidt", is_ac_member: true,  institution: "ETH Zurich",                   paper_count: 4, ppr_score: 0.92, c_norm: 1.00 },
+    { id: "ac003", label: "Elena Rodriguez", is_ac_member: true,  institution: "Imperial College London",      paper_count: 4, ppr_score: 0.88, c_norm: 1.00 },
+    { id: "ac004", label: "Yuki Tanaka",     is_ac_member: true,  institution: "NIMS",                         paper_count: 5, ppr_score: 0.95, c_norm: 1.00 },
+    { id: "ac005", label: "James Liu",       is_ac_member: true,  institution: "Argonne National Laboratory",  paper_count: 3, ppr_score: 0.82, c_norm: 1.00 },
+    // External: ppr_score reflects PPR proximity to AC; c_norm>1.25 = bridge author
+    { id: "ext001", label: "Wei Zhang",     is_ac_member: false, institution: "Stanford University",           paper_count: 2, ppr_score: 0.72, c_norm: 1.45 },
+    { id: "ext002", label: "Priya Sharma",  is_ac_member: false, institution: "Carnegie Mellon University",    paper_count: 2, ppr_score: 0.58, c_norm: 0.90 },
+    { id: "ext003", label: "Lars Eriksson", is_ac_member: false, institution: "Uppsala University",            paper_count: 1, ppr_score: 0.31, c_norm: 1.30 },
+    { id: "ext004", label: "Hana Kimura",   is_ac_member: false, institution: "Toyota Central R&D",           paper_count: 1, ppr_score: 0.24, c_norm: 0.85 },
+    { id: "ext005", label: "Aiko Nakamura", is_ac_member: false, institution: "Kyoto University",             paper_count: 1, ppr_score: 0.19, c_norm: 0.78 },
+    { id: "ext006", label: "Carlos Mendes", is_ac_member: false, institution: "University of São Paulo",      paper_count: 2, ppr_score: 0.41, c_norm: 1.62 },
+    { id: "ext007", label: "Thomas Müller", is_ac_member: false, institution: "Max Planck Institute",         paper_count: 1, ppr_score: 0.15, c_norm: 0.72 },
   ],
   edges: [
     { source: "ac001", target: "ac002", weight: 2, papers: ["p001"],        normalized_weight: 0.5,    involves_ac: true,  is_ac_ac: true  },

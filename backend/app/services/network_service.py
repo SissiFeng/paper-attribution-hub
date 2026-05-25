@@ -5,7 +5,12 @@ from __future__ import annotations
 import networkx as nx
 from sqlalchemy.orm import Session
 
-from app.services.graph_service import build_coauthor_graph as _build_coauthor_graph
+from app.services.graph_service import (
+    add_normalized_weights,
+    build_coauthor_graph as _build_coauthor_graph,
+    evans_chen_c_norm,
+    ppr_toward_ac,
+)
 
 
 def build_coauthor_graph(session: Session, only_relevant: bool = False) -> nx.Graph:
@@ -13,17 +18,6 @@ def build_coauthor_graph(session: Session, only_relevant: bool = False) -> nx.Gr
 
 
 def graph_to_payload(g: nx.Graph) -> dict:
-    nodes = [
-        {
-            "id": node_id,
-            "label": data.get("label", node_id),
-            "is_ac_member": bool(data.get("is_ac_member", False)),
-            "institution": data.get("institution"),
-            "paper_count": int(data.get("paper_count", 0)),
-        }
-        for node_id, data in g.nodes(data=True)
-    ]
-
     ac_members: set[str] = {
         node_id
         for node_id, data in g.nodes(data=True)
@@ -33,6 +27,24 @@ def graph_to_payload(g: nx.Graph) -> dict:
         node_id: int(data.get("paper_count", 0))
         for node_id, data in g.nodes(data=True)
     }
+
+    # Ensure normalized_weight edges are present, then score nodes.
+    add_normalized_weights(g)
+    ppr = ppr_toward_ac(g, ac_members)
+    c_norm = evans_chen_c_norm(g)
+
+    nodes = [
+        {
+            "id": node_id,
+            "label": data.get("label", node_id),
+            "is_ac_member": bool(data.get("is_ac_member", False)),
+            "institution": data.get("institution"),
+            "paper_count": int(data.get("paper_count", 0)),
+            "ppr_score": round(ppr.get(node_id, 0.0), 4),
+            "c_norm": round(c_norm.get(node_id, 1.0), 4),
+        }
+        for node_id, data in g.nodes(data=True)
+    ]
 
     edges = []
     for src, dst, data in g.edges(data=True):

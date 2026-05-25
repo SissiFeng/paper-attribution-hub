@@ -197,7 +197,7 @@ def _build_ac_member_set(session: Session) -> set[str]:
     }
 
 
-def _add_normalized_weights(g: nx.Graph) -> None:
+def add_normalized_weights(g: nx.Graph) -> None:
     """Add normalized_weight = weight / min(paper_count_u, paper_count_v) in-place."""
     for u, v, data in g.edges(data=True):
         w = int(data.get("weight", 1))
@@ -206,7 +206,7 @@ def _add_normalized_weights(g: nx.Graph) -> None:
         data["normalized_weight"] = round(w / max(min(deg_u, deg_v), 1), 4)
 
 
-def _ppr_toward_ac(g: nx.Graph, ac_ids: set[str]) -> dict[str, float]:
+def ppr_toward_ac(g: nx.Graph, ac_ids: set[str]) -> dict[str, float]:
     """
     AC-Personalized PageRank.
 
@@ -243,7 +243,7 @@ def _ppr_toward_ac(g: nx.Graph, ac_ids: set[str]) -> dict[str, float]:
     return {n: v / max_val for n, v in ppr.items()} if max_val > 0 else ppr
 
 
-def _evans_chen_c_norm(g: nx.Graph) -> dict[str, float]:
+def evans_chen_c_norm(g: nx.Graph) -> dict[str, float]:
     """
     Excess centrality from Evans & Chen (2022), extended to weighted networks.
 
@@ -375,10 +375,10 @@ def compute_graph_signals(session: Session) -> dict[str, GraphSignals]:
     for key, papers_list in author_pair_papers.items():
         a, b = key
         g.add_edge(a, b, weight=len(papers_list), papers=papers_list)
-    _add_normalized_weights(g)
+    add_normalized_weights(g)
 
-    ppr = _ppr_toward_ac(g, ac_member_ids)
-    c_norm = _evans_chen_c_norm(g)
+    ppr = ppr_toward_ac(g, ac_member_ids)
+    c_norm = evans_chen_c_norm(g)
     _BRIDGE_LAMBDA = 0.25  # bonus weight for Evans & Chen excess centrality
 
     # ── Citations ─────────────────────────────────────────────────────────────

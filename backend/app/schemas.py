@@ -435,6 +435,8 @@ class NetworkNode(BaseModel):
     is_ac_member: bool
     institution: str | None = None
     paper_count: int
+    ppr_score: float = 0.0
+    c_norm: float = 1.0
 
 
 class NetworkEdge(BaseModel):

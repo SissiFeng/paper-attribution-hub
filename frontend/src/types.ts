@@ -356,6 +356,8 @@ export interface NetworkNode {
   is_ac_member: boolean;
   institution?: string | null;
   paper_count: number;
+  ppr_score: number;
+  c_norm: number;
 }
 
 export interface NetworkEdge {
