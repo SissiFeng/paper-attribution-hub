@@ -6,7 +6,7 @@ const PeopleGridPage = lazy(() => import("@/pages/PeopleGridPage"));
 const MultiGraphPage = lazy(() => import("@/pages/MultiGraphPage"));
 const GeographicPage = lazy(() => import("@/pages/GeographicPage"));
 const SankeyPage = lazy(() => import("@/pages/SankeyPage"));
-const NetworkPage = lazy(() => import("@/pages/NetworkPage"));
+const CoauthorNetworkPage = lazy(() => import("@/pages/CoauthorNetworkPage"));
 const TimelinePage = lazy(() => import("@/pages/TimelinePage"));
 const DriftPage = lazy(() => import("@/pages/DriftPage"));
 const ImpactPage = lazy(() => import("@/pages/ImpactPage"));
@@ -58,8 +58,8 @@ const TABS = [
     key: "coauthors",
     label: "Co-authors",
     icon: "👥",
-    desc: "Pure author-author co-authorship network.",
-    component: NetworkPage,
+    desc: "Author co-authorship network — node size = AC influence (PPR), dashed ring = bridge author. Click any node for details. Switch to institution view with the toggle.",
+    component: CoauthorNetworkPage,
   },
   {
     key: "drift",

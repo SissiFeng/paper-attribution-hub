@@ -86,9 +86,11 @@ function layout(payload: NetworkPayload, width: number, height: number, iters = 
 
 interface Props {
   payload: NetworkPayload;
+  selectedId?: string | null;
+  onSelect?: (id: string | null) => void;
 }
 
-export function NetworkGraph({ payload }: Props) {
+export function NetworkGraph({ payload, selectedId, onSelect }: Props) {
   const ref = useRef<HTMLDivElement | null>(null);
   const [size, setSize] = useState({ w: 800, h: 520 });
 
@@ -111,13 +113,31 @@ export function NetworkGraph({ payload }: Props) {
     return <div className="empty">No co-author edges yet. Run the pipeline first.</div>;
   }
 
+  // Adjacency set for dimming: selected node + its direct neighbors
+  const adjacentIds: Set<string> = new Set();
+  if (selectedId) {
+    adjacentIds.add(selectedId);
+    for (const e of payload.edges) {
+      if (e.source === selectedId) adjacentIds.add(e.target);
+      else if (e.target === selectedId) adjacentIds.add(e.source);
+    }
+  }
+  const hasSelection = selectedId != null;
+
   return (
     <div ref={ref}>
-      <svg className="network-svg" width={size.w} height={size.h}>
+      <svg
+        className="network-svg"
+        width={size.w}
+        height={size.h}
+        onClick={() => onSelect?.(null)}
+        style={{ cursor: "default" }}
+      >
         {payload.edges.map((e, i) => {
           const a = placed.nodeById.get(e.source);
           const b = placed.nodeById.get(e.target);
           if (!a || !b) return null;
+          const isAdjEdge = !hasSelection || (adjacentIds.has(e.source) && adjacentIds.has(e.target));
           const stroke = e.is_ac_ac
             ? "rgba(52, 211, 153, 0.75)"
             : e.involves_ac
@@ -133,17 +153,16 @@ export function NetworkGraph({ payload }: Props) {
               y2={b.y}
               stroke={stroke}
               strokeWidth={Math.min(strokeWidth, 4)}
+              opacity={isAdjEdge ? 1 : 0.06}
+              style={{ transition: "opacity 0.2s" }}
             />
           );
         })}
         {placed.nodes.map((n) => {
-          // Radius: AC members use max size; others scale with PPR_AC score.
-          // sqrt gives perceptually linear area scaling.
-          const r = n.is_ac_member
-            ? 15
-            : 5 + Math.sqrt(n.ppr_score) * 10;
-          // Bridge ring: shown when c_norm > 1.25 (more central than degree predicts)
+          const r = n.is_ac_member ? 15 : 5 + Math.sqrt(n.ppr_score) * 10;
           const isBridge = !n.is_ac_member && n.c_norm > 1.25;
+          const isAdj = !hasSelection || adjacentIds.has(n.id);
+          const isSelected = n.id === selectedId;
           const tooltip = [
             n.label,
             `PPR score: ${(n.ppr_score * 100).toFixed(1)}%`,
@@ -151,33 +170,29 @@ export function NetworkGraph({ payload }: Props) {
             `Papers: ${n.paper_count}`,
           ].join("\n");
           return (
-            <g key={n.id}>
+            <g
+              key={n.id}
+              onClick={(ev) => { ev.stopPropagation(); onSelect?.(isSelected ? null : n.id); }}
+              style={{ cursor: "pointer", transition: "opacity 0.2s" }}
+              opacity={isAdj ? 1 : 0.12}
+            >
               <title>{tooltip}</title>
-              {isBridge && (
+              {isSelected && (
+                <circle cx={n.x} cy={n.y} r={r + 6} fill="none" stroke="white" strokeWidth={2} opacity={0.6} />
+              )}
+              {isBridge && !isSelected && (
                 <circle
-                  cx={n.x}
-                  cy={n.y}
-                  r={r + 4}
-                  fill="none"
-                  stroke="rgba(251, 191, 36, 0.55)"
-                  strokeWidth={2}
-                  strokeDasharray="4 3"
+                  cx={n.x} cy={n.y} r={r + 4}
+                  fill="none" stroke="rgba(251, 191, 36, 0.55)"
+                  strokeWidth={2} strokeDasharray="4 3"
                 />
               )}
               <circle
-                cx={n.x}
-                cy={n.y}
-                r={r}
+                cx={n.x} cy={n.y} r={r}
                 fill={n.is_ac_member ? "var(--accent)" : "var(--muted)"}
-                stroke="#0f1115"
-                strokeWidth={1.5}
+                stroke="#0f1115" strokeWidth={1.5}
               />
-              <text
-                x={n.x + r + 4}
-                y={n.y + 4}
-                fill="var(--text)"
-                fontSize={11}
-              >
+              <text x={n.x + r + 4} y={n.y + 4} fill="var(--text)" fontSize={11}>
                 {n.label}
               </text>
             </g>
