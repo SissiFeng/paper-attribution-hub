@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { getOverview } from "@/lib/api";
 import type { AnalyticsOverview } from "@/types";
 import { AnimatedNumber } from "@/components/AnimatedNumber";
+import { TiltCard } from "@/components/TiltCard";
 import css from "./StatsBar.module.css";
 
 export function StatsBar() {
@@ -56,7 +57,7 @@ export function StatsBar() {
   return (
     <div className={css.bar}>
       {stats.map((s) => (
-        <div key={s.label} className={`${css.card} ${css[s.accent]}`}>
+        <TiltCard key={s.label} className={`${css.card} ${css[s.accent]}`}>
           <div className={css.label}>{s.label}</div>
           <div className={css.value}>
             <AnimatedNumber
@@ -71,7 +72,7 @@ export function StatsBar() {
               {s.badge.text}
             </span>
           </div>
-        </div>
+        </TiltCard>
       ))}
     </div>
   );
