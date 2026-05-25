@@ -25,8 +25,10 @@ function buildOption(payload: InstitutionNetworkPayload) {
     target: e.target,
     value: e.weight,
     lineStyle: {
-      width: Math.min(1 + e.weight * 0.8, 4.5),
-      color: "rgba(154, 163, 178, 0.5)",
+      width: Math.min(1 + (e.normalized_weight ?? 0) * 3, 4.5),
+      color: e.involves_partner
+        ? "rgba(52, 211, 153, 0.7)"
+        : "rgba(154, 163, 178, 0.35)",
     },
   }));
   return {
@@ -40,7 +42,11 @@ function buildOption(payload: InstitutionNetworkPayload) {
         }
         const src = payload.nodes.find((n) => n.id === p.data.source)?.label;
         const tgt = payload.nodes.find((n) => n.id === p.data.target)?.label;
-        return `${src} ↔ ${tgt}<br/>${p.data.value} joint papers`;
+        const edge = payload.edges.find(
+          (e) => e.source === p.data.source && e.target === p.data.target
+        );
+        const norm = edge ? ` (strength ${(edge.normalized_weight * 100).toFixed(0)}%)` : "";
+        return `${src} ↔ ${tgt}<br/>${p.data.value} joint papers${norm}`;
       },
     },
     legend: {

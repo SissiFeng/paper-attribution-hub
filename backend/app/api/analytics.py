@@ -248,7 +248,12 @@ def institution_network_endpoint(
         ],
         edges=[
             InstitutionEdgeOut(
-                source=e.source, target=e.target, weight=e.weight, papers=e.papers
+                source=e.source,
+                target=e.target,
+                weight=e.weight,
+                papers=e.papers,
+                normalized_weight=e.normalized_weight,
+                involves_partner=e.involves_partner,
             )
             for e in edges
         ],

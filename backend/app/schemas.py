@@ -384,6 +384,8 @@ class InstitutionEdgeOut(BaseModel):
     target: str
     weight: int
     papers: list[str]
+    normalized_weight: float = 0.0
+    involves_partner: bool = False
 
 
 class InstitutionNetworkOut(BaseModel):
@@ -440,6 +442,9 @@ class NetworkEdge(BaseModel):
     target: str
     weight: int
     papers: list[str]
+    normalized_weight: float = 0.0
+    involves_ac: bool = False
+    is_ac_ac: bool = False
 
 
 class NetworkOut(BaseModel):

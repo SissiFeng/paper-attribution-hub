@@ -304,6 +304,8 @@ export interface InstitutionEdge {
   target: string;
   weight: number;
   papers: string[];
+  normalized_weight: number;
+  involves_partner: boolean;
 }
 
 export interface InstitutionNetworkPayload {
@@ -361,6 +363,9 @@ export interface NetworkEdge {
   target: string;
   weight: number;
   papers: string[];
+  normalized_weight: number;
+  involves_ac: boolean;
+  is_ac_ac: boolean;
 }
 
 export interface NetworkPayload {

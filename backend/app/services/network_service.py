@@ -23,13 +23,32 @@ def graph_to_payload(g: nx.Graph) -> dict:
         }
         for node_id, data in g.nodes(data=True)
     ]
-    edges = [
-        {
+
+    ac_members: set[str] = {
+        node_id
+        for node_id, data in g.nodes(data=True)
+        if data.get("is_ac_member")
+    }
+    paper_counts: dict[str, int] = {
+        node_id: int(data.get("paper_count", 0))
+        for node_id, data in g.nodes(data=True)
+    }
+
+    edges = []
+    for src, dst, data in g.edges(data=True):
+        weight = int(data.get("weight", 1))
+        min_degree = min(paper_counts.get(src, 1), paper_counts.get(dst, 1))
+        normalized_weight = round(weight / max(min_degree, 1), 4)
+        src_ac = src in ac_members
+        dst_ac = dst in ac_members
+        edges.append({
             "source": src,
             "target": dst,
-            "weight": int(data.get("weight", 1)),
+            "weight": weight,
             "papers": list(data.get("papers", [])),
-        }
-        for src, dst, data in g.edges(data=True)
-    ]
+            "normalized_weight": min(normalized_weight, 1.0),
+            "involves_ac": src_ac or dst_ac,
+            "is_ac_ac": src_ac and dst_ac,
+        })
+
     return {"nodes": nodes, "edges": edges}

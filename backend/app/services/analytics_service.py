@@ -77,6 +77,8 @@ class InstitutionGraphEdge:
     target: str
     weight: int
     papers: list[str]
+    normalized_weight: float = 0.0
+    involves_partner: bool = False
 
 
 def _papers_for(session: Session, filt: PaperFilter) -> list[Paper]:
@@ -207,20 +209,38 @@ def institution_network(
     contrib: Counter[str] = Counter()
     # Walk edges and accumulate paper counts against the filtered set.
     nodes_in_filter: set[str] = set()
-    edges_filtered: list[InstitutionGraphEdge] = []
+    raw_edges: list[tuple[str, str, list[str]]] = []
     for src, dst, data in g.edges(data=True):
         joint = [p for p in data.get("papers", []) if p in paper_ids]
         if not joint:
             continue
-        edges_filtered.append(
-            InstitutionGraphEdge(
-                source=src, target=dst, weight=len(joint), papers=joint
-            )
-        )
+        raw_edges.append((src, dst, joint))
         nodes_in_filter.add(src)
         nodes_in_filter.add(dst)
         contrib[src] += len(joint)
         contrib[dst] += len(joint)
+
+    partner_nodes: set[str] = {
+        node_id
+        for node_id in nodes_in_filter
+        if g.nodes[node_id].get("is_partner")
+    }
+
+    edges_filtered: list[InstitutionGraphEdge] = []
+    for src, dst, joint in raw_edges:
+        weight = len(joint)
+        min_contrib = min(contrib.get(src, 1), contrib.get(dst, 1))
+        normalized = round(weight / max(min_contrib, 1), 4)
+        edges_filtered.append(
+            InstitutionGraphEdge(
+                source=src,
+                target=dst,
+                weight=weight,
+                papers=joint,
+                normalized_weight=min(normalized, 1.0),
+                involves_partner=(src in partner_nodes or dst in partner_nodes),
+            )
+        )
 
     nodes_out: list[InstitutionGraphNode] = []
     for node_id in nodes_in_filter:

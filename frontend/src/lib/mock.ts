@@ -1039,22 +1039,22 @@ export const MOCK_COAUTHOR_NETWORK: NetworkPayload = {
     { id: "ext007", label: "Thomas Müller", is_ac_member: false, institution: "Max Planck Institute", paper_count: 1 },
   ],
   edges: [
-    { source: "ac001", target: "ac002", weight: 2, papers: ["p001"] },
-    { source: "ac001", target: "ac004", weight: 2, papers: ["p001", "p012"] },
-    { source: "ac001", target: "ext001", weight: 2, papers: ["p003", "p007"] },
-    { source: "ac001", target: "ext002", weight: 1, papers: ["p003"] },
-    { source: "ac001", target: "ac005", weight: 1, papers: ["p015"] },
-    { source: "ac002", target: "ac003", weight: 1, papers: ["p014"] },
-    { source: "ac002", target: "ac004", weight: 2, papers: ["p001", "p014"] },
-    { source: "ac002", target: "ext003", weight: 1, papers: ["p008"] },
-    { source: "ac002", target: "ext006", weight: 1, papers: ["p005"] },
-    { source: "ac003", target: "ac004", weight: 1, papers: ["p014"] },
-    { source: "ac003", target: "ac005", weight: 2, papers: ["p002", "p006"] },
-    { source: "ac003", target: "ext007", weight: 1, papers: ["p011"] },
-    { source: "ac003", target: "ext002", weight: 1, papers: ["p006"] },
-    { source: "ac004", target: "ext005", weight: 1, papers: ["p009"] },
-    { source: "ac004", target: "ext004", weight: 1, papers: ["p004"] },
-    { source: "ac005", target: "ext002", weight: 1, papers: ["p010"] },
+    { source: "ac001", target: "ac002", weight: 2, papers: ["p001"],        normalized_weight: 0.5,    involves_ac: true,  is_ac_ac: true  },
+    { source: "ac001", target: "ac004", weight: 2, papers: ["p001","p012"], normalized_weight: 0.4,    involves_ac: true,  is_ac_ac: true  },
+    { source: "ac001", target: "ext001", weight: 2, papers: ["p003","p007"],normalized_weight: 1.0,    involves_ac: true,  is_ac_ac: false },
+    { source: "ac001", target: "ext002", weight: 1, papers: ["p003"],       normalized_weight: 0.5,    involves_ac: true,  is_ac_ac: false },
+    { source: "ac001", target: "ac005", weight: 1, papers: ["p015"],        normalized_weight: 0.3333, involves_ac: true,  is_ac_ac: true  },
+    { source: "ac002", target: "ac003", weight: 1, papers: ["p014"],        normalized_weight: 0.25,   involves_ac: true,  is_ac_ac: true  },
+    { source: "ac002", target: "ac004", weight: 2, papers: ["p001","p014"], normalized_weight: 0.5,    involves_ac: true,  is_ac_ac: true  },
+    { source: "ac002", target: "ext003", weight: 1, papers: ["p008"],       normalized_weight: 1.0,    involves_ac: true,  is_ac_ac: false },
+    { source: "ac002", target: "ext006", weight: 1, papers: ["p005"],       normalized_weight: 0.5,    involves_ac: true,  is_ac_ac: false },
+    { source: "ac003", target: "ac004", weight: 1, papers: ["p014"],        normalized_weight: 0.25,   involves_ac: true,  is_ac_ac: true  },
+    { source: "ac003", target: "ac005", weight: 2, papers: ["p002","p006"], normalized_weight: 0.6667, involves_ac: true,  is_ac_ac: true  },
+    { source: "ac003", target: "ext007", weight: 1, papers: ["p011"],       normalized_weight: 1.0,    involves_ac: true,  is_ac_ac: false },
+    { source: "ac003", target: "ext002", weight: 1, papers: ["p006"],       normalized_weight: 0.5,    involves_ac: true,  is_ac_ac: false },
+    { source: "ac004", target: "ext005", weight: 1, papers: ["p009"],       normalized_weight: 1.0,    involves_ac: true,  is_ac_ac: false },
+    { source: "ac004", target: "ext004", weight: 1, papers: ["p004"],       normalized_weight: 1.0,    involves_ac: true,  is_ac_ac: false },
+    { source: "ac005", target: "ext002", weight: 1, papers: ["p010"],       normalized_weight: 0.5,    involves_ac: true,  is_ac_ac: false },
   ],
 };
 
@@ -1074,100 +1074,274 @@ export const MOCK_INSTITUTION_NETWORK: InstitutionNetworkPayload = {
     { id: "i010", label: "Toyota Central R&D", is_partner: false, country: "Japan", paper_count: 1 },
   ],
   edges: [
-    { source: "i001", target: "i002", weight: 2, papers: ["p001"] },
-    { source: "i001", target: "i006", weight: 2, papers: ["p001", "p012"] },
-    { source: "i001", target: "i005", weight: 2, papers: ["p003", "p007"] },
-    { source: "i001", target: "i004", weight: 1, papers: ["p015"] },
-    { source: "i002", target: "i003", weight: 2, papers: ["p014"] },
-    { source: "i002", target: "i006", weight: 2, papers: ["p001", "p014"] },
-    { source: "i002", target: "i008", weight: 1, papers: ["p008"] },
-    { source: "i003", target: "i004", weight: 2, papers: ["p002", "p006"] },
-    { source: "i003", target: "i006", weight: 1, papers: ["p014"] },
-    { source: "i006", target: "i009", weight: 1, papers: ["p009"] },
-    { source: "i006", target: "i010", weight: 1, papers: ["p004"] },
+    { source: "i001", target: "i002", weight: 2, papers: ["p001"],        normalized_weight: 0.5,    involves_partner: true  },
+    { source: "i001", target: "i006", weight: 2, papers: ["p001","p012"], normalized_weight: 0.4,    involves_partner: true  },
+    { source: "i001", target: "i005", weight: 2, papers: ["p003","p007"], normalized_weight: 1.0,    involves_partner: true  },
+    { source: "i001", target: "i004", weight: 1, papers: ["p015"],        normalized_weight: 0.3333, involves_partner: true  },
+    { source: "i002", target: "i003", weight: 2, papers: ["p014"],        normalized_weight: 0.5,    involves_partner: true  },
+    { source: "i002", target: "i006", weight: 2, papers: ["p001","p014"], normalized_weight: 0.5,    involves_partner: true  },
+    { source: "i002", target: "i008", weight: 1, papers: ["p008"],        normalized_weight: 1.0,    involves_partner: true  },
+    { source: "i003", target: "i004", weight: 2, papers: ["p002","p006"], normalized_weight: 0.6667, involves_partner: true  },
+    { source: "i003", target: "i006", weight: 1, papers: ["p014"],        normalized_weight: 0.25,   involves_partner: true  },
+    { source: "i006", target: "i009", weight: 1, papers: ["p009"],        normalized_weight: 1.0,    involves_partner: true  },
+    { source: "i006", target: "i010", weight: 1, papers: ["p004"],        normalized_weight: 1.0,    involves_partner: true  },
   ],
 };
 
 // ─── Multi-Graph ──────────────────────────────────────────────────────────────
 
-export const MOCK_MULTI_GRAPH: MultiGraphPayload = {
-  available_node_types: ["author", "institution", "paper", "topic", "method"],
-  available_edge_types: ["authored", "affiliated_with", "cites", "covers_topic", "uses_method"],
-  available_group_keys: ["institution", "label", "year"],
-  groups: [
-    { id: "University of Toronto", label: "University of Toronto", color: "#4f86c6", node_count: 6 },
-    { id: "ETH Zurich", label: "ETH Zurich", color: "#e07b39", node_count: 5 },
-    { id: "Imperial College London", label: "Imperial College London", color: "#6ab187", node_count: 5 },
-    { id: "NIMS", label: "NIMS", color: "#c75c5c", node_count: 6 },
-    { id: "Other", label: "Other / External", color: "#9ab1c4", node_count: 8 },
-  ],
-  nodes: [
-    // Authors
-    { id: "ac001", type: "author", label: "Sarah Chen", group: "University of Toronto", metadata: { is_ac: true, paper_count: 5 } },
-    { id: "ac002", type: "author", label: "Michael Schmidt", group: "ETH Zurich", metadata: { is_ac: true, paper_count: 4 } },
-    { id: "ac003", type: "author", label: "Elena Rodriguez", group: "Imperial College London", metadata: { is_ac: true, paper_count: 4 } },
-    { id: "ac004", type: "author", label: "Yuki Tanaka", group: "NIMS", metadata: { is_ac: true, paper_count: 5 } },
-    { id: "ac005", type: "author", label: "James Liu", group: "Other", metadata: { is_ac: true, paper_count: 3 } },
-    { id: "ext001", type: "author", label: "Wei Zhang", group: "Other", metadata: { is_ac: false, paper_count: 2 } },
-    // Institutions
-    { id: "i001", type: "institution", label: "University of Toronto", group: "University of Toronto", metadata: { is_partner: true, country: "Canada" } },
-    { id: "i002", type: "institution", label: "ETH Zurich", group: "ETH Zurich", metadata: { is_partner: true, country: "Switzerland" } },
-    { id: "i003", type: "institution", label: "Imperial College London", group: "Imperial College London", metadata: { is_partner: true, country: "UK" } },
-    { id: "i006", type: "institution", label: "NIMS", group: "NIMS", metadata: { is_partner: true, country: "Japan" } },
-    { id: "i005", type: "institution", label: "Stanford University", group: "Other", metadata: { is_partner: false, country: "USA" } },
-    // Papers
-    { id: "p001", type: "paper", label: "Solid-state Li metal batteries…", group: "University of Toronto", metadata: { year: 2023, label: "CORE_RELEVANT" } },
-    { id: "p002", type: "paper", label: "Dendrite suppression strategies…", group: "Imperial College London", metadata: { year: 2023, label: "CORE_RELEVANT" } },
-    { id: "p003", type: "paper", label: "ML accelerated electrolyte discovery…", group: "University of Toronto", metadata: { year: 2024, label: "CORE_RELEVANT" } },
-    { id: "p008", type: "paper", label: "Operando X-ray tomography…", group: "ETH Zurich", metadata: { year: 2024, label: "CORE_RELEVANT" } },
-    { id: "p014", type: "paper", label: "Interface engineering solid-liquid…", group: "ETH Zurich", metadata: { year: 2024, label: "CORE_RELEVANT" } },
-    // Topics
-    { id: "t001", type: "topic", label: "Solid-state Electrolytes", group: null, metadata: { is_core: true } },
-    { id: "t003", type: "topic", label: "Dendrite Suppression", group: null, metadata: { is_core: true } },
-    { id: "t007", type: "topic", label: "ML for Batteries", group: null, metadata: { is_core: true } },
-    { id: "t002", type: "topic", label: "Lithium Metal Anodes", group: null, metadata: { is_core: true } },
-    // Methods
-    { id: "m001", type: "method", label: "X-ray Tomography", group: null, metadata: {} },
-    { id: "m002", type: "method", label: "Graph Neural Networks", group: null, metadata: {} },
-    { id: "m003", type: "method", label: "DFT Simulation", group: null, metadata: {} },
-  ],
-  edges: [
-    // authored
-    { source: "ac001", target: "p001", type: "authored", weight: 1, metadata: {} },
-    { source: "ac001", target: "p003", type: "authored", weight: 1, metadata: {} },
-    { source: "ac002", target: "p001", type: "authored", weight: 1, metadata: {} },
-    { source: "ac002", target: "p008", type: "authored", weight: 1, metadata: {} },
-    { source: "ac002", target: "p014", type: "authored", weight: 1, metadata: {} },
-    { source: "ac003", target: "p002", type: "authored", weight: 1, metadata: {} },
-    { source: "ac003", target: "p014", type: "authored", weight: 1, metadata: {} },
-    { source: "ac004", target: "p001", type: "authored", weight: 1, metadata: {} },
-    { source: "ac004", target: "p014", type: "authored", weight: 1, metadata: {} },
-    { source: "ac005", target: "p002", type: "authored", weight: 1, metadata: {} },
-    { source: "ext001", target: "p003", type: "authored", weight: 1, metadata: {} },
-    // affiliated_with
-    { source: "ac001", target: "i001", type: "affiliated_with", weight: 1, metadata: {} },
-    { source: "ac002", target: "i002", type: "affiliated_with", weight: 1, metadata: {} },
-    { source: "ac003", target: "i003", type: "affiliated_with", weight: 1, metadata: {} },
-    { source: "ac004", target: "i006", type: "affiliated_with", weight: 1, metadata: {} },
-    { source: "ext001", target: "i005", type: "affiliated_with", weight: 1, metadata: {} },
-    // cites
-    { source: "p003", target: "p001", type: "cites", weight: 1, metadata: {} },
-    { source: "p014", target: "p001", type: "cites", weight: 1, metadata: {} },
-    { source: "p014", target: "p002", type: "cites", weight: 1, metadata: {} },
-    // covers_topic
-    { source: "p001", target: "t001", type: "covers_topic", weight: 1, metadata: {} },
-    { source: "p001", target: "t002", type: "covers_topic", weight: 1, metadata: {} },
-    { source: "p002", target: "t003", type: "covers_topic", weight: 1, metadata: {} },
-    { source: "p003", target: "t001", type: "covers_topic", weight: 1, metadata: {} },
-    { source: "p003", target: "t007", type: "covers_topic", weight: 1, metadata: {} },
-    { source: "p008", target: "t001", type: "covers_topic", weight: 1, metadata: {} },
-    { source: "p008", target: "t003", type: "covers_topic", weight: 1, metadata: {} },
-    { source: "p014", target: "t001", type: "covers_topic", weight: 1, metadata: {} },
-    // uses_method
-    { source: "p008", target: "m001", type: "uses_method", weight: 1, metadata: {} },
-    { source: "p003", target: "m002", type: "uses_method", weight: 1, metadata: {} },
-  ],
-};
+// Full corpus — papers span 2021-2025 so time filtering produces visible changes
+const MG_ALL_NODES: MultiGraphPayload["nodes"] = [
+  // ── Authors ──────────────────────────────────────────────────────────────
+  { id: "ac001", type: "author", label: "Sarah Chen",       group: "University of Toronto",  metadata: { is_ac: true,  paper_count: 6 } },
+  { id: "ac002", type: "author", label: "Michael Schmidt",  group: "ETH Zurich",              metadata: { is_ac: true,  paper_count: 6 } },
+  { id: "ac003", type: "author", label: "Elena Rodriguez",  group: "Imperial College London", metadata: { is_ac: true,  paper_count: 5 } },
+  { id: "ac004", type: "author", label: "Yuki Tanaka",      group: "NIMS",                    metadata: { is_ac: true,  paper_count: 5 } },
+  { id: "ac005", type: "author", label: "James Liu",        group: "Other",                   metadata: { is_ac: true,  paper_count: 4 } },
+  { id: "ext001", type: "author", label: "Wei Zhang",       group: "Other",                   metadata: { is_ac: false, paper_count: 3 } },
+  { id: "ext002", type: "author", label: "Maria Oliveira",  group: "Other",                   metadata: { is_ac: false, paper_count: 2 } },
+  { id: "ext003", type: "author", label: "Lars Eriksson",   group: "Other",                   metadata: { is_ac: false, paper_count: 2 } },
+  // ── Institutions ─────────────────────────────────────────────────────────
+  { id: "i001", type: "institution", label: "University of Toronto",  group: "University of Toronto",  metadata: { is_partner: true,  country: "Canada" } },
+  { id: "i002", type: "institution", label: "ETH Zurich",             group: "ETH Zurich",             metadata: { is_partner: true,  country: "Switzerland" } },
+  { id: "i003", type: "institution", label: "Imperial College London",group: "Imperial College London",metadata: { is_partner: true,  country: "UK" } },
+  { id: "i004", type: "institution", label: "NIMS",                   group: "NIMS",                   metadata: { is_partner: true,  country: "Japan" } },
+  { id: "i005", type: "institution", label: "Stanford University",    group: "Other",                   metadata: { is_partner: false, country: "USA" } },
+  { id: "i006", type: "institution", label: "Uppsala University",     group: "Other",                   metadata: { is_partner: false, country: "Sweden" } },
+  // ── Papers — each has `year` in metadata ─────────────────────────────────
+  { id: "p001", type: "paper", label: "Solid-state Li metal batteries (garnet)",   group: "University of Toronto",  metadata: { year: 2021, label: "CORE_RELEVANT" } },
+  { id: "p004", type: "paper", label: "Electrolyte design principles for Li-S",    group: "ETH Zurich",             metadata: { year: 2021, label: "CORE_RELEVANT" } },
+  { id: "p012", type: "paper", label: "Multi-scale battery modeling (continuum)",  group: "NIMS",                   metadata: { year: 2021, label: "RELATED_RELEVANT" } },
+  { id: "p005", type: "paper", label: "Anode interface stability in solid cells",  group: "University of Toronto",  metadata: { year: 2022, label: "CORE_RELEVANT" } },
+  { id: "p006", type: "paper", label: "Cathode degradation mechanisms at 4V",      group: "NIMS",                   metadata: { year: 2022, label: "RELATED_RELEVANT" } },
+  { id: "p002", type: "paper", label: "Dendrite suppression in garnet SE",         group: "Imperial College London",metadata: { year: 2022, label: "CORE_RELEVANT" } },
+  { id: "p003", type: "paper", label: "ML-accelerated electrolyte discovery",      group: "University of Toronto",  metadata: { year: 2023, label: "CORE_RELEVANT" } },
+  { id: "p007", type: "paper", label: "Fast-charging protocols for Li metal",      group: "Imperial College London",metadata: { year: 2023, label: "CORE_RELEVANT" } },
+  { id: "p013", type: "paper", label: "Polymer electrolyte membranes: a review",   group: "Other",                  metadata: { year: 2023, label: "RELATED_RELEVANT" } },
+  { id: "p008", type: "paper", label: "Operando X-ray tomography of anodes",       group: "ETH Zurich",             metadata: { year: 2024, label: "CORE_RELEVANT" } },
+  { id: "p009", type: "paper", label: "AI-driven materials discovery platform",    group: "University of Toronto",  metadata: { year: 2024, label: "CORE_RELEVANT" } },
+  { id: "p014", type: "paper", label: "Interface engineering solid-liquid hybrid", group: "ETH Zurich",             metadata: { year: 2024, label: "CORE_RELEVANT" } },
+  { id: "p010", type: "paper", label: "Sodium-ion battery anodes: recent advances",group: "Imperial College London",metadata: { year: 2025, label: "CORE_RELEVANT" } },
+  { id: "p011", type: "paper", label: "Composite electrolyte synthesis routes",    group: "NIMS",                   metadata: { year: 2025, label: "CORE_RELEVANT" } },
+  { id: "p015", type: "paper", label: "Fluoride electrolytes for high-voltage cells", group: "Other",               metadata: { year: 2025, label: "RELATED_RELEVANT" } },
+  // ── Topics ───────────────────────────────────────────────────────────────
+  { id: "t001", type: "topic", label: "Solid-state Electrolytes", group: null, metadata: { is_core: true } },
+  { id: "t002", type: "topic", label: "Lithium Metal Anodes",     group: null, metadata: { is_core: true } },
+  { id: "t003", type: "topic", label: "Dendrite Suppression",     group: null, metadata: { is_core: true } },
+  { id: "t004", type: "topic", label: "Fast Charging",            group: null, metadata: { is_core: false } },
+  { id: "t007", type: "topic", label: "ML for Batteries",         group: null, metadata: { is_core: true } },
+  { id: "t008", type: "topic", label: "Sodium-ion Batteries",     group: null, metadata: { is_core: false } },
+  { id: "t009", type: "topic", label: "Multi-scale Modeling",     group: null, metadata: { is_core: false } },
+  { id: "t010", type: "topic", label: "Electrode Degradation",    group: null, metadata: { is_core: false } },
+  // ── Methods ──────────────────────────────────────────────────────────────
+  { id: "m001", type: "method", label: "X-ray Tomography",     group: null, metadata: {} },
+  { id: "m002", type: "method", label: "Graph Neural Networks",group: null, metadata: {} },
+  { id: "m003", type: "method", label: "DFT Simulation",       group: null, metadata: {} },
+  { id: "m004", type: "method", label: "Continuum Modeling",   group: null, metadata: {} },
+];
+
+const MG_ALL_EDGES: MultiGraphPayload["edges"] = [
+  // authored (paper year drives author visibility)
+  { source: "ac001", target: "p001", type: "authored", weight: 1, metadata: {} },
+  { source: "ac002", target: "p001", type: "authored", weight: 1, metadata: {} },
+  { source: "ac004", target: "p001", type: "authored", weight: 1, metadata: {} },
+  { source: "ac002", target: "p004", type: "authored", weight: 1, metadata: {} },
+  { source: "ac004", target: "p012", type: "authored", weight: 1, metadata: {} },
+  { source: "ac001", target: "p005", type: "authored", weight: 1, metadata: {} },
+  { source: "ac002", target: "p005", type: "authored", weight: 1, metadata: {} },
+  { source: "ac004", target: "p006", type: "authored", weight: 1, metadata: {} },
+  { source: "ac005", target: "p006", type: "authored", weight: 1, metadata: {} },
+  { source: "ac003", target: "p002", type: "authored", weight: 1, metadata: {} },
+  { source: "ac005", target: "p002", type: "authored", weight: 1, metadata: {} },
+  { source: "ac001", target: "p003", type: "authored", weight: 1, metadata: {} },
+  { source: "ext001", target: "p003", type: "authored", weight: 1, metadata: {} },
+  { source: "ac003", target: "p007", type: "authored", weight: 1, metadata: {} },
+  { source: "ext002", target: "p007", type: "authored", weight: 1, metadata: {} },
+  { source: "ext001", target: "p013", type: "authored", weight: 1, metadata: {} },
+  { source: "ac003", target: "p013", type: "authored", weight: 1, metadata: {} },
+  { source: "ac002", target: "p008", type: "authored", weight: 1, metadata: {} },
+  { source: "ac001", target: "p009", type: "authored", weight: 1, metadata: {} },
+  { source: "ac005", target: "p009", type: "authored", weight: 1, metadata: {} },
+  { source: "ac002", target: "p014", type: "authored", weight: 1, metadata: {} },
+  { source: "ac003", target: "p014", type: "authored", weight: 1, metadata: {} },
+  { source: "ac004", target: "p014", type: "authored", weight: 1, metadata: {} },
+  { source: "ac003", target: "p010", type: "authored", weight: 1, metadata: {} },
+  { source: "ext003", target: "p010", type: "authored", weight: 1, metadata: {} },
+  { source: "ac002", target: "p011", type: "authored", weight: 1, metadata: {} },
+  { source: "ac004", target: "p011", type: "authored", weight: 1, metadata: {} },
+  { source: "ext003", target: "p015", type: "authored", weight: 1, metadata: {} },
+  { source: "ext001", target: "p015", type: "authored", weight: 1, metadata: {} },
+  // affiliated_with (always present — institution is permanent)
+  { source: "ac001", target: "i001", type: "affiliated_with", weight: 1, metadata: {} },
+  { source: "ac002", target: "i002", type: "affiliated_with", weight: 1, metadata: {} },
+  { source: "ac003", target: "i003", type: "affiliated_with", weight: 1, metadata: {} },
+  { source: "ac004", target: "i004", type: "affiliated_with", weight: 1, metadata: {} },
+  { source: "ac005", target: "i005", type: "affiliated_with", weight: 1, metadata: {} },
+  { source: "ext001", target: "i005", type: "affiliated_with", weight: 1, metadata: {} },
+  { source: "ext002", target: "i003", type: "affiliated_with", weight: 1, metadata: {} },
+  { source: "ext003", target: "i006", type: "affiliated_with", weight: 1, metadata: {} },
+  // cites
+  { source: "p005", target: "p001", type: "cites", weight: 1, metadata: {} },
+  { source: "p002", target: "p001", type: "cites", weight: 1, metadata: {} },
+  { source: "p003", target: "p001", type: "cites", weight: 1, metadata: {} },
+  { source: "p003", target: "p004", type: "cites", weight: 1, metadata: {} },
+  { source: "p007", target: "p002", type: "cites", weight: 1, metadata: {} },
+  { source: "p007", target: "p005", type: "cites", weight: 1, metadata: {} },
+  { source: "p008", target: "p004", type: "cites", weight: 1, metadata: {} },
+  { source: "p008", target: "p005", type: "cites", weight: 1, metadata: {} },
+  { source: "p009", target: "p003", type: "cites", weight: 1, metadata: {} },
+  { source: "p014", target: "p001", type: "cites", weight: 1, metadata: {} },
+  { source: "p014", target: "p002", type: "cites", weight: 1, metadata: {} },
+  { source: "p014", target: "p008", type: "cites", weight: 1, metadata: {} },
+  { source: "p010", target: "p002", type: "cites", weight: 1, metadata: {} },
+  { source: "p011", target: "p004", type: "cites", weight: 1, metadata: {} },
+  { source: "p011", target: "p014", type: "cites", weight: 1, metadata: {} },
+  { source: "p015", target: "p003", type: "cites", weight: 1, metadata: {} },
+  { source: "p015", target: "p013", type: "cites", weight: 1, metadata: {} },
+  // covers_topic
+  { source: "p001", target: "t001", type: "covers_topic", weight: 1, metadata: {} },
+  { source: "p001", target: "t002", type: "covers_topic", weight: 1, metadata: {} },
+  { source: "p004", target: "t001", type: "covers_topic", weight: 1, metadata: {} },
+  { source: "p012", target: "t009", type: "covers_topic", weight: 1, metadata: {} },
+  { source: "p005", target: "t001", type: "covers_topic", weight: 1, metadata: {} },
+  { source: "p005", target: "t002", type: "covers_topic", weight: 1, metadata: {} },
+  { source: "p006", target: "t010", type: "covers_topic", weight: 1, metadata: {} },
+  { source: "p002", target: "t003", type: "covers_topic", weight: 1, metadata: {} },
+  { source: "p002", target: "t002", type: "covers_topic", weight: 1, metadata: {} },
+  { source: "p003", target: "t001", type: "covers_topic", weight: 1, metadata: {} },
+  { source: "p003", target: "t007", type: "covers_topic", weight: 1, metadata: {} },
+  { source: "p007", target: "t003", type: "covers_topic", weight: 1, metadata: {} },
+  { source: "p007", target: "t004", type: "covers_topic", weight: 1, metadata: {} },
+  { source: "p013", target: "t001", type: "covers_topic", weight: 1, metadata: {} },
+  { source: "p008", target: "t001", type: "covers_topic", weight: 1, metadata: {} },
+  { source: "p008", target: "t003", type: "covers_topic", weight: 1, metadata: {} },
+  { source: "p009", target: "t007", type: "covers_topic", weight: 1, metadata: {} },
+  { source: "p009", target: "t001", type: "covers_topic", weight: 1, metadata: {} },
+  { source: "p014", target: "t001", type: "covers_topic", weight: 1, metadata: {} },
+  { source: "p014", target: "t002", type: "covers_topic", weight: 1, metadata: {} },
+  { source: "p010", target: "t008", type: "covers_topic", weight: 1, metadata: {} },
+  { source: "p011", target: "t001", type: "covers_topic", weight: 1, metadata: {} },
+  { source: "p015", target: "t001", type: "covers_topic", weight: 1, metadata: {} },
+  { source: "p015", target: "t007", type: "covers_topic", weight: 1, metadata: {} },
+  // uses_method
+  { source: "p012", target: "m004", type: "uses_method", weight: 1, metadata: {} },
+  { source: "p003", target: "m002", type: "uses_method", weight: 1, metadata: {} },
+  { source: "p008", target: "m001", type: "uses_method", weight: 1, metadata: {} },
+  { source: "p009", target: "m002", type: "uses_method", weight: 1, metadata: {} },
+  { source: "p011", target: "m003", type: "uses_method", weight: 1, metadata: {} },
+  { source: "p004", target: "m003", type: "uses_method", weight: 1, metadata: {} },
+  { source: "p014", target: "m001", type: "uses_method", weight: 1, metadata: {} },
+  { source: "p015", target: "m002", type: "uses_method", weight: 1, metadata: {} },
+];
+
+const MG_GROUPS: MultiGraphPayload["groups"] = [
+  { id: "University of Toronto",  label: "University of Toronto",  color: "#4f86c6", node_count: 0 },
+  { id: "ETH Zurich",             label: "ETH Zurich",             color: "#e07b39", node_count: 0 },
+  { id: "Imperial College London",label: "Imperial College London",color: "#6ab187", node_count: 0 },
+  { id: "NIMS",                   label: "NIMS",                   color: "#c75c5c", node_count: 0 },
+  { id: "Other",                  label: "Other / External",       color: "#9ab1c4", node_count: 0 },
+];
+
+export function getMockMultiGraph(params: {
+  node_types?: string[];
+  edge_types?: string[];
+  year_from?: number;
+  year_to?: number;
+}): MultiGraphPayload {
+  const yf = params.year_from ?? 2021;
+  const yt = params.year_to   ?? 2025;
+
+  // 1. Papers strictly in the year window — these are the temporal anchor
+  const visiblePaperIds = new Set(
+    MG_ALL_NODES
+      .filter(n => n.type === "paper" && (n.metadata.year as number) >= yf && (n.metadata.year as number) <= yt)
+      .map(n => n.id)
+  );
+
+  // 2. Authors who have at least one paper in the window
+  const visibleAuthorIds = new Set(
+    MG_ALL_EDGES
+      .filter(e => e.type === "authored" && visiblePaperIds.has(e.target))
+      .map(e => e.source)
+  );
+
+  // 3. Topics covered by visible papers
+  const visibleTopicIds = new Set(
+    MG_ALL_EDGES
+      .filter(e => e.type === "covers_topic" && visiblePaperIds.has(e.source))
+      .map(e => e.target)
+  );
+
+  // 4. Methods used by visible papers
+  const visibleMethodIds = new Set(
+    MG_ALL_EDGES
+      .filter(e => e.type === "uses_method" && visiblePaperIds.has(e.source))
+      .map(e => e.target)
+  );
+
+  // 5. Institutions affiliated with visible authors
+  const visibleInstitutionIds = new Set(
+    MG_ALL_EDGES
+      .filter(e => e.type === "affiliated_with" && visibleAuthorIds.has(e.source))
+      .map(e => e.target)
+  );
+
+  const reachableIds = new Set([
+    ...visiblePaperIds,
+    ...visibleAuthorIds,
+    ...visibleTopicIds,
+    ...visibleMethodIds,
+    ...visibleInstitutionIds,
+  ]);
+
+  // 6. Filter nodes by requested types and reachability
+  const activeTypes = params.node_types ?? ["author", "institution", "paper", "topic", "method"];
+  const visibleNodes = MG_ALL_NODES.filter(n =>
+    activeTypes.includes(n.type) && reachableIds.has(n.id)
+  );
+  const visibleNodeIds = new Set(visibleNodes.map(n => n.id));
+
+  // 5. Filter edges
+  const activeEdgeTypes = params.edge_types ?? ["authored", "affiliated_with", "cites", "covers_topic", "uses_method"];
+  const visibleEdges = MG_ALL_EDGES.filter(e =>
+    activeEdgeTypes.includes(e.type) &&
+    visibleNodeIds.has(e.source) &&
+    visibleNodeIds.has(e.target)
+  );
+
+  // 6. Recount groups
+  const groupCounts: Record<string, number> = {};
+  for (const n of visibleNodes) {
+    if (n.group) groupCounts[n.group] = (groupCounts[n.group] ?? 0) + 1;
+  }
+  const groups = MG_GROUPS
+    .map(g => ({ ...g, node_count: groupCounts[g.id] ?? 0 }))
+    .filter(g => g.node_count > 0);
+
+  // 7. Recalculate paper_count on authors/institutions from visible papers
+  const papersByAuthor: Record<string, number> = {};
+  for (const e of visibleEdges) {
+    if (e.type === "authored") papersByAuthor[e.source] = (papersByAuthor[e.source] ?? 0) + 1;
+  }
+  const enrichedNodes = visibleNodes.map(n => {
+    if (n.type === "author" && papersByAuthor[n.id] != null) {
+      return { ...n, metadata: { ...n.metadata, paper_count: papersByAuthor[n.id] } };
+    }
+    return n;
+  });
+
+  return {
+    available_node_types: ["author", "institution", "paper", "topic", "method"],
+    available_edge_types: ["authored", "affiliated_with", "cites", "covers_topic", "uses_method"],
+    available_group_keys: ["institution", "label", "year"],
+    groups,
+    nodes: enrichedNodes,
+    edges: visibleEdges,
+  };
+}
+
+// Keep static export for backwards compatibility with any other consumers
+export const MOCK_MULTI_GRAPH: MultiGraphPayload = getMockMultiGraph({});
 
 // ─── Geographic ───────────────────────────────────────────────────────────────
 

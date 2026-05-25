@@ -114,6 +114,12 @@ export function NetworkGraph({ payload }: Props) {
           const a = placed.nodeById.get(e.source);
           const b = placed.nodeById.get(e.target);
           if (!a || !b) return null;
+          const stroke = e.is_ac_ac
+            ? "rgba(52, 211, 153, 0.75)"
+            : e.involves_ac
+            ? "rgba(251, 191, 36, 0.65)"
+            : "rgba(154, 163, 178, 0.3)";
+          const strokeWidth = 1 + (e.normalized_weight ?? 0) * 3;
           return (
             <line
               key={i}
@@ -121,8 +127,8 @@ export function NetworkGraph({ payload }: Props) {
               y1={a.y}
               x2={b.x}
               y2={b.y}
-              stroke="rgba(154, 163, 178, 0.5)"
-              strokeWidth={Math.min(1 + e.weight * 0.8, 4)}
+              stroke={stroke}
+              strokeWidth={Math.min(strokeWidth, 4)}
             />
           );
         })}
@@ -153,6 +159,14 @@ export function NetworkGraph({ payload }: Props) {
       <div className="network-legend">
         <span><span className="dot ac" /> AC member</span>
         <span><span className="dot other" /> Co-author</span>
+        <span style={{ display: "inline-flex", alignItems: "center", gap: 4 }}>
+          <svg width={24} height={4}><line x1={0} y1={2} x2={24} y2={2} stroke="rgba(52,211,153,0.75)" strokeWidth={2.5}/></svg>
+          AC–AC
+        </span>
+        <span style={{ display: "inline-flex", alignItems: "center", gap: 4 }}>
+          <svg width={24} height={4}><line x1={0} y1={2} x2={24} y2={2} stroke="rgba(251,191,36,0.65)" strokeWidth={2}/></svg>
+          AC–External
+        </span>
         <span style={{ marginLeft: "auto" }}>
           {payload.nodes.length} authors · {payload.edges.length} collaborations
         </span>
