@@ -63,7 +63,6 @@ function buildPoints(countries: GeoCountry[]): GlobePoint[] {
   return countries.map(c => {
     const [lat, lng] = latLng(c.country);
     const frac = c.paper_count / maxPapers;
-    const altitude = 0.02 + frac * 0.38;
     return {
       lat, lng,
       country: c.country,
@@ -71,9 +70,9 @@ function buildPoints(countries: GeoCountry[]): GlobePoint[] {
       institution_count: c.institution_count,
       is_partner: c.is_partner,
       color: c.is_partner ? "#DDAED3" : `rgba(101,148,177,${0.55 + frac * 0.45})`,
-      radius: 0.45 + frac * 0.85,
-      altitude,
-      labelAlt: altitude + 0.07,
+      radius: 0.35 + frac * 0.55,
+      altitude: 0.01,
+      labelAlt: 0.12,
     };
   });
 }
@@ -271,18 +270,77 @@ export default function GeographicPage() {
             }}
             pointResolution={8}
             onPointClick={handlePointClick}
-            // Country name labels above bars
-            labelsData={points}
-            labelLat="lat"
-            labelLng="lng"
-            labelText="country"
-            labelColor={(d: object) =>
-              (d as GlobePoint).is_partner ? "#DDAED3" : "rgba(101,148,177,0.9)"
-            }
-            labelSize={0.44}
-            labelDotRadius={0}
-            labelAltitude="labelAlt"
-            labelResolution={4}
+            // Floating number chips above each country
+            htmlElementsData={points}
+            htmlLat="lat"
+            htmlLng="lng"
+            htmlAltitude={0.14}
+            htmlElement={(d: object) => {
+              const p = d as GlobePoint;
+              const color = p.is_partner ? "#DDAED3" : "rgba(200,220,235,0.92)";
+              const bg = p.is_partner
+                ? "rgba(221,174,211,0.18)"
+                : "rgba(13,27,42,0.55)";
+              const border = p.is_partner
+                ? "1px solid rgba(221,174,211,0.55)"
+                : "1px solid rgba(101,148,177,0.35)";
+              const el = document.createElement("div");
+              el.style.cssText = `
+                font-family: 'JetBrains Mono', monospace;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 1px;
+                cursor: pointer;
+                transform: translate(-50%, -100%);
+                pointer-events: auto;
+              `;
+              el.innerHTML = `
+                <div style="
+                  background: ${bg};
+                  border: ${border};
+                  border-radius: 8px;
+                  padding: 3px 9px 2px;
+                  backdrop-filter: blur(4px);
+                  -webkit-backdrop-filter: blur(4px);
+                ">
+                  <span style="
+                    font-size: 15px;
+                    font-weight: 700;
+                    color: ${color};
+                    line-height: 1;
+                    letter-spacing: -0.02em;
+                    text-shadow: 0 1px 4px rgba(0,0,0,0.7);
+                    display: block;
+                    text-align: center;
+                  ">${p.paper_count}</span>
+                  <span style="
+                    font-size: 8.5px;
+                    font-weight: 500;
+                    color: ${color};
+                    opacity: 0.72;
+                    letter-spacing: 0.04em;
+                    display: block;
+                    text-align: center;
+                    white-space: nowrap;
+                    text-shadow: 0 1px 3px rgba(0,0,0,0.8);
+                    max-width: 80px;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                  ">${p.country}</span>
+                </div>
+                <div style="
+                  width: 1px;
+                  height: 8px;
+                  background: ${color};
+                  opacity: 0.4;
+                "></div>
+              `;
+              el.addEventListener("click", () => {
+                setSelected(prev => prev === p.country ? null : p.country);
+              });
+              return el;
+            }}
             // Selection ring
             ringsData={selected ? points.filter(p => p.country === selected) : []}
             ringLat="lat"
