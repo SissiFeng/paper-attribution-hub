@@ -1,4 +1,5 @@
 import { lazy, Suspense, useEffect, useState } from "react";
+import { StatsBar } from "@/components/StatsBar";
 import { useSearchParams } from "react-router-dom";
 
 const PeopleGridPage = lazy(() => import("@/pages/PeopleGridPage"));
@@ -100,6 +101,8 @@ export default function InsightsPage() {
           </p>
         </div>
       </div>
+
+      <StatsBar />
 
       <div className="v7-tabs" style={{ width: "auto" }}>
         {TABS.map((t) => (

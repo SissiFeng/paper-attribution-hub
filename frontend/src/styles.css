@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /* =========================================================================
    Paper Attribution — Light Design System
    Style: Linear-inspired · Palette: Battery Lab (Navy/Steel/Pink)
