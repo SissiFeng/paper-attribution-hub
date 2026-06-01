@@ -22,6 +22,7 @@ Options
 from __future__ import annotations
 
 import argparse
+import os
 import re
 import sys
 import unicodedata
@@ -30,12 +31,40 @@ from pathlib import Path
 from typing import Any
 
 import pandas as pd
-from sqlalchemy import select
+from sqlalchemy import func, select
 from sqlalchemy.orm import Session
 
-ROOT = Path(__file__).resolve().parents[4]
-TIER_CSV = ROOT / "tier1_tier2_merged_classification_ready.csv"
-AC_CSV = ROOT / "AC Publications (Focused)-Grid view.csv"
+def _default_root() -> Path:
+    cwd = Path.cwd().resolve()
+    for candidate in [cwd, *cwd.parents]:
+        if (candidate / "data").exists() and (candidate / "backend").exists():
+            return candidate
+    return cwd
+
+
+ROOT = Path(os.environ.get("PAS_REPO_ROOT", _default_root())).resolve()
+DATA_ROOT = Path(os.environ.get("PAS_DATA_ROOT", "/data")).resolve()
+if not DATA_ROOT.exists():
+    DATA_ROOT = ROOT / "data"
+
+
+def _first_existing(*paths: Path) -> Path:
+    for path in paths:
+        if path.exists():
+            return path
+    return paths[0]
+
+
+TIER_CSV = _first_existing(
+    ROOT / "tier1_tier2_merged_classification_ready.csv",
+    DATA_ROOT / "tier1_tier2_merged_classification_ready.csv.gz",
+    DATA_ROOT / "tier1_tier2_merged_classification_ready.csv",
+)
+AC_CSV = _first_existing(
+    ROOT / "AC Publications (Focused)-Grid view.csv",
+    DATA_ROOT / "ac_publications_focused_grid_view.csv.gz",
+    DATA_ROOT / "AC Publications (Focused)-Grid view.csv",
+)
 
 # Architecture keyword lists for Tier-2 component scoring
 _AI_KW = [
@@ -669,8 +698,15 @@ def _build_ac_only_rows(
 # entry point
 # ---------------------------------------------------------------------------
 
-def run(dry_run: bool = False, reset: bool = False) -> None:
+def run(
+    dry_run: bool = False,
+    reset: bool = False,
+    seed_if_under: int | None = None,
+    prune_non_real: bool = False,
+    classify: bool = False,
+) -> None:
     from app.db import SessionLocal, init_database, reset_database
+    from app.models import Paper
 
     if not TIER_CSV.exists():
         print(f"ERROR: {TIER_CSV} not found", file=sys.stderr)
@@ -678,6 +714,18 @@ def run(dry_run: bool = False, reset: bool = False) -> None:
     if not AC_CSV.exists():
         print(f"ERROR: {AC_CSV} not found", file=sys.stderr)
         sys.exit(1)
+
+    if seed_if_under is not None and not reset:
+        init_database()
+        with SessionLocal() as session:
+            paper_count = session.scalar(select(func.count(Paper.id))) or 0
+        if paper_count >= seed_if_under:
+            print(
+                f"Seed skipped: database already has {paper_count} papers "
+                f"(threshold={seed_if_under}).",
+                file=sys.stderr,
+            )
+            return
 
     print("Loading CSVs...", file=sys.stderr)
     tier_raw = _load_tier(TIER_CSV)
@@ -739,6 +787,15 @@ def run(dry_run: bool = False, reset: bool = False) -> None:
     print("Writing to database...", file=sys.stderr)
     with SessionLocal() as session:
         inserted, updated, authors, institutions, links = _upsert_papers(session, all_rows)
+        if prune_non_real:
+            stale = list(
+                session.execute(
+                    select(Paper).where(Paper.provenance.notin_(["scopus_batch", "ac_gold"]))
+                ).scalars()
+            )
+            for paper in stale:
+                session.delete(paper)
+            print(f"      pruned_non_real_papers={len(stale)}", file=sys.stderr)
         session.commit()
 
     print(
@@ -750,13 +807,43 @@ def run(dry_run: bool = False, reset: bool = False) -> None:
         file=sys.stderr,
     )
 
+    if classify:
+        from app.services.scopus_classifier import run_scopus_classification
+
+        with SessionLocal() as session:
+            stats = run_scopus_classification(session)
+            session.commit()
+        print(f"      classification={stats}", file=sys.stderr)
+
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="Ingest Scopus batch + AC gold into DB.")
     parser.add_argument("--reset", action="store_true", help="Drop and recreate tables first.")
     parser.add_argument("--dry-run", action="store_true", help="Print stats, don't write.")
+    parser.add_argument(
+        "--seed-if-under",
+        type=int,
+        default=None,
+        help="Only ingest when the database has fewer than this many papers.",
+    )
+    parser.add_argument(
+        "--prune-non-real",
+        action="store_true",
+        help="Delete papers outside provenance=scopus_batch/ac_gold after ingest.",
+    )
+    parser.add_argument(
+        "--classify",
+        action="store_true",
+        help="Run Scopus/AC rule classification after ingest.",
+    )
     args = parser.parse_args()
-    run(dry_run=args.dry_run, reset=args.reset)
+    run(
+        dry_run=args.dry_run,
+        reset=args.reset,
+        seed_if_under=args.seed_if_under,
+        prune_non_real=args.prune_non_real,
+        classify=args.classify,
+    )
 
 
 if __name__ == "__main__":

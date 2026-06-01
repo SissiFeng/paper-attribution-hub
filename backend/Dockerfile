@@ -21,10 +21,12 @@ COPY data/ac_core_papers.csv /data/ac_core_papers.csv
 COPY data/institution_aliases.csv /data/institution_aliases.csv
 COPY data/topic_taxonomy.yaml /data/topic_taxonomy.yaml
 COPY data/domain_vocabulary.yaml /data/domain_vocabulary.yaml
+COPY data/tier1_tier2_merged_classification_ready.csv.gz /data/tier1_tier2_merged_classification_ready.csv.gz
+COPY data/ac_publications_focused_grid_view.csv.gz /data/ac_publications_focused_grid_view.csv.gz
 
 ENV PYTHONUNBUFFERED=1
 ENV PYTHONPATH=/app
 
 EXPOSE 8000
 
-CMD alembic upgrade head && uvicorn app.main:app --host 0.0.0.0 --port ${PORT:-8000}
+CMD alembic upgrade head && python -m app.scripts.ingest_scopus_batch --seed-if-under 1000 --prune-non-real --classify && uvicorn app.main:app --host 0.0.0.0 --port ${PORT:-8000}
