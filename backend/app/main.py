@@ -80,3 +80,19 @@ def debug_db() -> dict:
         return {"db": "ok", "url_prefix": settings.database_url[:40] + "..."}
     except Exception as exc:
         return {"db": "error", "error": type(exc).__name__, "detail": str(exc)[:400]}
+
+
+@app.get("/debug/papers", tags=["meta"])
+def debug_papers() -> dict:
+    """Diagnostic: run the simplest possible papers query and return any error."""
+    import traceback
+    from sqlalchemy import select, text
+    from app.db import get_session
+    from app.models import Paper
+    try:
+        with next(get_session()) as session:
+            row = session.execute(select(Paper.id, Paper.title).limit(1)).first()
+            return {"ok": True, "sample": {"id": row[0], "title": row[1]} if row else None}
+    except Exception as exc:
+        return {"ok": False, "error": type(exc).__name__, "detail": str(exc)[:800],
+                "trace": traceback.format_exc()[-1200:]}
