@@ -707,6 +707,7 @@ def run(
 ) -> None:
     from app.db import SessionLocal, init_database, reset_database
     from app.models import Paper
+    from app.models.proposition import PaperProposition
 
     if not TIER_CSV.exists():
         print(f"ERROR: {TIER_CSV} not found", file=sys.stderr)
@@ -793,6 +794,13 @@ def run(
                     select(Paper).where(Paper.provenance.notin_(["scopus_batch", "ac_gold"]))
                 ).scalars()
             )
+            if stale:
+                stale_ids = [p.id for p in stale]
+                session.execute(
+                    PaperProposition.__table__.delete().where(
+                        PaperProposition.paper_id.in_(stale_ids)
+                    )
+                )
             for paper in stale:
                 session.delete(paper)
             print(f"      pruned_non_real_papers={len(stale)}", file=sys.stderr)
