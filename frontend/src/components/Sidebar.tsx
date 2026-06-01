@@ -29,6 +29,8 @@ const TEAM_NAV = [
 ];
 
 const OPS_NAV = [
+  { to: "/lint",          label: "Lint Report"   },
+  { to: "/duplicates",    label: "Duplicates"    },
   { to: "/evidence-gaps", label: "Evidence Gaps" },
   { to: "/pipeline",      label: "Pipeline"      },
   { to: "/report",        label: "Report"        },
@@ -140,6 +142,22 @@ const ICONS: Record<string, JSX.Element> = {
       <circle cx="8" cy="8" r="6" />
       <line x1="8" y1="5" x2="8" y2="9" />
       <circle cx="8" cy="11" r="0.6" fill="currentColor" stroke="none" />
+    </svg>
+  ),
+  "Lint Report": (
+    <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.6">
+      <rect x="2" y="1.5" width="12" height="13" rx="1.5" />
+      <polyline points="4.5,5 6,6.5 9,3.5" />
+      <line x1="4.5" y1="10" x2="11.5" y2="10" />
+      <line x1="4.5" y1="12.5" x2="9.5" y2="12.5" />
+    </svg>
+  ),
+  Duplicates: (
+    <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.6">
+      <rect x="2" y="2" width="8" height="8" rx="1.5" />
+      <rect x="6" y="6" width="8" height="8" rx="1.5" />
+      <line x1="4" y1="5" x2="8" y2="5" />
+      <line x1="8" y1="10" x2="12" y2="10" />
     </svg>
   ),
   Pipeline: (

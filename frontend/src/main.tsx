@@ -7,6 +7,8 @@ import PaperReviewPage from "@/pages/PaperReviewPage";
 import ReviewQueuePage from "@/pages/ReviewQueuePage";
 import PipelineStatusPage from "@/pages/PipelineStatusPage";
 import EvidenceGapsPage from "@/pages/EvidenceGapsPage";
+import LintReportPage from "@/pages/LintReportPage";
+import DuplicateCandidatesPage from "@/pages/DuplicateCandidatesPage";
 import InsightsPage from "@/pages/InsightsPage";
 import PeopleGridPage from "@/pages/PeopleGridPage";
 import MultiGraphPage from "@/pages/MultiGraphPage";
@@ -41,6 +43,8 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
           <Route path="/insights" element={<InsightsPage />} />
           <Route path="/pipeline" element={<PipelineStatusPage />} />
           <Route path="/evidence-gaps" element={<EvidenceGapsPage />} />
+          <Route path="/lint" element={<LintReportPage />} />
+          <Route path="/duplicates" element={<DuplicateCandidatesPage />} />
           <Route path="/discovery" element={<DiscoveryPage />} />
           <Route path="/report" element={<ReportPage />} />
           <Route path="/eval" element={<EvalPage />} />

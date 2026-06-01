@@ -52,7 +52,8 @@ const EDGE_COLOR: Record<string, string> = {
 };
 
 const DEFAULT_NODE_TYPES = ["author", "institution", "paper", "topic"];
-const DEFAULT_EDGE_TYPES = ["authored", "affiliated_with", "covers_topic", "cites"];
+const DEFAULT_EDGE_TYPES = ["authored", "affiliated_with", "belongs_to_topic"];
+const AC_ATTRIBUTED_LABELS = ["CORE_RELEVANT", "RELATED_RELEVANT"];
 
 function colorForNode(node: MultiGraphPayload["nodes"][number]): string {
   if (node.type === "author" && node.metadata?.is_ac) return AC_AUTHOR_COLOR;
@@ -73,6 +74,7 @@ export default function MultiGraphPage() {
   const [searchParams, setSearchParams] = useSearchParams();
   const [payload, setPayload] = useState<MultiGraphPayload | null>(null);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const [activeNodeTypes, setActiveNodeTypes] = useState<string[]>(DEFAULT_NODE_TYPES);
   const [activeEdgeTypes, setActiveEdgeTypes] = useState<string[]>(DEFAULT_EDGE_TYPES);
@@ -95,17 +97,23 @@ export default function MultiGraphPage() {
   // so the force layout doesn't restart when the TimeSlider moves.
   const load = useCallback(async () => {
     setLoading(true);
+    setError(null);
     try {
       const data = await getMultiGraph({
         node_types: activeNodeTypes,
         edge_types: activeEdgeTypes,
-        group_by: "institution",
+        labels: AC_ATTRIBUTED_LABELS,
+        group_by: "by_institution",
         center_id: centerId || undefined,
         hop_limit: hopLimit,
+        min_edge_weight: 0.3,
         year_from: 2021,
         year_to: 2026,
       });
       setPayload(data);
+    } catch (e) {
+      setError(e instanceof Error ? e.message : String(e));
+      setPayload(null);
     } finally {
       setLoading(false);
     }
@@ -145,7 +153,7 @@ export default function MultiGraphPage() {
     const yearReachable: Set<string> = new Set(paperInRange);
     for (const e of payload.edges) {
       if (e.type === "authored"      && paperInRange.has(e.target)) yearReachable.add(e.source);
-      if (e.type === "covers_topic"  && paperInRange.has(e.source)) yearReachable.add(e.target);
+      if (e.type === "belongs_to_topic" && paperInRange.has(e.source)) yearReachable.add(e.target);
       if (e.type === "uses_method"   && paperInRange.has(e.source)) yearReachable.add(e.target);
     }
     // Institutions reachable from visible authors
@@ -290,8 +298,8 @@ export default function MultiGraphPage() {
         <div>
           <h1>Multi-Entity Network</h1>
           <p>
-            Authors · institutions · papers · topics in one force-directed graph.
-            Toggle layers below, click any node to focus its ego network.
+            Algorithm-selected AC-attributed papers from the tier1+tier2 candidate pool,
+            linked to authors, institutions, and topics.
           </p>
         </div>
         <div className="v7-hero-actions">
@@ -311,6 +319,12 @@ export default function MultiGraphPage() {
         yearFrom={yearFrom} yearTo={yearTo}
         onChange={(yf, yt) => { setYearFrom(yf); setYearTo(yt); }}
       />
+
+      {error && (
+        <div className="v7-card" style={{ borderColor: "rgba(249,115,22,0.4)" }}>
+          Backend error: {error}
+        </div>
+      )}
 
       {/* Node type toggles */}
       <div className="v7-graph-toolbar">
@@ -386,7 +400,7 @@ export default function MultiGraphPage() {
         <div className="v7-stat">
           <div className="label">Visible nodes</div>
           <div className="value">{visibleNodeCount}</div>
-          <div className="delta">{activeNodeTypes.length} type{activeNodeTypes.length !== 1 ? "s" : ""} shown</div>
+          <div className="delta">AC-attributed CORE + RELATED</div>
         </div>
         <div className="v7-stat">
           <div className="label">Visible edges</div>

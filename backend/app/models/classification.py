@@ -52,4 +52,19 @@ class PaperClassification(Base):
     )
     human_confirmed_by: Mapped[str | None] = mapped_column(String, nullable=True)
 
+    # ── Scopus-sourced evidence signals ──────────────────────────────────
+    # Each 0-1 float; set by scopus_classifier before the LLM judge runs.
+    funding_signal: Mapped[float] = mapped_column(Float, default=0.0)
+    acknowledgement_signal: Mapped[float] = mapped_column(Float, default=0.0)
+    retrieval_signal: Mapped[float] = mapped_column(Float, default=0.0)
+    architecture_signal: Mapped[float] = mapped_column(Float, default=0.0)
+
+    # ── Knowledge-base classification memory ─────────────────────────────
+    sdl_relevance_label: Mapped[str | None] = mapped_column(String, nullable=True)
+    ac_attribution_label: Mapped[str | None] = mapped_column(String, nullable=True)
+    model_agreement_status: Mapped[str | None] = mapped_column(String, nullable=True)
+    disagreement_type: Mapped[str | None] = mapped_column(String, nullable=True)
+    evidence_summary: Mapped[list[dict] | None] = mapped_column(JSON, nullable=True)
+    future_rule_update: Mapped[str | None] = mapped_column(Text, nullable=True)
+
     paper: Mapped["Paper"] = relationship(back_populates="classification")  # noqa: F821

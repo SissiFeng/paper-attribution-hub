@@ -58,6 +58,8 @@ class CitationSignalOut(BaseModel):
 class GraphSignalsOut(BaseModel):
     network_score: float = 0.0
     citation_score: float = 0.0
+    bridge_score: float = 0.0
+    cross_sdl_diversity: float = 0.0
     second_degree_paths: list[SecondDegreePathOut] = Field(default_factory=list)
     citation_signals: list[CitationSignalOut] = Field(default_factory=list)
     cites_corpus: list[str] = Field(default_factory=list)
@@ -80,6 +82,15 @@ class ClassificationOut(BaseModel):
     created_at: datetime
     fulltext_evidence: list[FulltextEvidenceOut] = Field(default_factory=list)
     graph_signals: GraphSignalsOut | None = None
+    funding_signal: float = 0.0
+    acknowledgement_signal: float = 0.0
+    retrieval_signal: float = 0.0
+    architecture_signal: float = 0.0
+    sdl_relevance_label: str | None = None
+    ac_attribution_label: str | None = None
+    model_agreement_status: str | None = None
+    disagreement_type: str | None = None
+    future_rule_update: str | None = None
 
 
 class HumanReviewIn(BaseModel):
@@ -88,6 +99,10 @@ class HumanReviewIn(BaseModel):
     corrected_people: list[str] | None = None
     reviewer: str | None = None
     notes: str | None = None
+    disagreement_type: str | None = None
+    rationale: str | None = None
+    evidence: list[dict[str, Any]] | None = None
+    future_rule_update: str | None = None
 
 
 class HumanReviewOut(HumanReviewIn):
@@ -437,6 +452,8 @@ class NetworkNode(BaseModel):
     paper_count: int
     ppr_score: float = 0.0
     c_norm: float = 1.0
+    cross_sdl_diversity: float = 0.0
+    bridge_score: float = 0.0
 
 
 class NetworkEdge(BaseModel):

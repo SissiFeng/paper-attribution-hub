@@ -3,6 +3,7 @@ import type {
   DiscoveryCandidate,
   DiscoveryRunResult,
   DriftReport,
+  DuplicateReport,
   EvalReport,
   EvidenceGapReport,
   GeographicReport,
@@ -11,6 +12,7 @@ import type {
   ImpactReport,
   InstTopicHeatmapPayload,
   InstitutionNetworkPayload,
+  LintReport,
   MissedPaperGroup,
   MultiGraphPayload,
   NetworkGrowthPayload,
@@ -45,11 +47,8 @@ async function request<T>(path: string, init?: RequestInit): Promise<T> {
 }
 
 async function withMock<T>(fetcher: () => Promise<T>, fallback: T): Promise<T> {
-  try {
-    return await fetcher();
-  } catch {
-    return fallback;
-  }
+  if (USE_MOCK) return fallback;
+  return fetcher();
 }
 
 export function listPapers(search?: URLSearchParams) {
@@ -295,6 +294,20 @@ export function getEvidenceGaps() {
   );
 }
 
+export function getLintReport() {
+  return withMock(
+    () => request<LintReport>("/analytics/lint-report"),
+    mock.MOCK_LINT_REPORT
+  );
+}
+
+export function getDuplicateCandidates() {
+  return withMock(
+    () => request<DuplicateReport>("/analytics/duplicate-candidates"),
+    mock.MOCK_DUPLICATE_REPORT
+  );
+}
+
 export function getPeopleGrid() {
   return withMock(
     () => request<PeopleGrid>("/analytics/people-grid"),
@@ -310,22 +323,26 @@ export interface MultiGraphParams {
   hop_limit?: number;
   year_from?: number;
   year_to?: number;
+  labels?: string[];
+  ac_author_only?: boolean;
+  min_edge_weight?: number;
 }
 
 export function getMultiGraph(params: MultiGraphParams = {}) {
   const sp = new URLSearchParams();
   (params.node_types ?? []).forEach((t) => sp.append("node_types", t));
   (params.edge_types ?? []).forEach((t) => sp.append("edge_types", t));
+  (params.labels ?? []).forEach((label) => sp.append("labels", label));
   if (params.group_by) sp.set("group_by", params.group_by);
   if (params.center_id) sp.set("center_id", params.center_id);
   if (params.hop_limit != null) sp.set("hop_limit", String(params.hop_limit));
   if (params.year_from != null) sp.set("year_from", String(params.year_from));
   if (params.year_to != null) sp.set("year_to", String(params.year_to));
+  if (params.ac_author_only != null) sp.set("ac_author_only", String(params.ac_author_only));
+  if (params.min_edge_weight != null) sp.set("min_edge_weight", String(params.min_edge_weight));
   const qs = sp.toString();
-  return withMock(
-    () => request<MultiGraphPayload>(`/analytics/multi-graph${qs ? `?${qs}` : ""}`),
-    mock.getMockMultiGraph(params)
-  );
+  if (USE_MOCK) return Promise.resolve(mock.getMockMultiGraph(params));
+  return request<MultiGraphPayload>(`/analytics/multi-graph${qs ? `?${qs}` : ""}`);
 }
 
 export function getGeographic(params: { year_from?: number; year_to?: number } = {}) {

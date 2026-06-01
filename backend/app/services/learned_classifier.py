@@ -167,7 +167,6 @@ def train_from_examples(
                 (
                     "lr",
                     LogisticRegression(
-                        multi_class="multinomial",
                         solver="lbfgs",
                         max_iter=500,
                         C=1.0,

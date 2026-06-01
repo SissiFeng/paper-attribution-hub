@@ -1,0 +1,504 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AC Paper Attribution System - Plain-English Algorithm Walkthrough</title>
+  <style>
+    :root {
+      --ink: #213c51;
+      --muted: #6f8aa0;
+      --line: #dbe6ee;
+      --paper: #f8fafc;
+      --panel: #ffffff;
+      --blue: #6594b1;
+      --pink: #ddaed3;
+      --green: #22c55e;
+      --orange: #f59e0b;
+      --red: #ef4444;
+      --shadow: 0 18px 45px rgba(33, 60, 81, 0.10);
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle, rgba(33,60,81,0.07) 1px, transparent 1px),
+        linear-gradient(180deg, #ffffff, var(--paper));
+      background-size: 22px 22px, 100% 100%;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      line-height: 1.55;
+    }
+
+    main {
+      width: min(1180px, calc(100vw - 48px));
+      margin: 0 auto;
+      padding: 28px 0 60px;
+    }
+
+    .slide {
+      min-height: 680px;
+      margin: 0 0 28px;
+      padding: 42px;
+      background: rgba(255,255,255,0.92);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      box-shadow: var(--shadow);
+      display: grid;
+      align-content: start;
+      gap: 24px;
+    }
+
+    .eyebrow {
+      color: var(--blue);
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    h1, h2, h3, p { margin: 0; }
+    h1 { font-size: clamp(38px, 5vw, 72px); line-height: 1.02; letter-spacing: 0; }
+    h2 { font-size: clamp(30px, 4vw, 52px); line-height: 1.08; letter-spacing: 0; }
+    h3 { font-size: 18px; }
+    p { color: var(--muted); font-size: 18px; max-width: 860px; }
+
+    .grid { display: grid; gap: 16px; }
+    .grid.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .grid.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .grid.four { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+    }
+
+    .card strong { color: var(--ink); }
+    .card p { font-size: 14px; margin-top: 8px; }
+
+    .metric {
+      border-top: 3px solid var(--blue);
+      min-height: 138px;
+    }
+    .metric .value {
+      display: block;
+      font-size: 38px;
+      font-weight: 800;
+      color: var(--ink);
+      margin: 8px 0 4px;
+    }
+    .metric .label {
+      color: var(--blue);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-weight: 800;
+    }
+
+    .flow {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 12px;
+      align-items: stretch;
+    }
+    .step {
+      border: 1px solid var(--line);
+      border-top: 4px solid var(--blue);
+      border-radius: 8px;
+      background: #fff;
+      padding: 16px;
+      min-height: 170px;
+    }
+    .step:nth-child(2) { border-top-color: var(--pink); }
+    .step:nth-child(3) { border-top-color: var(--green); }
+    .step:nth-child(4) { border-top-color: var(--orange); }
+    .step:nth-child(5) { border-top-color: var(--ink); }
+    .step .num { font-size: 12px; color: var(--muted); font-weight: 800; }
+    .step h3 { margin: 8px 0; }
+    .step p { font-size: 13px; }
+
+    ul {
+      margin: 0;
+      padding-left: 20px;
+      color: var(--muted);
+      font-size: 16px;
+    }
+    li { margin: 8px 0; }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      height: 28px;
+      padding: 0 10px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--ink);
+      background: #fff;
+      font-size: 12px;
+      font-weight: 800;
+      margin: 0 6px 6px 0;
+    }
+    .tag.green { color: #15803d; border-color: rgba(34,197,94,0.35); background: rgba(34,197,94,0.08); }
+    .tag.blue { color: var(--ink); border-color: rgba(101,148,177,0.45); background: rgba(101,148,177,0.10); }
+    .tag.pink { color: #be185d; border-color: rgba(221,174,211,0.75); background: rgba(221,174,211,0.18); }
+    .tag.red { color: #b91c1c; border-color: rgba(239,68,68,0.35); background: rgba(239,68,68,0.08); }
+
+    .matrix {
+      width: 100%;
+      border-collapse: collapse;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+      font-size: 14px;
+    }
+    .matrix th, .matrix td {
+      padding: 13px 14px;
+      text-align: left;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+    }
+    .matrix th {
+      color: var(--blue);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 11px;
+    }
+    .matrix tr:last-child td { border-bottom: 0; }
+
+    .callout {
+      border-left: 5px solid var(--orange);
+      background: rgba(245,158,11,0.08);
+      padding: 18px 20px;
+      border-radius: 8px;
+      color: var(--ink);
+    }
+    .callout p { color: var(--ink); font-size: 16px; }
+
+    .speaker {
+      margin-top: auto;
+      padding-top: 18px;
+      border-top: 1px dashed var(--line);
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    @media (max-width: 900px) {
+      main { width: min(100vw - 24px, 720px); }
+      .slide { padding: 28px; min-height: auto; }
+      .grid.two, .grid.three, .grid.four, .flow { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="slide">
+      <div class="eyebrow">Plain-English Walkthrough</div>
+      <h1>From raw research records to an AC knowledge library</h1>
+      <p>
+        The system takes a large candidate pool of research papers, normalizes it,
+        scores every paper for AC attribution and SDL relevance, then turns the result
+        into searchable tables, review queues, lint reports, and a multi-entity network.
+      </p>
+      <div>
+        <span class="tag blue">11,268 papers</span>
+        <span class="tag blue">45,416 authors</span>
+        <span class="tag blue">7,486 institutions</span>
+        <span class="tag green">827 graph nodes</span>
+        <span class="tag pink">1,512 graph edges</span>
+      </div>
+      <div class="speaker">
+        Speaker note: Start with the simple promise: "We are not manually reading
+        thousands of records. We are converting raw scholarly metadata into a curated,
+        inspectable knowledge base."
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="eyebrow">Does it meet the original product idea?</div>
+      <h2>Mostly for papers and articles; not yet for images or full open-ended Q&A</h2>
+      <table class="matrix">
+        <thead>
+          <tr><th>Need</th><th>Status</th><th>What exists now</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Dump raw research information</td>
+            <td><span class="tag green">Built for CSV/PDF</span></td>
+            <td>Scopus tier1+tier2 CSV, AC Publications CSV, and a full-text ingestion path for PDF/TXT/MD.</td>
+          </tr>
+          <tr>
+            <td>AI organizes it into a library</td>
+            <td><span class="tag green">Built</span></td>
+            <td>Entities, classifications, evidence summaries, duplicate checks, lint buckets, and wiki-style digests.</td>
+          </tr>
+          <tr>
+            <td>Search and ask questions later</td>
+            <td><span class="tag blue">Partially built</span></td>
+            <td>Search/filter is live. Hybrid retrieval exists, but current real DB has no chunk index yet.</td>
+          </tr>
+          <tr>
+            <td>Images as raw input</td>
+            <td><span class="tag red">Not built yet</span></td>
+            <td>No image OCR/vision ingestion pipeline is wired into the current corpus.</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="callout">
+        <p>
+          Honest summary: this is already a real paper-attribution knowledge system,
+          but it is not yet a general "dump anything, ask anything" AI memory system.
+        </p>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="eyebrow">Inputs</div>
+      <h2>What went into the current database?</h2>
+      <div class="grid three">
+        <div class="card metric">
+          <span class="label">Scopus batch</span>
+          <span class="value">10,844</span>
+          <p>Records from the tier1+tier2 candidate file.</p>
+        </div>
+        <div class="card metric">
+          <span class="label">AC gold set</span>
+          <span class="value">424</span>
+          <p>Known AC publications used as trusted seed and comparison data.</p>
+        </div>
+        <div class="card metric">
+          <span class="label">Full-text chunks now</span>
+          <span class="value">0</span>
+          <p>The full-text pipeline exists, but the current real DB has not indexed chunks.</p>
+        </div>
+      </div>
+      <ul>
+        <li>Source files are currently root CSV files plus files under <strong>data/fulltexts</strong>.</li>
+        <li>There is no active <strong>raw/</strong> directory in this repo right now.</li>
+        <li>The frontend no longer silently falls back to mock papers when the backend is unavailable.</li>
+      </ul>
+    </section>
+
+    <section class="slide">
+      <div class="eyebrow">Algorithm</div>
+      <h2>The five-stage pipeline</h2>
+      <div class="flow">
+        <div class="step">
+          <div class="num">01</div>
+          <h3>Normalize</h3>
+          <p>Clean titles, DOI values, author names, institutions, years, venues, keywords, and provenance.</p>
+        </div>
+        <div class="step">
+          <div class="num">02</div>
+          <h3>Attach entities</h3>
+          <p>Link papers to authors and institutions, mark known AC members, and keep source provenance.</p>
+        </div>
+        <div class="step">
+          <div class="num">03</div>
+          <h3>Score evidence</h3>
+          <p>Measure AC signals, funding/acknowledgement signals, tier retrieval signal, and SDL architecture terms.</p>
+        </div>
+        <div class="step">
+          <div class="num">04</div>
+          <h3>Classify</h3>
+          <p>Assign labels: CORE, RELATED, SDL_FIELD, ADJACENT, UNCERTAIN, or EXCLUDE.</p>
+        </div>
+        <div class="step">
+          <div class="num">05</div>
+          <h3>Publish views</h3>
+          <p>Generate tables, lint reports, duplicate candidates, wiki digests, and the multi-entity network.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="eyebrow">Labels</div>
+      <h2>How the system decides what is "AC-related"</h2>
+      <table class="matrix">
+        <thead>
+          <tr><th>Label</th><th>Plain-English meaning</th><th>Used in AC graph?</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="tag green">CORE_RELEVANT</span></td>
+            <td>Strong AC connection plus strong SDL/research relevance.</td>
+            <td>Yes</td>
+          </tr>
+          <tr>
+            <td><span class="tag green">RELATED_RELEVANT</span></td>
+            <td>Meaningful AC attribution or connection, but not necessarily core flagship work.</td>
+            <td>Yes</td>
+          </tr>
+          <tr>
+            <td><span class="tag blue">SDL_FIELD_RELEVANT</span></td>
+            <td>Relevant to self-driving labs or automation, but no direct AC attribution.</td>
+            <td>No, not in the default AC-attributed graph</td>
+          </tr>
+          <tr>
+            <td><span class="tag">ADJACENT / UNCERTAIN</span></td>
+            <td>Related area or insufficient evidence.</td>
+            <td>No by default</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="speaker">
+        Speaker note: Emphasize that "field relevant" and "AC attributed" are
+        intentionally different. The graph is not all SDL papers; it is the papers
+        the algorithm believes should count toward AC attribution.
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="eyebrow">Where 827 comes from</div>
+      <h2>The 827 nodes are the network view, not 827 papers</h2>
+      <div class="grid four">
+        <div class="card metric">
+          <span class="label">Papers</span>
+          <span class="value">460</span>
+          <p>CORE + RELATED papers in the 2021-2025/2026 window.</p>
+        </div>
+        <div class="card metric">
+          <span class="label">Authors</span>
+          <span class="value">229</span>
+          <p>Authors attached to those selected papers.</p>
+        </div>
+        <div class="card metric">
+          <span class="label">Institutions</span>
+          <span class="value">82</span>
+          <p>Affiliations connected through those authors.</p>
+        </div>
+        <div class="card metric">
+          <span class="label">Topics</span>
+          <span class="value">56</span>
+          <p>Topics from matched topic data or keyword fallback.</p>
+        </div>
+      </div>
+      <p>
+        460 + 229 + 82 + 56 = 827 network nodes. The graph also contains 1,512
+        edges connecting papers to authors, authors to institutions, and papers to topics.
+      </p>
+    </section>
+
+    <section class="slide">
+      <div class="eyebrow">Full text</div>
+      <h2>Important caveat: the current 827-node graph is not based on full-text matching</h2>
+      <div class="grid two">
+        <div class="card">
+          <h3>What the code supports</h3>
+          <ul>
+            <li>PDF/TXT/MD upload per paper.</li>
+            <li>PDF parsing with PyMuPDF or GROBID.</li>
+            <li>Section-aware chunking.</li>
+            <li>Hybrid BM25 + vector retrieval over chunks.</li>
+            <li>Full-text evidence scoring for classification.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>What the current real DB shows</h3>
+          <ul>
+            <li>full_text_available = false for all 11,268 papers.</li>
+            <li>PaperChunk rows = 0.</li>
+            <li>PaperProposition rows = 0.</li>
+            <li>fulltext_evidence_score greater than 0 = 0 papers.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="callout">
+        <p>
+          Translation: the algorithm currently uses Scopus/AC metadata, title,
+          abstract, keywords, retrieval tier, funding fields, authors, and affiliations.
+          It can use full text, but this particular imported corpus has not been
+          full-text indexed yet.
+        </p>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="eyebrow">Quality controls</div>
+      <h2>The system does not just classify; it audits itself</h2>
+      <div class="grid three">
+        <div class="card">
+          <h3>Lint report</h3>
+          <p>Finds website-blocking claims and reporting warnings before public use.</p>
+        </div>
+        <div class="card">
+          <h3>Duplicate candidates</h3>
+          <p>Groups same-title/different-DOI records and recommends canonical records.</p>
+        </div>
+        <div class="card">
+          <h3>Review queue</h3>
+          <p>Surfaces uncertain or risky records for human confirmation.</p>
+        </div>
+      </div>
+      <p>
+        This matters because attribution is a claims system. The goal is not just
+        to find papers, but to avoid publishing unsupported or duplicate claims.
+      </p>
+    </section>
+
+    <section class="slide">
+      <div class="eyebrow">One-sentence explanation</div>
+      <h2>How to explain it to a non-technical audience</h2>
+      <div class="callout">
+        <p>
+          "We start with a large pile of research records, clean and connect the
+          authors, institutions, topics, funding, and retrieval evidence, then the
+          system decides which papers are truly attributable to AC and turns that
+          into a searchable library and network map that humans can audit."
+        </p>
+      </div>
+      <div class="grid two">
+        <div class="card">
+          <h3>Analogy</h3>
+          <p>
+            It is like a librarian plus a fact-checker: first it shelves the papers
+            correctly, then it marks which ones are safe to cite as AC-related.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Current limitation</h3>
+          <p>
+            It is not yet a universal AI memory box for arbitrary raw files and images.
+            That requires running the raw-document ingestion and adding image OCR/vision.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="eyebrow">Next build step</div>
+      <h2>What would make it fully match the original vision?</h2>
+      <table class="matrix">
+        <thead>
+          <tr><th>Next capability</th><th>Why it matters</th><th>Implementation shape</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Canonical raw inbox</td>
+            <td>One place to dump PDFs, articles, CSVs, markdown, and images.</td>
+            <td>Create <strong>data/raw</strong> with an ingestion manifest.</td>
+          </tr>
+          <tr>
+            <td>Full-text indexing pass</td>
+            <td>Enables true question answering and evidence snippets.</td>
+            <td>Run PDF/TXT ingestion, chunking, embeddings, and retrieval eval.</td>
+          </tr>
+          <tr>
+            <td>Image/OCR pipeline</td>
+            <td>Handles scanned papers, figures, screenshots, and diagrams.</td>
+            <td>Add OCR + image caption extraction into the same evidence model.</td>
+          </tr>
+          <tr>
+            <td>Ask-the-library interface</td>
+            <td>Lets non-technical users ask "why is this paper included?"</td>
+            <td>Build a RAG answer endpoint grounded in retrieved chunks and metadata.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+</body>
+</html>

@@ -44,7 +44,7 @@ class MultiGraphFilter:
         default_factory=lambda: ["coauthored", "affiliated_with", "cites"]
     )
     group_by: str = "by_institution"
-    min_edge_weight: float = 1.0
+    min_edge_weight: float = 0.3
 
     # Optional ego-graph mode (NetworkX-style).
     center_id: str | None = None

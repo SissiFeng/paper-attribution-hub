@@ -9,6 +9,8 @@ interface LaidOutNode {
   paper_count: number;
   ppr_score: number;
   c_norm: number;
+  cross_sdl_diversity: number;
+  bridge_score: number;
   x: number;
   y: number;
   vx: number;
@@ -27,6 +29,8 @@ function layout(payload: NetworkPayload, width: number, height: number, iters = 
     paper_count: n.paper_count,
     ppr_score: n.ppr_score ?? 0,
     c_norm: n.c_norm ?? 1,
+    cross_sdl_diversity: n.cross_sdl_diversity ?? 0,
+    bridge_score: n.bridge_score ?? 0,
     x: width / 2 + Math.cos((i / payload.nodes.length) * Math.PI * 2) * 180,
     y: height / 2 + Math.sin((i / payload.nodes.length) * Math.PI * 2) * 180,
     vx: 0,
@@ -160,13 +164,15 @@ export function NetworkGraph({ payload, selectedId, onSelect }: Props) {
         })}
         {placed.nodes.map((n) => {
           const r = n.is_ac_member ? 15 : 5 + Math.sqrt(n.ppr_score) * 10;
-          const isBridge = !n.is_ac_member && n.c_norm > 1.25;
+          const isBridge = !n.is_ac_member && n.bridge_score > 0.15;
           const isAdj = !hasSelection || adjacentIds.has(n.id);
           const isSelected = n.id === selectedId;
           const tooltip = [
             n.label,
             `PPR score: ${(n.ppr_score * 100).toFixed(1)}%`,
             `c_norm: ${n.c_norm.toFixed(2)}${isBridge ? " ★ bridge" : ""}`,
+            `Bridge score: ${n.bridge_score.toFixed(2)}`,
+            `Cross-SDL diversity: ${n.cross_sdl_diversity.toFixed(2)}`,
             `Papers: ${n.paper_count}`,
           ].join("\n");
           return (
@@ -214,7 +220,7 @@ export function NetworkGraph({ payload, selectedId, onSelect }: Props) {
           <svg width={16} height={16}>
             <circle cx={8} cy={8} r={6} fill="none" stroke="rgba(251,191,36,0.55)" strokeWidth={2} strokeDasharray="4 3"/>
           </svg>
-          Bridge (c_norm&gt;1.25)
+          Bridge score &gt; 0.15
         </span>
         <span title="Node size = AC-Personalized PageRank score (structural proximity to AC core)">
           Size = PPR score

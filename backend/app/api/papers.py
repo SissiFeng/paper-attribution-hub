@@ -44,6 +44,15 @@ def _paper_to_schema(paper: Paper, evidence_rows: list[PaperEvidence] | None = N
             model_version=c.model_version,
             created_at=c.created_at,
             graph_signals=GraphSignalsOut(**c.graph_signals) if c.graph_signals else None,
+            funding_signal=c.funding_signal or 0.0,
+            acknowledgement_signal=c.acknowledgement_signal or 0.0,
+            retrieval_signal=c.retrieval_signal or 0.0,
+            architecture_signal=c.architecture_signal or 0.0,
+            sdl_relevance_label=c.sdl_relevance_label,
+            ac_attribution_label=c.ac_attribution_label,
+            model_agreement_status=c.model_agreement_status,
+            disagreement_type=c.disagreement_type,
+            future_rule_update=c.future_rule_update,
             fulltext_evidence=[
                 FulltextEvidenceOut(
                     id=e.id,
@@ -66,6 +75,10 @@ def _paper_to_schema(paper: Paper, evidence_rows: list[PaperEvidence] | None = N
             corrected_people=r.corrected_people,
             reviewer=r.reviewer,
             notes=r.notes,
+            disagreement_type=r.disagreement_type,
+            rationale=r.rationale,
+            evidence=r.evidence,
+            future_rule_update=r.future_rule_update,
             created_at=r.created_at,
         )
     return PaperOut(

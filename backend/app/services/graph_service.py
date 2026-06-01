@@ -27,6 +27,8 @@ from app.models import (
     PaperReference,
 )
 
+_EXACT_C_NORM_NODE_LIMIT = 5000
+
 
 @dataclass
 class SecondDegreePath:
@@ -56,6 +58,8 @@ class GraphSignals:
     paper_id: str
     network_score: float = 0.0
     citation_score: float = 0.0
+    bridge_score: float = 0.0
+    cross_sdl_diversity: float = 0.0
     second_degree_paths: list[SecondDegreePath] = field(default_factory=list)
     citation_signals: list[CitationSignal] = field(default_factory=list)
     cites_corpus: list[str] = field(default_factory=list)  # other papers in our corpus
@@ -64,6 +68,8 @@ class GraphSignals:
         return {
             "network_score": round(self.network_score, 3),
             "citation_score": round(self.citation_score, 3),
+            "bridge_score": round(self.bridge_score, 3),
+            "cross_sdl_diversity": round(self.cross_sdl_diversity, 3),
             "second_degree_paths": [
                 {
                     "via_author_id": p.via_author_id,
@@ -108,8 +114,13 @@ def build_coauthor_graph(session: Session, only_relevant: bool = False) -> nx.Gr
                     is_ac_member=bool(a.is_ac_member),
                     institution=a.institution.canonical_name if a.institution else None,
                     paper_count=0,
+                    sdl_contexts=set(),
+                    institution_contexts=set(),
                 )
             g.nodes[a.id]["paper_count"] += 1
+            g.nodes[a.id]["sdl_contexts"].update(_paper_sdl_contexts(paper))
+            if a.institution:
+                g.nodes[a.id]["institution_contexts"].add(a.institution.id)
             author_ids.append(a.id)
 
         for i, src in enumerate(author_ids):
@@ -120,6 +131,23 @@ def build_coauthor_graph(session: Session, only_relevant: bool = False) -> nx.Gr
                 else:
                     g.add_edge(src, dst, weight=1, papers=[paper.id])
     return g
+
+
+def _paper_sdl_contexts(paper: Paper) -> set[str]:
+    contexts = set(paper.sdl_tags or [])
+    if paper.classification and paper.classification.matched_topics:
+        contexts.update(
+            t.get("topic_id") or t.get("name")
+            for t in paper.classification.matched_topics
+            if t.get("topic_id") or t.get("name")
+        )
+    return {str(c) for c in contexts if c}
+
+
+def _normalized_diversity(count: int) -> float:
+    if count <= 0:
+        return 0.0
+    return min(1.0, math.log1p(count) / math.log1p(5))
 
 
 def build_institution_graph(session: Session) -> nx.Graph:
@@ -257,9 +285,15 @@ def evans_chen_c_norm(g: nx.Graph) -> dict[str, float]:
                   (bridge author, interdisciplinary connector)
     c_norm ≈ 1 → centrality fully explained by degree (Evans & Chen redundancy region)
     c_norm < 1 → structurally peripheral relative to productivity
+
+    For large production graphs, exact harmonic centrality is intentionally
+    skipped because it is all-pairs-distance work and can stall interactive
+    endpoints. The bridge score still uses PPR_AC × diversity in that mode.
     """
     n = g.number_of_nodes()
     if n < 4:
+        return {node: 1.0 for node in g.nodes()}
+    if n > _EXACT_C_NORM_NODE_LIMIT:
         return {node: 1.0 for node in g.nodes()}
 
     # Evans & Chen use degree k_r = number of distinct neighbors (unweighted),
@@ -379,6 +413,22 @@ def compute_graph_signals(session: Session) -> dict[str, GraphSignals]:
 
     ppr = ppr_toward_ac(g, ac_member_ids)
     c_norm = evans_chen_c_norm(g)
+    author_diversity = {
+        node: _normalized_diversity(
+            len(g.nodes[node].get("sdl_contexts", set()))
+            + len(g.nodes[node].get("institution_contexts", set()))
+        )
+        for node in g.nodes()
+    }
+    author_bridge = {
+        node: min(
+            1.0,
+            ppr.get(node, 0.0)
+            * max(c_norm.get(node, 1.0), 0.0)
+            * max(author_diversity.get(node, 0.0), 0.0),
+        )
+        for node in g.nodes()
+    }
     _BRIDGE_LAMBDA = 0.25  # bonus weight for Evans & Chen excess centrality
 
     # ── Citations ─────────────────────────────────────────────────────────────
@@ -450,6 +500,11 @@ def compute_graph_signals(session: Session) -> dict[str, GraphSignals]:
                 best = max(best, score)
             network_score = min(1.0, best)
 
+        bridge_score = max((author_bridge.get(aid, 0.0) for aid in author_ids), default=0.0)
+        cross_sdl_diversity = max(
+            (author_diversity.get(aid, 0.0) for aid in author_ids), default=0.0
+        )
+
         cite_signals = citations.get(paper.id, [])
         citation_score = min(1.0, 0.5 * len(cite_signals))
 
@@ -457,6 +512,8 @@ def compute_graph_signals(session: Session) -> dict[str, GraphSignals]:
             paper_id=paper.id,
             network_score=network_score,
             citation_score=citation_score,
+            bridge_score=bridge_score,
+            cross_sdl_diversity=cross_sdl_diversity,
             second_degree_paths=paths,
             citation_signals=cite_signals,
             cites_corpus=cites_corpus.get(paper.id, []),

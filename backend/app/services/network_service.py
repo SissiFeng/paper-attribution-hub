@@ -42,6 +42,16 @@ def graph_to_payload(g: nx.Graph) -> dict:
             "paper_count": int(data.get("paper_count", 0)),
             "ppr_score": round(ppr.get(node_id, 0.0), 4),
             "c_norm": round(c_norm.get(node_id, 1.0), 4),
+            "cross_sdl_diversity": round(_cross_sdl_diversity(data), 4),
+            "bridge_score": round(
+                min(
+                    1.0,
+                    ppr.get(node_id, 0.0)
+                    * max(c_norm.get(node_id, 1.0), 0.0)
+                    * _cross_sdl_diversity(data),
+                ),
+                4,
+            ),
         }
         for node_id, data in g.nodes(data=True)
     ]
@@ -64,3 +74,14 @@ def graph_to_payload(g: nx.Graph) -> dict:
         })
 
     return {"nodes": nodes, "edges": edges}
+
+
+def _cross_sdl_diversity(data: dict) -> float:
+    context_count = len(data.get("sdl_contexts", set())) + len(
+        data.get("institution_contexts", set())
+    )
+    if context_count <= 0:
+        return 0.0
+    import math
+
+    return min(1.0, math.log1p(context_count) / math.log1p(5))

@@ -43,7 +43,9 @@ from app.services.analytics_service import (
     topic_over_time,
 )
 from app.services.drift_service import build_drift_report
+from app.services.duplicate_service import build_duplicate_report
 from app.services.evidence_gap_service import build_evidence_gap_report
+from app.services.knowledge_lint_service import build_knowledge_lint_report
 from app.services.filter_spec import PaperFilter, apply_filter, paper_filter_query
 from app.services.missed_papers_service import build_missed_paper_groups
 from app.services.multi_graph import MultiGraphFilter, build_multi_graph
@@ -66,7 +68,7 @@ def multi_graph_endpoint(
         ]
     ),
     group_by: str = Query(default="by_institution"),
-    min_edge_weight: float = Query(default=1.0, ge=0.0),
+    min_edge_weight: float = Query(default=0.3, ge=0.0),
     center_id: str | None = Query(default=None),
     hop_limit: int = Query(default=2, ge=1, le=4),
     similarity_min: float = Query(default=0.7, ge=0.0, le=1.0),
@@ -176,6 +178,77 @@ def evidence_gaps(
                 ],
             }
             for b in report.buckets
+        ],
+    }
+
+
+@router.get("/lint-report")
+def lint_report(
+    session: Session = Depends(get_session),
+) -> dict:
+    """Knowledge-base lint report for website-ready attribution claims."""
+    report = build_knowledge_lint_report(session)
+    return {
+        "total_papers_scanned": report.total_papers_scanned,
+        "website_blockers": report.website_blockers,
+        "reporting_warnings": report.reporting_warnings,
+        "buckets": [
+            {
+                "bucket": b.bucket,
+                "label": b.label,
+                "description": b.description,
+                "severity": b.severity,
+                "count": b.count,
+                "entries": [
+                    {
+                        "paper_id": e.paper_id,
+                        "title": e.title,
+                        "label": e.label,
+                        "severity": e.severity,
+                        "reason": e.reason,
+                    }
+                    for e in b.entries
+                ],
+            }
+            for b in report.buckets
+        ],
+    }
+
+
+@router.get("/duplicate-candidates")
+def duplicate_candidates(
+    session: Session = Depends(get_session),
+) -> dict:
+    """Group same-title / different-DOI candidates with canonical suggestions."""
+    report = build_duplicate_report(session)
+    return {
+        "group_count": report["group_count"],
+        "paper_count": report["paper_count"],
+        "blocker_groups": report["blocker_groups"],
+        "warning_groups": report["warning_groups"],
+        "groups": [
+            {
+                "key": g.key,
+                "title": g.title,
+                "group_type": g.group_type,
+                "severity": g.severity,
+                "canonical_paper_id": g.canonical_paper_id,
+                "reason": g.reason,
+                "candidates": [
+                    {
+                        "paper_id": c.paper_id,
+                        "title": c.title,
+                        "doi": c.doi,
+                        "year": c.year,
+                        "provenance": c.provenance,
+                        "label": c.label,
+                        "is_preprint": c.is_preprint,
+                        "score": c.score,
+                    }
+                    for c in g.candidates
+                ],
+            }
+            for g in report["groups"]
         ],
     }
 

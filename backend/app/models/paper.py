@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from datetime import UTC, datetime
 
-from sqlalchemy import JSON, Boolean, DateTime, ForeignKey, Integer, String, Text
+from sqlalchemy import JSON, Boolean, DateTime, Float, ForeignKey, Integer, String, Text
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.db import Base
@@ -30,6 +30,37 @@ class Paper(Base):
     full_text_available: Mapped[bool] = mapped_column(Boolean, default=False)
     pdf_path: Mapped[str | None] = mapped_column(String)
     raw_metadata: Mapped[dict | None] = mapped_column(JSON)
+
+    # Scopus Indexed Keywords (separate from author-assigned keywords)
+    indexed_keywords: Mapped[list[str] | None] = mapped_column(JSON, nullable=True)
+
+    # ── Scopus retrieval provenance ──────────────────────────────────────
+    eid: Mapped[str | None] = mapped_column(String, unique=True, nullable=True, index=True)
+    retrieval_tier: Mapped[str | None] = mapped_column(String, nullable=True, index=True)
+    merge_tier_membership: Mapped[str | None] = mapped_column(String, nullable=True)
+    query_string: Mapped[str | None] = mapped_column(Text, nullable=True)
+    funding_text: Mapped[str | None] = mapped_column(Text, nullable=True)
+    funding_sponsors: Mapped[list[str] | None] = mapped_column(JSON, nullable=True)
+
+    # ── AC gold set fields (from AC Publications CSV) ────────────────────
+    ac_known_publication: Mapped[bool] = mapped_column(Boolean, default=False, index=True)
+    ac_acknowledged: Mapped[bool | None] = mapped_column(Boolean, nullable=True)
+    ac_highly_relevant: Mapped[bool | None] = mapped_column(Boolean, nullable=True)
+    ac_high_impact: Mapped[bool | None] = mapped_column(Boolean, nullable=True)
+    ac_members_matched: Mapped[list[str] | None] = mapped_column(JSON, nullable=True)
+    ac_programs: Mapped[str | None] = mapped_column(String, nullable=True)
+    sdl_tags: Mapped[list[str] | None] = mapped_column(JSON, nullable=True)
+    research_tags: Mapped[list[str] | None] = mapped_column(JSON, nullable=True)
+
+    # ── Attribution scores (set by scopus_classifier) ────────────────────
+    ac_attribution_score: Mapped[float | None] = mapped_column(Float, nullable=True)
+    sdl_relevance_score: Mapped[float | None] = mapped_column(Float, nullable=True)
+
+    # ── Tier 2 architecture component scores (0/1 keyword presence) ──────
+    ai_decision_score: Mapped[float | None] = mapped_column(Float, nullable=True)
+    automation_score: Mapped[float | None] = mapped_column(Float, nullable=True)
+    closed_loop_score: Mapped[float | None] = mapped_column(Float, nullable=True)
+
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_utcnow)
     # Bumped whenever ingestion / fulltext attachment / curation touches the
     # paper; the daily pipeline uses this to find papers whose classification

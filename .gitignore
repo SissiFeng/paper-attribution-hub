@@ -37,6 +37,9 @@ dist/
 /data/sample_papers.csv
 /data/eval_labels.csv
 /data/fulltexts/
+/AC Publications (Focused)-Grid view.csv
+/tier1_tier2_merged_classification_ready.csv
+/Retrieval_Operationalization.docx
 
 # Docker local state
 pgdata/
@@ -44,4 +47,6 @@ pgdata/
 # Claude Code / agent tooling
 .agents/
 .claude/
+.codex/
 skills-lock.json
+.vercel/

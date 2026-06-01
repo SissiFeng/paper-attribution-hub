@@ -5,6 +5,13 @@ import css from "./WikiPanel.module.css";
 
 // ── Section icons ──────────────────────────────────────────────────────────
 const SECTION_ICONS: Record<string, string> = {
+  identity:      "#",
+  abstract_summary: "≡",
+  retrieval_provenance: "↵",
+  sdl_evidence:  "◎",
+  ac_evidence:   "⬡",
+  classification:"✓",
+  links:         "↗",
   overview:      "◈",
   ac_connection: "⬡",
   contribution:  "◆",

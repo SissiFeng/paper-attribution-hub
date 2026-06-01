@@ -20,6 +20,7 @@ VALID_LABELS = {
     "UNCERTAIN",
     "EXCLUDE",
     "INCLUDE",
+    "SDL_FIELD_RELEVANT",
 }
 
 
@@ -48,6 +49,20 @@ def submit_review(
     review.corrected_people = payload.corrected_people
     review.reviewer = payload.reviewer
     review.notes = payload.notes
+    review.disagreement_type = payload.disagreement_type
+    review.rationale = payload.rationale
+    review.evidence = payload.evidence
+    review.future_rule_update = payload.future_rule_update
+
+    if paper.classification is not None:
+        cls = paper.classification
+        cls.disagreement_type = payload.disagreement_type
+        cls.future_rule_update = payload.future_rule_update
+        cls.model_agreement_status = (
+            "human_confirmed"
+            if previous_label == review.human_label
+            else "human_corrected"
+        )
     session.commit()
     session.refresh(review)
 
@@ -72,5 +87,9 @@ def submit_review(
         corrected_people=review.corrected_people,
         reviewer=review.reviewer,
         notes=review.notes,
+        disagreement_type=review.disagreement_type,
+        rationale=review.rationale,
+        evidence=review.evidence,
+        future_rule_update=review.future_rule_update,
         created_at=review.created_at,
     )

@@ -12,6 +12,8 @@ from __future__ import annotations
 
 from abc import ABC, abstractmethod
 from collections import defaultdict
+import hashlib
+import re
 from typing import Iterable
 
 from sqlalchemy import select
@@ -102,6 +104,72 @@ def _institution_ids_from_papers(papers: list[Paper]) -> set[str]:
     return out
 
 
+_TOPIC_STOPWORDS = {
+    "article",
+    "study",
+    "review",
+    "method",
+    "methods",
+    "system",
+    "systems",
+}
+
+
+def _keyword_topic_id(keyword: str) -> str:
+    normalized = _norm_keyword(keyword)
+    digest = hashlib.sha1(normalized.encode("utf-8")).hexdigest()[:10]
+    return f"kw_{digest}"
+
+
+def _norm_keyword(keyword: str) -> str:
+    return re.sub(r"\s+", " ", keyword.strip().lower())
+
+
+def _keyword_topics_for_paper(paper: Paper) -> list[dict]:
+    candidates: list[str] = []
+    for values in (
+        paper.sdl_tags,
+        paper.research_tags,
+        paper.keywords,
+        paper.indexed_keywords,
+    ):
+        for value in values or []:
+            text = str(value).strip()
+            norm = _norm_keyword(text)
+            if len(norm) < 3 or norm in _TOPIC_STOPWORDS:
+                continue
+            candidates.append(text)
+
+    seen: set[str] = set()
+    topics: list[dict] = []
+    for text in candidates:
+        norm = _norm_keyword(text)
+        if norm in seen:
+            continue
+        seen.add(norm)
+        topics.append(
+            {
+                "topic_id": _keyword_topic_id(text),
+                "name": text,
+                "score": 0.45,
+                "source": "paper_keyword",
+            }
+        )
+        if len(topics) >= 4:
+            break
+    return topics
+
+
+def _topic_matches_for_paper(paper: Paper) -> list[dict]:
+    if paper.classification is not None and paper.classification.matched_topics:
+        return [
+            tm
+            for tm in paper.classification.matched_topics
+            if tm.get("topic_id") and (tm.get("score") or 0) >= 0.3
+        ]
+    return _keyword_topics_for_paper(paper)
+
+
 # ---------------------------------------------------------------------------
 # Node providers
 # ---------------------------------------------------------------------------
@@ -190,14 +258,8 @@ class TopicNodes(NodeProvider):
         topic_ids: dict[str, str] = {}  # topic_id -> display name
         topic_paper_count: dict[str, int] = defaultdict(int)
         for p in papers:
-            if p.classification is None:
-                continue
-            for tm in p.classification.matched_topics or []:
+            for tm in _topic_matches_for_paper(p):
                 tid = tm.get("topic_id")
-                if not tid:
-                    continue
-                if (tm.get("score") or 0) < 0.3:
-                    continue
                 topic_ids[tid] = tm.get("name") or tid
                 topic_paper_count[tid] += 1
         for tid, name in topic_ids.items():
@@ -443,14 +505,10 @@ class BelongsToTopicEdges(EdgeProvider):
         papers = _filtered_papers(session, filt)
         for p in papers:
             paper_node = f"paper:{p.id}"
-            if paper_node not in active_node_ids or p.classification is None:
+            if paper_node not in active_node_ids:
                 continue
-            for tm in p.classification.matched_topics or []:
-                if (tm.get("score") or 0) < 0.3:
-                    continue
+            for tm in _topic_matches_for_paper(p):
                 tid = tm.get("topic_id")
-                if not tid:
-                    continue
                 topic_node = f"topic:{tid}"
                 if topic_node not in active_node_ids:
                     continue

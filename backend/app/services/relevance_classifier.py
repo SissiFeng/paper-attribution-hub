@@ -31,6 +31,7 @@ from app.services.topic_classifier import ClassifyResult, TopicClassifier, Topic
 
 LABEL_CORE = "CORE_RELEVANT"
 LABEL_RELATED = "RELATED_RELEVANT"
+LABEL_SDL_FIELD = "SDL_FIELD_RELEVANT"   # SDL-relevant but no direct AC connection
 LABEL_ADJACENT = "ADJACENT"
 LABEL_UNCERTAIN = "UNCERTAIN"
 LABEL_EXCLUDE = "EXCLUDE"
@@ -660,6 +661,14 @@ def classify_all(
         cls.graph_signals = (
             result.graph_signals.to_dict() if result.graph_signals else None
         )
+        cls.sdl_relevance_label = _sdl_memory_label(result.topic_score, result.fulltext_evidence_score)
+        cls.ac_attribution_label = _ac_memory_label(
+            result.author_score,
+            result.institution_score,
+            result.network_score,
+            result.citation_score,
+        )
+        cls.model_agreement_status = cls.model_agreement_status or "single_model"
         cls.model_version = _model_version_for(result)
         cls.matched_people = [
             {
@@ -896,6 +905,14 @@ def _classify_subset(
         cls.graph_signals = (
             result.graph_signals.to_dict() if result.graph_signals else None
         )
+        cls.sdl_relevance_label = _sdl_memory_label(result.topic_score, result.fulltext_evidence_score)
+        cls.ac_attribution_label = _ac_memory_label(
+            result.author_score,
+            result.institution_score,
+            result.network_score,
+            result.citation_score,
+        )
+        cls.model_agreement_status = cls.model_agreement_status or "single_model"
         cls.model_version = _model_version_for(result)
         cls.matched_people = [
             {
@@ -934,6 +951,31 @@ def _classify_subset(
         cls.last_classified_at = datetime.now(UTC)
 
     session.commit()
+
+
+def _sdl_memory_label(topic_score: float, fulltext_score: float) -> str:
+    score = max(topic_score, fulltext_score)
+    if score >= 0.6:
+        return "SDL_RELEVANT"
+    if score >= 0.3:
+        return "SDL_ADJACENT"
+    return "SDL_NOT_RELEVANT"
+
+
+def _ac_memory_label(
+    author_score: float,
+    institution_score: float,
+    network_score: float,
+    citation_score: float,
+) -> str:
+    score = max(author_score, institution_score, network_score, citation_score)
+    if score >= 0.7:
+        return "CORE_AC"
+    if score >= 0.4:
+        return "AC_RELATED"
+    if score >= 0.2:
+        return "WEAK_AC_SIGNAL"
+    return "NO_AC_EVIDENCE"
 
 
 def _model_version_for(result: ClassificationResult) -> str:

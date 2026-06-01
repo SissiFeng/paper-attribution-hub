@@ -1,6 +1,7 @@
 export type RelevanceLabel =
   | "CORE_RELEVANT"
   | "RELATED_RELEVANT"
+  | "SDL_FIELD_RELEVANT"
   | "ADJACENT"
   | "UNCERTAIN"
   | "EXCLUDE";
@@ -56,6 +57,8 @@ export interface CitationSignal {
 export interface GraphSignals {
   network_score: number;
   citation_score: number;
+  bridge_score?: number;
+  cross_sdl_diversity?: number;
   second_degree_paths: SecondDegreePath[];
   citation_signals: CitationSignal[];
   cites_corpus: string[];
@@ -78,6 +81,15 @@ export interface Classification {
   created_at: string;
   fulltext_evidence: FulltextEvidence[];
   graph_signals: GraphSignals | null;
+  funding_signal?: number;
+  acknowledgement_signal?: number;
+  retrieval_signal?: number;
+  architecture_signal?: number;
+  sdl_relevance_label?: string | null;
+  ac_attribution_label?: string | null;
+  model_agreement_status?: string | null;
+  disagreement_type?: string | null;
+  future_rule_update?: string | null;
 }
 
 export interface HumanReview {
@@ -87,6 +99,10 @@ export interface HumanReview {
   corrected_people?: string[] | null;
   reviewer?: string | null;
   notes?: string | null;
+  disagreement_type?: string | null;
+  rationale?: string | null;
+  evidence?: Record<string, unknown>[] | null;
+  future_rule_update?: string | null;
   created_at: string;
 }
 
@@ -358,6 +374,8 @@ export interface NetworkNode {
   paper_count: number;
   ppr_score: number;
   c_norm: number;
+  cross_sdl_diversity?: number;
+  bridge_score?: number;
 }
 
 export interface NetworkEdge {
@@ -443,6 +461,59 @@ export interface EvidenceGapBucket {
 export interface EvidenceGapReport {
   total_papers_scanned: number;
   buckets: EvidenceGapBucket[];
+}
+
+export interface LintEntry {
+  paper_id: string;
+  title: string;
+  label: RelevanceLabel | null;
+  severity: "blocker" | "warning";
+  reason: string;
+}
+
+export interface LintBucket {
+  bucket: string;
+  label: string;
+  description: string;
+  severity: "blocker" | "warning";
+  count: number;
+  entries: LintEntry[];
+}
+
+export interface LintReport {
+  total_papers_scanned: number;
+  website_blockers: number;
+  reporting_warnings: number;
+  buckets: LintBucket[];
+}
+
+export interface DuplicateCandidate {
+  paper_id: string;
+  title: string;
+  doi: string | null;
+  year: number | null;
+  provenance: string;
+  label: RelevanceLabel | null;
+  is_preprint: boolean;
+  score: number;
+}
+
+export interface DuplicateGroup {
+  key: string;
+  title: string;
+  group_type: string;
+  severity: "blocker" | "warning";
+  canonical_paper_id: string;
+  reason: string;
+  candidates: DuplicateCandidate[];
+}
+
+export interface DuplicateReport {
+  group_count: number;
+  paper_count: number;
+  blocker_groups: number;
+  warning_groups: number;
+  groups: DuplicateGroup[];
 }
 
 // --- v0.7 multi-entity graph, geographic, people-grid ---

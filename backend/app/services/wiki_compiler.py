@@ -31,34 +31,83 @@ def _build_paper_sections(paper: Paper) -> list[dict]:
     c = paper.classification
     sections: list[dict] = []
 
-    # 1. Overview
+    # 1. Identity
     body_parts: list[str] = []
-    if paper.abstract:
-        body_parts.append(paper.abstract[:600] + ("…" if len(paper.abstract) > 600 else ""))
-    else:
-        body_parts.append("No abstract available.")
-    if paper.year or paper.venue:
-        meta = []
-        if paper.year:  meta.append(str(paper.year))
-        if paper.venue: meta.append(paper.venue)
-        body_parts.append("Published: " + " · ".join(meta))
-
-    overview_chips = []
-    if paper.year:
-        overview_chips.append(_chip(str(paper.year), "year"))
-    if paper.venue:
-        overview_chips.append(_chip(paper.venue, "institution"))
+    body_parts.append(f"Title: {paper.title}")
     if paper.doi:
-        overview_chips.append(_chip(f"DOI: {paper.doi}", "paper"))
+        body_parts.append(f"DOI: {paper.doi}")
+    if paper.year:
+        body_parts.append(f"Year: {paper.year}")
+    if paper.venue:
+        body_parts.append(f"Source venue: {paper.venue}")
+    authors = ", ".join(pa.author.canonical_name for pa in paper.authors[:8] if pa.author)
+    if authors:
+        body_parts.append(f"Authors: {authors}")
+
+    identity_chips = []
+    if paper.year:
+        identity_chips.append(_chip(str(paper.year), "year"))
+    if paper.venue:
+        identity_chips.append(_chip(paper.venue, "institution"))
+    if paper.doi:
+        identity_chips.append(_chip(f"DOI: {paper.doi}", "paper"))
 
     sections.append({
-        "key": "overview",
-        "heading": "Overview",
-        "body": "\n\n".join(body_parts),
-        "chips": overview_chips,
+        "key": "identity",
+        "heading": "Identity",
+        "body": "\n".join(body_parts),
+        "chips": identity_chips,
     })
 
-    # 2. AC Connection
+    # 2. Abstract summary
+    sections.append({
+        "key": "abstract_summary",
+        "heading": "Abstract Summary",
+        "body": paper.abstract[:900] + ("..." if paper.abstract and len(paper.abstract) > 900 else "")
+        if paper.abstract else "No abstract available.",
+        "chips": [],
+    })
+
+    # 3. Retrieval provenance
+    provenance = [
+        f"Source: {paper.provenance or paper.source or 'unknown'}",
+        f"Retrieval tier: {paper.retrieval_tier or 'not recorded'}",
+    ]
+    if paper.merge_tier_membership:
+        provenance.append(f"Tier membership: {paper.merge_tier_membership}")
+    if paper.query_string:
+        provenance.append(f"Query matched: {paper.query_string[:300]}")
+    if paper.eid:
+        provenance.append(f"Scopus EID: {paper.eid}")
+    sections.append({
+        "key": "retrieval_provenance",
+        "heading": "Retrieval Provenance",
+        "body": "\n".join(provenance),
+        "chips": [_chip(paper.retrieval_tier, "paper")] if paper.retrieval_tier else [],
+    })
+
+    # 4. SDL evidence
+    ai = paper.ai_decision_score or 0.0
+    auto = paper.automation_score or 0.0
+    loop = paper.closed_loop_score or 0.0
+    arch = c.architecture_signal if c else max(ai, auto, loop)
+    sdl_lines = [
+        f"AI decision-making: {'yes' if ai > 0 else 'no'}",
+        f"Automation/high-throughput: {'yes' if auto > 0 else 'no'}",
+        f"Closed-loop optimization: {'yes' if loop > 0 else 'no'}",
+        f"Architecture score: {arch:.2f}",
+        f"Semantic SDL label: {c.sdl_relevance_label if c and c.sdl_relevance_label else 'not recorded'}",
+    ]
+    if paper.sdl_tags:
+        sdl_lines.append("SDL tags: " + ", ".join(paper.sdl_tags))
+    sections.append({
+        "key": "sdl_evidence",
+        "heading": "SDL Evidence",
+        "body": "\n".join(sdl_lines),
+        "chips": [_chip(t, "topic") for t in (paper.sdl_tags or [])[:5]],
+    })
+
+    # 5. AC evidence
     if c:
         conn_lines: list[str] = []
         ac_chips: list[dict] = []
@@ -79,28 +128,25 @@ def _build_paper_sections(paper: Paper) -> list[dict]:
             for i in partners[:3]:
                 ac_chips.append(_chip(i["canonical_name"], "institution"))
 
-        fulltext_ev = c.fulltext_evidence or []
-        funding_ev = [e for e in fulltext_ev if e.get("evidence_type") == "funding_acknowledgement"]
-        if funding_ev:
-            snippet = funding_ev[0].get("evidence_text", "")[:200]
-            conn_lines.append(f'Funding acknowledgement: "{snippet}..."')
-
-        label_str = c.label or "UNCLASSIFIED"
-        conf_str  = f"{c.confidence:.0%}" if c.confidence else "n/a"
-        conn_lines.append(f"Classification: {label_str} · confidence {conf_str}.")
-        ac_chips.append(_chip(label_str, "label"))
+        conn_lines.append(f"AC publication match: {'yes' if paper.ac_known_publication else 'no'}")
+        conn_lines.append(f"AC author match: {'yes' if (paper.ac_members_matched or c.matched_people) else 'no'}")
+        has_funding = (c.funding_signal or 0.0) > 0 or (c.acknowledgement_signal or 0.0) > 0
+        conn_lines.append(f"AC funding/acknowledgement: {'yes' if (paper.ac_acknowledged or paper.ac_programs or has_funding) else 'no'}")
+        conn_lines.append(f"AC attribution label: {c.ac_attribution_label or 'not recorded'}")
+        if paper.ac_programs:
+            conn_lines.append(f"AC program: {paper.ac_programs}")
 
         if not conn_lines:
             conn_lines.append("No direct AC connection signals detected.")
 
         sections.append({
-            "key": "ac_connection",
-            "heading": "AC Connection",
+            "key": "ac_evidence",
+            "heading": "AC Evidence",
             "body": "\n".join(conn_lines),
             "chips": ac_chips,
         })
 
-    # 3. Topics
+    # 6. Topics
     if c and c.matched_topics:
         core   = [t for t in c.matched_topics if t.get("is_core") and t.get("score", 0) > 0]
         adj    = [t for t in c.matched_topics if not t.get("is_core") and t.get("score", 0) > 0]
@@ -125,7 +171,25 @@ def _build_paper_sections(paper: Paper) -> list[dict]:
             "chips": t_chips,
         })
 
-    # 4. Evidence
+    # 7. Classification
+    if c:
+        conf_str = f"{c.confidence:.0%}" if c.confidence else "n/a"
+        review_status = "human-confirmed" if c.human_confirmed else ("needs review" if c.needs_review else "machine-classified")
+        sections.append({
+            "key": "classification",
+            "heading": "Classification",
+            "body": "\n".join([
+                f"Display label: {c.label or 'UNCLASSIFIED'}",
+                f"SDL relevance label: {c.sdl_relevance_label or 'not recorded'}",
+                f"AC attribution label: {c.ac_attribution_label or 'not recorded'}",
+                f"Confidence: {conf_str}",
+                f"Review status: {review_status}",
+                f"Agreement status: {c.model_agreement_status or 'not recorded'}",
+            ]),
+            "chips": [_chip(c.label or "UNCLASSIFIED", "label")],
+        })
+
+    # 8. Evidence trace
     if c:
         ev_lines: list[str] = []
         ev_chips: list[dict] = []
@@ -133,6 +197,8 @@ def _build_paper_sections(paper: Paper) -> list[dict]:
         for r in reasons[:6]:
             ev_lines.append(f"· {r}")
         graph_sig = c.graph_signals or {}
+        if graph_sig.get("bridge_score") is not None:
+            ev_lines.append(f"· Bridge score: {graph_sig.get('bridge_score')}.")
         paths = graph_sig.get("second_degree_paths", [])
         if paths:
             via = paths[0].get("via_author_name", "?")
@@ -151,7 +217,22 @@ def _build_paper_sections(paper: Paper) -> list[dict]:
             "chips": ev_chips,
         })
 
-    # 5. Review notes
+    # 9. Links
+    link_lines = []
+    if paper.authors:
+        link_lines.append("Authors: " + ", ".join(pa.author.canonical_name for pa in paper.authors[:8] if pa.author))
+    if paper.sdl_tags:
+        link_lines.append("SDLs/topics: " + ", ".join(paper.sdl_tags))
+    if c and c.matched_topics:
+        link_lines.append("Matched topics: " + ", ".join(t.get("name", "") for t in c.matched_topics[:6] if t.get("name")))
+    sections.append({
+        "key": "links",
+        "heading": "Links",
+        "body": "\n".join(link_lines) if link_lines else "No linked entities recorded.",
+        "chips": [],
+    })
+
+    # 10. Review notes
     review = getattr(paper, "review", None)
     if review and (review.notes or review.human_label):
         r_lines = []
@@ -173,7 +254,7 @@ def _build_paper_sections(paper: Paper) -> list[dict]:
     if c:
         if not (c.matched_people or []):
             open_q.append("No AC author matched — is this a false positive from topic/funding signals only?")
-        fulltext_ev = c.fulltext_evidence or []
+        fulltext_ev = getattr(c, "fulltext_evidence", None) or []
         if not fulltext_ev and not paper.full_text_available:
             open_q.append("Full text not indexed — funding acknowledgements and SDL methodology signals unavailable.")
         if c.label in ("UNCERTAIN", "ADJACENT"):
