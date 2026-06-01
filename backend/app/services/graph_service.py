@@ -16,7 +16,7 @@ from dataclasses import dataclass, field
 
 import networkx as nx
 from sqlalchemy import select
-from sqlalchemy.orm import Session
+from sqlalchemy.orm import Session, selectinload
 
 from app.models import (
     AcCorePaper,
@@ -96,7 +96,14 @@ class GraphSignals:
 def build_coauthor_graph(session: Session, only_relevant: bool = False) -> nx.Graph:
     """Author-level co-authorship graph (used by v0.1 endpoint + graph signals)."""
     g = nx.Graph()
-    papers: Iterable[Paper] = session.execute(select(Paper)).scalars()
+    papers: Iterable[Paper] = session.execute(
+        select(Paper).options(
+            selectinload(Paper.classification),
+            selectinload(Paper.authors)
+            .selectinload(PaperAuthor.author)
+            .selectinload(Author.institution),
+        )
+    ).scalars()
 
     for paper in papers:
         if only_relevant:
@@ -156,7 +163,13 @@ def build_institution_graph(session: Session) -> nx.Graph:
     institutions_by_id = {
         inst.id: inst for inst in session.execute(select(Institution)).scalars()
     }
-    papers = session.execute(select(Paper)).scalars()
+    papers = session.execute(
+        select(Paper).options(
+            selectinload(Paper.authors)
+            .selectinload(PaperAuthor.author)
+            .selectinload(Author.institution),
+        )
+    ).scalars()
 
     for paper in papers:
         institution_ids: list[str] = []

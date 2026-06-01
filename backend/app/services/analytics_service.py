@@ -15,7 +15,7 @@ from collections import Counter, defaultdict
 from dataclasses import dataclass
 
 from sqlalchemy import select
-from sqlalchemy.orm import Session
+from sqlalchemy.orm import Session, selectinload
 
 from app.models import (
     Author,
@@ -82,7 +82,15 @@ class InstitutionGraphEdge:
 
 
 def _papers_for(session: Session, filt: PaperFilter) -> list[Paper]:
-    stmt = apply_filter(select(Paper), filt)
+    stmt = apply_filter(
+        select(Paper).options(
+            selectinload(Paper.classification),
+            selectinload(Paper.authors)
+            .selectinload(PaperAuthor.author)
+            .selectinload(Author.institution),
+        ),
+        filt,
+    )
     return list(session.execute(stmt).scalars())
 
 

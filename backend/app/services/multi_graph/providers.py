@@ -17,7 +17,7 @@ import re
 from typing import Iterable
 
 from sqlalchemy import select
-from sqlalchemy.orm import Session
+from sqlalchemy.orm import Session, selectinload
 
 from app.models import (
     AcCorePaper,
@@ -83,7 +83,19 @@ class GroupProvider(ABC):
 
 
 def _filtered_papers(session: Session, filt: MultiGraphFilter) -> list[Paper]:
-    return list(session.execute(apply_filter(select(Paper), filt.paper_filter)).scalars())
+    return list(
+        session.execute(
+            apply_filter(
+                select(Paper).options(
+                    selectinload(Paper.classification),
+                    selectinload(Paper.authors)
+                    .selectinload(PaperAuthor.author)
+                    .selectinload(Author.institution),
+                ),
+                filt.paper_filter,
+            )
+        ).scalars()
+    )
 
 
 def _paper_id_set(session: Session, filt: MultiGraphFilter) -> set[str]:
