@@ -71,6 +71,9 @@ class Settings(BaseSettings):
     discovery_auto_cite_threshold: int = 2
     discovery_max_candidates_per_strategy: int = 50
 
+    # LLM / API keys (set via PAS_ANTHROPIC_API_KEY env var)
+    anthropic_api_key: str = ""
+
     cors_origins: list[str] = [
         "http://localhost:5173",
         "http://127.0.0.1:5173",

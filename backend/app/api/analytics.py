@@ -516,10 +516,14 @@ def hub_score(
 
 @router.get("/sankey", response_model=SankeyOut)
 def sankey(
+    top_institutions: int = Query(default=25, ge=1, le=100),
+    top_topics: int = Query(default=15, ge=1, le=50),
     filt: PaperFilter = Depends(paper_filter_query),
     session: Session = Depends(get_session),
 ) -> SankeyOut:
-    data = institution_topic_label_sankey(session, filt)
+    data = institution_topic_label_sankey(session, filt,
+                                          top_institutions=top_institutions,
+                                          top_topics=top_topics)
     return SankeyOut(
         nodes=[SankeyNodeOut(id=n.id, name=n.name, layer=n.layer) for n in data.nodes],
         links=[

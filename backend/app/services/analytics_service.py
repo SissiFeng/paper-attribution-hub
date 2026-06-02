@@ -102,9 +102,16 @@ def _paper_rows(session: Session, filt: PaperFilter):
 
 
 def institution_topic_label_sankey(
-    session: Session, filt: PaperFilter
+    session: Session,
+    filt: PaperFilter,
+    *,
+    top_institutions: int = 25,
+    top_topics: int = 15,
 ) -> SankeyData:
-    """Three-layer Sankey: Institution → Core Topic → Classification Label."""
+    """Three-layer Sankey: Institution → Core Topic → Classification Label.
+
+    top_institutions / top_topics cap node counts so the chart stays readable.
+    """
     id_subq = apply_filter(select(Paper.id), filt).subquery()
     paper_ids = [row[0] for row in session.execute(select(id_subq.c.id)).all()]
     if not paper_ids:
@@ -151,8 +158,20 @@ def institution_topic_label_sankey(
                 topic_names[topic_id] = topic_name
                 inst_to_topic_label[(inst_id, topic_id, label)] += 1
 
-    institution_ids = sorted(inst_names)
-    topic_ids = sorted(topic_names)
+    # Aggregate institution totals and keep only top_institutions
+    inst_totals: Counter[str] = Counter()
+    for (inst_id, _topic_id, _label), v in inst_to_topic_label.items():
+        inst_totals[inst_id] += v
+    top_inst_ids = {iid for iid, _ in inst_totals.most_common(top_institutions)}
+
+    # Aggregate topic totals and keep only top_topics
+    topic_totals: Counter[str] = Counter()
+    for (_inst_id, topic_id, _label), v in inst_to_topic_label.items():
+        topic_totals[topic_id] += v
+    top_topic_ids = {tid for tid, _ in topic_totals.most_common(top_topics)}
+
+    institution_ids = sorted(top_inst_ids)
+    topic_ids = sorted(top_topic_ids)
     label_ids = sorted(label_set)
 
     nodes = (
@@ -163,6 +182,8 @@ def institution_topic_label_sankey(
     inst_topic: Counter[tuple[str, str]] = Counter()
     topic_label: Counter[tuple[str, str]] = Counter()
     for (inst_id, topic_id, label), value in inst_to_topic_label.items():
+        if inst_id not in top_inst_ids or topic_id not in top_topic_ids:
+            continue
         inst_topic[(inst_id, topic_id)] += value
         topic_label[(topic_id, label)] += value
 

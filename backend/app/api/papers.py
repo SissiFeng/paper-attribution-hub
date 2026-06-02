@@ -107,6 +107,8 @@ def _paper_to_schema(paper: Paper, evidence_rows: list[PaperEvidence] | None = N
 @router.get("", response_model=list[PaperOut])
 def list_papers(
     filt: PaperFilter = Depends(paper_filter_query),
+    limit: int = Query(default=100, ge=1, le=500),
+    offset: int = Query(default=0, ge=0),
     # Back-compat aliases — older clients send `label` and `min_confidence`.
     label: str | None = Query(default=None, deprecated=True),
     min_confidence: float | None = Query(default=None, ge=0.0, le=1.0, deprecated=True),
@@ -117,7 +119,7 @@ def list_papers(
     if min_confidence is not None and filt.min_confidence is None:
         filt.min_confidence = min_confidence
 
-    stmt = apply_filter(select(Paper), filt)
+    stmt = apply_filter(select(Paper), filt).order_by(Paper.year.desc()).offset(offset).limit(limit)
     papers = list(session.execute(stmt).scalars())
     evidence_index = _evidence_by_paper(session, [p.id for p in papers])
     return [_paper_to_schema(p, evidence_index.get(p.id, [])) for p in papers]

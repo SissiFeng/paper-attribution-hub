@@ -189,11 +189,27 @@ class HybridIndex:
         bm25_local = bm25_scores[cand]
         cos_local = cos[cand]
 
+        # Reciprocal Rank Fusion — more robust than linear blend when score
+        # distributions differ in magnitude between BM25 and cosine.
+        # RRF(d) = 1/(k + rank_bm25(d)) + 1/(k + rank_cosine(d)), k=60 standard.
+        rrf_k = 60
+        bm25_order = np.argsort(-bm25_local)
+        cos_order = np.argsort(-cos_local)
+        bm25_ranks = np.empty_like(bm25_order)
+        bm25_ranks[bm25_order] = np.arange(len(bm25_order))
+        cos_ranks = np.empty_like(cos_order)
+        cos_ranks[cos_order] = np.arange(len(cos_order))
+        rrf_scores = 1.0 / (rrf_k + bm25_ranks) + 1.0 / (rrf_k + cos_ranks)
+
+        # Also compute legacy linear blend for callers that want it.
         bm25_norm = bm25_local / (bm25_local.max() if bm25_local.max() > 0 else 1.0)
         cos_norm = np.clip(cos_local, 0.0, 1.0)
         blended = alpha * bm25_norm + (1.0 - alpha) * cos_norm
 
-        order = np.argsort(-blended)[:top_k]
+        # RRF is default; fall back to linear blend only when alpha=1.0 (BM25-only).
+        final_scores = rrf_scores if alpha != 1.0 else blended
+
+        order = np.argsort(-final_scores)[:top_k]
         out: list[RetrievedChunk] = []
         for rel_idx in order:
             i = int(cand[rel_idx])
@@ -207,7 +223,7 @@ class HybridIndex:
                     text=c.text,
                     bm25_score=float(bm25_local[rel_idx]),
                     cosine_score=float(cos_local[rel_idx]),
-                    score=float(blended[rel_idx]),
+                    score=float(final_scores[rel_idx]),
                 )
             )
         return out
