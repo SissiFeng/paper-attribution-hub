@@ -18,7 +18,7 @@ const LABEL_COLORS: Record<string, string> = {
 };
 
 export default function PaperReviewPage() {
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
   const [papers, setPapers] = useState<Paper[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [selectedId, setSelectedId] = useState<string | null>(null);

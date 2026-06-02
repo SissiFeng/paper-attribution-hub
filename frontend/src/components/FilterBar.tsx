@@ -2,7 +2,7 @@ import { useSearchParams } from "react-router-dom";
 
 import { LABEL_OPTIONS, filterFromSearchParams, filterToSearchParams } from "@/lib/filter";
 import type { PaperFilterState, RelevanceLabel } from "@/types";
-import { DEFAULT_FILTER, EMPTY_FILTER } from "@/types";
+import { DEFAULT_FILTER } from "@/types";
 
 interface Props {
   // If true the filter bar shows a smaller subset (used in pages where the

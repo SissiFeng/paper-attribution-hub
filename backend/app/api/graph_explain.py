@@ -12,13 +12,13 @@ from sqlalchemy import select
 from sqlalchemy.orm import Session
 
 from app.db import get_session
-from app.models import AcCorePaper, Paper, PaperReference
+from app.models import Paper, PaperAuthor, PaperClassification, PaperReference
 from app.schemas import (
     CitationSignalOut,
     GraphExplanationOut,
     SecondDegreePathOut,
 )
-from app.services.graph_service import compute_graph_signals
+from app.services.graph_service import SecondDegreePath, CitationSignal
 
 router = APIRouter(prefix="/papers", tags=["graph_rag"])
 
@@ -27,30 +27,69 @@ router = APIRouter(prefix="/papers", tags=["graph_rag"])
 def graph_explanation(
     paper_id: str, session: Session = Depends(get_session)
 ) -> GraphExplanationOut:
+    """Return graph-based explanation for a paper using pre-computed signals.
+
+    Uses the graph_signals JSON already stored on PaperClassification rather
+    than rebuilding the entire coauthor graph — avoids OOM on Render free tier.
+    """
     paper = session.get(Paper, paper_id)
     if paper is None:
         raise HTTPException(status_code=404, detail=f"Paper {paper_id} not found")
 
-    signals = compute_graph_signals(session).get(paper_id)
-    if signals is None:
-        raise HTTPException(status_code=500, detail="Graph signals missing")
+    cls = session.execute(
+        select(PaperClassification).where(PaperClassification.paper_id == paper_id)
+    ).scalar_one_or_none()
 
+    # Read pre-computed graph signals from the classification record.
+    raw_signals: dict = (cls.graph_signals or {}) if cls else {}
+    second_degree_raw: list[dict] = raw_signals.get("second_degree_paths", [])
+    citation_raw: list[dict] = raw_signals.get("citation_signals", [])
+    cites_corpus: bool = raw_signals.get("cites_corpus", False)
+
+    # Direct AC authors from the authors relationship (lightweight).
     direct_ac_authors = [
-        pa.author.canonical_name for pa in paper.authors if pa.author.is_ac_member
+        pa.author.canonical_name
+        for pa in session.execute(
+            select(PaperAuthor).where(PaperAuthor.paper_id == paper_id)
+        ).scalars()
+        if pa.author and pa.author.is_ac_member
     ]
 
     cited_by_corpus = [
         r.citing_paper_id
         for r in session.execute(
-            select(PaperReference).where(PaperReference.cited_paper_id == paper_id)
+            select(PaperReference.citing_paper_id).where(
+                PaperReference.cited_paper_id == paper_id
+            )
         ).scalars()
+    ]
+
+    second_degree_paths = [
+        SecondDegreePath(
+            paper_id=paper_id,
+            via_author_id=p.get("via_author_id", ""),
+            via_author_name=p.get("via_author_name", ""),
+            ac_author_id=p.get("ac_author_id", ""),
+            ac_author_name=p.get("ac_author_name", ""),
+            shared_papers=p.get("shared_papers", []),
+            strength=p.get("strength", 0.0),
+        )
+        for p in second_degree_raw
+    ]
+    citation_signals = [
+        CitationSignal(
+            cited_ac_core_id=s.get("cited_ac_core_id", ""),
+            cited_ac_core_title=s.get("cited_ac_core_title", ""),
+            cited_doi=s.get("cited_doi"),
+        )
+        for s in citation_raw
     ]
 
     summary = _summarize(
         paper_id=paper_id,
         direct=direct_ac_authors,
-        second_degree=signals.second_degree_paths,
-        citation_signals=signals.citation_signals,
+        second_degree=second_degree_paths,
+        citation_signals=citation_signals,
         cited_by=cited_by_corpus,
     )
 
@@ -67,7 +106,7 @@ def graph_explanation(
                 shared_papers=p.shared_papers,
                 strength=p.strength,
             )
-            for p in signals.second_degree_paths
+            for p in second_degree_paths
         ],
         citation_signals=[
             CitationSignalOut(
@@ -75,9 +114,9 @@ def graph_explanation(
                 cited_ac_core_title=s.cited_ac_core_title,
                 cited_doi=s.cited_doi,
             )
-            for s in signals.citation_signals
+            for s in citation_signals
         ],
-        cites_corpus=signals.cites_corpus,
+        cites_corpus=cites_corpus,
         cited_by_corpus=cited_by_corpus,
     )
 

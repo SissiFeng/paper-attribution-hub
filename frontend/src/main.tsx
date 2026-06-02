@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
 
 import { Sidebar } from "@/components/Sidebar";
 import PaperReviewPage from "@/pages/PaperReviewPage";
@@ -26,11 +26,12 @@ import ReportPage from "@/pages/ReportPage";
 import NetworkGrowthPage from "@/pages/NetworkGrowthPage";
 import "@/styles.css";
 
-function Layout({ children }: { children: React.ReactNode }) {
+// Layout for pages that need the sidebar — uses React Router's Outlet
+function Layout() {
   return (
     <div className="app-shell">
       <Sidebar />
-      <main className="app-main">{children}</main>
+      <main className="app-main"><Outlet /></main>
     </div>
   );
 }
@@ -39,14 +40,12 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
-        {/* Embed routes — no sidebar, full viewport */}
+        {/* Embed / standalone pages — no sidebar */}
         <Route path="/multi-graph/embed" element={<MultiGraphEmbed />} />
 
-        {/* Main app shell */}
-        <Route path="*" element={
-          <Layout>
-            <Routes>
-              <Route path="/" element={<PaperReviewPage />} />
+        {/* Main app shell — all other routes get the sidebar via Outlet */}
+        <Route element={<Layout />}>
+          <Route path="/" element={<PaperReviewPage />} />
           <Route path="/queue" element={<ReviewQueuePage />} />
           <Route path="/insights" element={<InsightsPage />} />
           <Route path="/pipeline" element={<PipelineStatusPage />} />
@@ -66,9 +65,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
           <Route path="/multi-graph" element={<MultiGraphPage />} />
           <Route path="/geographic" element={<GeographicPage />} />
           <Route path="/growth" element={<NetworkGrowthPage />} />
-            </Routes>
-          </Layout>
-        } />
+        </Route>
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
