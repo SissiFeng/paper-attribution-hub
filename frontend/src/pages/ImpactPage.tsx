@@ -6,11 +6,39 @@ import { FilterBar } from "@/components/FilterBar";
 import { getImpactReport } from "@/lib/api";
 import type { GrowthSeries, ImpactReport } from "@/types";
 
+/** Detect if the last year looks like a partial year (< 60% of the prior year). */
+function isPartialYear(points: GrowthSeries["points"]): boolean {
+  if (points.length < 2) return false;
+  const last = points[points.length - 1].value;
+  const prev = points[points.length - 2].value;
+  return prev > 0 && last < prev * 0.6;
+}
+
 function lineOption(series: GrowthSeries, color: string) {
-  const data = series.points.map((p) => [String(p.year), p.value]);
+  const partial = isPartialYear(series.points);
+  const lastYear = series.points.length > 0
+    ? String(series.points[series.points.length - 1].year)
+    : null;
+
+  // Split into solid (complete) and dashed (partial) segments
+  const solidData = partial
+    ? series.points.slice(0, -1).map((p) => [String(p.year), p.value])
+    : series.points.map((p) => [String(p.year), p.value]);
+  const partialData = partial
+    ? series.points.slice(-2).map((p) => [String(p.year), p.value])
+    : [];
+
   return {
-    tooltip: { trigger: "axis" },
-    grid: { left: 36, right: 12, bottom: 28, top: 18 },
+    tooltip: {
+      trigger: "axis",
+      formatter: (params: any[]) => {
+        const p = params[0];
+        const yr = p.axisValue;
+        const suffix = partial && yr === lastYear ? " ⚠ partial year" : "";
+        return `${yr}: <b>${p.value}</b>${suffix}`;
+      },
+    },
+    grid: { left: 36, right: 12, bottom: 28, top: partial ? 28 : 18 },
     xAxis: {
       type: "category",
       data: series.points.map((p) => String(p.year)),
@@ -23,17 +51,39 @@ function lineOption(series: GrowthSeries, color: string) {
       axisLine: { lineStyle: { color: "#2a2f3a" } },
       splitLine: { lineStyle: { color: "#1f232c" } },
     },
+    ...(partial ? {
+      graphic: [{
+        type: "text",
+        right: 12, top: 4,
+        style: {
+          text: `⚠ ${lastYear} data is partial (import cutoff)`,
+          fill: "#f59e0b", fontSize: 11, fontFamily: "'JetBrains Mono', monospace",
+        },
+      }],
+    } : {}),
     series: [
       {
         type: "line",
         smooth: true,
         symbol: "circle",
         symbolSize: 7,
-        data,
+        data: solidData,
         itemStyle: { color },
         lineStyle: { color, width: 2 },
-        areaStyle: { color, opacity: 0.18 },
+        areaStyle: { color, opacity: 0.15 },
+        z: 2,
       },
+      ...(partial ? [{
+        type: "line",
+        smooth: false,
+        symbol: "emptyCircle",
+        symbolSize: 7,
+        data: partialData,
+        itemStyle: { color: "#f59e0b" },
+        lineStyle: { color: "#f59e0b", width: 2, type: "dashed" },
+        areaStyle: { color: "#f59e0b", opacity: 0.07 },
+        z: 1,
+      }] : []),
     ],
   };
 }
@@ -73,18 +123,24 @@ export default function ImpactPage() {
   }
 
   const total = report.yoy_attributed.points.reduce((s, p) => s + p.value, 0);
-  const totalCitations = report.citation_impact.points.reduce(
-    (s, p) => s + p.value,
-    0
-  );
+  const totalCitations = report.citation_impact.points.reduce((s, p) => s + p.value, 0);
+  const partialYearActive = isPartialYear(report.yoy_attributed.points);
+  const lastYear = report.yoy_attributed.points.length > 0
+    ? report.yoy_attributed.points[report.yoy_attributed.points.length - 1].year
+    : null;
 
   return (
     <div>
       <FilterBar />
       <div className="eval-headline" style={{ marginTop: "0.4rem" }}>
         <div className="cell">
-          <div className="label">AC-attributed papers</div>
+          <div className="label">AC-attributed papers (CORE + RELATED)</div>
           <div className="value">{total}</div>
+          {partialYearActive && (
+            <div style={{ fontSize: "0.72rem", color: "#f59e0b", marginTop: 2 }}>
+              excl. partial {lastYear}
+            </div>
+          )}
         </div>
         <div className="cell">
           <div className="label">Citation edges (corpus)</div>
