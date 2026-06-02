@@ -149,7 +149,102 @@ export default function PaperReviewPage() {
         </button>
       </div>
 
-      {selected && <EvidencePanel paper={selected} onReviewed={() => void load()} />}
+      {/* Right-side drawer */}
+      {selected && (
+        <>
+          {/* Backdrop — click to close */}
+          <div
+            onClick={() => setSelectedId(null)}
+            style={{
+              position: "fixed",
+              inset: 0,
+              zIndex: 200,
+              background: "rgba(15,17,21,0.35)",
+              backdropFilter: "blur(2px)",
+            }}
+          />
+
+          {/* Panel */}
+          <div
+            style={{
+              position: "fixed",
+              top: 0,
+              right: 0,
+              bottom: 0,
+              width: "min(52vw, 780px)",
+              zIndex: 201,
+              background: "var(--surface, #fff)",
+              borderLeft: "1px solid var(--border, #d1dce8)",
+              boxShadow: "-8px 0 32px rgba(0,0,0,0.12)",
+              display: "flex",
+              flexDirection: "column",
+              overflow: "hidden",
+            }}
+          >
+            {/* Drawer header */}
+            <div style={{
+              display: "flex",
+              alignItems: "flex-start",
+              justifyContent: "space-between",
+              padding: "16px 20px 12px",
+              borderBottom: "1px solid var(--border, #d1dce8)",
+              flexShrink: 0,
+              gap: 12,
+            }}>
+              <div style={{ minWidth: 0 }}>
+                <div style={{
+                  fontWeight: 600,
+                  fontSize: "0.95rem",
+                  color: "var(--text)",
+                  lineHeight: 1.35,
+                  marginBottom: 4,
+                  overflow: "hidden",
+                  display: "-webkit-box",
+                  WebkitLineClamp: 2,
+                  WebkitBoxOrient: "vertical",
+                }}>
+                  {selected.title}
+                </div>
+                <div style={{ fontSize: "0.78rem", color: "var(--muted)" }}>
+                  {selected.year}
+                  {selected.venue ? ` · ${selected.venue}` : ""}
+                  {selected.doi ? (
+                    <> · <a
+                      href={`https://doi.org/${selected.doi}`}
+                      target="_blank"
+                      rel="noreferrer"
+                      style={{ color: "var(--muted)", textDecoration: "underline" }}
+                    >{selected.doi}</a></>
+                  ) : null}
+                </div>
+              </div>
+              <button
+                onClick={() => setSelectedId(null)}
+                title="Close"
+                style={{
+                  flexShrink: 0,
+                  width: 28, height: 28,
+                  display: "flex", alignItems: "center", justifyContent: "center",
+                  border: "1px solid var(--border, #d1dce8)",
+                  borderRadius: 6,
+                  background: "transparent",
+                  cursor: "pointer",
+                  fontSize: 16,
+                  color: "var(--muted)",
+                  lineHeight: 1,
+                }}
+              >
+                ✕
+              </button>
+            </div>
+
+            {/* Scrollable body */}
+            <div style={{ flex: 1, overflowY: "auto", padding: "0 20px 24px" }}>
+              <EvidencePanel paper={selected} onReviewed={() => void load()} />
+            </div>
+          </div>
+        </>
+      )}
     </div>
   );
 }

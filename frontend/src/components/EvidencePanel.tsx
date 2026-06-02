@@ -130,12 +130,7 @@ export function EvidencePanel({ paper, onReviewed }: Props) {
   };
 
   return (
-    <section className="evidence-panel">
-      <h2 style={{ marginBottom: "0.4rem" }}>{paper.title}</h2>
-      <div style={{ color: "var(--muted)", fontSize: "0.9rem", marginBottom: "0.8rem" }}>
-        {paper.year} · {paper.venue ?? "—"} · DOI: {paper.doi ?? "—"}
-      </div>
-
+    <section className="evidence-panel" style={{ paddingTop: "0.75rem" }}>
       {/* Tab bar */}
       <div className="v7-subtabs" style={{ marginBottom: "1rem" }}>
         <button
