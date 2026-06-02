@@ -61,9 +61,9 @@ def compute_priority(
 ) -> tuple[float, list[str]]:
     """Return (priority_in_0_1, reasons[]). Higher = surface sooner."""
     if cls is None:
-        return 0.0, ["no classification yet"]
+        return 0.0, ["No classification yet — paper not processed."]
     if cls.human_confirmed:
-        return 0.0, ["already human-confirmed"]
+        return 0.0, ["Already human-confirmed."]
 
     now = now or datetime.now(UTC)
     reasons: list[str] = []
@@ -71,7 +71,7 @@ def compute_priority(
 
     if cls.label == "UNCERTAIN":
         score += _W_UNCERTAIN
-        reasons.append("Label is UNCERTAIN — needs adjudication.")
+        reasons.append("Label is UNCERTAIN — classifier could not decide; human adjudication required.")
 
     if (
         (paper.provenance or "").startswith("discovered_auto")
@@ -80,12 +80,12 @@ def compute_priority(
     ):
         score += _W_LOW_CONF_AUTO
         reasons.append(
-            f"Auto-ingested by discovery with low confidence ({cls.confidence:.2f})."
+            f"Auto-discovered paper with low confidence ({cls.confidence:.0%}) — verify this isn't a false positive."
         )
 
     if (paper.provenance or "").startswith("discovered_auto") and not has_review:
         score += _W_DISCOVERED_AUTO
-        reasons.append("Discovered automatically; reviewer should verify.")
+        reasons.append("Paper was ingested automatically by the discovery pipeline; first human review needed.")
 
     if disqualifying_count > 0 and cls.label in {
         "CORE_RELEVANT",
@@ -93,19 +93,24 @@ def compute_priority(
     }:
         score += _W_DISQUALIFYING_BUT_HIGH
         reasons.append(
-            f"{disqualifying_count} disqualifying evidence row(s) recorded "
-            f"despite label {cls.label} — sanity check."
+            f"{disqualifying_count} disqualifying evidence signal(s) recorded despite label '{cls.label}' "
+            f"— evidence conflicts with the positive label; sanity check required."
         )
 
     if "learned-" in (cls.model_version or "") and "+judge" not in (
         cls.model_version or ""
     ):
-        # Learned model touched the label without the judge agreeing.
         score += _W_LEARNED_DISAGREES
-        reasons.append("Learned classifier overrode the rules — verify.")
+        reasons.append(
+            f"Learned classifier (v: {cls.model_version}) overrode the rule-based score — verify the override is correct."
+        )
 
     if not has_review:
         score += _W_NO_REVIEW_YET
+        reasons.append(
+            f"No human review recorded yet for this paper (label: {cls.label}, "
+            f"confidence: {cls.confidence:.0%})."
+        )
 
     if cls.last_classified_at:
         last = cls.last_classified_at
@@ -116,7 +121,14 @@ def compute_priority(
             bump = min(_W_AGE_DAYS * age, 0.10)
             score += bump
             if bump >= 0.05:
-                reasons.append(f"Classified {age} days ago; due for re-look.")
+                reasons.append(f"Classification is {age} days old — worth a fresh look.")
+
+    # Always append the classifier's own reasons so reviewers see the evidence
+    # that drove the label, even when no queue-specific trigger fired.
+    classifier_reasons = [r for r in (cls.reasons or []) if r]
+    if classifier_reasons:
+        reasons.append("— Classification evidence —")
+        reasons.extend(classifier_reasons[:6])
 
     return min(round(score, 3), 1.0), reasons
 
