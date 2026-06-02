@@ -29,4 +29,4 @@ ENV PYTHONPATH=/app
 
 EXPOSE 8000
 
-CMD alembic upgrade head && python -m app.scripts.ingest_scopus_batch --seed-if-under 1000 --prune-non-real --classify && python -m app.scripts.seed_abstract_chunks && uvicorn app.main:app --host 0.0.0.0 --port ${PORT:-8000}
+CMD alembic upgrade head && python -m app.scripts.ingest_scopus_batch --seed-if-under 1000 --prune-non-real --classify && uvicorn app.main:app --host 0.0.0.0 --port ${PORT:-8000}

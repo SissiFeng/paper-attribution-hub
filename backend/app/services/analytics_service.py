@@ -128,9 +128,16 @@ def institution_topic_label_sankey(
     for paper_id, inst_id, inst_name in inst_rows:
         paper_institutions[paper_id].add((inst_id, inst_name))
 
-    # Classification per paper.
+    # Classification + sdl_tags per paper.
+    # Middle layer: prefer matched_topics → fall back to sdl_tags → fall back to reasons prefix.
     cls_rows = session.execute(
-        select(PaperClassification.paper_id, PaperClassification.label, PaperClassification.matched_topics)
+        select(
+            PaperClassification.paper_id,
+            PaperClassification.label,
+            PaperClassification.matched_topics,
+            Paper.sdl_tags,
+        )
+        .join(Paper, Paper.id == PaperClassification.paper_id)
         .where(PaperClassification.paper_id.in_(paper_ids))
     ).all()
 
@@ -139,17 +146,25 @@ def institution_topic_label_sankey(
     topic_names: dict[str, str] = {}
     label_set: set[str] = set()
 
-    for paper_id, label, matched_topics in cls_rows:
+    for paper_id, label, matched_topics, sdl_tags in cls_rows:
         if label is None:
             continue
         label_set.add(label)
-        topics = [
-            (t.get("topic_id"), t.get("name"))
-            for t in (matched_topics or [])
-            if t.get("is_core") and (t.get("score") or 0) > 0.3
-        ]
+
+        # Build topic list: matched_topics first, then sdl_tags as fallback.
+        topics: list[tuple[str, str]] = []
+        for t in (matched_topics or []):
+            if (t.get("score") or 0) > 0.3 and t.get("topic_id") and t.get("name"):
+                topics.append((t["topic_id"], t["name"]))
         if not topics:
-            topics = [("none", "(no core topic)")]
+            for tag in (sdl_tags or []):
+                tag = str(tag).strip()
+                if tag:
+                    tag_id = f"sdl:{tag.lower().replace(' ', '_')}"
+                    topics.append((tag_id, tag))
+
+        if not topics:
+            continue  # skip papers with neither matched topics nor sdl_tags
         for inst_id, inst_name in paper_institutions.get(paper_id, set()):
             inst_names[inst_id] = inst_name
             for topic_id, topic_name in topics:

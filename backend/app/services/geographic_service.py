@@ -61,6 +61,13 @@ def build_geographic_payload(session: Session, filt: PaperFilter) -> dict:
     for paper_id, inst_id, inst_name, country, is_partner in rows:
         if not country:
             continue
+        # Normalize semicolon-concatenated values (e.g. "China;China" → "China")
+        country = next(
+            (c.strip() for c in country.split(";") if c.strip()),
+            None,
+        )
+        if not country:
+            continue
         paper_country_pairs.add((paper_id, country))
         paper_institution_pairs.add((paper_id, inst_id))
         country_institutions[country].add(inst_id)
