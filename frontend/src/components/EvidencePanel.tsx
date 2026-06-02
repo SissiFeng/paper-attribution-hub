@@ -197,11 +197,28 @@ export function EvidencePanel({ paper, onReviewed }: Props) {
             <>
               <h3>Matched AC people</h3>
               <div className="matched-list">
-                {c.matched_people.map((m) => (
-                  <span key={m.person_id ?? m.name} className="chip ac">
-                    {m.name} · {m.match_type} ({m.score.toFixed(2)})
-                  </span>
-                ))}
+                {c.matched_people.map((m) => {
+                  const badge =
+                    m.match_type === "ac_publication_confirmed" ? "AC Publications"
+                    : m.match_type === "exact_author_match" ? "exact"
+                    : m.match_type === "alias_match" ? "alias"
+                    : m.match_type === "initials_match" ? "initials"
+                    : m.match_type === "fuzzy_match" ? "fuzzy"
+                    : m.match_type?.replace(/_/g, " ") ?? "";
+                  return (
+                    <span key={m.person_id ?? m.name} className="chip ac" title={m.match_type}>
+                      {m.name}
+                      {badge && (
+                        <span style={{
+                          marginLeft: 6, fontSize: "0.7rem", opacity: 0.75,
+                          fontFamily: "'JetBrains Mono', monospace",
+                        }}>
+                          [{badge}]
+                        </span>
+                      )}
+                    </span>
+                  );
+                })}
               </div>
             </>
           )}
@@ -214,8 +231,14 @@ export function EvidencePanel({ paper, onReviewed }: Props) {
                   <span
                     key={m.institution_id ?? m.canonical_name}
                     className={`chip ${m.is_partner ? "partner" : ""}`}
+                    title={m.is_partner ? "AC Partner institution" : "External institution"}
                   >
-                    {m.canonical_name} ({m.score.toFixed(2)})
+                    {m.canonical_name}
+                    {m.is_partner && (
+                      <span style={{ marginLeft: 6, fontSize: "0.7rem", opacity: 0.75 }}>
+                        [AC Partner]
+                      </span>
+                    )}
                   </span>
                 ))}
               </div>
@@ -227,8 +250,15 @@ export function EvidencePanel({ paper, onReviewed }: Props) {
               <h3>Topics</h3>
               <div className="matched-list">
                 {c.matched_topics.map((m) => (
-                  <span key={m.topic_id} className={`chip ${m.is_core ? "core" : ""}`}>
-                    {m.name} ({m.score.toFixed(2)})
+                  <span
+                    key={m.topic_id}
+                    className={`chip ${m.is_core ? "core" : ""}`}
+                    title={`Score: ${m.score.toFixed(2)} · ${m.is_core ? "Core SDL topic" : "Adjacent topic"}`}
+                  >
+                    {m.name}
+                    <span style={{ marginLeft: 6, fontSize: "0.7rem", opacity: 0.75 }}>
+                      {m.is_core ? "[core]" : "[adjacent]"}
+                    </span>
                   </span>
                 ))}
               </div>
@@ -246,8 +276,7 @@ export function EvidencePanel({ paper, onReviewed }: Props) {
                       <strong>{p.via_author_name}</strong> ↔{" "}
                       <span style={{ color: "var(--accent)" }}>{p.ac_author_name}</span>
                       <span style={{ color: "var(--muted)" }}>
-                        {" "}via {p.shared_papers.join(", ")} · strength{" "}
-                        {(p.strength * 100).toFixed(0)}%
+                        {" "}— {p.shared_papers.length} shared paper{p.shared_papers.length !== 1 ? "s" : ""}
                       </span>
                     </li>
                   ))}
