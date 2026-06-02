@@ -44,7 +44,11 @@ def graph_explanation(
     raw_signals: dict = (cls.graph_signals or {}) if cls else {}
     second_degree_raw: list[dict] = raw_signals.get("second_degree_paths", [])
     citation_raw: list[dict] = raw_signals.get("citation_signals", [])
-    cites_corpus: bool = raw_signals.get("cites_corpus", False)
+    # graph_signals stores cites_corpus as bool; GraphExplanationOut expects list[str].
+    # Use citation_signals paper ids as the list representation.
+    cites_corpus_list: list[str] = [
+        s.get("cited_ac_core_id", "") for s in citation_raw if s.get("cited_ac_core_id")
+    ]
 
     # Direct AC authors from the authors relationship (lightweight).
     direct_ac_authors = [
@@ -116,7 +120,7 @@ def graph_explanation(
             )
             for s in citation_signals
         ],
-        cites_corpus=cites_corpus,
+        cites_corpus=cites_corpus_list,
         cited_by_corpus=cited_by_corpus,
     )
 
