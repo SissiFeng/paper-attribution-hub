@@ -5,7 +5,7 @@ import { EvidencePanel } from "@/components/EvidencePanel";
 import { FilterBar } from "@/components/FilterBar";
 import { PaperTable } from "@/components/PaperTable";
 import { listPapers } from "@/lib/api";
-import { filterFromSearchParams } from "@/lib/filter";
+import { filterFromSearchParams, filterToSearchParams } from "@/lib/filter";
 import type { Paper } from "@/types";
 
 const LABEL_COLORS: Record<string, string> = {
@@ -32,7 +32,10 @@ export default function PaperReviewPage() {
     setLoading(true);
     setError(null);
     try {
-      const params = new URLSearchParams(searchParams);
+      // Apply filterFromSearchParams so DEFAULT_FILTER.labels are included
+      // even when the URL has no ?labels= params (fresh page load).
+      const filter = filterFromSearchParams(searchParams);
+      const params = filterToSearchParams(filter);
       params.set("limit", String(PAGE_SIZE));
       params.set("offset", String(offset));
       const fetched = await listPapers(params);

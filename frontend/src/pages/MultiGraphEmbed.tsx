@@ -172,13 +172,42 @@ export default function MultiGraphEmbed() {
       </div>
 
       {/* Full-height chart */}
-      <div style={{ flex: 1, overflow: "hidden" }}>
-        {error ? (
-          <div style={{ padding: 24, color: "#f97316" }}>Error: {error}</div>
-        ) : option ? (
+      <div style={{ flex: 1, overflow: "hidden", position: "relative" }}>
+        {loading && (
+          <div style={{
+            position: "absolute", inset: 0, display: "flex", alignItems: "center",
+            justifyContent: "center", background: "#F8FAFC", zIndex: 10,
+            color: "#6594B1", fontSize: 14, fontFamily: "'JetBrains Mono',monospace",
+          }}>
+            ↻ Building graph…
+          </div>
+        )}
+        {error && (
+          <div style={{
+            position: "absolute", inset: 0, display: "flex", flexDirection: "column",
+            alignItems: "center", justifyContent: "center", background: "#F8FAFC", zIndex: 10, gap: 12,
+          }}>
+            <div style={{ color: "#f97316", fontSize: 14, fontFamily: "'JetBrains Mono',monospace" }}>
+              Failed to load graph: {error}
+            </div>
+            <button onClick={() => void load()} style={{
+              padding: "6px 18px", borderRadius: 6, border: "1px solid #d1dce8",
+              background: "#fff", cursor: "pointer", fontSize: 13,
+            }}>
+              ↻ Retry
+            </button>
+          </div>
+        )}
+        {option ? (
           <EChart key={layoutKey.current} option={option} style={{ height: "100%", width: "100%" }} />
-        ) : loading ? (
-          <div style={{ padding: 24, color: "#9aa3b2" }}>Building graph…</div>
+        ) : !loading && !error ? (
+          <div style={{
+            position: "absolute", inset: 0, display: "flex", alignItems: "center",
+            justifyContent: "center", color: "#9aa3b2", fontSize: 13,
+            fontFamily: "'JetBrains Mono',monospace",
+          }}>
+            No data for the selected filters. Try adjusting node/edge types.
+          </div>
         ) : null}
       </div>
     </div>
