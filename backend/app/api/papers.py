@@ -6,7 +6,9 @@ import io
 from fastapi import APIRouter, Depends, HTTPException, Query
 from fastapi.responses import StreamingResponse
 from sqlalchemy import select
-from sqlalchemy.orm import Session
+from sqlalchemy.orm import Session, selectinload
+
+from app.models import Author, PaperAuthor
 
 from app.db import get_session
 from app.models import Paper, PaperClassification, PaperEvidence
@@ -119,7 +121,13 @@ def list_papers(
     if min_confidence is not None and filt.min_confidence is None:
         filt.min_confidence = min_confidence
 
-    stmt = apply_filter(select(Paper), filt).order_by(Paper.year.desc()).offset(offset).limit(limit)
+    stmt = apply_filter(
+        select(Paper).options(
+            selectinload(Paper.classification),
+            selectinload(Paper.authors).selectinload(PaperAuthor.author),
+        ),
+        filt,
+    ).order_by(Paper.year.desc()).offset(offset).limit(limit)
     papers = list(session.execute(stmt).scalars())
     evidence_index = _evidence_by_paper(session, [p.id for p in papers])
     return [_paper_to_schema(p, evidence_index.get(p.id, [])) for p in papers]

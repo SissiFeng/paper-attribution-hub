@@ -18,7 +18,7 @@ from datetime import UTC, datetime
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
-from app.models import Paper, WikiPage
+from app.models import Paper, PaperProposition, PaperReference, WikiPage
 
 
 # ── Section builders ──────────────────────────────────────────────────────────
@@ -27,7 +27,13 @@ def _chip(label: str, kind: str) -> dict:
     return {"label": label, "kind": kind}
 
 
-def _build_paper_sections(paper: Paper) -> list[dict]:
+def _build_paper_sections(
+    paper: Paper,
+    *,
+    propositions: list | None = None,
+    references: list | None = None,
+    ac_cites: list | None = None,
+) -> list[dict]:
     c = paper.classification
     sections: list[dict] = []
 
@@ -217,14 +223,78 @@ def _build_paper_sections(paper: Paper) -> list[dict]:
             "chips": ev_chips,
         })
 
-    # 9. Links
+    # 9. Keywords
+    kw_all: list[str] = []
+    for kw_field in (paper.keywords, paper.indexed_keywords):
+        kw_all.extend(str(k).strip() for k in (kw_field or []) if str(k).strip())
+    kw_dedup = list(dict.fromkeys(kw_all))  # preserve order, deduplicate
+    if kw_dedup:
+        sections.append({
+            "key": "keywords",
+            "heading": "Keywords",
+            "body": "; ".join(kw_dedup[:30]),
+            "chips": [_chip(k, "topic") for k in kw_dedup[:8]],
+        })
+
+    # 10. Methods & materials (from PaperProposition)
+    if propositions:
+        method_props = [p for p in propositions if p.predicate == "uses_method"]
+        material_props = [p for p in propositions if p.predicate in ("uses_material", "studies_system")]
+        funding_props = [p for p in propositions if p.predicate == "funded_by"]
+        if method_props:
+            method_lines = [f"· {p.object_value} (confidence {p.confidence:.0%})" for p in method_props[:8]]
+            sections.append({
+                "key": "methods",
+                "heading": "Methods & Techniques",
+                "body": "\n".join(method_lines),
+                "chips": [_chip(p.object_value, "topic") for p in method_props[:5]],
+            })
+        if material_props:
+            mat_lines = [f"· {p.object_value}" for p in material_props[:8]]
+            sections.append({
+                "key": "materials",
+                "heading": "Materials & Systems Studied",
+                "body": "\n".join(mat_lines),
+                "chips": [],
+            })
+        if funding_props:
+            fund_lines = [f"· {p.object_value}" for p in funding_props[:5]]
+            sections.append({
+                "key": "funding_sources",
+                "heading": "Funding Sources (extracted)",
+                "body": "\n".join(fund_lines),
+                "chips": [],
+            })
+    elif paper.funding_text:
+        sections.append({
+            "key": "funding_sources",
+            "heading": "Funding Sources",
+            "body": paper.funding_text[:600],
+            "chips": [],
+        })
+
+    # 11. References
+    ref_total = len(references) if references else 0
+    ac_cite_count = len(ac_cites) if ac_cites else 0
+    if ref_total > 0 or ac_cite_count > 0:
+        ref_body = f"Total references recorded: {ref_total}\nCites AC core papers: {ac_cite_count}"
+        sections.append({
+            "key": "references",
+            "heading": "References",
+            "body": ref_body,
+            "chips": [],
+        })
+
+    # 12. Links
     link_lines = []
     if paper.authors:
         link_lines.append("Authors: " + ", ".join(pa.author.canonical_name for pa in paper.authors[:8] if pa.author))
     if paper.sdl_tags:
-        link_lines.append("SDLs/topics: " + ", ".join(paper.sdl_tags))
+        link_lines.append("SDLs: " + ", ".join(paper.sdl_tags))
     if c and c.matched_topics:
-        link_lines.append("Matched topics: " + ", ".join(t.get("name", "") for t in c.matched_topics[:6] if t.get("name")))
+        link_lines.append("Topics: " + ", ".join(t.get("name", "") for t in c.matched_topics[:6] if t.get("name")))
+    if paper.ac_programs:
+        link_lines.append(f"AC program: {paper.ac_programs}")
     sections.append({
         "key": "links",
         "heading": "Links",
@@ -281,7 +351,7 @@ def get_or_compile_wiki(session: Session, paper_id: str) -> WikiPage:
         )
     ).scalar_one_or_none()
 
-    if existing is not None:
+    if existing is not None and not existing.is_stale:
         return existing
 
     return compile_wiki(session, paper_id)
@@ -293,7 +363,17 @@ def compile_wiki(session: Session, paper_id: str) -> WikiPage:
     if paper is None:
         raise ValueError(f"Paper {paper_id!r} not found")
 
-    sections = _build_paper_sections(paper)
+    # Pre-load propositions and references so _build_paper_sections can use them.
+    propositions = session.execute(
+        select(PaperProposition).where(PaperProposition.paper_id == paper_id)
+    ).scalars().all()
+    ref_count = session.execute(
+        select(PaperReference).where(PaperReference.citing_paper_id == paper_id)
+    ).scalars().all()
+    ac_cites = [r for r in ref_count if r.cited_ac_core_id is not None]
+
+    sections = _build_paper_sections(paper, propositions=list(propositions),
+                                     references=ref_count, ac_cites=ac_cites)
     title = paper.title or f"Paper {paper_id}"
 
     existing = session.execute(

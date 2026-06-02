@@ -381,39 +381,54 @@ def topic_stream(
 @router.get("/inst-topic-heatmap")
 def inst_topic_heatmap(
     year: int | None = Query(default=None),
+    filt: PaperFilter = Depends(paper_filter_query),
     session: Session = Depends(get_session),
 ) -> dict:
-    """Institution × Topic paper-count heatmap."""
-    paper_filt_stmt = select(Paper.id)
-    if year is not None:
-        paper_filt_stmt = paper_filt_stmt.where(Paper.year == year)
-    paper_ids_subq = paper_filt_stmt.subquery()
+    """Institution × SDL-topic paper-count heatmap.
 
-    rows = session.execute(
-        select(
-            Institution.canonical_name,
-            PaperClassification.matched_topics,
-        )
-        .join(PaperAuthor, PaperAuthor.paper_id == paper_ids_subq.c.id)
+    Middle axis uses sdl_tags (e.g. 'SDL 0 - AI & Automation') since
+    matched_topics is populated only after topic-classification runs.
+    """
+    from collections import Counter
+
+    # Build filtered paper set with sdl_tags + institution in one query.
+    stmt = (
+        select(Institution.canonical_name, Paper.sdl_tags)
+        .select_from(Paper)
+        .join(PaperAuthor, PaperAuthor.paper_id == Paper.id)
         .join(Author, Author.id == PaperAuthor.author_id)
         .join(Institution, Institution.id == Author.institution_id)
-        .join(PaperClassification, PaperClassification.paper_id == paper_ids_subq.c.id)
-        .where(paper_ids_subq.c.id == PaperAuthor.paper_id)
-    ).all()
+        .where(Author.institution_id.is_not(None))
+    )
+    if year is not None:
+        stmt = stmt.where(Paper.year == year)
+    else:
+        # Apply normal filter (year_from/year_to/labels etc.)
+        id_subq = apply_filter(select(Paper.id), filt).subquery()
+        stmt = stmt.where(Paper.id.in_(select(id_subq.c.id)))
 
-    from collections import Counter, defaultdict
+    rows = session.execute(stmt).all()
+
     cell_counts: Counter = Counter()
-    for inst_name, matched_topics in rows:
-        for tm in (matched_topics or []):
-            topic = tm.get("name")
-            if topic and (tm.get("score") or 0) >= 0.3:
-                cell_counts[(inst_name, topic)] += 1
+    for inst_name, sdl_tags in rows:
+        inst_short = (inst_name or "")[:40]
+        for tag in (sdl_tags or []):
+            tag = str(tag).strip()
+            if tag:
+                cell_counts[(inst_short, tag)] += 1
 
     if not cell_counts:
         return {"institutions": [], "topics": [], "cells": [], "year": year}
 
-    institutions = sorted({k[0] for k in cell_counts})[:30]
-    topics = sorted({k[1] for k in cell_counts})[:30]
+    # Top-30 institutions and top-20 SDL tags by total count
+    from collections import defaultdict
+    inst_totals: Counter = Counter()
+    topic_totals: Counter = Counter()
+    for (inst, topic), cnt in cell_counts.items():
+        inst_totals[inst] += cnt
+        topic_totals[topic] += cnt
+    institutions = [i for i, _ in inst_totals.most_common(30)]
+    topics = [t for t, _ in topic_totals.most_common(20)]
     inst_set, topic_set = set(institutions), set(topics)
     cells = [
         {"institution": inst, "topic": topic, "count": count}

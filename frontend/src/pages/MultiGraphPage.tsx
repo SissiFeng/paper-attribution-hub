@@ -75,6 +75,7 @@ export default function MultiGraphPage() {
   const [payload, setPayload] = useState<MultiGraphPayload | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [fullscreen, setFullscreen] = useState(false);
 
   const [activeNodeTypes, setActiveNodeTypes] = useState<string[]>(DEFAULT_NODE_TYPES);
   const [activeEdgeTypes, setActiveEdgeTypes] = useState<string[]>(DEFAULT_EDGE_TYPES);
@@ -311,6 +312,9 @@ export default function MultiGraphPage() {
           <button className="v7-btn" onClick={() => void load()} disabled={loading}>
             ↻ Refresh
           </button>
+          <button className="v7-btn" onClick={() => setFullscreen(true)} title="Open fullscreen graph">
+            ⛶ Fullscreen
+          </button>
         </div>
       </div>
 
@@ -448,6 +452,60 @@ export default function MultiGraphPage() {
           AC member (border)
         </span>
       </div>
+
+      {/* Fullscreen overlay */}
+      {fullscreen && option && (
+        <div
+          style={{
+            position: "fixed",
+            inset: 0,
+            zIndex: 9999,
+            background: "#F8FAFC",
+            display: "flex",
+            flexDirection: "column",
+          }}
+        >
+          {/* Toolbar */}
+          <div style={{
+            display: "flex",
+            alignItems: "center",
+            gap: 12,
+            padding: "10px 16px",
+            borderBottom: "1px solid #d1dce8",
+            background: "#fff",
+            flexShrink: 0,
+          }}>
+            <span style={{ fontWeight: 600, fontSize: 15, color: "#213C51", fontFamily: "'JetBrains Mono', monospace" }}>
+              Multi-Entity Network — Fullscreen
+            </span>
+            <span style={{ color: "#6594B1", fontSize: 12 }}>
+              {visibleNodeCount} nodes · {visibleEdgeCount} edges
+            </span>
+            <span style={{ marginLeft: "auto", display: "flex", gap: 8 }}>
+              {centerId && (
+                <button className="v7-btn" onClick={() => setCenterId(null)}>✕ Clear focus</button>
+              )}
+              <button
+                className="v7-btn"
+                onClick={() => setFullscreen(false)}
+                style={{ fontWeight: 600 }}
+              >
+                ✕ Exit fullscreen
+              </button>
+            </span>
+          </div>
+          {/* Chart fills rest of screen */}
+          <div style={{ flex: 1, overflow: "hidden" }}>
+            <EChart
+              key={`fs-${layoutKey.current}`}
+              option={option}
+              notMerge={false}
+              style={{ height: "100%", width: "100%" }}
+              onEvents={onChartEvent}
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 }
