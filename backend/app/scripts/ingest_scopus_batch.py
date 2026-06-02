@@ -174,6 +174,26 @@ def _bool_field(val: Any) -> bool | None:
     return None
 
 
+_AC_FUNDING_RE = re.compile(
+    r"acceleration\s+consortium"
+    r"|accelerat\w*\s+consortium"
+    r"|canada\s+first\s+research\s+excellence\s+fund"
+    r"|CFREF.{0,30}accel"
+    r"|AC\s+(?:PDF|Core\s+Development|Research\s+Moonshot|Translation)\s+Grant"
+    r"|(?:funded|supported|acknowledge)\w*\s+by\s+the\s+(?:Acceleration|AC\b)"
+    r"|Acceleration\s+Consortium\s+(?:of|at|for|grant)",
+    re.IGNORECASE,
+)
+
+
+def _detect_ac_funding(*texts: str | None) -> bool:
+    """Return True if any funding text contains a clear AC acknowledgement."""
+    for t in texts:
+        if t and _AC_FUNDING_RE.search(t):
+            return True
+    return False
+
+
 def _split_tags(val: Any) -> list[str] | None:
     if pd.isna(val):
         return None
@@ -585,6 +605,16 @@ def _build_rows(tier: pd.DataFrame, ac: pd.DataFrame, matches: dict[int, int]) -
         funding_sponsors_raw = _str_or_none(row.get("funding_sponsors"))
         funding_sponsors = _split_tags(funding_sponsors_raw)
 
+        # Detect AC funding acknowledgement from Scopus metadata fields —
+        # supplements the AC Publications gold-set flag for papers the
+        # gold set doesn't cover.
+        _ac_funding_detected = _detect_ac_funding(
+            funding_text,
+            _str_or_none(row.get("funding_details")),
+            funding_sponsors_raw,
+            _str_or_none(row.get("Funding")),
+        )
+
         doi = row["_doi"]
         eid = _str_or_none(row.get("EID"))
         paper_id = (
@@ -613,7 +643,8 @@ def _build_rows(tier: pd.DataFrame, ac: pd.DataFrame, matches: dict[int, int]) -
             "author_links": _author_links_from_row(row, row.get("_ac_members_matched")),
             # AC gold signals
             "ac_known_publication": bool(row.get("_ac_known", False)),
-            "ac_acknowledged": row.get("_ac_acknowledged"),
+            # ac_acknowledged: from gold-set CSV OR detected in Scopus funding text
+            "ac_acknowledged": bool(row.get("_ac_acknowledged")) or _ac_funding_detected,
             "ac_highly_relevant": row.get("_ac_highly_relevant"),
             "ac_high_impact": row.get("_ac_high_impact"),
             "ac_members_matched": row.get("_ac_members_matched"),

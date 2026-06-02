@@ -77,6 +77,28 @@ class ClassificationResult:
 # Per-paper classification
 # ---------------------------------------------------------------------------
 
+_AC_FUNDING_PATTERNS = (
+    r"acceleration\s+consortium",
+    r"accelerat\w*\s+consortium",
+    r"canada\s+first\s+research\s+excellence\s+fund",
+    r"\bCFREF\b.*accel",
+    r"\bA[Cc]\b.{0,20}(?:fund|grant|support|fellowship)",
+    r"AC\s+(?:PDF|Core\s+Development|Research\s+Moonshot|Translation)\s+Grant",
+    r"(?:fund|support)\w*\s+by\s+the\s+(?:Acceleration|AC\b)",
+)
+
+import re as _re
+
+def _has_ac_funding_in_text(*texts: str | None) -> bool:
+    """Return True if any of the text fields contain an AC funding acknowledgement."""
+    combined = " ".join(t for t in texts if t)
+    if not combined:
+        return False
+    for pat in _AC_FUNDING_PATTERNS:
+        if _re.search(pat, combined, _re.IGNORECASE):
+            return True
+    return False
+
 
 def _classify_paper(
     paper: Paper,
@@ -195,10 +217,19 @@ def _classify_paper(
         1 for r in fulltext_records if r.evidence_type == "disqualifying"
     )
 
+    # Full-text funding evidence (from PDF extraction)
     has_funding_evidence = any(
         r.evidence_type == "funding_acknowledgement" and r.score > 0
         for r in fulltext_records
     )
+
+    # ── Metadata-based AC funding signal ─────────────────────────────────
+    # Use Scopus metadata funding fields when no full-text is available.
+    # ac_acknowledged is set by ingest; also scan funding_text directly.
+    if not has_funding_evidence:
+        has_funding_evidence = bool(paper.ac_acknowledged) or _has_ac_funding_in_text(
+            paper.funding_text, paper.ac_programs
+        )
 
     # ---- Apply rules --------------------------------------------------
     label, confidence = _apply_rules(

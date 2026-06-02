@@ -137,7 +137,12 @@ def _build_paper_sections(
         conn_lines.append(f"AC publication match: {'yes' if paper.ac_known_publication else 'no'}")
         conn_lines.append(f"AC author match: {'yes' if (paper.ac_members_matched or c.matched_people) else 'no'}")
         has_funding = (c.funding_signal or 0.0) > 0 or (c.acknowledgement_signal or 0.0) > 0
-        conn_lines.append(f"AC funding/acknowledgement: {'yes' if (paper.ac_acknowledged or paper.ac_programs or has_funding) else 'no'}")
+        has_any_funding = paper.ac_acknowledged or paper.ac_programs or has_funding
+        conn_lines.append(f"AC funding/acknowledgement: {'yes' if has_any_funding else 'no'}")
+        if paper.ac_acknowledged and not paper.ac_known_publication:
+            conn_lines.append("⚑ Funding acknowledgement detected in Scopus metadata (not in gold set)")
+        if paper.ac_programs:
+            conn_lines.append(f"AC programs: {paper.ac_programs}")
         conn_lines.append(f"AC attribution label: {c.ac_attribution_label or 'not recorded'}")
         if paper.ac_programs:
             conn_lines.append(f"AC program: {paper.ac_programs}")
