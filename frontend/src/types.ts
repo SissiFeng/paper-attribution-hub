@@ -359,6 +359,15 @@ export interface PaperFilterState {
   search?: string;
 }
 
+// Default shows AC-relevant papers only. Users can remove labels to see all.
+export const DEFAULT_FILTER: PaperFilterState = {
+  labels: ["CORE_RELEVANT", "RELATED_RELEVANT"],
+  institutionIds: [],
+  partnerOnly: false,
+  acAuthorOnly: false,
+};
+
+// Truly empty — used by "Show all" toggle
 export const EMPTY_FILTER: PaperFilterState = {
   labels: [],
   institutionIds: [],

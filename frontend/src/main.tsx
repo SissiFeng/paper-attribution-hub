@@ -12,8 +12,10 @@ import DuplicateCandidatesPage from "@/pages/DuplicateCandidatesPage";
 import InsightsPage from "@/pages/InsightsPage";
 import PeopleGridPage from "@/pages/PeopleGridPage";
 import MultiGraphPage from "@/pages/MultiGraphPage";
+import MultiGraphEmbed from "@/pages/MultiGraphEmbed";
 import GeographicPage from "@/pages/GeographicPage";
 import NetworkPage from "@/pages/NetworkPage";
+import CoauthorNetworkPage from "@/pages/CoauthorNetworkPage";
 import SankeyPage from "@/pages/SankeyPage";
 import TimelinePage from "@/pages/TimelinePage";
 import EvalPage from "@/pages/EvalPage";
@@ -36,9 +38,15 @@ function Layout({ children }: { children: React.ReactNode }) {
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <BrowserRouter>
-      <Layout>
-        <Routes>
-          <Route path="/" element={<PaperReviewPage />} />
+      <Routes>
+        {/* Embed routes — no sidebar, full viewport */}
+        <Route path="/multi-graph/embed" element={<MultiGraphEmbed />} />
+
+        {/* Main app shell */}
+        <Route path="*" element={
+          <Layout>
+            <Routes>
+              <Route path="/" element={<PaperReviewPage />} />
           <Route path="/queue" element={<ReviewQueuePage />} />
           <Route path="/insights" element={<InsightsPage />} />
           <Route path="/pipeline" element={<PipelineStatusPage />} />
@@ -50,15 +58,18 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
           <Route path="/eval" element={<EvalPage />} />
           <Route path="/sankey" element={<SankeyPage />} />
           <Route path="/timeline" element={<TimelinePage />} />
-          <Route path="/network" element={<NetworkPage />} />
+          <Route path="/network" element={<CoauthorNetworkPage />} />
+          <Route path="/network-v1" element={<NetworkPage />} />
           <Route path="/impact" element={<ImpactPage />} />
           <Route path="/drift" element={<DriftPage />} />
           <Route path="/people" element={<PeopleGridPage />} />
           <Route path="/multi-graph" element={<MultiGraphPage />} />
           <Route path="/geographic" element={<GeographicPage />} />
           <Route path="/growth" element={<NetworkGrowthPage />} />
-        </Routes>
-      </Layout>
+            </Routes>
+          </Layout>
+        } />
+      </Routes>
     </BrowserRouter>
   </React.StrictMode>
 );

@@ -2,7 +2,7 @@ import { useSearchParams } from "react-router-dom";
 
 import { LABEL_OPTIONS, filterFromSearchParams, filterToSearchParams } from "@/lib/filter";
 import type { PaperFilterState, RelevanceLabel } from "@/types";
-import { EMPTY_FILTER } from "@/types";
+import { DEFAULT_FILTER, EMPTY_FILTER } from "@/types";
 
 interface Props {
   // If true the filter bar shows a smaller subset (used in pages where the
@@ -128,14 +128,21 @@ export function FilterBar({ hideLabels = false }: Props) {
               className={`chip-toggle ${filter.labels.includes(l) ? `active ${l}` : ""}`}
               onClick={() => toggleLabel(l)}
             >
-              {l.replace("_", " ")}
+              {l.replace(/_/g, " ")}
             </button>
           ))}
+          <button
+            className={`chip-toggle ${filter.labels.length === 0 ? "active" : ""}`}
+            onClick={() => update({ ...filter, labels: [] })}
+            title="Show all papers including unclassified"
+          >
+            Show all
+          </button>
         </div>
       )}
 
-      <button onClick={() => setSearchParams(filterToSearchParams(EMPTY_FILTER))}>
-        Clear
+      <button onClick={() => setSearchParams(filterToSearchParams(DEFAULT_FILTER))}>
+        Reset
       </button>
     </div>
   );

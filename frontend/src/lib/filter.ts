@@ -1,9 +1,10 @@
 import type { PaperFilterState, RelevanceLabel } from "@/types";
-import { EMPTY_FILTER } from "@/types";
+import { DEFAULT_FILTER, EMPTY_FILTER } from "@/types";
 
 const LABEL_OPTIONS: RelevanceLabel[] = [
   "CORE_RELEVANT",
   "RELATED_RELEVANT",
+  "SDL_FIELD_RELEVANT",
   "ADJACENT",
   "UNCERTAIN",
   "EXCLUDE",
@@ -11,9 +12,20 @@ const LABEL_OPTIONS: RelevanceLabel[] = [
 
 export { LABEL_OPTIONS };
 
-/** Decode the filter state out of a URLSearchParams object. */
+/** Decode the filter state out of a URLSearchParams object.
+ *  When no labels are present in the URL (fresh page load), defaults to
+ *  DEFAULT_FILTER.labels (CORE + RELATED) so the page is meaningful out-of-the-box.
+ */
 export function filterFromSearchParams(params: URLSearchParams): PaperFilterState {
-  const labels = params.getAll("labels").filter((l) => LABEL_OPTIONS.includes(l as RelevanceLabel)) as RelevanceLabel[];
+  const rawLabels = params.getAll("labels");
+  // Distinguish "user explicitly set labels=[]" (all param removed) from "no params yet".
+  // We use a sentinel: "all" means show everything; empty param list means use default.
+  const showAll = rawLabels.includes("all");
+  const labels = showAll
+    ? []
+    : rawLabels.length > 0
+      ? rawLabels.filter((l) => LABEL_OPTIONS.includes(l as RelevanceLabel)) as RelevanceLabel[]
+      : DEFAULT_FILTER.labels;
   return {
     yearFrom: params.get("year_from") ? Number(params.get("year_from")) : undefined,
     yearTo: params.get("year_to") ? Number(params.get("year_to")) : undefined,
