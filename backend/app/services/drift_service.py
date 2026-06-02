@@ -17,11 +17,12 @@ from collections import defaultdict
 from dataclasses import dataclass
 
 import numpy as np
+from sqlalchemy import select
 from sqlalchemy.orm import Session
 
-from app.models import Paper
-from app.services.analytics_service import _papers_for
-from app.services.filter_spec import PaperFilter
+from app.models import Paper, PaperClassification, PaperAuthor
+from app.services.analytics_service import _paper_rows
+from app.services.filter_spec import PaperFilter, apply_filter
 
 
 @dataclass
@@ -77,24 +78,26 @@ class DriftReport:
 
 
 def _topic_vectors(
-    papers: list[Paper],
+    rows: list,
 ) -> tuple[dict[int, dict[str, float]], dict[int, dict[str, int]], dict[str, str]]:
-    """Returns (year → topic_id → share, year → topic_id → paper_count, topic_id → display name)."""
+    """Returns (year → topic_id → share, year → topic_id → paper_count, topic_id → display name).
+    Accepts lean (id, year, label, matched_topics) tuples from _paper_rows().
+    """
     counts: dict[int, dict[str, int]] = defaultdict(lambda: defaultdict(int))
     paper_counts: dict[int, int] = defaultdict(int)
     names: dict[str, str] = {}
 
-    for p in papers:
-        if p.year is None or p.classification is None:
+    for _pid, year, _label, matched_topics in rows:
+        if year is None:
             continue
-        paper_counts[p.year] += 1
-        for tm in p.classification.matched_topics or []:
+        paper_counts[year] += 1
+        for tm in (matched_topics or []):
             if (tm.get("score") or 0) < 0.3:
                 continue
             topic_id = tm.get("topic_id")
             if not topic_id:
                 continue
-            counts[p.year][topic_id] += 1
+            counts[year][topic_id] += 1
             names[topic_id] = tm.get("name") or topic_id
 
     shares: dict[int, dict[str, float]] = {}
@@ -126,8 +129,8 @@ def build_drift_report(
     drift_threshold: float = 0.7,
     top_n_per_year: int = 5,
 ) -> DriftReport:
-    papers = _papers_for(session, filt)
-    shares, raw_counts, names = _topic_vectors(papers)
+    rows = _paper_rows(session, filt)
+    shares, raw_counts, names = _topic_vectors(rows)
     years = sorted(shares)
 
     per_year: list[YearTopics] = []
@@ -174,7 +177,7 @@ def build_drift_report(
             )
         )
 
-    vocab_suggestions = _suggest_vocabulary(session, papers, drift_events)
+    vocab_suggestions = _suggest_vocabulary(session, rows, drift_events)
 
     return DriftReport(
         per_year=per_year,
@@ -191,82 +194,78 @@ def build_drift_report(
 
 def _suggest_vocabulary(
     session: Session,
-    papers: list[Paper],
+    rows: list,
     drift_events: list[DriftEvent],
 ) -> list[VocabularySuggestion]:
-    """When the corpus drifts, surface candidate new keywords for review.
+    """Surface candidate new keywords for drifting topics.
 
-    Strategy: for each drift event, pick papers from the `to_year` whose
-    classification matched the topic that *appears* in next_year (so they
-    survived the keyword check), and compute the top distinctive bigrams
-    relative to the `from_year` cohort. Those bigrams become 'add_keyword'
-    suggestions for the topics whose share grew.
-
-    The suggestions are NOT auto-applied — they go through reviewers (and
-    the active learning loop will accept them by appending to the YAML).
+    Accepts lean (id, year, label, matched_topics) tuples from _paper_rows().
+    Fetches title/abstract only for the small set of papers involved in drift
+    events (deferred SQL query).
     """
-    from collections import Counter
     from app.models import Topic
 
     suggestions: list[VocabularySuggestion] = []
     if not drift_events:
         return suggestions
 
-    # Map paper → year + matched core topic ids
-    paper_topic_yearly: dict[int, dict[str, list[Paper]]] = defaultdict(
+    # Build year → topic_id → list[paper_id] from lean rows
+    paper_topic_yearly: dict[int, dict[str, list[str]]] = defaultdict(
         lambda: defaultdict(list)
     )
-    for p in papers:
-        if p.year is None or p.classification is None:
+    for pid, year, _label, matched_topics in rows:
+        if year is None:
             continue
-        for tm in p.classification.matched_topics or []:
+        for tm in (matched_topics or []):
             if not tm.get("is_core") or (tm.get("score") or 0) < 0.3:
                 continue
-            paper_topic_yearly[p.year][tm.get("topic_id")].append(p)
+            tid = tm.get("topic_id")
+            if tid:
+                paper_topic_yearly[year][tid].append(pid)
 
     topics_by_id = {
-        t.id: t for t in session.execute(__import__("sqlalchemy").select(Topic)).scalars()
+        t.id: t for t in session.execute(select(Topic)).scalars()
+    }
+
+    # Collect all paper IDs we'll need text for
+    needed_ids: set[str] = set()
+    for event in drift_events:
+        for pids in (paper_topic_yearly.get(event.to_year) or {}).values():
+            needed_ids.update(pids)
+        for pids in (paper_topic_yearly.get(event.from_year) or {}).values():
+            needed_ids.update(pids)
+
+    if not needed_ids:
+        return suggestions
+
+    text_by_id = {
+        pid: f"{title or ''} {abstract or ''}"
+        for pid, title, abstract in session.execute(
+            select(Paper.id, Paper.title, Paper.abstract).where(Paper.id.in_(list(needed_ids)))
+        ).all()
     }
 
     for event in drift_events:
-        # For each topic whose share grew in to_year, compute TF-IDF-ish
-        # distinctive bigrams.
-        to_papers_by_topic = paper_topic_yearly.get(event.to_year) or {}
-        from_papers_by_topic = paper_topic_yearly.get(event.from_year) or {}
-        for topic_id, to_ps in to_papers_by_topic.items():
+        to_by_topic = paper_topic_yearly.get(event.to_year) or {}
+        from_by_topic = paper_topic_yearly.get(event.from_year) or {}
+        for topic_id, to_pids in to_by_topic.items():
             topic = topics_by_id.get(topic_id)
             if topic is None or not topic.is_core:
                 continue
-            # Build "to-year word counter" and "from-year word counter".
-            to_text = " ".join(
-                f"{p.title or ''} {p.abstract or ''}" for p in to_ps
-            ).lower()
-            from_text = " ".join(
-                f"{p.title or ''} {p.abstract or ''}"
-                for p in (from_papers_by_topic.get(topic_id) or [])
-            ).lower()
-
+            to_text = " ".join(text_by_id.get(p, "") for p in to_pids).lower()
+            from_text = " ".join(text_by_id.get(p, "") for p in (from_by_topic.get(topic_id) or [])).lower()
             new_bigrams = _distinctive_bigrams(
-                to_text, from_text, existing_terms={
-                    (kw.get("term") or "").lower()
-                    for kw in (topic.keywords or [])
-                },
+                to_text, from_text,
+                existing_terms={(kw.get("term") or "").lower() for kw in (topic.keywords or [])},
             )
             for bg, score in new_bigrams[:3]:
-                suggestions.append(
-                    VocabularySuggestion(
-                        topic_id=topic_id,
-                        topic_name=topic.name,
-                        suggested_term=bg,
-                        score=round(score, 3),
-                        action="add_keyword",
-                        rationale=(
-                            f"Bigram appeared {score:.0f}x more often in "
-                            f"{event.to_year} papers than {event.from_year} "
-                            f"papers matching this topic."
-                        ),
-                    )
-                )
+                suggestions.append(VocabularySuggestion(
+                    topic_id=topic_id, topic_name=topic.name, suggested_term=bg,
+                    score=round(score, 3), action="add_keyword",
+                    rationale=(f"Bigram appeared {score:.0f}x more often in "
+                                f"{event.to_year} papers than {event.from_year} "
+                                f"papers matching this topic."),
+                ))
     return suggestions
 
 

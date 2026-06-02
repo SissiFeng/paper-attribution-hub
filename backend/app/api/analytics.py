@@ -1,11 +1,11 @@
 from __future__ import annotations
 
 from fastapi import APIRouter, Depends, Query
-from sqlalchemy import select
+from sqlalchemy import func, select
 from sqlalchemy.orm import Session
 
 from app.db import get_session
-from app.models import Paper
+from app.models import Author, Institution, Paper, PaperAuthor, PaperClassification
 from app.schemas import (
     AnalyticsOverviewOut,
     DriftEventOut,
@@ -258,14 +258,260 @@ def overview(
     filt: PaperFilter = Depends(paper_filter_query),
     session: Session = Depends(get_session),
 ) -> AnalyticsOverviewOut:
-    papers = list(session.execute(apply_filter(select(Paper), filt)).scalars())
+    id_subq = apply_filter(select(Paper.id, Paper.year), filt).subquery()
+    total = session.scalar(select(func.count()).select_from(id_subq)) or 0
+    years = sorted(
+        r[0] for r in session.execute(
+            select(id_subq.c.year.distinct()).where(id_subq.c.year.is_not(None))
+        ).all()
+    )
     breakdown = label_breakdown(session, filt)
-    years = sorted({p.year for p in papers if p.year is not None})
     return AnalyticsOverviewOut(
-        total_papers=len(papers),
+        total_papers=total,
         label_breakdown=breakdown,
         years=years,
     )
+
+
+# ---------------------------------------------------------------------------
+# Network Growth Page endpoints (previously missing — 404)
+# ---------------------------------------------------------------------------
+
+
+@router.get("/network-growth")
+def network_growth(
+    filt: PaperFilter = Depends(paper_filter_query),
+    session: Session = Depends(get_session),
+) -> dict:
+    """Yearly and cumulative growth of papers, authors, institutions, countries, collaborations."""
+    id_subq = apply_filter(select(Paper.id, Paper.year), filt).where(Paper.year.is_not(None)).subquery()
+
+    papers_by_year = dict(session.execute(
+        select(id_subq.c.year, func.count()).group_by(id_subq.c.year)
+    ).all())
+
+    authors_by_year = dict(session.execute(
+        select(id_subq.c.year, func.count(PaperAuthor.author_id.distinct()))
+        .join(PaperAuthor, PaperAuthor.paper_id == id_subq.c.id)
+        .group_by(id_subq.c.year)
+    ).all())
+
+    inst_by_year = dict(session.execute(
+        select(id_subq.c.year, func.count(Author.institution_id.distinct()))
+        .join(PaperAuthor, PaperAuthor.paper_id == id_subq.c.id)
+        .join(Author, Author.id == PaperAuthor.author_id)
+        .where(Author.institution_id.is_not(None))
+        .group_by(id_subq.c.year)
+    ).all())
+
+    country_by_year = dict(session.execute(
+        select(id_subq.c.year, func.count(Institution.country.distinct()))
+        .join(PaperAuthor, PaperAuthor.paper_id == id_subq.c.id)
+        .join(Author, Author.id == PaperAuthor.author_id)
+        .join(Institution, Institution.id == Author.institution_id)
+        .where(Institution.country.is_not(None))
+        .group_by(id_subq.c.year)
+    ).all())
+
+    # Collaborations = papers with authors from >1 institution
+    collab_rows = session.execute(
+        select(id_subq.c.year, id_subq.c.id, func.count(Author.institution_id.distinct()).label("inst_count"))
+        .join(PaperAuthor, PaperAuthor.paper_id == id_subq.c.id)
+        .join(Author, Author.id == PaperAuthor.author_id)
+        .where(Author.institution_id.is_not(None))
+        .group_by(id_subq.c.year, id_subq.c.id)
+        .having(func.count(Author.institution_id.distinct()) > 1)
+    ).all()
+    collab_by_year: dict[int, int] = {}
+    for yr, _pid, _ in collab_rows:
+        collab_by_year[yr] = collab_by_year.get(yr, 0) + 1
+
+    years = sorted(papers_by_year)
+    yearly = [
+        {
+            "year": y,
+            "papers": papers_by_year.get(y, 0),
+            "authors": authors_by_year.get(y, 0),
+            "institutions": inst_by_year.get(y, 0),
+            "countries": country_by_year.get(y, 0),
+            "collaborations": collab_by_year.get(y, 0),
+        }
+        for y in years
+    ]
+    cumulative = []
+    cum = {"papers": 0, "authors": 0, "institutions": 0, "countries": 0, "collaborations": 0}
+    for pt in yearly:
+        for k in cum:
+            cum[k] += pt[k]
+        cumulative.append({"year": pt["year"], **cum})
+    return {"yearly": yearly, "cumulative": cumulative}
+
+
+@router.get("/topic-stream")
+def topic_stream(
+    filt: PaperFilter = Depends(paper_filter_query),
+    session: Session = Depends(get_session),
+) -> dict:
+    """Topic frequency by year for ECharts themeRiver — returns {data, topics}."""
+    id_subq = apply_filter(
+        select(Paper.id, Paper.year).where(Paper.year.is_not(None)), filt
+    ).subquery()
+    rows = session.execute(
+        select(id_subq.c.year, PaperClassification.matched_topics)
+        .outerjoin(PaperClassification, PaperClassification.paper_id == id_subq.c.id)
+    ).all()
+
+    from collections import Counter, defaultdict
+    counts: dict[int, Counter] = defaultdict(Counter)
+    for year, matched_topics in rows:
+        for tm in (matched_topics or []):
+            name = tm.get("name")
+            if name and (tm.get("score") or 0) >= 0.3:
+                counts[year][name] += 1
+
+    all_topics = sorted({t for yr_counts in counts.values() for t in yr_counts})
+    data = [
+        [str(year), count, topic]
+        for year, yr_counts in sorted(counts.items())
+        for topic, count in yr_counts.items()
+    ]
+    return {"data": data, "topics": all_topics}
+
+
+@router.get("/inst-topic-heatmap")
+def inst_topic_heatmap(
+    year: int | None = Query(default=None),
+    session: Session = Depends(get_session),
+) -> dict:
+    """Institution × Topic paper-count heatmap."""
+    paper_filt_stmt = select(Paper.id)
+    if year is not None:
+        paper_filt_stmt = paper_filt_stmt.where(Paper.year == year)
+    paper_ids_subq = paper_filt_stmt.subquery()
+
+    rows = session.execute(
+        select(
+            Institution.canonical_name,
+            PaperClassification.matched_topics,
+        )
+        .join(PaperAuthor, PaperAuthor.paper_id == paper_ids_subq.c.id)
+        .join(Author, Author.id == PaperAuthor.author_id)
+        .join(Institution, Institution.id == Author.institution_id)
+        .join(PaperClassification, PaperClassification.paper_id == paper_ids_subq.c.id)
+        .where(paper_ids_subq.c.id == PaperAuthor.paper_id)
+    ).all()
+
+    from collections import Counter, defaultdict
+    cell_counts: Counter = Counter()
+    for inst_name, matched_topics in rows:
+        for tm in (matched_topics or []):
+            topic = tm.get("name")
+            if topic and (tm.get("score") or 0) >= 0.3:
+                cell_counts[(inst_name, topic)] += 1
+
+    if not cell_counts:
+        return {"institutions": [], "topics": [], "cells": [], "year": year}
+
+    institutions = sorted({k[0] for k in cell_counts})[:30]
+    topics = sorted({k[1] for k in cell_counts})[:30]
+    inst_set, topic_set = set(institutions), set(topics)
+    cells = [
+        {"institution": inst, "topic": topic, "count": count}
+        for (inst, topic), count in cell_counts.items()
+        if inst in inst_set and topic in topic_set
+    ]
+    return {"institutions": institutions, "topics": topics, "cells": cells, "year": year}
+
+
+@router.get("/hub-score")
+def hub_score(
+    institution: str = Query(default="uoft"),
+    session: Session = Depends(get_session),
+) -> dict:
+    """Yearly hub metrics for a given institution (degree/betweenness centrality + partner/intl collab counts)."""
+    import networkx as nx
+
+    # Find institution by partial name match
+    inst_row = session.execute(
+        select(Institution).where(
+            func.lower(Institution.canonical_name).contains(institution.lower())
+        ).limit(1)
+    ).scalar()
+    inst_label = inst_row.canonical_name if inst_row else institution
+    inst_id = inst_row.id if inst_row else None
+
+    # Per-year collaboration data
+    rows = session.execute(
+        select(Paper.year, Institution.id, Institution.is_partner, Institution.country)
+        .join(PaperAuthor, PaperAuthor.paper_id == Paper.id)
+        .join(Author, Author.id == PaperAuthor.author_id)
+        .join(Institution, Institution.id == Author.institution_id)
+        .where(Paper.year.is_not(None))
+    ).all()
+
+    from collections import defaultdict
+    # year → set of (paper_id, institution_id) pairs
+    year_paper_insts: dict[int, dict[str, set[str]]] = defaultdict(lambda: defaultdict(set))
+    for yr, iid, _is_partner, _country in rows:
+        year_paper_insts[yr]  # ensure key exists
+
+    rows2 = session.execute(
+        select(Paper.year, Paper.id, Institution.id, Institution.is_partner, Institution.country)
+        .join(PaperAuthor, PaperAuthor.paper_id == Paper.id)
+        .join(Author, Author.id == PaperAuthor.author_id)
+        .join(Institution, Institution.id == Author.institution_id)
+        .where(Paper.year.is_not(None))
+    ).all()
+
+    year_data: dict[int, dict] = {}
+    for yr, pid, iid, is_partner, country in rows2:
+        if yr not in year_data:
+            year_data[yr] = {"paper_insts": defaultdict(set)}
+        year_data[yr]["paper_insts"][pid].add((iid, bool(is_partner), country))
+
+    result = []
+    for yr in sorted(year_data):
+        paper_insts = year_data[yr]["paper_insts"]
+        # Build collaboration graph for this year
+        g = nx.Graph()
+        for pid, inst_set in paper_insts.items():
+            inst_list = list(inst_set)
+            for i, (iid, _, _) in enumerate(inst_list):
+                g.add_node(iid)
+                for (jid, _, _) in inst_list[i + 1:]:
+                    if g.has_edge(iid, jid):
+                        g[iid][jid]["weight"] += 1
+                    else:
+                        g.add_edge(iid, jid, weight=1)
+        if inst_id not in g:
+            continue
+
+        deg_cent = nx.degree_centrality(g).get(inst_id, 0.0)
+        try:
+            bet_cent = nx.betweenness_centrality(g, normalized=True).get(inst_id, 0.0)
+        except Exception:
+            bet_cent = 0.0
+
+        # Partner and international collab counts
+        neighbors = set(g.neighbors(inst_id))
+        inst_meta = {iid: (is_p, cty) for pid, inst_set in paper_insts.items()
+                     for (iid, is_p, cty) in inst_set}
+        target_country = (inst_meta.get(inst_id) or (None, None))[1]
+        partner_count = sum(1 for n in neighbors if inst_meta.get(n, (False, None))[0])
+        intl_count = sum(1 for n in neighbors
+                         if inst_meta.get(n, (None, None))[1] not in (None, target_country))
+
+        hub_score_val = round(0.4 * deg_cent + 0.4 * bet_cent + 0.1 * min(partner_count / 10, 1.0) + 0.1 * min(intl_count / 10, 1.0), 4)
+        result.append({
+            "year": yr,
+            "degree_centrality": round(deg_cent, 4),
+            "betweenness_centrality": round(bet_cent, 4),
+            "partner_count": partner_count,
+            "intl_collab_count": intl_count,
+            "hub_score": hub_score_val,
+        })
+
+    return {"institution": inst_label, "data": result}
 
 
 @router.get("/sankey", response_model=SankeyOut)
