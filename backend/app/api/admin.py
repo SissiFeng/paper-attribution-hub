@@ -62,3 +62,35 @@ def seed_chunks(
 
     background_tasks.add_task(_run)
     return {"status": "started", "message": "seeding chunks in background; check /admin/chunk-stats shortly"}
+
+
+@router.get("/accuracy", response_model=dict)
+def accuracy_report(session: Session = Depends(get_session)) -> dict:
+    """Live accuracy report against the AC Publications gold set.
+
+    Returns precision, recall, F1, and a list of any gold-set papers that
+    are labelled below RELATED_RELEVANT (failures).
+    """
+    from app.scripts.measure_accuracy import measure
+    return measure(session)
+
+
+@router.post("/reclassify", response_model=dict)
+def reclassify(
+    background_tasks: BackgroundTasks,
+    session: Session = Depends(get_session),
+) -> dict:
+    """Re-run classify_all() in the background.
+
+    Call this after deploying a classifier change to apply it to the full
+    corpus without a redeploy. Takes ~5 minutes on the full 11K-paper set.
+    Returns immediately; check /admin/accuracy afterwards.
+    """
+    def _run():
+        from app.services.relevance_classifier import classify_all
+        from app.db import SessionLocal
+        with SessionLocal() as s:
+            classify_all(s)
+
+    background_tasks.add_task(_run)
+    return {"status": "started", "message": "reclassification running in background"}

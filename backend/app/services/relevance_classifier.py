@@ -24,6 +24,7 @@ from sqlalchemy.orm import Session
 from app.config import settings
 from app.models import Author, Institution, Paper, PaperClassification, PaperEvidence, Topic
 from app.services.author_matcher import AuthorMatch, AuthorMatcher
+from app.services.normalization_service import normalize_name
 from app.services.evidence_extractor import _aggregate_score
 from app.services.graph_service import GraphSignals, compute_graph_signals
 from app.services.institution_matcher import InstitutionMatch, InstitutionMatcher
@@ -109,6 +110,38 @@ def _classify_paper(
         (m.score for m in matched_people if m.is_ac_member), default=0.0
     )
 
+    # ── AC-publication gold-set boost ─────────────────────────────────────
+    # paper.ac_members_matched is written by the ingestion pipeline directly
+    # from the AC Publications CSV — it is more authoritative than the live
+    # fuzzy name-matcher because it bypasses normalization/threshold issues.
+    # When the matcher missed an AC author (alias, non-canonical formatting,
+    # Scopus name variant), this fills the gap and guarantees the paper
+    # receives at least RELATED_RELEVANT.
+    already_matched = {normalize_name(m.name) for m in matched_people if m.is_ac_member}
+    for raw_name in (paper.ac_members_matched or []):
+        raw_name = str(raw_name).strip()
+        if not raw_name:
+            continue
+        norm = normalize_name(raw_name)
+        if norm in already_matched:
+            continue
+        already_matched.add(norm)
+        matched_people.append(
+            AuthorMatch(
+                person_id=f"acpub:{norm}",
+                name=raw_name,
+                institution=None,
+                match_type="ac_publication_confirmed",
+                score=0.95,
+                is_ac_member=True,
+                corroborating_signals=["ac_publication_database"],
+            )
+        )
+    # Recompute after any synthetic additions so the rule tree sees the real score.
+    author_score = max(
+        (m.score for m in matched_people if m.is_ac_member), default=0.0
+    )
+
     # ---- Institutions -------------------------------------------------
     matched_institutions: list[InstitutionMatch] = []
     seen_institutions: set[str] = set()
@@ -181,6 +214,7 @@ def _classify_paper(
         topic_density=topic_density,
         disqualifying_count=disqualifying_count,
         has_core_topic_match=any(m.is_core and m.score > 0 for m in matched_topics),
+        ac_known_publication=bool(paper.ac_known_publication),
     )
 
     reasons = _build_reasons(
@@ -250,6 +284,7 @@ def _apply_rules(
     topic_density: int | None = None,
     disqualifying_count: int = 0,
     has_core_topic_match: bool | None = None,
+    ac_known_publication: bool = False,
 ) -> tuple[str, float]:
     """Tightened decision tree (v0.7).
 
@@ -257,6 +292,10 @@ def _apply_rules(
     strong signal. The matrix below is conservative on purpose — borderline
     cases are pushed to UNCERTAIN and the cross-encoder / LLM judge resolves
     them downstream.
+
+    v0.8 addition: Tier-0 hard overrides for AC-known publications.
+    ac_known_publication=True means the paper is in the AC Publications gold
+    set. That guarantees >= RELATED regardless of signal scores.
     """
     # Sensible inference for callers that don't pass v0.7-specific signals.
     if has_core_topic_match is None:
@@ -291,6 +330,18 @@ def _apply_rules(
         base = max(0.0, base - 0.15 * disqualifying_count)
 
     confidence = round(base, 3)
+
+    # ── Tier-0: AC Publications gold-set guarantee ────────────────────────
+    # Papers in the AC Publications gold set MUST be >= RELATED_RELEVANT.
+    # This fires only when the signal-based path would produce a lower label
+    # (i.e. when ac_members_matched was populated but the name matcher failed).
+    # The synthetic author_score=0.95 injected in _classify_paper() usually
+    # makes the Tier-1 rules fire first; this is a belt-and-suspenders backup.
+    if ac_known_publication:
+        # Promote to CORE if there's any SDL topic evidence; otherwise RELATED.
+        if has_core_topic_match and (topic_score >= 0.3 or fulltext_score >= 0.3 or topic_density >= 1):
+            return LABEL_CORE, max(confidence, 0.85)
+        return LABEL_RELATED, max(confidence, 0.72)
 
     # ---------------- CORE: requires conjunctive conditions ----------------
     # An AC author *and* a core topic match (or fulltext evidence proving SDL).
