@@ -83,7 +83,9 @@ class GroupProvider(ABC):
 
 
 def _filtered_papers(session: Session, filt: MultiGraphFilter) -> list[Paper]:
-    return list(
+    if filt._papers_cache is not None:
+        return filt._papers_cache  # type: ignore[return-value]
+    result = list(
         session.execute(
             apply_filter(
                 select(Paper).options(
@@ -96,6 +98,8 @@ def _filtered_papers(session: Session, filt: MultiGraphFilter) -> list[Paper]:
             )
         ).scalars()
     )
+    filt._papers_cache = result
+    return result
 
 
 def _paper_id_set(session: Session, filt: MultiGraphFilter) -> set[str]:

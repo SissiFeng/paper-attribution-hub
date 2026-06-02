@@ -22,6 +22,7 @@ from app.services.multi_graph.providers import (
     EDGE_PROVIDERS,
     GROUP_PROVIDERS,
     NODE_PROVIDERS,
+    _filtered_papers,
     available_edge_types,
     available_group_keys,
     available_node_types,
@@ -164,6 +165,8 @@ def _friendly_label(group_id: str, sample_node_id: str, nodes: list[GraphNode]) 
 def build_multi_graph(
     session: Session, filt: MultiGraphFilter
 ) -> MultiGraphPayload:
+    # Pre-fetch papers once; providers reuse this instead of re-querying.
+    _filtered_papers(session, filt)
     nodes_map = _materialize_nodes(session, filt)
     edges = _materialize_edges(session, filt, set(nodes_map.keys()))
 

@@ -94,49 +94,107 @@ class GraphSignals:
 
 
 def build_coauthor_graph(session: Session, only_relevant: bool = False) -> nx.Graph:
-    """Author-level co-authorship graph (used by v0.1 endpoint + graph signals)."""
+    """Author-level co-authorship graph (used by v0.1 endpoint + graph signals).
+
+    Uses lean SQL queries instead of loading full Paper ORM objects to stay
+    within Render's 512 MB memory limit.
+    """
+    from collections import defaultdict
+    from app.models import PaperClassification
+
     g = nx.Graph()
-    papers: Iterable[Paper] = session.execute(
-        select(Paper).options(
-            selectinload(Paper.classification),
-            selectinload(Paper.authors)
-            .selectinload(PaperAuthor.author)
-            .selectinload(Author.institution),
+
+    # Query 1: paper-level data (id, sdl_tags, label, matched_topics).
+    paper_cls_stmt = (
+        select(
+            Paper.id,
+            Paper.sdl_tags,
+            PaperClassification.label,
+            PaperClassification.matched_topics,
         )
-    ).scalars()
+        .outerjoin(PaperClassification, PaperClassification.paper_id == Paper.id)
+    )
+    if only_relevant:
+        paper_cls_stmt = paper_cls_stmt.where(
+            PaperClassification.label.in_({"CORE_RELEVANT", "RELATED_RELEVANT"})
+        )
+    paper_data: dict[str, dict] = {}
+    for pid, sdl_tags, label, matched_topics in session.execute(paper_cls_stmt).all():
+        paper_data[pid] = {
+            "sdl_tags": sdl_tags or [],
+            "matched_topics": matched_topics or [],
+        }
 
-    for paper in papers:
-        if only_relevant:
-            cls = paper.classification
-            if not cls or cls.label not in {"CORE_RELEVANT", "RELATED_RELEVANT"}:
+    if not paper_data:
+        return g
+
+    # Query 2: author + institution data.
+    author_rows = session.execute(
+        select(
+            Author.id,
+            Author.canonical_name,
+            Author.is_ac_member,
+            Author.institution_id,
+            Institution.canonical_name.label("inst_name"),
+        )
+        .outerjoin(Institution, Institution.id == Author.institution_id)
+    ).all()
+    author_info: dict[str, dict] = {
+        a_id: {
+            "label": name,
+            "is_ac_member": bool(is_ac),
+            "institution": inst_name,
+            "institution_id": inst_id,
+        }
+        for a_id, name, is_ac, inst_id, inst_name in author_rows
+    }
+
+    # Query 3: paper-author associations (only for papers we care about).
+    pa_rows = session.execute(
+        select(PaperAuthor.paper_id, PaperAuthor.author_id).where(
+            PaperAuthor.paper_id.in_(list(paper_data.keys()))
+        )
+    ).all()
+
+    # Group by paper.
+    paper_authors: dict[str, list[str]] = defaultdict(list)
+    for paper_id, author_id in pa_rows:
+        paper_authors[paper_id].append(author_id)
+
+    # Build graph.
+    for paper_id, author_ids in paper_authors.items():
+        pdata = paper_data[paper_id]
+        sdl_ctx = _sdl_contexts_from_data(pdata["sdl_tags"], pdata["matched_topics"])
+        for a_id in author_ids:
+            info = author_info.get(a_id)
+            if info is None:
                 continue
-
-        author_ids: list[str] = []
-        for pa in paper.authors:
-            a: Author = pa.author
-            if a.id not in g:
+            if a_id not in g:
                 g.add_node(
-                    a.id,
-                    label=a.canonical_name,
-                    is_ac_member=bool(a.is_ac_member),
-                    institution=a.institution.canonical_name if a.institution else None,
+                    a_id,
+                    label=info["label"],
+                    is_ac_member=info["is_ac_member"],
+                    institution=info["institution"],
                     paper_count=0,
                     sdl_contexts=set(),
                     institution_contexts=set(),
                 )
-            g.nodes[a.id]["paper_count"] += 1
-            g.nodes[a.id]["sdl_contexts"].update(_paper_sdl_contexts(paper))
-            if a.institution:
-                g.nodes[a.id]["institution_contexts"].add(a.institution.id)
-            author_ids.append(a.id)
+            g.nodes[a_id]["paper_count"] += 1
+            g.nodes[a_id]["sdl_contexts"].update(sdl_ctx)
+            if info["institution_id"]:
+                g.nodes[a_id]["institution_contexts"].add(info["institution_id"])
 
         for i, src in enumerate(author_ids):
+            if src not in g:
+                continue
             for dst in author_ids[i + 1 :]:
+                if dst not in g:
+                    continue
                 if g.has_edge(src, dst):
                     g[src][dst]["weight"] += 1
-                    g[src][dst]["papers"].append(paper.id)
+                    g[src][dst]["papers"].append(paper_id)
                 else:
-                    g.add_edge(src, dst, weight=1, papers=[paper.id])
+                    g.add_edge(src, dst, weight=1, papers=[paper_id])
     return g
 
 
@@ -151,6 +209,15 @@ def _paper_sdl_contexts(paper: Paper) -> set[str]:
     return {str(c) for c in contexts if c}
 
 
+def _sdl_contexts_from_data(sdl_tags: list, matched_topics: list) -> set[str]:
+    contexts = set(sdl_tags or [])
+    for t in matched_topics or []:
+        key = t.get("topic_id") or t.get("name")
+        if key:
+            contexts.add(key)
+    return {str(c) for c in contexts if c}
+
+
 def _normalized_diversity(count: int) -> float:
     if count <= 0:
         return 0.0
@@ -158,54 +225,47 @@ def _normalized_diversity(count: int) -> float:
 
 
 def build_institution_graph(session: Session) -> nx.Graph:
-    """Institution-level collaboration graph (figure.md §recommended-MVP-set)."""
+    """Institution-level collaboration graph (figure.md §recommended-MVP-set).
+
+    Uses lean SQL JOINs instead of loading full Paper ORM objects to stay
+    within Render's 512 MB memory limit.
+    """
+    from collections import defaultdict
+
     g = nx.Graph()
-    institutions_by_id = {
-        inst.id: inst for inst in session.execute(select(Institution)).scalars()
-    }
-    papers = session.execute(
-        select(Paper).options(
-            selectinload(Paper.authors)
-            .selectinload(PaperAuthor.author)
-            .selectinload(Author.institution),
+    # Seed all institutions as isolated nodes first.
+    for inst in session.execute(select(Institution)).scalars():
+        g.add_node(
+            inst.id,
+            label=inst.canonical_name,
+            is_partner=bool(inst.is_partner),
+            country=inst.country,
+            paper_count=0,
         )
-    ).scalars()
 
-    for paper in papers:
-        institution_ids: list[str] = []
-        for pa in paper.authors:
-            inst = pa.author.institution
-            if inst is None:
-                continue
-            if inst.id not in institution_ids:
-                institution_ids.append(inst.id)
-            if inst.id not in g:
-                g.add_node(
-                    inst.id,
-                    label=inst.canonical_name,
-                    is_partner=bool(inst.is_partner),
-                    country=inst.country,
-                    paper_count=0,
-                )
-            g.nodes[inst.id]["paper_count"] += 1
+    # Lean query: one row per (paper, author) — no full Paper objects in memory.
+    rows = session.execute(
+        select(PaperAuthor.paper_id, Author.institution_id)
+        .join(Author, Author.id == PaperAuthor.author_id)
+        .where(Author.institution_id.is_not(None))
+    ).all()
 
-        for i, src in enumerate(institution_ids):
-            for dst in institution_ids[i + 1 :]:
+    paper_insts: dict[str, list[str]] = defaultdict(list)
+    for paper_id, inst_id in rows:
+        if inst_id not in g:
+            continue
+        g.nodes[inst_id]["paper_count"] += 1
+        if inst_id not in paper_insts[paper_id]:
+            paper_insts[paper_id].append(inst_id)
+
+    for paper_id, inst_ids in paper_insts.items():
+        for i, src in enumerate(inst_ids):
+            for dst in inst_ids[i + 1 :]:
                 if g.has_edge(src, dst):
                     g[src][dst]["weight"] += 1
-                    g[src][dst]["papers"].append(paper.id)
+                    g[src][dst]["papers"].append(paper_id)
                 else:
-                    g.add_edge(src, dst, weight=1, papers=[paper.id])
-    # Add isolated institutions (so the partner-only view doesn't drop AC nodes).
-    for inst_id, inst in institutions_by_id.items():
-        if inst_id not in g:
-            g.add_node(
-                inst_id,
-                label=inst.canonical_name,
-                is_partner=bool(inst.is_partner),
-                country=inst.country,
-                paper_count=0,
-            )
+                    g.add_edge(src, dst, weight=1, papers=[paper_id])
     return g
 
 

@@ -54,6 +54,9 @@ class MultiGraphFilter:
     similarity_min: float = 0.7
     similarity_top_k: int = 5
 
+    # Internal: populated once by build_multi_graph so providers share one DB fetch.
+    _papers_cache: list | None = field(default=None, repr=False, compare=False)
+
 
 @dataclass
 class MultiGraphPayload:
