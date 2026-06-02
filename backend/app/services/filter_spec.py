@@ -11,7 +11,7 @@ from typing import Annotated
 
 from fastapi import Query
 from pydantic import BaseModel, Field
-from sqlalchemy import Select, exists, func, or_, select
+from sqlalchemy import Select, String, exists, func, or_, select
 from sqlalchemy.orm import Session
 
 from app.models import (
@@ -98,23 +98,25 @@ def apply_filter(stmt: Select, filt: PaperFilter) -> Select:
         or filt.max_confidence is not None
         or filt.topic_ids
     ):
-        stmt = stmt.join(PaperClassification, PaperClassification.paper_id == Paper.id)
+        # Use EXISTS subquery instead of JOIN so we never produce duplicate rows
+        # (JOIN on a 1:1 relationship is safe, but DISTINCT on JSON columns fails
+        # in PostgreSQL because json has no equality operator).
+        cls_conds = [PaperClassification.paper_id == Paper.id]
         if filt.labels:
-            stmt = stmt.where(PaperClassification.label.in_([l.upper() for l in filt.labels]))
+            cls_conds.append(PaperClassification.label.in_([l.upper() for l in filt.labels]))
         if filt.min_confidence is not None:
-            stmt = stmt.where(PaperClassification.confidence >= filt.min_confidence)
+            cls_conds.append(PaperClassification.confidence >= filt.min_confidence)
         if filt.max_confidence is not None:
-            stmt = stmt.where(PaperClassification.confidence <= filt.max_confidence)
+            cls_conds.append(PaperClassification.confidence <= filt.max_confidence)
         if filt.topic_ids:
-            # matched_topics is JSON; SQLite has no native JSON-array filter, so
-            # we do a string-LIKE match against the serialized JSON. Robust
-            # enough for the topic ids we generate (they don't collide as
-            # substrings) and avoids requiring a JSON1 build.
             for tid in filt.topic_ids:
                 like_pattern = f'%"topic_id": "{tid}"%'
-                stmt = stmt.where(
-                    func.cast(PaperClassification.matched_topics, type_=__import__("sqlalchemy").String).like(like_pattern)
+                cls_conds.append(
+                    func.cast(PaperClassification.matched_topics, String).like(like_pattern)
                 )
+        stmt = stmt.where(
+            exists(select(1).select_from(PaperClassification).where(*cls_conds))
+        )
 
     if filt.has_review is True:
         stmt = stmt.where(exists().where(HumanReview.paper_id == Paper.id))
@@ -151,7 +153,7 @@ def apply_filter(stmt: Select, filt: PaperFilter) -> Select:
                 )
             )
 
-    return stmt.distinct()
+    return stmt
 
 
 def filtered_paper_ids(session: Session, filt: PaperFilter) -> list[str]:
