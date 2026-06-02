@@ -322,8 +322,12 @@ def _build_paper_sections(
     # 6. Open questions
     open_q: list[str] = []
     if c:
-        if not (c.matched_people or []):
-            open_q.append("No AC author matched — is this a false positive from topic/funding signals only?")
+        # AC author check: prefer paper.ac_members_matched (set by ingestion
+        # from AC Publications gold set) over c.matched_people (often None in
+        # DB because classify_all hasn't been re-run on this instance yet).
+        has_ac_author = bool(paper.ac_members_matched) or bool(c.matched_people)
+        if not has_ac_author and c.label in ("CORE_RELEVANT", "RELATED_RELEVANT"):
+            open_q.append("No AC author found via name-matching — attribution relies on funding/topic signals. Consider verifying authorship.")
         fulltext_ev = getattr(c, "fulltext_evidence", None) or []
         if not fulltext_ev and not paper.full_text_available:
             open_q.append("Full text not indexed — funding acknowledgements and SDL methodology signals unavailable.")

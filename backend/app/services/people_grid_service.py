@@ -25,6 +25,7 @@ from sqlalchemy import select
 from sqlalchemy.orm import Session
 
 from app.models import Author, Paper, PaperAuthor, PaperClassification, Topic
+from app.services.normalization_service import normalize_name
 
 
 _LATIN_LETTER = re.compile(r"[A-Za-z]")
@@ -52,11 +53,23 @@ def _symbol_for(name: str) -> str:
 
 
 def build_people_grid(session: Session) -> dict:
-    ac_authors = list(
+    raw_authors = list(
         session.execute(select(Author).where(Author.is_ac_member)).scalars()
     )
-    if not ac_authors:
+    if not raw_authors:
         return {"elements": [], "categories": [], "max_papers": 0}
+
+    # Deduplicate by normalized canonical name — multiple Author rows can exist
+    # for the same person when different CSV imports create slight name variants.
+    # Prefer the record that has an ORCID; otherwise keep whichever was loaded first.
+    seen_norm: dict[str, Author] = {}
+    for author in raw_authors:
+        norm = normalize_name(author.canonical_name)
+        if norm not in seen_norm:
+            seen_norm[norm] = author
+        elif author.orcid and not seen_norm[norm].orcid:
+            seen_norm[norm] = author  # upgrade to the ORCID-bearing record
+    ac_authors = list(seen_norm.values())
 
     # Map author → papers + topics
     topic_lookup: dict[str, Topic] = {
