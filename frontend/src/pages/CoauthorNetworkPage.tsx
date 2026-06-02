@@ -280,7 +280,7 @@ type View = "authors" | "institutions";
 export default function CoauthorNetworkPage() {
   const [searchParams] = useSearchParams();
   const [view, setView] = useState<View>("authors");
-  const [onlyRelevant, setOnlyRelevant] = useState(false);
+  const [onlyRelevant, setOnlyRelevant] = useState(true);
   const [minPapers, setMinPapers] = useState(1);
   const [payload, setPayload] = useState<NetworkPayload | null>(null);
   const [instPayload, setInstPayload] = useState<InstitutionNetworkPayload | null>(null);

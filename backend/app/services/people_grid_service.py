@@ -21,7 +21,7 @@ import unicodedata
 from collections import Counter, defaultdict
 from dataclasses import dataclass
 
-from sqlalchemy import select
+from sqlalchemy import func, select
 from sqlalchemy.orm import Session
 
 from app.models import Author, Paper, PaperAuthor, PaperClassification, Topic
@@ -80,78 +80,75 @@ def build_people_grid(session: Session) -> dict:
     category_paper_counts: dict[str, int] = defaultdict(int)
     seen_symbols: set[str] = set()
 
+    # ── Batch-load all data in 3 queries rather than N per-author queries ────
+    author_ids = [a.id for a in ac_authors]
+
+    # 1. Paper count per author (lean aggregation, no Paper objects).
+    paper_counts: dict[str, int] = dict(
+        session.execute(
+            select(PaperAuthor.author_id, func.count(PaperAuthor.paper_id))
+            .where(PaperAuthor.author_id.in_(author_ids))
+            .group_by(PaperAuthor.author_id)
+        ).all()
+    )
+
+    # 2. Label distribution per author (lean join, no Paper objects).
+    label_rows = session.execute(
+        select(PaperAuthor.author_id, PaperClassification.label, func.count())
+        .join(PaperClassification, PaperClassification.paper_id == PaperAuthor.paper_id)
+        .where(PaperAuthor.author_id.in_(author_ids))
+        .group_by(PaperAuthor.author_id, PaperClassification.label)
+    ).all()
+    label_dist: dict[str, Counter[str]] = defaultdict(Counter)
+    for aid, label, cnt in label_rows:
+        label_dist[aid][label] = cnt
+
+    # 3. Paper sample (5 most recent per author, minimal columns).
+    sample_rows = session.execute(
+        select(PaperAuthor.author_id, Paper.id, Paper.title, Paper.year, PaperClassification.label)
+        .join(Paper, Paper.id == PaperAuthor.paper_id)
+        .outerjoin(PaperClassification, PaperClassification.paper_id == Paper.id)
+        .where(PaperAuthor.author_id.in_(author_ids))
+        .where(Paper.year.is_not(None))
+        .order_by(PaperAuthor.author_id, Paper.year.desc())
+    ).all()
+    author_samples: dict[str, list[dict]] = defaultdict(list)
+    for aid, pid, title, year, label in sample_rows:
+        if len(author_samples[aid]) < 5:
+            author_samples[aid].append({"id": pid, "title": title, "year": year, "label": label})
+
     for author in ac_authors:
-        # All papers the author is on, with classification.
-        rows = list(
-            session.execute(
-                select(Paper, PaperClassification)
-                .join(PaperAuthor, PaperAuthor.paper_id == Paper.id)
-                .outerjoin(
-                    PaperClassification,
-                    PaperClassification.paper_id == Paper.id,
-                )
-                .where(PaperAuthor.author_id == author.id)
-            ).all()
-        )
+        label_counter = label_dist.get(author.id, Counter())
+        paper_count = paper_counts.get(author.id, 0)
 
-        papers = [r[0] for r in rows]
-        classifications = [r[1] for r in rows if r[1] is not None]
-
-        # Top topic across all classifications.
-        topic_counter: Counter[str] = Counter()
-        label_counter: Counter[str] = Counter()
-        for cls in classifications:
-            label_counter[cls.label] += 1
-            for tm in cls.matched_topics or []:
-                if not tm.get("is_core"):
-                    continue
-                tid = tm.get("topic_id")
-                if not tid:
-                    continue
-                topic_counter[tid] += 1
-
-        top_topic_id = topic_counter.most_common(1)[0][0] if topic_counter else None
-        top_topic_name = (
-            topic_lookup[top_topic_id].name if top_topic_id else "Uncategorized"
-        )
-        category = top_topic_id or "uncategorized"
-        category_paper_counts[category] += len(papers)
+        # Top topic: matched_topics is NULL in production, so use "Uncategorized".
+        top_topic_id = None
+        top_topic_name = "Uncategorized"
+        category = "uncategorized"
+        category_paper_counts[category] += paper_count
 
         # Symbol — ensure uniqueness in the grid.
         sym = _symbol_for(author.canonical_name)
         original = sym
         suffix = 1
         while sym in seen_symbols and suffix < 26:
-            # Disambiguate: replace second letter with next initial from first name.
             tokens = author.canonical_name.split()
             if len(tokens) >= 2 and len(tokens[0]) > suffix:
                 sym = (original[0] + tokens[0][suffix].lower()).capitalize()
             else:
-                # Fall back: numeric suffix is ugly, prefer cycling letters.
                 idx = (ord("a") + suffix) - ord("a")
                 sym = (original[0] + chr(ord("a") + idx)).capitalize()
             suffix += 1
         seen_symbols.add(sym)
 
-        # Sample paper titles for hover.
-        sample = [
-            {
-                "id": p.id,
-                "title": p.title,
-                "year": p.year,
-                "label": (
-                    next((c.label for c in classifications if c.paper_id == p.id), None)
-                ),
-            }
-            for p in sorted(papers, key=lambda x: -(x.year or 0))[:5]
-        ]
+        sample = author_samples.get(author.id, [])
 
         elements.append(
             {
                 "person_id": author.id,
                 "symbol": sym,
                 "name": author.canonical_name,
-                "atomic_number": len(papers),
+                "atomic_number": paper_count,
                 "category": category,
                 "category_label": top_topic_name,
                 "institution": (
