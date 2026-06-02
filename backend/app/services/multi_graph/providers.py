@@ -82,6 +82,13 @@ class GroupProvider(ABC):
 # ---------------------------------------------------------------------------
 
 
+def _norm_semi(value: str | None) -> str | None:
+    """Normalize semicolon-concatenated fields (e.g. 'China;China' → 'China')."""
+    if not value:
+        return value
+    return next((v.strip() for v in value.split(";") if v.strip()), value)
+
+
 def _filtered_papers(session: Session, filt: MultiGraphFilter) -> list[Paper]:
     if filt._papers_cache is not None:
         return filt._papers_cache  # type: ignore[return-value]
@@ -237,8 +244,8 @@ class InstitutionNodes(NodeProvider):
                 label=inst.canonical_name,
                 metadata={
                     "is_partner": bool(inst.is_partner),
-                    "country": inst.country,
-                    "city": inst.city,
+                    "country": _norm_semi(inst.country),
+                    "city": _norm_semi(inst.city),
                     "paper_count": paper_count[inst.id],
                 },
             )

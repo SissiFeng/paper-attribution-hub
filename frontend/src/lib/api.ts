@@ -79,6 +79,7 @@ export function getTimeline(by: "topic" | "label", search?: URLSearchParams) {
 export function getInstitutionNetwork(minPapers: number, search?: URLSearchParams) {
   const params = new URLSearchParams(search);
   params.set("min_papers", String(minPapers));
+  params.set("top_n", "30");  // cap at 30 for the heatmap to stay readable
   return withMock(
     () => request<InstitutionNetworkPayload>(`/analytics/institution-network?${params.toString()}`),
     mock.MOCK_INSTITUTION_NETWORK

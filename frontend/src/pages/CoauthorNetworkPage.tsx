@@ -10,72 +10,87 @@ import type {
   NetworkPayload,
 } from "@/types";
 
-// ── Institution graph option (mirrors NetworkPage logic) ──────────────────────
-function buildInstOption(payload: InstitutionNetworkPayload) {
-  const nodes = payload.nodes.map((n) => ({
-    id: n.id,
-    name: n.label,
-    symbolSize: Math.max(12, Math.min(46, 12 + n.paper_count * 4)),
-    itemStyle: {
-      color: n.is_partner ? "#34d399" : "#7aa2f7",
-      borderColor: "#0f1115",
-      borderWidth: 1.5,
-    },
-    label: { show: true, color: "#e7eaf0", fontSize: 11, position: "right" },
-    value: n.paper_count,
-    category: n.is_partner ? 0 : 1,
-  }));
-  const edges = payload.edges.map((e) => ({
-    source: e.source,
-    target: e.target,
-    value: e.weight,
-    lineStyle: {
-      width: Math.min(1 + (e.normalized_weight ?? 0) * 3, 4.5),
-      color: e.involves_partner
-        ? "rgba(52, 211, 153, 0.7)"
-        : "rgba(154, 163, 178, 0.35)",
-    },
-  }));
+// ── Institution collaboration heatmap (replaces messy force-graph) ───────────
+function buildInstHeatmapOption(payload: InstitutionNetworkPayload) {
+  // Top-N nodes already capped by backend (top_n=50 default).
+  // Sort by paper_count descending, take up to 30 for readability.
+  const sorted = [...payload.nodes]
+    .sort((a, b) => b.paper_count - a.paper_count)
+    .slice(0, 30);
+
+  const idxById: Record<string, number> = {};
+  sorted.forEach((n, i) => { idxById[n.id] = i; });
+  const labels = sorted.map((n) =>
+    n.label.length > 22 ? n.label.slice(0, 20) + "…" : n.label
+  );
+
+  // Build edge lookup: (srcId, tgtId) → weight (symmetric)
+  const edgeMap: Record<string, number> = {};
+  for (const e of payload.edges) {
+    const key1 = `${e.source}__${e.target}`;
+    const key2 = `${e.target}__${e.source}`;
+    edgeMap[key1] = e.weight;
+    edgeMap[key2] = e.weight;
+  }
+
+  const data: [number, number, number][] = [];
+  for (let i = 0; i < sorted.length; i++) {
+    for (let j = 0; j < sorted.length; j++) {
+      const w = i === j
+        ? sorted[i].paper_count
+        : (edgeMap[`${sorted[i].id}__${sorted[j].id}`] ?? 0);
+      data.push([j, i, w]);  // ECharts heatmap: [col, row, value]
+    }
+  }
+
+  const maxVal = Math.max(...data.map((d) => d[2]));
+
   return {
     tooltip: {
       formatter: (p: any) => {
-        if (p.dataType === "node") {
-          const node = payload.nodes.find((n) => n.id === p.data.id);
-          return node
-            ? `<b>${node.label}</b><br/>${node.country ?? "—"}<br/>${node.paper_count} joint papers`
-            : p.name;
-        }
-        const src = payload.nodes.find((n) => n.id === p.data.source)?.label;
-        const tgt = payload.nodes.find((n) => n.id === p.data.target)?.label;
-        const edge = payload.edges.find(
-          (e) => e.source === p.data.source && e.target === p.data.target
-        );
-        const norm = edge
-          ? ` (strength ${(edge.normalized_weight * 100).toFixed(0)}%)`
-          : "";
-        return `${src} ↔ ${tgt}<br/>${p.data.value} joint papers${norm}`;
+        const row = sorted[p.data[1]];
+        const col = sorted[p.data[0]];
+        const v = p.data[2];
+        if (!row || !col) return "";
+        if (row.id === col.id)
+          return `<b>${row.label}</b><br/>${v} papers`;
+        return `<b>${row.label}</b><br/>↔ ${col.label}<br/><b>${v}</b> joint papers`;
       },
     },
-    legend: {
-      data: [
-        { name: "AC partner", icon: "circle", itemStyle: { color: "#34d399" } },
-        { name: "External", icon: "circle", itemStyle: { color: "#7aa2f7" } },
-      ],
-      top: 0,
+    grid: { left: "26%", right: "4%", bottom: "26%", top: "4%" },
+    xAxis: {
+      type: "category",
+      data: labels,
+      splitArea: { show: true },
+      axisLabel: {
+        rotate: 45,
+        color: "#9aa3b2",
+        fontSize: 10,
+        interval: 0,
+      },
+    },
+    yAxis: {
+      type: "category",
+      data: labels,
+      splitArea: { show: true },
+      axisLabel: { color: "#9aa3b2", fontSize: 10 },
+    },
+    visualMap: {
+      min: 0,
+      max: maxVal,
+      calculable: true,
+      orient: "horizontal",
+      left: "center",
+      bottom: "2%",
+      inRange: { color: ["#1e2330", "#3b4a6b", "#7aa2f7", "#34d399"] },
       textStyle: { color: "#9aa3b2" },
     },
     series: [
       {
-        type: "graph",
-        layout: "force",
-        roam: true,
-        draggable: true,
-        force: { repulsion: 220, edgeLength: [80, 200], gravity: 0.08 },
-        categories: [{ name: "AC partner" }, { name: "External" }],
-        edges,
-        data: nodes,
-        emphasis: { focus: "adjacency" },
-        label: { show: true },
+        name: "Joint Papers",
+        type: "heatmap",
+        data,
+        emphasis: { itemStyle: { shadowBlur: 10, shadowColor: "rgba(0,0,0,0.5)" } },
       },
     ],
   };
@@ -352,7 +367,13 @@ export default function CoauthorNetworkPage() {
             />
           )}
           {view === "institutions" && instPayload && instPayload.nodes.length > 0 && (
-            <EChart option={buildInstOption(instPayload)} />
+            <div>
+              <p style={{ color: "var(--text-muted)", fontSize: 12, marginBottom: 8 }}>
+                Top {Math.min(instPayload.nodes.length, 30)} institutions by joint papers.
+                Diagonal = solo paper count · off-diagonal = co-authored papers.
+              </p>
+              <EChart option={buildInstHeatmapOption(instPayload)} style={{ height: 560 }} />
+            </div>
           )}
           {view === "institutions" && instPayload && instPayload.nodes.length === 0 && (
             <div className="empty">No institutions match the current filter.</div>

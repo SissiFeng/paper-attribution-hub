@@ -252,10 +252,22 @@ def topic_over_time(
     return series_list
 
 
+def _norm_field(value: str | None) -> str | None:
+    """Normalize semicolon-concatenated institution fields (e.g. 'China;China' → 'China')."""
+    if not value:
+        return value
+    first = next((v.strip() for v in value.split(";") if v.strip()), None)
+    return first
+
+
 def institution_network(
-    session: Session, filt: PaperFilter, *, min_papers: int = 1
+    session: Session, filt: PaperFilter, *, min_papers: int = 1, top_n: int = 50
 ) -> tuple[list[InstitutionGraphNode], list[InstitutionGraphEdge]]:
-    """Institution-level collaboration network restricted to the filtered set."""
+    """Institution-level collaboration network restricted to the filtered set.
+
+    top_n caps the number of institutions (by paper_count desc) so the graph
+    stays renderable. Default 50; use top_n=200 for a full export.
+    """
     paper_ids = {row[0] for row in session.execute(apply_filter(select(Paper.id), filt)).all()}
     g = build_institution_graph(session)
 
@@ -295,22 +307,25 @@ def institution_network(
             )
         )
 
-    nodes_out: list[InstitutionGraphNode] = []
+    # Build all qualifying nodes
+    all_nodes: list[InstitutionGraphNode] = []
     for node_id in nodes_in_filter:
         data = g.nodes[node_id]
         paper_count = contrib[node_id]
         if paper_count < min_papers:
             continue
-        nodes_out.append(
+        all_nodes.append(
             InstitutionGraphNode(
                 id=node_id,
                 label=data.get("label", node_id),
                 is_partner=bool(data.get("is_partner", False)),
-                country=data.get("country"),
+                country=_norm_field(data.get("country")),
                 paper_count=paper_count,
             )
         )
-    # Drop edges whose endpoints fell below the threshold.
+
+    # Cap to top_n by paper_count so the graph stays renderable
+    nodes_out = sorted(all_nodes, key=lambda n: -n.paper_count)[:top_n]
     keep_node_ids = {n.id for n in nodes_out}
     edges_out = [e for e in edges_filtered if e.source in keep_node_ids and e.target in keep_node_ids]
 

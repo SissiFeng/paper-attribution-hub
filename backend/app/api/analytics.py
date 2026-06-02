@@ -554,10 +554,11 @@ def timeline(
 @router.get("/institution-network", response_model=InstitutionNetworkOut)
 def institution_network_endpoint(
     min_papers: int = Query(default=1, ge=1),
+    top_n: int = Query(default=50, ge=5, le=200),
     filt: PaperFilter = Depends(paper_filter_query),
     session: Session = Depends(get_session),
 ) -> InstitutionNetworkOut:
-    nodes, edges = institution_network(session, filt, min_papers=min_papers)
+    nodes, edges = institution_network(session, filt, min_papers=min_papers, top_n=top_n)
     return InstitutionNetworkOut(
         nodes=[
             InstitutionNodeOut(
