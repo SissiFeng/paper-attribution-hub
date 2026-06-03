@@ -112,6 +112,18 @@ export interface PaperAuthor {
   affiliation?: string | null;
 }
 
+export interface RagStatus {
+  status: string;
+  ready: boolean;
+  full_text_available: boolean;
+  chunk_count: number;
+  embedded_chunk_count: number;
+  evidence_count: number;
+  attribution_evidence_count: number;
+  needs_action?: string | null;
+  action_hint?: string | null;
+}
+
 export interface Paper {
   id: string;
   title: string;
@@ -121,6 +133,7 @@ export interface Paper {
   doi?: string | null;
   keywords?: string[] | null;
   full_text_available: boolean;
+  rag_status?: RagStatus | null;
   provenance: string;
   authors: PaperAuthor[];
   classification?: Classification | null;
@@ -433,6 +446,7 @@ export interface QueueItem {
   last_classified_at: string | null;
   provenance: string | null;
   has_human_review: boolean;
+  rag_status?: RagStatus | null;
 }
 
 export interface PipelineStepLog {

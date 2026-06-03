@@ -9,6 +9,7 @@ import {
 import { useMemo, useState } from "react";
 
 import { ClassificationBadge, ConfidenceBar } from "@/components/ClassificationBadge";
+import { RagStatusBadge } from "@/components/RagStatusBadge";
 import type { Paper } from "@/types";
 
 interface Props {
@@ -48,6 +49,12 @@ export function PaperTable({ papers, selectedId, onSelect }: Props) {
         header: "Confidence",
         accessorFn: (row) => row.classification?.confidence ?? 0,
         cell: ({ getValue }) => <ConfidenceBar value={getValue<number>()} />,
+      },
+      {
+        id: "rag",
+        header: "RAG",
+        accessorFn: (row) => row.rag_status?.status ?? "missing_fulltext",
+        cell: ({ row }) => <RagStatusBadge status={row.original.rag_status} compact />,
       },
       {
         id: "title",

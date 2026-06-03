@@ -21,6 +21,8 @@ from pydantic import BaseModel
 from sqlalchemy.orm import Session
 
 from app.db import get_session
+from app.schemas import RagStatusOut
+from app.services.rag_status_service import rag_status_by_paper
 from app.services.review_queue import (
     QueueItem,
     confirm_classification,
@@ -53,9 +55,14 @@ class QueueItemOut(BaseModel):
     last_classified_at: datetime | None
     provenance: str | None
     has_human_review: bool
+    rag_status: RagStatusOut | None = None
 
     @classmethod
-    def from_item(cls, item: QueueItem) -> "QueueItemOut":
+    def from_item(
+        cls,
+        item: QueueItem,
+        rag_status: RagStatusOut | None = None,
+    ) -> "QueueItemOut":
         return cls(
             paper_id=item.paper_id,
             title=item.title,
@@ -66,6 +73,7 @@ class QueueItemOut(BaseModel):
             last_classified_at=item.last_classified_at,
             provenance=item.provenance,
             has_human_review=item.has_human_review,
+            rag_status=rag_status,
         )
 
 
@@ -139,7 +147,8 @@ def get_queue(
         offset=offset,
         include_confirmed=include_confirmed,
     )
-    return [QueueItemOut.from_item(it) for it in items]
+    statuses = rag_status_by_paper(session, [item.paper_id for item in items])
+    return [QueueItemOut.from_item(it, statuses.get(it.paper_id)) for it in items]
 
 
 @router.get("/reviews/queue/next", response_model=QueueItemOut | None)
@@ -147,7 +156,10 @@ def get_queue_next(
     session: Session = Depends(get_session),
 ) -> QueueItemOut | None:
     item = get_next(session)
-    return QueueItemOut.from_item(item) if item else None
+    if not item:
+        return None
+    status = rag_status_by_paper(session, [item.paper_id]).get(item.paper_id)
+    return QueueItemOut.from_item(item, status)
 
 
 @router.get("/reviews/queue/size")
@@ -166,6 +178,7 @@ def confirm(
     except ValueError as e:
         raise HTTPException(status_code=404, detail=str(e)) from e
     paper = cls.paper
+    status = rag_status_by_paper(session, [paper.id]).get(paper.id)
     return QueueItemOut(
         paper_id=paper.id,
         title=paper.title,
@@ -176,6 +189,7 @@ def confirm(
         last_classified_at=cls.last_classified_at,
         provenance=paper.provenance,
         has_human_review=paper.review is not None,
+        rag_status=status,
     )
 
 
@@ -192,6 +206,7 @@ def skip(
     except ValueError as e:
         raise HTTPException(status_code=404, detail=str(e)) from e
     paper = cls.paper
+    status = rag_status_by_paper(session, [paper.id]).get(paper.id)
     return QueueItemOut(
         paper_id=paper.id,
         title=paper.title,
@@ -202,6 +217,7 @@ def skip(
         last_classified_at=cls.last_classified_at,
         provenance=paper.provenance,
         has_human_review=paper.review is not None,
+        rag_status=status,
     )
 
 

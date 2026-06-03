@@ -23,6 +23,8 @@ def test_get_queue_returns_flagged_papers(seeded_session):
     assert r.status_code == 200
     items = r.json()
     assert any(it["paper_id"] == "P002" for it in items)
+    p002 = next(it for it in items if it["paper_id"] == "P002")
+    assert p002["rag_status"]["status"] == "missing_fulltext"
 
 
 def test_get_queue_next(seeded_session):

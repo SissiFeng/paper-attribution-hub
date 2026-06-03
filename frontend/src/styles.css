@@ -317,6 +317,90 @@ table.papers tr { cursor: pointer; transition: background var(--fast); }
 table.papers tbody tr:hover td { background: rgba(101,148,177,0.06); }
 table.papers tbody tr:last-child td { border-bottom: none; }
 
+.rag-status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 22px;
+  padding: 2px 8px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 650;
+  line-height: 1.2;
+  white-space: nowrap;
+  color: var(--muted);
+  background: var(--panel-2);
+}
+.rag-status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: currentColor;
+  flex: 0 0 auto;
+}
+.rag-status-badge.ready {
+  color: var(--core);
+  border-color: rgba(52,211,153,0.36);
+  background: var(--core-dim);
+}
+.rag-status-badge.needs-action {
+  color: var(--uncertain);
+  border-color: rgba(251,146,60,0.35);
+  background: var(--uncertain-dim);
+}
+.rag-status-badge.no_attribution_evidence {
+  color: var(--related);
+  border-color: rgba(101,148,177,0.32);
+  background: rgba(101,148,177,0.10);
+}
+.rag-status-panel {
+  margin: 12px 0 14px;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--bg-3);
+}
+.rag-status-panel.ready {
+  border-color: rgba(52,211,153,0.28);
+  background: rgba(52,211,153,0.07);
+}
+.rag-status-panel.needs-action {
+  border-color: rgba(251,146,60,0.25);
+  background: rgba(251,146,60,0.07);
+}
+.rag-status-panel-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+.rag-status-action {
+  color: var(--muted);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.rag-status-panel p {
+  margin: 0 0 8px;
+  color: var(--muted);
+  font-size: 12px;
+}
+.rag-status-metrics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.rag-status-metrics span {
+  padding: 2px 7px;
+  border-radius: 999px;
+  background: rgba(33,60,81,0.06);
+  color: var(--color-navy);
+  font-size: 11px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
 /* =========================================================================
    Filter Bar
    ========================================================================= */

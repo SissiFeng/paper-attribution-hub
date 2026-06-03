@@ -7,6 +7,7 @@ import {
   skipReview,
   submitReview,
 } from "@/lib/api";
+import { RagStatusBadge, RagStatusPanel } from "@/components/RagStatusBadge";
 import type { QueueItem, RelevanceLabel } from "@/types";
 
 const LABEL_OPTIONS: RelevanceLabel[] = [
@@ -240,6 +241,7 @@ export default function ReviewQueuePage() {
                 <div className="item-row">
                   <span className="priority-pill">⚡ {it.priority.toFixed(2)}</span>
                   <span className={`v7-label ${it.label}`}>{it.label.replace("_", " ")}</span>
+                  <RagStatusBadge status={it.rag_status} compact />
                 </div>
                 <div className="item-title">{it.title}</div>
                 <div className="item-meta">
@@ -300,6 +302,8 @@ export default function ReviewQueuePage() {
                 </div>
               </div>
             </div>
+
+            <RagStatusPanel status={selected.rag_status} />
 
             <div>
               <h2 style={{ fontSize: "1rem", margin: "0 0 0.5rem" }}>Why this is flagged</h2>

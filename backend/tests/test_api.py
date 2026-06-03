@@ -38,6 +38,23 @@ def test_list_papers(client):
     ]
     assert len(people_ids) == len(set(people_ids))
     assert len(institution_ids) == len(set(institution_ids))
+    assert p["rag_status"]["status"] == "missing_fulltext"
+    assert p["rag_status"]["needs_action"] == "upload_or_fetch_fulltext"
+
+
+def test_list_papers_reports_fulltext_rag_ready(fulltext_seeded_session):
+    from app.main import app
+    from app.services.relevance_classifier import classify_all
+
+    classify_all(fulltext_seeded_session)
+    client = TestClient(app)
+    r = client.get("/papers")
+    assert r.status_code == 200
+    p = next(p for p in r.json() if p["id"] == "P001")
+    assert p["rag_status"]["ready"] is True
+    assert p["rag_status"]["chunk_count"] > 0
+    assert p["rag_status"]["embedded_chunk_count"] == p["rag_status"]["chunk_count"]
+    assert p["rag_status"]["attribution_evidence_count"] > 0
 
 
 def test_filter_papers_by_label(client):

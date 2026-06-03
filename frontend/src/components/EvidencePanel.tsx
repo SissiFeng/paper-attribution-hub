@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 
 import { ClassificationBadge, ConfidenceBar } from "@/components/ClassificationBadge";
+import { RagStatusPanel } from "@/components/RagStatusBadge";
 import { WikiPanel } from "@/components/WikiPanel";
 import { getGraphExplanation, submitReview } from "@/lib/api";
 import type { FulltextEvidence, GraphExplanation, Paper } from "@/types";
@@ -162,6 +163,8 @@ export function EvidencePanel({ paper, onReviewed }: Props) {
             <ConfidenceBar value={c.confidence} />
           </div>
 
+          <RagStatusPanel status={paper.rag_status} />
+
           <div className="score-grid">
             {[
               { label: "Author", value: c.author_score },
@@ -177,11 +180,9 @@ export function EvidencePanel({ paper, onReviewed }: Props) {
               </div>
             ))}
           </div>
-          {paper.full_text_available && (
-            <div style={{ color: "var(--core)", fontSize: "0.85rem", marginBottom: "0.6rem" }}>
-              ● Full-text indexed · model {c.model_version}
-            </div>
-          )}
+          <div style={{ color: "var(--muted)", fontSize: "0.85rem", marginBottom: "0.6rem" }}>
+            Model {c.model_version}
+          </div>
 
           <h3>Why?</h3>
           <ul className="reasons">
