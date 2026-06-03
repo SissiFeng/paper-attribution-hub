@@ -3,33 +3,62 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import { getPeopleGrid } from "@/lib/api";
 import type { PeopleElement, PeopleGrid } from "@/types";
 
-// Stable palette taken from user screenshot.
-const PALETTE = [
-  "#E84A85", // hot pink
-  "#F0712C", // orange
-  "#F5C518", // yellow
-  "#5E4E96", // purple
-  "#1B3590", // navy
-  "#6377B5", // blue mid
-  "#C73C73", // magenta
-  "#864020", // brown
-  "#7E94CE", // light blue
-  "#F0A03A", // light orange
-  "#5A6FA8", // steel
-  "#E891AC", // pink light
-];
+// SDL-specific colors — each SDL track gets a distinct color
+const SDL_COLORS: Record<string, string> = {
+  sdl_ai:           "#60a5fa",  // SDL 0 - AI & Automation  → blue
+  sdl_robotics:     "#818cf8",  // SDL 1 - Robotics         → indigo
+  sdl_organic:      "#34d399",  // SDL 2 - Organic          → emerald
+  sdl_inorganic:    "#2dd4bf",  // SDL 3 - Inorganic        → teal
+  sdl_biology:      "#f472b6",  // SDL 4 - Biology          → pink
+  sdl_formulations: "#fbbf24",  // SDL 5 - Formulations     → amber
+  sdl_energy:       "#fb923c",  // SDL 6 - Energy           → orange
+  sdl_scale:        "#a78bfa",  // SDL 7 - Scale up         → violet
+  sdl_other:        "#94a3b8",  // other SDL                → slate
+  uncategorized:    "#64748b",  // no SDL data              → gray
+};
+
+// Fallback palette for unknown categories
+const PALETTE = ["#E84A85","#F0712C","#F5C518","#5E4E96","#1B3590",
+                  "#6377B5","#C73C73","#7E94CE","#F0A03A","#E891AC"];
 
 function colorForCategory(category: string, allCategories: string[]): string {
+  if (category in SDL_COLORS) return SDL_COLORS[category];
   const idx = allCategories.indexOf(category);
-  if (idx === -1) return PALETTE[0];
-  return PALETTE[idx % PALETTE.length];
+  return PALETTE[idx >= 0 ? idx % PALETTE.length : 0];
 }
+
+// ── Human review types ────────────────────────────────────────────────────────
+interface DedupPair {
+  author_a: { id: string; name: string; orcid?: string };
+  author_b: { id: string; name: string; orcid?: string };
+  score: number;
+  reasons: string[];
+}
+
+// Persist dismissed pairs in localStorage so they don't reappear
+const DISMISSED_KEY = "people_grid_dedup_dismissed";
+function loadDismissed(): Set<string> {
+  try {
+    const raw = localStorage.getItem(DISMISSED_KEY);
+    return new Set(raw ? JSON.parse(raw) : []);
+  } catch { return new Set(); }
+}
+function saveDismissed(s: Set<string>) {
+  try { localStorage.setItem(DISMISSED_KEY, JSON.stringify([...s])); } catch {}
+}
+function pairKey(a: string, b: string) {
+  return [a, b].sort().join("__");
+}
+
+const API_BASE = (import.meta.env.VITE_API_BASE ?? "http://localhost:8000").replace(/\/$/, "");
 
 export default function PeopleGridPage() {
   const [data, setData] = useState<PeopleGrid | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [selected, setSelected] = useState<PeopleElement | null>(null);
+  const [dedupPairs, setDedupPairs] = useState<DedupPair[]>([]);
+  const [dismissed, setDismissed] = useState<Set<string>>(loadDismissed);
 
   const load = useCallback(async () => {
     setLoading(true);
@@ -37,6 +66,9 @@ export default function PeopleGridPage() {
     try {
       const out = await getPeopleGrid();
       setData(out);
+      // Also fetch dedup candidates
+      const dd = await fetch(`${API_BASE}/admin/dedup-candidates`).then(r => r.json());
+      setDedupPairs([...(dd.auto_merge ?? []), ...(dd.human_review ?? [])]);
     } catch (e) {
       setError(e instanceof Error ? e.message : String(e));
     } finally {
@@ -253,6 +285,105 @@ export default function PeopleGridPage() {
           )}
         </div>
       )}
+
+      {/* ── Human review panel for uncertain duplicate pairs ─────────────── */}
+      {(() => {
+        const pending = dedupPairs.filter(
+          p => !dismissed.has(pairKey(p.author_a.id, p.author_b.id))
+        );
+        if (pending.length === 0) return null;
+        return (
+          <div style={{
+            marginTop: "2rem",
+            border: "1px solid rgba(251,191,36,0.4)",
+            borderRadius: 10,
+            background: "rgba(251,191,36,0.06)",
+            padding: "16px 20px",
+          }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 12 }}>
+              <span style={{ fontSize: 18 }}>⚠</span>
+              <strong style={{ color: "#f59e0b" }}>
+                {pending.length} possible duplicate{pending.length > 1 ? "s" : ""} — please review
+              </strong>
+              <span style={{ color: "var(--muted)", fontSize: "0.8rem" }}>
+                Confirmed decisions won't appear again.
+              </span>
+            </div>
+
+            {pending.map(pair => {
+              const key = pairKey(pair.author_a.id, pair.author_b.id);
+              const dismiss = () => {
+                const next = new Set(dismissed);
+                next.add(key);
+                setDismissed(next);
+                saveDismissed(next);
+              };
+              const handleMerge = async () => {
+                // Keep the one with shorter ID (CSV anchor) or first one
+                const keepId = pair.author_a.id < pair.author_b.id ? pair.author_a.id : pair.author_b.id;
+                const removeId = keepId === pair.author_a.id ? pair.author_b.id : pair.author_a.id;
+                await fetch(
+                  `${API_BASE}/admin/dedup-merge?keep_id=${encodeURIComponent(keepId)}&remove_id=${encodeURIComponent(removeId)}&decided_by=human`,
+                  { method: "POST" }
+                );
+                dismiss();
+                void load();
+              };
+              const handleSeparate = async () => {
+                await fetch(
+                  `${API_BASE}/admin/dedup-separate?author_id_a=${encodeURIComponent(pair.author_a.id)}&author_id_b=${encodeURIComponent(pair.author_b.id)}&decided_by=human`,
+                  { method: "POST" }
+                );
+                dismiss();
+              };
+
+              return (
+                <div key={key} style={{
+                  display: "flex", alignItems: "center", gap: 12, flexWrap: "wrap",
+                  padding: "10px 0", borderBottom: "1px solid rgba(251,191,36,0.15)",
+                  fontSize: "0.85rem",
+                }}>
+                  <div style={{ flex: 1, minWidth: 200 }}>
+                    <div style={{ display: "flex", gap: 8, alignItems: "baseline" }}>
+                      <strong>{pair.author_a.name}</strong>
+                      <span style={{ color: "var(--muted)", fontSize: "0.75rem" }}>{pair.author_a.id}</span>
+                      <span style={{ color: "#f59e0b", fontFamily: "monospace" }}>↔</span>
+                      <strong>{pair.author_b.name}</strong>
+                      <span style={{ color: "var(--muted)", fontSize: "0.75rem" }}>{pair.author_b.id}</span>
+                    </div>
+                    <div style={{ color: "var(--muted)", fontSize: "0.78rem", marginTop: 2 }}>
+                      Score {(pair.score * 100).toFixed(0)}% · {pair.reasons.join(" · ")}
+                    </div>
+                  </div>
+                  <div style={{ display: "flex", gap: 8 }}>
+                    <button
+                      onClick={handleMerge}
+                      style={{
+                        padding: "4px 14px", borderRadius: 6, cursor: "pointer",
+                        background: "#34d399", border: "none", color: "#0f1115",
+                        fontWeight: 600, fontSize: "0.8rem",
+                      }}
+                    >
+                      ✓ Same person
+                    </button>
+                    <button
+                      onClick={handleSeparate}
+                      style={{
+                        padding: "4px 14px", borderRadius: 6, cursor: "pointer",
+                        background: "transparent",
+                        border: "1px solid rgba(249,115,22,0.5)",
+                        color: "#fb923c", fontSize: "0.8rem",
+                      }}
+                    >
+                      ✕ Different
+                    </button>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        );
+      })()}
     </div>
   );
 }

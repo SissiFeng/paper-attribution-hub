@@ -115,18 +115,22 @@ def build_people_grid(session: Session) -> dict:
     #    PaperAuthor links are missing (new CSV author IDs with no Scopus rows).
     #    Load all papers that have ac_members_matched populated.
     match_rows = session.execute(
-        select(Paper.id, Paper.title, Paper.year, Paper.ac_members_matched, PaperClassification.label)
+        select(Paper.id, Paper.title, Paper.year, Paper.ac_members_matched,
+               Paper.sdl_tags, PaperClassification.label)
         .outerjoin(PaperClassification, PaperClassification.paper_id == Paper.id)
         .where(Paper.ac_members_matched.is_not(None))
     ).all()
     # Build: norm(member_name) → list of paper dicts
     name_to_papers: dict[str, list[dict]] = defaultdict(list)
     name_to_label_counter: dict[str, Counter] = defaultdict(Counter)
-    for pid, title, year, ac_members, label in match_rows:
+    for pid, title, year, ac_members, sdl_tags, label in match_rows:
         for mname in (ac_members or []):
             nk = normalize_name(str(mname))
             if nk:
-                name_to_papers[nk].append({"id": pid, "title": title, "year": year, "label": label})
+                name_to_papers[nk].append({
+                    "id": pid, "title": title, "year": year,
+                    "label": label, "sdl_tags": sdl_tags or [],
+                })
                 if label:
                     name_to_label_counter[nk][label] += 1
 
@@ -146,6 +150,7 @@ def build_people_grid(session: Session) -> dict:
                 sample.append(paper)
 
         # If PaperAuthor links are missing, use ac_members_matched as fallback
+        sdl_counter: Counter[str] = Counter()
         if paper_count == 0:
             all_names = [entry["name"], *_load_ac_members_csv_aliases(entry["name"])]
             for name in all_names:
@@ -157,16 +162,28 @@ def build_people_grid(session: Session) -> dict:
                     if paper["id"] not in seen_papers:
                         seen_papers.add(paper["id"])
                         sample.append(paper)
+                # Accumulate SDL tags from this paper for color
+                for tag in (paper.get("sdl_tags") or []):
+                    sdl_counter[str(tag).strip()] += 1
                 if paper_count > 0:
                     break
+        else:
+            # Also gather SDL tags from the PaperAuthor path
+            for pid, title, year, label in [
+                (p["id"], p["title"], p["year"], p["label"]) for p in sample
+            ]:
+                pass  # sdl_tags not in sample, will fallback to "uncategorized"
 
         sample.sort(key=lambda p: (p["year"] or 0), reverse=True)
         sample = sample[:5]
 
-        # Top topic: matched_topics is NULL in production, so use "Uncategorized".
+        # Top SDL tag → color category (normalise tag to a short key)
+        top_sdl_full = sdl_counter.most_common(1)[0][0] if sdl_counter else None
+        top_sdl = _sdl_category_key(top_sdl_full) if top_sdl_full else "uncategorized"
+
         top_topic_id = None
-        top_topic_name = "Uncategorized"
-        category = "uncategorized"
+        top_topic_name = top_sdl.replace("_", " ").title() if top_sdl != "uncategorized" else "Uncategorized"
+        category = top_sdl
         category_paper_counts[category] += paper_count
 
         # Symbol — ensure uniqueness in the grid.
@@ -285,6 +302,27 @@ def _ac_member_entries(session: Session) -> list[dict]:
         )
 
     return entries
+
+
+_SDL_CATEGORY_MAP = {
+    "0": "sdl_ai",          # SDL 0 - AI & Automation
+    "1": "sdl_robotics",    # SDL 1 - Robotics
+    "2": "sdl_organic",     # SDL 2 - Organic
+    "3": "sdl_inorganic",   # SDL 3 - Inorganic
+    "4": "sdl_biology",     # SDL 4 - Biology
+    "5": "sdl_formulations",# SDL 5 - Formulations
+    "6": "sdl_energy",      # SDL 6 - Energy
+    "7": "sdl_scale",       # SDL 7 - Scale up
+}
+
+
+def _sdl_category_key(tag: str) -> str:
+    """'SDL 2 - Organic' → 'sdl_organic'"""
+    import re as _re
+    m = _re.search(r"SDL\s+(\d+)", tag, _re.IGNORECASE)
+    if m:
+        return _SDL_CATEGORY_MAP.get(m.group(1), "sdl_other")
+    return "sdl_other"
 
 
 _CSV_ALIAS_CACHE: dict[str, list[str]] = {}

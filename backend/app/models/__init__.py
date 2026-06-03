@@ -14,6 +14,7 @@ from app.models.proposition import PaperProposition
 from app.models.discovery import DiscoveryCandidate, ExternalCache
 from app.models.pipeline_run import PipelineRun
 from app.models.wiki import WikiPage
+from app.models.dedup import AuthorDedupDecision
 
 all_models = (
     Paper,
@@ -33,6 +34,7 @@ all_models = (
     ExternalCache,
     PipelineRun,
     WikiPage,
+    AuthorDedupDecision,
 )
 
 __all__ = [
@@ -53,5 +55,6 @@ __all__ = [
     "ExternalCache",
     "PipelineRun",
     "WikiPage",
+    "AuthorDedupDecision",
     "all_models",
 ]

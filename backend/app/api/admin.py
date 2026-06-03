@@ -156,3 +156,85 @@ def apply_ac_members(
             "Watch server logs; then call GET /admin/accuracy to verify."
         ),
     }
+
+
+# ---------------------------------------------------------------------------
+# Author deduplication
+# ---------------------------------------------------------------------------
+
+@router.get("/dedup-candidates", response_model=dict)
+def dedup_candidates(session: Session = Depends(get_session)) -> dict:
+    """Return auto-merge candidates (high confidence) and human-review pairs."""
+    from app.services.dedup_service import find_candidates, HIGH_THRESHOLD, UNCERTAIN_LOW
+
+    auto, review = find_candidates(session)
+    return {
+        "auto_merge": [
+            {
+                "author_a": {"id": c.author_a.id, "name": c.author_a.canonical_name,
+                              "orcid": c.author_a.orcid},
+                "author_b": {"id": c.author_b.id, "name": c.author_b.canonical_name,
+                              "orcid": c.author_b.orcid},
+                "score": c.score,
+                "reasons": c.reasons,
+            }
+            for c in auto
+        ],
+        "human_review": [
+            {
+                "author_a": {"id": c.author_a.id, "name": c.author_a.canonical_name,
+                              "orcid": c.author_a.orcid},
+                "author_b": {"id": c.author_b.id, "name": c.author_b.canonical_name,
+                              "orcid": c.author_b.orcid},
+                "score": c.score,
+                "reasons": c.reasons,
+            }
+            for c in review
+        ],
+        "thresholds": {"auto_merge": HIGH_THRESHOLD, "uncertain_low": UNCERTAIN_LOW},
+    }
+
+
+@router.post("/dedup-merge", response_model=dict)
+def dedup_merge(
+    keep_id: str,
+    remove_id: str,
+    decided_by: str = "human",
+    session: Session = Depends(get_session),
+) -> dict:
+    """Merge remove_id → keep_id (confirmed same person)."""
+    from app.services.dedup_service import merge_authors
+    result = merge_authors(session, keep_id, remove_id, decided_by=decided_by)
+    session.commit()
+    return result
+
+
+@router.post("/dedup-separate", response_model=dict)
+def dedup_separate(
+    author_id_a: str,
+    author_id_b: str,
+    decided_by: str = "human",
+    session: Session = Depends(get_session),
+) -> dict:
+    """Record that two authors are different people — don't flag again."""
+    from app.services.dedup_service import record_separate
+    record_separate(session, author_id_a, author_id_b, decided_by=decided_by)
+    session.commit()
+    return {"status": "recorded", "decision": "separate",
+            "author_id_a": author_id_a, "author_id_b": author_id_b}
+
+
+@router.post("/dedup-authors", response_model=dict)
+def dedup_authors(
+    background_tasks: BackgroundTasks,
+) -> dict:
+    """Auto-merge all high-confidence duplicate Author pairs in the background."""
+    def _run():
+        from app.services.dedup_service import run_auto_dedup
+        from app.db import SessionLocal
+        with SessionLocal() as s:
+            result = run_auto_dedup(s)
+        print(f"[dedup] merged={result['auto_merged']} pending={result['pending_human_review']}")
+
+    background_tasks.add_task(_run)
+    return {"status": "started", "message": "Auto-dedup running in background"}
