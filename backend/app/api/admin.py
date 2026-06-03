@@ -75,6 +75,40 @@ def accuracy_report(session: Session = Depends(get_session)) -> dict:
     return measure(session)
 
 
+@router.get("/vocabulary-suggestions", response_model=list[dict])
+def vocabulary_suggestions(
+    max_suggestions: int = 20,
+    min_positive_freq: int = 3,
+    session: Session = Depends(get_session),
+) -> list[dict]:
+    """Candidate terms mined from the AC gold set for human review.
+
+    Returns bigrams that are distinctive to ac_known_publication=True papers
+    versus the background corpus.  action is one of:
+      - "add_protected_phrase": add to domain_vocabulary.yaml protected_phrases
+      - "add_keyword":          add to topic_taxonomy.yaml keywords
+    Nothing is written automatically — this is read-only.
+    """
+    from app.services.active_learning import mine_positive_vocabulary
+
+    suggestions = mine_positive_vocabulary(
+        session,
+        max_suggestions=max_suggestions,
+        min_positive_freq=min_positive_freq,
+    )
+    return [
+        {
+            "topic_id": s.topic_id,
+            "topic_name": s.topic_name,
+            "suggested_term": s.suggested_term,
+            "score": s.score,
+            "action": s.action,
+            "rationale": s.rationale,
+        }
+        for s in suggestions
+    ]
+
+
 @router.post("/reclassify", response_model=dict)
 def reclassify(
     background_tasks: BackgroundTasks,
@@ -94,3 +128,31 @@ def reclassify(
 
     background_tasks.add_task(_run)
     return {"status": "started", "message": "reclassification running in background"}
+
+
+@router.post("/apply-ac-members", response_model=dict)
+def apply_ac_members(
+    background_tasks: BackgroundTasks,
+    skip_classify: bool = False,
+) -> dict:
+    """Apply the updated ac_members.csv to the DB.
+
+    Matches all 82 CSV members against existing Author records, marks them
+    is_ac_member=True, creates new Author rows for any missing members,
+    updates Paper.ac_members_matched, then re-classifies (unless
+    skip_classify=true).
+
+    Safe to call multiple times — idempotent.
+    """
+    def _run():
+        from app.scripts.apply_ac_members import run
+        run(dry_run=False, skip_classify=skip_classify)
+
+    background_tasks.add_task(_run)
+    return {
+        "status": "started",
+        "message": (
+            "Applying AC members in background. "
+            "Watch server logs; then call GET /admin/accuracy to verify."
+        ),
+    }
