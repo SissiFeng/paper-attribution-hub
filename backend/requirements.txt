@@ -21,6 +21,10 @@ pgvector>=0.3
 # Optional — full-text ingestion (v0.2). Install if you want to ingest PDFs.
 pymupdf>=1.24
 
+# LLM SDKs — answer generation in /retrieve/answer
+anthropic>=0.28
+openai>=1.30      # Used for Kimi (OpenAI-compatible API at api.moonshot.cn)
+
 # Optional — learned classifier (v0.7). sklearn is the default backend.
 scikit-learn>=1.4
 joblib>=1.3

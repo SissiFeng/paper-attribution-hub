@@ -13,12 +13,12 @@ from sqlalchemy.orm import Session
 
 from app.db import get_session
 from app.models import Paper, PaperChunk
-from app.schemas import ChunkOut, RetrieveRequest
+from app.schemas import ChunkOut, PropositionHit, RetrieveRequest
 from app.services.embedding_service import get_embedder
 from app.services.fulltext_service import build_chunk_embeddings, ingest_fulltext_file
 from app.services.relevance_classifier import classify_all
 from app.services.reranker import get_reranker
-from app.services.retrieval_service import HybridIndex
+from app.services.retrieval_service import HybridIndex, is_structured_query, search_propositions
 
 router = APIRouter(tags=["fulltext"])
 
@@ -41,6 +41,8 @@ class SourceOut(BaseModel):
     score: float
     bm25_score: float
     cosine_score: float
+    graph_score: float = 0.0
+    graph_context: str | None = None   # Point 3: structured network paths
 
 
 class AnswerOut(BaseModel):
@@ -48,6 +50,7 @@ class AnswerOut(BaseModel):
     sources: list[SourceOut]
     model: str
     chunks_retrieved: int
+    proposition_hints: list[PropositionHit] = []  # Point 2: structured hits
 
 
 @router.post("/papers/{paper_id}/fulltext", response_model=dict)
@@ -143,9 +146,87 @@ def retrieve(payload: RetrieveRequest, session: Session = Depends(get_session)) 
             score=r.score,
             bm25_score=r.bm25_score,
             cosine_score=r.cosine_score,
+            graph_score=r.graph_score,
         )
         for r in retrieved
     ]
+
+
+# Point 2: Proposition-first endpoint
+@router.get("/retrieval/propositions", response_model=list[PropositionHit])
+def proposition_search(
+    q: str,
+    top_k: int = 10,
+    predicate: list[str] | None = None,
+    session: Session = Depends(get_session),
+) -> list[PropositionHit]:
+    """Search structured propositions (method/funding/mechanism claims).
+
+    More precise than chunk search for queries like:
+      'which papers use Bayesian optimization?'
+      'papers funded by NSERC'
+    """
+    hits = search_propositions(session, q, top_k=top_k, predicates=predicate)
+    return [PropositionHit(**h.__dict__) for h in hits]
+
+
+def _llm_answer(query: str, context_blocks: str) -> tuple[str, str]:
+    """Generate a grounded answer via Kimi or Claude.  Returns (answer, model_name)."""
+    from app.config import settings
+
+    system_prompt = (
+        "You are a research assistant specialised in self-driving laboratories, "
+        "laboratory automation, and materials-acceleration platforms. "
+        "Answer strictly from the provided passages, citing them as [N]. "
+        "If the passages are insufficient, state that explicitly."
+    )
+    user_prompt = (
+        f"Question: {query}\n\n"
+        f"Retrieved passages:\n{context_blocks}\n\n"
+        "Provide a comprehensive, citation-grounded answer."
+    )
+
+    # Determine which LLM to call
+    provider = settings.llm_provider
+    if provider == "auto":
+        provider = "kimi" if settings.kimi_api_key else ("anthropic" if settings.anthropic_api_key else "none")
+
+    if provider == "kimi" and settings.kimi_api_key:
+        try:
+            import openai
+            client = openai.OpenAI(
+                api_key=settings.kimi_api_key,
+                base_url=settings.kimi_base_url,
+            )
+            resp = client.chat.completions.create(
+                model=settings.kimi_model,
+                messages=[
+                    {"role": "system", "content": system_prompt},
+                    {"role": "user",   "content": user_prompt},
+                ],
+                max_tokens=1024,
+                temperature=0.3,
+            )
+            return resp.choices[0].message.content, f"kimi/{settings.kimi_model}"
+        except Exception as exc:
+            return f"Kimi answer generation failed: {exc}", "error"
+
+    if provider == "anthropic" and settings.anthropic_api_key:
+        try:
+            import anthropic
+            client = anthropic.Anthropic(api_key=settings.anthropic_api_key)
+            resp = client.messages.create(
+                model="claude-sonnet-4-6",
+                max_tokens=1024,
+                system=system_prompt,
+                messages=[{"role": "user", "content": user_prompt}],
+            )
+            return resp.content[0].text, "claude-sonnet-4-6"
+        except Exception as exc:
+            return f"Anthropic answer generation failed: {exc}", "error"
+
+    # No LLM configured — return passages only
+    return None, "retrieval-only"
 
 
 @router.post("/retrieve/answer", response_model=AnswerOut)
@@ -153,19 +234,33 @@ def retrieve_answer(
     payload: AnswerRequest,
     session: Session = Depends(get_session),
 ) -> AnswerOut:
-    """Advanced RAG endpoint: hybrid retrieval → LLM re-ranking → grounded answer.
+    """Advanced RAG endpoint: hybrid retrieval → LLM answer generation.
 
-    Pipeline:
-    1. Hybrid BM25 + cosine search with Reciprocal Rank Fusion
-    2. Retrieve 3× top_k candidates for the reranker to work on
-    3. Re-rank via ClaudeReranker (if PAS_RERANKER=claude) or NullReranker
-    4. Trim to top_k and generate a citation-grounded answer with Claude
+    Supports Kimi (PAS_KIMI_API_KEY) and Claude (PAS_ANTHROPIC_API_KEY).
+    Set PAS_LLM_PROVIDER=kimi|anthropic|auto (default: auto).
+
+    OOM fix: limits chunk loading to MAX_CHUNKS most-recently-embedded chunks
+    so the TF-IDF fit stays within Render's 512 MB limit.
     """
-    chunks = list(session.execute(select(PaperChunk)).scalars())
+    MAX_CHUNKS = 5000  # enough for semantic coverage, safe for 512 MB
+
+    # Load only the most recent / embedded chunks to avoid OOM
+    chunks = list(session.execute(
+        select(PaperChunk)
+        .where(PaperChunk.embedding.is_not(None))
+        .order_by(PaperChunk.created_at.desc())
+        .limit(MAX_CHUNKS)
+    ).scalars())
+
+    if not chunks:
+        # Fall back to all chunks if none embedded
+        chunks = list(session.execute(
+            select(PaperChunk).limit(MAX_CHUNKS)
+        ).scalars())
+
     if not chunks:
         return AnswerOut(
-            answer="The knowledge base is empty — no paper chunks have been indexed yet. "
-                   "Run `python -m app.scripts.seed_abstract_chunks` to seed the corpus.",
+            answer="知识库还没有索引任何论文片段。请先触发 POST /admin/seed-chunks。",
             sources=[],
             model="none",
             chunks_retrieved=0,
@@ -188,6 +283,26 @@ def retrieve_answer(
     # Re-rank (Claude or null)
     reranked = get_reranker().rerank(payload.query, candidates)[: payload.top_k]
 
+    # Point 3: load graph context (second-degree paths + AC citations) for top papers.
+    from app.models import PaperClassification
+    unique_paper_ids = list({r.paper_id for r in reranked})
+    graph_ctx: dict[str, str] = {}
+    for cls_row in session.execute(
+        select(PaperClassification).where(PaperClassification.paper_id.in_(unique_paper_ids))
+    ).scalars():
+        gs = cls_row.graph_signals or {}
+        lines: list[str] = []
+        for path in (gs.get("second_degree_paths") or [])[:2]:
+            lines.append(
+                f"network: {path.get('via_author_name','')} → {path.get('ac_author_name','')}"
+                f" ({len(path.get('shared_papers', []))} shared papers)"
+            )
+        for sig in (gs.get("citation_signals") or [])[:2]:
+            title = (sig.get("cited_ac_core_title") or "")[:60]
+            lines.append(f"cites AC core: {title}")
+        if lines:
+            graph_ctx[cls_row.paper_id] = " | ".join(lines)
+
     sources = [
         SourceOut(
             chunk_id=r.chunk_id,
@@ -198,59 +313,42 @@ def retrieve_answer(
             score=r.score,
             bm25_score=r.bm25_score,
             cosine_score=r.cosine_score,
+            graph_score=r.graph_score,
+            graph_context=graph_ctx.get(r.paper_id),
         )
         for r in reranked
     ]
 
-    # Generate grounded answer with Claude
-    api_key = os.environ.get("PAS_ANTHROPIC_API_KEY", "")
-    if not api_key:
+    # Point 2: append proposition hints for structured queries.
+    prop_hints: list[PropositionHit] = []
+    if is_structured_query(payload.query):
+        raw_hits = search_propositions(session, payload.query, top_k=5)
+        prop_hints = [PropositionHit(**h.__dict__) for h in raw_hits]
+
+    # Build context and generate answer
+    context_blocks = "\n\n".join(
+        f"[{i+1}] (paper={s.paper_id}, section={s.section_type}"
+        + (f", graph: {s.graph_context}" if s.graph_context else "")
+        + f")\n{s.text}"
+        for i, s in enumerate(sources)
+    )
+
+    answer, model_used = _llm_answer(payload.query, context_blocks)
+
+    if answer is None:
+        # No LLM configured — show passages with hint
+        from app.config import settings
         answer = (
-            "Retrieved the following passages. "
-            "Set PAS_ANTHROPIC_API_KEY to enable answer generation.\n\n"
-            + "\n\n".join(f"[{i+1}] {s.text[:400]}" for i, s in enumerate(sources))
+            "**Retrieved passages** (set PAS_KIMI_API_KEY or PAS_ANTHROPIC_API_KEY in "
+            "Render environment to enable LLM answer generation):\n\n"
+            + "\n\n".join(f"**[{i+1}]** {s.text[:500]}" for i, s in enumerate(sources))
         )
         model_used = "retrieval-only"
-    else:
-        try:
-            import anthropic
-
-            client = anthropic.Anthropic(api_key=api_key)
-
-            context_blocks = "\n\n".join(
-                f"[{i+1}] (paper={s.paper_id}, section={s.section_type})\n{s.text}"
-                for i, s in enumerate(sources)
-            )
-            system_prompt = (
-                "You are a research assistant with deep expertise in self-driving labs, "
-                "laboratory automation, and materials acceleration platforms. "
-                "Answer questions based strictly on the provided passages. "
-                "Cite passages using [N] notation inline. "
-                "If the passages are insufficient, say so explicitly rather than speculating."
-            )
-            user_prompt = (
-                f"Question: {payload.query}\n\n"
-                f"Retrieved passages:\n{context_blocks}\n\n"
-                f"Provide a comprehensive, citation-grounded answer."
-            )
-
-            response = client.messages.create(
-                model="claude-sonnet-4-6",
-                max_tokens=1024,
-                system=system_prompt,
-                messages=[{"role": "user", "content": user_prompt}],
-            )
-            answer = response.content[0].text
-            model_used = "claude-sonnet-4-6"
-        except Exception as exc:
-            answer = f"Answer generation failed: {exc}\n\nTop passages:\n" + "\n\n".join(
-                f"[{i+1}] {s.text[:400]}" for i, s in enumerate(sources)
-            )
-            model_used = "error"
 
     return AnswerOut(
         answer=answer,
         sources=sources,
         model=model_used,
         chunks_retrieved=len(candidates),
+        proposition_hints=prop_hints,
     )
