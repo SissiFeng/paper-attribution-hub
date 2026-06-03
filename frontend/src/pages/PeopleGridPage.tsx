@@ -253,7 +253,8 @@ export default function PeopleGridPage() {
             </div>
             <a
               className="v7-btn primary"
-              href={`/insights?tab=network&center=author:${selected.person_id}`}
+              href={`/multi-graph?center=author:${selected.person_id}&year_from=2021&year_to=2025&labels=CORE_RELEVANT&labels=RELATED_RELEVANT`}
+              target="_self"
             >
               Focus in network →
             </a>

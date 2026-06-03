@@ -32,8 +32,10 @@ from sqlalchemy.orm import Session
 from app.models import Author, AuthorDedupDecision, Paper, PaperAuthor
 
 # ── Thresholds ────────────────────────────────────────────────────────────────
-HIGH_THRESHOLD = 0.80      # auto-merge above this
-UNCERTAIN_LOW  = 0.55      # flag for human review between LOW and HIGH
+# Deliberately conservative: short names in a large corpus produce many
+# false positives when the threshold is too low.
+HIGH_THRESHOLD = 0.90      # auto-merge above this (ORCID match or very high name sim)
+UNCERTAIN_LOW  = 0.72      # flag for human review between LOW and HIGH
 # Below UNCERTAIN_LOW → assume different person (no flag)
 
 
@@ -100,13 +102,14 @@ def _score_pair(
         reasons.append(f"Name similarity {ns:.0%}")
 
     # 3. Co-authorship overlap (0–0.3)
+    # Require ≥2 shared papers to avoid false positives on common names.
     papers_a = papers_by_author.get(a.id, set())
     papers_b = papers_by_author.get(b.id, set())
-    if papers_a and papers_b:
-        overlap = len(papers_a & papers_b) / min(len(papers_a), len(papers_b))
+    shared = len(papers_a & papers_b)
+    if papers_a and papers_b and shared >= 2:
+        overlap = shared / min(len(papers_a), len(papers_b))
         score += overlap * 0.3
-        if overlap > 0:
-            reasons.append(f"Share {len(papers_a & papers_b)} paper(s)")
+        reasons.append(f"Share {shared} papers")
 
     # 4. Same institution (0–0.2)
     if a.institution_id and b.institution_id and a.institution_id == b.institution_id:
@@ -118,12 +121,23 @@ def _score_pair(
 
 # ── Main pipeline ─────────────────────────────────────────────────────────────
 
-def find_candidates(session: Session) -> tuple[list[DedupCandidate], list[DedupCandidate]]:
+def find_candidates(
+    session: Session,
+    *,
+    ac_members_only: bool = True,
+) -> tuple[list[DedupCandidate], list[DedupCandidate]]:
     """Return (auto_merge_list, human_review_list).
+
+    ac_members_only=True (default): only compare authors flagged is_ac_member=True.
+    This avoids the massive false-positive rate on common Chinese/Korean names in
+    the general 10K corpus.
 
     Pairs with a prior human decision are excluded from both lists.
     """
-    authors = list(session.execute(select(Author)).scalars())
+    stmt = select(Author)
+    if ac_members_only:
+        stmt = stmt.where(Author.is_ac_member.is_(True))
+    authors = list(session.execute(stmt).scalars())
 
     # Build paper-sets per author
     pa_rows = session.execute(
