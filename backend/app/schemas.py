@@ -154,6 +154,17 @@ class ChunkOut(BaseModel):
     score: float | None = None
     bm25_score: float | None = None
     cosine_score: float | None = None
+    graph_score: float | None = None   # composite graph centrality boost applied
+
+
+class PropositionHit(BaseModel):
+    paper_id: str
+    predicate: str
+    object_value: str
+    claim_text: str
+    confidence: float
+    source_section: str | None = None
+    score: float
 
 
 class RetrieveRequest(BaseModel):
