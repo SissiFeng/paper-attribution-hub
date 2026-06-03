@@ -117,21 +117,9 @@ def run_daily_pipeline(
         if do_fulltext:
             step = {"name": "fulltext_evidence", "started_at": _isoformat_now()}
             try:
-                from sqlalchemy import select
-
-                from app.models import Paper
-                from app.services.evidence_extractor import persist_evidence
-
-                papers_with_text = session.execute(
-                    select(Paper).where(Paper.full_text_available.is_(True))
-                ).scalars()
-                count = 0
-                for p in papers_with_text:
-                    persist_evidence(session, p.id)
-                    count += 1
-                session.commit()
+                stats = _fetch_and_ingest_fulltexts(session)
                 step["status"] = "ok"
-                step["papers_with_fulltext"] = count
+                step.update(stats)
             except Exception as e:
                 step["status"] = "skipped"
                 step["error"] = f"{type(e).__name__}: {e}"
@@ -187,6 +175,96 @@ def run_daily_pipeline(
     return result
 
 
+def _fetch_and_ingest_fulltexts(session: Session) -> dict:
+    """Best-effort OA full-text fetch for the scheduled pipeline.
+
+    Earlier versions only re-ran evidence extraction on papers already marked
+    `full_text_available=True`, which left most production papers stuck on
+    abstract/metadata evidence. This step now resolves OA URLs, downloads PDFs,
+    ingests sections/chunks/evidence, and leaves classification refresh to the
+    following `classify_new` step.
+    """
+    from sqlalchemy import and_, select
+
+    from app.config import settings
+    from app.models import Paper, PaperClassification
+    from app.services.fulltext_fetcher import fetch_and_ingest
+    from app.services.relevance_classifier import (
+        LABEL_CORE,
+        LABEL_RELATED,
+        LABEL_SDL_FIELD,
+        LABEL_UNCERTAIN,
+    )
+
+    limit = _env_int("PAS_PIPELINE_FULLTEXT_LIMIT", default=50)
+    rate_limit = _env_float("PAS_PIPELINE_FULLTEXT_RATE_LIMIT", default=1.0)
+    dest_dir = settings.fulltexts_dir
+    dest_dir.mkdir(parents=True, exist_ok=True)
+
+    base = (
+        select(Paper, PaperClassification)
+        .outerjoin(PaperClassification, PaperClassification.paper_id == Paper.id)
+        .where(Paper.doi.is_not(None), Paper.full_text_available.is_(False))
+    )
+    tier_queries = [
+        base.where(PaperClassification.label.in_([LABEL_CORE, LABEL_RELATED])),
+        base.where(Paper.provenance == "ac_gold"),
+        base.where(
+            and_(
+                PaperClassification.label == LABEL_UNCERTAIN,
+                PaperClassification.review_priority >= 0.6,
+            )
+        ),
+        base.where(
+            and_(
+                PaperClassification.label == LABEL_SDL_FIELD,
+                Paper.ai_decision_score == 1.0,
+                Paper.automation_score == 1.0,
+                Paper.closed_loop_score == 1.0,
+            )
+        ),
+        base.where(PaperClassification.label == LABEL_SDL_FIELD),
+        base.where(PaperClassification.paper_id.is_(None)),
+    ]
+
+    attempted = succeeded = failed = 0
+    seen_papers: set[str] = set()
+    for query in tier_queries:
+        if succeeded >= limit:
+            break
+        for paper, _cls in session.execute(query).all():
+            if succeeded >= limit:
+                break
+            if paper.id in seen_papers:
+                continue
+            seen_papers.add(paper.id)
+            attempted += 1
+            ok, _reason = fetch_and_ingest(
+                session,
+                paper.id,
+                paper.doi,
+                dest_dir,
+                rate_limit_s=rate_limit,
+            )
+            if ok:
+                succeeded += 1
+            else:
+                failed += 1
+            if attempted % 25 == 0:
+                session.commit()
+    session.commit()
+    if succeeded:
+        from app.services.fulltext_service import build_chunk_embeddings
+
+        build_chunk_embeddings(session)
+    return {
+        "attempted": attempted,
+        "fetched": succeeded,
+        "failed": failed,
+        "limit": limit,
+    }
+
+
 def _persist_run(
     session: Session, result: PipelineResult, *, triggered_by: str
 ) -> None:
@@ -219,6 +297,26 @@ def _env_bool(name: str, *, default: bool = False) -> bool:
     if raw is None:
         return default
     return raw.strip().lower() in {"1", "true", "yes", "y"}
+
+
+def _env_int(name: str, *, default: int) -> int:
+    raw = os.environ.get(name)
+    if raw is None:
+        return default
+    try:
+        return int(raw)
+    except ValueError:
+        return default
+
+
+def _env_float(name: str, *, default: float) -> float:
+    raw = os.environ.get(name)
+    if raw is None:
+        return default
+    try:
+        return float(raw)
+    except ValueError:
+        return default
 
 
 # ---------------------------------------------------------------------------

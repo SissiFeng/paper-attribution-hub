@@ -79,3 +79,33 @@ def test_pipeline_records_failure_in_audit(seeded_session, monkeypatch):
     # And the audit row recorded the failure.
     row = latest_run(seeded_session)
     assert row.status == "failed"
+
+
+def test_pipeline_fulltext_step_fetches_and_rebuilds_embeddings(seeded_session, monkeypatch):
+    calls: list[str] = []
+    embeddings = {"rebuilt": False}
+
+    def fake_fetch(session, paper_id, doi, dest_dir, *, rate_limit_s=1.0, prefer_grobid=None):
+        paper = session.get(Paper, paper_id)
+        paper.full_text_available = True
+        calls.append(paper_id)
+        return True, "fake fulltext"
+
+    def fake_embeddings(session):
+        embeddings["rebuilt"] = True
+        return 1
+
+    monkeypatch.setattr("app.services.fulltext_fetcher.fetch_and_ingest", fake_fetch)
+    monkeypatch.setattr("app.services.fulltext_service.build_chunk_embeddings", fake_embeddings)
+
+    result = run_daily_pipeline(
+        seeded_session,
+        do_discovery=False,
+        do_fulltext=True,
+    )
+
+    assert result.status == "success"
+    assert calls
+    assert embeddings["rebuilt"] is True
+    fulltext_step = next(step for step in result.steps if step["name"] == "fulltext_evidence")
+    assert fulltext_step["fetched"] == len(calls)

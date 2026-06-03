@@ -60,7 +60,10 @@ export function listPapers(search?: URLSearchParams) {
 }
 
 export function getSankey(search?: URLSearchParams) {
-  const qs = search?.toString();
+  const params = new URLSearchParams(search);
+  params.set("top_institutions", "200");
+  params.set("top_topics", "100");
+  const qs = params.toString();
   return withMock(
     () => request<SankeyPayload>(`/analytics/sankey${qs ? `?${qs}` : ""}`),
     mock.MOCK_SANKEY
@@ -76,10 +79,14 @@ export function getTimeline(by: "topic" | "label", search?: URLSearchParams) {
   );
 }
 
-export function getInstitutionNetwork(minPapers: number, search?: URLSearchParams) {
+export function getInstitutionNetwork(
+  minPapers: number,
+  search?: URLSearchParams,
+  topN: number = 200
+) {
   const params = new URLSearchParams(search);
   params.set("min_papers", String(minPapers));
-  params.set("top_n", "30");  // cap at 30 for the heatmap to stay readable
+  params.set("top_n", String(topN));
   return withMock(
     () => request<InstitutionNetworkPayload>(`/analytics/institution-network?${params.toString()}`),
     mock.MOCK_INSTITUTION_NETWORK
@@ -189,6 +196,7 @@ export function getCoauthorNetwork(
 ) {
   const params = new URLSearchParams();
   params.set("only_relevant", String(onlyRelevant));
+  params.set("top_n_authors", "200");
   if (options.importanceProfile) {
     params.set("importance_profile", options.importanceProfile);
   }

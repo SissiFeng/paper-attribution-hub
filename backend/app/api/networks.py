@@ -22,16 +22,22 @@ def coauthor_network(
     session: Session = Depends(get_session),
 ) -> NetworkOut:
     g = build_coauthor_graph(session, only_relevant=only_relevant)
-    # Cap node count: keep the top-N authors by paper_count to avoid OOM
-    if g.number_of_nodes() > top_n_authors:
+    # Keep a larger candidate pool by paper_count for runtime, then rank that
+    # pool by the selected explainable importance score. Ranking only by
+    # paper_count made profile switches look identical in the UI.
+    candidate_limit = min(max(top_n_authors * 4, top_n_authors), 1200)
+    if g.number_of_nodes() > candidate_limit:
         top = sorted(g.nodes, key=lambda n: -g.nodes[n].get("paper_count", 0))
-        keep = set(top[:top_n_authors])
+        ac_nodes = {n for n in g.nodes if g.nodes[n].get("is_ac_member")}
+        keep = set(top[:candidate_limit]) | ac_nodes
         g.remove_nodes_from([n for n in list(g.nodes) if n not in keep])
     payload = graph_to_payload(
         g,
         importance_profile=importance_profile,
         importance_weights=_parse_importance_weights(importance_weights),
     )
+    if len(payload["nodes"]) > top_n_authors:
+        payload = _trim_payload_by_importance(payload, top_n_authors)
     return NetworkOut(**payload)
 
 
@@ -49,3 +55,23 @@ def _parse_importance_weights(raw: str | None) -> dict[str, float] | None:
         except ValueError:
             continue
     return out or None
+
+
+def _trim_payload_by_importance(payload: dict, limit: int) -> dict:
+    nodes = sorted(
+        payload["nodes"],
+        key=lambda n: (
+            n.get("importance_score", n.get("ppr_score", 0.0)),
+            n.get("paper_count", 0),
+        ),
+        reverse=True,
+    )[:limit]
+    keep = {n["id"] for n in nodes}
+    return {
+        "nodes": nodes,
+        "edges": [
+            e
+            for e in payload["edges"]
+            if e["source"] in keep and e["target"] in keep
+        ],
+    }

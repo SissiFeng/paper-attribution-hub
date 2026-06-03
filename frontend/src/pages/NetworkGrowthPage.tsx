@@ -387,8 +387,9 @@ function buildHubOption(data: HubScorePayload) {
 // ── Component ─────────────────────────────────────────────────────────────────
 
 export default function NetworkGrowthPage() {
+  const currentYear = new Date().getFullYear();
   const [yearFrom, setYearFrom] = useState(2021);
-  const [yearTo,   setYearTo]   = useState(2025);
+  const [yearTo,   setYearTo]   = useState(currentYear);
   const [activeTab, setActiveTab] = useState<ActiveTab>("growth");
   const [growthMode, setGrowthMode] = useState<GrowthMode>("cumulative");
   const [activeLines, setActiveLines] = useState<Set<string>>(
@@ -441,6 +442,18 @@ export default function NetworkGrowthPage() {
     return filtered[filtered.length - 1] ?? null;
   }, [hub, yearTo]);
 
+  const sliderBounds = useMemo(() => {
+    const years = [
+      ...(growth?.yearly.map((r) => r.year) ?? []),
+      yearFrom,
+      yearTo,
+    ];
+    return {
+      min: Math.min(...years),
+      max: Math.max(...years, currentYear),
+    };
+  }, [growth, yearFrom, yearTo, currentYear]);
+
   const growthOption  = useMemo(() => filteredGrowth ? buildGrowthOption(filteredGrowth, growthMode, activeLines) : null, [filteredGrowth, growthMode, activeLines]);
   const streamOption  = useMemo(() => stream  ? buildStreamOption(stream)  : null, [stream]);
   const heatmapOption = useMemo(() => heatmap ? buildHeatmapOption(heatmap) : null, [heatmap]);
@@ -482,7 +495,7 @@ export default function NetworkGrowthPage() {
 
       {/* ── Year slider ──────────────────────────────────────────── */}
       <TimeSlider
-        minYear={2021} maxYear={2025}
+        minYear={sliderBounds.min} maxYear={sliderBounds.max}
         yearFrom={yearFrom} yearTo={yearTo}
         onChange={(yf, yt) => { setYearFrom(yf); setYearTo(yt); }}
       />

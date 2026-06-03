@@ -24,7 +24,10 @@ interface LaidOutNode {
  * a few iterations of repulsion + spring tension is plenty.
  */
 function layout(payload: NetworkPayload, width: number, height: number, iters = 240) {
-  const nodes: LaidOutNode[] = payload.nodes.map((n, i) => ({
+  const orderedNodes = [...payload.nodes].sort(
+    (a, b) => (b.importance_score ?? b.ppr_score ?? 0) - (a.importance_score ?? a.ppr_score ?? 0)
+  );
+  const nodes: LaidOutNode[] = orderedNodes.map((n, i) => ({
     id: n.id,
     label: n.label,
     is_ac_member: n.is_ac_member,
@@ -35,8 +38,8 @@ function layout(payload: NetworkPayload, width: number, height: number, iters = 
     bridge_score: n.bridge_score ?? 0,
     importance_score: n.importance_score ?? n.ppr_score ?? 0,
     importance_profile: n.importance_profile ?? "bridge_builders",
-    x: width / 2 + Math.cos((i / payload.nodes.length) * Math.PI * 2) * 180,
-    y: height / 2 + Math.sin((i / payload.nodes.length) * Math.PI * 2) * 180,
+    x: width / 2 + Math.cos((i / orderedNodes.length) * Math.PI * 2) * (90 + i * 2.4),
+    y: height / 2 + Math.sin((i / orderedNodes.length) * Math.PI * 2) * (90 + i * 2.4),
     vx: 0,
     vy: 0,
   }));
@@ -170,6 +173,7 @@ export function NetworkGraph({ payload, selectedId, onSelect }: Props) {
           const visualScore = Math.max(n.importance_score, n.is_ac_member ? n.ppr_score : 0);
           const r = n.is_ac_member ? 15 : 5 + Math.sqrt(visualScore) * 11;
           const isBridge = !n.is_ac_member && n.bridge_score > 0.15;
+          const intensity = Math.max(0, Math.min(1, n.importance_score));
           const isAdj = !hasSelection || adjacentIds.has(n.id);
           const isSelected = n.id === selectedId;
           const tooltip = [
@@ -201,7 +205,7 @@ export function NetworkGraph({ payload, selectedId, onSelect }: Props) {
               )}
               <circle
                 cx={n.x} cy={n.y} r={r}
-                fill={n.is_ac_member ? "var(--accent)" : "var(--muted)"}
+                fill={n.is_ac_member ? "var(--accent)" : `rgba(27, 53, 144, ${0.28 + intensity * 0.72})`}
                 stroke="#0f1115" strokeWidth={1.5}
               />
               <text x={n.x + r + 4} y={n.y + 4} fill="var(--text)" fontSize={11}>

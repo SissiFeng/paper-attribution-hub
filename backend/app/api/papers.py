@@ -20,13 +20,19 @@ from app.schemas import (
     PaperAuthorOut,
     PaperOut,
     PipelineStats,
+    RagStatusOut,
 )
 from app.services.filter_spec import PaperFilter, apply_filter, paper_filter_query
+from app.services.rag_status_service import rag_status_by_paper
 
 router = APIRouter(prefix="/papers", tags=["papers"])
 
 
-def _paper_to_schema(paper: Paper, evidence_rows: list[PaperEvidence] | None = None) -> PaperOut:
+def _paper_to_schema(
+    paper: Paper,
+    evidence_rows: list[PaperEvidence] | None = None,
+    rag_status: RagStatusOut | None = None,
+) -> PaperOut:
     cls_out: ClassificationOut | None = None
     if paper.classification:
         c = paper.classification
@@ -92,6 +98,7 @@ def _paper_to_schema(paper: Paper, evidence_rows: list[PaperEvidence] | None = N
         doi=paper.doi,
         keywords=paper.keywords,
         full_text_available=bool(paper.full_text_available),
+        rag_status=rag_status,
         provenance=getattr(paper, "provenance", "csv") or "csv",
         authors=[
             PaperAuthorOut(
@@ -130,7 +137,11 @@ def list_papers(
     ).order_by(Paper.year.desc()).offset(offset).limit(limit)
     papers = list(session.execute(stmt).scalars())
     evidence_index = _evidence_by_paper(session, [p.id for p in papers])
-    return [_paper_to_schema(p, evidence_index.get(p.id, [])) for p in papers]
+    rag_status = rag_status_by_paper(session, [p.id for p in papers])
+    return [
+        _paper_to_schema(p, evidence_index.get(p.id, []), rag_status.get(p.id))
+        for p in papers
+    ]
 
 
 def _evidence_by_paper(session: Session, paper_ids: list[str]) -> dict[str, list[PaperEvidence]]:
@@ -147,7 +158,6 @@ def _evidence_by_paper(session: Session, paper_ids: list[str]) -> dict[str, list
     for r in rows:
         out.setdefault(r.paper_id, []).append(r)
     return out
-
 
 @router.get("/stats", response_model=PipelineStats)
 def stats(session: Session = Depends(get_session)) -> PipelineStats:
@@ -255,4 +265,5 @@ def get_paper(paper_id: str, session: Session = Depends(get_session)) -> PaperOu
     if paper is None:
         raise HTTPException(status_code=404, detail=f"Paper {paper_id} not found")
     evidence_rows = _evidence_by_paper(session, [paper.id]).get(paper.id, [])
-    return _paper_to_schema(paper, evidence_rows)
+    rag_status = rag_status_by_paper(session, [paper.id]).get(paper.id)
+    return _paper_to_schema(paper, evidence_rows, rag_status)

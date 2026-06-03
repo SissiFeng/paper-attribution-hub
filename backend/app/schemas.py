@@ -116,6 +116,18 @@ class PaperAuthorOut(BaseModel):
     affiliation: str | None = None
 
 
+class RagStatusOut(BaseModel):
+    status: str
+    ready: bool
+    full_text_available: bool
+    chunk_count: int = 0
+    embedded_chunk_count: int = 0
+    evidence_count: int = 0
+    attribution_evidence_count: int = 0
+    needs_action: str | None = None
+    action_hint: str | None = None
+
+
 class PaperOut(BaseModel):
     id: str
     title: str
@@ -125,6 +137,7 @@ class PaperOut(BaseModel):
     doi: str | None = None
     keywords: list[str] | None = None
     full_text_available: bool = False
+    rag_status: RagStatusOut | None = None
     provenance: str = "csv"
     authors: list[PaperAuthorOut] = Field(default_factory=list)
     classification: ClassificationOut | None = None

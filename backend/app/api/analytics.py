@@ -326,6 +326,24 @@ def network_growth(
     for yr, _pid, _ in collab_rows:
         collab_by_year[yr] = collab_by_year.get(yr, 0) + 1
 
+    author_year_rows = session.execute(
+        select(id_subq.c.year, PaperAuthor.author_id)
+        .join(PaperAuthor, PaperAuthor.paper_id == id_subq.c.id)
+    ).all()
+    inst_year_rows = session.execute(
+        select(id_subq.c.year, Author.institution_id)
+        .join(PaperAuthor, PaperAuthor.paper_id == id_subq.c.id)
+        .join(Author, Author.id == PaperAuthor.author_id)
+        .where(Author.institution_id.is_not(None))
+    ).all()
+    country_year_rows = session.execute(
+        select(id_subq.c.year, Institution.country)
+        .join(PaperAuthor, PaperAuthor.paper_id == id_subq.c.id)
+        .join(Author, Author.id == PaperAuthor.author_id)
+        .join(Institution, Institution.id == Author.institution_id)
+        .where(Institution.country.is_not(None))
+    ).all()
+
     years = sorted(papers_by_year)
     yearly = [
         {
@@ -339,11 +357,28 @@ def network_growth(
         for y in years
     ]
     cumulative = []
-    cum = {"papers": 0, "authors": 0, "institutions": 0, "countries": 0, "collaborations": 0}
+    cumulative_papers = 0
+    cumulative_collaborations = 0
+    seen_authors: set[str] = set()
+    seen_institutions: set[str] = set()
+    seen_countries: set[str] = set()
     for pt in yearly:
-        for k in cum:
-            cum[k] += pt[k]
-        cumulative.append({"year": pt["year"], **cum})
+        year = pt["year"]
+        cumulative_papers += pt["papers"]
+        cumulative_collaborations += pt["collaborations"]
+        seen_authors.update(aid for yr, aid in author_year_rows if yr <= year)
+        seen_institutions.update(inst_id for yr, inst_id in inst_year_rows if yr <= year)
+        seen_countries.update(country for yr, country in country_year_rows if yr <= year)
+        cumulative.append(
+            {
+                "year": year,
+                "papers": cumulative_papers,
+                "authors": len(seen_authors),
+                "institutions": len(seen_institutions),
+                "countries": len(seen_countries),
+                "collaborations": cumulative_collaborations,
+            }
+        )
     return {"yearly": yearly, "cumulative": cumulative}
 
 
@@ -531,8 +566,8 @@ def hub_score(
 
 @router.get("/sankey", response_model=SankeyOut)
 def sankey(
-    top_institutions: int = Query(default=25, ge=1, le=100),
-    top_topics: int = Query(default=15, ge=1, le=50),
+    top_institutions: int = Query(default=100, ge=1, le=500),
+    top_topics: int = Query(default=50, ge=1, le=200),
     filt: PaperFilter = Depends(paper_filter_query),
     session: Session = Depends(get_session),
 ) -> SankeyOut:

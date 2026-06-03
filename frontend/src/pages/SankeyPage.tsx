@@ -23,7 +23,7 @@ const LABEL_COLOR: Record<string, string> = {
 function buildOption(payload: SankeyPayload) {
   const data = payload.nodes.map((n) => ({
     name: n.id,
-    label: { formatter: () => n.name, color: "#e7eaf0" },
+    label: { formatter: () => n.name, color: "#213C51" },
     itemStyle: {
       color:
         n.layer === "label" && LABEL_COLOR[n.name.replace(/ /g, "_").toUpperCase()]
@@ -59,8 +59,8 @@ function buildOption(payload: SankeyPayload) {
         nodeGap: 12,
         nodeWidth: 14,
         lineStyle: { color: "gradient", curveness: 0.5, opacity: 0.4 },
-        label: { color: "#e7eaf0", fontSize: 12 },
-        layoutIterations: 32,
+        label: { color: "#213C51", fontSize: 11, overflow: "truncate", width: 220 },
+        layoutIterations: 64,
       },
     ],
   };
@@ -93,7 +93,12 @@ export default function SankeyPage() {
       {payload && payload.nodes.length === 0 && (
         <div className="empty">No flow matches the current filter.</div>
       )}
-      {payload && payload.nodes.length > 0 && <EChart option={buildOption(payload)} />}
+      {payload && payload.nodes.length > 0 && (
+        <EChart
+          option={buildOption(payload)}
+          style={{ height: Math.max(620, payload.nodes.length * 18) }}
+        />
+      )}
     </div>
   );
 }

@@ -67,3 +67,28 @@ def test_label_breakdown_respects_filter(fulltext_seeded_session):
         fulltext_seeded_session, PaperFilter(year_from=2024)
     )
     assert sum(filtered.values()) <= sum(all_counts.values())
+
+
+def test_people_grid_uses_full_ac_members_csv(seeded_session):
+    from app.services.people_grid_service import build_people_grid
+
+    data = build_people_grid(seeded_session)
+
+    assert data["total_people"] >= 82
+    assert len(data["elements"]) >= 82
+
+
+def test_network_growth_cumulative_counts_unique_entities(fulltext_seeded_session):
+    from fastapi.testclient import TestClient
+    from app.main import app
+
+    _setup(fulltext_seeded_session)
+    client = TestClient(app)
+    r = client.get("/analytics/network-growth", params={"year_from": 2023, "year_to": 2024})
+    assert r.status_code == 200
+    body = r.json()
+    yearly_author_sum = sum(row["authors"] for row in body["yearly"])
+    latest = body["cumulative"][-1]
+
+    assert latest["authors"] <= yearly_author_sum
+    assert latest["institutions"] <= sum(row["institutions"] for row in body["yearly"])
