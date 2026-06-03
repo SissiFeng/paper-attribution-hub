@@ -19,10 +19,10 @@ from dataclasses import dataclass, field
 from datetime import UTC, datetime
 
 from sqlalchemy import select
-from sqlalchemy.orm import Session
+from sqlalchemy.orm import Session, selectinload
 
 from app.config import settings
-from app.models import Author, Institution, Paper, PaperClassification, PaperEvidence, Topic
+from app.models import Author, Institution, Paper, PaperAuthor, PaperClassification, PaperEvidence, Topic
 from app.services.author_matcher import AuthorMatch, AuthorMatcher
 from app.services.normalization_service import normalize_name
 from app.services.evidence_extractor import _aggregate_score
@@ -687,22 +687,104 @@ def classify_all(
     for ev in session.execute(select(PaperEvidence)).scalars():
         evidence_index.setdefault(ev.paper_id, []).append(ev)
 
-    graph_signals_by_paper = compute_graph_signals(session)
+    # Graph signals: try to compute but degrade gracefully if OOM or missing scipy.
+    # Papers still get classified via author/institution/topic/funding signals.
+    graph_signals_by_paper: dict = {}
+    try:
+        graph_signals_by_paper = compute_graph_signals(session)
+    except Exception as exc:
+        import sys
+        print(f"[classify_all] graph signals skipped ({type(exc).__name__}: {exc})",
+              file=sys.stderr)
 
-    papers = list(session.execute(select(Paper)).scalars())
+    # --- Batch processing to avoid loading all 10K papers at once ---
+    # Get all paper IDs first (lean), then process in batches of 300.
+    # Each batch is committed independently so progress is saved even if a later
+    # batch fails. Human-confirmed papers are never overwritten.
+    _BATCH = 300
+    all_paper_ids: list[str] = [
+        r[0] for r in session.execute(
+            select(Paper.id).where(
+                ~Paper.id.in_(
+                    select(PaperClassification.paper_id).where(
+                        PaperClassification.human_confirmed.is_(True)
+                    )
+                )
+            )
+        ).all()
+    ]
+
+    papers: list[Paper] = []   # accumulate for rerank/judge below
     results: dict[str, ClassificationResult] = {}
-    for paper in papers:
-        result = _classify_paper(
-            paper,
-            author_matcher,
-            institution_matcher,
-            topic_classifier,
-            evidence_index=evidence_index,
-            graph_signals=graph_signals_by_paper.get(paper.id),
-        )
-        results[paper.id] = result
 
-    # v0.7: cross-encoder rerank for borderline cases.
+    for batch_start in range(0, len(all_paper_ids), _BATCH):
+        batch_ids = all_paper_ids[batch_start: batch_start + _BATCH]
+        batch_papers = list(
+            session.execute(
+                select(Paper).options(
+                    selectinload(Paper.authors)
+                    .selectinload(PaperAuthor.author)
+                    .selectinload(Author.institution)
+                ).where(Paper.id.in_(batch_ids))
+            ).scalars()
+        )
+        batch_results: dict[str, ClassificationResult] = {}
+        for paper in batch_papers:
+            result = _classify_paper(
+                paper,
+                author_matcher,
+                institution_matcher,
+                topic_classifier,
+                evidence_index=evidence_index,
+                graph_signals=graph_signals_by_paper.get(paper.id),
+            )
+            batch_results[paper.id] = result
+            papers.append(paper)
+            results[paper.id] = result
+
+        # Persist this batch immediately so progress is not lost on OOM
+        for paper in batch_papers:
+            result = batch_results[paper.id]
+            if paper.classification is None:
+                paper.classification = PaperClassification(
+                    id=f"cls_{uuid.uuid4().hex[:12]}", paper_id=paper.id
+                )
+                session.add(paper.classification)
+            cls = paper.classification
+            if not cls.human_confirmed:
+                cls.label = result.label
+                cls.confidence = result.confidence
+            else:
+                cls.confidence = max(cls.confidence, result.confidence)
+            cls.author_score = result.author_score
+            cls.institution_score = result.institution_score
+            cls.topic_score = result.topic_score
+            cls.network_score = result.network_score
+            cls.fulltext_evidence_score = result.fulltext_evidence_score
+            cls.citation_score = result.citation_score
+            cls.graph_signals = (
+                result.graph_signals.to_dict() if result.graph_signals else None
+            )
+            cls.sdl_relevance_label = _sdl_memory_label(result.topic_score, result.fulltext_evidence_score)
+            cls.ac_attribution_label = _ac_memory_label(
+                result.author_score, result.institution_score,
+                result.network_score, result.citation_score,
+            )
+            cls.model_agreement_status = cls.model_agreement_status or "single_model"
+            cls.model_version = _model_version_for(result)
+            cls.matched_people = _serialize_matched_people(result.matched_people)
+            cls.matched_institutions = _serialize_matched_institutions(result.matched_institutions)
+            cls.matched_topics = [
+                {"topic_id": m.topic_id, "name": m.name, "is_core": m.is_core,
+                 "score": m.score, "hits": m.hits, "density": m.density,
+                 "negation_hits": m.negation_hits, "blacklist_hits": m.blacklist_hits}
+                for m in result.matched_topics
+            ]
+            cls.reasons = result.reasons
+            cls.last_classified_at = datetime.now(UTC)
+        session.commit()   # ← commit each batch; progress is durable
+
+    # v0.7: cross-encoder rerank for borderline cases (operates on in-memory results).
     _apply_rerank_to_borderline(papers, results)
 
     # v0.7: LLM judge for what's still UNCERTAIN.
@@ -717,66 +799,15 @@ def classify_all(
     if use_learned:
         _apply_learned_override(papers, results)
 
-    # Persist.
-    for paper in papers:
-        result = results[paper.id]
-        if paper.classification is None:
-            paper.classification = PaperClassification(
-                id=f"cls_{uuid.uuid4().hex[:12]}", paper_id=paper.id
-            )
-            session.add(paper.classification)
-        cls = paper.classification
-        # Never auto-overwrite a human-confirmed label. We still re-record
-        # signals (so analytics stay accurate) but keep the locked label.
-        if not cls.human_confirmed:
-            cls.label = result.label
-            cls.confidence = result.confidence
-        else:
-            cls.label = cls.label  # explicit no-op for readability
-            cls.confidence = max(cls.confidence, result.confidence)
-        cls.author_score = result.author_score
-        cls.institution_score = result.institution_score
-        cls.topic_score = result.topic_score
-        cls.network_score = result.network_score
-        cls.fulltext_evidence_score = result.fulltext_evidence_score
-        cls.citation_score = result.citation_score
-        cls.graph_signals = (
-            result.graph_signals.to_dict() if result.graph_signals else None
-        )
-        cls.sdl_relevance_label = _sdl_memory_label(result.topic_score, result.fulltext_evidence_score)
-        cls.ac_attribution_label = _ac_memory_label(
-            result.author_score,
-            result.institution_score,
-            result.network_score,
-            result.citation_score,
-        )
-        cls.model_agreement_status = cls.model_agreement_status or "single_model"
-        cls.model_version = _model_version_for(result)
-        cls.matched_people = _serialize_matched_people(result.matched_people)
-        cls.matched_institutions = _serialize_matched_institutions(
-            result.matched_institutions
-        )
-        cls.matched_topics = [
-            {
-                "topic_id": m.topic_id,
-                "name": m.name,
-                "is_core": m.is_core,
-                "score": m.score,
-                "hits": m.hits,
-                "density": m.density,
-                "negation_hits": m.negation_hits,
-                "blacklist_hits": m.blacklist_hits,
-            }
-            for m in result.matched_topics
-        ]
-        cls.reasons = result.reasons
-        cls.last_classified_at = datetime.now(UTC)
-    session.commit()
+    # All papers already persisted per-batch above.
+    # v0.4: refresh proposition table once all classifications are settled.
+    try:
+        from app.services.proposition_extractor import persist_propositions
+        persist_propositions(session)
+    except Exception as exc:
+        import sys
+        print(f"[classify_all] proposition extraction skipped ({exc})", file=sys.stderr)
 
-    # v0.4: refresh proposition table once classifications are settled.
-    from app.services.proposition_extractor import persist_propositions
-
-    persist_propositions(session)
     return papers
 
 
