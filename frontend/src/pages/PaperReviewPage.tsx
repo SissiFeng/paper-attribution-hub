@@ -40,11 +40,8 @@ export default function PaperReviewPage() {
       params.set("offset", String(offset));
       const fetched = await listPapers(params);
       setPapers(fetched);
-      if (fetched.length > 0 && !fetched.some((p) => p.id === selectedId)) {
-        setSelectedId(fetched[0].id);
-      } else if (fetched.length === 0) {
-        setSelectedId(null);
-      }
+      // Do NOT auto-select — drawer only opens when user explicitly clicks a row
+      setSelectedId(null);
     } catch (err) {
       setError(err instanceof Error ? err.message : String(err));
     } finally {
