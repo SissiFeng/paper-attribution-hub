@@ -11,6 +11,8 @@ interface LaidOutNode {
   c_norm: number;
   cross_sdl_diversity: number;
   bridge_score: number;
+  importance_score: number;
+  importance_profile: string;
   x: number;
   y: number;
   vx: number;
@@ -31,6 +33,8 @@ function layout(payload: NetworkPayload, width: number, height: number, iters = 
     c_norm: n.c_norm ?? 1,
     cross_sdl_diversity: n.cross_sdl_diversity ?? 0,
     bridge_score: n.bridge_score ?? 0,
+    importance_score: n.importance_score ?? n.ppr_score ?? 0,
+    importance_profile: n.importance_profile ?? "bridge_builders",
     x: width / 2 + Math.cos((i / payload.nodes.length) * Math.PI * 2) * 180,
     y: height / 2 + Math.sin((i / payload.nodes.length) * Math.PI * 2) * 180,
     vx: 0,
@@ -163,12 +167,14 @@ export function NetworkGraph({ payload, selectedId, onSelect }: Props) {
           );
         })}
         {placed.nodes.map((n) => {
-          const r = n.is_ac_member ? 15 : 5 + Math.sqrt(n.ppr_score) * 10;
+          const visualScore = Math.max(n.importance_score, n.is_ac_member ? n.ppr_score : 0);
+          const r = n.is_ac_member ? 15 : 5 + Math.sqrt(visualScore) * 11;
           const isBridge = !n.is_ac_member && n.bridge_score > 0.15;
           const isAdj = !hasSelection || adjacentIds.has(n.id);
           const isSelected = n.id === selectedId;
           const tooltip = [
             n.label,
+            `Importance: ${(n.importance_score * 100).toFixed(1)}% (${n.importance_profile})`,
             `PPR score: ${(n.ppr_score * 100).toFixed(1)}%`,
             `c_norm: ${n.c_norm.toFixed(2)}${isBridge ? " ★ bridge" : ""}`,
             `Bridge score: ${n.bridge_score.toFixed(2)}`,
@@ -222,8 +228,8 @@ export function NetworkGraph({ payload, selectedId, onSelect }: Props) {
           </svg>
           Bridge score &gt; 0.15
         </span>
-        <span title="Node size = AC-Personalized PageRank score (structural proximity to AC core)">
-          Size = PPR score
+        <span title="Node size = selected explainable importance score">
+          Size = importance score
         </span>
         <span style={{ marginLeft: "auto" }}>
           {payload.nodes.length} authors · {payload.edges.length} collaborations

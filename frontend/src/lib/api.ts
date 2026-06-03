@@ -183,9 +183,23 @@ export function generateReport(
   );
 }
 
-export function getCoauthorNetwork(onlyRelevant: boolean) {
+export function getCoauthorNetwork(
+  onlyRelevant: boolean,
+  options: { importanceProfile?: string; importanceWeights?: Record<string, number> } = {}
+) {
+  const params = new URLSearchParams();
+  params.set("only_relevant", String(onlyRelevant));
+  if (options.importanceProfile) {
+    params.set("importance_profile", options.importanceProfile);
+  }
+  if (options.importanceWeights) {
+    const encoded = Object.entries(options.importanceWeights)
+      .map(([key, value]) => `${key}:${value}`)
+      .join(",");
+    if (encoded) params.set("importance_weights", encoded);
+  }
   return withMock(
-    () => request<NetworkPayload>(`/network/coauthors?only_relevant=${onlyRelevant}`),
+    () => request<NetworkPayload>(`/network/coauthors?${params.toString()}`),
     mock.MOCK_COAUTHOR_NETWORK
   );
 }

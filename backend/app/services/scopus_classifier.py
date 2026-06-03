@@ -228,30 +228,30 @@ def classify_paper(paper: "Paper") -> ScopusClassifyResult:
 def _decide_label(
     ac: float, sdl: float, paper: "Paper"
 ) -> tuple[str, float]:
-    # CORE: strong AC signal
-    if ac >= 0.7:
-        return LABEL_CORE, min(0.95, 0.6 + ac * 0.5)
-    if ac >= 0.4 and sdl >= 0.6:
-        return LABEL_CORE, 0.82
+    # AC Publications is the positive gold set. A paper stamped from that
+    # source must never fall below RELATED because weak metadata extraction
+    # (missing abstract, missing SDL tags, name variants) is not negative
+    # evidence against the curated AC label.
+    if paper.ac_known_publication:
+        if (
+            paper.ac_highly_relevant
+            or paper.ac_acknowledged
+            or paper.ac_programs
+            or sdl >= 0.6
+        ):
+            return LABEL_CORE, max(0.85, min(0.95, 0.6 + max(ac, sdl) * 0.4))
+        return LABEL_RELATED, max(0.72, min(0.9, 0.55 + max(ac, sdl) * 0.4))
 
-    # RELATED: moderate AC signal
-    if ac >= 0.4:
-        return LABEL_RELATED, min(0.80, 0.5 + ac * 0.6)
-    if ac >= 0.2 and sdl >= 0.5:
-        return LABEL_RELATED, 0.68
-
-    # SDL field: clear SDL signal, weak AC
+    # In the Scopus batch path, the AC Publications file is the positive
+    # label source. Non-gold papers with AC-like metadata are candidates for
+    # review/discovery, but they should not count as AC-positive labels until
+    # curated into the gold set.
     if sdl >= 0.6:
         return LABEL_SDL_FIELD, min(0.85, 0.4 + sdl * 0.6)
     if sdl >= 0.4:
         return LABEL_SDL_FIELD, 0.65
-
-    # Adjacent: weak but real signal
     if sdl >= 0.2 or ac >= 0.1:
         return LABEL_ADJACENT, 0.55
-
-    # Exclude papers with zero signal that came from Scopus tier retrieval
-    # (the retrieval itself is evidence they're in the SDL field)
     if paper.retrieval_tier:
         return LABEL_UNCERTAIN, 0.40
 
@@ -308,8 +308,10 @@ def _compute_priority(
     priority = 0.0
     needs_review = False
 
-    # Tier 1: high-confidence SDL but not already known to AC
-    if label in (LABEL_CORE, LABEL_SDL_FIELD) and not paper.ac_known_publication and ac < 0.3:
+    # Tier 1: high-confidence SDL/AC-like metadata but not already known to AC.
+    if not paper.ac_known_publication and (
+        (label == LABEL_SDL_FIELD and sdl >= 0.5) or ac >= 0.2
+    ):
         priority = max(priority, 0.85)
         needs_review = True
 

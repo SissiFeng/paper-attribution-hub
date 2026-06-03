@@ -189,6 +189,7 @@ def _attach_authors(
     session: Session, paper: Paper, author_names: list[str], affiliations: list[str]
 ) -> None:
     """Create lightweight Author rows for paper authors not already known."""
+    seen_author_ids: set[str] = set()
     for order, name in enumerate(author_names):
         affiliation = affiliations[order] if order < len(affiliations) else None
         normalized = normalize_name(name)
@@ -211,6 +212,9 @@ def _attach_authors(
             )
             session.add(author)
             session.flush()
+        if author.id in seen_author_ids:
+            continue
+        seen_author_ids.add(author.id)
         session.add(
             PaperAuthor(
                 paper_id=paper.id,

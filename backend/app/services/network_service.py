@@ -11,13 +11,23 @@ from app.services.graph_service import (
     evans_chen_c_norm,
     ppr_toward_ac,
 )
+from app.services.node_importance_service import (
+    author_metrics_from_graph,
+    compute_author_importance,
+    recency_from_years,
+)
 
 
 def build_coauthor_graph(session: Session, only_relevant: bool = False) -> nx.Graph:
     return _build_coauthor_graph(session, only_relevant=only_relevant)
 
 
-def graph_to_payload(g: nx.Graph) -> dict:
+def graph_to_payload(
+    g: nx.Graph,
+    *,
+    importance_profile: str = "bridge_builders",
+    importance_weights: dict[str, float] | None = None,
+) -> dict:
     ac_members: set[str] = {
         node_id
         for node_id, data in g.nodes(data=True)
@@ -32,29 +42,50 @@ def graph_to_payload(g: nx.Graph) -> dict:
     add_normalized_weights(g)
     ppr = ppr_toward_ac(g, ac_members)
     c_norm = evans_chen_c_norm(g)
+    relationship_strength = _relationship_strength_by_node(g, ac_members)
 
-    nodes = [
-        {
-            "id": node_id,
-            "label": data.get("label", node_id),
-            "is_ac_member": bool(data.get("is_ac_member", False)),
-            "institution": data.get("institution"),
-            "paper_count": int(data.get("paper_count", 0)),
-            "ppr_score": round(ppr.get(node_id, 0.0), 4),
-            "c_norm": round(c_norm.get(node_id, 1.0), 4),
-            "cross_sdl_diversity": round(_cross_sdl_diversity(data), 4),
-            "bridge_score": round(
-                min(
-                    1.0,
-                    ppr.get(node_id, 0.0)
-                    * max(c_norm.get(node_id, 1.0), 0.0)
-                    * _cross_sdl_diversity(data),
-                ),
-                4,
+    nodes = []
+    for node_id, data in g.nodes(data=True):
+        diversity = _cross_sdl_diversity(data)
+        importance = compute_author_importance(
+            metrics=author_metrics_from_graph(
+                ppr_score=ppr.get(node_id, 0.0),
+                c_norm=c_norm.get(node_id, 1.0),
+                cross_sdl_diversity=diversity,
+                relationship_strength=relationship_strength.get(node_id, 0.0),
+                citation_affinity=0.0,
+                recency=recency_from_years(list(data.get("active_years", set()))),
             ),
-        }
-        for node_id, data in g.nodes(data=True)
-    ]
+            profile=importance_profile,
+            weights_override=importance_weights,
+        )
+        nodes.append(
+            {
+                "id": node_id,
+                "label": data.get("label", node_id),
+                "is_ac_member": bool(data.get("is_ac_member", False)),
+                "institution": data.get("institution"),
+                "paper_count": int(data.get("paper_count", 0)),
+                "ppr_score": round(ppr.get(node_id, 0.0), 4),
+                "c_norm": round(c_norm.get(node_id, 1.0), 4),
+                "cross_sdl_diversity": round(diversity, 4),
+                "bridge_score": round(
+                    min(
+                        1.0,
+                        ppr.get(node_id, 0.0)
+                        * max(c_norm.get(node_id, 1.0), 0.0)
+                        * diversity,
+                    ),
+                    4,
+                ),
+                "importance_score": importance.score,
+                "importance_profile": importance.profile,
+                "importance_components": importance.components,
+                "importance_radar_axes": importance.radar_axes,
+                "importance_explanation": importance.explanation,
+                "importance_weights": importance.weights,
+            }
+        )
 
     edges = []
     for src, dst, data in g.edges(data=True):
@@ -74,6 +105,19 @@ def graph_to_payload(g: nx.Graph) -> dict:
         })
 
     return {"nodes": nodes, "edges": edges}
+
+
+def _relationship_strength_by_node(g: nx.Graph, ac_members: set[str]) -> dict[str, float]:
+    out: dict[str, float] = {node_id: 0.0 for node_id in g.nodes()}
+    for src, dst, data in g.edges(data=True):
+        strength = float(data.get("normalized_weight", 0.0))
+        if src in ac_members or dst in ac_members:
+            out[src] = max(out.get(src, 0.0), strength)
+            out[dst] = max(out.get(dst, 0.0), strength)
+        else:
+            out[src] = max(out.get(src, 0.0), strength * 0.5)
+            out[dst] = max(out.get(dst, 0.0), strength * 0.5)
+    return out
 
 
 def _cross_sdl_diversity(data: dict) -> float:

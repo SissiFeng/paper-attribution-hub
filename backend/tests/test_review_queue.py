@@ -1,7 +1,7 @@
 """v0.7 review queue: priority scoring, confirm, skip."""
 from datetime import UTC, datetime, timedelta
 
-from app.models import Paper, PaperClassification, PaperEvidence
+from app.models import HumanReview, Paper, PaperClassification, PaperEvidence
 from app.services.relevance_classifier import classify_all
 from app.services.review_queue import (
     confirm_classification,
@@ -81,9 +81,37 @@ def test_confirm_locks_label_and_clears_queue(seeded_session):
     assert cls.human_confirmed is True
     assert cls.human_confirmed_by == "ssf"
     assert cls.needs_review is False
+    from sqlalchemy import select
+
+    review = seeded_session.execute(
+        select(HumanReview).where(HumanReview.paper_id == "P002")
+    ).scalar_one()
+    assert review.human_label == "UNCERTAIN"
+    assert review.reviewer == "ssf"
     # Queue is one shorter (or zero).
     after = queue_size(seeded_session)
     assert after == before - 1
+
+
+def test_confirm_triggers_active_learning_when_enabled(
+    seeded_session, tmp_path, monkeypatch
+):
+    from app.config import settings
+
+    fake_csv = tmp_path / "eval_labels.csv"
+    fake_csv.write_text("paper_id,gold_label,gold_topics,notes\n", encoding="utf-8")
+    monkeypatch.setattr(settings, "eval_labels_csv", fake_csv)
+    monkeypatch.setenv("PAS_ACTIVE_LEARNING", "1")
+
+    classify_all(seeded_session)
+    paper = seeded_session.get(Paper, "P002")
+    paper.classification.label = "UNCERTAIN"
+    seeded_session.commit()
+
+    confirm_classification(seeded_session, "P002", reviewer="ssf")
+
+    text = fake_csv.read_text(encoding="utf-8")
+    assert "P002,UNCERTAIN,,reviewer:ssf" in text
 
 
 def test_skip_defers_paper_from_queue(seeded_session):

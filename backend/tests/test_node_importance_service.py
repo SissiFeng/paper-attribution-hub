@@ -1,0 +1,100 @@
+from __future__ import annotations
+
+from app.models import Author, Institution, Paper, PaperAuthor
+from app.services.network_service import build_coauthor_graph, graph_to_payload
+from app.services.node_importance_service import AUTHOR_DIMENSIONS, compute_author_importance
+
+
+def test_author_importance_components_sum_to_score():
+    result = compute_author_importance(
+        metrics={
+            "ac_proximity": 0.8,
+            "relationship_strength": 0.6,
+            "excess_centrality": 0.5,
+            "cross_sdl_diversity": 0.7,
+            "citation_affinity": 0.0,
+            "recency": 0.3,
+        },
+        profile="bridge_builders",
+    )
+
+    total = round(
+        sum(c["contribution"] for c in result.components.values()),
+        4,
+    )
+    assert result.score == total
+    assert [axis["key"] for axis in result.radar_axes] == AUTHOR_DIMENSIONS
+    assert result.explanation
+
+
+def test_author_importance_weight_override_changes_score():
+    metrics = {
+        "ac_proximity": 0.1,
+        "relationship_strength": 0.1,
+        "excess_centrality": 0.1,
+        "cross_sdl_diversity": 0.1,
+        "citation_affinity": 0.0,
+        "recency": 1.0,
+    }
+
+    default = compute_author_importance(metrics=metrics, profile="bridge_builders")
+    custom = compute_author_importance(
+        metrics=metrics,
+        profile="bridge_builders",
+        weights_override={"recency": 1.0},
+    )
+
+    assert custom.score > default.score
+    assert custom.weights["recency"] > default.weights["recency"]
+
+
+def test_network_payload_exposes_explainable_importance(session):
+    inst_ac = Institution(
+        id="inst_ac",
+        canonical_name="AC",
+        aliases=[],
+        normalized_aliases=[],
+        is_partner=True,
+    )
+    inst_ext = Institution(
+        id="inst_ext",
+        canonical_name="External",
+        aliases=[],
+        normalized_aliases=[],
+    )
+    ac = Author(
+        id="a_ac",
+        canonical_name="AC PI",
+        normalized_name="ac pi",
+        is_ac_member=True,
+        institution=inst_ac,
+    )
+    bridge = Author(
+        id="a_bridge",
+        canonical_name="Bridge Author",
+        normalized_name="bridge author",
+        institution=inst_ext,
+    )
+    p1 = Paper(id="p_bridge_1", title="SDL one", year=2025, sdl_tags=["sdl-1"])
+    p2 = Paper(id="p_bridge_2", title="SDL two", year=2026, sdl_tags=["sdl-2"])
+    p1.authors = [
+        PaperAuthor(author=ac, author_order=1),
+        PaperAuthor(author=bridge, author_order=2),
+    ]
+    p2.authors = [
+        PaperAuthor(author=bridge, author_order=1),
+    ]
+    session.add_all([inst_ac, inst_ext, ac, bridge, p1, p2])
+    session.commit()
+
+    payload = graph_to_payload(
+        build_coauthor_graph(session),
+        importance_profile="bridge_builders",
+    )
+
+    bridge_node = next(n for n in payload["nodes"] if n["id"] == "a_bridge")
+    assert bridge_node["importance_profile"] == "bridge_builders"
+    assert set(bridge_node["importance_components"]) == set(AUTHOR_DIMENSIONS)
+    assert [axis["key"] for axis in bridge_node["importance_radar_axes"]] == AUTHOR_DIMENSIONS
+    assert 0.0 <= bridge_node["importance_score"] <= 1.0
+    assert bridge_node["importance_explanation"]

@@ -16,6 +16,7 @@ def isolate_database(tmp_path_factory: pytest.TempPathFactory):
     if "PAS_DATABASE_URL" not in os.environ:
         db_path = tmp_path_factory.mktemp("pas") / "test.db"
         os.environ["PAS_DATABASE_URL"] = f"sqlite:///{db_path}"
+    os.environ.setdefault("PAS_ACTIVE_LEARNING", "0")
     yield
 
 

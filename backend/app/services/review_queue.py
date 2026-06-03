@@ -15,6 +15,8 @@ Once a paper's classification is human_confirmed (either via /confirm or
 """
 from __future__ import annotations
 
+import os
+import uuid
 from dataclasses import dataclass
 from datetime import UTC, datetime, timedelta
 
@@ -274,12 +276,36 @@ def confirm_classification(
     cls = session.get(PaperClassification, cls_id)
     if cls is None:
         raise ValueError(f"No classification for paper {paper_id}")
+    previous_label = cls.label
+    review = cls.paper.review
+    if review is None:
+        review = HumanReview(id=f"rev_{uuid.uuid4().hex[:12]}", paper_id=paper_id)
+        session.add(review)
+    review.human_label = cls.label
+    review.reviewer = reviewer
+    review.notes = review.notes or "confirmed current classifier label"
     cls.human_confirmed = True
     cls.human_confirmed_at = datetime.now(UTC)
     cls.human_confirmed_by = reviewer
     cls.needs_review = False
     cls.review_priority = 0.0
     session.commit()
+
+    if os.environ.get("PAS_ACTIVE_LEARNING", "1") == "1":
+        try:
+            from app.services.active_learning import on_review_submitted
+
+            on_review_submitted(
+                session,
+                paper_id,
+                new_label=cls.label,
+                previous_label=previous_label,
+                reviewer=reviewer,
+            )
+        except Exception:
+            # Review confirmation must not be blocked by training-side issues.
+            pass
+
     return cls
 
 

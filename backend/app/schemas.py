@@ -454,6 +454,12 @@ class NetworkNode(BaseModel):
     c_norm: float = 1.0
     cross_sdl_diversity: float = 0.0
     bridge_score: float = 0.0
+    importance_score: float = 0.0
+    importance_profile: str = "bridge_builders"
+    importance_components: dict[str, dict[str, float]] = Field(default_factory=dict)
+    importance_radar_axes: list[dict] = Field(default_factory=list)
+    importance_explanation: str = ""
+    importance_weights: dict[str, float] = Field(default_factory=dict)
 
 
 class NetworkEdge(BaseModel):

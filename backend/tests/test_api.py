@@ -30,6 +30,14 @@ def test_list_papers(client):
     assert any(
         m["name"] == "Alan Aspuru-Guzik" for m in p["classification"]["matched_people"]
     )
+    people_ids = [
+        m["person_id"] for m in p["classification"]["matched_people"]
+    ]
+    institution_ids = [
+        m["institution_id"] for m in p["classification"]["matched_institutions"]
+    ]
+    assert len(people_ids) == len(set(people_ids))
+    assert len(institution_ids) == len(set(institution_ids))
 
 
 def test_filter_papers_by_label(client):

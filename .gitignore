@@ -50,3 +50,4 @@ pgdata/
 .codex/
 skills-lock.json
 .vercel/
+.vercel

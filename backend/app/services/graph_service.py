@@ -26,6 +26,7 @@ from app.models import (
     PaperAuthor,
     PaperReference,
 )
+from app.services.author_matcher import preferred_author_display_name
 
 _EXACT_C_NORM_NODE_LIMIT = 5000
 
@@ -108,6 +109,7 @@ def build_coauthor_graph(session: Session, only_relevant: bool = False) -> nx.Gr
     paper_cls_stmt = (
         select(
             Paper.id,
+            Paper.year,
             Paper.sdl_tags,
             PaperClassification.label,
             PaperClassification.matched_topics,
@@ -119,8 +121,9 @@ def build_coauthor_graph(session: Session, only_relevant: bool = False) -> nx.Gr
             PaperClassification.label.in_({"CORE_RELEVANT", "RELATED_RELEVANT"})
         )
     paper_data: dict[str, dict] = {}
-    for pid, sdl_tags, label, matched_topics in session.execute(paper_cls_stmt).all():
+    for pid, year, sdl_tags, label, matched_topics in session.execute(paper_cls_stmt).all():
         paper_data[pid] = {
+            "year": year,
             "sdl_tags": sdl_tags or [],
             "matched_topics": matched_topics or [],
         }
@@ -159,7 +162,8 @@ def build_coauthor_graph(session: Session, only_relevant: bool = False) -> nx.Gr
     # Group by paper.
     paper_authors: dict[str, list[str]] = defaultdict(list)
     for paper_id, author_id in pa_rows:
-        paper_authors[paper_id].append(author_id)
+        if author_id not in paper_authors[paper_id]:
+            paper_authors[paper_id].append(author_id)
 
     # Build graph.
     for paper_id, author_ids in paper_authors.items():
@@ -176,10 +180,13 @@ def build_coauthor_graph(session: Session, only_relevant: bool = False) -> nx.Gr
                     is_ac_member=info["is_ac_member"],
                     institution=info["institution"],
                     paper_count=0,
+                    active_years=set(),
                     sdl_contexts=set(),
                     institution_contexts=set(),
                 )
             g.nodes[a_id]["paper_count"] += 1
+            if pdata["year"] is not None:
+                g.nodes[a_id]["active_years"].add(int(pdata["year"]))
             g.nodes[a_id]["sdl_contexts"].update(sdl_ctx)
             if info["institution_id"]:
                 g.nodes[a_id]["institution_contexts"].add(info["institution_id"])
@@ -192,7 +199,8 @@ def build_coauthor_graph(session: Session, only_relevant: bool = False) -> nx.Gr
                     continue
                 if g.has_edge(src, dst):
                     g[src][dst]["weight"] += 1
-                    g[src][dst]["papers"].append(paper_id)
+                    if paper_id not in g[src][dst]["papers"]:
+                        g[src][dst]["papers"].append(paper_id)
                 else:
                     g.add_edge(src, dst, weight=1, papers=[paper_id])
     return g
@@ -328,15 +336,19 @@ def ppr_toward_ac(g: nx.Graph, ac_ids: set[str]) -> dict[str, float]:
         node: (1.0 / len(ac_nodes) if node in ac_ids else 0.0)
         for node in g.nodes()
     }
+    pagerank_kwargs = {
+        "alpha": 0.85,
+        "personalization": personalization,
+        "weight": "normalized_weight",
+        "max_iter": 300,
+        "tol": 1e-9,
+    }
     try:
-        ppr = nx.pagerank(
-            g,
-            alpha=0.85,
-            personalization=personalization,
-            weight="normalized_weight",
-            max_iter=300,
-            tol=1e-9,
-        )
+        ppr = nx.pagerank(g, **pagerank_kwargs)
+    except (ImportError, ModuleNotFoundError):
+        from networkx.algorithms.link_analysis.pagerank_alg import _pagerank_python
+
+        ppr = _pagerank_python(g, **pagerank_kwargs)
     except nx.PowerIterationFailedConvergence:
         return {n: 0.0 for n in g.nodes()}
 
@@ -452,7 +464,12 @@ def compute_graph_signals(session: Session) -> dict[str, GraphSignals]:
 
     # Map paper_id → list of (author_id, name).
     paper_to_authors: dict[str, list[tuple[str, str]]] = {}
+    seen_paper_authors: set[tuple[str, str]] = set()
     for pa in session.execute(select(PaperAuthor)).scalars():
+        key = (pa.paper_id, pa.author_id)
+        if key in seen_paper_authors:
+            continue
+        seen_paper_authors.add(key)
         paper_to_authors.setdefault(pa.paper_id, []).append(
             (pa.author_id, pa.author.canonical_name)
         )
@@ -469,11 +486,13 @@ def compute_graph_signals(session: Session) -> dict[str, GraphSignals]:
                 coauthor_of.setdefault(a, set()).add(b)
                 coauthor_of.setdefault(b, set()).add(a)
                 key = tuple(sorted((a, b)))
-                author_pair_papers.setdefault(key, []).append(paper_id)
+                papers = author_pair_papers.setdefault(key, [])
+                if paper_id not in papers:
+                    papers.append(paper_id)
 
-    author_names = {
-        a.id: a.canonical_name for a in session.execute(select(Author)).scalars()
-    }
+    author_names = {}
+    for author in session.execute(select(Author)).scalars():
+        author_names[author.id] = preferred_author_display_name(author)
 
     # ── Build weighted coauthor graph for PPR + Evans & Chen ──────────────────
     g = nx.Graph()
@@ -512,7 +531,10 @@ def compute_graph_signals(session: Session) -> dict[str, GraphSignals]:
         if ref.cited_ac_core_id:
             core = ac_cores.get(ref.cited_ac_core_id)
             if core is not None:
-                citations.setdefault(ref.citing_paper_id, []).append(
+                signals = citations.setdefault(ref.citing_paper_id, [])
+                if any(s.cited_ac_core_id == core.id for s in signals):
+                    continue
+                signals.append(
                     CitationSignal(
                         cited_ac_core_id=core.id,
                         cited_ac_core_title=core.title,
@@ -521,7 +543,9 @@ def compute_graph_signals(session: Session) -> dict[str, GraphSignals]:
                     )
                 )
         if ref.cited_paper_id and ref.cited_paper_id != ref.citing_paper_id:
-            cites_corpus.setdefault(ref.citing_paper_id, []).append(ref.cited_paper_id)
+            cited = cites_corpus.setdefault(ref.citing_paper_id, [])
+            if ref.cited_paper_id not in cited:
+                cited.append(ref.cited_paper_id)
 
     signals: dict[str, GraphSignals] = {}
     for paper in session.execute(select(Paper)).scalars():

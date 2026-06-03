@@ -20,6 +20,10 @@ The loop does three things, all idempotent:
 
 Everything here is best-effort; failures log and continue, because review
 submission must never be blocked by training-side issues.
+
+`mine_positive_vocabulary` is a separate, read-only function that scans the
+AC Publications gold set (ac_known_publication=True) for vocabulary gaps and
+surfaces candidates via VocabularySuggestion — it never writes to YAML.
 """
 from __future__ import annotations
 
@@ -40,7 +44,8 @@ from app.models import HumanReview, Paper, Topic
 # ---------------------------------------------------------------------------
 
 
-_RETRAIN_EVERY_N_REVIEWS = int(os.environ.get("PAS_ACTIVE_RETRAIN_EVERY", "5"))
+def _retrain_every_n_reviews() -> int:
+    return max(1, int(os.environ.get("PAS_ACTIVE_RETRAIN_EVERY", "10")))
 
 
 def on_review_submitted(
@@ -253,7 +258,7 @@ def maybe_retrain(session: Session) -> str | None:
         return None
     # Crude trigger: every N reviews, retrain. Idempotent in the sense that
     # we always re-train from scratch on the full set.
-    if n_reviews == 0 or n_reviews % _RETRAIN_EVERY_N_REVIEWS != 0:
+    if n_reviews == 0 or n_reviews % _retrain_every_n_reviews() != 0:
         return None
     try:
         from app.services.learned_classifier import (
@@ -291,3 +296,128 @@ def reclassify_after_review(session: Session) -> int:
 
     papers = classify_all(session)
     return len(papers)
+
+
+# ---------------------------------------------------------------------------
+# Positive-vocabulary mining
+# ---------------------------------------------------------------------------
+
+
+def mine_positive_vocabulary(
+    session: Session,
+    *,
+    max_suggestions: int = 20,
+    min_positive_freq: int = 3,
+    background_sample: int = 500,
+) -> list:
+    """Mine AC gold-set abstracts for vocabulary gaps.
+
+    Compares ac_known_publication=True papers against a background sample to
+    surface bigrams that are:
+      - Distinctive to AC papers AND high absolute frequency
+        → action "add_protected_phrase" (keep as single BM25 token)
+      - Distinctive but lower frequency
+        → action "add_keyword" (candidate for topic_taxonomy.yaml)
+
+    Returns list[VocabularySuggestion] for human approval.
+    Does NOT write to domain_vocabulary.yaml or topic_taxonomy.yaml.
+    """
+    from app.services.drift_service import VocabularySuggestion, _distinctive_bigrams
+
+    pos_rows = session.execute(
+        select(Paper.title, Paper.abstract).where(Paper.ac_known_publication.is_(True))
+    ).all()
+    if not pos_rows:
+        return []
+
+    bg_rows = session.execute(
+        select(Paper.title, Paper.abstract)
+        .where(Paper.ac_known_publication.is_(False))
+        .limit(background_sample)
+    ).all()
+
+    pos_text = " ".join(f"{t or ''} {a or ''}" for t, a in pos_rows).lower()
+    bg_text = " ".join(f"{t or ''} {a or ''}" for t, a in bg_rows).lower()
+
+    # Build the set of already-known terms so we never re-suggest them.
+    vocab = _get_vocab_terms()
+    topics = session.execute(select(Topic)).scalars().all()
+    for t in topics:
+        for kw in t.keywords or []:
+            vocab.add((kw.get("term") or "").lower())
+        for neg in t.negative_keywords or []:
+            vocab.add(neg.lower())
+
+    candidates = _distinctive_bigrams(pos_text, bg_text, existing_terms=vocab)
+    if not candidates:
+        return []
+
+    # Absolute bigram frequency in positive corpus (for protected_phrase decision).
+    pos_tokens = [tok for tok in _WORD_RE.findall(pos_text) if tok not in _STOPWORDS]
+    pos_bigram_freq: Counter = Counter(
+        f"{a} {b}" for a, b in zip(pos_tokens, pos_tokens[1:])
+    )
+
+    suggestions = []
+    for term, score in candidates[:max_suggestions]:
+        abs_freq = pos_bigram_freq.get(term, 0)
+        topic_id, topic_name = _best_topic_match(term, topics)
+        if abs_freq >= min_positive_freq:
+            action = "add_protected_phrase"
+            rationale = (
+                f"Appears {abs_freq}× in AC gold-set abstracts "
+                f"(distinctiveness {score:.1f} vs background). "
+                "Protecting as a phrase token prevents BM25 from splitting it."
+            )
+        else:
+            action = "add_keyword"
+            rationale = (
+                f"Distinctive to AC gold-set (score {score:.1f}); "
+                f"absolute frequency {abs_freq} — review before adding."
+            )
+        suggestions.append(
+            VocabularySuggestion(
+                topic_id=topic_id,
+                topic_name=topic_name,
+                suggested_term=term,
+                score=round(score, 3),
+                action=action,
+                rationale=rationale,
+            )
+        )
+
+    return suggestions
+
+
+def _get_vocab_terms() -> set:
+    """Return all terms already in domain_vocabulary.yaml as a flat set."""
+    from app.services.domain_tokenizer import get_vocabulary
+
+    vocab = get_vocabulary()
+    terms: set[str] = set()
+    for p in vocab.protected:
+        terms.add(p.lower())
+    for src, dst in vocab.synonyms.items():
+        terms.add(src.lower())
+        terms.add(dst.lower())
+    return terms
+
+
+def _best_topic_match(term: str, topics) -> tuple[str, str]:
+    """Return (topic_id, topic_name) for the core topic whose keyword tokens
+    most overlap with the candidate term's tokens.  Falls back to a sentinel
+    when no match is found."""
+    term_tokens = set(term.split())
+    best_id, best_name, best_overlap = "__vocabulary__", "domain_vocabulary", 0
+    for t in topics:
+        if not t.is_core:
+            continue
+        kw_tokens = {
+            tok
+            for kw in (t.keywords or [])
+            for tok in (kw.get("term") or "").lower().split()
+        }
+        overlap = len(term_tokens & kw_tokens)
+        if overlap > best_overlap:
+            best_overlap, best_id, best_name = overlap, t.id, t.name
+    return best_id, best_name

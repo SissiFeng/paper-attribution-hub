@@ -66,8 +66,9 @@ def submit_review(
     session.commit()
     session.refresh(review)
 
-    # v0.7: active learning — gated behind env so tests opt-in.
-    if os.environ.get("PAS_ACTIVE_LEARNING", "0") == "1":
+    # v0.7: active learning is on by default; tests/ops can opt out with
+    # PAS_ACTIVE_LEARNING=0.
+    if os.environ.get("PAS_ACTIVE_LEARNING", "1") == "1":
         try:
             on_review_submitted(
                 session,

@@ -14,6 +14,11 @@ def test_second_degree_detected_for_p011(fulltext_seeded_session):
     assert any(
         p.ac_author_name == "Alan Aspuru-Guzik" for p in p011.second_degree_paths
     )
+    path_keys = {
+        (p.via_author_id, p.ac_author_id, tuple(p.shared_papers))
+        for p in p011.second_degree_paths
+    }
+    assert len(path_keys) == len(p011.second_degree_paths)
 
 
 def test_p003_cites_ac_core(fulltext_seeded_session):

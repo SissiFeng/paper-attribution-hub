@@ -385,6 +385,25 @@ export interface NetworkNode {
   c_norm: number;
   cross_sdl_diversity?: number;
   bridge_score?: number;
+  importance_score?: number;
+  importance_profile?: string;
+  importance_components?: Record<string, ImportanceComponent>;
+  importance_radar_axes?: ImportanceRadarAxis[];
+  importance_explanation?: string;
+  importance_weights?: Record<string, number>;
+}
+
+export interface ImportanceComponent {
+  value: number;
+  weight: number;
+  contribution: number;
+}
+
+export interface ImportanceRadarAxis {
+  key: string;
+  label: string;
+  value: number;
+  weight: number;
 }
 
 export interface NetworkEdge {

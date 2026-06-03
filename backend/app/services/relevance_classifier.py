@@ -752,26 +752,10 @@ def classify_all(
         )
         cls.model_agreement_status = cls.model_agreement_status or "single_model"
         cls.model_version = _model_version_for(result)
-        cls.matched_people = [
-            {
-                "person_id": m.person_id,
-                "name": m.name,
-                "match_type": m.match_type,
-                "score": round(m.score, 3),
-                "institution": m.institution,
-            }
-            for m in result.matched_people
-        ]
-        cls.matched_institutions = [
-            {
-                "institution_id": m.institution_id,
-                "canonical_name": m.canonical_name,
-                "is_partner": m.is_partner,
-                "score": round(m.score, 3),
-                "matched_text": m.matched_text,
-            }
-            for m in result.matched_institutions
-        ]
+        cls.matched_people = _serialize_matched_people(result.matched_people)
+        cls.matched_institutions = _serialize_matched_institutions(
+            result.matched_institutions
+        )
         cls.matched_topics = [
             {
                 "topic_id": m.topic_id,
@@ -996,26 +980,10 @@ def _classify_subset(
         )
         cls.model_agreement_status = cls.model_agreement_status or "single_model"
         cls.model_version = _model_version_for(result)
-        cls.matched_people = [
-            {
-                "person_id": m.person_id,
-                "name": m.name,
-                "match_type": m.match_type,
-                "score": round(m.score, 3),
-                "institution": m.institution,
-            }
-            for m in result.matched_people
-        ]
-        cls.matched_institutions = [
-            {
-                "institution_id": m.institution_id,
-                "canonical_name": m.canonical_name,
-                "is_partner": m.is_partner,
-                "score": round(m.score, 3),
-                "matched_text": m.matched_text,
-            }
-            for m in result.matched_institutions
-        ]
+        cls.matched_people = _serialize_matched_people(result.matched_people)
+        cls.matched_institutions = _serialize_matched_institutions(
+            result.matched_institutions
+        )
         cls.matched_topics = [
             {
                 "topic_id": m.topic_id,
@@ -1033,6 +1001,46 @@ def _classify_subset(
         cls.last_classified_at = datetime.now(UTC)
 
     session.commit()
+
+
+def _serialize_matched_people(matches: list[AuthorMatch]) -> list[dict]:
+    rows: list[dict] = []
+    seen: set[str] = set()
+    for m in sorted(matches, key=lambda item: item.score, reverse=True):
+        key = m.person_id or normalize_name(m.name)
+        if key in seen:
+            continue
+        seen.add(key)
+        rows.append(
+            {
+                "person_id": m.person_id,
+                "name": m.name,
+                "match_type": m.match_type,
+                "score": round(m.score, 3),
+                "institution": m.institution,
+            }
+        )
+    return rows
+
+
+def _serialize_matched_institutions(matches: list[InstitutionMatch]) -> list[dict]:
+    rows: list[dict] = []
+    seen: set[str] = set()
+    for m in sorted(matches, key=lambda item: item.score, reverse=True):
+        key = m.institution_id
+        if key in seen:
+            continue
+        seen.add(key)
+        rows.append(
+            {
+                "institution_id": m.institution_id,
+                "canonical_name": m.canonical_name,
+                "is_partner": m.is_partner,
+                "score": round(m.score, 3),
+                "matched_text": m.matched_text,
+            }
+        )
+    return rows
 
 
 def _sdl_memory_label(topic_score: float, fulltext_score: float) -> str:

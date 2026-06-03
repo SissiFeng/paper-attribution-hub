@@ -22,6 +22,7 @@ that the old fuzzy threshold let through.
 from __future__ import annotations
 
 from dataclasses import dataclass
+import unicodedata
 
 from rapidfuzz import fuzz
 
@@ -55,12 +56,64 @@ _REQUIRES_CORROBORATION = {"initials_match", "fuzzy_match"}
 def _build_alias_index(authors: list[Author]) -> dict[str, Author]:
     index: dict[str, Author] = {}
     for a in authors:
-        index[a.normalized_name] = a
+        for key in _index_keys(a.normalized_name):
+            index[key] = a
         for alias in a.aliases or []:
             normalized = normalize_name(alias)
             if normalized:
-                index.setdefault(normalized, a)
+                if _is_initials_alias(normalized):
+                    continue
+                for key in _index_keys(normalized):
+                    index.setdefault(key, a)
     return index
+
+
+def _index_keys(normalized_name: str) -> set[str]:
+    keys = {normalized_name}
+    if "-" in normalized_name:
+        keys.add(normalized_name.replace("-", " "))
+    return {key for key in keys if key}
+
+
+def _is_initials_alias(normalized_name: str) -> bool:
+    tokens = normalized_name.split()
+    return len(tokens) >= 2 and any(len(token) == 1 for token in tokens)
+
+
+def preferred_author_display_name(author: Author, raw_name: str | None = None) -> str:
+    """Choose a stable human-facing name without changing the identity key."""
+    if (
+        raw_name
+        and raw_name.strip() != author.canonical_name
+        and normalize_name(raw_name) == author.normalized_name
+    ):
+        return raw_name.strip()
+
+    candidates = [author.canonical_name, *(author.aliases or [])]
+    for candidate in candidates:
+        candidate = (candidate or "").strip()
+        if _is_full_display_name(candidate) and _is_ascii(candidate):
+            return candidate
+    for candidate in candidates:
+        candidate = (candidate or "").strip()
+        if _is_full_display_name(candidate):
+            return candidate
+    return author.canonical_name
+
+
+def _is_full_display_name(name: str) -> bool:
+    normalized = normalize_name(name)
+    tokens = normalized.split()
+    if len(tokens) < 2:
+        return False
+    if "," in name:
+        return False
+    return not any(len(token) == 1 for token in tokens[:-1])
+
+
+def _is_ascii(value: str) -> bool:
+    folded = unicodedata.normalize("NFKD", value).encode("ascii", "ignore")
+    return folded.decode("ascii") == value
 
 
 def _initials_match(query: str, candidate: Author) -> bool:
@@ -116,6 +169,7 @@ class AuthorMatcher:
             return self._build(
                 author,
                 "exact_author_match",
+                raw_name=raw_name,
                 coauthor_names=coauthor_names,
                 affiliations=affiliations,
                 orcid=orcid,
@@ -124,6 +178,7 @@ class AuthorMatcher:
             return self._build(
                 author,
                 "alias_match",
+                raw_name=raw_name,
                 coauthor_names=coauthor_names,
                 affiliations=affiliations,
                 orcid=orcid,
@@ -134,6 +189,7 @@ class AuthorMatcher:
                 return self._build(
                     candidate,
                     "initials_match",
+                    raw_name=raw_name,
                     coauthor_names=coauthor_names,
                     affiliations=affiliations,
                     orcid=orcid,
@@ -149,6 +205,7 @@ class AuthorMatcher:
                 best[0],
                 "fuzzy_match",
                 score=best[1],
+                raw_name=raw_name,
                 coauthor_names=coauthor_names,
                 affiliations=affiliations,
                 orcid=orcid,
@@ -166,6 +223,7 @@ class AuthorMatcher:
         match_type: str,
         *,
         score: float | None = None,
+        raw_name: str | None = None,
         coauthor_names: list[str] | None = None,
         affiliations: list[str] | None = None,
         orcid: str | None = None,
@@ -202,7 +260,7 @@ class AuthorMatcher:
 
         return AuthorMatch(
             person_id=author.id,
-            name=author.canonical_name,
+            name=preferred_author_display_name(author, raw_name),
             institution=(
                 author.institution.canonical_name if author.institution else None
             ),

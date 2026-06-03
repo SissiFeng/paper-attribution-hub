@@ -1,14 +1,66 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 
 import { EChart } from "@/components/EChart";
 import { NetworkGraph } from "@/components/NetworkGraph";
 import { getCoauthorNetwork, getInstitutionNetwork } from "@/lib/api";
 import type {
+  ImportanceRadarAxis,
   InstitutionNetworkPayload,
   NetworkNode,
   NetworkPayload,
 } from "@/types";
+
+const IMPORTANCE_DIMENSIONS = [
+  { key: "ac_proximity", label: "AC proximity" },
+  { key: "relationship_strength", label: "Relationship strength" },
+  { key: "excess_centrality", label: "Excess centrality" },
+  { key: "cross_sdl_diversity", label: "Cross-SDL diversity" },
+  { key: "citation_affinity", label: "Citation affinity" },
+  { key: "recency", label: "Recency" },
+] as const;
+
+const IMPORTANCE_PROFILES: Record<string, { label: string; purpose: string; weights: Record<string, number> }> = {
+  ac_attribution: {
+    label: "AC attribution",
+    purpose: "Prioritize authors structurally close to AC and directly attributable to AC work.",
+    weights: { ac_proximity: 0.55, relationship_strength: 0.20, citation_affinity: 0.15, recency: 0.10 },
+  },
+  bridge_builders: {
+    label: "Bridge builders",
+    purpose: "Surface authors who connect AC-adjacent communities across SDL contexts.",
+    weights: { ac_proximity: 0.35, excess_centrality: 0.30, cross_sdl_diversity: 0.25, relationship_strength: 0.10 },
+  },
+  institution_hubs: {
+    label: "Institution hubs",
+    purpose: "Emphasize durable collaboration strength and institution-spanning centrality.",
+    weights: { relationship_strength: 0.30, excess_centrality: 0.25, cross_sdl_diversity: 0.20, ac_proximity: 0.15, citation_affinity: 0.10 },
+  },
+  emerging_connectors: {
+    label: "Emerging connectors",
+    purpose: "Find newer authors with recent activity and early bridge potential.",
+    weights: { recency: 0.30, excess_centrality: 0.25, cross_sdl_diversity: 0.20, ac_proximity: 0.15, relationship_strength: 0.10 },
+  },
+  topic_diffusion: {
+    label: "Topic diffusion",
+    purpose: "Highlight cross-SDL spread and collaborations that move methods between areas.",
+    weights: { cross_sdl_diversity: 0.35, relationship_strength: 0.20, excess_centrality: 0.20, ac_proximity: 0.15, recency: 0.10 },
+  },
+};
+
+function weightsForProfile(profile: string): Record<string, number> {
+  const base = IMPORTANCE_PROFILES[profile]?.weights ?? IMPORTANCE_PROFILES.bridge_builders.weights;
+  return Object.fromEntries(IMPORTANCE_DIMENSIONS.map((d) => [d.key, base[d.key] ?? 0]));
+}
+
+function normalizeWeights(weights: Record<string, number>): Record<string, number> {
+  const clean = Object.fromEntries(
+    IMPORTANCE_DIMENSIONS.map((d) => [d.key, Math.max(0, weights[d.key] ?? 0)])
+  );
+  const total = Object.values(clean).reduce((sum, value) => sum + value, 0);
+  if (total <= 0) return weightsForProfile("bridge_builders");
+  return Object.fromEntries(Object.entries(clean).map(([key, value]) => [key, value / total]));
+}
 
 // ── Institution collaboration heatmap (replaces messy force-graph) ───────────
 function buildInstHeatmapOption(payload: InstitutionNetworkPayload) {
@@ -96,6 +148,139 @@ function buildInstHeatmapOption(payload: InstitutionNetworkPayload) {
   };
 }
 
+function ImportanceWeightEditor({
+  profile,
+  weights,
+  onProfileChange,
+  onWeightsChange,
+}: {
+  profile: string;
+  weights: Record<string, number>;
+  onProfileChange: (profile: string) => void;
+  onWeightsChange: (weights: Record<string, number>) => void;
+}) {
+  const normalized = normalizeWeights(weights);
+  const activeProfile = IMPORTANCE_PROFILES[profile] ?? IMPORTANCE_PROFILES.bridge_builders;
+  const total = Object.values(weights).reduce((sum, value) => sum + value, 0);
+
+  return (
+    <section className="importance-editor" aria-label="Node importance weight editor">
+      <div className="importance-editor-head">
+        <div>
+          <div className="section-kicker">Node importance profile</div>
+          <h2>Weight editor</h2>
+          <p>{activeProfile.purpose}</p>
+        </div>
+        <button
+          type="button"
+          className="ghost-button"
+          onClick={() => onWeightsChange(weightsForProfile(profile))}
+          title="Reset weights to the selected profile"
+        >
+          Reset
+        </button>
+      </div>
+
+      <div className="profile-grid" role="list">
+        {Object.entries(IMPORTANCE_PROFILES).map(([key, item]) => (
+          <button
+            type="button"
+            key={key}
+            className={key === profile ? "profile-chip active" : "profile-chip"}
+            onClick={() => onProfileChange(key)}
+            title={item.purpose}
+          >
+            {item.label}
+          </button>
+        ))}
+      </div>
+
+      <div className="weight-grid">
+        {IMPORTANCE_DIMENSIONS.map((dimension) => {
+          const value = normalized[dimension.key] ?? 0;
+          return (
+            <label key={dimension.key} className="weight-row">
+              <span>
+                <strong>{dimension.label}</strong>
+                <small>{(value * 100).toFixed(0)}%</small>
+              </span>
+              <input
+                type="range"
+                min={0}
+                max={100}
+                step={1}
+                value={Math.round(value * 100)}
+                onChange={(event) => {
+                  const next = {
+                    ...normalized,
+                    [dimension.key]: Number(event.target.value) / 100,
+                  };
+                  onWeightsChange(normalizeWeights(next));
+                }}
+              />
+            </label>
+          );
+        })}
+      </div>
+
+      <div className="weight-footer">
+        <span>Normalized total {(total > 0 ? 1 : 0).toFixed(0)}. Scores recompute server-side.</span>
+        <span>{IMPORTANCE_DIMENSIONS.length} dimensions</span>
+      </div>
+    </section>
+  );
+}
+
+function ImportanceRadar({ axes }: { axes?: ImportanceRadarAxis[] }) {
+  const radarAxes = axes?.length ? axes : IMPORTANCE_DIMENSIONS.map((d) => ({
+    key: d.key,
+    label: d.label,
+    value: 0,
+    weight: 0,
+  }));
+  const size = 176;
+  const center = size / 2;
+  const radius = 58;
+  const points = radarAxes.map((axis, i) => {
+    const angle = -Math.PI / 2 + (i / radarAxes.length) * Math.PI * 2;
+    const valueRadius = radius * Math.max(0, Math.min(1, axis.value ?? 0));
+    return {
+      ...axis,
+      x: center + Math.cos(angle) * valueRadius,
+      y: center + Math.sin(angle) * valueRadius,
+      lx: center + Math.cos(angle) * (radius + 22),
+      ly: center + Math.sin(angle) * (radius + 22),
+      gx: center + Math.cos(angle) * radius,
+      gy: center + Math.sin(angle) * radius,
+    };
+  });
+  const polygon = points.map((p) => `${p.x},${p.y}`).join(" ");
+
+  return (
+    <svg className="importance-radar" width={size} height={size} viewBox={`0 0 ${size} ${size}`}>
+      {[0.33, 0.66, 1].map((level) => {
+        const ring = radarAxes.map((_axis, i) => {
+          const angle = -Math.PI / 2 + (i / radarAxes.length) * Math.PI * 2;
+          return `${center + Math.cos(angle) * radius * level},${center + Math.sin(angle) * radius * level}`;
+        }).join(" ");
+        return <polygon key={level} points={ring} fill="none" stroke="rgba(33,60,81,0.10)" />;
+      })}
+      {points.map((p) => (
+        <line key={p.key} x1={center} y1={center} x2={p.gx} y2={p.gy} stroke="rgba(33,60,81,0.10)" />
+      ))}
+      <polygon points={polygon} fill="rgba(101,148,177,0.22)" stroke="var(--accent)" strokeWidth={2} />
+      {points.map((p) => (
+        <g key={p.key}>
+          <circle cx={p.x} cy={p.y} r={3} fill="var(--color-navy)" />
+          <text x={p.lx} y={p.ly} textAnchor={p.lx < center - 4 ? "end" : p.lx > center + 4 ? "start" : "middle"}>
+            {p.label.replace(" ", "\n")}
+          </text>
+        </g>
+      ))}
+    </svg>
+  );
+}
+
 // ── Author detail panel ───────────────────────────────────────────────────────
 function AuthorPanel({
   node,
@@ -118,6 +303,8 @@ function AuthorPanel({
 
   const isBridge = !node.is_ac_member && node.c_norm > 1.25;
   const pprPct = (node.ppr_score * 100).toFixed(1);
+  const importanceScore = node.importance_score ?? node.ppr_score ?? 0;
+  const components = node.importance_components ?? {};
 
   return (
     <div style={{
@@ -181,6 +368,32 @@ function AuthorPanel({
         </div>
       </div>
 
+      <div className="importance-panel">
+        <div className="importance-panel-title">
+          <span>Importance</span>
+          <strong>{(importanceScore * 100).toFixed(1)}%</strong>
+        </div>
+        <p>{node.importance_explanation ?? "No importance explanation available."}</p>
+        <ImportanceRadar axes={node.importance_radar_axes} />
+        <div className="component-list">
+          {IMPORTANCE_DIMENSIONS.map((dimension) => {
+            const item = components[dimension.key];
+            const contribution = item?.contribution ?? 0;
+            const weight = item?.weight ?? 0;
+            const value = item?.value ?? 0;
+            return (
+              <div key={dimension.key} className="component-row">
+                <span>{dimension.label}</span>
+                <div>
+                  <strong>{(contribution * 100).toFixed(1)}</strong>
+                  <small>v {(value * 100).toFixed(0)} · w {(weight * 100).toFixed(0)}</small>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+
       {/* Collaborators list */}
       {neighbors.length > 0 && (
         <>
@@ -223,8 +436,8 @@ function MetricBox({ label, value }: { label: string; value: string }) {
   );
 }
 
-// ── PPR ranking strip ─────────────────────────────────────────────────────────
-function PprRanking({
+// ── Importance ranking strip ─────────────────────────────────────────────────
+function ImportanceRanking({
   nodes,
   onSelect,
 }: {
@@ -233,7 +446,7 @@ function PprRanking({
 }) {
   const top = [...nodes]
     .filter((n) => !n.is_ac_member)
-    .sort((a, b) => b.ppr_score - a.ppr_score)
+    .sort((a, b) => (b.importance_score ?? b.ppr_score) - (a.importance_score ?? a.ppr_score))
     .slice(0, 8);
 
   if (top.length === 0) return null;
@@ -241,7 +454,7 @@ function PprRanking({
   return (
     <div style={{ marginTop: 20, background: "var(--surface)", border: "1px solid var(--border)", borderRadius: 10, padding: "14px 16px" }}>
       <div style={{ fontSize: 12, fontWeight: 600, color: "var(--muted)", marginBottom: 12, textTransform: "uppercase", letterSpacing: "0.05em" }}>
-        Top External Collaborators by AC Influence
+        Top External Collaborators by Selected Importance
       </div>
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))", gap: 8 }}>
         {top.map((n, i) => (
@@ -262,10 +475,10 @@ function PprRanking({
               {n.c_norm > 1.25 && <span style={{ fontSize: 10, color: "#fbbf24" }}>★</span>}
             </div>
             <div style={{ height: 4, background: "var(--border)", borderRadius: 2, overflow: "hidden" }}>
-              <div style={{ height: "100%", width: `${n.ppr_score * 100}%`, background: "#7aa2f7", borderRadius: 2 }} />
+              <div style={{ height: "100%", width: `${(n.importance_score ?? n.ppr_score) * 100}%`, background: "#7aa2f7", borderRadius: 2 }} />
             </div>
             <div style={{ fontSize: 11, color: "var(--muted)" }}>
-              PPR {(n.ppr_score * 100).toFixed(1)}% · {n.paper_count} papers
+              Score {((n.importance_score ?? n.ppr_score) * 100).toFixed(1)}% · {n.paper_count} papers
             </div>
           </button>
         ))}
@@ -282,20 +495,37 @@ export default function CoauthorNetworkPage() {
   const [view, setView] = useState<View>("authors");
   const [onlyRelevant, setOnlyRelevant] = useState(true);
   const [minPapers, setMinPapers] = useState(1);
+  const [importanceProfile, setImportanceProfile] = useState("bridge_builders");
+  const [importanceWeights, setImportanceWeights] = useState<Record<string, number>>(
+    () => weightsForProfile("bridge_builders")
+  );
   const [payload, setPayload] = useState<NetworkPayload | null>(null);
   const [instPayload, setInstPayload] = useState<InstitutionNetworkPayload | null>(null);
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const normalizedWeights = useMemo(
+    () => normalizeWeights(importanceWeights),
+    [importanceWeights]
+  );
+
+  function handleProfileChange(profile: string) {
+    setImportanceProfile(profile);
+    setImportanceWeights(weightsForProfile(profile));
+    setSelectedId(null);
+  }
 
   // Fetch author network
   useEffect(() => {
     let cancelled = false;
     setError(null);
-    getCoauthorNetwork(onlyRelevant)
+    getCoauthorNetwork(onlyRelevant, {
+      importanceProfile,
+      importanceWeights: normalizedWeights,
+    })
       .then((p) => { if (!cancelled) setPayload(p); })
       .catch((e) => { if (!cancelled) setError(e instanceof Error ? e.message : String(e)); });
     return () => { cancelled = true; };
-  }, [onlyRelevant]);
+  }, [onlyRelevant, importanceProfile, normalizedWeights]);
 
   // Fetch institution network on demand
   useEffect(() => {
@@ -354,6 +584,18 @@ export default function CoauthorNetworkPage() {
         )}
       </div>
 
+      {view === "authors" && (
+        <ImportanceWeightEditor
+          profile={importanceProfile}
+          weights={normalizedWeights}
+          onProfileChange={handleProfileChange}
+          onWeightsChange={(next) => {
+            setImportanceWeights(next);
+            setSelectedId(null);
+          }}
+        />
+      )}
+
       {error && <div style={{ color: "var(--uncertain)", marginBottom: 8 }}>Backend error: {error}</div>}
 
       {/* Graph + detail panel */}
@@ -389,9 +631,9 @@ export default function CoauthorNetworkPage() {
         )}
       </div>
 
-      {/* PPR ranking (authors view only) */}
+      {/* Importance ranking (authors view only) */}
       {view === "authors" && payload && (
-        <PprRanking nodes={payload.nodes} onSelect={(id) => setSelectedId(id)} />
+        <ImportanceRanking nodes={payload.nodes} onSelect={(id) => setSelectedId(id)} />
       )}
     </div>
   );
