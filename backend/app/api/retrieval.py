@@ -8,7 +8,7 @@ from pathlib import Path
 
 from fastapi import APIRouter, Depends, HTTPException, UploadFile
 from pydantic import BaseModel
-from sqlalchemy import select
+from sqlalchemy import func, select
 from sqlalchemy.orm import Session
 
 from app.db import get_session
@@ -242,23 +242,11 @@ def retrieve_answer(
     OOM fix: limits chunk loading to MAX_CHUNKS most-recently-embedded chunks
     so the TF-IDF fit stays within Render's 512 MB limit.
     """
-    MAX_CHUNKS = 5000  # enough for semantic coverage, safe for 512 MB
+    MAX_CHUNKS = 2000  # safe for Render 512 MB; covers ~1000 papers × 2 chunks
 
-    # Load only the most recent / embedded chunks to avoid OOM
-    chunks = list(session.execute(
-        select(PaperChunk)
-        .where(PaperChunk.embedding.is_not(None))
-        .order_by(PaperChunk.created_at.desc())
-        .limit(MAX_CHUNKS)
-    ).scalars())
-
-    if not chunks:
-        # Fall back to all chunks if none embedded
-        chunks = list(session.execute(
-            select(PaperChunk).limit(MAX_CHUNKS)
-        ).scalars())
-
-    if not chunks:
+    # Check if any chunks exist at all
+    chunk_count = session.scalar(select(func.count()).select_from(PaperChunk))
+    if not chunk_count:
         return AnswerOut(
             answer="知识库还没有索引任何论文片段。请先触发 POST /admin/seed-chunks。",
             sources=[],
@@ -267,7 +255,10 @@ def retrieve_answer(
         )
 
     embedder = get_embedder()
-    index = HybridIndex.from_session(session, embedder)
+    # load_graph_scores=False skips loading all PaperClassification rows (saves ~100 MB)
+    index = HybridIndex.from_session(session, embedder,
+                                      max_chunks=MAX_CHUNKS,
+                                      load_graph_scores=False)
     year_range: tuple[int | None, int | None] | None = None
     if payload.year_from is not None or payload.year_to is not None:
         year_range = (payload.year_from, payload.year_to)
