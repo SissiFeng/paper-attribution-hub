@@ -76,7 +76,7 @@ class Settings(BaseSettings):
     # Kimi (MoonShot AI) — OpenAI-compatible, set PAS_KIMI_API_KEY in Render
     kimi_api_key: str = ""
     kimi_model: str = "moonshot-v1-32k"
-    kimi_base_url: str = "https://api.moonshot.cn/v1"
+    kimi_base_url: str = "https://api.moonshot.ai/v1"
     # Which LLM to use for answer generation: "kimi" | "anthropic" | "auto"
     # "auto" = use kimi if key set, else anthropic, else retrieval-only
     llm_provider: str = "auto"
