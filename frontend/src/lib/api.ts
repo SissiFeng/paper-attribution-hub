@@ -466,17 +466,33 @@ export function retrieveAnswer(params: {
   year_to?: number | null;
   paper_ids?: string[] | null;
 }) {
-  return request<AnswerOut>("/retrieve/answer", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(params),
-  });
+  return withMock(
+    () => request<AnswerOut>("/retrieve/answer", {
+      method: "POST",
+      body: JSON.stringify(params),
+    }),
+    {
+      answer: "(Mock) No backend connected. Set VITE_USE_MOCK=false to query the real API.",
+      sources: [],
+      model: "mock",
+      chunks_retrieved: 0,
+      proposition_hints: [],
+      query_type: "fact",
+      evidence_score: 0,
+      source_precision: 0,
+      missing_evidence: [],
+      should_retry: false,
+    } as AnswerOut,
+  );
 }
 
 export function searchPropositions(q: string, top_k = 10, predicate?: string[]) {
   const params = new URLSearchParams({ q, top_k: String(top_k) });
   if (predicate?.length) predicate.forEach((p) => params.append("predicate", p));
-  return request<PropositionHit[]>(`/retrieval/propositions?${params}`);
+  return withMock(
+    () => request<PropositionHit[]>(`/retrieval/propositions?${params}`),
+    [] as PropositionHit[],
+  );
 }
 
 export function submitRagFeedback(payload: RagFeedbackIn) {

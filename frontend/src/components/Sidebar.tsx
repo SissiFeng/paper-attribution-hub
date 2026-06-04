@@ -61,6 +61,16 @@ const ICONS: Record<string, JSX.Element> = {
       <line x1="10" y1="10" x2="14" y2="14" />
     </svg>
   ),
+  "Graph RAG": (
+    <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.6">
+      <circle cx="8" cy="4" r="2" />
+      <circle cx="3" cy="12" r="2" />
+      <circle cx="13" cy="12" r="2" />
+      <line x1="8" y1="6" x2="5" y2="10" />
+      <line x1="8" y1="6" x2="11" y2="10" />
+      <line x1="5" y1="12" x2="11" y2="12" />
+    </svg>
+  ),
   Insights: (
     <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.6">
       <polyline points="1,12 5,7 8,9 11,4 15,8" />

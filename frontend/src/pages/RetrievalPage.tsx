@@ -114,6 +114,46 @@ export default function RetrievalPage() {
         <div style={{ color: "#f87171", marginBottom: 16 }}>{error}</div>
       )}
 
+      {!result && !loading && !error && (
+        <div
+          style={{
+            marginTop: 40, textAlign: "center", color: "#444",
+            display: "flex", flexDirection: "column", alignItems: "center", gap: 20,
+          }}
+        >
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="#333" strokeWidth="1.5">
+            <circle cx="20" cy="20" r="12" />
+            <line x1="30" y1="30" x2="42" y2="42" />
+            <line x1="14" y1="20" x2="26" y2="20" strokeWidth="1.2" />
+            <line x1="20" y1="14" x2="20" y2="26" strokeWidth="1.2" />
+          </svg>
+          <div style={{ fontSize: 14, color: "#555" }}>
+            Ask a question about the SDL paper corpus
+          </div>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: 8, justifyContent: "center", maxWidth: 600 }}>
+            {[
+              "Which papers use Bayesian optimization for materials discovery?",
+              "What automation platforms are used in self-driving labs?",
+              "Papers funded by NSERC on closed-loop synthesis",
+              "Compare active learning approaches across SDL papers",
+            ].map((q) => (
+              <button
+                key={q}
+                type="button"
+                onClick={() => setQuery(q)}
+                style={{
+                  padding: "5px 12px", borderRadius: 20, fontSize: 12,
+                  border: "1px solid #2a2a2a", background: "#141414",
+                  color: "#666", cursor: "pointer",
+                }}
+              >
+                {q}
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
+
       {result && (
         <>
           {/* Tab bar */}
