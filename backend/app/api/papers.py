@@ -24,6 +24,7 @@ from app.schemas import (
 )
 from app.services.filter_spec import PaperFilter, apply_filter, paper_filter_query
 from app.services.rag_status_service import rag_status_by_paper
+from app.services.sdl_dimensions import dimensions_from_evidence_summary
 
 router = APIRouter(prefix="/papers", tags=["papers"])
 
@@ -60,6 +61,7 @@ def _paper_to_schema(
             ac_attribution_label=c.ac_attribution_label,
             model_agreement_status=c.model_agreement_status,
             disagreement_type=c.disagreement_type,
+            classification_dimensions=dimensions_from_evidence_summary(c.evidence_summary) or {},
             future_rule_update=c.future_rule_update,
             fulltext_evidence=[
                 FulltextEvidenceOut(

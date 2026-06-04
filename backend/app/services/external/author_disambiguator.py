@@ -21,6 +21,7 @@ from sqlalchemy import select
 from sqlalchemy.orm import Session
 
 from app.models import Author
+from app.services.author_matcher import preferred_author_display_name
 from app.services.normalization_service import normalize_name
 
 
@@ -49,7 +50,7 @@ def disambiguate(
         if row:
             return DisambiguationMatch(
                 author_id=row.id,
-                canonical_name=row.canonical_name,
+                canonical_name=preferred_author_display_name(row),
                 method="orcid",
                 confidence=1.0,
             )
@@ -61,7 +62,7 @@ def disambiguate(
             if meta.get("openalex_id") == openalex_author_id:
                 return DisambiguationMatch(
                     author_id=row.id,
-                    canonical_name=row.canonical_name,
+                    canonical_name=preferred_author_display_name(row),
                     method="openalex_id",
                     confidence=0.95,
                 )
@@ -79,7 +80,7 @@ def disambiguate(
             if row_inst and normalize_institution(row_inst) == target_inst:
                 return DisambiguationMatch(
                     author_id=row.id,
-                    canonical_name=row.canonical_name,
+                    canonical_name=preferred_author_display_name(row),
                     method="name_institution",
                     confidence=0.85,
                 )
@@ -102,7 +103,7 @@ def disambiguate(
             if coauthor_norms & their_coauthor_norms:
                 return DisambiguationMatch(
                     author_id=row.id,
-                    canonical_name=row.canonical_name,
+                    canonical_name=preferred_author_display_name(row),
                     method="name_coauthor",
                     confidence=0.75,
                 )

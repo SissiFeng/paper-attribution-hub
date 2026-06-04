@@ -5,8 +5,9 @@ from sqlalchemy.orm import Session
 
 from app.config import settings
 from app.db import get_session
-from app.schemas import EvalMetric, EvalReport
+from app.schemas import EvalMetric, EvalReport, RagFeedbackOut, RagFeedbackReport
 from app.services.eval_service import run_evaluation
+from app.services.rag_evaluator import build_feedback_report
 
 router = APIRouter(prefix="/eval", tags=["eval"])
 
@@ -40,4 +41,32 @@ def eval_metrics(
         evidence_recall_at_k=report.evidence_recall_at_k,
         k=report.k,
         n_evaluated=report.n_evaluated,
+    )
+
+
+@router.get("/rag-feedback", response_model=RagFeedbackReport)
+def rag_feedback_report(
+    limit: int = Query(default=20, ge=1, le=100),
+    session: Session = Depends(get_session),
+) -> RagFeedbackReport:
+    report = build_feedback_report(session, limit=limit)
+    return RagFeedbackReport(
+        total_feedback=report["total_feedback"],
+        average_rating=report["average_rating"],
+        low_rating_count=report["low_rating_count"],
+        by_failure_type=report["by_failure_type"],
+        recent=[
+            RagFeedbackOut(
+                id=row.id,
+                query=row.query,
+                rating=row.rating,
+                failure_type=row.failure_type,
+                note=row.note,
+                answer_model=row.answer_model,
+                source_chunk_ids=row.source_chunk_ids or [],
+                source_paper_ids=row.source_paper_ids or [],
+                created_at=row.created_at,
+            )
+            for row in report["recent"]
+        ],
     )

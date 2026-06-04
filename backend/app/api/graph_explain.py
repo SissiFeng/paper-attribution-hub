@@ -18,6 +18,7 @@ from app.schemas import (
     GraphExplanationOut,
     SecondDegreePathOut,
 )
+from app.services.author_matcher import preferred_author_display_name
 from app.services.graph_service import SecondDegreePath, CitationSignal
 
 router = APIRouter(prefix="/papers", tags=["graph_rag"])
@@ -52,7 +53,7 @@ def graph_explanation(
 
     # Direct AC authors from the authors relationship (lightweight).
     direct_ac_authors = [
-        pa.author.canonical_name
+        preferred_author_display_name(pa.author)
         for pa in session.execute(
             select(PaperAuthor).where(PaperAuthor.paper_id == paper_id)
         ).scalars()
@@ -85,6 +86,7 @@ def graph_explanation(
             cited_ac_core_id=s.get("cited_ac_core_id", ""),
             cited_ac_core_title=s.get("cited_ac_core_title", ""),
             cited_doi=s.get("cited_doi"),
+            raw_text=s.get("raw_text", ""),
         )
         for s in citation_raw
     ]

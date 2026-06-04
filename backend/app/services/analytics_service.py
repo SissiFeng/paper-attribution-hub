@@ -272,6 +272,7 @@ def institution_network(
     g = build_institution_graph(session)
 
     contrib: Counter[str] = Counter()
+    paper_contrib: Counter[str] = Counter()
     # Walk edges and accumulate paper counts against the filtered set.
     nodes_in_filter: set[str] = set()
     raw_edges: list[tuple[str, str, list[str]]] = []
@@ -284,6 +285,30 @@ def institution_network(
         nodes_in_filter.add(dst)
         contrib[src] += len(joint)
         contrib[dst] += len(joint)
+
+    # Include institutions that appear in filtered papers even when they have
+    # no remaining collaboration edge. Partner-only views can otherwise look
+    # empty for papers with a single partner institution.
+    inst_rows = session.execute(
+        select(PaperAuthor.paper_id, Author.institution_id)
+        .join(Author, Author.id == PaperAuthor.author_id)
+        .where(
+            PaperAuthor.paper_id.in_(paper_ids),
+            Author.institution_id.is_not(None),
+        )
+    ).all()
+    seen_paper_inst: set[tuple[str, str]] = set()
+    for paper_id, inst_id in inst_rows:
+        if inst_id not in g:
+            continue
+        if filt.partner_only and not g.nodes[inst_id].get("is_partner"):
+            continue
+        key = (paper_id, inst_id)
+        if key in seen_paper_inst:
+            continue
+        seen_paper_inst.add(key)
+        nodes_in_filter.add(inst_id)
+        paper_contrib[inst_id] += 1
 
     partner_nodes: set[str] = {
         node_id
@@ -311,7 +336,7 @@ def institution_network(
     all_nodes: list[InstitutionGraphNode] = []
     for node_id in nodes_in_filter:
         data = g.nodes[node_id]
-        paper_count = contrib[node_id]
+        paper_count = paper_contrib.get(node_id, contrib[node_id])
         if paper_count < min_papers:
             continue
         all_nodes.append(
@@ -328,6 +353,12 @@ def institution_network(
     nodes_out = sorted(all_nodes, key=lambda n: -n.paper_count)[:top_n]
     keep_node_ids = {n.id for n in nodes_out}
     edges_out = [e for e in edges_filtered if e.source in keep_node_ids and e.target in keep_node_ids]
+    if filt.partner_only:
+        partner_keep = {n.id for n in nodes_out if n.is_partner}
+        nodes_out = [n for n in nodes_out if n.id in partner_keep]
+        edges_out = [
+            e for e in edges_out if e.source in partner_keep and e.target in partner_keep
+        ]
 
     return nodes_out, edges_out
 

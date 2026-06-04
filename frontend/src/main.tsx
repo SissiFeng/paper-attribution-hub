@@ -24,6 +24,7 @@ import ImpactPage from "@/pages/ImpactPage";
 import DriftPage from "@/pages/DriftPage";
 import ReportPage from "@/pages/ReportPage";
 import NetworkGrowthPage from "@/pages/NetworkGrowthPage";
+import RetrievalPage from "@/pages/RetrievalPage";
 import "@/styles.css";
 
 // Layout for pages that need the sidebar — uses React Router's Outlet
@@ -65,6 +66,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
           <Route path="/multi-graph" element={<MultiGraphPage />} />
           <Route path="/geographic" element={<GeographicPage />} />
           <Route path="/growth" element={<NetworkGrowthPage />} />
+          <Route path="/retrieval" element={<RetrievalPage />} />
         </Route>
       </Routes>
     </BrowserRouter>

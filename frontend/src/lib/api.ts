@@ -1,4 +1,6 @@
 import type {
+  AnswerOut,
+  PropositionHit,
   AnalyticsOverview,
   DiscoveryCandidate,
   DiscoveryRunResult,
@@ -22,6 +24,7 @@ import type {
   PipelineRun,
   PipelineRunInput,
   QueueItem,
+  RagFeedbackIn,
   ReportResult,
   SankeyPayload,
   TimelinePayload,
@@ -451,6 +454,36 @@ export function compileWikiPage(paperId: string) {
     () => request<WikiPage>(`/wiki/paper/${paperId}/compile`, { method: "POST" }),
     MOCK_WIKI_PAGE(paperId)
   );
+}
+
+// ── Graph-enhanced retrieval ─────────────────────────────────────────────────
+
+export function retrieveAnswer(params: {
+  query: string;
+  top_k?: number;
+  alpha?: number;
+  year_from?: number | null;
+  year_to?: number | null;
+  paper_ids?: string[] | null;
+}) {
+  return request<AnswerOut>("/retrieve/answer", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(params),
+  });
+}
+
+export function searchPropositions(q: string, top_k = 10, predicate?: string[]) {
+  const params = new URLSearchParams({ q, top_k: String(top_k) });
+  if (predicate?.length) predicate.forEach((p) => params.append("predicate", p));
+  return request<PropositionHit[]>(`/retrieval/propositions?${params}`);
+}
+
+export function submitRagFeedback(payload: RagFeedbackIn) {
+  return request("/retrieve/feedback", {
+    method: "POST",
+    body: JSON.stringify(payload),
+  });
 }
 
 export { API_BASE };

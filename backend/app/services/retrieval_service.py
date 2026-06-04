@@ -35,7 +35,8 @@ _GRAPH_WEIGHT = 0.3
 _STRUCTURED_SIGNALS = {
     "use", "uses", "method", "technique", "approach", "funded", "funding",
     "grant", "mechanism", "employs", "implements", "developed",
-    "proposed", "built on", "based on",
+    "proposed", "built on", "based on", "platform", "domain", "autonomy",
+    "automation", "failure", "limitation", "constraint",
 }
 
 

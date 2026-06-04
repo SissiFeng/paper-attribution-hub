@@ -28,6 +28,10 @@ from app.services.normalization_service import normalize_name
 from app.services.evidence_extractor import _aggregate_score
 from app.services.graph_service import GraphSignals, compute_graph_signals
 from app.services.institution_matcher import InstitutionMatch, InstitutionMatcher
+from app.services.sdl_dimensions import (
+    infer_sdl_dimensions,
+    merge_dimensions_into_evidence_summary,
+)
 from app.services.topic_classifier import ClassifyResult, TopicClassifier, TopicMatch
 
 LABEL_CORE = "CORE_RELEVANT"
@@ -771,6 +775,10 @@ def classify_all(
                 result.network_score, result.citation_score,
             )
             cls.model_agreement_status = cls.model_agreement_status or "single_model"
+            cls.evidence_summary = merge_dimensions_into_evidence_summary(
+                cls.evidence_summary,
+                infer_sdl_dimensions(paper, topic_score=result.topic_score),
+            )
             cls.model_version = _model_version_for(result)
             cls.matched_people = _serialize_matched_people(result.matched_people)
             cls.matched_institutions = _serialize_matched_institutions(result.matched_institutions)
@@ -1010,6 +1018,10 @@ def _classify_subset(
             result.citation_score,
         )
         cls.model_agreement_status = cls.model_agreement_status or "single_model"
+        cls.evidence_summary = merge_dimensions_into_evidence_summary(
+            cls.evidence_summary,
+            infer_sdl_dimensions(paper, topic_score=result.topic_score),
+        )
         cls.model_version = _model_version_for(result)
         cls.matched_people = _serialize_matched_people(result.matched_people)
         cls.matched_institutions = _serialize_matched_institutions(

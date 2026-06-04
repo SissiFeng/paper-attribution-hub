@@ -35,7 +35,7 @@ def rag_status_by_paper(session: Session, paper_ids: list[str]) -> dict[str, Rag
         ft = bool(ft_map.get(pid, False))
         cc, ec, evc, aec = chunk_count[pid], embedded_count[pid], ev_count[pid], attr_ev_count[pid]
         if not ft:
-            s, ready, action, hint = "no_fulltext", False, "upload_fulltext", "Upload PDF to enable full-text evidence."
+            s, ready, action, hint = "missing_fulltext", False, "upload_or_fetch_fulltext", "Upload or fetch the PDF to enable full-text evidence."
         elif cc == 0:
             s, ready, action, hint = "not_chunked", False, "run_chunker", "POST /admin/seed-chunks to create abstract chunks."
         elif ec == 0:

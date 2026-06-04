@@ -4,9 +4,10 @@ import styles from "./Sidebar.module.css";
 // ── Route groups ────────────────────────────────────────────────────────────
 
 const RESEARCH_NAV = [
-  { to: "/",          label: "Papers",       end: true },
-  { to: "/queue",     label: "Review Queue"            },
-  { to: "/discovery", label: "Discovery"               },
+  { to: "/",           label: "Papers",       end: true },
+  { to: "/queue",      label: "Review Queue"            },
+  { to: "/discovery",  label: "Discovery"               },
+  { to: "/retrieval",  label: "Graph RAG"               },
 ];
 
 const ANALYTICS_NAV = [

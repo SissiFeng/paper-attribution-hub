@@ -46,6 +46,7 @@ from app.services.relevance_classifier import (
     LABEL_SDL_FIELD,
     LABEL_UNCERTAIN,
 )
+from app.services.sdl_dimensions import infer_sdl_dimensions
 
 if TYPE_CHECKING:
     from app.models import Paper, PaperClassification
@@ -82,6 +83,7 @@ class ScopusClassifyResult:
     architecture_signal: float
     needs_review: bool
     review_priority: float
+    classification_dimensions: dict[str, str] = field(default_factory=dict)
     reasons: list[str] = field(default_factory=list)
     model_version: str = "scopus-rules-v1.0"
 
@@ -221,6 +223,7 @@ def classify_paper(paper: "Paper") -> ScopusClassifyResult:
         architecture_signal=round(arch_signal, 4),
         needs_review=needs_review,
         review_priority=round(priority, 4),
+        classification_dimensions=infer_sdl_dimensions(paper, topic_score=sdl_score),
         reasons=reasons,
     )
 
@@ -290,6 +293,7 @@ def _evidence_summary(result: ScopusClassifyResult) -> list[dict]:
         {"type": "acknowledgement", "score": result.acknowledgement_signal},
         {"type": "retrieval", "score": result.retrieval_signal},
         {"type": "architecture", "score": result.architecture_signal},
+        {"type": "classification_dimensions", "dimensions": result.classification_dimensions},
     ]
 
 

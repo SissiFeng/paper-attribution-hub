@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { retrieveAnswer, searchPropositions } from "@/lib/api";
+import { retrieveAnswer, searchPropositions, submitRagFeedback } from "@/lib/api";
 import type { AnswerOut, PropositionHit } from "@/types";
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -18,6 +18,8 @@ export default function RetrievalPage() {
   const [propHits, setPropHits] = useState<PropositionHit[] | null>(null);
   const [activeTab, setActiveTab] = useState<"answer" | "propositions">("answer");
   const [error, setError] = useState<string | null>(null);
+  const [feedbackSent, setFeedbackSent] = useState(false);
+  const [failureType, setFailureType] = useState<string>("missing_source");
 
   async function handleSearch(e: React.FormEvent) {
     e.preventDefault();
@@ -31,6 +33,7 @@ export default function RetrievalPage() {
       ]);
       setResult(ans);
       setPropHits(props);
+      setFeedbackSent(false);
     } catch (err) {
       setError(String(err));
     } finally {
@@ -50,6 +53,19 @@ export default function RetrievalPage() {
         <span style={{ fontSize: 11, color: "#aaa" }}>{v.toFixed(3)}</span>
       </div>
     ) : null;
+
+  async function handleFeedback(rating: number) {
+    if (!result) return;
+    await submitRagFeedback({
+      query,
+      rating,
+      failure_type: rating <= 2 ? failureType : null,
+      answer_model: result.model,
+      source_chunk_ids: result.sources.map((s) => s.chunk_id),
+      source_paper_ids: Array.from(new Set(result.sources.map((s) => s.paper_id))),
+    });
+    setFeedbackSent(true);
+  }
 
   return (
     <div style={{ padding: "24px 32px", maxWidth: 960, margin: "0 auto" }}>
@@ -120,6 +136,44 @@ export default function RetrievalPage() {
               {result.chunks_retrieved} chunks searched · {result.sources.length} returned · {result.model}
             </span>
           </div>
+
+          <div
+            style={{
+              display: "grid", gridTemplateColumns: "repeat(4, minmax(0, 1fr))",
+              gap: 10, marginBottom: 16,
+            }}
+          >
+            <div style={{ background: "#111", border: "1px solid #2a2a2a", borderRadius: 8, padding: 10 }}>
+              <div style={{ fontSize: 11, color: "#666" }}>Query type</div>
+              <div style={{ fontSize: 13, fontWeight: 600 }}>{result.query_type}</div>
+            </div>
+            <div style={{ background: "#111", border: "1px solid #2a2a2a", borderRadius: 8, padding: 10 }}>
+              <div style={{ fontSize: 11, color: "#666" }}>Evidence score</div>
+              <div style={{ fontSize: 13, fontWeight: 600 }}>{result.evidence_score.toFixed(3)}</div>
+            </div>
+            <div style={{ background: "#111", border: "1px solid #2a2a2a", borderRadius: 8, padding: 10 }}>
+              <div style={{ fontSize: 11, color: "#666" }}>Source precision</div>
+              <div style={{ fontSize: 13, fontWeight: 600 }}>{result.source_precision.toFixed(3)}</div>
+            </div>
+            <div style={{ background: "#111", border: "1px solid #2a2a2a", borderRadius: 8, padding: 10 }}>
+              <div style={{ fontSize: 11, color: "#666" }}>Retry signal</div>
+              <div style={{ fontSize: 13, fontWeight: 600, color: result.should_retry ? "#fbbf24" : "#7dc97d" }}>
+                {result.should_retry ? "Review evidence" : "Enough evidence"}
+              </div>
+            </div>
+          </div>
+
+          {result.missing_evidence.length > 0 && (
+            <div
+              style={{
+                background: "#1a1500", border: "1px solid #4a3900",
+                borderRadius: 8, padding: 12, marginBottom: 16,
+                color: "#d4a574", fontSize: 13,
+              }}
+            >
+              {result.missing_evidence.map((m) => <div key={m}>{m}</div>)}
+            </div>
+          )}
 
           {activeTab === "answer" && (
             <>
@@ -207,6 +261,45 @@ export default function RetrievalPage() {
                     </p>
                   </div>
                 ))}
+              </div>
+
+              <div
+                style={{
+                  marginTop: 16, padding: 12, border: "1px solid #2a2a2a",
+                  borderRadius: 8, background: "#111", display: "flex",
+                  alignItems: "center", gap: 10, flexWrap: "wrap",
+                }}
+              >
+                <span style={{ fontSize: 12, color: "#888" }}>Was this answer useful?</span>
+                <button
+                  type="button"
+                  disabled={feedbackSent}
+                  onClick={() => void handleFeedback(5)}
+                  style={{ padding: "5px 10px", borderRadius: 6, border: "1px solid #2a4a2a", background: "#1e2a1e", color: "#7dc97d" }}
+                >
+                  Useful
+                </button>
+                <select
+                  value={failureType}
+                  onChange={(e) => setFailureType(e.target.value)}
+                  disabled={feedbackSent}
+                  style={{ padding: "5px 8px", borderRadius: 6, border: "1px solid #333", background: "#1a1a1a", color: "#aaa" }}
+                >
+                  <option value="missing_source">Missing source</option>
+                  <option value="wrong_source">Wrong source</option>
+                  <option value="hallucination">Hallucination risk</option>
+                  <option value="too_broad">Too broad</option>
+                  <option value="stale">Stale evidence</option>
+                </select>
+                <button
+                  type="button"
+                  disabled={feedbackSent}
+                  onClick={() => void handleFeedback(1)}
+                  style={{ padding: "5px 10px", borderRadius: 6, border: "1px solid #4a2a2a", background: "#2a1e1e", color: "#f87171" }}
+                >
+                  Needs work
+                </button>
+                {feedbackSent && <span style={{ fontSize: 12, color: "#666" }}>Feedback saved.</span>}
               </div>
             </>
           )}

@@ -89,6 +89,7 @@ export interface Classification {
   ac_attribution_label?: string | null;
   model_agreement_status?: string | null;
   disagreement_type?: string | null;
+  classification_dimensions?: Record<string, string>;
   future_rule_update?: string | null;
 }
 
@@ -539,6 +540,60 @@ export interface DuplicateCandidate {
   is_preprint: boolean;
   score: number;
 }
+
+// ── Retrieval (graph-enhanced) ──────────────────────────────────────────────
+
+export interface ChunkOut {
+  chunk_id: string;
+  paper_id: string;
+  section_type: string;
+  section_title: string | null;
+  text: string;
+  token_count: number;
+  score: number | null;
+  bm25_score: number | null;
+  cosine_score: number | null;
+  graph_score: number | null;
+}
+
+export interface SourceOut extends ChunkOut {
+  graph_context: string | null;
+}
+
+export interface PropositionHit {
+  paper_id: string;
+  predicate: string;
+  object_value: string;
+  claim_text: string;
+  confidence: number;
+  source_section: string | null;
+  score: number;
+}
+
+export interface AnswerOut {
+  answer: string;
+  sources: SourceOut[];
+  model: string;
+  chunks_retrieved: number;
+  proposition_hints: PropositionHit[];
+  query_type: string;
+  evidence_score: number;
+  source_precision: number;
+  missing_evidence: string[];
+  should_retry: boolean;
+}
+
+export interface RagFeedbackIn {
+  query: string;
+  rating: number;
+  failure_type?: string | null;
+  note?: string | null;
+  answer_model?: string | null;
+  source_chunk_ids: string[];
+  source_paper_ids: string[];
+}
+
+// ────────────────────────────────────────────────────────────────────────────
 
 export interface DuplicateGroup {
   key: string;

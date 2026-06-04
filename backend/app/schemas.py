@@ -90,6 +90,7 @@ class ClassificationOut(BaseModel):
     ac_attribution_label: str | None = None
     model_agreement_status: str | None = None
     disagreement_type: str | None = None
+    classification_dimensions: dict[str, str] = Field(default_factory=dict)
     future_rule_update: str | None = None
 
 
@@ -165,6 +166,37 @@ class PropositionHit(BaseModel):
     confidence: float
     source_section: str | None = None
     score: float
+
+
+class RagEvidenceAssessment(BaseModel):
+    query_type: str
+    evidence_score: float
+    source_precision: float
+    missing_evidence: list[str] = Field(default_factory=list)
+    should_retry: bool = False
+
+
+class RagFeedbackIn(BaseModel):
+    query: str
+    rating: int = Field(ge=1, le=5)
+    failure_type: str | None = None
+    note: str | None = None
+    answer_model: str | None = None
+    source_chunk_ids: list[str] = Field(default_factory=list)
+    source_paper_ids: list[str] = Field(default_factory=list)
+
+
+class RagFeedbackOut(RagFeedbackIn):
+    id: str
+    created_at: datetime
+
+
+class RagFeedbackReport(BaseModel):
+    total_feedback: int
+    average_rating: float | None = None
+    low_rating_count: int = 0
+    by_failure_type: dict[str, int] = Field(default_factory=dict)
+    recent: list[RagFeedbackOut] = Field(default_factory=list)
 
 
 class RetrieveRequest(BaseModel):

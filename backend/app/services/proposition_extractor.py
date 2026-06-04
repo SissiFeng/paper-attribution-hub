@@ -40,12 +40,18 @@ from app.models import (
     Topic,
 )
 from app.services.domain_tokenizer import get_vocabulary
+from app.services.sdl_dimensions import dimensions_from_evidence_summary
 
 PREDICATE_FUNDED_BY = "funded_by"
 PREDICATE_USES_METHOD = "uses_method"
 PREDICATE_AFFILIATED_WITH = "affiliated_with"
 PREDICATE_CITES = "cites"
 PREDICATE_BELONGS_TO_TOPIC = "belongs_to_topic"
+PREDICATE_USES_PLATFORM = "uses_platform"
+PREDICATE_USES_OPTIMIZATION_METHOD = "uses_optimization_method"
+PREDICATE_TARGETS_DOMAIN = "targets_domain"
+PREDICATE_HAS_AUTONOMY_LEVEL = "has_autonomy_level"
+PREDICATE_REPORTS_FAILURE_OR_LIMITATION = "reports_failure_or_limitation"
 
 
 @dataclass
@@ -109,6 +115,16 @@ _METHOD_KEYWORDS = [
     "self-driving laboratory",
     "self-driving lab",
     "autonomous platform",
+]
+
+_FAILURE_PATTERNS = [
+    "fails when",
+    "failure",
+    "limitation",
+    "limited by",
+    "constraint",
+    "does not generalize",
+    "performance deteriorates",
 ]
 
 
@@ -221,6 +237,59 @@ def _extract_topics(
     return out
 
 
+def _extract_dimensions(paper: Paper) -> list[PropositionRecord]:
+    if paper.classification is None:
+        return []
+    dims = dimensions_from_evidence_summary(paper.classification.evidence_summary)
+    if not dims:
+        return []
+    out: list[PropositionRecord] = []
+    mapping = [
+        ("platform_type", PREDICATE_USES_PLATFORM),
+        ("optimization_method", PREDICATE_USES_OPTIMIZATION_METHOD),
+        ("domain", PREDICATE_TARGETS_DOMAIN),
+        ("automation_level", PREDICATE_HAS_AUTONOMY_LEVEL),
+    ]
+    for key, predicate in mapping:
+        value = dims.get(key)
+        if not value or value in {"none", "unknown", "other"}:
+            continue
+        out.append(
+            PropositionRecord(
+                predicate=predicate,
+                object_value=value,
+                object_key=value,
+                claim_text=f"{paper.id} has SDL dimension {key}={value}.",
+                confidence=0.65,
+                source_section="classification_dimensions",
+                extra={"dimension": key},
+            )
+        )
+    return out
+
+
+def _extract_failures(
+    paper_id: str, evidence_rows: list[PaperEvidence]
+) -> list[PropositionRecord]:
+    out: list[PropositionRecord] = []
+    for ev in evidence_rows:
+        text = ev.evidence_text.lower()
+        if any(p in text for p in _FAILURE_PATTERNS):
+            out.append(
+                PropositionRecord(
+                    predicate=PREDICATE_REPORTS_FAILURE_OR_LIMITATION,
+                    object_value="limitation",
+                    object_key="limitation",
+                    claim_text=ev.evidence_text[:500],
+                    confidence=min(0.75, max(0.35, ev.score)),
+                    source_section=ev.evidence_source,
+                    source_evidence_id=ev.id,
+                    source_chunk_id=ev.chunk_id,
+                )
+            )
+    return out
+
+
 def extract_propositions_for_paper(
     session: Session,
     paper_id: str,
@@ -250,6 +319,8 @@ def extract_propositions_for_paper(
     records.extend(_extract_affiliations(paper, session))
     records.extend(_extract_citations(paper_id, references))
     records.extend(_extract_topics(paper, topic_index))
+    records.extend(_extract_dimensions(paper))
+    records.extend(_extract_failures(paper_id, evidence_rows))
 
     # Negative-phrase demotion: when a chunk supporting a method proposition
     # contains a negative phrase like "closed-loop control", flag it.

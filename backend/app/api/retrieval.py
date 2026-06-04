@@ -13,11 +13,12 @@ from sqlalchemy.orm import Session
 
 from app.db import get_session
 from app.models import Paper, PaperChunk
-from app.schemas import ChunkOut, PropositionHit, RetrieveRequest
+from app.schemas import ChunkOut, PropositionHit, RagFeedbackIn, RagFeedbackOut, RetrieveRequest
 from app.services.embedding_service import get_embedder
 from app.services.fulltext_service import build_chunk_embeddings, ingest_fulltext_file
 from app.services.relevance_classifier import classify_all
 from app.services.reranker import get_reranker
+from app.services.rag_evaluator import evaluate_retrieval, record_feedback
 from app.services.retrieval_service import HybridIndex, is_structured_query, search_propositions
 
 router = APIRouter(tags=["fulltext"])
@@ -51,6 +52,11 @@ class AnswerOut(BaseModel):
     model: str
     chunks_retrieved: int
     proposition_hints: list[PropositionHit] = []  # Point 2: structured hits
+    query_type: str = "fact"
+    evidence_score: float = 0.0
+    source_precision: float = 0.0
+    missing_evidence: list[str] = []
+    should_retry: bool = False
 
 
 @router.post("/papers/{paper_id}/fulltext", response_model=dict)
@@ -252,6 +258,9 @@ def retrieve_answer(
             sources=[],
             model="none",
             chunks_retrieved=0,
+            query_type="fact",
+            missing_evidence=["No paper chunks are indexed yet."],
+            should_retry=False,
         )
 
     embedder = get_embedder()
@@ -316,6 +325,12 @@ def retrieve_answer(
         raw_hits = search_propositions(session, payload.query, top_k=5)
         prop_hints = [PropositionHit(**h.__dict__) for h in raw_hits]
 
+    assessment = evaluate_retrieval(
+        payload.query,
+        sources,
+        proposition_hints=prop_hints,
+    )
+
     # Build context and generate answer
     context_blocks = "\n\n".join(
         f"[{i+1}] (paper={s.paper_id}, section={s.section_type}"
@@ -342,4 +357,37 @@ def retrieve_answer(
         model=model_used,
         chunks_retrieved=len(candidates),
         proposition_hints=prop_hints,
+        query_type=assessment.query_type,
+        evidence_score=assessment.evidence_score,
+        source_precision=assessment.source_precision,
+        missing_evidence=assessment.missing_evidence,
+        should_retry=assessment.should_retry,
+    )
+
+
+@router.post("/retrieve/feedback", response_model=RagFeedbackOut)
+def submit_rag_feedback(
+    payload: RagFeedbackIn,
+    session: Session = Depends(get_session),
+) -> RagFeedbackOut:
+    row = record_feedback(
+        session,
+        query=payload.query,
+        rating=payload.rating,
+        failure_type=payload.failure_type,
+        note=payload.note,
+        answer_model=payload.answer_model,
+        source_chunk_ids=payload.source_chunk_ids,
+        source_paper_ids=payload.source_paper_ids,
+    )
+    return RagFeedbackOut(
+        id=row.id,
+        query=row.query,
+        rating=row.rating,
+        failure_type=row.failure_type,
+        note=row.note,
+        answer_model=row.answer_model,
+        source_chunk_ids=row.source_chunk_ids or [],
+        source_paper_ids=row.source_paper_ids or [],
+        created_at=row.created_at,
     )

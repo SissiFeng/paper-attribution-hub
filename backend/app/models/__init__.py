@@ -15,6 +15,7 @@ from app.models.discovery import DiscoveryCandidate, ExternalCache
 from app.models.pipeline_run import PipelineRun
 from app.models.wiki import WikiPage
 from app.models.dedup import AuthorDedupDecision
+from app.models.rag_feedback import RagFeedback
 
 all_models = (
     Paper,
@@ -35,6 +36,7 @@ all_models = (
     PipelineRun,
     WikiPage,
     AuthorDedupDecision,
+    RagFeedback,
 )
 
 __all__ = [
@@ -56,5 +58,6 @@ __all__ = [
     "PipelineRun",
     "WikiPage",
     "AuthorDedupDecision",
+    "RagFeedback",
     "all_models",
 ]

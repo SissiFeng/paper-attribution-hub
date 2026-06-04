@@ -84,3 +84,38 @@ def test_negative_phrase_demotes_method_confidence(seeded_session):
     assert bayes
     assert bayes[0].confidence < 0.6  # original would be 0.85; negative cuts it to ~0.34
     assert (bayes[0].extra or {}).get("negative_phrase_detected") is True
+
+
+def test_dimension_propositions_from_classification_summary(seeded_session):
+    from app.models import Paper, PaperClassification
+    from app.services.proposition_extractor import extract_propositions_for_paper
+
+    paper = seeded_session.get(Paper, "P001")
+    paper.classification = PaperClassification(
+        id="cls_dim_p001",
+        paper_id="P001",
+        label="SDL_FIELD_RELEVANT",
+        confidence=0.8,
+        evidence_summary=[
+            {
+                "type": "classification_dimensions",
+                "dimensions": {
+                    "domain": "materials",
+                    "automation_level": "autonomous",
+                    "autonomy_basis": "paper_self_description",
+                    "optimization_method": "bayesian",
+                    "platform_type": "physical_sdl",
+                    "evidence_role": "case_study",
+                },
+            }
+        ],
+    )
+    seeded_session.flush()
+
+    records = extract_propositions_for_paper(seeded_session, "P001")
+    pairs = {(r.predicate, r.object_value) for r in records}
+
+    assert ("targets_domain", "materials") in pairs
+    assert ("has_autonomy_level", "autonomous") in pairs
+    assert ("uses_optimization_method", "bayesian") in pairs
+    assert ("uses_platform", "physical_sdl") in pairs
