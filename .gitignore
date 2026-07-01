@@ -37,6 +37,8 @@ dist/
 # Sensitive / large data files (keep config CSVs, skip raw data)
 /data/sample_papers.csv
 /data/eval_labels.csv
+!/data/sample_papers.csv
+!/data/eval_labels.csv
 /data/fulltexts/
 # (gzipped copies of these two root CSVs live in data/)
 /AC Publications (Focused)-Grid view.csv
