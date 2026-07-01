@@ -12,12 +12,15 @@ from app.api import (
     discovery,
     evaluation,
     graph_explain,
+    kb,
+    labs,
     networks,
     papers,
     propositions,
     retrieval,
     review_queue,
     reviews,
+    transfer_studio,
     wiki,
 )
 from app.config import settings
@@ -62,6 +65,9 @@ app.include_router(admin.router)
 app.include_router(discovery.router)
 app.include_router(review_queue.router)
 app.include_router(wiki.router)
+app.include_router(labs.router)
+app.include_router(kb.router)
+app.include_router(transfer_studio.router)
 
 
 @app.get("/health", tags=["meta"])

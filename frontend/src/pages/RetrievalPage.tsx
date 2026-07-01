@@ -2,6 +2,77 @@ import { useState } from "react";
 import { retrieveAnswer, searchPropositions, submitRagFeedback } from "@/lib/api";
 import type { AnswerOut, PropositionHit } from "@/types";
 
+// ── Graph path visualizer ──────────────────────────────────────────────────
+// Parses graph_context strings like:
+//   "network: Via Author → AC Author (3 shared papers) | cites AC core: Title"
+// and renders them as a node-dot + dashed-arrow diagram.
+
+type PathSegment = { kind: "network" | "cite"; nodes: string[]; detail?: string };
+
+function parseGraphContext(ctx: string): PathSegment[] {
+  return ctx.split(" | ").map((seg) => {
+    if (seg.startsWith("network: ")) {
+      const body = seg.slice(9);
+      const m = body.match(/^(.+?) → (.+?) \((\d+) shared/);
+      if (m) return { kind: "network" as const, nodes: [m[1].trim(), m[2].trim()], detail: `${m[3]} shared` };
+      return { kind: "network" as const, nodes: body.split(" → ").map((s) => s.trim()) };
+    }
+    if (seg.startsWith("cites AC core: ")) {
+      const title = seg.slice(15);
+      return { kind: "cite" as const, nodes: ["paper", title.length > 44 ? title.slice(0, 42) + "…" : title] };
+    }
+    return { kind: "network" as const, nodes: [seg.slice(0, 50)] };
+  });
+}
+
+function GraphPath({ context }: { context: string }) {
+  const segments = parseGraphContext(context);
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+      {segments.map((seg, si) => {
+        const dot = seg.kind === "cite" ? "#a07830" : "#3a6a7a";
+        const line = seg.kind === "cite" ? "#241800" : "#0a2025";
+        return (
+          <div key={si} style={{ display: "flex", alignItems: "flex-start" }}>
+            {seg.nodes.map((node, ni) => (
+              <div key={ni} style={{ display: "flex", alignItems: "flex-start" }}>
+                <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 3 }}>
+                  <div style={{
+                    width: 6, height: 6, borderRadius: "50%",
+                    background: dot, boxShadow: `0 0 5px ${dot}88`, marginTop: 1,
+                  }} />
+                  <span style={{
+                    fontSize: 9, color: "#555", textAlign: "center",
+                    letterSpacing: "0.04em", lineHeight: 1.25,
+                    maxWidth: 68, overflow: "hidden",
+                    textOverflow: "ellipsis", whiteSpace: "nowrap",
+                  }}>
+                    {node}
+                  </span>
+                </div>
+                {ni < seg.nodes.length - 1 && (
+                  <div style={{ display: "flex", flexDirection: "column", alignItems: "center", padding: "1px 2px 0" }}>
+                    <svg width="48" height="8" style={{ overflow: "visible" }}>
+                      <line x1="0" y1="3.5" x2="40" y2="3.5"
+                        stroke={line} strokeWidth="1.2" strokeDasharray="3 2.5" />
+                      <polygon points="37,1 41,3.5 37,6" fill={line} />
+                    </svg>
+                    {seg.detail && (
+                      <span style={{ fontSize: 8, color: "#3a3a3a", whiteSpace: "nowrap", marginTop: 1 }}>
+                        {seg.detail}
+                      </span>
+                    )}
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const PREDICATE_OPTIONS = [
   "uses_method",
@@ -283,16 +354,19 @@ export default function RetrievalPage() {
                       {scoreBar(src.graph_score, "#d4a574")}
                     </div>
 
-                    {/* Graph context path */}
+                    {/* Graph path visualization */}
                     {src.graph_context && (
-                      <div
-                        style={{
-                          fontSize: 11, color: "#b8860b",
-                          background: "#1a1500", borderRadius: 4,
-                          padding: "4px 8px", marginBottom: 8,
-                        }}
-                      >
-                        🕸 {src.graph_context}
+                      <div style={{
+                        background: "#0b1a20", border: "1px solid #152530",
+                        borderRadius: 5, padding: "7px 10px", marginBottom: 8,
+                      }}>
+                        <div style={{
+                          fontSize: 8, color: "#2a4a55", letterSpacing: "0.1em",
+                          marginBottom: 5, fontWeight: 600,
+                        }}>
+                          GRAPH PATH
+                        </div>
+                        <GraphPath context={src.graph_context} />
                       </div>
                     )}
 

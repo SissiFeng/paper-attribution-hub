@@ -24,6 +24,7 @@ import json
 import sys
 
 from app.db import SessionLocal, init_database
+from app.logging_utils import configure_logging
 from app.services.scheduled_pipeline import run_daily_pipeline
 
 
@@ -61,6 +62,7 @@ def main() -> int:
     )
     args = parser.parse_args()
 
+    configure_logging()
     init_database()
     with SessionLocal() as session:
         result = run_daily_pipeline(

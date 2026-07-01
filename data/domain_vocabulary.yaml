@@ -12,17 +12,44 @@
 protected_phrases:
   - self-driving lab
   - self-driving laboratory
+  - self-driven lab
+  - self-driven laboratory
+  - autonomous lab
   - autonomous laboratory
+  - autonomous experiment
+  - autonomous discovery
+  - accelerated discovery
+  - accelerated experiment
+  - accelerated scientific discovery
+  - discovery acceleration
+  - materials acceleration platform
   - closed-loop experimentation
   - closed-loop optimization
+  - closed-loop
   - Bayesian optimization
   - active learning
+  - reinforcement learning
+  - Gaussian process
+  - data-driven
+  - algorithm-guided
   - high-throughput experimentation
+  - high throughput experiment
   - high-throughput screening
+  - HTE
   - workflow orchestration
   - robotic synthesis
   - robotic platform
+  - robotic experiment
+  - robotic laboratory
+  - robot scientist
   - automated synthesis
+  - automated experimentation
+  - self-optimizing
+  - adaptive optimization
+  - experiment planning
+  - adaptive experimentation
+  - design-build-test-learn
+  - DBTL
   - University of Toronto
   - University of British Columbia
   - Vector Institute
@@ -36,9 +63,16 @@ canonical_synonyms:
   autonomous lab: self-driving laboratory
   autonomous laboratory: self-driving laboratory
   self-driving lab: self-driving laboratory
+  self-driven lab: self-driving laboratory
+  self-driven laboratory: self-driving laboratory
+  self driving lab: self-driving laboratory
+  self driving laboratory: self-driving laboratory
   sdl: self-driving laboratory
   robotic experimentation: lab automation
   sequential optimization: Bayesian optimization
+  high throughput experiment: high-throughput experimentation
+  hte: high-throughput experimentation
+  design build test learn: design-build-test-learn
   experiment planning agent: scientific agent
   uoft: University of Toronto
   univ. toronto: University of Toronto

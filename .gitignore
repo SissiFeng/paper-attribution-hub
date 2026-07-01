@@ -32,11 +32,13 @@ dist/
 
 # All root-level markdown files (developer notes — not for GitHub)
 /*.md
+!/README.md
 
 # Sensitive / large data files (keep config CSVs, skip raw data)
 /data/sample_papers.csv
 /data/eval_labels.csv
 /data/fulltexts/
+# (gzipped copies of these two root CSVs live in data/)
 /AC Publications (Focused)-Grid view.csv
 /tier1_tier2_merged_classification_ready.csv
 /Retrieval_Operationalization.docx

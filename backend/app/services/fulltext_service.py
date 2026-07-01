@@ -26,13 +26,18 @@ from app.models import (
     PaperReference,
     PaperSection,
 )
-from app.services.chunking_service import chunk_sections, contextual_prefix, with_context
+from app.services.chunking_service import (
+    chunk_sections,
+    contextual_prefix,
+    with_parent_context,
+)
 from app.services.evidence_extractor import persist_evidence
 from app.services.normalization_service import normalize_doi
 from app.services.pdf_parser import (
     ParsedDocument,
     ParsedReferenceRecord,
     ParsedSection,
+    SUPPORTED_FULLTEXT_SUFFIXES,
     parse_any,
 )
 from app.services.reference_parser import extract_references_from_sections
@@ -132,7 +137,7 @@ def _persist_chunks(
             section_title=chunk.section_title,
         )
         indexed_text = (
-            with_context(chunk.text, prefix)
+            with_parent_context(chunk.text, prefix, chunk.parent_text)
             if settings.contextual_chunking
             else chunk.text
         )
@@ -153,6 +158,13 @@ def _persist_chunks(
                     "doi": paper.doi,
                     "venue": paper.venue,
                     "contextual_prefix": prefix,
+                    "chunk_kind": "child",
+                    "parent_id": chunk.parent_id,
+                    "parent_text": chunk.parent_text,
+                    "parent_char_start": chunk.parent_char_start,
+                    "parent_char_end": chunk.parent_char_end,
+                    "parent_token_count": chunk.parent_token_count,
+                    "split_strategy": chunk.split_strategy,
                 },
             )
         )
@@ -280,7 +292,7 @@ def ingest_fulltext_directory(
     for path in sorted(Path(directory).glob("*")):
         if path.is_dir():
             continue
-        if path.suffix.lower() not in {".pdf", ".txt", ".md"}:
+        if path.suffix.lower() not in SUPPORTED_FULLTEXT_SUFFIXES:
             continue
         paper_id = path.stem
         if session.get(Paper, paper_id) is None:

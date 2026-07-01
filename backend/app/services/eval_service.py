@@ -41,9 +41,15 @@ class EvalReport:
     n_evaluated: int = 0
 
 
-def load_gold_labels(path: Path) -> dict[str, str]:
+def load_gold_labels(path: Path, silver_path: Path | None = None) -> dict[str, str]:
+    """Load gold labels; optionally merge silver labels (hand labels win)."""
     df = pd.read_csv(path)
-    return {str(row["paper_id"]).strip(): str(row["gold_label"]).strip() for _, row in df.iterrows()}
+    gold = {str(row["paper_id"]).strip(): str(row["gold_label"]).strip() for _, row in df.iterrows()}
+    if silver_path is not None:
+        silver = pd.read_csv(silver_path)
+        for _, row in silver.iterrows():
+            gold.setdefault(str(row["paper_id"]).strip(), str(row["gold_label"]).strip())
+    return gold
 
 
 def _precision_recall_f1(tp: int, fp: int, fn: int) -> tuple[float, float, float]:
@@ -159,8 +165,13 @@ def evidence_recall_at_k(
     return round(hits / evaluated, 3)
 
 
-def run_evaluation(session: Session, eval_labels_path: Path, k: int = 5) -> EvalReport:
-    gold = load_gold_labels(eval_labels_path)
+def run_evaluation(
+    session: Session,
+    eval_labels_path: Path,
+    k: int = 5,
+    silver_labels_path: Path | None = None,
+) -> EvalReport:
+    gold = load_gold_labels(eval_labels_path, silver_path=silver_labels_path)
     papers = list(session.execute(select(Paper)).scalars())
     pred = {p.id: p.classification.label for p in papers if p.classification}
     report = compute_metrics(pred, gold)

@@ -1,0 +1,294 @@
+# Hand-extracted example Transferable Knowledge Units (extractor="example").
+# Each is grounded in the real abstract of an ac_gold paper in the shipped DB.
+# These let the cross-SDL transfer demo run without any LLM API key.
+# Lessons are polarity-diverse and faithful to what each paper actually claims.
+
+tkus:
+  # ── Battery / electrolyte (2) ────────────────────────────────────────────
+  - paper_id: acgold_11f7152e6b04
+    source_domain: battery
+    problem_signature:
+      task_type: characterization
+      evaluation_cost: high
+      search_space: discrete
+      objectives: multi
+      budget_evaluations: 18361
+      batch_size: null
+      noise: low
+    method_core:
+      workflow: high-accuracy quantum-chemistry reference dataset generation over a fixed molecular library
+      surrogate_model: null
+      acquisition: null
+      loop: null
+      key_components:
+        - hierarchy of ab-initio methods (HF, MP2-F12, CCSD(T)-F12) as accuracy tiers
+        - large curated molecular library as the enumeration space
+        - implicit-solvent models swept across many solvents
+        - logging of compute cost (CPU time, disk) alongside each property
+    assumptions:
+      - the property of interest can be computed accurately from molecular structure alone
+      - a finite enumerated library adequately covers the design space
+      - higher levels of theory give trustworthy reference values
+    lessons:
+      - text: A tiered set of theory levels lets you trade compute cost against accuracy and produce calibrated reference labels.
+        polarity: positive
+      - text: Recording CPU time and storage per calculation makes the cost of high-fidelity labels explicit for downstream budgeting.
+        polarity: positive
+      - text: Coverage is bounded by the chosen library; properties outside the enumerated chemical space are not represented.
+        polarity: negative
+    domain_bindings:
+      - lithium battery electrolyte
+      - ionization potential / electron affinity
+      - solvation energy
+      - QM9 / Electrolyte Genome Project molecules
+
+  - paper_id: acgold_1e9ddd3dc480
+    source_domain: battery
+    problem_signature:
+      task_type: optimization
+      evaluation_cost: high
+      search_space: discrete
+      objectives: multi
+      budget_evaluations: null
+      batch_size: null
+      noise: low
+    method_core:
+      workflow: evolutionary Monte Carlo search over a graph-defined design space with tunable explore/exploit
+      surrogate_model: null
+      acquisition: Metropolis acceptance with adjustable temperature
+      loop: propose mutation, evaluate objective, accept/reject, iterate
+      key_components:
+        - genetic-algorithm-style mutation operators on graph representations
+        - Metropolis sampling to balance exploration and exploitation
+        - hard constraints enforced during search (lower bound on a secondary property)
+        - objective evaluated by a property predictor or simulator
+    assumptions:
+      - the design space can be expressed as mutable graphs
+      - the objective is cheap enough to evaluate many times during sampling
+      - constraints can be enforced as bounds during proposal acceptance
+    lessons:
+      - text: Casting the search as evolutionary Monte Carlo lets you tune exploration vs exploitation with a single temperature knob while keeping GA-style diversity.
+        polarity: positive
+      - text: Encoding secondary requirements as hard lower-bound constraints keeps optimized candidates physically admissible.
+        polarity: positive
+      - text: The approach inherits the vastness of the combinatorial space, so results depend heavily on the seed library and mutation operators chosen.
+        polarity: neutral
+    domain_bindings:
+      - battery electrolyte molecules
+      - solvation energy / dipole moment / HOMO-LUMO gap
+      - QM9 / EGP molecular graphs
+
+  # ── Polymer / formulation (3) ─────────────────────────────────────────────
+  - paper_id: acgold_45436743f63f
+    source_domain: polymer
+    problem_signature:
+      task_type: prediction
+      evaluation_cost: high
+      search_space: mixed
+      objectives: multi
+      budget_evaluations: 433
+      batch_size: null
+      noise: medium
+    method_core:
+      workflow: literature-curated dataset assembly to enable data-driven property prediction over a formulation design space
+      surrogate_model: machine learning regressors trained on tabular formulation features
+      acquisition: null
+      loop: null
+      key_components:
+        - manual literature curation into a structured open dataset
+        - formulation composition + process parameters as features
+        - measured physical characteristics as prediction targets
+    assumptions:
+      - published formulations are comparable enough to pool into one dataset
+      - tabular composition/process features capture the drivers of the target properties
+      - 433 records suffice to learn useful structure-property relationships
+    lessons:
+      - text: A shared, literature-curated open dataset is the prerequisite that unblocks ML-accelerated formulation design in a field that lacked one.
+        polarity: positive
+      - text: Designing and optimizing these formulations is an iterative trial-and-error process that data-driven models aim to shortcut.
+        polarity: neutral
+      - text: Comprehensive open datasets remain scarce despite decades of research, which is itself the bottleneck.
+        polarity: negative
+    domain_bindings:
+      - PLGA nanoparticle
+      - small-molecule drug delivery
+      - encapsulation efficiency / particle size
+
+  - paper_id: acgold_69fd03b3ab15
+    source_domain: polymer
+    problem_signature:
+      task_type: optimization
+      evaluation_cost: high
+      search_space: mixed
+      objectives: multi
+      budget_evaluations: null
+      batch_size: null
+      noise: medium
+    method_core:
+      workflow: closed-loop design combining experimental automation with ML over a constrained formulation space
+      surrogate_model: machine learning model mapping formulation parameters to performance
+      acquisition: model-guided selection of next formulations to test
+      loop: propose formulation, run automated experiment, measure, update model, repeat
+      key_components:
+        - experimental automation for reproducible sample preparation/measurement
+        - ML surrogate trained on a small initial subset
+        - iterative model-in-the-loop selection
+        - narrow but well-characterized design space
+    assumptions:
+      - a small initial subset of experiments is enough to seed a useful surrogate
+      - automated experiments are reproducible enough to train on
+      - the relevant design space can be bounded a priori
+    lessons:
+      - text: Pairing experimental automation with ML lets you accelerate design even when starting from only a small subset of experiments.
+        polarity: positive
+      - text: Traditional design methods are restricted to a narrow design space, which the data-driven loop is meant to widen.
+        polarity: negative
+      - text: Complex multi-component formulations make design intricate, so constraining the space up front is necessary.
+        polarity: neutral
+    domain_bindings:
+      - solid lipid nanoparticle / nanostructured lipid carrier
+      - cannabidiol (hydrophobic drug)
+      - oral bioavailability
+
+  - paper_id: acgold_5e6d32360cf7
+    source_domain: polymer
+    problem_signature:
+      task_type: prediction
+      evaluation_cost: medium
+      search_space: mixed
+      objectives: single
+      budget_evaluations: null
+      batch_size: null
+      noise: medium
+    method_core:
+      workflow: comparative survey of feature-representation choices for ML on macromolecular systems
+      surrogate_model: machine learning models over alternative molecular feature descriptors
+      acquisition: null
+      loop: null
+      key_components:
+        - multiple competing descriptor families compared on the same task
+        - explicit discussion of merits/limitations per representation
+        - emphasis on feature engineering as the lever for accuracy
+    assumptions:
+      - choice of feature representation materially changes predictive performance
+      - no single representation is universally best
+    lessons:
+      - text: There is no consensus universal representation for macromolecules; the right descriptor is sensitive to the property being predicted.
+        polarity: negative
+      - text: Making feature-engineering knowledge accessible is itself a lever for accelerating discovery.
+        polarity: positive
+      - text: Representation choice should be treated as a tunable design decision, not a fixed preprocessing step.
+        polarity: neutral
+    domain_bindings:
+      - polymeric biomaterials
+      - biomaterial interaction prediction
+      - macromolecular descriptors
+
+  # ── Catalysis / organic synthesis (2) ─────────────────────────────────────
+  - paper_id: acgold_320cac94a8b2
+    source_domain: catalysis
+    problem_signature:
+      task_type: prediction
+      evaluation_cost: high
+      search_space: discrete
+      objectives: single
+      budget_evaluations: null
+      batch_size: null
+      noise: low
+    method_core:
+      workflow: physics-informed additive baseline plus delta-machine-learning to correct residuals, screening via volcano plots
+      surrogate_model: delta-ML model correcting a cheap analytic baseline
+      acquisition: volcano-plot ranking to nominate top candidates
+      loop: null
+      key_components:
+        - additive combination rule giving a cheap analytic baseline (HIP/cHIP)
+        - delta-ML trained only on the baseline residuals for data efficiency
+        - volcano plots to identify promising candidates
+    assumptions:
+      - a domain-knowledge additive baseline captures most of the signal
+      - residuals are easier and cheaper to learn than the full target
+      - candidate quality is well summarized by a descriptor on a volcano plot
+    lessons:
+      - text: Learning only the residual on top of a physics-based additive baseline sharply improves data efficiency.
+        polarity: positive
+      - text: An additive combination rule lets you extend descriptors to unseen pairings without new measurements.
+        polarity: positive
+      - text: The baseline must actually be predictive for delta-ML to pay off; a poor baseline shifts the whole burden back to the ML model.
+        polarity: neutral
+    domain_bindings:
+      - homogeneous organometallic catalysis
+      - Hammett sigma constants / ligands and metals
+      - Suzuki-Miyaura cross-coupling
+
+  - paper_id: acgold_65692bf39579
+    source_domain: catalysis
+    problem_signature:
+      task_type: optimization
+      evaluation_cost: high
+      search_space: mixed
+      objectives: single
+      budget_evaluations: null
+      batch_size: null
+      noise: medium
+    method_core:
+      workflow: physics-grounded simulation feeding Bayesian optimization over a compositional space
+      surrogate_model: Bayesian / Gaussian-process model over composition
+      acquisition: Bayesian optimization with oversampling to handle imbalance
+      loop: simulate candidate, score, update posterior, propose next composition
+      key_components:
+        - first-principles simulation as the expensive evaluator
+        - Bayesian model for compositional optimization
+        - oversampling strategy to address imbalanced/sparse regimes
+        - mechanistic analysis to interpret why optima work
+    assumptions:
+      - simulation fidelity is high enough to guide the search
+      - the compositional space is the dominant lever on performance
+      - a Bayesian surrogate can be trained from limited simulated data
+    lessons:
+      - text: Coupling first-principles simulation with Bayesian optimization makes compositional search over a huge space tractable.
+        polarity: positive
+      - text: An oversampling variant of Bayesian learning helps when the informative region is sparse or imbalanced.
+        polarity: positive
+      - text: Without mechanistic insight into the system, blind compositional modification is unfeasible, so interpretability is part of the method, not an add-on.
+        polarity: neutral
+    domain_bindings:
+      - IrPdPtRhRu high-entropy-alloy catalyst
+      - hydrogen evolution reaction
+      - d-band / underpotential-deposited hydrogen
+
+  # ── Robotics / automation (1) ─────────────────────────────────────────────
+  - paper_id: acgold_092a5c2d81d2
+    source_domain: robotics
+    problem_signature:
+      task_type: automation
+      evaluation_cost: high
+      search_space: discrete
+      objectives: single
+      budget_evaluations: null
+      batch_size: null
+      noise: high
+    method_core:
+      workflow: translate natural-language instructions into executable plans via LLM plus task-and-motion planning
+      surrogate_model: large language model as the instruction-to-plan translator
+      acquisition: null
+      loop: perceive workspace, plan multi-step actions, execute, re-plan
+      key_components:
+        - LLM front-end converting NL instructions to structured plans
+        - task and motion planning to ground plans in feasible actions
+        - perception of the physical workspace
+        - embodied execution with multi-step action sequencing
+    assumptions:
+      - user intent can be expressed adequately in natural language
+      - an LLM can map NL to valid high-level plans
+      - the environment is perceivable and actions are physically executable
+    lessons:
+      - text: A natural-language interface lowers the barrier so non-expert users can drive complex autonomous-experiment hardware.
+        polarity: positive
+      - text: Reliably executing LLM-generated plans in the real world by an embodied agent remains challenging.
+        polarity: negative
+      - text: Coupling the LLM planner with task-and-motion planning is what bridges high-level intent and low-level robot commands.
+        polarity: neutral
+    domain_bindings:
+      - chemistry experiment robots
+      - robot-executable / low-level robotics languages
+      - autonomous chemistry experiment systems

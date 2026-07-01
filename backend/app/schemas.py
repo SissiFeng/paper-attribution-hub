@@ -40,6 +40,19 @@ class FulltextEvidenceOut(BaseModel):
     score: float
 
 
+class PaperEntityOut(BaseModel):
+    id: str
+    entity_type: str
+    name: str
+    normalized_name: str
+    evidence_chunk_id: str | None = None
+    section: str | None = None
+    confidence: float
+    extractor: str
+    stage: str | None = None
+    usage_snippet: str | None = None
+
+
 class SecondDegreePathOut(BaseModel):
     via_author_id: str
     via_author_name: str
@@ -319,6 +332,159 @@ class ImpactReportOut(BaseModel):
     window_to: int | None = None
 
 
+class TransferLabOut(BaseModel):
+    id: str
+    name: str
+
+
+class TransferFlowsOut(BaseModel):
+    labs: list[TransferLabOut] = Field(default_factory=list)
+    matrix: list[list[int]] = Field(default_factory=list)
+    intra_lab: dict[str, int] = Field(default_factory=dict)
+    total_cross_flows: int = 0
+
+
+class AdoptionOut(BaseModel):
+    lab: str
+    first_year: int
+    lag_years: int
+
+
+class AdoptionLagOut(BaseModel):
+    entity: str
+    entity_type: str
+    origin_lab: str
+    origin_year: int
+    adoptions: list[AdoptionOut] = Field(default_factory=list)
+
+
+class FastSpreadingEntityOut(BaseModel):
+    entity: str
+    entity_type: str
+    adopter_count: int
+    avg_lag_years: float
+
+
+class TransferSummaryOut(BaseModel):
+    labs: int
+    linked_papers: int
+    entities_tracked: int
+    cross_lab_entities: int
+    median_adoption_lag_years: float | None = None
+    fastest_spreading: list[FastSpreadingEntityOut] = Field(default_factory=list)
+
+
+class KbEntityIndexOut(BaseModel):
+    entity_type: str
+    name: str
+    paper_count: int
+    lab_count: int
+    first_year: int | None = None
+    last_year: int | None = None
+
+
+class KbEntityLabOut(BaseModel):
+    lab_id: str
+    lab_name: str
+    first_year: int | None = None
+    paper_count: int
+
+
+class KbEntityPaperOut(BaseModel):
+    id: str
+    title: str
+    year: int | None = None
+    labs: list[str] = Field(default_factory=list)
+    confidence: float
+    stage: str | None = None
+    usage_snippet: str | None = None
+
+
+class KbYearCountOut(BaseModel):
+    year: int
+    paper_count: int
+
+
+class KbEvidenceOut(BaseModel):
+    paper_id: str
+    paper_title: str
+    text: str
+    stage: str | None = None
+    usage_snippet: str | None = None
+
+
+class KbRelatedEntityOut(BaseModel):
+    entity_type: str
+    name: str
+
+
+class KbSagEventOut(BaseModel):
+    id: str
+    event_type: str
+    paper_id: str
+    paper_title: str
+    year: int | None = None
+    labs: list[str] = Field(default_factory=list)
+    entity_type: str
+    entity: str
+    stage: str | None = None
+    source_chunk_id: str | None = None
+    snippet: str
+    related_entities: list[KbRelatedEntityOut] = Field(default_factory=list)
+
+
+class KbEntityPageOut(BaseModel):
+    entity: str
+    entity_type: str
+    labs: list[KbEntityLabOut] = Field(default_factory=list)
+    papers: list[KbEntityPaperOut] = Field(default_factory=list)
+    timeline: list[KbYearCountOut] = Field(default_factory=list)
+    evidence: list[KbEvidenceOut] = Field(default_factory=list)
+    adoption: AdoptionLagOut | None = None
+    stages: dict[str, int] = Field(default_factory=dict)
+    events: list[KbSagEventOut] = Field(default_factory=list)
+
+
+class KbTopEntityOut(BaseModel):
+    name: str
+    paper_count: int
+
+
+class KbTagCountOut(BaseModel):
+    tag: str
+    count: int
+
+
+class KbCollaborationOut(BaseModel):
+    lab_id: str
+    name: str
+    shared_papers: int
+
+
+class KbLabProfileOut(BaseModel):
+    id: str
+    name: str
+    institution: str
+    pi_names: list[str] = Field(default_factory=list)
+    domain_focus: str
+    platform_stack: list[str] | None = None
+    automation_level: str | None = None
+    paper_count: int
+    first_year: int | None = None
+    last_year: int | None = None
+    sdl_tag_histogram: list[KbTagCountOut] = Field(default_factory=list)
+    top_entities: dict[str, list[KbTopEntityOut]] = Field(default_factory=dict)
+    collaborations: list[KbCollaborationOut] = Field(default_factory=list)
+    entities_unique_to_lab: int = 0
+
+
+class KbSummaryOut(BaseModel):
+    labs: int
+    linked_papers: int
+    entities_by_type: dict[str, int] = Field(default_factory=dict)
+    cross_lab_entities: int
+
+
 class TopicShareOut(BaseModel):
     topic_id: str
     name: str
@@ -531,6 +697,75 @@ class NetworkEdge(BaseModel):
 class NetworkOut(BaseModel):
     nodes: list[NetworkNode]
     edges: list[NetworkEdge]
+
+
+# ─── Cross-SDL transfer studio ────────────────────────────────────────────────
+
+
+class TransferTargetOut(BaseModel):
+    id: str
+    name: str
+    description: str
+    typical_signature: dict[str, Any] = Field(default_factory=dict)
+    typical_constraints: list[str] = Field(default_factory=list)
+    keywords: list[str] = Field(default_factory=list)
+
+
+class TransferTkuOut(BaseModel):
+    id: str
+    paper_id: str
+    paper_title: str
+    paper_year: int | None = None
+    source_domain: str
+    problem_signature: dict[str, Any] = Field(default_factory=dict)
+    method_core: dict[str, Any] = Field(default_factory=dict)
+
+
+class TransferMatchOut(BaseModel):
+    paper_id: str
+    title: str
+    year: int | None = None
+    source_domain: str
+    score: int
+    score_breakdown: dict[str, Any] = Field(default_factory=dict)
+    key_lesson: str | None = None
+
+
+class TransferDesignRequest(BaseModel):
+    target_id: str
+    source_domain: str | None = None
+    top_k: int = 6
+    use_llm: bool = False
+
+
+class TransferDesignOut(BaseModel):
+    target: dict[str, Any]
+    markdown: str
+    mode: str  # "template" | "llm"
+    matches: list[TransferMatchOut] = Field(default_factory=list)
+
+
+class EvolutionaryTransferRequest(BaseModel):
+    target_id: str
+    source_domain: str | None = None
+    source_pool: int = 24
+    population_size: int = 12
+    generations: int = 6
+    genome_size: int = 3
+    mutation_rate: float = 0.35
+    seed: int = 7
+    include_knowledge_json: bool = True
+
+
+class EvolutionaryTransferOut(BaseModel):
+    target: dict[str, Any]
+    config: dict[str, Any]
+    source_count: int
+    accepted: bool
+    best: dict[str, Any] | None = None
+    candidates: list[dict[str, Any]] = Field(default_factory=list)
+    trace: list[dict[str, Any]] = Field(default_factory=list)
+    recommendations: list[str] = Field(default_factory=list)
 
 
 class PipelineStats(BaseModel):

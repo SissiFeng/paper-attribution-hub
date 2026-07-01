@@ -17,6 +17,9 @@ const ANALYTICS_NAV = [
   { to: "/sankey",    label: "Sankey"     },
   { to: "/impact",    label: "Impact"     },
   { to: "/drift",     label: "Drift"      },
+  { to: "/transfer",  label: "Knowledge Transfer" },
+  { to: "/transfer-studio", label: "Transfer Studio" },
+  { to: "/kb",        label: "Knowledge Base" },
 ];
 
 const NETWORK_NAV = [
@@ -108,6 +111,29 @@ const ICONS: Record<string, JSX.Element> = {
     <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.6">
       <circle cx="8" cy="8" r="6" />
       <path d="M5 8 Q8 4 11 8 Q8 12 5 8" />
+    </svg>
+  ),
+  "Knowledge Transfer": (
+    <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.6">
+      <circle cx="3.5" cy="8" r="2.5" />
+      <circle cx="12.5" cy="8" r="2.5" />
+      <path d="M6 6.5 Q8 5 10 6.5" />
+      <path d="M10 9.5 Q8 11 6 9.5" />
+    </svg>
+  ),
+  "Transfer Studio": (
+    <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.6">
+      <rect x="1.5" y="2" width="6" height="6" rx="1" />
+      <rect x="8.5" y="8" width="6" height="6" rx="1" />
+      <path d="M7.5 5 H11 V8" />
+      <polyline points="9.5,6.5 11,8 12.5,6.5" />
+    </svg>
+  ),
+  "Knowledge Base": (
+    <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.6">
+      <path d="M8 3 C6.5 1.8 4 1.8 2 2.5 V12.5 C4 11.8 6.5 11.8 8 13" />
+      <path d="M8 3 C9.5 1.8 12 1.8 14 2.5 V12.5 C12 11.8 9.5 11.8 8 13" />
+      <line x1="8" y1="3" x2="8" y2="13" />
     </svg>
   ),
   "Multi-Graph": (

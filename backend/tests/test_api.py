@@ -57,6 +57,57 @@ def test_list_papers_reports_fulltext_rag_ready(fulltext_seeded_session):
     assert p["rag_status"]["attribution_evidence_count"] > 0
 
 
+def test_retrieve_answer_returns_modular_trace(fulltext_seeded_session):
+    from app.main import app
+
+    client = TestClient(app)
+    r = client.post(
+        "/retrieve/answer",
+        json={
+            "query": "Which papers use Bayesian optimization?",
+            "top_k": 3,
+            "mode": "adaptive",
+        },
+    )
+    assert r.status_code == 200, r.text
+    body = r.json()
+    assert body["execution_mode"] in {"adaptive", "iterative", "recursive"}
+    assert [step["module"] for step in body["module_trace"]][:3] == [
+        "routing",
+        "memory",
+        "search",
+    ]
+    assert body["retrieval_quality"]["layer"] == "retrieval_quality"
+    assert body["answer_grounding"]["layer"] == "answer_grounding"
+    assert body["human_feedback"]["layer"] == "human_feedback"
+    assert body["module_metrics"]["layer"] == "module_metrics"
+    assert "agentic_search" in [step["module"] for step in body["module_trace"]]
+    assert "agentic_search" in body["module_metrics"]["modules"]
+    assert body["sources"]
+
+
+def test_retrieve_answer_can_disable_agentic_search(fulltext_seeded_session):
+    from app.main import app
+
+    client = TestClient(app)
+    r = client.post(
+        "/retrieve/answer",
+        json={
+            "query": "Compare robotic synthesis and Bayesian optimization papers",
+            "top_k": 3,
+            "mode": "adaptive",
+            "agentic_search": False,
+        },
+    )
+    assert r.status_code == 200, r.text
+    body = r.json()
+    agentic = next(
+        step for step in body["module_trace"] if step["module"] == "agentic_search"
+    )
+    assert agentic["skipped"] == "not_needed"
+    assert body["module_metrics"]["modules"]["agentic_search"]["enabled"] is False
+
+
 def test_filter_papers_by_label(client):
     r = client.get("/papers", params={"label": "CORE_RELEVANT"})
     assert r.status_code == 200

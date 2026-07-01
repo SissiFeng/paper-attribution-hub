@@ -20,6 +20,7 @@ from fastapi import APIRouter, Body, Depends, HTTPException, Query
 from pydantic import BaseModel
 from sqlalchemy.orm import Session
 
+from app.api.auth import require_api_key
 from app.db import get_session
 from app.schemas import RagStatusOut
 from app.services.rag_status_service import rag_status_by_paper
@@ -167,7 +168,11 @@ def get_queue_size(session: Session = Depends(get_session)) -> dict:
     return {"count": queue_size(session)}
 
 
-@router.post("/reviews/{paper_id}/confirm", response_model=QueueItemOut)
+@router.post(
+    "/reviews/{paper_id}/confirm",
+    response_model=QueueItemOut,
+    dependencies=[Depends(require_api_key)],
+)
 def confirm(
     paper_id: str,
     payload: ConfirmIn = Body(default_factory=ConfirmIn),
@@ -193,7 +198,11 @@ def confirm(
     )
 
 
-@router.post("/reviews/{paper_id}/skip", response_model=QueueItemOut)
+@router.post(
+    "/reviews/{paper_id}/skip",
+    response_model=QueueItemOut,
+    dependencies=[Depends(require_api_key)],
+)
 def skip(
     paper_id: str,
     payload: SkipIn = Body(default_factory=SkipIn),
@@ -226,7 +235,11 @@ def skip(
 # ---------------------------------------------------------------------------
 
 
-@router.post("/pipeline/run", response_model=PipelineRunOut)
+@router.post(
+    "/pipeline/run",
+    response_model=PipelineRunOut,
+    dependencies=[Depends(require_api_key)],
+)
 def trigger_pipeline(
     payload: PipelineRunInput = Body(default_factory=PipelineRunInput),
     session: Session = Depends(get_session),

@@ -7,6 +7,7 @@ from sqlalchemy.orm import Session
 from app.db import get_session
 from app.models import Author, Institution, Paper, PaperAuthor, PaperClassification
 from app.schemas import (
+    AdoptionLagOut,
     AnalyticsOverviewOut,
     DriftEventOut,
     DriftReportOut,
@@ -32,6 +33,8 @@ from app.schemas import (
     TimelineOut,
     TimelineSeriesOut,
     TopicShareOut,
+    TransferFlowsOut,
+    TransferSummaryOut,
     YearMetricOut,
     YearTopicsOut,
 )
@@ -50,6 +53,11 @@ from app.services.filter_spec import PaperFilter, apply_filter, paper_filter_que
 from app.services.missed_papers_service import build_missed_paper_groups
 from app.services.multi_graph import MultiGraphFilter, build_multi_graph
 from app.services.reporting_service import build_report
+from app.services.transfer_service import (
+    adoption_lags,
+    lab_flow_matrix,
+    transfer_summary,
+)
 
 router = APIRouter(prefix="/analytics", tags=["analytics"])
 
@@ -735,6 +743,44 @@ def drift(
         ],
         drift_threshold=report.drift_threshold,
     )
+
+
+# ---------------------------------------------------------------------------
+# Cross-SDL knowledge transfer
+# ---------------------------------------------------------------------------
+
+
+@router.get("/transfer/flows", response_model=TransferFlowsOut)
+def transfer_flows(
+    year_from: int | None = Query(default=None),
+    year_to: int | None = Query(default=None),
+    session: Session = Depends(get_session),
+) -> TransferFlowsOut:
+    """Lab×lab citation-flow matrix (self-flows reported separately)."""
+    return TransferFlowsOut(
+        **lab_flow_matrix(session, year_from=year_from, year_to=year_to)
+    )
+
+
+@router.get("/transfer/adoption", response_model=list[AdoptionLagOut])
+def transfer_adoption(
+    entity_type: str | None = Query(default=None),
+    min_labs: int = Query(default=2, ge=2),
+    session: Session = Depends(get_session),
+) -> list[AdoptionLagOut]:
+    """Entity adoption lags: origin lab + years until other labs picked it up."""
+    return [
+        AdoptionLagOut(**entry)
+        for entry in adoption_lags(session, entity_type=entity_type, min_labs=min_labs)
+    ]
+
+
+@router.get("/transfer/summary", response_model=TransferSummaryOut)
+def transfer_summary_endpoint(
+    session: Session = Depends(get_session),
+) -> TransferSummaryOut:
+    """Headline knowledge-transfer numbers."""
+    return TransferSummaryOut(**transfer_summary(session))
 
 
 @router.get("/missed-papers", response_model=list[MissedPaperGroupOut])

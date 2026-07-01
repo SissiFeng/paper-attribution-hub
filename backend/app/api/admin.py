@@ -7,6 +7,7 @@ import os
 from fastapi import APIRouter, Depends, BackgroundTasks
 from sqlalchemy.orm import Session
 
+from app.api.auth import require_api_key
 from app.config import settings
 from app.db import get_session
 from app.schemas import ParseBackendStatusOut
@@ -35,7 +36,7 @@ def parse_backend_status() -> ParseBackendStatusOut:
     )
 
 
-@router.post("/seed-chunks", response_model=dict)
+@router.post("/seed-chunks", response_model=dict, dependencies=[Depends(require_api_key)])
 def seed_chunks(
     background_tasks: BackgroundTasks,
     force: bool = False,
@@ -109,7 +110,7 @@ def vocabulary_suggestions(
     ]
 
 
-@router.post("/reclassify", response_model=dict)
+@router.post("/reclassify", response_model=dict, dependencies=[Depends(require_api_key)])
 def reclassify(
     background_tasks: BackgroundTasks,
     session: Session = Depends(get_session),
@@ -130,7 +131,7 @@ def reclassify(
     return {"status": "started", "message": "reclassification running in background"}
 
 
-@router.post("/apply-ac-members", response_model=dict)
+@router.post("/apply-ac-members", response_model=dict, dependencies=[Depends(require_api_key)])
 def apply_ac_members(
     background_tasks: BackgroundTasks,
     skip_classify: bool = False,
@@ -195,7 +196,7 @@ def dedup_candidates(session: Session = Depends(get_session)) -> dict:
     }
 
 
-@router.post("/dedup-merge", response_model=dict)
+@router.post("/dedup-merge", response_model=dict, dependencies=[Depends(require_api_key)])
 def dedup_merge(
     keep_id: str,
     remove_id: str,
@@ -209,7 +210,7 @@ def dedup_merge(
     return result
 
 
-@router.post("/dedup-separate", response_model=dict)
+@router.post("/dedup-separate", response_model=dict, dependencies=[Depends(require_api_key)])
 def dedup_separate(
     author_id_a: str,
     author_id_b: str,
@@ -224,7 +225,7 @@ def dedup_separate(
             "author_id_a": author_id_a, "author_id_b": author_id_b}
 
 
-@router.post("/dedup-authors", response_model=dict)
+@router.post("/dedup-authors", response_model=dict, dependencies=[Depends(require_api_key)])
 def dedup_authors(
     background_tasks: BackgroundTasks,
 ) -> dict:

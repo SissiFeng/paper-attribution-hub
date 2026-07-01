@@ -755,6 +755,175 @@ export interface HubScorePayload {
   data: HubYearPoint[];
 }
 
+// ─── Cross-SDL knowledge transfer ─────────────────────────────────────────────
+
+export interface TransferLab {
+  id: string;
+  name: string;
+}
+
+export interface TransferFlows {
+  labs: TransferLab[];
+  matrix: number[][];
+  intra_lab: Record<string, number>;
+  total_cross_flows: number;
+}
+
+export interface Adoption {
+  lab: string;
+  first_year: number;
+  lag_years: number;
+}
+
+export interface AdoptionLag {
+  entity: string;
+  entity_type: string;
+  origin_lab: string;
+  origin_year: number;
+  adoptions: Adoption[];
+}
+
+export interface FastSpreadingEntity {
+  entity: string;
+  entity_type: string;
+  adopter_count: number;
+  avg_lag_years: number;
+}
+
+export interface TransferSummary {
+  labs: number;
+  linked_papers: number;
+  entities_tracked: number;
+  cross_lab_entities: number;
+  median_adoption_lag_years: number | null;
+  fastest_spreading: FastSpreadingEntity[];
+}
+
+// ─── Cross-SDL knowledge base ─────────────────────────────────────────────────
+
+export interface KbSummary {
+  labs: number;
+  linked_papers: number;
+  entities_by_type: Record<string, number>;
+  cross_lab_entities: number;
+}
+
+export interface KbEntityIndexItem {
+  entity_type: string;
+  name: string;
+  paper_count: number;
+  lab_count: number;
+  first_year: number | null;
+  last_year: number | null;
+}
+
+export interface KbEntityLab {
+  lab_id: string;
+  lab_name: string;
+  first_year: number | null;
+  paper_count: number;
+}
+
+export interface KbEntityPaper {
+  id: string;
+  title: string;
+  year: number | null;
+  labs: string[];
+  confidence: number;
+}
+
+export interface KbYearCount {
+  year: number;
+  paper_count: number;
+}
+
+export interface KbEvidenceSnippet {
+  paper_id: string;
+  paper_title: string;
+  text: string;
+}
+
+export interface KbEntityPage {
+  entity: string;
+  entity_type: string;
+  labs: KbEntityLab[];
+  papers: KbEntityPaper[];
+  timeline: KbYearCount[];
+  evidence: KbEvidenceSnippet[];
+  adoption: AdoptionLag | null;
+}
+
+export interface KbTopEntity {
+  name: string;
+  paper_count: number;
+}
+
+export interface KbTagCount {
+  tag: string;
+  count: number;
+}
+
+export interface KbCollaboration {
+  lab_id: string;
+  name: string;
+  shared_papers: number;
+}
+
+export interface KbLabProfile {
+  id: string;
+  name: string;
+  institution: string;
+  pi_names: string[];
+  domain_focus: string;
+  platform_stack: string[] | null;
+  automation_level: string | null;
+  paper_count: number;
+  first_year: number | null;
+  last_year: number | null;
+  sdl_tag_histogram: KbTagCount[];
+  top_entities: Record<string, KbTopEntity[]>;
+  collaborations: KbCollaboration[];
+  entities_unique_to_lab: number;
+}
+
+// ─── Cross-SDL transfer studio ────────────────────────────────────────────────
+
+export interface TransferTarget {
+  id: string;
+  name: string;
+  description: string;
+  typical_signature: Record<string, unknown>;
+  typical_constraints: string[];
+  keywords: string[];
+}
+
+export interface TransferTku {
+  id: string;
+  paper_id: string;
+  paper_title: string;
+  paper_year: number | null;
+  source_domain: string;
+  problem_signature: Record<string, unknown>;
+  method_core: Record<string, unknown>;
+}
+
+export interface TransferMatch {
+  paper_id: string;
+  title: string;
+  year: number | null;
+  source_domain: string;
+  score: number;
+  score_breakdown: Record<string, unknown>;
+  key_lesson: string | null;
+}
+
+export interface TransferDesign {
+  target: Record<string, unknown>;
+  markdown: string;
+  mode: "template" | "llm";
+  matches: TransferMatch[];
+}
+
 // ─── Wiki / Knowledge Digest ──────────────────────────────────────────────────
 
 export type WikiEntityType = "paper" | "author" | "institution" | "topic";

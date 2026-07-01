@@ -40,6 +40,7 @@ from app.models import (
     Topic,
 )
 from app.services.domain_tokenizer import get_vocabulary
+from app.services.retrieval_operationalization import sdl_methodology_terms
 from app.services.sdl_dimensions import dimensions_from_evidence_summary
 
 PREDICATE_FUNDED_BY = "funded_by"
@@ -115,7 +116,9 @@ _METHOD_KEYWORDS = [
     "self-driving laboratory",
     "self-driving lab",
     "autonomous platform",
+    *sdl_methodology_terms(),
 ]
+_METHOD_KEYWORDS = list(dict.fromkeys(_METHOD_KEYWORDS))
 
 _FAILURE_PATTERNS = [
     "fails when",

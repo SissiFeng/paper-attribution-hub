@@ -11,13 +11,14 @@ from sqlalchemy.orm import Session, selectinload
 from app.models import Author, PaperAuthor
 
 from app.db import get_session
-from app.models import Paper, PaperClassification, PaperEvidence
+from app.models import Paper, PaperClassification, PaperEntity, PaperEvidence
 from app.schemas import (
     ClassificationOut,
     FulltextEvidenceOut,
     GraphSignalsOut,
     HumanReviewOut,
     PaperAuthorOut,
+    PaperEntityOut,
     PaperOut,
     PipelineStats,
     RagStatusOut,
@@ -269,3 +270,33 @@ def get_paper(paper_id: str, session: Session = Depends(get_session)) -> PaperOu
     evidence_rows = _evidence_by_paper(session, [paper.id]).get(paper.id, [])
     rag_status = rag_status_by_paper(session, [paper.id]).get(paper.id)
     return _paper_to_schema(paper, evidence_rows, rag_status)
+
+
+@router.get("/{paper_id}/entities", response_model=list[PaperEntityOut])
+def get_paper_entities(
+    paper_id: str, session: Session = Depends(get_session)
+) -> list[PaperEntityOut]:
+    """Typed entities (method/material/instrument/software) for a paper."""
+    paper = session.get(Paper, paper_id)
+    if paper is None:
+        raise HTTPException(status_code=404, detail=f"Paper {paper_id} not found")
+    rows = session.execute(
+        select(PaperEntity)
+        .where(PaperEntity.paper_id == paper_id)
+        .order_by(PaperEntity.entity_type, PaperEntity.normalized_name)
+    ).scalars()
+    return [
+        PaperEntityOut(
+            id=r.id,
+            entity_type=r.entity_type,
+            name=r.name,
+            normalized_name=r.normalized_name,
+            evidence_chunk_id=r.evidence_chunk_id,
+            section=r.section,
+            confidence=r.confidence,
+            extractor=r.extractor,
+            stage=r.stage,
+            usage_snippet=r.usage_snippet,
+        )
+        for r in rows
+    ]

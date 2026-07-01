@@ -34,6 +34,8 @@ import pandas as pd
 from sqlalchemy import func, select
 from sqlalchemy.orm import Session
 
+from app.services.retrieval_operationalization import architecture_terms
+
 def _default_root() -> Path:
     cwd = Path.cwd().resolve()
     for candidate in [cwd, *cwd.parents]:
@@ -71,16 +73,18 @@ _AI_KW = [
     "machine learning", "deep learning", "neural network", "reinforcement learning",
     "bayesian optimization", "gaussian process", "active learning", "ai-driven",
     "ai driven", "artificial intelligence", "transformer", "language model",
+    *architecture_terms("ai_decision_making"),
 ]
 _AUTO_KW = [
     "automated", "high-throughput", "high throughput", "robotic", "autonomous experimentation",
     "liquid handling", "automated synthesis", "flow chemistry", "self-operating",
-    "autonomous platform",
+    "autonomous platform", *architecture_terms("automated_experimentation"),
 ]
 _LOOP_KW = [
     "closed-loop", "closed loop", "iterative optimization", "self-driving",
     "autonomous discovery", "feedback loop", "sequential optimization",
     "design-build-test", "design build test", "active sampling",
+    *architecture_terms("iterative_closed_loop"),
 ]
 
 # AC institution/funding keywords for attribution scoring
@@ -237,7 +241,7 @@ def _jaccard(a: set[str], b: set[str]) -> float:
 
 def _kw_present(text: str, keywords: list[str]) -> bool:
     t = text.lower()
-    return any(kw in t for kw in keywords)
+    return any(kw.lower() in t for kw in keywords)
 
 
 # ---------------------------------------------------------------------------
@@ -818,6 +822,13 @@ def run(
 
     print("Writing to database...", file=sys.stderr)
     with SessionLocal() as session:
+        # Seed the topic taxonomy first — without it every topic_score is 0.0
+        # and the relevance classifier can never reach CORE_RELEVANT.
+        from app.adapters import CsvPaperSource
+        from app.services.ingestion_service import ingest_topics
+
+        topics_seeded = ingest_topics(session, CsvPaperSource())
+        print(f"      topics_seeded={topics_seeded}", file=sys.stderr)
         inserted, updated, authors, institutions, links = _upsert_papers(session, all_rows)
         if prune_non_real:
             stale = list(

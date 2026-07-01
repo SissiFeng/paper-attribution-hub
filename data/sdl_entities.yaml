@@ -1,0 +1,522 @@
+# Typed entity vocabulary for cross-SDL knowledge transfer.
+#
+# Sections map to PaperEntity.entity_type: methods → method, materials →
+# material, instruments → instrument, software → software.
+# Each entry has a canonical `name` plus surface-form `aliases`. Matching is
+# case-insensitive with word boundaries (see entity_extractor); aliases
+# shorter than 3 characters are never matched, so don't bother listing them
+# (this is also why ambiguous 2-char acronyms like "GP"/"RF" are absent).
+#
+# Method entries may carry an optional `category` naming the coarse method
+# family the fine-grained term belongs to. Every `category` value must itself
+# be the canonical `name` of a method entry (enforced by tests). Coarse
+# family entries carry no `category`.
+#
+# Keep terms consistent with data/domain_vocabulary.yaml and
+# data/retrieval_operationalization_terms.yaml.
+
+methods:
+  - name: bayesian optimization
+    aliases:
+      - sequential model-based optimization
+      - sequential optimization
+  - name: active learning
+    aliases: []
+  - name: reinforcement learning
+    aliases: []
+  - name: machine learning
+    aliases: []
+  - name: deep learning
+    aliases:
+      - neural network
+      - neural networks
+  - name: gaussian process
+    category: machine learning
+    aliases:
+      - gaussian processes
+  - name: high-throughput screening
+    aliases:
+      - high throughput screening
+  - name: high-throughput experimentation
+    aliases:
+      - high throughput experiment
+      - HTE
+  - name: flow chemistry
+    aliases:
+      - continuous flow synthesis
+      - flow reactor
+  - name: closed-loop optimization
+    aliases:
+      - closed-loop experimentation
+      - closed-loop discovery
+      - iterative optimization
+  - name: self-driving laboratory
+    aliases:
+      - self-driving lab
+      - self-driven laboratory
+      - self-driven lab
+      - autonomous laboratory
+      - autonomous lab
+      - SDL
+  - name: density functional theory
+    aliases:
+      - DFT
+      - DFT calculations
+      - first-principles calculations
+      - ab initio calculations
+  - name: molecular dynamics
+    aliases:
+      - molecular dynamics simulation
+  - name: machine learning interatomic potentials
+    category: machine learning
+    aliases:
+      - machine learning interatomic potential
+      - machine-learned interatomic potential
+      - interatomic potential
+      - MLIP
+  - name: generative model
+    aliases:
+      - generative models
+      - generative design
+      - generative molecular design
+  - name: graph neural network
+    category: deep learning
+    aliases:
+      - graph neural networks
+      - GNN
+  - name: transfer learning
+    aliases: []
+  - name: multi-objective optimization
+    aliases:
+      - pareto optimization
+  - name: design of experiments
+    aliases:
+      - DoE
+  - name: automated synthesis
+    aliases:
+      - robotic synthesis
+  - name: combinatorial screening
+    aliases:
+      - combinatorial chemistry
+  - name: retrosynthesis
+    aliases:
+      - retrosynthetic analysis
+      - computer-aided synthesis planning
+  - name: molecular docking
+    aliases: []
+  - name: crystal structure prediction
+    aliases: []
+  - name: workflow orchestration
+    aliases: []
+  - name: design-build-test-learn
+    aliases:
+      - design build test learn
+      - DBTL
+  - name: large language model
+    category: deep learning
+    aliases:
+      - large language models
+      - LLM
+
+  # ---- fine-grained ML models -------------------------------------------
+  - name: gaussian process regression
+    category: gaussian process
+    aliases:
+      - GP regression
+  - name: random forest
+    category: machine learning
+    aliases:
+      - random forests
+  - name: gradient boosting
+    category: machine learning
+    aliases:
+      - gradient boosted trees
+      - gradient boosting machine
+  - name: XGBoost
+    category: gradient boosting
+    aliases: []
+  - name: LightGBM
+    category: gradient boosting
+    aliases: []
+  - name: support vector machine
+    category: machine learning
+    aliases:
+      - support vector machines
+      - support vector regression
+      - SVM
+  - name: kernel ridge regression
+    category: machine learning
+    aliases:
+      - KRR
+  - name: linear regression
+    category: machine learning
+    aliases: []
+  - name: logistic regression
+    category: machine learning
+    aliases: []
+  - name: ensemble learning
+    category: machine learning
+    aliases:
+      - ensemble model
+      - ensemble models
+  - name: symbolic regression
+    category: machine learning
+    aliases: []
+  - name: principal component analysis
+    category: machine learning
+    aliases:
+      - PCA
+  - name: message passing neural network
+    category: graph neural network
+    aliases:
+      - message passing neural networks
+      - MPNN
+  - name: graph convolutional network
+    category: graph neural network
+    aliases:
+      - graph convolutional networks
+      - GCN
+  - name: CGCNN
+    category: graph neural network
+    aliases:
+      - crystal graph convolutional neural network
+  - name: MEGNet
+    category: graph neural network
+    aliases: []
+  - name: ALIGNN
+    category: graph neural network
+    aliases: []
+  - name: SchNet
+    category: graph neural network
+    aliases: []
+  - name: NequIP
+    category: machine learning interatomic potentials
+    aliases: []
+  - name: MACE
+    category: machine learning interatomic potentials
+    aliases: []
+  - name: neural network potential
+    category: machine learning interatomic potentials
+    aliases:
+      - neural network potentials
+      - NNP
+  - name: convolutional neural network
+    category: deep learning
+    aliases:
+      - convolutional neural networks
+      - CNN
+  - name: recurrent neural network
+    category: deep learning
+    aliases:
+      - recurrent neural networks
+      - RNN
+  - name: long short-term memory
+    category: deep learning
+    aliases:
+      - LSTM
+  - name: transformer model
+    category: deep learning
+    aliases:
+      - transformer architecture
+      - transformer-based model
+      - transformer models
+  - name: bayesian neural network
+    category: deep learning
+    aliases:
+      - bayesian neural networks
+      - BNN
+  - name: variational autoencoder
+    category: generative model
+    aliases:
+      - variational autoencoders
+      - VAE
+  - name: generative adversarial network
+    category: generative model
+    aliases:
+      - generative adversarial networks
+      - GAN
+      - GANs
+  - name: diffusion model
+    category: generative model
+    aliases:
+      - diffusion models
+      - denoising diffusion
+  - name: normalizing flow
+    category: generative model
+    aliases:
+      - normalizing flows
+  - name: GPT
+    category: large language model
+    aliases:
+      - GPT-3
+      - GPT-4
+      - ChatGPT
+  - name: BERT
+    category: large language model
+    aliases: []
+
+  # ---- BO / optimization ---------------------------------------------------
+  - name: expected improvement
+    category: bayesian optimization
+    aliases:
+      - expected improvement acquisition
+  - name: upper confidence bound
+    category: bayesian optimization
+    aliases:
+      - UCB
+  - name: thompson sampling
+    category: bayesian optimization
+    aliases: []
+  - name: expected hypervolume improvement
+    category: multi-objective optimization
+    aliases:
+      - q-EHVI
+      - qEHVI
+      - EHVI
+  - name: evolutionary algorithm
+    aliases:
+      - evolutionary algorithms
+      - evolutionary optimization
+  - name: genetic algorithm
+    category: evolutionary algorithm
+    aliases:
+      - genetic algorithms
+  - name: particle swarm optimization
+    category: evolutionary algorithm
+    aliases:
+      - particle swarm
+  - name: CMA-ES
+    category: evolutionary algorithm
+    aliases:
+      - covariance matrix adaptation
+  - name: simulated annealing
+    aliases: []
+  - name: proximal policy optimization
+    category: reinforcement learning
+    aliases:
+      - PPO
+  - name: Q-learning
+    category: reinforcement learning
+    aliases:
+      - deep Q-network
+      - DQN
+  - name: monte carlo tree search
+    category: reinforcement learning
+    aliases:
+      - MCTS
+  - name: multi-armed bandit
+    category: reinforcement learning
+    aliases:
+      - multi-armed bandits
+      - contextual bandit
+
+  # ---- active learning -------------------------------------------------
+  - name: uncertainty sampling
+    category: active learning
+    aliases: []
+  - name: query by committee
+    category: active learning
+    aliases:
+      - query-by-committee
+
+  # ---- chemistry / materials specifics -----------------------------------
+  - name: retrosynthesis prediction
+    category: retrosynthesis
+    aliases:
+      - retrosynthesis planning
+  - name: reaction yield prediction
+    category: machine learning
+    aliases:
+      - yield prediction
+  - name: monte carlo simulation
+    aliases:
+      - monte carlo simulations
+      - kinetic monte carlo
+  - name: ab initio molecular dynamics
+    category: molecular dynamics
+    aliases:
+      - AIMD
+  - name: high-throughput DFT
+    category: density functional theory
+    aliases:
+      - high-throughput first-principles
+  - name: model interpretability
+    aliases:
+      - explainable AI
+      - interpretable machine learning
+      - XAI
+  - name: SHAP
+    category: model interpretability
+    aliases:
+      - shapley additive explanations
+      - shapley values
+
+  # ---- closed-loop workflow phrases ---------------------------------------
+  - name: closed-loop workflow
+    aliases: []
+  - name: design-make-test-analyze
+    category: closed-loop workflow
+    aliases:
+      - DMTA
+  - name: human-in-the-loop
+    category: closed-loop workflow
+    aliases:
+      - human in the loop
+  - name: batch bayesian optimization
+    category: closed-loop workflow
+    aliases:
+      - batch BO
+
+materials:
+  - name: perovskite
+    aliases:
+      - perovskites
+      - perovskite solar cell
+  - name: OLED emitter
+    aliases:
+      - organic light-emitting diode
+      - OLED
+  - name: electrolyte
+    aliases:
+      - electrolytes
+      - solid-state electrolyte
+  - name: metal-organic framework
+    aliases:
+      - metal organic framework
+      - metal-organic frameworks
+      - MOF
+      - MOFs
+  - name: quantum dot
+    aliases:
+      - quantum dots
+  - name: polymer
+    aliases:
+      - polymers
+      - copolymer
+  - name: thin film
+    aliases:
+      - thin films
+      - thin-film
+  - name: catalyst
+    aliases:
+      - catalysts
+      - electrocatalyst
+      - photocatalyst
+  - name: nanoparticle
+    aliases:
+      - nanoparticles
+  - name: battery material
+    aliases:
+      - battery materials
+      - cathode material
+      - anode material
+  - name: photovoltaic
+    aliases:
+      - photovoltaics
+      - solar cell
+      - solar cells
+  - name: organic semiconductor
+    aliases:
+      - organic semiconductors
+  - name: organic laser material
+    aliases:
+      - organic laser materials
+  - name: zeolite
+    aliases:
+      - zeolites
+  - name: covalent organic framework
+    aliases:
+      - covalent organic frameworks
+      - COF
+      - COFs
+  - name: ionic liquid
+    aliases:
+      - ionic liquids
+  - name: alloy
+    aliases:
+      - alloys
+      - high-entropy alloy
+  - name: hydrogel
+    aliases:
+      - hydrogels
+  - name: peptide
+    aliases:
+      - peptides
+  - name: 2D material
+    aliases:
+      - two-dimensional material
+      - graphene
+
+instruments:
+  - name: Chemspeed
+    aliases:
+      - chemspeed platform
+  - name: Opentrons
+    aliases: []
+  - name: liquid handler
+    aliases:
+      - liquid handling robot
+      - liquid-handling system
+      - liquid handling
+  - name: robotic arm
+    aliases:
+      - robot arm
+  - name: X-ray diffraction
+    aliases:
+      - XRD
+      - x-ray diffractometer
+  - name: nuclear magnetic resonance
+    aliases:
+      - NMR
+      - NMR spectroscopy
+  - name: mass spectrometer
+    aliases:
+      - mass spectrometry
+      - LC-MS
+      - GC-MS
+  - name: plate reader
+    aliases:
+      - microplate reader
+  - name: HPLC
+    aliases:
+      - high-performance liquid chromatography
+  - name: UV-Vis spectrometer
+    aliases:
+      - UV-Vis spectroscopy
+      - UV-Vis
+  - name: mobile robot
+    aliases:
+      - mobile robotic chemist
+  - name: scanning electron microscope
+    aliases:
+      - SEM
+      - electron microscopy
+
+software:
+  - name: BoTorch
+    aliases:
+      - Ax platform
+  - name: ChemOS
+    aliases: []
+  - name: RDKit
+    aliases: []
+  - name: pymatgen
+    aliases: []
+  - name: scikit-learn
+    aliases:
+      - sklearn
+  - name: PyTorch
+    aliases: []
+  - name: TensorFlow
+    aliases: []
+  - name: atomic simulation environment
+    aliases:
+      - ASE
+  - name: BayBE
+    aliases: []
+  - name: PHYSBO
+    aliases: []
+  - name: matminer
+    aliases: []
+  - name: AlphaFold
+    aliases: []

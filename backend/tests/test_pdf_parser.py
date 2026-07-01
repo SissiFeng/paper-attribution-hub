@@ -1,6 +1,16 @@
 from pathlib import Path
+import sys
+from types import SimpleNamespace
 
-from app.services.pdf_parser import parse_any, parse_text_file, split_into_sections
+import pytest
+
+from app.services.pdf_parser import (
+    ParsedDocument,
+    ParsedSection,
+    parse_any,
+    parse_text_file,
+    split_into_sections,
+)
 
 
 def test_split_detects_canonical_sections():
@@ -57,3 +67,99 @@ def test_unknown_handles_front_matter():
     secs = split_into_sections(text)
     assert any(s.section_type == "unknown" for s in secs)
     assert any(s.section_type == "methods" for s in secs)
+
+
+def test_parse_pdf_uses_markitdown_first(monkeypatch: pytest.MonkeyPatch, tmp_path: Path):
+    class FakeMarkItDown:
+        def convert(self, path: str):
+            return SimpleNamespace(
+                text_content="""# Markdown PDF Title
+
+Abstract
+Converted abstract.
+
+Methods
+Converted methods.
+"""
+            )
+
+    monkeypatch.setitem(
+        sys.modules,
+        "markitdown",
+        SimpleNamespace(MarkItDown=FakeMarkItDown),
+    )
+
+    sample = tmp_path / "paper.pdf"
+    sample.write_bytes(b"%PDF-1.4 fake")
+
+    doc = parse_any(sample)
+
+    assert doc.source == "markitdown"
+    assert doc.title == "Markdown PDF Title"
+    assert {s.section_type for s in doc.sections} >= {"abstract", "methods"}
+
+
+def test_parse_docx_uses_markitdown(monkeypatch: pytest.MonkeyPatch, tmp_path: Path):
+    class FakeMarkItDown:
+        def convert(self, path: str):
+            return SimpleNamespace(
+                text_content="""Document Title
+
+Abstract
+Converted docx abstract.
+"""
+            )
+
+    monkeypatch.setitem(
+        sys.modules,
+        "markitdown",
+        SimpleNamespace(MarkItDown=FakeMarkItDown),
+    )
+
+    sample = tmp_path / "paper.docx"
+    sample.write_bytes(b"fake docx")
+
+    doc = parse_any(sample)
+
+    assert doc.source == "markitdown"
+    assert doc.title == "Document Title"
+    assert [s.section_type for s in doc.sections] == ["unknown", "abstract"]
+
+
+def test_parse_pdf_falls_back_when_markitdown_fails(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+):
+    class BrokenMarkItDown:
+        def convert(self, path: str):
+            raise RuntimeError("conversion failed")
+
+    def fake_pymupdf(path: Path) -> ParsedDocument:
+        return ParsedDocument(
+            sections=[
+                ParsedSection(
+                    section_type="abstract",
+                    title="Abstract",
+                    text="Fallback.",
+                )
+            ],
+            source="pymupdf",
+        )
+
+    from app.config import settings
+    import app.services.pdf_parser as pdf_parser
+
+    monkeypatch.setattr(settings, "grobid_url", "")
+    monkeypatch.setitem(
+        sys.modules,
+        "markitdown",
+        SimpleNamespace(MarkItDown=BrokenMarkItDown),
+    )
+    monkeypatch.setattr(pdf_parser, "parse_pdf_as_document", fake_pymupdf)
+
+    sample = tmp_path / "paper.pdf"
+    sample.write_bytes(b"%PDF-1.4 fake")
+
+    doc = parse_any(sample)
+
+    assert doc.source == "pymupdf"
+    assert doc.sections[0].text == "Fallback."

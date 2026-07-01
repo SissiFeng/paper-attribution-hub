@@ -1,0 +1,286 @@
+# Cross-SDL transfer targets — CURATOR FILE, edit by hand.
+#
+# Profiles of Acceleration Consortium's eight Self-Driving Lab (SDL) programs.
+# Consumed by app.services.transfer_designer to score transferable knowledge
+# units (TKUs) from source domains against a target SDL and draft an
+# experiment-design proposal. These are not generated from the DB — they are
+# human-curated descriptions of what each SDL program optimizes, the shape of
+# its problems, and the physical constraints a transferred method must respect.
+#
+# Each target:
+#   id                  stable slug (e.g. sdl4)
+#   name                display name
+#   description         one paragraph, materials-acceleration-literate
+#   typical_signature   same shape as TKU.problem_signature (nulls allowed)
+#   typical_constraints list of physical / operational constraints
+#   keywords            terms overlapped against TKU method_core for scoring
+
+targets:
+- id: sdl0
+  name: SDL 0 — AI & Automation
+  description: >
+    The horizontal AI-and-automation backbone of the consortium. SDL 0 does not
+    own a single chemistry; it builds the shared software, orchestration layers,
+    surrogate models, and active-learning loops that the domain SDLs reuse. Work
+    here is about closing the design-make-test-analyze loop itself — Bayesian
+    optimization frameworks, multi-fidelity surrogates, experiment schedulers,
+    and the data infrastructure that lets a campaign run with minimal human
+    intervention. Methods proven in one SDL are abstracted and hardened here for
+    reuse everywhere.
+  typical_signature:
+    task_type: optimization
+    evaluation_cost: medium
+    search_space: mixed
+    objectives: multi
+    budget_evaluations: null
+    batch_size: null
+    noise: variable across instruments
+  typical_constraints:
+    - heterogeneous instrument APIs and data schemas
+    - asynchronous experiment completion times
+    - reproducibility and provenance tracking across labs
+    - human-in-the-loop checkpoints for safety
+  keywords:
+    - bayesian optimization
+    - active learning
+    - surrogate model
+    - gaussian process
+    - acquisition function
+    - closed-loop
+    - orchestration
+    - multi-fidelity
+    - autonomous
+
+- id: sdl1
+  name: SDL 1 — Inorganic Materials
+  description: >
+    Autonomous discovery and optimization of inorganic solids — catalysts,
+    photocatalysts, semiconductors, metal oxides, and energy-storage materials.
+    Campaigns combine high-throughput synthesis (sputtering, sol-gel,
+    solid-state) with rapid structural and functional characterization (XRD,
+    UV-Vis, electrochemistry). The search space mixes continuous composition
+    gradients with discrete phase and processing choices, and each measurement
+    is moderately expensive, so sample-efficient optimization and physically
+    grounded surrogates matter.
+  typical_signature:
+    task_type: optimization
+    evaluation_cost: medium
+    search_space: mixed
+    objectives: multi
+    budget_evaluations: null
+    batch_size: null
+    noise: instrument-dependent
+  typical_constraints:
+    - composition simplex constraints (fractions sum to one)
+    - phase stability and annealing temperature windows
+    - thin-film vs bulk processing differences
+    - characterization throughput bottlenecks (XRD, electrochemistry)
+  keywords:
+    - high-throughput synthesis
+    - composition
+    - bayesian optimization
+    - xrd
+    - catalysis
+    - electrochemistry
+    - phase
+    - photocatalyst
+
+- id: sdl2
+  name: SDL 2 — Organic Synthesis
+  description: >
+    Self-driving organic chemistry: automated reaction optimization and route
+    discovery over discrete reagent, catalyst, solvent, and condition spaces.
+    Yield, selectivity, and conversion are read out by online HPLC, LC-MS, or
+    NMR, and each reaction is expensive in both reagents and time, putting a
+    premium on batch-aware, sample-efficient search. Reaction outcomes are noisy
+    and the design space is largely categorical, so surrogate choice and
+    acquisition design carry the campaign.
+  typical_signature:
+    task_type: optimization
+    evaluation_cost: high
+    search_space: discrete
+    objectives: multi
+    budget_evaluations: null
+    batch_size: null
+    noise: high (reaction variability)
+  typical_constraints:
+    - categorical reagent/catalyst/solvent design space
+    - reaction time limits throughput
+    - air- and moisture-sensitive handling
+    - online analytics calibration drift
+  keywords:
+    - reaction optimization
+    - yield
+    - catalyst screening
+    - hplc
+    - solvent
+    - bayesian optimization
+    - design of experiments
+    - flow chemistry
+
+- id: sdl3
+  name: SDL 3 — Medicinal Chemistry
+  description: >
+    Closed-loop molecular design for therapeutics: proposing, making, and
+    testing candidate molecules against potency, selectivity, ADMET, and
+    synthesizability objectives. The workflow couples generative or
+    property-prediction models with automated synthesis and bioassays. The
+    search space is the vast discrete space of drug-like molecules, evaluation
+    is expensive and slow (assays, multi-step synthesis), and the problem is
+    inherently multi-objective with hard developability constraints.
+  typical_signature:
+    task_type: generation
+    evaluation_cost: high
+    search_space: discrete
+    objectives: multi
+    budget_evaluations: null
+    batch_size: null
+    noise: assay-dependent
+  typical_constraints:
+    - synthesizability / retrosynthetic feasibility
+    - ADMET and developability filters
+    - slow, expensive bioassay readouts
+    - intellectual-property novelty constraints
+  keywords:
+    - molecular generation
+    - property prediction
+    - admet
+    - docking
+    - active learning
+    - bioassay
+    - generative model
+    - retrosynthesis
+
+- id: sdl4
+  name: SDL 4 — Polymers
+  description: >
+    Autonomous polymer discovery and formulation: optimizing monomer choice,
+    composition, molecular weight, and processing to hit target mechanical,
+    thermal, and transport properties. Campaigns span continuous composition and
+    process variables with discrete monomer/architecture choices, and rely on
+    property prediction plus automated synthesis and characterization (GPC, DSC,
+    rheology). Measurements are moderately to highly expensive and the
+    structure-property map is noisy, favoring sample-efficient multi-objective
+    optimization with physically informed surrogates.
+  typical_signature:
+    task_type: optimization
+    evaluation_cost: medium
+    search_space: mixed
+    objectives: multi
+    budget_evaluations: null
+    batch_size: null
+    noise: moderate (batch-to-batch)
+  typical_constraints:
+    - viscous-liquid and gel handling on liquid handlers
+    - long polymerization / cure times limit throughput
+    - molecular-weight distribution control
+    - solvent compatibility and degassing
+  keywords:
+    - polymer
+    - composition
+    - property prediction
+    - bayesian optimization
+    - molecular weight
+    - rheology
+    - formulation
+    - structure-property
+
+- id: sdl5
+  name: SDL 5 — Formulations
+  description: >
+    Self-driving formulation science: mixtures, emulsions, coatings, and
+    dispersions where the response depends on ingredient ratios and process
+    history rather than a single molecule. The design space is a constrained
+    mixture simplex with discrete additive choices, objectives are multi
+    (stability, viscosity, performance), and characterization (rheology,
+    particle sizing, stability aging) is moderately expensive and time-coupled,
+    so mixture-aware design of experiments and surrogate modeling dominate.
+  typical_signature:
+    task_type: optimization
+    evaluation_cost: medium
+    search_space: mixed
+    objectives: multi
+    budget_evaluations: null
+    batch_size: null
+    noise: moderate
+  typical_constraints:
+    - mixture simplex constraints (components sum to one)
+    - viscous and multiphase liquid handling
+    - stability aging requires delayed readouts
+    - order-of-addition and shear-history effects
+  keywords:
+    - formulation
+    - mixture design
+    - emulsion
+    - viscosity
+    - rheology
+    - stability
+    - design of experiments
+    - dispersion
+
+- id: sdl6
+  name: SDL 6 — Hydrogen & Organic Materials (HOM)
+  description: >
+    Autonomous discovery for hydrogen and organic energy materials — electro-
+    and photocatalysts, organic redox and electrolyte systems, and materials for
+    hydrogen evolution, storage, and conversion. Campaigns couple automated
+    electrochemical synthesis and testing with surrogate-guided optimization
+    over mixed composition and condition spaces. Electrochemical measurements
+    are moderately expensive and drift-prone, and objectives (activity,
+    stability, efficiency) trade off, demanding robust multi-objective loops.
+  typical_signature:
+    task_type: optimization
+    evaluation_cost: medium
+    search_space: mixed
+    objectives: multi
+    budget_evaluations: null
+    batch_size: null
+    noise: electrochemical drift
+  typical_constraints:
+    - electrolyte and atmosphere control (inert / humidified)
+    - electrode fouling and reference-drift over a campaign
+    - gas handling and safety for hydrogen
+    - stability testing requires long-duration runs
+  keywords:
+    - electrocatalysis
+    - hydrogen evolution
+    - electrochemistry
+    - bayesian optimization
+    - composition
+    - stability
+    - redox
+    - photocatalyst
+
+- id: sdl7
+  name: SDL 7 — Scale-up
+  description: >
+    Translating lab-scale recipes into reproducible, manufacturable processes.
+    SDL 7 optimizes process parameters (temperature, flow, residence time,
+    mixing) for yield, throughput, and quality at larger scale, where each run
+    is expensive and slow and the search space is mostly continuous process
+    variables. The dominant concern is robustness and transfer: a setting that
+    works at bench must survive scale-dependent heat- and mass-transfer effects,
+    so surrogate models and design of experiments target process windows rather
+    than single optima.
+  typical_signature:
+    task_type: optimization
+    evaluation_cost: high
+    search_space: continuous
+    objectives: multi
+    budget_evaluations: null
+    batch_size: null
+    noise: process variability
+  typical_constraints:
+    - scale-dependent heat- and mass-transfer effects
+    - expensive, slow pilot-scale runs
+    - equipment changeover and cleaning time
+    - quality and reproducibility tolerances
+  keywords:
+    - process optimization
+    - scale-up
+    - flow
+    - residence time
+    - design of experiments
+    - yield
+    - throughput
+    - robustness

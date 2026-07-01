@@ -15,8 +15,16 @@ core_topics:
     keywords:
       - { term: "self-driving lab", weight: 1.0 }
       - { term: "self-driving laboratory", weight: 1.0 }
+      - { term: "self-driven lab", weight: 1.0 }
+      - { term: "self-driven laboratory", weight: 1.0 }
       - { term: "autonomous laboratory", weight: 1.0 }
+      - { term: "autonomous lab", weight: 1.0 }
+      - { term: "autonomous experiment", weight: 0.8 }
       - { term: "autonomous discovery", weight: 0.9 }
+      - { term: "accelerated discovery", weight: 0.8 }
+      - { term: "accelerated experiment", weight: 0.7 }
+      - { term: "accelerated scientific discovery", weight: 0.8 }
+      - { term: "discovery acceleration", weight: 0.8 }
       - { term: "closed-loop experimentation", weight: 0.9 }
       - { term: "closed-loop optimization", weight: 0.9 }
       - { term: "closed-loop", weight: 0.6 }
@@ -37,6 +45,11 @@ core_topics:
     keywords:
       - { term: "Bayesian optimization", weight: 1.0 }
       - { term: "active learning", weight: 0.9 }
+      - { term: "artificial intelligence", weight: 0.7 }
+      - { term: "reinforcement learning", weight: 0.7 }
+      - { term: "Gaussian process", weight: 0.8 }
+      - { term: "data-driven", weight: 0.6 }
+      - { term: "algorithm-guided", weight: 0.7 }
       - { term: "molecular design", weight: 0.8 }
       - { term: "materials discovery", weight: 0.8 }
       - { term: "ai for science", weight: 0.9 }
@@ -55,9 +68,20 @@ core_topics:
       - { term: "workflow orchestration", weight: 0.9 }
       - { term: "robotic synthesis", weight: 0.9 }
       - { term: "robotic platform", weight: 0.8 }
+      - { term: "robotic experiment", weight: 0.8 }
+      - { term: "robotic laboratory", weight: 0.8 }
+      - { term: "robot scientist", weight: 0.8 }
       - { term: "high-throughput experimentation", weight: 0.8 }
+      - { term: "high throughput experiment", weight: 0.8 }
       - { term: "high-throughput screening", weight: 0.7 }
       - { term: "automated synthesis", weight: 0.8 }
+      - { term: "automated experimentation", weight: 0.8 }
+      - { term: "self-optimizing", weight: 0.8 }
+      - { term: "adaptive optimization", weight: 0.8 }
+      - { term: "experiment planning", weight: 0.6 }
+      - { term: "adaptive experimentation", weight: 0.8 }
+      - { term: "design-build-test-learn", weight: 0.8 }
+      - { term: "DBTL", weight: 0.8 }
     negative_keywords: []
 
   software_infrastructure:

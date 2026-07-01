@@ -21,6 +21,13 @@ COPY data/ac_core_papers.csv /data/ac_core_papers.csv
 COPY data/institution_aliases.csv /data/institution_aliases.csv
 COPY data/topic_taxonomy.yaml /data/topic_taxonomy.yaml
 COPY data/domain_vocabulary.yaml /data/domain_vocabulary.yaml
+COPY data/retrieval_operationalization_terms.yaml /data/retrieval_operationalization_terms.yaml
+COPY data/eval_labels_silver.csv /data/eval_labels_silver.csv
+COPY data/sdl_entities.yaml /data/sdl_entities.yaml
+COPY data/sdl_labs.yaml /data/sdl_labs.yaml
+COPY data/sdl_targets.yaml /data/sdl_targets.yaml
+COPY data/method_stages.yaml /data/method_stages.yaml
+COPY data/example_tkus.yaml /data/example_tkus.yaml
 COPY data/tier1_tier2_merged_classification_ready.csv.gz /data/tier1_tier2_merged_classification_ready.csv.gz
 COPY data/ac_publications_focused_grid_view.csv.gz /data/ac_publications_focused_grid_view.csv.gz
 

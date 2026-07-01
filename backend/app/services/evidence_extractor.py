@@ -35,6 +35,7 @@ from app.services.text_utils import (
     find_term_hits,
     tokens,
 )
+from app.services.retrieval_operationalization import sdl_methodology_terms
 
 # Configurable signal libraries.
 FUNDING_TERMS = [
@@ -71,7 +72,9 @@ SDL_METHODOLOGY_TERMS = [
     "high-throughput experimentation",
     "automated synthesis",
     "workflow orchestration",
+    *sdl_methodology_terms(),
 ]
+SDL_METHODOLOGY_TERMS = list(dict.fromkeys(SDL_METHODOLOGY_TERMS))
 
 # v0.7: blacklist for SDL-look-alikes in figure captions / methods that come
 # from unrelated domains.

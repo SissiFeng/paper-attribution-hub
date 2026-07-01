@@ -33,7 +33,10 @@ from datetime import UTC, datetime
 
 from sqlalchemy.orm import Session
 
+from app.logging_utils import get_logger
 from app.models import PipelineRun
+
+logger = get_logger(__name__)
 
 
 @dataclass
@@ -95,6 +98,8 @@ def run_daily_pipeline(
         # 1. Discovery -------------------------------------------------
         if do_discovery:
             step = {"name": "discovery", "started_at": _isoformat_now()}
+            logger.info("stage=discovery status=start run_id=%s", run_id)
+            stage_t0 = time.monotonic()
             try:
                 from app.services.discovery_service import run_discovery
 
@@ -106,9 +111,18 @@ def run_daily_pipeline(
                 step["seen"] = disc.candidates_seen
                 step["auto"] = disc.auto_ingested
                 step["queued"] = disc.queued
+                logger.info(
+                    "stage=discovery status=end seen=%d auto=%d queued=%d elapsed_s=%.1f",
+                    disc.candidates_seen, disc.auto_ingested, disc.queued,
+                    time.monotonic() - stage_t0,
+                )
             except Exception as e:
                 step["status"] = "skipped"
                 step["error"] = f"{type(e).__name__}: {e}"
+                logger.warning(
+                    "stage=discovery status=skipped error=%r elapsed_s=%.1f",
+                    step["error"], time.monotonic() - stage_t0,
+                )
             result.steps.append(step)
         else:
             result.steps.append({"name": "discovery", "status": "disabled"})
@@ -116,19 +130,32 @@ def run_daily_pipeline(
         # 2. Full-text evidence for new papers (best-effort) -----------
         if do_fulltext:
             step = {"name": "fulltext_evidence", "started_at": _isoformat_now()}
+            logger.info("stage=ingest status=start run_id=%s", run_id)
+            stage_t0 = time.monotonic()
             try:
                 stats = _fetch_and_ingest_fulltexts(session)
                 step["status"] = "ok"
                 step.update(stats)
+                logger.info(
+                    "stage=ingest status=end attempted=%d fetched=%d failed=%d elapsed_s=%.1f",
+                    stats["attempted"], stats["fetched"], stats["failed"],
+                    time.monotonic() - stage_t0,
+                )
             except Exception as e:
                 step["status"] = "skipped"
                 step["error"] = f"{type(e).__name__}: {e}"
+                logger.warning(
+                    "stage=ingest status=skipped error=%r elapsed_s=%.1f",
+                    step["error"], time.monotonic() - stage_t0,
+                )
             result.steps.append(step)
         else:
             result.steps.append({"name": "fulltext_evidence", "status": "disabled"})
 
         # 3. Incremental classify -------------------------------------
         step = {"name": "classify_new", "started_at": _isoformat_now()}
+        logger.info("stage=classify status=start run_id=%s", run_id)
+        stage_t0 = time.monotonic()
         try:
             from app.services.relevance_classifier import classify_new
 
@@ -143,14 +170,24 @@ def run_daily_pipeline(
             step["touched"] = len(touched)
             step["new"] = new_count
             step["refreshed"] = refreshed
+            logger.info(
+                "stage=classify status=end touched=%d new=%d refreshed=%d elapsed_s=%.1f",
+                len(touched), new_count, refreshed, time.monotonic() - stage_t0,
+            )
         except Exception as e:
             step["status"] = "failed"
             step["error"] = f"{type(e).__name__}: {e}"
+            logger.error(
+                "stage=classify status=failed error=%r elapsed_s=%.1f",
+                step["error"], time.monotonic() - stage_t0,
+            )
             raise
         result.steps.append(step)
 
         # 4. Re-prioritize the review queue ---------------------------
         step = {"name": "refresh_queue", "started_at": _isoformat_now()}
+        logger.info("stage=review_queue_refresh status=start run_id=%s", run_id)
+        stage_t0 = time.monotonic()
         try:
             from app.services.review_queue import refresh_queue
 
@@ -158,9 +195,17 @@ def run_daily_pipeline(
             result.enqueued_for_review = flagged
             step["status"] = "ok"
             step["flagged"] = flagged
+            logger.info(
+                "stage=review_queue_refresh status=end flagged=%d elapsed_s=%.1f",
+                flagged, time.monotonic() - stage_t0,
+            )
         except Exception as e:
             step["status"] = "failed"
             step["error"] = f"{type(e).__name__}: {e}"
+            logger.error(
+                "stage=review_queue_refresh status=failed error=%r elapsed_s=%.1f",
+                step["error"], time.monotonic() - stage_t0,
+            )
             raise
         result.steps.append(step)
 
@@ -171,7 +216,14 @@ def run_daily_pipeline(
     result.finished_at = datetime.now(UTC)
     result.duration_seconds = round(time.monotonic() - t0, 3)
 
+    logger.info("stage=audit status=start run_id=%s", run_id)
+    stage_t0 = time.monotonic()
     _persist_run(session, result, triggered_by=triggered_by)
+    logger.info(
+        "stage=audit status=end run_id=%s run_status=%s duration_s=%.1f elapsed_s=%.1f",
+        run_id, result.status, result.duration_seconds,
+        time.monotonic() - stage_t0,
+    )
     return result
 
 

@@ -23,6 +23,7 @@ class Settings(BaseSettings):
     topics_yaml: Path = DATA_DIR / "topic_taxonomy.yaml"
     fulltexts_dir: Path = DATA_DIR / "fulltexts"
     eval_labels_csv: Path = DATA_DIR / "eval_labels.csv"
+    eval_labels_silver_csv: Path = DATA_DIR / "eval_labels_silver.csv"
     ac_core_papers_csv: Path = DATA_DIR / "ac_core_papers.csv"
 
     fuzzy_author_threshold: float = 0.85
@@ -50,6 +51,9 @@ class Settings(BaseSettings):
     network_weight_v3: float = 0.10  # second-degree collaborator weight
     second_degree_floor_score: float = 0.55  # min confidence when only second-degree
 
+    # Typed-entity signal (PaperEntity rows from entity extraction)
+    entity_weight: float = 0.05
+
     # v0.4 advanced digest
     # GROBID HTTP service URL. Empty disables GROBID and forces PyMuPDF.
     grobid_url: str = ""
@@ -59,6 +63,13 @@ class Settings(BaseSettings):
     # Reranker: "none" (default) or "cross-encoder" (requires sentence-transformers).
     reranker_backend: str = "none"
     domain_vocabulary_yaml: Path = DATA_DIR / "domain_vocabulary.yaml"
+    retrieval_operationalization_yaml: Path = DATA_DIR / "retrieval_operationalization_terms.yaml"
+
+    # Cross-SDL knowledge transfer foundation
+    sdl_entities_yaml: Path = DATA_DIR / "sdl_entities.yaml"
+    sdl_labs_yaml: Path = DATA_DIR / "sdl_labs.yaml"
+    method_stages_yaml: Path = DATA_DIR / "method_stages.yaml"
+    example_tkus_yaml: Path = DATA_DIR / "example_tkus.yaml"
 
     # v0.5 external data sources (overridable via PAS_* env vars)
     openalex_url: str = "https://api.openalex.org"
@@ -72,6 +83,9 @@ class Settings(BaseSettings):
     discovery_max_candidates_per_strategy: int = 50
 
     # LLM / API keys
+    # API key required (header X-API-Key) on mutating endpoints.
+    # Empty = auth disabled (local dev).
+    api_key: str = ""
     anthropic_api_key: str = ""
     # Kimi (MoonShot AI) — OpenAI-compatible, set PAS_KIMI_API_KEY in Render
     kimi_api_key: str = ""

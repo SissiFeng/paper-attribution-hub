@@ -22,7 +22,7 @@ from sqlalchemy import select
 from sqlalchemy.orm import Session, selectinload
 
 from app.config import settings
-from app.models import Author, Institution, Paper, PaperAuthor, PaperClassification, PaperEvidence, Topic
+from app.models import Author, Institution, Paper, PaperAuthor, PaperClassification, PaperEntity, PaperEvidence, Topic
 from app.services.author_matcher import AuthorMatch, AuthorMatcher
 from app.services.normalization_service import normalize_name
 from app.services.evidence_extractor import _aggregate_score
@@ -65,6 +65,7 @@ class ClassificationResult:
     matched_institutions: list[InstitutionMatch]
     matched_topics: list[TopicMatch]
     fulltext_evidence: list[FulltextEvidenceSnapshot] = field(default_factory=list)
+    entity_score: float = 0.0
     reasons: list[str] = field(default_factory=list)
     graph_signals: GraphSignals | None = None
     # v0.7 fields
@@ -111,6 +112,7 @@ def _classify_paper(
     topic_classifier: TopicClassifier,
     evidence_index: dict[str, list[PaperEvidence]] | None = None,
     graph_signals: GraphSignals | None = None,
+    entity_index: dict[str, list[PaperEntity]] | None = None,
 ) -> ClassificationResult:
     # ---- Authors with contextual disambiguation -----------------------
     raw_author_names = [
@@ -235,6 +237,10 @@ def _classify_paper(
             paper.funding_text, paper.ac_programs
         )
 
+    # ---- Typed SDL entities (cross-SDL extraction) ---------------------
+    entity_rows: list[PaperEntity] = (entity_index or {}).get(paper.id, [])
+    entity_score, entity_summary = _entity_signal(entity_rows)
+
     # ---- Apply rules --------------------------------------------------
     label, confidence = _apply_rules(
         author_score=author_score,
@@ -250,6 +256,7 @@ def _classify_paper(
         disqualifying_count=disqualifying_count,
         has_core_topic_match=any(m.is_core and m.score > 0 for m in matched_topics),
         ac_known_publication=bool(paper.ac_known_publication),
+        entity_score=entity_score,
     )
 
     reasons = _build_reasons(
@@ -261,6 +268,7 @@ def _classify_paper(
         graph_signals=graph_signals,
         topic_density=topic_density,
         disqualifying_count=disqualifying_count,
+        entity_summary=entity_summary,
     )
 
     return ClassificationResult(
@@ -272,6 +280,7 @@ def _classify_paper(
         network_score=round(network_score, 3),
         fulltext_evidence_score=round(fulltext_score, 3),
         citation_score=round(citation_score, 3),
+        entity_score=round(entity_score, 3),
         matched_people=matched_people,
         matched_institutions=matched_institutions,
         matched_topics=matched_topics,
@@ -282,6 +291,32 @@ def _classify_paper(
         negated_topic_hits=topic_result.negated_hit_count,
         disqualifying_count=disqualifying_count,
     )
+
+
+def _entity_signal(rows: list[PaperEntity]) -> tuple[float, dict[str, list[str]]]:
+    """Score typed-entity evidence (PaperEntity rows from entity extraction).
+
+    Simple monotone formula over *distinct* normalized names:
+      score = min(1.0, 0.25 * n_methods
+                       + 0.20 * n_instruments_or_software
+                       + 0.10 * n_materials)
+    Methods (e.g. bayesian optimization) are most diagnostic of SDL work,
+    instruments/software less so, materials least. Zero rows → (0.0, {}).
+    """
+    methods = sorted({r.normalized_name for r in rows if r.entity_type == "method"})
+    tools = sorted(
+        {r.normalized_name for r in rows if r.entity_type in ("instrument", "software")}
+    )
+    materials = sorted({r.normalized_name for r in rows if r.entity_type == "material"})
+    score = min(1.0, 0.25 * len(methods) + 0.20 * len(tools) + 0.10 * len(materials))
+    summary: dict[str, list[str]] = {}
+    if methods:
+        summary["method"] = methods
+    if tools:
+        summary["instrument_or_software"] = tools
+    if materials:
+        summary["material"] = materials
+    return round(score, 3), summary
 
 
 def _aggregate_score_from_rows(rows: list[PaperEvidence]) -> float:
@@ -320,6 +355,7 @@ def _apply_rules(
     disqualifying_count: int = 0,
     has_core_topic_match: bool | None = None,
     ac_known_publication: bool = False,
+    entity_score: float = 0.0,
 ) -> tuple[str, float]:
     """Tightened decision tree (v0.7).
 
@@ -359,6 +395,11 @@ def _apply_rules(
             settings.network_weight_v3 * network_score
             + settings.citation_weight * citation_score
         )
+    if entity_score > 0:
+        # Typed-entity evidence is additive-only: a small confidence nudge for
+        # borderline papers, never enough to change a label tier by itself
+        # (entity_weight = 0.05 → at most +0.05 on the blend).
+        base += settings.entity_weight * entity_score
 
     # Disqualifying evidence subtracts from the blend.
     if disqualifying_count > 0:
@@ -417,6 +458,11 @@ def _apply_rules(
         return LABEL_ADJACENT, max(confidence, 0.55)
     if has_second_degree and topic_score >= 0.15:
         return LABEL_ADJACENT, max(confidence, settings.second_degree_floor_score)
+    # Typed-entity evidence alone (≥2 SDL method terms, or method + tool mix)
+    # caps at ADJACENT — mirrors the topic-only rule above. It can never reach
+    # RELATED/CORE without an author / funding / institution signal.
+    if entity_score >= 0.5:
+        return LABEL_ADJACENT, max(confidence, 0.5)
 
     # ---------------- UNCERTAIN: send to rerank / human ----------------
     # Disqualifying evidence pulls the floor down so the override is visible
@@ -550,6 +596,7 @@ def _build_reasons(
     graph_signals: GraphSignals | None = None,
     topic_density: int = 0,
     disqualifying_count: int = 0,
+    entity_summary: dict[str, list[str]] | None = None,
 ) -> list[str]:
     reasons: list[str] = []
     for m in matched_people:
@@ -598,6 +645,18 @@ def _build_reasons(
             f"{disqualifying_count} disqualifying-evidence row(s) recorded "
             f"(LLM judge or active learning)."
         )
+
+    # Typed-entity evidence (PaperEntity rows from entity extraction).
+    for entity_type, noun in (
+        ("method", "method"),
+        ("instrument_or_software", "instrument/software"),
+        ("material", "material"),
+    ):
+        names = (entity_summary or {}).get(entity_type, [])
+        if names:
+            reasons.append(
+                f"Found {len(names)} SDL {noun} term(s): {', '.join(names[:3])}."
+            )
 
     if graph_signals:
         for path in graph_signals.second_degree_paths[:2]:
@@ -691,6 +750,10 @@ def classify_all(
     for ev in session.execute(select(PaperEvidence)).scalars():
         evidence_index.setdefault(ev.paper_id, []).append(ev)
 
+    entity_index: dict[str, list[PaperEntity]] = {}
+    for ent in session.execute(select(PaperEntity)).scalars():
+        entity_index.setdefault(ent.paper_id, []).append(ent)
+
     # Graph signals: try to compute but degrade gracefully if OOM or missing scipy.
     # Papers still get classified via author/institution/topic/funding signals.
     graph_signals_by_paper: dict = {}
@@ -741,6 +804,7 @@ def classify_all(
                 topic_classifier,
                 evidence_index=evidence_index,
                 graph_signals=graph_signals_by_paper.get(paper.id),
+                entity_index=entity_index,
             )
             batch_results[paper.id] = result
             papers.append(paper)
@@ -961,6 +1025,12 @@ def _classify_subset(
     ).scalars():
         evidence_index.setdefault(ev.paper_id, []).append(ev)
 
+    entity_index: dict[str, list[PaperEntity]] = {}
+    for ent in session.execute(
+        select(PaperEntity).where(PaperEntity.paper_id.in_(target_ids))
+    ).scalars():
+        entity_index.setdefault(ent.paper_id, []).append(ent)
+
     # Graph signals depend on the whole corpus but the result map covers
     # all papers, so we can index into it for our subset.
     graph_signals = compute_graph_signals(session)
@@ -974,6 +1044,7 @@ def _classify_subset(
             topic_classifier,
             evidence_index=evidence_index,
             graph_signals=graph_signals.get(paper.id),
+            entity_index=entity_index,
         )
 
     _apply_rerank_to_borderline(papers, results)

@@ -1,0 +1,60 @@
+# Pipeline-stage taxonomy for method entities.
+#
+# When the entity extractor finds a method mention, it matches these keyword
+# stems (case-insensitive substring) against the containing sentence to decide
+# which pipeline stage the method is used in.
+#
+# Stage order below IS the priority order: when a sentence matches keywords
+# from several stages, the first stage listed here wins.
+
+stages:
+  property_prediction:
+    name: Property prediction
+    keywords:
+      - predict
+      - screening
+      - estimat
+      - classif
+  optimization:
+    name: Optimization
+    keywords:
+      - optimiz
+      - maximiz
+      - minimiz
+      - reaction condition
+      - tune
+  generative_design:
+    name: Generative design
+    keywords:
+      - generat
+      - inverse design
+      - de novo
+      - molecular design
+  synthesis_planning:
+    name: Synthesis planning
+    keywords:
+      - retrosynthe
+      - synthesis route
+      - synthesis planning
+  characterization_analysis:
+    name: Characterization & analysis
+    keywords:
+      - characteriz
+      - spectr
+      - imaging
+      - analysis
+  automation_orchestration:
+    name: Automation & orchestration
+    keywords:
+      - automat
+      - robot
+      - closed-loop
+      - orchestrat
+      - self-driving
+  data_extraction:
+    name: Data extraction
+    keywords:
+      - text mining
+      - literature
+      - named entity
+      - data extraction

@@ -1,0 +1,951 @@
+# SDL lab registry — GENERATED FILE, do not edit by hand.
+#
+# Source: data/ac_members.csv (one lab per PI row; non-PI rows skipped).
+# Regenerate with:
+#   python -m app.scripts.build_lab_registry
+#
+# Fields per lab (consumed by lab_service.load_labs_from_yaml):
+#   id                  stable slug (PI surname), used as primary key
+#   name                display name ("<PI name> Group")
+#   institution         host institution
+#   pi_names            principal investigators
+#   domain_focus        short free-text domain descriptor (empty: unknown)
+#   member_author_names author roster matched against paper authors
+#                       (exact match on folded names — diacritics stripped,
+#                       lowercased; see normalization_service.normalize_name)
+
+labs:
+- id: aspuru-guzik-lab
+  name: Alán Aspuru-Guzik Group
+  institution: University of Toronto
+  pi_names:
+  - Alán Aspuru-Guzik
+  domain_focus: ''
+  member_author_names:
+  - Alán Aspuru-Guzik
+  - A. Aspuru-Guzik
+  - Alan Aspuru-Guzik
+  - Aspuru-Guzik A.
+  - Aspuru-Guzik, A.
+  - Aspuru-Guzik, Alán
+- id: lilienfeld-lab
+  name: Anatole von Lilienfeld Group
+  institution: University of Basel
+  pi_names:
+  - Anatole von Lilienfeld
+  domain_focus: ''
+  member_author_names:
+  - Anatole von Lilienfeld
+  - A. Lilienfeld
+  - Anatole v. Lilienfeld
+  - Lilienfeld A.
+  - Lilienfeld, A.
+  - Lilienfeld, Anatole
+- id: hattrick-simpers-lab
+  name: Jason Hattrick-Simpers Group
+  institution: University of Toronto
+  pi_names:
+  - Jason Hattrick-Simpers
+  domain_focus: ''
+  member_author_names:
+  - Jason Hattrick-Simpers
+  - Hattrick-Simpers J.
+  - Hattrick-Simpers, J.
+  - Hattrick-Simpers, Jason
+  - J. Hattrick-Simpers
+- id: wang-lab
+  name: Bo Wang Group
+  institution: University of Toronto
+  pi_names:
+  - Bo Wang
+  domain_focus: ''
+  member_author_names:
+  - Bo Wang
+  - B. Wang
+  - Wang B.
+  - Wang, B.
+  - Wang, Bo
+- id: moosavi-lab
+  name: Mohamad Moosavi Group
+  institution: University of Toronto
+  pi_names:
+  - Mohamad Moosavi
+  domain_focus: ''
+  member_author_names:
+  - Mohamad Moosavi
+  - M. Moosavi
+  - Moosavi M.
+  - Moosavi, M.
+  - Moosavi, Mohamad
+- id: hein-lab
+  name: Jason Hein Group
+  institution: University of British Columbia
+  pi_names:
+  - Jason Hein
+  domain_focus: ''
+  member_author_names:
+  - Jason Hein
+  - Hein J.
+  - Hein, J.
+  - Hein, Jason
+  - J. Hein
+- id: garg-lab
+  name: Animesh Garg Group
+  institution: University of Toronto
+  pi_names:
+  - Animesh Garg
+  domain_focus: ''
+  member_author_names:
+  - Animesh Garg
+  - A. Garg
+  - Garg A.
+  - Garg, A.
+  - Garg, Animesh
+- id: allen-lab
+  name: Christine Allen Group
+  institution: University of Toronto
+  pi_names:
+  - Christine Allen
+  domain_focus: ''
+  member_author_names:
+  - Christine Allen
+  - Allen C.
+  - Allen, C.
+  - Allen, Christine
+  - C. Allen
+- id: darvish-lab
+  name: Kourosh Darvish Group
+  institution: University of Toronto
+  pi_names:
+  - Kourosh Darvish
+  domain_focus: ''
+  member_author_names:
+  - Kourosh Darvish
+  - Darvish K.
+  - Darvish, K.
+  - Darvish, Kourosh
+  - K. Darvish
+- id: schapira-lab
+  name: Matthieu Schapira Group
+  institution: University of Toronto
+  pi_names:
+  - Matthieu Schapira
+  domain_focus: ''
+  member_author_names:
+  - Matthieu Schapira
+  - M. Schapira
+  - Schapira M.
+  - Schapira, M.
+  - Schapira, Matthieu
+- id: carrillo-lab
+  name: Sergio Pablo-García Carrillo Group
+  institution: University of Toronto
+  pi_names:
+  - Sergio Pablo-García Carrillo
+  domain_focus: ''
+  member_author_names:
+  - Sergio Pablo-García Carrillo
+  - Carrillo S.
+  - Carrillo, S.
+  - Carrillo, Sergio
+  - S. Carrillo
+  - Sergio P. Carrillo
+  - Sergio Pablo-Garcia Carrillo
+- id: zou-lab
+  name: Yu Zou Group
+  institution: University of Toronto
+  pi_names:
+  - Yu Zou
+  domain_focus: ''
+  member_author_names:
+  - Yu Zou
+  - Y. Zou
+  - Zou Y.
+  - Zou, Y.
+  - Zou, Yu
+- id: arrowsmith-lab
+  name: Cheryl Arrowsmith Group
+  institution: University of Toronto
+  pi_names:
+  - Cheryl Arrowsmith
+  domain_focus: ''
+  member_author_names:
+  - Cheryl Arrowsmith
+  - Arrowsmith C.
+  - Arrowsmith, C.
+  - Arrowsmith, Cheryl
+  - C. Arrowsmith
+- id: sinton-lab
+  name: David Sinton Group
+  institution: University of Toronto
+  pi_names:
+  - David Sinton
+  domain_focus: ''
+  member_author_names:
+  - David Sinton
+  - D. Sinton
+  - Sinton D.
+  - Sinton, D.
+  - Sinton, David
+- id: cao-lab
+  name: Yang Cao Group
+  institution: University of Toronto
+  pi_names:
+  - Yang Cao
+  domain_focus: ''
+  member_author_names:
+  - Yang Cao
+  - Cao Y.
+  - Cao, Y.
+  - Cao, Yang
+  - Y. Cao
+- id: sun-lab
+  name: Yu Sun Group
+  institution: University of Toronto
+  pi_names:
+  - Yu Sun
+  domain_focus: ''
+  member_author_names:
+  - Yu Sun
+  - Sun Y.
+  - Sun, Y.
+  - Sun, Yu
+  - Y. Sun
+- id: bao-lab
+  name: Zeqing Bao Group
+  institution: University of Toronto
+  pi_names:
+  - Zeqing Bao
+  domain_focus: ''
+  member_author_names:
+  - Zeqing Bao
+  - Bao Z.
+  - Bao, Z.
+  - Bao, Zeqing
+  - Z. Bao
+- id: li-lab
+  name: Bowen Li Group
+  institution: University of Toronto
+  pi_names:
+  - Bowen Li
+  domain_focus: ''
+  member_author_names:
+  - Bowen Li
+  - B. Li
+  - Li B.
+  - Li, B.
+  - Li, Bowen
+- id: voznyy-lab
+  name: Oleksandr Voznyy Group
+  institution: Ontario Tech University
+  pi_names:
+  - Oleksandr Voznyy
+  domain_focus: ''
+  member_author_names:
+  - Oleksandr Voznyy
+  - O. Voznyy
+  - Voznyy O.
+  - Voznyy, O.
+  - Voznyy, Oleksandr
+- id: goldfarb-lab
+  name: Avi Goldfarb Group
+  institution: University of Toronto
+  pi_names:
+  - Avi Goldfarb
+  domain_focus: ''
+  member_author_names:
+  - Avi Goldfarb
+  - A. Goldfarb
+  - Goldfarb A.
+  - Goldfarb, A.
+  - Goldfarb, Avi
+- id: tran-lab
+  name: Helen Tran Group
+  institution: University of Toronto
+  pi_names:
+  - Helen Tran
+  domain_focus: ''
+  member_author_names:
+  - Helen Tran
+  - H. Tran
+  - Tran H.
+  - Tran, H.
+  - Tran, Helen
+- id: campbell-lab
+  name: Kieran Campbell Group
+  institution: University of Toronto
+  pi_names:
+  - Kieran Campbell
+  domain_focus: ''
+  member_author_names:
+  - Kieran Campbell
+  - Campbell K.
+  - Campbell, K.
+  - Campbell, Kieran
+  - K. Campbell
+- id: shkurti-lab
+  name: Florian Shkurti Group
+  institution: University of Toronto
+  pi_names:
+  - Florian Shkurti
+  domain_focus: ''
+  member_author_names:
+  - Florian Shkurti
+  - F. Shkurti
+  - Shkurti F.
+  - Shkurti, F.
+  - Shkurti, Florian
+- id: seltzer-lab
+  name: Margo Seltzer Group
+  institution: University of British Columbia
+  pi_names:
+  - Margo Seltzer
+  domain_focus: ''
+  member_author_names:
+  - Margo Seltzer
+  - M. Seltzer
+  - Seltzer M.
+  - Seltzer, M.
+  - Seltzer, Margo
+- id: singh-lab
+  name: Chandra Veer Singh Group
+  institution: University of Toronto
+  pi_names:
+  - Chandra Veer Singh
+  domain_focus: ''
+  member_author_names:
+  - Chandra Veer Singh
+  - C. Singh
+  - Chandra V. Singh
+  - Singh C.
+  - Singh, C.
+  - Singh, Chandra
+- id: hao-lab
+  name: Han Hao Group
+  institution: University of Toronto
+  pi_names:
+  - Han Hao
+  domain_focus: ''
+  member_author_names:
+  - Han Hao
+  - H. Hao
+  - Hao H.
+  - Hao, H.
+  - Hao, Han
+- id: gu-lab
+  name: Frank Gu Group
+  institution: University of Toronto
+  pi_names:
+  - Frank Gu
+  domain_focus: ''
+  member_author_names:
+  - Frank Gu
+  - F. Gu
+  - Gu F.
+  - Gu, F.
+  - Gu, Frank
+- id: ozin-lab
+  name: Geoffrey Ozin Group
+  institution: University of Toronto
+  pi_names:
+  - Geoffrey Ozin
+  domain_focus: ''
+  member_author_names:
+  - Geoffrey Ozin
+  - G. Ozin
+  - Ozin G.
+  - Ozin, G.
+  - Ozin, Geoffrey
+- id: sanchez-lab
+  name: Benjamin Sanchez Group
+  institution: University of Toronto
+  pi_names:
+  - Benjamin Sanchez
+  domain_focus: ''
+  member_author_names:
+  - Benjamin Sanchez
+  - B. Sanchez
+  - Sanchez B.
+  - Sanchez, B.
+  - Sanchez, Benjamin
+- id: strieth-kalthoff-lab
+  name: Felix Strieth-Kalthoff Group
+  institution: University of Toronto
+  pi_names:
+  - Felix Strieth-Kalthoff
+  domain_focus: ''
+  member_author_names:
+  - Felix Strieth-Kalthoff
+  - F. Strieth-Kalthoff
+  - Strieth-Kalthoff F.
+  - Strieth-Kalthoff, F.
+  - Strieth-Kalthoff, Felix
+- id: yakavets-lab
+  name: Ilya Yakavets Group
+  institution: University of Toronto
+  pi_names:
+  - Ilya Yakavets
+  domain_focus: ''
+  member_author_names:
+  - Ilya Yakavets
+  - I. Yakavets
+  - Yakavets I.
+  - Yakavets, I.
+  - Yakavets, Ilya
+- id: watchorn-lab
+  name: Jeff Watchorn Group
+  institution: University of Toronto
+  pi_names:
+  - Jeff Watchorn
+  domain_focus: ''
+  member_author_names:
+  - Jeff Watchorn
+  - J. Watchorn
+  - Watchorn J.
+  - Watchorn, J.
+  - Watchorn, Jeff
+- id: gans-lab
+  name: Joshua Gans Group
+  institution: University of Toronto
+  pi_names:
+  - Joshua Gans
+  domain_focus: ''
+  member_author_names:
+  - Joshua Gans
+  - Gans J.
+  - Gans, J.
+  - Gans, Joshua
+  - J. Gans
+- id: huang-lab
+  name: Kai Huang Group
+  institution: University of Toronto
+  pi_names:
+  - Kai Huang
+  domain_focus: ''
+  member_author_names:
+  - Kai Huang
+  - Huang K.
+  - Huang, K.
+  - Huang, Kai
+  - K. Huang
+- id: radisic-lab
+  name: Milica Radisic Group
+  institution: University of Toronto
+  pi_names:
+  - Milica Radisic
+  domain_focus: ''
+  member_author_names:
+  - Milica Radisic
+  - M. Radisic
+  - Radisic M.
+  - Radisic, M.
+  - Radisic, Milica
+- id: agrawal-lab
+  name: Ajay Agrawal Group
+  institution: University of Toronto
+  pi_names:
+  - Ajay Agrawal
+  domain_focus: ''
+  member_author_names:
+  - Ajay Agrawal
+  - A. Agrawal
+  - Agrawal A.
+  - Agrawal, A.
+  - Agrawal, Ajay
+- id: mcguigan-lab
+  name: Alison McGuigan Group
+  institution: University of Toronto
+  pi_names:
+  - Alison McGuigan
+  domain_focus: ''
+  member_author_names:
+  - Alison McGuigan
+  - A. McGuigan
+  - McGuigan A.
+  - McGuigan, A.
+  - McGuigan, Alison
+- id: berlinguette-lab
+  name: Curtis Berlinguette Group
+  institution: University of British Columbia
+  pi_names:
+  - Curtis Berlinguette
+  domain_focus: ''
+  member_author_names:
+  - Curtis Berlinguette
+  - Berlinguette C.
+  - Berlinguette, C.
+  - Berlinguette, Curtis
+  - C. Berlinguette
+- id: seferos-lab
+  name: Dwight Seferos Group
+  institution: University of Toronto
+  pi_names:
+  - Dwight Seferos
+  domain_focus: ''
+  member_author_names:
+  - Dwight Seferos
+  - D. Seferos
+  - Seferos D.
+  - Seferos, D.
+  - Seferos, Dwight
+- id: devedec-lab
+  name: Frantz le Dévédec Group
+  institution: University of Toronto
+  pi_names:
+  - Frantz le Dévédec
+  domain_focus: ''
+  member_author_names:
+  - Frantz le Dévédec
+  - Dévédec F.
+  - Dévédec, F.
+  - Dévédec, Frantz
+  - F. Dévédec
+  - Frantz Le Devedec
+  - Frantz l. Dévédec
+- id: buonassisi-lab
+  name: Tonio Buonassisi Group
+  institution: Massachusetts Institute of Technology
+  pi_names:
+  - Tonio Buonassisi
+  domain_focus: ''
+  member_author_names:
+  - Tonio Buonassisi
+  - Buonassisi T.
+  - Buonassisi, T.
+  - Buonassisi, Tonio
+  - T. Buonassisi
+- id: clasky-lab
+  name: Aaron Clasky Group
+  institution: University of Toronto
+  pi_names:
+  - Aaron Clasky
+  domain_focus: ''
+  member_author_names:
+  - Aaron Clasky
+  - A. Clasky
+  - Clasky A.
+  - Clasky, A.
+  - Clasky, Aaron
+- id: sutton-lab
+  name: Chris Sutton Group
+  institution: University of South Carolina
+  pi_names:
+  - Chris Sutton
+  domain_focus: ''
+  member_author_names:
+  - Chris Sutton
+  - C. Sutton
+  - Sutton C.
+  - Sutton, C.
+  - Sutton, Chris
+- id: kumacheva-lab
+  name: Eugenia Kumacheva Group
+  institution: University of Toronto
+  pi_names:
+  - Eugenia Kumacheva
+  domain_focus: ''
+  member_author_names:
+  - Eugenia Kumacheva
+  - E. Kumacheva
+  - Kumacheva E.
+  - Kumacheva, E.
+  - Kumacheva, Eugenia
+- id: bai-lab
+  name: Yang Bai Group
+  institution: University of Toronto
+  pi_names:
+  - Yang Bai
+  domain_focus: ''
+  member_author_names:
+  - Yang Bai
+  - Bai Y.
+  - Bai, Y.
+  - Bai, Yang
+  - Y. Bai
+- id: zhao-lab
+  name: Yimu Zhao Group
+  institution: University of Toronto
+  pi_names:
+  - Yimu Zhao
+  domain_focus: ''
+  member_author_names:
+  - Yimu Zhao
+  - Y. Zhao
+  - Zhao Y.
+  - Zhao, Y.
+  - Zhao, Yimu
+- id: bazylak-lab
+  name: Aimy Bazylak Group
+  institution: University of Toronto
+  pi_names:
+  - Aimy Bazylak
+  domain_focus: ''
+  member_author_names:
+  - Aimy Bazylak
+  - A. Bazylak
+  - Bazylak A.
+  - Bazylak, A.
+  - Bazylak, Aimy
+- id: dolatabadi-lab
+  name: Ali Dolatabadi Group
+  institution: University of Toronto
+  pi_names:
+  - Ali Dolatabadi
+  domain_focus: ''
+  member_author_names:
+  - Ali Dolatabadi
+  - A. Dolatabadi
+  - Dolatabadi A.
+  - Dolatabadi, A.
+  - Dolatabadi, Ali
+- id: gopaluni-lab
+  name: Bhushan Gopaluni Group
+  institution: University of British Columbia
+  pi_names:
+  - Bhushan Gopaluni
+  domain_focus: ''
+  member_author_names:
+  - Bhushan Gopaluni
+  - B. Gopaluni
+  - Gopaluni B.
+  - Gopaluni, B.
+  - Gopaluni, Bhushan
+- id: panesar-lab
+  name: Daman Panesar Group
+  institution: University of Toronto
+  pi_names:
+  - Daman Panesar
+  domain_focus: ''
+  member_author_names:
+  - Daman Panesar
+  - D. Panesar
+  - Panesar D.
+  - Panesar, D.
+  - Panesar, Daman
+- id: stagljar-lab
+  name: Igor Stagljar Group
+  institution: University of Toronto
+  pi_names:
+  - Igor Stagljar
+  domain_focus: ''
+  member_author_names:
+  - Igor Stagljar
+  - I. Stagljar
+  - Stagljar I.
+  - Stagljar, I.
+  - Stagljar, Igor
+- id: werber-lab
+  name: Jay Werber Group
+  institution: University of Toronto
+  pi_names:
+  - Jay Werber
+  domain_focus: ''
+  member_author_names:
+  - Jay Werber
+  - J. Werber
+  - Werber J.
+  - Werber, J.
+  - Werber, Jay
+- id: chou-lab
+  name: Leo Chou Group
+  institution: University of Toronto
+  pi_names:
+  - Leo Chou
+  domain_focus: ''
+  member_author_names:
+  - Leo Chou
+  - Chou L.
+  - Chou, L.
+  - Chou, Leo
+  - L. Chou
+- id: garton-lab
+  name: Michael Garton Group
+  institution: University of British Columbia
+  pi_names:
+  - Michael Garton
+  domain_focus: ''
+  member_author_names:
+  - Michael Garton
+  - Garton M.
+  - Garton, M.
+  - Garton, Michael
+  - M. Garton
+- id: yoshikawa-lab
+  name: Naruki Yoshikawa Group
+  institution: University of Toronto
+  pi_names:
+  - Naruki Yoshikawa
+  domain_focus: ''
+  member_author_names:
+  - Naruki Yoshikawa
+  - N. Yoshikawa
+  - Yoshikawa N.
+  - Yoshikawa, N.
+  - Yoshikawa, Naruki
+- id: batey-lab
+  name: Robert Batey Group
+  institution: University of Toronto
+  pi_names:
+  - Robert Batey
+  domain_focus: ''
+  member_author_names:
+  - Robert Batey
+  - Batey R.
+  - Batey, R.
+  - Batey, Robert
+  - R. Batey
+- id: santhakumar-lab
+  name: Santha Santhakumar Group
+  institution: University of Toronto
+  pi_names:
+  - Santha Santhakumar
+  domain_focus: ''
+  member_author_names:
+  - Santha Santhakumar
+  - S. Santhakumar
+  - Santhakumar S.
+  - Santhakumar, S.
+  - Santhakumar, Santha
+- id: baird-lab
+  name: Sterling Baird Group
+  institution: University of Utah
+  pi_names:
+  - Sterling Baird
+  domain_focus: ''
+  member_author_names:
+  - Sterling Baird
+  - Baird S.
+  - Baird, S.
+  - Baird, Sterling
+  - S. Baird
+- id: marani-lab
+  name: Afshin Marani Group
+  institution: University of Toronto
+  pi_names:
+  - Afshin Marani
+  domain_focus: ''
+  member_author_names:
+  - Afshin Marani
+  - A. Marani
+  - Marani A.
+  - Marani, A.
+  - Marani, Afshin
+- id: veerman-lab
+  name: Alan Veerman Group
+  institution: University of Toronto
+  pi_names:
+  - Alan Veerman
+  domain_focus: ''
+  member_author_names:
+  - Alan Veerman
+  - A. Veerman
+  - Veerman A.
+  - Veerman, A.
+  - Veerman, Alan
+- id: andreazza-lab
+  name: Ana Andreazza Group
+  institution: University of Toronto
+  pi_names:
+  - Ana Andreazza
+  domain_focus: ''
+  member_author_names:
+  - Ana Andreazza
+  - A. Andreazza
+  - Andreazza A.
+  - Andreazza, A.
+  - Andreazza, Ana
+- id: yudin-lab
+  name: Andrei Yudin Group
+  institution: University of Toronto
+  pi_names:
+  - Andrei Yudin
+  domain_focus: ''
+  member_author_names:
+  - Andrei Yudin
+  - A. Yudin
+  - Yudin A.
+  - Yudin, A.
+  - Yudin, Andrei
+- id: lawson-lab
+  name: Christopher Lawson Group
+  institution: University of Toronto
+  pi_names:
+  - Christopher Lawson
+  domain_focus: ''
+  member_author_names:
+  - Christopher Lawson
+  - C. Lawson
+  - Lawson C.
+  - Lawson, C.
+  - Lawson, Christopher
+- id: persaud-lab
+  name: Daniel Persaud Group
+  institution: University of Toronto
+  pi_names:
+  - Daniel Persaud
+  domain_focus: ''
+  member_author_names:
+  - Daniel Persaud
+  - D. Persaud
+  - Persaud D.
+  - Persaud, D.
+  - Persaud, Daniel
+- id: williams-lab
+  name: Joseph Williams Group
+  institution: University of Toronto
+  pi_names:
+  - Joseph Williams
+  domain_focus: ''
+  member_author_names:
+  - Joseph Williams
+  - J. Williams
+  - Williams J.
+  - Williams, J.
+  - Williams, Joseph
+- id: pardee-lab
+  name: Keith Pardee Group
+  institution: University of Toronto
+  pi_names:
+  - Keith Pardee
+  domain_focus: ''
+  member_author_names:
+  - Keith Pardee
+  - K. Pardee
+  - Pardee K.
+  - Pardee, K.
+  - Pardee, Keith
+- id: murphy-lab
+  name: M Murphy Group
+  institution: University of Toronto
+  pi_names:
+  - M Murphy
+  domain_focus: ''
+  member_author_names:
+  - M Murphy
+  - M. Murphy
+  - Murphy M.
+  - Murphy, M
+  - Murphy, M.
+- id: kochi-lab
+  name: Mahyar Rajabi Kochi Group
+  institution: University of Toronto
+  pi_names:
+  - Mahyar Rajabi Kochi
+  domain_focus: ''
+  member_author_names:
+  - Mahyar Rajabi Kochi
+  - Kochi M.
+  - Kochi, M.
+  - Kochi, Mahyar
+  - M. Kochi
+  - Mahyar R. Kochi
+- id: ansari-lab
+  name: Mehrad Gholizadeh Ansari Group
+  institution: University of Toronto
+  pi_names:
+  - Mehrad Gholizadeh Ansari
+  domain_focus: ''
+  member_author_names:
+  - Mehrad Gholizadeh Ansari
+  - Ansari M.
+  - Ansari, M.
+  - Ansari, Mehrad
+  - M. Ansari
+  - Mehrad G. Ansari
+- id: fisker-bødker-lab
+  name: Nis Fisker-Bødker Group
+  institution: University of Toronto
+  pi_names:
+  - Nis Fisker-Bødker
+  domain_focus: ''
+  member_author_names:
+  - Nis Fisker-Bødker
+  - Fisker-Bødker N.
+  - Fisker-Bødker, N.
+  - Fisker-Bødker, Nis
+  - N. Fisker-Bødker
+- id: mahadevan-lab
+  name: Radhakrishnan (Krishna) Mahadevan Group
+  institution: University of Toronto
+  pi_names:
+  - Radhakrishnan (Krishna) Mahadevan
+  domain_focus: ''
+  member_author_names:
+  - Radhakrishnan (Krishna) Mahadevan
+  - Mahadevan R.
+  - Mahadevan, R.
+  - Mahadevan, Radhakrishnan
+  - R. Mahadevan
+  - Radhakrishnan (. Mahadevan
+- id: black-lab
+  name: Robert Black Group
+  institution: University of Toronto
+  pi_names:
+  - Robert Black
+  domain_focus: ''
+  member_author_names:
+  - Robert Black
+  - Black R.
+  - Black, R.
+  - Black, Robert
+  - R. Black
+- id: green-lab
+  name: Stuart Green Group
+  institution: University of Toronto
+  pi_names:
+  - Stuart Green
+  domain_focus: ''
+  member_author_names:
+  - Stuart Green
+  - Green S.
+  - Green, S.
+  - Green, Stuart
+  - S. Green
+- id: sparks-lab
+  name: Taylor Sparks Group
+  institution: University of Utah
+  pi_names:
+  - Taylor Sparks
+  domain_focus: ''
+  member_author_names:
+  - Taylor Sparks
+  - Sparks T.
+  - Sparks, T.
+  - Sparks, Taylor
+  - T. Sparks
+- id: vegge-lab
+  name: Tejs Vegge Group
+  institution: Technical University of Denmark
+  pi_names:
+  - Tejs Vegge
+  domain_focus: ''
+  member_author_names:
+  - Tejs Vegge
+  - T. Vegge
+  - Vegge T.
+  - Vegge, T.
+  - Vegge, Tejs
+- id: welsh-lab
+  name: Timothy Welsh Group
+  institution: University of Toronto
+  pi_names:
+  - Timothy Welsh
+  domain_focus: ''
+  member_author_names:
+  - Timothy Welsh
+  - T. Welsh
+  - Welsh T.
+  - Welsh, T.
+  - Welsh, Timothy
+- id: jin-lab
+  name: Zhijing Jin Group
+  institution: Max Planck Institute
+  pi_names:
+  - Zhijing Jin
+  domain_focus: ''
+  member_author_names:
+  - Zhijing Jin
+  - Jin Z.
+  - Jin, Z.
+  - Jin, Zhijing
+  - Z. Jin

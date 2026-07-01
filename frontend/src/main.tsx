@@ -22,6 +22,10 @@ import EvalPage from "@/pages/EvalPage";
 import DiscoveryPage from "@/pages/DiscoveryPage";
 import ImpactPage from "@/pages/ImpactPage";
 import DriftPage from "@/pages/DriftPage";
+import KnowledgeTransferPage from "@/pages/KnowledgeTransferPage";
+import TransferStudioPage from "@/pages/TransferStudioPage";
+import KnowledgeBasePage from "@/pages/KnowledgeBasePage";
+import LabProfilePage from "@/pages/LabProfilePage";
 import ReportPage from "@/pages/ReportPage";
 import NetworkGrowthPage from "@/pages/NetworkGrowthPage";
 import RetrievalPage from "@/pages/RetrievalPage";
@@ -62,6 +66,10 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
           <Route path="/network-v1" element={<NetworkPage />} />
           <Route path="/impact" element={<ImpactPage />} />
           <Route path="/drift" element={<DriftPage />} />
+          <Route path="/transfer" element={<KnowledgeTransferPage />} />
+          <Route path="/transfer-studio" element={<TransferStudioPage />} />
+          <Route path="/kb" element={<KnowledgeBasePage />} />
+          <Route path="/labs/:labId" element={<LabProfilePage />} />
           <Route path="/people" element={<PeopleGridPage />} />
           <Route path="/multi-graph" element={<MultiGraphPage />} />
           <Route path="/geographic" element={<GeographicPage />} />

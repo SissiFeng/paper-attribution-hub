@@ -4,10 +4,11 @@ import os
 import shutil
 import tempfile
 from dataclasses import dataclass
+from typing import Any
 from pathlib import Path
 
 from fastapi import APIRouter, Depends, HTTPException, UploadFile
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 from sqlalchemy import func, select
 from sqlalchemy.orm import Session
 
@@ -16,10 +17,13 @@ from app.models import Paper, PaperChunk
 from app.schemas import ChunkOut, PropositionHit, RagFeedbackIn, RagFeedbackOut, RetrieveRequest
 from app.services.embedding_service import get_embedder
 from app.services.fulltext_service import build_chunk_embeddings, ingest_fulltext_file
+from app.services.pdf_parser import SUPPORTED_FULLTEXT_SUFFIXES
 from app.services.relevance_classifier import classify_all
 from app.services.reranker import get_reranker
-from app.services.rag_evaluator import evaluate_retrieval, record_feedback
-from app.services.retrieval_service import HybridIndex, is_structured_query, search_propositions
+from app.services.rag_evaluator import record_feedback
+from app.services.retrieval_service import HybridIndex, search_propositions
+from app.services.nl_to_sql_service import run_nl_sql
+from app.services.modular_rag_service import ModularRagRequest, run_modular_rag
 
 router = APIRouter(tags=["fulltext"])
 
@@ -31,6 +35,8 @@ class AnswerRequest(BaseModel):
     year_from: int | None = None
     year_to: int | None = None
     paper_ids: list[str] | None = None
+    mode: str = "adaptive"
+    agentic_search: bool = True
 
 
 class SourceOut(BaseModel):
@@ -44,6 +50,15 @@ class SourceOut(BaseModel):
     cosine_score: float
     graph_score: float = 0.0
     graph_context: str | None = None   # Point 3: structured network paths
+    agentic_links: list[dict[str, Any]] = Field(default_factory=list)
+
+
+class NlSqlOut(BaseModel):
+    intent: str
+    planner: str
+    sql: str
+    rows: list[dict[str, Any]]
+    summary: str
 
 
 class AnswerOut(BaseModel):
@@ -52,11 +67,18 @@ class AnswerOut(BaseModel):
     model: str
     chunks_retrieved: int
     proposition_hints: list[PropositionHit] = []  # Point 2: structured hits
+    sql_hints: list[NlSqlOut] = []
     query_type: str = "fact"
     evidence_score: float = 0.0
     source_precision: float = 0.0
     missing_evidence: list[str] = []
     should_retry: bool = False
+    execution_mode: str = "adaptive"
+    module_trace: list[dict[str, Any]] = Field(default_factory=list)
+    retrieval_quality: dict[str, Any] = Field(default_factory=dict)
+    answer_grounding: dict[str, Any] = Field(default_factory=dict)
+    human_feedback: dict[str, Any] = Field(default_factory=dict)
+    module_metrics: dict[str, Any] = Field(default_factory=dict)
 
 
 @router.post("/papers/{paper_id}/fulltext", response_model=dict)
@@ -70,8 +92,9 @@ async def upload_fulltext(
         raise HTTPException(status_code=404, detail=f"Paper {paper_id} not found")
 
     suffix = Path(file.filename or "").suffix.lower() or ".txt"
-    if suffix not in {".pdf", ".txt", ".md"}:
-        raise HTTPException(status_code=415, detail="Only .pdf / .txt / .md accepted")
+    if suffix not in SUPPORTED_FULLTEXT_SUFFIXES:
+        accepted = " / ".join(sorted(SUPPORTED_FULLTEXT_SUFFIXES))
+        raise HTTPException(status_code=415, detail=f"Only {accepted} accepted")
 
     with tempfile.NamedTemporaryFile(delete=False, suffix=suffix) as tmp:
         shutil.copyfileobj(file.file, tmp)
@@ -176,6 +199,23 @@ def proposition_search(
     return [PropositionHit(**h.__dict__) for h in hits]
 
 
+@router.get("/retrieval/nl-sql", response_model=NlSqlOut)
+def nl_sql_search(
+    q: str,
+    use_llm: bool = True,
+    session: Session = Depends(get_session),
+) -> NlSqlOut:
+    """Run schema-constrained NL-to-SQL over paper attribution tables."""
+    result = run_nl_sql(session, q, use_llm=use_llm)
+    return NlSqlOut(
+        intent=result.plan.intent,
+        planner=result.plan.source,
+        sql=result.sql,
+        rows=result.rows,
+        summary=result.summary,
+    )
+
+
 def _llm_answer(query: str, context_blocks: str) -> tuple[str, str]:
     """Generate a grounded answer via Kimi or Claude.  Returns (answer, model_name)."""
     from app.config import settings
@@ -240,7 +280,7 @@ def retrieve_answer(
     payload: AnswerRequest,
     session: Session = Depends(get_session),
 ) -> AnswerOut:
-    """Advanced RAG endpoint: hybrid retrieval → LLM answer generation.
+    """Modular RAG endpoint with controlled agentic search.
 
     Supports Kimi (PAS_KIMI_API_KEY) and Claude (PAS_ANTHROPIC_API_KEY).
     Set PAS_LLM_PROVIDER=kimi|anthropic|auto (default: auto).
@@ -250,7 +290,6 @@ def retrieve_answer(
     """
     MAX_CHUNKS = 2000  # safe for Render 512 MB; covers ~1000 papers × 2 chunks
 
-    # Check if any chunks exist at all
     chunk_count = session.scalar(select(func.count()).select_from(PaperChunk))
     if not chunk_count:
         return AnswerOut(
@@ -258,110 +297,63 @@ def retrieve_answer(
             sources=[],
             model="none",
             chunks_retrieved=0,
+            sql_hints=[],
             query_type="fact",
             missing_evidence=["No paper chunks are indexed yet."],
             should_retry=False,
+            execution_mode=payload.mode,
+            module_trace=[{"module": "search", "skipped": "no_chunks"}],
         )
 
-    embedder = get_embedder()
-    # load_graph_scores=False skips loading all PaperClassification rows (saves ~100 MB)
-    index = HybridIndex.from_session(session, embedder,
-                                      max_chunks=MAX_CHUNKS,
-                                      load_graph_scores=False)
-    year_range: tuple[int | None, int | None] | None = None
-    if payload.year_from is not None or payload.year_to is not None:
-        year_range = (payload.year_from, payload.year_to)
-
-    # Fetch wider net for re-ranking
-    candidates = index.search(
-        payload.query,
-        paper_ids=payload.paper_ids,
-        year_range=year_range,
-        top_k=max(payload.top_k * 4, 20),
-        alpha=payload.alpha,
+    mode = payload.mode if payload.mode in {"iterative", "recursive", "adaptive"} else "adaptive"
+    result = run_modular_rag(
+        session,
+        ModularRagRequest(
+            query=payload.query,
+            top_k=payload.top_k,
+            alpha=payload.alpha,
+            year_from=payload.year_from,
+            year_to=payload.year_to,
+            paper_ids=payload.paper_ids,
+            mode=mode,
+            max_chunks=MAX_CHUNKS,
+            agentic_search=payload.agentic_search,
+        ),
+        answer_fn=_llm_answer,
     )
-    # Re-rank (Claude or null)
-    reranked = get_reranker().rerank(payload.query, candidates)[: payload.top_k]
 
-    # Point 3: load graph context (second-degree paths + AC citations) for top papers.
-    from app.models import PaperClassification
-    unique_paper_ids = list({r.paper_id for r in reranked})
-    graph_ctx: dict[str, str] = {}
-    for cls_row in session.execute(
-        select(PaperClassification).where(PaperClassification.paper_id.in_(unique_paper_ids))
-    ).scalars():
-        gs = cls_row.graph_signals or {}
-        lines: list[str] = []
-        for path in (gs.get("second_degree_paths") or [])[:2]:
-            lines.append(
-                f"network: {path.get('via_author_name','')} → {path.get('ac_author_name','')}"
-                f" ({len(path.get('shared_papers', []))} shared papers)"
-            )
-        for sig in (gs.get("citation_signals") or [])[:2]:
-            title = (sig.get("cited_ac_core_title") or "")[:60]
-            lines.append(f"cites AC core: {title}")
-        if lines:
-            graph_ctx[cls_row.paper_id] = " | ".join(lines)
-
-    sources = [
-        SourceOut(
-            chunk_id=r.chunk_id,
-            paper_id=r.paper_id,
-            section_type=r.section_type,
-            section_title=r.section_title,
-            text=r.text,
-            score=r.score,
-            bm25_score=r.bm25_score,
-            cosine_score=r.cosine_score,
-            graph_score=r.graph_score,
-            graph_context=graph_ctx.get(r.paper_id),
+    sources = [SourceOut(**src) for src in result.sources]
+    prop_hints = [PropositionHit(**h.__dict__) for h in result.proposition_hints]
+    sql_hints = [
+        NlSqlOut(
+            intent=hint.plan.intent,
+            planner=hint.plan.source,
+            sql=hint.sql,
+            rows=hint.rows,
+            summary=hint.summary,
         )
-        for r in reranked
+        for hint in result.sql_hints
     ]
-
-    # Point 2: append proposition hints for structured queries.
-    prop_hints: list[PropositionHit] = []
-    if is_structured_query(payload.query):
-        raw_hits = search_propositions(session, payload.query, top_k=5)
-        prop_hints = [PropositionHit(**h.__dict__) for h in raw_hits]
-
-    assessment = evaluate_retrieval(
-        payload.query,
-        sources,
-        proposition_hints=prop_hints,
-    )
-
-    # Build context and generate answer
-    context_blocks = "\n\n".join(
-        f"[{i+1}] (paper={s.paper_id}, section={s.section_type}"
-        + (f", graph: {s.graph_context}" if s.graph_context else "")
-        + f")\n{s.text}"
-        for i, s in enumerate(sources)
-    )
-
-    answer, model_used = _llm_answer(payload.query, context_blocks)
-
-    if answer is None:
-        # No LLM configured — show passages with hint
-        from app.config import settings
-        answer = (
-            "**Retrieved passages** (set PAS_KIMI_API_KEY or PAS_ANTHROPIC_API_KEY in "
-            "Render environment to enable LLM answer generation):\n\n"
-            + "\n\n".join(f"**[{i+1}]** {s.text[:500]}" for i, s in enumerate(sources))
-        )
-        model_used = "retrieval-only"
+    assessment = result.assessment
 
     return AnswerOut(
-        answer=answer,
+        answer=result.answer,
         sources=sources,
-        model=model_used,
-        chunks_retrieved=len(candidates),
+        model=result.model,
+        chunks_retrieved=result.chunks_retrieved,
         proposition_hints=prop_hints,
-        query_type=assessment.query_type,
-        evidence_score=assessment.evidence_score,
-        source_precision=assessment.source_precision,
-        missing_evidence=assessment.missing_evidence,
-        should_retry=assessment.should_retry,
+        sql_hints=sql_hints,
+        query_type=assessment.query_type if assessment else "fact",
+        evidence_score=assessment.evidence_score if assessment else 0.0,
+        source_precision=assessment.source_precision if assessment else 0.0,
+        missing_evidence=assessment.missing_evidence if assessment else [],
+        should_retry=assessment.should_retry if assessment else False,
+        execution_mode=result.mode,
+        module_trace=result.module_trace,
+        retrieval_quality=assessment.retrieval_quality if assessment else {},
+        answer_grounding=assessment.answer_grounding if assessment else {},
+        human_feedback=assessment.human_feedback if assessment else {},
+        module_metrics=assessment.module_metrics if assessment else {},
     )
 
 

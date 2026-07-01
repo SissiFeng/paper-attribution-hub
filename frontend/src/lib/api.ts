@@ -29,6 +29,16 @@ import type {
   SankeyPayload,
   TimelinePayload,
   TopicStreamPayload,
+  AdoptionLag,
+  TransferFlows,
+  TransferSummary,
+  KbEntityIndexItem,
+  KbEntityPage,
+  KbLabProfile,
+  KbSummary,
+  TransferTarget,
+  TransferTku,
+  TransferDesign,
   WikiPage,
 } from "@/types";
 import * as mock from "@/lib/mock";
@@ -418,6 +428,127 @@ export function getHubScore(institution: string = "uoft") {
   return withMock(
     () => request<HubScorePayload>(`/analytics/hub-score?institution=${institution}`),
     mock.MOCK_HUB_SCORE
+  );
+}
+
+// ─── Cross-SDL knowledge transfer ────────────────────────────────────────────
+
+export function getTransferFlows(params: { year_from?: number; year_to?: number } = {}) {
+  const sp = new URLSearchParams();
+  if (params.year_from != null) sp.set("year_from", String(params.year_from));
+  if (params.year_to != null) sp.set("year_to", String(params.year_to));
+  const qs = sp.toString();
+  return withMock(
+    () => request<TransferFlows>(`/analytics/transfer/flows${qs ? `?${qs}` : ""}`),
+    { labs: [], matrix: [], intra_lab: {}, total_cross_flows: 0 } as TransferFlows
+  );
+}
+
+export function getTransferAdoption(params: { entity_type?: string; min_labs?: number } = {}) {
+  const sp = new URLSearchParams();
+  if (params.entity_type) sp.set("entity_type", params.entity_type);
+  if (params.min_labs != null) sp.set("min_labs", String(params.min_labs));
+  const qs = sp.toString();
+  return withMock(
+    () => request<AdoptionLag[]>(`/analytics/transfer/adoption${qs ? `?${qs}` : ""}`),
+    [] as AdoptionLag[]
+  );
+}
+
+export function getTransferSummary() {
+  return withMock(
+    () => request<TransferSummary>("/analytics/transfer/summary"),
+    {
+      labs: 0,
+      linked_papers: 0,
+      entities_tracked: 0,
+      cross_lab_entities: 0,
+      median_adoption_lag_years: null,
+      fastest_spreading: [],
+    } as TransferSummary
+  );
+}
+
+// ─── Cross-SDL knowledge base ────────────────────────────────────────────────
+
+export function getKbSummary() {
+  return withMock(
+    () => request<KbSummary>("/kb/summary"),
+    {
+      labs: 0,
+      linked_papers: 0,
+      entities_by_type: {},
+      cross_lab_entities: 0,
+    } as KbSummary
+  );
+}
+
+export function getKbEntities(params: { entity_type?: string; q?: string } = {}) {
+  const sp = new URLSearchParams();
+  if (params.entity_type) sp.set("entity_type", params.entity_type);
+  if (params.q) sp.set("q", params.q);
+  const qs = sp.toString();
+  return withMock(
+    () => request<KbEntityIndexItem[]>(`/kb/entities${qs ? `?${qs}` : ""}`),
+    [] as KbEntityIndexItem[]
+  );
+}
+
+export function getKbEntityPage(entityType: string, name: string) {
+  return withMock<KbEntityPage | null>(
+    () =>
+      request<KbEntityPage>(
+        `/kb/entities/${encodeURIComponent(entityType)}/${encodeURIComponent(name)}`
+      ),
+    null
+  );
+}
+
+export function getKbLabProfile(labId: string) {
+  return withMock<KbLabProfile | null>(
+    () => request<KbLabProfile>(`/kb/labs/${encodeURIComponent(labId)}/profile`),
+    null
+  );
+}
+
+// ─── Cross-SDL transfer studio ───────────────────────────────────────────────
+
+export function getTransferTargets() {
+  return withMock(
+    () => request<TransferTarget[]>("/transfer/targets"),
+    [] as TransferTarget[]
+  );
+}
+
+export function getTransferTkus(params: { source_domain?: string; task_type?: string } = {}) {
+  const sp = new URLSearchParams();
+  if (params.source_domain) sp.set("source_domain", params.source_domain);
+  if (params.task_type) sp.set("task_type", params.task_type);
+  const qs = sp.toString();
+  return withMock(
+    () => request<TransferTku[]>(`/transfer/tkus${qs ? `?${qs}` : ""}`),
+    [] as TransferTku[]
+  );
+}
+
+export function generateTransferDesign(payload: {
+  target_id: string;
+  source_domain?: string;
+  top_k?: number;
+  use_llm?: boolean;
+}) {
+  return withMock(
+    () =>
+      request<TransferDesign>("/transfer/design", {
+        method: "POST",
+        body: JSON.stringify(payload),
+      }),
+    {
+      target: { id: payload.target_id, name: payload.target_id, description: "" },
+      markdown: "_(mock) No backend connected._",
+      mode: "template",
+      matches: [],
+    } as TransferDesign
   );
 }
 

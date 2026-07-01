@@ -16,6 +16,8 @@ from app.models.pipeline_run import PipelineRun
 from app.models.wiki import WikiPage
 from app.models.dedup import AuthorDedupDecision
 from app.models.rag_feedback import RagFeedback
+from app.models.sdl import PaperEntity, PaperLabLink, SdlLab
+from app.models.tku import TransferKnowledgeUnit
 
 all_models = (
     Paper,
@@ -37,6 +39,10 @@ all_models = (
     WikiPage,
     AuthorDedupDecision,
     RagFeedback,
+    SdlLab,
+    PaperLabLink,
+    PaperEntity,
+    TransferKnowledgeUnit,
 )
 
 __all__ = [
@@ -59,5 +65,9 @@ __all__ = [
     "WikiPage",
     "AuthorDedupDecision",
     "RagFeedback",
+    "SdlLab",
+    "PaperLabLink",
+    "PaperEntity",
+    "TransferKnowledgeUnit",
     "all_models",
 ]

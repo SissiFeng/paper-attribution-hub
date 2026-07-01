@@ -1,0 +1,57 @@
+# Canonical SDL retrieval terms from Retrieval_Operationalization.docx.
+#
+# The document defines candidate retrieval, not final AC attribution labels.
+# Keep this file synchronized with the protocol so ingestion, evidence
+# extraction, topic matching, and tests do not drift apart.
+
+tier1_label_terms:
+  - self-driving laboratory
+  - self driving laboratory
+  - self-driven laboratory
+  - self-driving lab
+  - self driving lab
+  - self-driven lab
+  - autonomous laboratory
+  - autonomous lab
+  - autonomous experiment
+  - autonomous discovery
+  - accelerated discovery
+  - accelerated experiment
+  - accelerated scientific discovery
+  - materials acceleration platform
+  - discovery acceleration
+
+tier2_architecture_terms:
+  ai_decision_making:
+    - machine learning
+    - artificial intelligence
+    - Bayesian optimization
+    - active learning
+    - reinforcement learning
+    - Gaussian process
+    - data-driven
+    - algorithm-guided
+  automated_experimentation:
+    - high-throughput
+    - high throughput experiment
+    - HTE
+    - robotic synthesis
+    - robotic platform
+    - robotic experiment
+    - robotic laboratory
+    - automated synthesis
+    - automated experimentation
+    - robot scientist
+  iterative_closed_loop:
+    - closed-loop
+    - closed loop
+    - feedback loop
+    - iterative optimization
+    - sequential optimization
+    - self-optimizing
+    - adaptive optimization
+    - experiment planning
+    - adaptive experimentation
+    - design-build-test-learn
+    - design build test learn
+    - DBTL

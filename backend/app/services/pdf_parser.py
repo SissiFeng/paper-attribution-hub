@@ -2,10 +2,10 @@
 
 The parser yields `ParsedDocument(title, abstract, authors, sections, references)`.
 v0.2 uses PyMuPDF for PDFs and pure-Python regex section splitting.
-v0.4 adds a GROBID adapter (see `grobid_adapter.py`) — when GROBID is
-reachable, `parse_any` routes PDF files through it for higher-fidelity
-sections, authors, and references; otherwise the PyMuPDF path runs as
-before.
+v0.4 adds a GROBID adapter (see `grobid_adapter.py`) for higher-fidelity
+sections, authors, and references when explicitly requested.
+v0.8 adds MarkItDown as the default PDF normalization layer so uploaded PDFs
+are first converted into LLM-friendly Markdown before section splitting.
 
 The `ParsedDocument` dataclass is the contract between parsers and the
 ingestion pipeline. Any new backend (e.g. a Semantic Scholar API adapter)
@@ -84,6 +84,22 @@ SECTION_PATTERNS: list[tuple[str, re.Pattern[str]]] = [
         re.compile(r"^\s*figure\s+\d+[\.:]\s", re.IGNORECASE),
     ),
 ]
+
+SUPPORTED_FULLTEXT_SUFFIXES = {
+    ".csv",
+    ".docx",
+    ".epub",
+    ".htm",
+    ".html",
+    ".json",
+    ".md",
+    ".pdf",
+    ".pptx",
+    ".txt",
+    ".xls",
+    ".xlsx",
+    ".xml",
+}
 
 
 @dataclass
@@ -307,11 +323,52 @@ def parse_pdf_as_document(path: Path) -> ParsedDocument:
     return ParsedDocument(sections=sections, source="pymupdf")
 
 
+def parse_via_markitdown(path: Path) -> ParsedDocument:
+    """Convert a document to Markdown with MarkItDown, then reuse text heuristics."""
+    try:
+        from markitdown import MarkItDown  # type: ignore
+    except ImportError as e:
+        raise RuntimeError(
+            "MarkItDown is required for Markdown-first PDF parsing. "
+            "`pip install markitdown` or use the PyMuPDF fallback."
+        ) from e
+
+    converter = MarkItDown()
+    convert = getattr(converter, "convert_local", converter.convert)
+    result = convert(str(path))
+    markdown = getattr(result, "text_content", None)
+    if markdown is None:
+        markdown = getattr(result, "markdown", None)
+    if markdown is None:
+        markdown = str(result)
+    markdown = markdown.strip()
+    if not markdown:
+        return ParsedDocument(source="markitdown")
+
+    sections = split_into_sections(markdown)
+    abstract = next(
+        (s.text for s in sections if s.section_type == "abstract"), None
+    )
+    title = None
+    for line in markdown.splitlines()[:20]:
+        stripped = line.strip().lstrip("#").strip()
+        if stripped:
+            title = stripped
+            break
+    return ParsedDocument(
+        sections=sections,
+        title=title,
+        abstract=abstract,
+        source="markitdown",
+    )
+
+
 def parse_any(path: Path, *, prefer_grobid: bool | None = None) -> ParsedDocument:
     """Pick the best available backend for the file.
 
-    - `.pdf`: try GROBID first when `prefer_grobid` is True (or auto when
-      `PAS_GROBID_URL` is set and reachable); otherwise PyMuPDF.
+    - `.pdf`: use GROBID first only when explicitly requested; otherwise try
+      MarkItDown first, then GROBID when configured, then PyMuPDF.
+    - Office / HTML / structured text formats: convert through MarkItDown.
     - `.txt` / `.md`: text path (no parser choice).
     """
     p = Path(path)
@@ -321,10 +378,7 @@ def parse_any(path: Path, *, prefer_grobid: bool | None = None) -> ParsedDocumen
     if suffix == ".pdf":
         from app.config import settings  # local import avoids cyclic init
 
-        want_grobid = prefer_grobid
-        if want_grobid is None:
-            want_grobid = bool(settings.grobid_url)
-        if want_grobid:
+        if prefer_grobid:
             try:
                 from app.services.grobid_adapter import parse_pdf_via_grobid
 
@@ -332,7 +386,26 @@ def parse_any(path: Path, *, prefer_grobid: bool | None = None) -> ParsedDocumen
                 if doc.sections:
                     return doc
             except Exception:
-                # Fall through to PyMuPDF so a downed GROBID never blocks ingestion.
+                # Fall through so a downed GROBID never blocks ingestion.
                 pass
+        else:
+            try:
+                doc = parse_via_markitdown(p)
+                if doc.sections:
+                    return doc
+            except Exception:
+                pass
+
+            if settings.grobid_url:
+                try:
+                    from app.services.grobid_adapter import parse_pdf_via_grobid
+
+                    doc = parse_pdf_via_grobid(p)
+                    if doc.sections:
+                        return doc
+                except Exception:
+                    pass
         return parse_pdf_as_document(p)
+    if suffix in SUPPORTED_FULLTEXT_SUFFIXES:
+        return parse_via_markitdown(p)
     raise ValueError(f"Unsupported full-text format: {suffix}")

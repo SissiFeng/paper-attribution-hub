@@ -6,6 +6,7 @@ import uuid
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 
+from app.api.auth import require_api_key
 from app.db import get_session
 from app.models import HumanReview, Paper
 from app.schemas import HumanReviewIn, HumanReviewOut
@@ -24,7 +25,11 @@ VALID_LABELS = {
 }
 
 
-@router.post("/{paper_id}", response_model=HumanReviewOut)
+@router.post(
+    "/{paper_id}",
+    response_model=HumanReviewOut,
+    dependencies=[Depends(require_api_key)],
+)
 def submit_review(
     paper_id: str, payload: HumanReviewIn, session: Session = Depends(get_session)
 ) -> HumanReviewOut:

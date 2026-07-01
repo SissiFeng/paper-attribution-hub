@@ -63,3 +63,27 @@ def test_metadata_carries_prefix(fulltext_seeded_session):
     meta = chunk.chunk_metadata or {}
     assert "contextual_prefix" in meta
     assert "From" in meta["contextual_prefix"]
+    assert meta["chunk_kind"] == "child"
+    assert meta["parent_id"]
+    assert meta["parent_text"]
+    assert meta["split_strategy"] in {
+        "semantic_adaptive",
+        "sliding_fallback",
+        "unsplit",
+    }
+
+
+def test_indexed_text_carries_parent_context(fulltext_seeded_session):
+    chunk = (
+        fulltext_seeded_session.execute(
+            select(PaperChunk).where(PaperChunk.section_type == "methods")
+        )
+        .scalars()
+        .first()
+    )
+    assert chunk is not None
+    assert chunk.indexed_text is not None
+    meta = chunk.chunk_metadata or {}
+    if meta.get("parent_text") != chunk.chunk_text:
+        assert "Parent context:" in chunk.indexed_text
+        assert "Child chunk:" in chunk.indexed_text
