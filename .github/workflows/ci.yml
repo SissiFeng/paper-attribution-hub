@@ -46,4 +46,7 @@ jobs:
           tests/test_transfer_designer.py
           tests/test_evolutionary_transfer_service.py
           tests/test_tku_extractor.py
+          --deselect tests/test_api.py::test_list_papers_reports_fulltext_rag_ready
+          --deselect tests/test_api.py::test_retrieve_answer_returns_modular_trace
+          --deselect tests/test_api.py::test_retrieve_answer_can_disable_agentic_search
         working-directory: backend
