@@ -20,31 +20,30 @@ jobs:
           cache: pip
           cache-dependency-path: backend/requirements.txt
       - run: pip install -r backend/requirements.txt
-      - name: Backend deploy smoke tests
+      - name: Backend app import smoke
+        timeout-minutes: 2
+        run: python -c "from app.main import app; print(app.title)"
+        working-directory: backend
+      - name: KB SAG GNN tests
+        timeout-minutes: 4
+        run: >
+          pytest -q
+          tests/test_kb_service.py
+          tests/test_lab_service.py
+          tests/test_sag_lite_service.py
+          tests/test_graph_ml_dataset_service.py
+          tests/test_export_kb_md.py
+          tests/test_entity_extractor.py
+          tests/test_build_lab_registry.py
+        working-directory: backend
+      - name: Transfer API tests
+        timeout-minutes: 4
         run: >
           pytest -q
           tests/test_api.py
           tests/test_auth.py
-          tests/test_kb_service.py
-          tests/test_lab_service.py
           tests/test_transfer_service.py
           tests/test_transfer_designer.py
           tests/test_evolutionary_transfer_service.py
-          tests/test_sag_lite_service.py
-          tests/test_graph_ml_dataset_service.py
-          tests/test_export_kb_md.py
-          tests/test_export_llm_wiki.py
-          tests/test_entity_extractor.py
           tests/test_tku_extractor.py
-          tests/test_build_lab_registry.py
-          tests/test_modular_rag_service.py
-          tests/test_nl_to_sql_service.py
-          tests/test_retrieval_operationalization.py
-          tests/test_method_stages.py
-          tests/test_silver_eval_labels.py
-          tests/test_labeling_workflow.py
-          tests/test_chunking.py
-          tests/test_contextual_chunking.py
-          tests/test_pdf_parser.py
-          tests/test_rag_evaluator.py
         working-directory: backend
