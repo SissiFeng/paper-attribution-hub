@@ -9,6 +9,7 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    timeout-minutes: 12
     env:
       PAS_DATABASE_URL: sqlite:////tmp/ci.db
     steps:
@@ -19,9 +20,31 @@ jobs:
           cache: pip
           cache-dependency-path: backend/requirements.txt
       - run: pip install -r backend/requirements.txt
-      # test_rules_only_no_core_false_positives is a pre-existing accuracy
-      # threshold failure; re-enable after gold-set expansion.
-      - run: >
-          pytest tests -q
-          --deselect tests/test_eval_before_after.py::test_rules_only_no_core_false_positives
+      - name: Backend deploy smoke tests
+        run: >
+          pytest -q
+          tests/test_api.py
+          tests/test_auth.py
+          tests/test_kb_service.py
+          tests/test_lab_service.py
+          tests/test_transfer_service.py
+          tests/test_transfer_designer.py
+          tests/test_evolutionary_transfer_service.py
+          tests/test_sag_lite_service.py
+          tests/test_graph_ml_dataset_service.py
+          tests/test_export_kb_md.py
+          tests/test_export_llm_wiki.py
+          tests/test_entity_extractor.py
+          tests/test_tku_extractor.py
+          tests/test_build_lab_registry.py
+          tests/test_modular_rag_service.py
+          tests/test_nl_to_sql_service.py
+          tests/test_retrieval_operationalization.py
+          tests/test_method_stages.py
+          tests/test_silver_eval_labels.py
+          tests/test_labeling_workflow.py
+          tests/test_chunking.py
+          tests/test_contextual_chunking.py
+          tests/test_pdf_parser.py
+          tests/test_rag_evaluator.py
         working-directory: backend
