@@ -570,6 +570,11 @@ export interface PropositionHit {
   score: number;
 }
 
+export interface RagModuleStep {
+  module: string;
+  [key: string]: unknown;
+}
+
 export interface AnswerOut {
   answer: string;
   sources: SourceOut[];
@@ -581,6 +586,9 @@ export interface AnswerOut {
   source_precision: number;
   missing_evidence: string[];
   should_retry: boolean;
+  // Present in the backend payload; surfaced by the agent UI.
+  module_trace?: RagModuleStep[];
+  execution_mode?: string;
 }
 
 export interface RagFeedbackIn {
