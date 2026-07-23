@@ -613,6 +613,8 @@ export function retrieveAnswer(params: {
       source_precision: 0,
       missing_evidence: [],
       should_retry: false,
+      module_trace: [],
+      execution_mode: "adaptive",
     } as AnswerOut,
   );
 }
