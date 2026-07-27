@@ -60,6 +60,10 @@ class Settings(BaseSettings):
     grobid_timeout_s: float = 60.0
     # Apply contextual chunk prefixing before BM25 / embedding (Anthropic style).
     contextual_chunking: bool = True
+    # Experimental, read-only Attribution Evidence Tree API.
+    attribution_evidence_tree_enabled: bool = False
+    # Experimental AET-assisted classifier authority; explicit opt-in.
+    attribution_evidence_classifier_enabled: bool = False
     # Reranker: "none" (default) or "cross-encoder" (requires sentence-transformers).
     reranker_backend: str = "none"
     domain_vocabulary_yaml: Path = DATA_DIR / "domain_vocabulary.yaml"

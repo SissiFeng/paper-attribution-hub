@@ -9,6 +9,7 @@ from app import __version__
 from app.api import (
     admin,
     analytics,
+    attribution_evidence_tree,
     discovery,
     evaluation,
     graph_explain,
@@ -60,6 +61,7 @@ app.include_router(retrieval.router)
 app.include_router(evaluation.router)
 app.include_router(analytics.router)
 app.include_router(graph_explain.router)
+app.include_router(attribution_evidence_tree.router)
 app.include_router(propositions.router)
 app.include_router(admin.router)
 app.include_router(discovery.router)

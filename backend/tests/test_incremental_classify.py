@@ -1,9 +1,11 @@
 """v0.7 review-loop: classify_new + human_confirmed lock."""
+
 from datetime import UTC, datetime, timedelta
 
 from sqlalchemy import select
 
 from app.models import Paper, PaperClassification
+from app.services.attribution_evidence_scoring import SCORING_VERSION
 from app.services.relevance_classifier import (
     CURRENT_MODEL_VERSION,
     classify_all,
@@ -42,7 +44,7 @@ def test_classify_new_picks_up_brand_new_paper(seeded_session):
     # And the new paper has a classification now.
     paper = seeded_session.get(Paper, "P_NEW")
     assert paper.classification is not None
-    assert paper.classification.model_version.startswith("rules-v0.7")
+    assert paper.classification.model_version.startswith(CURRENT_MODEL_VERSION)
 
 
 def test_classify_new_refreshes_stale_model_version(seeded_session):
@@ -59,6 +61,23 @@ def test_classify_new_refreshes_stale_model_version(seeded_session):
     assert refreshed >= 1
     seeded_session.refresh(paper.classification)
     assert paper.classification.model_version.startswith(CURRENT_MODEL_VERSION)
+
+
+def test_enabling_aet_refreshes_non_aet_classifications(seeded_session):
+    classify_all(seeded_session, use_attribution_evidence=False)
+
+    touched, new, refreshed = classify_new(
+        seeded_session, use_attribution_evidence=True
+    )
+
+    assert touched
+    assert new == 0
+    assert refreshed == len(touched)
+    assert all(
+        paper.classification.model_version
+        == f"{CURRENT_MODEL_VERSION}+{SCORING_VERSION}"
+        for paper in touched
+    )
 
 
 def test_human_confirmed_label_is_never_overwritten(seeded_session):

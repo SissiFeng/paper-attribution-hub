@@ -2,9 +2,15 @@
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Any
+from typing import Any, Literal
 
 from pydantic import BaseModel, Field
+
+from app.attribution_evidence_contract import (
+    AttributionCentrality,
+    AttributionMetadataStatus,
+    AttributionPolarity,
+)
 
 
 class MatchedPerson(BaseModel):
@@ -644,6 +650,52 @@ class GraphExplanationOut(BaseModel):
     citation_signals: list["CitationSignalOut"] = Field(default_factory=list)
     cites_corpus: list[str] = Field(default_factory=list)
     cited_by_corpus: list[str] = Field(default_factory=list)
+
+
+class AttributionTreeNodeOut(BaseModel):
+    node_id: str
+    parent_node_id: str | None = None
+    node_type: Literal["root", "section", "source"]
+    path: list[str]
+    section_type: str | None = None
+    title: str
+    summary: str | None = None
+    page_start: int | None = None
+    page_end: int | None = None
+    source_section_id: str | None = None
+    source_chunk_ids: list[str] = Field(default_factory=list)
+
+
+class AttributionEvidencePathOut(BaseModel):
+    generation_id: str
+    path_id: str
+    rank: int = Field(ge=1)
+    node_id: str
+    path: list[str]
+    evidence_type: str
+    polarity: AttributionPolarity
+    centrality: AttributionCentrality
+    quote: str
+    page_start: int | None = None
+    page_end: int | None = None
+    source_chunk_ids: list[str] = Field(default_factory=list)
+    raw_score: float
+    weight: float
+    confidence: float | None = Field(default=None, ge=0.0, le=1.0)
+    detector_type: str
+    metadata_status: AttributionMetadataStatus
+
+
+class AttributionEvidenceTreeOut(BaseModel):
+    paper_id: str
+    tree_version: str
+    generation_mode: Literal["derived_ephemeral"]
+    generation_id: str
+    metadata_contract_version: str
+    nodes: list[AttributionTreeNodeOut] = Field(default_factory=list)
+    evidence_paths: list[AttributionEvidencePathOut] = Field(default_factory=list)
+    evidence_review_recommended: bool = False
+    evidence_review_reasons: list[str] = Field(default_factory=list)
 
 
 class EvalMetric(BaseModel):

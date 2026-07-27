@@ -31,6 +31,9 @@ jobs:
           tests/test_kb_service.py
           tests/test_lab_service.py
           tests/test_sag_lite_service.py
+          tests/test_attribution_evidence_tree.py
+          tests/test_attribution_evidence_scoring.py
+          tests/test_eval_before_after.py
           tests/test_graph_ml_dataset_service.py
           tests/test_export_kb_md.py
           tests/test_entity_extractor.py
