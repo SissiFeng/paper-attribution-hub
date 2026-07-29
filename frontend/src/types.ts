@@ -359,6 +359,68 @@ export interface GraphExplanation {
   cited_by_corpus: string[];
 }
 
+export type AttributionCentrality =
+  | "core_contribution"
+  | "supporting_method"
+  | "background_only"
+  | "incidental_mention"
+  | "unrelated";
+
+export type AttributionPolarity = "positive" | "negative";
+
+export type AttributionMetadataStatus =
+  | "versioned_validated"
+  | "legacy_validated"
+  | "legacy_fallback"
+  | "invalid_fallback"
+  | "not_applicable";
+
+export interface AttributionTreeNode {
+  node_id: string;
+  parent_node_id: string | null;
+  node_type: "root" | "section" | "source";
+  path: string[];
+  section_type: string | null;
+  title: string;
+  summary: string | null;
+  page_start: number | null;
+  page_end: number | null;
+  source_section_id: string | null;
+  source_chunk_ids: string[];
+}
+
+export interface AttributionEvidencePath {
+  generation_id: string;
+  path_id: string;
+  rank: number;
+  node_id: string;
+  path: string[];
+  evidence_type: string;
+  polarity: AttributionPolarity;
+  centrality: AttributionCentrality;
+  quote: string;
+  page_start: number | null;
+  page_end: number | null;
+  source_chunk_ids: string[];
+  raw_score: number;
+  weight: number;
+  confidence: number | null;
+  detector_type: string;
+  metadata_status: AttributionMetadataStatus;
+}
+
+export interface AttributionEvidenceTree {
+  paper_id: string;
+  tree_version: string;
+  generation_mode: "derived_ephemeral";
+  generation_id: string;
+  metadata_contract_version: string;
+  nodes: AttributionTreeNode[];
+  evidence_paths: AttributionEvidencePath[];
+  evidence_review_recommended: boolean;
+  evidence_review_reasons: string[];
+}
+
 export interface PaperFilterState {
   yearFrom?: number;
   yearTo?: number;

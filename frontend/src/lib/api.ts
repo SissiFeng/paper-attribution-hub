@@ -2,6 +2,7 @@ import type {
   AnswerOut,
   PropositionHit,
   AnalyticsOverview,
+  AttributionEvidenceTree,
   DiscoveryCandidate,
   DiscoveryRunResult,
   DriftReport,
@@ -44,11 +45,18 @@ import type {
 import * as mock from "@/lib/mock";
 
 const API_BASE = (import.meta.env.VITE_API_BASE ?? "http://localhost:8000").replace(/\/$/, "");
+const PAPER_API_BASE = (
+  import.meta.env.VITE_PAPER_API_BASE ?? API_BASE
+).replace(/\/$/, "");
 const USE_MOCK = import.meta.env.VITE_USE_MOCK === "true";
 
-async function request<T>(path: string, init?: RequestInit): Promise<T> {
+async function request<T>(
+  path: string,
+  init?: RequestInit,
+  base: string = API_BASE
+): Promise<T> {
   if (USE_MOCK) throw new Error("mock");
-  const res = await fetch(`${API_BASE}${path}`, {
+  const res = await fetch(`${base}${path}`, {
     headers: { "Content-Type": "application/json" },
     ...init,
   });
@@ -67,9 +75,19 @@ async function withMock<T>(fetcher: () => Promise<T>, fallback: T): Promise<T> {
 export function listPapers(search?: URLSearchParams) {
   const qs = search?.toString();
   return withMock(
-    () => request<Paper[]>(`/papers${qs ? `?${qs}` : ""}`),
+    () =>
+      request<Paper[]>(
+        `/papers${qs ? `?${qs}` : ""}`,
+        undefined,
+        PAPER_API_BASE
+      ),
     mock.MOCK_PAPERS
   );
+}
+
+export function getPaper(paperId: string) {
+  const encodedPaperId = encodeURIComponent(paperId);
+  return request<Paper>(`/papers/${encodedPaperId}`, undefined, PAPER_API_BASE);
 }
 
 export function getSankey(search?: URLSearchParams) {
@@ -118,6 +136,19 @@ export function getGraphExplanation(paperId: string) {
   return withMock(
     () => request<GraphExplanation>(`/papers/${paperId}/graph-explanation`),
     mock.getMockGraphExplanation(paperId)
+  );
+}
+
+export function getAttributionEvidenceTree(paperId: string) {
+  const encodedPaperId = encodeURIComponent(paperId);
+  return withMock(
+    () =>
+      request<AttributionEvidenceTree>(
+        `/papers/${encodedPaperId}/attribution-evidence-tree`,
+        undefined,
+        PAPER_API_BASE
+      ),
+    mock.getMockAttributionEvidenceTree(paperId)
   );
 }
 

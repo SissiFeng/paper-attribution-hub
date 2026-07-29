@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 
 import { EvidencePanel } from "@/components/EvidencePanel";
 import { FilterBar } from "@/components/FilterBar";
@@ -215,24 +215,44 @@ export default function PaperReviewPage() {
                   ) : null}
                 </div>
               </div>
-              <button
-                onClick={() => setSelectedId(null)}
-                title="Close"
-                style={{
-                  flexShrink: 0,
-                  width: 28, height: 28,
-                  display: "flex", alignItems: "center", justifyContent: "center",
-                  border: "1px solid var(--border, #d1dce8)",
-                  borderRadius: 6,
-                  background: "transparent",
-                  cursor: "pointer",
-                  fontSize: 16,
-                  color: "var(--muted)",
-                  lineHeight: 1,
-                }}
-              >
-                ✕
-              </button>
+              <div style={{ display: "flex", alignItems: "center", gap: 8, flexShrink: 0 }}>
+                <Link
+                  to={`/papers/${encodeURIComponent(selected.id)}/evidence-map`}
+                  style={{
+                    display: "inline-flex",
+                    alignItems: "center",
+                    minHeight: 28,
+                    padding: "4px 9px",
+                    border: "1px solid var(--border, #d1dce8)",
+                    borderRadius: 6,
+                    background: "var(--accent-bg)",
+                    color: "var(--text)",
+                    fontSize: 10,
+                    fontWeight: 600,
+                    whiteSpace: "nowrap",
+                  }}
+                >
+                  Evidence map ↗
+                </Link>
+                <button
+                  onClick={() => setSelectedId(null)}
+                  title="Close"
+                  style={{
+                    flexShrink: 0,
+                    width: 28, height: 28,
+                    display: "flex", alignItems: "center", justifyContent: "center",
+                    border: "1px solid var(--border, #d1dce8)",
+                    borderRadius: 6,
+                    background: "transparent",
+                    cursor: "pointer",
+                    fontSize: 16,
+                    color: "var(--muted)",
+                    lineHeight: 1,
+                  }}
+                >
+                  ✕
+                </button>
+              </div>
             </div>
 
             {/* Scrollable body */}

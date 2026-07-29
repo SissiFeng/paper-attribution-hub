@@ -7,6 +7,7 @@
 
 import type {
   AnalyticsOverview,
+  AttributionEvidenceTree,
   DiscoveryCandidate,
   DriftReport,
   DuplicateReport,
@@ -44,6 +45,202 @@ export const MOCK_OVERVIEW: AnalyticsOverview = {
   },
   years: [2020, 2021, 2022, 2023, 2024],
 };
+
+/**
+ * Synthetic AET used only for the standalone evidence-map page in mock mode.
+ * Real deployments always read the server-derived, read-only tree.
+ */
+export function getMockAttributionEvidenceTree(
+  paperId: string
+): AttributionEvidenceTree {
+  const generationId = `mock-aet-${paperId}`;
+  const rootId = `${generationId}:root`;
+  const methodsId = `${generationId}:section:methods`;
+  const resultsId = `${generationId}:section:results`;
+  const fundingId = `${generationId}:section:funding`;
+  const referencesId = `${generationId}:section:references`;
+
+  return {
+    paper_id: paperId,
+    tree_version: "aet-derived-v0.1",
+    generation_mode: "derived_ephemeral",
+    generation_id: generationId,
+    metadata_contract_version: "aet-evidence-meta-v0.1",
+    evidence_review_recommended: true,
+    evidence_review_reasons: ["AET_CONFLICTING_EVIDENCE"],
+    nodes: [
+      {
+        node_id: rootId,
+        parent_node_id: null,
+        node_type: "root",
+        path: ["Paper"],
+        section_type: null,
+        title: "Fast-charging lithium-ion batteries: evidence-path review",
+        summary:
+          "A mock-mode paper used to exercise the read-only evidence star map.",
+        page_start: 1,
+        page_end: 14,
+        source_section_id: null,
+        source_chunk_ids: [],
+      },
+      {
+        node_id: methodsId,
+        parent_node_id: rootId,
+        node_type: "section",
+        path: ["Paper", "Methods"],
+        section_type: "methods",
+        title: "Methods",
+        summary:
+          "Electrochemical cycling protocol and charging-rate characterization.",
+        page_start: 3,
+        page_end: 6,
+        source_section_id: "mock-section-methods",
+        source_chunk_ids: ["mock-chunk-methods-1"],
+      },
+      {
+        node_id: resultsId,
+        parent_node_id: rootId,
+        node_type: "section",
+        path: ["Paper", "Results"],
+        section_type: "results",
+        title: "Results",
+        summary:
+          "Performance claims and measured retention under fast-charge conditions.",
+        page_start: 7,
+        page_end: 10,
+        source_section_id: "mock-section-results",
+        source_chunk_ids: ["mock-chunk-results-1", "mock-chunk-results-2"],
+      },
+      {
+        node_id: fundingId,
+        parent_node_id: rootId,
+        node_type: "section",
+        path: ["Paper", "Funding"],
+        section_type: "funding",
+        title: "Funding",
+        summary: "Acknowledgement and program attribution statements.",
+        page_start: 13,
+        page_end: 13,
+        source_section_id: "mock-section-funding",
+        source_chunk_ids: ["mock-chunk-funding-1"],
+      },
+      {
+        node_id: referencesId,
+        parent_node_id: rootId,
+        node_type: "source",
+        path: ["Paper", "Classifier Signals"],
+        section_type: "classifier_signals",
+        title: "Classifier Signals",
+        summary: "Graph and citation signals without a directly located section.",
+        page_start: null,
+        page_end: null,
+        source_section_id: null,
+        source_chunk_ids: [],
+      },
+    ],
+    evidence_paths: [
+      {
+        generation_id: generationId,
+        path_id: `${generationId}:path:funding`,
+        rank: 1,
+        node_id: fundingId,
+        path: ["Paper", "Funding", "AC program acknowledgement"],
+        evidence_type: "funding_acknowledgement",
+        polarity: "positive",
+        centrality: "core_contribution",
+        quote:
+          "This work was supported through the Accelerate program for advanced battery materials.",
+        page_start: 13,
+        page_end: 13,
+        source_chunk_ids: ["mock-chunk-funding-1"],
+        raw_score: 0.94,
+        weight: 0.94,
+        confidence: 0.96,
+        detector_type: "metadata_contract",
+        metadata_status: "versioned_validated",
+      },
+      {
+        generation_id: generationId,
+        path_id: `${generationId}:path:method`,
+        rank: 2,
+        node_id: methodsId,
+        path: ["Paper", "Methods", "Shared experimental method"],
+        evidence_type: "shared_method",
+        polarity: "positive",
+        centrality: "supporting_method",
+        quote:
+          "Cells were cycled using the consortium fast-charge protocol and shared reference electrodes.",
+        page_start: 4,
+        page_end: 4,
+        source_chunk_ids: ["mock-chunk-methods-1"],
+        raw_score: 0.72,
+        weight: 0.58,
+        confidence: 0.82,
+        detector_type: "rule_based",
+        metadata_status: "versioned_validated",
+      },
+      {
+        generation_id: generationId,
+        path_id: `${generationId}:path:result`,
+        rank: 3,
+        node_id: resultsId,
+        path: ["Paper", "Results", "Core fast-charge finding"],
+        evidence_type: "core_finding",
+        polarity: "positive",
+        centrality: "core_contribution",
+        quote:
+          "The optimized electrode retained 91% capacity after 500 cycles at a four-C charging rate.",
+        page_start: 8,
+        page_end: 8,
+        source_chunk_ids: ["mock-chunk-results-1"],
+        raw_score: 0.86,
+        weight: 0.86,
+        confidence: 0.9,
+        detector_type: "evidence_extractor",
+        metadata_status: "versioned_validated",
+      },
+      {
+        generation_id: generationId,
+        path_id: `${generationId}:path:negative`,
+        rank: 4,
+        node_id: resultsId,
+        path: ["Paper", "Results", "Scope limitation"],
+        evidence_type: "scope_limitation",
+        polarity: "negative",
+        centrality: "background_only",
+        quote:
+          "The analysis does not evaluate pack-level thermal management or manufacturing scale-up.",
+        page_start: 10,
+        page_end: 10,
+        source_chunk_ids: ["mock-chunk-results-2"],
+        raw_score: -0.42,
+        weight: -0.21,
+        confidence: 0.78,
+        detector_type: "evidence_extractor",
+        metadata_status: "versioned_validated",
+      },
+      {
+        generation_id: generationId,
+        path_id: `${generationId}:path:network`,
+        rank: 5,
+        node_id: referencesId,
+        path: ["Paper", "Classifier Signals", "Second-degree collaboration"],
+        evidence_type: "network_relation",
+        polarity: "positive",
+        centrality: "incidental_mention",
+        quote: "A second-degree collaboration path connects this paper to the AC core.",
+        page_start: null,
+        page_end: null,
+        source_chunk_ids: [],
+        raw_score: 0.34,
+        weight: 0.12,
+        confidence: null,
+        detector_type: "classifier_signal",
+        metadata_status: "not_applicable",
+      },
+    ],
+  };
+}
 
 // ─── Review Queue ─────────────────────────────────────────────────────────────
 

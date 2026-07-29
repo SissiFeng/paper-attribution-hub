@@ -29,6 +29,7 @@ import LabProfilePage from "@/pages/LabProfilePage";
 import ReportPage from "@/pages/ReportPage";
 import NetworkGrowthPage from "@/pages/NetworkGrowthPage";
 import RetrievalPage from "@/pages/RetrievalPage";
+import EvidenceMapPage from "@/pages/EvidenceMapPage";
 import "@/styles.css";
 
 // Layout for pages that need the sidebar — uses React Router's Outlet
@@ -51,6 +52,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
         {/* Main app shell — all other routes get the sidebar via Outlet */}
         <Route element={<Layout />}>
           <Route path="/" element={<PaperReviewPage />} />
+          <Route path="/papers/:paperId/evidence-map" element={<EvidenceMapPage />} />
           <Route path="/queue" element={<ReviewQueuePage />} />
           <Route path="/insights" element={<InsightsPage />} />
           <Route path="/pipeline" element={<PipelineStatusPage />} />
