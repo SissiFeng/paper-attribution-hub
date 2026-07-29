@@ -27,6 +27,11 @@ def main() -> None:
     parser.add_argument("--genome-size", type=int, default=3)
     parser.add_argument("--mutation-rate", type=float, default=0.35)
     parser.add_argument("--seed", type=int, default=7)
+    parser.add_argument(
+        "--ontology-gate",
+        action="store_true",
+        help="accept only candidates compatible with the versioned SDL ontology",
+    )
     parser.add_argument("--json", action="store_true", help="print JSON report")
     parser.add_argument(
         "--db-only",
@@ -51,6 +56,7 @@ def main() -> None:
         mutation_rate=args.mutation_rate,
         seed=args.seed,
         include_knowledge_json=not args.db_only,
+        ontology_gate=args.ontology_gate,
     )
     with SessionLocal() as session:
         report = run_evolutionary_transfer_search(session, config)
@@ -67,6 +73,9 @@ def main() -> None:
     print(f"Source TKUs: {report['source_count']}")
     print(f"Best score: {best.get('score')}")
     print(f"Hypothesis: {best.get('hypothesis')}")
+    compatibility = (best.get("ontology_compatibility") or {}).get("status")
+    print(f"Ontology compatibility: {compatibility}")
+    print(f"Knowledge state: {(best.get('knowledge_claim') or {}).get('state')}")
     if path:
         print(f"Wrote autosearch run to {path}")
 

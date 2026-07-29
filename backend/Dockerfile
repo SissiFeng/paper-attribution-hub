@@ -26,6 +26,7 @@ COPY data/eval_labels_silver.csv /data/eval_labels_silver.csv
 COPY data/sdl_entities.yaml /data/sdl_entities.yaml
 COPY data/sdl_labs.yaml /data/sdl_labs.yaml
 COPY data/sdl_targets.yaml /data/sdl_targets.yaml
+COPY data/sdl_ontology.yaml /data/sdl_ontology.yaml
 COPY data/method_stages.yaml /data/method_stages.yaml
 COPY data/example_tkus.yaml /data/example_tkus.yaml
 COPY data/tier1_tier2_merged_classification_ready.csv.gz /data/tier1_tier2_merged_classification_ready.csv.gz

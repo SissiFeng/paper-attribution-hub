@@ -1,0 +1,154 @@
+ontology_version: sdl-ontology/1.0
+
+concept_types:
+  - method
+  - capability
+  - unit_dimension
+
+relation_types:
+  - id: requires_capability
+    source_type: method
+    target_type: capability
+
+concepts:
+  - id: method:bayesian_optimization
+    type: method
+    name: Bayesian optimization
+    aliases:
+      - bayesian optimization
+      - expected improvement
+  - id: method:active_learning
+    type: method
+    name: Active learning
+    aliases:
+      - active learning
+  - id: method:high_throughput_synthesis
+    type: method
+    name: High-throughput synthesis
+    aliases:
+      - high-throughput synthesis
+      - autonomous catalyst screening
+  - id: method:flow_chemistry
+    type: method
+    name: Flow chemistry
+    aliases:
+      - flow chemistry
+      - continuous flow synthesis
+  - id: method:property_prediction
+    type: method
+    name: Property prediction
+    aliases:
+      - property prediction
+  - id: method:rheology
+    type: method
+    name: Rheological characterization
+    aliases:
+      - rheology
+
+  - id: capability:closed_loop_optimization
+    type: capability
+    name: Closed-loop optimization
+    aliases: []
+  - id: capability:high_throughput_experimentation
+    type: capability
+    name: High-throughput experimentation
+    aliases: []
+  - id: capability:continuous_flow_reactor
+    type: capability
+    name: Continuous-flow reactor
+    aliases: []
+  - id: capability:property_prediction
+    type: capability
+    name: Property prediction
+    aliases: []
+  - id: capability:rheological_characterization
+    type: capability
+    name: Rheological characterization
+    aliases: []
+
+  - id: unit_dimension:composition_fraction
+    type: unit_dimension
+    name: Composition fraction
+    aliases: []
+  - id: unit_dimension:mass
+    type: unit_dimension
+    name: Mass
+    aliases: []
+  - id: unit_dimension:molecular_weight
+    type: unit_dimension
+    name: Molecular weight
+    aliases: []
+  - id: unit_dimension:temperature
+    type: unit_dimension
+    name: Temperature
+    aliases: []
+  - id: unit_dimension:time
+    type: unit_dimension
+    name: Time
+    aliases: []
+  - id: unit_dimension:viscosity
+    type: unit_dimension
+    name: Viscosity
+    aliases: []
+  - id: unit_dimension:volume
+    type: unit_dimension
+    name: Volume
+    aliases: []
+
+relations:
+  - source: method:bayesian_optimization
+    predicate: requires_capability
+    target: capability:closed_loop_optimization
+  - source: method:active_learning
+    predicate: requires_capability
+    target: capability:closed_loop_optimization
+  - source: method:high_throughput_synthesis
+    predicate: requires_capability
+    target: capability:high_throughput_experimentation
+  - source: method:flow_chemistry
+    predicate: requires_capability
+    target: capability:continuous_flow_reactor
+  - source: method:property_prediction
+    predicate: requires_capability
+    target: capability:property_prediction
+  - source: method:rheology
+    predicate: requires_capability
+    target: capability:rheological_characterization
+
+knowledge_lifecycle:
+  states:
+    - proposed
+    - reviewed
+    - validation_requested
+    - validated
+    - rejected
+    - promoted
+    - deprecated
+  transitions:
+    - from: proposed
+      action: review
+      to: reviewed
+    - from: proposed
+      action: request_validation
+      to: validation_requested
+    - from: proposed
+      action: reject
+      to: rejected
+    - from: reviewed
+      action: request_validation
+      to: validation_requested
+    - from: reviewed
+      action: reject
+      to: rejected
+    - from: validation_requested
+      action: validate
+      to: validated
+    - from: validation_requested
+      action: reject
+      to: rejected
+    - from: validated
+      action: promote
+      to: promoted
+    - from: promoted
+      action: deprecate
+      to: deprecated

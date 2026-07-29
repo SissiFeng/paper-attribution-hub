@@ -23,6 +23,12 @@ from sqlalchemy.orm import Session
 from app.config import REPO_ROOT
 from app.models import TransferKnowledgeUnit
 from app.scripts.export_kb_md import slugify
+from app.services.ontology_service import (
+    build_proposed_claim,
+    evaluate_candidate_compatibility,
+    ontology_gate_readiness,
+    ontology_summary,
+)
 from app.services.transfer_designer import load_target, match_tkus
 
 AUTOSEARCH_DIR = REPO_ROOT / "llm-wiki" / "autosearch"
@@ -40,6 +46,7 @@ class EvolutionConfig:
     mutation_rate: float = 0.35
     seed: int = 7
     include_knowledge_json: bool = True
+    ontology_gate: bool = False
 
 
 @dataclass(frozen=True)
@@ -63,6 +70,8 @@ class Candidate:
     assumptions_to_test: list[str]
     risks: list[str]
     citations: list[str]
+    ontology_compatibility: dict
+    knowledge_claim: dict
 
 
 def run_evolutionary_transfer_search(
@@ -74,6 +83,12 @@ def run_evolutionary_transfer_search(
     target = load_target(config.target_id)
     if target is None:
         raise ValueError(f"Unknown transfer target '{config.target_id}'")
+    readiness = ontology_gate_readiness(target)
+    if config.ontology_gate and not readiness["ready"]:
+        raise ValueError(
+            f"Ontology gate is not ready for '{config.target_id}': "
+            + "; ".join(readiness["reasons"])
+        )
 
     matches = _source_matches(session, target, config)
     if not matches:
@@ -87,7 +102,7 @@ def run_evolutionary_transfer_search(
         population_size=config.population_size,
     )
     trace: list[dict] = []
-    best: Candidate | None = None
+    archive: list[Candidate] = []
 
     for generation in range(config.generations):
         scored = [
@@ -96,8 +111,7 @@ def run_evolutionary_transfer_search(
             if ids
         ]
         scored.sort(key=lambda c: (-c.score, c.id))
-        if scored and (best is None or scored[0].score > best.score):
-            best = scored[0]
+        archive.extend(scored)
         trace.append(
             {
                 "generation": generation,
@@ -113,15 +127,29 @@ def run_evolutionary_transfer_search(
             rng,
         )
 
-    ranked = [
+    archive.extend(
         _score_candidate(tuple(ids), pool_by_id, target, config.generations)
         for ids in population
         if ids
-    ]
-    if best is not None:
-        ranked.append(best)
-    ranked = _dedupe_candidates(ranked)
-    ranked.sort(key=lambda c: (-c.score, c.id))
+    )
+    ranked = _dedupe_candidates(archive)
+    if config.ontology_gate:
+        ranked.sort(
+            key=lambda c: (
+                c.ontology_compatibility["status"] != "compatible",
+                -c.score,
+                c.id,
+            )
+        )
+    else:
+        ranked.sort(key=lambda c: (-c.score, c.id))
+
+    selected = ranked[0] if ranked else None
+    accepted = bool(selected) and selected.score >= 8.0
+    if config.ontology_gate:
+        accepted = bool(accepted) and (
+            selected.ontology_compatibility["status"] == "compatible"
+        )
 
     return {
         "target": {
@@ -130,12 +158,16 @@ def run_evolutionary_transfer_search(
             "description": target.get("description", "").strip(),
         },
         "config": asdict(config),
+        "ontology": {
+            **ontology_summary(),
+            "gate_enabled": config.ontology_gate,
+        },
         "source_count": len(matches),
-        "accepted": bool(ranked) and ranked[0].score >= 8.0,
-        "best": asdict(ranked[0]) if ranked else None,
+        "accepted": accepted,
+        "best": asdict(selected) if selected else None,
         "candidates": [asdict(c) for c in ranked[: config.population_size]],
         "trace": trace,
-        "recommendations": _recommendations(ranked[0] if ranked else None),
+        "recommendations": _recommendations(selected, config.ontology_gate),
     }
 
 
@@ -144,6 +176,7 @@ def export_autosearch_run(report: dict, output_dir: Path | None = None) -> Path:
     base = Path(output_dir or AUTOSEARCH_DIR)
     base.mkdir(parents=True, exist_ok=True)
     target = report["target"]
+    best = report.get("best") or {}
     date = datetime.now(UTC).date().isoformat()
     path = base / f"{target['id']}--{date}--evolution.md"
     fm = {
@@ -151,7 +184,9 @@ def export_autosearch_run(report: dict, output_dir: Path | None = None) -> Path:
         "target": target["id"],
         "accepted": report["accepted"],
         "generated": date,
-        "best_score": (report.get("best") or {}).get("score"),
+        "best_score": best.get("score"),
+        "ontology_version": (report.get("ontology") or {}).get("ontology_version"),
+        "knowledge_state": (best.get("knowledge_claim") or {}).get("state"),
     }
     path.write_text(_render_report_markdown(report, fm), encoding="utf-8")
     _append_autosearch_log(base.parent / "log.md", target["name"], path)
@@ -200,6 +235,7 @@ def _normalize_config(config: EvolutionConfig) -> EvolutionConfig:
         mutation_rate=max(0.0, min(float(config.mutation_rate), 1.0)),
         seed=config.seed,
         include_knowledge_json=config.include_knowledge_json,
+        ontology_gate=config.ontology_gate,
     )
 
 
@@ -392,6 +428,15 @@ def _score_candidate(
     score = round(match_strength + novelty + transferability + evidence - risk_penalty, 3)
 
     hypothesis = _hypothesis(target, tkus, components)
+    citations = [f"[src:{pid}]" for pid in paper_ids]
+    compatibility = evaluate_candidate_compatibility(tkus, target)
+    knowledge_claim = build_proposed_claim(
+        target=target,
+        paper_ids=paper_ids,
+        hypothesis=hypothesis,
+        citations=citations,
+        compatibility=compatibility,
+    )
     return Candidate(
         id=f"cand-{generation}-{slugify('-'.join(paper_ids))[:48]}",
         paper_ids=paper_ids,
@@ -407,7 +452,9 @@ def _score_candidate(
         transfer_plan=_transfer_plan(tkus),
         assumptions_to_test=assumptions[:6],
         risks=negative_lessons[:6],
-        citations=[f"[src:{pid}]" for pid in paper_ids],
+        citations=citations,
+        ontology_compatibility=compatibility,
+        knowledge_claim=knowledge_claim,
     )
 
 
@@ -664,7 +711,7 @@ def _float_or_zero(value) -> float:
         return 0.0
 
 
-def _recommendations(best: Candidate | None) -> list[str]:
+def _recommendations(best: Candidate | None, ontology_gate: bool = False) -> list[str]:
     if best is None:
         return ["Extract or load TKUs before running evolutionary transfer search."]
     recs = [
@@ -673,6 +720,10 @@ def _recommendations(best: Candidate | None) -> list[str]:
     ]
     if best.components["risk_penalty"] > 0:
         recs.append("Negative source lessons are present; keep them as design constraints.")
+    if ontology_gate and best.ontology_compatibility["status"] != "compatible":
+        recs.append(
+            "Ontology gate blocked acceptance; resolve every compatibility issue."
+        )
     return recs
 
 
@@ -684,6 +735,10 @@ def _empty_result(target: dict, config: EvolutionConfig) -> dict:
             "description": target.get("description", "").strip(),
         },
         "config": asdict(config),
+        "ontology": {
+            **ontology_summary(),
+            "gate_enabled": config.ontology_gate,
+        },
         "source_count": 0,
         "accepted": False,
         "best": None,
@@ -713,6 +768,9 @@ def _render_report_markdown(report: dict, front_matter: dict) -> str:
             f"- Score: {best['score']}",
             f"- Sources: {' '.join(best['citations'])}",
             f"- Hypothesis: {best['hypothesis']}",
+            f"- Ontology compatibility: {best['ontology_compatibility']['status']}",
+            f"- Knowledge state: {best['knowledge_claim']['state']}",
+            f"- Executable: {best['knowledge_claim']['executable']}",
             "",
             "### Transfer plan",
             "",

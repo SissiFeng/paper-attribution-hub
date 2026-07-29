@@ -175,6 +175,23 @@ targets:
     - long polymerization / cure times limit throughput
     - molecular-weight distribution control
     - solvent compatibility and degassing
+  ontology_profile:
+    ontology_version: sdl-ontology/1.0
+    capability_inventory_complete: true
+    unit_dimension_inventory_complete: true
+    capabilities:
+      - capability:closed_loop_optimization
+      - capability:high_throughput_experimentation
+      - capability:property_prediction
+      - capability:rheological_characterization
+    supported_unit_dimensions:
+      - unit_dimension:composition_fraction
+      - unit_dimension:mass
+      - unit_dimension:molecular_weight
+      - unit_dimension:temperature
+      - unit_dimension:time
+      - unit_dimension:viscosity
+      - unit_dimension:volume
   keywords:
     - polymer
     - composition

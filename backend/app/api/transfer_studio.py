@@ -9,6 +9,7 @@ from app.models import Paper, TransferKnowledgeUnit
 from app.schemas import (
     EvolutionaryTransferOut,
     EvolutionaryTransferRequest,
+    OntologySummaryOut,
     TransferDesignOut,
     TransferDesignRequest,
     TransferMatchOut,
@@ -19,6 +20,7 @@ from app.services.evolutionary_transfer_service import (
     EvolutionConfig,
     run_evolutionary_transfer_search,
 )
+from app.services.ontology_service import ontology_gate_readiness, ontology_summary
 from app.services.transfer_designer import generate_design, load_target, load_targets
 
 router = APIRouter(prefix="/transfer", tags=["transfer"])
@@ -35,9 +37,17 @@ def targets() -> list[TransferTargetOut]:
             typical_signature=t.get("typical_signature") or {},
             typical_constraints=t.get("typical_constraints") or [],
             keywords=t.get("keywords") or [],
+            ontology_profile=t.get("ontology_profile") or None,
+            ontology_gate_ready=ontology_gate_readiness(t)["ready"],
         )
         for t in load_targets()
     ]
+
+
+@router.get("/ontology", response_model=OntologySummaryOut)
+def ontology() -> dict:
+    """Version and coverage of the active cross-SDL ontology contract."""
+    return ontology_summary()
 
 
 @router.get("/tkus", response_model=list[TransferTkuOut])
@@ -107,9 +117,19 @@ def evolve(
     session: Session = Depends(get_session),
 ) -> EvolutionaryTransferOut:
     """Evolve cross-domain TKU combinations into candidate transfer hypotheses."""
-    if load_target(payload.target_id) is None:
+    target = load_target(payload.target_id)
+    if target is None:
         raise HTTPException(
             status_code=404, detail=f"Unknown transfer target '{payload.target_id}'"
+        )
+    readiness = ontology_gate_readiness(target)
+    if payload.ontology_gate and not readiness["ready"]:
+        raise HTTPException(
+            status_code=422,
+            detail={
+                "message": f"Ontology gate is not ready for '{payload.target_id}'",
+                "reasons": readiness["reasons"],
+            },
         )
     report = run_evolutionary_transfer_search(
         session,
@@ -123,6 +143,7 @@ def evolve(
             mutation_rate=payload.mutation_rate,
             seed=payload.seed,
             include_knowledge_json=payload.include_knowledge_json,
+            ontology_gate=payload.ontology_gate,
         ),
     )
     return EvolutionaryTransferOut(**report)

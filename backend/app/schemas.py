@@ -754,6 +754,22 @@ class NetworkOut(BaseModel):
 # ─── Cross-SDL transfer studio ────────────────────────────────────────────────
 
 
+class OntologyTargetProfileOut(BaseModel):
+    ontology_version: str
+    capability_inventory_complete: bool = False
+    unit_dimension_inventory_complete: bool = False
+    capabilities: list[str] = Field(default_factory=list)
+    supported_unit_dimensions: list[str] = Field(default_factory=list)
+
+
+class OntologySummaryOut(BaseModel):
+    ontology_version: str
+    concepts: int
+    concepts_by_type: dict[str, int] = Field(default_factory=dict)
+    relations: int
+    knowledge_states: list[str] = Field(default_factory=list)
+
+
 class TransferTargetOut(BaseModel):
     id: str
     name: str
@@ -761,6 +777,8 @@ class TransferTargetOut(BaseModel):
     typical_signature: dict[str, Any] = Field(default_factory=dict)
     typical_constraints: list[str] = Field(default_factory=list)
     keywords: list[str] = Field(default_factory=list)
+    ontology_profile: OntologyTargetProfileOut | None = None
+    ontology_gate_ready: bool = False
 
 
 class TransferTkuOut(BaseModel):
@@ -807,11 +825,13 @@ class EvolutionaryTransferRequest(BaseModel):
     mutation_rate: float = 0.35
     seed: int = 7
     include_knowledge_json: bool = True
+    ontology_gate: bool = False
 
 
 class EvolutionaryTransferOut(BaseModel):
     target: dict[str, Any]
     config: dict[str, Any]
+    ontology: dict[str, Any] = Field(default_factory=dict)
     source_count: int
     accepted: bool
     best: dict[str, Any] | None = None
