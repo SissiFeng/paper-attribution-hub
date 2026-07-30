@@ -18,7 +18,7 @@ from __future__ import annotations
 
 import math
 from collections.abc import Iterable
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 
 import numpy as np
 from sqlalchemy import select
@@ -138,8 +138,21 @@ class HybridIndex:
                 mx = max(raw.values()) or 1.0
                 graph_scores = {pid: v / mx for pid, v in raw.items()}
 
+        # Select only the fields used to build the in-memory index. Loading the
+        # full ORM row also deserializes every stored embedding even though the
+        # vectors are immediately recomputed below. On the 512 MB Render
+        # instance, 2,000 JSON/vector embeddings can consume the remaining
+        # process headroom before retrieval begins.
         rows = session.execute(
-            select(PaperChunk, Paper.year)
+            select(
+                PaperChunk.id,
+                PaperChunk.paper_id,
+                PaperChunk.section_type,
+                PaperChunk.chunk_text,
+                PaperChunk.indexed_text,
+                PaperChunk.chunk_metadata,
+                Paper.year,
+            )
             .join(Paper, Paper.id == PaperChunk.paper_id)
             .order_by(PaperChunk.created_at.desc())
             .limit(max_chunks)
@@ -149,7 +162,8 @@ class HybridIndex:
         # vectors are recomputed in this fit-space so query vectors line up
         # dimensionally — callers don't need to remember to refit.
         index_corpus = [
-            (chunk.indexed_text or chunk.chunk_text) for chunk, _ in rows
+            indexed_text or chunk_text
+            for _, _, _, chunk_text, indexed_text, _, _ in rows
         ]
         if index_corpus:
             embedder.fit(index_corpus)
@@ -157,21 +171,28 @@ class HybridIndex:
         else:
             refit_matrix = None
         chunks: list[IndexedChunk] = []
-        for idx, (chunk, year) in enumerate(rows):
-            if refit_matrix is not None:
-                emb = refit_matrix[idx]
-            elif chunk.embedding is not None:
-                emb = np.asarray(chunk.embedding, dtype=np.float32)
-            else:
-                emb = np.zeros(1, dtype=np.float32)
-            indexed_text = chunk.indexed_text or chunk.chunk_text
+        for idx, (
+            chunk_id,
+            paper_id,
+            section_type,
+            chunk_text,
+            stored_indexed_text,
+            chunk_metadata,
+            year,
+        ) in enumerate(rows):
+            emb = (
+                refit_matrix[idx]
+                if refit_matrix is not None
+                else np.zeros(1, dtype=np.float32)
+            )
+            indexed_text = stored_indexed_text or chunk_text
             chunks.append(
                 IndexedChunk(
-                    chunk_id=chunk.id,
-                    paper_id=chunk.paper_id,
-                    section_type=chunk.section_type,
-                    section_title=(chunk.chunk_metadata or {}).get("section_title"),
-                    text=chunk.chunk_text,
+                    chunk_id=chunk_id,
+                    paper_id=paper_id,
+                    section_type=section_type,
+                    section_title=(chunk_metadata or {}).get("section_title"),
+                    text=chunk_text,
                     indexed_text=indexed_text,
                     tokens=tokenize(indexed_text),
                     embedding=emb,

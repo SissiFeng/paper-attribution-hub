@@ -4,8 +4,9 @@ services:
     runtime: docker
     dockerfilePath: backend/Dockerfile
     dockerContext: .
-    plan: free
-    region: oregon
+    plan: starter
+    region: ohio
+    preDeployCommand: python -m app.scripts.db_bootstrap
 
     envVars:
       - key: PAS_DATABASE_URL

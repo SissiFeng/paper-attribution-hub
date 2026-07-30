@@ -2,6 +2,35 @@ from app.services.embedding_service import get_embedder
 from app.services.retrieval_service import HybridIndex
 
 
+def test_index_query_does_not_load_stored_embeddings(fulltext_seeded_session):
+    """The request-time index refits vectors and must not deserialize old ones."""
+    from sqlalchemy import event
+
+    statements: list[str] = []
+    engine = fulltext_seeded_session.get_bind()
+
+    def capture_sql(_conn, _cursor, statement, _parameters, _context, _executemany):
+        statements.append(statement)
+
+    event.listen(engine, "before_cursor_execute", capture_sql)
+    try:
+        HybridIndex.from_session(
+            fulltext_seeded_session,
+            get_embedder(),
+            max_chunks=2,
+        )
+    finally:
+        event.remove(engine, "before_cursor_execute", capture_sql)
+
+    chunk_select = next(
+        statement
+        for statement in statements
+        if "FROM paper_chunks" in statement and "JOIN papers" in statement
+    )
+    selected_columns = chunk_select.split("FROM paper_chunks", 1)[0]
+    assert "paper_chunks.embedding" not in selected_columns
+
+
 def test_retrieval_finds_acknowledgement_for_ac_query(fulltext_seeded_session):
     embedder = get_embedder()
     from sqlalchemy import select
