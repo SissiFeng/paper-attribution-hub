@@ -37,4 +37,6 @@ ENV PYTHONPATH=/app
 
 EXPOSE 8000
 
-CMD alembic upgrade head && python -m app.scripts.ingest_scopus_batch --seed-if-under 1000 --prune-non-real && uvicorn app.main:app --host 0.0.0.0 --port ${PORT:-8000}
+# Demo-safe entrypoint: bootstrap + seed are best-effort and never block boot;
+# uvicorn always starts so /health and /debug/* stay reachable for diagnosis.
+CMD ["python", "-m", "app.scripts.serve"]

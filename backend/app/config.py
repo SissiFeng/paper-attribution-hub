@@ -1,8 +1,11 @@
 from __future__ import annotations
 
+import json
 from pathlib import Path
+from typing import Annotated
 
-from pydantic_settings import BaseSettings, SettingsConfigDict
+from pydantic import field_validator
+from pydantic_settings import BaseSettings, NoDecode, SettingsConfigDict
 
 _here = Path(__file__).resolve()
 REPO_ROOT = _here.parents[2]
@@ -80,6 +83,10 @@ class Settings(BaseSettings):
     openalex_mailto: str = ""
     semantic_scholar_url: str = "https://api.semanticscholar.org/graph/v1"
     semantic_scholar_api_key: str = ""
+    unpaywall_url: str = "https://api.unpaywall.org/v2"
+    # Unpaywall asks API callers for a contact email.  When empty we reuse
+    # openalex_mailto; the resolver simply skips Unpaywall if neither is set.
+    unpaywall_email: str = ""
     crossref_url: str = "https://api.crossref.org"
     external_cache_ttl_hours: int = 24 * 7  # one week
     # Hybrid auto/queue split (see docs/discovery_design.md).
@@ -99,13 +106,28 @@ class Settings(BaseSettings):
     # "auto" = use kimi if key set, else anthropic, else retrieval-only
     llm_provider: str = "auto"
 
-    cors_origins: list[str] = [
+    # `NoDecode` disables pydantic-settings' automatic JSON decoding so the
+    # validator below can accept either a JSON array or a comma-separated list.
+    # Setting PAS_CORS_ORIGINS as a bare comma string used to crash boot.
+    cors_origins: Annotated[list[str], NoDecode] = [
         "http://localhost:5173",
         "http://127.0.0.1:5173",
         "http://localhost:3000",
         "http://127.0.0.1:3000",
         "https://frontend-delta-three-38.vercel.app",
     ]
+
+    @field_validator("cors_origins", mode="before")
+    @classmethod
+    def _parse_cors_origins(cls, value: object) -> object:
+        if not isinstance(value, str):
+            return value
+        text = value.strip()
+        if not text:
+            return []
+        if text.startswith("["):
+            return json.loads(text)
+        return [item.strip() for item in text.split(",") if item.strip()]
 
 
 settings = Settings()

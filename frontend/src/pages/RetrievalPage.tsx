@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { retrieveAnswer, searchPropositions, submitRagFeedback } from "@/lib/api";
-import type { AnswerOut, PropositionHit } from "@/types";
+import type { AnswerOut, PropositionHit, RagModuleStep } from "@/types";
+import styles from "./RetrievalPage.module.css";
 
 // ── Graph path visualizer ──────────────────────────────────────────────────
 // Parses graph_context strings like:
@@ -30,35 +31,30 @@ function GraphPath({ context }: { context: string }) {
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
       {segments.map((seg, si) => {
-        const dot = seg.kind === "cite" ? "#a07830" : "#3a6a7a";
-        const line = seg.kind === "cite" ? "#241800" : "#0a2025";
+        const color = seg.kind === "cite" ? "var(--amber)" : "var(--blue)";
         return (
           <div key={si} style={{ display: "flex", alignItems: "flex-start" }}>
             {seg.nodes.map((node, ni) => (
               <div key={ni} style={{ display: "flex", alignItems: "flex-start" }}>
                 <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 3 }}>
-                  <div style={{
-                    width: 6, height: 6, borderRadius: "50%",
-                    background: dot, boxShadow: `0 0 5px ${dot}88`, marginTop: 1,
-                  }} />
+                  <div style={{ width: 7, height: 7, borderRadius: "50%", background: color, marginTop: 1 }} />
                   <span style={{
-                    fontSize: 9, color: "#555", textAlign: "center",
-                    letterSpacing: "0.04em", lineHeight: 1.25,
-                    maxWidth: 68, overflow: "hidden",
-                    textOverflow: "ellipsis", whiteSpace: "nowrap",
+                    fontSize: 9.5, color: "var(--muted)", textAlign: "center",
+                    letterSpacing: "0.03em", lineHeight: 1.25, maxWidth: 74,
+                    overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap",
+                    fontFamily: "var(--mono)",
                   }}>
                     {node}
                   </span>
                 </div>
                 {ni < seg.nodes.length - 1 && (
-                  <div style={{ display: "flex", flexDirection: "column", alignItems: "center", padding: "1px 2px 0" }}>
+                  <div style={{ display: "flex", flexDirection: "column", alignItems: "center", padding: "1px 3px 0" }}>
                     <svg width="48" height="8" style={{ overflow: "visible" }}>
-                      <line x1="0" y1="3.5" x2="40" y2="3.5"
-                        stroke={line} strokeWidth="1.2" strokeDasharray="3 2.5" />
-                      <polygon points="37,1 41,3.5 37,6" fill={line} />
+                      <line x1="0" y1="3.5" x2="40" y2="3.5" stroke={color} strokeWidth="1.3" strokeDasharray="3 2.5" />
+                      <polygon points="37,1 41,3.5 37,6" fill={color} />
                     </svg>
                     {seg.detail && (
-                      <span style={{ fontSize: 8, color: "#3a3a3a", whiteSpace: "nowrap", marginTop: 1 }}>
+                      <span style={{ fontSize: 8.5, color: "var(--muted)", whiteSpace: "nowrap", marginTop: 1, fontFamily: "var(--mono)" }}>
                         {seg.detail}
                       </span>
                     )}
@@ -73,12 +69,71 @@ function GraphPath({ context }: { context: string }) {
   );
 }
 
+// ── Reasoning-trace rendering ───────────────────────────────────────────────
+// The backend already returns module_trace; the agent UI surfaces it as the
+// pipeline "thinking" instead of hiding it.
+
+const STEP_LABEL: Record<string, string> = {
+  routing: "route",
+  memory: "recall",
+  search: "retrieve",
+  agentic_search: "traverse",
+  fusion: "fuse",
+  predict: "assess",
+  demonstrate: "answer",
+};
+
+const numOf = (v: unknown) => (typeof v === "number" ? v : undefined);
+const strOf = (v: unknown) => (v == null ? undefined : String(v));
+
+function describeStep(step: RagModuleStep): { label: string; detail: string; think: boolean; skip: boolean } {
+  const label = STEP_LABEL[step.module] ?? step.module;
+  const skipped = strOf(step.skipped);
+  if (skipped) return { label, detail: skipped.replace(/_/g, " "), think: false, skip: true };
+
+  let detail = "";
+  switch (step.module) {
+    case "routing":
+      detail = [strOf(step.query_type), strOf(step.mode)].filter(Boolean).join(" · ");
+      break;
+    case "memory":
+      detail = `${numOf(step.low_rating_count) ?? 0} signals`;
+      break;
+    case "search":
+      detail = `${numOf(step.candidates) ?? 0} chunks`;
+      break;
+    case "agentic_search":
+      detail = `${numOf(step.links) ?? numOf(step.agentic_links) ?? 0} links`;
+      break;
+    case "fusion":
+      detail = `${numOf(step.sources) ?? 0} sources`;
+      break;
+    case "predict": {
+      const es = numOf(step.evidence_score);
+      detail = es != null ? `evidence ${es.toFixed(2)}` : "scored";
+      break;
+    }
+    case "demonstrate":
+      detail = strOf(step.model) ?? "grounded";
+      break;
+    default: {
+      const first = Object.entries(step).find(
+        ([k, v]) => k !== "module" && (typeof v === "number" || typeof v === "string"),
+      );
+      detail = first ? `${first[0]} ${first[1]}` : "";
+    }
+  }
+  return { label, detail, think: step.module === "agentic_search", skip: false };
+}
+
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-export const PREDICATE_OPTIONS = [
-  "uses_method",
-  "funded_by",
-  "cites",
-  "belongs_to_topic",
+export const PREDICATE_OPTIONS = ["uses_method", "funded_by", "cites", "belongs_to_topic"];
+
+const EXAMPLES = [
+  "Which papers use Bayesian optimization for materials discovery?",
+  "What automation platforms are used in self-driving labs?",
+  "Papers funded by NSERC on closed-loop synthesis",
+  "Compare active learning approaches across SDL papers",
 ];
 
 export default function RetrievalPage() {
@@ -91,6 +146,7 @@ export default function RetrievalPage() {
   const [error, setError] = useState<string | null>(null);
   const [feedbackSent, setFeedbackSent] = useState(false);
   const [failureType, setFailureType] = useState<string>("missing_source");
+  const [runKey, setRunKey] = useState(0);
 
   async function handleSearch(e: React.FormEvent) {
     e.preventDefault();
@@ -105,25 +161,14 @@ export default function RetrievalPage() {
       setResult(ans);
       setPropHits(props);
       setFeedbackSent(false);
+      setActiveTab("answer");
+      setRunKey((k) => k + 1);
     } catch (err) {
       setError(String(err));
     } finally {
       setLoading(false);
     }
   }
-
-  const scoreBar = (v: number | null, color: string) =>
-    v != null ? (
-      <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
-        <div
-          style={{
-            height: 6, borderRadius: 3, background: color,
-            width: `${Math.min(100, v * 100)}%`, minWidth: 4, flex: "0 0 auto",
-          }}
-        />
-        <span style={{ fontSize: 11, color: "#aaa" }}>{v.toFixed(3)}</span>
-      </div>
-    ) : null;
 
   async function handleFeedback(rating: number) {
     if (!result) return;
@@ -138,329 +183,232 @@ export default function RetrievalPage() {
     setFeedbackSent(true);
   }
 
+  const scoreBar = (v: number | null, cls: string) =>
+    v != null ? (
+      <div className={styles.scoreRow}>
+        <span className={`${styles.scoreTrack}`}>
+          <span className={`${styles.scoreFill} ${styles[cls]}`} style={{ width: `${Math.min(100, v * 100)}%` }} />
+        </span>
+        <span className={styles.scoreVal}>{v.toFixed(3)}</span>
+      </div>
+    ) : (
+      <span className={styles.scoreVal} style={{ color: "var(--faint)" }}>—</span>
+    );
+
+  const trace: RagModuleStep[] = result?.module_trace ?? [];
+
   return (
-    <div style={{ padding: "24px 32px", maxWidth: 960, margin: "0 auto" }}>
-      <h2 style={{ marginBottom: 4 }}>Graph-Enhanced Retrieval</h2>
-      <p style={{ color: "#888", marginBottom: 20, fontSize: 13 }}>
-        BM25 + cosine + RRF · graph centrality re-ranking (PPR, Evans-Chen) ·
-        proposition-first channel · graph-path context
-      </p>
+    <div className={styles.page}>
+      <div className={styles.inner}>
+        <h1 className={styles.h1}>Graph-Enhanced Retrieval</h1>
+        <p className={styles.sub}>
+          BM25 + cosine + RRF · graph centrality re-ranking (PPR, Evans-Chen) · proposition-first channel · graph-path context
+        </p>
 
-      <form onSubmit={handleSearch} style={{ display: "flex", gap: 10, marginBottom: 24 }}>
-        <input
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          placeholder="e.g. Which papers use Bayesian optimization for materials discovery?"
-          style={{
-            flex: 1, padding: "8px 12px", borderRadius: 6,
-            border: "1px solid #333", background: "#1a1a1a", color: "#eee",
-            fontSize: 14,
-          }}
-        />
-        <select
-          value={topK}
-          onChange={(e) => setTopK(Number(e.target.value))}
-          style={{
-            padding: "8px 10px", borderRadius: 6,
-            border: "1px solid #333", background: "#1a1a1a", color: "#aaa",
-          }}
-        >
-          {[4, 8, 12, 20].map((n) => (
-            <option key={n} value={n}>top {n}</option>
-          ))}
-        </select>
-        <button
-          type="submit"
-          disabled={loading}
-          style={{
-            padding: "8px 20px", borderRadius: 6, background: "#d4a574",
-            border: "none", color: "#000", fontWeight: 600, cursor: "pointer",
-          }}
-        >
-          {loading ? "…" : "Search"}
-        </button>
-      </form>
-
-      {error && (
-        <div style={{ color: "#f87171", marginBottom: 16 }}>{error}</div>
-      )}
-
-      {!result && !loading && !error && (
-        <div
-          style={{
-            marginTop: 40, textAlign: "center", color: "#444",
-            display: "flex", flexDirection: "column", alignItems: "center", gap: 20,
-          }}
-        >
-          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="#333" strokeWidth="1.5">
-            <circle cx="20" cy="20" r="12" />
-            <line x1="30" y1="30" x2="42" y2="42" />
-            <line x1="14" y1="20" x2="26" y2="20" strokeWidth="1.2" />
-            <line x1="20" y1="14" x2="20" y2="26" strokeWidth="1.2" />
-          </svg>
-          <div style={{ fontSize: 14, color: "#555" }}>
-            Ask a question about the SDL paper corpus
+        <form className={styles.ask} onSubmit={handleSearch}>
+          <div className={styles.field}>
+            <span className={styles.glyph}>&gt;_</span>
+            <input
+              className={styles.input}
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              placeholder="Ask the corpus — e.g. which labs use Bayesian optimization after 2022?"
+              aria-label="Research question"
+            />
           </div>
-          <div style={{ display: "flex", flexWrap: "wrap", gap: 8, justifyContent: "center", maxWidth: 600 }}>
-            {[
-              "Which papers use Bayesian optimization for materials discovery?",
-              "What automation platforms are used in self-driving labs?",
-              "Papers funded by NSERC on closed-loop synthesis",
-              "Compare active learning approaches across SDL papers",
-            ].map((q) => (
-              <button
-                key={q}
-                type="button"
-                onClick={() => setQuery(q)}
-                style={{
-                  padding: "5px 12px", borderRadius: 20, fontSize: 12,
-                  border: "1px solid #2a2a2a", background: "#141414",
-                  color: "#666", cursor: "pointer",
-                }}
-              >
-                {q}
-              </button>
+          <select className={styles.topk} value={topK} onChange={(e) => setTopK(Number(e.target.value))} aria-label="Sources to retrieve">
+            {[4, 8, 12, 20].map((n) => (
+              <option key={n} value={n}>top {n}</option>
             ))}
-          </div>
-        </div>
-      )}
+          </select>
+          <button className={styles.go} type="submit" disabled={loading}>
+            {loading ? "Thinking…" : "Ask"}
+          </button>
+        </form>
 
-      {result && (
-        <>
-          {/* Tab bar */}
-          <div style={{ display: "flex", gap: 0, marginBottom: 16, borderBottom: "1px solid #333" }}>
-            {(["answer", "propositions"] as const).map((tab) => (
-              <button
-                key={tab}
-                onClick={() => setActiveTab(tab)}
-                style={{
-                  padding: "8px 18px", border: "none", cursor: "pointer",
-                  background: "none", fontSize: 13, fontWeight: 600,
-                  color: activeTab === tab ? "#d4a574" : "#666",
-                  borderBottom: activeTab === tab ? "2px solid #d4a574" : "2px solid transparent",
-                }}
-              >
-                {tab === "answer" ? "Answer & Sources" : `Propositions (${propHits?.length ?? 0})`}
-              </button>
-            ))}
-            <span style={{ marginLeft: "auto", fontSize: 12, color: "#555", padding: "8px 0" }}>
-              {result.chunks_retrieved} chunks searched · {result.sources.length} returned · {result.model}
-            </span>
-          </div>
+        {error && <div className={styles.error}>{error}</div>}
 
-          <div
-            style={{
-              display: "grid", gridTemplateColumns: "repeat(4, minmax(0, 1fr))",
-              gap: 10, marginBottom: 16,
-            }}
-          >
-            <div style={{ background: "#111", border: "1px solid #2a2a2a", borderRadius: 8, padding: 10 }}>
-              <div style={{ fontSize: 11, color: "#666" }}>Query type</div>
-              <div style={{ fontSize: 13, fontWeight: 600 }}>{result.query_type}</div>
-            </div>
-            <div style={{ background: "#111", border: "1px solid #2a2a2a", borderRadius: 8, padding: 10 }}>
-              <div style={{ fontSize: 11, color: "#666" }}>Evidence score</div>
-              <div style={{ fontSize: 13, fontWeight: 600 }}>{result.evidence_score.toFixed(3)}</div>
-            </div>
-            <div style={{ background: "#111", border: "1px solid #2a2a2a", borderRadius: 8, padding: 10 }}>
-              <div style={{ fontSize: 11, color: "#666" }}>Source precision</div>
-              <div style={{ fontSize: 13, fontWeight: 600 }}>{result.source_precision.toFixed(3)}</div>
-            </div>
-            <div style={{ background: "#111", border: "1px solid #2a2a2a", borderRadius: 8, padding: 10 }}>
-              <div style={{ fontSize: 11, color: "#666" }}>Retry signal</div>
-              <div style={{ fontSize: 13, fontWeight: 600, color: result.should_retry ? "#fbbf24" : "#7dc97d" }}>
-                {result.should_retry ? "Review evidence" : "Enough evidence"}
-              </div>
+        {loading && (
+          <>
+            <div className={styles.agentLabel}><span className={styles.pulse} /> Reasoning over the corpus…</div>
+          </>
+        )}
+
+        {!result && !loading && !error && (
+          <div className={styles.empty}>
+            <svg width="46" height="46" viewBox="0 0 48 48" fill="none" strokeWidth="1.6">
+              <circle cx="20" cy="20" r="12" />
+              <line x1="30" y1="30" x2="42" y2="42" />
+              <line x1="14" y1="20" x2="26" y2="20" strokeWidth="1.3" />
+              <line x1="20" y1="14" x2="20" y2="26" strokeWidth="1.3" />
+            </svg>
+            <div className={styles.emptyLabel}>Ask a question about the SDL paper corpus</div>
+            <div className={styles.examples}>
+              {EXAMPLES.map((q) => (
+                <button key={q} type="button" className={styles.example} onClick={() => setQuery(q)}>
+                  {q}
+                </button>
+              ))}
             </div>
           </div>
+        )}
 
-          {result.missing_evidence.length > 0 && (
-            <div
-              style={{
-                background: "#1a1500", border: "1px solid #4a3900",
-                borderRadius: 8, padding: 12, marginBottom: 16,
-                color: "#d4a574", fontSize: 13,
-              }}
-            >
-              {result.missing_evidence.map((m) => <div key={m}>{m}</div>)}
-            </div>
-          )}
-
-          {activeTab === "answer" && (
-            <>
-              {/* Answer box */}
-              <div
-                style={{
-                  background: "#111", border: "1px solid #2a2a2a",
-                  borderRadius: 8, padding: 16, marginBottom: 20,
-                  fontSize: 14, lineHeight: 1.7, whiteSpace: "pre-wrap",
-                }}
-              >
-                {result.answer}
-              </div>
-
-              {/* Proposition hints (if returned inline) */}
-              {result.proposition_hints.length > 0 && (
-                <div style={{ marginBottom: 16 }}>
-                  <div style={{ fontSize: 12, color: "#888", marginBottom: 8 }}>
-                    Structured proposition hits (method/funding signals):
-                  </div>
-                  <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
-                    {result.proposition_hints.slice(0, 4).map((h, i) => (
+        {result && !loading && (
+          <>
+            {trace.length > 0 && (
+              <>
+                <div className={styles.agentLabel}><span className={styles.pulse} /> Reasoning</div>
+                <div className={styles.trace} key={runKey}>
+                  {trace.map((step, i) => {
+                    const d = describeStep(step);
+                    return (
                       <span
                         key={i}
-                        style={{
-                          background: "#1e2a1e", border: "1px solid #2a4a2a",
-                          borderRadius: 4, padding: "3px 8px", fontSize: 12, color: "#7dc97d",
-                        }}
+                        className={`${styles.step} ${d.think ? styles.stepThink : ""} ${d.skip ? styles.stepSkip : ""}`}
+                        style={{ animationDelay: `${i * 0.07}s` }}
                       >
+                        <span className={styles.k}>{d.label}</span>
+                        {d.detail}
+                        <span className={styles.tick}>{d.skip ? "–" : "✓"}</span>
+                      </span>
+                    );
+                  })}
+                </div>
+              </>
+            )}
+
+            <p className={styles.answer}>{result.answer}</p>
+            <div className={styles.answerMeta}>
+              {(result.execution_mode ?? "adaptive")} mode · {result.model} · {result.chunks_retrieved} chunks searched · {result.sources.length} sources
+            </div>
+
+            <div className={styles.stats}>
+              <div className={styles.stat}>
+                <div className={styles.statN} style={{ fontSize: 17, paddingTop: 4 }}>{result.query_type}</div>
+                <div className={styles.statL}>query type</div>
+              </div>
+              <div className={styles.stat}>
+                <div className={styles.statN}>{result.evidence_score.toFixed(2)}</div>
+                <div className={styles.statL}>evidence score</div>
+              </div>
+              <div className={styles.stat}>
+                <div className={styles.statN}>{result.source_precision.toFixed(2)}</div>
+                <div className={styles.statL}>source precision</div>
+              </div>
+              <div className={styles.stat}>
+                <div className={`${styles.statN} ${result.should_retry ? styles.warn : styles.good}`} style={{ fontSize: 15, paddingTop: 6 }}>
+                  {result.should_retry ? "review" : "sufficient"}
+                </div>
+                <div className={styles.statL}>evidence signal</div>
+              </div>
+            </div>
+
+            {result.missing_evidence.length > 0 && (
+              <div className={styles.note}>
+                {result.missing_evidence.map((m) => <span key={m}>⚠ {m}</span>)}
+              </div>
+            )}
+
+            <div className={styles.tabs}>
+              <button className={`${styles.tab} ${activeTab === "answer" ? styles.tabActive : ""}`} onClick={() => setActiveTab("answer")}>
+                Evidence &amp; sources
+              </button>
+              <button className={`${styles.tab} ${activeTab === "propositions" ? styles.tabActive : ""}`} onClick={() => setActiveTab("propositions")}>
+                Propositions ({propHits?.length ?? 0})
+              </button>
+              <span className={styles.tabMeta}>graph-path re-ranked</span>
+            </div>
+
+            {activeTab === "answer" && (
+              <>
+                {result.proposition_hints.length > 0 && (
+                  <div className={styles.propChips}>
+                    {result.proposition_hints.slice(0, 6).map((h, i) => (
+                      <span key={i} className={styles.propChip}>
                         {h.predicate}: {h.object_value.slice(0, 40)}
                       </span>
                     ))}
                   </div>
-                </div>
-              )}
+                )}
 
-              {/* Source cards */}
-              <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-                {result.sources.map((src, i) => (
-                  <div
-                    key={src.chunk_id}
-                    style={{
-                      background: "#111", border: "1px solid #2a2a2a",
-                      borderRadius: 8, padding: 14,
-                    }}
-                  >
-                    <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 8 }}>
-                      <span style={{ fontWeight: 600, fontSize: 13 }}>
-                        [{i + 1}] {src.paper_id}
-                        <span style={{ color: "#666", marginLeft: 8, fontSize: 12 }}>
-                          {src.section_type}
-                          {src.section_title ? ` · ${src.section_title}` : ""}
+                <div className={styles.sources}>
+                  {result.sources.map((src, i) => (
+                    <div key={src.chunk_id} className={styles.source}>
+                      <div className={styles.srcHead}>
+                        <span className={styles.srcId}>
+                          <span className={styles.srcCite}>{i + 1}</span>
+                          {src.paper_id}
+                          <span className={styles.srcSection}>
+                            {src.section_type}{src.section_title ? ` · ${src.section_title}` : ""}
+                          </span>
                         </span>
-                      </span>
-                      <span style={{ fontSize: 12, color: "#888" }}>
-                        score {(src.score ?? 0).toFixed(3)}
-                      </span>
-                    </div>
-
-                    {/* Score breakdown */}
-                    <div style={{ display: "grid", gridTemplateColumns: "80px 1fr", gap: "3px 8px", marginBottom: 8 }}>
-                      <span style={{ fontSize: 11, color: "#666" }}>BM25</span>
-                      {scoreBar(src.bm25_score, "#6594b1")}
-                      <span style={{ fontSize: 11, color: "#666" }}>Cosine</span>
-                      {scoreBar(src.cosine_score, "#22c55e")}
-                      <span style={{ fontSize: 11, color: "#666" }}>Graph</span>
-                      {scoreBar(src.graph_score, "#d4a574")}
-                    </div>
-
-                    {/* Graph path visualization */}
-                    {src.graph_context && (
-                      <div style={{
-                        background: "#0b1a20", border: "1px solid #152530",
-                        borderRadius: 5, padding: "7px 10px", marginBottom: 8,
-                      }}>
-                        <div style={{
-                          fontSize: 8, color: "#2a4a55", letterSpacing: "0.1em",
-                          marginBottom: 5, fontWeight: 600,
-                        }}>
-                          GRAPH PATH
-                        </div>
-                        <GraphPath context={src.graph_context} />
+                        <span className={styles.srcScore}>score {(src.score ?? 0).toFixed(3)}</span>
                       </div>
-                    )}
 
-                    <p style={{ fontSize: 13, color: "#ccc", margin: 0, lineHeight: 1.6 }}>
-                      {src.text.slice(0, 400)}{src.text.length > 400 ? "…" : ""}
-                    </p>
-                  </div>
-                ))}
+                      <div className={styles.scores}>
+                        <span className={styles.scoreLabel}>BM25</span>{scoreBar(src.bm25_score, "sBm25")}
+                        <span className={styles.scoreLabel}>cosine</span>{scoreBar(src.cosine_score, "sCos")}
+                        <span className={styles.scoreLabel}>graph</span>{scoreBar(src.graph_score, "sGraph")}
+                      </div>
+
+                      {src.graph_context && (
+                        <div className={styles.graphPath}>
+                          <div className={styles.graphPathLabel}>GRAPH PATH</div>
+                          <GraphPath context={src.graph_context} />
+                        </div>
+                      )}
+
+                      <p className={styles.excerpt}>
+                        {src.text.slice(0, 400)}{src.text.length > 400 ? "…" : ""}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+
+                <div className={styles.feedback}>
+                  <span>Was this answer useful?</span>
+                  <button type="button" className={styles.fbGood} disabled={feedbackSent} onClick={() => void handleFeedback(5)}>
+                    Useful
+                  </button>
+                  <select className={styles.fbSelect} value={failureType} onChange={(e) => setFailureType(e.target.value)} disabled={feedbackSent}>
+                    <option value="missing_source">Missing source</option>
+                    <option value="wrong_source">Wrong source</option>
+                    <option value="hallucination">Hallucination risk</option>
+                    <option value="too_broad">Too broad</option>
+                    <option value="stale">Stale evidence</option>
+                  </select>
+                  <button type="button" className={styles.fbBad} disabled={feedbackSent} onClick={() => void handleFeedback(1)}>
+                    Needs work
+                  </button>
+                  {feedbackSent && <span>Feedback saved.</span>}
+                </div>
+              </>
+            )}
+
+            {activeTab === "propositions" && propHits && (
+              <div className={styles.propList}>
+                {propHits.length === 0 ? (
+                  <p className={styles.propMeta}>No structured propositions matched this query.</p>
+                ) : (
+                  propHits.map((h, i) => (
+                    <div key={i} className={styles.propCard}>
+                      <div className={styles.propTop}>
+                        <span className={styles.propPred}>{h.predicate}</span>
+                        <span className={styles.propScore}>score {h.score.toFixed(3)} · conf {h.confidence.toFixed(2)}</span>
+                      </div>
+                      <div className={styles.propObj}>{h.object_value}</div>
+                      <div className={styles.propClaim}>{h.claim_text}</div>
+                      <div className={styles.propMeta}>
+                        paper: {h.paper_id}{h.source_section ? ` · §${h.source_section}` : ""}
+                      </div>
+                    </div>
+                  ))
+                )}
               </div>
-
-              <div
-                style={{
-                  marginTop: 16, padding: 12, border: "1px solid #2a2a2a",
-                  borderRadius: 8, background: "#111", display: "flex",
-                  alignItems: "center", gap: 10, flexWrap: "wrap",
-                }}
-              >
-                <span style={{ fontSize: 12, color: "#888" }}>Was this answer useful?</span>
-                <button
-                  type="button"
-                  disabled={feedbackSent}
-                  onClick={() => void handleFeedback(5)}
-                  style={{ padding: "5px 10px", borderRadius: 6, border: "1px solid #2a4a2a", background: "#1e2a1e", color: "#7dc97d" }}
-                >
-                  Useful
-                </button>
-                <select
-                  value={failureType}
-                  onChange={(e) => setFailureType(e.target.value)}
-                  disabled={feedbackSent}
-                  style={{ padding: "5px 8px", borderRadius: 6, border: "1px solid #333", background: "#1a1a1a", color: "#aaa" }}
-                >
-                  <option value="missing_source">Missing source</option>
-                  <option value="wrong_source">Wrong source</option>
-                  <option value="hallucination">Hallucination risk</option>
-                  <option value="too_broad">Too broad</option>
-                  <option value="stale">Stale evidence</option>
-                </select>
-                <button
-                  type="button"
-                  disabled={feedbackSent}
-                  onClick={() => void handleFeedback(1)}
-                  style={{ padding: "5px 10px", borderRadius: 6, border: "1px solid #4a2a2a", background: "#2a1e1e", color: "#f87171" }}
-                >
-                  Needs work
-                </button>
-                {feedbackSent && <span style={{ fontSize: 12, color: "#666" }}>Feedback saved.</span>}
-              </div>
-            </>
-          )}
-
-          {activeTab === "propositions" && propHits && (
-            <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-              {propHits.length === 0 ? (
-                <p style={{ color: "#666", fontSize: 13 }}>No structured propositions matched this query.</p>
-              ) : (
-                propHits.map((h, i) => (
-                  <div
-                    key={i}
-                    style={{
-                      background: "#111", border: "1px solid #2a3a2a",
-                      borderRadius: 8, padding: 14,
-                    }}
-                  >
-                    <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 6 }}>
-                      <span
-                        style={{
-                          background: "#1e2a1e", borderRadius: 4,
-                          padding: "2px 8px", fontSize: 12, color: "#7dc97d",
-                        }}
-                      >
-                        {h.predicate}
-                      </span>
-                      <span style={{ fontSize: 12, color: "#666" }}>
-                        score {h.score.toFixed(3)} · conf {h.confidence.toFixed(2)}
-                      </span>
-                    </div>
-                    <div style={{ fontWeight: 600, fontSize: 13, marginBottom: 4 }}>
-                      {h.object_value}
-                    </div>
-                    <div style={{ fontSize: 13, color: "#aaa", marginBottom: 6 }}>
-                      {h.claim_text}
-                    </div>
-                    <div style={{ fontSize: 11, color: "#555" }}>
-                      paper: {h.paper_id}
-                      {h.source_section ? ` · §${h.source_section}` : ""}
-                    </div>
-                  </div>
-                ))
-              )}
-            </div>
-          )}
-        </>
-      )}
+            )}
+          </>
+        )}
+      </div>
     </div>
   );
 }
