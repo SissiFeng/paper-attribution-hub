@@ -1,0 +1,61 @@
+version: catalyst-entity-gold/1.0
+cases:
+  - id: hea_her_composition
+    text: IrPdPtRhRu high-entropy-alloy catalyst accelerates the hydrogen evolution reaction.
+    expected_concepts:
+      - material:high_entropy_alloy_catalyst
+    excluded_concepts:
+      - material:catalyst
+    expected_relations:
+      - predicate: catalyzes
+        object_concept_id: reaction:hydrogen_evolution
+      - predicate: has_composition
+        object_value: IrPdPtRhRu
+        elements: [Ir, Pd, Pt, Rh, Ru]
+
+  - id: catalyst_subtypes
+    text: A photocatalyst enables carbon dioxide reduction. An electrocatalyst enables oxygen evolution.
+    expected_concepts:
+      - material:photocatalyst
+      - material:electrocatalyst
+    excluded_concepts:
+      - material:catalyst
+
+  - id: single_atom_cross_coupling
+    text: A single-atom catalyst was evaluated for the cross-coupling reaction.
+    expected_concepts:
+      - material:single_atom_catalyst
+    excluded_concepts:
+      - material:catalyst
+    expected_relations:
+      - predicate: catalyzes
+        object_concept_id: reaction:cross_coupling
+
+  - id: generic_catalyst
+    text: The catalyst improved methanol synthesis.
+    expected_concepts:
+      - material:catalyst
+    excluded_concepts: []
+    expected_relations:
+      - predicate: catalyzes
+        object_concept_id: reaction:methanol_synthesis
+
+  - id: variable_composition
+    text: PdxTi1-xHy electrocatalyst promotes the oxygen evolution reaction.
+    expected_concepts:
+      - material:electrocatalyst
+    excluded_concepts:
+      - material:catalyst
+    expected_relations:
+      - predicate: catalyzes
+        object_concept_id: reaction:oxygen_evolution
+      - predicate: has_composition
+        object_value: PdxTi1-xHy
+        elements: [Pd, Ti, H]
+
+  - id: negated_catalyst
+    text: No photocatalyst was used in this control experiment.
+    expected_concepts: []
+    excluded_concepts:
+      - material:photocatalyst
+      - material:catalyst

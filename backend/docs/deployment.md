@@ -60,13 +60,21 @@ cd ../frontend && npm install && npm run build   # → dist/, exit 0
 ```
 db_bootstrap                                   # schema: create+stamp | stamp | upgrade
 ingest_scopus_batch --seed-if-under 1000 ...   # best-effort seed
-exec uvicorn app.main:app --host 0.0.0.0 --port ${PORT:-8000}
+seed_sdl_labs --json                           # lab registry + paper links
+background: run_entity_extraction --if-stale-version --batch-size 100
+uvicorn app.main:app --host 0.0.0.0 --port ${PORT:-8000}
 ```
 
-Bootstrap and seed are **best-effort**: a non-zero exit is logged as a
-`[serve] WARNING` but uvicorn still starts, so `/health` and `/debug/db` stay
-reachable for diagnosis. `uvicorn` is exec'd (replaces the process) so it
-receives container signals.
+Bootstrap, seeds, and extraction are **best-effort**: a non-zero exit is logged
+as a `[serve] WARNING` but uvicorn still starts, so `/health` and `/debug/db`
+stay reachable for diagnosis. Entity extraction runs in a daemon thread after
+the API starts. It fingerprints each paper's title, abstract, and chunks along
+with the ontology, vocabulary, method-stage, and extractor versions, then
+commits in batches. PostgreSQL advisory locking and a SQLite file lock prevent
+overlapping processes from running the same backfill. An interrupted container
+resumes only stale papers on the next boot. KB/Transfer readers expose only
+papers whose compatibility projection has the current config/version and is
+not older than the paper's latest update.
 
 ## Known risks / caveats
 

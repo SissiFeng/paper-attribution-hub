@@ -4,8 +4,10 @@ import { Link } from "react-router-dom";
 import { EChart } from "@/components/EChart";
 import { getTransferAdoption, getTransferFlows, getTransferSummary } from "@/lib/api";
 import type { AdoptionLag, TransferFlows, TransferSummary } from "@/types";
+import styles from "./KnowledgeHierarchy.module.css";
 
 const ENTITY_TYPES = ["all", "method", "material", "instrument", "software"];
+type Granularity = "entity" | "parent" | "reaction";
 
 function heatmapOption(flows: TransferFlows) {
   const labels = flows.labs.map((l) => l.name);
@@ -67,6 +69,7 @@ export default function KnowledgeTransferPage() {
   const [flows, setFlows] = useState<TransferFlows | null>(null);
   const [adoption, setAdoption] = useState<AdoptionLag[] | null>(null);
   const [entityType, setEntityType] = useState("all");
+  const [granularity, setGranularity] = useState<Granularity>("entity");
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
@@ -88,7 +91,14 @@ export default function KnowledgeTransferPage() {
 
   useEffect(() => {
     let cancelled = false;
-    getTransferAdoption(entityType === "all" ? {} : { entity_type: entityType })
+    const params: {
+      entity_type?: string;
+      granularity: Granularity;
+    } = { granularity };
+    if (granularity !== "reaction" && entityType !== "all") {
+      params.entity_type = entityType;
+    }
+    getTransferAdoption(params)
       .then((a) => !cancelled && setAdoption(a))
       .catch(
         (err) => !cancelled && setError(err instanceof Error ? err.message : String(err))
@@ -96,7 +106,7 @@ export default function KnowledgeTransferPage() {
     return () => {
       cancelled = true;
     };
-  }, [entityType]);
+  }, [entityType, granularity]);
 
   if (error) {
     return (
@@ -180,7 +190,11 @@ export default function KnowledgeTransferPage() {
       <div className="filters" style={{ marginTop: "0.4rem" }}>
         <label>
           Entity type:&nbsp;
-          <select value={entityType} onChange={(e) => setEntityType(e.target.value)}>
+          <select
+            value={entityType}
+            disabled={granularity === "reaction"}
+            onChange={(e) => setEntityType(e.target.value)}
+          >
             {ENTITY_TYPES.map((t) => (
               <option key={t} value={t}>
                 {t}
@@ -188,15 +202,33 @@ export default function KnowledgeTransferPage() {
             ))}
           </select>
         </label>
-        <span style={{ color: "var(--muted)" }}>
-          Origin = lab with the earliest mention; lag = years until another lab
-          first mentions the same entity.
+        <label>
+          Granularity:&nbsp;
+          <select
+            value={granularity}
+            onChange={(e) => setGranularity(e.target.value as Granularity)}
+          >
+            <option value="entity">Specific entity</option>
+            <option value="parent">Parent roll-up</option>
+            <option value="reaction">Catalyzed reaction</option>
+          </select>
+        </label>
+        <span className={styles.granularityNote}>
+          {granularity === "entity" &&
+            "Exact subtype mentions; photocatalyst and electrocatalyst stay separate."}
+          {granularity === "parent" &&
+            "Ontology children roll up to their parent, e.g. catalyst."}
+          {granularity === "reaction" &&
+            "Evidence-linked catalyst→reaction relations; these remain proposed."}
         </span>
       </div>
       {!adoption || adoption.length === 0 ? (
         <div className="empty">
-          No entities seen in 2+ labs
-          {entityType !== "all" ? ` for type "${entityType}"` : ""}.
+          No {granularity === "reaction" ? "reactions" : "entities"} seen in 2+ labs
+          {granularity !== "reaction" && entityType !== "all"
+            ? ` for type "${entityType}"`
+            : ""}
+          .
         </div>
       ) : (
         <table className="eval-table">
@@ -211,9 +243,14 @@ export default function KnowledgeTransferPage() {
           </thead>
           <tbody>
             {adoption.map((e) => (
-              <tr key={`${e.entity_type}:${e.entity}`}>
+              <tr key={`${granularity}:${e.entity_type}:${e.entity}`}>
                 <td>{e.entity}</td>
-                <td>{e.entity_type}</td>
+                <td>
+                  {e.entity_type}{" "}
+                  {e.knowledge_state !== "observed" && (
+                    <span className={styles.stateBadge}>{e.knowledge_state}</span>
+                  )}
+                </td>
                 <td>
                   <Link to={`/labs/${e.origin_lab}`}>{e.origin_lab}</Link>
                 </td>

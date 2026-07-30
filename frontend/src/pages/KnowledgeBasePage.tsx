@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 import { getKbEntities, getKbEntityPage, getKbSummary } from "@/lib/api";
 import type { KbEntityIndexItem, KbEntityPage, KbSummary } from "@/types";
+import styles from "./KnowledgeHierarchy.module.css";
 
 const ENTITY_TYPES = ["all", "method", "material", "instrument", "software"];
 
@@ -15,6 +16,82 @@ function yearSpan(first: number | null, last: number | null): string {
 function EntityDetail({ detail }: { detail: KbEntityPage }) {
   return (
     <div style={{ padding: "0.6rem 0.4rem" }}>
+      {detail.concept_id && (
+        <section className={styles.hierarchyBand} aria-label="Ontology hierarchy">
+          <div>
+            <div className={styles.lineage}>
+              {[...detail.ancestors].reverse().map((ancestor) => (
+                <Fragment key={ancestor.concept_id}>
+                  <span className={styles.branch}>{ancestor.name}</span>
+                  <span aria-hidden="true">→</span>
+                </Fragment>
+              ))}
+              <strong>{detail.entity}</strong>
+            </div>
+            <div className={styles.conceptId}>{detail.concept_id}</div>
+            {detail.children.length > 0 && (
+              <div className={styles.lineage} style={{ marginTop: 8 }}>
+                <span>Branches</span>
+                {detail.children.map((child) => (
+                  <span className={styles.branch} key={child.concept_id}>
+                    {child.name}
+                  </span>
+                ))}
+              </div>
+            )}
+          </div>
+          <div className={styles.metricPair} aria-label="Direct and rolled-up coverage">
+            <div>
+              <strong>{detail.direct_paper_count}</strong>
+              <span>direct papers</span>
+            </div>
+            <div>
+              <strong>{detail.rolled_up_paper_count}</strong>
+              <span>with branches</span>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {(detail.reactions.length > 0 || detail.compositions.length > 0) && (
+        <div className={styles.facetGrid}>
+          <section className={styles.facetColumn}>
+            <h4>Catalyzed reactions</h4>
+            {detail.reactions.length === 0 ? (
+              <div className="empty">No reaction relation extracted.</div>
+            ) : (
+              <ul className={styles.facetList}>
+                {detail.reactions.map((facet) => (
+                  <li className={styles.facetRow} key={facet.concept_id ?? facet.name}>
+                    <span>
+                      {facet.name} · {facet.paper_count} paper(s)
+                    </span>
+                    <span className={styles.stateBadge}>{facet.knowledge_state}</span>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </section>
+          <section className={styles.facetColumn}>
+            <h4>Explicit compositions</h4>
+            {detail.compositions.length === 0 ? (
+              <div className="empty">No explicit composition extracted.</div>
+            ) : (
+              <ul className={styles.facetList}>
+                {detail.compositions.map((facet) => (
+                  <li className={styles.facetRow} key={facet.name}>
+                    <span>
+                      {facet.name} · {facet.paper_count} paper(s)
+                    </span>
+                    <span className={styles.stateBadge}>{facet.knowledge_state}</span>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </section>
+        </div>
+      )}
+
       <h4 style={{ margin: "0 0 0.4rem" }}>Labs</h4>
       {detail.labs.length === 0 ? (
         <div className="empty">No lab-linked papers mention this entity.</div>
@@ -73,7 +150,15 @@ function EntityDetail({ detail }: { detail: KbEntityPage }) {
           {detail.evidence.map((ev, i) => (
             <li key={`${ev.paper_id}-${i}`}>
               <span>
-                <span style={{ color: "var(--muted)" }}>{ev.paper_title}: </span>
+                <span className={styles.evidenceMeta}>
+                  <span style={{ color: "var(--muted)" }}>{ev.paper_title}</span>
+                  {ev.matched_entity && (
+                    <span className={styles.branch}>{ev.matched_entity}</span>
+                  )}
+                  {ev.knowledge_state && (
+                    <span className={styles.stateBadge}>{ev.knowledge_state}</span>
+                  )}
+                </span>
                 “{ev.text}”
               </span>
             </li>
@@ -246,15 +331,50 @@ export default function KnowledgeBasePage() {
                 <Fragment key={key}>
                   <tr
                     onClick={() => toggleRow(item)}
+                    onKeyDown={(event) => {
+                      if (event.key === "Enter" || event.key === " ") {
+                        event.preventDefault();
+                        toggleRow(item);
+                      }
+                    }}
+                    className={styles.interactiveRow}
+                    tabIndex={0}
+                    role="button"
+                    aria-expanded={expanded === key}
                     style={{ cursor: "pointer" }}
                   >
                     <td>
-                      {expanded === key ? "▾ " : "▸ "}
-                      {item.name}
+                      <span className={styles.entityName}>
+                        <span aria-hidden="true">
+                          {expanded === key ? "▾" : "▸"}
+                        </span>
+                        {item.parent_concept_ids.length > 0 && (
+                          <span className={styles.depthMark} aria-label="ontology branch">
+                            └
+                          </span>
+                        )}
+                        {item.name}
+                      </span>
                     </td>
                     <td>{item.entity_type}</td>
-                    <td>{item.paper_count}</td>
-                    <td>{item.lab_count}</td>
+                    <td className={styles.countCell}>
+                      {item.direct_paper_count ?? item.paper_count}
+                      {item.rolled_up_paper_count != null &&
+                        item.rolled_up_paper_count !== item.direct_paper_count && (
+                          <span className={styles.rollupCount}>
+                            {item.rolled_up_paper_count} incl. branches
+                          </span>
+                        )}
+                    </td>
+                    <td className={styles.countCell}>
+                      {item.direct_lab_count ?? item.lab_count}
+                      {item.rolled_up_lab_count != null &&
+                        item.rolled_up_lab_count !== item.direct_lab_count && (
+                          <span className={styles.rollupCount}>
+                            {item.rolled_up_lab_count} incl. branches
+                          </span>
+                        )}
+                    </td>
                     <td>{yearSpan(item.first_year, item.last_year)}</td>
                   </tr>
                   {expanded === key && (

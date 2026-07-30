@@ -12,7 +12,26 @@ from statistics import median
 from sqlalchemy import func, select
 from sqlalchemy.orm import Session
 
-from app.models import Paper, PaperEntity, PaperLabLink, PaperReference, SdlLab
+from app.models import (
+    Paper,
+    PaperEntity,
+    PaperEntityExtractionState,
+    PaperEntityMention,
+    PaperEntityRelation,
+    PaperLabLink,
+    PaperReference,
+    SdlLab,
+)
+from app.services.entity_extractor import (
+    CATALYST_EXTRACTOR_VERSION,
+    extraction_config_fingerprint,
+)
+from app.services.ontology_service import (
+    concept,
+    concept_ancestors,
+    concept_id_for_name,
+    load_ontology,
+)
 
 
 def lab_flow_matrix(
@@ -66,9 +85,16 @@ def lab_flow_matrix(
 
 
 def adoption_lags(
-    session: Session, entity_type: str | None = None, min_labs: int = 2
+    session: Session,
+    entity_type: str | None = None,
+    min_labs: int = 2,
+    granularity: str = "entity",
 ) -> list[dict]:
     """Per-entity adoption lags across labs.
+
+    ``granularity="parent"`` rolls ontology-backed catalyst subtypes up to
+    their direct parent. ``granularity="reaction"`` groups proposed
+    evidence-linked catalyst→reaction relations instead of flat entities.
 
     For each normalized entity, the origin is the lab with the earliest
     mention year (ties: all earliest labs count as origins; the alphabetically
@@ -78,24 +104,101 @@ def adoption_lags(
     skipped. Only entities seen in >= min_labs labs are returned, sorted by
     number of adopting labs descending.
     """
-    stmt = (
-        select(
-            PaperEntity.entity_type,
-            PaperEntity.normalized_name,
-            PaperLabLink.lab_id,
-            Paper.year,
+    if granularity not in {"entity", "parent", "reaction"}:
+        raise ValueError(f"Unknown adoption granularity: {granularity}")
+
+    if granularity == "reaction":
+        ontology_version = load_ontology()["ontology_version"]
+        rows = session.execute(
+            select(
+                PaperEntityRelation.object_concept_id,
+                PaperLabLink.lab_id,
+                Paper.year,
+                PaperEntityRelation.status,
+            )
+            .join(
+                PaperEntityMention,
+                PaperEntityMention.id == PaperEntityRelation.subject_mention_id,
+            )
+            .join(
+                PaperLabLink,
+                PaperLabLink.paper_id == PaperEntityMention.paper_id,
+            )
+            .join(
+                PaperEntityExtractionState,
+                PaperEntityExtractionState.paper_id
+                == PaperEntityMention.paper_id,
+            )
+            .join(Paper, Paper.id == PaperEntityMention.paper_id)
+            .where(
+                PaperEntityRelation.predicate == "catalyzes",
+                PaperEntityRelation.object_concept_id.is_not(None),
+                PaperEntityRelation.status.not_in({"rejected", "deprecated"}),
+                PaperEntityMention.ontology_version == ontology_version,
+                PaperEntityRelation.ontology_version == ontology_version,
+                PaperEntityExtractionState.ontology_version == ontology_version,
+                PaperEntityExtractionState.extractor_version
+                == CATALYST_EXTRACTOR_VERSION,
+                PaperEntityExtractionState.config_fingerprint
+                == extraction_config_fingerprint(),
+                Paper.updated_at <= PaperEntityExtractionState.extracted_at,
+                Paper.year.is_not(None),
+            )
         )
-        .join(PaperLabLink, PaperLabLink.paper_id == PaperEntity.paper_id)
-        .join(Paper, Paper.id == PaperEntity.paper_id)
-        .where(Paper.year.is_not(None))
-    )
-    if entity_type is not None:
-        stmt = stmt.where(PaperEntity.entity_type == entity_type)
+        source_rows = []
+        for concept_id, lab_id, year, status in rows:
+            reaction = concept(concept_id)
+            if reaction is None:
+                continue
+            source_rows.append(
+                ("reaction", reaction["name"], lab_id, year, status)
+            )
+    else:
+        ontology_version = load_ontology()["ontology_version"]
+        stmt = (
+            select(
+                PaperEntity.entity_type,
+                PaperEntity.normalized_name,
+                PaperLabLink.lab_id,
+                Paper.year,
+            )
+            .join(
+                PaperEntityExtractionState,
+                PaperEntityExtractionState.paper_id == PaperEntity.paper_id,
+            )
+            .join(PaperLabLink, PaperLabLink.paper_id == PaperEntity.paper_id)
+            .join(Paper, Paper.id == PaperEntity.paper_id)
+            .where(
+                PaperEntityExtractionState.ontology_version == ontology_version,
+                PaperEntityExtractionState.extractor_version
+                == CATALYST_EXTRACTOR_VERSION,
+                PaperEntityExtractionState.config_fingerprint
+                == extraction_config_fingerprint(),
+                Paper.updated_at <= PaperEntityExtractionState.extracted_at,
+                Paper.year.is_not(None),
+            )
+        )
+        if entity_type is not None:
+            stmt = stmt.where(PaperEntity.entity_type == entity_type)
+        source_rows = [
+            (etype, norm, lab_id, year, "observed")
+            for etype, norm, lab_id, year in session.execute(stmt)
+        ]
 
     # (entity_type, normalized_name) -> {lab_id: first mention year}
     first_years: dict[tuple[str, str], dict[str, int]] = defaultdict(dict)
-    for etype, norm, lab_id, year in session.execute(stmt):
+    states: dict[tuple[str, str], set[str]] = defaultdict(set)
+    for etype, norm, lab_id, year, state in source_rows:
+        if granularity == "parent" and etype == "material":
+            concept_id = concept_id_for_name("material", norm)
+            if concept_id is not None:
+                ancestors = concept_ancestors(concept_id)
+                if ancestors:
+                    parent = concept(ancestors[0])
+                    if parent is not None:
+                        norm = parent["name"]
         key = (etype, norm)
+        states[key].add(state)
         prev = first_years[key].get(lab_id)
         if prev is None or year < prev:
             first_years[key][lab_id] = year
@@ -120,6 +223,11 @@ def adoption_lags(
                 "origin_lab": origin_labs[0],
                 "origin_year": origin_year,
                 "adoptions": adoptions,
+                "knowledge_state": (
+                    next(iter(states[(etype, norm)]))
+                    if len(states[(etype, norm)]) == 1
+                    else "mixed"
+                ),
             }
         )
     entries.sort(key=lambda e: (-len(e["adoptions"]), e["entity"], e["entity_type"]))
@@ -167,6 +275,20 @@ def transfer_summary(session: Session) -> dict:
         session.scalar(
             select(func.count()).select_from(
                 select(PaperEntity.entity_type, PaperEntity.normalized_name)
+                .join(
+                    PaperEntityExtractionState,
+                    PaperEntityExtractionState.paper_id == PaperEntity.paper_id,
+                )
+                .join(Paper, Paper.id == PaperEntity.paper_id)
+                .where(
+                    PaperEntityExtractionState.ontology_version
+                    == load_ontology()["ontology_version"],
+                    PaperEntityExtractionState.extractor_version
+                    == CATALYST_EXTRACTOR_VERSION,
+                    PaperEntityExtractionState.config_fingerprint
+                    == extraction_config_fingerprint(),
+                    Paper.updated_at <= PaperEntityExtractionState.extracted_at,
+                )
                 .distinct()
                 .subquery()
             )

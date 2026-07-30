@@ -37,6 +37,6 @@ ENV PYTHONPATH=/app
 
 EXPOSE 8000
 
-# Demo-safe entrypoint: bootstrap + seed are best-effort and never block boot;
-# uvicorn always starts so /health and /debug/* stay reachable for diagnosis.
+# Demo-safe entrypoint: bootstrap and seed are best-effort; the API starts while
+# versioned entity extraction continues in resumable background batches.
 CMD ["python", "-m", "app.scripts.serve"]

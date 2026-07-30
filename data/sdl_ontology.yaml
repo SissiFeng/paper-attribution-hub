@@ -1,14 +1,19 @@
-ontology_version: sdl-ontology/1.0
+ontology_version: sdl-ontology/1.1
 
 concept_types:
   - method
   - capability
   - unit_dimension
+  - material
+  - reaction
 
 relation_types:
   - id: requires_capability
     source_type: method
     target_type: capability
+  - id: subclass_of
+    source_type: material
+    target_type: material
 
 concepts:
   - id: method:bayesian_optimization
@@ -95,6 +100,99 @@ concepts:
     name: Volume
     aliases: []
 
+  # Catalyst pilot: material concepts stay hierarchical. Specific catalyst
+  # systems are paper-scoped mentions; they are not promoted into this global
+  # registry.
+  - id: material:catalyst
+    type: material
+    name: catalyst
+    aliases:
+      - catalysts
+  - id: material:electrocatalyst
+    type: material
+    name: electrocatalyst
+    aliases:
+      - electrocatalysts
+      - electro-catalyst
+      - electro-catalysts
+  - id: material:photocatalyst
+    type: material
+    name: photocatalyst
+    aliases:
+      - photocatalysts
+      - photo-catalyst
+      - photo-catalysts
+  - id: material:single_atom_catalyst
+    type: material
+    name: single-atom catalyst
+    aliases:
+      - single atom catalyst
+      - single-atom catalysts
+      - single atom catalysts
+      - SAC catalyst
+      - SAC catalysts
+  - id: material:high_entropy_alloy_catalyst
+    type: material
+    name: high-entropy-alloy catalyst
+    aliases:
+      - high entropy alloy catalyst
+      - high-entropy alloy catalyst
+      - high entropy alloy catalysts
+      - high-entropy alloy catalysts
+      - HEA catalyst
+      - HEA catalysts
+  - id: material:heterogeneous_catalyst
+    type: material
+    name: heterogeneous catalyst
+    aliases:
+      - heterogeneous catalysts
+  - id: material:homogeneous_catalyst
+    type: material
+    name: homogeneous catalyst
+    aliases:
+      - homogeneous catalysts
+  - id: material:organometallic_catalyst
+    type: material
+    name: organometallic catalyst
+    aliases:
+      - organometallic catalysts
+
+  - id: reaction:hydrogen_evolution
+    type: reaction
+    name: hydrogen evolution reaction
+    aliases:
+      - hydrogen evolution
+      - HER
+  - id: reaction:oxygen_evolution
+    type: reaction
+    name: oxygen evolution reaction
+    aliases:
+      - oxygen evolution
+      - OER
+  - id: reaction:carbon_dioxide_reduction
+    type: reaction
+    name: carbon dioxide reduction reaction
+    aliases:
+      - carbon dioxide reduction
+      - CO2 reduction
+      - CO2RR
+  - id: reaction:oxidative_coupling_methane
+    type: reaction
+    name: oxidative coupling of methane
+    aliases:
+      - OCM
+  - id: reaction:methanol_synthesis
+    type: reaction
+    name: methanol synthesis
+    aliases: []
+  - id: reaction:cross_coupling
+    type: reaction
+    name: cross-coupling reaction
+    aliases:
+      - cross coupling reaction
+      - cross-coupling
+      - cross coupling
+
 relations:
   - source: method:bayesian_optimization
     predicate: requires_capability
@@ -114,6 +212,27 @@ relations:
   - source: method:rheology
     predicate: requires_capability
     target: capability:rheological_characterization
+  - source: material:electrocatalyst
+    predicate: subclass_of
+    target: material:catalyst
+  - source: material:photocatalyst
+    predicate: subclass_of
+    target: material:catalyst
+  - source: material:single_atom_catalyst
+    predicate: subclass_of
+    target: material:catalyst
+  - source: material:high_entropy_alloy_catalyst
+    predicate: subclass_of
+    target: material:catalyst
+  - source: material:heterogeneous_catalyst
+    predicate: subclass_of
+    target: material:catalyst
+  - source: material:homogeneous_catalyst
+    predicate: subclass_of
+    target: material:catalyst
+  - source: material:organometallic_catalyst
+    predicate: subclass_of
+    target: material:catalyst
 
 knowledge_lifecycle:
   states:

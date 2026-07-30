@@ -12,7 +12,18 @@ from collections import defaultdict
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
-from app.models import Paper, PaperChunk, PaperEntity, PaperLabLink
+from app.models import (
+    Paper,
+    PaperChunk,
+    PaperEntity,
+    PaperEntityExtractionState,
+    PaperLabLink,
+)
+from app.services.entity_extractor import (
+    CATALYST_EXTRACTOR_VERSION,
+    extraction_config_fingerprint,
+)
+from app.services.ontology_service import load_ontology
 
 _EVENT_LIMIT = 12
 _SNIPPET_CHARS = 260
@@ -44,10 +55,21 @@ def entity_event_trail(
     """
     rows = session.execute(
         select(PaperEntity, Paper)
+        .join(
+            PaperEntityExtractionState,
+            PaperEntityExtractionState.paper_id == PaperEntity.paper_id,
+        )
         .join(Paper, Paper.id == PaperEntity.paper_id)
         .where(
             PaperEntity.entity_type == entity_type,
             PaperEntity.normalized_name == normalized_name,
+            PaperEntityExtractionState.ontology_version
+            == load_ontology()["ontology_version"],
+            PaperEntityExtractionState.extractor_version
+            == CATALYST_EXTRACTOR_VERSION,
+            PaperEntityExtractionState.config_fingerprint
+            == extraction_config_fingerprint(),
+            Paper.updated_at <= PaperEntityExtractionState.extracted_at,
         )
         .order_by(Paper.year, Paper.id)
         .limit(limit)
@@ -80,7 +102,21 @@ def entity_event_trail(
     related: dict[str, list[dict]] = defaultdict(list)
     for entity in session.execute(
         select(PaperEntity)
-        .where(PaperEntity.paper_id.in_(paper_ids))
+        .join(
+            PaperEntityExtractionState,
+            PaperEntityExtractionState.paper_id == PaperEntity.paper_id,
+        )
+        .join(Paper, Paper.id == PaperEntity.paper_id)
+        .where(
+            PaperEntity.paper_id.in_(paper_ids),
+            PaperEntityExtractionState.ontology_version
+            == load_ontology()["ontology_version"],
+            PaperEntityExtractionState.extractor_version
+            == CATALYST_EXTRACTOR_VERSION,
+            PaperEntityExtractionState.config_fingerprint
+            == extraction_config_fingerprint(),
+            Paper.updated_at <= PaperEntityExtractionState.extracted_at,
+        )
         .order_by(PaperEntity.entity_type, PaperEntity.normalized_name)
     ).scalars():
         if (

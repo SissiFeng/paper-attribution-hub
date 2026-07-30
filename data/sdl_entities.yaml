@@ -400,8 +400,47 @@ materials:
   - name: catalyst
     aliases:
       - catalysts
-      - electrocatalyst
-      - photocatalyst
+  - name: electrocatalyst
+    category: catalyst
+    aliases:
+      - electrocatalysts
+      - electro-catalyst
+      - electro-catalysts
+  - name: photocatalyst
+    category: catalyst
+    aliases:
+      - photocatalysts
+      - photo-catalyst
+      - photo-catalysts
+  - name: single-atom catalyst
+    category: catalyst
+    aliases:
+      - single atom catalyst
+      - single-atom catalysts
+      - single atom catalysts
+      - SAC catalyst
+      - SAC catalysts
+  - name: high-entropy-alloy catalyst
+    category: catalyst
+    aliases:
+      - high entropy alloy catalyst
+      - high-entropy alloy catalyst
+      - high entropy alloy catalysts
+      - high-entropy alloy catalysts
+      - HEA catalyst
+      - HEA catalysts
+  - name: heterogeneous catalyst
+    category: catalyst
+    aliases:
+      - heterogeneous catalysts
+  - name: homogeneous catalyst
+    category: catalyst
+    aliases:
+      - homogeneous catalysts
+  - name: organometallic catalyst
+    category: catalyst
+    aliases:
+      - organometallic catalysts
   - name: nanoparticle
     aliases:
       - nanoparticles

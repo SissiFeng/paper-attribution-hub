@@ -1,9 +1,10 @@
-"""Demo-safe container entrypoint: prepare the DB defensively, then serve.
+"""Demo-safe container entrypoint: prepare DB and demo knowledge, then serve.
 
-Schema bootstrap and data seeding run as best-effort steps: a non-zero exit is
-logged loudly but never prevents uvicorn from starting.  A running API whose
-`/health` is green and whose `/debug/db` reports the real error is far more
-useful during a demo than a container that never boots.
+Schema bootstrap and data/lab seeding run before the API. Version-gated entity
+extraction then runs in a daemon thread with per-batch commits, so health checks
+do not wait for a corpus scan and interrupted work resumes on the next boot.
+Every preparation step is best-effort: a non-zero exit is logged loudly but
+never prevents uvicorn from starting.
 
 Usage (Docker CMD):
     python -m app.scripts.serve
@@ -14,6 +15,7 @@ from __future__ import annotations
 import os
 import subprocess
 import sys
+from threading import Thread
 
 
 def _run_step(name: str, module_args: list[str]) -> int:
@@ -44,22 +46,30 @@ def main() -> None:
             "--prune-non-real",
         ],
     )
+    _run_step("SDL lab seed", ["app.scripts.seed_sdl_labs", "--json"])
+    extraction = Thread(
+        target=_run_step,
+        args=(
+            "versioned entity extraction",
+            [
+                "app.scripts.run_entity_extraction",
+                "--if-stale-version",
+                "--json",
+            ],
+        ),
+        daemon=True,
+        name="entity-extraction-backfill",
+    )
+    extraction.start()
 
     port = os.environ.get("PORT", "8000")
     print(f"[serve] starting uvicorn on :{port}", flush=True)
-    # exec so uvicorn replaces this process and receives container signals.
-    os.execv(
-        sys.executable,
-        [
-            sys.executable,
-            "-m",
-            "uvicorn",
-            "app.main:app",
-            "--host",
-            "0.0.0.0",
-            "--port",
-            port,
-        ],
+    import uvicorn
+
+    uvicorn.run(
+        "app.main:app",
+        host="0.0.0.0",
+        port=int(port),
     )
 
 

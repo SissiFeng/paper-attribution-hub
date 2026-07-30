@@ -789,6 +789,7 @@ export interface AdoptionLag {
   origin_lab: string;
   origin_year: number;
   adoptions: Adoption[];
+  knowledge_state: string;
 }
 
 export interface FastSpreadingEntity {
@@ -823,6 +824,18 @@ export interface KbEntityIndexItem {
   lab_count: number;
   first_year: number | null;
   last_year: number | null;
+  concept_id: string | null;
+  parent_concept_ids: string[];
+  children: KbConceptRef[];
+  direct_paper_count: number | null;
+  direct_lab_count: number | null;
+  rolled_up_paper_count: number | null;
+  rolled_up_lab_count: number | null;
+}
+
+export interface KbConceptRef {
+  concept_id: string;
+  name: string;
 }
 
 export interface KbEntityLab {
@@ -838,6 +851,9 @@ export interface KbEntityPaper {
   year: number | null;
   labs: string[];
   confidence: number;
+  stage: string | null;
+  usage_snippet: string | null;
+  matched_entities: string[];
 }
 
 export interface KbYearCount {
@@ -849,16 +865,36 @@ export interface KbEvidenceSnippet {
   paper_id: string;
   paper_title: string;
   text: string;
+  stage: string | null;
+  usage_snippet: string | null;
+  matched_entity: string | null;
+  knowledge_state: string | null;
+}
+
+export interface KbEntityFacet {
+  name: string;
+  concept_id: string | null;
+  paper_count: number;
+  knowledge_state: string;
 }
 
 export interface KbEntityPage {
   entity: string;
   entity_type: string;
+  concept_id: string | null;
+  ancestors: KbConceptRef[];
+  children: KbConceptRef[];
+  direct_paper_count: number;
+  direct_lab_count: number;
+  rolled_up_paper_count: number;
+  rolled_up_lab_count: number;
   labs: KbEntityLab[];
   papers: KbEntityPaper[];
   timeline: KbYearCount[];
   evidence: KbEvidenceSnippet[];
   adoption: AdoptionLag | null;
+  reactions: KbEntityFacet[];
+  compositions: KbEntityFacet[];
 }
 
 export interface KbTopEntity {

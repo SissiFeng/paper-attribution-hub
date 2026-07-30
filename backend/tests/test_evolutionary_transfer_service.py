@@ -67,7 +67,7 @@ def _tku(
             "acquisition": "expected improvement",
             "loop": "design-make-test-analyze",
             "key_components": list(key_components),
-            "ontology_version": "sdl-ontology/1.0",
+            "ontology_version": "sdl-ontology/1.1",
             "ontology_mapping_complete": ontology_mapping_complete,
             "method_concepts": method_concepts,
             "requires_capabilities": list(requires_capabilities),
@@ -188,7 +188,7 @@ def test_export_autosearch_run_writes_wiki_card_and_log(session, tmp_path):
     text = path.read_text(encoding="utf-8")
     assert text.startswith("---")
     assert "type: autosearch-run" in text
-    assert "ontology_version: sdl-ontology/1.0" in text
+    assert "ontology_version: sdl-ontology/1.1" in text
     assert "knowledge_state: proposed" in text
     assert "## Best candidate" in text
     assert "Ontology compatibility: compatible" in text
@@ -232,7 +232,7 @@ def test_api_evolve_endpoint(session):
 
 def test_ontology_contract_and_lifecycle_are_versioned():
     ontology = load_ontology()
-    assert ontology["ontology_version"] == "sdl-ontology/1.0"
+    assert ontology["ontology_version"] == "sdl-ontology/1.1"
     assert "proposed" in ontology["knowledge_lifecycle"]["states"]
     assert any(
         transition["action"] == "promote" and transition["from"] == "validated"
@@ -385,7 +385,7 @@ def test_api_exposes_ontology_summary():
     client = TestClient(app)
     response = client.get("/transfer/ontology")
     assert response.status_code == 200
-    assert response.json()["ontology_version"] == "sdl-ontology/1.0"
+    assert response.json()["ontology_version"] == "sdl-ontology/1.1"
     targets = client.get("/transfer/targets")
     assert targets.status_code == 200
     sdl4 = next(target for target in targets.json() if target["id"] == "sdl4")

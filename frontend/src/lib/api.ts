@@ -444,10 +444,17 @@ export function getTransferFlows(params: { year_from?: number; year_to?: number 
   );
 }
 
-export function getTransferAdoption(params: { entity_type?: string; min_labs?: number } = {}) {
+export function getTransferAdoption(
+  params: {
+    entity_type?: string;
+    min_labs?: number;
+    granularity?: "entity" | "parent" | "reaction";
+  } = {}
+) {
   const sp = new URLSearchParams();
   if (params.entity_type) sp.set("entity_type", params.entity_type);
   if (params.min_labs != null) sp.set("min_labs", String(params.min_labs));
+  if (params.granularity) sp.set("granularity", params.granularity);
   const qs = sp.toString();
   return withMock(
     () => request<AdoptionLag[]>(`/analytics/transfer/adoption${qs ? `?${qs}` : ""}`),

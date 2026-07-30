@@ -176,7 +176,7 @@ targets:
     - molecular-weight distribution control
     - solvent compatibility and degassing
   ontology_profile:
-    ontology_version: sdl-ontology/1.0
+    ontology_version: sdl-ontology/1.1
     capability_inventory_complete: true
     unit_dimension_inventory_complete: true
     capabilities:

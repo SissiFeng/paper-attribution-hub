@@ -9,6 +9,7 @@ start in the non-executable ``proposed`` state.
 from __future__ import annotations
 
 import hashlib
+import re
 from functools import lru_cache
 from pathlib import Path
 
@@ -39,6 +40,95 @@ def ontology_summary(ontology: dict | None = None) -> dict:
         "relations": len(registry["relations"]),
         "knowledge_states": list(registry["knowledge_lifecycle"]["states"]),
     }
+
+
+def concept(concept_id: str, ontology: dict | None = None) -> dict | None:
+    """Return one ontology concept by stable id."""
+    registry = ontology or load_ontology()
+    return registry["concepts"].get(concept_id)
+
+
+def concept_id_for_name(
+    concept_type: str,
+    name: str,
+    ontology: dict | None = None,
+) -> str | None:
+    """Resolve an exact canonical concept name, case-insensitively."""
+    registry = ontology or load_ontology()
+    return registry["canonical_ids_by_type"].get(concept_type, {}).get(name.lower())
+
+
+def concept_ancestors(
+    concept_id: str,
+    ontology: dict | None = None,
+) -> list[str]:
+    """Return nearest-first ``subclass_of`` ancestors for a concept."""
+    registry = ontology or load_ontology()
+    parents = registry["parents"]
+    ordered: list[str] = []
+    seen: set[str] = set()
+    frontier = list(parents.get(concept_id, ()))
+    while frontier:
+        parent = frontier.pop(0)
+        if parent in seen:
+            continue
+        seen.add(parent)
+        ordered.append(parent)
+        frontier.extend(parents.get(parent, ()))
+    return ordered
+
+
+def concept_children(
+    concept_id: str,
+    ontology: dict | None = None,
+) -> list[str]:
+    """Return direct child concept ids in deterministic order."""
+    registry = ontology or load_ontology()
+    return list(registry["children"].get(concept_id, ()))
+
+
+def match_ontology_concepts(
+    text: str,
+    concept_type: str,
+    ontology: dict | None = None,
+) -> list[dict]:
+    """Return non-overlapping longest ontology matches in source order.
+
+    This prevents a phrase such as ``high entropy alloy catalyst`` from being
+    collapsed into a second, overlapping generic ``catalyst`` mention. Parent
+    concepts remain available through :func:`concept_ancestors`.
+    """
+    registry = ontology or load_ontology()
+    candidates: dict[tuple[int, int, str], dict] = {}
+    for surface, concept_id in registry["aliases_by_type"].get(concept_type, ()):
+        for hit in find_term_hits(text, surface):
+            key = (hit.start, hit.end, concept_id)
+            candidates[key] = {
+                "concept_id": concept_id,
+                "start": hit.start,
+                "end": hit.end,
+                "surface": text[hit.start : hit.end],
+                "negated": hit.negated,
+            }
+    ranked = sorted(
+        candidates.values(),
+        key=lambda item: (
+            -(item["end"] - item["start"]),
+            item["start"],
+            item["concept_id"],
+        ),
+    )
+    selected: list[dict] = []
+    for candidate in ranked:
+        if any(
+            candidate["start"] < current["end"]
+            and current["start"] < candidate["end"]
+            for current in selected
+        ):
+            continue
+        selected.append(candidate)
+    selected.sort(key=lambda item: (item["start"], item["end"], item["concept_id"]))
+    return selected
 
 
 def ontology_gate_readiness(target: dict, ontology: dict | None = None) -> dict:
@@ -269,15 +359,40 @@ def _validate_ontology(raw: dict) -> dict:
             raise ValueError(f"Unknown concept type for {concept_id}")
         concepts[concept_id] = concept
 
-    method_aliases: list[tuple[str, str]] = []
+    aliases_by_type: dict[str, list[tuple[str, str]]] = {
+        concept_type: [] for concept_type in concept_types
+    }
+    canonical_ids_by_type: dict[str, dict[str, str]] = {
+        concept_type: {} for concept_type in concept_types
+    }
+    alias_ids_by_type: dict[str, dict[str, str]] = {
+        concept_type: {} for concept_type in concept_types
+    }
     for concept_id, concept in concepts.items():
-        if concept["type"] != "method":
-            continue
+        concept_type = concept["type"]
+        canonical_key = str(concept["name"]).strip().lower()
+        existing = canonical_ids_by_type[concept_type].get(canonical_key)
+        if existing is not None and existing != concept_id:
+            raise ValueError(
+                f"Duplicate canonical {concept_type} name: {concept['name']!r}"
+            )
+        canonical_ids_by_type[concept_type][canonical_key] = concept_id
         for surface in [concept["name"], *(concept.get("aliases") or [])]:
-            method_aliases.append((surface, concept_id))
-    method_aliases.sort(key=lambda item: (-len(item[0]), item[0], item[1]))
+            alias_key = re.sub(r"[\s-]+", " ", str(surface).strip().lower())
+            existing_alias = alias_ids_by_type[concept_type].get(alias_key)
+            if existing_alias is not None and existing_alias != concept_id:
+                raise ValueError(
+                    f"Ambiguous {concept_type} alias {surface!r}: "
+                    f"{existing_alias} and {concept_id}"
+                )
+            alias_ids_by_type[concept_type][alias_key] = concept_id
+            aliases_by_type[concept_type].append((surface, concept_id))
+    for aliases in aliases_by_type.values():
+        aliases.sort(key=lambda item: (-len(item[0]), item[0], item[1]))
 
     relations = list(raw.get("relations") or [])
+    parents: dict[str, list[str]] = {}
+    children: dict[str, list[str]] = {}
     for relation in relations:
         spec = relation_types.get(relation.get("predicate"))
         source = concepts.get(relation.get("source"))
@@ -289,6 +404,14 @@ def _validate_ontology(raw: dict) -> dict:
             or target["type"] != spec["target_type"]
         ):
             raise ValueError(f"Ontology relation type mismatch: {relation}")
+        if relation["predicate"] == "subclass_of":
+            parents.setdefault(relation["source"], []).append(relation["target"])
+            children.setdefault(relation["target"], []).append(relation["source"])
+    for values in parents.values():
+        values.sort()
+    for values in children.values():
+        values.sort()
+    _validate_parent_graph(parents)
 
     lifecycle = raw.get("knowledge_lifecycle") or {}
     states = set(lifecycle.get("states") or [])
@@ -301,10 +424,34 @@ def _validate_ontology(raw: dict) -> dict:
     return {
         "ontology_version": version,
         "concepts": concepts,
-        "method_aliases": method_aliases,
+        "method_aliases": aliases_by_type.get("method", []),
+        "aliases_by_type": aliases_by_type,
+        "canonical_ids_by_type": canonical_ids_by_type,
+        "parents": parents,
+        "children": children,
         "relations": relations,
         "knowledge_lifecycle": lifecycle,
     }
+
+
+def _validate_parent_graph(parents: dict[str, list[str]]) -> None:
+    """Reject cycles in the subclass graph."""
+    visiting: set[str] = set()
+    visited: set[str] = set()
+
+    def visit(node: str) -> None:
+        if node in visiting:
+            raise ValueError(f"Ontology subclass cycle at {node}")
+        if node in visited:
+            return
+        visiting.add(node)
+        for parent in parents.get(node, ()):
+            visit(parent)
+        visiting.remove(node)
+        visited.add(node)
+
+    for node in parents:
+        visit(node)
 
 
 def _is_concept(reference, expected_type: str, concepts: dict[str, dict]) -> bool:

@@ -3,8 +3,20 @@ from __future__ import annotations
 
 from fastapi.testclient import TestClient
 
-from app.models import Paper, PaperChunk, PaperEntity, PaperLabLink, SdlLab
+from app.models import (
+    Paper,
+    PaperChunk,
+    PaperEntity,
+    PaperEntityExtractionState,
+    PaperLabLink,
+    SdlLab,
+)
+from app.services.entity_extractor import (
+    CATALYST_EXTRACTOR_VERSION,
+    extraction_config_fingerprint,
+)
 from app.services.kb_service import entity_index, entity_page, kb_summary, lab_profile
+from app.services.ontology_service import load_ontology
 
 CHUNK_TEXT = "We used bayesian optimization to drive the closed-loop campaign. " * 8
 
@@ -49,6 +61,15 @@ def _seed(session) -> None:
     }
     for pid, (year, lab_id, tags) in papers.items():
         session.add(Paper(id=pid, title=f"Paper {pid}", year=year, sdl_tags=tags))
+        session.add(
+            PaperEntityExtractionState(
+                paper_id=pid,
+                ontology_version=load_ontology()["ontology_version"],
+                extractor_version=CATALYST_EXTRACTOR_VERSION,
+                config_fingerprint=extraction_config_fingerprint(),
+                source_fingerprint=f"test:{pid}",
+            )
+        )
         if lab_id:
             session.add(PaperLabLink(paper_id=pid, lab_id=lab_id))
     # PA2 is shared between lab-a and lab-b (collaboration).

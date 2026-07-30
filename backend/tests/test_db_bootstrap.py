@@ -69,7 +69,9 @@ def test_bootstrap_fresh_db_creates_schema_and_stamps_head(tmp_path):
     tables, version = _inspect(db_path)
     # Full current schema is present without any replay collision.
     assert "papers" in tables
-    assert "paper_events" in tables  # added by a post-0001 migration
+    assert "paper_entity_mentions" in tables  # added by a post-0001 migration
+    assert "paper_entity_relations" in tables
+    assert "paper_entity_extraction_states" in tables
     assert "alembic_version" in tables
     # Stamped at head so future `alembic upgrade head` is incremental, not replay.
     assert version == _alembic_head()

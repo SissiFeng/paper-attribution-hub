@@ -11,10 +11,16 @@ from app.models import (
     Paper,
     PaperClassification,
     PaperEntity,
+    PaperEntityExtractionState,
     PaperLabLink,
     PaperReference,
     SdlLab,
 )
+from app.services.entity_extractor import (
+    CATALYST_EXTRACTOR_VERSION,
+    extraction_config_fingerprint,
+)
+from app.services.ontology_service import load_ontology
 
 _LINK_RE = re.compile(r"\]\(([^)]+)\)")
 
@@ -46,6 +52,16 @@ def _entity(
     )
 
 
+def _state(paper_id: str) -> PaperEntityExtractionState:
+    return PaperEntityExtractionState(
+        paper_id=paper_id,
+        ontology_version=load_ontology()["ontology_version"],
+        extractor_version=CATALYST_EXTRACTOR_VERSION,
+        config_fingerprint=extraction_config_fingerprint(),
+        source_fingerprint=f"test:{paper_id}",
+    )
+
+
 def _seed(session, with_classifications: bool, with_references: bool) -> None:
     session.add_all([_lab("lab-a"), _lab("lab-b"), _lab("lab-c")])
     papers = {
@@ -56,6 +72,7 @@ def _seed(session, with_classifications: bool, with_references: bool) -> None:
     }
     for pid, (year, lab_id) in papers.items():
         session.add(Paper(id=pid, title=f"Paper {pid}", year=year))
+        session.add(_state(pid))
         session.add(PaperLabLink(paper_id=pid, lab_id=lab_id))
     session.add_all(
         [
@@ -238,6 +255,7 @@ def test_entity_papers_capped_at_30(session, tmp_path):
     for i in range(35):
         pid = f"P{i:02d}"
         session.add(Paper(id=pid, title=f"Paper {pid}", year=2020))
+        session.add(_state(pid))
         session.add(PaperLabLink(paper_id=pid, lab_id="lab-a"))
         session.add(_entity(pid, "method", "bayesian optimization"))
     session.commit()

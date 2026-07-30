@@ -10,6 +10,7 @@ from sqlalchemy import (
     Float,
     ForeignKey,
     Index,
+    Integer,
     String,
     Text,
     UniqueConstraint,
@@ -92,4 +93,92 @@ class PaperEntity(Base):
             "paper_id", "entity_type", "normalized_name", name="uq_paper_entity"
         ),
         Index("ix_paper_entities_type_norm", "entity_type", "normalized_name"),
+    )
+
+
+class PaperEntityMention(Base):
+    """One evidence-linked ontology mention in a paper source.
+
+    Offsets are relative to ``source_kind`` (title, abstract, or the linked
+    chunk). ``PaperEntity`` remains the per-paper compatibility roll-up; this
+    table preserves every auditable catalyst mention.
+    """
+
+    __tablename__ = "paper_entity_mentions"
+
+    id: Mapped[str] = mapped_column(String, primary_key=True)
+    paper_id: Mapped[str] = mapped_column(
+        ForeignKey("papers.id"), nullable=False, index=True
+    )
+    entity_type: Mapped[str] = mapped_column(String, nullable=False)
+    concept_id: Mapped[str] = mapped_column(String, nullable=False)
+    normalized_name: Mapped[str] = mapped_column(String, nullable=False)
+    surface_form: Mapped[str] = mapped_column(String, nullable=False)
+    source_kind: Mapped[str] = mapped_column(String, nullable=False)
+    evidence_chunk_id: Mapped[str | None] = mapped_column(
+        ForeignKey("paper_chunks.id"), nullable=True
+    )
+    section: Mapped[str | None] = mapped_column(String, nullable=True)
+    start_char: Mapped[int] = mapped_column(Integer, nullable=False)
+    end_char: Mapped[int] = mapped_column(Integer, nullable=False)
+    evidence_text: Mapped[str] = mapped_column(Text, nullable=False)
+    confidence: Mapped[float] = mapped_column(Float, nullable=False)
+    specificity: Mapped[str] = mapped_column(String, nullable=False)
+    extractor: Mapped[str] = mapped_column(String, nullable=False)
+    extractor_version: Mapped[str] = mapped_column(String, nullable=False)
+    ontology_version: Mapped[str] = mapped_column(String, nullable=False)
+
+    __table_args__ = (
+        Index(
+            "ix_paper_entity_mentions_concept",
+            "entity_type",
+            "concept_id",
+        ),
+    )
+
+
+class PaperEntityRelation(Base):
+    """A proposed relation whose paper and evidence derive from its mention."""
+
+    __tablename__ = "paper_entity_relations"
+
+    id: Mapped[str] = mapped_column(String, primary_key=True)
+    subject_mention_id: Mapped[str] = mapped_column(
+        ForeignKey("paper_entity_mentions.id", ondelete="CASCADE"),
+        nullable=False,
+        index=True,
+    )
+    predicate: Mapped[str] = mapped_column(String, nullable=False)
+    object_concept_id: Mapped[str | None] = mapped_column(String, nullable=True)
+    object_value: Mapped[str | None] = mapped_column(Text, nullable=True)
+    object_metadata: Mapped[dict] = mapped_column(JSON, nullable=False, default=dict)
+    confidence: Mapped[float] = mapped_column(Float, nullable=False)
+    status: Mapped[str] = mapped_column(String, nullable=False, default="proposed")
+    extractor: Mapped[str] = mapped_column(String, nullable=False)
+    extractor_version: Mapped[str] = mapped_column(String, nullable=False)
+    ontology_version: Mapped[str] = mapped_column(String, nullable=False)
+
+    __table_args__ = (
+        Index(
+            "ix_paper_entity_relations_object",
+            "predicate",
+            "object_concept_id",
+        ),
+    )
+
+
+class PaperEntityExtractionState(Base):
+    """Per-paper fingerprint for resumable, versioned entity extraction."""
+
+    __tablename__ = "paper_entity_extraction_states"
+
+    paper_id: Mapped[str] = mapped_column(
+        ForeignKey("papers.id"), primary_key=True
+    )
+    ontology_version: Mapped[str] = mapped_column(String, nullable=False)
+    extractor_version: Mapped[str] = mapped_column(String, nullable=False)
+    config_fingerprint: Mapped[str] = mapped_column(String, nullable=False)
+    source_fingerprint: Mapped[str] = mapped_column(String, nullable=False)
+    extracted_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), default=_utcnow, nullable=False
     )

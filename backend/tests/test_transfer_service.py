@@ -3,7 +3,19 @@ from __future__ import annotations
 
 from fastapi.testclient import TestClient
 
-from app.models import Paper, PaperEntity, PaperLabLink, PaperReference, SdlLab
+from app.models import (
+    Paper,
+    PaperEntity,
+    PaperEntityExtractionState,
+    PaperLabLink,
+    PaperReference,
+    SdlLab,
+)
+from app.services.entity_extractor import (
+    CATALYST_EXTRACTOR_VERSION,
+    extraction_config_fingerprint,
+)
+from app.services.ontology_service import load_ontology
 from app.services.transfer_service import (
     adoption_lags,
     lab_flow_matrix,
@@ -50,6 +62,15 @@ def _seed(session) -> None:
     }
     for pid, (year, lab_id) in papers.items():
         session.add(Paper(id=pid, title=f"Paper {pid}", year=year))
+        session.add(
+            PaperEntityExtractionState(
+                paper_id=pid,
+                ontology_version=load_ontology()["ontology_version"],
+                extractor_version=CATALYST_EXTRACTOR_VERSION,
+                config_fingerprint=extraction_config_fingerprint(),
+                source_fingerprint=f"test:{pid}",
+            )
+        )
         if lab_id:
             session.add(PaperLabLink(paper_id=pid, lab_id=lab_id))
     session.add_all(

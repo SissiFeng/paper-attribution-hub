@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from typing import Literal
+
 from fastapi import APIRouter, Depends, Query
 from sqlalchemy import func, select
 from sqlalchemy.orm import Session
@@ -766,12 +768,18 @@ def transfer_flows(
 def transfer_adoption(
     entity_type: str | None = Query(default=None),
     min_labs: int = Query(default=2, ge=2),
+    granularity: Literal["entity", "parent", "reaction"] = Query(default="entity"),
     session: Session = Depends(get_session),
 ) -> list[AdoptionLagOut]:
     """Entity adoption lags: origin lab + years until other labs picked it up."""
     return [
         AdoptionLagOut(**entry)
-        for entry in adoption_lags(session, entity_type=entity_type, min_labs=min_labs)
+        for entry in adoption_lags(
+            session,
+            entity_type=entity_type,
+            min_labs=min_labs,
+            granularity=granularity,
+        )
     ]
 
 

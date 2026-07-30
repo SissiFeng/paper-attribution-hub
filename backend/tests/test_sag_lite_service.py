@@ -1,7 +1,19 @@
 """SAG-lite derived event trail over existing KB tables."""
 from __future__ import annotations
 
-from app.models import Paper, PaperChunk, PaperEntity, PaperLabLink, SdlLab
+from app.models import (
+    Paper,
+    PaperChunk,
+    PaperEntity,
+    PaperEntityExtractionState,
+    PaperLabLink,
+    SdlLab,
+)
+from app.services.entity_extractor import (
+    CATALYST_EXTRACTOR_VERSION,
+    extraction_config_fingerprint,
+)
+from app.services.ontology_service import load_ontology
 from app.services.sag_lite_service import entity_event_trail
 
 
@@ -23,6 +35,15 @@ def test_entity_event_trail_links_mentions_to_related_entities(session):
         )
     )
     session.add(PaperLabLink(paper_id="P1", lab_id="lab-a"))
+    session.add(
+        PaperEntityExtractionState(
+            paper_id="P1",
+            ontology_version=load_ontology()["ontology_version"],
+            extractor_version=CATALYST_EXTRACTOR_VERSION,
+            config_fingerprint=extraction_config_fingerprint(),
+            source_fingerprint="test:P1",
+        )
+    )
     session.add(
         PaperChunk(
             id="CH1",

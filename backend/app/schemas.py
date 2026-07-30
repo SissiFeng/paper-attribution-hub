@@ -362,6 +362,7 @@ class AdoptionLagOut(BaseModel):
     origin_lab: str
     origin_year: int
     adoptions: list[AdoptionOut] = Field(default_factory=list)
+    knowledge_state: str = "observed"
 
 
 class FastSpreadingEntityOut(BaseModel):
@@ -387,6 +388,18 @@ class KbEntityIndexOut(BaseModel):
     lab_count: int
     first_year: int | None = None
     last_year: int | None = None
+    concept_id: str | None = None
+    parent_concept_ids: list[str] = Field(default_factory=list)
+    children: list["KbConceptRefOut"] = Field(default_factory=list)
+    direct_paper_count: int | None = None
+    direct_lab_count: int | None = None
+    rolled_up_paper_count: int | None = None
+    rolled_up_lab_count: int | None = None
+
+
+class KbConceptRefOut(BaseModel):
+    concept_id: str
+    name: str
 
 
 class KbEntityLabOut(BaseModel):
@@ -404,6 +417,7 @@ class KbEntityPaperOut(BaseModel):
     confidence: float
     stage: str | None = None
     usage_snippet: str | None = None
+    matched_entities: list[str] = Field(default_factory=list)
 
 
 class KbYearCountOut(BaseModel):
@@ -417,6 +431,15 @@ class KbEvidenceOut(BaseModel):
     text: str
     stage: str | None = None
     usage_snippet: str | None = None
+    matched_entity: str | None = None
+    knowledge_state: str | None = None
+
+
+class KbEntityFacetOut(BaseModel):
+    name: str
+    concept_id: str | None = None
+    paper_count: int
+    knowledge_state: str
 
 
 class KbRelatedEntityOut(BaseModel):
@@ -442,11 +465,20 @@ class KbSagEventOut(BaseModel):
 class KbEntityPageOut(BaseModel):
     entity: str
     entity_type: str
+    concept_id: str | None = None
+    ancestors: list[KbConceptRefOut] = Field(default_factory=list)
+    children: list[KbConceptRefOut] = Field(default_factory=list)
+    direct_paper_count: int = 0
+    direct_lab_count: int = 0
+    rolled_up_paper_count: int = 0
+    rolled_up_lab_count: int = 0
     labs: list[KbEntityLabOut] = Field(default_factory=list)
     papers: list[KbEntityPaperOut] = Field(default_factory=list)
     timeline: list[KbYearCountOut] = Field(default_factory=list)
     evidence: list[KbEvidenceOut] = Field(default_factory=list)
     adoption: AdoptionLagOut | None = None
+    reactions: list[KbEntityFacetOut] = Field(default_factory=list)
+    compositions: list[KbEntityFacetOut] = Field(default_factory=list)
     stages: dict[str, int] = Field(default_factory=dict)
     events: list[KbSagEventOut] = Field(default_factory=list)
 
