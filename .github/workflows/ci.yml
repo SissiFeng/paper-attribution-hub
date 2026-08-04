@@ -25,7 +25,7 @@ jobs:
       - name: Ruff
         run: ruff check backend
       - name: Full backend test suite
-        run: pytest -q
+        run: pytest -vv --maxfail=1 --timeout=60
         working-directory: backend
 
   postgres-migrations:
