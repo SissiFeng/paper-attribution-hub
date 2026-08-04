@@ -5,6 +5,18 @@ import pandas as pd
 from sqlalchemy import select
 
 
+def test_configured_csv_source_uses_application_paths():
+    from app.config import settings
+    from app.scripts.ingest_scopus_batch import _configured_csv_source
+
+    source = _configured_csv_source()
+
+    assert source.papers_csv == settings.papers_csv
+    assert source.people_csv == settings.people_csv
+    assert source.institutions_csv == settings.institutions_csv
+    assert source.topics_yaml == settings.topics_yaml
+
+
 def test_author_links_from_scopus_row_aligns_affiliations():
     from app.scripts.ingest_scopus_batch import _author_links_from_row
 
