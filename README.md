@@ -118,16 +118,18 @@ POST /reviews/{paper_id}         # correct label (existing endpoint)
 `POST /reviews/{paper_id}` and the confirm endpoint feed the **active learning
 loop** when a complete review contains an explicit classifier label. Every 20
 distinct eligible reviewed papers trigger a full retrain on all allowed
-training labels. The candidate is evaluated out-of-fold and on a required,
-training-disjoint fixed validation set; it is atomically promoted only when accuracy,
-macro-F1, and supported per-label recall do not regress and at least one
-protected metric strictly improves. Frozen `eval_labels.csv` rows never enter
-training. See [`docs/model_evolution.md`](docs/model_evolution.md).
+training labels. The web request only commits review feedback; an independent
+worker reconciles feedback and drains complete batches. The candidate is
+evaluated out-of-fold and on a required, training-disjoint fixed validation
+set. Passing candidates are retained as `STAGED` by default for shadow review;
+production promotion is a separate, explicitly enabled authority boundary.
+Frozen `eval_labels.csv` rows never enter training. See
+[`docs/model_evolution.md`](docs/model_evolution.md).
 
 `GET /pipeline/runs/latest` and `GET /pipeline/runs` expose the audit log
 so the dashboard can show "last run @ 06:00 — 12 new papers, 3 flagged."
 `GET /model-evolution/status` and `GET /model-evolution/runs` expose the
-20-review pulse and every promoted, rejected, or failed candidate.
+20-review pulse and every staged, promoted, rejected, or failed candidate.
 
 Every trust-sensitive analytics response (timeline, institution network,
 geographic collaboration, and multi-graph) includes the canonical filter,

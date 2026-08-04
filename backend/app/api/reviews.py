@@ -3,7 +3,7 @@ from __future__ import annotations
 import os
 import uuid
 
-from fastapi import APIRouter, BackgroundTasks, Depends, HTTPException
+from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 
 from app.api.auth import require_api_key
@@ -25,7 +25,6 @@ router = APIRouter(prefix="/reviews", tags=["reviews"])
 def submit_review(
     paper_id: str,
     payload: HumanReviewIn,
-    background_tasks: BackgroundTasks,
     session: Session = Depends(get_session),
 ) -> HumanReviewOut:
     paper = session.get(Paper, paper_id)
@@ -105,35 +104,30 @@ def submit_review(
     ):
         paper.classification.needs_review = False
         paper.classification.review_priority = 0.0
-    session.commit()
-    session.refresh(review)
+    session.flush()
 
     # v0.7: active learning is on by default; tests/ops can opt out with
     # PAS_ACTIVE_LEARNING=0.
-    learning_actions = None
     if (
         normalized_human_label is not None
         and os.environ.get("PAS_ACTIVE_LEARNING", "1") == "1"
     ):
         try:
-            learning_actions = on_review_submitted(
+            on_review_submitted(
                 session,
                 paper_id,
                 new_label=normalized_human_label,
                 previous_label=previous_label,
                 reviewer=review.reviewer,
                 run_retraining=False,
+                commit=False,
             )
-            if learning_actions["training_feedback_recorded"]:
-                from app.services.model_evolution import (
-                    run_model_evolution_background,
-                )
-
-                background_tasks.add_task(run_model_evolution_background)
         except Exception:
             # Active learning must never break submit.
             pass
-    apply_paper_screening(session, paper)
+    apply_paper_screening(session, paper, commit=False)
+    session.commit()
+    session.refresh(review)
 
     return HumanReviewOut(
         paper_id=review.paper_id,

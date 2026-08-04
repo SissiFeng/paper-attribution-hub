@@ -13,13 +13,11 @@ REST surface:
 """
 from __future__ import annotations
 
-import os
 from datetime import datetime
 from typing import Annotated
 
 from fastapi import (
     APIRouter,
-    BackgroundTasks,
     Body,
     Depends,
     HTTPException,
@@ -279,7 +277,6 @@ def update_assignment(
 )
 def confirm(
     paper_id: str,
-    background_tasks: BackgroundTasks,
     payload: ConfirmIn = Body(default_factory=ConfirmIn),
     session: Session = Depends(get_session),
 ) -> QueueItemOut:
@@ -288,15 +285,10 @@ def confirm(
             session,
             paper_id,
             reviewer=payload.reviewer,
-            run_retraining=False,
         )
     except ValueError as e:
         raise HTTPException(status_code=404, detail=str(e)) from e
     paper = cls.paper
-    if os.environ.get("PAS_ACTIVE_LEARNING", "1") == "1":
-        from app.services.model_evolution import run_model_evolution_background
-
-        background_tasks.add_task(run_model_evolution_background)
     status = rag_status_by_paper(session, [paper.id]).get(paper.id)
     return QueueItemOut(
         paper_id=paper.id,

@@ -37,6 +37,26 @@ output "ecs_service_name" {
   value       = aws_ecs_service.backend.name
 }
 
+output "worker_task_definition_arn" {
+  description = "Task definition used by the scheduled ETL/model-evolution worker"
+  value       = aws_ecs_task_definition.worker.arn
+}
+
+output "worker_security_group_id" {
+  description = "Security group for one-off and scheduled worker tasks"
+  value       = aws_security_group.worker.id
+}
+
+output "private_subnet_ids" {
+  description = "Private subnets used by scheduled and one-off worker tasks"
+  value       = aws_subnet.private[*].id
+}
+
+output "worker_failure_queue_url" {
+  description = "SQS queue receiving scheduling and non-zero worker task failures"
+  value       = aws_sqs_queue.worker_failures.url
+}
+
 output "cloudfront_distribution_id" {
   description = "CloudFront distribution ID (for cache invalidation)"
   value       = aws_cloudfront_distribution.frontend.id

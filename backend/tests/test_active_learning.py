@@ -188,6 +188,7 @@ def test_maybe_retrain_after_ten_reviews(seeded_session, tmp_path, monkeypatch):
     monkeypatch.setenv("PAS_LEARNED_MODEL_PATH", str(model_path))
     monkeypatch.setenv("PAS_MODEL_REGISTRY_DIR", str(tmp_path / "registry"))
     monkeypatch.setenv("PAS_ACTIVE_RETRAIN_EVERY", "10")
+    monkeypatch.setenv("PAS_MODEL_AUTO_PROMOTE", "1")
     monkeypatch.setattr(
         model_evolution,
         "evaluate_candidate_for_promotion",

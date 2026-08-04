@@ -23,6 +23,14 @@ db_max_allocated_storage = 50
 # Dev: single task, no auto-scaling needed
 backend_desired_count = 1
 
+# Review-driven learning is drained by a separate Fargate task. Passing
+# candidates remain staged until a human explicitly promotes them.
+worker_schedules_enabled = true
+active_retrain_every     = 20
+model_auto_promote       = false
+pipeline_discovery       = false
+pipeline_fulltext        = false
+
 # Log retention — shorter for dev
 log_retention_days = 7
 

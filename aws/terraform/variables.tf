@@ -126,6 +126,71 @@ variable "image_tag" {
   default     = "latest"
 }
 
+variable "worker_cpu" {
+  description = "CPU units for scheduled Fargate ETL/model-evolution tasks"
+  type        = number
+  default     = 2048
+}
+
+variable "worker_memory" {
+  description = "Memory (MiB) for scheduled Fargate ETL/model-evolution tasks"
+  type        = number
+  default     = 4096
+}
+
+variable "worker_ephemeral_storage" {
+  description = "Ephemeral storage (GiB) for scheduled worker artifacts"
+  type        = number
+  default     = 40
+}
+
+variable "worker_schedules_enabled" {
+  description = "Enable EventBridge schedules for model evolution and daily ETL"
+  type        = bool
+  default     = true
+}
+
+variable "model_evolution_schedule" {
+  description = "EventBridge schedule for draining human-review retraining batches"
+  type        = string
+  default     = "rate(5 minutes)"
+}
+
+variable "pipeline_schedule" {
+  description = "EventBridge schedule for the incremental daily pipeline"
+  type        = string
+  default     = "cron(0 6 * * ? *)"
+}
+
+variable "active_retrain_every" {
+  description = "Distinct eligible human reviews required for one retraining batch"
+  type        = number
+  default     = 20
+
+  validation {
+    condition     = var.active_retrain_every >= 2
+    error_message = "active_retrain_every must be at least 2."
+  }
+}
+
+variable "model_auto_promote" {
+  description = "Allow a passing candidate to replace the production model"
+  type        = bool
+  default     = false
+}
+
+variable "pipeline_discovery" {
+  description = "Allow the scheduled daily pipeline to call external discovery APIs"
+  type        = bool
+  default     = false
+}
+
+variable "pipeline_fulltext" {
+  description = "Allow the scheduled daily pipeline to fetch and extract full text"
+  type        = bool
+  default     = false
+}
+
 # ---------------------------------------------------------------------------
 # Application settings
 # ---------------------------------------------------------------------------

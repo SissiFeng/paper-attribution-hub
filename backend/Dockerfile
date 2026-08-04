@@ -23,6 +23,9 @@ COPY data/institution_aliases.csv /data/institution_aliases.csv
 COPY data/topic_taxonomy.yaml /data/topic_taxonomy.yaml
 COPY data/domain_vocabulary.yaml /data/domain_vocabulary.yaml
 COPY data/retrieval_operationalization_terms.yaml /data/retrieval_operationalization_terms.yaml
+COPY data/training_labels.csv /data/training_labels.csv
+COPY data/validation_labels.csv /data/validation_labels.csv
+COPY data/eval_labels.csv /data/eval_labels.csv
 COPY data/eval_labels_silver.csv /data/eval_labels_silver.csv
 COPY data/sdl_entities.yaml /data/sdl_entities.yaml
 COPY data/sdl_labs.yaml /data/sdl_labs.yaml

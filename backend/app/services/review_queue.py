@@ -470,7 +470,6 @@ def confirm_classification(
     paper_id: str,
     *,
     reviewer: str | None = None,
-    run_retraining: bool = True,
 ) -> PaperClassification:
     """Lock in the current label as reviewer-confirmed.
 
@@ -497,7 +496,7 @@ def confirm_classification(
     cls.human_confirmed_by = reviewer
     cls.needs_review = False
     cls.review_priority = 0.0
-    session.commit()
+    session.flush()
 
     if os.environ.get("PAS_ACTIVE_LEARNING", "1") == "1":
         try:
@@ -509,12 +508,14 @@ def confirm_classification(
                 new_label=cls.label,
                 previous_label=previous_label,
                 reviewer=reviewer,
-                run_retraining=run_retraining,
+                run_retraining=False,
+                commit=False,
             )
         except Exception:
             # Review confirmation must not be blocked by training-side issues.
             pass
-    apply_paper_screening(session, cls.paper)
+    apply_paper_screening(session, cls.paper, commit=False)
+    session.commit()
 
     return cls
 

@@ -69,6 +69,15 @@ def minimum_validation_labels() -> int:
     return _nonnegative_int_env("PAS_MODEL_MIN_VALIDATION_LABELS", 2)
 
 
+def auto_promotion_enabled() -> bool:
+    """Return whether a passing candidate may replace production authority."""
+    return os.environ.get("PAS_MODEL_AUTO_PROMOTE", "0").strip().lower() in {
+        "1",
+        "true",
+        "yes",
+    }
+
+
 def validation_readiness(validation_examples: list[dict]) -> dict:
     observed_examples = len(validation_examples)
     observed_labels = sorted(
@@ -111,6 +120,7 @@ def record_training_feedback(
     reviewer: str | None,
     incumbent_label: str | None,
     incumbent_confidence: float | None,
+    commit: bool = True,
 ) -> TrainingFeedbackEvent | None:
     """Persist one immutable label-change event.
 
@@ -144,8 +154,11 @@ def record_training_feedback(
         incumbent_confidence=incumbent_confidence,
     )
     session.add(event)
-    session.commit()
-    session.refresh(event)
+    if commit:
+        session.commit()
+        session.refresh(event)
+    else:
+        session.flush()
     return event
 
 
@@ -337,14 +350,6 @@ def run_pending_model_evolution(session: Session) -> list[ModelTrainingRun]:
         completed.append(run)
         if run.status == "FAILED":
             return completed
-
-
-def run_model_evolution_background() -> None:
-    """Execute a pending batch after an API response using an independent session."""
-    from app.db import SessionLocal
-
-    with SessionLocal() as session:
-        run_pending_model_evolution(session)
 
 
 def _training_state(
@@ -690,16 +695,26 @@ def _execute_training_run_with_lease(
     run.finished_at = datetime.now(UTC)
     run.heartbeat_at = run.finished_at
 
-    if decision.accepted:
+    promotion_accepted = decision.accepted and auto_promotion_enabled()
+    if decision.accepted and not promotion_accepted:
+        run.promotion_reason = (
+            f"{decision.reason}; automatic production promotion is disabled, "
+            "candidate retained for shadow evaluation"
+        )
+
+    if promotion_accepted:
         run.status = "PROMOTED"
         run.promoted_at = datetime.now(UTC)
         run.cache_sync_status = "PENDING"
+    elif decision.accepted:
+        run.status = "STAGED"
+        run.cache_sync_status = "NOT_APPLICABLE"
     else:
         run.status = "REJECTED"
         run.cache_sync_status = "NOT_APPLICABLE"
-    _finalize_training_lease(session, run, promoted=decision.accepted)
+    _finalize_training_lease(session, run, promoted=promotion_accepted)
     session.commit()
-    if decision.accepted:
+    if promotion_accepted:
         _refresh_production_cache_after_commit(session, run.id, production_path)
     session.refresh(run)
     return run

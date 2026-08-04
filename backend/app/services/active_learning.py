@@ -8,15 +8,17 @@ The learning portion does two things, both idempotent:
      the candidate-model promotion gate.
 
   2. **Retrain hook** — every 20 distinct, eligible reviewed papers become an
-     immutable trigger batch. The complete model is retrained from scratch,
-     evaluated out-of-fold (plus dedicated validation when available), and
-     atomically promoted only if protected metrics do not regress.
+     immutable trigger batch. A separate worker retrains the complete model,
+     evaluates it out-of-fold (plus dedicated validation when available), and
+     retains a passing candidate for shadow evaluation. Production promotion
+     is a separate, explicitly enabled authority boundary.
 
 The persisted `human_reviews` row is production feedback and may feed model
 training. It never mutates the frozen evaluation holdout.
 
-Everything here is best-effort; failures log and continue, because review
-submission must never be blocked by training-side issues.
+The review transaction records feedback when the evaluation boundary is
+available. A scheduled reconciliation pass backfills any eligible review that
+could not be recorded at response time.
 
 `mine_positive_vocabulary` is a separate, read-only function that scans the
 AC Publications gold set (ac_known_publication=True) for vocabulary gaps and
@@ -43,6 +45,7 @@ def on_review_submitted(
     previous_label: str | None = None,
     reviewer: str | None = None,
     run_retraining: bool = True,
+    commit: bool = True,
 ) -> dict:
     """Main entry point. Called by the review API after persisting the review.
 
@@ -107,6 +110,7 @@ def on_review_submitted(
                         if paper.classification is not None
                         else None
                     ),
+                    commit=False,
                 )
                 if event is not None:
                     actions["training_feedback_recorded"].append(paper_id)
@@ -143,7 +147,7 @@ def on_review_submitted(
             paper.classification.human_confirmed_at = datetime.now(UTC)
             paper.classification.needs_review = False
             paper.classification.review_priority = 0.0
-            session.commit()
+            session.flush()
             actions["classification_locked"].append(paper_id)
     except Exception as e:
         actions["warnings"].append(f"lock failed: {e}")
@@ -160,6 +164,11 @@ def on_review_submitted(
                     )
         except Exception as e:
             actions["warnings"].append(f"retrain failed: {e}")
+
+    if commit:
+        session.commit()
+    else:
+        session.flush()
 
     return actions
 
