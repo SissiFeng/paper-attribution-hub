@@ -3,7 +3,7 @@
 # ---------------------------------------------------------------------------
 
 environment = "dev"
-aws_region  = "us-east-1"
+aws_region  = "ca-central-1"
 
 # Domain — leave empty for dev (use ALB/CloudFront auto-generated DNS names)
 route53_zone_id = ""
@@ -11,8 +11,9 @@ frontend_domain = ""
 api_domain      = ""
 
 # GitHub (for OIDC CI/CD)
-# github_org  = ""
-# github_repo = "paper-attribution-system"
+github_org               = "SissiFeng"
+github_repo              = "paper-attribution-hub"
+github_oidc_provider_arn = "arn:aws:iam::247893369214:oidc-provider/token.actions.githubusercontent.com"
 
 # Cost-optimized database for development
 db_instance_class        = "db.t3.micro"

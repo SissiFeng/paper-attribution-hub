@@ -3,8 +3,8 @@
 # ---------------------------------------------------------------------------
 
 output "api_endpoint" {
-  description = "API base URL (ALB DNS or custom domain)"
-  value       = var.api_domain != "" ? "https://${var.api_domain}" : "http://${aws_lb.main.dns_name}"
+  description = "Same-origin API base URL through CloudFront"
+  value       = "${var.frontend_domain != "" ? "https://${var.frontend_domain}" : "https://${aws_cloudfront_distribution.frontend.domain_name}"}/api"
 }
 
 output "frontend_url" {

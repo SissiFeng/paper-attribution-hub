@@ -50,6 +50,12 @@ dist/
 # Docker local state
 pgdata/
 
+# Terraform local state and provider cache
+.terraform/
+*.tfplan
+*.tfstate
+*.tfstate.*
+
 # Claude Code / agent tooling
 .agents/
 !.agents/

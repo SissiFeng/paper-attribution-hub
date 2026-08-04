@@ -15,7 +15,7 @@ variable "environment" {
 variable "aws_region" {
   description = "Primary AWS region for regional resources (VPC, ECS, RDS, ALB, S3)"
   type        = string
-  default     = "us-east-1"
+  default     = "ca-central-1"
 }
 
 # ---------------------------------------------------------------------------
@@ -54,6 +54,12 @@ variable "github_repo" {
   description = "GitHub repository name (e.g., paper-attribution-system)"
   type        = string
   default     = "paper-attribution-system"
+}
+
+variable "github_oidc_provider_arn" {
+  description = "Existing GitHub Actions OIDC provider ARN. Leave empty to create one."
+  type        = string
+  default     = ""
 }
 
 # ---------------------------------------------------------------------------

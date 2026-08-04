@@ -1,11 +1,5 @@
-# S3 backend for Terraform state. The bucket and DynamoDB table must be
-# created manually before running `terraform init` (see docs/aws-console-setup.md).
+# S3 backend for Terraform state. Deployment supplies account- and
+# environment-specific settings after bootstrapping the bucket and lock table.
 terraform {
-  backend "s3" {
-    bucket         = "paper-attribution-tfstate"
-    key            = "terraform.tfstate"
-    region         = "us-east-1"
-    dynamodb_table = "terraform-locks"
-    encrypt        = true
-  }
+  backend "s3" {}
 }
