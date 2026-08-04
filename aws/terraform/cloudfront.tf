@@ -173,7 +173,9 @@ resource "aws_cloudfront_distribution" "frontend" {
     cloudfront_default_certificate = var.frontend_domain == ""
     acm_certificate_arn            = var.frontend_domain != "" ? aws_acm_certificate.frontend[0].arn : null
     ssl_support_method             = var.frontend_domain != "" ? "sni-only" : null
-    minimum_protocol_version       = "TLSv1.2_2021"
+    # AWS fixes this field to TLSv1 when using the CloudFront default
+    # certificate. Custom certificates use the explicit modern policy.
+    minimum_protocol_version = var.frontend_domain != "" ? "TLSv1.2_2021" : "TLSv1"
   }
 
   restrictions {
