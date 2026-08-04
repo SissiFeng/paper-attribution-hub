@@ -120,3 +120,34 @@ def test_bootstrap_is_idempotent(tmp_path):
     head = _alembic_head()
     assert first_version == second_version == head
     assert "papers" in tables
+
+
+def test_fresh_bootstrap_prepares_extensions_before_schema(monkeypatch):
+    import app.scripts.db_bootstrap as bootstrap
+
+    events: list[str] = []
+
+    monkeypatch.setattr(bootstrap, "_current_revision", lambda: None)
+    monkeypatch.setattr(
+        bootstrap,
+        "inspect",
+        lambda _engine: type("Inspector", (), {"has_table": lambda _self, _name: False})(),
+    )
+    monkeypatch.setattr(
+        bootstrap,
+        "_prepare_fresh_database",
+        lambda: events.append("extensions"),
+    )
+    monkeypatch.setattr(
+        bootstrap.Base.metadata,
+        "create_all",
+        lambda *, bind: events.append("schema"),
+    )
+    monkeypatch.setattr(
+        bootstrap.command,
+        "stamp",
+        lambda _config, _revision: events.append("stamp"),
+    )
+
+    assert bootstrap.bootstrap_database() == "created"
+    assert events == ["extensions", "schema", "stamp"]
