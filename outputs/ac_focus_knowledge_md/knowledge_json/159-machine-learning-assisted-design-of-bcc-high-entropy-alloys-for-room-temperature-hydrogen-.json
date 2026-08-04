@@ -1,0 +1,157 @@
+{
+  "paper_id": "acfocus_789771e9b397",
+  "title": "Machine learning assisted design of BCC high entropy alloys for room temperature hydrogen storage",
+  "metadata": {
+    "doi": "10.1016/j.actamat.2024.119841",
+    "url": "https://www.sciencedirect.com/science/article/pii/S1359645424001940",
+    "year": "2024",
+    "authors": "Halpren E, Yao X, Chen ZW, Singh CV",
+    "venue": "Acta Materialia",
+    "category": "Journal article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Chandra Veer Singh"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "checked",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "Researchers used multi-objective Bayesian optimization and density functional theory to discover eight new high entropy alloys (HEAs) for hydrogen storage, including VNbCrMoMn, which can store 2.83 wt% hydrogen at room temperature—significantly surpassing commercial hydrides—due to optimized absorption thermodynamics guided by interpretable machine learning.",
+  "abstract": "Body-centered cubic (BCC) alloy systems can theoretically store double amounts of hydrogen compared with commercial metal hydrides at room temperature, and BCC high entropy alloys (HEAs) have shown the potential to reach this theoretic limit. However, the high thermodynamic stability of the dihydrides formed during hydrogen storage results in high operating temperatures. Here, by employing multi-objective Bayesian optimization-aided density functional theory calculations, we discovered 8 new HEA candidates for hydrogen storage, including the VNbCrMoMn HEA that can store 2.83 wt% hydrogen at room temperature and atmospheric pressure, vastly exceeding the hydrogen capacities of 1.38 wt% and 1.91 wt% for commercial LaNi5H6 and TiFeH2. Such a high performance of VNbCrMoMn is ascribed to the optimized hydrogen absorption thermodynamics, which is achieved under the guidance of interpretable machine learning which revealed that the thermodynamics of the first and second stages of absorption are largely determined by the bulk modulus and the number of states in the d-band, respectively.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "Researchers used multi-objective Bayesian optimization and density functional theory to discover eight new high entropy alloys (HEAs) for hydrogen storage, including VNbCrMoMn, which can store 2.83 wt% hydrogen at room temperature—significantly surpassing commercial hydrides—due to optimized absorption thermodynamics guided by interpretable machine learning.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Artificial Intelligence & Data Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Materials Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "Machine learning assisted design of BCC high entropy alloys for room temperature hydrogen storage Researchers used multi-objective Bayesian optimization and density functional theory to discover eight new high entropy alloys (HEAs) for hydrogen storage, including VNbCrMoMn, which can store 2.83 wt% hydrogen at room temperature—significantly surpassing commercial hydrides—due to optimized absorption thermodynamics guided by interpretable machine learning.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Body-centered cubic (BCC) alloy systems can theoretically store double amounts of hydrogen compared with commercial metal hydrides at room temperature, and BCC high entropy alloys (HEAs) have shown the potential to reach this theoretic limit.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [
+    {
+      "value": "However, the high thermodynamic stability of the dihydrides formed during hydrogen storage results in high operating temperatures.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [],
+  "conditions": [
+    {
+      "value": "Machine learning assisted design of BCC high entropy alloys for room temperature hydrogen storage Researchers used multi-objective Bayesian optimization and density functional theory to discover eight new high entropy alloys (HEAs) for hydrogen storage, including VNbCrMoMn, which can store 2.83 wt% hydrogen at room temperature—significantly surpassing commercial hydrides—due to optimized absorption thermodynamics guided by interpretable machine learning.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Body-centered cubic (BCC) alloy systems can theoretically store double amounts of hydrogen compared with commercial metal hydrides at room temperature, and BCC high entropy alloys (HEAs) have shown the potential to reach this theoretic limit.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Here, by employing multi-objective Bayesian optimization-aided density functional theory calculations, we discovered 8 new HEA candidates for hydrogen storage, including the VNbCrMoMn HEA that can store 2.83 wt% hydrogen at room temperature and atmospheric pressure, vastly exceeding the hydrogen capacities of 1.38 wt% and 1.91 wt% for commercial LaNi5H6 and TiFeH2.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "mechanisms": [],
+  "outcomes": [
+    {
+      "value": "Clean energy",
+      "source": "csv_applied_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Energy Storage",
+      "source": "csv_applied_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "Artificial Intelligence & Data Science",
+    "Materials Science",
+    "Clean energy",
+    "Energy Storage"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.61,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": true,
+      "properties": true,
+      "measurements": false,
+      "conditions": true,
+      "mechanisms": false,
+      "outcomes": true,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "measurements",
+      "mechanisms",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

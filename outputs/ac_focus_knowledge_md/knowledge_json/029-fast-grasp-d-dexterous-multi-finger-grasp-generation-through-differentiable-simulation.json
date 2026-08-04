@@ -1,0 +1,240 @@
+{
+  "paper_id": "acfocus_9a2ed8d92d4c",
+  "title": "Fast-Grasp'D: Dexterous Multi-finger Grasp Generation Through Differentiable Simulation",
+  "metadata": {
+    "doi": "10.48550/arxiv.2306.08132",
+    "url": "https://arxiv.org/abs/2306.08132",
+    "year": "2023",
+    "authors": "Turpin, Dylan; Zhong, Tao; Zhang, Shutong; Zhu, Guanglei; Liu, Jingzhou; Singh, Ritvik; Heiden, Eric; Macklin, Miles; Tsogkas, Stavros; Dickinson, Sven; Garg, Animesh",
+    "venue": "arxiv",
+    "category": "Preprint",
+    "peer_reviewed": "Non Peer Reviewed",
+    "ac_members": [
+      "Animesh Garg"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "Grasp'D-1M is a large-scale, high-quality dataset of one million multi-finger robotic grasps generated using the fast, differentiable Fast-Grasp'D simulator, enabling more stable and contact-rich grasps and significantly improving vision-based grasping model performance.",
+  "abstract": "Multi-finger grasping relies on high quality training data, which is hard to obtain: human data is hard to transfer and synthetic data relies on simplifying assumptions that reduce grasp quality. By making grasp simulation differentiable, and contact dynamics amenable to gradient-based optimization, we accelerate the search for high-quality grasps with fewer limiting assumptions. We present Grasp'D-1M: a large-scale dataset for multi-finger robotic grasping, synthesized with Fast- Grasp'D, a novel differentiable grasping simulator. Grasp'D- 1M contains one million training examples for three robotic hands (three, four and five-fingered), each with multimodal visual inputs (RGB+depth+segmentation, available in mono and stereo). Grasp synthesis with Fast-Grasp'D is 10x faster than GraspIt! and 20x faster than the prior Grasp'D differentiable simulator. Generated grasps are more stable and contact-rich than GraspIt! grasps, regardless of the distance threshold used for contact generation. We validate the usefulness of our dataset by retraining an existing vision-based grasping pipeline on Grasp'D-1M, and showing a dramatic increase in model performance, predicting grasps with 30% more contact, a 33% higher epsilon metric, and 35% lower simulated displacement. Additional details at https://dexgrasp.github.io.",
+  "hardware": [
+    {
+      "value": "Grasp'D-1M is a large-scale, high-quality dataset of one million multi-finger robotic grasps generated using the fast, differentiable Fast-Grasp'D simulator, enabling more stable and contact-rich grasps and significantly improving vision-based grasping model performance.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "We present Grasp'D-1M: a large-scale dataset for multi-finger robotic grasping, synthesized with Fast- Grasp'D, a novel differentiable grasping simulator.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Grasp'D- 1M contains one million training examples for three robotic hands (three, four and five-fingered), each with multimodal visual inputs (RGB+depth+segmentation, available in mono and stereo).",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "The authors developed Fast-Grasp’D, a differentiable grasping simulator, and Grasp’D-1M, a large-scale dataset synthesized with Fast-Grasp’D, to improve the quality of synthetic grasp data for training robotic grasping systems.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "methods": [
+    {
+      "value": "The authors developed Fast-Grasp’D, a differentiable grasping simulator, and Grasp’D-1M, a large-scale dataset synthesized with Fast-Grasp’D, to improve the quality of synthetic grasp data for training robotic grasping systems.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "problems": [
+    {
+      "value": "Generating high-quality, realistic multi-finger robotic grasps for training vision-based robotic grasping systems is challenging due to the limitations of synthetic data generation methods.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "hypotheses": [
+    {
+      "value": "By making grasp simulation differentiable and optimizing contact dynamics through gradient-based methods, the search for high-quality grasps can be accelerated with fewer limiting assumptions.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "evidence": [
+    {
+      "value": "The Grasp’D-1M dataset demonstrated improved model performance with 30% more contact, a 33% higher epsilon metric, and 35% lower simulated displacement compared to existing methods.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "conclusions": [
+    {
+      "value": "Fast-Grasp’D and Grasp’D-1M enable the generation of high-quality, realistic multi-finger robotic grasps that can significantly improve the performance of vision-based robotic grasping systems.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "entities": [
+    {
+      "value": "Robotic hands (Barrett, Allegro, Shadow)",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Object meshes",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Grasp poses",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Signed distance functions (SDFs)",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "materials": [],
+  "properties": [],
+  "measurements": [],
+  "conditions": [],
+  "mechanisms": [
+    {
+      "value": "Differentiable grasp synthesis through gradient-based optimization",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Position-based dynamics for stable simulation of contacts",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Phong SDF smoothing for accurate mesh representation",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "outcomes": [
+    {
+      "value": "Generation of contact-rich, stable grasps",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Acceleration of grasp search with fewer limiting assumptions",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Improved performance of vision-based grasping models",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "Automation and Robotics",
+    "Artificial Intelligence & Data Science"
+  ],
+  "reasoning_motifs": [
+    {
+      "value": "Gradient-based optimization → Improved search efficiency",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Position-based dynamics → Stability in contact-rich scenarios",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Mesh smoothing → Enhanced accuracy in complex geometries",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "general_principles": [
+    {
+      "value": "Optimization through differentiable simulations",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Stability and robustness in dynamic systems",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Accuracy enhancement through advanced geometric representations",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "acgold_f92b470ac14f",
+    "cross_sdl_reasoning_json": "/Users/sissifeng/Downloads/cross-sdl_knowledge_transfer_engine/data/reasoning/acgold_f92b470ac14f.json",
+    "cross_sdl_extraction_quality": 0.9,
+    "cross_sdl_notes": "The paper provides a clear structure of the problem, hypothesis, method, results, and conclusions, making it easy to extract the scientific reasoning. However, some details in the layer3_motifs and layer4_principles required inference based on the overall narrative and the significance of the results."
+  },
+  "validation": {
+    "score": 0.76,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": true,
+      "method": true,
+      "evidence": true,
+      "entities": true,
+      "materials": false,
+      "properties": false,
+      "measurements": false,
+      "conditions": false,
+      "mechanisms": true,
+      "outcomes": true,
+      "cross_sdl_match": true
+    },
+    "missing": [
+      "materials",
+      "properties",
+      "measurements",
+      "conditions"
+    ],
+    "notes": []
+  }
+}

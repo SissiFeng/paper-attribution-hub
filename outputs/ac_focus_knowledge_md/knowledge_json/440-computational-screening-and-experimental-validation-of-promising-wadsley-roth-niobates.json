@@ -1,0 +1,174 @@
+{
+  "paper_id": "acfocus_a8353edae39c",
+  "title": "Computational Screening and Experimental Validation of Promising Wadsley-Roth Niobates",
+  "metadata": {
+    "doi": "10.1021/acs.chemmater.5c01273",
+    "url": "https://pubs.acs.org/doi/abs/10.1021/acs.chemmater.5c01273",
+    "year": "2025",
+    "authors": "Z. J. L. Bare; C. J. Sturgill; M. Kumar; I. Milisavljevic; H. C. Zur Loye; S. Misture; M. Stefik; C. Sutton",
+    "venue": "Chemistry of Materials",
+    "category": "Journal Article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Chris Sutton"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "checked",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "High-throughput computational screening expanded the set of potentially stable Wadsley–Roth niobate compounds for lithium-ion batteries from fewer than 30 to 1301, leading to the successful synthesis and validation of a new phase, MoWNb₄₂O₆₆, with superior lithium storage performance, thus providing a valuable resource for discovering advanced battery materials.",
+  "abstract": "The demand for efficient, high-capacity energy storage has driven research into the development of advanced materials for lithium-ion batteries, among which Wadsley–Roth (WR) niobates stand out due to rapid Li+diffusion within ReO<inf>3</inf>-like blocks (n × m × ∞) and good electronic conductivity along shear planes. Despite the remarkable features of WR phases, there are presently less than 30 known compounds which limits identification of structure–property relationships for improved performance as well as the identification of phases with more earth-abundant elements. In this work, we have dramatically expanded the set of potentially (meta)-stable compositions (with ΔH<inf>d</inf>< 22 meV/atom) to 1301 (out of 3283) through high-throughput screening with density functional theory (DFT). This large space of compounds was generated through single- and double-site substitution into 10 known WR-niobate prototypes using 48 elements across the periodic table. To confirm the structure predictions, we successfully synthesized MoWNb<inf>24</inf>O<inf>66</inf>and validated it with X-ray diffraction. The measured lithium diffusivity in MoWNb<inf>24</inf>O<inf>66</inf>has a peak value of 1.0 × 10–16m2/s at 1.45 V vs Li/Li+and achieved 225 ± 1 mAh/g at 5C. Thus, a computationally predicted phase was realized experimentally with performance exceeding Nb<inf>16</inf>W<inf>5</inf>O<inf>55</inf>(a recently reported WR phase benchmark material). Overall, the computational data set of potentially stable compounds with one realized that has competitive performance provide a valuable guide for experimentalists toward discovering long-duration battery materials. © 2025 American Chemical Society",
+  "hardware": [
+    {
+      "value": "High-throughput computational screening expanded the set of potentially stable Wadsley–Roth niobate compounds for lithium-ion batteries from fewer than 30 to 1301, leading to the successful synthesis and validation of a new phase, MoWNb₄₂O₆₆, with superior lithium storage performance, thus providing a valuable resource for discovering advanced battery materials.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "In this work, we have dramatically expanded the set of potentially (meta)-stable compositions (with ΔH<inf>d</inf>< 22 meV/atom) to 1301 (out of 3283) through high-throughput screening with density functional theory (DFT).",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "methods": [
+    {
+      "value": "High-throughput computational screening expanded the set of potentially stable Wadsley–Roth niobate compounds for lithium-ion batteries from fewer than 30 to 1301, leading to the successful synthesis and validation of a new phase, MoWNb₄₂O₆₆, with superior lithium storage performance, thus providing a valuable resource for discovering advanced battery materials.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Artificial Intelligence & Data Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Automation and Robotics",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Materials Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "Computational Screening and Experimental Validation of Promising Wadsley-Roth Niobates High-throughput computational screening expanded the set of potentially stable Wadsley–Roth niobate compounds for lithium-ion batteries from fewer than 30 to 1301, leading to the successful synthesis and validation of a new phase, MoWNb₄₂O₆₆, with superior lithium storage performance, thus providing a valuable resource for discovering advanced battery materials.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "The demand for efficient, high-capacity energy storage has driven research into the development of advanced materials for lithium-ion batteries, among which Wadsley–Roth (WR) niobates stand out due to rapid Li+diffusion within ReO<inf>3</inf>-like blocks (n × m × ∞) and good electronic conductivity along shear planes.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Thus, a computationally predicted phase was realized experimentally with performance exceeding Nb<inf>16</inf>W<inf>5</inf>O<inf>55</inf>(a recently reported WR phase benchmark material).",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [
+    {
+      "value": "The demand for efficient, high-capacity energy storage has driven research into the development of advanced materials for lithium-ion batteries, among which Wadsley–Roth (WR) niobates stand out due to rapid Li+diffusion within ReO<inf>3</inf>-like blocks (n × m × ∞) and good electronic conductivity along shear planes.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Despite the remarkable features of WR phases, there are presently less than 30 known compounds which limits identification of structure–property relationships for improved performance as well as the identification of phases with more earth-abundant elements.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [
+    {
+      "value": "To confirm the structure predictions, we successfully synthesized MoWNb<inf>24</inf>O<inf>66</inf>and validated it with X-ray diffraction.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Thus, a computationally predicted phase was realized experimentally with performance exceeding Nb<inf>16</inf>W<inf>5</inf>O<inf>55</inf>(a recently reported WR phase benchmark material).",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "conditions": [],
+  "mechanisms": [],
+  "outcomes": [
+    {
+      "value": "Energy Storage",
+      "source": "csv_applied_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "Artificial Intelligence & Data Science",
+    "Automation and Robotics",
+    "Materials Science",
+    "Energy Storage"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.73,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": true,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": true,
+      "properties": true,
+      "measurements": true,
+      "conditions": false,
+      "mechanisms": false,
+      "outcomes": true,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "evidence",
+      "conditions",
+      "mechanisms",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only."
+    ]
+  }
+}

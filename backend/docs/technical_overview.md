@@ -351,7 +351,7 @@ Fusion 不是简单排序，它会把不同证据通道合成 answer context。
 - SQL hints：结构化查询结果。
 - agentic links：探索模块发现的关系。
 
-结构化查询来自 `nl_to_sql_service.py`。它不是让 LLM 执行任意 SQL，而是让系统生成受限 plan，再编译成白名单 SQLAlchemy 查询。支持 intent 包括：
+结构化查询来自 `nl_to_sql_service.py`。它完全不调用 LLM：确定性 grammar 生成受限 plan，再编译成参数绑定的白名单只读 SQLAlchemy 查询。支持 intent 包括：
 
 - `count_papers`
 - `list_papers`
@@ -360,7 +360,7 @@ Fusion 不是简单排序，它会把不同证据通道合成 answer context。
 - `top_propositions`
 - `review_queue`
 
-所以 `/retrieve/answer` 可以同时回答“找证据”和“查数字”两类问题。
+`/retrieve/sql-chat` 专门回答结构化取数问题，并返回 SQL、绑定参数、rows、filter/paper-set/statement hashes；不支持的问题 fail closed。`/retrieve/answer` 是独立 Graph-RAG 工作区，不是全局 chat 的后端。
 
 ## 14. Answer generation
 
@@ -480,10 +480,25 @@ POST /reviews/{paper_id}
 人工 review 不只是改 UI 状态。它会影响：
 
 - `human_reviews`
-- active learning 的 label 数据
+- 完整且显式的 classifier label 会形成不可变 training feedback event
 - future classifier tuning
 - RAG feedback memory
 - pipeline audit
+
+每累计 20 篇不同论文的合格 feedback，系统从全部允许的训练数据重新训练
+候选模型。候选必须通过 trigger batch 的 out-of-fold 对比，并且独立固定
+validation 至少达到默认 20 条、覆盖两个标签后才允许 promotion；accuracy、macro-F1 和有支持度
+标签的 recall 不得退化，而且至少一个受保护指标必须严格提升。失败或退化
+的候选保留审计记录但不替换 production model。冻结 holdout 不参与这一循环。
+
+状态入口：
+
+```text
+GET /model-evolution/status
+GET /model-evolution/runs
+```
+
+完整契约见 `docs/model_evolution.md`。
 
 ## 18. Analytics 和 Research Intelligence
 
@@ -492,11 +507,15 @@ analytics API 在 `backend/app/api/analytics.py`，前端对应多个 dashboard 
 主要能力：
 
 - `/analytics/overview`：总体统计。
+- `/analytics/scope`：重放当前 filter 的指纹、论文集合 hash、覆盖率和来源分布。
+- `/analytics/filter-options`：返回数据库中真实存在的国家、机构、主题、领域和来源选项。
 - `/analytics/sankey`：机构、主题、label 的 Sankey。
-- `/analytics/timeline`：按年份看 topic 或 label。
+- `/analytics/timeline`：按年份看 topic、label、institution 或 country。
 - `/analytics/institution-network`：机构合作网络。
 - `/analytics/multi-graph`：可配置多类型节点和边。
-- `/analytics/geographic`：地理分布。
+- `/analytics/geographic`：地理合作与中心增长。可选择任意已入库国家或机构，
+  返回按年 distinct center papers、collaboration papers、active/cumulative
+  partners；前端在 U of T 存在时默认以其为中心，也可切换 China 等中心。
 - `/analytics/people-grid`：人员视图。
 - `/analytics/evidence-gaps`：证据缺口。
 - `/analytics/lint-report`：知识库 lint。
@@ -514,8 +533,8 @@ Multi-Graph 在 `backend/app/services/multi_graph/`。
 
 它允许按用户选择动态构图：
 
-- node types：paper、author、institution、topic、method、funder、ac_core 等。
-- edge types：authored、affiliated_with、coauthored、institution_collaboration、cites、cites_ac_core、belongs_to_topic、uses_method、funded_by、topic_cooccurrence、similarity 等。
+- node types：paper、author、institution、country、topic、method、funder、ac_core 等。
+- edge types：authored、published_by、affiliated_with、coauthored、institution_collaboration、country_collaboration、cites、cites_ac_core、belongs_to_topic、uses_method、funded_by、topic_cooccurrence、similarity 等。
 
 构图流程：
 
@@ -523,8 +542,13 @@ Multi-Graph 在 `backend/app/services/multi_graph/`。
 2. 运行 node providers。
 3. 只生成两端节点都存在的 edge。
 4. 用 `min_edge_weight` 过滤。
-5. 可选按 center_id 和 hop_limit 做 ego graph。
-6. 可按 institution、country、topic 等分组。
+5. 按 `min_papers`、迭代 `min_degree` 和每类 top-N 做确定性裁剪。
+6. 可选按 center_id 和 hop_limit 做 ego graph。
+7. 可按 institution、country、topic 等分组。
+
+前端预设把“只选作者/机构/国家”解释为各自的合作投影，把
+“作者/机构/主题 + 论文”解释为对应的二部图，不再要求画面必须含 paper 节点。
+所有 edge 权重都在 audit metric contract 中定义；合作次数不被描述成影响力。
 
 前端页面：
 
@@ -601,6 +625,7 @@ GET  /papers/{paper_id}/chunks
 POST /retrieve
 GET  /retrieval/propositions
 GET  /retrieval/nl-sql
+POST /retrieve/sql-chat
 POST /retrieve/answer
 POST /retrieve/feedback
 ```

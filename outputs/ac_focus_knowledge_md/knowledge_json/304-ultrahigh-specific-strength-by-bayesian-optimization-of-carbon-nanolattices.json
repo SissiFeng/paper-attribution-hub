@@ -1,0 +1,116 @@
+{
+  "paper_id": "acfocus_a8688e45b002",
+  "title": "Ultrahigh Specific Strength by Bayesian Optimization of Carbon Nanolattices",
+  "metadata": {
+    "doi": "10.1002/adma.202410651",
+    "url": "https://www.nature.com/nature-index/article/10.1002/adma.202410651",
+    "year": "2025",
+    "authors": "P. Serles; J. Yeo; M. Haché; P. G. Demingos; J. Kong; P. Kiefer; S. Dhulipala; B. Kumral; K. Jia; S. Yang; T. Feng; C. Jia; P. M. Ajayan; C. M. Portela; M. Wegener; J. Y. Howe; C. V. Singh; Y. Zou; S. Ryu; T. Filleter",
+    "venue": "Advanced Materials",
+    "category": "Journal Article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Yu Zou"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "Researchers used multi-objective Bayesian optimization and advanced fabrication techniques to create carbon nanolattices with record-high specific strength and stiffness, achieving the strength of carbon steel at the density of Styrofoam, thus enabling unprecedented lightweight and high-performance metamaterials for modern applications.",
+  "abstract": "Nanoarchitected materials are at the frontier of metamaterial design and have set the benchmark for mechanical performance in several contemporary applications. However, traditional nanoarchitected designs with conventional topologies exhibit poor stress distributions and induce premature nodal failure. Here, using multi-objective Bayesian optimization and two-photon polymerization, optimized carbon nanolattices with an exceptional specific strength of 2.03 MPa m3 kg−1 at low densities <215 kg m−3 are created. Generative design optimization provides experimental improvements in strength and Young's modulus by as much as 118% and 68%, respectively, at equivalent densities with entirely different lattice failure responses. Additionally, the reduction of nanolattice strut diameters to 300 nm produces a unique high-strength carbon with a pyrolysis-induced atomic gradient of 94% sp2 aromatic carbon and low oxygen impurities. Using multi-focus multi-photon polymerization, a millimeter-scalable metamaterial consisting of 18.75 million lattice cells with nanometer dimensions is demonstrated. Combining Bayesian optimized designs and nanoarchitected pyrolyzed carbon, the optimal nanostructures exhibit the strength of carbon steel at the density of Styrofoam offering unparalleled capabilities in light-weighting, fuel reduction, and contemporary design applications. © 2025 The Author(s). Advanced Materials published by Wiley-VCH GmbH.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "Researchers used multi-objective Bayesian optimization and advanced fabrication techniques to create carbon nanolattices with record-high specific strength and stiffness, achieving the strength of carbon steel at the density of Styrofoam, thus enabling unprecedented lightweight and high-performance metamaterials for modern applications.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [],
+  "materials": [
+    {
+      "value": "Nanoarchitected materials are at the frontier of metamaterial design and have set the benchmark for mechanical performance in several contemporary applications.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Advanced Materials published by Wiley-VCH GmbH.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [
+    {
+      "value": "Ultrahigh Specific Strength by Bayesian Optimization of Carbon Nanolattices Researchers used multi-objective Bayesian optimization and advanced fabrication techniques to create carbon nanolattices with record-high specific strength and stiffness, achieving the strength of carbon steel at the density of Styrofoam, thus enabling unprecedented lightweight and high-performance metamaterials for modern applications.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [
+    {
+      "value": "Nanoarchitected materials are at the frontier of metamaterial design and have set the benchmark for mechanical performance in several contemporary applications.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "conditions": [],
+  "mechanisms": [],
+  "outcomes": [],
+  "sdl_tags": [],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.5,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": false,
+      "materials": true,
+      "properties": true,
+      "measurements": true,
+      "conditions": false,
+      "mechanisms": false,
+      "outcomes": false,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "entities",
+      "conditions",
+      "mechanisms",
+      "outcomes",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

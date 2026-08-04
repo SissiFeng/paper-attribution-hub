@@ -9,11 +9,14 @@ from app import __version__
 from app.api import (
     admin,
     analytics,
+    attribution_evidence_tree,
+    attribution_skills,
     discovery,
     evaluation,
     graph_explain,
     kb,
     labs,
+    model_evolution,
     networks,
     papers,
     propositions,
@@ -60,12 +63,15 @@ app.include_router(retrieval.router)
 app.include_router(evaluation.router)
 app.include_router(analytics.router)
 app.include_router(graph_explain.router)
+app.include_router(attribution_evidence_tree.router)
+app.include_router(attribution_skills.router)
 app.include_router(propositions.router)
 app.include_router(admin.router)
 app.include_router(discovery.router)
 app.include_router(review_queue.router)
 app.include_router(wiki.router)
 app.include_router(labs.router)
+app.include_router(model_evolution.router)
 app.include_router(kb.router)
 app.include_router(transfer_studio.router)
 

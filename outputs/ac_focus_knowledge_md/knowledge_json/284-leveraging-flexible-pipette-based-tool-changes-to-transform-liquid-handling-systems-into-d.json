@@ -1,0 +1,191 @@
+{
+  "paper_id": "acfocus_2aa5c316b31d",
+  "title": "Leveraging flexible pipette-based tool changes to transform liquid handling systems into dual-function sample preparation and imaging platforms",
+  "metadata": {
+    "doi": "10.1016/j.ohx.2025.e00653",
+    "url": "https://chemrxiv.org/doi/full/10.26434/chemrxiv-2024-f67jg",
+    "year": "2025",
+    "authors": "M. Nazeri; J. Watchorn; S. Mei; A. Zhang; C. Allen; F. X. Gu",
+    "venue": "HardwareX",
+    "category": "Journal Article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Christine Allen",
+      "Frank Gu"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance",
+      "AC Full Member",
+      "AC Governance"
+    ],
+    "flags": {
+      "acknowledges_ac": "checked",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "This work introduces a new hardware platform that integrates simultaneous pipetting and in-situ imaging using an Opentron OT-2 robot and a 3D-printed adapter, enabling real-time, high-throughput characterization of dynamic soft materials processes such as hydrogel crosslinking, with broader applications in materials research.",
+  "abstract": "In soft materials synthesis, rapid self-assembly and poor mechanical strength often limit the applicability of experimental characterization techniques. This limitation arises because transferring these materials to a suitable imaging platform is either too slow to capture the process of interest or impossible to safely transfer from the synthesis vessel to the characterization. In addition, the variable nature of these materials requires many experiments to understand the underlying structure–property relationships that govern these materials. In this work we present a new hardware platform that integrates simultaneous pipetting and in-situ imaging using the Opentron OT-2 liquid handling robot. A 3D printed adapter features two cylindrical openings, one containing the pipette tip to gantry adapter, and the other a USB camera. When the gantry picks up the pipette tip, the entire apparatus is lifted, allowing the camera to be used. This system enables real-time monitoring and characterization of dynamic processes, such as hydrogel crosslinking, without manual intervention. We used this system to characterize ionically crosslinked hydrogels, and monitored their properties over time, in a high-throughput and combinatorial manner. Although hydrogels were used as a proof-of-concept, this platform has broader applications in materials research, including crystallization dynamics, polymerization kinetics, and drug delivery system development. © 2025",
+  "hardware": [
+    {
+      "value": "This work introduces a new hardware platform that integrates simultaneous pipetting and in-situ imaging using an Opentron OT-2 robot and a 3D-printed adapter, enabling real-time, high-throughput characterization of dynamic soft materials processes such as hydrogel crosslinking, with broader applications in materials research.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "This limitation arises because transferring these materials to a suitable imaging platform is either too slow to capture the process of interest or impossible to safely transfer from the synthesis vessel to the characterization.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "In this work we present a new hardware platform that integrates simultaneous pipetting and in-situ imaging using the Opentron OT-2 liquid handling robot.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "We used this system to characterize ionically crosslinked hydrogels, and monitored their properties over time, in a high-throughput and combinatorial manner.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "methods": [
+    {
+      "value": "This work introduces a new hardware platform that integrates simultaneous pipetting and in-situ imaging using an Opentron OT-2 robot and a 3D-printed adapter, enabling real-time, high-throughput characterization of dynamic soft materials processes such as hydrogel crosslinking, with broader applications in materials research.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [],
+  "materials": [
+    {
+      "value": "Leveraging flexible pipette-based tool changes to transform liquid handling systems into dual-function sample preparation and imaging platforms This work introduces a new hardware platform that integrates simultaneous pipetting and in-situ imaging using an Opentron OT-2 robot and a 3D-printed adapter, enabling real-time, high-throughput characterization of dynamic soft materials processes such as hydrogel crosslinking, with broader applications in materials research.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "In soft materials synthesis, rapid self-assembly and poor mechanical strength often limit the applicability of experimental characterization techniques.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "This limitation arises because transferring these materials to a suitable imaging platform is either too slow to capture the process of interest or impossible to safely transfer from the synthesis vessel to the characterization.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [
+    {
+      "value": "In addition, the variable nature of these materials requires many experiments to understand the underlying structure–property relationships that govern these materials.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "We used this system to characterize ionically crosslinked hydrogels, and monitored their properties over time, in a high-throughput and combinatorial manner.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [
+    {
+      "value": "Leveraging flexible pipette-based tool changes to transform liquid handling systems into dual-function sample preparation and imaging platforms This work introduces a new hardware platform that integrates simultaneous pipetting and in-situ imaging using an Opentron OT-2 robot and a 3D-printed adapter, enabling real-time, high-throughput characterization of dynamic soft materials processes such as hydrogel crosslinking, with broader applications in materials research.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "In soft materials synthesis, rapid self-assembly and poor mechanical strength often limit the applicability of experimental characterization techniques.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "This limitation arises because transferring these materials to a suitable imaging platform is either too slow to capture the process of interest or impossible to safely transfer from the synthesis vessel to the characterization.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "This system enables real-time monitoring and characterization of dynamic processes, such as hydrogel crosslinking, without manual intervention.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "conditions": [
+    {
+      "value": "Leveraging flexible pipette-based tool changes to transform liquid handling systems into dual-function sample preparation and imaging platforms This work introduces a new hardware platform that integrates simultaneous pipetting and in-situ imaging using an Opentron OT-2 robot and a 3D-printed adapter, enabling real-time, high-throughput characterization of dynamic soft materials processes such as hydrogel crosslinking, with broader applications in materials research.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "This system enables real-time monitoring and characterization of dynamic processes, such as hydrogel crosslinking, without manual intervention.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "We used this system to characterize ionically crosslinked hydrogels, and monitored their properties over time, in a high-throughput and combinatorial manner.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "mechanisms": [],
+  "outcomes": [],
+  "sdl_tags": [],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.64,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": true,
+      "method": true,
+      "evidence": false,
+      "entities": false,
+      "materials": true,
+      "properties": true,
+      "measurements": true,
+      "conditions": true,
+      "mechanisms": false,
+      "outcomes": false,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "evidence",
+      "entities",
+      "mechanisms",
+      "outcomes",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only."
+    ]
+  }
+}

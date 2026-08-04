@@ -1,12 +1,12 @@
-paper_id,gold_label,gold_topics,notes
-P001,CORE_RELEVANT,self_driving_labs;ai_for_science,Direct AC author + SDL methods + AC funding acknowledgement
-P002,CORE_RELEVANT,ai_for_science,Direct AC author (alias) + UofT
-P003,RELATED_RELEVANT,ai_for_science,Originally generic GNN but AC postdoctoral fellowship in acknowledgement
-P004,CORE_RELEVANT,lab_automation;software_infrastructure,Multiple AC authors + workflow orchestration
-P005,ADJACENT,ai_for_science,Active learning ML; no AC author; non-AC funding
-P006,CORE_RELEVANT,self_driving_labs,Berlinguette + Helena Garcia + UBC + AC funding
-P007,EXCLUDE,,NLP survey unrelated to AC
-P008,ADJACENT,lab_automation,Robotic but no closed-loop and no AC funding
-P009,CORE_RELEVANT,self_driving_labs,Chen + Garcia + UofT + closed-loop electrochem
-P010,EXCLUDE,,Climate review unrelated to AC
-P011,ADJACENT,ai_for_science,No AC author but co-author Jane Doe previously worked with Aspuru-Guzik on P001 — second-degree only; flag for review
+paper_id,gold_label,gold_topics,notes,label_scope,annotation_source,evidence_level
+P001,CORE_RELEVANT,self_driving_labs;ai_for_science,Direct AC author + SDL methods + AC funding acknowledgement,AC_REPORTING,historical_reporting_review,UNKNOWN
+P002,CORE_RELEVANT,ai_for_science,Direct AC author (alias) + UofT,AC_REPORTING,historical_reporting_review,UNKNOWN
+P003,RELATED_RELEVANT,ai_for_science,Originally generic GNN but AC postdoctoral fellowship in acknowledgement,AC_REPORTING,historical_reporting_review,UNKNOWN
+P004,CORE_RELEVANT,lab_automation;software_infrastructure,Multiple AC authors + workflow orchestration,AC_REPORTING,historical_reporting_review,UNKNOWN
+P005,ADJACENT,ai_for_science,Active learning ML; no AC author; non-AC funding,AC_REPORTING,historical_reporting_review,UNKNOWN
+P006,CORE_RELEVANT,self_driving_labs,Berlinguette + Helena Garcia + UBC + AC funding,AC_REPORTING,historical_reporting_review,UNKNOWN
+P007,EXCLUDE,,NLP survey unrelated to AC,AC_REPORTING,historical_reporting_review,UNKNOWN
+P008,ADJACENT,lab_automation,Robotic but no closed-loop and no AC funding,AC_REPORTING,historical_reporting_review,UNKNOWN
+P009,CORE_RELEVANT,self_driving_labs,Chen + Garcia + UofT + closed-loop electrochem,AC_REPORTING,historical_reporting_review,UNKNOWN
+P010,EXCLUDE,,Climate review unrelated to AC,AC_REPORTING,historical_reporting_review,UNKNOWN
+P011,ADJACENT,ai_for_science,No AC author but co-author Jane Doe previously worked with Aspuru-Guzik on P001 — second-degree only; flag for review,AC_REPORTING,historical_reporting_review,UNKNOWN

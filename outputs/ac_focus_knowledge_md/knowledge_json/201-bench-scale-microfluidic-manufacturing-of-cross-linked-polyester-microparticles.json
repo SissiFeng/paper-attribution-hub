@@ -1,0 +1,182 @@
+{
+  "paper_id": "acfocus_8085ff4d47b1",
+  "title": "Bench-Scale Microfluidic Manufacturing of Cross-Linked Polyester Microparticles",
+  "metadata": {
+    "doi": "10.1021/acsapm.4c02070",
+    "url": "https://pubs.acs.org/doi/10.1021/acsapm.4c02070",
+    "year": "2024",
+    "authors": "Bufton JR, Burns DC, Watchorn J, Lee S, Allen C",
+    "venue": "ACS Applied Polymer Materials",
+    "category": "Journal article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Christine Allen"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance"
+    ],
+    "flags": {
+      "acknowledges_ac": "checked",
+      "highly_relevant": "checked",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "This study demonstrates a modular microfluidic system using commercially available components to efficiently produce monodisperse, photo-cross-linked polyester microparticles with tunable properties and high yields, highlighting the potential of microfluidic techniques for improved and scalable drug delivery formulations.",
+  "abstract": "Polymeric microparticles used as long-acting drug delivery systems provide advantages relative to conventional oral dosage forms including improved efficacy and safety. However, development of these formulations, including generics, is constrained by current manufacturing techniques. Conventional approaches have limited control over process parameters and are difficult to scale. Droplet microfluidic techniques produce individual particles sequentially enabling unparalleled consistency on key material properties including particle size and dispersity. While microfluidics approaches have much promise, including affording continuous rather than batch production; designing, constructing, and operating these systems is challenging reducing adoption by formulation scientists. Herein, we describe the operation of a modular microfluidic system built with commercially available components to prepare photo-cross-linked microparticles by droplet generation, inline dilution, and inline irradiation with UV. We synthesized monodisperse cross-linked polyester microparticles with a median size of 37.6 ± 0.4 μm at 20, 60, and 120 mg batch sizes with average yields of 92 ± 5%. Additionally, as a means to tailor material properties, particles were produced at varying degrees of cross-linking. The particle’s properties were further characterized, loaded with celecoxib at a low and a high level, then the in vitro drug release evaluated. Overall, the degree of cross-linking and drug loading modulated key formulation properties such as in vitro release rate. With this work, we showcase the potential of microfluidic systems and aim to foster further adoption of microfluidic techniques to manufacture comparable materials.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "This study demonstrates a modular microfluidic system using commercially available components to efficiently produce monodisperse, photo-cross-linked polyester microparticles with tunable properties and high yields, highlighting the potential of microfluidic techniques for improved and scalable drug delivery formulations.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Automation and Robotics",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Chemical Engineering",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "Droplet microfluidic techniques produce individual particles sequentially enabling unparalleled consistency on key material properties including particle size and dispersity.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Additionally, as a means to tailor material properties, particles were produced at varying degrees of cross-linking.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "With this work, we showcase the potential of microfluidic systems and aim to foster further adoption of microfluidic techniques to manufacture comparable materials.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [
+    {
+      "value": "Bench-Scale Microfluidic Manufacturing of Cross-Linked Polyester Microparticles This study demonstrates a modular microfluidic system using commercially available components to efficiently produce monodisperse, photo-cross-linked polyester microparticles with tunable properties and high yields, highlighting the potential of microfluidic techniques for improved and scalable drug delivery formulations.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Droplet microfluidic techniques produce individual particles sequentially enabling unparalleled consistency on key material properties including particle size and dispersity.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Additionally, as a means to tailor material properties, particles were produced at varying degrees of cross-linking.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "The particle’s properties were further characterized, loaded with celecoxib at a low and a high level, then the in vitro drug release evaluated.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Overall, the degree of cross-linking and drug loading modulated key formulation properties such as in vitro release rate.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [],
+  "conditions": [
+    {
+      "value": "However, development of these formulations, including generics, is constrained by current manufacturing techniques.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Overall, the degree of cross-linking and drug loading modulated key formulation properties such as in vitro release rate.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "mechanisms": [],
+  "outcomes": [
+    {
+      "value": "Therapeutics",
+      "source": "csv_applied_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Formulations",
+      "source": "csv_applied_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "Automation and Robotics",
+    "Chemical Engineering",
+    "Therapeutics",
+    "Formulations"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.61,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": true,
+      "properties": true,
+      "measurements": false,
+      "conditions": true,
+      "mechanisms": false,
+      "outcomes": true,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "measurements",
+      "mechanisms",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

@@ -20,9 +20,10 @@ import numpy as np
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
-from app.models import Paper, PaperClassification, PaperAuthor
+from app.models import Paper
 from app.services.analytics_service import _paper_rows
-from app.services.filter_spec import PaperFilter, apply_filter
+from app.services.filter_spec import PaperFilter, build_filter_audit
+from app.services.topic_identity import canonical_topic_names
 
 
 @dataclass
@@ -70,6 +71,7 @@ class DriftReport:
     per_year: list[YearTopics]
     drift_events: list[DriftEvent]
     drift_threshold: float
+    audit: dict
     vocabulary_suggestions: list[VocabularySuggestion] = None  # type: ignore[assignment]
 
     def __post_init__(self) -> None:
@@ -79,34 +81,47 @@ class DriftReport:
 
 def _topic_vectors(
     rows: list,
-) -> tuple[dict[int, dict[str, float]], dict[int, dict[str, int]], dict[str, str]]:
-    """Returns (year → topic_id → share, year → topic_id → paper_count, topic_id → display name).
+) -> tuple[
+    dict[int, dict[str, float]],
+    dict[int, dict[str, int]],
+    dict[int, int],
+    dict[str, set[str]],
+]:
+    """Return yearly shares/counts, distinct paper totals, and name aliases.
+
     Accepts lean (id, year, label, matched_topics) tuples from _paper_rows().
     """
     counts: dict[int, dict[str, int]] = defaultdict(lambda: defaultdict(int))
     paper_counts: dict[int, int] = defaultdict(int)
-    names: dict[str, str] = {}
+    aliases: dict[str, set[str]] = defaultdict(set)
 
     for _pid, year, _label, matched_topics in rows:
         if year is None:
             continue
         paper_counts[year] += 1
+        paper_topics: set[str] = set()
         for tm in (matched_topics or []):
             if (tm.get("score") or 0) < 0.3:
                 continue
             topic_id = tm.get("topic_id")
             if not topic_id:
                 continue
+            paper_topics.add(topic_id)
+            aliases.setdefault(topic_id, set())
+            topic_name = tm.get("name")
+            if topic_name:
+                aliases[topic_id].add(str(topic_name))
+        for topic_id in paper_topics:
             counts[year][topic_id] += 1
-            names[topic_id] = tm.get("name") or topic_id
 
     shares: dict[int, dict[str, float]] = {}
     raw_counts: dict[int, dict[str, int]] = {}
-    for year, topic_counts in counts.items():
-        total = paper_counts[year] or 1
+    for year, total_papers in paper_counts.items():
+        topic_counts = counts[year]
+        total = total_papers or 1
         shares[year] = {tid: c / total for tid, c in topic_counts.items()}
         raw_counts[year] = dict(topic_counts)
-    return shares, raw_counts, names
+    return shares, raw_counts, dict(paper_counts), aliases
 
 
 def _cosine(a: dict[str, float], b: dict[str, float]) -> float:
@@ -130,7 +145,8 @@ def build_drift_report(
     top_n_per_year: int = 5,
 ) -> DriftReport:
     rows = _paper_rows(session, filt)
-    shares, raw_counts, names = _topic_vectors(rows)
+    shares, raw_counts, yearly_paper_counts, aliases = _topic_vectors(rows)
+    names = canonical_topic_names(session, aliases)
     years = sorted(shares)
 
     per_year: list[YearTopics] = []
@@ -138,12 +154,12 @@ def build_drift_report(
         topic_shares = shares[year]
         topic_counts = raw_counts[year]
         ordered = sorted(
-            topic_shares.items(), key=lambda kv: -kv[1]
+            topic_shares.items(), key=lambda item: (-item[1], item[0])
         )[:top_n_per_year]
         per_year.append(
             YearTopics(
                 year=year,
-                total_papers=sum(topic_counts.values()),
+                total_papers=yearly_paper_counts[year],
                 top_topics=[
                     TopicShare(
                         topic_id=tid,
@@ -178,11 +194,28 @@ def build_drift_report(
         )
 
     vocab_suggestions = _suggest_vocabulary(session, rows, drift_events)
+    audit = build_filter_audit(
+        session,
+        filt,
+        algorithm="topic_drift.v3",
+        metric_definitions={
+            "topic_share": "Distinct filtered papers containing the topic divided by all distinct filtered papers in the publication year.",
+            "topic_paper_count": "Distinct filtered papers containing the topic in the publication year.",
+            "total_papers": "All distinct filtered papers in the publication year, including papers without matched topics.",
+            "cosine_similarity": "Cosine similarity between adjacent yearly topic-share vectors.",
+            "drift_event": "An adjacent-year pair whose cosine similarity is below drift_threshold.",
+        },
+        projection={
+            "drift_threshold": drift_threshold,
+            "top_n_per_year": top_n_per_year,
+        },
+    )
 
     return DriftReport(
         per_year=per_year,
         drift_events=drift_events,
         drift_threshold=drift_threshold,
+        audit=audit,
         vocabulary_suggestions=vocab_suggestions,
     )
 

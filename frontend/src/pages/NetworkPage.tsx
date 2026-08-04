@@ -1,9 +1,16 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 
+import { AnalysisScopePanel } from "@/components/AnalysisScopePanel";
 import { EChart } from "@/components/EChart";
 import { FilterBar } from "@/components/FilterBar";
 import { getInstitutionNetwork } from "@/lib/api";
+import { escapeHtml } from "@/lib/html";
+import {
+  isLatestRequest,
+  resultForScope,
+  type ScopedResult,
+} from "@/lib/scopedResult";
 import type { InstitutionNetworkPayload } from "@/types";
 
 function buildOption(payload: InstitutionNetworkPayload) {
@@ -37,8 +44,8 @@ function buildOption(payload: InstitutionNetworkPayload) {
         if (p.dataType === "node") {
           const node = payload.nodes.find((n) => n.id === p.data.id);
           return node
-            ? `<b>${node.label}</b><br/>${node.country ?? "—"}<br/>${node.paper_count} joint papers`
-            : p.name;
+            ? `<b>${escapeHtml(node.label)}</b><br/>${escapeHtml(node.country ?? "—")}<br/>${node.paper_count} distinct papers`
+            : escapeHtml(p.name);
         }
         const src = payload.nodes.find((n) => n.id === p.data.source)?.label;
         const tgt = payload.nodes.find((n) => n.id === p.data.target)?.label;
@@ -46,7 +53,7 @@ function buildOption(payload: InstitutionNetworkPayload) {
           (e) => e.source === p.data.source && e.target === p.data.target
         );
         const norm = edge ? ` (strength ${(edge.normalized_weight * 100).toFixed(0)}%)` : "";
-        return `${src} ↔ ${tgt}<br/>${p.data.value} joint papers${norm}`;
+        return `${escapeHtml(src ?? "—")} ↔ ${escapeHtml(tgt ?? "—")}<br/>${p.data.value} joint papers${norm}`;
       },
     },
     legend: {
@@ -77,25 +84,53 @@ function buildOption(payload: InstitutionNetworkPayload) {
 export default function NetworkPage() {
   const [searchParams] = useSearchParams();
   const [minPapers, setMinPapers] = useState(1);
-  const [payload, setPayload] = useState<InstitutionNetworkPayload | null>(null);
+  const [topN, setTopN] = useState(50);
+  const searchKey = searchParams.toString();
+  const scopeKey = JSON.stringify([searchKey, minPapers, topN]);
+  const [payloadResult, setPayloadResult] = useState<
+    ScopedResult<InstitutionNetworkPayload> | null
+  >(null);
+  const payload = resultForScope(payloadResult, scopeKey);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const requestGeneration = useRef(0);
 
   useEffect(() => {
     let cancelled = false;
-    getInstitutionNetwork(minPapers, searchParams)
-      .then((p) => !cancelled && setPayload(p))
-      .catch((err) => !cancelled && setError(err instanceof Error ? err.message : String(err)));
+    const generation = ++requestGeneration.current;
+    setLoading(true);
+    setError(null);
+    getInstitutionNetwork(minPapers, new URLSearchParams(searchKey), topN)
+      .then((nextPayload) => {
+        if (!cancelled && isLatestRequest(generation, requestGeneration.current)) {
+          setPayloadResult({ scopeKey, payload: nextPayload });
+        }
+      })
+      .catch((err) => {
+        if (!cancelled && isLatestRequest(generation, requestGeneration.current)) {
+          setError(err instanceof Error ? err.message : String(err));
+          setPayloadResult(null);
+        }
+      })
+      .finally(() => {
+        if (!cancelled && isLatestRequest(generation, requestGeneration.current)) {
+          setLoading(false);
+        }
+      });
     return () => {
       cancelled = true;
     };
-  }, [minPapers, searchParams.toString()]);
+  }, [minPapers, scopeKey, searchKey, topN]);
 
   return (
     <div>
       <FilterBar />
+      <div className="page-heading-compact">
+        <div><h1>Institutional Collaboration</h1><p>Edges count distinct filtered papers jointly affiliated with both institutions.</p></div>
+      </div>
       <div className="filters" style={{ marginTop: "0.5rem" }}>
         <label>
-          Min joint papers:&nbsp;
+          Min papers per institution:&nbsp;
           <input
             type="number"
             min={1}
@@ -105,8 +140,13 @@ export default function NetworkPage() {
             style={{ width: 70 }}
           />
         </label>
+        <label>
+          Top institutions:&nbsp;
+          <input type="number" min={5} max={200} value={topN} onChange={(e) => setTopN(Math.max(5, Number(e.target.value)))} style={{ width: 70 }} />
+        </label>
       </div>
       {error && <div style={{ color: "var(--uncertain)" }}>Backend error: {error}</div>}
+      {loading && !payload && <div className="empty">Loading network…</div>}
       {payload && payload.nodes.length === 0 && (
         <div className="empty">No institutions match the current filter.</div>
       )}
@@ -124,6 +164,7 @@ export default function NetworkPage() {
               {payload.nodes.length} institutions · {payload.edges.length} collaborations
             </span>
           </div>
+          <AnalysisScopePanel audit={payload.audit} title="Collaboration evidence scope" />
         </>
       )}
     </div>

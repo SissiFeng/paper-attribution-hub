@@ -28,7 +28,9 @@ dist/
 .env.local
 
 # Docs (developer-only internal notes — skip on GitHub)
-/docs/
+/docs/*
+!/docs/aws-console-setup.md
+!/docs/aws-deployment.md
 
 # All root-level markdown files (developer notes — not for GitHub)
 /*.md
@@ -50,6 +52,12 @@ pgdata/
 
 # Claude Code / agent tooling
 .agents/
+!.agents/
+.agents/*
+!.agents/skills/
+.agents/skills/*
+!.agents/skills/ac-paper-attribution/
+!.agents/skills/ac-paper-attribution/**
 .claude/
 .codex/
 skills-lock.json

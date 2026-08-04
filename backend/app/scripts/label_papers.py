@@ -24,7 +24,15 @@ from app.db import SessionLocal, init_database
 from app.models import Paper
 from app.scripts.sample_for_labeling import QUEUE_FIELDS
 
-EVAL_FIELDS = ["paper_id", "gold_label", "gold_topics", "notes"]
+EVAL_FIELDS = [
+    "paper_id",
+    "gold_label",
+    "gold_topics",
+    "notes",
+    "label_scope",
+    "annotation_source",
+    "evidence_level",
+]
 LABEL_KEYS = {
     "1": "CORE_RELEVANT",
     "2": "RELATED_RELEVANT",
@@ -70,7 +78,17 @@ def append_eval_label(path: Path, paper_id: str, label: str, notes: str = "") ->
         writer = csv.writer(fh)
         if write_header:
             writer.writerow(EVAL_FIELDS)
-        writer.writerow([paper_id, label, "", notes])
+        writer.writerow(
+            [
+                paper_id,
+                label,
+                "",
+                notes,
+                "AC_REPORTING",
+                "interactive_labeling",
+                "UNKNOWN",
+            ]
+        )
     return True
 
 

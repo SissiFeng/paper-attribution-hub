@@ -1,0 +1,172 @@
+{
+  "paper_id": "acfocus_d4fc93a63808",
+  "title": "Impact of imine bonds on the electronic properties of degradable carotenoid-based conjugated polymers",
+  "metadata": {
+    "doi": "10.1039/d5py00235d",
+    "url": "https://pubs.rsc.org/en/content/articlelanding/2025/py/d5py00235d",
+    "year": "2025",
+    "authors": "A. Uva; Y. Kim; S. Michailovich; N. S. Y. Hsu; D. C. Bain; S. H. Huang; A. J. Musser; H. Tran",
+    "venue": "Polymer Chemistry",
+    "category": "Journal Article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Helen Tran"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance"
+    ],
+    "flags": {
+      "acknowledges_ac": "checked",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "This study demonstrates that replacing imine linkers with vinylene groups in carotenoid-based π-conjugated polymers significantly enhances charge transport and semiconductor performance while preserving degradability, highlighting the promise of carotenoid monomers for sustainable electronic materials.",
+  "abstract": "Carotenoids are suitable building blocks for degradable π-conjugated polymers due to their intrinsic single-molecule conductance and well-documented degradation pathways. Previously, we reported a carotenoid-based polymer, p(CP-hexyl), which incorporated a cleavable imine linker enabling degradation via acid hydrolysis or sunlight; however, there was limited insight into its electronic properties. In this current study, we compare the optoelectronic and photophysical properties of p(CP-hexyl) with a structural analog, caro-PPV, which replaces the imine bonds with vinylene groups, to improve charge transport while maintaining degradability. Ultraviolet-visible spectroscopy, density functional theory, and transient absorption spectroscopy provided a comprehensive understanding of these polymers’ optoelectronic properties. Further, chemical doping and oxidative degradation were evaluated using FeCl<inf>3</inf> and trifluoroacetic acid, unveiling differences in radical formation and degradation mechanisms for both carotenoid-based polymers. Lastly, charge carrier mobility measurements in organic field-effect transistors unveiled caro-PPV's superior semiconductor performance, with mobilities 10<sup>3</sup>-10<sup>4</sup> times greater than p(CP-hexyl). These findings highlight the potential of carotenoid monomers in the design of π-conjugated polymers for degradable electronics.",
+  "hardware": [
+    {
+      "value": "Ultraviolet-visible spectroscopy, density functional theory, and transient absorption spectroscopy provided a comprehensive understanding of these polymers’ optoelectronic properties.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "methods": [
+    {
+      "value": "This study demonstrates that replacing imine linkers with vinylene groups in carotenoid-based π-conjugated polymers significantly enhances charge transport and semiconductor performance while preserving degradability, highlighting the promise of carotenoid monomers for sustainable electronic materials.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Chemistry",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "Impact of imine bonds on the electronic properties of degradable carotenoid-based conjugated polymers This study demonstrates that replacing imine linkers with vinylene groups in carotenoid-based π-conjugated polymers significantly enhances charge transport and semiconductor performance while preserving degradability, highlighting the promise of carotenoid monomers for sustainable electronic materials.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Carotenoids are suitable building blocks for degradable π-conjugated polymers due to their intrinsic single-molecule conductance and well-documented degradation pathways.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Previously, we reported a carotenoid-based polymer, p(CP-hexyl), which incorporated a cleavable imine linker enabling degradation via acid hydrolysis or sunlight; however, there was limited insight into its electronic properties.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [
+    {
+      "value": "Impact of imine bonds on the electronic properties of degradable carotenoid-based conjugated polymers This study demonstrates that replacing imine linkers with vinylene groups in carotenoid-based π-conjugated polymers significantly enhances charge transport and semiconductor performance while preserving degradability, highlighting the promise of carotenoid monomers for sustainable electronic materials.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Previously, we reported a carotenoid-based polymer, p(CP-hexyl), which incorporated a cleavable imine linker enabling degradation via acid hydrolysis or sunlight; however, there was limited insight into its electronic properties.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "In this current study, we compare the optoelectronic and photophysical properties of p(CP-hexyl) with a structural analog, caro-PPV, which replaces the imine bonds with vinylene groups, to improve charge transport while maintaining degradability.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Ultraviolet-visible spectroscopy, density functional theory, and transient absorption spectroscopy provided a comprehensive understanding of these polymers’ optoelectronic properties.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Lastly, charge carrier mobility measurements in organic field-effect transistors unveiled caro-PPV's superior semiconductor performance, with mobilities 10<sup>3</sup>-10<sup>4</sup> times greater than p(CP-hexyl).",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [
+    {
+      "value": "Ultraviolet-visible spectroscopy, density functional theory, and transient absorption spectroscopy provided a comprehensive understanding of these polymers’ optoelectronic properties.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Lastly, charge carrier mobility measurements in organic field-effect transistors unveiled caro-PPV's superior semiconductor performance, with mobilities 10<sup>3</sup>-10<sup>4</sup> times greater than p(CP-hexyl).",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "conditions": [
+    {
+      "value": "In this current study, we compare the optoelectronic and photophysical properties of p(CP-hexyl) with a structural analog, caro-PPV, which replaces the imine bonds with vinylene groups, to improve charge transport while maintaining degradability.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "mechanisms": [],
+  "outcomes": [],
+  "sdl_tags": [
+    "Chemistry"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.71,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": true,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": true,
+      "properties": true,
+      "measurements": true,
+      "conditions": true,
+      "mechanisms": false,
+      "outcomes": false,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "evidence",
+      "mechanisms",
+      "outcomes",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only."
+    ]
+  }
+}

@@ -29,9 +29,8 @@ from __future__ import annotations
 
 import argparse
 import sys
-from pathlib import Path
 
-from sqlalchemy import and_, or_, select
+from sqlalchemy import and_, select
 from sqlalchemy.orm import Session
 
 from app.config import settings

@@ -1,0 +1,232 @@
+{
+  "paper_id": "acfocus_da27514c512b",
+  "title": "Computer Vision To Predict Cell Seeding Coverage In Re-endothelialized Mouse Lungs",
+  "metadata": {
+    "doi": "10.1038/s41598-025-11272-8",
+    "url": "https://www.researchgate.net/publication/393806570_Computer_vision_to_predict_cell_seeding_coverage_in_re-endothelialized_mouse_lungs",
+    "year": "2024",
+    "authors": "Paciocco J, Zargar A, Moayad A, Chan JKD, Taniguchi D, Amon C, Karoubi G, Bazylak A",
+    "venue": "Nature Scientific Reports",
+    "category": "Conference",
+    "peer_reviewed": "Non Peer Reviewed",
+    "ac_members": [
+      "Aimy Bazylak"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "",
+  "abstract": "Computer vision to predict \ncell seeding coverage in re-\nendothelialized mouse lungs\nJoshua Paciocco1, Ahmed Hasan1, Jason Chan1, Daisuke Taniguchi2, Cristina Amon1,3, \nGolnaz Karoubi1,2,4 & Aimy Bazylak1\nTransplantation of donor grafts recellularized with recipient-derived or non-immunogenic universal \ncells is a potential means of reducing the graft rejection and post-transplant complications in lung \ntransplantation. Achieving a fully recellularized lung, however, remains a far-off goal and has several \nlimitations, including inadequate cell coverage of the acellular scaffold. A key parameter for evaluating \nrecellularization efficacy is the cell seeding coverage (CSC); the ratio of seeded cell area to the total \narea of the lung scaffold. To calculate the CSC from a histological image, the lung scaffold and the \nseeded cell areas must be quantified. In this work, the ability of semantic segmentation to accurately \nautomate the pixel-wise analysis of histological images is investigated. Specifically, the U-Net \nand LinkNet models are applied to re-endothelialized mouse lung images, generating pixel-wise \nclassifications of the lung scaffold and the seeded cell areas to calculate the CSC. Model performance \nwhen trained on complete images and on image patches is compared. The patch-based U-Net model \noutperformed the other models, predicting CSC with a root mean square error of 2.23 ± 0.36%, in \naddition to classifying lung scaffold pixels and seeded cell pixels with intersection over union scores of \n77.8 ± 1.4% and 69.5 ± 1.1% respectively.\nKeywords  Bioengineered lung, Cell seeding coverage, Lung re-endothelialization, Machine learning, \nMedical images, Semantic segmentation\nLung transplantation is the only treatment option for end-stage lung disease and yet, the five-year survival rate \npost-procedure is estimated to be 55%-60%, with high rejection rates and complications post-transplantation \nbeing among the most common causes of death1,2. In addition, with ",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "Applying U-Net and LinkNet models to re-endothelialized mouse lung images for pixel-wise classifications of lung scaffold and seeded cell areas to calculate CSC, comparing model performance when trained on complete images vs. image patches",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "problems": [
+    {
+      "value": "Inadequate cell coverage of the acellular scaffold in lung recellularization, specifically quantifying cell seeding coverage (CSC) from histological images",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "hypotheses": [
+    {
+      "value": "Semantic segmentation models, specifically U-Net and LinkNet, can accurately automate pixel-wise analysis of histological images to calculate CSC",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "evidence": [
+    {
+      "value": "Patch-based U-Net model outperformed with a root mean square error of 2.23 ± 0.36% and intersection over union scores of 77.8 ± 1.4% for lung scaffold and 69.5 ± 1.1% for seeded cells",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "conclusions": [
+    {
+      "value": "Semantic segmentation via U-Net and LinkNet models is a viable means of automating pixel-wise analysis of re-endothelialized images, potentially saving time and reducing errors in CSC calculation",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "entities": [
+    {
+      "value": "lung scaffold",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "seeded cells",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "histological images",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "seeded cells",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [],
+  "measurements": [],
+  "conditions": [],
+  "mechanisms": [
+    {
+      "value": "semantic segmentation for pixel-wise classification",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "image patching to increase training data",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "transfer learning from pre-trained models",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "outcomes": [
+    {
+      "value": "accurate classification of lung scaffold and seeded cell pixels",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "increased training data to improve model performance",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "adaptation of pre-trained models to specific task of CSC prediction",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "Artificial Intelligence & Data Science",
+    "Biology"
+  ],
+  "reasoning_motifs": [
+    {
+      "value": "Data Augmentation → Model Generalizability",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Pre-trained Models → Task-specific Adaptation",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Patch-based Learning → Increased Training Data",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "general_principles": [
+    {
+      "value": "Data Representation Enhancement",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Knowledge Transfer",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Sample Diversity",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "failure_paths": [
+    {
+      "value": "failure: Applying HALO software for image segmentation Evidence: HALO software missed significant lung scaffold tissues and misinterpreted background pixels for lung scaffold",
+      "source": "cross_sdl_phase4",
+      "confidence": 0.75,
+      "evidence": ""
+    },
+    {
+      "value": "success: Using k-means clustering for image segmentation Evidence: k-means clustering produced nearly identical pixel classifications as multi-Otsu thresholding, a preferred method",
+      "source": "cross_sdl_phase4",
+      "confidence": 0.75,
+      "evidence": ""
+    }
+  ],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "acgold_7690053ac614",
+    "cross_sdl_reasoning_json": "/Users/sissifeng/Downloads/cross-sdl_knowledge_transfer_engine/data/reasoning/acgold_7690053ac614.json",
+    "cross_sdl_extraction_quality": 0.8,
+    "cross_sdl_notes": "The paper provides a structured approach to applying semantic segmentation to a specific problem in bioengineering, with clear problem formulation, hypothesis testing, and methodological details. However, some aspects of the exploration narrative had to be inferred from the results and discussion, particularly regarding initial attempts and motivations behind choosing specific models or techniques."
+  },
+  "validation": {
+    "score": 0.65,
+    "coverage": {
+      "source_summary": false,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": true,
+      "entities": true,
+      "materials": true,
+      "properties": false,
+      "measurements": false,
+      "conditions": false,
+      "mechanisms": true,
+      "outcomes": true,
+      "cross_sdl_match": true
+    },
+    "missing": [
+      "source_summary",
+      "hardware",
+      "properties",
+      "measurements",
+      "conditions"
+    ],
+    "notes": [
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

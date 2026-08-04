@@ -2,9 +2,15 @@
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Any
+from typing import Any, Literal
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, model_validator
+
+from app.attribution_evidence_contract import (
+    AttributionCentrality,
+    AttributionMetadataStatus,
+    AttributionPolarity,
+)
 
 
 class MatchedPerson(BaseModel):
@@ -105,10 +111,43 @@ class ClassificationOut(BaseModel):
     disagreement_type: str | None = None
     classification_dimensions: dict[str, str] = Field(default_factory=dict)
     future_rule_update: str | None = None
+    screening_stage: str | None = None
+    screening_route: str | None = None
+    screening_reason: str | None = None
 
 
 class HumanReviewIn(BaseModel):
-    human_label: str
+    human_label: str | None = None
+    sdl_judgement: Literal[
+        "CONFIRMED_SDL",
+        "PROBABLE_SDL",
+        "SDL_ADJACENT",
+        "NOT_SDL",
+        "INSUFFICIENT_EVIDENCE",
+    ] | None = None
+    ac_relevance_judgement: Literal[
+        "AC_RELEVANT",
+        "NOT_AC_RELEVANT",
+        "INSUFFICIENT_EVIDENCE",
+    ] | None = None
+    ai_for_science_judgement: Literal[
+        "AI_FOR_SCIENCE",
+        "NOT_AI_FOR_SCIENCE",
+        "INSUFFICIENT_EVIDENCE",
+    ] | None = None
+    review_status: Literal[
+        "PENDING", "PARTIAL", "COMPLETED", "NEEDS_FULLTEXT"
+    ] | None = None
+    evidence_level: Literal[
+        "TITLE_ONLY",
+        "ABSTRACT",
+        "FULLTEXT",
+        "SUPPORTING_INFORMATION",
+        "UNKNOWN",
+    ] | None = None
+    judgement_basis: Literal[
+        "DUAL_REVIEW", "AC_REPORTING", "STRICT_SDL", "OTHER"
+    ] | None = None
     corrected_topics: list[str] | None = None
     corrected_people: list[str] | None = None
     reviewer: str | None = None
@@ -117,6 +156,41 @@ class HumanReviewIn(BaseModel):
     rationale: str | None = None
     evidence: list[dict[str, Any]] | None = None
     future_rule_update: str | None = None
+
+    @model_validator(mode="after")
+    def validate_review_contract(self) -> "HumanReviewIn":
+        dimensional = any(
+            (
+                self.sdl_judgement,
+                self.ac_relevance_judgement,
+                self.ai_for_science_judgement,
+            )
+        )
+        if self.human_label is None and not dimensional:
+            raise ValueError(
+                "review must include a legacy human_label or an independent "
+                "SDL/AC/AI judgement"
+            )
+        if dimensional and (self.evidence_level is None or self.judgement_basis is None):
+            raise ValueError(
+                "independent judgements require evidence_level and judgement_basis"
+            )
+        if self.review_status == "COMPLETED" and (
+            self.sdl_judgement is None
+            or self.ac_relevance_judgement is None
+        ):
+            raise ValueError(
+                "COMPLETED review requires both SDL and AC judgements"
+            )
+        if self.review_status == "COMPLETED" and "INSUFFICIENT_EVIDENCE" in {
+            self.sdl_judgement,
+            self.ac_relevance_judgement,
+        }:
+            raise ValueError(
+                "INSUFFICIENT_EVIDENCE must use NEEDS_FULLTEXT rather than "
+                "COMPLETED"
+            )
+        return self
 
 
 class HumanReviewOut(HumanReviewIn):
@@ -153,6 +227,8 @@ class PaperOut(BaseModel):
     full_text_available: bool = False
     rag_status: RagStatusOut | None = None
     provenance: str = "csv"
+    source: str = "csv"
+    corpus_sources: list[str] = Field(default_factory=list)
     authors: list[PaperAuthorOut] = Field(default_factory=list)
     classification: ClassificationOut | None = None
     review: HumanReviewOut | None = None
@@ -321,15 +397,36 @@ class ThemeGrowthOut(BaseModel):
     delta_pct: float | str  # "inf" -> "new"
 
 
+class InstitutionCitationIndexOut(BaseModel):
+    institution_id: str
+    institution_name: str
+    paper_count: int
+    normalized_index: float
+
+
+class NormalizedCitationImpactOut(BaseModel):
+    metric_name: str
+    normalized_index: float | None = None
+    covered_papers: int
+    total_papers: int
+    coverage: float
+    snapshot_oldest_at: str | None = None
+    snapshot_newest_at: str | None = None
+    source_breakdown: dict[str, int] = Field(default_factory=dict)
+    by_institution: list[InstitutionCitationIndexOut] = Field(default_factory=list)
+
+
 class ImpactReportOut(BaseModel):
     yoy_attributed: GrowthSeriesOut
     yoy_by_label: list[GrowthSeriesOut] = Field(default_factory=list)
     citation_impact: GrowthSeriesOut
+    normalized_citation_impact: NormalizedCitationImpactOut
     emerging_institutions: list[EmergingEntityOut] = Field(default_factory=list)
     emerging_authors: list[EmergingEntityOut] = Field(default_factory=list)
     top_growing_themes: list[ThemeGrowthOut] = Field(default_factory=list)
     window_from: int | None = None
     window_to: int | None = None
+    audit: dict[str, Any] = Field(default_factory=dict)
 
 
 class TransferLabOut(BaseModel):
@@ -510,6 +607,7 @@ class DriftReportOut(BaseModel):
     per_year: list[YearTopicsOut] = Field(default_factory=list)
     drift_events: list[DriftEventOut] = Field(default_factory=list)
     drift_threshold: float
+    audit: dict[str, Any] = Field(default_factory=dict)
 
 
 class MissedPaperGroupOut(BaseModel):
@@ -524,6 +622,11 @@ class MetricTripleOut(BaseModel):
     label: str
     value: Any
     source_link: str
+
+
+class ReportMetricEvidenceOut(BaseModel):
+    metric: MetricTripleOut
+    audit: dict[str, Any] = Field(default_factory=dict)
 
 
 class ReportSectionOut(BaseModel):
@@ -543,6 +646,18 @@ class ReportOut(BaseModel):
 class ReportRequest(BaseModel):
     sections: list[str] | None = None
     backend: str | None = None  # "template" | "anthropic"
+    # D21 report corpus evidence policy.
+    report_evidence_mode: str | None = None
+    report_evidence_confidence_threshold: float | None = Field(
+        default=None, ge=0.0, le=1.0
+    )
+    report_evidence_sdl_judgements: list[str] = Field(default_factory=list)
+    report_evidence_include_model_only: bool = False
+    report_evidence_allow_needs_fulltext: bool = False
+    report_evidence_allow_abstract_only: bool = False
+    report_evidence_exclude_unreviewed_broad: bool = True
+    # D20 reporting entity selector.
+    report_entity: str | None = None
 
 
 # v0.7 — multi-graph explorer
@@ -578,6 +693,7 @@ class MultiGraphPayloadOut(BaseModel):
     available_node_types: list[str] = Field(default_factory=list)
     available_edge_types: list[str] = Field(default_factory=list)
     available_group_keys: list[str] = Field(default_factory=list)
+    audit: dict[str, Any] = Field(default_factory=dict)
 
 
 class SankeyNodeOut(BaseModel):
@@ -595,6 +711,7 @@ class SankeyLinkOut(BaseModel):
 class SankeyOut(BaseModel):
     nodes: list[SankeyNodeOut] = Field(default_factory=list)
     links: list[SankeyLinkOut] = Field(default_factory=list)
+    audit: dict[str, Any] = Field(default_factory=dict)
 
 
 class TimelineSeriesOut(BaseModel):
@@ -604,8 +721,10 @@ class TimelineSeriesOut(BaseModel):
 
 class TimelineOut(BaseModel):
     by: str
+    top_n: int
     years: list[int]
     series: list[TimelineSeriesOut]
+    audit: dict[str, Any] = Field(default_factory=dict)
 
 
 class InstitutionNodeOut(BaseModel):
@@ -628,6 +747,7 @@ class InstitutionEdgeOut(BaseModel):
 class InstitutionNetworkOut(BaseModel):
     nodes: list[InstitutionNodeOut] = Field(default_factory=list)
     edges: list[InstitutionEdgeOut] = Field(default_factory=list)
+    audit: dict[str, Any] = Field(default_factory=dict)
 
 
 class AnalyticsOverviewOut(BaseModel):
@@ -644,6 +764,52 @@ class GraphExplanationOut(BaseModel):
     citation_signals: list["CitationSignalOut"] = Field(default_factory=list)
     cites_corpus: list[str] = Field(default_factory=list)
     cited_by_corpus: list[str] = Field(default_factory=list)
+
+
+class AttributionTreeNodeOut(BaseModel):
+    node_id: str
+    parent_node_id: str | None = None
+    node_type: Literal["root", "section", "source"]
+    path: list[str]
+    section_type: str | None = None
+    title: str
+    summary: str | None = None
+    page_start: int | None = None
+    page_end: int | None = None
+    source_section_id: str | None = None
+    source_chunk_ids: list[str] = Field(default_factory=list)
+
+
+class AttributionEvidencePathOut(BaseModel):
+    generation_id: str
+    path_id: str
+    rank: int = Field(ge=1)
+    node_id: str
+    path: list[str]
+    evidence_type: str
+    polarity: AttributionPolarity
+    centrality: AttributionCentrality
+    quote: str
+    page_start: int | None = None
+    page_end: int | None = None
+    source_chunk_ids: list[str] = Field(default_factory=list)
+    raw_score: float
+    weight: float
+    confidence: float | None = Field(default=None, ge=0.0, le=1.0)
+    detector_type: str
+    metadata_status: AttributionMetadataStatus
+
+
+class AttributionEvidenceTreeOut(BaseModel):
+    paper_id: str
+    tree_version: str
+    generation_mode: Literal["derived_ephemeral"]
+    generation_id: str
+    metadata_contract_version: str
+    nodes: list[AttributionTreeNodeOut] = Field(default_factory=list)
+    evidence_paths: list[AttributionEvidencePathOut] = Field(default_factory=list)
+    evidence_review_recommended: bool = False
+    evidence_review_reasons: list[str] = Field(default_factory=list)
 
 
 class EvalMetric(BaseModel):
@@ -664,6 +830,16 @@ class EvalReport(BaseModel):
     evidence_recall_at_k: float | None = None
     k: int = 5
     n_evaluated: int
+    dataset_role: Literal["frozen_holdout", "diagnostic"] = "diagnostic"
+    dataset_id: str = "in_memory"
+    dataset_hash: str | None = None
+    includes_silver: bool = False
+    label_scope: str = "UNSPECIFIED"
+    annotation_sources: list[str] = Field(default_factory=list)
+    evidence_levels: list[str] = Field(default_factory=list)
+    allowed_claim: str = (
+        "Label scope is unspecified; metrics are diagnostic only."
+    )
 
 
 class NetworkNode(BaseModel):
@@ -671,7 +847,14 @@ class NetworkNode(BaseModel):
     label: str
     is_ac_member: bool
     institution: str | None = None
+    institution_id: str | None = None
     paper_count: int
+    corpus_paper_count: int = 0
+    ac_core_citing_paper_count: int = 0
+    citation_affinity: float = 0.0
+    reference_evidence_paper_count: int = 0
+    citation_reference_coverage: float = 0.0
+    active_years: list[int] = Field(default_factory=list)
     ppr_score: float = 0.0
     c_norm: float = 1.0
     cross_sdl_diversity: float = 0.0
@@ -682,6 +865,7 @@ class NetworkNode(BaseModel):
     importance_radar_axes: list[dict] = Field(default_factory=list)
     importance_explanation: str = ""
     importance_weights: dict[str, float] = Field(default_factory=dict)
+    importance_rank: int = 0
 
 
 class NetworkEdge(BaseModel):
@@ -697,6 +881,7 @@ class NetworkEdge(BaseModel):
 class NetworkOut(BaseModel):
     nodes: list[NetworkNode]
     edges: list[NetworkEdge]
+    audit: dict[str, Any] = Field(default_factory=dict)
 
 
 # ─── Cross-SDL transfer studio ────────────────────────────────────────────────

@@ -1,0 +1,286 @@
+{
+  "paper_id": "acfocus_22a6c87e4468",
+  "title": "DELFI: a computer oracle for recommending density functionals for excited states calculations",
+  "metadata": {
+    "doi": "10.1039/d3sc06440a",
+    "url": "https://xlink.rsc.org/?DOI=D3SC06440A",
+    "year": "2024",
+    "authors": "Avagliano D, Skreta M, Arellano-Rubach S, Aspuru-Guzik A",
+    "venue": "Chemical Science",
+    "category": "Journal article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Alán Aspuru-Guzik"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance"
+    ],
+    "flags": {
+      "acknowledges_ac": "checked",
+      "highly_relevant": "checked",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "The authors developed DELFI, a neural network-based tool that uses a novel scoring system and a large open database to recommend and rank functionals for TD-DFT excited state calculations of organic molecules, simplifying and accelerating the selection process for accurate photophysical property predictions.",
+  "abstract": "Density functional theory (DFT) is the workhorse of computational quantum chemistry. One of its main limitations is that choosing the right functional is a non-trivial task left for human experts. The choice is particularly hard for excited state calculations when using its time-dependent formulation (TD-DFT). This is due to the approximations of the method, but also because the photophysical properties of a molecule are defined by a manifold of states that all need to be properly described. This includes not only the relative energy of the states, but also capturing the correct character, order, and intensity of the transitions. In this work, we developed a neural network to recommend functionals to be used on molecules for TD-DFT calculations, by simultaneously considering all these properties for a manifold of states. This was possible by developing a scoring system to define the accuracy of an excited state's calculation against a higher-accuracy reference. The scoring system is generalizable to any level of theory; we here applied it to evaluate the performance of common functionals of different rungs against a higher accuracy method on a large set of organic molecules. The results are collected in a database that we released and made open, providing four million data points to the community for future applications. The scoring system assigns a value between zero and one hundred to each functional for each molecule, transforming the complicated task of learning photophysical properties into a simpler regression task. We used the dataset to train a graph attention neural network to predict the scores for unseen molecules. We call this oracle DELFI (Data-driven EvaLuation of Functionals by Inference), which can be used to quickly screen and predict the ranking of functionals to calculate the optical properties of organic molecules. We validated DELFI in two in silico experiments: choosing a common functional for a series of spiropyran-merocyanine isomers and a unique functional to screen a large dataset of over 50 000 organic photovoltaic molecules, for which an extensive benchmark would be unfeasible. A corresponding web application allows DELFI to be easily run and the results to be analyzed, alleviating the hurdle of choosing the right functional for TD-DFT calculations.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "Develop a scoring system to define the accuracy of an excited state's calculation against a higher-accuracy reference and train a graph attention neural network on a large dataset of molecular calculations.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "problems": [
+    {
+      "value": "Choosing the right functional for time-dependent density functional theory (TD-DFT) excited state calculations is a non-trivial task left for human experts.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "hypotheses": [
+    {
+      "value": "A neural network can be developed to recommend functionals for TD-DFT calculations by considering photophysical properties of molecules.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "evidence": [
+    {
+      "value": "The scoring system assigns a value between zero and one hundred to each functional for each molecule, and the trained model (DELFI) can predict the ranking of functionals for calculating the optical properties of organic molecules.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "conclusions": [
+    {
+      "value": "DELFI can be used to quickly screen and predict the ranking of functionals for TD-DFT calculations, reducing the need for extensive benchmarks.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "entities": [
+    {
+      "value": "Density functionals",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Excited states",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Molecular properties",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Neural network model (DELFI)",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "DELFI: a computer oracle for recommending density functionals for excited states calculations The authors developed DELFI, a neural network-based tool that uses a novel scoring system and a large open database to recommend and rank functionals for TD-DFT excited state calculations of organic molecules, simplifying and accelerating the selection process for accurate photophysical property predictions.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "This is due to the approximations of the method, but also because the photophysical properties of a molecule are defined by a manifold of states that all need to be properly described.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "In this work, we developed a neural network to recommend functionals to be used on molecules for TD-DFT calculations, by simultaneously considering all these properties for a manifold of states.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [
+    {
+      "value": "DELFI: a computer oracle for recommending density functionals for excited states calculations The authors developed DELFI, a neural network-based tool that uses a novel scoring system and a large open database to recommend and rank functionals for TD-DFT excited state calculations of organic molecules, simplifying and accelerating the selection process for accurate photophysical property predictions.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "This is due to the approximations of the method, but also because the photophysical properties of a molecule are defined by a manifold of states that all need to be properly described.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "This includes not only the relative energy of the states, but also capturing the correct character, order, and intensity of the transitions.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "In this work, we developed a neural network to recommend functionals to be used on molecules for TD-DFT calculations, by simultaneously considering all these properties for a manifold of states.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "This was possible by developing a scoring system to define the accuracy of an excited state's calculation against a higher-accuracy reference.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [
+    {
+      "value": "We validated DELFI in two in silico experiments: choosing a common functional for a series of spiropyran-merocyanine isomers and a unique functional to screen a large dataset of over 50 000 organic photovoltaic molecules, for which an extensive benchmark would be unfeasible.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Density functionals Excited states Molecular properties Neural network model (DELFI) Quantitative assessment of functional performance Automated prediction of suitable functionals for TD-DFT calculations Reduction in the need for extensive benchmarking of functionals",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "conditions": [
+    {
+      "value": "The choice is particularly hard for excited state calculations when using its time-dependent formulation (TD-DFT).",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "mechanisms": [
+    {
+      "value": "Scoring system development for excited state calculations",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Neural network training on molecular property data",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Functional recommendation based on molecular properties",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "outcomes": [
+    {
+      "value": "Quantitative assessment of functional performance",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Automated prediction of suitable functionals for TD-DFT calculations",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Reduction in the need for extensive benchmarking of functionals",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "Artificial Intelligence & Data Science",
+    "Chemistry"
+  ],
+  "reasoning_motifs": [
+    {
+      "value": "Data Integration → Model Accuracy",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Pattern Recognition → Prediction Improvement",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "general_principles": [
+    {
+      "value": "Data-Driven Prediction Enhancement",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Model Generalization from Training Data",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "failure_paths": [
+    {
+      "value": "success: Benchmarking of functionals against higher-level methods or experimental results for each excited state. Evidence: This approach is prohibitive when studying large-size molecular systems or screening the optical properties of a large set of molecules.",
+      "source": "cross_sdl_phase4",
+      "confidence": 0.75,
+      "evidence": ""
+    },
+    {
+      "value": "partial: Using general qualitative indexes or focusing on specific types of excitations. Evidence: These approaches always require actually running the calculations a priori and might leave out the outperforming functional.",
+      "source": "cross_sdl_phase4",
+      "confidence": 0.75,
+      "evidence": ""
+    }
+  ],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "acgold_bdc06b3a427a",
+    "cross_sdl_reasoning_json": "/Users/sissifeng/Downloads/cross-sdl_knowledge_transfer_engine/data/reasoning/acgold_bdc06b3a427a.json",
+    "cross_sdl_extraction_quality": 0.8,
+    "cross_sdl_notes": "The paper presents a clear structure of the problem, hypothesis, and the approach taken to develop DELFI. However, some details of the neural network architecture and training process were simplified in the extraction to fit the structured format."
+  },
+  "validation": {
+    "score": 0.9,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": true,
+      "entities": true,
+      "materials": true,
+      "properties": true,
+      "measurements": true,
+      "conditions": true,
+      "mechanisms": true,
+      "outcomes": true,
+      "cross_sdl_match": true
+    },
+    "missing": [
+      "hardware"
+    ],
+    "notes": [
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

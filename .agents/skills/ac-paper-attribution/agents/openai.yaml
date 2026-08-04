@@ -1,0 +1,4 @@
+interface:
+  display_name: "AC Paper Attribution"
+  short_description: "Auditable AC paper attribution and review routing"
+  default_prompt: "Use $ac-paper-attribution to determine whether a paper belongs to AC and return auditable evidence."

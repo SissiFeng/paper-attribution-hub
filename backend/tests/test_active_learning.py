@@ -1,8 +1,6 @@
-"""v0.7 active learning: negative-keyword harvest, eval append, retrain hook,
-and positive-vocabulary mining."""
+"""v0.7 active learning: review feedback, retrain hook, and vocabulary mining."""
 import os
 import uuid
-from pathlib import Path
 
 from sqlalchemy import select
 
@@ -41,15 +39,17 @@ def test_negative_keyword_harvest_targets_top_topic(seeded_session):
     assert isinstance(additions, list)
 
 
-def test_on_review_submitted_runs_without_raising(seeded_session, tmp_path, monkeypatch):
-    # Redirect the eval_labels CSV to a temp file so we don't mutate the real one.
+def test_on_review_submitted_keeps_frozen_holdout_unchanged(
+    seeded_session, tmp_path, monkeypatch
+):
     from app.config import settings
 
     fake_csv = tmp_path / "eval_labels.csv"
     fake_csv.write_text(
-        "paper_id,gold_label,gold_topics,notes\nP001,CORE_RELEVANT,,seed\n"
+        "paper_id,gold_label,gold_topics,notes\nP999,CORE_RELEVANT,,seed\n"
     )
     monkeypatch.setattr(settings, "eval_labels_csv", fake_csv)
+    original_holdout = fake_csv.read_text(encoding="utf-8")
 
     from app.services.relevance_classifier import classify_all
 
@@ -72,9 +72,93 @@ def test_on_review_submitted_runs_without_raising(seeded_session, tmp_path, monk
         reviewer="ssf",
     )
     assert isinstance(out, dict)
-    assert "P001" in out["eval_labels_updated"]
-    # eval_labels.csv now contains the new label.
-    assert "EXCLUDE" in fake_csv.read_text()
+    assert "P001" in out["training_feedback_recorded"]
+    assert fake_csv.read_text(encoding="utf-8") == original_holdout
+
+
+def test_on_review_submitted_does_not_learn_from_holdout(
+    seeded_session, tmp_path, monkeypatch
+):
+    from app.config import settings
+    from app.services.relevance_classifier import classify_all
+
+    holdout = tmp_path / "eval_labels.csv"
+    holdout.write_text(
+        "paper_id,gold_label,gold_topics,notes\n"
+        "P001,CORE_RELEVANT,,frozen holdout\n",
+        encoding="utf-8",
+    )
+    monkeypatch.setattr(settings, "eval_labels_csv", holdout)
+    classify_all(seeded_session)
+    seeded_session.add(
+        HumanReview(
+            id=f"rev_{uuid.uuid4().hex[:8]}",
+            paper_id="P001",
+            human_label="EXCLUDE",
+        )
+    )
+    seeded_session.commit()
+
+    out = on_review_submitted(
+        seeded_session,
+        "P001",
+        new_label="EXCLUDE",
+        previous_label="CORE_RELEVANT",
+        reviewer="ssf",
+    )
+
+    assert out["training_feedback_recorded"] == []
+    assert out["negative_keywords_added"] == []
+    assert any("holdout paper" in warning for warning in out["warnings"])
+
+
+def test_automatic_keyword_mutation_is_off_by_default(
+    seeded_session,
+    tmp_path,
+    monkeypatch,
+):
+    from app.config import settings
+    from app.services.relevance_classifier import classify_all
+
+    header = "paper_id,gold_label,gold_topics,notes\n"
+    training = tmp_path / "training_labels.csv"
+    validation = tmp_path / "validation_labels.csv"
+    holdout = tmp_path / "eval_labels.csv"
+    for path in (training, validation, holdout):
+        path.write_text(header, encoding="utf-8")
+    monkeypatch.setattr(settings, "training_labels_csv", training)
+    monkeypatch.setattr(settings, "validation_labels_csv", validation)
+    monkeypatch.setattr(settings, "eval_labels_csv", holdout)
+    monkeypatch.delenv("PAS_ACTIVE_KEYWORD_HARVEST", raising=False)
+    classify_all(seeded_session)
+    review = HumanReview(
+        id="rev_no_keyword_mutation",
+        paper_id="P003",
+        human_label="EXCLUDE",
+        reviewer="ssf",
+    )
+    seeded_session.add(review)
+    seeded_session.commit()
+    before = {
+        topic.id: list(topic.negative_keywords or [])
+        for topic in seeded_session.execute(select(Topic)).scalars()
+    }
+
+    actions = on_review_submitted(
+        seeded_session,
+        "P003",
+        new_label="EXCLUDE",
+        previous_label="RELATED_RELEVANT",
+        reviewer="ssf",
+        run_retraining=False,
+    )
+    after = {
+        topic.id: list(topic.negative_keywords or [])
+        for topic in seeded_session.execute(select(Topic)).scalars()
+    }
+
+    assert actions["negative_keywords_added"] == []
+    assert after == before
 
 
 def test_review_endpoint_optional_active_learning(seeded_session):
@@ -86,13 +170,37 @@ def test_review_endpoint_optional_active_learning(seeded_session):
 
 def test_maybe_retrain_after_ten_reviews(seeded_session, tmp_path, monkeypatch):
     from app.config import settings
+    from app.services import model_evolution
+    from app.services.model_evolution import (
+        PromotionDecision,
+        record_training_feedback,
+    )
 
-    fake_csv = tmp_path / "eval_labels.csv"
+    fake_csv = tmp_path / "training_labels.csv"
     fake_csv.write_text("paper_id,gold_label,gold_topics,notes\n", encoding="utf-8")
+    fake_holdout = tmp_path / "eval_labels.csv"
+    fake_holdout.write_text(
+        "paper_id,gold_label,gold_topics,notes\n", encoding="utf-8"
+    )
     model_path = tmp_path / "learned_classifier.joblib"
-    monkeypatch.setattr(settings, "eval_labels_csv", fake_csv)
+    monkeypatch.setattr(settings, "training_labels_csv", fake_csv)
+    monkeypatch.setattr(settings, "eval_labels_csv", fake_holdout)
     monkeypatch.setenv("PAS_LEARNED_MODEL_PATH", str(model_path))
+    monkeypatch.setenv("PAS_MODEL_REGISTRY_DIR", str(tmp_path / "registry"))
     monkeypatch.setenv("PAS_ACTIVE_RETRAIN_EVERY", "10")
+    monkeypatch.setattr(
+        model_evolution,
+        "evaluate_candidate_for_promotion",
+        lambda *args, **kwargs: PromotionDecision(
+            accepted=True,
+            reason="test promotion",
+            evaluation_scope="trigger_batch_oof",
+            candidate_metrics={"accuracy": 1.0, "macro_f1": 1.0},
+            incumbent_metrics={"accuracy": 0.0, "macro_f1": 0.0},
+            validation_candidate_metrics=None,
+            validation_incumbent_metrics=None,
+        ),
+    )
 
     labels = [
         "CORE_RELEVANT",
@@ -107,19 +215,28 @@ def test_maybe_retrain_after_ten_reviews(seeded_session, tmp_path, monkeypatch):
         "UNCERTAIN",
     ]
     for idx, label in enumerate(labels, start=1):
-        seeded_session.add(
-            HumanReview(
-                id=f"rev_train_{idx}",
-                paper_id=f"P{idx:03d}",
-                human_label=label,
-                reviewer="ssf",
-            )
+        review = HumanReview(
+            id=f"rev_train_{idx}",
+            paper_id=f"P{idx:03d}",
+            human_label=label,
+            reviewer="ssf",
         )
-    seeded_session.commit()
+        seeded_session.add(review)
+        seeded_session.commit()
+        record_training_feedback(
+            seeded_session,
+            paper_id=review.paper_id,
+            review_id=review.id,
+            human_label=label,
+            reviewer=review.reviewer,
+            incumbent_label=None,
+            incumbent_confidence=None,
+        )
 
     out = maybe_retrain(seeded_session)
 
-    assert out == str(model_path)
+    assert out is not None
+    assert out.status == "PROMOTED"
     assert model_path.exists()
 
 

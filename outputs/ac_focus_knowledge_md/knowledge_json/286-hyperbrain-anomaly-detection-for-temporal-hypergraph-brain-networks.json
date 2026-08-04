@@ -1,0 +1,138 @@
+{
+  "paper_id": "acfocus_1c6986325867",
+  "title": "HyperBrain: Anomaly Detection for Temporal Hypergraph Brain Networks",
+  "metadata": {
+    "doi": "10.1007/978-3-031-78761-4_4",
+    "url": "https://dl.acm.org/doi/10.1007/978-3-031-78761-4_4",
+    "year": "2025",
+    "authors": "S. Sadeghian; X. Li; M. Seltzer",
+    "venue": "Lecture Notes in Computer Science (including subseries Lecture Notes in Artificial Intelligence and Lecture Notes in Bioinformatics)",
+    "category": "Conference Proceedings",
+    "peer_reviewed": "Non Peer Reviewed",
+    "ac_members": [
+      "Margo Seltzer"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "HyperBrain is an unsupervised anomaly detection framework that models fMRI data as temporal hypergraphs to capture dynamic, higher-order brain interactions, outperforming existing methods in detecting abnormal co-activations linked to brain disorders like Autism and ADHD.",
+  "abstract": "Identifying unusual brain activity is a crucial task in neuroscience research, as it aids in the early detection of brain disorders. It is common to represent brain networks as graphs, and researchers have developed various graph-based machine learning methods for analyzing them. However, the majority of existing graph learning tools for the brain face a combination of the following three key limitations. First, they focus only on pairwise correlations between regions of the brain, limiting their ability to capture synchronized activity among larger groups of regions. Second, they model the brain network as a static network, overlooking the temporal changes in the brain. Third, most are designed only for classifying brain networks as healthy or disordered, lacking the ability to identify abnormal brain activity patterns linked to biomarkers associated with disorders. To address these issues, we present HyperBrain, an unsupervised anomaly detection framework for temporal hypergraph brain networks. HyperBrain models fMRI time series data as temporal hypergraphs capturing dynamic higher-order interactions. It then uses a novel customized temporal walk (BrainWalk) and neural encodings to detect abnormal co-activations among brain regions. We evaluate the performance of HyperBrain in both synthetic and real-world settings for Autism Spectrum Disorder and Attention Deficit Hyperactivity Disorder (ADHD). HyperBrain outperforms all other baselines on detecting abnormal co-activations in brain networks. Furthermore, results obtained from HyperBrain are consistent with clinical research on these brain disorders. Our findings suggest that learning temporal and higher-order connections in the brain provides a promising approach to uncover intricate connectivity patterns in brain networks, offering improved diagnosis. Our code is available at: https://github.com/ubc-systopia/HyperBrain. © The Author(s), under exclusive license to Springer Nature Switzerland AG 2025.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "HyperBrain is an unsupervised anomaly detection framework that models fMRI data as temporal hypergraphs to capture dynamic, higher-order brain interactions, outperforming existing methods in detecting abnormal co-activations linked to brain disorders like Autism and ADHD.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Artificial Intelligence & Data Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Biology",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [],
+  "properties": [
+    {
+      "value": "Identifying unusual brain activity is a crucial task in neuroscience research, as it aids in the early detection of brain disorders.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "First, they focus only on pairwise correlations between regions of the brain, limiting their ability to capture synchronized activity among larger groups of regions.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Third, most are designed only for classifying brain networks as healthy or disordered, lacking the ability to identify abnormal brain activity patterns linked to biomarkers associated with disorders.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [],
+  "conditions": [
+    {
+      "value": "HyperBrain models fMRI time series data as temporal hypergraphs capturing dynamic higher-order interactions.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "mechanisms": [],
+  "outcomes": [
+    {
+      "value": "Therapeutics",
+      "source": "csv_applied_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "Artificial Intelligence & Data Science",
+    "Biology",
+    "Therapeutics"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.54,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": false,
+      "properties": true,
+      "measurements": false,
+      "conditions": true,
+      "mechanisms": false,
+      "outcomes": true,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "materials",
+      "measurements",
+      "mechanisms",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

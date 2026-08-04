@@ -1,0 +1,282 @@
+{
+  "paper_id": "acfocus_9a1b75082acf",
+  "title": "The generative quantum eigensolver (GQE) and its application for ground state search",
+  "metadata": {
+    "doi": "10.48550/arxiv.2401.09253",
+    "url": "https://arxiv.org/abs/2401.09253",
+    "year": "2024",
+    "authors": "Nakaji K, Kristensen LB, Campos-Gonzalez-Angulo JA, Vakili MG, Huang H, Bagherimehrab M, Gorgulla C, Wong F, McCaskey A, Kim J-S, Nguyen T, Rao P, Aspuru-Guzik A",
+    "venue": "arxiv",
+    "category": "Preprint",
+    "peer_reviewed": "Non Peer Reviewed",
+    "ac_members": [
+      "Alán Aspuru-Guzik"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "",
+  "abstract": "The generative quantum eigensolver (GQE) and its\napplication for ground state search\nKouhei Nakaji1,2,3,9, Lasse Bjørn Kristensen1,4, Ryota Kemmoku3, Jorge A.\nCampos-Gonzalez-Angulo ∗1, Mohammad Ghazi Vakili ∗1,4, Haozhe Huang ∗4,5, Mohsen\nBagherimehrab †1,4, Christoph Gorgulla †6,7, FuTe Wong4,8, Alex McCaskey9, Jin-Sung Kim9,\nThien Nguyen9, Pooja Rao9, Qi Gao3, 13, Michihiko Sugawara3, Naoki Yamamoto3, and Alan\nAspuru-Guzik1,4,5,10,11,12,9\n1 Chemical Physics Theory Group, Department of Chemistry, University of Toronto, Toronto, Ontario, Canada\n2Research Center for Emerging Computing Technologies, National Institute of Advanced Industrial Science and\nTechnology (AIST), 1-1-1 Umezono, Tsukuba, Ibaraki, Japan\n3Quantum Computing Center, Keio University, 3-14-1 Hiyoshi, Kohoku-ku, Yokohama, Kanagawa, Japan\n4Department of Computer Science, University of Toronto, Toronto, Ontario, Canada\n5Vector Institute for Artificial Intelligence, Toronto, Ontario, Canada\n6Department of Physics, Faculty of Arts and Sciences, Harvard University, Cambridge, Massachusetts, USA\n7Department of Structural Biology, St. Jude Children’s Research Hospital, Memphis, Tennessee, USA\n8Institute of Medical Science, University of Toronto, Toronto, Ontario, Canada\n9NVIDIA, Santa Clara, California, USA\n10Department of Chemical Engineering & Applied Chemistry, University of Toronto, Toronto, Ontario, Canada\n11Department of Materials Science & Engineering, University of Toronto, Toronto, Ontario, Canada\n12Lebovic Fellow, Canadian Institute for Advanced Research, Toronto, Ontario, Canada\n13Mitsubishi Chemical Corporation, Science & Innovation Center, 1000, Kamoshida-cho, Aoba-ku, Yokohama\n227-8502, Japan\nAbstract\nWe introduce the generative quantum eigensolver\n(GQE), a new quantum computational framework\nthat operates outside the variational quantum al-\ngorithm paradigm by applying classical genera-\ntive models to quantum simulation.\nThe GQE\nalgorithm optimizes a classical generative model\nto produce quan",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "The authors propose a transformer-based implementation of GQE, named GPT-QE, and demonstrate its training and pretraining on electronic structure Hamiltonians, comparing its performance to coupled cluster singles and doubles (CCSD) methods.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "problems": [
+    {
+      "value": "Developing a quantum computational framework that operates outside the variational quantum algorithm paradigm by applying classical generative models to quantum simulation for ground state search.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "hypotheses": [
+    {
+      "value": "A generative quantum eigensolver (GQE) can optimize a classical generative model to produce quantum circuits with desired properties, potentially overcoming limitations of variational quantum algorithms.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "evidence": [
+    {
+      "value": "GPT-QE outperforms CCSD in the strong bond dissociation regime of the nitrogen molecule and approaches chemical accuracy, as shown in Figures 4, 5, and 6.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "conclusions": [
+    {
+      "value": "GPT-QE demonstrates the ability to find a quantum state with energy close to that of the ground state, offering a new approach to quantum circuit generation that leverages classical generative models.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "entities": [
+    {
+      "value": "GPT-QE model",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Quantum circuits",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Electronic structure Hamiltonians",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Pauli operators",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Unitary operators",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "GPT-QE outperforms CCSD in the strong bond dissociation regime of the nitrogen molecule and approaches chemical accuracy, as shown in Figures 4, 5, and 6.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [
+    {
+      "value": "GPT-QE outperforms CCSD in the strong bond dissociation regime of the nitrogen molecule and approaches chemical accuracy, as shown in Figures 4, 5, and 6.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [
+    {
+      "value": "GPT-QE model Quantum circuits Electronic structure Hamiltonians Pauli operators Unitary operators Improved trainability for large problem instances Approximation of ground state energies Reduction in measurement cost Potential for incorporating domain knowledge into circuit generation",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "conditions": [],
+  "mechanisms": [
+    {
+      "value": "Transformer-based generative model optimization",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Quantum circuit generation via sequence sampling",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Energy estimation using Pauli expectation values",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Operator pool construction from unitary coupled-cluster single and double excitations",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "outcomes": [
+    {
+      "value": "Improved trainability for large problem instances",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Approximation of ground state energies",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Reduction in measurement cost",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Potential for incorporating domain knowledge into circuit generation",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "Quantum",
+    "Chemistry",
+    "Physics"
+  ],
+  "reasoning_motifs": [
+    {
+      "value": "Model Optimization → Performance Improvement",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Circuit Generation → Energy Approximation",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Data Reuse → Computational Efficiency",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Knowledge Incorporation → Problem-specific Solutions",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "general_principles": [
+    {
+      "value": "Optimization Leads to Improvement",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Representation Reuse Enhances Efficiency",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Adaptation to Constraints Enables Specificity",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "failure_paths": [
+    {
+      "value": "success: Comparing GRPO and Logit Matching loss functions for N2 at bond length 1.5 ˚A. Evidence: GRPO consistently outperforms Logit Matching across all gate counts, achieving lower energy values and demonstrating better convergence properties.",
+      "source": "cross_sdl_phase4",
+      "confidence": 0.75,
+      "evidence": ""
+    },
+    {
+      "value": "success: Investigating the effect of pre-training data ratio on energy evaluation count for N2 at bond length 1.05 ˚A. Evidence: Using pre-constructed data significantly reduces the number of energy evaluations needed to achieve chemical accuracy.",
+      "source": "cross_sdl_phase4",
+      "confidence": 0.75,
+      "evidence": ""
+    },
+    {
+      "value": "success: Validating the practical applicability of GPT-QE on the IBM 127-qubit backend for the H2 molecule. Evidence: Calculations performed on ibm kawasaki closely reproduce the exact energy values, demonstrating successful training on the quantum device.",
+      "source": "cross_sdl_phase4",
+      "confidence": 0.75,
+      "evidence": ""
+    }
+  ],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "acgold_1837509052d6",
+    "cross_sdl_reasoning_json": "/Users/sissifeng/Downloads/cross-sdl_knowledge_transfer_engine/data/reasoning/acgold_1837509052d6.json",
+    "cross_sdl_extraction_quality": 0.9,
+    "cross_sdl_notes": "The paper presents a structured approach to developing and testing GPT-QE, with clear hypotheses, methods, and results. The reasoning is explicit, and the conclusions are well-supported by the data presented."
+  },
+  "validation": {
+    "score": 0.78,
+    "coverage": {
+      "source_summary": false,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": true,
+      "entities": true,
+      "materials": true,
+      "properties": true,
+      "measurements": true,
+      "conditions": false,
+      "mechanisms": true,
+      "outcomes": true,
+      "cross_sdl_match": true
+    },
+    "missing": [
+      "source_summary",
+      "hardware",
+      "conditions"
+    ],
+    "notes": [
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

@@ -1,0 +1,128 @@
+{
+  "paper_id": "acfocus_a83c48442bd5",
+  "title": "PEG-Grafted Oligolysines Stabilize DNA Origami While Enhancing Receptor-Specific Cell Binding",
+  "metadata": {
+    "doi": "10.1021/jacs.5c07566",
+    "url": "https://pubs.acs.org/doi/10.1021/jacs.5c07566",
+    "year": "2025",
+    "authors": "M. G. Moghadam; T. R. Douglas; S. Alexander; L. K. Fiddes; G. Tilstra; O. F. Khan; L. Y. T. Chou",
+    "venue": "Journal of the American Chemical Society",
+    "category": "Journal Article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Leo Chou"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member"
+    ],
+    "flags": {
+      "acknowledges_ac": "checked",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "Researchers developed a library of polyethylene glycol (PEG)-grafted oligolysine coatings that significantly enhance the stability and receptor-specific cell binding of DNA nanostructures, identifying optimal formulations that outperform existing coatings and establishing a multiparametric design framework for biostable, targeted DNA nanodevices.",
+  "abstract": "DNA nanostructures (DNs) offer programmable platforms for targeted biomedical applications, but their limited stability under physiological conditions has hindered their utility. Protective surface modifiers, or “coatings”, can improve DN stability but often impede access of surface-displayed ligands to cell receptors, reducing receptor engagement and target cell binding. Here, we report polyethylene glycol (PEG)-grafted oligolysine coatings that simultaneously enhance DN structural stability and preserve receptor-specific cell binding. We synthesized a 36-member coating library varying in lysine valency, PEG molecular weight, and grafting density, and identified three formulations that bound DNs with ∼ 6-fold higher affinity and conferred ∼ 30-fold greater cargo stability than the widely used K<inf>10</inf>-b-PEG<inf>5k</inf> block copolymer. When functionalized with antibodies, coated DNs selectively engaged Fcγ receptors on DC2.4 dendritic cells─a phagocytic cell line prone to nonspecific interactions with uncoated DNs─achieving a 12-fold increase in binding specificity relative to K<inf>10</inf>-b-PEG<inf>5k</inf>. Statistical modeling revealed that optimal performance required coordinated tuning of multiple parameters, underscoring the importance of multiparametric design. This work identifies improved protective coatings for DNA origami and establishes a design framework for engineering biostable, receptor-targeted DNA nanodevices for biological applications. © 2025 American Chemical Society",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "Researchers developed a library of polyethylene glycol (PEG)-grafted oligolysine coatings that significantly enhance the stability and receptor-specific cell binding of DNA nanostructures, identifying optimal formulations that outperform existing coatings and establishing a multiparametric design framework for biostable, targeted DNA nanodevices.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [],
+  "materials": [],
+  "properties": [
+    {
+      "value": "PEG-Grafted Oligolysines Stabilize DNA Origami While Enhancing Receptor-Specific Cell Binding Researchers developed a library of polyethylene glycol (PEG)-grafted oligolysine coatings that significantly enhance the stability and receptor-specific cell binding of DNA nanostructures, identifying optimal formulations that outperform existing coatings and establishing a multiparametric design framework for biostable, targeted DNA nanodevices.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "DNA nanostructures (DNs) offer programmable platforms for targeted biomedical applications, but their limited stability under physiological conditions has hindered their utility.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Protective surface modifiers, or “coatings”, can improve DN stability but often impede access of surface-displayed ligands to cell receptors, reducing receptor engagement and target cell binding.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Here, we report polyethylene glycol (PEG)-grafted oligolysine coatings that simultaneously enhance DN structural stability and preserve receptor-specific cell binding.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "We synthesized a 36-member coating library varying in lysine valency, PEG molecular weight, and grafting density, and identified three formulations that bound DNs with ∼ 6-fold higher affinity and conferred ∼ 30-fold greater cargo stability than the widely used K<inf>10</inf>-b-PEG<inf>5k</inf> block copolymer.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [],
+  "conditions": [
+    {
+      "value": "DNA nanostructures (DNs) offer programmable platforms for targeted biomedical applications, but their limited stability under physiological conditions has hindered their utility.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "mechanisms": [],
+  "outcomes": [],
+  "sdl_tags": [],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.41,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": false,
+      "materials": false,
+      "properties": true,
+      "measurements": false,
+      "conditions": true,
+      "mechanisms": false,
+      "outcomes": false,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "entities",
+      "materials",
+      "measurements",
+      "mechanisms",
+      "outcomes",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

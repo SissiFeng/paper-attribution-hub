@@ -4,8 +4,14 @@ Evidence-based paper attribution pipeline with structured analytics, proactive m
 
 Six layers, deliberately not mixed: visualization (ECharts) → analytics (SQL + NetworkX) → graph (`graph_service`) → persistence → external enrichment → **reporting & intelligence (v0.6)**. The RAG / LLM layer is parallel — it only narrates structured numbers; it never invents edges or digits. See `docs/research_intelligence_design.md` for the v0.6 contract.
 
+The global bottom-right chat is stricter than the separate Graph-RAG workspace:
+it uses deterministic, allow-listed, parameter-bound Text-to-SQL and renders
+answers directly from returned rows. It never invokes an LLM and fails closed
+when a question cannot be mapped to an approved query template.
+
 **v0.1**: CSV metadata ingestion, entity normalization, multi-signal matching, rule-based classification, review API, CSV export, co-author network.
-**v0.2**: PDF/text full-text ingestion, section-aware chunking, TF-IDF embeddings, BM25+cosine hybrid retrieval, evidence extractor, classifier extension with `fulltext_evidence_score`, gold-standard eval.
+**v0.2**: PDF/text full-text ingestion, section-aware chunking, TF-IDF embeddings, BM25+cosine hybrid retrieval, evidence extractor, classifier extension with `fulltext_evidence_score`, versioned reference-set evaluation.
+**P2 screening**: broad-corpus scoring persists an auditable route for every classified paper; only positive, uncertain, or full-text-needed subsets enter human review.
 **v0.3**: citation graph + `ac_core_papers`, second-degree collaborator detection, citation-based attribution rules, unified `PaperFilter`, analytics endpoints, Graph-RAG explanation, ECharts dashboard.
 **v0.4**: GROBID adapter with PyMuPDF fallback, contextual chunking, domain-aware retokenization, proposition extractor, optional cross-encoder reranker, `/papers/{id}/propositions` API.
 **v0.5**: OpenAlex / Semantic Scholar / Crossref clients with SQLite-backed cache, source reliability ladder, author disambiguation hardening (ORCID-first), hybrid discovery service (cite-of-core / ac-coauthor / S2 recommendations), `/discovery` API + page, paper `provenance` tracking.
@@ -109,14 +115,25 @@ POST /reviews/{paper_id}/skip    # defer for cooldown_days
 POST /reviews/{paper_id}         # correct label (existing endpoint)
 ```
 
-`POST /reviews/{paper_id}` (label correction) feeds the **active learning
-loop**: it appends the new label to `eval_labels.csv`, harvests negative
-keywords from the abstract, locks the classification so the daily pipeline
-won't overwrite it, and retrains the learned classifier every N reviews
-(`PAS_ACTIVE_LEARNING=1` to enable, `PAS_ACTIVE_RETRAIN_EVERY=5` to tune).
+`POST /reviews/{paper_id}` and the confirm endpoint feed the **active learning
+loop** when a complete review contains an explicit classifier label. Every 20
+distinct eligible reviewed papers trigger a full retrain on all allowed
+training labels. The candidate is evaluated out-of-fold and on a required,
+training-disjoint fixed validation set; it is atomically promoted only when accuracy,
+macro-F1, and supported per-label recall do not regress and at least one
+protected metric strictly improves. Frozen `eval_labels.csv` rows never enter
+training. See [`docs/model_evolution.md`](docs/model_evolution.md).
 
 `GET /pipeline/runs/latest` and `GET /pipeline/runs` expose the audit log
 so the dashboard can show "last run @ 06:00 — 12 new papers, 3 flagged."
+`GET /model-evolution/status` and `GET /model-evolution/runs` expose the
+20-review pulse and every promoted, rejected, or failed candidate.
+
+Every trust-sensitive analytics response (timeline, institution network,
+geographic collaboration, and multi-graph) includes the canonical filter,
+filter fingerprint, paper-set hash, coverage counts, corpus-source breakdown,
+algorithm identifier, and metric definitions. `GET /analytics/scope` replays
+the same evidence scope independently; see [`docs/filter_spec.md`](docs/filter_spec.md).
 
 ### Cross-SDL knowledge base (v0.8)
 
@@ -235,5 +252,41 @@ Thresholds live in `backend/app/services/relevance_classifier.py` and `docs/clas
 - LLM-generated explanations (kept deterministic + chunk-cited to avoid the 40%-accuracy hallucination failure mode)
 - HyDE / Doc2Query (planned v0.3)
 - Multi-tenant auth, scheduled OpenAlex/Crossref ingestion
+
+## AWS Deployment
+
+The system can be deployed to AWS using ECS Fargate (backend), RDS PostgreSQL with pgvector (database), S3 + CloudFront (frontend), and S3 (artifact storage).
+
+### Quick Deploy
+
+```bash
+# 1. Run the one-time AWS console setup (see docs/aws-console-setup.md)
+# 2. Deploy infrastructure
+./aws/scripts/deploy.sh prod
+
+# 3. Set API keys in SSM (see docs/aws-console-setup.md Step 6)
+# 4. Set GitHub Actions secrets (see docs/aws-console-setup.md Step 7)
+# 5. Push to main → CI/CD auto-deploys
+```
+
+### Architecture
+
+- **Backend**: ECS Fargate (1-4 tasks, auto-scaled) behind ALB with HTTPS
+- **Database**: RDS PostgreSQL 16 with pgvector extension
+- **Frontend**: React SPA on S3 + CloudFront with SPA routing
+- **Artifacts**: S3 bucket with lifecycle policies for reviews, exports, model snapshots
+- **CI/CD**: GitHub Actions with OIDC (no long-lived credentials)
+- **Infrastructure**: Terraform (see `aws/terraform/`)
+
+### Documentation
+
+- **Setup**: `docs/aws-console-setup.md` — Manual AWS console steps (one-time)
+- **Operations**: `docs/aws-deployment.md` — Full deployment guide, cost estimates, backup procedures
+
+### Existing Deploy (Backup)
+
+The Render + Vercel deployment (`render.yaml`, `frontend/vercel.json`) is preserved as a fallback option.
+
+---
 
 See `docs/mvp_spec.md` for v0.1 scope, `docs/rag_design.md` for the v0.2 RAG design, and `docs/eval_methodology.md` for evaluation.

@@ -1,0 +1,122 @@
+{
+  "paper_id": "acfocus_ba7749a6baaf",
+  "title": "Drug design on quantum computers",
+  "metadata": {
+    "doi": "10.1038/s41567-024-02411-5",
+    "url": "https://www.nature.com/articles/s41567-024-02411-5",
+    "year": "2024",
+    "authors": "Santagati R, Aspuru-Guzik A, Babbush R, Degroote M, González L, Kyoseva E, Moll N, Oppel M, Parrish RM, Rubin NC, Streif M, Tautermann CS, Weiss H, Wiebe N, Utschig-Utschig C",
+    "venue": "Nature Physics",
+    "category": "Journal article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Alán Aspuru-Guzik"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "checked",
+      "high_impact": "checked"
+    }
+  },
+  "source_summary": "Quantum computers have the potential to revolutionize drug design by enabling accurate quantum chemical calculations, but significant advancements are still required before they can be routinely used in pharmaceutical research.",
+  "abstract": "The promised industrial applications of quantum computers often rest on their anticipated ability to perform accurate, efficient quantum chemical calculations. Computational drug discovery relies on accurate predictions of how candidate drugs interact with their targets in a cellular environment involving several thousands of atoms at finite temperatures. Although quantum computers are still far from being used as daily tools in the pharmaceutical industry, here we explore the challenges and opportunities of applying quantum computers to drug design. We discuss where these could transform industrial research and identify the substantial further developments needed to reach this goal.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "Quantum computers have the potential to revolutionize drug design by enabling accurate quantum chemical calculations, but significant advancements are still required before they can be routinely used in pharmaceutical research.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Quantum",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Chemistry",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Biology",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [],
+  "properties": [],
+  "measurements": [],
+  "conditions": [],
+  "mechanisms": [],
+  "outcomes": [
+    {
+      "value": "Therapeutics",
+      "source": "csv_applied_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "Quantum",
+    "Chemistry",
+    "Biology",
+    "Therapeutics"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.43,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": false,
+      "properties": false,
+      "measurements": false,
+      "conditions": false,
+      "mechanisms": false,
+      "outcomes": true,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "materials",
+      "properties",
+      "measurements",
+      "conditions",
+      "mechanisms",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

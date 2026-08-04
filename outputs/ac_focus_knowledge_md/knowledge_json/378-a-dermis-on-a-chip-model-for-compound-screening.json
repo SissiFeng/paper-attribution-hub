@@ -1,0 +1,134 @@
+{
+  "paper_id": "acfocus_59cff8596548",
+  "title": "A dermis-on-a-chip model for compound screening",
+  "metadata": {
+    "doi": "10.1016/j.mtbio.2025.102111",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/40740248/",
+    "year": "2025",
+    "authors": "D. Abdo; Y. Zhao; S. Okhovatian; L. F. Jiménez Vargas; K. T. Wagner; A. Shakeri; D. Vosoughi; M. Radisic",
+    "venue": "Materials Today Bio",
+    "category": "Journal Article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Milica Radisic",
+      "Yimu Zhao"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance",
+      "AC Staff"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "A dermis-on-a-chip platform enables physiologically relevant screening of anti-fibrotic compounds, demonstrating that the QHREDGS peptide can selectively modulate TGFβ-induced fibrotic changes and improve markers of wound repair.",
+  "abstract": "Dermal fibrosis is a significant barrier to effective wound healing, with excessive myofibroblast activation and extracellular matrix deposition leading to scar formation and compromised tissue function. Current in vitro models for studying dermal fibrosis, such as monolayer cultures and human skin equivalents (HSEs), have limited physiological relevance or scalability for drug screening. Here, we present a dermis-on-a-chip platform to enable screening of anti-fibrotic compounds in physiologically-relevant 3D dermal microtissues. Upon treatment with transforming growth factor beta (TGFβ), the tissues exhibited hallmarks of fibrosis, including impaired integrity, increased tensile forces, altered cellular morphology, and a pro-fibrotic cytokine profile. Conversely, incorporation of QHREDGS (Q-peptide), an angiopoietin-1 derived peptide with known regenerative properties, selectively modulated these fibrotic changes. Q-peptide was found to reduce TGFβ-induced tensile forces, suppress smooth muscle actin (SMA) expression, and upregulate certain cytokines associated with wound repair. Overall, these findings demonstrate the utility of our dermis-on-a-chip model in compound screening.",
+  "hardware": [
+    {
+      "value": "A dermis-on-a-chip platform enables physiologically relevant screening of anti-fibrotic compounds, demonstrating that the QHREDGS peptide can selectively modulate TGFβ-induced fibrotic changes and improve markers of wound repair.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Here, we present a dermis-on-a-chip platform to enable screening of anti-fibrotic compounds in physiologically-relevant 3D dermal microtissues.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "methods": [
+    {
+      "value": "A dermis-on-a-chip platform enables physiologically relevant screening of anti-fibrotic compounds, demonstrating that the QHREDGS peptide can selectively modulate TGFβ-induced fibrotic changes and improve markers of wound repair.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Biology",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [],
+  "properties": [
+    {
+      "value": "Conversely, incorporation of QHREDGS (Q-peptide), an angiopoietin-1 derived peptide with known regenerative properties, selectively modulated these fibrotic changes.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [],
+  "conditions": [
+    {
+      "value": "Current in vitro models for studying dermal fibrosis, such as monolayer cultures and human skin equivalents (HSEs), have limited physiological relevance or scalability for drug screening.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "mechanisms": [],
+  "outcomes": [
+    {
+      "value": "Tissue Engineering",
+      "source": "csv_applied_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "SDL 6 - HOM",
+    "Biology",
+    "Tissue Engineering"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.64,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": true,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": false,
+      "properties": true,
+      "measurements": false,
+      "conditions": true,
+      "mechanisms": false,
+      "outcomes": true,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "evidence",
+      "materials",
+      "measurements",
+      "mechanisms",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only."
+    ]
+  }
+}

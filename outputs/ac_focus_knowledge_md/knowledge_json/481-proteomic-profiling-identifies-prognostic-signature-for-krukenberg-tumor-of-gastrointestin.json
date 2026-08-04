@@ -1,0 +1,98 @@
+{
+  "paper_id": "acfocus_d553d108a713",
+  "title": "Proteomic profiling identifies prognostic signature for Krukenberg tumor of gastrointestinal origin",
+  "metadata": {
+    "doi": "10.1016/j.isci.2026.114682",
+    "url": "https://www.cell.com/iscience/pdf/S2589-0042(26)00057-X.pdf",
+    "year": "2026",
+    "authors": "X. Wang; X. Yi; Z. Xue; W. Liu; X. Teng; H. Zhang; T. Guo; Y. Zhu; B. Wang",
+    "venue": "iScience",
+    "category": "Journal Article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Bo Wang"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "This study used advanced proteomic analysis to identify distinct protein signatures and potential biomarkers in primary gastrointestinal lesions of Krukenberg tumor, enabling improved diagnosis and early prediction of ovarian metastasis in gastrointestinal cancer patients.",
+  "abstract": "Krukenberg tumor (KT) primarily originates from the stomach and colorectum, but reliable biomarkers for distinguishing KT from other tumors at the same sites and predicting ovarian metastasis remain lacking. Using pressure cycling technology (PCT) and data-independent acquisition (DIA) mass spectrometry, we analyzed 263 formalin-fixed paraffin-embedded (FFPE) samples, identifying 10,837 proteins. The results revealed distinct proteomic signatures from the primary gastrointestinal lesions of KT. Comparative analyses identified group-specific pathways, particularly mesenchymal-epithelial transition (MET) signaling pathways and extracellular matrix (ECM) pathways, that were enriched in the primary lesions of KT. We developed protein-based classifiers with promising diagnostic value in distinguishing the primary gastrointestinal lesions of KT from those without ovarian metastases. We depicted distinct proteomic signatures in the primary gastrointestinal lesions of KT and identified potential biomarkers for prediction and early intervention of gastrointestinal cancer patients at risk of ovarian metastases. © 2026 The Author(s)",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "This study used advanced proteomic analysis to identify distinct protein signatures and potential biomarkers in primary gastrointestinal lesions of Krukenberg tumor, enabling improved diagnosis and early prediction of ovarian metastasis in gastrointestinal cancer patients.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [],
+  "materials": [],
+  "properties": [],
+  "measurements": [],
+  "conditions": [
+    {
+      "value": "Using pressure cycling technology (PCT) and data-independent acquisition (DIA) mass spectrometry, we analyzed 263 formalin-fixed paraffin-embedded (FFPE) samples, identifying 10,837 proteins.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "mechanisms": [],
+  "outcomes": [],
+  "sdl_tags": [],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.34,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": false,
+      "materials": false,
+      "properties": false,
+      "measurements": false,
+      "conditions": true,
+      "mechanisms": false,
+      "outcomes": false,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "entities",
+      "materials",
+      "properties",
+      "measurements",
+      "mechanisms",
+      "outcomes",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

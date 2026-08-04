@@ -1,0 +1,93 @@
+{
+  "paper_id": "acfocus_a5b4fff5dbd4",
+  "title": "The growing impact of machine learning on drug formulation science",
+  "metadata": {
+    "doi": "10.1016/j.addr.2025.115761",
+    "url": "https://www.sciencedirect.com/science/article/abs/pii/S0169409X25002467",
+    "year": "2026",
+    "authors": "Z. Bao; S. Huynh; F. Le Devedec; J. Nguyen; C. Allen",
+    "venue": "Advanced Drug Delivery Reviews",
+    "category": "Journal Article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Christine Allen"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance"
+    ],
+    "flags": {
+      "acknowledges_ac": "checked",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "This review examines the growing adoption and impact of machine learning in drug formulation science over the past decade, highlighting key trends, core applications, emerging techniques, and future directions such as regulatory openness, organoid integration, and experimental automation.",
+  "abstract": "Machine learning (ML) has increasingly been adopted in drug formulation science to support more efficient, data-driven drug development strategies. A growing number of studies have demonstrated the promise of ML tools across various aspects of drug formulation science, including both preformulation studies and formulation optimization. Building on these foundational efforts, more advanced data collection and ML techniques are now being integrated, driving innovation and expanding the scope of ML applications in the field. To better understand the trend of breakthroughs in this area, this review examines relevant works published in the past decade, identifying key trends, core applications, and emerging techniques in ML-driven drug delivery. Representative studies are highlighted as examples to illustrate the evolving landscape and practical implementations of these technologies. Furthermore, this review explores forward-looking perspectives, highlighting the convergence of ML with the increasing openness of regulatory bodies, the integration of organoid models, and the advancement of experimental automation.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "This review examines the growing adoption and impact of machine learning in drug formulation science over the past decade, highlighting key trends, core applications, emerging techniques, and future directions such as regulatory openness, organoid integration, and experimental automation.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [],
+  "materials": [],
+  "properties": [],
+  "measurements": [],
+  "conditions": [],
+  "mechanisms": [],
+  "outcomes": [],
+  "sdl_tags": [],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.3,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": false,
+      "materials": false,
+      "properties": false,
+      "measurements": false,
+      "conditions": false,
+      "mechanisms": false,
+      "outcomes": false,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "entities",
+      "materials",
+      "properties",
+      "measurements",
+      "conditions",
+      "mechanisms",
+      "outcomes",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

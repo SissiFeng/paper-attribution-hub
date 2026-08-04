@@ -1,0 +1,162 @@
+{
+  "paper_id": "acfocus_28da1b01d394",
+  "title": "Accurate and efficient predictions of keyhole dynamics in laser materials processing using machine learning-aided simulations",
+  "metadata": {
+    "doi": "10.1016/j.ijheatmasstransfer.2025.127279",
+    "url": "https://www.sciencedirect.com/science/article/pii/S0017931025006180",
+    "year": "2025",
+    "authors": "J. Zhang; R. Jiang; K. Li; P. Chen; S. Bi; X. Shang; Z. Liu; J. Hattrick-Simpers; B. J. Simonds; Q. Wei; H. Hongze; T. Sun; A. D. Rollett; Y. Zou",
+    "venue": "International Journal of Heat and Mass Transfer",
+    "category": "Journal Article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Jason Hattrick-Simpers"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance"
+    ],
+    "flags": {
+      "acknowledges_ac": "checked",
+      "highly_relevant": "checked",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "A machine learning-aided simulation method is developed to accurately and efficiently predict keyhole dynamics, particularly keyhole depth fluctuations, in laser materials processing, outperforming traditional methods and offering a cost-effective alternative to synchrotron experiments for reducing defects across various materials.",
+  "abstract": "The keyhole phenomenon has been widely observed in laser materials processing, including laser welding, remelting, cladding, drilling, and additive manufacturing. Keyhole-induced defects, primarily pores, dramatically affect the performance of final products, impeding the broad use of these laser-based technologies. The formation of these pores is typically associated with the dynamic behavior of the keyhole. So far, the accurate characterization and prediction of keyhole features, particularly keyhole depth, as a function of time, has been a challenging task. In situ characterization of keyhole dynamic behavior using the synchrotron X-ray technique is informative but complicated and expensive. Current simulations are generally hindered by their poor accuracy and generalization abilities in predicting keyhole depths due to the lack of accurate laser absorptance data. In this study, we develop a machine learning-aided simulation method that accurately predicts keyhole dynamics, especially in keyhole depth fluctuations, over a wide range of processing parameters. In two case studies involving titanium and aluminum alloys, we achieve keyhole depth prediction with a mean absolute percentage error of 10 %, surpassing those simulated using the ray-tracing method with an error margin of 30 %, while also reducing computational time. This exceptional fidelity and efficiency empower our model to serve as a cost-effective alternative to synchrotron experiments. Our machine learning-aided simulation method is affordable and readily deployable for a large variety of materials, opening new doors to eliminate or reduce defects for a wide range of laser materials processing techniques. © 2025 The Author(s)",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "A machine learning-aided simulation method is developed to accurately and efficiently predict keyhole dynamics, particularly keyhole depth fluctuations, in laser materials processing, outperforming traditional methods and offering a cost-effective alternative to synchrotron experiments for reducing defects across various materials.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Artificial Intelligence & Data Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "Accurate and efficient predictions of keyhole dynamics in laser materials processing using machine learning-aided simulations A machine learning-aided simulation method is developed to accurately and efficiently predict keyhole dynamics, particularly keyhole depth fluctuations, in laser materials processing, outperforming traditional methods and offering a cost-effective alternative to synchrotron experiments for reducing defects across various materials.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "The keyhole phenomenon has been widely observed in laser materials processing, including laser welding, remelting, cladding, drilling, and additive manufacturing.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "In two case studies involving titanium and aluminum alloys, we achieve keyhole depth prediction with a mean absolute percentage error of 10 %, surpassing those simulated using the ray-tracing method with an error margin of 30 %, while also reducing computational time.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [
+    {
+      "value": "Current simulations are generally hindered by their poor accuracy and generalization abilities in predicting keyhole depths due to the lack of accurate laser absorptance data.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [
+    {
+      "value": "So far, the accurate characterization and prediction of keyhole features, particularly keyhole depth, as a function of time, has been a challenging task.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "In situ characterization of keyhole dynamic behavior using the synchrotron X-ray technique is informative but complicated and expensive.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "conditions": [
+    {
+      "value": "So far, the accurate characterization and prediction of keyhole features, particularly keyhole depth, as a function of time, has been a challenging task.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Current simulations are generally hindered by their poor accuracy and generalization abilities in predicting keyhole depths due to the lack of accurate laser absorptance data.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "In two case studies involving titanium and aluminum alloys, we achieve keyhole depth prediction with a mean absolute percentage error of 10 %, surpassing those simulated using the ray-tracing method with an error margin of 30 %, while also reducing computational time.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "mechanisms": [],
+  "outcomes": [
+    {
+      "value": "Optical Materials",
+      "source": "csv_applied_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "Artificial Intelligence & Data Science",
+    "Optical Materials"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.67,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": true,
+      "properties": true,
+      "measurements": true,
+      "conditions": true,
+      "mechanisms": false,
+      "outcomes": true,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "mechanisms",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

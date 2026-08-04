@@ -6,7 +6,9 @@
  */
 
 import type {
+  AnalysisAudit,
   AnalyticsOverview,
+  AttributionEvidenceTree,
   DiscoveryCandidate,
   DriftReport,
   DuplicateReport,
@@ -18,6 +20,7 @@ import type {
   InstitutionNetworkPayload,
   LintReport,
   MissedPaperGroup,
+  ModelEvolutionStatus,
   MultiGraphPayload,
   NetworkPayload,
   Paper,
@@ -45,19 +48,250 @@ export const MOCK_OVERVIEW: AnalyticsOverview = {
   years: [2020, 2021, 2022, 2023, 2024],
 };
 
+export const MOCK_ANALYSIS_AUDIT: AnalysisAudit = {
+  filter: { labels: ["CORE_RELEVANT", "RELATED_RELEVANT"] },
+  filter_fingerprint: "mock-filter-fingerprint-v1",
+  paper_set_sha256: "mock-paper-set-sha256-v1",
+  included_papers: 15,
+  classified_papers: 15,
+  reviewed_papers: 6,
+  fulltext_papers: 9,
+  corpus_source_breakdown: { ac_member: 8, strict_sdl: 7 },
+  algorithm: "mock.analysis.v1",
+  metric_definitions: {
+    paper_count: "Count of distinct papers in the filtered evidence scope.",
+  },
+  filter_semantics: {
+    within_dimension: "OR",
+    between_dimensions: "AND",
+    human_judgement_precedence: "Human judgement overrides model-derived scope when present.",
+  },
+  generated_at: "2026-08-01T12:00:00Z",
+};
+
+/**
+ * Synthetic AET used only for the standalone evidence-map page in mock mode.
+ * Real deployments always read the server-derived, read-only tree.
+ */
+export function getMockAttributionEvidenceTree(
+  paperId: string
+): AttributionEvidenceTree {
+  const generationId = `mock-aet-${paperId}`;
+  const rootId = `${generationId}:root`;
+  const methodsId = `${generationId}:section:methods`;
+  const resultsId = `${generationId}:section:results`;
+  const fundingId = `${generationId}:section:funding`;
+  const referencesId = `${generationId}:section:references`;
+
+  return {
+    paper_id: paperId,
+    tree_version: "aet-derived-v0.1",
+    generation_mode: "derived_ephemeral",
+    generation_id: generationId,
+    metadata_contract_version: "aet-evidence-meta-v0.1",
+    evidence_review_recommended: true,
+    evidence_review_reasons: ["AET_CONFLICTING_EVIDENCE"],
+    nodes: [
+      {
+        node_id: rootId,
+        parent_node_id: null,
+        node_type: "root",
+        path: ["Paper"],
+        section_type: null,
+        title: "Fast-charging lithium-ion batteries: evidence-path review",
+        summary:
+          "A mock-mode paper used to exercise the read-only evidence star map.",
+        page_start: 1,
+        page_end: 14,
+        source_section_id: null,
+        source_chunk_ids: [],
+      },
+      {
+        node_id: methodsId,
+        parent_node_id: rootId,
+        node_type: "section",
+        path: ["Paper", "Methods"],
+        section_type: "methods",
+        title: "Methods",
+        summary:
+          "Electrochemical cycling protocol and charging-rate characterization.",
+        page_start: 3,
+        page_end: 6,
+        source_section_id: "mock-section-methods",
+        source_chunk_ids: ["mock-chunk-methods-1"],
+      },
+      {
+        node_id: resultsId,
+        parent_node_id: rootId,
+        node_type: "section",
+        path: ["Paper", "Results"],
+        section_type: "results",
+        title: "Results",
+        summary:
+          "Performance claims and measured retention under fast-charge conditions.",
+        page_start: 7,
+        page_end: 10,
+        source_section_id: "mock-section-results",
+        source_chunk_ids: ["mock-chunk-results-1", "mock-chunk-results-2"],
+      },
+      {
+        node_id: fundingId,
+        parent_node_id: rootId,
+        node_type: "section",
+        path: ["Paper", "Funding"],
+        section_type: "funding",
+        title: "Funding",
+        summary: "Acknowledgement and program attribution statements.",
+        page_start: 13,
+        page_end: 13,
+        source_section_id: "mock-section-funding",
+        source_chunk_ids: ["mock-chunk-funding-1"],
+      },
+      {
+        node_id: referencesId,
+        parent_node_id: rootId,
+        node_type: "source",
+        path: ["Paper", "Classifier Signals"],
+        section_type: "classifier_signals",
+        title: "Classifier Signals",
+        summary: "Graph and citation signals without a directly located section.",
+        page_start: null,
+        page_end: null,
+        source_section_id: null,
+        source_chunk_ids: [],
+      },
+    ],
+    evidence_paths: [
+      {
+        generation_id: generationId,
+        path_id: `${generationId}:path:funding`,
+        rank: 1,
+        node_id: fundingId,
+        path: ["Paper", "Funding", "AC program acknowledgement"],
+        evidence_type: "funding_acknowledgement",
+        polarity: "positive",
+        centrality: "core_contribution",
+        quote:
+          "This work was supported through the Accelerate program for advanced battery materials.",
+        page_start: 13,
+        page_end: 13,
+        source_chunk_ids: ["mock-chunk-funding-1"],
+        raw_score: 0.94,
+        weight: 0.94,
+        confidence: 0.96,
+        detector_type: "metadata_contract",
+        metadata_status: "versioned_validated",
+      },
+      {
+        generation_id: generationId,
+        path_id: `${generationId}:path:method`,
+        rank: 2,
+        node_id: methodsId,
+        path: ["Paper", "Methods", "Shared experimental method"],
+        evidence_type: "shared_method",
+        polarity: "positive",
+        centrality: "supporting_method",
+        quote:
+          "Cells were cycled using the consortium fast-charge protocol and shared reference electrodes.",
+        page_start: 4,
+        page_end: 4,
+        source_chunk_ids: ["mock-chunk-methods-1"],
+        raw_score: 0.72,
+        weight: 0.58,
+        confidence: 0.82,
+        detector_type: "rule_based",
+        metadata_status: "versioned_validated",
+      },
+      {
+        generation_id: generationId,
+        path_id: `${generationId}:path:result`,
+        rank: 3,
+        node_id: resultsId,
+        path: ["Paper", "Results", "Core fast-charge finding"],
+        evidence_type: "core_finding",
+        polarity: "positive",
+        centrality: "core_contribution",
+        quote:
+          "The optimized electrode retained 91% capacity after 500 cycles at a four-C charging rate.",
+        page_start: 8,
+        page_end: 8,
+        source_chunk_ids: ["mock-chunk-results-1"],
+        raw_score: 0.86,
+        weight: 0.86,
+        confidence: 0.9,
+        detector_type: "evidence_extractor",
+        metadata_status: "versioned_validated",
+      },
+      {
+        generation_id: generationId,
+        path_id: `${generationId}:path:negative`,
+        rank: 4,
+        node_id: resultsId,
+        path: ["Paper", "Results", "Scope limitation"],
+        evidence_type: "scope_limitation",
+        polarity: "negative",
+        centrality: "background_only",
+        quote:
+          "The analysis does not evaluate pack-level thermal management or manufacturing scale-up.",
+        page_start: 10,
+        page_end: 10,
+        source_chunk_ids: ["mock-chunk-results-2"],
+        raw_score: -0.42,
+        weight: -0.21,
+        confidence: 0.78,
+        detector_type: "evidence_extractor",
+        metadata_status: "versioned_validated",
+      },
+      {
+        generation_id: generationId,
+        path_id: `${generationId}:path:network`,
+        rank: 5,
+        node_id: referencesId,
+        path: ["Paper", "Classifier Signals", "Second-degree collaboration"],
+        evidence_type: "network_relation",
+        polarity: "positive",
+        centrality: "incidental_mention",
+        quote: "A second-degree collaboration path connects this paper to the AC core.",
+        page_start: null,
+        page_end: null,
+        source_chunk_ids: [],
+        raw_score: 0.34,
+        weight: 0.12,
+        confidence: null,
+        detector_type: "classifier_signal",
+        metadata_status: "not_applicable",
+      },
+    ],
+  };
+}
+
 // ─── Review Queue ─────────────────────────────────────────────────────────────
 
 export const MOCK_QUEUE: QueueItem[] = [
   {
     paper_id: "p010",
     title: "Carbon nanotube-reinforced silicon anodes for high-energy lithium-ion batteries",
+    abstract:
+      "We report a materials optimization study combining automated experimentation with iterative model-guided selection of silicon anode formulations.",
+    year: 2024,
+    venue: "Energy Storage Materials",
+    doi: "10.0000/mock.p010",
+    authors: ["Maya Chen", "Lucas Martin"],
+    institutions: ["University of Toronto", "National Research Council Canada"],
     label: "UNCERTAIN",
     confidence: 0.52,
     priority: 1,
     reasons: ["No AC authors matched directly", "Electrode materials topic — borderline"],
     last_classified_at: "2024-01-22T10:00:00Z",
+    source: "openalex",
     provenance: "manual",
+    corpus_sources: ["ARCHITECTURE_BROAD_RETRIEVAL", "MANUALLY_ADDED"],
+    full_text_url: "https://doi.org/10.0000/mock.p010",
     has_human_review: false,
+    screening_stage: "HUMAN_REVIEW",
+    screening_route: "UNCERTAIN_REVIEW",
+    screening_reason:
+      "Uncertain prediction (UNCERTAIN, confidence 0.52); human review required.",
   },
   {
     paper_id: "p006",
@@ -114,8 +348,22 @@ export const MOCK_PIPELINE_RUNS: PipelineRun[] = [
     steps: [
       { name: "discovery", status: "ok", started_at: "2024-04-15T02:00:00Z", candidates: 23 },
       { name: "fulltext_fetch", status: "ok", started_at: "2024-04-15T02:01:30Z", fetched: 18 },
+      { name: "model_evolution", status: "ok", started_at: "2024-04-15T02:02:50Z", pending_reviews: 13 },
       { name: "classify", status: "ok", started_at: "2024-04-15T02:03:00Z", classified: 11 },
-      { name: "enqueue", status: "ok", started_at: "2024-04-15T02:04:50Z", enqueued: 4 },
+      {
+        name: "staged_screening",
+        status: "ok",
+        started_at: "2024-04-15T02:04:50Z",
+        scored: 13420,
+        seed_reference: 412,
+        positive_review: 126,
+        uncertain_review: 214,
+        fulltext_review: 18,
+        review_subset: 358,
+        screened_out: 12481,
+        resolved: 169,
+        queued_now: 358,
+      },
     ],
   },
   {
@@ -179,6 +427,110 @@ export const MOCK_PIPELINE_RUNS: PipelineRun[] = [
     ],
   },
 ];
+
+export const MOCK_MODEL_EVOLUTION_STATUS: ModelEvolutionStatus = {
+  batch_size: 20,
+  pending_reviews: 13,
+  reviews_until_retrain: 7,
+  progress: 0.65,
+  current_model_version: "learned-train_7f4c",
+  production_authority: {
+    production_run_id: "train_7f4c",
+    status: "VERIFIED",
+    model_version: "learned-train_7f4c",
+    artifact_sha256: "b54c56f36ee41e98d32cc723fc18f9c1e0188f6f4c3f5c70f57bf7f9ea2c8c9b",
+    cache_sync_status: "SYNCED",
+    cache_present: true,
+    cache_sha256: "b54c56f36ee41e98d32cc723fc18f9c1e0188f6f4c3f5c70f57bf7f9ea2c8c9b",
+    cache_matches_authority: true,
+    error: null,
+  },
+  validation_gate: {
+    ready: true,
+    required_examples: 20,
+    observed_examples: 28,
+    required_labels: 2,
+    observed_labels: ["CORE_RELEVANT", "EXCLUDE"],
+    reason: "fixed validation gate is ready",
+  },
+  active_run: null,
+  latest_run: {
+    run_id: "train_7f4c",
+    status: "PROMOTED",
+    trigger_review_count: 20,
+    trigger_event_ids: ["feedback_mock_1", "feedback_mock_2"],
+    trigger_paper_ids: ["P001", "P002"],
+    lease_generation: 4,
+    training_example_count: 132,
+    validation_example_count: 28,
+    backend: "sklearn",
+    model_version: "learned-train_7f4c",
+    evaluation_scope: "trigger_batch_oof+dedicated_validation",
+    candidate_metrics: {
+      n_evaluated: 20,
+      accuracy: 0.85,
+      macro_f1: 0.82,
+    },
+    incumbent_metrics: {
+      n_evaluated: 20,
+      accuracy: 0.75,
+      macro_f1: 0.71,
+    },
+    validation_candidate_metrics: {
+      n_evaluated: 28,
+      accuracy: 0.857,
+      macro_f1: 0.834,
+    },
+    validation_incumbent_metrics: {
+      n_evaluated: 28,
+      accuracy: 0.821,
+      macro_f1: 0.798,
+    },
+    promotion_reason:
+      "Candidate improved a protected metric with no accuracy, macro-F1, or per-label recall regression.",
+    promotion_gate_config: {
+      regression_tolerance: 0,
+      protected_metrics: ["accuracy", "macro_f1", "supported_per_label_recall"],
+    },
+    runtime_versions: { python: "3.12", backend: "sklearn" },
+    cache_sync_status: "SYNCED",
+    training_dataset_hash: "mock-training-dataset-sha256",
+    validation_dataset_hash: "mock-validation-dataset-sha256",
+    label_boundary_hashes: {
+      training: "mock-training-boundary",
+      validation: "mock-validation-boundary",
+      frozen_holdout: "mock-holdout-boundary",
+    },
+    candidate_model_sha256: "mock-candidate-sha256",
+    incumbent_model_sha256: "mock-incumbent-sha256",
+    error_message: null,
+    started_at: "2024-04-15T16:20:00Z",
+    finished_at: "2024-04-15T16:20:09Z",
+    promoted_at: "2024-04-15T16:20:09Z",
+    heartbeat_at: "2024-04-15T16:20:09Z",
+  },
+};
+
+export const MOCK_FILTER_OPTIONS = {
+  years: [2021, 2022, 2023, 2024, 2025],
+  countries: [
+    "Brazil",
+    "Canada",
+    "China",
+    "Germany",
+    "Japan",
+    "Sweden",
+    "Switzerland",
+    "United Kingdom",
+    "United States",
+  ],
+  institutions: [
+    { id: "uoft", name: "University of Toronto", country: "Canada", is_partner: true },
+  ],
+  topics: [],
+  fields: ["Materials", "Life Sciences", "Chemistry"],
+  corpus_sources: ["ac_member", "strict_sdl", "architecture_broad", "citation_expansion"],
+};
 
 // ─── Evidence Gaps ────────────────────────────────────────────────────────────
 
@@ -490,12 +842,19 @@ export const MOCK_SANKEY: SankeyPayload = {
     { source: "t010", target: "UNCERTAIN", value: 1 },
     { source: "t005", target: "RELATED_RELEVANT", value: 2 },
   ],
+  audit: {
+    ...MOCK_ANALYSIS_AUDIT,
+    algorithm: "institution_topic_label_sankey.v2",
+    projection: { top_institutions: 200, top_topics: 100 },
+    projection_fingerprint: "mock-sankey-projection-fingerprint-v1",
+  },
 };
 
 // ─── Timeline ─────────────────────────────────────────────────────────────────
 
 export const MOCK_TIMELINE_BY_TOPIC: TimelinePayload = {
   by: "topic",
+  top_n: 10,
   years: [2020, 2021, 2022, 2023, 2024],
   series: [
     { name: "Solid-state Electrolytes", data: [[2020, 2], [2021, 3], [2022, 4], [2023, 6], [2024, 5]] },
@@ -505,10 +864,12 @@ export const MOCK_TIMELINE_BY_TOPIC: TimelinePayload = {
     { name: "Fast Charging",            data: [[2020, 2], [2021, 2], [2022, 3], [2023, 3], [2024, 2]] },
     { name: "Electrode Materials",      data: [[2020, 3], [2021, 3], [2022, 4], [2023, 3], [2024, 2]] },
   ],
+  audit: { ...MOCK_ANALYSIS_AUDIT, algorithm: "timeline.distinct-paper-count.v1" },
 };
 
 export const MOCK_TIMELINE_BY_LABEL: TimelinePayload = {
   by: "label",
+  top_n: 10,
   years: [2020, 2021, 2022, 2023, 2024],
   series: [
     { name: "CORE_RELEVANT",    data: [[2020, 3], [2021, 4], [2022, 5], [2023, 7], [2024, 6]] },
@@ -517,6 +878,7 @@ export const MOCK_TIMELINE_BY_LABEL: TimelinePayload = {
     { name: "UNCERTAIN",        data: [[2020, 1], [2021, 1], [2022, 1], [2023, 2], [2024, 1]] },
     { name: "EXCLUDE",          data: [[2020, 2], [2021, 2], [2022, 3], [2023, 2], [2024, 1]] },
   ],
+  audit: { ...MOCK_ANALYSIS_AUDIT, algorithm: "timeline.distinct-paper-count.v1" },
 };
 
 // ─── Network ──────────────────────────────────────────────────────────────────
@@ -586,6 +948,15 @@ export const MOCK_INSTITUTION_NETWORK: InstitutionNetworkPayload = {
     { source: "i006", target: "i009", weight: 1, papers: ["p009"],        normalized_weight: 1.0,    involves_partner: true  },
     { source: "i006", target: "i010", weight: 1, papers: ["p004"],        normalized_weight: 1.0,    involves_partner: true  },
   ],
+  audit: {
+    ...MOCK_ANALYSIS_AUDIT,
+    algorithm: "institution-collaboration.distinct-joint-papers.v1",
+    metric_definitions: {
+      node_paper_count: "Distinct filtered papers affiliated with the institution.",
+      edge_weight: "Distinct filtered papers jointly affiliated with both institutions.",
+      normalized_weight: "Edge weight divided by the smaller endpoint paper count.",
+    },
+  },
 };
 
 // ─── Multi-Graph ──────────────────────────────────────────────────────────────
@@ -747,6 +1118,9 @@ export function getMockMultiGraph(params: {
   edge_types?: string[];
   year_from?: number;
   year_to?: number;
+  min_papers?: number;
+  min_degree?: number;
+  top_n?: number;
 }): MultiGraphPayload {
   const yf = params.year_from ?? 2021;
   const yt = params.year_to   ?? 2025;
@@ -837,6 +1211,17 @@ export function getMockMultiGraph(params: {
     groups,
     nodes: enrichedNodes,
     edges: visibleEdges,
+    audit: {
+      ...MOCK_ANALYSIS_AUDIT,
+      algorithm: "multi-graph.filtered-entity-projection.v1",
+      graph_filter: {
+        min_papers: params.min_papers ?? 1,
+        min_degree: params.min_degree ?? 0,
+        top_n: params.top_n ?? 100,
+        visible_nodes: enrichedNodes.length,
+        visible_edges: visibleEdges.length,
+      },
+    },
   };
 }
 
@@ -847,6 +1232,31 @@ export const MOCK_MULTI_GRAPH: MultiGraphPayload = getMockMultiGraph({});
 
 export const MOCK_GEOGRAPHIC: GeographicReport = {
   total_papers: 15,
+  center_country: null,
+  center: {
+    type: "institution",
+    id: "uoft",
+    name: "University of Toronto",
+    country: "Canada",
+    paper_count: 5,
+    collaboration_paper_count: 4,
+    partner_count: 3,
+    first_year: 2021,
+    last_year: 2025,
+    missing_year_paper_count: 0,
+  },
+  growth: [
+    { year: 2021, center_papers: 1, collaboration_papers: 1, active_partners: 1, cumulative_partners: 1, cumulative_collaboration_papers: 1 },
+    { year: 2022, center_papers: 1, collaboration_papers: 0, active_partners: 0, cumulative_partners: 1, cumulative_collaboration_papers: 1 },
+    { year: 2023, center_papers: 1, collaboration_papers: 1, active_partners: 1, cumulative_partners: 2, cumulative_collaboration_papers: 2 },
+    { year: 2024, center_papers: 1, collaboration_papers: 1, active_partners: 1, cumulative_partners: 2, cumulative_collaboration_papers: 3 },
+    { year: 2025, center_papers: 1, collaboration_papers: 1, active_partners: 1, cumulative_partners: 3, cumulative_collaboration_papers: 4 },
+  ],
+  partners: [
+    { id: "i004", name: "Argonne National Laboratory", country: "United States", paper_count: 2, first_year: 2021, last_year: 2024, yearly: [] },
+    { id: "i009", name: "Kyoto University", country: "Japan", paper_count: 1, first_year: 2023, last_year: 2023, yearly: [] },
+    { id: "i002", name: "ETH Zurich", country: "Switzerland", paper_count: 1, first_year: 2025, last_year: 2025, yearly: [] },
+  ],
   countries: [
     { country: "Canada", paper_count: 5, institution_count: 1, is_partner: true },
     { country: "Switzerland", paper_count: 4, institution_count: 1, is_partner: true },
@@ -856,6 +1266,7 @@ export const MOCK_GEOGRAPHIC: GeographicReport = {
     { country: "Sweden", paper_count: 1, institution_count: 1, is_partner: false },
     { country: "Germany", paper_count: 1, institution_count: 1, is_partner: false },
     { country: "Brazil", paper_count: 2, institution_count: 1, is_partner: false },
+    { country: "China", paper_count: 3, institution_count: 1, is_partner: false },
   ],
   arcs: [
     { from: "Canada", to: "Switzerland", weight: 2 },
@@ -867,9 +1278,10 @@ export const MOCK_GEOGRAPHIC: GeographicReport = {
     { from: "United Kingdom", to: "Japan", weight: 1 },
     { from: "United Kingdom", to: "United States", weight: 2 },
     { from: "Japan", to: "United States", weight: 1 },
+    { from: "Canada", to: "China", weight: 2 },
   ],
   institutions: [
-    { id: "i001", name: "University of Toronto", country: "Canada", is_partner: true, paper_count: 5 },
+    { id: "uoft:Canada", institution_id: "uoft", name: "University of Toronto", country: "Canada", is_partner: true, paper_count: 5 },
     { id: "i002", name: "ETH Zurich", country: "Switzerland", is_partner: true, paper_count: 4 },
     { id: "i003", name: "Imperial College London", country: "United Kingdom", is_partner: true, paper_count: 4 },
     { id: "i006", name: "NIMS", country: "Japan", is_partner: true, paper_count: 5 },
@@ -882,7 +1294,188 @@ export const MOCK_GEOGRAPHIC: GeographicReport = {
     { id: "i011", name: "Max Planck Institute", country: "Germany", is_partner: false, paper_count: 1 },
     { id: "i012", name: "University of São Paulo", country: "Brazil", is_partner: false, paper_count: 2 },
   ],
+  audit: {
+    ...MOCK_ANALYSIS_AUDIT,
+    algorithm: "geographic_collaboration_growth.v2",
+    metric_definitions: {
+      country_paper_count: "Distinct filtered papers with at least one institution in the country.",
+      arc_weight: "Distinct filtered papers connecting the selected center to the mapped partner country.",
+      growth_semantics: "Yearly collaboration growth, not causal influence or citation impact.",
+    },
+    projection: {
+      center_type: "institution",
+      center_id: "uoft",
+      center_name: "University of Toronto",
+      partner_type: "institution",
+      yearly_zero_fill: [2021, 2022, 2023, 2024, 2025],
+      arc_scope: "all_center_incident_collaborations",
+    },
+    projection_fingerprint: "mock-geographic-uoft-projection-v2",
+  },
 };
+
+function distributeMockCount(total: number, years: number[]): number[] {
+  return years.map((_year, index) => {
+    const base = Math.floor(total / years.length);
+    return base + (index >= years.length - (total % years.length) ? 1 : 0);
+  });
+}
+
+export function getMockGeographic(
+  center?: { type: "country" | "institution"; id: string } | null,
+): GeographicReport {
+  if (!center) {
+    return {
+      ...MOCK_GEOGRAPHIC,
+      center_country: null,
+      center: null,
+      growth: [],
+      partners: [],
+      audit: {
+        ...MOCK_GEOGRAPHIC.audit,
+        projection: {
+          center_type: null,
+          center_id: null,
+          center_name: null,
+          partner_type: null,
+          yearly_zero_fill: [2021, 2022, 2023, 2024, 2025],
+          arc_scope: "pairs_involving_ac_partner_country",
+        },
+        projection_fingerprint: "mock-geographic-global-projection-v2",
+      },
+    };
+  }
+  if (center.type === "institution") {
+    if (center.id === "uoft") return MOCK_GEOGRAPHIC;
+    return {
+      ...MOCK_GEOGRAPHIC,
+      center_country: null,
+      center: {
+        type: "institution",
+        id: center.id,
+        name: center.id,
+        country: null,
+        paper_count: 0,
+        collaboration_paper_count: 0,
+        partner_count: 0,
+        first_year: null,
+        last_year: null,
+        missing_year_paper_count: 0,
+      },
+      growth: [],
+      partners: [],
+      arcs: [],
+      audit: {
+        ...MOCK_GEOGRAPHIC.audit,
+        projection: {
+          center_type: "institution",
+          center_id: center.id,
+          center_name: center.id,
+          partner_type: "institution",
+          yearly_zero_fill: [2021, 2022, 2023, 2024, 2025],
+          arc_scope: "all_center_incident_collaborations",
+        },
+        projection_fingerprint: `mock-geographic-institution-${center.id}-projection-v2`,
+      },
+    };
+  }
+
+  const country = MOCK_GEOGRAPHIC.countries.find((item) => item.country === center.id);
+  if (!country) {
+    return {
+      ...MOCK_GEOGRAPHIC,
+      center_country: center.id,
+      center: {
+        type: "country",
+        id: center.id,
+        name: center.id,
+        country: center.id,
+        paper_count: 0,
+        collaboration_paper_count: 0,
+        partner_count: 0,
+        first_year: null,
+        last_year: null,
+        missing_year_paper_count: 0,
+      },
+      growth: [],
+      partners: [],
+      arcs: [],
+    };
+  }
+
+  const years = [2021, 2022, 2023, 2024, 2025];
+  const incidentArcs = MOCK_GEOGRAPHIC.arcs.filter(
+    (arc) => arc.from === center.id || arc.to === center.id,
+  );
+  const collaborationPaperCount = Math.min(
+    country.paper_count,
+    incidentArcs.reduce((sum, arc) => sum + arc.weight, 0),
+  );
+  const centerByYear = distributeMockCount(country.paper_count, years);
+  const collaborationByYear = distributeMockCount(collaborationPaperCount, years);
+  const partnerNames = incidentArcs.map((arc) => (
+    arc.from === center.id ? arc.to : arc.from
+  ));
+  let cumulativeCollaborationPapers = 0;
+  const growth = years.map((year, index) => {
+    cumulativeCollaborationPapers += collaborationByYear[index];
+    const activePartners = Math.min(partnerNames.length, collaborationByYear[index]);
+    return {
+      year,
+      center_papers: centerByYear[index],
+      collaboration_papers: collaborationByYear[index],
+      active_partners: activePartners,
+      cumulative_partners: Math.min(
+        partnerNames.length,
+        collaborationByYear.slice(0, index + 1).reduce((sum, count) => sum + count, 0),
+      ),
+      cumulative_collaboration_papers: cumulativeCollaborationPapers,
+    };
+  });
+
+  return {
+    ...MOCK_GEOGRAPHIC,
+    center_country: center.id,
+    center: {
+      type: "country",
+      id: center.id,
+      name: center.id,
+      country: center.id,
+      paper_count: country.paper_count,
+      collaboration_paper_count: collaborationPaperCount,
+      partner_count: partnerNames.length,
+      first_year: years[0],
+      last_year: years[years.length - 1],
+      missing_year_paper_count: 0,
+    },
+    arcs: incidentArcs,
+    growth,
+    partners: incidentArcs.map((arc) => {
+      const name = arc.from === center.id ? arc.to : arc.from;
+      return {
+        id: name,
+        name,
+        country: name,
+        paper_count: arc.weight,
+        first_year: years[0],
+        last_year: years[years.length - 1],
+        yearly: [],
+      };
+    }),
+    audit: {
+      ...MOCK_GEOGRAPHIC.audit,
+      projection: {
+        center_type: "country",
+        center_id: center.id,
+        center_name: center.id,
+        partner_type: "country",
+        yearly_zero_fill: years,
+        arc_scope: "all_center_incident_collaborations",
+      },
+      projection_fingerprint: `mock-geographic-country-${center.id}-projection-v2`,
+    },
+  };
+}
 
 // ─── Impact Report ────────────────────────────────────────────────────────────
 
@@ -932,6 +1525,20 @@ export const MOCK_IMPACT: ImpactReport = {
       { year: 2024, value: 289 },
     ],
   },
+  normalized_citation_impact: {
+    metric_name: "corpus_field_year_normalized_citation_index.v1",
+    normalized_index: 1.18,
+    covered_papers: 18,
+    total_papers: 22,
+    coverage: 0.8182,
+    snapshot_oldest_at: "2026-08-01T00:00:00+00:00",
+    snapshot_newest_at: "2026-08-02T00:00:00+00:00",
+    source_breakdown: { openalex: 18 },
+    by_institution: [
+      { institution_id: "i001", institution_name: "University of Toronto", paper_count: 8, normalized_index: 1.31 },
+      { institution_id: "i002", institution_name: "ETH Zurich", paper_count: 4, normalized_index: 1.12 },
+    ],
+  },
   emerging_institutions: [
     { entity_type: "institution", id: "i002", label: "ETH Zurich", first_year: 2022, paper_count: 4, is_partner: true },
     { entity_type: "institution", id: "i005", label: "Stanford University", first_year: 2022, paper_count: 2, is_partner: false },
@@ -949,6 +1556,10 @@ export const MOCK_IMPACT: ImpactReport = {
     { topic_id: "t002", name: "Lithium Metal Anodes", value_now: 5, value_then: 3, delta_pct: 67 },
     { topic_id: "t009", name: "Sodium-ion Batteries", value_now: 2, value_then: 0, delta_pct: "new" },
   ],
+  audit: {
+    ...MOCK_ANALYSIS_AUDIT,
+    algorithm: "research_impact.v4",
+  },
 };
 
 // ─── Drift Report ─────────────────────────────────────────────────────────────
@@ -1024,6 +1635,12 @@ export const MOCK_DRIFT: DriftReport = {
       faded_topics: [],
     },
   ],
+  audit: {
+    ...MOCK_ANALYSIS_AUDIT,
+    algorithm: "topic_drift.v3",
+    projection: { drift_threshold: 0.75, top_n_per_year: 5 },
+    projection_fingerprint: "mock-drift-projection-sha256",
+  },
 };
 
 // ─── Eval Report ──────────────────────────────────────────────────────────────
@@ -1036,6 +1653,14 @@ export const MOCK_EVAL: EvalReport = {
   macro_recall: 0.83,
   macro_f1: 0.85,
   accuracy: 0.88,
+  dataset_role: "diagnostic",
+  dataset_id: "mock-ac-reporting",
+  includes_silver: false,
+  label_scope: "AC_REPORTING",
+  annotation_sources: ["historical_reporting_review"],
+  evidence_levels: ["UNKNOWN"],
+  allowed_claim:
+    "Measures agreement with AC reporting judgements; it is not strict SDL classification accuracy.",
   per_label: [
     { label: "CORE_RELEVANT",    precision: 0.94, recall: 0.91, f1: 0.92, support: 18 },
     { label: "RELATED_RELEVANT", precision: 0.86, recall: 0.82, f1: 0.84, support: 11 },
@@ -1136,6 +1761,15 @@ export const MOCK_REPORT: ReportResult = {
   period_label: "2022–2024",
   generated_at: "2024-04-15T10:00:00Z",
   backend: "mock",
+  evidence_policy: {
+    mode: "human_plus_probable",
+    confidence_threshold: 0.8,
+    sdl_judgements: ["CONFIRMED_SDL", "PROBABLE_SDL", "SDL_ADJACENT"],
+    include_model_only_separately: false,
+    allow_needs_fulltext: false,
+    allow_abstract_only: false,
+    exclude_unreviewed_broad_retrieval: true,
+  },
   sections: [
     {
       key: "overview",

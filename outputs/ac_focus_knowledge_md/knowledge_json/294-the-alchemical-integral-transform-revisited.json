@@ -1,0 +1,132 @@
+{
+  "paper_id": "acfocus_1dc95cda0524",
+  "title": "The alchemical integral transform revisited",
+  "metadata": {
+    "doi": "10.1063/5.0245863",
+    "url": "https://pubs.aip.org/aip/jcp/article/162/1/014110/3329132/The-alchemical-integral-transform-revisited",
+    "year": "2025",
+    "authors": "Krug S.L., von Lilienfeld O.A.",
+    "venue": "Journal of Chemical Physics",
+    "category": "Journal article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Anatole von Lilienfeld"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance"
+    ],
+    "flags": {
+      "acknowledges_ac": "checked",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "The article rigorously derives the kernel of the Alchemical Integral Transform (AIT), explores the parameterization of space in alchemical changes across n dimensions, and provides analytical expressions for energy spectra and density changes in various quantum systems, including the quantum harmonic oscillator, hydrogen-like atom, and multiparticle cases.",
+  "abstract": "We recently introduced the Alchemical Integral Transform (AIT), enabling the prediction of energy differences, and guessed an ansatz to parameterize space r in some alchemical change λ. Here, we present a rigorous derivation of AIT’s kernel K and discuss the parameterization r(λ) in n dimensions, i.e., necessary conditions, mathematical freedoms, and additional constraints when obtaining it. Analytical expressions for changes in energy spectra and densities are given for a number of systems. Examples include homogeneous potentials such as the quantum harmonic oscillator, hydrogen-like atom, and Dirac well, both for one- and multiparticle cases, and a multiparticle system beyond coordinate scaling for harmonic potentials. © 2025 Author(s).",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "The article rigorously derives the kernel of the Alchemical Integral Transform (AIT), explores the parameterization of space in alchemical changes across n dimensions, and provides analytical expressions for energy spectra and density changes in various quantum systems, including the quantum harmonic oscillator, hydrogen-like atom, and multiparticle cases.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Chemistry",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Physics",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [],
+  "properties": [
+    {
+      "value": "The alchemical integral transform revisited The article rigorously derives the kernel of the Alchemical Integral Transform (AIT), explores the parameterization of space in alchemical changes across n dimensions, and provides analytical expressions for energy spectra and density changes in various quantum systems, including the quantum harmonic oscillator, hydrogen-like atom, and multiparticle cases.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "We recently introduced the Alchemical Integral Transform (AIT), enabling the prediction of energy differences, and guessed an ansatz to parameterize space r in some alchemical change λ.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Analytical expressions for changes in energy spectra and densities are given for a number of systems.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [],
+  "conditions": [
+    {
+      "value": "Here, we present a rigorous derivation of AIT’s kernel K and discuss the parameterization r(λ) in n dimensions, i.e., necessary conditions, mathematical freedoms, and additional constraints when obtaining it.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "mechanisms": [],
+  "outcomes": [],
+  "sdl_tags": [
+    "Chemistry",
+    "Physics"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.48,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": false,
+      "properties": true,
+      "measurements": false,
+      "conditions": true,
+      "mechanisms": false,
+      "outcomes": false,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "materials",
+      "measurements",
+      "mechanisms",
+      "outcomes",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

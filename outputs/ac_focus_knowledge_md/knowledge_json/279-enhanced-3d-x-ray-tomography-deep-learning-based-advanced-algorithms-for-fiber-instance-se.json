@@ -1,0 +1,168 @@
+{
+  "paper_id": "acfocus_a4ed4ff1c758",
+  "title": "Enhanced 3D X-Ray Tomography: Deep Learning-Based Advanced Algorithms for Fiber Instance Segmentation",
+  "metadata": {
+    "doi": "10.1007/978-3-031-75653-5_9",
+    "url": "https://experts.mcmaster.ca/scholarly-works/3579521",
+    "year": "2025",
+    "authors": "V. K. Vijay Kumar; M. Fang; Y. Cao; R. B. Gopaluni",
+    "venue": "Deep Learning for Advanced X-ray Detection and Imaging Applications",
+    "category": "Book Section",
+    "peer_reviewed": "Non Peer Reviewed",
+    "ac_members": [
+      "Yang Cao"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Staff"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "This chapter presents a novel four-step hybrid 3D fiber segmentation algorithm using deep learning and advanced image processing techniques for precise identification of individual fibers in 3D X-ray tomography images, demonstrating superior accuracy and efficiency over existing methods.",
+  "abstract": "Identifying specific properties of fibers in paper hand sheets is a challenge being faced for many decades. In this chapter, some of the advanced algorithms for image segmentation to estimate these properties are systematically presented. The process of determining the appropriate operating conditions from the estimated properties is also elaborated. Moreover, the authors introduce a new machine learning algorithm designed for 3D X-ray tomography. This technique is utilized to produce images of intricate fiber structures. The novel four-step hybrid 3D fiber segmentation algorithm presented in the chapter involves deep learning-assisted semantic segmentation, which generates 2D images from 3D ones for fiber extraction. Additionally, the algorithm combines elliptical contour estimation with the marker-controlled watershed technique to separate fibers from the background area. By employing 3D reconstruction, individual fibers are identified. To validate the performance of this approach, the proposed methodology is implemented on a real-time sample of nylon fiber bundle under compression and its 3D X-ray image volume. The results demonstrate the algorithm’s superiority in terms of precision and efficiency when compared to off-the-shelf image processing algorithms. © The Editor(s) (if applicable) and The Author(s), under exclusive license to Springer Nature Switzerland AG 2024.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "This chapter presents a novel four-step hybrid 3D fiber segmentation algorithm using deep learning and advanced image processing techniques for precise identification of individual fibers in 3D X-ray tomography images, demonstrating superior accuracy and efficiency over existing methods.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Artificial Intelligence & Data Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Automation and Robotics",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Materials Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [],
+  "properties": [
+    {
+      "value": "Enhanced 3D X-Ray Tomography: Deep Learning-Based Advanced Algorithms for Fiber Instance Segmentation This chapter presents a novel four-step hybrid 3D fiber segmentation algorithm using deep learning and advanced image processing techniques for precise identification of individual fibers in 3D X-ray tomography images, demonstrating superior accuracy and efficiency over existing methods.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Identifying specific properties of fibers in paper hand sheets is a challenge being faced for many decades.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "In this chapter, some of the advanced algorithms for image segmentation to estimate these properties are systematically presented.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "The process of determining the appropriate operating conditions from the estimated properties is also elaborated.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [
+    {
+      "value": "Enhanced 3D X-Ray Tomography: Deep Learning-Based Advanced Algorithms for Fiber Instance Segmentation This chapter presents a novel four-step hybrid 3D fiber segmentation algorithm using deep learning and advanced image processing techniques for precise identification of individual fibers in 3D X-ray tomography images, demonstrating superior accuracy and efficiency over existing methods.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Moreover, the authors introduce a new machine learning algorithm designed for 3D X-ray tomography.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "To validate the performance of this approach, the proposed methodology is implemented on a real-time sample of nylon fiber bundle under compression and its 3D X-ray image volume.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "conditions": [
+    {
+      "value": "The process of determining the appropriate operating conditions from the estimated properties is also elaborated.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "To validate the performance of this approach, the proposed methodology is implemented on a real-time sample of nylon fiber bundle under compression and its 3D X-ray image volume.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "mechanisms": [],
+  "outcomes": [],
+  "sdl_tags": [
+    "Artificial Intelligence & Data Science",
+    "Automation and Robotics",
+    "Materials Science"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.54,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": false,
+      "properties": true,
+      "measurements": true,
+      "conditions": true,
+      "mechanisms": false,
+      "outcomes": false,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "materials",
+      "mechanisms",
+      "outcomes",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

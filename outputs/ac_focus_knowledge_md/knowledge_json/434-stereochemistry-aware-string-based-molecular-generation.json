@@ -1,0 +1,120 @@
+{
+  "paper_id": "acfocus_c4e897345b7e",
+  "title": "Stereochemistry-aware string-based molecular generation",
+  "metadata": {
+    "doi": "10.1093/pnasnexus/pgaf329",
+    "url": "https://academic.oup.com/pnasnexus/article/4/11/pgaf329/8286226",
+    "year": "2025",
+    "authors": "G. Tom; E. Yu; N. Yoshikawa; K. Jorner; A. Aspuru-Guzik",
+    "venue": "Pnas Nexus",
+    "category": "Journal article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Alán Aspuru-Guzik"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "This study compares stereochemistry-aware and stereochemistry-unaware molecular generative models, showing that while stereochemistry-aware models often outperform conventional ones in stereochemistry-sensitive tasks, they may struggle with increased complexity in less stereochemistry-dependent scenarios, highlighting important trade-offs for model selection in computational drug discovery and materials design.",
+  "abstract": "This study investigates the impact of incorporating stereochemical information, a crucial aspect of computational drug discovery and materials design, in molecular generative modeling. We present a detailed comparison of stereochemistry-aware and conventionally stereochemistry-unaware string-based generative approaches, utilizing both genetic algorithms and reinforcement learning-based techniques. To evaluate these models, we introduce novel benchmarks specifically designed to assess the importance of stereochemistry-aware generative modeling. Our results demonstrate that stereochemistry-aware models generally perform on par with or surpass conventional algorithms across various stereochemistry-sensitive tasks. However, we also observe that in scenarios where stereochemistry plays a less critical role, stereochemistry-aware models may face challenges due to the increased complexity of the chemical space they must navigate. This work provides insights into the trade-offs involved in incorporating stereochemical information in molecular generative models and offers guidance for selecting appropriate approaches based on specific application requirements.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "This study compares stereochemistry-aware and stereochemistry-unaware molecular generative models, showing that while stereochemistry-aware models often outperform conventional ones in stereochemistry-sensitive tasks, they may struggle with increased complexity in less stereochemistry-dependent scenarios, highlighting important trade-offs for model selection in computational drug discovery and materials design.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Automation and Robotics",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Chemistry",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "Stereochemistry-aware string-based molecular generation This study compares stereochemistry-aware and stereochemistry-unaware molecular generative models, showing that while stereochemistry-aware models often outperform conventional ones in stereochemistry-sensitive tasks, they may struggle with increased complexity in less stereochemistry-dependent scenarios, highlighting important trade-offs for model selection in computational drug discovery and materials design.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "This study investigates the impact of incorporating stereochemical information, a crucial aspect of computational drug discovery and materials design, in molecular generative modeling.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [],
+  "measurements": [],
+  "conditions": [],
+  "mechanisms": [],
+  "outcomes": [],
+  "sdl_tags": [
+    "Automation and Robotics",
+    "Chemistry"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.44,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": true,
+      "properties": false,
+      "measurements": false,
+      "conditions": false,
+      "mechanisms": false,
+      "outcomes": false,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "properties",
+      "measurements",
+      "conditions",
+      "mechanisms",
+      "outcomes",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

@@ -1,0 +1,239 @@
+{
+  "paper_id": "acfocus_5798b54f009f",
+  "title": "Chemically Motivated Simulation Problems are Efficiently Solvable by a Quantum Computer",
+  "metadata": {
+    "doi": "10.48550/arxiv.2401.09268",
+    "url": "https://arxiv.org/abs/2401.09268",
+    "year": "2024",
+    "authors": "Schleich P, Kristensen LB, Angulo JACG, Avagliano D, Bagherimehrab M, Aldossary A, Gorgulla C, Fitzsimons J, Aspuru-Guzik A",
+    "venue": "arxiv",
+    "category": "Preprint",
+    "peer_reviewed": "Non Peer Reviewed",
+    "ac_members": [
+      "Alán Aspuru-Guzik"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "",
+  "abstract": "Chemically Motivated Simulation Problems are Efficiently Solvable by a Quantum Computer\nPhilipp Schleich,1, 2, ∗Lasse Bjørn Kristensen,1, 3, 4, † Jorge A. Campos-Gonzalez-Angulo,3, 2\nAbdulrahman Aldossary,3 Davide Avagliano,3, 5 Mohsen Bagherimehrab,1\nChristoph Gorgulla,6, 7 Joe Fitzsimons,8 and Alán Aspuru-Guzik1, 2, 3, 9, 10, 11, 12, 13, ‡\n1Department of Computer Science, University of Toronto, Toronto, ON M5S 3G4, Canada.\n2Vector Institute of Artificial Intelligence, Toronto, ON M5G 1M1, Canada.\n3Department of Chemistry, University of Toronto, Toronto, ON M5S 3H6, Canada.\n4Department of Computer Science, University of Copenhagen, Copenhagen, DK-2100, Denmark.\n5Chimie ParisTech, PSL University, CNRS, Institute for Life and Health Sciences (iCLeHS UMR 8060), 75005 Paris, France.\n6Department of Structural Biology, St. Jude Children’s Research Hospital, Memphis, TN 38105, USA.\n7Department of Physics, Harvard University, Cambridge, MA 02138, USA.\n8Horizon Quantum Computing, Singapore 138565.\n9Department of Chemical Engineering & Applied Chemistry, University of Toronto, Toronto, ON M5S 3E5, Canada.\n10Department of Materials Science & Engineering, University of Toronto, Toronto, ON M5S 3E4, Canada.\n11Acceleration Consortium, Toronto, ON M5S 3H6, Canada.\n12Canadian Institute for Advanced Research, Toronto, ON M5G 1Z8, Canada.\n13Lebovic Fellow, Canadian Institute for Advanced Research, Toronto, ON M5S 1M1, Canada.\nSimulating chemical systems is highly sought after and computationally challenging, as the number of degrees\nof freedom increases exponentially with the size of the system. Quantum computers have been proposed as\na computational means to overcome this bottleneck , thanks to their capability of representing this amount of\ninformation efficiently. Most efforts so far have been centered around determining the ground states of chemical\nsystems. However, hardness results and the lack of theoretical guarantees for efficient heuristics for initial-state\ngeneration she",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "The proposed framework employs a limited set of attainable atomic initial states and dynamically prepares input states for a reaction of interest through a scattering process, specifically by hierarchically combining atomic states through scattering.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "problems": [
+    {
+      "value": "Simulating chemical systems is highly sought after and computationally challenging due to the exponential increase in degrees of freedom with system size.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "hypotheses": [
+    {
+      "value": "A heuristically guided approach based on efficient routines can solve chemical simulation problems requiring quantum circuits of size scaling polynomially in relevant system parameters.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "evidence": [
+    {
+      "value": "The approach finds good initial states for dynamics simulation by assembling them in a scattering tree, and it discusses a variety of quantities of chemical interest that can be measured after the quantum simulation of a process.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "conclusions": [
+    {
+      "value": "The paper demonstrates a new approach to quantum chemical simulations that avoids the hardness of ground state problems and enables the simulation of a wide range of chemically relevant phenomena.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "entities": [
+    {
+      "value": "Quantum circuits",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Chemical Hamiltonians",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Atomic initial states",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Molecular reactants",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Scattering process",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "materials": [],
+  "properties": [],
+  "measurements": [
+    {
+      "value": "Quantum circuits Chemical Hamiltonians Atomic initial states Molecular reactants Scattering process Efficient simulation of chemical systems Production of molecular input states for subsequent dynamical simulation Measurement of reaction rates and time correlation functions",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "conditions": [
+    {
+      "value": "Quantum circuits Chemical Hamiltonians Atomic initial states Molecular reactants Scattering process Efficient simulation of chemical systems Production of molecular input states for subsequent dynamical simulation Measurement of reaction rates and time correlation functions",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "mechanisms": [
+    {
+      "value": "Polynomial-size quantum circuit simulation",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Hamiltonian simulation with local Hamiltonians",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "State preparation through scattering",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Measurement of dynamical quantities",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "outcomes": [
+    {
+      "value": "Efficient simulation of chemical systems",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Production of molecular input states for subsequent dynamical simulation",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Measurement of reaction rates and time correlation functions",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "Quantum",
+    "Chemistry",
+    "Physics"
+  ],
+  "reasoning_motifs": [
+    {
+      "value": "Information Representation → State Preparation",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Local Interactions → System Evolution",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Feedback Control → Adaptation",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "general_principles": [
+    {
+      "value": "Control Through Constraints",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Multi-scale Coupling",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "acgold_3cf8ce0004ba",
+    "cross_sdl_reasoning_json": "/Users/sissifeng/Downloads/cross-sdl_knowledge_transfer_engine/data/reasoning/acgold_3cf8ce0004ba.json",
+    "cross_sdl_extraction_quality": 0.8,
+    "cross_sdl_notes": "The paper is highly structured and presents a clear hypothesis, method, and conclusion. However, the reasoning is complex and involves multiple layers of abstraction, which might require domain expertise for full understanding. The lack of reported failures makes the exploration narrative incomplete."
+  },
+  "validation": {
+    "score": 0.68,
+    "coverage": {
+      "source_summary": false,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": true,
+      "entities": true,
+      "materials": false,
+      "properties": false,
+      "measurements": true,
+      "conditions": true,
+      "mechanisms": true,
+      "outcomes": true,
+      "cross_sdl_match": true
+    },
+    "missing": [
+      "source_summary",
+      "hardware",
+      "materials",
+      "properties"
+    ],
+    "notes": [
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

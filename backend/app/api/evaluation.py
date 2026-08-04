@@ -41,6 +41,14 @@ def eval_metrics(
         evidence_recall_at_k=report.evidence_recall_at_k,
         k=report.k,
         n_evaluated=report.n_evaluated,
+        dataset_role=report.dataset_role,
+        dataset_id=report.dataset_id,
+        dataset_hash=report.dataset_hash,
+        includes_silver=report.includes_silver,
+        label_scope=report.label_scope,
+        annotation_sources=report.annotation_sources,
+        evidence_levels=report.evidence_levels,
+        allowed_claim=report.allowed_claim,
     )
 
 

@@ -1,0 +1,127 @@
+{
+  "paper_id": "acfocus_b17746c86ecd",
+  "title": "Transfer learning improves performance in volumetric electron microscopy organelle segmentation across tissues",
+  "metadata": {
+    "doi": "10.1093/bioadv/vbaf021",
+    "url": "https://academic.oup.com/bioinformaticsadvances/article/5/1/vbaf021/8104107",
+    "year": "2025",
+    "authors": "R. Xie; B. Mulcahy; A. Darbandi; S. Marwah; F. Ali; Y. Lee; G. Parlakgül; G. S. Hotamisligil; B. Wang; S. MacParland; M. Zhen; G. D. Bader",
+    "venue": "Bioinformatics Advances",
+    "category": "Journal Article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Bo Wang"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "Transfer learning enables high-performance segmentation of multiple organelles in volumetric electron microscopy data with minimal new training data by pretraining on diverse datasets and fine-tuning on target samples, outperforming existing models in various benchmarking scenarios.",
+  "abstract": "Motivation: Volumetric electron microscopy (VEM) enables nanoscale resolution three-dimensional imaging of biological samples. Identification and labeling of organelles, cells, and other structures in the image volume is required for image interpretation, but manual labeling is extremely time-consuming. This can be automated using deep learning segmentation algorithms, but these traditionally require substantial manual annotation for training and typically these labeled datasets are unavailable for new samples. Results: We show that transfer learning can help address this challenge. By pretraining on VEM data from multiple mammalian tissues and organelle types and then fine-tuning on a target dataset, we segment multiple organelles at high performance, yet require a relatively small amount of new training data. We benchmark our method on three published VEM datasets and a new rat liver dataset we imaged over a 56×56×11μm volume measuring 7000×7000×219 px using serial block face scanning electron microscopy with corresponding manually labeled mitochondria and endoplasmic reticulum structures. We further benchmark our approach against the Segment Anything Model 2 and MitoNet in zero-shot, prompted, and fine-tuned settings. © The Author(s) 2025.",
+  "hardware": [
+    {
+      "value": "This can be automated using deep learning segmentation algorithms, but these traditionally require substantial manual annotation for training and typically these labeled datasets are unavailable for new samples.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "methods": [
+    {
+      "value": "Transfer learning enables high-performance segmentation of multiple organelles in volumetric electron microscopy data with minimal new training data by pretraining on diverse datasets and fine-tuning on target samples, outperforming existing models in various benchmarking scenarios.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [],
+  "materials": [],
+  "properties": [],
+  "measurements": [
+    {
+      "value": "Transfer learning improves performance in volumetric electron microscopy organelle segmentation across tissues Transfer learning enables high-performance segmentation of multiple organelles in volumetric electron microscopy data with minimal new training data by pretraining on diverse datasets and fine-tuning on target samples, outperforming existing models in various benchmarking scenarios.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Motivation: Volumetric electron microscopy (VEM) enables nanoscale resolution three-dimensional imaging of biological samples.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "We benchmark our method on three published VEM datasets and a new rat liver dataset we imaged over a 56×56×11μm volume measuring 7000×7000×219 px using serial block face scanning electron microscopy with corresponding manually labeled mitochondria and endoplasmic reticulum structures.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "We further benchmark our approach against the Segment Anything Model 2 and MitoNet in zero-shot, prompted, and fine-tuned settings.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "conditions": [
+    {
+      "value": "Identification and labeling of organelles, cells, and other structures in the image volume is required for image interpretation, but manual labeling is extremely time-consuming.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "mechanisms": [],
+  "outcomes": [],
+  "sdl_tags": [],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.5,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": true,
+      "method": true,
+      "evidence": false,
+      "entities": false,
+      "materials": false,
+      "properties": false,
+      "measurements": true,
+      "conditions": true,
+      "mechanisms": false,
+      "outcomes": false,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "evidence",
+      "entities",
+      "materials",
+      "properties",
+      "mechanisms",
+      "outcomes",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only."
+    ]
+  }
+}

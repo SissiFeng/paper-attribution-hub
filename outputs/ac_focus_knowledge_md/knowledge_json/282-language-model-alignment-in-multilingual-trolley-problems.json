@@ -1,0 +1,92 @@
+{
+  "paper_id": "acfocus_e6c163013e61",
+  "title": "LANGUAGE MODEL ALIGNMENT IN MULTILINGUAL TROLLEY PROBLEMS",
+  "metadata": {
+    "doi": "",
+    "url": "https://www.scopus.com/inward/record.uri?eid=2-s2.0-105010285449&partnerID=40&md5=8d8b3334f53ea0b2831fadef99fd906a",
+    "year": "2025",
+    "authors": "Z. Jin; M. Kleiman-Weiner; G. Piatti; S. Levine; J. Liu; F. Gonzalez; F. Ortu; A. Strausz; M. Sachan; R. Mihalcea; Y. Choi; B. Schölkopf",
+    "venue": "13th International Conference on Learning Representations, ICLR 2025",
+    "category": "Conference Proceedings",
+    "peer_reviewed": "Non Peer Reviewed",
+    "ac_members": [
+      "Zhijing Jin"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "The study introduces MULTITP, a multilingual dataset of moral dilemmas, to evaluate how well 19 large language models align with human moral preferences across over 100 languages, revealing significant cross-lingual and ethical biases and emphasizing the need for diverse perspectives in responsible AI research.",
+  "abstract": "We evaluate the moral alignment of LLMs with human preferences in multilingual trolley problems. Building on the Moral Machine experiment, which captures over 40 million human judgments across 200+ countries, we develop a crosslingual corpus of moral dilemma vignettes in over 100 languages called MULTITP. This dataset enables the assessment of LLMs' decision-making processes in diverse linguistic contexts. Our analysis explores the alignment of 19 different LLMs with human judgments, capturing preferences across six moral dimensions: species, gender, fitness, status, age, and the number of lives involved. By correlating these preferences with the demographic distribution of language speakers and examining the consistency of LLM responses to various prompt paraphrasings, our findings provide insights into cross-lingual and ethical biases of LLMs and their intersection. We discover significant variance in alignment across languages, challenging the assumption of uniform moral reasoning in AI systems and highlighting the importance of incorporating diverse perspectives in AI ethics. The results underscore the need for further research on the integration of multilingual dimensions in responsible AI research to ensure fair and equitable AI interactions worldwide. © 2025 13th International Conference on Learning Representations, ICLR 2025. All rights reserved.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "The study introduces MULTITP, a multilingual dataset of moral dilemmas, to evaluate how well 19 large language models align with human moral preferences across over 100 languages, revealing significant cross-lingual and ethical biases and emphasizing the need for diverse perspectives in responsible AI research.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [],
+  "materials": [],
+  "properties": [],
+  "measurements": [],
+  "conditions": [],
+  "mechanisms": [],
+  "outcomes": [],
+  "sdl_tags": [],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.3,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": false,
+      "materials": false,
+      "properties": false,
+      "measurements": false,
+      "conditions": false,
+      "mechanisms": false,
+      "outcomes": false,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "entities",
+      "materials",
+      "properties",
+      "measurements",
+      "conditions",
+      "mechanisms",
+      "outcomes",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

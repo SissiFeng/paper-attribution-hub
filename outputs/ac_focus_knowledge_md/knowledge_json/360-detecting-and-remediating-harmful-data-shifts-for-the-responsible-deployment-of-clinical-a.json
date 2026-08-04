@@ -1,0 +1,114 @@
+{
+  "paper_id": "acfocus_7ccb7981d790",
+  "title": "Detecting and Remediating Harmful Data Shifts for the Responsible Deployment of Clinical AI Models",
+  "metadata": {
+    "doi": "10.1001/jamanetworkopen.2025.13685",
+    "url": "https://jamanetwork.com/journals/jamanetworkopen/fullarticle/2834882#google_vignette202506",
+    "year": "2025",
+    "authors": "V. Subasri; A. Krishnan; A. Kore; A. Dhalla; D. Pandya; B. Wang; D. Malkin; F. Razak; A. A. Verma; A. Goldenberg; E. Dolatabadi",
+    "venue": "JAMA Network Open",
+    "category": "Journal Article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Ali Dolatabadi"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "This study developed and evaluated a proactive, label-agnostic monitoring pipeline that successfully detected and mitigated harmful data shifts in clinical AI systems predicting in-hospital mortality, demonstrating that transfer learning and continual learning strategies can maintain model performance across diverse healthcare settings.",
+  "abstract": "Importance: Clinical artificial intelligence (AI) systems are susceptible to performance degradation due to data shifts, which can lead to erroneous predictions and potential patient harm. Proactively detecting and mitigating these shifts is crucial for maintaining AI effectiveness and safety in clinical practice. Objectives: To develop and evaluate a proactive, label-agnostic monitoring pipeline to detect and mitigate harmful data shifts in clinical AI systems and to assess the use of transfer learning and continual learning strategies in maintaining model performance. Design, Setting, and Participants: This prognostic study was conducted using electronic health record data for admissions to general internal medicine wards of 7 large hospitals (5 academic and 2 community) in Toronto, Canada, between January 1, 2010, to August 31, 2020. Inpatients (aged ≥18 years) with a hospital stay of at least 24 hours were included. Data analysis was performed from January to August 2022. Exposures: Data shifts due to changes in hospital type, critical laboratory assays, patient demographics, admission type, and the COVID-19 pandemic. Main Outcomes and Measures: The primary outcome was predictive performance for all-cause in-hospital mortality within the next 2 weeks, evaluated using the area under the receiver operating characteristic curve (AUROC) and the area under the precision-recall curve (AUPRC). Data shifts were detected using a label-agnostic monitoring pipeline employing a black box shift estimator with maximum mean discrepancy testing. Results: Data were available for 143049 adult inpatients (mean [SD] age, 67.8 [19.6] years; 50.7% female). Significant data shifts were detected as a result of changes in younger age groups and admissions from nursing homes and acute care centers, transferring from community to academic hospitals, and changes in brain natriuretic peptide and D-dimer. Transfer learning improved model performance of community hospitals in a hospital type-dependent manner (Delta AUROC [SD], 0.05 [0.03]; Delta AUPRC [SD], 0.06 [0.04]). During the COVID-19 pandemic, drift-triggered continual learning improved overall model performance (Delta AUROC [SD], 0.44 [0.02]; P =.007, Mann-Whitney U test). Conclusions and Relevance: In this prognostic study, a proactive, label-agnostic monitoring pipeline detected harmful data shifts for a clinical AI system predicting in-hospital mortality. Transfer learning and drift-triggered continual learning strategies mitigated performance degradation, maintaining model performance across health care settings. These findings suggest that the approach used here may ensure the robust and equitable deployment of clinical AI models. Future research should explore the generalizability of this framework across diverse clinical domains, data modalities, and longer deployment periods to further validate its effectiveness. © 2025 American Medical Association. All rights reserved.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "This study developed and evaluated a proactive, label-agnostic monitoring pipeline that successfully detected and mitigated harmful data shifts in clinical AI systems predicting in-hospital mortality, demonstrating that transfer learning and continual learning strategies can maintain model performance across diverse healthcare settings.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Artificial Intelligence & Data Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Biology",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [],
+  "properties": [],
+  "measurements": [],
+  "conditions": [],
+  "mechanisms": [],
+  "outcomes": [
+    {
+      "value": "Therapeutics",
+      "source": "csv_applied_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "Artificial Intelligence & Data Science",
+    "Biology",
+    "Therapeutics"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.43,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": false,
+      "properties": false,
+      "measurements": false,
+      "conditions": false,
+      "mechanisms": false,
+      "outcomes": true,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "materials",
+      "properties",
+      "measurements",
+      "conditions",
+      "mechanisms",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

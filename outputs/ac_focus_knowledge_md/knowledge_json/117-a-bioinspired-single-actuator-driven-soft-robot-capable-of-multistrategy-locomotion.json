@@ -1,0 +1,129 @@
+{
+  "paper_id": "acfocus_88a7e86edf12",
+  "title": "A Bioinspired Single Actuator-Driven Soft Robot Capable of Multistrategy Locomotion",
+  "metadata": {
+    "doi": "10.1109/tro.2024.3370050",
+    "url": "https://ieeexplore.ieee.org/document/10449469",
+    "year": "2024",
+    "authors": "Chen R, Zhu X, Yuan Z, Pu H, Luo J, Sun Y",
+    "venue": "IEEE Transactions on Robotics",
+    "category": "Journal article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Yu Sun"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "checked",
+      "high_impact": "checked"
+    }
+  },
+  "source_summary": "This work introduces a lightweight, compact multidirectional jumping soft robot powered by a simple biaxial electrohydraulic actuator, capable of two switchable locomotion strategies for agile navigation and environmental sensing in complex terrains.",
+  "abstract": "Multidirectional jumping is commonly found in living creatures and desirable to be integrated into mobile robots for enhanced agility. Existing jumping robots mostly employ complex or cumbersome structures and modular designs to achieve multidirectional jumping. There is a lack of a simple, lightweight, and compact actuator design for multidirectional jumping robots. Here, we present a multidirectional jumping soft robot (MDJSR) driven by a biaxial electrohydraulic actuator (BEHA). The BEHA has a simple structure, i.e., a thin plastic frame-guided film pouch with four pairs of distributed electrodes and enclosed with a dielectric liquid. Inspired by gall midge larvae, the MDJSR exhibits two switchable locomotion strategies, including continuous nonenergy-storing jumping to move fast and energy-storing jumping to cross obstacles. Its multidirectional jumping capability was demonstrated in the navigation through a labyrinth with two ways of obstacle-crossing and obstacle-circumventing in different terrain environments. In addition, the robot can be deployed to detect unknown space and collect environmental factors. This work provides an enabling solution to miniature and lightweight multimodal jumping soft robots for various robotic tasks.",
+  "hardware": [
+    {
+      "value": "This work introduces a lightweight, compact multidirectional jumping soft robot powered by a simple biaxial electrohydraulic actuator, capable of two switchable locomotion strategies for agile navigation and environmental sensing in complex terrains.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Multidirectional jumping is commonly found in living creatures and desirable to be integrated into mobile robots for enhanced agility.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Existing jumping robots mostly employ complex or cumbersome structures and modular designs to achieve multidirectional jumping.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "There is a lack of a simple, lightweight, and compact actuator design for multidirectional jumping robots.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "methods": [
+    {
+      "value": "This work introduces a lightweight, compact multidirectional jumping soft robot powered by a simple biaxial electrohydraulic actuator, capable of two switchable locomotion strategies for agile navigation and environmental sensing in complex terrains.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Automation and Robotics",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [],
+  "properties": [
+    {
+      "value": "Inspired by gall midge larvae, the MDJSR exhibits two switchable locomotion strategies, including continuous nonenergy-storing jumping to move fast and energy-storing jumping to cross obstacles.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [],
+  "conditions": [],
+  "mechanisms": [],
+  "outcomes": [],
+  "sdl_tags": [
+    "Automation and Robotics"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.54,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": true,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": false,
+      "properties": true,
+      "measurements": false,
+      "conditions": false,
+      "mechanisms": false,
+      "outcomes": false,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "evidence",
+      "materials",
+      "measurements",
+      "conditions",
+      "mechanisms",
+      "outcomes",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only."
+    ]
+  }
+}

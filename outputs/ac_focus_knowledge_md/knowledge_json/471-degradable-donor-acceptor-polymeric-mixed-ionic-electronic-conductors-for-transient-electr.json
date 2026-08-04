@@ -1,0 +1,132 @@
+{
+  "paper_id": "acfocus_97e60ba924cb",
+  "title": "Degradable Donor-Acceptor Polymeric Mixed Ionic-Electronic Conductors for Transient Electronics",
+  "metadata": {
+    "doi": "10.1002/admt.202502543",
+    "url": "https://advanced.onlinelibrary.wiley.com/doi/10.1002/admt.202502543",
+    "year": "2026",
+    "authors": "A. Lin; Z. Liu; S. Upreti; S. Lo; N. S. Y. Hsu; X. Gu; S. Wang; H. Tran",
+    "venue": "Advanced Materials Technologies",
+    "category": "Journal article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Helen Tran"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance"
+    ],
+    "flags": {
+      "acknowledges_ac": "checked",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "This study demonstrates that systematic side chain engineering of donor–acceptor polymers enables programmable degradation rates and maintains electronic performance in degradable organic mixed ionic-electronic conductors, advancing the design of transient electronics for sustainability and bioelectronics applications.",
+  "abstract": "Development of degradable organic mixed ionic-electronic conductors (OMIECs) can help realize transient electronics for sustainability aims in reducing electronic waste and for human health outcomes in bioelectronics. However, the diverse environments envisioned for transient electronics makes it difficult to define a singular ideal degradation profile for materials, necessitating adaptable molecular design strategies. Here we take a systematic side chain engineering approach to elucidate how molecular-level modifications of donor–acceptor (D–A) polymer structures can satisfy demands for transient electronics that are often conflicting: degradability, charge carrier transport, and ionic transport. Utilizing D–A polymer backbones that can be functionalized with various glycolated side chains opens a wide range of molecular design combinations to be explored in device optimization for different electronic needs (i.e., rate of degradation). From acid degradation studies, we demonstrate that side chain design impacts the degradation kinetics of polymeric MIECs, with the branched triethylene glycol (bTEG) side chain-functionalized polymers showing faster degradation rates relative to amphiphilic side chain-functionalized analogues. The bTEG-functionalized polymers also promisingly exhibit retention of similar OECT performance to their previously reported high-performing C12TEG analogues. This work on degradable D–A polymeric MIECs highlights a promising molecular-level design approach to achieve programmable degradation rates for materials in transient electronics.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "This study demonstrates that systematic side chain engineering of donor–acceptor polymers enables programmable degradation rates and maintains electronic performance in degradable organic mixed ionic-electronic conductors, advancing the design of transient electronics for sustainability and bioelectronics applications.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Chemistry",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "Degradable Donor-Acceptor Polymeric Mixed Ionic-Electronic Conductors for Transient Electronics This study demonstrates that systematic side chain engineering of donor–acceptor polymers enables programmable degradation rates and maintains electronic performance in degradable organic mixed ionic-electronic conductors, advancing the design of transient electronics for sustainability and bioelectronics applications.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "However, the diverse environments envisioned for transient electronics makes it difficult to define a singular ideal degradation profile for materials, necessitating adaptable molecular design strategies.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Here we take a systematic side chain engineering approach to elucidate how molecular-level modifications of donor–acceptor (D–A) polymer structures can satisfy demands for transient electronics that are often conflicting: degradability, charge carrier transport, and ionic transport.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [],
+  "measurements": [],
+  "conditions": [
+    {
+      "value": "Utilizing D–A polymer backbones that can be functionalized with various glycolated side chains opens a wide range of molecular design combinations to be explored in device optimization for different electronic needs (i.e., rate of degradation).",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "mechanisms": [],
+  "outcomes": [
+    {
+      "value": "Electronics",
+      "source": "csv_applied_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "Chemistry",
+    "Electronics"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.54,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": true,
+      "properties": false,
+      "measurements": false,
+      "conditions": true,
+      "mechanisms": false,
+      "outcomes": true,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "properties",
+      "measurements",
+      "mechanisms",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

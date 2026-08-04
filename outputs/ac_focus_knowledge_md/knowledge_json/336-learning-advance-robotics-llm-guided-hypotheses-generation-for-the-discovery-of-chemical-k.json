@@ -1,0 +1,138 @@
+{
+  "paper_id": "acfocus_b21784f877df",
+  "title": "Learning Advance: Robotics-LLM Guided Hypotheses Generation for the Discovery of Chemical Knowledge",
+  "metadata": {
+    "doi": "10.26434/chemrxiv-2025-n1b4l",
+    "url": "https://chemrxiv.org/doi/full/10.26434/chemrxiv-2025-n1b4l",
+    "year": "2025",
+    "authors": "T. Yin; R. Feng; J. Bao; P. Gao; Y. Liang; J. Heather; A. Aspuru-Guzik; W. Wang",
+    "venue": "ChemRxiv",
+    "category": "Preprint",
+    "peer_reviewed": "Non Peer Reviewed",
+    "ac_members": [
+      "Alán Aspuru-Guzik"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "The \"Learning Advance\" framework integrates Bayesian optimization, AI-driven hypothesis generation, and automated experimentation to iteratively discover and validate new chemical knowledge for optimizing solubility in amphiphile/water systems.",
+  "abstract": "We present a novel framework that we name Learning Advance\" for hypothesis generation and validation for the discovery of chemical knowledge in the context of optimizing solubility in amphiphile/water systems. The workflow begins with an initial hypothesis: that the incorporation of common hydrotropic additives, such as sugars or urea, enhances solubility limits. To test this assumption, we employ a grid search and Latin hypercube sampling approach to design experimental combinations of additive weight percentages. We employ high-throughput robotic systems for automating the experiments and a YOLO-based image analysis workflow for determining the degree of solubilization. Experimental data are transformed into a chemical feature space to train a Gaussian Process Regression (GPR) model, which drives a Bayesian optimization (BO) algorithm for identifying optimal additive combinations. When BO plateaus, the \"Learning Advance\" approach leverages all accumulated data for AI analysis. We extract correlations between target property and chemical features, enabling LLM tools to generate a novel hypothesis based on the observed data. This hypothesis is subsequently validated through experimentation, creating a continuous cycle of discovery. This framework demonstrates how integrating BO with AI-driven hypothesis generation enables breakthroughs beyond conventional optimization limits, establishing a promising approach for advancing scientific knowledge discovery in material science and chemistry.\"",
+  "hardware": [
+    {
+      "value": "The \"Learning Advance\" framework integrates Bayesian optimization, AI-driven hypothesis generation, and automated experimentation to iteratively discover and validate new chemical knowledge for optimizing solubility in amphiphile/water systems.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "We employ high-throughput robotic systems for automating the experiments and a YOLO-based image analysis workflow for determining the degree of solubilization.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "methods": [
+    {
+      "value": "The \"Learning Advance\" framework integrates Bayesian optimization, AI-driven hypothesis generation, and automated experimentation to iteratively discover and validate new chemical knowledge for optimizing solubility in amphiphile/water systems.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Artificial Intelligence & Data Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Automation and Robotics",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Chemistry",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "This framework demonstrates how integrating BO with AI-driven hypothesis generation enables breakthroughs beyond conventional optimization limits, establishing a promising approach for advancing scientific knowledge discovery in material science and chemistry.\"",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [
+    {
+      "value": "We extract correlations between target property and chemical features, enabling LLM tools to generate a novel hypothesis based on the observed data.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [],
+  "conditions": [],
+  "mechanisms": [],
+  "outcomes": [],
+  "sdl_tags": [
+    "Artificial Intelligence & Data Science",
+    "Automation and Robotics",
+    "Chemistry"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.61,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": true,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": true,
+      "properties": true,
+      "measurements": false,
+      "conditions": false,
+      "mechanisms": false,
+      "outcomes": false,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "evidence",
+      "measurements",
+      "conditions",
+      "mechanisms",
+      "outcomes",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only."
+    ]
+  }
+}

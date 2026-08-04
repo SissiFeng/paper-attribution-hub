@@ -1,0 +1,101 @@
+{
+  "paper_id": "acfocus_545c259fcd82",
+  "title": "Quantum Deep Equilibrium Models",
+  "metadata": {
+    "doi": "10.48550/arxiv.2410.23940",
+    "url": "https://arxiv.org/abs/2410.23940",
+    "year": "2024",
+    "authors": "Schleich P, Skreta M, Kristensen LB, Vargas-Hernández RA, Aspuru-Guzik A",
+    "venue": "arxiv",
+    "category": "Preprint",
+    "peer_reviewed": "Non Peer Reviewed",
+    "ac_members": [
+      "Alán Aspuru-Guzik"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "",
+  "abstract": "Quantum Deep Equilibrium Models\nPhilipp Schleich∗\nDepartment of Computer Science\nUniversity of Toronto\nVector Institute\nphilipps@cs.toronto.edu\nMarta Skreta∗\nDepartment of Computer Science\nUniversity of Toronto\nVector Institute\nmartaskreta@cs.toronto.edu\nLasse B. Kristensen\nDepartment of Computer Science\nUniversity of Copenhagen\nRodrigo A. Vargas-Hernández\nDepartment of Chemistry\n& Chemical Biology\nMcMaster University, ON\nAlán Aspuru-Guzik\nDepartment of Computer Science\nDepartment of Chemistry\nUniversity of Toronto\nVector Institute\nAbstract\nThe feasibility of variational quantum algorithms, the most popular correspondent\nof neural networks on noisy, near-term quantum hardware, is highly impacted by\nthe circuit depth of the involved parametrized quantum circuits (PQCs). Higher\ndepth increases expressivity, but also results in a detrimental accumulation of\nerrors. Furthermore, the number of parameters involved in the PQC significantly\ninfluences the performance through the necessary number of measurements to\nevaluate gradients, which scales linearly with the number of parameters. Motivated\nby this, we look at deep equilibrium models (DEQs), which mimic an infinite-depth,\nweight-tied network using a fraction of the memory by employing a root solver\nto find the fixed points of the network. In this work, we present Quantum Deep\nEquilibrium Models (QDEQs): a training paradigm that learns parameters of a\nquantum machine learning model given by a PQC using DEQs. To our knowledge,\nno work has yet explored the application of DEQs to QML models. We apply\nQDEQs to find the parameters of a quantum circuit in two settings: the first involves\nclassifying MNIST-4 digits with 4 qubits; the second extends it to 10 classes of\nMNIST, FashionMNIST and CIFAR. We find that QDEQ is not only competitive\nwith comparable existing baseline models, but also achieves higher performance\nthan a network with 5 times more layers. This demonstrates that the QDEQ\nparadigm can be used to develop signif",
+  "hardware": [],
+  "methods": [],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Artificial Intelligence & Data Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Quantum",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [],
+  "properties": [],
+  "measurements": [],
+  "conditions": [],
+  "mechanisms": [],
+  "outcomes": [],
+  "sdl_tags": [
+    "Artificial Intelligence & Data Science",
+    "Quantum"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "acgold_8519012fcd2f",
+    "cross_sdl_reasoning_json": "/Users/sissifeng/Downloads/cross-sdl_knowledge_transfer_engine/data/reasoning/acgold_8519012fcd2f.json",
+    "cross_sdl_extraction_quality": 0.0,
+    "cross_sdl_notes": "Extraction failed — parse error: Expecting ',' delimiter: line 51 column 4 (char 3199)"
+  },
+  "validation": {
+    "score": 0.22,
+    "coverage": {
+      "source_summary": false,
+      "abstract": true,
+      "hardware": false,
+      "method": false,
+      "evidence": false,
+      "entities": true,
+      "materials": false,
+      "properties": false,
+      "measurements": false,
+      "conditions": false,
+      "mechanisms": false,
+      "outcomes": false,
+      "cross_sdl_match": true
+    },
+    "missing": [
+      "source_summary",
+      "hardware",
+      "method",
+      "evidence",
+      "materials",
+      "properties",
+      "measurements",
+      "conditions",
+      "mechanisms",
+      "outcomes"
+    ],
+    "notes": [
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

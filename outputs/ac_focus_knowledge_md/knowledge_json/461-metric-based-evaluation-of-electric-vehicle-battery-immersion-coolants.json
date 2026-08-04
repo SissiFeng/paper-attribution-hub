@@ -1,0 +1,107 @@
+{
+  "paper_id": "acfocus_481c20ad03f0",
+  "title": "Metric-based evaluation of electric vehicle battery immersion coolants",
+  "metadata": {
+    "doi": "10.1016/j.est.2025.119036",
+    "url": "https://www.sciencedirect.com/science/article/pii/S2352152X25037491",
+    "year": "2025",
+    "authors": "H. Rezaei; M. Rajabi-Kochi; M. Ebrahimiazar; M. Zargartalebi; S. M. Moosavi; D. Sinton",
+    "venue": "Journal of Energy Storage",
+    "category": "Journal Article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Mohamad Moosavi",
+      "David Sinton"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Full Member",
+      "AC Governance"
+    ],
+    "flags": {
+      "acknowledges_ac": "checked",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "This study introduces a figure of merit (FOM) to quantify and rapidly screen the thermal performance of dielectric fluids for immersion cooling in cylindrical EV battery packs, using computational fluid dynamics and active learning to efficiently identify high-performing fluid mixtures and accelerate the discovery of optimal thermal management solutions.",
+  "abstract": "The widespread adoption of electric vehicles (EVs) depends on batteries with higher energy density and faster charging. Achieving these goals requires effective thermal management, with immersion cooling emerging as a promising solution. However, the lack of a standardized metric for screening immersion cooling fluids remains a challenge, in part because performance is a function of fluid properties and geometry. This study introduces a figure of merit (FOM) to quantify the thermal performance of dielectric fluids for the immersion cooling of the most common cylindrical EV battery packs. We combined computational fluid dynamics (CFD) and active learning techniques to screen over 1600 fluid mixtures drawn from liquid families potentially suitable for EV immersion cooling. Active learning drove the FOM with 15 data points—achieving a tenfold improvement in computational efficiency compared to random sampling. The resulting model was predictive (R<sup>2</sup> = 0.99) across diverse dielectric fluids and binary mixtures, with silicon oils and essential oils achieving the highest FOM values. This work provides a metric-driven approach to rapidly screening and ranking fluids, facilitating the accelerated discovery of high-performance thermal fluids tailored to specific EV applications.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "This study introduces a figure of merit (FOM) to quantify and rapidly screen the thermal performance of dielectric fluids for immersion cooling in cylindrical EV battery packs, using computational fluid dynamics and active learning to efficiently identify high-performing fluid mixtures and accelerate the discovery of optimal thermal management solutions.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [],
+  "materials": [],
+  "properties": [
+    {
+      "value": "The widespread adoption of electric vehicles (EVs) depends on batteries with higher energy density and faster charging.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "However, the lack of a standardized metric for screening immersion cooling fluids remains a challenge, in part because performance is a function of fluid properties and geometry.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [],
+  "conditions": [],
+  "mechanisms": [],
+  "outcomes": [],
+  "sdl_tags": [],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.37,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": false,
+      "materials": false,
+      "properties": true,
+      "measurements": false,
+      "conditions": false,
+      "mechanisms": false,
+      "outcomes": false,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "entities",
+      "materials",
+      "measurements",
+      "conditions",
+      "mechanisms",
+      "outcomes",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

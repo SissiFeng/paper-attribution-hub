@@ -1,0 +1,256 @@
+{
+  "paper_id": "acfocus_3ee3a2a14fa2",
+  "title": "Chemical language models can generate biomolecules atom-by-atom",
+  "metadata": {
+    "doi": "10.1039/d5dd00107b",
+    "url": "https://pubs.rsc.org/en/content/articlelanding/2025/dd/d5dd00107b",
+    "year": "2025",
+    "authors": "K. Zhu; D. Flam-Shepherd; A. Aspuru-Guzik",
+    "venue": "Digital Discovery",
+    "category": "Journal Article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Alán Aspuru-Guzik"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance"
+    ],
+    "flags": {
+      "acknowledges_ac": "checked",
+      "highly_relevant": "checked",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "Chemical language models can learn and generate atom-level representations of large biomolecules, including proteins and protein-drug conjugates, enabling hierarchical and novel biomolecular design.",
+  "abstract": "Chemical language models are powerful generative models, capable of learning complex molecular distributions such as the largest molecules in Pubchem. In this work, we further show that chemical language models can learn atom-level representations of substantially larger molecules - scaling even to biomolecules like proteins. We show that chemical language models can generate entire biomolecules atom by atom - effectively learning the multiple hierarchical layers of molecular information from primary sequence to tertiary structure. Even further, we demonstrate that chemical language models can explore chemical space and protein space simultaneously by generating novel examples of protein-drug conjugates. The results demonstrate the potential for atom level biomolecular design with chemical language models.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "Training chemical language models on various biomolecules including proteins from the Protein DataBank and creating synthetic biomolecular datasets by attaching small molecules to single-domain antibodies.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "problems": [
+    {
+      "value": "The ability of chemical language models to generate large biomolecules atom by atom, including proteins and protein-drug conjugates.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "hypotheses": [
+    {
+      "value": "Chemical language models can learn atom-level representations of substantially larger molecules, scaling to biomolecules like proteins.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "evidence": [
+    {
+      "value": "The model generated proteins with valid primary sequences, unique amino acid sequences, and meaningful secondary and tertiary structures as confirmed by AlphaFold structure predictions.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "conclusions": [
+    {
+      "value": "Chemical language models can effectively learn the hierarchical layers of molecular information from primary sequence to tertiary structure and explore chemical space and protein space simultaneously.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "entities": [
+    {
+      "value": "Proteins",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Protein-drug conjugates",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Small molecules",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Amino acid sequences",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "Proteins",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Protein-drug conjugates",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Small molecules",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Chemical language models are powerful generative models, capable of learning complex molecular distributions such as the largest molecules in Pubchem.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "In this work, we further show that chemical language models can learn atom-level representations of substantially larger molecules - scaling even to biomolecules like proteins.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Training chemical language models on various biomolecules including proteins from the Protein DataBank and creating synthetic biomolecular datasets by attaching small molecules to single-domain antibodies.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [],
+  "measurements": [],
+  "conditions": [],
+  "mechanisms": [
+    {
+      "value": "Learning atom-level representations of biomolecules",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Generating molecular graphs representing proteins and protein-drug conjugates",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Exploring chemical and protein space by generating novel molecular structures",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "outcomes": [
+    {
+      "value": "Generation of proteins with valid primary sequences and structures",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Creation of novel protein-drug conjugates with valid and novel protein sequences and structures attached to drug-like molecules",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "Artificial Intelligence & Data Science",
+    "Biochemistry"
+  ],
+  "reasoning_motifs": [
+    {
+      "value": "Learning → Generation",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Data augmentation → Enhanced exploration",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Sequence pattern recognition → Novel sequence creation",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "general_principles": [
+    {
+      "value": "Information Representation",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Generative Modeling",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Pattern Recognition",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "failure_paths": [
+    {
+      "value": "success: Training chemical language models on larger biomolecules and protein-drug conjugates. Evidence: The model successfully learned to generate proteins and protein-drug conjugates with valid structures and sequences.",
+      "source": "cross_sdl_phase4",
+      "confidence": 0.75,
+      "evidence": ""
+    }
+  ],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "acgold_9920048a18d3",
+    "cross_sdl_reasoning_json": "/Users/sissifeng/Downloads/cross-sdl_knowledge_transfer_engine/data/reasoning/acgold_9920048a18d3.json",
+    "cross_sdl_extraction_quality": 0.8,
+    "cross_sdl_notes": "The paper provides a clear structure of the problem, hypothesis, method, and results, but some details on the specific training processes and model architectures were inferred."
+  },
+  "validation": {
+    "score": 0.73,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": true,
+      "entities": true,
+      "materials": true,
+      "properties": false,
+      "measurements": false,
+      "conditions": false,
+      "mechanisms": true,
+      "outcomes": true,
+      "cross_sdl_match": true
+    },
+    "missing": [
+      "hardware",
+      "properties",
+      "measurements",
+      "conditions"
+    ],
+    "notes": [
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

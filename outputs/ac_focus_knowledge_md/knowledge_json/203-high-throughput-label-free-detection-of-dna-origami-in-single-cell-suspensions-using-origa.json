@@ -1,0 +1,124 @@
+{
+  "paper_id": "acfocus_2346f9c5bc1e",
+  "title": "High-Throughput, Label-Free Detection of DNA Origami in Single-Cell Suspensions Using origamiFISH-Flow",
+  "metadata": {
+    "doi": "10.1002/smll.202400236",
+    "url": "https://onlinelibrary.wiley.com/doi/full/10.1002/smll.202400236",
+    "year": "2024",
+    "authors": "Alexander S, Wang WX, Tseng CY, Douglas TR, Chou LYT",
+    "venue": "Small",
+    "category": "Journal article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Leo Chou"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "checked",
+      "high_impact": "checked"
+    }
+  },
+  "source_summary": "origamiFISH-Flow is a high-throughput, label-free flow cytometry technique that enables sensitive, structure-agnostic quantification of DNA nanostructures in single-cell suspensions, facilitating detailed analysis of DN-cell interactions and uptake across diverse cell types and tissues.",
+  "abstract": "Structural DNA nanotechnology enables custom fabrication of nanoscale devices and promises diverse biological applications. However, the effects of design on DNA nanostructure (DN)-cell interactions in vitro and in vivo are not yet well-characterized. origamiFISH is a recently developed technique for imaging DNs in cells and tissues. Compared to the use of fluorescent tags, origamiFISH offers label-free and structure-agnostic detection of DNs with significantly improved sensitivity. Here, the origamiFISH technique is extended to quantify DNs in single-cell suspensions, including in nonadherent cells such as subsets of immune cells, via readout by flow cytometry. This method, referred to as origamiFISH-Flow, is high-throughput (e.g., 10 000 cells per second) and compatible with immunostaining for concurrent cell-type and cell-state characterization. It is shown that origamiFISH-Flow provides 20-fold higher signal-to-noise ratio for DN detection compared to dye labeling approaches, leading to the capture of >25-fold more DN+ cells under single-picomolar DN uptake concentrations. Additionally, the use of origamiFISH-Flow is validated to profile the uptake of various DN shapes across multiple cell lines and splenocytes, as well as to quantify in vivo DN accumulation in lymphoid organs. Together, origamiFISH-Flow offers a new tool to interrogate DN interactions with cells and tissues, while providing insights for tailoring their designs in bio-applications.",
+  "hardware": [
+    {
+      "value": "origamiFISH-Flow is a high-throughput, label-free flow cytometry technique that enables sensitive, structure-agnostic quantification of DNA nanostructures in single-cell suspensions, facilitating detailed analysis of DN-cell interactions and uptake across diverse cell types and tissues.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "This method, referred to as origamiFISH-Flow, is high-throughput (e.g., 10 000 cells per second) and compatible with immunostaining for concurrent cell-type and cell-state characterization.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "methods": [
+    {
+      "value": "origamiFISH-Flow is a high-throughput, label-free flow cytometry technique that enables sensitive, structure-agnostic quantification of DNA nanostructures in single-cell suspensions, facilitating detailed analysis of DN-cell interactions and uptake across diverse cell types and tissues.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Automation and Robotics",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Biology",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [],
+  "properties": [],
+  "measurements": [
+    {
+      "value": "This method, referred to as origamiFISH-Flow, is high-throughput (e.g., 10 000 cells per second) and compatible with immunostaining for concurrent cell-type and cell-state characterization.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "conditions": [],
+  "mechanisms": [],
+  "outcomes": [],
+  "sdl_tags": [
+    "Automation and Robotics",
+    "Biology"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.53,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": true,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": false,
+      "properties": false,
+      "measurements": true,
+      "conditions": false,
+      "mechanisms": false,
+      "outcomes": false,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "evidence",
+      "materials",
+      "properties",
+      "conditions",
+      "mechanisms",
+      "outcomes",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only."
+    ]
+  }
+}

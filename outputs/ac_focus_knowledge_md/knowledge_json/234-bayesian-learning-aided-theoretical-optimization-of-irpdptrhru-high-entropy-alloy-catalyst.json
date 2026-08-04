@@ -1,0 +1,159 @@
+{
+  "paper_id": "acfocus_359f134ae489",
+  "title": "Bayesian Learning Aided Theoretical Optimization of IrPdPtRhRu High Entropy Alloy Catalysts for the Hydrogen Evolution Reaction",
+  "metadata": {
+    "doi": "10.1002/smtd.202401224",
+    "url": "https://onlinelibrary.wiley.com/doi/10.1002/smtd.202401224",
+    "year": "2024",
+    "authors": "Huang L, Gariepy Z, Halpren E, Du L, Shan CH, Yang C, Chen ZW, Singh CV",
+    "venue": "Small Methods",
+    "category": "Journal article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Yang Cao",
+      "Chandra Veer Singh"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Staff",
+      "AC Full Member"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "checked",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "This work combines density functional theory and Bayesian machine learning to reveal the unique catalytic mechanism of IrPdPtRhRu high entropy alloy catalysts for hydrogen evolution, demonstrating that a novel Bayesian optimization approach can improve catalytic performance and reduce synthesis cost by about 15%, outperforming benchmark Pt catalysts by approximately 40% in overpotential.",
+  "abstract": "The complex compositional space of high entropy alloys (HEAs) has shown a great potential to reduce the cost and further increase the catalytic activity for hydrogen evolution reaction (HER) by compositional optimization. Without uncovering the specifics of the HER mechanism on a given HEA surface, it is unfeasible to apply compositional modifications to enhance the performance and save costs. In this work, a combination of density functional theory and Bayesian machine learning is used to demonstrate the unique catalytic mechanism of IrPdPtRhRu HEA catalysts for HER. At high coverage of underpotential-deposited hydrogen, a d-band investigation of the active sites of the HEA surface is conducted to elucidate the superior catalytic performance through electronic interactions between elements. At low coverage, a novel Bayesian learning with oversampling approach is then outlined to optimize the HEA composition for performance improvement and cost reduction. This approach proves more efficacious and efficient and yields higher-quality structures with less training set bias compared with neural-network optimization. The proposed HEA optimization theoretically outperforms benchmark Pt catalysts’ overpotential by ≈40% at a 15% reduced synthesis cost comparing to the equiatomic ratio HEA.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "This work combines density functional theory and Bayesian machine learning to reveal the unique catalytic mechanism of IrPdPtRhRu high entropy alloy catalysts for hydrogen evolution, demonstrating that a novel Bayesian optimization approach can improve catalytic performance and reduce synthesis cost by about 15%, outperforming benchmark Pt catalysts by approximately 40% in overpotential.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Artificial Intelligence & Data Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Materials Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "Bayesian Learning Aided Theoretical Optimization of IrPdPtRhRu High Entropy Alloy Catalysts for the Hydrogen Evolution Reaction This work combines density functional theory and Bayesian machine learning to reveal the unique catalytic mechanism of IrPdPtRhRu high entropy alloy catalysts for hydrogen evolution, demonstrating that a novel Bayesian optimization approach can improve catalytic performance and reduce synthesis cost by about 15%, outperforming benchmark Pt catalysts by approximately 40% in overpotential.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "The complex compositional space of high entropy alloys (HEAs) has shown a great potential to reduce the cost and further increase the catalytic activity for hydrogen evolution reaction (HER) by compositional optimization.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "In this work, a combination of density functional theory and Bayesian machine learning is used to demonstrate the unique catalytic mechanism of IrPdPtRhRu HEA catalysts for HER.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [
+    {
+      "value": "The complex compositional space of high entropy alloys (HEAs) has shown a great potential to reduce the cost and further increase the catalytic activity for hydrogen evolution reaction (HER) by compositional optimization.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [
+    {
+      "value": "Bayesian Learning Aided Theoretical Optimization of IrPdPtRhRu High Entropy Alloy Catalysts for the Hydrogen Evolution Reaction This work combines density functional theory and Bayesian machine learning to reveal the unique catalytic mechanism of IrPdPtRhRu high entropy alloy catalysts for hydrogen evolution, demonstrating that a novel Bayesian optimization approach can improve catalytic performance and reduce synthesis cost by about 15%, outperforming benchmark Pt catalysts by approximately 40% in overpotential.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "The proposed HEA optimization theoretically outperforms benchmark Pt catalysts’ overpotential by ≈40% at a 15% reduced synthesis cost comparing to the equiatomic ratio HEA.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "conditions": [],
+  "mechanisms": [],
+  "outcomes": [
+    {
+      "value": "Clean energy",
+      "source": "csv_applied_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Catalysis",
+      "source": "csv_applied_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "Artificial Intelligence & Data Science",
+    "Materials Science",
+    "Clean energy",
+    "Catalysis"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.63,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": true,
+      "properties": true,
+      "measurements": true,
+      "conditions": false,
+      "mechanisms": false,
+      "outcomes": true,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "conditions",
+      "mechanisms",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

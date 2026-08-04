@@ -1,8 +1,10 @@
 """v0.7 evidence extractor: negation, funding context, blacklist."""
+
 from app.services.evidence_extractor import (
     EvidenceRecord,
     _aggregate_score,
     add_disqualifying_evidence,
+    persist_evidence,
 )
 
 
@@ -65,6 +67,30 @@ def test_add_disqualifying_evidence(session):
     )
     assert row.evidence_type == "disqualifying"
     assert row.score < 0
+    assert row.extra == {
+        "attribution_evidence": {
+            "contract_version": "aet-evidence-meta-v0.1",
+            "polarity": "negative",
+            "detector_type": "disqualifying_evidence",
+        }
+    }
+
+
+def test_reextracting_rule_evidence_preserves_disqualifying_rows(session):
+    from app.models import Paper, PaperEvidence
+
+    session.add(Paper(id="P_NEGATIVE_PERSIST", title="t"))
+    session.commit()
+    negative = add_disqualifying_evidence(
+        session,
+        paper_id="P_NEGATIVE_PERSIST",
+        source="llm_judge",
+        snippet="generic optimization only",
+    )
+
+    persist_evidence(session, "P_NEGATIVE_PERSIST")
+
+    assert session.get(PaperEvidence, negative.id) is negative
 
 
 def test_funding_context_required(fulltext_seeded_session):

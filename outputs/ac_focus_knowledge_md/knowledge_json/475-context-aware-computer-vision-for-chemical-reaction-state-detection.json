@@ -1,0 +1,126 @@
+{
+  "paper_id": "acfocus_9926f892084b",
+  "title": "Context-aware computer vision for chemical reaction state detection",
+  "metadata": {
+    "doi": "10.1039/d5dd00346f",
+    "url": "https://pubs.rsc.org/en/content/articlehtml/2026/dd/d5dd00346f",
+    "year": "2026",
+    "authors": "J. Ren; A. Mandal; R. El-khawaldeh; S. X. Leong; J. Hein; A. Aspuru-Guzik; L. Nalpantidis; K. Darvish",
+    "venue": "Digital Discovery",
+    "category": "Journal Article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Alán Aspuru-Guzik",
+      "Kourosh Darvish",
+      "Jason Hein"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance",
+      "AC Staff",
+      "AC Full Member",
+      "AC Governance"
+    ],
+    "flags": {
+      "acknowledges_ac": "checked",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "This study presents YOLO-text, a multi-modal object detection framework that integrates scene images and task context using large language models to improve chemical classification in laboratory experiments, achieving up to a 7% increase in overall mAP and enabling accurate detection even for visually similar substances.",
+  "abstract": "Real-time monitoring of laboratory experiments is essential for automating complex workflows and enhancing experimental efficiency. Accurate detection and classification of chemicals in varying forms and states support a range of techniques, including liquid–liquid extraction, distillation, and crystallization. However, challenges exist in the detection of chemical forms: some classes appear visually similar, and the classification of the forms is often context-dependent. In this study, we adapt the YOLO model into a multi-modal architecture that integrates scene images and task context for object detection. With the help of Large Language Models (LLM), the developed method facilitates reasoning about the experimental process and uses the reasoning result as the context guidance for the detection model. Experimental results show that by introducing context during training and inference, the performance of the proposed model, YOLO-text, has improved among all classes, and the model is able to make accurate predictions on visually similar areas. Compared to the baseline, our model increases 4.8% overall mAP without context given and 7% with context. The proposed framework can classify and localize substances with and without contextual suggestions, thereby enhancing the adaptability and flexibility of the detection process.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "This study presents YOLO-text, a multi-modal object detection framework that integrates scene images and task context using large language models to improve chemical classification in laboratory experiments, achieving up to a 7% increase in overall mAP and enabling accurate detection even for visually similar substances.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Artificial Intelligence & Data Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Automation and Robotics",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Chemistry",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [],
+  "properties": [],
+  "measurements": [],
+  "conditions": [
+    {
+      "value": "Real-time monitoring of laboratory experiments is essential for automating complex workflows and enhancing experimental efficiency.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "mechanisms": [],
+  "outcomes": [],
+  "sdl_tags": [
+    "Artificial Intelligence & Data Science",
+    "Automation and Robotics",
+    "Chemistry"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.41,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": false,
+      "properties": false,
+      "measurements": false,
+      "conditions": true,
+      "mechanisms": false,
+      "outcomes": false,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "materials",
+      "properties",
+      "measurements",
+      "mechanisms",
+      "outcomes",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

@@ -1,0 +1,146 @@
+{
+  "paper_id": "acfocus_e185bb03dd8e",
+  "title": "Highly Water-Soluble Polyether-Based Viologen Negolytes for Aqueous Redox-Flow Batteries",
+  "metadata": {
+    "doi": "https://pubs-acs org.myaccess.library.utoronto.ca/doi/10.1021/jacs.4c14969.",
+    "url": "https://pubs-acs-org.myaccess.library.utoronto.ca/doi/full/10.1021/jacs.4c14969",
+    "year": "2025",
+    "authors": "Eloi Grignon, Jiang Tian, LiuYe Fun Tan, Yang Cao, Alán Aspuru-Guzik, Dwight S. Seferos",
+    "venue": "Journal of the American Chemical Society",
+    "category": "Journal article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Alán Aspuru-Guzik",
+      "Yang Cao",
+      "Dwight Seferos"
+    ],
+    "ac_programs": [
+      "Core Development Grants_Dwight Seferos_2024-25"
+    ],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance",
+      "AC Staff",
+      "AC Full Member",
+      "AC Governance"
+    ],
+    "flags": {
+      "acknowledges_ac": "checked",
+      "highly_relevant": "blank",
+      "high_impact": "checked"
+    }
+  },
+  "source_summary": "Researchers developed the first water-soluble viologen-bearing homopolymers with a hydrophilic polyether backbone, offering high solubility and stable redox performance, thus expanding the range of active materials available for cost-effective aqueous polymer redox-flow batteries.",
+  "abstract": "Aqueous redox-flow batteries employing polymeric active materials and size-exclusion membranes can potentially offer sustainable energy storage at a much lower cost. However, redox-active polymers that are soluble in water are scarce. Herein, we develop a series of water-soluble viologen-bearing homopolymers based on a highly hydrophilic polyether backbone─the first of its kind─through a one-step postpolymerization modification of poly(epibromohydrin). These new functional polymers exhibit relatively high solubility values upward of 0.5 M and display the stable and reversible redox processes associated with small molecule viologens. In preliminary redox flow battery tests at neutral pH, the polyethers cycle well with no observable interference from the backbone and can deliver 4.04 Ah l–1 at 20 mA cm–2. Overall, these prototypes represent a key addition to the small library of active materials for aqueous polymer redox-flow batteries.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "Researchers developed the first water-soluble viologen-bearing homopolymers with a hydrophilic polyether backbone, offering high solubility and stable redox performance, thus expanding the range of active materials available for cost-effective aqueous polymer redox-flow batteries.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Chemistry",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "Highly Water-Soluble Polyether-Based Viologen Negolytes for Aqueous Redox-Flow Batteries Researchers developed the first water-soluble viologen-bearing homopolymers with a hydrophilic polyether backbone, offering high solubility and stable redox performance, thus expanding the range of active materials available for cost-effective aqueous polymer redox-flow batteries.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Aqueous redox-flow batteries employing polymeric active materials and size-exclusion membranes can potentially offer sustainable energy storage at a much lower cost.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "However, redox-active polymers that are soluble in water are scarce.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [
+    {
+      "value": "Aqueous redox-flow batteries employing polymeric active materials and size-exclusion membranes can potentially offer sustainable energy storage at a much lower cost.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [],
+  "conditions": [
+    {
+      "value": "In preliminary redox flow battery tests at neutral pH, the polyethers cycle well with no observable interference from the backbone and can deliver 4.04 Ah l–1 at 20 mA cm–2.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "mechanisms": [],
+  "outcomes": [
+    {
+      "value": "Clean energy",
+      "source": "csv_applied_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "SDL 2 - Organic",
+    "Chemistry",
+    "Clean energy"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.61,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": true,
+      "properties": true,
+      "measurements": false,
+      "conditions": true,
+      "mechanisms": false,
+      "outcomes": true,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "measurements",
+      "mechanisms",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

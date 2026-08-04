@@ -21,6 +21,39 @@ AUTHOR_DIMENSIONS = [
 ]
 
 
+AUTHOR_DIMENSION_DEFINITIONS: dict[str, str] = {
+    "ac_proximity": (
+        "AC-personalized PageRank on the complete filtered coauthor graph, "
+        "normalized to [0, 1]."
+    ),
+    "relationship_strength": (
+        "Strongest normalized collaboration tie; ties involving an AC member "
+        "receive full value and other ties receive half value."
+    ),
+    "excess_centrality": (
+        "clamp(c_norm - 1, 0, 1), where c_norm compares weighted harmonic "
+        "centrality with the value expected from degree."
+    ),
+    "cross_sdl_diversity": (
+        "log-scaled count of distinct SDL/topic and institution contexts, "
+        "capped at five contexts."
+    ),
+    "citation_affinity": (
+        "Fraction of distinct filtered authored papers with at least one stored, "
+        "resolved reference to a curated AC-core paper; missing parsed reference "
+        "evidence contributes zero rather than proving no citation."
+    ),
+    "recency": (
+        "exp(-age/4), where age is years since the author's latest filtered paper."
+    ),
+}
+
+AUTHOR_IMPORTANCE_FORMULA = (
+    "importance_score = sum(normalized_weight[d] * value[d]) across the six "
+    "clamped [0,1] dimensions"
+)
+
+
 AUTHOR_PROFILES: dict[str, dict[str, float]] = {
     "ac_attribution": {
         "ac_proximity": 0.55,
@@ -168,7 +201,7 @@ _DIMENSION_LABELS = {
     "ac_proximity": "AC proximity",
     "relationship_strength": "Relationship strength",
     "excess_centrality": "Excess centrality",
-    "cross_sdl_diversity": "Cross-SDL diversity",
+    "cross_sdl_diversity": "Context diversity",
     "citation_affinity": "Citation affinity",
     "recency": "Recency",
 }

@@ -1,0 +1,128 @@
+{
+  "paper_id": "acfocus_0dffebf72f6a",
+  "title": "Advances in cardiac tissue engineering and heart‐on‐a‐chip",
+  "metadata": {
+    "doi": "10.1002/jbm.a.37633",
+    "url": "https://onlinelibrary.wiley.com/doi/10.1002/jbm.a.37633",
+    "year": "2024",
+    "authors": "Kieda, Jennifer; Shakeri, Amid; Landau, Shira; Wang, Erika Yan; Zhao, Yimu; Lai, Benjamin Fook; Okhovatian, Sargol; Wang, Ying; Jiang, Richard; Radisic, Milica",
+    "venue": "Journal of Biomedical Materials Research Part A",
+    "category": "Journal article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Milica Radisic",
+      "Yimu Zhao"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance",
+      "AC Staff"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "checked",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "Recent advances in cardiac tissue engineering and heart-on-a-chip technologies are driven by new biomaterials and fabrication techniques that enable precise tissue modeling, with ongoing challenges including scalable fabrication, standardization, vascularization, tissue maturation, and cryopreservation.",
+  "abstract": "Abstract             Recent advances in both cardiac tissue engineering and hearts‐on‐a‐chip are grounded in new biomaterial development as well as the employment of innovative fabrication techniques that enable precise control of the mechanical, electrical, and structural properties of the cardiac tissues being modelled. The elongated structure of cardiomyocytes requires tuning of substrate properties and application of biophysical stimuli to drive its mature phenotype. Landmark advances have already been achieved with induced pluripotent stem cell‐derived cardiac patches that advanced to human testing. Heart‐on‐a‐chip platforms are now commonly used by a number of pharmaceutical and biotechnology companies. Here, we provide an overview of cardiac physiology in order to better define the requirements for functional tissue recapitulation. We then discuss the biomaterials most commonly used in both cardiac tissue engineering and heart‐on‐a‐chip, followed by the discussion of recent representative studies in both fields. We outline significant challenges common to both fields, specifically: scalable tissue fabrication and platform standardization, improving cellular fidelity through effective tissue vascularization, achieving adult tissue maturation, and ultimately developing cryopreservation protocols so that the tissues are available off the shelf.",
+  "hardware": [
+    {
+      "value": "We outline significant challenges common to both fields, specifically: scalable tissue fabrication and platform standardization, improving cellular fidelity through effective tissue vascularization, achieving adult tissue maturation, and ultimately developing cryopreservation protocols so that the tissues are available off the shelf.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "methods": [
+    {
+      "value": "Recent advances in cardiac tissue engineering and heart-on-a-chip technologies are driven by new biomaterials and fabrication techniques that enable precise tissue modeling, with ongoing challenges including scalable fabrication, standardization, vascularization, tissue maturation, and cryopreservation.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Biology",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [],
+  "properties": [
+    {
+      "value": "Abstract             Recent advances in both cardiac tissue engineering and hearts‐on‐a‐chip are grounded in new biomaterial development as well as the employment of innovative fabrication techniques that enable precise control of the mechanical, electrical, and structural properties of the cardiac tissues being modelled.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "The elongated structure of cardiomyocytes requires tuning of substrate properties and application of biophysical stimuli to drive its mature phenotype.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [],
+  "conditions": [],
+  "mechanisms": [],
+  "outcomes": [
+    {
+      "value": "Tissue Engineering",
+      "source": "csv_applied_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "SDL 6 - HOM",
+    "Biology",
+    "Tissue Engineering"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.6,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": true,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": false,
+      "properties": true,
+      "measurements": false,
+      "conditions": false,
+      "mechanisms": false,
+      "outcomes": true,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "evidence",
+      "materials",
+      "measurements",
+      "conditions",
+      "mechanisms",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only."
+    ]
+  }
+}

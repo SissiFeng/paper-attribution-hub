@@ -24,12 +24,11 @@ import uuid
 from collections import defaultdict
 from dataclasses import dataclass, field
 from datetime import UTC, datetime
-from typing import Iterator
 
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
-from app.models import Author, AuthorDedupDecision, Paper, PaperAuthor
+from app.models import Author, AuthorDedupDecision, PaperAuthor
 
 # ── Thresholds ────────────────────────────────────────────────────────────────
 # Deliberately conservative: short names in a large corpus produce many

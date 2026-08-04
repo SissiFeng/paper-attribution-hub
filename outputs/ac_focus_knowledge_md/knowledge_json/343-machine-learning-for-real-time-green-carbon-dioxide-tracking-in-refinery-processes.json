@@ -1,0 +1,134 @@
+{
+  "paper_id": "acfocus_1443669b4f58",
+  "title": "Machine learning for real-time green carbon dioxide tracking in refinery processes",
+  "metadata": {
+    "doi": "10.1016/j.rser.2025.115417",
+    "url": "https://www.sciencedirect.com/science/article/abs/pii/S1364032125000905",
+    "year": "2025",
+    "authors": "L. Cao; J. Su; J. Saddler; Y. Cao; Y. Wang; G. Lee; L. C. Siang; Y. Luo; R. Pinchuk; J. Li; B. Gopaluni",
+    "venue": "Renewable and Sustainable Energy Reviews",
+    "category": "Journal Article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Yang Cao"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Staff"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "This study presents an AI-based machine learning framework that enables real-time, accurate, and cost-effective monitoring of green CO₂ emissions from biogenic feedstock co-processing in oil refineries, overcoming traditional measurement challenges and supporting informed decisions in renewable fuel production.",
+  "abstract": "The global increase in greenhouse gas emissions presents an urgent environmental challenge, demanding innovative strategies for emission reduction and a fundamental shift in energy consumption practices. Co-processing biogenic feedstocks, such as used cooking oils and biocrudes derived from forest and agricultural residues, within existing oil refineries has been demonstrated as a cost-effective, scalable approach to producing low-carbon fuels, quickly helping the oil refiners to mitigate carbon dioxide emissions, leveraging the existing infrastructures. Despite its potential, monitoring the ”green” CO<inf>2</inf> emissions originating from biogenic feedstocks during co-processing remains challenging. The molecular structure of biogenic components becomes indistinguishable from fossil-based molecules, necessitating costly, labor-intensive, and time-consuming sample collection and testing procedures, often involving isotope carbon analysis. This work proposes a new approach by applying artificial intelligence to model green CO<inf>2</inf> emissions in real-time. By analyzing over 102,000 samples of industrial data from a commercial FCC unit, a robust machine learning framework is developed to provide continuous, cost-effective, and accurate green CO<inf>2</inf> monitoring. The methodology encompasses a comparative analysis of ten input analysis techniques and five regression models to model emissions, achieving an average error margin of just 2.66% compared to traditional laboratory measurements. This AI-driven approach offers refiners and policymakers a practical tool for assessing the environmental performance of biogenic feedstock co-processing, facilitating informed decision-making in renewable fuel production. © 2025 Elsevier Ltd",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "This study presents an AI-based machine learning framework that enables real-time, accurate, and cost-effective monitoring of green CO₂ emissions from biogenic feedstock co-processing in oil refineries, overcoming traditional measurement challenges and supporting informed decisions in renewable fuel production.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [],
+  "materials": [
+    {
+      "value": "The molecular structure of biogenic components becomes indistinguishable from fossil-based molecules, necessitating costly, labor-intensive, and time-consuming sample collection and testing procedures, often involving isotope carbon analysis.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [
+    {
+      "value": "The global increase in greenhouse gas emissions presents an urgent environmental challenge, demanding innovative strategies for emission reduction and a fundamental shift in energy consumption practices.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [
+    {
+      "value": "Machine learning for real-time green carbon dioxide tracking in refinery processes This study presents an AI-based machine learning framework that enables real-time, accurate, and cost-effective monitoring of green CO₂ emissions from biogenic feedstock co-processing in oil refineries, overcoming traditional measurement challenges and supporting informed decisions in renewable fuel production.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "The methodology encompasses a comparative analysis of ten input analysis techniques and five regression models to model emissions, achieving an average error margin of just 2.66% compared to traditional laboratory measurements.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "conditions": [
+    {
+      "value": "Machine learning for real-time green carbon dioxide tracking in refinery processes This study presents an AI-based machine learning framework that enables real-time, accurate, and cost-effective monitoring of green CO₂ emissions from biogenic feedstock co-processing in oil refineries, overcoming traditional measurement challenges and supporting informed decisions in renewable fuel production.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "The molecular structure of biogenic components becomes indistinguishable from fossil-based molecules, necessitating costly, labor-intensive, and time-consuming sample collection and testing procedures, often involving isotope carbon analysis.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "This work proposes a new approach by applying artificial intelligence to model green CO<inf>2</inf> emissions in real-time.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "mechanisms": [],
+  "outcomes": [],
+  "sdl_tags": [],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.54,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": false,
+      "materials": true,
+      "properties": true,
+      "measurements": true,
+      "conditions": true,
+      "mechanisms": false,
+      "outcomes": false,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "entities",
+      "mechanisms",
+      "outcomes",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

@@ -13,11 +13,19 @@ REST surface:
 """
 from __future__ import annotations
 
+import os
 from datetime import datetime
 from typing import Annotated
 
-from fastapi import APIRouter, Body, Depends, HTTPException, Query
-from pydantic import BaseModel
+from fastapi import (
+    APIRouter,
+    BackgroundTasks,
+    Body,
+    Depends,
+    HTTPException,
+    Query,
+)
+from pydantic import BaseModel, Field
 from sqlalchemy.orm import Session
 
 from app.api.auth import require_api_key
@@ -26,6 +34,7 @@ from app.schemas import RagStatusOut
 from app.services.rag_status_service import rag_status_by_paper
 from app.services.review_queue import (
     QueueItem,
+    assign_review,
     confirm_classification,
     get_next,
     list_queue,
@@ -49,13 +58,34 @@ router = APIRouter(tags=["review-queue"])
 class QueueItemOut(BaseModel):
     paper_id: str
     title: str
+    abstract: str | None = None
+    year: int | None = None
+    venue: str | None = None
+    doi: str | None = None
+    authors: list[str] = Field(default_factory=list)
+    institutions: list[str] = Field(default_factory=list)
     label: str
     confidence: float
     priority: float
     reasons: list[str]
     last_classified_at: datetime | None
+    source: str | None = None
     provenance: str | None
+    corpus_sources: list[str] = Field(default_factory=list)
+    full_text_url: str | None = None
     has_human_review: bool
+    sdl_judgement: str | None = None
+    ac_relevance_judgement: str | None = None
+    ai_for_science_judgement: str | None = None
+    review_status: str | None = None
+    evidence_level: str | None = None
+    judgement_basis: str | None = None
+    screening_stage: str | None = None
+    screening_route: str | None = None
+    screening_reason: str | None = None
+    review_assignee: str | None = None
+    review_assigned_at: datetime | None = None
+    review_assigned_by: str | None = None
     rag_status: RagStatusOut | None = None
 
     @classmethod
@@ -67,13 +97,34 @@ class QueueItemOut(BaseModel):
         return cls(
             paper_id=item.paper_id,
             title=item.title,
+            abstract=item.abstract,
+            year=item.year,
+            venue=item.venue,
+            doi=item.doi,
+            authors=item.authors,
+            institutions=item.institutions,
             label=item.label,
             confidence=item.confidence,
             priority=item.priority,
             reasons=item.reasons,
             last_classified_at=item.last_classified_at,
+            source=item.source,
             provenance=item.provenance,
+            corpus_sources=item.corpus_sources,
+            full_text_url=item.full_text_url,
             has_human_review=item.has_human_review,
+            sdl_judgement=item.sdl_judgement,
+            ac_relevance_judgement=item.ac_relevance_judgement,
+            ai_for_science_judgement=item.ai_for_science_judgement,
+            review_status=item.review_status,
+            evidence_level=item.evidence_level,
+            judgement_basis=item.judgement_basis,
+            screening_stage=item.screening_stage,
+            screening_route=item.screening_route,
+            screening_reason=item.screening_reason,
+            review_assignee=item.review_assignee,
+            review_assigned_at=item.review_assigned_at,
+            review_assigned_by=item.review_assigned_by,
             rag_status=rag_status,
         )
 
@@ -84,6 +135,11 @@ class ConfirmIn(BaseModel):
 
 class SkipIn(BaseModel):
     cooldown_days: int = 7
+
+
+class AssignmentIn(BaseModel):
+    assignee: str | None = Field(default=None, max_length=200)
+    assigned_by: str | None = Field(default=None, max_length=200)
 
 
 class PipelineRunOut(BaseModel):
@@ -140,6 +196,8 @@ def get_queue(
     limit: Annotated[int, Query(ge=1, le=200)] = 50,
     offset: Annotated[int, Query(ge=0)] = 0,
     include_confirmed: Annotated[bool, Query()] = False,
+    assignee: Annotated[str | None, Query(max_length=200)] = None,
+    unassigned_only: Annotated[bool, Query()] = False,
     session: Session = Depends(get_session),
 ) -> list[QueueItemOut]:
     items = list_queue(
@@ -147,6 +205,8 @@ def get_queue(
         limit=limit,
         offset=offset,
         include_confirmed=include_confirmed,
+        assignee=assignee,
+        unassigned_only=unassigned_only,
     )
     statuses = rag_status_by_paper(session, [item.paper_id for item in items])
     return [QueueItemOut.from_item(it, statuses.get(it.paper_id)) for it in items]
@@ -154,9 +214,15 @@ def get_queue(
 
 @router.get("/reviews/queue/next", response_model=QueueItemOut | None)
 def get_queue_next(
+    assignee: Annotated[str | None, Query(max_length=200)] = None,
+    unassigned_only: Annotated[bool, Query()] = False,
     session: Session = Depends(get_session),
 ) -> QueueItemOut | None:
-    item = get_next(session)
+    item = get_next(
+        session,
+        assignee=assignee,
+        unassigned_only=unassigned_only,
+    )
     if not item:
         return None
     status = rag_status_by_paper(session, [item.paper_id]).get(item.paper_id)
@@ -164,8 +230,46 @@ def get_queue_next(
 
 
 @router.get("/reviews/queue/size")
-def get_queue_size(session: Session = Depends(get_session)) -> dict:
-    return {"count": queue_size(session)}
+def get_queue_size(
+    assignee: Annotated[str | None, Query(max_length=200)] = None,
+    unassigned_only: Annotated[bool, Query()] = False,
+    session: Session = Depends(get_session),
+) -> dict:
+    return {
+        "count": queue_size(
+            session,
+            assignee=assignee,
+            unassigned_only=unassigned_only,
+        )
+    }
+
+
+@router.put(
+    "/reviews/{paper_id}/assignment",
+    response_model=QueueItemOut,
+    dependencies=[Depends(require_api_key)],
+)
+def update_assignment(
+    paper_id: str,
+    payload: AssignmentIn,
+    session: Session = Depends(get_session),
+) -> QueueItemOut:
+    try:
+        assign_review(
+            session,
+            paper_id,
+            assignee=payload.assignee,
+            assigned_by=payload.assigned_by,
+        )
+    except ValueError as exc:
+        raise HTTPException(status_code=404, detail=str(exc)) from exc
+    except RuntimeError as exc:
+        raise HTTPException(status_code=409, detail=str(exc)) from exc
+    item = next(iter(list_queue(session, limit=1, paper_id=paper_id)), None)
+    if item is None:
+        raise HTTPException(status_code=409, detail="Paper left the review queue")
+    status = rag_status_by_paper(session, [paper_id]).get(paper_id)
+    return QueueItemOut.from_item(item, status)
 
 
 @router.post(
@@ -175,14 +279,24 @@ def get_queue_size(session: Session = Depends(get_session)) -> dict:
 )
 def confirm(
     paper_id: str,
+    background_tasks: BackgroundTasks,
     payload: ConfirmIn = Body(default_factory=ConfirmIn),
     session: Session = Depends(get_session),
 ) -> QueueItemOut:
     try:
-        cls = confirm_classification(session, paper_id, reviewer=payload.reviewer)
+        cls = confirm_classification(
+            session,
+            paper_id,
+            reviewer=payload.reviewer,
+            run_retraining=False,
+        )
     except ValueError as e:
         raise HTTPException(status_code=404, detail=str(e)) from e
     paper = cls.paper
+    if os.environ.get("PAS_ACTIVE_LEARNING", "1") == "1":
+        from app.services.model_evolution import run_model_evolution_background
+
+        background_tasks.add_task(run_model_evolution_background)
     status = rag_status_by_paper(session, [paper.id]).get(paper.id)
     return QueueItemOut(
         paper_id=paper.id,
@@ -194,6 +308,9 @@ def confirm(
         last_classified_at=cls.last_classified_at,
         provenance=paper.provenance,
         has_human_review=paper.review is not None,
+        screening_stage=cls.screening_stage,
+        screening_route=cls.screening_route,
+        screening_reason=cls.screening_reason,
         rag_status=status,
     )
 
@@ -226,6 +343,9 @@ def skip(
         last_classified_at=cls.last_classified_at,
         provenance=paper.provenance,
         has_human_review=paper.review is not None,
+        screening_stage=cls.screening_stage,
+        screening_route=cls.screening_route,
+        screening_reason=cls.screening_reason,
         rag_status=status,
     )
 

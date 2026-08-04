@@ -1,0 +1,98 @@
+{
+  "paper_id": "acfocus_6560e61cd558",
+  "title": "ACS: Concurrent Kernel Execution on Irregular, Input-Dependent Computational Graphs",
+  "metadata": {
+    "doi": "10.48550/arxiv.2401.12377",
+    "url": "https://arxiv.org/abs/2401.12377",
+    "year": "2024",
+    "authors": "Durvasula S, Zhao A, Kiguru R, Guan Y, Chen Z, Vijaykumar N",
+    "venue": "arxiv",
+    "category": "Preprint",
+    "peer_reviewed": "Non Peer Reviewed",
+    "ac_members": [
+      "Vijay Narasimhan"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "N/A"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "Concurrent Kernel Execution on Irregular, Input-Dependent Computational Graphs",
+  "abstract": "ACS: Concurrent Kernel Execution on Irregular,\nInput-Dependent Computational Graphs\nSankeerth Durvasula∗, Adrian Zhao∗, Raymond Kiguru, Yushi Guan, Zhonghan Chen, Nandita Vijaykumar\nAbstract—GPUs are widely used to accelerate many important\nclasses of workloads today. However, in this work, we observe\nthat several important emerging classes of workloads, including\nsimulation engines for deep reinforcement learning and dynamic\nneural networks, are unable to fully utilize the massive paral-\nlelism that GPUs offer. These applications tend to have kernels\nthat are small in size, i.e., have few threads and thread blocks\nthat cannot saturate the GPU’s compute resources. Executing\nindependent kernels concurrently is a promising approach to\nimprove parallelism and utilization. However, this inter-kernel\nconcurrency is difficult to leverage in such workloads with\nexisting approaches: First, the inter-kernel dependencies and\ncomputational graph are input-dependent and vary each time the\napplication is executed. Second, the computational graphs tend to\nbe irregular, requiring fine-grain scheduling and synchronization;\nthus incurring significant synchronization overheads if kernel\nexecution is parallelized. In this work, we propose ACS, a new\nframework that enables lightweight detection of inter-kernel\ndependencies and low overhead kernel scheduling at runtime.\nThe key idea behind ACS is to perform inter-kernel dependency\nchecks for a small window of kernels at runtime, similar to out-of-\norder instruction scheduling. This enables concurrent execution\nof kernels in applications whose computational graphs are input-\ndependent and require fine-grained scheduling. We propose\nACS-SW, a software-only open-source implementation of ACS\nand ACS-HW, a hardware-software cooperative implementation.\nACS-HW further reduces synchronization overheads by reducing\ncommunication between the CPU and GPU. We evaluate ACS\nfor deep RL simulation engines and dynamic and static DNNs\non both real hardw",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "Concurrent Kernel Execution on Irregular, Input-Dependent Computational Graphs",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Artificial Intelligence & Data Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [],
+  "properties": [],
+  "measurements": [],
+  "conditions": [],
+  "mechanisms": [],
+  "outcomes": [],
+  "sdl_tags": [
+    "Artificial Intelligence & Data Science"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "acgold_f698fb325e4d",
+    "cross_sdl_reasoning_json": "/Users/sissifeng/Downloads/cross-sdl_knowledge_transfer_engine/data/reasoning/acgold_f698fb325e4d.json",
+    "cross_sdl_extraction_quality": 0.0,
+    "cross_sdl_notes": "Extraction failed — parse error: Expecting ',' delimiter: line 68 column 4 (char 3863)"
+  },
+  "validation": {
+    "score": 0.42,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": false,
+      "properties": false,
+      "measurements": false,
+      "conditions": false,
+      "mechanisms": false,
+      "outcomes": false,
+      "cross_sdl_match": true
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "materials",
+      "properties",
+      "measurements",
+      "conditions",
+      "mechanisms",
+      "outcomes"
+    ],
+    "notes": [
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

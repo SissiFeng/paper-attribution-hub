@@ -1,0 +1,133 @@
+{
+  "paper_id": "acfocus_9d99657c50ce",
+  "title": "CACHE Challenge #1: Targeting the WDR Domain of LRRK2, A Parkinson’s Disease Associated Protein",
+  "metadata": {
+    "doi": "10.1021/acs.jcim.4c01267",
+    "url": "https://pubs.acs.org/doi/10.1021/acs.jcim.4c01267",
+    "year": "2024",
+    "authors": "Li F, Ackloo S, Arrowsmith CH, Ban F, Barden CJ, Beck H, Beránek J, Berenger F, Bolotokova A, Bret G, Breznik M, Carosati E, Chau I, Chen Y, Cherkasov A, Corte DD, Denzinger K, Dong A, Draga S, Dunn I, Edfeldt K, Edwards A, Eguida M, Eisenhuth P, Friedrich L, Fuerll A, Gardiner SS, Gentile F, Ghiabi P, Gibson E, Glavatskikh M, Gorgulla C, Guenther J, Gunnarsson A, Gusev F, Gutkin E, Halabelian L, Harding RJ, Hillisch A, Hoffer L, Hogner A, Houliston S, Irwin JJ, Isayev O, Ivanova A, Jacquemard C, Jarrett AJ, Jensen JH, Kireev D, Kleber J, Koby SB, Koes D, Kumar A, Kurnikova MG, Kutlushina A, Lessel U, Liessmann F, Liu S, Lu W, Meiler J, Mettu A, Minibaeva G, Moretti R, Morris CJ, Narangoda C, Noonan T, Obendorf L, Pach S, Pandit A, Perveen S, Poda G, Polishchuk P, Puls K, Pütter V, Rognan D, Roskams-Edris D, Schindler C, Sindt F, Spiwok V, Steinmann C, Stevens RL, Talagayev V, Tingey D, Vu O, Walters WP, Wang X, Wang Z, Wolber G, Wolf CA, Wortmann L, Zeng H, Zepeda CA, Zhang KYJ, Zhang J, Zheng S, Schapira M",
+    "venue": "Journal of Chemical Information and Modeling",
+    "category": "Journal article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Cheryl Arrowsmith"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "checked",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "The inaugural CACHE challenge demonstrated that while diverse computational strategies, including machine learning and molecular dynamics, can identify novel binders for difficult targets like the LRRK2 WDR domain, the resulting compounds were rare and weakly potent, highlighting the ongoing challenges in computational hit-finding for undruggable proteins.",
+  "abstract": "The CACHE challenges are a series of prospective benchmarking exercises to evaluate progress in the field of computational hit-finding. Here we report the results of the inaugural CACHE challenge in which 23 computational teams each selected up to 100 commercially available compounds that they predicted would bind to the WDR domain of the Parkinson’s disease target LRRK2, a domain with no known ligand and only an apo structure in the PDB. The lack of known binding data and presumably low druggability of the target is a challenge to computational hit finding methods. Of the 1955 molecules predicted by participants in Round 1 of the challenge, 73 were found to bind to LRRK2 in an SPR assay with a KD lower than 150 μM. These 73 molecules were advanced to the Round 2 hit expansion phase, where computational teams each selected up to 50 analogs. Binding was observed in two orthogonal assays for seven chemically diverse series, with affinities ranging from 18 to 140 μM. The seven successful computational workflows varied in their screening strategies and techniques. Three used molecular dynamics to produce a conformational ensemble of the targeted site, three included a fragment docking step, three implemented a generative design strategy and five used one or more deep learning steps. CACHE #1 reflects a highly exploratory phase in computational drug design where participants adopted strikingly diverging screening strategies. Machine learning-accelerated methods achieved similar results to brute force (e.g., exhaustive) docking. First-in-class, experimentally confirmed compounds were rare and weakly potent, indicating that recent advances are not sufficient to effectively address challenging targets.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "The inaugural CACHE challenge demonstrated that while diverse computational strategies, including machine learning and molecular dynamics, can identify novel binders for difficult targets like the LRRK2 WDR domain, the resulting compounds were rare and weakly potent, highlighting the ongoing challenges in computational hit-finding for undruggable proteins.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Artificial Intelligence & Data Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Biology",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "Of the 1955 molecules predicted by participants in Round 1 of the challenge, 73 were found to bind to LRRK2 in an SPR assay with a KD lower than 150 μM.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "These 73 molecules were advanced to the Round 2 hit expansion phase, where computational teams each selected up to 50 analogs.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [],
+  "measurements": [
+    {
+      "value": "The CACHE challenges are a series of prospective benchmarking exercises to evaluate progress in the field of computational hit-finding.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "conditions": [],
+  "mechanisms": [],
+  "outcomes": [
+    {
+      "value": "Therapeutics",
+      "source": "csv_applied_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "Artificial Intelligence & Data Science",
+    "Biology",
+    "Therapeutics"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.56,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": true,
+      "properties": false,
+      "measurements": true,
+      "conditions": false,
+      "mechanisms": false,
+      "outcomes": true,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "properties",
+      "conditions",
+      "mechanisms",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

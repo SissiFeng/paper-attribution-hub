@@ -19,7 +19,7 @@ def test_author_links_from_scopus_row_aligns_affiliations():
 
     links = _author_links_from_row(row, ["Alice Smith"])
 
-    assert [l["name"] for l in links] == ["Alice Smith", "Bob Jones"]
+    assert [link["name"] for link in links] == ["Alice Smith", "Bob Jones"]
     assert links[0]["institution"] == "University A"
     assert links[0]["country"] == "Canada"
     assert links[0]["is_ac_member"] is True

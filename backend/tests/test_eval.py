@@ -24,6 +24,12 @@ def test_full_pipeline_eval_runs_with_fulltext(fulltext_seeded_session):
 
     classify_all(fulltext_seeded_session)
     report = run_evaluation(fulltext_seeded_session, settings.eval_labels_csv, k=5)
+    assert report.dataset_role == "frozen_holdout"
+    assert report.dataset_id.startswith("eval_labels.csv@sha256:")
+    assert len(report.dataset_hash) == 64
+    assert report.includes_silver is False
+    assert report.label_scope == "AC_REPORTING"
+    assert "not strict sdl" in report.allowed_claim.lower()
     assert report.n_evaluated == 11
     # We don't pin a specific F1 number, but the v0.2 fulltext win should land
     # the classifier well above the 0.40 baseline mentioned in the spec.

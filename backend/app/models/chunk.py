@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from datetime import UTC, datetime
 
+from pgvector.sqlalchemy import Vector
 from sqlalchemy import JSON, DateTime, ForeignKey, Integer, String, Text
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
@@ -28,7 +29,9 @@ class PaperChunk(Base):
     char_start: Mapped[int] = mapped_column(Integer, default=0)
     char_end: Mapped[int] = mapped_column(Integer, default=0)
     token_count: Mapped[int] = mapped_column(Integer, default=0)
-    embedding: Mapped[list[float] | None] = mapped_column(JSON)
+    embedding: Mapped[list[float] | None] = mapped_column(
+        JSON().with_variant(Vector(1536), "postgresql")
+    )
     embedding_backend: Mapped[str | None] = mapped_column(String)
     chunk_metadata: Mapped[dict | None] = mapped_column("metadata", JSON)
     created_at: Mapped[datetime] = mapped_column(

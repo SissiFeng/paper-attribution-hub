@@ -1,0 +1,145 @@
+{
+  "paper_id": "acfocus_e15ce4a4f340",
+  "title": "Conformational and state-specific effects in reactions of 2,3-dibromobutadiene with Coulomb-crystallized calcium ions",
+  "metadata": {
+    "doi": "10.1039/d3cp01416a",
+    "url": "https://xlink.rsc.org/?DOI=D3CP01416A",
+    "year": "2023",
+    "authors": "Kilaj, Ardita; Käser, Silvan; Wang, Jia; Straňák, Patrik; Schwilk, Max; Xu, Lei; Von Lilienfeld, O. Anatole; Küpper, Jochen; Meuwly, Markus; Willitsch, Stefan",
+    "venue": "Physical Chemistry Chemical Physics",
+    "category": "Journal article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Anatole von Lilienfeld"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "checked",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "Recent advances in experimental techniques have enabled precise studies showing that the reaction rates of 2,3-dibromobutadiene with laser-cooled calcium ions in the gas phase depend strongly on both the molecular conformation of the reactant and the electronic state of the ion, revealing significant differences in reactivity between individual conformers.",
+  "abstract": "Recent advances in experimental methodology enabled studies of the quantum-state- and conformational dependence of the reaction of 2,3-dibromobutadiene with laser-cooled calcium ions in the gas phase.           ,                             Recent advances in experimental methodology enabled studies of the quantum-state- and conformational dependence of chemical reactions under precisely controlled conditions in the gas phase. Here, we generated samples of selected               gauche               and               s-trans               2,3-dibromobutadiene (DBB) by electrostatic deflection in a molecular beam and studied their reaction with Coulomb crystals of laser-cooled Ca               +               ions in an ion trap. The rate coefficients for the total reaction were found to strongly depend on both the conformation of DBB and the electronic state of Ca               +               . In the (4p)               2               P               1/2               and (3d)               2               D               3/2               excited states of Ca               +               , the reaction is capture-limited and faster for the               gauche               conformer due to long-range ion–dipole interactions. In the (4s)               2               S               1/2               ground state of Ca               +               , the reaction rate for               s-trans               DBB still conforms with the capture limit, while that for               gauche               DBB is strongly suppressed. The experimental observations were analysed with the help of adiabatic capture theory,               ab initio               calculations and reactive molecular dynamics simulations on a machine-learned full-dimensional potential energy surface of the system. The theory yields near-quantitative agreement for               s-trans               -DBB, but overestimates the reactivity of the               gauche               -conformer compared to the experiment. The present study points to the important role of molecular geometry even in strongly reactive exothermic systems and illustrates striking differences in the reactivity of individual conformers in gas-phase ion–molecule reactions.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "Recent advances in experimental techniques have enabled precise studies showing that the reaction rates of 2,3-dibromobutadiene with laser-cooled calcium ions in the gas phase depend strongly on both the molecular conformation of the reactant and the electronic state of the ion, revealing significant differences in reactivity between individual conformers.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Artificial Intelligence & Data Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Chemistry",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Physics",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "The present study points to the important role of molecular geometry even in strongly reactive exothermic systems and illustrates striking differences in the reactivity of individual conformers in gas-phase ion–molecule reactions.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [
+    {
+      "value": "The experimental observations were analysed with the help of adiabatic capture theory,               ab initio               calculations and reactive molecular dynamics simulations on a machine-learned full-dimensional potential energy surface of the system.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [],
+  "conditions": [
+    {
+      "value": ",                             Recent advances in experimental methodology enabled studies of the quantum-state- and conformational dependence of chemical reactions under precisely controlled conditions in the gas phase.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "The rate coefficients for the total reaction were found to strongly depend on both the conformation of DBB and the electronic state of Ca               +               .",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "In the (4s)               2               S               1/2               ground state of Ca               +               , the reaction rate for               s-trans               DBB still conforms with the capture limit, while that for               gauche               DBB is strongly suppressed.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "mechanisms": [],
+  "outcomes": [],
+  "sdl_tags": [
+    "Artificial Intelligence & Data Science",
+    "Chemistry",
+    "Physics"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.55,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": true,
+      "properties": true,
+      "measurements": false,
+      "conditions": true,
+      "mechanisms": false,
+      "outcomes": false,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "measurements",
+      "mechanisms",
+      "outcomes",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

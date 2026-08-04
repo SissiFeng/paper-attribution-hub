@@ -1,0 +1,165 @@
+{
+  "paper_id": "acfocus_971591d406bb",
+  "title": "LLM4Mat-bench: benchmarking large language models for materials property prediction",
+  "metadata": {
+    "doi": "10.1088/2632-2153/add3bb",
+    "url": "https://iopscience.iop.org/article/10.1088/2632-2153/add3bb",
+    "year": "2025",
+    "authors": "A. Niyongabo Rubungo; K. Li; J. Hattrick-Simpers; A. Bousso Dieng",
+    "venue": "Machine Learning: Science and Technology",
+    "category": "Journal Article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Jason Hattrick-Simpers"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "LLM4Mat-Bench is a large benchmark dataset of 1.9 million crystal structures designed to evaluate and improve the performance of large language models in predicting crystalline materials properties, highlighting the limitations of general-purpose LLMs and the need for task-specific models in materials science.",
+  "abstract": "Large language models (LLMs) are increasingly being used in materials science. However, little attention has been given to benchmarking and standardized evaluation for LLM-based materials property prediction, which hinders progress. We present LLM4Mat-Bench, the largest benchmark to date for evaluating the performance of LLMs in predicting the properties of crystalline materials. LLM4Mat-Bench contains about 1.9 M crystal structures in total, collected from 10 publicly available materials data sources, and 45 distinct properties. LLM4Mat-Bench features different input modalities: crystal composition, CIF, and crystal text description, with 4.7 M, 615.5 M, and 3.1B tokens in total for each modality, respectively. We use LLM4Mat-Bench to fine-tune models with different sizes, including LLM-Prop and MatBERT, and provide zero-shot and few-shot prompts to evaluate the property prediction capabilities of LLM-chat-like models, including Llama, Gemma, and Mistral. The results highlight the challenges of general-purpose LLMs in materials science and the need for task-specific predictive models and task-specific instruction-tuned LLMs in materials property prediction7 7 The Benchmark and code can be found at: https://github.com/vertaix/LLM4Mat-Bench. . © 2025 The Author(s). Published by IOP Publishing Ltd.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "LLM4Mat-Bench is a large benchmark dataset of 1.9 million crystal structures designed to evaluate and improve the performance of large language models in predicting crystalline materials properties, highlighting the limitations of general-purpose LLMs and the need for task-specific models in materials science.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [],
+  "materials": [
+    {
+      "value": "LLM4Mat-bench: benchmarking large language models for materials property prediction LLM4Mat-Bench is a large benchmark dataset of 1.9 million crystal structures designed to evaluate and improve the performance of large language models in predicting crystalline materials properties, highlighting the limitations of general-purpose LLMs and the need for task-specific models in materials science.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Large language models (LLMs) are increasingly being used in materials science.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "However, little attention has been given to benchmarking and standardized evaluation for LLM-based materials property prediction, which hinders progress.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [
+    {
+      "value": "LLM4Mat-bench: benchmarking large language models for materials property prediction LLM4Mat-Bench is a large benchmark dataset of 1.9 million crystal structures designed to evaluate and improve the performance of large language models in predicting crystalline materials properties, highlighting the limitations of general-purpose LLMs and the need for task-specific models in materials science.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "However, little attention has been given to benchmarking and standardized evaluation for LLM-based materials property prediction, which hinders progress.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "We present LLM4Mat-Bench, the largest benchmark to date for evaluating the performance of LLMs in predicting the properties of crystalline materials.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "LLM4Mat-Bench contains about 1.9 M crystal structures in total, collected from 10 publicly available materials data sources, and 45 distinct properties.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "We use LLM4Mat-Bench to fine-tune models with different sizes, including LLM-Prop and MatBERT, and provide zero-shot and few-shot prompts to evaluate the property prediction capabilities of LLM-chat-like models, including Llama, Gemma, and Mistral.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [
+    {
+      "value": "LLM4Mat-bench: benchmarking large language models for materials property prediction LLM4Mat-Bench is a large benchmark dataset of 1.9 million crystal structures designed to evaluate and improve the performance of large language models in predicting crystalline materials properties, highlighting the limitations of general-purpose LLMs and the need for task-specific models in materials science.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "However, little attention has been given to benchmarking and standardized evaluation for LLM-based materials property prediction, which hinders progress.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "We present LLM4Mat-Bench, the largest benchmark to date for evaluating the performance of LLMs in predicting the properties of crystalline materials.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "The results highlight the challenges of general-purpose LLMs in materials science and the need for task-specific predictive models and task-specific instruction-tuned LLMs in materials property prediction7 7 The Benchmark and code can be found at: https://github.com/vertaix/LLM4Mat-Bench.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "conditions": [],
+  "mechanisms": [],
+  "outcomes": [],
+  "sdl_tags": [],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.5,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": false,
+      "materials": true,
+      "properties": true,
+      "measurements": true,
+      "conditions": false,
+      "mechanisms": false,
+      "outcomes": false,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "entities",
+      "conditions",
+      "mechanisms",
+      "outcomes",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

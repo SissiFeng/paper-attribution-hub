@@ -1,0 +1,177 @@
+{
+  "paper_id": "acfocus_edfde5439f78",
+  "title": "An affordable platform for automated synthesis and electrochemical characterization",
+  "metadata": {
+    "doi": "10.1016/j.device.2024.100567",
+    "url": "https://www.scopus.com/inward/record.uri?eid=2-s2.0-85207808584&doi=10.1016%2fj.device.2024.100567&partnerID=40&md5=7cf0a1d2a3e7a33979ef80d96fd42e2d",
+    "year": "2025",
+    "authors": "Pablo-García S., García Á., Akkoc G.D., Sim M., Cao Y., Somers M., Hattrick C., Yoshikawa N., Dworschak D., Hao H., Aspuru-Guzik A.",
+    "venue": "Device",
+    "category": "Journal article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Alán Aspuru-Guzik",
+      "Yang Cao",
+      "Han Hao",
+      "Sergio Pablo-García Carrillo",
+      "Naruki Yoshikawa (Deactivated)"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance",
+      "AC Staff",
+      "AC Staff",
+      "AC Staff",
+      "AC Trainee"
+    ],
+    "flags": {
+      "acknowledges_ac": "checked",
+      "highly_relevant": "checked",
+      "high_impact": "checked"
+    }
+  },
+  "source_summary": "This study presents an open, cost-effective autonomous electrochemical setup with a custom potentiostat and automated module for self-driving laboratories, enabling rapid, controlled, and reproducible high-throughput experiments, with all designs, software, and data openly shared to advance accessible and transparent materials discovery.",
+  "abstract": "Electrochemical techniques are pivotal for materials discovery and renewable energy; however, often the extensive chemical spaces to be explored require high-throughput experimentation to ensure timely results, which are costly for both instruments and materials/consumables. While self-driving laboratories (SDLs) promise efficient chemical exploration, most contemporary implementations demand significant time, economic investment, and expertise. This study introduces an open and cost-effective autonomous electrochemical setup comprising a synthesis platform and a custom-designed potentiostat device. We present an automated electrochemical module for SDLs that offers rapid deployment and extensive control over electrochemical experiments compared to commercial alternatives. Using ChemOS 2.0 for orchestration, we showcase our setup's capabilities through a campaign reacting different metal ions with ligands to form coordination compounds, yielding a database of 400 electrochemical measurements. Committed to open science, we provide the potentiostat design, campaign software, and raw data, aiming to democratize customized components in SDLs and ensure transparent data sharing and reproducibility. © 2024 The Author(s)",
+  "hardware": [
+    {
+      "value": "This study presents an open, cost-effective autonomous electrochemical setup with a custom potentiostat and automated module for self-driving laboratories, enabling rapid, controlled, and reproducible high-throughput experiments, with all designs, software, and data openly shared to advance accessible and transparent materials discovery.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Electrochemical techniques are pivotal for materials discovery and renewable energy; however, often the extensive chemical spaces to be explored require high-throughput experimentation to ensure timely results, which are costly for both instruments and materials/consumables.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "This study introduces an open and cost-effective autonomous electrochemical setup comprising a synthesis platform and a custom-designed potentiostat device.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "We present an automated electrochemical module for SDLs that offers rapid deployment and extensive control over electrochemical experiments compared to commercial alternatives.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "methods": [
+    {
+      "value": "This study presents an open, cost-effective autonomous electrochemical setup with a custom potentiostat and automated module for self-driving laboratories, enabling rapid, controlled, and reproducible high-throughput experiments, with all designs, software, and data openly shared to advance accessible and transparent materials discovery.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Automation and Robotics",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Chemistry",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "An affordable platform for automated synthesis and electrochemical characterization This study presents an open, cost-effective autonomous electrochemical setup with a custom potentiostat and automated module for self-driving laboratories, enabling rapid, controlled, and reproducible high-throughput experiments, with all designs, software, and data openly shared to advance accessible and transparent materials discovery.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Electrochemical techniques are pivotal for materials discovery and renewable energy; however, often the extensive chemical spaces to be explored require high-throughput experimentation to ensure timely results, which are costly for both instruments and materials/consumables.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [
+    {
+      "value": "Electrochemical techniques are pivotal for materials discovery and renewable energy; however, often the extensive chemical spaces to be explored require high-throughput experimentation to ensure timely results, which are costly for both instruments and materials/consumables.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [
+    {
+      "value": "An affordable platform for automated synthesis and electrochemical characterization This study presents an open, cost-effective autonomous electrochemical setup with a custom potentiostat and automated module for self-driving laboratories, enabling rapid, controlled, and reproducible high-throughput experiments, with all designs, software, and data openly shared to advance accessible and transparent materials discovery.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Using ChemOS 2.0 for orchestration, we showcase our setup's capabilities through a campaign reacting different metal ions with ligands to form coordination compounds, yielding a database of 400 electrochemical measurements.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "conditions": [
+    {
+      "value": "While self-driving laboratories (SDLs) promise efficient chemical exploration, most contemporary implementations demand significant time, economic investment, and expertise.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "mechanisms": [],
+  "outcomes": [],
+  "sdl_tags": [
+    "SDL 2 - Organic",
+    "SDL 0 - AI & Automation",
+    "Automation and Robotics",
+    "Chemistry"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.71,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": true,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": true,
+      "properties": true,
+      "measurements": true,
+      "conditions": true,
+      "mechanisms": false,
+      "outcomes": false,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "evidence",
+      "mechanisms",
+      "outcomes",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only."
+    ]
+  }
+}

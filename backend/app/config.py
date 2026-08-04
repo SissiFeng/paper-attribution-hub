@@ -25,6 +25,10 @@ class Settings(BaseSettings):
     institutions_csv: Path = DATA_DIR / "institution_aliases.csv"
     topics_yaml: Path = DATA_DIR / "topic_taxonomy.yaml"
     fulltexts_dir: Path = DATA_DIR / "fulltexts"
+    training_labels_csv: Path = DATA_DIR / "training_labels.csv"
+    validation_labels_csv: Path = DATA_DIR / "validation_labels.csv"
+    # Frozen, hand-labeled holdout. Production review and model training must
+    # not write to or read from this path respectively.
     eval_labels_csv: Path = DATA_DIR / "eval_labels.csv"
     eval_labels_silver_csv: Path = DATA_DIR / "eval_labels_silver.csv"
     ac_core_papers_csv: Path = DATA_DIR / "ac_core_papers.csv"
@@ -63,6 +67,10 @@ class Settings(BaseSettings):
     grobid_timeout_s: float = 60.0
     # Apply contextual chunk prefixing before BM25 / embedding (Anthropic style).
     contextual_chunking: bool = True
+    # Experimental, read-only Attribution Evidence Tree API.
+    attribution_evidence_tree_enabled: bool = False
+    # Experimental AET-assisted classifier authority; explicit opt-in.
+    attribution_evidence_classifier_enabled: bool = False
     # Reranker: "none" (default) or "cross-encoder" (requires sentence-transformers).
     reranker_backend: str = "none"
     domain_vocabulary_yaml: Path = DATA_DIR / "domain_vocabulary.yaml"
@@ -112,6 +120,10 @@ class Settings(BaseSettings):
         "http://127.0.0.1:3000",
         "https://frontend-delta-three-38.vercel.app",
     ]
+
+    # AWS S3 artifact storage. Empty string disables S3 (fallback to local filesystem).
+    s3_artifacts_bucket: str = ""
+    aws_region: str = "us-east-1"
 
     @field_validator("cors_origins", mode="before")
     @classmethod

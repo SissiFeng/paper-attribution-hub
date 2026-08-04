@@ -27,6 +27,9 @@ anthropic>=0.28
 openai>=1.30      # Used for Kimi (OpenAI-compatible API at api.moonshot.cn)
 langgraph>=1.0    # Optional Modular RAG graph runtime
 
+# AWS S3 — artifact storage (boto3 uses IAM role, no credentials needed in env)
+boto3>=1.35
+
 # Optional — learned classifier (v0.7). sklearn is the default backend.
 scikit-learn>=1.4
 joblib>=1.3

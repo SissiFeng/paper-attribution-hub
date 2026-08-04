@@ -1,0 +1,112 @@
+{
+  "paper_id": "acfocus_f801eeea2044",
+  "title": "Protein–ligand data at scale to support machine learning",
+  "metadata": {
+    "doi": "10.1038/s41570-025-00737-z",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/40702244/",
+    "year": "2025",
+    "authors": "A. M. Edwards; D. R. Owen; S. Ackloo; A. A. Antolín; C. H. Arrowsmith; A. D. Axtman; A. J. Baghaie; D. Baršytė Lovejoy; F. M. Bashore; M. H. Bengtson; P. J. Brown; N. A. Burgess-Brown; T. Cernak; D. A. Clevert; J. A. Coker; W. D. Cornell; R. M. Couñago; S. Martínez Cuesta; A. S. Diaz; S. Djordjevic; D. Dou; D. Drewry; K. Duerr; M. M. Edwards; O. Engkvist; A. Fernández-Montalván; L. Foschini; O. Gileadi; C. Gordijo; M. A. Guié; J. Günther; B. Haibe-Kains; L. Halabelian; T. Hanke; R. Harding; I. V. Hartung; E. R. Holzinger; S. Häberle; S. A. Johnson; A. Kannt; A. Keefe; S. Knapp; F. Krieger; O. Krämer; A. R. Leach; U. Lessel; S. Melliou; M. Michel; J. C. Mobarec; F. Montel; M. R. Morgan; A. Mueller-Fahrnow; S. Müller-Knapp; J. P. O’Donnell; H. Peng; D. Petrović; E. Rivers; K. Saikatendu; S. Santhakumar; M. Schapira; L. H. Holmberg-Schiavone; K. Schütt; M. Shen; L. R. de Souza; S. Stauffer; A. Steffen; M. Sundström; S. Thamm; A. Tjaden; M. H. Todd; C. Tredup; A. Tropsha; E. Vernet; J. Walsh; Y. Wang; J. Wellnitz; T. M. Willson; D. W. Young; L. Zhang",
+    "venue": "Nature Reviews Chemistry",
+    "category": "Journal Article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Santha Santhakumar",
+      "Matthieu Schapira"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Staff",
+      "AC Full Member"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "Target 2035 is a global initiative aiming to develop computational methods and large, open datasets to accelerate small-molecule hit discovery for every human protein by 2035, leveraging machine learning and iterative prediction-testing cycles to identify and predict new chemical probes.",
+  "abstract": "Target 2035 is a global initiative that aims to develop a potent and selective pharmacological modulator, such as a chemical probe, for every human protein by 2035. Here, we describe the Target 2035 roadmap to develop computational methods to improve small-molecule hit discovery, which is a key bottleneck in the discovery of chemical probes. Large, publicly available datasets of high-quality protein–small-molecule binding data will be created using affinity-selection mass spectrometry and DNA-encoded chemical library screening. Positive and negative data will be made openly available, and the machine learning community will be challenged to use these data to build models and predict new, diverse small-molecule binders. Iterative cycles of prediction and testing will lead to improved models and more successful predictions. By 2030, Target 2035 will have identified experimentally verified hits for thousands of human proteins and advanced the development of open-access algorithms capable of predicting hits for proteins for which there are not yet any experimental data. (Figure presented.) © Springer Nature Limited 2025.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "Target 2035 is a global initiative aiming to develop computational methods and large, open datasets to accelerate small-molecule hit discovery for every human protein by 2035, leveraging machine learning and iterative prediction-testing cycles to identify and predict new chemical probes.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [],
+  "materials": [
+    {
+      "value": "Protein–ligand data at scale to support machine learning Target 2035 is a global initiative aiming to develop computational methods and large, open datasets to accelerate small-molecule hit discovery for every human protein by 2035, leveraging machine learning and iterative prediction-testing cycles to identify and predict new chemical probes.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Here, we describe the Target 2035 roadmap to develop computational methods to improve small-molecule hit discovery, which is a key bottleneck in the discovery of chemical probes.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Large, publicly available datasets of high-quality protein–small-molecule binding data will be created using affinity-selection mass spectrometry and DNA-encoded chemical library screening.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [],
+  "measurements": [],
+  "conditions": [],
+  "mechanisms": [],
+  "outcomes": [],
+  "sdl_tags": [],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.37,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": false,
+      "materials": true,
+      "properties": false,
+      "measurements": false,
+      "conditions": false,
+      "mechanisms": false,
+      "outcomes": false,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "entities",
+      "properties",
+      "measurements",
+      "conditions",
+      "mechanisms",
+      "outcomes",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

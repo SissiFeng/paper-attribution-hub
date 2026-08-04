@@ -1,0 +1,138 @@
+{
+  "paper_id": "acfocus_f418ad5fef2f",
+  "title": "Incorporating ChatGPT into a Simulated Peer-Review Assignment in an Upper-Level Materials Chemistry Course",
+  "metadata": {
+    "doi": "10.1021/acs.jchemed.5c00790",
+    "url": "https://pubs.acs.org/doi/10.1021/acs.jchemed.5c00790",
+    "year": "2026",
+    "authors": "B. R. Varju; M. E. Noman; A. P. Dicks; D. S. Seferos",
+    "venue": "Journal of Chemical Education",
+    "category": "Journal Article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Dwight Seferos"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "The integration of ChatGPT into an organic materials chemistry course allowed students to use, critique, and edit AI-generated essays, enhancing their understanding and enjoyment of course topics while highlighting both the benefits and challenges of incorporating generative AI into undergraduate science curricula.",
+  "abstract": "The growing presence of generative artificial intelligence (GenAI), such as ChatGPT, has already begun to alter the scientific landscape. In addition to the utility of GenAI, there are also concerns about its ethical use. The rapid introduction of GenAI means that science undergraduate curricula need to be updated to address this technological evolution. To that end, we report here an assignment for an organic materials chemistry course incorporating ChatGPT. This two week activity involves students using ChatGPT to generate short essays on course topics and then critiquing and editing the generated information. Students reported that this assignment helped their understanding of the course topics and that they enjoyed the activity overall. Additionally, we address some of the issues we encountered when implementing this assignment due to the unpredictable nature of ChatGPT, and the solutions we found for them. Overall, students felt that this assignment was valuable for improving their grasp of the course topics without an excessive time commitment.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "The integration of ChatGPT into an organic materials chemistry course allowed students to use, critique, and edit AI-generated essays, enhancing their understanding and enjoyment of course topics while highlighting both the benefits and challenges of incorporating generative AI into undergraduate science curricula.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Artificial Intelligence & Data Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Chemistry",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "Incorporating ChatGPT into a Simulated Peer-Review Assignment in an Upper-Level Materials Chemistry Course The integration of ChatGPT into an organic materials chemistry course allowed students to use, critique, and edit AI-generated essays, enhancing their understanding and enjoyment of course topics while highlighting both the benefits and challenges of incorporating generative AI into undergraduate science curricula.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "To that end, we report here an assignment for an organic materials chemistry course incorporating ChatGPT.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [
+    {
+      "value": "This two week activity involves students using ChatGPT to generate short essays on course topics and then critiquing and editing the generated information.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Students reported that this assignment helped their understanding of the course topics and that they enjoyed the activity overall.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [],
+  "conditions": [
+    {
+      "value": "Overall, students felt that this assignment was valuable for improving their grasp of the course topics without an excessive time commitment.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "mechanisms": [],
+  "outcomes": [],
+  "sdl_tags": [
+    "Artificial Intelligence & Data Science",
+    "Chemistry"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.55,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": true,
+      "properties": true,
+      "measurements": false,
+      "conditions": true,
+      "mechanisms": false,
+      "outcomes": false,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "measurements",
+      "mechanisms",
+      "outcomes",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

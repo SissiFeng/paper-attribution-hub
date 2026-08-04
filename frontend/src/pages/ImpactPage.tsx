@@ -1,9 +1,15 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 
+import { AnalysisScopePanel } from "@/components/AnalysisScopePanel";
 import { EChart } from "@/components/EChart";
 import { FilterBar } from "@/components/FilterBar";
 import { getImpactReport } from "@/lib/api";
+import {
+  isLatestRequest,
+  resultForScope,
+  type ScopedResult,
+} from "@/lib/scopedResult";
 import type { GrowthSeries, ImpactReport } from "@/types";
 
 /** Detect if the last year looks like a partial year (< 60% of the prior year). */
@@ -90,20 +96,34 @@ function lineOption(series: GrowthSeries, color: string) {
 
 export default function ImpactPage() {
   const [searchParams] = useSearchParams();
-  const [report, setReport] = useState<ImpactReport | null>(null);
+  const searchKey = searchParams.toString();
+  const [reportResult, setReportResult] = useState<
+    ScopedResult<ImpactReport> | null
+  >(null);
+  const report = resultForScope(reportResult, searchKey);
   const [error, setError] = useState<string | null>(null);
+  const requestGeneration = useRef(0);
 
   useEffect(() => {
     let cancelled = false;
-    getImpactReport(searchParams)
-      .then((r) => !cancelled && setReport(r))
-      .catch(
-        (err) => !cancelled && setError(err instanceof Error ? err.message : String(err))
-      );
+    const generation = ++requestGeneration.current;
+    setError(null);
+    getImpactReport(new URLSearchParams(searchKey))
+      .then((nextReport) => {
+        if (!cancelled && isLatestRequest(generation, requestGeneration.current)) {
+          setReportResult({ scopeKey: searchKey, payload: nextReport });
+        }
+      })
+      .catch((err) => {
+        if (!cancelled && isLatestRequest(generation, requestGeneration.current)) {
+          setError(err instanceof Error ? err.message : String(err));
+          setReportResult(null);
+        }
+      });
     return () => {
       cancelled = true;
     };
-  }, [searchParams.toString()]);
+  }, [searchKey]);
 
   if (error) {
     return (
@@ -124,6 +144,7 @@ export default function ImpactPage() {
 
   const total = report.yoy_attributed.points.reduce((s, p) => s + p.value, 0);
   const totalCitations = report.citation_impact.points.reduce((s, p) => s + p.value, 0);
+  const normalizedCitations = report.normalized_citation_impact;
   const partialYearActive = isPartialYear(report.yoy_attributed.points);
   const lastYear = report.yoy_attributed.points.length > 0
     ? report.yoy_attributed.points[report.yoy_attributed.points.length - 1].year
@@ -147,6 +168,15 @@ export default function ImpactPage() {
           <div className="value">{totalCitations}</div>
         </div>
         <div className="cell">
+          <div className="label">Field-year normalized citations</div>
+          <div className="value">
+            {normalizedCitations.normalized_index?.toFixed(2) ?? "—"}
+          </div>
+          <div style={{ fontSize: "0.72rem", color: "var(--muted)", marginTop: 2 }}>
+            {normalizedCitations.covered_papers}/{normalizedCitations.total_papers} papers covered
+          </div>
+        </div>
+        <div className="cell">
           <div className="label">Window</div>
           <div className="value">
             {report.window_from ?? "all"}–{report.window_to ?? "all"}
@@ -157,6 +187,8 @@ export default function ImpactPage() {
           <div className="value">{report.emerging_institutions.length}</div>
         </div>
       </div>
+
+      <AnalysisScopePanel audit={report.audit} title="Impact evidence scope" />
 
       <div className="impact-grid">
         <div className="impact-card">
@@ -172,6 +204,42 @@ export default function ImpactPage() {
             option={lineOption(report.citation_impact, "#7aa2f7")}
             style={{ height: 220 }}
           />
+        </div>
+        <div className="impact-card">
+          <h3>Normalized external citation impact</h3>
+          <p className="metric-note">
+            Mean citations per covered paper relative to this corpus&apos;s same-field,
+            same-year baseline. 1.00 is the baseline; this is not a proprietary global FWCI.
+          </p>
+          {normalizedCitations.normalized_index == null ? (
+            <div className="empty">
+              No external citation snapshots in scope. Run the citation snapshot refresh job.
+            </div>
+          ) : (
+            <>
+              <div className="impact-citation-summary">
+                <strong>{normalizedCitations.normalized_index.toFixed(2)}</strong>
+                <span>{(normalizedCitations.coverage * 100).toFixed(1)}% snapshot coverage</span>
+                <small>
+                  Snapshot range {normalizedCitations.snapshot_oldest_at
+                    ? new Date(normalizedCitations.snapshot_oldest_at).toLocaleDateString()
+                    : "unknown"} – {normalizedCitations.snapshot_newest_at
+                    ? new Date(normalizedCitations.snapshot_newest_at).toLocaleDateString()
+                    : "unknown"}
+                </small>
+              </div>
+              <ul className="impact-list">
+                {normalizedCitations.by_institution.slice(0, 6).map((item) => (
+                  <li key={item.institution_id}>
+                    <span>{item.institution_name}</span>
+                    <span>
+                      {item.normalized_index.toFixed(2)} · {item.paper_count} paper(s)
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </>
+          )}
         </div>
         <div className="impact-card">
           <h3>Top growing themes</h3>

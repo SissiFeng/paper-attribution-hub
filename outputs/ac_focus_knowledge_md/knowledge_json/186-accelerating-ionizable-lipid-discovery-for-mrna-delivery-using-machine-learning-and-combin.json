@@ -1,0 +1,139 @@
+{
+  "paper_id": "acfocus_8b6ba109b404",
+  "title": "Accelerating ionizable lipid discovery for mRNA delivery using machine learning and combinatorial chemistry",
+  "metadata": {
+    "doi": "10.1038/s41563-024-01867-3",
+    "url": "https://www.nature.com/articles/s41563-024-01867-3",
+    "year": "2024",
+    "authors": "Li B, Raji IO, Gordon AGR, Sun L, Raimondo TM, Oladimeji FA, Jiang AY, Varley A, Langer RS, Anderson DG",
+    "venue": "Nature Materials",
+    "category": "Journal article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Bowen Li"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "checked",
+      "high_impact": "checked"
+    }
+  },
+  "source_summary": "The study presents a machine learning-driven approach that, combined with combinatorial chemistry, enables rapid discovery and evaluation of new ionizable lipids for mRNA delivery, resulting in the identification of a superior lipid (119-23) that enhances lipid nanoparticle performance for targeted mRNA therapies.",
+  "abstract": "To unlock the full promise of messenger (mRNA) therapies, expanding the toolkit of lipid nanoparticles is paramount. However, a pivotal component of lipid nanoparticle development that remains a bottleneck is identifying new ionizable lipids. Here we describe an accelerated approach to discovering effective ionizable lipids for mRNA delivery that combines machine learning with advanced combinatorial chemistry tools. Starting from a simple four-component reaction platform, we create a chemically diverse library of 584 ionizable lipids. We screen the mRNA transfection potencies of lipid nanoparticles containing those lipids and use the data as a foundational dataset for training various machine learning models. We choose the best-performing model to probe an expansive virtual library of 40,000 lipids, synthesizing and experimentally evaluating the top 16 lipids flagged. We identify lipid 119-23, which outperforms established benchmark lipids in transfecting muscle and immune cells in several tissues. This approach facilitates the creation and evaluation of versatile ionizable lipid libraries, advancing the formulation of lipid nanoparticles for precise mRNA delivery.",
+  "hardware": [
+    {
+      "value": "Starting from a simple four-component reaction platform, we create a chemically diverse library of 584 ionizable lipids.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "methods": [
+    {
+      "value": "The study presents a machine learning-driven approach that, combined with combinatorial chemistry, enables rapid discovery and evaluation of new ionizable lipids for mRNA delivery, resulting in the identification of a superior lipid (119-23) that enhances lipid nanoparticle performance for targeted mRNA therapies.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Artificial Intelligence & Data Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Automation and Robotics",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Chemistry",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [],
+  "properties": [],
+  "measurements": [
+    {
+      "value": "We identify lipid 119-23, which outperforms established benchmark lipids in transfecting muscle and immune cells in several tissues.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "conditions": [],
+  "mechanisms": [],
+  "outcomes": [
+    {
+      "value": "Therapeutics",
+      "source": "csv_applied_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Formulations",
+      "source": "csv_applied_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "Artificial Intelligence & Data Science",
+    "Automation and Robotics",
+    "Chemistry",
+    "Therapeutics",
+    "Formulations"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.59,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": true,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": false,
+      "properties": false,
+      "measurements": true,
+      "conditions": false,
+      "mechanisms": false,
+      "outcomes": true,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "evidence",
+      "materials",
+      "properties",
+      "conditions",
+      "mechanisms",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only."
+    ]
+  }
+}

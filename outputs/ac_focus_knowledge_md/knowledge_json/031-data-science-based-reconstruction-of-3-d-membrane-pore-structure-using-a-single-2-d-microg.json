@@ -1,0 +1,154 @@
+{
+  "paper_id": "acfocus_13731b4c076d",
+  "title": "Data-science-based reconstruction of 3-D membrane pore structure using a single 2-D micrograph",
+  "metadata": {
+    "doi": "10.1016/j.memsci.2023.121673",
+    "url": "https://linkinghub.elsevier.com/retrieve/pii/S0376738823003290",
+    "year": "2023",
+    "authors": "Chamani, Hooman; Rabbani, Arash; Russell, Kaitlyn P.; Zydney, Andrew L.; Gomez, Enrique D.; Hattrick-Simpers, Jason; Werber, Jay R.",
+    "venue": "Journal of Membrane Science",
+    "category": "Journal article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Jason Hattrick-Simpers",
+      "Jay Werber"
+    ],
+    "ac_programs": [
+      "AC PDF_Jay Werber_2021-22"
+    ],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance",
+      "AC Full Member"
+    ],
+    "flags": {
+      "acknowledges_ac": "checked",
+      "highly_relevant": "checked",
+      "high_impact": "checked"
+    }
+  },
+  "source_summary": "This study demonstrates a data science-based method to reconstruct the 3-D structure of a membrane from a single 2-D SEM image, achieving close agreement with experimental 3-D data and enabling more efficient membrane characterization and design.",
+  "abstract": "Conventional 2-D scanning electron microscopy (SEM) is commonly used to rapidly and qualitatively evaluate membrane pore structure. Quantitative 2-D analyses of pore sizes can be extracted from SEM, but without information about 3-D spatial arrangement and connectivity, which are crucial to the understanding of membrane pore structure. Meanwhile, experimental 3-D reconstruction via tomography is complex, expensive, and not easily accessible. Here, we employ data science tools to demonstrate a proof-of-principle reconstruction of the 3-D structure of a membrane using a single 2-D image pulled from a 3-D tomographic data set. The reconstructed and experimental 3-D structures were then directly compared, with important properties such as mean pore radius, mean throat radius, coordination number and tortuosity differing by less than 15%. The developed algorithm will dramatically improve the ability of the membrane community to characterize membranes, accelerating the design and synthesis of membranes with desired structural and transport properties.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "This study demonstrates a data science-based method to reconstruct the 3-D structure of a membrane from a single 2-D SEM image, achieving close agreement with experimental 3-D data and enabling more efficient membrane characterization and design.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Artificial Intelligence & Data Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Chemical Engineering",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "Data-science-based reconstruction of 3-D membrane pore structure using a single 2-D micrograph This study demonstrates a data science-based method to reconstruct the 3-D structure of a membrane from a single 2-D SEM image, achieving close agreement with experimental 3-D data and enabling more efficient membrane characterization and design.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Conventional 2-D scanning electron microscopy (SEM) is commonly used to rapidly and qualitatively evaluate membrane pore structure.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Quantitative 2-D analyses of pore sizes can be extracted from SEM, but without information about 3-D spatial arrangement and connectivity, which are crucial to the understanding of membrane pore structure.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [
+    {
+      "value": "The reconstructed and experimental 3-D structures were then directly compared, with important properties such as mean pore radius, mean throat radius, coordination number and tortuosity differing by less than 15%.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "The developed algorithm will dramatically improve the ability of the membrane community to characterize membranes, accelerating the design and synthesis of membranes with desired structural and transport properties.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [
+    {
+      "value": "Data-science-based reconstruction of 3-D membrane pore structure using a single 2-D micrograph This study demonstrates a data science-based method to reconstruct the 3-D structure of a membrane from a single 2-D SEM image, achieving close agreement with experimental 3-D data and enabling more efficient membrane characterization and design.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Conventional 2-D scanning electron microscopy (SEM) is commonly used to rapidly and qualitatively evaluate membrane pore structure.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "conditions": [],
+  "mechanisms": [],
+  "outcomes": [],
+  "sdl_tags": [
+    "Artificial Intelligence & Data Science",
+    "Chemical Engineering"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.57,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": true,
+      "properties": true,
+      "measurements": true,
+      "conditions": false,
+      "mechanisms": false,
+      "outcomes": false,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "conditions",
+      "mechanisms",
+      "outcomes",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

@@ -1,0 +1,268 @@
+{
+  "paper_id": "acfocus_ad7ecafb7ab7",
+  "title": "Grammar-driven SMILES standardization with TokenSMILES",
+  "metadata": {
+    "doi": "10.1039/d5sc05004a",
+    "url": "https://www.scopus.com/inward/record.uri?eid=2-s2.0-105023168024&doi=10.1039%2Fd5sc05004a&partnerID=40&md5=946dedd1ae908903c764fcd708da4631",
+    "year": "2026",
+    "authors": "L. A. González-Ortiz; L. Noriega; F. Ortíz-Chi; G. Vidales-Ayala; E. Soberanis-Cáceres; A. Meneses; A. Aspuru-Guzik; G. Merino",
+    "venue": "Chemical Science",
+    "category": "Journal Article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Alán Aspuru-Guzik"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "TokenSMILES is a grammatical framework that standardizes SMILES notation into structured, machine-interpretable sentences to reduce redundancy and ensure syntactic and semantic consistency, enabling more systematic chemical space exploration and supporting applications in drug discovery, materials design, and molecular machine learning.",
+  "abstract": "The redundancy of SMILES notation, where multiple strings can describe the same molecule, remains a challenge in computational chemistry and cheminformatics. To mitigate this issue, we introduce TokenSMILES, a grammatical framework that standardizes SMILES into structured sentences composed of context-free words. By applying five syntactic constraints (including branch limitations, balanced parentheses, and aromaticity exclusion), TokenSMILES minimizes redundant SMILES enumerations for alkanes while maintaining valence and octet compliance through semantic parsing rules. TokenSMILES does not replace SMILES but rather formalizes its syntax into a standardized, machine-interpretable form. This grammatical structure enables controlled generation and manipulation of valid SMILES strings, ensuring syntactic and semantic consistency while substantially reducing redundancy. Implemented into SmilX, an open-source tool, TokenSMILES generates valid SMILES with accuracy comparable to existing computational implementations for molecules with low hydrogen deficiency (HDI ≤ 4). Its applicability extends beyond alkanes through stoichiometric modifications such as bond insertion, cyclization, and heteroatom substitution. Nevertheless, challenges remain for highly unsaturated systems, where canonicalization artifacts highlight the need for dynamic feasibility checks. By integrating linguistic principles with cheminformatics, TokenSMILES establishes a scalable framework for systematic chemical space exploration, supporting applications in drug discovery, materials design, and machine learning-driven molecular innovation. This journal is © The Royal Society of Chemistry, 2026",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "Applying five syntactic constraints (including branch limitations, balanced parentheses, and aromaticity exclusion) to formalize the SMILES language, along with the development of SmilX, an open-source implementation.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "problems": [
+    {
+      "value": "The redundancy of SMILES notation where multiple strings can describe the same molecule.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "hypotheses": [
+    {
+      "value": "Introducing TokenSMILES, a grammatical framework that standardizes SMILES into structured sentences composed of context-free words, can minimize redundant SMILES enumerations while maintaining valence and octet compliance.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "evidence": [
+    {
+      "value": "TokenSMILES substantially reduces the number of valid SMILES variants for alkanes, and SmilX generates valid SMILES with accuracy comparable to existing computational implementations for molecules with low hydrogen deficiency (HDI # 4).",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "conclusions": [
+    {
+      "value": "TokenSMILES establishes a scalable framework for systematic chemical space exploration, supporting applications in drug discovery, materials design, and machine learning-driven molecular innovation.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "entities": [
+    {
+      "value": "SMILES strings",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "TokenSMILES",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "syntactic constraints",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "semantic parsing rules",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "chemical context",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "Grammar-driven SMILES standardization with TokenSMILES TokenSMILES is a grammatical framework that standardizes SMILES notation into structured, machine-interpretable sentences to reduce redundancy and ensure syntactic and semantic consistency, enabling more systematic chemical space exploration and supporting applications in drug discovery, materials design, and molecular machine learning.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "The redundancy of SMILES notation, where multiple strings can describe the same molecule, remains a challenge in computational chemistry and cheminformatics.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Implemented into SmilX, an open-source tool, TokenSMILES generates valid SMILES with accuracy comparable to existing computational implementations for molecules with low hydrogen deficiency (HDI ≤ 4).",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [
+    {
+      "value": "Implemented into SmilX, an open-source tool, TokenSMILES generates valid SMILES with accuracy comparable to existing computational implementations for molecules with low hydrogen deficiency (HDI ≤ 4).",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "TokenSMILES substantially reduces the number of valid SMILES variants for alkanes, and SmilX generates valid SMILES with accuracy comparable to existing computational implementations for molecules with low hydrogen deficiency (HDI # 4).",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [],
+  "conditions": [],
+  "mechanisms": [
+    {
+      "value": "standardization of SMILES into structured sentences",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "minimization of redundant SMILES enumerations",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "maintenance of valence and octet compliance",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "systematic computational analysis and exhaustive isomer enumeration",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "outcomes": [
+    {
+      "value": "controlled generation and manipulation of valid SMILES strings",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "ensuring syntactic and semantic consistency",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "substantial reduction of redundancy",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "Artificial Intelligence & Data Science",
+    "Chemistry"
+  ],
+  "reasoning_motifs": [
+    {
+      "value": "Constraint → Consistency",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Reduction → Efficiency",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Compliance → Accuracy",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "general_principles": [
+    {
+      "value": "Control Through Constraints",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Simplicity Through Reduction",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Precision Through Compliance",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "failure_paths": [
+    {
+      "value": "partial: Generating isomers for systems with high hydrogen deficiency (HDI) using SmilX. Evidence: SmilX occasionally yielded one missing structure (false negative) or 1–7 additional isomers (false positives) in systems as C8H2, C9H2, C10H2, C9H4, C10H4, C10H6, C9H8, and C10H10.",
+      "source": "cross_sdl_phase4",
+      "confidence": 0.75,
+      "evidence": ""
+    }
+  ],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "acgold_e6ac05d676c5",
+    "cross_sdl_reasoning_json": "/Users/sissifeng/Downloads/cross-sdl_knowledge_transfer_engine/data/reasoning/acgold_e6ac05d676c5.json",
+    "cross_sdl_extraction_quality": 0.8,
+    "cross_sdl_notes": "The paper presents a clear hypothesis, method, and results, but some details of the underlying mechanisms and motifs were inferred from the context rather than being explicitly stated."
+  },
+  "validation": {
+    "score": 0.8,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": true,
+      "entities": true,
+      "materials": true,
+      "properties": true,
+      "measurements": false,
+      "conditions": false,
+      "mechanisms": true,
+      "outcomes": true,
+      "cross_sdl_match": true
+    },
+    "missing": [
+      "hardware",
+      "measurements",
+      "conditions"
+    ],
+    "notes": [
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

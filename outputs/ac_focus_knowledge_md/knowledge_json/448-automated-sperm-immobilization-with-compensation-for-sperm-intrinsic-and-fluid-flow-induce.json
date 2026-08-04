@@ -1,0 +1,141 @@
+{
+  "paper_id": "acfocus_6a33eb9d7b5a",
+  "title": "Automated Sperm Immobilization With Compensation for Sperm Intrinsic and Fluid Flow-Induced Movements",
+  "metadata": {
+    "doi": "10.1109/tmech.2025.3545921",
+    "url": "https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=10939006&tag=1",
+    "year": "2025",
+    "authors": "H. Gu; R. Zhai; C. Yue; Y. Sun; C. Dai",
+    "venue": "IEEE/ASME Transactions on Mechatronics",
+    "category": "Journal Article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Yu Sun"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "This study introduces a novel robotic sperm immobilization method using a micromanipulator and adaptive control to compensate for both sperm’s intrinsic movement and fluid-induced displacement, achieving a 90.9% success rate and outperforming previous methods that do not account for these factors.",
+  "abstract": "In automated sperm immobilization, motorized stages are conventional means for transporting sperm, while they are not typical devices in clinical setups. This study designs a new robotic sperm immobilization method by leveraging a micromanipulator to position a tooltip above sperm for immobilizing it without a motorized stage. The challenge arises when tooltip motion agitates the medium, leading to the passive displacement of sperm, and the sperm's intrinsic movement also complicates tooltip positioning. To address these concerns, first, a predictor is introduced to predict the sperm's intrinsic movement. Second, a model is established to describe the fluid flow and characterize the passive displacement of sperm as a function of tooltip velocity and medium parameters. Finally, an adaptive control algorithm that accounts for uncalibrated medium parameters is designed to compensate for the sperm's intrinsic movement and tooltip motion-induced sperm displacement. The stability of the control algorithm is analyzed, and the boundedness of the positioning error is proven. Experiments verified the effectiveness of the proposed method in both predicting and feedforwarding sperm's intrinsic movement and in compensating for tooltip motion-induced sperm displacement. The performance of the proposed method is comparable to existing robotic sperm immobilization methods that rely on motorized stages, while being easier to implement in clinics. With the proposed method, the system achieved a success rate of 90.9% in sperm immobilization, representing an improvement of 28.2% over the method not factoring in the sperm's intrinsic movement and 16.3% over the method not accounting for the tooltip motion-induced sperm displacement, respectively. © 1996-2012 IEEE.",
+  "hardware": [
+    {
+      "value": "This study introduces a novel robotic sperm immobilization method using a micromanipulator and adaptive control to compensate for both sperm’s intrinsic movement and fluid-induced displacement, achieving a 90.9% success rate and outperforming previous methods that do not account for these factors.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "In automated sperm immobilization, motorized stages are conventional means for transporting sperm, while they are not typical devices in clinical setups.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "This study designs a new robotic sperm immobilization method by leveraging a micromanipulator to position a tooltip above sperm for immobilizing it without a motorized stage.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "The performance of the proposed method is comparable to existing robotic sperm immobilization methods that rely on motorized stages, while being easier to implement in clinics.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "methods": [
+    {
+      "value": "This study introduces a novel robotic sperm immobilization method using a micromanipulator and adaptive control to compensate for both sperm’s intrinsic movement and fluid-induced displacement, achieving a 90.9% success rate and outperforming previous methods that do not account for these factors.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Automation and Robotics",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [],
+  "properties": [
+    {
+      "value": "The stability of the control algorithm is analyzed, and the boundedness of the positioning error is proven.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [],
+  "conditions": [
+    {
+      "value": "Automated Sperm Immobilization With Compensation for Sperm Intrinsic and Fluid Flow-Induced Movements This study introduces a novel robotic sperm immobilization method using a micromanipulator and adaptive control to compensate for both sperm’s intrinsic movement and fluid-induced displacement, achieving a 90.9% success rate and outperforming previous methods that do not account for these factors.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "With the proposed method, the system achieved a success rate of 90.9% in sperm immobilization, representing an improvement of 28.2% over the method not factoring in the sperm's intrinsic movement and 16.3% over the method not accounting for the tooltip motion-induced sperm displacement, respectively.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "mechanisms": [],
+  "outcomes": [],
+  "sdl_tags": [
+    "Automation and Robotics"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.58,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": true,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": false,
+      "properties": true,
+      "measurements": false,
+      "conditions": true,
+      "mechanisms": false,
+      "outcomes": false,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "evidence",
+      "materials",
+      "measurements",
+      "mechanisms",
+      "outcomes",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only."
+    ]
+  }
+}

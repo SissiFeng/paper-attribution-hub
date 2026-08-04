@@ -1,0 +1,255 @@
+{
+  "paper_id": "acfocus_821d50acb29d",
+  "title": "Does this smell the same? Learning representations of olfactory mixtures using inductive biases",
+  "metadata": {
+    "doi": "10.1088/2632-2153/adfffc",
+    "url": "https://iopscience.iop.org/article/10.1088/2632-2153/adfffc",
+    "year": "2025",
+    "authors": "G. Tom; C. Tian Ser; E. M. Rajaonson; S. Lo; H. Suk Park; B. K. Lee; B. Sanchez-Lengeling",
+    "venue": "Machine Learning: Science and Technology",
+    "category": "Journal Article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Benjamin Sanchez"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member"
+    ],
+    "flags": {
+      "acknowledges_ac": "checked",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "POMMix is a new model that extends the principal odor map to represent complex odor mixtures using deep learning techniques, achieving state-of-the-art results and advancing the digitization of olfaction.",
+  "abstract": "Olfaction—how molecules are perceived as odors to humans—is a relatively less understood sensory system compared to vision or hearing. Recently, the principal odor map (POM) was introduced to digitize the olfactory properties of single compounds. However, smells in real life are not pure single molecules, but complex mixtures of molecules, whose representations remain relatively under-explored due to limited data in olfactory mixtures. We introduce POMMix, a mixture model extension of POM which leverages mono-molecular olfactory data to build meaningful mixture representations of smells. Our model builds upon the symmetries of the problem space in a hierarchical manner: (1) graph neural networks for building mono-molecular embeddings, (2) attention mechanisms for aggregating molecular representations into mixture representations, and (3) cosine prediction heads to encode olfactory perceptual distance in the mixture embedding space. POMMix achieves state-of-the-art performance across multiple datasets. We perform comprehensive ablation studies of the components of POMMix to understand the contribution of each component. We evaluate the generalizability of the model, explore olfactory phenomena with the representations, and analyze the interpretability of the representations. Our work advances the effort to digitize olfaction, highlighting the synergy of domain expertise and deep learning in crafting mixture representations in low-data regimes. © 2025 The Author(s). Published by IOP Publishing Ltd.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "The POMMIX model, which combines graph neural networks for building mono-molecular embeddings, attention mechanisms for aggregating molecular representations into mixture representations, and cosine prediction heads to encode olfactory perceptual distance in the mixture embedding space.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "problems": [
+    {
+      "value": "How molecules are perceived as odors to humans, specifically the challenge of representing complex mixtures of molecules in olfaction compared to single molecules.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "hypotheses": [
+    {
+      "value": "A model can be developed to predict the olfactory similarities between mixtures of molecules by leveraging mono-molecular olfactory data.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "evidence": [
+    {
+      "value": "POMMIX achieves state-of-the-art performance across multiple datasets, as evidenced by high Pearson correlation coefficients, low root-mean-squared error, and high Kendall ranking coefficient.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "conclusions": [
+    {
+      "value": "POMMIX, an extension of the principal odor map, successfully predicts olfactory similarities between mixtures of molecules, highlighting the synergy of domain expertise and deep learning in crafting mixture representations in low-data regimes.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "entities": [
+    {
+      "value": "Molecular graphs derived from SMILES representations",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Graph neural networks (GNNs)",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Attention mechanisms",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Mixture embeddings",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Olfactory perceptual distance",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "Olfaction—how molecules are perceived as odors to humans—is a relatively less understood sensory system compared to vision or hearing.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "However, smells in real life are not pure single molecules, but complex mixtures of molecules, whose representations remain relatively under-explored due to limited data in olfactory mixtures.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "A new model building block, CHEMIX, for encoding mixtures of molecules.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [
+    {
+      "value": "Recently, the principal odor map (POM) was introduced to digitize the olfactory properties of single compounds.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "POMMIX achieves state-of-the-art performance across multiple datasets, as evidenced by high Pearson correlation coefficients, low root-mean-squared error, and high Kendall ranking coefficient.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [],
+  "conditions": [],
+  "mechanisms": [
+    {
+      "value": "Graph neural networks create embeddings for individual molecules based on their graph structures.",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Attention mechanisms aggregate molecular embeddings into a representation for the entire mixture.",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Cosine prediction heads compare mixture embeddings to predict the perceptual similarity of mixtures.",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "outcomes": [
+    {
+      "value": "Improved predictions of olfactory mixture similarity.",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "State-of-the-art performance on olfactory mixture similarity prediction tasks.",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "A new model building block, CHEMIX, for encoding mixtures of molecules.",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "Artificial Intelligence & Data Science",
+    "Biology",
+    "Therapeutics"
+  ],
+  "reasoning_motifs": [
+    {
+      "value": "Permutation invariance → Robustness to input order",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Domain expertise incorporation → Improved generalization",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Hierarchical representation learning → Enhanced expressivity",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "general_principles": [
+    {
+      "value": "Information integration across levels (from molecular to mixture level)",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Symmetry and invariance in representation learning",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Aggregation of individual components to system-level properties",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "acgold_525270086955",
+    "cross_sdl_reasoning_json": "/Users/sissifeng/Downloads/cross-sdl_knowledge_transfer_engine/data/reasoning/acgold_525270086955.json",
+    "cross_sdl_extraction_quality": 0.8,
+    "cross_sdl_notes": "The paper provides a clear structure and explicit statements of the problem, hypothesis, and methods, facilitating the extraction process. However, some inferences were necessary to fill in the details of the exploration narrative and potential future work."
+  },
+  "validation": {
+    "score": 0.8,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": true,
+      "entities": true,
+      "materials": true,
+      "properties": true,
+      "measurements": false,
+      "conditions": false,
+      "mechanisms": true,
+      "outcomes": true,
+      "cross_sdl_match": true
+    },
+    "missing": [
+      "hardware",
+      "measurements",
+      "conditions"
+    ],
+    "notes": [
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

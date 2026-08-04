@@ -1,0 +1,122 @@
+{
+  "paper_id": "acfocus_42000d879273",
+  "title": "Indigenous Environmental Data Justice: Confronting Colonial Data and Activating Indigenous Sovereignty",
+  "metadata": {
+    "doi": "10.1177/01622439251343837",
+    "url": "https://journals.sagepub.com/doi/10.1177/01622439251343837",
+    "year": "2025",
+    "authors": "M. F. Yanchapaxi; M. Murphy",
+    "venue": "Science Technology and Human Values",
+    "category": "Journal Article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "M Murphy"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance"
+    ],
+    "flags": {
+      "acknowledges_ac": "checked",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "This article introduces Indigenous Environmental Data Justice (IEDJ) as a framework distinct from Environmental Data Justice, emphasizing Indigenous communities' sovereign data governance practices and principles developed in response to colonial environmental datafication and inadequate data from government and corporate sources.",
+  "abstract": "This article offers Indigenous Environmental Data Justice (IEDJ) as a framework related to, but importantly distinct from, Environmental Data Justice. IEDJ points to the manifold practices and principles that diverse Indigenous communities have developed in response to the pervasive structures of colonial environmental datafication and toward creating their own sovereign data governance practices. This article gathers a constellation of Indigenous community-specific place-thought data relations and practices, particularly drawing on work in North America, which are nonetheless convergent broadly in that they all confront commonalities of colonial data structures. We describe IEDJ as following the principles of Indigenous Data Sovereignty and involving complementary practices for confronting inadequate colonial data that government environmental agencies and companies provide to Indigenous communities.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "This article introduces Indigenous Environmental Data Justice (IEDJ) as a framework distinct from Environmental Data Justice, emphasizing Indigenous communities' sovereign data governance practices and principles developed in response to colonial environmental datafication and inadequate data from government and corporate sources.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Artificial Intelligence & Data Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Indigenous Science & Technologies Studies",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Responsible Discovery",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [],
+  "properties": [],
+  "measurements": [],
+  "conditions": [],
+  "mechanisms": [],
+  "outcomes": [
+    {
+      "value": "Environmental Remediation",
+      "source": "csv_applied_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "Artificial Intelligence & Data Science",
+    "Indigenous Science & Technologies Studies",
+    "Responsible Discovery",
+    "Environmental Remediation"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.43,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": false,
+      "properties": false,
+      "measurements": false,
+      "conditions": false,
+      "mechanisms": false,
+      "outcomes": true,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "materials",
+      "properties",
+      "measurements",
+      "conditions",
+      "mechanisms",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

@@ -1,0 +1,97 @@
+{
+  "paper_id": "acfocus_30120d51ebb3",
+  "title": "Quantum Deep Equilibrium Models",
+  "metadata": {
+    "doi": "10.52202/079017-1004",
+    "url": "https://proceedings.neurips.cc/paper_files/paper/2024/hash/386432c7534eec9a1cd7cbeea90d7e9f-Abstract-Conference.html",
+    "year": "2024",
+    "authors": "Schleich P, Skreta M, Kristensen LB, Vargas-Hernández RA, Aspuru-Guzik A",
+    "venue": "Advances in Neural Information Processing Systems",
+    "category": "Conference",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Alán Aspuru-Guzik"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "checked",
+      "high_impact": "checked"
+    }
+  },
+  "source_summary": "This work introduces Quantum Deep Equilibrium Models (QDEQs), a novel training paradigm that leverages deep equilibrium models to optimize parametrized quantum circuits for quantum machine learning, enabling shallower circuits with competitive or superior performance compared to deeper networks, which is crucial for practical use on near-term quantum hardware.",
+  "abstract": "The feasibility of variational quantum algorithms, the most popular correspondent of neural networks on noisy, near-term quantum hardware, is highly impacted by the circuit depth of the involved parametrized quantum circuits (PQCs). Higher depth increases expressivity, but also results in a detrimental accumulation of errors. Furthermore, the number of parameters involved in the PQC significantly influences the performance through the necessary number of measurements to evaluate gradients, which scales linearly with the number of parameters. Motivated by this, we look at deep equilibrium models (DEQs), which mimic an infinite-depth, weight-tied network using a fraction of the memory by employing a root solver to find the fixed points of the network. In this work, we present Quantum Deep Equilibrium Models (QDEQs): a training paradigm that learns parameters of a quantum machine learning model given by a PQC using DEQs. To our knowledge, no work has yet explored the application of DEQs to QML models. We apply QDEQs to find the parameters of a quantum circuit in two settings: the first involves classifying MNIST-4 digits with 4 qubits; the second extends it to 10 classes of MNIST, FashionMNIST and CIFAR. We find that QDEQ is not only competitive with comparable existing baseline models, but also achieves higher performance than a network with 5 times more layers. This demonstrates that the QDEQ paradigm can be used to develop significantly more shallow quantum circuits for a given task, something which is essential for the utility of near-term quantum computers. Our code is available at https://github.com/martaskrt/qdeq.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "This work introduces Quantum Deep Equilibrium Models (QDEQs), a novel training paradigm that leverages deep equilibrium models to optimize parametrized quantum circuits for quantum machine learning, enabling shallower circuits with competitive or superior performance compared to deeper networks, which is crucial for practical use on near-term quantum hardware.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [],
+  "materials": [],
+  "properties": [],
+  "measurements": [
+    {
+      "value": "Furthermore, the number of parameters involved in the PQC significantly influences the performance through the necessary number of measurements to evaluate gradients, which scales linearly with the number of parameters.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "conditions": [],
+  "mechanisms": [],
+  "outcomes": [],
+  "sdl_tags": [],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "acgold_8519012fcd2f",
+    "cross_sdl_reasoning_json": "/Users/sissifeng/Downloads/cross-sdl_knowledge_transfer_engine/data/reasoning/acgold_8519012fcd2f.json",
+    "cross_sdl_extraction_quality": 0.0,
+    "cross_sdl_notes": "Extraction failed — parse error: Expecting ',' delimiter: line 51 column 4 (char 3199)"
+  },
+  "validation": {
+    "score": 0.41,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": false,
+      "materials": false,
+      "properties": false,
+      "measurements": true,
+      "conditions": false,
+      "mechanisms": false,
+      "outcomes": false,
+      "cross_sdl_match": true
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "entities",
+      "materials",
+      "properties",
+      "conditions",
+      "mechanisms",
+      "outcomes"
+    ],
+    "notes": [
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

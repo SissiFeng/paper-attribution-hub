@@ -1,0 +1,259 @@
+{
+  "paper_id": "acfocus_003d01034348",
+  "title": "Discovering Robotic Interaction Modes with Discrete Representation Learning",
+  "metadata": {
+    "doi": "10.48550/arxiv.2410.20258",
+    "url": "https://arxiv.org/abs/2410.20258",
+    "year": "2024",
+    "authors": "Wang L, Goyal A, Xu H, Garg A",
+    "venue": "arXiv",
+    "category": "Conference",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Animesh Garg"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "checked",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "ActAIM2 is an unsupervised robot learning framework that discovers discrete interaction modes for manipulating articulated objects, enabling robust and generalizable action sampling without expert labels or privileged information.",
+  "abstract": "Human actions manipulating articulated objects, such as opening and closing a drawer, can be categorized into multiple modalities we define as interaction modes. Traditional robot learning approaches lack discrete representations of these modes, which are crucial for empirical sampling and grounding. In this paper, we present ActAIM2, which learns a discrete representation of robot manipulation interaction modes in a purely unsupervised fashion, without the use of expert labels or simulator-based privileged information. Utilizing novel data collection methods involving simulator rollouts, ActAIM2 consists of an interaction mode selector and a low-level action predictor. The selector generates discrete representations of potential interaction modes with self-supervision, while the predictor outputs corresponding action trajectories. Our method is validated through its success rate in manipulating articulated objects and its robustness in sampling meaningful actions from the discrete representation. Extensive experiments demonstrate ActAIM2's effectiveness in enhancing manipulability and generalizability over baselines and ablation studies. For videos and additional results, see our website: https://actaim2.github.io/.",
+  "hardware": [
+    {
+      "value": "ActAIM2 is an unsupervised robot learning framework that discovers discrete interaction modes for manipulating articulated objects, enabling robust and generalizable action sampling without expert labels or privileged information.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Traditional robot learning approaches lack discrete representations of these modes, which are crucial for empirical sampling and grounding.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "In this paper, we present ActAIM2, which learns a discrete representation of robot manipulation interaction modes in a purely unsupervised fashion, without the use of expert labels or simulator-based privileged information.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "methods": [
+    {
+      "value": "The ActAIM2 method, which consists of an interaction mode selector and a low-level action predictor, utilizing novel data collection methods involving simulator rollouts and self-supervision.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "problems": [
+    {
+      "value": "How to learn a discrete representation of robot manipulation interaction modes in a self-supervised manner without expert labels or simulator-based privileged information.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "hypotheses": [
+    {
+      "value": "A self-supervised learning approach that enables discrete sampling across different interaction modes can enhance manipulability and generalizability in robotic control.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "evidence": [
+    {
+      "value": "Extensive experiments demonstrating ActAIM2’s effectiveness in enhancing manipulability and generalizability over baselines and ablation studies.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "conclusions": [
+    {
+      "value": "ActAIM2 successfully learns a discrete representation of robot manipulation interaction modes in an unsupervised fashion, improving upon prior methods.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "entities": [
+    {
+      "value": "Robotic manipulation interaction modes",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Self-supervised learning approach",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Discrete representation",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Low-level action predictor",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "materials": [],
+  "properties": [],
+  "measurements": [],
+  "conditions": [
+    {
+      "value": "Our method is validated through its success rate in manipulating articulated objects and its robustness in sampling meaningful actions from the discrete representation.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "mechanisms": [
+    {
+      "value": "Discrete representation learning via unsupervised clustering",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Action prediction based on discrete interaction mode sampling",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Data collection through adaptive sampling and heuristic grasping",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "outcomes": [
+    {
+      "value": "Improved manipulability and generalizability in robotic control tasks",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Enhanced ability to sample meaningful actions from the discrete representation",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Creation of a diverse dataset representing various interaction modes",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "Automation and Robotics",
+    "Artificial Intelligence & Data Science"
+  ],
+  "reasoning_motifs": [
+    {
+      "value": "Diversity in Data → Enhanced Generalizability",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Discrete Representation → Targeted Action Sampling",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Self-Supervision →减少了标注依赖",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "general_principles": [
+    {
+      "value": "Multi-scale Coupling",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Emergent Order from Unsupervised Learning",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Control Through Constraints in Self-Supervision",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "failure_paths": [
+    {
+      "value": "success: Incorporating more expert tele-operation control data into the dataset to achieve more reliable grasping. Evidence: Suggested as a potential solution to address the imbalanced success rates across different interaction modes.",
+      "source": "cross_sdl_phase4",
+      "confidence": 0.75,
+      "evidence": ""
+    },
+    {
+      "value": "success: Training the model on more data to improve scalability across different categories of objects. Evidence: Suggested as a potential solution to address the lack of general scalability across different object categories.",
+      "source": "cross_sdl_phase4",
+      "confidence": 0.75,
+      "evidence": ""
+    },
+    {
+      "value": "success: Redefining the concept of interaction modes for tool manipulation tasks and introducing stable grasping as an additional interaction mode. Evidence: Suggested as a potential solution to address the limitation of ActAIM2 being specific to articulated object manipulation.",
+      "source": "cross_sdl_phase4",
+      "confidence": 0.75,
+      "evidence": ""
+    }
+  ],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "acgold_64ba1d28ced9",
+    "cross_sdl_reasoning_json": "/Users/sissifeng/Downloads/cross-sdl_knowledge_transfer_engine/data/reasoning/acgold_64ba1d28ced9.json",
+    "cross_sdl_extraction_quality": 0.8,
+    "cross_sdl_notes": "The paper is well-structured with explicit hypotheses and methods, but some inferences were made regarding the underlying mechanisms and principles, especially in phase 3 and 4."
+  },
+  "validation": {
+    "score": 0.8,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": true,
+      "method": true,
+      "evidence": true,
+      "entities": true,
+      "materials": false,
+      "properties": false,
+      "measurements": false,
+      "conditions": true,
+      "mechanisms": true,
+      "outcomes": true,
+      "cross_sdl_match": true
+    },
+    "missing": [
+      "materials",
+      "properties",
+      "measurements"
+    ],
+    "notes": []
+  }
+}

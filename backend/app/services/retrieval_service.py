@@ -18,7 +18,7 @@ from __future__ import annotations
 
 import math
 from collections.abc import Iterable
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 
 import numpy as np
 from sqlalchemy import select

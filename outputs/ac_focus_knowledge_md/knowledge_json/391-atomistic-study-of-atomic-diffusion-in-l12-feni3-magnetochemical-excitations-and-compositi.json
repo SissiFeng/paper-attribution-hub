@@ -1,0 +1,144 @@
+{
+  "paper_id": "acfocus_475984c7584f",
+  "title": "Atomistic study of atomic diffusion in L12-FeNi3: Magnetochemical excitations and compositional effects",
+  "metadata": {
+    "doi": "10.1103/493p-85fd",
+    "url": "https://journals.aps.org/prmaterials/abstract/10.1103/493p-85fd",
+    "year": "2025",
+    "authors": "K. Li; C. C. Fu",
+    "venue": "Physical Review Materials",
+    "category": "Journal article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Kangming Li"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Staff",
+      "AC Trainee"
+    ],
+    "flags": {
+      "acknowledges_ac": "checked",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "This study uses kinetic Monte Carlo simulations parametrized by density functional theory to reveal how magnetochemical effects and stoichiometry influence atomic diffusion in L₁₂-FeNi₃, finding that Fe diffuses slightly faster than Ni, with diffusion strongly affected by magnetic excitations and composition, thus providing key insights for understanding and predicting diffusion behavior in intermetallic alloys.",
+  "abstract": "Atomic diffusion in intermetallic phases is crucial for the microstructural evolution and mechanical properties of transition-metal alloys. This study investigates diffusion in L<inf>12</inf>-FeNi<inf>3</inf> using kinetic Monte Carlo simulations with an effective interaction model parametrized on density functional theory data. By explicitly modeling atomic and spin degrees of freedom, the simulations systematically explore the effects of finite-temperature magnetochemical interplay and stoichiometry on diffusion. The results show that Fe diffuses slightly faster than Ni, contrasting the empirical rule experimentally verified in many intermetallics where the majority element diffuses faster. Non-Arrhenius behaviors of Fe and Ni diffusion are found, which are mainly attributed to the chemical rather than magnetic transitions. Activation energies for Fe and Ni atoms are predicted to be 3.22 eV in the ferromagnetic L<inf>12</inf> phase, approximately 0.6 eV higher than in the paramagnetic disordered phase. Magnetic excitations significantly impact diffusion properties, with notable discrepancies between the equilibrium ferromagnetic and perfectly ferromagnetic states in the L<inf>12</inf> phase. Deviations from stoichiometric composition lower activation energies and enhance diffusion for both Fe and Ni, which is unexpectedly similar to the trends observed in B2-type intermetallics. In the absence of experimental tracer diffusion data for the L<inf>12</inf> phase, this work provides reliable diffusion predictions based on a model validated in disordered Fe-Ni alloys. These results are expected to guide future studies of phase transformation and domain growth in ordered intermetallics. This work provides a detailed analysis of diffusion in L<inf>12</inf>-FeNi<inf>3</inf>, contributing a broader understanding of magnetochemical and compositional effects on diffusion behavior in intermetallic alloys. ©2025 American Physical Society.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "This study uses kinetic Monte Carlo simulations parametrized by density functional theory to reveal how magnetochemical effects and stoichiometry influence atomic diffusion in L₁₂-FeNi₃, finding that Fe diffuses slightly faster than Ni, with diffusion strongly affected by magnetic excitations and composition, thus providing key insights for understanding and predicting diffusion behavior in intermetallic alloys.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Chemistry",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Materials Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "Atomistic study of atomic diffusion in L12-FeNi3: Magnetochemical excitations and compositional effects This study uses kinetic Monte Carlo simulations parametrized by density functional theory to reveal how magnetochemical effects and stoichiometry influence atomic diffusion in L₁₂-FeNi₃, finding that Fe diffuses slightly faster than Ni, with diffusion strongly affected by magnetic excitations and composition, thus providing key insights for understanding and predicting diffusion behavior in intermetallic alloys.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Atomic diffusion in intermetallic phases is crucial for the microstructural evolution and mechanical properties of transition-metal alloys.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "In the absence of experimental tracer diffusion data for the L<inf>12</inf> phase, this work provides reliable diffusion predictions based on a model validated in disordered Fe-Ni alloys.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [
+    {
+      "value": "Atomic diffusion in intermetallic phases is crucial for the microstructural evolution and mechanical properties of transition-metal alloys.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Magnetic excitations significantly impact diffusion properties, with notable discrepancies between the equilibrium ferromagnetic and perfectly ferromagnetic states in the L<inf>12</inf> phase.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [],
+  "conditions": [
+    {
+      "value": "By explicitly modeling atomic and spin degrees of freedom, the simulations systematically explore the effects of finite-temperature magnetochemical interplay and stoichiometry on diffusion.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "mechanisms": [],
+  "outcomes": [],
+  "sdl_tags": [
+    "Chemistry",
+    "Materials Science"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.55,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": true,
+      "properties": true,
+      "measurements": false,
+      "conditions": true,
+      "mechanisms": false,
+      "outcomes": false,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "measurements",
+      "mechanisms",
+      "outcomes",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

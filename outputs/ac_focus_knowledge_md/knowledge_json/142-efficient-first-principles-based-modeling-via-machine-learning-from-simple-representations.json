@@ -1,0 +1,151 @@
+{
+  "paper_id": "acfocus_24142be9ad18",
+  "title": "Efficient first principles based modeling via machine learning: from simple representations to high entropy materials",
+  "metadata": {
+    "doi": "10.1039/d4ta00982g",
+    "url": "https://xlink.rsc.org/?DOI=D4TA00982G",
+    "year": "2024",
+    "authors": "Li K, Choudhary K, DeCost B, Greenwood M, Hattrick-Simpers J",
+    "venue": "Journal of Materials Chemistry A",
+    "category": "Journal article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Jason Hattrick-Simpers"
+    ],
+    "ac_programs": [
+      "Core Development Grants_Jason Hattrick-Simpers_2023-24"
+    ],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "checked",
+      "high_impact": "checked"
+    }
+  },
+  "source_summary": "This study presents a large open DFT dataset of 84,000 alloy structures and demonstrates that machine learning models, using various material representations, can generalize from simpler to more complex high-entropy materials, highlighting the importance of dataset size and structure relaxation for effective HEM modeling.",
+  "abstract": "High-entropy materials (HEMs) have recently emerged as a significant category of materials, offering highly tunable properties. However, the scarcity of HEM data in existing density functional theory (DFT) databases, primarily due to computational expense, hinders the development of effective modeling strategies for computational materials discovery. In this study, we introduce an open DFT dataset of alloys and employ machine learning (ML) methods to investigate the material representations needed for HEM modeling. Utilizing high-throughput DFT calculations, we generate a comprehensive dataset of 84k structures, encompassing both ordered and disordered alloys across a spectrum of up to seven components and the entire concentration range. We apply descriptor-based models and graph neural networks to assess how material information is captured across diverse chemical-structural representations. We first evaluate the in-distribution performance of ML models to confirm their predictive accuracy. Subsequently, we demonstrate the capability of ML models to generalize between ordered and disordered structures, between low-order and high-order alloy systems, and between equimolar and non-equimolar compositions. Our findings suggest that ML models can generalize from cost-effective calculations of simpler systems to more complex scenarios. Additionally, we discuss the influence of dataset size and reveal that the information loss associated with the use of unrelaxed structures could significantly degrade the generalization performance. Overall, this research sheds light on several critical aspects of HEM modeling and offers insights for data-driven atomistic modeling of HEMs.",
+  "hardware": [
+    {
+      "value": "Utilizing high-throughput DFT calculations, we generate a comprehensive dataset of 84k structures, encompassing both ordered and disordered alloys across a spectrum of up to seven components and the entire concentration range.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "methods": [
+    {
+      "value": "This study presents a large open DFT dataset of 84,000 alloy structures and demonstrates that machine learning models, using various material representations, can generalize from simpler to more complex high-entropy materials, highlighting the importance of dataset size and structure relaxation for effective HEM modeling.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Artificial Intelligence & Data Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Materials Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "Efficient first principles based modeling via machine learning: from simple representations to high entropy materials This study presents a large open DFT dataset of 84,000 alloy structures and demonstrates that machine learning models, using various material representations, can generalize from simpler to more complex high-entropy materials, highlighting the importance of dataset size and structure relaxation for effective HEM modeling.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "High-entropy materials (HEMs) have recently emerged as a significant category of materials, offering highly tunable properties.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "However, the scarcity of HEM data in existing density functional theory (DFT) databases, primarily due to computational expense, hinders the development of effective modeling strategies for computational materials discovery.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [
+    {
+      "value": "High-entropy materials (HEMs) have recently emerged as a significant category of materials, offering highly tunable properties.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "We first evaluate the in-distribution performance of ML models to confirm their predictive accuracy.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [],
+  "conditions": [
+    {
+      "value": "Utilizing high-throughput DFT calculations, we generate a comprehensive dataset of 84k structures, encompassing both ordered and disordered alloys across a spectrum of up to seven components and the entire concentration range.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "mechanisms": [],
+  "outcomes": [],
+  "sdl_tags": [
+    "Artificial Intelligence & Data Science",
+    "Materials Science"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.65,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": true,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": true,
+      "properties": true,
+      "measurements": false,
+      "conditions": true,
+      "mechanisms": false,
+      "outcomes": false,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "evidence",
+      "measurements",
+      "mechanisms",
+      "outcomes",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only."
+    ]
+  }
+}

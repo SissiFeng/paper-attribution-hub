@@ -1,0 +1,156 @@
+{
+  "paper_id": "acfocus_4293494388b3",
+  "title": "MOF-ChemUnity: Unifying metal-organic framework data using large language models",
+  "metadata": {
+    "doi": "10.26434/chemrxiv-2025-8h5q7",
+    "url": "https://chemrxiv.org/doi/10.26434/chemrxiv-2025-8h5q7",
+    "year": "2025",
+    "authors": "T. M. Pruyn; A. Aswad; S. T. Khan; R. Black; S. M. Moosavi",
+    "venue": "ChemRxiv",
+    "category": "Preprint",
+    "peer_reviewed": "Non Peer Reviewed",
+    "ac_members": [
+      "Mohamad Moosavi"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "MOF-ChemUnity is a scalable knowledge graph that unifies experimental and computational MOF data by linking literature-derived insights to crystal structures, enabling advanced AI-driven materials discovery and outperforming standard language models in accuracy, interpretability, and trustworthiness.",
+  "abstract": "Artificial intelligence (AI) is transforming materials research in metal-organic frameworks (MOFs), where models trained on structured computational data routinely predict new materials and optimize their properties. This raises a central question: What if we could leverage the full breadth of MOF knowledge, not just structured datasets, but also the scientific literature? For human researchers, the literature remains the primary source of knowledge, yet much of its content, including experimental data and expert insight, remains underutilized by AI systems. We introduce MOF-ChemUnity, a structured, extensible, and scalable knowledge graph that unifies MOF chemical data by linking literature-derived insights to crystal structures and computational datasets. By disambiguating MOF names in the literature and connecting them to crystal structures in the Cambridge Structural Database, MOF-ChemUnity unifies experimental and computational sources and enables cross-document knowledge extraction and linking. We showcase how this enables multi-property machine learning across simulated and experimental data, compilation of complete synthesis records for individual compounds by aggregating information across multiple publications, and expert-guided materials recommendations via structure-based embeddings. When used as a knowledge source to augment large language models (LLMs), MOF-ChemUnity enables a literature-informed AI assistant that operates over the full scope of MOF knowledge. Expert evaluations show improved accuracy, interpretability, and trustworthiness across tasks such as retrieval, inference of structure-property relationships, and materials recommendation, outperforming standard LLMs. This work lays the foundation for literature-informed materials discovery, enabling both human scientists and AI systems to reason over the full landscape of MOF knowledge in a new way.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "MOF-ChemUnity is a scalable knowledge graph that unifies experimental and computational MOF data by linking literature-derived insights to crystal structures, enabling advanced AI-driven materials discovery and outperforming standard language models in accuracy, interpretability, and trustworthiness.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Artificial Intelligence & Data Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Materials Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "MOF-ChemUnity: Unifying metal-organic framework data using large language models MOF-ChemUnity is a scalable knowledge graph that unifies experimental and computational MOF data by linking literature-derived insights to crystal structures, enabling advanced AI-driven materials discovery and outperforming standard language models in accuracy, interpretability, and trustworthiness.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Artificial intelligence (AI) is transforming materials research in metal-organic frameworks (MOFs), where models trained on structured computational data routinely predict new materials and optimize their properties.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "We showcase how this enables multi-property machine learning across simulated and experimental data, compilation of complete synthesis records for individual compounds by aggregating information across multiple publications, and expert-guided materials recommendations via structure-based embeddings.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [
+    {
+      "value": "MOF-ChemUnity: Unifying metal-organic framework data using large language models MOF-ChemUnity is a scalable knowledge graph that unifies experimental and computational MOF data by linking literature-derived insights to crystal structures, enabling advanced AI-driven materials discovery and outperforming standard language models in accuracy, interpretability, and trustworthiness.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Artificial intelligence (AI) is transforming materials research in metal-organic frameworks (MOFs), where models trained on structured computational data routinely predict new materials and optimize their properties.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "We showcase how this enables multi-property machine learning across simulated and experimental data, compilation of complete synthesis records for individual compounds by aggregating information across multiple publications, and expert-guided materials recommendations via structure-based embeddings.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Expert evaluations show improved accuracy, interpretability, and trustworthiness across tasks such as retrieval, inference of structure-property relationships, and materials recommendation, outperforming standard LLMs.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [],
+  "conditions": [],
+  "mechanisms": [],
+  "outcomes": [
+    {
+      "value": "Catalysis",
+      "source": "csv_applied_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "Artificial Intelligence & Data Science",
+    "Materials Science",
+    "Catalysis"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.57,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": true,
+      "properties": true,
+      "measurements": false,
+      "conditions": false,
+      "mechanisms": false,
+      "outcomes": true,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "measurements",
+      "conditions",
+      "mechanisms",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

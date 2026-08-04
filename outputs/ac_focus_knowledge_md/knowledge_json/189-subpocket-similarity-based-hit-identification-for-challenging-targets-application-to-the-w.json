@@ -1,0 +1,121 @@
+{
+  "paper_id": "acfocus_0199c11e0b7f",
+  "title": "Subpocket Similarity-Based Hit Identification for Challenging Targets: Application to the WDR Domain of LRRK2",
+  "metadata": {
+    "doi": "10.1021/acs.jcim.4c00601",
+    "url": "https://hal.science/hal-04791542v1/document",
+    "year": "2024",
+    "authors": "Eguida M, Bret G, Sindt F, Li F, Chau I, Ackloo S, Arrowsmith C, Bolotokova A, Ghiabi P, Gibson E, Halabelian L, Houliston S, Harding RJ, Hutchinson A, Loppnau P, Perveen S, Seitova A, Zeng H, Schapira M, Rognan D",
+    "venue": "Journal of Chemical Information and Modeling",
+    "category": "Journal article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Cheryl Arrowsmith"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "checked",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "The POEM method enables rapid identification of potential ligands for challenging protein targets by aligning known fragment-bound subpockets to a target cavity using point cloud registration, followed by fragment placement and deep generative linking, as demonstrated by the discovery of 94 potential hits—five confirmed in vitro—for the LRRK2-WDR binding site.",
+  "abstract": "We herewith applied a priori a generic hit identification method (POEM) for difficult targets of known three-dimensional structure, relying on the simple knowledge of physicochemical and topological properties of a user-selected cavity. Searching for local similarity to a set of fragment-bound protein microenvironments of known structure, a point cloud registration algorithm is first applied to align known subpockets to the target cavity. The resulting alignment then permits us to directly pose the corresponding seed fragments in a target cavity space not typically amenable to classical docking approaches. Last, linking potentially connectable atoms by a deep generative linker enables full ligand enumeration. When applied to the WD40 repeat (WDR) central cavity of leucine-rich repeat kinase 2 (LRRK2), an unprecedented binding site, POEM was able to quickly propose 94 potential hits, five of which were subsequently confirmed to bind in vitro to LRRK2-WDR.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "The POEM method enables rapid identification of potential ligands for challenging protein targets by aligning known fragment-bound subpockets to a target cavity using point cloud registration, followed by fragment placement and deep generative linking, as demonstrated by the discovery of 94 potential hits—five confirmed in vitro—for the LRRK2-WDR binding site.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Biology",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Biochemistry",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [],
+  "properties": [
+    {
+      "value": "We herewith applied a priori a generic hit identification method (POEM) for difficult targets of known three-dimensional structure, relying on the simple knowledge of physicochemical and topological properties of a user-selected cavity.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [],
+  "conditions": [],
+  "mechanisms": [],
+  "outcomes": [
+    {
+      "value": "Therapeutics",
+      "source": "csv_applied_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "Biology",
+    "Biochemistry",
+    "Therapeutics"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.5,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": false,
+      "properties": true,
+      "measurements": false,
+      "conditions": false,
+      "mechanisms": false,
+      "outcomes": true,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "materials",
+      "measurements",
+      "conditions",
+      "mechanisms",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

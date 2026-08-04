@@ -18,6 +18,14 @@ from app.models.dedup import AuthorDedupDecision
 from app.models.rag_feedback import RagFeedback
 from app.models.sdl import PaperEntity, PaperLabLink, SdlLab
 from app.models.tku import TransferKnowledgeUnit
+from app.models.attribution_skill_invocation import (
+    AttributionSkillInvocationRecord,
+)
+from app.models.model_evolution import (
+    ModelTrainingRun,
+    ModelTrainingState,
+    TrainingFeedbackEvent,
+)
 
 all_models = (
     Paper,
@@ -43,6 +51,10 @@ all_models = (
     PaperLabLink,
     PaperEntity,
     TransferKnowledgeUnit,
+    AttributionSkillInvocationRecord,
+    ModelTrainingRun,
+    ModelTrainingState,
+    TrainingFeedbackEvent,
 )
 
 __all__ = [
@@ -69,5 +81,9 @@ __all__ = [
     "PaperLabLink",
     "PaperEntity",
     "TransferKnowledgeUnit",
+    "AttributionSkillInvocationRecord",
+    "ModelTrainingRun",
+    "ModelTrainingState",
+    "TrainingFeedbackEvent",
     "all_models",
 ]

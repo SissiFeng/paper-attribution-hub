@@ -1,0 +1,139 @@
+{
+  "paper_id": "acfocus_6cd4126bb59a",
+  "title": "A Machine Learning Approach for Predicting Particle Spatial, Velocity, and Temperature Distributions in Cold Spray Additive Manufacturing",
+  "metadata": {
+    "doi": "10.3390/app15126418",
+    "url": "https://www.mdpi.com/2076-3417/15/12/6418",
+    "year": "2025",
+    "authors": "L. Wang; M. Jadidi; A. Dolatabadi",
+    "venue": "Applied Sciences Switzerland",
+    "category": "Journal Article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Ali Dolatabadi"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "checked",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "A two-stage machine learning framework, trained on high-fidelity CFD simulations, accurately predicts particle behavior in masked cold spray additive manufacturing of nickel-based electrodes, significantly accelerating process design and generalizing to unmasked setups.",
+  "abstract": "Masked cold spray additive manufacturing (CSAM) is investigated for fabricating nickel-based electrodes with pyramidal pin-fins that enlarge the active area for the hydrogen-evolution reaction (HER). To bypass the high cost of purely CFD-driven optimization, we construct a two-stage machine learning (ML) framework trained on 48 high-fidelity CFD simulations. Stage 1 applies sampling and a K-nearest-neighbor kernel-density-estimation algorithm that predicts the spatial distribution of impacting particles and re-allocates weights in regions of under-estimation. Stage 2 combines sampling, interpolation and symbolic regression to extract key features, then uses a weighted random forest model to forecast particle velocity and temperature upon impact. The ML predictions closely match CFD outputs while reducing computation time by orders of magnitude, demonstrating that ML-CFD integration can accelerate CSAM process design. Although developed for a masked setup, the framework generalizes readily to unmasked cold spray configurations.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "A two-stage machine learning framework, trained on high-fidelity CFD simulations, accurately predicts particle behavior in masked cold spray additive manufacturing of nickel-based electrodes, significantly accelerating process design and generalizing to unmasked setups.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Artificial Intelligence & Data Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Chemistry",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Chemical Engineering",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [],
+  "properties": [],
+  "measurements": [],
+  "conditions": [
+    {
+      "value": "A Machine Learning Approach for Predicting Particle Spatial, Velocity, and Temperature Distributions in Cold Spray Additive Manufacturing A two-stage machine learning framework, trained on high-fidelity CFD simulations, accurately predicts particle behavior in masked cold spray additive manufacturing of nickel-based electrodes, significantly accelerating process design and generalizing to unmasked setups.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Stage 2 combines sampling, interpolation and symbolic regression to extract key features, then uses a weighted random forest model to forecast particle velocity and temperature upon impact.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "The ML predictions closely match CFD outputs while reducing computation time by orders of magnitude, demonstrating that ML-CFD integration can accelerate CSAM process design.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "mechanisms": [],
+  "outcomes": [
+    {
+      "value": "Electronics",
+      "source": "csv_applied_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "Artificial Intelligence & Data Science",
+    "Chemistry",
+    "Chemical Engineering",
+    "Electronics"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.47,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": false,
+      "properties": false,
+      "measurements": false,
+      "conditions": true,
+      "mechanisms": false,
+      "outcomes": true,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "materials",
+      "properties",
+      "measurements",
+      "mechanisms",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

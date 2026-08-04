@@ -1,0 +1,119 @@
+{
+  "paper_id": "acfocus_3ed5101d581e",
+  "title": "Beyond benchmarking and towards predictive models of dataset-specific single-cell RNA-seq pipeline performance",
+  "metadata": {
+    "doi": "10.1186/s13059-024-03304-9",
+    "url": "https://link.springer.com/article/10.1186/s13059-024-03304-9",
+    "year": "2024",
+    "authors": "Fang C, Selega A, Campbell KR",
+    "venue": "Genome Biology",
+    "category": "Journal article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Kieran Campbell"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "checked",
+      "high_impact": "checked"
+    }
+  },
+  "source_summary": "Supervised machine learning models can effectively predict optimal single-cell RNA-seq analysis pipelines for specific datasets, outperforming random selection and offering guidance to users by leveraging dataset and pipeline characteristics.",
+  "abstract": "Background: The advent of single-cell RNA-sequencing (scRNA-seq) has driven significant computational methods development for all steps in the scRNA-seq data analysis pipeline, including filtering, normalization, and clustering. The large number of methods and their resulting parameter combinations has created a combinatorial set of possible pipelines to analyze scRNA-seq data, which leads to the obvious question: which is best? Several benchmarking studies compare methods but frequently find variable performance depending on dataset and pipeline characteristics. Alternatively, the large number of scRNA-seq datasets along with advances in supervised machine learning raise a tantalizing possibility: could the optimal pipeline be predicted for a given dataset? Results: Here, we begin to answer this question by applying 288 scRNA-seq analysis pipelines to 86 datasets and quantifying pipeline success via a range of measures evaluating cluster purity and biological plausibility. We build supervised machine learning models to predict pipeline success given a range of dataset and pipeline characteristics. We find that prediction performance is significantly better than random and that in many cases pipelines predicted to perform well provide clustering outputs similar to expert-annotated cell type labels. We identify characteristics of datasets that correlate with strong prediction performance that could guide when such prediction models may be useful. Conclusions: Supervised machine learning models have utility for recommending analysis pipelines and therefore the potential to alleviate the burden of choosing from the near-infinite number of possibilities. Different aspects of datasets influence the predictive performance of such models which will further guide users.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "Supervised machine learning models can effectively predict optimal single-cell RNA-seq analysis pipelines for specific datasets, outperforming random selection and offering guidance to users by leveraging dataset and pipeline characteristics.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Artificial Intelligence & Data Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Biology",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [],
+  "properties": [],
+  "measurements": [
+    {
+      "value": "Beyond benchmarking and towards predictive models of dataset-specific single-cell RNA-seq pipeline performance Supervised machine learning models can effectively predict optimal single-cell RNA-seq analysis pipelines for specific datasets, outperforming random selection and offering guidance to users by leveraging dataset and pipeline characteristics.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Several benchmarking studies compare methods but frequently find variable performance depending on dataset and pipeline characteristics.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "conditions": [],
+  "mechanisms": [],
+  "outcomes": [],
+  "sdl_tags": [
+    "Artificial Intelligence & Data Science",
+    "Biology"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.43,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": false,
+      "properties": false,
+      "measurements": true,
+      "conditions": false,
+      "mechanisms": false,
+      "outcomes": false,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "materials",
+      "properties",
+      "conditions",
+      "mechanisms",
+      "outcomes",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

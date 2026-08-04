@@ -1,0 +1,149 @@
+{
+  "paper_id": "acfocus_6cea17206ae2",
+  "title": "Sparse random Fourier features based interatomic potentials for high entropy alloys",
+  "metadata": {
+    "doi": "10.48550/arxiv.2302.06844",
+    "url": "https://arxiv.org/abs/2302.06844",
+    "year": "2023",
+    "authors": "Dhaliwal, Gurjot; Anand, Abu; Nair, Prasanth B.; Singh, Chandra Veer",
+    "venue": "arxiv",
+    "category": "Preprint",
+    "peer_reviewed": "Non Peer Reviewed",
+    "ac_members": [
+      "Chandra Veer Singh"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "This work introduces a computationally efficient, random features-based interatomic potential for high entropy alloys that accurately models melting behavior, process-related defects, and atomic forces close to DFT accuracy, while a novel sparse model reduces computational cost by 94% without sacrificing force prediction accuracy.",
+  "abstract": "Computational modeling of high entropy alloys (HEA) is challenging given the scalability issues of Density functional theory (DFT) and the non-availability of Interatomic potentials (IP) for molecular dynamics simulations (MD). This work presents a computationally efficient IP for modeling complex elemental interactions present in HEAs. The proposed random features-based IP can accurately model melting behaviour along with various process-related defects. The disordering of atoms during the melting process was simulated. Predicted atomic forces are within 0.08 eV/$\\unicode{xC5}$ of corresponding DFT forces. MD simulations predictions of mechanical and thermal properties are within 7$\\%$ of the DFT values. High-temperature self-diffusion in the alloy system was investigated using the IP. A novel sparse model is also proposed which reduces the computational cost by 94$\\%$ without compromising on the force prediction accuracy.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "This work introduces a computationally efficient, random features-based interatomic potential for high entropy alloys that accurately models melting behavior, process-related defects, and atomic forces close to DFT accuracy, while a novel sparse model reduces computational cost by 94% without sacrificing force prediction accuracy.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Artificial Intelligence & Data Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Materials Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "Sparse random Fourier features based interatomic potentials for high entropy alloys This work introduces a computationally efficient, random features-based interatomic potential for high entropy alloys that accurately models melting behavior, process-related defects, and atomic forces close to DFT accuracy, while a novel sparse model reduces computational cost by 94% without sacrificing force prediction accuracy.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Computational modeling of high entropy alloys (HEA) is challenging given the scalability issues of Density functional theory (DFT) and the non-availability of Interatomic potentials (IP) for molecular dynamics simulations (MD).",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "High-temperature self-diffusion in the alloy system was investigated using the IP.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [
+    {
+      "value": "Sparse random Fourier features based interatomic potentials for high entropy alloys This work introduces a computationally efficient, random features-based interatomic potential for high entropy alloys that accurately models melting behavior, process-related defects, and atomic forces close to DFT accuracy, while a novel sparse model reduces computational cost by 94% without sacrificing force prediction accuracy.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "MD simulations predictions of mechanical and thermal properties are within 7$\\%$ of the DFT values.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "A novel sparse model is also proposed which reduces the computational cost by 94$\\%$ without compromising on the force prediction accuracy.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [],
+  "conditions": [
+    {
+      "value": "High-temperature self-diffusion in the alloy system was investigated using the IP.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "mechanisms": [],
+  "outcomes": [],
+  "sdl_tags": [
+    "Artificial Intelligence & Data Science",
+    "Materials Science"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.55,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": true,
+      "properties": true,
+      "measurements": false,
+      "conditions": true,
+      "mechanisms": false,
+      "outcomes": false,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "measurements",
+      "mechanisms",
+      "outcomes",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

@@ -1,0 +1,286 @@
+{
+  "paper_id": "acfocus_82897d87d4d0",
+  "title": "Automatic graph representation algorithm for heterogeneous catalysis",
+  "metadata": {
+    "doi": "10.48550/arxiv.2306.04742",
+    "url": "https://arxiv.org/abs/2306.04742",
+    "year": "2023",
+    "authors": "Gariepy, Zachary; Chen, ZhiWen; Tamblyn, Isaac; Singh, Chandra Veer; Feugmo, Conrard Giresse Tetsassi",
+    "venue": "arxiv",
+    "category": "Preprint",
+    "peer_reviewed": "Non Peer Reviewed",
+    "ac_members": [
+      "Chandra Veer Singh"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "The study introduces an automatic graph representation algorithm (AGRA) that streamlines the extraction and modeling of local chemical environments in heterogeneous catalysis, demonstrating superior transferability, reduced computational cost, and strong predictive performance across multiple catalytic reaction datasets compared to existing methods.",
+  "abstract": "One of the most appealing aspects of machine learning for material design is its high throughput exploration of chemical spaces, but to reach the ceiling of ML-aided exploration, more than current model architectures and processing algorithms are required. New architectures such as Graph Neural Networks (GNNs) have seen significant research investments recently. For heterogeneous catalysis, defining substrate intramolecular bonds and adsorbate/substrate intermolecular bonds is a time-consuming and challenging process. Before applying a model, dataset pre-processing, node/bond descriptor design, and specific model constraints have to be considered. In this work, a framework designed to solve these issues is presented in the form of an automatic graph representation algorithm (AGRA) tool to extract the local chemical environment of metallic surface adsorption sites is presented. This tool is able to gather multiple adsorption geometry datasets composed of different systems and combine them into a single model. To show AGRA's excellent transferability and reduced computational cost compared to other graph representation methods, it was applied to 5 different catalytic reaction datasets and benchmarked against the Open Catalyst Projects (OCP) graph representation method. The two ORR datasets with O/OH adsorbates obtained 0.053 eV RMSD when combined together, whereas the three CO2RR datasets with CHO/CO/COOH obtained an average performance of 0.088 eV RMSD. To further display the algorithm's versatility and extrapolation ability, a model was trained on a subset combination of all 5 datasets with an RMSD of 0.105 eV. This universal model was then used to predict a wide range of adsorption energies and an entirely new ORR catalyst system and then verified through Density Functional Theory calculations",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "AGRA tool development using Python packages Atomic Simulation Environment (ASE) and NetworkX to analyze material systems surface and construct graph representations.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "problems": [
+    {
+      "value": "Defining substrate intramolecular bonds and adsorbate/substrate intermolecular bonds for heterogeneous catalysis is time-consuming and challenging.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "hypotheses": [
+    {
+      "value": "An automatic graph representation algorithm (AGRA) can efficiently extract the local chemical environment of metallic surface adsorption sites and improve model transferability and reduced computational cost.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "evidence": [
+    {
+      "value": "AGRA was applied to 5 different catalytic reaction datasets and benchmarked against the Open Catalyst Projects (OCP) graph representation method, showing improved transferability and reduced computational cost.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "conclusions": [
+    {
+      "value": "AGRA successfully automates the graph representation process for adsorption sites, enhancing the efficiency and accuracy of machine learning models in predicting catalytic properties.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "entities": [
+    {
+      "value": "Metallic surface adsorption sites",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Graph Neural Networks (GNNs)",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Adsorbate/catalyst system geometry",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Local chemical environment",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "Adsorbate/catalyst system geometry",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "One of the most appealing aspects of machine learning for material design is its high throughput exploration of chemical spaces, but to reach the ceiling of ML-aided exploration, more than current model architectures and processing algorithms are required.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "To show AGRA's excellent transferability and reduced computational cost compared to other graph representation methods, it was applied to 5 different catalytic reaction datasets and benchmarked against the Open Catalyst Projects (OCP) graph representation method.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "This universal model was then used to predict a wide range of adsorption energies and an entirely new ORR catalyst system and then verified through Density Functional Theory calculations AGRA tool development using Python packages Atomic Simulation Environment (ASE) and NetworkX to analyze material systems surface and construct graph representations.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [
+    {
+      "value": "Metallic surface adsorption sites Graph Neural Networks (GNNs) Adsorbate/catalyst system geometry Local chemical environment Improved model transferability across different catalytic reaction datasets Reduced computational cost compared to other graph representation methods Enhanced predictive accuracy for catalytic properties",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [
+    {
+      "value": "To show AGRA's excellent transferability and reduced computational cost compared to other graph representation methods, it was applied to 5 different catalytic reaction datasets and benchmarked against the Open Catalyst Projects (OCP) graph representation method.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "AGRA was applied to 5 different catalytic reaction datasets and benchmarked against the Open Catalyst Projects (OCP) graph representation method, showing improved transferability and reduced computational cost.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "conditions": [
+    {
+      "value": "One of the most appealing aspects of machine learning for material design is its high throughput exploration of chemical spaces, but to reach the ceiling of ML-aided exploration, more than current model architectures and processing algorithms are required.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "For heterogeneous catalysis, defining substrate intramolecular bonds and adsorbate/substrate intermolecular bonds is a time-consuming and challenging process.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "mechanisms": [
+    {
+      "value": "Automatic extraction of local chemical environment based on adsorption site geometry",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Graph construction using node/bond descriptors",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Model training on combined adsorption geometry datasets",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "outcomes": [
+    {
+      "value": "Improved model transferability across different catalytic reaction datasets",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Reduced computational cost compared to other graph representation methods",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Enhanced predictive accuracy for catalytic properties",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "Artificial Intelligence & Data Science",
+    "Materials Science",
+    "Catalysis"
+  ],
+  "reasoning_motifs": [
+    {
+      "value": "Data Integration → Model Generalization",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Automated Feature Extraction → Computational Efficiency",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Graph Representation → Predictive Model Accuracy",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "general_principles": [
+    {
+      "value": "Modularity Enables Generalization",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Representation Learning Enhances Prediction",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Graph Theory Unifies Structure-Property Relationships",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "failure_paths": [
+    {
+      "value": "success: Combining multiple adsorbate datasets into a single model for predicting catalytic properties. Evidence: The combined model achieved an average RMSE of 0.053 eV for the ORR datasets and 0.088 eV for the CO2RR datasets.",
+      "source": "cross_sdl_phase4",
+      "confidence": 0.75,
+      "evidence": ""
+    },
+    {
+      "value": "success: Predicting a wide range of adsorption energies and an entirely new ORR catalyst system using the universal model. Evidence: The universal model predicted adsorption energies with an RMSD of 0.105 eV and was verified through Density Functional Theory calculations.",
+      "source": "cross_sdl_phase4",
+      "confidence": 0.75,
+      "evidence": ""
+    }
+  ],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "acgold_f8dc1b1cd49a",
+    "cross_sdl_reasoning_json": "/Users/sissifeng/Downloads/cross-sdl_knowledge_transfer_engine/data/reasoning/acgold_f8dc1b1cd49a.json",
+    "cross_sdl_extraction_quality": 0.9,
+    "cross_sdl_notes": "The paper provides a clear structure of the problem, hypothesis, method, and results, making the extraction process straightforward. The reasoning is explicit and well-documented, leading to a high extraction quality."
+  },
+  "validation": {
+    "score": 0.9,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": true,
+      "entities": true,
+      "materials": true,
+      "properties": true,
+      "measurements": true,
+      "conditions": true,
+      "mechanisms": true,
+      "outcomes": true,
+      "cross_sdl_match": true
+    },
+    "missing": [
+      "hardware"
+    ],
+    "notes": [
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

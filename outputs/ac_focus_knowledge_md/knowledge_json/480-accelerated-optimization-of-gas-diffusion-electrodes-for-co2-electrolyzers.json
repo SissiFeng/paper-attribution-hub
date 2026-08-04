@@ -1,0 +1,169 @@
+{
+  "paper_id": "acfocus_24cb85f3dca8",
+  "title": "Accelerated optimization of gas diffusion electrodes for CO2 electrolyzers",
+  "metadata": {
+    "doi": "10.1016/j.matt.2025.102519",
+    "url": "https://www.sciencedirect.com/science/article/abs/pii/S2590238525005624",
+    "year": "2026",
+    "authors": "A. Soni; S. Ma; K. Ocean; K. Dettelbach; D. Lin; C. C. Rupnow; M. Mokhtari; C. E. B. Waizenegger; G. V. Crescenzo; C. P. Berlinguette",
+    "venue": "Matter",
+    "category": "Journal Article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Curtis Berlinguette"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "checked",
+      "high_impact": "checked"
+    }
+  },
+  "source_summary": "AdaCarbon is a high-throughput automation system using seven collaborative robots to accelerate GDE development for CO₂ electrolysis, enabling rapid fabrication and testing of 90 GDEs and increasing ethylene selectivity by 5%–9% while tripling development speed compared to manual methods.",
+  "abstract": "We introduce AdaCarbon, a high-throughput automation system designed to accelerate the development of GDEs for CO<inf>2</inf> electrolysis. AdaCarbon consists of seven collaborative robots that automate GDE fabrication, characterization, and zero-gap CO<inf>2</inf> electrolysis testing. Using this platform, we fabricated and tested 90 GDEs with varying Cu–Ag metal compositions and Nafion-Sustainion ionomer bilayers to optimize ethylene production at 200 mA cm−2. Our results show that higher Cu and Nafion content increased ethylene selectivity by 5%–9%. Furthermore, AdaCarbon accelerates GDE development by a factor of three compared to manual workflows, demonstrating its potential to significantly enhance CO<inf>2</inf> electrolysis research. © 2025 Elsevier Inc.",
+  "hardware": [
+    {
+      "value": "AdaCarbon is a high-throughput automation system using seven collaborative robots to accelerate GDE development for CO₂ electrolysis, enabling rapid fabrication and testing of 90 GDEs and increasing ethylene selectivity by 5%–9% while tripling development speed compared to manual methods.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "We introduce AdaCarbon, a high-throughput automation system designed to accelerate the development of GDEs for CO<inf>2</inf> electrolysis.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "AdaCarbon consists of seven collaborative robots that automate GDE fabrication, characterization, and zero-gap CO<inf>2</inf> electrolysis testing.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Using this platform, we fabricated and tested 90 GDEs with varying Cu–Ag metal compositions and Nafion-Sustainion ionomer bilayers to optimize ethylene production at 200 mA cm−2.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "methods": [
+    {
+      "value": "AdaCarbon is a high-throughput automation system using seven collaborative robots to accelerate GDE development for CO₂ electrolysis, enabling rapid fabrication and testing of 90 GDEs and increasing ethylene selectivity by 5%–9% while tripling development speed compared to manual methods.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Artificial Intelligence & Data Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Automation and Robotics",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Materials Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [],
+  "properties": [
+    {
+      "value": "Accelerated optimization of gas diffusion electrodes for CO2 electrolyzers AdaCarbon is a high-throughput automation system using seven collaborative robots to accelerate GDE development for CO₂ electrolysis, enabling rapid fabrication and testing of 90 GDEs and increasing ethylene selectivity by 5%–9% while tripling development speed compared to manual methods.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Our results show that higher Cu and Nafion content increased ethylene selectivity by 5%–9%.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [
+    {
+      "value": "AdaCarbon consists of seven collaborative robots that automate GDE fabrication, characterization, and zero-gap CO<inf>2</inf> electrolysis testing.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Using this platform, we fabricated and tested 90 GDEs with varying Cu–Ag metal compositions and Nafion-Sustainion ionomer bilayers to optimize ethylene production at 200 mA cm−2.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "conditions": [],
+  "mechanisms": [],
+  "outcomes": [
+    {
+      "value": "Catalysis",
+      "source": "csv_applied_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "Artificial Intelligence & Data Science",
+    "Automation and Robotics",
+    "Materials Science",
+    "Catalysis"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.66,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": true,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": false,
+      "properties": true,
+      "measurements": true,
+      "conditions": false,
+      "mechanisms": false,
+      "outcomes": true,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "evidence",
+      "materials",
+      "conditions",
+      "mechanisms",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only."
+    ]
+  }
+}

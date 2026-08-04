@@ -1,0 +1,93 @@
+{
+  "paper_id": "acfocus_e204ae3e82a2",
+  "title": "DISORF: A Distributed Online 3D Reconstruction Framework for Mobile Robots",
+  "metadata": {
+    "doi": "10.48550/arxiv.2403.00228",
+    "url": "https://arxiv.org/abs/2403.00228",
+    "year": "2024",
+    "authors": "Li C, Fan H, Huang X, Liang R, Durvasula S, Vijaykumar N",
+    "venue": "arxiv",
+    "category": "Preprint",
+    "peer_reviewed": "Non Peer Reviewed",
+    "ac_members": [
+      "Vijay Narasimhan"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "N/A"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "",
+  "abstract": "DISORF: A Distributed Online 3D Reconstruction Framework for\nMobile Robots\nChunlin Li1∗, Hanrui Fan1∗, Xiaorui Huang1∗, Ruofan Liang2, Sankeerth Durvasula2, Nandita Vijaykumar2\nAbstract— We present a framework, DISORF, to enable\nonline 3D reconstruction and visualization of scenes captured\nby resource-constrained mobile robots and edge devices. To\naddress the limited computing capabilities of edge devices and\npotentially limited network availability, we design a framework\nthat efficiently distributes computation between the edge device\nand the remote server. We leverage on-device SLAM systems\nto generate posed keyframes and transmit them to remote\nservers that can perform high-quality 3D reconstruction and\nvisualization at runtime by leveraging recent advances in neural\n3D methods. We identify a key challenge with online training\nwhere naive image sampling strategies can lead to significant\ndegradation in rendering quality. We propose a novel shifted ex-\nponential frame sampling method that addresses this challenge\nfor online training. We demonstrate the effectiveness of our\nframework in enabling high-quality real-time reconstruction\nand visualization of unknown scenes as they are captured and\nstreamed from cameras in mobile robots and edge devices.\nIndex Terms— Visual Learning, Incremental Learning, Dis-\ntributed Robot Systems, Mapping\nI. INTRODUCTION\nOnline 3D reconstruction to learn a representation of a\nscene at real-time—where RGB images are continuously\ncaptured and used to optimize a 3D model that can be\nrendered and visualized—holds immense potential in various\ndomains. For example, mobile robots and embodied devices\n(e.g., drones) navigating a previously unseen environment\nwith the ability to construct and visualize a 3D model of\nthe environment on the fly, offer opportunities for enhanced\nnavigation, scene understanding, and interactive exploration\nof the environment. Online 3D scene reconstruction has\nbeen extensively studied with various methods to repre",
+  "hardware": [],
+  "methods": [],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Automation and Robotics",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [],
+  "properties": [],
+  "measurements": [],
+  "conditions": [],
+  "mechanisms": [],
+  "outcomes": [],
+  "sdl_tags": [
+    "Automation and Robotics"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "acgold_2af7adc76b0f",
+    "cross_sdl_reasoning_json": "/Users/sissifeng/Downloads/cross-sdl_knowledge_transfer_engine/data/reasoning/acgold_2af7adc76b0f.json",
+    "cross_sdl_extraction_quality": 0.0,
+    "cross_sdl_notes": "Extraction failed — parse error: Expecting ',' delimiter: line 60 column 4 (char 3351)"
+  },
+  "validation": {
+    "score": 0.22,
+    "coverage": {
+      "source_summary": false,
+      "abstract": true,
+      "hardware": false,
+      "method": false,
+      "evidence": false,
+      "entities": true,
+      "materials": false,
+      "properties": false,
+      "measurements": false,
+      "conditions": false,
+      "mechanisms": false,
+      "outcomes": false,
+      "cross_sdl_match": true
+    },
+    "missing": [
+      "source_summary",
+      "hardware",
+      "method",
+      "evidence",
+      "materials",
+      "properties",
+      "measurements",
+      "conditions",
+      "mechanisms",
+      "outcomes"
+    ],
+    "notes": [
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

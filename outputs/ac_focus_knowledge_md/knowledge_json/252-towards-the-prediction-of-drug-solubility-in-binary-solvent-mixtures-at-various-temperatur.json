@@ -1,0 +1,154 @@
+{
+  "paper_id": "acfocus_23445dadadcf",
+  "title": "Towards the prediction of drug solubility in binary solvent mixtures at various temperatures using machine learning",
+  "metadata": {
+    "doi": "10.1186/s13321-024-00911-3",
+    "url": "https://link.springer.com/article/10.1186/s13321-024-00911-3",
+    "year": "2024",
+    "authors": "Bao Z, Tom G, Cheng A, Watchorn J, Aspuru-Guzik A, Allen C",
+    "venue": "Journal of Cheminformatics",
+    "category": "Journal article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Christine Allen",
+      "Alán Aspuru-Guzik",
+      "Zeqing Bao",
+      "Jeff Watchorn"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance",
+      "AC Full Member",
+      "AC Governance",
+      "AC Staff",
+      "AC Staff"
+    ],
+    "flags": {
+      "acknowledges_ac": "checked",
+      "highly_relevant": "checked",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "This study presents machine learning models trained on a large, diverse dataset of small molecule solubility in binary solvent mixtures across various temperatures, achieving accurate predictions and providing open access to the dataset and code to advance drug development and formulation.",
+  "abstract": "Abstract: Drug solubility is an important parameter in the drug development process, yet it is often tedious and challenging to measure, especially for expensive drugs or those available in small quantities. To alleviate these challenges, machine learning (ML) has been applied to predict drug solubility as an alternative approach. However, the majority of existing ML research has focused on the predictions of aqueous solubility and/or solubility at specific temperatures, which restricts the model applicability in pharmaceutical development. To bridge this gap, we compiled a dataset of 27,000 solubility datapoints, including solubility of small molecules measured in a range of binary solvent mixtures under various temperatures. Next, a panel of ML models were trained on this dataset with their hyperparameters tuned using Bayesian optimization. The resulting top-performing models, both gradient boosted decision trees (light gradient boosting machine and extreme gradient boosting), achieved mean absolute errors (MAE) of 0.33 for LogS (S in g/100 g) on the holdout set. These models were further validated through a prospective study, wherein the solubility of four drug molecules were predicted by the models and then validated with in-house solubility experiments. This prospective study demonstrated that the models accurately predicted the solubility of solutes in specific binary solvent mixtures under different temperatures, especially for drugs whose features closely align within the solutes in the dataset (MAE < 0.5 for LogS). To support future research and facilitate advancements in the field, we have made the dataset and code openly available. Scientific contribution Our research advances the state-of-the-art in predicting solubility for small molecules by leveraging ML and a uniquely comprehensive dataset. Unlike existing ML studies that predominantly focus on solubility in aqueous solvents at fixed temperatures, our work enables prediction of drug solubility in a variety of binary solvent mixtures over a broad temperature range, providing practical insights on the modeling of solubility for realistic pharmaceutical applications. These advancements along with the open access dataset and code support significant steps in the drug development process including new molecule discovery, drug analysis and formulation. Graphical Abstract: (Figure presented.)",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "This study presents machine learning models trained on a large, diverse dataset of small molecule solubility in binary solvent mixtures across various temperatures, achieving accurate predictions and providing open access to the dataset and code to advance drug development and formulation.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Artificial Intelligence & Data Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Chemistry",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "Towards the prediction of drug solubility in binary solvent mixtures at various temperatures using machine learning This study presents machine learning models trained on a large, diverse dataset of small molecule solubility in binary solvent mixtures across various temperatures, achieving accurate predictions and providing open access to the dataset and code to advance drug development and formulation.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "To bridge this gap, we compiled a dataset of 27,000 solubility datapoints, including solubility of small molecules measured in a range of binary solvent mixtures under various temperatures.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "These models were further validated through a prospective study, wherein the solubility of four drug molecules were predicted by the models and then validated with in-house solubility experiments.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [],
+  "measurements": [],
+  "conditions": [
+    {
+      "value": "Unlike existing ML studies that predominantly focus on solubility in aqueous solvents at fixed temperatures, our work enables prediction of drug solubility in a variety of binary solvent mixtures over a broad temperature range, providing practical insights on the modeling of solubility for realistic pharmaceutical applications.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "mechanisms": [],
+  "outcomes": [
+    {
+      "value": "Therapeutics",
+      "source": "csv_applied_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Formulations",
+      "source": "csv_applied_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "SDL 5 - Formulations",
+    "Artificial Intelligence & Data Science",
+    "Chemistry",
+    "Therapeutics",
+    "Formulations"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.54,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": true,
+      "properties": false,
+      "measurements": false,
+      "conditions": true,
+      "mechanisms": false,
+      "outcomes": true,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "properties",
+      "measurements",
+      "mechanisms",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

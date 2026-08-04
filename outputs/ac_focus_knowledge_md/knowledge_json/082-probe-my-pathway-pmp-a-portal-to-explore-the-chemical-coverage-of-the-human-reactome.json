@@ -1,0 +1,114 @@
+{
+  "paper_id": "acfocus_2f5eecefda53",
+  "title": "Probe my Pathway (PmP): a portal to explore the chemical coverage of the human Reactome",
+  "metadata": {
+    "doi": "10.1093/database/baae116",
+    "url": "https://academic.oup.com/database/article/doi/10.1093/database/baae116/7917298",
+    "year": "2024",
+    "authors": "Kwak HA, Liu L, Schapira M",
+    "venue": "Database : the journal of biological databases and curation",
+    "category": "Journal article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Matthieu Schapira"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "checked",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "Probe my Pathway (PmP) is a database that maps high-quality chemical probes and chemogenomic compounds onto all human pathways in the Reactome database, enabling researchers to explore pathway-phenotype associations and chemical coverage through an interactive web interface.",
+  "abstract": "Deciphering pathway-phenotype associations is critical for a system-wide understanding of cells and the chemistry of life. An approach to reach this goal is to systematically modulate pathways pharmacologically. The targeted and controlled regulation of an increasing number of proteins is becoming possible, thanks to the growing list of chemical probes and chemogenomic compounds available to cell biologists, but no resource is available that directly maps these chemical tools on cellular pathways. To fill this gap, we developed Probe my Pathway (PmP), a database where high-quality chemical probes and well-characterized sets of chemogenomic compounds are mapped on all the human pathways of the Reactome database. The web interface allows users to browse the data via icicle charts or search the data for compounds, proteins, or pathways. Chemists can rapidly find pathways with low chemical coverage or explore the structural chemistry of ligands targeting specific cellular machineries. Cell biologists can look for chemical probes targeting different proteins in the same pathway or find which pathways are targeted by chemical probes of interest. PmP is updated annually and will grow with the expanding chemical tool kit produced by Target 2035 and other efforts.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "Probe my Pathway (PmP) is a database that maps high-quality chemical probes and chemogenomic compounds onto all human pathways in the Reactome database, enabling researchers to explore pathway-phenotype associations and chemical coverage through an interactive web interface.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Artificial Intelligence & Data Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Biology",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [],
+  "properties": [],
+  "measurements": [],
+  "conditions": [],
+  "mechanisms": [],
+  "outcomes": [
+    {
+      "value": "Therapeutics",
+      "source": "csv_applied_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "Artificial Intelligence & Data Science",
+    "Biology",
+    "Therapeutics"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.43,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": false,
+      "properties": false,
+      "measurements": false,
+      "conditions": false,
+      "mechanisms": false,
+      "outcomes": true,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "materials",
+      "properties",
+      "measurements",
+      "conditions",
+      "mechanisms",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

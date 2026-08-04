@@ -1,0 +1,171 @@
+{
+  "paper_id": "acfocus_bda8435850b5",
+  "title": "Functionally active modulators targeting the LRRK2 WD40 repeat domain identified by FRASE-bot in CACHE Challenge #1",
+  "metadata": {
+    "doi": "10.1039/d4sc07532c",
+    "url": "https://pubs.rsc.org/en/content/articlelanding/2025/sc/d4sc07532c",
+    "year": "2025",
+    "authors": "A. Mettu; M. Glavatskikh; X. Wang; A. J. Lara Ordóñez; F. Li; I. Chau; S. Ackloo; C. H. Arrowsmith; A. Bolotokova; P. Ghiabi; E. Gibson; L. Halabelian; S. Houliston; R. Harding; A. Hutchinson; P. Loppnau; S. Perveen; A. Seitova; H. Zeng; M. Schapira; J. M. Taymans; D. Kireev",
+    "venue": "Chemical Science",
+    "category": "Journal Article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Cheryl Arrowsmith",
+      "Matthieu Schapira"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance",
+      "AC Full Member"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "In CACHE Challenge #1, the FRASE-bot platform enabled the identification of eight small-molecule ligands binding to the LRRK2-WDR domain, with some compounds significantly modulating LRRK2 kinase activity and conformation in cellular assays.",
+  "abstract": "Critical Assessment of Computational Hit-Finding Experiments (CACHE) Challenges emerged as real-life stress tests for computational hit-finding strategies. In CACHE Challenge #1, 23 participants contributed their original workflows to identify small-molecule ligands for the WD40 repeat (WDR) of LRRK2, a promising Parkinson's target. We applied the FRASE-based hit-finding robot (FRASE-bot), a platform for interaction-based screening allowing a drastic reduction of the explorable chemical space and a concurrent detection of putative ligand-binding sites. In two screening rounds, 84 compounds were procured for experimental testing and 8 were confirmed to bind LRRK2-WDR with dissociation constants (K<inf>d</inf>) ranging from 3 to 41 μM. To investigate the functional effect of WDR ligands, they were tested for their ability to modify the LRRK2 activity markers in HEK293T cells. Two compounds showed statistically significant increases in the kinase activity of WT LRRK2, and two compounds affected the conformation and kinase activity of major LRRK2 mutants. © 2025 The Royal Society of Chemistry.",
+  "hardware": [
+    {
+      "value": "In CACHE Challenge #1, the FRASE-bot platform enabled the identification of eight small-molecule ligands binding to the LRRK2-WDR domain, with some compounds significantly modulating LRRK2 kinase activity and conformation in cellular assays.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "We applied the FRASE-based hit-finding robot (FRASE-bot), a platform for interaction-based screening allowing a drastic reduction of the explorable chemical space and a concurrent detection of putative ligand-binding sites.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "methods": [
+    {
+      "value": "In CACHE Challenge #1, the FRASE-bot platform enabled the identification of eight small-molecule ligands binding to the LRRK2-WDR domain, with some compounds significantly modulating LRRK2 kinase activity and conformation in cellular assays.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Artificial Intelligence & Data Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Biology",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Biochemistry",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "Functionally active modulators targeting the LRRK2 WD40 repeat domain identified by FRASE-bot in CACHE Challenge #1 In CACHE Challenge #1, the FRASE-bot platform enabled the identification of eight small-molecule ligands binding to the LRRK2-WDR domain, with some compounds significantly modulating LRRK2 kinase activity and conformation in cellular assays.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "In CACHE Challenge #1, 23 participants contributed their original workflows to identify small-molecule ligands for the WD40 repeat (WDR) of LRRK2, a promising Parkinson's target.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [
+    {
+      "value": "Functionally active modulators targeting the LRRK2 WD40 repeat domain identified by FRASE-bot in CACHE Challenge #1 In CACHE Challenge #1, the FRASE-bot platform enabled the identification of eight small-molecule ligands binding to the LRRK2-WDR domain, with some compounds significantly modulating LRRK2 kinase activity and conformation in cellular assays.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "To investigate the functional effect of WDR ligands, they were tested for their ability to modify the LRRK2 activity markers in HEK293T cells.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Two compounds showed statistically significant increases in the kinase activity of WT LRRK2, and two compounds affected the conformation and kinase activity of major LRRK2 mutants.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [
+    {
+      "value": "To investigate the functional effect of WDR ligands, they were tested for their ability to modify the LRRK2 activity markers in HEK293T cells.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "conditions": [],
+  "mechanisms": [],
+  "outcomes": [
+    {
+      "value": "Therapeutics",
+      "source": "csv_applied_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "Artificial Intelligence & Data Science",
+    "Biology",
+    "Biochemistry",
+    "Therapeutics"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.73,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": true,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": true,
+      "properties": true,
+      "measurements": true,
+      "conditions": false,
+      "mechanisms": false,
+      "outcomes": true,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "evidence",
+      "conditions",
+      "mechanisms",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only."
+    ]
+  }
+}

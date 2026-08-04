@@ -1,0 +1,139 @@
+{
+  "paper_id": "acfocus_aa1743f3eae3",
+  "title": "Integrating spheroid‐on‐a‐chip with tubeless rocker platform: A high‐throughput biological screening platform",
+  "metadata": {
+    "doi": "10.1002/biot.202200621",
+    "url": "https://onlinelibrary.wiley.com/doi/10.1002/biot.202200621",
+    "year": "2023",
+    "authors": "Kheiri, Sina; Chen, Zhengkun; Yakavets, Ilya; Rakhshani, Faeze; Young, Edmond W. K.; Kumacheva, Eugenia",
+    "venue": "Biotechnology Journal",
+    "category": "Journal article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Eugenia Kumacheva",
+      "Ilya Yakavets"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Staff"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "checked",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "A gravity-driven, rocker-based microfluidic spheroid-on-a-chip platform was developed for high-throughput in vitro screening, demonstrating comparable or superior performance to syringe pump systems in cell viability, spheroid formation, and protein production, while offering lower cost, easier handling, and scalability for industrial applications.",
+  "abstract": "Abstract             Spheroid‐on‐a‐chip platforms are emerging as promising in vitro models that enable screening of the efficacy of biologically active ingredients. Generally, the supply of liquids to spheroids occurs in the steady flow mode with the use of syringe pumps; however, the utilization of tubing and connections, especially for multiplexing and high‐throughput screening applications, makes spheroid‐on‐a‐chip platforms labor‐ and cost‐intensive. Gravity‐induced flow using rocker platforms overcomes these challenges. Here, a robust gravity‐driven technique was developed to culture arrays of cancer cell spheroids and dermal fibroblast spheroids in a high‐throughput manner using a rocker platform. The efficiency of the developed rocker‐based platform was benchmarked to syringe pumps for generating multicellular spheroids and their use for screening biologically active ingredients. Cell viability, internal spheroid structure as well as the effect of vitamin C on spheroids' protein synthesis was studied. The rocker‐based platform not only offers comparable or enhanced performance in terms of cell viability, spheroids formation, and protein production by dermal fibroblast spheroids but also, from a practical perspective, offers a smaller footprint, requires a lower cost, and offers an easier method for handling. These results support the application of rocker‐based microfluidic spheroid‐on‐a‐chip platforms for in vitro screening in a high‐throughput manner with industrial scaling‐up opportunities.",
+  "hardware": [
+    {
+      "value": "A gravity-driven, rocker-based microfluidic spheroid-on-a-chip platform was developed for high-throughput in vitro screening, demonstrating comparable or superior performance to syringe pump systems in cell viability, spheroid formation, and protein production, while offering lower cost, easier handling, and scalability for industrial applications.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Here, a robust gravity‐driven technique was developed to culture arrays of cancer cell spheroids and dermal fibroblast spheroids in a high‐throughput manner using a rocker platform.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "The efficiency of the developed rocker‐based platform was benchmarked to syringe pumps for generating multicellular spheroids and their use for screening biologically active ingredients.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "The rocker‐based platform not only offers comparable or enhanced performance in terms of cell viability, spheroids formation, and protein production by dermal fibroblast spheroids but also, from a practical perspective, offers a smaller footprint, requires a lower cost, and offers an easier method for handling.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "methods": [
+    {
+      "value": "A gravity-driven, rocker-based microfluidic spheroid-on-a-chip platform was developed for high-throughput in vitro screening, demonstrating comparable or superior performance to syringe pump systems in cell viability, spheroid formation, and protein production, while offering lower cost, easier handling, and scalability for industrial applications.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Automation and Robotics",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Biology",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [],
+  "properties": [],
+  "measurements": [
+    {
+      "value": "The efficiency of the developed rocker‐based platform was benchmarked to syringe pumps for generating multicellular spheroids and their use for screening biologically active ingredients.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "conditions": [],
+  "mechanisms": [],
+  "outcomes": [],
+  "sdl_tags": [
+    "SDL 6 - HOM",
+    "Automation and Robotics",
+    "Biology"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.53,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": true,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": false,
+      "properties": false,
+      "measurements": true,
+      "conditions": false,
+      "mechanisms": false,
+      "outcomes": false,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "evidence",
+      "materials",
+      "properties",
+      "conditions",
+      "mechanisms",
+      "outcomes",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only."
+    ]
+  }
+}

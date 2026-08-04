@@ -40,7 +40,7 @@ from app.services.retrieval_service import (
     is_structured_query,
     search_propositions,
 )
-from app.services.nl_to_sql_service import run_nl_sql
+from app.services.nl_to_sql_service import NlSqlUnsupportedError, run_nl_sql
 
 RagMode = Literal["iterative", "recursive", "adaptive"]
 AnswerFn = Callable[[str, str], tuple[str | None, str]]
@@ -421,8 +421,11 @@ def fusion_module(session: Session, state: RagGraphState) -> RagGraphState:
         prop_hints = search_propositions(session, req.query, top_k=5)
 
     sql_hints = []
-    nl_sql_result = run_nl_sql(session, req.query)
-    if nl_sql_result.rows:
+    try:
+        nl_sql_result = run_nl_sql(session, req.query)
+    except NlSqlUnsupportedError:
+        nl_sql_result = None
+    if nl_sql_result is not None and nl_sql_result.rows:
         sql_hints.append(nl_sql_result)
 
     state["reranked"] = reranked

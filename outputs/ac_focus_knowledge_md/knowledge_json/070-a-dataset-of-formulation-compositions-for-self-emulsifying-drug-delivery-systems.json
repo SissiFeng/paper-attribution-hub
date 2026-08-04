@@ -1,0 +1,117 @@
+{
+  "paper_id": "acfocus_7292f66efa16",
+  "title": "A dataset of formulation compositions for self-emulsifying drug delivery systems",
+  "metadata": {
+    "doi": "10.1038/s41597-023-02812-w",
+    "url": "https://www.nature.com/articles/s41597-023-02812-w",
+    "year": "2023",
+    "authors": "Zaslavsky, Jonathan; Allen, Christine",
+    "venue": "Scientific Data",
+    "category": "Journal article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Christine Allen"
+    ],
+    "ac_programs": [
+      "Core Development Grants_Christine Allen_2023-24"
+    ],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance"
+    ],
+    "flags": {
+      "acknowledges_ac": "checked",
+      "highly_relevant": "checked",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "This study curated a dataset of 668 unique self-emulsifying drug delivery system (SEDDS) formulations for 20 poorly water-soluble drugs, aiming to facilitate data-driven approaches and simplify the development of SEDDS formulations.",
+  "abstract": "Self-emulsifying drug delivery systems (SEDDS) are a well-established formulation strategy for improving the oral bioavailability of poorly water-soluble drugs. Traditional development of these formulations relies heavily on empirical observation to assess drug and excipient compatibility, as well as to select and optimize the formulation compositions. The aim of this work was to leverage previously developed SEDDS in the literature to construct a comprehensive SEDDS dataset that can be used to gain insights and advance data-driven approaches to formulation development. A dataset comprised of 668 unique SEDDS formulations encompassing 20 poorly water-soluble drugs was curated. While there are still opportunities to enhance the quality and quantity of data on SEDDS, this research lays the groundwork to potentially simplify the SEDDS formulation development process.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "This study curated a dataset of 668 unique self-emulsifying drug delivery system (SEDDS) formulations for 20 poorly water-soluble drugs, aiming to facilitate data-driven approaches and simplify the development of SEDDS formulations.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Artificial Intelligence & Data Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [],
+  "properties": [],
+  "measurements": [],
+  "conditions": [],
+  "mechanisms": [],
+  "outcomes": [
+    {
+      "value": "Therapeutics",
+      "source": "csv_applied_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Formulations",
+      "source": "csv_applied_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "Artificial Intelligence & Data Science",
+    "Therapeutics",
+    "Formulations"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.43,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": false,
+      "properties": false,
+      "measurements": false,
+      "conditions": false,
+      "mechanisms": false,
+      "outcomes": true,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "materials",
+      "properties",
+      "measurements",
+      "conditions",
+      "mechanisms",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

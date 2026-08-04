@@ -1,5 +1,4 @@
 from app.services.external.source_reliability import (
-    SOURCE_TRUST,
     merge_paper_records,
     pick_best,
     trust,

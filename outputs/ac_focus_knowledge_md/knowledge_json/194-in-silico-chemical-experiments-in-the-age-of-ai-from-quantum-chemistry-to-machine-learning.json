@@ -1,0 +1,138 @@
+{
+  "paper_id": "acfocus_d03f0d301349",
+  "title": "In Silico Chemical Experiments in the Age of AI: From Quantum Chemistry to Machine Learning and Back",
+  "metadata": {
+    "doi": "10.1002/adma.202402369",
+    "url": "https://advanced.onlinelibrary.wiley.com/doi/10.1002/adma.202402369",
+    "year": "2024",
+    "authors": "Aldossary A, Campos-Gonzalez-Angulo JA, Pablo-García S, Leong SX, Rajaonson EM, Thiede L, Tom G, Wang A, Avagliano D, Aspuru-Guzik A",
+    "venue": "Advanced Materials",
+    "category": "Journal article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Alán Aspuru-Guzik"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance"
+    ],
+    "flags": {
+      "acknowledges_ac": "checked",
+      "highly_relevant": "checked",
+      "high_impact": "checked"
+    }
+  },
+  "source_summary": "This review discusses the integration of artificial intelligence and machine learning into computational chemistry to overcome traditional limitations, enhance scalability and speed, and ultimately develop accurate, transferable models for predicting molecular properties and solving the Schrödinger equation.",
+  "abstract": "Computational chemistry is an indispensable tool for understanding molecules and predicting chemical properties. However, traditional computational methods face significant challenges due to the difficulty of solving the Schrödinger equations and the increasing computational cost with the size of the molecular system. In response, there has been a surge of interest in leveraging artificial intelligence (AI) and machine learning (ML) techniques to in silico experiments. Integrating AI and ML into computational chemistry increases the scalability and speed of the exploration of chemical space. However, challenges remain, particularly regarding the reproducibility and transferability of ML models. This review highlights the evolution of ML in learning from, complementing, or replacing traditional computational chemistry for energy and property predictions. Starting from models trained entirely on numerical data, a journey set forth toward the ideal model incorporating or learning the physical laws of quantum mechanics. This paper also reviews existing computational methods and ML models and their intertwining, outlines a roadmap for future research, and identifies areas for improvement and innovation. Ultimately, the goal is to develop AI architectures capable of predicting accurate and transferable solutions to the Schrödinger equation, thereby revolutionizing in silico experiments within chemistry and materials science.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "This review discusses the integration of artificial intelligence and machine learning into computational chemistry to overcome traditional limitations, enhance scalability and speed, and ultimately develop accurate, transferable models for predicting molecular properties and solving the Schrödinger equation.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Artificial Intelligence & Data Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Chemistry",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "Computational chemistry is an indispensable tool for understanding molecules and predicting chemical properties.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Ultimately, the goal is to develop AI architectures capable of predicting accurate and transferable solutions to the Schrödinger equation, thereby revolutionizing in silico experiments within chemistry and materials science.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [
+    {
+      "value": "In Silico Chemical Experiments in the Age of AI: From Quantum Chemistry to Machine Learning and Back This review discusses the integration of artificial intelligence and machine learning into computational chemistry to overcome traditional limitations, enhance scalability and speed, and ultimately develop accurate, transferable models for predicting molecular properties and solving the Schrödinger equation.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Computational chemistry is an indispensable tool for understanding molecules and predicting chemical properties.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "This review highlights the evolution of ML in learning from, complementing, or replacing traditional computational chemistry for energy and property predictions.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [],
+  "conditions": [],
+  "mechanisms": [],
+  "outcomes": [],
+  "sdl_tags": [
+    "Artificial Intelligence & Data Science",
+    "Chemistry"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.51,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": true,
+      "properties": true,
+      "measurements": false,
+      "conditions": false,
+      "mechanisms": false,
+      "outcomes": false,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "measurements",
+      "conditions",
+      "mechanisms",
+      "outcomes",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

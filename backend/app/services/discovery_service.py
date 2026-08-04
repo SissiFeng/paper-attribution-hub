@@ -24,7 +24,6 @@ from __future__ import annotations
 
 import uuid
 from dataclasses import dataclass, field
-from typing import Iterable
 
 from sqlalchemy import select
 from sqlalchemy.orm import Session
@@ -37,7 +36,7 @@ from app.models import (
     DiscoveryCandidate,
     Paper,
 )
-from app.services.external.author_disambiguator import disambiguate
+from app.review_contract import infer_corpus_sources
 from app.services.external.crossref_client import (
     CrossrefClient,
     crossref_work_to_record,
@@ -435,6 +434,11 @@ def _ingest_candidate_as_paper(
         venue=env.record.venue,
         source=env.triggers[0].source if env.triggers else "discovered",
         provenance=provenance,
+        corpus_sources=infer_corpus_sources(
+            provenance=provenance,
+            source=env.triggers[0].source if env.triggers else "discovered",
+            trigger_strategies=[trigger.strategy for trigger in env.triggers],
+        ),
         keywords=env.record.keywords,
         raw_metadata=env.record.raw,
     )
@@ -568,6 +572,15 @@ def approve_candidate(
     env = CandidateEnvelope(external_id=row.external_id, record=record)
     paper = _ingest_candidate_as_paper(session, env)
     paper.provenance = "discovered_approved"
+    paper.corpus_sources = infer_corpus_sources(
+        provenance=paper.provenance,
+        source=paper.source,
+        trigger_strategies=[
+            trigger.get("strategy")
+            for trigger in (row.triggers or [])
+            if trigger.get("strategy")
+        ],
+    )
     row.status = "approved"
     row.resulting_paper_id = paper.id
     row.reviewer = reviewer

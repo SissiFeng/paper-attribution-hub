@@ -1,0 +1,320 @@
+{
+  "paper_id": "acfocus_3cfa9bcc7d72",
+  "title": "Developing and validating a high-throughput robotic system for the accelerated development of porous membranes",
+  "metadata": {
+    "doi": "10.1016/j.memsci.2025.124804",
+    "url": "https://www.sciencedirect.com/science/article/pii/S0376738825011172",
+    "year": "2026",
+    "authors": "H. Wang; S. Zeinali Danalou; J. Zhu; K. Sulimro; C. Lim; S. Basak; A. Tai; U. Siriwardana; J. Hattrick-Simpers; J. R. Werber",
+    "venue": "Journal of Membrane Science",
+    "category": "Journal Article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Jason Hattrick-Simpers"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "This study introduces a fully automated, modular platform for fabricating and characterizing porous polymeric membranes via nonsolvent-induced phase separation, enabling precise, reproducible, and high-throughput experimentation with integrated mechanical testing to support data-driven membrane optimization.",
+  "abstract": "The development of porous polymeric membranes remains a labor-intensive process, often requiring extensive trial and error to identify optimal fabrication parameters. In this study, we present a fully automated platform for membrane fabrication and characterization via nonsolvent-induced phase separation (NIPS). The system integrates automated solution preparation, blade casting, controlled immersion, and compression testing, allowing precise control over fabrication parameters such as polymer concentration and ambient humidity. The modular design enables reproducible sample handling to improve consistency and can be adapted for future parallel processing to further reduce experimental time. Compression testing is introduced as a sensitive mechanical characterization method for estimating membrane stiffness and as a proxy to infer porosity and intra-sample uniformity through automated analysis of stress–strain curves. As a proof of concept to demonstrate the effectiveness of the system, NIPS was carried out with polysulfone, the green solvent PolarClean®, and water as the polymer, solvent, and nonsolvent, respectively. Experiments conducted with the automated system reproduced expected effects of polymer concentration and ambient humidity on membrane properties, namely increased stiffness and uniformity with increasing polymer concentration and humidity variations in pore morphology and mechanical response. The developed automated platform supports high-throughput experimentation and is well-suited for integration into self-driving laboratory workflows, offering a scalable and reproducible foundation for data-driven optimization of porous polymeric membranes through NIPS. © 2025 The Authors.",
+  "hardware": [
+    {
+      "value": "This study introduces a fully automated, modular platform for fabricating and characterizing porous polymeric membranes via nonsolvent-induced phase separation, enabling precise, reproducible, and high-throughput experimentation with integrated mechanical testing to support data-driven membrane optimization.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "In this study, we present a fully automated platform for membrane fabrication and characterization via nonsolvent-induced phase separation (NIPS).",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "The system integrates automated solution preparation, blade casting, controlled immersion, and compression testing, allowing precise control over fabrication parameters such as polymer concentration and ambient humidity.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Compression testing is introduced as a sensitive mechanical characterization method for estimating membrane stiffness and as a proxy to infer porosity and intra-sample uniformity through automated analysis of stress–strain curves.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "methods": [
+    {
+      "value": "The system integrates automated solution preparation, blade casting, controlled immersion, and compression testing, allowing precise control over fabrication parameters such as polymer concentration and ambient humidity.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "problems": [
+    {
+      "value": "The development of porous polymeric membranes remains a labor-intensive process, often requiring extensive trial and error to identify optimal fabrication parameters.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "hypotheses": [
+    {
+      "value": "A fully automated platform for membrane fabrication and characterization via nonsolvent-induced phase separation (NIPS) can precisely control fabrication parameters, reducing experimental time and increasing consistency.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "evidence": [
+    {
+      "value": "Experiments conducted with the automated system reproduced expected effects of polymer concentration and ambient humidity on membrane properties, namely increased stiffness and uniformity with increasing polymer concentration and humidity variations in pore morphology and mechanical response.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "conclusions": [
+    {
+      "value": "The developed automated platform supports high-throughput experimentation and is well-suited for integration into self-driving laboratory workflows, offering a scalable and reproducible foundation for data-driven optimization of porous polymeric membranes through NIPS.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "entities": [
+    {
+      "value": "polysulfone (PSf) membrane",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "PolarClean® solvent",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "water nonsolvent",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "polymer concentration",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "ambient humidity",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "mechanical stiffness",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "pore morphology",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "polysulfone (PSf) membrane",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "polymer concentration",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Developing and validating a high-throughput robotic system for the accelerated development of porous membranes This study introduces a fully automated, modular platform for fabricating and characterizing porous polymeric membranes via nonsolvent-induced phase separation, enabling precise, reproducible, and high-throughput experimentation with integrated mechanical testing to support data-driven membrane optimization.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "The development of porous polymeric membranes remains a labor-intensive process, often requiring extensive trial and error to identify optimal fabrication parameters.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "In this study, we present a fully automated platform for membrane fabrication and characterization via nonsolvent-induced phase separation (NIPS).",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [
+    {
+      "value": "Compression testing is introduced as a sensitive mechanical characterization method for estimating membrane stiffness and as a proxy to infer porosity and intra-sample uniformity through automated analysis of stress–strain curves.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Experiments conducted with the automated system reproduced expected effects of polymer concentration and ambient humidity on membrane properties, namely increased stiffness and uniformity with increasing polymer concentration and humidity variations in pore morphology and mechanical response.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "polysulfone (PSf) membrane PolarClean® solvent water nonsolvent polymer concentration ambient humidity mechanical stiffness pore morphology increased stiffness and uniformity with higher polymer concentration variability in pore morphology and mechanical response with changes in ambient humidity",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [
+    {
+      "value": "In this study, we present a fully automated platform for membrane fabrication and characterization via nonsolvent-induced phase separation (NIPS).",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "The system integrates automated solution preparation, blade casting, controlled immersion, and compression testing, allowing precise control over fabrication parameters such as polymer concentration and ambient humidity.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Compression testing is introduced as a sensitive mechanical characterization method for estimating membrane stiffness and as a proxy to infer porosity and intra-sample uniformity through automated analysis of stress–strain curves.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "conditions": [
+    {
+      "value": "The system integrates automated solution preparation, blade casting, controlled immersion, and compression testing, allowing precise control over fabrication parameters such as polymer concentration and ambient humidity.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "The modular design enables reproducible sample handling to improve consistency and can be adapted for future parallel processing to further reduce experimental time.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Experiments conducted with the automated system reproduced expected effects of polymer concentration and ambient humidity on membrane properties, namely increased stiffness and uniformity with increasing polymer concentration and humidity variations in pore morphology and mechanical response.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "mechanisms": [
+    {
+      "value": "nonsolvent-induced phase separation (NIPS) for membrane fabrication",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "compression testing for mechanical characterization",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "polymer concentration and humidity influence on membrane structure",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "outcomes": [
+    {
+      "value": "increased stiffness and uniformity with higher polymer concentration",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "variability in pore morphology and mechanical response with changes in ambient humidity",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "Artificial Intelligence & Data Science",
+    "Automation and Robotics",
+    "Materials Science",
+    "Environmental Remediation"
+  ],
+  "reasoning_motifs": [
+    {
+      "value": "Control Through Automation → Reproducibility and Consistency",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Parameter Variation → Structural and Property Variation",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "general_principles": [
+    {
+      "value": "Controlled Synthesis Enables Property Tunability",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "acgold_1e62e4c2f84c",
+    "cross_sdl_reasoning_json": "/Users/sissifeng/Downloads/cross-sdl_knowledge_transfer_engine/data/reasoning/acgold_1e62e4c2f84c.json",
+    "cross_sdl_extraction_quality": 0.8,
+    "cross_sdl_notes": "The paper presents a structured approach to developing an automated system for membrane fabrication, with clear hypotheses, methods, and conclusions. However, the exploration narrative and phase 4 attempts are limited, as the paper does not detail any failed experiments or alternative approaches considered. The reasoning is primarily implicit in the results and discussion, requiring some inference to construct the full scientific reasoning链条."
+  },
+  "validation": {
+    "score": 1.0,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": true,
+      "method": true,
+      "evidence": true,
+      "entities": true,
+      "materials": true,
+      "properties": true,
+      "measurements": true,
+      "conditions": true,
+      "mechanisms": true,
+      "outcomes": true,
+      "cross_sdl_match": true
+    },
+    "missing": [],
+    "notes": []
+  }
+}

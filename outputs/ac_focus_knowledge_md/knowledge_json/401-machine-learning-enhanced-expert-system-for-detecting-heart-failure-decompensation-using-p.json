@@ -1,0 +1,268 @@
+{
+  "paper_id": "acfocus_e921cdaf319d",
+  "title": "Machine learning enhanced expert system for detecting heart failure decompensation using patient reported vitals and electronic health records",
+  "metadata": {
+    "doi": "10.1038/s41598-025-16376-9",
+    "url": "https://www.nature.com/articles/s41598-025-16376-9",
+    "year": "2025",
+    "authors": "S. Saha; H. Ross; P. E. Velmovitsky; C. X. Wang; J. K. K. Vishram-Nielsen; C. Manlhiot; B. Wang; J. A. Cafazzo",
+    "venue": "Scientific Reports",
+    "category": "Journal Article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Bo Wang"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "This study enhanced the Medly digital therapeutic for heart failure by integrating machine learning and electronic health record data, resulting in significantly improved accuracy and reduced false positives in predicting decompensation episodes compared to the original rules-based algorithm.",
+  "abstract": "Heart failure (HF) is a condition with periods of stability interrupted by periods of worsening symptoms, known as decompensation episodes. Digital interventions are promising tools to alleviate burdens on HF management through automated alerts at the earliest decompensation sign. To accomplish this, our lab developed Medly, an expert system-enhanced digital therapeutic program for HF patients. Medly’s algorithm is a knowledge-based system that analyzes weight, blood pressure, and heart rate and sends automated alerts to clinicians and patients if deterioration is identified. Rules were set conservatively to account for false negatives. However, reducing false negatives resulted in an increase in false positives, which can lead to unnecessary clinical workload. Further, patients’ electronic health records (EHR) were not used when developing the rules-based algorithm. This study aimed to enhance Medly’s performance with machine learning and include a richer set of data, including EHR, for predicting decompensated HF episodes. We performed a retrospective study using XGBoost for the binary classification of whether the patient needed to be contacted for a possible decompensation episode. Features included blood pressure, weight change, heart rate, and EHR data (e.g., blood work, medication history). We further performed interpretability analysis to investigate the importance of including EHR data in the model. The enhanced algorithm achieved 98.08% accuracy, 95.26% sensitivity, 98.86% specificity, and a PPV of 88.18% – a marked improvement over the 55.8% in the rules-based algorithm. EHR data, mainly B-type natriuretic peptide (BNP) and total cholesterol, was crucial in predicting decompensation and correcting false-positive alerting. © The Author(s) 2025.",
+  "hardware": [
+    {
+      "value": "Digital interventions are promising tools to alleviate burdens on HF management through automated alerts at the earliest decompensation sign.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Medly’s algorithm is a knowledge-based system that analyzes weight, blood pressure, and heart rate and sends automated alerts to clinicians and patients if deterioration is identified.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "methods": [
+    {
+      "value": "Retrospective study using XGBoost for binary classification of patient need for contact due to possible decompensation episode, with features including vitals and EHR data",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "problems": [
+    {
+      "value": "Detecting heart failure decompensation using patient reported vitals and electronic health records",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "hypotheses": [
+    {
+      "value": "A machine learning-enhanced expert system can improve prediction of heart failure decompensation episodes by integrating EHR data",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "evidence": [
+    {
+      "value": "The enhanced algorithm achieved 98.08% accuracy, 95.26% sensitivity, 98.86% specificity, and a PPV of 88.18%, compared to 55.8% PPV in the rules-based algorithm",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "conclusions": [
+    {
+      "value": "Incorporating EHR data into a machine learning-enhanced expert system improves prediction of heart failure decompensation episodes and reduces false positives",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "entities": [
+    {
+      "value": "Weight change",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Blood pressure",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Heart rate",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "B-type natriuretic peptide (BNP)",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Total cholesterol",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "materials": [],
+  "properties": [
+    {
+      "value": "Machine learning enhanced expert system for detecting heart failure decompensation using patient reported vitals and electronic health records This study enhanced the Medly digital therapeutic for heart failure by integrating machine learning and electronic health record data, resulting in significantly improved accuracy and reduced false positives in predicting decompensation episodes compared to the original rules-based algorithm.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Heart failure (HF) is a condition with periods of stability interrupted by periods of worsening symptoms, known as decompensation episodes.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "The enhanced algorithm achieved 98.08% accuracy, 95.26% sensitivity, 98.86% specificity, and a PPV of 88.18% – a marked improvement over the 55.8% in the rules-based algorithm.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Retrospective study using XGBoost for binary classification of patient need for contact due to possible decompensation episode, with features including vitals and EHR data The enhanced algorithm achieved 98.08% accuracy, 95.26% sensitivity, 98.86% specificity, and a PPV of 88.18%, compared to 55.8% PPV in the rules-based algorithm Weight change Blood pressure Heart rate B-type natriuretic peptide (BNP) Total cholesterol Improved prediction of decompensation episodes Reduction in false positive alerts",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [],
+  "conditions": [
+    {
+      "value": "Heart failure (HF) is a condition with periods of stability interrupted by periods of worsening symptoms, known as decompensation episodes.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Medly’s algorithm is a knowledge-based system that analyzes weight, blood pressure, and heart rate and sends automated alerts to clinicians and patients if deterioration is identified.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Features included blood pressure, weight change, heart rate, and EHR data (e.g., blood work, medication history).",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Retrospective study using XGBoost for binary classification of patient need for contact due to possible decompensation episode, with features including vitals and EHR data The enhanced algorithm achieved 98.08% accuracy, 95.26% sensitivity, 98.86% specificity, and a PPV of 88.18%, compared to 55.8% PPV in the rules-based algorithm Weight change Blood pressure Heart rate B-type natriuretic peptide (BNP) Total cholesterol Improved prediction of decompensation episodes Reduction in false positive alerts",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "mechanisms": [
+    {
+      "value": "Vital sign monitoring for early detection of decompensation",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Biomarker analysis for heart failure severity assessment",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "outcomes": [
+    {
+      "value": "Improved prediction of decompensation episodes",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Reduction in false positive alerts",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [],
+  "reasoning_motifs": [
+    {
+      "value": "Data integration → Improved prediction",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Feature importance → Reduced false positives",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "general_principles": [
+    {
+      "value": "Information integration enhances predictive accuracy",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Feature selection optimizes model performance",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "failure_paths": [
+    {
+      "value": "success: Retrospective analysis of the original rules-based Medly algorithm Evidence: Achieved 93.6% accuracy but only 55.8% PPV, indicating high false positive rate",
+      "source": "cross_sdl_phase4",
+      "confidence": 0.75,
+      "evidence": ""
+    },
+    {
+      "value": "success: Incorporation of EHR data into the XGBoost algorithm Evidence: Significantly improved PPV to 88.18% and reduced false positives",
+      "source": "cross_sdl_phase4",
+      "confidence": 0.75,
+      "evidence": ""
+    }
+  ],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "acgold_e497ad52b39d",
+    "cross_sdl_reasoning_json": "/Users/sissifeng/Downloads/cross-sdl_knowledge_transfer_engine/data/reasoning/acgold_e497ad52b39d.json",
+    "cross_sdl_extraction_quality": 0.8,
+    "cross_sdl_notes": "The paper provides a clear structure of the problem, hypothesis, method, results, and conclusions, facilitating the extraction process. However, some details on the specific steps of the machine learning model training and validation could be more explicit, which would enhance the extraction quality further."
+  },
+  "validation": {
+    "score": 0.87,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": true,
+      "method": true,
+      "evidence": true,
+      "entities": true,
+      "materials": false,
+      "properties": true,
+      "measurements": false,
+      "conditions": true,
+      "mechanisms": true,
+      "outcomes": true,
+      "cross_sdl_match": true
+    },
+    "missing": [
+      "materials",
+      "measurements"
+    ],
+    "notes": []
+  }
+}

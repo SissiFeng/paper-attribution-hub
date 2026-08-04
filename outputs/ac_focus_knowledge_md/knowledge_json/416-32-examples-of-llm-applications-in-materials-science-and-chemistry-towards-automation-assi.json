@@ -1,0 +1,144 @@
+{
+  "paper_id": "acfocus_bedffc630d8b",
+  "title": "32 examples of LLM applications in materials science and chemistry: towards automation, assistants, agents, and accelerated scientific discovery",
+  "metadata": {
+    "doi": "10.1088/2632-2153/ae011a",
+    "url": "https://iopscience.iop.org/article/10.1088/2632-2153/ae011a",
+    "year": "2025",
+    "authors": "Y. Zimmermann; A. Bazgir; A. Al-Feghali; M. Ansari; J. Bocarsly; L. C. Brinson; Y. Chiang; D. Circi; M. H. Chiu; N. Daelman; M. L. Evans; A. S. Gangan; J. George; H. Harb; G. Khalighinejad; S. Takrim Khan; S. Klawohn; M. Lederbauer; S. Mahjoubi; B. Mohr; S. Mohamad Moosavi; A. Naik; A. Beste Ozhan; D. Plessers; A. Roy; F. Schöppach; P. Schwaller; C. Terboven; K. Ueltzen; Y. Wu; S. Zhu; J. Janssen; C. Li; I. Foster; B. Blaiszik",
+    "venue": "Machine Learning Science and Technology",
+    "category": "Journal Article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Mohamad Moosavi"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member"
+    ],
+    "flags": {
+      "acknowledges_ac": "checked",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "Large language models (LLMs) are transforming materials science and chemistry research by enabling advances in prediction, design, automation, and knowledge extraction, as demonstrated by 32 projects from a global hackathon that highlight their versatility, growing capabilities, and the need for ongoing research to address challenges in reliability and reproducibility.",
+  "abstract": "Large language models (LLMs) are reshaping many aspects of materials science and chemistry research, enabling advances in molecular property prediction, materials design, scientific automation, knowledge extraction, and more. Recent developments demonstrate that the latest class of models are able to integrate structured and unstructured data, assist in hypothesis generation, and streamline research workflows. To explore the frontier of LLM capabilities across the research lifecycle, we review applications of LLMs through 32 total projects developed during the second annual LLM hackathon for applications in materials science and chemistry, a global hybrid event. These projects spanned seven key research areas: (1) molecular and material property prediction, (2) molecular and material design, (3) automation and novel interfaces, (4) scientific communication and education, (5) research data management and automation, (6) hypothesis generation and evaluation, and (7) knowledge extraction and reasoning from the scientific literature. Collectively, these applications illustrate how LLMs serve as versatile predictive models, platforms for rapid prototyping of domain-specific tools, and much more. In particular, improvements in both open source and proprietary LLM performance through the addition of reasoning, additional training data, and new techniques have expanded effectiveness, particularly in low-data environments and interdisciplinary research. As LLMs continue to improve, their integration into scientific workflows presents both new opportunities and new challenges, requiring ongoing exploration, continued refinement, and further research to address reliability, interpretability, and reproducibility.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "Large language models (LLMs) are transforming materials science and chemistry research by enabling advances in prediction, design, automation, and knowledge extraction, as demonstrated by 32 projects from a global hackathon that highlight their versatility, growing capabilities, and the need for ongoing research to address challenges in reliability and reproducibility.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Artificial Intelligence & Data Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Chemistry",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Materials Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "32 examples of LLM applications in materials science and chemistry: towards automation, assistants, agents, and accelerated scientific discovery Large language models (LLMs) are transforming materials science and chemistry research by enabling advances in prediction, design, automation, and knowledge extraction, as demonstrated by 32 projects from a global hackathon that highlight their versatility, growing capabilities, and the need for ongoing research to address challenges in reliability and reproducibility.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Large language models (LLMs) are reshaping many aspects of materials science and chemistry research, enabling advances in molecular property prediction, materials design, scientific automation, knowledge extraction, and more.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "To explore the frontier of LLM capabilities across the research lifecycle, we review applications of LLMs through 32 total projects developed during the second annual LLM hackathon for applications in materials science and chemistry, a global hybrid event.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [
+    {
+      "value": "Large language models (LLMs) are reshaping many aspects of materials science and chemistry research, enabling advances in molecular property prediction, materials design, scientific automation, knowledge extraction, and more.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "These projects spanned seven key research areas: (1) molecular and material property prediction, (2) molecular and material design, (3) automation and novel interfaces, (4) scientific communication and education, (5) research data management and automation, (6) hypothesis generation and evaluation, and (7) knowledge extraction and reasoning from the scientific literature.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [],
+  "conditions": [],
+  "mechanisms": [],
+  "outcomes": [],
+  "sdl_tags": [
+    "Artificial Intelligence & Data Science",
+    "Chemistry",
+    "Materials Science"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.51,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": true,
+      "properties": true,
+      "measurements": false,
+      "conditions": false,
+      "mechanisms": false,
+      "outcomes": false,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "measurements",
+      "conditions",
+      "mechanisms",
+      "outcomes",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

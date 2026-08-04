@@ -1,6 +1,5 @@
 """End-to-end discovery tests with fully mocked HTTP."""
 import httpx
-import pytest
 
 from app.models import DiscoveryCandidate, Paper
 from app.services.discovery_service import (
@@ -15,7 +14,6 @@ from app.services.external.semantic_scholar_client import SemanticScholarClient
 from tests.fixtures.external_responses import (
     crossref_work,
     openalex_work,
-    s2_paper,
 )
 
 
@@ -174,7 +172,6 @@ def test_queued_candidate_can_be_rejected(seeded_session):
 
 def test_existing_doi_is_skipped(seeded_session):
     # Add a paper with one of the mocked DOIs so it should be skipped.
-    from app.adapters.base import PaperRecord
     from app.adapters.csv_source import CsvPaperSource  # noqa: F401  (import side effects)
 
     seeded_session.add(

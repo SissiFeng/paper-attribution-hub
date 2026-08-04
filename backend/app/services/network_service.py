@@ -16,10 +16,20 @@ from app.services.node_importance_service import (
     compute_author_importance,
     recency_from_years,
 )
+from app.services.filter_spec import PaperFilter
 
 
-def build_coauthor_graph(session: Session, only_relevant: bool = False) -> nx.Graph:
-    return _build_coauthor_graph(session, only_relevant=only_relevant)
+def build_coauthor_graph(
+    session: Session,
+    only_relevant: bool = False,
+    *,
+    filt: PaperFilter | None = None,
+) -> nx.Graph:
+    return _build_coauthor_graph(
+        session,
+        only_relevant=only_relevant,
+        filt=filt,
+    )
 
 
 def graph_to_payload(
@@ -27,6 +37,7 @@ def graph_to_payload(
     *,
     importance_profile: str = "bridge_builders",
     importance_weights: dict[str, float] | None = None,
+    recency_as_of_year: int | None = None,
 ) -> dict:
     ac_members: set[str] = {
         node_id
@@ -47,14 +58,37 @@ def graph_to_payload(
     nodes = []
     for node_id, data in g.nodes(data=True):
         diversity = _cross_sdl_diversity(data)
+        filtered_paper_count = int(data.get("paper_count", 0))
+        reference_evidence_paper_count = len(
+            set(data.get("reference_evidence_papers", set()))
+        )
+        ac_core_citing_paper_count = len(
+            set(data.get("ac_core_citing_papers", set()))
+        )
+        citation_affinity = (
+            ac_core_citing_paper_count / filtered_paper_count
+            if filtered_paper_count > 0
+            else 0.0
+        )
+        citation_reference_coverage = (
+            reference_evidence_paper_count / filtered_paper_count
+            if filtered_paper_count > 0
+            else 0.0
+        )
+        active_years = sorted(
+            int(year) for year in set(data.get("active_years", set()))
+        )
         importance = compute_author_importance(
             metrics=author_metrics_from_graph(
                 ppr_score=ppr.get(node_id, 0.0),
                 c_norm=c_norm.get(node_id, 1.0),
                 cross_sdl_diversity=diversity,
                 relationship_strength=relationship_strength.get(node_id, 0.0),
-                citation_affinity=0.0,
-                recency=recency_from_years(list(data.get("active_years", set()))),
+                citation_affinity=citation_affinity,
+                recency=recency_from_years(
+                    active_years,
+                    now_year=recency_as_of_year,
+                ),
             ),
             profile=importance_profile,
             weights_override=importance_weights,
@@ -65,7 +99,19 @@ def graph_to_payload(
                 "label": data.get("label", node_id),
                 "is_ac_member": bool(data.get("is_ac_member", False)),
                 "institution": data.get("institution"),
-                "paper_count": int(data.get("paper_count", 0)),
+                "institution_id": data.get("institution_id"),
+                "paper_count": filtered_paper_count,
+                "corpus_paper_count": int(
+                    data.get("corpus_paper_count", filtered_paper_count)
+                ),
+                "ac_core_citing_paper_count": ac_core_citing_paper_count,
+                "citation_affinity": round(citation_affinity, 4),
+                "reference_evidence_paper_count": reference_evidence_paper_count,
+                "citation_reference_coverage": round(
+                    citation_reference_coverage,
+                    4,
+                ),
+                "active_years": active_years,
                 "ppr_score": round(ppr.get(node_id, 0.0), 4),
                 "c_norm": round(c_norm.get(node_id, 1.0), 4),
                 "cross_sdl_diversity": round(diversity, 4),
@@ -86,6 +132,17 @@ def graph_to_payload(
                 "importance_weights": importance.weights,
             }
         )
+
+    ranked_nodes = sorted(
+        nodes,
+        key=lambda node: (
+            -float(node.get("importance_score", 0.0)),
+            -int(node.get("paper_count", 0)),
+            str(node.get("id", "")),
+        ),
+    )
+    for rank, node in enumerate(ranked_nodes, start=1):
+        node["importance_rank"] = rank
 
     edges = []
     for src, dst, data in g.edges(data=True):

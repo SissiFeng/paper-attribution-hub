@@ -45,6 +45,10 @@ class MultiGraphFilter:
     )
     group_by: str = "by_institution"
     min_edge_weight: float = 0.3
+    min_papers: int = 1
+    min_degree: int = 0
+    top_n: int | None = None
+    excluded_node_ids: list[str] = field(default_factory=list)
 
     # Optional ego-graph mode (NetworkX-style).
     center_id: str | None = None
@@ -66,3 +70,4 @@ class MultiGraphPayload:
     available_node_types: list[str]
     available_edge_types: list[str]
     available_group_keys: list[str]
+    audit: dict = field(default_factory=dict)

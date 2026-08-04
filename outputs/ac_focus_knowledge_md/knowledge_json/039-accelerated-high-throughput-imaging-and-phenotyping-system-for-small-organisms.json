@@ -1,0 +1,285 @@
+{
+  "paper_id": "acfocus_7e0391106169",
+  "title": "Accelerated high-throughput imaging and phenotyping system for small organisms",
+  "metadata": {
+    "doi": "10.1371/journal.pone.0287739",
+    "url": "https://dx.plos.org/10.1371/journal.pone.0287739",
+    "year": "2023",
+    "authors": "Kose, Talha; Lins, Tiago F.; Wang, Jessie; O’Brien, Anna M.; Sinton, David; Frederickson, Megan E.",
+    "venue": "PLOS ONE",
+    "category": "Journal article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "David Sinton"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "checked",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "We developed an automated high-throughput experimentation system for duckweeds that enables large-scale, efficient studies of plant-microbe interactions, demonstrated by analyzing 6,000 experimental units across 2,000 treatments, and capable of scaling to 11,520 units for broader applications.",
+  "abstract": "Studying the complex web of interactions in biological communities requires large multifactorial experiments with sufficient statistical power. Automation tools reduce the time and labor associated with setup, data collection, and analysis in experiments that untangle these webs. We developed tools for high-throughput experimentation (HTE) in duckweeds, small aquatic plants that are amenable to autonomous experimental preparation and image-based phenotyping. We showcase the abilities of our HTE system in a study with 6,000 experimental units grown across 2,000 treatments. These automated tools facilitated the collection and analysis of time-resolved growth data, which revealed finer dynamics of plant-microbe interactions across environmental gradients. Altogether, our HTE system can run experiments with up to 11,520 experimental units and can be adapted for other small organisms.",
+  "hardware": [
+    {
+      "value": "We developed an automated high-throughput experimentation system for duckweeds that enables large-scale, efficient studies of plant-microbe interactions, demonstrated by analyzing 6,000 experimental units across 2,000 treatments, and capable of scaling to 11,520 units for broader applications.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "We developed tools for high-throughput experimentation (HTE) in duckweeds, small aquatic plants that are amenable to autonomous experimental preparation and image-based phenotyping.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "These automated tools facilitated the collection and analysis of time-resolved growth data, which revealed finer dynamics of plant-microbe interactions across environmental gradients.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "The researchers developed an automated system for high-throughput experimentation in duckweeds, integrating a liquid-handling robot for loading duckweeds into multi-well plates, an autonomous imaging system for time-resolved growth data, and a user interface for image-phenotyping.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "methods": [
+    {
+      "value": "The researchers developed an automated system for high-throughput experimentation in duckweeds, integrating a liquid-handling robot for loading duckweeds into multi-well plates, an autonomous imaging system for time-resolved growth data, and a user interface for image-phenotyping.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "problems": [
+    {
+      "value": "The need for large multifactorial experiments with sufficient statistical power to study complex interactions in biological communities and the challenges in adapting existing experimentation methods to novel automated systems.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "hypotheses": [
+    {
+      "value": "The development of high-throughput experimentation (HTE) tools for small aquatic plants like duckweeds can facilitate autonomous experimental preparation and image-based phenotyping, allowing for large databases necessary for AI and ML.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "evidence": [
+    {
+      "value": "The HTE system successfully ran an experiment with 6,000 duckweed units across 2,000 treatments, capturing time-resolved growth data and revealing finer dynamics of plant-microbe interactions across environmental gradients.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "conclusions": [
+    {
+      "value": "The HTE system can run experiments with up to 11,520 experimental units and can be adapted for other small organisms, substantially advancing scientific research by enabling large-scale, multifactorial studies.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "entities": [
+    {
+      "value": "Duckweeds",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Liquid-handling robot",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Autonomous imaging system",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "User interface for image-phenotyping",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "materials": [],
+  "properties": [],
+  "measurements": [],
+  "conditions": [
+    {
+      "value": "Automation tools reduce the time and labor associated with setup, data collection, and analysis in experiments that untangle these webs.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "These automated tools facilitated the collection and analysis of time-resolved growth data, which revealed finer dynamics of plant-microbe interactions across environmental gradients.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "The researchers developed an automated system for high-throughput experimentation in duckweeds, integrating a liquid-handling robot for loading duckweeds into multi-well plates, an autonomous imaging system for time-resolved growth data, and a user interface for image-phenotyping.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "The HTE system successfully ran an experiment with 6,000 duckweed units across 2,000 treatments, capturing time-resolved growth data and revealing finer dynamics of plant-microbe interactions across environmental gradients.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Duckweeds Liquid-handling robot Autonomous imaging system User interface for image-phenotyping Reduction in manual labor and time for experimental setup Collection and analysis of large datasets for AI and ML training Enhanced understanding of complex interactions in biological communities",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "mechanisms": [
+    {
+      "value": "Automated loading of duckweeds into multi-well plates",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Time-resolved growth data collection via automated imaging",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Image-phenotyping using color-thresholding",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "outcomes": [
+    {
+      "value": "Reduction in manual labor and time for experimental setup",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Collection and analysis of large datasets for AI and ML training",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Enhanced understanding of complex interactions in biological communities",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "Biology",
+    "Automation and Robotics",
+    "Environmental Remediation"
+  ],
+  "reasoning_motifs": [
+    {
+      "value": "Automation → Efficiency",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Data Collection → Knowledge Generation",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Adaptability → Broad Applicability",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "general_principles": [
+    {
+      "value": "Enhanced Throughput Enables Complex Interaction Analysis",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Automation Reduces Human Error and Increases Reproducibility",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "failure_paths": [
+    {
+      "value": "success: The development of an automated duckweed loading system to reduce manual labor in HTE. Evidence: The system achieved an average fill rate of 75% and reduced the setup time significantly.",
+      "source": "cross_sdl_phase4",
+      "confidence": 0.75,
+      "evidence": ""
+    },
+    {
+      "value": "success: The implementation of an autonomous imaging system to capture time-resolved growth data. Evidence: The system successfully tracked plant growth through time, capturing detailed growth dynamics.",
+      "source": "cross_sdl_phase4",
+      "confidence": 0.75,
+      "evidence": ""
+    },
+    {
+      "value": "success: The use of a user interface for image-phenotyping to extract specific phenotypes. Evidence: The tool smoothly extracted data in most cases, with some optimization needed for color thresholding limits.",
+      "source": "cross_sdl_phase4",
+      "confidence": 0.75,
+      "evidence": ""
+    }
+  ],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "acgold_96a2e57fb2f9",
+    "cross_sdl_reasoning_json": "/Users/sissifeng/Downloads/cross-sdl_knowledge_transfer_engine/data/reasoning/acgold_96a2e57fb2f9.json",
+    "cross_sdl_extraction_quality": 0.8,
+    "cross_sdl_notes": "The paper provides a clear structure of the problem, hypothesis, method, evidence, and conclusion, making the extraction process relatively straightforward. However, some details on the specific algorithms used for image-phenotyping and the exact nature of the optimizations would have improved the extraction quality."
+  },
+  "validation": {
+    "score": 0.8,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": true,
+      "method": true,
+      "evidence": true,
+      "entities": true,
+      "materials": false,
+      "properties": false,
+      "measurements": false,
+      "conditions": true,
+      "mechanisms": true,
+      "outcomes": true,
+      "cross_sdl_match": true
+    },
+    "missing": [
+      "materials",
+      "properties",
+      "measurements"
+    ],
+    "notes": []
+  }
+}

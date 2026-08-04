@@ -1,14 +1,28 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 
+import { AnalysisScopePanel } from "@/components/AnalysisScopePanel";
 import { EChart } from "@/components/EChart";
+import { FilterBar } from "@/components/FilterBar";
 import { TimeSlider } from "@/components/TimeSlider";
 import { getMultiGraph } from "@/lib/api";
+import { filterFromSearchParams } from "@/lib/filter";
+import { escapeHtml } from "@/lib/html";
+import {
+  multiGraphProjectionFromSearchParams,
+  multiGraphProjectionToSearchParams,
+} from "@/lib/multiGraphUrl";
+import {
+  isLatestRequest,
+  resultForScope,
+  type ScopedResult,
+} from "@/lib/scopedResult";
 import type { MultiGraphPayload } from "@/types";
 
 const TYPE_COLOR: Record<string, string> = {
   author:      "#6594B1",
   institution: "#213C51",
+  country:     "#8b5cf6",
   paper:       "#DDAED3",
   topic:       "#22c55e",
   method:      "#f59e0b",
@@ -22,6 +36,7 @@ const PARTNER_INST_COLOR   = "#6594B1";
 const TYPE_SYMBOL: Record<string, string> = {
   author:      "circle",
   institution: "roundRect",
+  country:     "hexagon",
   paper:       "diamond",
   topic:       "triangle",
   method:      "pin",
@@ -32,6 +47,7 @@ const TYPE_SYMBOL: Record<string, string> = {
 const TYPE_LABEL: Record<string, string> = {
   author:      "Authors",
   institution: "Institutions",
+  country:     "Countries",
   paper:       "Papers",
   topic:       "Topics",
   method:      "Methods",
@@ -47,16 +63,25 @@ const EDGE_COLOR: Record<string, string> = {
   cites:             "rgba(221,174,211,0.55)",
   cites_ac_core:     "rgba(236,72,153,0.65)",
   uses_method:       "rgba(245,158,11,0.45)",
-  institution_collab:"rgba(167,139,250,0.45)",
+  institution_collaboration: "rgba(167,139,250,0.45)",
+  country_collaboration: "rgba(139,92,246,0.5)",
+  published_by: "rgba(33,60,81,0.45)",
   covers_topic:      "rgba(34,197,94,0.45)",
 };
 
-const DEFAULT_NODE_TYPES = ["author", "institution", "paper", "topic"];
-const DEFAULT_EDGE_TYPES = ["authored", "affiliated_with", "belongs_to_topic"];
-const AC_ATTRIBUTED_LABELS = ["CORE_RELEVANT", "RELATED_RELEVANT"];
+const DEFAULT_NODE_TYPES = ["author", "paper"];
+const DEFAULT_EDGE_TYPES = ["authored"];
+const VIEW_PRESETS = [
+  { id: "authors", label: "Authors", nodes: ["author"], edges: ["coauthored"] },
+  { id: "institutions", label: "Institutions", nodes: ["institution"], edges: ["institution_collaboration"] },
+  { id: "countries", label: "Countries", nodes: ["country"], edges: ["country_collaboration"] },
+  { id: "author-papers", label: "Authors + papers", nodes: ["author", "paper"], edges: ["authored"] },
+  { id: "institution-papers", label: "Institutions + papers", nodes: ["institution", "paper"], edges: ["published_by"] },
+  { id: "topic-papers", label: "Topics + papers", nodes: ["topic", "paper"], edges: ["belongs_to_topic"] },
+] as const;
 
 function colorForNode(node: MultiGraphPayload["nodes"][number]): string {
-  if (node.type === "author" && node.metadata?.is_ac) return AC_AUTHOR_COLOR;
+  if (node.type === "author" && (node.metadata?.is_ac || node.metadata?.is_ac_member)) return AC_AUTHOR_COLOR;
   if (node.type === "institution" && node.metadata?.is_partner) return PARTNER_INST_COLOR;
   return TYPE_COLOR[node.type] ?? "#9ab1c4";
 }
@@ -64,6 +89,7 @@ function colorForNode(node: MultiGraphPayload["nodes"][number]): string {
 function sizeForNode(node: MultiGraphPayload["nodes"][number]): number {
   const p = (node.metadata?.paper_count as number) ?? 1;
   if (node.type === "institution") return 22 + Math.log1p(p) * 8;
+  if (node.type === "country")     return 24 + Math.log1p(p) * 8;
   if (node.type === "topic")       return 18 + Math.log1p(p) * 6;
   if (node.type === "author")      return 14 + Math.log1p(p) * 7;
   if (node.type === "paper")       return 12 + Math.log1p(p) * 4;
@@ -72,130 +98,126 @@ function sizeForNode(node: MultiGraphPayload["nodes"][number]): number {
 
 export default function MultiGraphPage() {
   const [searchParams, setSearchParams] = useSearchParams();
-  const [payload, setPayload] = useState<MultiGraphPayload | null>(null);
+  const [payloadResult, setPayloadResult] = useState<
+    ScopedResult<MultiGraphPayload> | null
+  >(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  // Opens graph in a dedicated new tab (no sidebar, full viewport)
+  const [entitySearch, setEntitySearch] = useState("");
+  const requestGeneration = useRef(0);
+  const yearFrom = Number(searchParams.get("year_from")) || 2021;
+  const yearTo = Number(searchParams.get("year_to")) || 2025;
+  const searchKey = searchParams.toString();
+  const payload = resultForScope(payloadResult, searchKey);
+  const filter = useMemo(
+    () => filterFromSearchParams(new URLSearchParams(searchKey)),
+    [searchKey],
+  );
+
+  const currentProjection = useMemo(
+    () => multiGraphProjectionFromSearchParams(
+      new URLSearchParams(searchKey),
+    ),
+    [searchKey],
+  );
+  const {
+    nodeTypes: activeNodeTypes,
+    edgeTypes: activeEdgeTypes,
+    centerId,
+    hopLimit,
+    minPapers,
+    minDegree,
+    topN,
+    excludedNodeIds,
+  } = currentProjection;
+
+  const updateProjection = useCallback((
+    patch: Partial<typeof currentProjection>,
+    replace = false,
+  ) => {
+    setSearchParams(
+      multiGraphProjectionToSearchParams(
+        new URLSearchParams(searchKey),
+        { ...currentProjection, ...patch },
+      ),
+      { replace },
+    );
+  }, [currentProjection, searchKey, setSearchParams]);
+
   const openEmbed = () => {
-    const params = new URLSearchParams({
-      year_from: String(yearFrom),
-      year_to: String(yearTo),
-    });
+    const params = multiGraphProjectionToSearchParams(
+      new URLSearchParams(searchKey),
+      currentProjection,
+    );
+    params.set("year_from", String(yearFrom));
+    params.set("year_to", String(yearTo));
     window.open(`/multi-graph/embed?${params.toString()}`, "_blank");
   };
 
-  const [activeNodeTypes, setActiveNodeTypes] = useState<string[]>(DEFAULT_NODE_TYPES);
-  const [activeEdgeTypes, setActiveEdgeTypes] = useState<string[]>(DEFAULT_EDGE_TYPES);
-  const [centerId, setCenterId] = useState<string | null>(searchParams.get("center"));
-  const [hopLimit, setHopLimit] = useState(2);
-  const [yearFrom, setYearFrom] = useState(Number(searchParams.get("year_from")) || 2021);
-  const [yearTo,   setYearTo]   = useState(Number(searchParams.get("year_to"))   || 2025);
+  const setYearRange = (nextYearFrom: number, nextYearTo: number) => {
+    const next = new URLSearchParams(searchParams);
+    next.set("year_from", String(nextYearFrom));
+    next.set("year_to", String(nextYearTo));
+    setSearchParams(next, { replace: true });
+  };
 
-  useEffect(() => {
-    const sp = new URLSearchParams(searchParams);
-    sp.set("year_from", String(yearFrom));
-    sp.set("year_to",   String(yearTo));
-    if (centerId) sp.set("center", centerId);
-    else sp.delete("center");
-    setSearchParams(sp, { replace: true });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [yearFrom, yearTo, centerId]);
-
-  // Fetch the full year range once per structural change; year filtering is done client-side
-  // so the force layout doesn't restart when the TimeSlider moves.
   const load = useCallback(async () => {
+    const generation = ++requestGeneration.current;
     setLoading(true);
     setError(null);
     try {
       const data = await getMultiGraph({
+        search: new URLSearchParams(searchKey),
         node_types: activeNodeTypes,
         edge_types: activeEdgeTypes,
-        labels: AC_ATTRIBUTED_LABELS,
-        group_by: "by_institution",
+        labels: filter.labels,
+        group_by: currentProjection.groupBy,
         center_id: centerId || undefined,
         hop_limit: hopLimit,
-        min_edge_weight: 0.3,
-        year_from: 2021,
-        year_to: 2026,
+        min_edge_weight: currentProjection.minEdgeWeight,
+        min_papers: minPapers,
+        min_degree: minDegree,
+        top_n: topN,
+        excluded_node_ids: excludedNodeIds,
+        similarity_min: currentProjection.similarityMin,
+        similarity_top_k: currentProjection.similarityTopK,
+        year_from: yearFrom,
+        year_to: yearTo,
       });
-      setPayload(data);
+      if (isLatestRequest(generation, requestGeneration.current)) {
+        setPayloadResult({ scopeKey: searchKey, payload: data });
+      }
     } catch (e) {
-      setError(e instanceof Error ? e.message : String(e));
-      setPayload(null);
+      if (isLatestRequest(generation, requestGeneration.current)) {
+        setError(e instanceof Error ? e.message : String(e));
+        setPayloadResult(null);
+      }
     } finally {
-      setLoading(false);
+      if (isLatestRequest(generation, requestGeneration.current)) setLoading(false);
     }
-  }, [activeNodeTypes, activeEdgeTypes, centerId, hopLimit]); // yearFrom/yearTo intentionally excluded
+  }, [currentProjection, filter.labels, searchKey, yearFrom, yearTo]);
 
   useEffect(() => { void load(); }, [load]);
 
-  // A stable key that changes only on structural param changes — causes EChart to remount
-  // (fresh layout) for those, while year-only changes just merge into the live chart.
-  const layoutKey = useRef(0);
-  const prevStructural = useRef({ activeNodeTypes, activeEdgeTypes, centerId, hopLimit });
-  const prev = prevStructural.current;
-  if (
-    prev.centerId !== centerId ||
-    prev.hopLimit !== hopLimit ||
-    prev.activeNodeTypes.join() !== activeNodeTypes.join() ||
-    prev.activeEdgeTypes.join() !== activeEdgeTypes.join()
-  ) {
-    layoutKey.current += 1;
-    prevStructural.current = { activeNodeTypes, activeEdgeTypes, centerId, hopLimit };
-  }
-
-  // ── Client-side filter: year + type ──────────────────────────────────────
   const option = useMemo(() => {
-    if (!payload) return null;
-
-    // Temporal reachability: start from papers in the year window, then derive
-    // authors/institutions/topics/methods that connect to those papers.
-    const paperInRange = new Set(
-      payload.nodes
-        .filter(n => n.type === "paper" &&
-          (n.metadata.year as number) >= yearFrom &&
-          (n.metadata.year as number) <= yearTo)
-        .map(n => n.id)
-    );
-
-    const yearReachable: Set<string> = new Set(paperInRange);
-    for (const e of payload.edges) {
-      if (e.type === "authored"      && paperInRange.has(e.target)) yearReachable.add(e.source);
-      if (e.type === "belongs_to_topic" && paperInRange.has(e.source)) yearReachable.add(e.target);
-      if (e.type === "uses_method"   && paperInRange.has(e.source)) yearReachable.add(e.target);
-    }
-    // Institutions reachable from visible authors
-    for (const e of payload.edges) {
-      if (e.type === "affiliated_with" && yearReachable.has(e.source)) yearReachable.add(e.target);
-    }
-
-    // Filter nodes: active type AND temporally reachable
-    const visibleNodes = payload.nodes.filter(n =>
-      activeNodeTypes.includes(n.type) && yearReachable.has(n.id)
-    );
-    const visibleIds = new Set(visibleNodes.map(n => n.id));
-
-    // Filter edges: type must be active AND both endpoints visible
-    const visibleEdges = payload.edges.filter(e =>
-      activeEdgeTypes.includes(e.type) &&
-      visibleIds.has(e.source) &&
-      visibleIds.has(e.target)
-    );
+    if (!payload || payload.nodes.length === 0) return null;
+    const visibleNodes = payload.nodes;
+    const visibleEdges = payload.edges;
 
     const data = visibleNodes.map(n => {
       const color = colorForNode(n);
       const size  = sizeForNode(n);
       const meta  = n.metadata as Record<string, unknown>;
-      const isAC  = Boolean(meta?.is_ac);
-      const isPrt = Boolean(meta?.is_partner);
+      const isAC  = Boolean(meta?.is_ac || meta?.is_ac_member);
+      const isPrt = Boolean(meta?.is_partner || meta?.has_partner_institution);
       const tooltip = [
-        `<b style="color:#213C51">${n.label}</b>`,
-        `<span style="color:#6594B1">${n.type}</span>`,
+        `<b style="color:#213C51">${escapeHtml(n.label)}</b>`,
+        `<span style="color:#6594B1">${escapeHtml(n.type)}</span>`,
         isAC  ? "AC member"        : null,
         isPrt ? "Partner institution" : null,
         meta?.paper_count ? `${meta.paper_count} papers` : null,
-        meta?.country ? String(meta.country) : null,
-        meta?.label   ? String(meta.label)   : null,
+        meta?.country ? escapeHtml(meta.country) : null,
+        meta?.label   ? escapeHtml(meta.label)   : null,
       ].filter(Boolean).join("<br>");
 
       return {
@@ -212,7 +234,7 @@ export default function MultiGraphPage() {
           shadowColor: isAC ? "rgba(33,60,81,0.5)" : isPrt ? "rgba(101,148,177,0.5)" : "rgba(0,0,0,0.15)",
         },
         label: {
-          show: ["institution", "topic"].includes(n.type) || isAC,
+          show: ["institution", "country", "topic"].includes(n.type) || isAC,
           fontSize: n.type === "institution" ? 12 : 10,
           fontWeight: isAC ? 600 : 400,
           color: "#213C51",
@@ -271,48 +293,62 @@ export default function MultiGraphPage() {
         },
       ],
     };
-  }, [payload, activeNodeTypes, activeEdgeTypes, yearFrom, yearTo]);
+  }, [payload]);
 
   const onChartEvent = useMemo(() => ({
     click: (params: unknown) => {
       const id = (params as { data?: { node_id?: string } })?.data?.node_id;
-      if (id) setCenterId(id);
+      if (id) updateProjection({ centerId: id });
     },
-  }), []);
+  }), [updateProjection]);
 
   const toggle = (kind: "node" | "edge", t: string) => {
     if (kind === "node") {
-      setActiveNodeTypes(prev => prev.includes(t) ? prev.filter(x => x !== t) : [...prev, t]);
+      const next = activeNodeTypes.includes(t)
+        ? activeNodeTypes.filter((value) => value !== t)
+        : [...activeNodeTypes, t];
+      if (next.length > 0) updateProjection({ nodeTypes: next });
     } else {
-      setActiveEdgeTypes(prev => prev.includes(t) ? prev.filter(x => x !== t) : [...prev, t]);
+      const next = activeEdgeTypes.includes(t)
+        ? activeEdgeTypes.filter((value) => value !== t)
+        : [...activeEdgeTypes, t];
+      if (next.length > 0) updateProjection({ edgeTypes: next });
     }
   };
 
-  const visibleNodeCount = useMemo(() =>
-    payload?.nodes.filter(n => activeNodeTypes.includes(n.type)).length ?? 0,
-  [payload, activeNodeTypes]);
+  const visibleNodeCount = payload?.nodes.length ?? 0;
+  const visibleEdgeCount = payload?.edges.length ?? 0;
+  const removableNodes = useMemo(() => {
+    const needle = entitySearch.trim().toLocaleLowerCase();
+    return (payload?.nodes ?? [])
+      .filter((node) => node.type === "author" || node.type === "institution")
+      .filter((node) => !needle || node.label.toLocaleLowerCase().includes(needle))
+      .sort((left, right) => (
+        Number(right.metadata?.paper_count ?? 0) - Number(left.metadata?.paper_count ?? 0)
+        || left.label.localeCompare(right.label)
+        || left.id.localeCompare(right.id)
+      ));
+  }, [entitySearch, payload]);
 
-  const visibleEdgeCount = useMemo(() => {
-    if (!payload) return 0;
-    const ids = new Set(payload.nodes.filter(n => activeNodeTypes.includes(n.type)).map(n => n.id));
-    return payload.edges.filter(e =>
-      activeEdgeTypes.includes(e.type) && ids.has(e.source) && ids.has(e.target)
-    ).length;
-  }, [payload, activeNodeTypes, activeEdgeTypes]);
+  const hideNode = (nodeId: string) => updateProjection({
+    excludedNodeIds: [...new Set([...excludedNodeIds, nodeId])],
+    centerId: centerId === nodeId ? null : centerId,
+  });
 
   return (
     <div className="v7-page">
+      <FilterBar />
       <div className="v7-hero">
         <div>
           <h1>Multi-Entity Network</h1>
           <p>
-            Algorithm-selected AC-attributed papers from the tier1+tier2 candidate pool,
-            linked to authors, institutions, and topics.
+            Filtered paper evidence linked to the selected entity and relationship
+            types, with a replayable scope and projection audit.
           </p>
         </div>
         <div className="v7-hero-actions">
           {centerId && (
-            <button className="v7-btn" onClick={() => setCenterId(null)}>
+            <button className="v7-btn" onClick={() => updateProjection({ centerId: null })}>
               ✕ Clear focus
             </button>
           )}
@@ -328,8 +364,39 @@ export default function MultiGraphPage() {
       <TimeSlider
         minYear={2021} maxYear={2026}
         yearFrom={yearFrom} yearTo={yearTo}
-        onChange={(yf, yt) => { setYearFrom(yf); setYearTo(yt); }}
+        onChange={setYearRange}
       />
+
+      <div className="v7-graph-toolbar" aria-label="Graph view presets">
+        <span className="toolbar-label">View</span>
+        {VIEW_PRESETS.map((preset) => {
+          const selected = preset.nodes.join() === activeNodeTypes.join() && preset.edges.join() === activeEdgeTypes.join();
+          return (
+            <button
+              type="button"
+              key={preset.id}
+              className={`v7-toggle ${selected ? "on" : ""}`}
+              aria-pressed={selected}
+              onClick={() => {
+                updateProjection({
+                  nodeTypes: [...preset.nodes],
+                  edgeTypes: [...preset.edges],
+                  centerId: null,
+                });
+              }}
+            >
+              {preset.label}
+            </button>
+          );
+        })}
+      </div>
+
+      <div className="v7-graph-toolbar graph-thresholds" aria-label="Network thresholds">
+        <span className="toolbar-label">Thresholds</span>
+        <label>Min papers <input type="number" min={1} max={100} value={minPapers} onChange={(event) => updateProjection({ minPapers: Math.max(1, Number(event.target.value)) }, true)} /></label>
+        <label>Min degree <input type="number" min={0} max={100} value={minDegree} onChange={(event) => updateProjection({ minDegree: Math.max(0, Number(event.target.value)) }, true)} /></label>
+        <label>Top N/type <input type="number" min={1} max={500} value={topN} onChange={(event) => updateProjection({ topN: Math.max(1, Number(event.target.value)) }, true)} /></label>
+      </div>
 
       {error && (
         <div className="v7-card" style={{ borderColor: "rgba(249,115,22,0.4)" }}>
@@ -396,7 +463,7 @@ export default function MultiGraphPage() {
             Ego graph · hops:&nbsp;
             <select
               value={hopLimit}
-              onChange={e => setHopLimit(Number(e.target.value))}
+              onChange={e => updateProjection({ hopLimit: Number(e.target.value) })}
               style={{ fontFamily: "inherit", border: "1px solid var(--border)", borderRadius: 4, padding: "1px 4px" }}
             >
               <option value={1}>1</option>
@@ -411,7 +478,11 @@ export default function MultiGraphPage() {
         <div className="v7-stat">
           <div className="label">Visible nodes</div>
           <div className="value">{visibleNodeCount}</div>
-          <div className="delta">AC-attributed CORE + RELATED</div>
+          <div className="delta">
+            {filter.labels.length === 0
+              ? "All classifications"
+              : filter.labels.map((label) => label.replace(/_/g, " ")).join(" + ")}
+          </div>
         </div>
         <div className="v7-stat">
           <div className="label">Visible edges</div>
@@ -425,25 +496,78 @@ export default function MultiGraphPage() {
         </div>
       </div>
 
-      <div className="v7-chart-frame tall" style={{ background: "#F8FAFC", borderRadius: 14, border: "1px solid var(--border)", overflow: "hidden" }}>
-        {loading && !payload ? (
-          <div style={{ padding: 16 }}>
-            <div className="v7-skel card" style={{ height: 560 }} />
+      <div className="multi-graph-workspace">
+        <aside className="multi-graph-entity-panel" aria-label="Visible author and institution nodes">
+          <div className="multi-graph-entity-head">
+            <div>
+              <span className="review-kicker">Graph cleanup</span>
+              <strong>Authors & institutions</strong>
+            </div>
+            {excludedNodeIds.length > 0 && (
+              <button
+                type="button"
+                className="ghost-button"
+                onClick={() => updateProjection({ excludedNodeIds: [] })}
+              >
+                Restore {excludedNodeIds.length}
+              </button>
+            )}
           </div>
-        ) : option ? (
-          <EChart
-            key={layoutKey.current}
-            option={option}
-            notMerge={false}
-            style={{ height: "100%", width: "100%" }}
-            onEvents={onChartEvent}
+          <input
+            type="search"
+            value={entitySearch}
+            onChange={(event) => setEntitySearch(event.target.value)}
+            placeholder="Search visible names…"
+            aria-label="Search visible authors and institutions"
           />
-        ) : (
-          <div className="v7-empty">
-            <div>No graph data. Try enabling more node or edge types.</div>
+          <p>
+            Hide outliers from this projection without changing stored evidence.
+            Hidden node IDs are retained in the URL and audit.
+          </p>
+          <div className="multi-graph-entity-list">
+            {removableNodes.map((node) => (
+              <div key={node.id}>
+                <span>
+                  <strong>{node.label}</strong>
+                  <small>{TYPE_LABEL[node.type] ?? node.type} · {Number(node.metadata?.paper_count ?? 0)} papers</small>
+                </span>
+                <button
+                  type="button"
+                  onClick={() => hideNode(node.id)}
+                  aria-label={`Hide ${node.label}`}
+                  title={`Hide ${node.label} from this graph projection`}
+                >
+                  Hide
+                </button>
+              </div>
+            ))}
+            {removableNodes.length === 0 && (
+              <div className="metric-note">No matching author or institution nodes.</div>
+            )}
           </div>
-        )}
+        </aside>
+        <div className="v7-chart-frame tall" style={{ background: "#F8FAFC", borderRadius: 14, border: "1px solid var(--border)", overflow: "hidden" }}>
+          {loading && !payload ? (
+            <div style={{ padding: 16 }}>
+              <div className="v7-skel card" style={{ height: 560 }} />
+            </div>
+          ) : option ? (
+            <EChart
+              key={`${activeNodeTypes.join("-")}:${activeEdgeTypes.join("-")}:${yearFrom}-${yearTo}:${minPapers}:${minDegree}:${topN}:${centerId ?? "all"}:${excludedNodeIds.join("-")}`}
+              option={option}
+              notMerge={false}
+              style={{ height: "100%", width: "100%" }}
+              onEvents={onChartEvent}
+            />
+          ) : (
+            <div className="v7-empty">
+              <div>No graph data. Try enabling more node or edge types.</div>
+            </div>
+          )}
+        </div>
       </div>
+
+      {payload && <AnalysisScopePanel audit={payload.audit} title="Graph evidence scope" />}
 
       {/* Legend */}
       <div className="v7-card" style={{ display: "flex", flexWrap: "wrap", gap: "1rem", padding: "12px 16px", fontSize: "0.78rem", color: "var(--muted)" }}>
@@ -451,7 +575,7 @@ export default function MultiGraphPage() {
         {Object.entries(TYPE_LABEL).map(([type, label]) => (
           <span key={type} style={{ display: "inline-flex", alignItems: "center", gap: 5 }}>
             <span style={{ width: 10, height: 10, borderRadius: type === "institution" ? 2 : "50%", background: TYPE_COLOR[type] }} />
-            {label}
+            {label} · {TYPE_SYMBOL[type] ?? "circle"}
           </span>
         ))}
         <span style={{ display: "inline-flex", alignItems: "center", gap: 5 }}>
@@ -459,6 +583,20 @@ export default function MultiGraphPage() {
           AC member (border)
         </span>
       </div>
+
+      <details className="v7-card graph-explanation">
+        <summary>How to read the graph</summary>
+        <p>
+          Author-only uses co-authorship; institution-only and country-only use
+          shared-paper collaboration. Institution + papers uses published-by,
+          author + papers uses authored-by, and topic + papers uses topic membership.
+        </p>
+        <p>
+          Node size is distinct-paper support. Min papers removes low-support
+          entities, min degree removes weakly connected entities, and Top N keeps
+          the strongest entities per type. Clicking a node creates a replayable ego graph.
+        </p>
+      </details>
 
     </div>
   );

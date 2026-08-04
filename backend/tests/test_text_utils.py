@@ -1,7 +1,6 @@
 """Unit tests for text_utils — the primitive layer of the v0.7 filter."""
 from app.services.text_utils import (
     find_term_hits,
-    is_negated,
     split_paragraphs,
     tokens,
 )

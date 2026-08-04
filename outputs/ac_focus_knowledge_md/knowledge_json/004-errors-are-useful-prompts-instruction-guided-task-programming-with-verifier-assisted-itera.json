@@ -1,0 +1,279 @@
+{
+  "paper_id": "acfocus_96fcbbcad556",
+  "title": "Errors are Useful Prompts: Instruction Guided Task Programming with Verifier-Assisted Iterative Prompting",
+  "metadata": {
+    "doi": "10.48550/arxiv.2303.14100",
+    "url": "https://arxiv.org/abs/2303.14100",
+    "year": "2023",
+    "authors": "Skreta, Marta; Yoshikawa, Naruki; Arellano-Rubach, Sebastian; Ji, Zhi; Kristensen, Lasse Bjørn; Darvish, Kourosh; Aspuru-Guzik, Alán; Shkurti, Florian; Garg, Animesh",
+    "venue": "arxiv",
+    "category": "Preprint",
+    "peer_reviewed": "Non Peer Reviewed",
+    "ac_members": [
+      "Alán Aspuru-Guzik",
+      "Kourosh Darvish (Deactivated)",
+      "Animesh Garg",
+      "Florian Shkurti"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance",
+      "AC Trainee",
+      "AC Full Member",
+      "AC Full Member",
+      "AC Governance"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "The paper introduces CLAIRIFY, a method that combines iterative prompting and program verification to guide language models in generating syntactically valid, environment-constrained robot task plans from high-level instructions, demonstrating state-of-the-art results in planning chemistry experiments and real robot execution.",
+  "abstract": "Generating low-level robot task plans from high-level natural language instructions remains a challenging problem. Although large language models have shown promising results in generating plans, the accuracy of the output remains unverified. Furthermore, the lack of domain-specific language data poses a limitation on the applicability of these models. In this paper, we propose CLAIRIFY, a novel approach that combines automatic iterative prompting with program verification to ensure programs written in data-scarce domain-specific language are syntactically valid and incorporate environment constraints. Our approach provides effective guidance to the language model on generating structured-like task plans by incorporating any errors as feedback, while the verifier ensures the syntactic accuracy of the generated plans. We demonstrate the effectiveness of CLAIRIFY in planning chemistry experiments by achieving state-of-the-art results. We also show that the generated plans can be executed on a real robot by integrating them with a task and motion planner.",
+  "hardware": [
+    {
+      "value": "The paper introduces CLAIRIFY, a method that combines iterative prompting and program verification to guide language models in generating syntactically valid, environment-constrained robot task plans from high-level instructions, demonstrating state-of-the-art results in planning chemistry experiments and real robot execution.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Generating low-level robot task plans from high-level natural language instructions remains a challenging problem.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "We also show that the generated plans can be executed on a real robot by integrating them with a task and motion planner.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Proposing CLAIRIFY, a framework that translates natural language into a domain-specific structured task plan using an automated iterative verification technique to ensure syntactic validity in the target DSL.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "methods": [
+    {
+      "value": "Proposing CLAIRIFY, a framework that translates natural language into a domain-specific structured task plan using an automated iterative verification technique to ensure syntactic validity in the target DSL.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "problems": [
+    {
+      "value": "Generating low-level robot task plans from high-level natural language instructions in data-scarce domain-specific languages remains challenging.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "hypotheses": [
+    {
+      "value": "A novel approach combining automatic iterative prompting with program verification can ensure programs written in data-scarce domain-specific languages are syntactically valid and incorporate environment constraints.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "evidence": [
+    {
+      "value": "CLAIRIFY demonstrated state-of-the-art results in planning chemistry experiments and the generated plans were executable on a real robot, integrating with a task and motion planner.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "conclusions": [
+    {
+      "value": "CLAIRIFY effectively translates natural language instructions into structured task plans for domain-specific languages with syntactic correctness and executable by real robots.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "entities": [
+    {
+      "value": "Large Language Model (LLM)",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Program Verifier",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Domain-Specific Language (DSL)",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Environment Constraints",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Task and Motion Planner (TAMP)",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "materials": [],
+  "properties": [
+    {
+      "value": "Although large language models have shown promising results in generating plans, the accuracy of the output remains unverified.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Our approach provides effective guidance to the language model on generating structured-like task plans by incorporating any errors as feedback, while the verifier ensures the syntactic accuracy of the generated plans.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [],
+  "conditions": [],
+  "mechanisms": [
+    {
+      "value": "Iterative prompting with feedback incorporation",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Program verification for syntactic accuracy",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Incorporation of environmental constraints into task planning",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Translation of DSL plans into robot executable actions",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "outcomes": [
+    {
+      "value": "Improved syntactic correctness of generated task plans",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Increased applicability of LLMs to data-scarce domains",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Executable task plans on real robots",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "State-of-the-art performance in chemistry experiment planning",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "SDL 0 - AI & Automation",
+    "Artificial Intelligence & Data Science"
+  ],
+  "reasoning_motifs": [
+    {
+      "value": "Feedback → Adaptation",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Constraint → Stability",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Translation → Execution",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "general_principles": [
+    {
+      "value": "Control Through Constraints",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Emergent Order",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "failure_paths": [
+    {
+      "value": "failure: Prompting the generator without a DSL description Evidence: The LLM was unable to generate XDL for any of the inputs from the small validation set.",
+      "source": "cross_sdl_phase4",
+      "confidence": 0.75,
+      "evidence": ""
+    }
+  ],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "acgold_e7a120b62075",
+    "cross_sdl_reasoning_json": "/Users/sissifeng/Downloads/cross-sdl_knowledge_transfer_engine/data/reasoning/acgold_e7a120b62075.json",
+    "cross_sdl_extraction_quality": 0.8,
+    "cross_sdl_notes": "The paper presents a structured approach to generating task plans from natural language instructions using a novel framework. However, some details of the iterative process and the specific challenges faced in integrating with real-world robots are not fully elaborated."
+  },
+  "validation": {
+    "score": 0.83,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": true,
+      "method": true,
+      "evidence": true,
+      "entities": true,
+      "materials": false,
+      "properties": true,
+      "measurements": false,
+      "conditions": false,
+      "mechanisms": true,
+      "outcomes": true,
+      "cross_sdl_match": true
+    },
+    "missing": [
+      "materials",
+      "measurements",
+      "conditions"
+    ],
+    "notes": []
+  }
+}

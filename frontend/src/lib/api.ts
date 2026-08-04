@@ -1,7 +1,10 @@
 import type {
   AnswerOut,
+  SqlChatOut,
+  ConversationTurn,
   PropositionHit,
   AnalyticsOverview,
+  AttributionEvidenceTree,
   DiscoveryCandidate,
   DiscoveryRunResult,
   DriftReport,
@@ -16,6 +19,8 @@ import type {
   InstitutionNetworkPayload,
   LintReport,
   MissedPaperGroup,
+  ModelEvolutionStatus,
+  FilterOptions,
   MultiGraphPayload,
   NetworkGrowthPayload,
   NetworkPayload,
@@ -42,13 +47,24 @@ import type {
   WikiPage,
 } from "@/types";
 import * as mock from "@/lib/mock";
+import {
+  canonicalFilterSearchParams,
+  paperFilterPayloadFromSearchParams,
+} from "@/lib/filter";
 
 const API_BASE = (import.meta.env.VITE_API_BASE ?? "http://localhost:8000").replace(/\/$/, "");
+const PAPER_API_BASE = (
+  import.meta.env.VITE_PAPER_API_BASE ?? API_BASE
+).replace(/\/$/, "");
 const USE_MOCK = import.meta.env.VITE_USE_MOCK === "true";
 
-async function request<T>(path: string, init?: RequestInit): Promise<T> {
+async function request<T>(
+  path: string,
+  init?: RequestInit,
+  base: string = API_BASE
+): Promise<T> {
   if (USE_MOCK) throw new Error("mock");
-  const res = await fetch(`${API_BASE}${path}`, {
+  const res = await fetch(`${base}${path}`, {
     headers: { "Content-Type": "application/json" },
     ...init,
   });
@@ -65,15 +81,25 @@ async function withMock<T>(fetcher: () => Promise<T>, fallback: T): Promise<T> {
 }
 
 export function listPapers(search?: URLSearchParams) {
-  const qs = search?.toString();
+  const qs = canonicalFilterSearchParams(search).toString();
   return withMock(
-    () => request<Paper[]>(`/papers${qs ? `?${qs}` : ""}`),
+    () =>
+      request<Paper[]>(
+        `/papers${qs ? `?${qs}` : ""}`,
+        undefined,
+        PAPER_API_BASE
+      ),
     mock.MOCK_PAPERS
   );
 }
 
+export function getPaper(paperId: string) {
+  const encodedPaperId = encodeURIComponent(paperId);
+  return request<Paper>(`/papers/${encodedPaperId}`, undefined, PAPER_API_BASE);
+}
+
 export function getSankey(search?: URLSearchParams) {
-  const params = new URLSearchParams(search);
+  const params = canonicalFilterSearchParams(search);
   params.set("top_institutions", "200");
   params.set("top_topics", "100");
   const qs = params.toString();
@@ -83,12 +109,24 @@ export function getSankey(search?: URLSearchParams) {
   );
 }
 
-export function getTimeline(by: "topic" | "label", search?: URLSearchParams) {
-  const params = new URLSearchParams(search);
+export function getTimeline(
+  by: "topic" | "label" | "institution" | "country" | "field",
+  search?: URLSearchParams,
+  topN: number = 10,
+) {
+  const params = canonicalFilterSearchParams(search);
   params.set("by", by);
+  params.set("top_n", String(topN));
   return withMock(
     () => request<TimelinePayload>(`/analytics/timeline?${params.toString()}`),
     by === "label" ? mock.MOCK_TIMELINE_BY_LABEL : mock.MOCK_TIMELINE_BY_TOPIC
+  );
+}
+
+export function getFilterOptions() {
+  return withMock(
+    () => request<FilterOptions>("/analytics/filter-options"),
+    mock.MOCK_FILTER_OPTIONS
   );
 }
 
@@ -97,7 +135,7 @@ export function getInstitutionNetwork(
   search?: URLSearchParams,
   topN: number = 200
 ) {
-  const params = new URLSearchParams(search);
+  const params = canonicalFilterSearchParams(search);
   params.set("min_papers", String(minPapers));
   params.set("top_n", String(topN));
   return withMock(
@@ -107,7 +145,7 @@ export function getInstitutionNetwork(
 }
 
 export function getOverview(search?: URLSearchParams) {
-  const qs = search?.toString();
+  const qs = canonicalFilterSearchParams(search).toString();
   return withMock(
     () => request<AnalyticsOverview>(`/analytics/overview${qs ? `?${qs}` : ""}`),
     mock.MOCK_OVERVIEW
@@ -118,6 +156,19 @@ export function getGraphExplanation(paperId: string) {
   return withMock(
     () => request<GraphExplanation>(`/papers/${paperId}/graph-explanation`),
     mock.getMockGraphExplanation(paperId)
+  );
+}
+
+export function getAttributionEvidenceTree(paperId: string) {
+  const encodedPaperId = encodeURIComponent(paperId);
+  return withMock(
+    () =>
+      request<AttributionEvidenceTree>(
+        `/papers/${encodedPaperId}/attribution-evidence-tree`,
+        undefined,
+        PAPER_API_BASE
+      ),
+    mock.getMockAttributionEvidenceTree(paperId)
   );
 }
 
@@ -167,15 +218,22 @@ export function rejectDiscoveryCandidate(
 // --- v0.6 research intelligence ---
 
 export function getImpactReport(search?: URLSearchParams) {
-  const qs = search?.toString();
+  const qs = canonicalFilterSearchParams(search).toString();
   return withMock(
     () => request<ImpactReport>(`/analytics/impact${qs ? `?${qs}` : ""}`),
     mock.MOCK_IMPACT
   );
 }
 
-export function getDriftReport(search?: URLSearchParams) {
-  const qs = search?.toString();
+export function getDriftReport(
+  search?: URLSearchParams,
+  driftThreshold: number = 0.7,
+  topNPerYear: number = 5,
+) {
+  const params = canonicalFilterSearchParams(search);
+  params.set("drift_threshold", String(driftThreshold));
+  params.set("top_n_per_year", String(topNPerYear));
+  const qs = params.toString();
   return withMock(
     () => request<DriftReport>(`/analytics/drift${qs ? `?${qs}` : ""}`),
     mock.MOCK_DRIFT
@@ -189,11 +247,24 @@ export function getMissedPaperGroups(status: string = "queued") {
   );
 }
 
+export interface ReportPolicyPayload {
+  sections?: string[];
+  backend?: string;
+  report_entity?: string;
+  report_evidence_mode?: string;
+  report_evidence_confidence_threshold?: number;
+  report_evidence_sdl_judgements?: string[];
+  report_evidence_include_model_only?: boolean;
+  report_evidence_allow_needs_fulltext?: boolean;
+  report_evidence_allow_abstract_only?: boolean;
+  report_evidence_exclude_unreviewed_broad?: boolean;
+}
+
 export function generateReport(
-  payload: { sections?: string[]; backend?: string } = {},
+  payload: ReportPolicyPayload = {},
   search?: URLSearchParams
 ) {
-  const qs = search?.toString();
+  const qs = canonicalFilterSearchParams(search).toString();
   return withMock(
     () => request<ReportResult>(`/analytics/report${qs ? `?${qs}` : ""}`, {
       method: "POST",
@@ -205,11 +276,23 @@ export function generateReport(
 
 export function getCoauthorNetwork(
   onlyRelevant: boolean,
-  options: { importanceProfile?: string; importanceWeights?: Record<string, number> } = {}
+  options: {
+    importanceProfile?: string;
+    importanceWeights?: Record<string, number>;
+    minPapers?: number;
+    nodeSearch?: string;
+    nodeInstitutionIds?: string[];
+    search?: URLSearchParams;
+  } = {}
 ) {
-  const params = new URLSearchParams();
+  const params = canonicalFilterSearchParams(options.search);
   params.set("only_relevant", String(onlyRelevant));
   params.set("top_n_authors", "200");
+  if (options.minPapers != null) params.set("min_papers", String(options.minPapers));
+  if (options.nodeSearch) params.set("node_search", options.nodeSearch);
+  (options.nodeInstitutionIds ?? []).forEach((id) => {
+    params.append("node_institution_ids", id);
+  });
   if (options.importanceProfile) {
     params.set("importance_profile", options.importanceProfile);
   }
@@ -227,7 +310,17 @@ export function getCoauthorNetwork(
 
 export function submitReview(
   paperId: string,
-  payload: { human_label: string; reviewer?: string; notes?: string }
+  payload: {
+    human_label?: string;
+    sdl_judgement?: string;
+    ac_relevance_judgement?: string;
+    ai_for_science_judgement?: string;
+    review_status?: string;
+    evidence_level?: string;
+    judgement_basis?: string;
+    reviewer?: string;
+    notes?: string;
+  }
 ) {
   return withMock(
     () => request(`/reviews/${paperId}`, {
@@ -247,10 +340,17 @@ export function getEvalReport(k: number = 5) {
 
 // --- v0.7 review loop / pipeline ---
 
-export function getReviewQueue(params: { limit?: number; offset?: number } = {}) {
+export function getReviewQueue(params: {
+  limit?: number;
+  offset?: number;
+  assignee?: string;
+  unassigned_only?: boolean;
+} = {}) {
   const search = new URLSearchParams();
   if (params.limit != null) search.set("limit", String(params.limit));
   if (params.offset != null) search.set("offset", String(params.offset));
+  if (params.assignee) search.set("assignee", params.assignee);
+  if (params.unassigned_only) search.set("unassigned_only", "true");
   const qs = search.toString();
   const { limit = 20, offset = 0 } = params;
   return withMock(
@@ -266,10 +366,35 @@ export function getReviewQueueNext() {
   );
 }
 
-export function getReviewQueueSize() {
+export function getReviewQueueSize(params: {
+  assignee?: string;
+  unassigned_only?: boolean;
+} = {}) {
+  const search = new URLSearchParams();
+  if (params.assignee) search.set("assignee", params.assignee);
+  if (params.unassigned_only) search.set("unassigned_only", "true");
+  const qs = search.toString();
   return withMock(
-    () => request<{ count: number }>("/reviews/queue/size"),
+    () => request<{ count: number }>(`/reviews/queue/size${qs ? `?${qs}` : ""}`),
     { count: mock.MOCK_QUEUE.length }
+  );
+}
+
+export function updateReviewAssignment(
+  paperId: string,
+  payload: { assignee?: string | null; assigned_by?: string },
+) {
+  return withMock(
+    () => request<QueueItem>(`/reviews/${paperId}/assignment`, {
+      method: "PUT",
+      body: JSON.stringify(payload),
+    }),
+    {
+      ...(mock.MOCK_QUEUE.find((q) => q.paper_id === paperId) ?? mock.MOCK_QUEUE[0]),
+      review_assignee: payload.assignee ?? null,
+      review_assigned_by: payload.assignee ? payload.assigned_by ?? payload.assignee : null,
+      review_assigned_at: payload.assignee ? new Date().toISOString() : null,
+    },
   );
 }
 
@@ -323,6 +448,13 @@ export function runPipeline(payload: PipelineRunInput = {}) {
   );
 }
 
+export function getModelEvolutionStatus() {
+  return withMock(
+    () => request<ModelEvolutionStatus>("/model-evolution/status"),
+    mock.MOCK_MODEL_EVOLUTION_STATUS
+  );
+}
+
 export function getEvidenceGaps() {
   return withMock(
     () => request<EvidenceGapReport>("/analytics/evidence-gaps"),
@@ -352,6 +484,7 @@ export function getPeopleGrid() {
 }
 
 export interface MultiGraphParams {
+  search?: URLSearchParams;
   node_types?: string[];
   edge_types?: string[];
   group_by?: string;
@@ -362,13 +495,22 @@ export interface MultiGraphParams {
   labels?: string[];
   ac_author_only?: boolean;
   min_edge_weight?: number;
+  min_papers?: number;
+  min_degree?: number;
+  top_n?: number;
+  similarity_min?: number;
+  similarity_top_k?: number;
+  excluded_node_ids?: string[];
 }
 
 export function getMultiGraph(params: MultiGraphParams = {}) {
-  const sp = new URLSearchParams();
+  const sp = canonicalFilterSearchParams(params.search);
   (params.node_types ?? []).forEach((t) => sp.append("node_types", t));
   (params.edge_types ?? []).forEach((t) => sp.append("edge_types", t));
-  (params.labels ?? []).forEach((label) => sp.append("labels", label));
+  if (params.labels) {
+    sp.delete("labels");
+    params.labels.forEach((label) => sp.append("labels", label));
+  }
   if (params.group_by) sp.set("group_by", params.group_by);
   if (params.center_id) sp.set("center_id", params.center_id);
   if (params.hop_limit != null) sp.set("hop_limit", String(params.hop_limit));
@@ -376,19 +518,30 @@ export function getMultiGraph(params: MultiGraphParams = {}) {
   if (params.year_to != null) sp.set("year_to", String(params.year_to));
   if (params.ac_author_only != null) sp.set("ac_author_only", String(params.ac_author_only));
   if (params.min_edge_weight != null) sp.set("min_edge_weight", String(params.min_edge_weight));
+  if (params.min_papers != null) sp.set("min_papers", String(params.min_papers));
+  if (params.min_degree != null) sp.set("min_degree", String(params.min_degree));
+  if (params.top_n != null) sp.set("top_n", String(params.top_n));
+  if (params.similarity_min != null) sp.set("similarity_min", String(params.similarity_min));
+  if (params.similarity_top_k != null) sp.set("similarity_top_k", String(params.similarity_top_k));
+  (params.excluded_node_ids ?? []).forEach((id) => sp.append("excluded_node_ids", id));
   const qs = sp.toString();
   if (USE_MOCK) return Promise.resolve(mock.getMockMultiGraph(params));
   return request<MultiGraphPayload>(`/analytics/multi-graph${qs ? `?${qs}` : ""}`);
 }
 
-export function getGeographic(params: { year_from?: number; year_to?: number } = {}) {
-  const sp = new URLSearchParams();
-  if (params.year_from != null) sp.set("year_from", String(params.year_from));
-  if (params.year_to != null) sp.set("year_to", String(params.year_to));
+export function getGeographic(
+  search?: URLSearchParams,
+  center?: { type: "country" | "institution"; id: string } | null,
+) {
+  const sp = canonicalFilterSearchParams(search);
+  if (center) {
+    sp.set("center_type", center.type);
+    sp.set("center_id", center.id);
+  }
   const qs = sp.toString();
   return withMock(
     () => request<GeographicReport>(`/analytics/geographic${qs ? `?${qs}` : ""}`),
-    mock.MOCK_GEOGRAPHIC
+    mock.getMockGeographic(center)
   );
 }
 
@@ -596,11 +749,16 @@ export function retrieveAnswer(params: {
   year_from?: number | null;
   year_to?: number | null;
   paper_ids?: string[] | null;
-}) {
+  mode?: "iterative" | "recursive" | "adaptive";
+  agentic_search?: boolean;
+  conversation?: ConversationTurn[];
+  page_context?: string | null;
+}, signal?: AbortSignal) {
   return withMock(
     () => request<AnswerOut>("/retrieve/answer", {
       method: "POST",
       body: JSON.stringify(params),
+      signal,
     }),
     {
       answer: "(Mock) No backend connected. Set VITE_USE_MOCK=false to query the real API.",
@@ -613,9 +771,62 @@ export function retrieveAnswer(params: {
       source_precision: 0,
       missing_evidence: [],
       should_retry: false,
+      retrieval_query: params.query,
+      conversation_turns_used: params.conversation?.length ?? 0,
+      page_context: params.page_context ?? null,
       module_trace: [],
       execution_mode: "adaptive",
     } as AnswerOut,
+  );
+}
+
+export function retrieveSqlChat(params: {
+  query: string;
+  paper_ids?: string[] | null;
+  conversation?: ConversationTurn[];
+  page_context?: string | null;
+}, search?: URLSearchParams, signal?: AbortSignal) {
+  return withMock(
+    () => request<SqlChatOut>("/retrieve/sql-chat", {
+      method: "POST",
+      body: JSON.stringify({
+        ...params,
+        filters: paperFilterPayloadFromSearchParams(search),
+      }),
+      signal,
+    }),
+    {
+      answer: "(Mock) The strict SQL chat requires a backend connection.",
+      model: "deterministic-text-to-sql",
+      intent: "count_papers",
+      planner: "deterministic-template.v2",
+      resolved_query: params.query,
+      sql: "SELECT count(DISTINCT papers.id) AS paper_count FROM papers",
+      parameters: {},
+      rows: [{ paper_count: 0 }],
+      audit: {
+        planner: "deterministic-template.v2",
+        answer_renderer: "deterministic-sql-answer.v1",
+        read_only: true,
+        llm_used: false,
+        allowed_intents: ["count_papers"],
+        allowed_tables: ["papers"],
+        intent: "count_papers",
+        group_by: null,
+        limit: 10,
+        query_constraints: {},
+        page_filter: paperFilterPayloadFromSearchParams(search),
+        page_filter_fingerprint: "mock-filter-fingerprint",
+        scope_paper_count: 0,
+        scope_paper_set_sha256: "mock-paper-set-sha256",
+        scope_paper_set_encoding: "paper-id-set-json.v1",
+        statement_sha256: "mock-statement-sha256",
+        parameter_binding: "sqlalchemy-bound-parameters",
+        row_count: 1,
+      },
+      conversation_turns_used: 0,
+      page_context: params.page_context ?? null,
+    },
   );
 }
 

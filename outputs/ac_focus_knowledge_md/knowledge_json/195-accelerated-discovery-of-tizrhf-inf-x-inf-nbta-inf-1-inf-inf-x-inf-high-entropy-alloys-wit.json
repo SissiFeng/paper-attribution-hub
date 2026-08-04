@@ -1,0 +1,162 @@
+{
+  "paper_id": "acfocus_e3744ba8f8c8",
+  "title": "Accelerated Discovery of (TiZrHf)<inf>x</inf>(NbTa)<inf>1−</inf><inf>x</inf> High-Entropy Alloys With Superior Thermal Stability and a New Crystallization Mechanism",
+  "metadata": {
+    "doi": "10.1002/adma.202403632",
+    "url": "https://advanced.onlinelibrary.wiley.com/doi/full/10.1002/adma.202403632",
+    "year": "2024",
+    "authors": "Cheng C, Feng R, Lyu T, Zou Y",
+    "venue": "Advanced Materials",
+    "category": "Journal article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Yu Zou"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member"
+    ],
+    "flags": {
+      "acknowledges_ac": "checked",
+      "highly_relevant": "checked",
+      "high_impact": "checked"
+    }
+  },
+  "source_summary": "This study develops a combinatorial approach to rapidly discover nanocrystalline (nc) (TiZrHf)x(NbTa)1−x alloys with distinct thermal stability, revealing how varying compositions influence phase transitions and grain growth upon annealing, thereby advancing understanding of thermal stability and crystallization in high-entropy alloy systems.",
+  "abstract": "Nanocrystalline (nc) metals are generally strong yet thermally unstable, rendering them difficult to process and unsuitable for use, particularly at elevated temperatures. Nc multicomponent and high-entropy alloys (HEAs) are found to offer enhanced thermal stability but only in a few empirically discovered systems out of a vast compositional space. In response, this work develops a combinatorial strategy to accelerate the discovery of nc-(TiZrHf)x(NbTa)1−x alloy library with distinct thermal stability, in terms of phases and grain sizes. Based on synchrotron X-ray diffraction and electron microscopy characterizations, a phase transition is observed from amorphous–crystalline nanocomposites to a body-centered cubic (bcc) phase upon annealing. With increased NbTa content (decreased x value), the system tends to achieve thermally stable dual bcc phases upon annealing; in contrast, alloys with increased TiZrHf content (x > 0.6) maintain a single-composition nanocomposite state, impeding crystallization and grain growth. This investigation not only broadens the understanding of thermal stability but also delves into the onset of crystallization in HEA systems.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "This study develops a combinatorial approach to rapidly discover nanocrystalline (nc) (TiZrHf)x(NbTa)1−x alloys with distinct thermal stability, revealing how varying compositions influence phase transitions and grain growth upon annealing, thereby advancing understanding of thermal stability and crystallization in high-entropy alloy systems.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Automation and Robotics",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Materials Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "Accelerated Discovery of (TiZrHf)<inf>x</inf>(NbTa)<inf>1−</inf><inf>x</inf> High-Entropy Alloys With Superior Thermal Stability and a New Crystallization Mechanism This study develops a combinatorial approach to rapidly discover nanocrystalline (nc) (TiZrHf)x(NbTa)1−x alloys with distinct thermal stability, revealing how varying compositions influence phase transitions and grain growth upon annealing, thereby advancing understanding of thermal stability and crystallization in high-entropy alloy systems.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Nc multicomponent and high-entropy alloys (HEAs) are found to offer enhanced thermal stability but only in a few empirically discovered systems out of a vast compositional space.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "In response, this work develops a combinatorial strategy to accelerate the discovery of nc-(TiZrHf)x(NbTa)1−x alloy library with distinct thermal stability, in terms of phases and grain sizes.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [
+    {
+      "value": "Accelerated Discovery of (TiZrHf)<inf>x</inf>(NbTa)<inf>1−</inf><inf>x</inf> High-Entropy Alloys With Superior Thermal Stability and a New Crystallization Mechanism This study develops a combinatorial approach to rapidly discover nanocrystalline (nc) (TiZrHf)x(NbTa)1−x alloys with distinct thermal stability, revealing how varying compositions influence phase transitions and grain growth upon annealing, thereby advancing understanding of thermal stability and crystallization in high-entropy alloy systems.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Nc multicomponent and high-entropy alloys (HEAs) are found to offer enhanced thermal stability but only in a few empirically discovered systems out of a vast compositional space.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "In response, this work develops a combinatorial strategy to accelerate the discovery of nc-(TiZrHf)x(NbTa)1−x alloy library with distinct thermal stability, in terms of phases and grain sizes.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "This investigation not only broadens the understanding of thermal stability but also delves into the onset of crystallization in HEA systems.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [
+    {
+      "value": "Based on synchrotron X-ray diffraction and electron microscopy characterizations, a phase transition is observed from amorphous–crystalline nanocomposites to a body-centered cubic (bcc) phase upon annealing.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "conditions": [],
+  "mechanisms": [],
+  "outcomes": [
+    {
+      "value": "Advanced Materials",
+      "source": "csv_applied_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "Automation and Robotics",
+    "Materials Science",
+    "Advanced Materials"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.63,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": true,
+      "properties": true,
+      "measurements": true,
+      "conditions": false,
+      "mechanisms": false,
+      "outcomes": true,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "conditions",
+      "mechanisms",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

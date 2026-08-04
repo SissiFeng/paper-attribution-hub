@@ -1,21 +1,29 @@
-"""Quantitative evaluation against a hand-labeled gold standard.
+"""Quantitative evaluation against a versioned reference-label dataset.
 
 Loads `data/eval_labels.csv`, compares against the latest classifier labels,
 and reports per-label precision / recall / F1, a confusion matrix, and a
 top-k evidence-recall figure for CORE/RELATED papers (does the top-k retrieval
 hit at least one of the chunks the evidence extractor flagged as funding /
-methodology?).
+methodology?). The dataset metadata determines which scientific claims those
+metrics support; AC reporting labels are not presented as strict SDL truth.
 """
 from __future__ import annotations
 
-from collections import Counter
 from dataclasses import dataclass, field
 from pathlib import Path
 
-import pandas as pd
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
+from app.config import settings
+from app.label_dataset import (
+    EvaluationDatasetRole,
+    combine_label_dataset_metadata,
+    evaluation_dataset_identity,
+    evaluation_dataset_role,
+    load_label_dataset,
+    load_label_dataset_metadata,
+)
 from app.models import Paper, PaperEvidence
 
 
@@ -39,16 +47,25 @@ class EvalReport:
     evidence_recall_at_k: float | None = None
     k: int = 5
     n_evaluated: int = 0
+    dataset_role: EvaluationDatasetRole = "diagnostic"
+    dataset_id: str = "in_memory"
+    dataset_hash: str | None = None
+    includes_silver: bool = False
+    label_scope: str = "UNSPECIFIED"
+    annotation_sources: list[str] = field(default_factory=list)
+    evidence_levels: list[str] = field(default_factory=list)
+    allowed_claim: str = (
+        "Label scope is unspecified; metrics are diagnostic only."
+    )
 
 
 def load_gold_labels(path: Path, silver_path: Path | None = None) -> dict[str, str]:
-    """Load gold labels; optionally merge silver labels (hand labels win)."""
-    df = pd.read_csv(path)
-    gold = {str(row["paper_id"]).strip(): str(row["gold_label"]).strip() for _, row in df.iterrows()}
+    """Load reference labels; optionally merge silver labels (hand labels win)."""
+    gold = load_label_dataset(path, role="frozen_holdout")
     if silver_path is not None:
-        silver = pd.read_csv(silver_path)
-        for _, row in silver.iterrows():
-            gold.setdefault(str(row["paper_id"]).strip(), str(row["gold_label"]).strip())
+        silver = load_label_dataset(silver_path, role="diagnostic_silver")
+        for paper_id, label in silver.items():
+            gold.setdefault(paper_id, label)
     return gold
 
 
@@ -109,7 +126,7 @@ def evidence_recall_at_k(
     queries: dict[str, str] | None = None,
     k: int = 5,
 ) -> float | None:
-    """For papers labeled CORE_RELEVANT or RELATED_RELEVANT in the gold set,
+    """For papers labeled CORE_RELEVANT or RELATED_RELEVANT in the reference set,
     check whether top-k retrieval surfaces a chunk that the evidence extractor
     flagged as `funding_acknowledgement` or `sdl_methodology`."""
     from app.services.embedding_service import get_embedder
@@ -171,16 +188,49 @@ def run_evaluation(
     k: int = 5,
     silver_labels_path: Path | None = None,
 ) -> EvalReport:
+    _, dataset_hash_before = evaluation_dataset_identity(
+        eval_labels_path,
+        silver_path=silver_labels_path,
+    )
     gold = load_gold_labels(eval_labels_path, silver_path=silver_labels_path)
     papers = list(session.execute(select(Paper)).scalars())
     pred = {p.id: p.classification.label for p in papers if p.classification}
     report = compute_metrics(pred, gold)
     report.k = k
+    report.includes_silver = silver_labels_path is not None
+    report.dataset_role = evaluation_dataset_role(
+        eval_labels_path,
+        configured_holdout_path=settings.eval_labels_csv,
+        includes_silver=report.includes_silver,
+    )
+    metadata = load_label_dataset_metadata(eval_labels_path)
+    if silver_labels_path is not None:
+        metadata = combine_label_dataset_metadata(
+            metadata,
+            load_label_dataset_metadata(silver_labels_path),
+        )
+    report.label_scope = metadata.label_scope
+    report.annotation_sources = list(metadata.annotation_sources)
+    report.evidence_levels = list(metadata.evidence_levels)
+    report.allowed_claim = metadata.allowed_claim
     report.evidence_recall_at_k = evidence_recall_at_k(session, gold, k=k)
+    dataset_id_after, dataset_hash_after = evaluation_dataset_identity(
+        eval_labels_path,
+        silver_path=silver_labels_path,
+    )
+    if dataset_hash_before != dataset_hash_after:
+        raise RuntimeError("evaluation dataset changed while metrics were running")
+    report.dataset_id = dataset_id_after
+    report.dataset_hash = dataset_hash_after
     return report
 
 
 def print_report(report: EvalReport) -> None:
+    print(
+        f"Dataset: {report.dataset_id} | role: {report.dataset_role}"
+        + (" (includes silver labels)" if report.includes_silver else "")
+    )
+    print(f"Label scope: {report.label_scope} | claim: {report.allowed_claim}")
     print(f"Evaluated {report.n_evaluated} papers")
     print(
         f"Accuracy: {report.accuracy:.3f} | macro P/R/F1: "
@@ -194,12 +244,12 @@ def print_report(report: EvalReport) -> None:
             f"{m.label:<20} {m.precision:>6.3f} {m.recall:>6.3f} "
             f"{m.f1:>6.3f} {m.support:>8d}"
         )
-    print("\nConfusion (rows=gold, cols=pred):")
+    print("\nConfusion (rows=reference, cols=prediction):")
     labels = list(report.confusion.keys())
-    print(" " * 22 + " ".join(f"{l[:14]:>14}" for l in labels))
+    print(" " * 22 + " ".join(f"{label[:14]:>14}" for label in labels))
     for gold_label in labels:
         row = report.confusion[gold_label]
         print(
             f"{gold_label[:20]:<20}  "
-            + " ".join(f"{row.get(l, 0):>14d}" for l in labels)
+            + " ".join(f"{row.get(label, 0):>14d}" for label in labels)
         )

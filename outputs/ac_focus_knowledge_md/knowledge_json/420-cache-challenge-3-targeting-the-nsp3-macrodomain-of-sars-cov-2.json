@@ -1,0 +1,145 @@
+{
+  "paper_id": "acfocus_5d7d73aee225",
+  "title": "CACHE Challenge #3: Targeting the Nsp3 Macrodomain of SARS-CoV-2",
+  "metadata": {
+    "doi": "10.26434/chemrxiv-2025-d1v7v",
+    "url": "https://chemrxiv.org/doi/full/10.26434/chemrxiv-2025-d1v7v",
+    "year": "2025",
+    "authors": "O. Herasymenko; M. Silva; G. J. Correy; A. A. A. A. Abu-Saleh; S. Ackloo; C. Arrowsmith; F. Ban; H. Beck; K. P. Bishop; H. J. Bohórquez; A. Bolotokova; M. Breznik; I. Chau; Y. Chen; A. Cherkasov; W. Dehaen; D. Della Corte; K. Denzinger; K. Edfeldt; A. Edwards; D. Fayne; F. Gentile; E. Gibson; O. Gokdemir; J. J. Irwin; A. Gunnarsson; J. Günther; J. H. Jensen; R. J. Harding; A. Hillisch; L. Hoffer; A. Hogner; A. Hutchinson; S. Kandwal; A. Karlova; D. Kozakov; J. Lee; S. Lee; U. Lessel; S. Liu; X. Liu; P. Loppnau; J. Meiler; R. Moretti; Y. S. Moroz; C. Muvva; T. I. Oprea; B. Paige; A. Pandit; K. Park; G. Poda; M. V. Protopopov; V. Pütter; R. Ravichandran; D. Rognan; E. Rosta; Y. Sabnis; T. Scott; A. Seitova; P. Sharma; F. Sindt; M. Song; C. Steinmann; R. Stevens; V. Talagayev; V. V. Tararina; O. Tarkhanova; D. Tingey; J. Trant; D. Treleaven; A. Tropsha; P. Walters; J. Wells; Y. Westermaier; G. Wolber; L. Wortmann; S. Zheng; J. S. Fraser; M. Schapira",
+    "venue": "ChemRxiv",
+    "category": "Preprint",
+    "peer_reviewed": "Non Peer Reviewed",
+    "ac_members": [
+      "Matthieu Schapira"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "The third CACHE challenge demonstrated that diverse computational design strategies, including physics-based and machine learning approaches, can efficiently identify chemically novel ligands for SARS-CoV-2 Nsp3-Mac1, though the most effective hits often resemble known compounds, providing new insights for antiviral development.",
+  "abstract": "The third Critical Assessment of Computational Hit-finding Experiments (CACHE) challenged computational teams to identify chemically novel ligands targeting the macrodomain 1 of SARS-CoV-2 Nsp3, a promising coronavirus drug target. Twenty-three groups deployed diverse design strategies to collectively select 1739 ligand candidates. While over 85% of the designed molecules were chemically novel, the best experimentally confirmed hits were structurally similar to previously published compounds. Confirming a trend observed in CACHE #1 and #2, two of the best-performing workflows used compounds selected by physics-based computational screening methods to train machine learning models able to rapidly screen large chemical libraries, while four others used exclusively physics-based approaches. Three pharmacophore searches and one fragment growing strategy were also part of the seven winning workflows. While active molecules discovered by CACHE #3 participants largely mimicked the adenine ring of the endogenous substrate, ADP-ribose, preserving the canonical chemotype commonly observed in previously reported Nsp3-Mac1 ligands, they still provide novel structure-activity relationship insights that may inform the development of future antivirals. Collectively, these results show that multiple molecular design strategies can efficiently converge on similar effective molecules.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "The third CACHE challenge demonstrated that diverse computational design strategies, including physics-based and machine learning approaches, can efficiently identify chemically novel ligands for SARS-CoV-2 Nsp3-Mac1, though the most effective hits often resemble known compounds, providing new insights for antiviral development.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Biochemistry",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Computational Biology",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Biology",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "While over 85% of the designed molecules were chemically novel, the best experimentally confirmed hits were structurally similar to previously published compounds.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "While active molecules discovered by CACHE #3 participants largely mimicked the adenine ring of the endogenous substrate, ADP-ribose, preserving the canonical chemotype commonly observed in previously reported Nsp3-Mac1 ligands, they still provide novel structure-activity relationship insights that may inform the development of future antivirals.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Collectively, these results show that multiple molecular design strategies can efficiently converge on similar effective molecules.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [
+    {
+      "value": "While active molecules discovered by CACHE #3 participants largely mimicked the adenine ring of the endogenous substrate, ADP-ribose, preserving the canonical chemotype commonly observed in previously reported Nsp3-Mac1 ligands, they still provide novel structure-activity relationship insights that may inform the development of future antivirals.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [],
+  "conditions": [],
+  "mechanisms": [],
+  "outcomes": [
+    {
+      "value": "Therapeutics",
+      "source": "csv_applied_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "Biochemistry",
+    "Computational Biology",
+    "Biology",
+    "Therapeutics"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.57,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": true,
+      "properties": true,
+      "measurements": false,
+      "conditions": false,
+      "mechanisms": false,
+      "outcomes": true,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "measurements",
+      "conditions",
+      "mechanisms",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

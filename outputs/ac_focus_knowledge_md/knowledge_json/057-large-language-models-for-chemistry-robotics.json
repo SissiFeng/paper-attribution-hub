@@ -1,0 +1,155 @@
+{
+  "paper_id": "acfocus_b4fb4aabd446",
+  "title": "Large language models for chemistry robotics",
+  "metadata": {
+    "doi": "10.1007/s10514-023-10136-2",
+    "url": "https://link.springer.com/article/10.1007/s10514-023-10136-2",
+    "year": "2023",
+    "authors": "Naruki Yoshikawa, Marta Skreta, Kourosh Darvish, Sebastian Arellano-Rubach, Zhi Ji, Lasse Bjørn Kristensen, Andrew Zou Li, Yuchi Zhao, Haoping Xu, Artur Kuramshin, Alán Aspuru-Guzik, Florian Shkurti, Animesh Garg",
+    "venue": "Springer Nature",
+    "category": "Journal article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Alán Aspuru-Guzik",
+      "Kourosh Darvish (Deactivated)",
+      "Animesh Garg",
+      "Florian Shkurti"
+    ],
+    "ac_programs": [
+      "AC PDF_Florian Shkurti_2022-23",
+      "Core Development Grants_Florian Shkurti_2023-24"
+    ],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance",
+      "AC Trainee",
+      "AC Full Member",
+      "AC Full Member",
+      "AC Governance"
+    ],
+    "flags": {
+      "acknowledges_ac": "checked",
+      "highly_relevant": "checked",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "This paper introduces CLAIRify, a system that uses large language models and task/motion planning to translate natural language chemistry experiment instructions into robot-executable plans, enabling autonomous, safe, and effective execution of complex lab tasks by robots.",
+  "abstract": "This paper proposes an approach to automate chemistry experiments using robots by translating natural language instructions\ninto robot-executable plans, using large language models together with task and motion planning. Adding natural language\ninterfaces to autonomous chemistry experiment systems lowers the barrier to using complicated robotics systems and increases\nutility for non-expert users, but translating natural language experiment descriptions from users into low-level robotics languages\nis nontrivial. Furthermore, while recent advances have used large language models to generate task plans, reliably\nexecuting those plans in the real world by an embodied agent remains challenging. To enable autonomous chemistry experiments\nand alleviate the workload of chemists, robots must interpret natural language commands, perceive the workspace,\nautonomously plan multi-step actions and motions, consider safety precautions, and interact with various laboratory equipment.\nOur approach, CLAIRify, combines automatic iterative prompting with program verification to ensure syntactically\nvalid programs in a data-scarce domain-specific language that incorporates environmental constraints. The generated plan is\nexecuted through solving a constrained task and motion planning problem using PDDLStream solvers to prevent spillages of\nliquids as well as collisions in chemistry labs.We demonstrate the effectiveness of our approach in planning chemistry experiments,\nwith plans successfully executed on a real robot using a repertoire of robot skills and lab tools. Specifically,we showcase\nthe utility of our framework in pouring skills for various materials and two fundamental chemical experiments for materials\nsynthesis: solubility and recrystallization. Further details about CLAIRify can be found at https://ac-rad.github.io/clairify/.",
+  "hardware": [
+    {
+      "value": "This paper introduces CLAIRify, a system that uses large language models and task/motion planning to translate natural language chemistry experiment instructions into robot-executable plans, enabling autonomous, safe, and effective execution of complex lab tasks by robots.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "This paper proposes an approach to automate chemistry experiments using robots by translating natural language instructions\ninto robot-executable plans, using large language models together with task and motion planning.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Adding natural language\ninterfaces to autonomous chemistry experiment systems lowers the barrier to using complicated robotics systems and increases\nutility for non-expert users, but translating natural language experiment descriptions from users into low-level robotics languages\nis nontrivial.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "To enable autonomous chemistry experiments\nand alleviate the workload of chemists, robots must interpret natural language commands, perceive the workspace,\nautonomously plan multi-step actions and motions, consider safety precautions, and interact with various laboratory equipment.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "methods": [
+    {
+      "value": "This paper introduces CLAIRify, a system that uses large language models and task/motion planning to translate natural language chemistry experiment instructions into robot-executable plans, enabling autonomous, safe, and effective execution of complex lab tasks by robots.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Artificial Intelligence & Data Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Automation and Robotics",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Chemistry",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "Specifically,we showcase\nthe utility of our framework in pouring skills for various materials and two fundamental chemical experiments for materials\nsynthesis: solubility and recrystallization.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [],
+  "measurements": [],
+  "conditions": [],
+  "mechanisms": [],
+  "outcomes": [],
+  "sdl_tags": [
+    "SDL 0 - AI & Automation",
+    "Artificial Intelligence & Data Science",
+    "Automation and Robotics",
+    "Chemistry"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.54,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": true,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": true,
+      "properties": false,
+      "measurements": false,
+      "conditions": false,
+      "mechanisms": false,
+      "outcomes": false,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "evidence",
+      "properties",
+      "measurements",
+      "conditions",
+      "mechanisms",
+      "outcomes",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only."
+    ]
+  }
+}

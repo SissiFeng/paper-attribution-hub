@@ -17,8 +17,34 @@ def test_classification_autoresearch_reports_gold_gates(fulltext_seeded_session)
 
     assert report["target"] == "classification"
     assert report["human_eval"]["n_evaluated"] == 11
+    assert report["human_eval"]["dataset_role"] == "frozen_holdout"
+    assert len(report["human_eval"]["dataset_hash"]) == 64
+    assert any(g["name"] == "frozen_holdout_dataset" for g in report["gates"])
     assert any(g["name"] == "human_gold_accuracy_100" for g in report["gates"])
     assert "ac_publications_eval" in report
+
+
+def test_classification_autoresearch_rejects_custom_diagnostic_dataset(
+    fulltext_seeded_session, tmp_path
+):
+    from app.services.relevance_classifier import classify_all
+
+    classify_all(fulltext_seeded_session)
+    custom_labels = tmp_path / "custom_labels.csv"
+    custom_labels.write_bytes(settings.eval_labels_csv.read_bytes())
+
+    report = run_classification_autoresearch(
+        fulltext_seeded_session,
+        eval_labels_path=custom_labels,
+        k=5,
+    )
+
+    role_gate = next(
+        gate for gate in report["gates"] if gate["name"] == "frozen_holdout_dataset"
+    )
+    assert report["human_eval"]["dataset_role"] == "diagnostic"
+    assert role_gate["status"] == "fail"
+    assert report["accepted"] is False
 
 
 def test_rag_autoresearch_scores_evidence_retrieval(fulltext_seeded_session):

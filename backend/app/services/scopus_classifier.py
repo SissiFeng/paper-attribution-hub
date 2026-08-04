@@ -27,6 +27,7 @@ Review priority ordering (descending)
 5. Tier 2 with complete SDL architecture (all 3 components)
 6. Duplicates / metadata conflicts
 """
+
 from __future__ import annotations
 
 import re
@@ -38,7 +39,7 @@ from typing import TYPE_CHECKING
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
-from app.services.relevance_classifier import (
+from app.classification_labels import (
     LABEL_ADJACENT,
     LABEL_CORE,
     LABEL_EXCLUDE,
@@ -49,7 +50,7 @@ from app.services.relevance_classifier import (
 from app.services.sdl_dimensions import infer_sdl_dimensions
 
 if TYPE_CHECKING:
-    from app.models import Paper, PaperClassification
+    from app.models import Paper
 
 
 # Funding text patterns that signal AC connection
@@ -147,17 +148,32 @@ def classify_paper(paper: "Paper") -> ScopusClassifyResult:
     # ── 5. Author / AC member signal (from ac_members_matched) ───────────
     has_ac_member = bool(paper.ac_members_matched)
     if has_ac_member:
-        reasons.append(f"AC member(s) in authors: {', '.join(paper.ac_members_matched)}")
+        reasons.append(
+            f"AC member(s) in authors: {', '.join(paper.ac_members_matched)}"
+        )
 
     # ── 6. SDL tag signal (keywords are explicit author-assigned terms) ───
     # Combine sdl_tags (from AC gold) with paper.keywords (Author_Keywords from Scopus)
     # and paper.indexed_keywords (Scopus-assigned terms).
-    all_keywords = list(paper.sdl_tags or []) + list(paper.keywords or []) + list(paper.indexed_keywords or [])
+    all_keywords = (
+        list(paper.sdl_tags or [])
+        + list(paper.keywords or [])
+        + list(paper.indexed_keywords or [])
+    )
     has_sdl_tag = bool(paper.sdl_tags)
     has_sdl_keyword = any(
-        any(t in kw.lower() for t in ("self-driving", "autonomous lab", "autonomous discovery",
-                                      "materials acceleration", "closed-loop optimization",
-                                      "high-throughput experimentation", "bayesian optim"))
+        any(
+            t in kw.lower()
+            for t in (
+                "self-driving",
+                "autonomous lab",
+                "autonomous discovery",
+                "materials acceleration",
+                "closed-loop optimization",
+                "high-throughput experimentation",
+                "bayesian optim",
+            )
+        )
         for kw in all_keywords
     )
     if has_sdl_tag:
@@ -177,7 +193,9 @@ def classify_paper(paper: "Paper") -> ScopusClassifyResult:
         if ft_score >= 0.3:
             # Acknowledgements section explicitly mentions AC → strong AC signal
             fulltext_ack_boost = min(ft_score, 0.8)
-            reasons.append(f"Fulltext evidence score: {ft_score:.2f} (acknowledgements/methods)")
+            reasons.append(
+                f"Fulltext evidence score: {ft_score:.2f} (acknowledgements/methods)"
+            )
         elif ft_score > 0:
             fulltext_fund_boost = ft_score * 0.5
             reasons.append(f"Weak fulltext evidence: {ft_score:.2f}")
@@ -198,11 +216,7 @@ def classify_paper(paper: "Paper") -> ScopusClassifyResult:
 
     # sdl_relevance: architecture + retrieval + SDL keyword signals
     sdl_kw_signal = 1.0 if (has_sdl_tag or has_sdl_keyword) else 0.0
-    sdl_score = (
-        0.45 * arch_signal
-        + 0.30 * ret_signal
-        + 0.25 * sdl_kw_signal
-    )
+    sdl_score = 0.45 * arch_signal + 0.30 * ret_signal + 0.25 * sdl_kw_signal
     sdl_score = min(sdl_score, 1.0)
 
     # ── Label decision ────────────────────────────────────────────────────
@@ -228,9 +242,7 @@ def classify_paper(paper: "Paper") -> ScopusClassifyResult:
     )
 
 
-def _decide_label(
-    ac: float, sdl: float, paper: "Paper"
-) -> tuple[str, float]:
+def _decide_label(ac: float, sdl: float, paper: "Paper") -> tuple[str, float]:
     # AC Publications is the positive gold set. A paper stamped from that
     # source must never fall below RELATED because weak metadata extraction
     # (missing abstract, missing SDL tags, name variants) is not negative
@@ -293,7 +305,10 @@ def _evidence_summary(result: ScopusClassifyResult) -> list[dict]:
         {"type": "acknowledgement", "score": result.acknowledgement_signal},
         {"type": "retrieval", "score": result.retrieval_signal},
         {"type": "architecture", "score": result.architecture_signal},
-        {"type": "classification_dimensions", "dimensions": result.classification_dimensions},
+        {
+            "type": "classification_dimensions",
+            "dimensions": result.classification_dimensions,
+        },
     ]
 
 
@@ -348,6 +363,7 @@ def _compute_priority(
 # ---------------------------------------------------------------------------
 # batch entry point
 # ---------------------------------------------------------------------------
+
 
 def _stable_cls_id(paper_id: str) -> str:
     seed = f"cls|{paper_id}"

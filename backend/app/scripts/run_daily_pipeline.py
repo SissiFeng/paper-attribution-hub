@@ -103,7 +103,7 @@ def main() -> int:
               f"auto={result.auto_ingested} queued={result.queued_for_review}")
         print(f"  classify    : new={result.classified_new} "
               f"refreshed={result.reclassified_stale}")
-        print(f"  review queue: flagged={result.enqueued_for_review}")
+        print(f"  staged review: queued={result.enqueued_for_review}")
         if result.error_message:
             print(f"  error: {result.error_message}", file=sys.stderr)
 

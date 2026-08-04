@@ -1,22 +1,52 @@
-"""Schema-constrained NL-to-SQL retrieval over the paper attribution database.
+"""Deterministic, schema-constrained text-to-SQL for PAS.
 
-The service deliberately compiles natural-language questions into a small
-allow-list of read-only SQLAlchemy query templates. That gives the product a
-real NL-to-SQL retrieval channel without letting an LLM execute arbitrary SQL.
+Natural-language input is mapped to a small allow-list of read-only SQLAlchemy
+templates. No LLM plans, writes, executes, summarises, or repairs a query. A
+question that cannot be mapped unambiguously fails closed.
 """
 from __future__ import annotations
 
+import hashlib
 import json
 import re
 from dataclasses import dataclass, field
+from datetime import date, datetime
+from decimal import Decimal
 from typing import Any
 
-from sqlalchemy import String, desc, distinct, func, or_, select
+from sqlalchemy import desc, distinct, exists, func, or_, select
 from sqlalchemy.orm import Session
 
-from app.models import Author, Institution, Paper, PaperAuthor, PaperClassification, PaperProposition
-from app.services.embedding_service import tokenize
+from app.country_normalization import canonical_country_entries
+from app.models import (
+    Author,
+    Institution,
+    Paper,
+    PaperAuthor,
+    PaperClassification,
+    PaperProposition,
+)
+from app.services.filter_spec import (
+    PAPER_SET_ENCODING,
+    PaperFilter,
+    apply_filter,
+    canonical_filter_payload,
+    filter_fingerprint,
+    paper_set_sha256,
+)
 
+
+PLANNER_ID = "deterministic-template.v2"
+ANSWER_RENDERER_ID = "deterministic-sql-answer.v1"
+ALLOWED_TABLES = (
+    "papers",
+    "paper_classifications",
+    "paper_authors",
+    "authors",
+    "institutions",
+    "paper_propositions",
+    "human_reviews",
+)
 
 _LABEL_ALIASES = {
     "core": "CORE_RELEVANT",
@@ -43,6 +73,22 @@ _INTENTS = {
     "review_queue",
 }
 
+_COUNT_MARKERS = ("count", "how many", "number of", "多少", "数量", "几篇")
+_LIST_MARKERS = ("which papers", "list papers", "show papers", "find papers", "哪些论文", "列出论文")
+_TOP_MARKERS = ("top", "most", "leading", "rank", "前", "最多", "排名")
+_AUTHOR_MARKERS = ("author", "coauthor", "people", "person", "collaborator", "作者", "合作者")
+_INSTITUTION_MARKERS = ("institution", "university", "partner", "机构", "学校", "大学")
+_REVIEW_MARKERS = ("review queue", "needs review", "待审", "审查队列")
+_FORBIDDEN_SQL_SYNTAX = re.compile(
+    r"\b(?:drop|delete|insert|update|alter|create|truncate|attach|detach|"
+    r"pragma|grant|revoke|execute|exec|union\s+select)\b",
+    re.I,
+)
+
+
+class NlSqlUnsupportedError(ValueError):
+    """Raised when a question cannot safely map to one deterministic template."""
+
 
 @dataclass
 class NlSqlPlan:
@@ -50,7 +96,7 @@ class NlSqlPlan:
     filters: dict[str, Any] = field(default_factory=dict)
     group_by: str | None = None
     limit: int = 10
-    source: str = "heuristic"
+    source: str = PLANNER_ID
 
 
 @dataclass
@@ -58,250 +104,418 @@ class NlSqlResult:
     query: str
     plan: NlSqlPlan
     sql: str
+    parameters: dict[str, Any]
     rows: list[dict[str, Any]]
     summary: str
+    audit: dict[str, Any]
 
 
-def _normalise_label(raw: str) -> str | None:
-    key = raw.strip().lower().replace("-", "_").replace(" ", "_")
-    return _LABEL_ALIASES.get(key)
+def _contains_any(query: str, markers: tuple[str, ...]) -> bool:
+    return any(marker in query for marker in markers)
 
 
 def _extract_limit(query: str) -> int:
-    m = re.search(r"\btop\s+(\d{1,2})\b|\b前\s*(\d{1,2})\b", query, re.I)
-    if not m:
+    match = re.search(
+        r"\b(?:top|first|limit)\s+(\d{1,2})\b|\b前\s*(\d{1,2})\b",
+        query,
+        re.I,
+    )
+    if not match:
         return 10
-    value = int(next(g for g in m.groups() if g))
+    value = int(next(group for group in match.groups() if group))
     return max(1, min(value, 50))
 
 
 def _extract_year_filters(query: str) -> dict[str, int]:
-    filters: dict[str, int] = {}
-    years = [int(y) for y in re.findall(r"\b(20\d{2}|19\d{2})\b", query)]
+    years = [int(year) for year in re.findall(r"\b(20\d{2}|19\d{2})\b", query)]
     if not years:
-        return filters
-    q = query.lower()
-    if any(word in q for word in ["after", "since", "from", "之后", "以来"]):
-        filters["year_from"] = min(years)
-    elif any(word in q for word in ["before", "until", "to", "以前", "之前"]):
-        filters["year_to"] = max(years)
-    elif len(years) >= 2:
-        filters["year_from"] = min(years)
-        filters["year_to"] = max(years)
-    else:
-        filters["year"] = years[0]
-    return filters
+        return {}
+    if len(years) >= 2:
+        return {"year_from": min(years), "year_to": max(years)}
+    normalized = query.casefold()
+    if _contains_any(normalized, ("after", "since", "from", "之后", "以来", "起")):
+        return {"year_from": years[0]}
+    if _contains_any(normalized, ("before", "until", "以前", "之前", "截至")):
+        return {"year_to": years[0]}
+    return {"year": years[0]}
 
 
 def _extract_labels(query: str) -> list[str]:
-    q = query.lower()
+    normalized = query.casefold()
     labels: list[str] = []
     for alias, label in _LABEL_ALIASES.items():
-        if re.search(rf"(?<![a-z0-9_]){re.escape(alias)}(?![a-z0-9_])", q) and label not in labels:
+        if (
+            re.search(
+                rf"(?<![a-z0-9_]){re.escape(alias)}(?![a-z0-9_])",
+                normalized,
+            )
+            and label not in labels
+        ):
             labels.append(label)
     return labels
 
 
-def _extract_text_filter(query: str) -> str | None:
-    quoted = re.findall(r'"([^"]{3,80})"|“([^”]{3,80})”', query)
+def _quoted_phrase(query: str) -> str | None:
+    quoted = re.findall(r'"([^"\n]{2,100})"|“([^”\n]{2,100})”', query)
+    if not quoted:
+        return None
+    return next(part for match in quoted for part in match if part).strip()
+
+
+def _clean_relation_object(value: str) -> str | None:
+    cleaned = value.strip(" \t\n\r?.!,;:，。！？；：")
+    cleaned = re.split(
+        r"\b(?:after|before|since|between|from|during|top|grouped)\b|"
+        r"(?:之后|之前|以来|按年份|前\s*\d+)",
+        cleaned,
+        maxsplit=1,
+        flags=re.I,
+    )[0]
+    cleaned = re.sub(r"\s+", " ", cleaned).strip()
+    return cleaned[:100] if len(cleaned) >= 2 else None
+
+
+def _extract_relation_filter(query: str) -> tuple[str | None, str | None]:
+    normalized = query.casefold()
+    predicate: str | None = None
+    if _contains_any(
+        normalized,
+        ("funded", "funding", "funder", "grant", "基金", "资助"),
+    ):
+        predicate = "funded_by"
+    elif _contains_any(normalized, ("topic", "theme", "主题", "领域")):
+        predicate = "belongs_to_topic"
+    elif _contains_any(
+        normalized,
+        (
+            " use ",
+            " uses ",
+            " using ",
+            "method",
+            "platform",
+            "technique",
+            "instrument",
+            "方法",
+            "平台",
+            "仪器",
+        ),
+    ):
+        predicate = "uses_method"
+    if predicate is None:
+        return None, None
+
+    quoted = _quoted_phrase(query)
     if quoted:
-        return next(part for match in quoted for part in match if part).strip()
-    about = re.search(r"\b(?:about|on)\s+([A-Za-z][A-Za-z0-9\-\s]{2,80})", query, re.I)
-    if about:
-        text = about.group(1)
-        text = re.split(r"\b(?:after|before|since|from|by|grouped|top)\b", text, flags=re.I)[0]
-        return text.strip() or None
-    zh_about = re.search(r"(?:关于|有关)([^，。,.]{2,40})", query)
-    if zh_about:
-        return zh_about.group(1).strip()
-    return None
+        return predicate, quoted
+
+    patterns = {
+        "funded_by": (
+            r"\b(?:funded|financed|supported)\s+by\s+(.{2,100})$",
+            r"(?:由|受)(.{2,60})(?:资助|支持)",
+        ),
+        "uses_method": (
+            r"\b(?:use|uses|used|using)\s+(.{2,100})$",
+            r"(?:使用|采用)([^，。,.]{2,60})",
+        ),
+        "belongs_to_topic": (
+            r"\b(?:topic|theme)\s+(?:is|of|about)?\s*(.{2,100})$",
+            r"(?:主题|领域)(?:是|为|关于)?([^，。,.]{2,60})",
+        ),
+    }
+    for pattern in patterns[predicate]:
+        match = re.search(pattern, query, re.I)
+        if match:
+            return predicate, _clean_relation_object(match.group(1))
+    return predicate, None
 
 
-def _heuristic_plan(query: str) -> NlSqlPlan:
-    q = query.lower()
-    filters: dict[str, Any] = {}
-    filters.update(_extract_year_filters(query))
+def _extract_text_filter(query: str, *, relation_object: str | None) -> str | None:
+    if relation_object:
+        return None
+    quoted = _quoted_phrase(query)
+    if quoted:
+        return quoted
+    match = re.search(
+        r"\b(?:about|on)\s+([A-Za-z][A-Za-z0-9\-\s]{2,100})",
+        query,
+        re.I,
+    )
+    if match:
+        return _clean_relation_object(match.group(1))
+    match = re.search(r"(?:关于|有关)([^，。,.]{2,60})", query)
+    return match.group(1).strip() if match else None
+
+
+def _deterministic_plan(query: str) -> NlSqlPlan:
+    if _FORBIDDEN_SQL_SYNTAX.search(query):
+        raise NlSqlUnsupportedError(
+            "Raw SQL and write-oriented syntax are not accepted by strict text-to-SQL"
+        )
+    normalized = f" {query.casefold().strip()} "
+    relation_predicate, relation_object = _extract_relation_filter(query)
+    filters: dict[str, Any] = _extract_year_filters(query)
     labels = _extract_labels(query)
     if labels:
         filters["labels"] = labels
-    text_filter = _extract_text_filter(query)
+    text_filter = _extract_text_filter(query, relation_object=relation_object)
     if text_filter:
         filters["text"] = text_filter
+    if relation_predicate:
+        filters["proposition_predicate"] = relation_predicate
+    if relation_object:
+        filters["proposition_object"] = relation_object
 
-    if any(word in q for word in ["review", "queue", "uncertain", "待审", "审查"]):
+    is_count = _contains_any(normalized, _COUNT_MARKERS)
+    is_list = _contains_any(normalized, _LIST_MARKERS)
+    is_top = _contains_any(normalized, _TOP_MARKERS)
+    has_author = _contains_any(normalized, _AUTHOR_MARKERS)
+    has_institution = _contains_any(normalized, _INSTITUTION_MARKERS)
+
+    if _contains_any(normalized, _REVIEW_MARKERS):
         intent = "review_queue"
-    elif any(word in q for word in ["author", "coauthor", "people", "person", "collaborator", "作者", "合作者"]):
-        intent = "top_authors"
-    elif any(word in q for word in ["institution", "university", "partner", "机构", "学校"]):
+    elif is_count and has_institution and _contains_any(normalized, (" by ", "按", "每个")):
         intent = "top_institutions"
-    elif any(word in q for word in ["method", "funding", "funded", "topic", "proposition", "uses", "方法", "基金", "主题"]):
-        intent = "top_propositions"
-    elif any(word in q for word in ["count", "how many", "number", "多少", "数量", "几篇"]):
+    elif is_count and has_author and _contains_any(normalized, (" by ", "按", "每个")):
+        intent = "top_authors"
+    elif is_count:
         intent = "count_papers"
-    else:
+    elif is_list:
         intent = "list_papers"
+    elif is_top and has_author:
+        intent = "top_authors"
+    elif is_top and has_institution:
+        intent = "top_institutions"
+    elif is_top and relation_predicate:
+        intent = "top_propositions"
+    elif relation_predicate and _contains_any(normalized, ("what", "which", "哪些", "什么")):
+        intent = "top_propositions"
+    else:
+        raise NlSqlUnsupportedError(
+            "Question is outside the deterministic SQL grammar. Supported forms: "
+            "count papers (optionally by year/label), list papers, top authors, "
+            "top institutions, top methods/topics/funders, and review queue."
+        )
 
     group_by = None
     if intent == "count_papers":
-        if any(word in q for word in ["year", "年度", "年份"]):
+        if _contains_any(normalized, ("year", "年度", "年份")):
             group_by = "year"
-        elif any(word in q for word in ["label", "category", "等级", "分类"]):
+        elif _contains_any(normalized, ("label", "category", "等级", "分类")):
             group_by = "label"
 
-    return NlSqlPlan(intent=intent, filters=filters, group_by=group_by, limit=_extract_limit(query))
-
-
-def _llm_plan(query: str) -> NlSqlPlan | None:
-    """Ask the configured LLM for a constrained query plan, then validate it.
-
-    The model is not allowed to provide SQL. It can only choose one of the
-    allow-listed intents and filters, which are compiled by this service.
-    """
-    from app.config import settings
-
-    provider = settings.llm_provider
-    if provider == "auto":
-        provider = "kimi" if settings.kimi_api_key else ("anthropic" if settings.anthropic_api_key else "none")
-    if provider == "none":
-        return None
-
-    prompt = (
-        "Convert the user question into JSON for a safe NL-to-SQL planner. "
-        "Allowed intents: count_papers, list_papers, top_authors, "
-        "top_institutions, top_propositions, review_queue. "
-        "Allowed filters: labels, year, year_from, year_to, text. "
-        "Allowed group_by: label, year, null. "
-        "Return only JSON with keys intent, filters, group_by, limit.\n\n"
-        f"Question: {query}"
+    return NlSqlPlan(
+        intent=intent,
+        filters=filters,
+        group_by=group_by,
+        limit=_extract_limit(query),
     )
-    try:
-        if provider == "kimi" and settings.kimi_api_key:
-            import openai
 
-            client = openai.OpenAI(api_key=settings.kimi_api_key, base_url=settings.kimi_base_url)
-            resp = client.chat.completions.create(
-                model=settings.kimi_model,
-                messages=[{"role": "user", "content": prompt}],
-                max_tokens=256,
-                temperature=0.0,
-            )
-            raw = resp.choices[0].message.content or ""
-        elif provider == "anthropic" and settings.anthropic_api_key:
-            import anthropic
 
-            client = anthropic.Anthropic(api_key=settings.anthropic_api_key)
-            resp = client.messages.create(
-                model="claude-sonnet-4-6",
-                max_tokens=256,
-                temperature=0.0,
-                messages=[{"role": "user", "content": prompt}],
-            )
-            raw = resp.content[0].text
-        else:
-            return None
-        start = raw.find("{")
-        end = raw.rfind("}")
-        data = json.loads(raw[start : end + 1])
-        intent = str(data.get("intent", "list_papers"))
-        if intent not in _INTENTS:
-            return None
-        filters = data.get("filters") if isinstance(data.get("filters"), dict) else {}
-        labels = [
-            label for label in (
-                _normalise_label(str(v)) or str(v).upper()
-                for v in filters.get("labels", [])
-            )
-            if label in set(_LABEL_ALIASES.values())
-        ]
-        if labels:
-            filters["labels"] = sorted(set(labels))
-        elif "labels" in filters:
-            filters.pop("labels")
-        group_by = data.get("group_by")
-        if group_by not in {"label", "year", None}:
-            group_by = None
-        limit = max(1, min(int(data.get("limit") or 10), 50))
-        return NlSqlPlan(intent=intent, filters=filters, group_by=group_by, limit=limit, source=f"llm/{provider}")
-    except Exception:
+def plan_nl_sql(query: str, *, use_llm: bool | None = None) -> NlSqlPlan:
+    """Return a deterministic plan; explicitly reject attempts to enable an LLM."""
+    if use_llm is True:
+        raise NlSqlUnsupportedError("LLM planning is disabled for strict text-to-SQL")
+    return _deterministic_plan(query)
+
+
+def _phrase_in_query(phrase: str, query: str) -> bool:
+    normalized = re.sub(r"\s+", " ", phrase.casefold()).strip()
+    if len(normalized) < 3:
+        return False
+    return normalized in query
+
+
+def _entity_candidate(query: str, plan: NlSqlPlan) -> str | None:
+    if plan.filters.get("text") or plan.filters.get("proposition_object"):
         return None
+    match = re.search(
+        r"\b(?:from|at|by|in)\s+([^?!.，。！？]{2,100})[?!.，。！？]*$|"
+        r"(?:来自|由|在)([^，。！？]{2,60})[，。！？]*$",
+        query,
+        re.I,
+    )
+    if not match:
+        return None
+    candidate = next(group for group in match.groups() if group)
+    candidate = _clean_relation_object(candidate)
+    if candidate is None or re.fullmatch(r"(?:19|20)\d{2}", candidate):
+        return None
+    if candidate.casefold() in {
+        "the current scope",
+        "current scope",
+        "the corpus",
+        "corpus",
+        "the database",
+        "database",
+        "distinct papers",
+        "year",
+        "label",
+    }:
+        return None
+    return candidate
 
 
-def _paper_filters(stmt, filters: dict[str, Any], *, classification_joined: bool = False):
-    if labels := filters.get("labels"):
-        if not classification_joined:
-            stmt = stmt.join(PaperClassification, PaperClassification.paper_id == Paper.id)
-        stmt = stmt.where(PaperClassification.label.in_(labels))
-    if year := filters.get("year"):
-        stmt = stmt.where(Paper.year == int(year))
-    if year_from := filters.get("year_from"):
-        stmt = stmt.where(Paper.year >= int(year_from))
-    if year_to := filters.get("year_to"):
-        stmt = stmt.where(Paper.year <= int(year_to))
-    if text := filters.get("text"):
-        like = f"%{str(text).lower()}%"
+def _resolve_entities(session: Session, query: str, plan: NlSqlPlan) -> None:
+    candidate = _entity_candidate(query, plan)
+    if candidate is None:
+        return
+    normalized_query = re.sub(r"\s+", " ", candidate.casefold())
+
+    institution_matches: list[tuple[int, str]] = []
+    for institution in session.execute(select(Institution)).scalars():
+        names = [institution.canonical_name, *(institution.aliases or [])]
+        matched_lengths = [
+            len(name)
+            for name in names
+            if _phrase_in_query(str(name), normalized_query)
+        ]
+        if matched_lengths:
+            institution_matches.append((max(matched_lengths), institution.id))
+    if institution_matches:
+        longest = max(length for length, _id in institution_matches)
+        plan.filters["institution_ids"] = sorted(
+            {_id for length, _id in institution_matches if length == longest}
+        )
+
+    country_matches: list[tuple[int, str]] = []
+    seen_countries: set[str] = set()
+    for raw_country in session.execute(select(Institution.country)).scalars():
+        for entry in canonical_country_entries(raw_country):
+            if entry.identity in seen_countries:
+                continue
+            seen_countries.add(entry.identity)
+            if _phrase_in_query(entry.display, normalized_query):
+                country_matches.append((len(entry.display), entry.display))
+    if country_matches:
+        longest = max(length for length, _country in country_matches)
+        plan.filters["countries"] = sorted(
+            {country for length, country in country_matches if length == longest}
+        )
+
+    author_matches: list[tuple[int, str]] = []
+    for author in session.execute(select(Author)).scalars():
+        names = [author.canonical_name, *(author.aliases or [])]
+        matched_lengths = [
+            len(name)
+            for name in names
+            if _phrase_in_query(str(name), normalized_query)
+        ]
+        if matched_lengths:
+            author_matches.append((max(matched_lengths), author.id))
+    if author_matches:
+        longest = max(length for length, _id in author_matches)
+        plan.filters["author_ids"] = sorted(
+            {_id for length, _id in author_matches if length == longest}
+        )
+
+
+def _query_filter(plan: NlSqlPlan) -> PaperFilter:
+    filters = plan.filters
+    year = filters.get("year")
+    return PaperFilter(
+        year_from=year if year is not None else filters.get("year_from"),
+        year_to=year if year is not None else filters.get("year_to"),
+        labels=filters.get("labels", []),
+        institution_ids=filters.get("institution_ids", []),
+        countries=filters.get("countries", []),
+        search=filters.get("text"),
+    )
+
+
+def _escape_like(value: str) -> str:
+    return value.replace("\\", "\\\\").replace("%", "\\%").replace("_", "\\_")
+
+
+def _scope_statement(
+    base_filter: PaperFilter,
+    plan: NlSqlPlan,
+    paper_ids: list[str] | None,
+):
+    stmt = apply_filter(select(Paper.id), base_filter)
+    stmt = apply_filter(stmt, _query_filter(plan))
+    if paper_ids is not None:
+        stmt = stmt.where(Paper.id.in_(paper_ids))
+    if author_ids := plan.filters.get("author_ids"):
         stmt = stmt.where(
-            or_(
-                func.lower(Paper.title).like(like),
-                func.lower(Paper.abstract).like(like),
-                func.lower(func.cast(Paper.keywords, String)).like(like),
-                func.lower(func.cast(Paper.indexed_keywords, String)).like(like),
+            exists().where(
+                PaperAuthor.paper_id == Paper.id,
+                PaperAuthor.author_id.in_(author_ids),
             )
         )
-    return stmt
+    if predicate := plan.filters.get("proposition_predicate"):
+        conditions = [
+            PaperProposition.paper_id == Paper.id,
+            PaperProposition.predicate == predicate,
+        ]
+        if object_value := plan.filters.get("proposition_object"):
+            pattern = f"%{_escape_like(str(object_value).casefold())}%"
+            conditions.append(
+                or_(
+                    func.lower(PaperProposition.object_value).like(
+                        pattern,
+                        escape="\\",
+                    ),
+                    func.lower(PaperProposition.claim_text).like(
+                        pattern,
+                        escape="\\",
+                    ),
+                )
+            )
+        stmt = stmt.where(exists().where(*conditions))
+    return stmt.distinct()
 
 
-def _compile_sql(stmt) -> str:
-    try:
-        return str(stmt.compile(compile_kwargs={"literal_binds": True}))
-    except Exception:
-        return str(stmt)
+def _proposition_conditions(plan: NlSqlPlan) -> list[Any]:
+    conditions: list[Any] = []
+    if predicate := plan.filters.get("proposition_predicate"):
+        conditions.append(PaperProposition.predicate == predicate)
+    if object_value := plan.filters.get("proposition_object"):
+        pattern = f"%{_escape_like(str(object_value).casefold())}%"
+        conditions.append(
+            or_(
+                func.lower(PaperProposition.object_value).like(
+                    pattern,
+                    escape="\\",
+                ),
+                func.lower(PaperProposition.claim_text).like(
+                    pattern,
+                    escape="\\",
+                ),
+            )
+        )
+    return conditions
 
 
-def _rows(result) -> list[dict[str, Any]]:
-    return [dict(row._mapping) for row in result]
-
-
-def _summarise(plan: NlSqlPlan, rows: list[dict[str, Any]]) -> str:
-    if not rows:
-        return "No structured database rows matched this query."
-    if plan.intent == "count_papers":
-        if len(rows) == 1 and "paper_count" in rows[0]:
-            return f"Structured query found {rows[0]['paper_count']} matching papers."
-        return f"Structured query returned {len(rows)} grouped count rows."
-    if plan.intent == "review_queue":
-        return f"Structured query found {len(rows)} papers currently prioritized for review."
-    return f"Structured query returned {len(rows)} rows for intent={plan.intent}."
-
-
-def plan_nl_sql(query: str, *, use_llm: bool = True) -> NlSqlPlan:
-    if use_llm:
-        plan = _llm_plan(query)
-        if plan is not None:
-            return plan
-    return _heuristic_plan(query)
-
-
-def run_nl_sql(session: Session, query: str, *, use_llm: bool = True) -> NlSqlResult:
-    plan = plan_nl_sql(query, use_llm=use_llm)
-    filters = plan.filters
-
+def _statement_for_plan(plan: NlSqlPlan, scope_stmt):
+    scope = scope_stmt.subquery("strict_sql_scope")
+    in_scope = Paper.id.in_(select(scope.c.id))
     if plan.intent == "count_papers":
         if plan.group_by == "label":
-            stmt = (
-                select(PaperClassification.label, func.count(distinct(Paper.id)).label("paper_count"))
+            return (
+                select(
+                    PaperClassification.label,
+                    func.count(distinct(Paper.id)).label("paper_count"),
+                )
                 .join(Paper, Paper.id == PaperClassification.paper_id)
+                .where(in_scope)
                 .group_by(PaperClassification.label)
-                .order_by(desc("paper_count"))
+                .order_by(desc("paper_count"), PaperClassification.label)
             )
-            stmt = _paper_filters(stmt, filters, classification_joined=True)
-        elif plan.group_by == "year":
-            stmt = select(Paper.year, func.count(Paper.id).label("paper_count")).group_by(Paper.year).order_by(Paper.year)
-            stmt = _paper_filters(stmt, filters)
-        else:
-            stmt = select(func.count(distinct(Paper.id)).label("paper_count"))
-            stmt = _paper_filters(stmt, filters)
-    elif plan.intent == "top_authors":
-        stmt = (
+        if plan.group_by == "year":
+            return (
+                select(
+                    Paper.year,
+                    func.count(distinct(Paper.id)).label("paper_count"),
+                )
+                .where(in_scope)
+                .group_by(Paper.year)
+                .order_by(Paper.year)
+            )
+        return select(func.count(distinct(Paper.id)).label("paper_count")).where(
+            in_scope
+        )
+    if plan.intent == "top_authors":
+        return (
             select(
                 Author.id.label("author_id"),
                 Author.canonical_name.label("author"),
@@ -310,13 +524,13 @@ def run_nl_sql(session: Session, query: str, *, use_llm: bool = True) -> NlSqlRe
             )
             .join(PaperAuthor, PaperAuthor.author_id == Author.id)
             .join(Paper, Paper.id == PaperAuthor.paper_id)
+            .where(in_scope)
             .group_by(Author.id, Author.canonical_name, Author.is_ac_member)
-            .order_by(desc("paper_count"), Author.canonical_name)
+            .order_by(desc("paper_count"), Author.canonical_name, Author.id)
             .limit(plan.limit)
         )
-        stmt = _paper_filters(stmt, filters)
-    elif plan.intent == "top_institutions":
-        stmt = (
+    if plan.intent == "top_institutions":
+        return (
             select(
                 Institution.id.label("institution_id"),
                 Institution.canonical_name.label("institution"),
@@ -326,13 +540,21 @@ def run_nl_sql(session: Session, query: str, *, use_llm: bool = True) -> NlSqlRe
             .join(Author, Author.institution_id == Institution.id)
             .join(PaperAuthor, PaperAuthor.author_id == Author.id)
             .join(Paper, Paper.id == PaperAuthor.paper_id)
-            .group_by(Institution.id, Institution.canonical_name, Institution.is_partner)
-            .order_by(desc("paper_count"), Institution.canonical_name)
+            .where(in_scope)
+            .group_by(
+                Institution.id,
+                Institution.canonical_name,
+                Institution.is_partner,
+            )
+            .order_by(
+                desc("paper_count"),
+                Institution.canonical_name,
+                Institution.id,
+            )
             .limit(plan.limit)
         )
-        stmt = _paper_filters(stmt, filters)
-    elif plan.intent == "top_propositions":
-        stmt = (
+    if plan.intent == "top_propositions":
+        return (
             select(
                 PaperProposition.predicate,
                 PaperProposition.object_value,
@@ -340,13 +562,18 @@ def run_nl_sql(session: Session, query: str, *, use_llm: bool = True) -> NlSqlRe
                 func.avg(PaperProposition.confidence).label("avg_confidence"),
             )
             .join(Paper, Paper.id == PaperProposition.paper_id)
+            .where(in_scope, *_proposition_conditions(plan))
             .group_by(PaperProposition.predicate, PaperProposition.object_value)
-            .order_by(desc("paper_count"), desc("avg_confidence"))
+            .order_by(
+                desc("paper_count"),
+                desc("avg_confidence"),
+                PaperProposition.predicate,
+                PaperProposition.object_value,
+            )
             .limit(plan.limit)
         )
-        stmt = _paper_filters(stmt, filters)
-    elif plan.intent == "review_queue":
-        stmt = (
+    if plan.intent == "review_queue":
+        return (
             select(
                 Paper.id.label("paper_id"),
                 Paper.title,
@@ -356,32 +583,162 @@ def run_nl_sql(session: Session, query: str, *, use_llm: bool = True) -> NlSqlRe
                 PaperClassification.review_priority,
             )
             .join(PaperClassification, PaperClassification.paper_id == Paper.id)
-            .where(PaperClassification.needs_review.is_(True))
-            .order_by(desc(PaperClassification.review_priority), desc(PaperClassification.confidence))
-            .limit(plan.limit)
-        )
-        stmt = _paper_filters(stmt, filters, classification_joined=True)
-    else:
-        stmt = (
-            select(
-                Paper.id.label("paper_id"),
-                Paper.title,
-                Paper.year,
-                Paper.venue,
-                PaperClassification.label,
-                PaperClassification.confidence,
+            .where(in_scope, PaperClassification.needs_review.is_(True))
+            .order_by(
+                desc(PaperClassification.review_priority),
+                desc(PaperClassification.confidence),
+                Paper.id,
             )
-            .outerjoin(PaperClassification, PaperClassification.paper_id == Paper.id)
-            .order_by(desc(PaperClassification.confidence), desc(Paper.year))
             .limit(plan.limit)
         )
-        stmt = _paper_filters(stmt, filters, classification_joined=True)
+    return (
+        select(
+            Paper.id.label("paper_id"),
+            Paper.title,
+            Paper.year,
+            Paper.venue,
+            PaperClassification.label,
+            PaperClassification.confidence,
+        )
+        .outerjoin(PaperClassification, PaperClassification.paper_id == Paper.id)
+        .where(in_scope)
+        .order_by(
+            desc(PaperClassification.confidence),
+            desc(Paper.year),
+            Paper.id,
+        )
+        .limit(plan.limit)
+    )
 
+
+def _json_value(value: Any) -> Any:
+    if isinstance(value, (datetime, date)):
+        return value.isoformat()
+    if isinstance(value, Decimal):
+        return float(value)
+    if isinstance(value, (str, int, float, bool)) or value is None:
+        return value
+    if isinstance(value, (list, tuple, set)):
+        return [_json_value(item) for item in value]
+    if isinstance(value, dict):
+        return {str(key): _json_value(item) for key, item in value.items()}
+    return str(value)
+
+
+def _compile_parameterized(stmt) -> tuple[str, dict[str, Any]]:
+    compiled = stmt.compile(compile_kwargs={"render_postcompile": True})
+    return str(compiled), {
+        str(key): _json_value(value) for key, value in compiled.params.items()
+    }
+
+
+def _rows(result) -> list[dict[str, Any]]:
+    return [
+        {str(key): _json_value(value) for key, value in row._mapping.items()}
+        for row in result
+    ]
+
+
+def _summary(plan: NlSqlPlan, rows: list[dict[str, Any]], *, chinese: bool) -> str:
+    if not rows:
+        return "严格的数据库查询没有返回匹配记录。" if chinese else "The strict database query returned no matching rows."
+    if plan.intent == "count_papers":
+        if len(rows) == 1 and "paper_count" in rows[0]:
+            count = rows[0]["paper_count"]
+            return f"数据库查询返回 {count} 篇匹配论文。" if chinese else f"The database query returned {count} matching papers."
+        dimension = plan.group_by or "group"
+        values = "; ".join(
+            f"{row.get(dimension) if row.get(dimension) is not None else 'Unknown'}: {row['paper_count']}"
+            for row in rows
+        )
+        return f"按{dimension}统计：{values}。" if chinese else f"Counts by {dimension}: {values}."
+
+    lines: list[str] = []
+    for row in rows:
+        if plan.intent == "list_papers":
+            lines.append(
+                f"[{row['paper_id']}] {row['title']} "
+                f"({row.get('year') or 'year unknown'}; {row.get('label') or 'unclassified'})"
+            )
+        elif plan.intent == "top_authors":
+            lines.append(f"{row['author']}: {row['paper_count']} distinct papers")
+        elif plan.intent == "top_institutions":
+            lines.append(f"{row['institution']}: {row['paper_count']} distinct papers")
+        elif plan.intent == "top_propositions":
+            lines.append(
+                f"{row['predicate']} — {row['object_value']}: "
+                f"{row['paper_count']} distinct papers"
+            )
+        else:
+            lines.append(
+                f"[{row['paper_id']}] {row['title']} "
+                f"(priority {float(row['review_priority']):.3f})"
+            )
+    heading = (
+        f"数据库查询返回 {len(rows)} 行："
+        if chinese
+        else f"The database query returned {len(rows)} rows:"
+    )
+    return f"{heading}\n" + "\n".join(f"- {line}" for line in lines)
+
+
+def run_nl_sql(
+    session: Session,
+    query: str,
+    *,
+    base_filter: PaperFilter | None = None,
+    paper_ids: list[str] | None = None,
+    use_llm: bool | None = None,
+) -> NlSqlResult:
+    plan = plan_nl_sql(query, use_llm=use_llm)
+    _resolve_entities(session, query, plan)
+    active_filter = base_filter or PaperFilter()
+    normalized_paper_ids = None
+    if paper_ids is not None:
+        normalized_paper_ids = list(dict.fromkeys(paper_ids))
+    scope_stmt = _scope_statement(active_filter, plan, normalized_paper_ids)
+    scope_ids = list(session.execute(scope_stmt).scalars())
+    stmt = _statement_for_plan(plan, scope_stmt)
+    sql, parameters = _compile_parameterized(stmt)
     rows = _rows(session.execute(stmt))
+    sql_fingerprint = hashlib.sha256(
+        json.dumps(
+            {"sql": sql, "parameters": parameters},
+            sort_keys=True,
+            separators=(",", ":"),
+        ).encode("utf-8")
+    ).hexdigest()
+    audit = {
+        "planner": PLANNER_ID,
+        "answer_renderer": ANSWER_RENDERER_ID,
+        "read_only": True,
+        "llm_used": False,
+        "allowed_intents": sorted(_INTENTS),
+        "allowed_tables": list(ALLOWED_TABLES),
+        "intent": plan.intent,
+        "group_by": plan.group_by,
+        "limit": plan.limit,
+        "query_constraints": _json_value(plan.filters),
+        "page_filter": canonical_filter_payload(active_filter),
+        "page_filter_fingerprint": filter_fingerprint(active_filter),
+        "scope_paper_count": len(set(scope_ids)),
+        "scope_paper_set_sha256": paper_set_sha256(scope_ids),
+        "scope_paper_set_encoding": PAPER_SET_ENCODING,
+        "statement_sha256": sql_fingerprint,
+        "parameter_binding": "sqlalchemy-bound-parameters",
+        "statement_type": "SELECT",
+        "row_count": len(rows),
+    }
     return NlSqlResult(
         query=query,
         plan=plan,
-        sql=_compile_sql(stmt),
+        sql=sql,
+        parameters=parameters,
         rows=rows,
-        summary=_summarise(plan, rows),
+        summary=_summary(
+            plan,
+            rows,
+            chinese=bool(re.search(r"[\u3400-\u9fff]", query)),
+        ),
+        audit=audit,
     )

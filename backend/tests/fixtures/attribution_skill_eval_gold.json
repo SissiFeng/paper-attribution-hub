@@ -1,0 +1,142 @@
+[
+  {
+    "case_id": "gold-positive",
+    "family": "authoritative_positive",
+    "paper_id": "EVAL-GOLD",
+    "title": "Curated AC publication",
+    "abstract": "A consortium publication with a curated source record.",
+    "year": 2024,
+    "ac_known_publication": true,
+    "truth": "ATTRIBUTED",
+    "expected_status": "succeeded",
+    "expected_decision": "ATTRIBUTED",
+    "classification": {
+      "label": "RELATED_RELEVANT",
+      "confidence": 0.92
+    }
+  },
+  {
+    "case_id": "explicit-funding-positive",
+    "family": "authoritative_positive",
+    "paper_id": "EVAL-FUNDING",
+    "title": "AC-supported experimental study",
+    "abstract": "An experimental study with explicit consortium support.",
+    "year": 2024,
+    "truth": "ATTRIBUTED",
+    "expected_status": "succeeded",
+    "expected_decision": "ATTRIBUTED",
+    "classification": {
+      "label": "RELATED_RELEVANT",
+      "confidence": 0.8
+    },
+    "evidence": [
+      {
+        "evidence_type": "funding_acknowledgement",
+        "evidence_source": "acknowledgements",
+        "evidence_text": "This work was supported by the Acceleration Consortium.",
+        "score": 0.95
+      }
+    ]
+  },
+  {
+    "case_id": "topic-only-hard-negative",
+    "family": "hard_negative",
+    "paper_id": "EVAL-TOPIC-ONLY",
+    "title": "Generic autonomous experimentation",
+    "abstract": "A closed-loop laboratory unrelated to AC.",
+    "year": 2024,
+    "truth": "NOT_ATTRIBUTED",
+    "expected_status": "review_required",
+    "expected_decision": "REVIEW_REQUIRED",
+    "classification": {
+      "label": "SDL_FIELD_RELEVANT",
+      "confidence": 0.9,
+      "topic_score": 0.95,
+      "matched_topics": [
+        {
+          "topic_id": "closed-loop",
+          "name": "Closed-loop experimentation",
+          "is_core": true,
+          "score": 0.95
+        }
+      ]
+    }
+  },
+  {
+    "case_id": "citation-only-hard-negative",
+    "family": "hard_negative",
+    "paper_id": "EVAL-CITATION-ONLY",
+    "title": "Paper citing an AC method",
+    "abstract": "The work cites an AC paper but has no AC relationship.",
+    "year": 2024,
+    "truth": "NOT_ATTRIBUTED",
+    "expected_status": "review_required",
+    "expected_decision": "REVIEW_REQUIRED",
+    "classification": {
+      "label": "ADJACENT",
+      "confidence": 0.7,
+      "citation_score": 0.9,
+      "graph_signals": {
+        "citation_signals": [
+          "EVAL-GOLD"
+        ]
+      }
+    }
+  },
+  {
+    "case_id": "gold-counterfactual-original",
+    "family": "counterfactual",
+    "paper_id": "EVAL-CF-GOLD",
+    "title": "Counterfactual attribution pair",
+    "abstract": "Metadata is held fixed while gold authority changes.",
+    "year": 2023,
+    "ac_known_publication": true,
+    "truth": "ATTRIBUTED",
+    "expected_status": "succeeded",
+    "expected_decision": "ATTRIBUTED",
+    "classification": {
+      "label": "ADJACENT",
+      "confidence": 0.6
+    }
+  },
+  {
+    "case_id": "gold-counterfactual-removed",
+    "family": "counterfactual",
+    "paper_id": "EVAL-CF-NO-GOLD",
+    "title": "Counterfactual attribution pair",
+    "abstract": "Metadata is held fixed while gold authority changes.",
+    "year": 2023,
+    "ac_known_publication": false,
+    "truth": "NOT_ATTRIBUTED",
+    "expected_status": "review_required",
+    "expected_decision": "REVIEW_REQUIRED",
+    "classification": {
+      "label": "ADJACENT",
+      "confidence": 0.6
+    }
+  },
+  {
+    "case_id": "cross-domain-transfer",
+    "family": "cross_domain_transfer",
+    "paper_id": "EVAL-CROSS-DOMAIN",
+    "title": "Autonomous protein formulation laboratory",
+    "abstract": "A life-science SDL transfers closed-loop methods across domains.",
+    "year": 2025,
+    "truth": "NOT_ATTRIBUTED",
+    "expected_status": "review_required",
+    "expected_decision": "REVIEW_REQUIRED",
+    "classification": {
+      "label": "SDL_FIELD_RELEVANT",
+      "confidence": 0.88,
+      "topic_score": 0.9,
+      "matched_topics": [
+        {
+          "topic_id": "autonomous-lab",
+          "name": "Autonomous laboratory",
+          "is_core": true,
+          "score": 0.9
+        }
+      ]
+    }
+  }
+]

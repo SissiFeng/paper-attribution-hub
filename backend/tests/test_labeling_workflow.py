@@ -5,7 +5,10 @@ from pathlib import Path
 
 import pytest
 
-EVAL_HEADER = "paper_id,gold_label,gold_topics,notes"
+EVAL_HEADER = (
+    "paper_id,gold_label,gold_topics,notes,label_scope,"
+    "annotation_source,evidence_level"
+)
 
 
 def _add_paper(session, pid: str, label: str, confidence: float, *, doi=None, title=None):
@@ -28,7 +31,10 @@ def _add_paper(session, pid: str, label: str, confidence: float, *, doi=None, ti
 @pytest.fixture()
 def eval_labels_file(tmp_path: Path) -> Path:
     path = tmp_path / "eval_labels.csv"
-    path.write_text(f"{EVAL_HEADER}\nG001,CORE_RELEVANT,,seed row\n")
+    path.write_text(
+        f"{EVAL_HEADER}\n"
+        "G001,CORE_RELEVANT,,seed row,AC_REPORTING,test_fixture,UNKNOWN\n"
+    )
     return path
 
 
@@ -115,7 +121,10 @@ def test_append_eval_label_no_duplicates(eval_labels_file):
 
     lines = eval_labels_file.read_text().splitlines()
     assert lines[0] == EVAL_HEADER
-    assert lines[1:] == ["G001,CORE_RELEVANT,,seed row", "P100,ADJACENT,,"]
+    assert lines[1:] == [
+        "G001,CORE_RELEVANT,,seed row,AC_REPORTING,test_fixture,UNKNOWN",
+        "P100,ADJACENT,,,AC_REPORTING,interactive_labeling,UNKNOWN",
+    ]
 
 
 def test_apply_label_and_undo(tmp_path, eval_labels_file):
@@ -139,7 +148,10 @@ def test_apply_label_and_undo(tmp_path, eval_labels_file):
     assert load_queue(queue)[0]["human_label"] == ""
     assert "P200" not in eval_labels_file.read_text()
     # The pre-existing gold row survives the undo rewrite.
-    assert "G001,CORE_RELEVANT,,seed row" in eval_labels_file.read_text()
+    assert (
+        "G001,CORE_RELEVANT,,seed row,AC_REPORTING,test_fixture,UNKNOWN"
+        in eval_labels_file.read_text()
+    )
 
 
 def test_eval_labels_consumable_by_eval_service(eval_labels_file):

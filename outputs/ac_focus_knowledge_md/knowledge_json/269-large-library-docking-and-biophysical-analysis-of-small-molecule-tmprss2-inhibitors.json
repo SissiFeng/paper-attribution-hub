@@ -1,0 +1,269 @@
+{
+  "paper_id": "acfocus_3b513fc28430",
+  "title": "Large library docking and biophysical analysis of small molecule TMPRSS2 inhibitors",
+  "metadata": {
+    "doi": "10.26434/chemrxiv-2024-v1sc1",
+    "url": "https://chemrxiv.org/doi/10.26434/chemrxiv-2024-v1sc1",
+    "year": "2024",
+    "authors": "Fraser B, Young N, Bender B, Gahbauer S, Ilyassov O, Wilson R, Li Y, Seitova A, Lourenço AL, Chung D-H, Bardine C, Bénard F, Shoichet B, Craik C, Arrowsmith C",
+    "venue": "ChemRxiv",
+    "category": "Preprint",
+    "peer_reviewed": "Non Peer Reviewed",
+    "ac_members": [
+      "Cheryl Arrowsmith"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "",
+  "abstract": "18 December 2024\nLarge library docking and biophysical analysis of\nsmall molecule TMPRSS2 inhibitors\nBryan Fraser\n1,2, Nicholas Young\n4, Brian Bender\n5, Stefan Gahbauer\n6, Olzhas Ilyassov\n2, Ryan Wilson\n2, Yanjun Li\n2,\nAlmagul Seitova\n2, André Luiz Lourenço\n7, Dong-Hee Chung\n8, Conner Bardine\n9, François Bénard\n10,11, Brian Shoichet\n7,\nCharles Craik\n7, Cheryl Arrowsmith\n1,2,3\n1. University of Toronto\n10. University of British Columbia\n11. British Columbia Cancer Research Institute\n2. Structural Genomics Consortium\n3. University Health Network\n4. BigHat Biosciences\n5. Isomorphic Labs\n6. Deep Apple Therapeutics\n7. University of California, San Francisco\n8. Xaira therapeutics\n9. CytomX Therapeutics (United States)\nAbstract\nTransmembrane protease, serine -2 (TMPRSS2) is an essential host entry factor in human airways\nfor SARS-CoV-2 and inﬂuenza A/B and has presented as a target for antiviral drug development;\nhowever, no clinically viable, oral small molecule TMPRSS2 inhibitors have been developed to\ndate. Here we perform two large-scale docking campaigns to identify covalent and noncovalent\nTMPRSS2 small molecule inhibitors from a homology model and crystal structure. We establish\na pipeline to rapidly screen TMPRSS2 inhibitors, then interrogate the potency, speciﬁcity and\nbiophysical properties of covalent and noncovalent inhibition using enzyme kinetics on synthetic\npeptide and protein substrates and diﬀerential scanning ﬂuorimetry. Furthermore, we established a\nreadily crystallizable form of TMPRSS2 protein that produced high resolution crystal structures with\nnafamostat, ‘157, and 6-amidino-2-naphthol. A novel noncovalent inhibitor scaﬀold is biochemically\nand biophysically validated as a potential avenue to develop TMPRSS2-selective inhibitors.\nPosted on 18 December 2024 — CC-BY 4.0 — This is a preprint and has not been peer reviewed. Data may be preliminary. — https://\ndoi.org/10.26434/chemrxiv-2024-v1sc1\n\n1 \n \nLarge library docking and biophysical analysis of sm",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "Two large-scale docking campaigns were performed against a homology model and crystal structure of TMPRSS2 to identify inhibitors, followed by biochemical and biophysical assays for characterization.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "problems": [
+    {
+      "value": "No clinically viable, oral small molecule TMPRSS2 inhibitors have been developed to date for SARS-CoV-2 and influenza A/B which require TMPRSS2 for entry into human airways.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "hypotheses": [
+    {
+      "value": "Covalent and noncovalent small molecule inhibitors can be identified to inhibit TMPRSS2 activity.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "evidence": [
+    {
+      "value": "A novel noncovalent inhibitor scaffold was identified and biochemically and biophysically validated, along with several covalent inhibitors, demonstrating potential for developing TMPRSS2-selective inhibitors.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "conclusions": [
+    {
+      "value": "The study identified potential avenues for the development of TMPRSS2-selective inhibitors, contributing to the development of antiviral therapeutics.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "entities": [
+    {
+      "value": "TMPRSS2 protein",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "SARS-CoV-2",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "influenza A/B",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "small molecule inhibitors",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "nafamostat",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "covalent and noncovalent scaffolds",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "TMPRSS2 protein",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "small molecule inhibitors",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Large library docking and biophysical analysis of small molecule TMPRSS2 inhibitors Two large-scale docking campaigns were performed against a homology model and crystal structure of TMPRSS2 to identify inhibitors, followed by biochemical and biophysical assays for characterization.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "TMPRSS2 protein SARS-CoV-2 influenza A/B small molecule inhibitors nafamostat covalent and noncovalent scaffolds identification of potential covalent and noncovalent inhibitors establishment of a pipeline for rapid screening of TMPRSS2 inhibitors generation of high resolution crystal structures to understand inhibitor binding",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [],
+  "measurements": [
+    {
+      "value": "Large library docking and biophysical analysis of small molecule TMPRSS2 inhibitors Two large-scale docking campaigns were performed against a homology model and crystal structure of TMPRSS2 to identify inhibitors, followed by biochemical and biophysical assays for characterization.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "conditions": [],
+  "mechanisms": [
+    {
+      "value": "molecular docking to identify potential inhibitors",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "enzyme kinetics to assess inhibitor potency and specificity",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "differential scanning fluorimetry to evaluate ligand binding",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "X-ray crystallography to determine high resolution crystal structures",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "outcomes": [
+    {
+      "value": "identification of potential covalent and noncovalent inhibitors",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "establishment of a pipeline for rapid screening of TMPRSS2 inhibitors",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "generation of high resolution crystal structures to understand inhibitor binding",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "Biochemistry",
+    "Biology",
+    "Therapeutics"
+  ],
+  "reasoning_motifs": [
+    {
+      "value": "Inhibition → Reduced Viral Entry",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Binding Affinity → Inhibition Potency",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Structural Information → Inhibitor Design",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "general_principles": [
+    {
+      "value": "Targeted Inhibition of Viral Entry Factors",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Molecular Recognition for Therapeutic Intervention",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Structural Biology-guided Drug Design",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "acgold_7643acdc36d9",
+    "cross_sdl_reasoning_json": "/Users/sissifeng/Downloads/cross-sdl_knowledge_transfer_engine/data/reasoning/acgold_7643acdc36d9.json",
+    "cross_sdl_extraction_quality": 0.8,
+    "cross_sdl_notes": "The paper presents a clear structure with explicit hypotheses, methods, and conclusions, facilitating the extraction process. However, some specific details regarding the initial attempts or failures were not explicitly mentioned, which could have provided additional depth to the exploration narrative."
+  },
+  "validation": {
+    "score": 0.71,
+    "coverage": {
+      "source_summary": false,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": true,
+      "entities": true,
+      "materials": true,
+      "properties": false,
+      "measurements": true,
+      "conditions": false,
+      "mechanisms": true,
+      "outcomes": true,
+      "cross_sdl_match": true
+    },
+    "missing": [
+      "source_summary",
+      "hardware",
+      "properties",
+      "conditions"
+    ],
+    "notes": [
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

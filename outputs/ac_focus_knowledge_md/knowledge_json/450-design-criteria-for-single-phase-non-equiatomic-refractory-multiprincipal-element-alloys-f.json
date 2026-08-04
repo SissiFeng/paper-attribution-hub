@@ -1,0 +1,187 @@
+{
+  "paper_id": "acfocus_37433e055c5f",
+  "title": "Design criteria for single-phase non-equiatomic refractory multiprincipal element alloys from the Nb-Ti-Zr system",
+  "metadata": {
+    "doi": "10.1016/j.matdes.2025.115211",
+    "url": "https://www.sciencedirect.com/science/article/pii/S0264127525016326",
+    "year": "2025",
+    "authors": "S. Lech; J. Hattrick-Simpers; E. A. Anber; M. J. Waters; H. Joress; D. Sur; E. Holcombe; J. M. Rondinelli; J. R. Scully; M. L. Taheri",
+    "venue": "Materials and Design",
+    "category": "Journal Article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Jason Hattrick-Simpers"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "This study establishes design criteria for single-phase, non-equiatomic refractory high entropy alloys (RMPEAs) in the Nb-Ti-Zr system, mapping phase stability and identifying a stable BCC region, thereby advancing rational alloy design for high-temperature applications.",
+  "abstract": "Refractory high entropy alloys (RMPEAs) hold promise as candidate materials for high-temperature applications challenging widely used nickel-based superalloys. RMPEAs application is currently limited by their low structure and phase stability in the presence of oxygen, which can be improved by single-phase alloy design. This study establishes design criteria for achieving single-phase, non-equiatomic RMPEAs through a systematic exploration of the Nb-Ti-Zr compositional space. Using combinatorial synthesis via magnetron co-sputtering and high-throughput characterization, we map phase stability across a broad compositional range. We identify a stable single-phase BCC region for compositions containing 19.5–55 at.% Nb, 43–59 at.% Ti, and less than 30.5 at.% Zr. Monte Carlo simulations were used to predict the phase formation at high temperatures along with electron microscopy revealing phase segregations at high-Zr compositions, exploring the role of soluble oxygen in phase formation. Our findings provide a foundation for the rational alloy design, explain the effect of each element, and pave a path for further exploration and modification of the identified compositional space. © © 2025. Published by Elsevier Ltd.",
+  "hardware": [
+    {
+      "value": "Using combinatorial synthesis via magnetron co-sputtering and high-throughput characterization, we map phase stability across a broad compositional range.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "methods": [
+    {
+      "value": "This study establishes design criteria for single-phase, non-equiatomic refractory high entropy alloys (RMPEAs) in the Nb-Ti-Zr system, mapping phase stability and identifying a stable BCC region, thereby advancing rational alloy design for high-temperature applications.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Artificial Intelligence & Data Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Automation and Robotics",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Materials Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "Design criteria for single-phase non-equiatomic refractory multiprincipal element alloys from the Nb-Ti-Zr system This study establishes design criteria for single-phase, non-equiatomic refractory high entropy alloys (RMPEAs) in the Nb-Ti-Zr system, mapping phase stability and identifying a stable BCC region, thereby advancing rational alloy design for high-temperature applications.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Refractory high entropy alloys (RMPEAs) hold promise as candidate materials for high-temperature applications challenging widely used nickel-based superalloys.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "RMPEAs application is currently limited by their low structure and phase stability in the presence of oxygen, which can be improved by single-phase alloy design.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [
+    {
+      "value": "Design criteria for single-phase non-equiatomic refractory multiprincipal element alloys from the Nb-Ti-Zr system This study establishes design criteria for single-phase, non-equiatomic refractory high entropy alloys (RMPEAs) in the Nb-Ti-Zr system, mapping phase stability and identifying a stable BCC region, thereby advancing rational alloy design for high-temperature applications.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "RMPEAs application is currently limited by their low structure and phase stability in the presence of oxygen, which can be improved by single-phase alloy design.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Using combinatorial synthesis via magnetron co-sputtering and high-throughput characterization, we map phase stability across a broad compositional range.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [
+    {
+      "value": "Using combinatorial synthesis via magnetron co-sputtering and high-throughput characterization, we map phase stability across a broad compositional range.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Monte Carlo simulations were used to predict the phase formation at high temperatures along with electron microscopy revealing phase segregations at high-Zr compositions, exploring the role of soluble oxygen in phase formation.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "conditions": [
+    {
+      "value": "Design criteria for single-phase non-equiatomic refractory multiprincipal element alloys from the Nb-Ti-Zr system This study establishes design criteria for single-phase, non-equiatomic refractory high entropy alloys (RMPEAs) in the Nb-Ti-Zr system, mapping phase stability and identifying a stable BCC region, thereby advancing rational alloy design for high-temperature applications.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Refractory high entropy alloys (RMPEAs) hold promise as candidate materials for high-temperature applications challenging widely used nickel-based superalloys.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "mechanisms": [],
+  "outcomes": [
+    {
+      "value": "Sustainable Materials",
+      "source": "csv_applied_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "Artificial Intelligence & Data Science",
+    "Automation and Robotics",
+    "Materials Science",
+    "Sustainable Materials"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.77,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": true,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": true,
+      "properties": true,
+      "measurements": true,
+      "conditions": true,
+      "mechanisms": false,
+      "outcomes": true,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "evidence",
+      "mechanisms",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only."
+    ]
+  }
+}

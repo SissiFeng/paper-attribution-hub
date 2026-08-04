@@ -1,0 +1,137 @@
+{
+  "paper_id": "acfocus_9a7ac80466db",
+  "title": "Accelerating discovery in organic redox flow batteries",
+  "metadata": {
+    "doi": "10.1038/s43588-024-00600-z",
+    "url": "https://www.nature.com/articles/s43588-024-00600-z",
+    "year": "2024",
+    "authors": "Cao Y, Aspuru-Guzik A",
+    "venue": "Nature Computational Science",
+    "category": "Journal article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Alán Aspuru-Guzik",
+      "Yang Cao"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance",
+      "AC Staff"
+    ],
+    "flags": {
+      "acknowledges_ac": "checked",
+      "highly_relevant": "checked",
+      "high_impact": "checked"
+    }
+  },
+  "source_summary": "The text emphasizes the importance of collaborative research and the integration of computation with experimentation to accelerate advancements in organic redox flow battery research, with potential benefits extending beyond energy storage.",
+  "abstract": "We highlight the challenges and opportunities in organic redox flow battery research, underscoring the need for collaborative research efforts. The synergy between computation and experimentation holds the potential to expedite progress in this field and can have far-reaching impacts beyond energy storage applications.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "The text emphasizes the importance of collaborative research and the integration of computation with experimentation to accelerate advancements in organic redox flow battery research, with potential benefits extending beyond energy storage.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Artificial Intelligence & Data Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Automation and Robotics",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Chemistry",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [],
+  "properties": [
+    {
+      "value": "Accelerating discovery in organic redox flow batteries The text emphasizes the importance of collaborative research and the integration of computation with experimentation to accelerate advancements in organic redox flow battery research, with potential benefits extending beyond energy storage.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "The synergy between computation and experimentation holds the potential to expedite progress in this field and can have far-reaching impacts beyond energy storage applications.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [],
+  "conditions": [],
+  "mechanisms": [],
+  "outcomes": [
+    {
+      "value": "Energy Storage",
+      "source": "csv_applied_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "SDL 2 - Organic",
+    "Artificial Intelligence & Data Science",
+    "Automation and Robotics",
+    "Chemistry",
+    "Energy Storage"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.5,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": false,
+      "properties": true,
+      "measurements": false,
+      "conditions": false,
+      "mechanisms": false,
+      "outcomes": true,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "materials",
+      "measurements",
+      "conditions",
+      "mechanisms",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

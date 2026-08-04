@@ -91,11 +91,20 @@ export interface Classification {
   disagreement_type?: string | null;
   classification_dimensions?: Record<string, string>;
   future_rule_update?: string | null;
+  screening_stage?: ScreeningStage | null;
+  screening_route?: ScreeningRoute | null;
+  screening_reason?: string | null;
 }
 
 export interface HumanReview {
   paper_id: string;
-  human_label: string;
+  human_label: string | null;
+  sdl_judgement?: SdlJudgement | null;
+  ac_relevance_judgement?: AcRelevanceJudgement | null;
+  ai_for_science_judgement?: AiForScienceJudgement | null;
+  review_status?: ReviewStatus | null;
+  evidence_level?: EvidenceLevel | null;
+  judgement_basis?: JudgementBasis | null;
   corrected_topics?: string[] | null;
   corrected_people?: string[] | null;
   reviewer?: string | null;
@@ -136,6 +145,8 @@ export interface Paper {
   full_text_available: boolean;
   rag_status?: RagStatus | null;
   provenance: string;
+  source?: string;
+  corpus_sources?: string[];
   authors: PaperAuthor[];
   classification?: Classification | null;
   review?: HumanReview | null;
@@ -207,15 +218,36 @@ export interface ThemeGrowth {
   delta_pct: number | "new";
 }
 
+export interface InstitutionCitationIndex {
+  institution_id: string;
+  institution_name: string;
+  paper_count: number;
+  normalized_index: number;
+}
+
+export interface NormalizedCitationImpact {
+  metric_name: string;
+  normalized_index?: number | null;
+  covered_papers: number;
+  total_papers: number;
+  coverage: number;
+  snapshot_oldest_at?: string | null;
+  snapshot_newest_at?: string | null;
+  source_breakdown: Record<string, number>;
+  by_institution: InstitutionCitationIndex[];
+}
+
 export interface ImpactReport {
   yoy_attributed: GrowthSeries;
   yoy_by_label: GrowthSeries[];
   citation_impact: GrowthSeries;
+  normalized_citation_impact: NormalizedCitationImpact;
   emerging_institutions: EmergingEntity[];
   emerging_authors: EmergingEntity[];
   top_growing_themes: ThemeGrowth[];
   window_from?: number | null;
   window_to?: number | null;
+  audit: AnalysisAudit;
 }
 
 export interface TopicShare {
@@ -243,6 +275,7 @@ export interface DriftReport {
   per_year: YearTopics[];
   drift_events: DriftEvent[];
   drift_threshold: number;
+  audit: AnalysisAudit;
 }
 
 export interface MissedPaperGroup {
@@ -266,12 +299,29 @@ export interface ReportSection {
   metrics: MetricTriple[];
 }
 
+export interface ReportEvidencePolicy {
+  mode: string;
+  confidence_threshold: number;
+  sdl_judgements: string[];
+  include_model_only_separately: boolean;
+  allow_needs_fulltext: boolean;
+  allow_abstract_only: boolean;
+  exclude_unreviewed_broad_retrieval: boolean;
+}
+
 export interface ReportResult {
   period_label: string;
   sections: ReportSection[];
   generated_at: string;
   backend: string;
+  evidence_policy?: ReportEvidencePolicy;
 }
+
+export type ReportEvidenceMode =
+  | "human_only"
+  | "human_high_confidence"
+  | "human_plus_probable"
+  | "all_threshold";
 
 export interface EvalMetric {
   label: string;
@@ -291,6 +341,14 @@ export interface EvalReport {
   evidence_recall_at_k: number | null;
   k: number;
   n_evaluated: number;
+  dataset_role?: "frozen_holdout" | "diagnostic";
+  dataset_id?: string;
+  dataset_hash?: string | null;
+  includes_silver?: boolean;
+  label_scope?: string;
+  annotation_sources?: string[];
+  evidence_levels?: string[];
+  allowed_claim?: string;
 }
 
 export interface SankeyNode {
@@ -308,6 +366,7 @@ export interface SankeyLink {
 export interface SankeyPayload {
   nodes: SankeyNode[];
   links: SankeyLink[];
+  audit: AnalysisAudit;
 }
 
 export interface TimelineSeries {
@@ -316,9 +375,11 @@ export interface TimelineSeries {
 }
 
 export interface TimelinePayload {
-  by: "topic" | "label";
+  by: "topic" | "label" | "institution" | "country" | "field";
+  top_n: number;
   years: number[];
   series: TimelineSeries[];
+  audit: AnalysisAudit;
 }
 
 export interface InstitutionNode {
@@ -341,6 +402,7 @@ export interface InstitutionEdge {
 export interface InstitutionNetworkPayload {
   nodes: InstitutionNode[];
   edges: InstitutionEdge[];
+  audit: AnalysisAudit;
 }
 
 export interface AnalyticsOverview {
@@ -359,11 +421,81 @@ export interface GraphExplanation {
   cited_by_corpus: string[];
 }
 
+export type AttributionCentrality =
+  | "core_contribution"
+  | "supporting_method"
+  | "background_only"
+  | "incidental_mention"
+  | "unrelated";
+
+export type AttributionPolarity = "positive" | "negative";
+
+export type AttributionMetadataStatus =
+  | "versioned_validated"
+  | "legacy_validated"
+  | "legacy_fallback"
+  | "invalid_fallback"
+  | "not_applicable";
+
+export interface AttributionTreeNode {
+  node_id: string;
+  parent_node_id: string | null;
+  node_type: "root" | "section" | "source";
+  path: string[];
+  section_type: string | null;
+  title: string;
+  summary: string | null;
+  page_start: number | null;
+  page_end: number | null;
+  source_section_id: string | null;
+  source_chunk_ids: string[];
+}
+
+export interface AttributionEvidencePath {
+  generation_id: string;
+  path_id: string;
+  rank: number;
+  node_id: string;
+  path: string[];
+  evidence_type: string;
+  polarity: AttributionPolarity;
+  centrality: AttributionCentrality;
+  quote: string;
+  page_start: number | null;
+  page_end: number | null;
+  source_chunk_ids: string[];
+  raw_score: number;
+  weight: number;
+  confidence: number | null;
+  detector_type: string;
+  metadata_status: AttributionMetadataStatus;
+}
+
+export interface AttributionEvidenceTree {
+  paper_id: string;
+  tree_version: string;
+  generation_mode: "derived_ephemeral";
+  generation_id: string;
+  metadata_contract_version: string;
+  nodes: AttributionTreeNode[];
+  evidence_paths: AttributionEvidencePath[];
+  evidence_review_recommended: boolean;
+  evidence_review_reasons: string[];
+}
+
 export interface PaperFilterState {
   yearFrom?: number;
   yearTo?: number;
   labels: RelevanceLabel[];
   institutionIds: string[];
+  topicIds: string[];
+  fields: string[];
+  countries: string[];
+  corpusSources: string[];
+  sdlJudgements: string[];
+  acRelevanceJudgements: string[];
+  aiForScienceJudgements: string[];
+  reviewStatuses: string[];
   partnerOnly: boolean;
   acAuthorOnly: boolean;
   hasFulltext?: boolean;
@@ -377,6 +509,14 @@ export interface PaperFilterState {
 export const DEFAULT_FILTER: PaperFilterState = {
   labels: ["CORE_RELEVANT", "RELATED_RELEVANT"],
   institutionIds: [],
+  topicIds: [],
+  fields: [],
+  countries: [],
+  corpusSources: [],
+  sdlJudgements: [],
+  acRelevanceJudgements: [],
+  aiForScienceJudgements: [],
+  reviewStatuses: [],
   partnerOnly: false,
   acAuthorOnly: false,
 };
@@ -385,6 +525,14 @@ export const DEFAULT_FILTER: PaperFilterState = {
 export const EMPTY_FILTER: PaperFilterState = {
   labels: [],
   institutionIds: [],
+  topicIds: [],
+  fields: [],
+  countries: [],
+  corpusSources: [],
+  sdlJudgements: [],
+  acRelevanceJudgements: [],
+  aiForScienceJudgements: [],
+  reviewStatuses: [],
   partnerOnly: false,
   acAuthorOnly: false,
 };
@@ -394,7 +542,14 @@ export interface NetworkNode {
   label: string;
   is_ac_member: boolean;
   institution?: string | null;
+  institution_id?: string | null;
   paper_count: number;
+  corpus_paper_count?: number;
+  ac_core_citing_paper_count?: number;
+  citation_affinity?: number;
+  reference_evidence_paper_count?: number;
+  citation_reference_coverage?: number;
+  active_years?: number[];
   ppr_score: number;
   c_norm: number;
   cross_sdl_diversity?: number;
@@ -405,6 +560,7 @@ export interface NetworkNode {
   importance_radar_axes?: ImportanceRadarAxis[];
   importance_explanation?: string;
   importance_weights?: Record<string, number>;
+  importance_rank?: number;
 }
 
 export interface ImportanceComponent {
@@ -433,20 +589,80 @@ export interface NetworkEdge {
 export interface NetworkPayload {
   nodes: NetworkNode[];
   edges: NetworkEdge[];
+  audit?: AnalysisAudit;
 }
 
 // --- v0.7 review loop / pipeline status ---
 
+export type SdlJudgement =
+  | "CONFIRMED_SDL"
+  | "PROBABLE_SDL"
+  | "SDL_ADJACENT"
+  | "NOT_SDL"
+  | "INSUFFICIENT_EVIDENCE";
+
+export type AcRelevanceJudgement =
+  | "AC_RELEVANT"
+  | "NOT_AC_RELEVANT"
+  | "INSUFFICIENT_EVIDENCE";
+
+export type AiForScienceJudgement =
+  | "AI_FOR_SCIENCE"
+  | "NOT_AI_FOR_SCIENCE"
+  | "INSUFFICIENT_EVIDENCE";
+
+export type ReviewStatus = "PENDING" | "PARTIAL" | "COMPLETED" | "NEEDS_FULLTEXT";
+export type EvidenceLevel =
+  | "TITLE_ONLY"
+  | "ABSTRACT"
+  | "FULLTEXT"
+  | "SUPPORTING_INFORMATION"
+  | "UNKNOWN";
+export type JudgementBasis = "DUAL_REVIEW" | "AC_REPORTING" | "STRICT_SDL" | "OTHER";
+export type ScreeningStage =
+  | "SEED_REFERENCE"
+  | "BROAD_SCORED"
+  | "HUMAN_REVIEW"
+  | "HUMAN_RESOLVED";
+export type ScreeningRoute =
+  | "SEED"
+  | "POSITIVE_REVIEW"
+  | "UNCERTAIN_REVIEW"
+  | "FULLTEXT_REVIEW"
+  | "SCREENED_OUT"
+  | "RESOLVED";
+
 export interface QueueItem {
   paper_id: string;
   title: string;
+  abstract?: string | null;
+  year?: number | null;
+  venue?: string | null;
+  doi?: string | null;
+  authors?: string[];
+  institutions?: string[];
   label: RelevanceLabel;
   confidence: number;
   priority: number;
   reasons: string[];
   last_classified_at: string | null;
+  source?: string | null;
   provenance: string | null;
+  corpus_sources?: string[];
+  full_text_url?: string | null;
   has_human_review: boolean;
+  sdl_judgement?: SdlJudgement | null;
+  ac_relevance_judgement?: AcRelevanceJudgement | null;
+  ai_for_science_judgement?: AiForScienceJudgement | null;
+  review_status?: ReviewStatus | null;
+  evidence_level?: EvidenceLevel | null;
+  judgement_basis?: JudgementBasis | null;
+  screening_stage?: ScreeningStage | null;
+  screening_route?: ScreeningRoute | null;
+  screening_reason?: string | null;
+  review_assignee?: string | null;
+  review_assigned_at?: string | null;
+  review_assigned_by?: string | null;
   rag_status?: RagStatus | null;
 }
 
@@ -481,6 +697,80 @@ export interface PipelineRunInput {
   use_learned?: boolean | null;
   use_judge?: boolean | null;
   triggered_by?: string;
+}
+
+export interface ModelMetricSummary {
+  n_evaluated?: number;
+  accuracy?: number;
+  macro_precision?: number;
+  macro_recall?: number;
+  macro_f1?: number;
+  per_label?: Record<
+    string,
+    { precision: number; recall: number; f1: number; support: number }
+  >;
+  confusion?: Record<string, Record<string, number>>;
+}
+
+export interface ModelTrainingRun {
+  run_id: string;
+  status: "RUNNING" | "PROMOTED" | "REJECTED" | "INVALIDATED" | "FAILED";
+  trigger_review_count: number;
+  trigger_event_ids: string[];
+  trigger_paper_ids: string[];
+  lease_generation: number;
+  training_example_count: number;
+  validation_example_count: number;
+  backend: string;
+  model_version: string | null;
+  evaluation_scope: string | null;
+  candidate_metrics: ModelMetricSummary | null;
+  incumbent_metrics: ModelMetricSummary | null;
+  validation_candidate_metrics: ModelMetricSummary | null;
+  validation_incumbent_metrics: ModelMetricSummary | null;
+  promotion_reason: string | null;
+  promotion_gate_config: Record<string, unknown> | null;
+  runtime_versions: Record<string, unknown> | null;
+  cache_sync_status: string | null;
+  training_dataset_hash: string | null;
+  validation_dataset_hash: string | null;
+  label_boundary_hashes: Record<string, string> | null;
+  candidate_model_sha256: string | null;
+  incumbent_model_sha256: string | null;
+  error_message: string | null;
+  started_at: string;
+  finished_at: string | null;
+  promoted_at: string | null;
+  heartbeat_at: string | null;
+}
+
+export interface ModelEvolutionStatus {
+  batch_size: number;
+  pending_reviews: number;
+  reviews_until_retrain: number;
+  progress: number;
+  current_model_version: string | null;
+  production_authority: {
+    production_run_id: string | null;
+    status: "VERIFIED" | "UNHEALTHY" | "LEGACY_CACHE" | "RULES_ONLY";
+    model_version: string | null;
+    artifact_sha256: string | null;
+    cache_sync_status: string | null;
+    cache_present: boolean;
+    cache_sha256: string | null;
+    cache_matches_authority: boolean | null;
+    error: string | null;
+  };
+  validation_gate: {
+    ready: boolean;
+    required_examples: number;
+    observed_examples: number;
+    required_labels: number;
+    observed_labels: string[];
+    reason: string;
+  };
+  active_run: ModelTrainingRun | null;
+  latest_run: ModelTrainingRun | null;
 }
 
 export interface EvidenceGapEntry {
@@ -586,9 +876,51 @@ export interface AnswerOut {
   source_precision: number;
   missing_evidence: string[];
   should_retry: boolean;
+  retrieval_query: string;
+  conversation_turns_used: number;
+  page_context: string | null;
   // Present in the backend payload; surfaced by the agent UI.
   module_trace?: RagModuleStep[];
   execution_mode?: string;
+}
+
+export interface SqlChatOut {
+  answer: string;
+  model: "deterministic-text-to-sql";
+  intent: string;
+  planner: string;
+  resolved_query: string;
+  sql: string;
+  parameters: Record<string, unknown>;
+  rows: Array<Record<string, unknown>>;
+  audit: {
+    planner: string;
+    answer_renderer: string;
+    read_only: boolean;
+    llm_used: boolean;
+    allowed_intents: string[];
+    allowed_tables: string[];
+    intent: string;
+    group_by?: string | null;
+    limit: number;
+    query_constraints: Record<string, unknown>;
+    page_filter: Record<string, unknown>;
+    page_filter_fingerprint: string;
+    scope_paper_count: number;
+    scope_paper_set_sha256: string;
+    scope_paper_set_encoding: string;
+    statement_sha256: string;
+    parameter_binding: string;
+    statement_type?: "SELECT";
+    row_count: number;
+  };
+  conversation_turns_used: number;
+  page_context: string | null;
+}
+
+export interface ConversationTurn {
+  role: "user" | "assistant";
+  content: string;
 }
 
 export interface RagFeedbackIn {
@@ -625,7 +957,7 @@ export interface DuplicateReport {
 
 export interface MultiGraphNode {
   id: string;
-  type: "author" | "institution" | "paper" | "topic" | "method" | "funder" | "ac_core";
+  type: "author" | "institution" | "country" | "paper" | "topic" | "method" | "funder" | "ac_core";
   label: string;
   group: string | null;
   metadata: Record<string, unknown>;
@@ -653,6 +985,48 @@ export interface MultiGraphPayload {
   available_node_types: string[];
   available_edge_types: string[];
   available_group_keys: string[];
+  audit: AnalysisAudit;
+}
+
+export interface AnalysisAudit {
+  filter: Record<string, unknown>;
+  filter_fingerprint: string;
+  paper_set_sha256: string;
+  paper_set_encoding?: string;
+  included_papers: number;
+  classified_papers: number;
+  reviewed_papers: number;
+  fulltext_papers: number;
+  corpus_source_breakdown: Record<string, number>;
+  algorithm: string;
+  metric_definitions: Record<string, string>;
+  filter_semantics?: Record<string, string>;
+  generated_at: string;
+  graph_filter?: Record<string, unknown>;
+  projection?: Record<string, unknown>;
+  projection_fingerprint?: string;
+  purpose?: string;
+  dependencies?: Record<string, AnalysisAudit>;
+  evidence_subsets?: Record<string, {
+    count: number;
+    paper_set_sha256: string;
+    paper_set_encoding?: string;
+    purpose?: string;
+  }>;
+}
+
+export interface FilterOptions {
+  years: number[];
+  countries: string[];
+  institutions: Array<{
+    id: string;
+    name: string;
+    country: string | null;
+    is_partner: boolean;
+  }>;
+  topics: Array<{ id: string; name: string }>;
+  fields: string[];
+  corpus_sources: string[];
 }
 
 export interface GeoCountry {
@@ -668,16 +1042,51 @@ export interface GeoArc {
 }
 export interface GeoInstitution {
   id: string;
+  institution_id?: string;
   name: string;
   country: string;
   is_partner: boolean;
   paper_count: number;
+}
+export interface GeographicCenter {
+  type: "country" | "institution";
+  id: string;
+  name: string;
+  country?: string | null;
+  paper_count: number;
+  collaboration_paper_count: number;
+  partner_count: number;
+  first_year?: number | null;
+  last_year?: number | null;
+  missing_year_paper_count: number;
+}
+export interface GeographicGrowthPoint {
+  year: number;
+  center_papers: number;
+  collaboration_papers: number;
+  active_partners: number;
+  cumulative_partners: number;
+  cumulative_collaboration_papers: number;
+}
+export interface GeographicPartner {
+  id: string;
+  name: string;
+  country?: string | null;
+  paper_count: number;
+  first_year?: number | null;
+  last_year?: number | null;
+  yearly: Array<{ year: number; paper_count: number }>;
 }
 export interface GeographicReport {
   countries: GeoCountry[];
   arcs: GeoArc[];
   institutions: GeoInstitution[];
   total_papers: number;
+  center_country?: string | null;
+  center?: GeographicCenter | null;
+  growth: GeographicGrowthPoint[];
+  partners: GeographicPartner[];
+  audit: AnalysisAudit;
 }
 
 export interface PeoplePaper {

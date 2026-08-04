@@ -1,0 +1,111 @@
+{
+  "paper_id": "acfocus_ea154d273638",
+  "title": "Microwave-Assisted Automated Synthesis of Lanthanide-Doped Quantum Cutting Perovskite Nanocrystals",
+  "metadata": {
+    "doi": "",
+    "url": "",
+    "year": "2025",
+    "authors": "Kai Huang",
+    "venue": "",
+    "category": "Conference",
+    "peer_reviewed": "Non Peer Reviewed",
+    "ac_members": [
+      "Kai Huang"
+    ],
+    "ac_programs": [
+      "Research Moonshot Grant_Kai Huang_2024-25"
+    ],
+    "membership_status": [
+      "AC Full Member"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "The poster presents a method for rapidly synthesizing lanthanide-doped quantum cutting perovskite nanocrystals using microwave-assisted automation.",
+  "abstract": "Poster presentation: “Microwave-Assisted Automated Synthesis of Lanthanide-Doped Quantum Cutting Perovskite Nanocrystals,” Accelerate Conference 2025, Aug 11, 2025, Toronto, Canada.",
+  "hardware": [
+    {
+      "value": "Poster presentation: “Microwave-Assisted Automated Synthesis of Lanthanide-Doped Quantum Cutting Perovskite Nanocrystals,” Accelerate Conference 2025, Aug 11, 2025, Toronto, Canada.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "methods": [
+    {
+      "value": "The poster presents a method for rapidly synthesizing lanthanide-doped quantum cutting perovskite nanocrystals using microwave-assisted automation.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [],
+  "materials": [
+    {
+      "value": "Microwave-Assisted Automated Synthesis of Lanthanide-Doped Quantum Cutting Perovskite Nanocrystals The poster presents a method for rapidly synthesizing lanthanide-doped quantum cutting perovskite nanocrystals using microwave-assisted automation.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Poster presentation: “Microwave-Assisted Automated Synthesis of Lanthanide-Doped Quantum Cutting Perovskite Nanocrystals,” Accelerate Conference 2025, Aug 11, 2025, Toronto, Canada.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [],
+  "measurements": [],
+  "conditions": [],
+  "mechanisms": [],
+  "outcomes": [],
+  "sdl_tags": [],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.47,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": true,
+      "method": true,
+      "evidence": false,
+      "entities": false,
+      "materials": true,
+      "properties": false,
+      "measurements": false,
+      "conditions": false,
+      "mechanisms": false,
+      "outcomes": false,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "evidence",
+      "entities",
+      "properties",
+      "measurements",
+      "conditions",
+      "mechanisms",
+      "outcomes",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only."
+    ]
+  }
+}

@@ -28,7 +28,7 @@ def measure(session) -> dict:
             PaperClassification.author_score, PaperClassification.topic_score,
         )
         .join(PaperClassification, PaperClassification.paper_id == Paper.id)
-        .where(Paper.ac_known_publication == True)
+        .where(Paper.ac_known_publication.is_(True))
     ).all()
 
     dist = Counter(r.label for r in rows)
@@ -41,7 +41,7 @@ def measure(session) -> dict:
         select(Paper.id, Paper.title, PaperClassification.confidence)
         .join(PaperClassification, PaperClassification.paper_id == Paper.id)
         .where(PaperClassification.label.in_(AC_RELEVANT))
-        .where(Paper.ac_known_publication == False)
+        .where(Paper.ac_known_publication.is_(False))
     ).all()
 
     total_predicted = len(correct) + len(false_pos)
@@ -79,12 +79,12 @@ def print_report(result: dict) -> None:
     print("AC CLASSIFICATION ACCURACY REPORT")
     print("=" * 65)
     print(f"Gold set (ac_known_publication=True): {result['gold_set_size']} papers")
-    print(f"\nLabel distribution on gold set:")
+    print("\nLabel distribution on gold set:")
     for label, count in sorted(result["label_distribution"].items(), key=lambda x: -x[1]):
         bar = "█" * (count // 5)
         print(f"  {label:<25} {count:4d}  {bar}")
 
-    print(f"\n── Recall ──────────────────────────────────────────")
+    print("\n── Recall ──────────────────────────────────────────")
     print(f"  Correct (>= RELATED): {result['correct_on_gold']}/{result['gold_set_size']}")
     print(f"  Recall:  {result['recall']:.1%}")
 
@@ -95,9 +95,9 @@ def print_report(result: dict) -> None:
             print(f"      author={f['author_score']:.2f} topic={f['topic_score']:.2f}"
                   f"  ac_members={f['ac_members']}")
     else:
-        print(f"\n  ✓  No failures — all gold-set papers >= RELATED_RELEVANT")
+        print("\n  ✓  No failures — all gold-set papers >= RELATED_RELEVANT")
 
-    print(f"\n── Precision ───────────────────────────────────────")
+    print("\n── Precision ───────────────────────────────────────")
     print(f"  False positives (CORE/RELATED not in gold set): {result['false_positives']}")
     print(f"  Precision: {result['precision']:.1%}")
     if result["false_positive_details"]:
@@ -105,7 +105,7 @@ def print_report(result: dict) -> None:
         for fp in result["false_positive_details"]:
             print(f"    [{fp['confidence']:.0%}] {fp['title']}")
 
-    print(f"\n── Summary ─────────────────────────────────────────")
+    print("\n── Summary ─────────────────────────────────────────")
     print(f"  Precision: {result['precision']:.1%}   Recall: {result['recall']:.1%}")
     f1 = (2 * result["precision"] * result["recall"] /
           (result["precision"] + result["recall"])

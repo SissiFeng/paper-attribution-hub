@@ -1,0 +1,93 @@
+{
+  "paper_id": "acfocus_5801dba98ce9",
+  "title": "STAMP: Differentiable Task and Motion Planning via Stein Variational Gradient Descent",
+  "metadata": {
+    "doi": "10.1109/lra.2025.3561575",
+    "url": "https://ieeexplore.ieee.org/document/10966056",
+    "year": "2025",
+    "authors": "Y. Lee; A. Z. Li; P. Huang; E. Heiden; K. M. Jatavallabhula; F. Damken; K. Smith; D. Nowrouzezahrai; F. Ramos; F. Shkurti",
+    "venue": "IEEE Robotics and Automation Letters",
+    "category": "Journal Article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Florian Shkurti"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "The authors introduce Stein Task and Motion Planning (STAMP), a novel approach to TAMP that uses gradient-based variational inference and differentiable physics simulation to efficiently optimize both discrete and continuous plan parameters, enabling the discovery of multiple diverse and feasible plans in a single, GPU-parallelized optimization run.",
+  "abstract": "Planning for sequential robotics tasks often requires integrated symbolic and geometric reasoning. TAMP algorithms typically solve these problems by performing a tree search over high-level task sequences while checking for kinematic and dynamic feasibility. This can be inefficient because, typically, candidate task plans resulting from the tree search ignore geometric information. This often leads to motion planning failures that require expensive backtracking steps to find alternative task plans. We propose a novel approach to TAMP called Stein Task and Motion Planning (STAMP) that relaxes the hybrid optimization problem into a continuous domain. This allows us to leverage gradients from differentiable physics simulation to fully optimize discrete and continuous plan parameters for TAMP. In particular, we solve the optimization problem using a gradient-based variational inference algorithm called Stein Variational Gradient Descent. This allows us to find a distribution of solutions within a single optimization run. Furthermore, we use an off-the-shelf differentiable physics simulator that is parallelized on the GPU to run parallelized inference over diverse plan parameters. We demonstrate our method on a variety of problems and show that it can find multiple diverse plans in a single optimization run while also being significantly faster than existing approaches.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "The authors introduce Stein Task and Motion Planning (STAMP), a novel approach to TAMP that uses gradient-based variational inference and differentiable physics simulation to efficiently optimize both discrete and continuous plan parameters, enabling the discovery of multiple diverse and feasible plans in a single, GPU-parallelized optimization run.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [],
+  "materials": [],
+  "properties": [],
+  "measurements": [],
+  "conditions": [],
+  "mechanisms": [],
+  "outcomes": [],
+  "sdl_tags": [],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.3,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": false,
+      "materials": false,
+      "properties": false,
+      "measurements": false,
+      "conditions": false,
+      "mechanisms": false,
+      "outcomes": false,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "entities",
+      "materials",
+      "properties",
+      "measurements",
+      "conditions",
+      "mechanisms",
+      "outcomes",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

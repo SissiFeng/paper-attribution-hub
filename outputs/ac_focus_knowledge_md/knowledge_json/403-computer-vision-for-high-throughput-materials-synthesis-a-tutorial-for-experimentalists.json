@@ -1,0 +1,306 @@
+{
+  "paper_id": "acfocus_44f1f9a52cca",
+  "title": "Computer Vision for High-Throughput Materials Synthesis: A Tutorial for Experimentalists",
+  "metadata": {
+    "doi": "10.26434/chemrxiv-2025-m6r2j",
+    "url": "https://chemrxiv.org/doi/pdf/10.26434/chemrxiv-2025-m6r2j",
+    "year": "2025",
+    "authors": "M. Gaidimas; A. Mandal; P. Chen; S. X. Leong; G. H. Kim; A. Talekar; K. Kirlikovali; K. Darvish; O. Farha; V. Bernales; A. Aspuru-Guzik",
+    "venue": "ChemRxiv",
+    "category": "Preprint",
+    "peer_reviewed": "Non Peer Reviewed",
+    "ac_members": [
+      "Alán Aspuru-Guzik",
+      "Kourosh Darvish (Deactivated)"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance",
+      "AC Trainee"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "This tutorial provides a practical, structured guide for experimentalists to integrate computer vision into high-throughput materials research, detailing the necessary hardware, software, and workflow steps to accelerate materials characterization and discovery.",
+  "abstract": "Advances in high-throughput instrumentation and laboratory automation are revolutionizing materials synthesis by enabling the rapid generation of large libraries of novel materials. However, efficient characterization of these synthetic libraries remains a significant bottleneck in the discovery of new materials. Traditional characterization methods are often limited to sequential analysis, making them time-intensive and cost-prohibitive when applied to large sample sets. In the same way that chemists interpret visual indicators to identify promising samples, computer vision (CV) is an efficient approach to accelerate materials characterization across varying scales when visual cues are present. CV is particularly useful in high-throughput synthesis and characterization workflows, as these techniques can be rapid, scalable, and cost-effective. Although there is a set of growing examples in the literature, we have found a lack of resources where newcomers interested in the field could get a hold of a practical way to get started. Here, we aim to fill that identified gap and present a structured tutorial for experimentalists to integrate computer vision into high-throughput materials research, providing a detailed roadmap from data collection to model validation. Specifically, we describe the hardware and software stack required for deploying CV in materials characterization, including image acquisition, annotation strategies, model training, and performance evaluation. As a case study, we demonstrate the implementation of a CV workflow within a high-throughput materials synthesis and characterization platform to investigate the crystallization of metal–organic frameworks (MOFs). By outlining key challenges and best practices, this tutorial aims to equip chemists and materials scientists with the necessary tools to harness CV for accelerating materials discovery.",
+  "hardware": [
+    {
+      "value": "This tutorial provides a practical, structured guide for experimentalists to integrate computer vision into high-throughput materials research, detailing the necessary hardware, software, and workflow steps to accelerate materials characterization and discovery.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Advances in high-throughput instrumentation and laboratory automation are revolutionizing materials synthesis by enabling the rapid generation of large libraries of novel materials.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "CV is particularly useful in high-throughput synthesis and characterization workflows, as these techniques can be rapid, scalable, and cost-effective.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Here, we aim to fill that identified gap and present a structured tutorial for experimentalists to integrate computer vision into high-throughput materials research, providing a detailed roadmap from data collection to model validation.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "methods": [
+    {
+      "value": "Integration of computer vision into high-throughput materials research, providing a detailed roadmap from data collection to model validation.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "problems": [
+    {
+      "value": "Efficient characterization of large libraries of novel materials synthesized through high-throughput methods.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "hypotheses": [
+    {
+      "value": "Computer vision can accelerate materials characterization across varying scales when visual cues are present.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "evidence": [
+    {
+      "value": "The implementation of a computer vision workflow within a high-throughput materials synthesis and characterization platform to investigate the crystallization of metal–organic frameworks (MOFs) demonstrated the ability to rapidly classify material phases.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "conclusions": [
+    {
+      "value": "Computer vision techniques can complement traditional materials characterization methods, enabling more efficient allocation of time-intensive characterization resources.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "entities": [
+    {
+      "value": "Metal–organic frameworks (MOFs)",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Digital images of sample vials",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Computer vision (CV) models",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "Metal–organic frameworks (MOFs)",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Computer Vision for High-Throughput Materials Synthesis: A Tutorial for Experimentalists This tutorial provides a practical, structured guide for experimentalists to integrate computer vision into high-throughput materials research, detailing the necessary hardware, software, and workflow steps to accelerate materials characterization and discovery.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Advances in high-throughput instrumentation and laboratory automation are revolutionizing materials synthesis by enabling the rapid generation of large libraries of novel materials.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "However, efficient characterization of these synthetic libraries remains a significant bottleneck in the discovery of new materials.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [],
+  "measurements": [
+    {
+      "value": "Computer Vision for High-Throughput Materials Synthesis: A Tutorial for Experimentalists This tutorial provides a practical, structured guide for experimentalists to integrate computer vision into high-throughput materials research, detailing the necessary hardware, software, and workflow steps to accelerate materials characterization and discovery.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "However, efficient characterization of these synthetic libraries remains a significant bottleneck in the discovery of new materials.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Traditional characterization methods are often limited to sequential analysis, making them time-intensive and cost-prohibitive when applied to large sample sets.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "In the same way that chemists interpret visual indicators to identify promising samples, computer vision (CV) is an efficient approach to accelerate materials characterization across varying scales when visual cues are present.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "CV is particularly useful in high-throughput synthesis and characterization workflows, as these techniques can be rapid, scalable, and cost-effective.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "conditions": [
+    {
+      "value": "Traditional characterization methods are often limited to sequential analysis, making them time-intensive and cost-prohibitive when applied to large sample sets.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Metal–organic frameworks (MOFs) Digital images of sample vials Computer vision (CV) models Identification of promising MOF candidates during exploratory synthesis programs Reduction of researcher time spent on tedious, repetitive work Standardization of outputs to minimize subjectivity in analyses",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "mechanisms": [
+    {
+      "value": "Rapid classification of material phases (solids, liquids, residues) based on image analysis",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Data augmentation to expand limited datasets and reduce model sensitivity to input variations",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Hierarchical model architecture to improve robustness against environmental variability",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "outcomes": [
+    {
+      "value": "Identification of promising MOF candidates during exploratory synthesis programs",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Reduction of researcher time spent on tedious, repetitive work",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Standardization of outputs to minimize subjectivity in analyses",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "SDL 0 - AI & Automation",
+    "Artificial Intelligence & Data Science",
+    "Automation and Robotics",
+    "Chemistry"
+  ],
+  "reasoning_motifs": [
+    {
+      "value": "Data Quality → Model Performance",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Feedback → Adaptation",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Diversity → Robustness",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "general_principles": [
+    {
+      "value": "Control Through Constraints",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Multi-scale Coupling",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "failure_paths": [
+    {
+      "value": "success: Incorporating computer vision analysis into automated synthesis platforms to monitor reaction progress and complement traditional materials characterization techniques. Evidence: The CV model outperformed human participants in overall F1 scores across all phases, with notable improvements in detecting empty, residue, and solid phases.",
+      "source": "cross_sdl_phase4",
+      "confidence": 0.75,
+      "evidence": ""
+    }
+  ],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "acgold_b0d0b1f46be2",
+    "cross_sdl_reasoning_json": "/Users/sissifeng/Downloads/cross-sdl_knowledge_transfer_engine/data/reasoning/acgold_b0d0b1f46be2.json",
+    "cross_sdl_extraction_quality": 0.8,
+    "cross_sdl_notes": "The paper provides a structured tutorial and case study, making the reasoning structure relatively clear. However, some aspects of the computer vision techniques and model training could be better detailed to fully assess the extraction quality."
+  },
+  "validation": {
+    "score": 0.93,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": true,
+      "method": true,
+      "evidence": true,
+      "entities": true,
+      "materials": true,
+      "properties": false,
+      "measurements": true,
+      "conditions": true,
+      "mechanisms": true,
+      "outcomes": true,
+      "cross_sdl_match": true
+    },
+    "missing": [
+      "properties"
+    ],
+    "notes": []
+  }
+}

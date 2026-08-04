@@ -1,0 +1,132 @@
+{
+  "paper_id": "acfocus_b7798367e624",
+  "title": "Gradient-based optimization of complex nanoparticle heterostructures enabled by deep learning on heterogeneous graphs",
+  "metadata": {
+    "doi": "10.1038/s43588-025-00917-3",
+    "url": "https://www.nature.com/articles/s43588-025-00917-3.pdf",
+    "year": "2025",
+    "authors": "E. Sivonxay; L. Attia; E. W. C. Spotte-Smith; B. Sanchez-Lengeling; X. Xia; D. Barter; E. M. Chan; S. M. Blau",
+    "venue": "Nature Computational Science",
+    "category": "Journal Article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Benjamin Sanchez"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "checked",
+      "high_impact": "checked"
+    }
+  },
+  "source_summary": "This study presents a large-scale dataset and a graph neural network approach to optimize the nonlinear optical properties of upconverting nanoparticles, achieving structures with significantly enhanced emission and providing a roadmap for deep learning-based inverse design of nanomaterials.",
+  "abstract": "Applications of deep learning (DL) to design nanomaterials are hampered by a lack of suitable data representations and training data. Here we report efforts to overcome these limitations and leverage DL to optimize the nonlinear optical properties of core–shell upconverting nanoparticles (UCNPs). UCNPs, which have applications in fields such as biosensing, super-resolution microscopy and three-dimensional printing, can emit visible and ultraviolet light from near-infrared excitations. We report a large-scale dataset of UCNP emission spectra based on accurate but expensive kinetic Monte Carlo simulations (N > 6,000) and use these data to train a heterogeneous graph neural network using a physically motivated representation of UCNP nanostructure. Applying gradient-based optimization on the trained graph neural network, we identify structures with 6.5× higher predicted emission under 800-nm illumination than any UCNP in our training set. Our work reveals design principles for UCNP heterostructures and presents a roadmap for DL-based inverse design of nanomaterials. © The Author(s), under exclusive licence to Springer Nature America, Inc. 2025.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "This study presents a large-scale dataset and a graph neural network approach to optimize the nonlinear optical properties of upconverting nanoparticles, achieving structures with significantly enhanced emission and providing a roadmap for deep learning-based inverse design of nanomaterials.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Artificial Intelligence & Data Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Chemistry",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Materials Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [],
+  "properties": [
+    {
+      "value": "Gradient-based optimization of complex nanoparticle heterostructures enabled by deep learning on heterogeneous graphs This study presents a large-scale dataset and a graph neural network approach to optimize the nonlinear optical properties of upconverting nanoparticles, achieving structures with significantly enhanced emission and providing a roadmap for deep learning-based inverse design of nanomaterials.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Here we report efforts to overcome these limitations and leverage DL to optimize the nonlinear optical properties of core–shell upconverting nanoparticles (UCNPs).",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [
+    {
+      "value": "UCNPs, which have applications in fields such as biosensing, super-resolution microscopy and three-dimensional printing, can emit visible and ultraviolet light from near-infrared excitations.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "conditions": [],
+  "mechanisms": [],
+  "outcomes": [],
+  "sdl_tags": [
+    "Artificial Intelligence & Data Science",
+    "Chemistry",
+    "Materials Science"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.5,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": false,
+      "properties": true,
+      "measurements": true,
+      "conditions": false,
+      "mechanisms": false,
+      "outcomes": false,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "materials",
+      "conditions",
+      "mechanisms",
+      "outcomes",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

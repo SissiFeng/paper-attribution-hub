@@ -1,0 +1,275 @@
+{
+  "paper_id": "acfocus_8cd0b22fa4d9",
+  "title": "A critical examination of robustness and generalizability of machine learning prediction of materials properties",
+  "metadata": {
+    "doi": "10.1038/s41524-023-01012-9",
+    "url": "https://www.nature.com/articles/s41524-023-01012-9",
+    "year": "2023",
+    "authors": "Li, Kangming; DeCost, Brian; Choudhary, Kamal; Greenwood, Michael; Hattrick-Simpers, Jason",
+    "venue": "npj Computational Materials",
+    "category": "Journal article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Jason Hattrick-Simpers"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "checked",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "Machine learning models trained on older materials databases may perform poorly on newer data due to distribution shifts, but using tools like UMAP and model disagreement can help identify and address these issues, significantly improving prediction accuracy with minimal new data.",
+  "abstract": "Recent advances in machine learning (ML) have led to substantial performance improvement in material database benchmarks, but an excellent benchmark score may not imply good generalization performance. Here we show that ML models trained on Materials Project 2018 can have severely degraded performance on new compounds in Materials Project 2021 due to the distribution shift. We discuss how to foresee the issue with a few simple tools. Firstly, the uniform manifold approximation and projection (UMAP) can be used to investigate the relation between the training and test data within the feature space. Secondly, the disagreement between multiple ML models on the test data can illuminate out-of-distribution samples. We demonstrate that the UMAP-guided and query by committee acquisition strategies can greatly improve prediction accuracy by adding only 1% of the test data. We believe this work provides valuable insights for building databases and models that enable better robustness and generalizability.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "The authors used the ALIGNN model pretrained on Materials Project 2018 to predict formation energies of new structures in Materials Project 2021 and compared its performance with traditional ML models.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "problems": [
+    {
+      "value": "Machine learning models may not generalize well to new compounds in materials science due to distribution shift between training and test datasets.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "hypotheses": [
+    {
+      "value": "The performance of ML models trained on Materials Project 2018 will degrade on new compounds in Materials Project 2021.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "evidence": [
+    {
+      "value": "ALIGNN-MP18 predictions strongly underestimated the formation energies for a significant portion of the structures whose E_dft were above 0.5 eV/atom, with prediction errors ranging from 0.5 eV/atom to up to 3.5 eV/atom.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "conclusions": [
+    {
+      "value": "ML models, including state-of-the-art neural networks, can have severely degraded performance on new compounds due to distribution shift, which is a critical issue for assessing the maturity of a database and the robustness of ML predictions.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "entities": [
+    {
+      "value": "ALIGNN model",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Materials Project 2018 database",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Materials Project 2021 database",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Traditional ML models (XGB, RF, LF)",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "Materials Project 2018 database",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Materials Project 2021 database",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "A critical examination of robustness and generalizability of machine learning prediction of materials properties Machine learning models trained on older materials databases may perform poorly on newer data due to distribution shifts, but using tools like UMAP and model disagreement can help identify and address these issues, significantly improving prediction accuracy with minimal new data.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Recent advances in machine learning (ML) have led to substantial performance improvement in material database benchmarks, but an excellent benchmark score may not imply good generalization performance.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Here we show that ML models trained on Materials Project 2018 can have severely degraded performance on new compounds in Materials Project 2021 due to the distribution shift.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [
+    {
+      "value": "A critical examination of robustness and generalizability of machine learning prediction of materials properties Machine learning models trained on older materials databases may perform poorly on newer data due to distribution shifts, but using tools like UMAP and model disagreement can help identify and address these issues, significantly improving prediction accuracy with minimal new data.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "We demonstrate that the UMAP-guided and query by committee acquisition strategies can greatly improve prediction accuracy by adding only 1% of the test data.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "ALIGNN model Materials Project 2018 database Materials Project 2021 database Traditional ML models (XGB, RF, LF) Degraded performance of ML models on new compounds Identification of out-of-distribution samples through UMAP clustering and model disagreement Improvement in prediction accuracy by adding a small amount of new data",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [
+    {
+      "value": "Recent advances in machine learning (ML) have led to substantial performance improvement in material database benchmarks, but an excellent benchmark score may not imply good generalization performance.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "conditions": [],
+  "mechanisms": [
+    {
+      "value": "Distribution shift between training and test datasets",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Underestimation of formation energies for out-of-distribution samples",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Dimension reduction via UMAP to analyze feature space",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "outcomes": [
+    {
+      "value": "Degraded performance of ML models on new compounds",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Identification of out-of-distribution samples through UMAP clustering and model disagreement",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Improvement in prediction accuracy by adding a small amount of new data",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "SDL 1 - Inorganic",
+    "Artificial Intelligence & Data Science",
+    "Materials Science"
+  ],
+  "reasoning_motifs": [
+    {
+      "value": "Distribution Shift → Performance Degradation",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Feature Space Analysis → Out-of-Distribution Identification",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Data Acquisition → Prediction Improvement",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "general_principles": [
+    {
+      "value": "Generalization is sensitive to distribution shift",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Robustness can be improved by identifying and acquiring out-of-distribution data",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "failure_paths": [
+    {
+      "value": "failure: Using RF model uncertainty quantification to identify out-of-distribution samples Evidence: RF uncertainty is only moderately correlated with the true prediction error for the test data.",
+      "source": "cross_sdl_phase4",
+      "confidence": 0.75,
+      "evidence": ""
+    }
+  ],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "acgold_e2d44cf2777c",
+    "cross_sdl_reasoning_json": "/Users/sissifeng/Downloads/cross-sdl_knowledge_transfer_engine/data/reasoning/acgold_e2d44cf2777c.json",
+    "cross_sdl_extraction_quality": 0.8,
+    "cross_sdl_notes": "The paper has a clear structure and logical flow in presenting the problem, analysis, and solutions. However, some details are omitted, such as the specific steps in the UMAP dimension reduction process. The reasoning链条 are mostly explicit, with some minor inferences needed."
+  },
+  "validation": {
+    "score": 0.86,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": true,
+      "entities": true,
+      "materials": true,
+      "properties": true,
+      "measurements": true,
+      "conditions": false,
+      "mechanisms": true,
+      "outcomes": true,
+      "cross_sdl_match": true
+    },
+    "missing": [
+      "hardware",
+      "conditions"
+    ],
+    "notes": [
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

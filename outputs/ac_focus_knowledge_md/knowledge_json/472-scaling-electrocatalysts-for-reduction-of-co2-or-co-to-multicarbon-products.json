@@ -1,0 +1,152 @@
+{
+  "paper_id": "acfocus_9d955dacea1b",
+  "title": "Scaling electrocatalysts for reduction of CO2 or CO to multicarbon products",
+  "metadata": {
+    "doi": "10.1038/s41578-025-00875-2",
+    "url": "https://utoronto.scholaris.ca/items/204517c6-0d57-40c8-a003-f246bab4fa28",
+    "year": "2026",
+    "authors": "H. S. Moon; S. A. Jaffer; R. K. Miao; E. H. Sargent; D. Sinton",
+    "venue": "Nature Reviews Materials",
+    "category": "Journal Article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "David Sinton"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "Scaling up electrochemical CO₂ reduction to multicarbon products requires not only efficient catalysts and electrodes but also scalable catalyst production and integration methods, with nanoparticle deposition emerging as the most promising approach for industrial-scale manufacturing, and catalyst production throughput, stability, and high-speed coating identified as key research priorities.",
+  "abstract": "Electrochemical CO<inf>2</inf> reduction (CO<inf>2</inf>R) to multicarbon (C<inf>2+</inf>) products can reduce the carbon intensity of both chemicals and fuels. Although laboratory-scale demonstrations now achieve encouraging selectivities and current densities on the square centimetre scale using milligrams of catalyst, industrial implementation demands electrodes on the square metre scale and more than 10 grams of catalyst per electrolyser. Replacing just 2% or so of fossil-based ethylene globally would require about 10 tonnes of catalyst annually, making scalability in material production as essential as electrochemical efficiency. Scaling C<inf>2+</inf> production introduces distinct challenges, as Cu-based catalysts show structure-sensitive selectivity, necessitating precise integration with electrodes. In this Perspective, we evaluate current strategies for catalyst–electrode integration — nanoparticle catalyst deposition, electrodeposition and sputtering — and argue that electrodeposition and sputtering will be constrained in scalability by throughput and substrate limitations. In contrast, nanoparticle deposition — pre-synthesizing nanoparticles and coating them onto electrodes — combines structural tunability with compatibility for high-throughput roll-to-roll processing, as demonstrated in large-scale manufacturing for fuel cells, water electrolysers and batteries. Building on evidence from the literature, we propose a workflow connecting scalable catalyst synthesis to continuous coating. We further advocate establishing catalyst production throughput (for example, grams per hour) as a benchmark alongside conventional electrochemical performance metrics. We highlight catalyst stability and uniform, high-speed ink coating processes as top research priorities for gigawatt-scale CO<inf>2</inf>R-to-C<inf>2+</inf> products.",
+  "hardware": [
+    {
+      "value": "In contrast, nanoparticle deposition — pre-synthesizing nanoparticles and coating them onto electrodes — combines structural tunability with compatibility for high-throughput roll-to-roll processing, as demonstrated in large-scale manufacturing for fuel cells, water electrolysers and batteries.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "methods": [
+    {
+      "value": "Scaling up electrochemical CO₂ reduction to multicarbon products requires not only efficient catalysts and electrodes but also scalable catalyst production and integration methods, with nanoparticle deposition emerging as the most promising approach for industrial-scale manufacturing, and catalyst production throughput, stability, and high-speed coating identified as key research priorities.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [],
+  "materials": [
+    {
+      "value": "Scaling electrocatalysts for reduction of CO2 or CO to multicarbon products Scaling up electrochemical CO₂ reduction to multicarbon products requires not only efficient catalysts and electrodes but also scalable catalyst production and integration methods, with nanoparticle deposition emerging as the most promising approach for industrial-scale manufacturing, and catalyst production throughput, stability, and high-speed coating identified as key research priorities.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Although laboratory-scale demonstrations now achieve encouraging selectivities and current densities on the square centimetre scale using milligrams of catalyst, industrial implementation demands electrodes on the square metre scale and more than 10 grams of catalyst per electrolyser.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Replacing just 2% or so of fossil-based ethylene globally would require about 10 tonnes of catalyst annually, making scalability in material production as essential as electrochemical efficiency.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [
+    {
+      "value": "Scaling electrocatalysts for reduction of CO2 or CO to multicarbon products Scaling up electrochemical CO₂ reduction to multicarbon products requires not only efficient catalysts and electrodes but also scalable catalyst production and integration methods, with nanoparticle deposition emerging as the most promising approach for industrial-scale manufacturing, and catalyst production throughput, stability, and high-speed coating identified as key research priorities.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Scaling C<inf>2+</inf> production introduces distinct challenges, as Cu-based catalysts show structure-sensitive selectivity, necessitating precise integration with electrodes.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "We highlight catalyst stability and uniform, high-speed ink coating processes as top research priorities for gigawatt-scale CO<inf>2</inf>R-to-C<inf>2+</inf> products.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [
+    {
+      "value": "We further advocate establishing catalyst production throughput (for example, grams per hour) as a benchmark alongside conventional electrochemical performance metrics.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "conditions": [
+    {
+      "value": "Although laboratory-scale demonstrations now achieve encouraging selectivities and current densities on the square centimetre scale using milligrams of catalyst, industrial implementation demands electrodes on the square metre scale and more than 10 grams of catalyst per electrolyser.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "In this Perspective, we evaluate current strategies for catalyst–electrode integration — nanoparticle catalyst deposition, electrodeposition and sputtering — and argue that electrodeposition and sputtering will be constrained in scalability by throughput and substrate limitations.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "mechanisms": [],
+  "outcomes": [],
+  "sdl_tags": [],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.64,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": true,
+      "method": true,
+      "evidence": false,
+      "entities": false,
+      "materials": true,
+      "properties": true,
+      "measurements": true,
+      "conditions": true,
+      "mechanisms": false,
+      "outcomes": false,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "evidence",
+      "entities",
+      "mechanisms",
+      "outcomes",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only."
+    ]
+  }
+}

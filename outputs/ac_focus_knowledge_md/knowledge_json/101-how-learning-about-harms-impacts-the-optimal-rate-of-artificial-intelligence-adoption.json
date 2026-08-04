@@ -1,0 +1,102 @@
+{
+  "paper_id": "acfocus_7982bb23b281",
+  "title": "How Learning About Harms Impacts the Optimal Rate of Artificial Intelligence Adoption",
+  "metadata": {
+    "doi": "",
+    "url": "https://academic.oup.com/economicpolicy/article/40/121/199/7762638",
+    "year": "2024",
+    "authors": "Gans JS",
+    "venue": "Economic Policy",
+    "category": "Journal article",
+    "peer_reviewed": "",
+    "ac_members": [
+      "Joshua Gans"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Affiliate Member"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "",
+  "abstract": "",
+  "hardware": [],
+  "methods": [],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Economics & Management",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [],
+  "properties": [],
+  "measurements": [],
+  "conditions": [
+    {
+      "value": "How Learning About Harms Impacts the Optimal Rate of Artificial Intelligence Adoption",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "mechanisms": [],
+  "outcomes": [],
+  "sdl_tags": [
+    "Economics & Management"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.11,
+    "coverage": {
+      "source_summary": false,
+      "abstract": false,
+      "hardware": false,
+      "method": false,
+      "evidence": false,
+      "entities": true,
+      "materials": false,
+      "properties": false,
+      "measurements": false,
+      "conditions": true,
+      "mechanisms": false,
+      "outcomes": false,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "source_summary",
+      "abstract",
+      "hardware",
+      "method",
+      "evidence",
+      "materials",
+      "properties",
+      "measurements",
+      "mechanisms",
+      "outcomes",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

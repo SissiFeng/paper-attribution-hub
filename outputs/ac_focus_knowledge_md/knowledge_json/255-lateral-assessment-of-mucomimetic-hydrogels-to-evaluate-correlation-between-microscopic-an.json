@@ -1,0 +1,182 @@
+{
+  "paper_id": "acfocus_9586dad4236d",
+  "title": "Lateral Assessment of Mucomimetic Hydrogels to Evaluate Correlation between Microscopic and Macroscopic Properties",
+  "metadata": {
+    "doi": "10.1002/mabi.202400146",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/39374341/",
+    "year": "2024",
+    "authors": "Faurschou, Kristina L.; Clasky, Aaron J.; Watchorn, Jeffrey; Tram Su, Jennifer; Li, Nancy T.; McGuigan, Alison P.; Gu, Frank X.",
+    "venue": "Macromolecular Bioscience",
+    "category": "Journal article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Aaron Clasky",
+      "Frank Gu",
+      "Alison McGuigan",
+      "Jeff Watchorn"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Staff",
+      "AC Full Member",
+      "AC Governance",
+      "AC Full Member",
+      "AC Staff"
+    ],
+    "flags": {
+      "acknowledges_ac": "checked",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "The study demonstrates that common characterization techniques do not consistently predict the barrier performance of mucomimetic hydrogels, highlighting the need for standardized testing with multiple nanoparticle formulations to better reflect in vivo drug delivery conditions.",
+  "abstract": "A major limitation in the development of mucosal drug delivery systems is the design of in vitro models that accurately reflect in vivo conditions. Traditionally, models seek to mimic characteristics of physiological mucus, often focusing on property-specific trial metrics such as rheological behavior or diffusion of a nanoparticle of interest. Despite the success of these models, translation from in vitro results to in vivo trials is limited. As a result, several authors have called for work to develop standardized testing methodologies and characterize the influence of model properties on drug delivery performance. To this end, a series of trials is performed on 12 mucomimetic hydrogels reproduced from literature. Experiments show that there is no consistent correlation between barrier performance and rheological or microstructural properties of the tested mucomimetic hydrogels. In addition, the permeability of both mucopenetrating and mucoadhesive nanoparticles is assessed, revealing non-obvious variations in barrier properties such as the relative contributions of electrostatic and hydrophobic interactions in different models. These results demonstrate the limitations of predicting mucomimetic behavior with common characterization techniques and highlight the importance of testing barrier performance with multiple nanoparticle formulations. © 2024 Wiley-VCH GmbH.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "The study demonstrates that common characterization techniques do not consistently predict the barrier performance of mucomimetic hydrogels, highlighting the need for standardized testing with multiple nanoparticle formulations to better reflect in vivo drug delivery conditions.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Chemistry",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Biology",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [],
+  "properties": [
+    {
+      "value": "Lateral Assessment of Mucomimetic Hydrogels to Evaluate Correlation between Microscopic and Macroscopic Properties The study demonstrates that common characterization techniques do not consistently predict the barrier performance of mucomimetic hydrogels, highlighting the need for standardized testing with multiple nanoparticle formulations to better reflect in vivo drug delivery conditions.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Traditionally, models seek to mimic characteristics of physiological mucus, often focusing on property-specific trial metrics such as rheological behavior or diffusion of a nanoparticle of interest.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "As a result, several authors have called for work to develop standardized testing methodologies and characterize the influence of model properties on drug delivery performance.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Experiments show that there is no consistent correlation between barrier performance and rheological or microstructural properties of the tested mucomimetic hydrogels.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "In addition, the permeability of both mucopenetrating and mucoadhesive nanoparticles is assessed, revealing non-obvious variations in barrier properties such as the relative contributions of electrostatic and hydrophobic interactions in different models.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [
+    {
+      "value": "Lateral Assessment of Mucomimetic Hydrogels to Evaluate Correlation between Microscopic and Macroscopic Properties The study demonstrates that common characterization techniques do not consistently predict the barrier performance of mucomimetic hydrogels, highlighting the need for standardized testing with multiple nanoparticle formulations to better reflect in vivo drug delivery conditions.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Experiments show that there is no consistent correlation between barrier performance and rheological or microstructural properties of the tested mucomimetic hydrogels.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "These results demonstrate the limitations of predicting mucomimetic behavior with common characterization techniques and highlight the importance of testing barrier performance with multiple nanoparticle formulations.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "conditions": [
+    {
+      "value": "Lateral Assessment of Mucomimetic Hydrogels to Evaluate Correlation between Microscopic and Macroscopic Properties The study demonstrates that common characterization techniques do not consistently predict the barrier performance of mucomimetic hydrogels, highlighting the need for standardized testing with multiple nanoparticle formulations to better reflect in vivo drug delivery conditions.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "A major limitation in the development of mucosal drug delivery systems is the design of in vitro models that accurately reflect in vivo conditions.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "mechanisms": [],
+  "outcomes": [
+    {
+      "value": "Therapeutics",
+      "source": "csv_applied_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "SDL 5 - Formulations",
+    "Chemistry",
+    "Biology",
+    "Therapeutics"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.6,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": false,
+      "properties": true,
+      "measurements": true,
+      "conditions": true,
+      "mechanisms": false,
+      "outcomes": true,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "materials",
+      "mechanisms",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

@@ -1,0 +1,144 @@
+{
+  "paper_id": "acfocus_931dd2f3fa23",
+  "title": "Benchmarking Methods for PROTAC Ternary Complex Structure Prediction",
+  "metadata": {
+    "doi": "10.1021/acs.jcim.4c00426",
+    "url": "https://pubs.acs.org/doi/10.1021/acs.jcim.4c00426",
+    "year": "2024",
+    "authors": "Rovers E, Schapira M",
+    "venue": "Journal of Chemical Information and Modeling",
+    "category": "Journal article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Matthieu Schapira"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "checked",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "This study benchmarks three computational tools for predicting PROTAC ternary complexes, revealing that while these methods can generate experimentally observed structures, they also produce many inaccurate models, highlighting both the potential and limitations of current approaches and the importance of structural and biophysical data for accurate predictions.",
+  "abstract": "Proteolysis targeting chimeras (PROTACs) are bifunctional compounds that recruit an E3 ligase to a target protein to induce ubiquitination and degradation of the target. Rational optimization of PROTAC requires a structural model of the ternary complex. In the absence of an experimental structure, computational tools have emerged that attempt to predict PROTAC ternary complexes. Here, we systematically benchmark three commonly used tools: PRosettaC, MOE, and ICM. We find that these PROTAC-focused methods produce an array of ternary complex structures, including some that are observed experimentally, but also many that significantly deviate from the crystal structure. Molecular dynamics simulations show that PROTAC complexes may exist in a multiplicity of configurational states and question the use of experimentally observed structures as a reference for accurate predictions. The pioneering computational tools benchmarked here highlight the promises and challenges in the field and may be more valuable when guided by clear structural and biophysical data. The benchmarking data set that we provide may also be valuable for evaluating other and future computational tools for ternary complex modeling.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "This study benchmarks three computational tools for predicting PROTAC ternary complexes, revealing that while these methods can generate experimentally observed structures, they also produce many inaccurate models, highlighting both the potential and limitations of current approaches and the importance of structural and biophysical data for accurate predictions.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Artificial Intelligence & Data Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Biology",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [],
+  "properties": [],
+  "measurements": [
+    {
+      "value": "Benchmarking Methods for PROTAC Ternary Complex Structure Prediction This study benchmarks three computational tools for predicting PROTAC ternary complexes, revealing that while these methods can generate experimentally observed structures, they also produce many inaccurate models, highlighting both the potential and limitations of current approaches and the importance of structural and biophysical data for accurate predictions.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Here, we systematically benchmark three commonly used tools: PRosettaC, MOE, and ICM.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "The pioneering computational tools benchmarked here highlight the promises and challenges in the field and may be more valuable when guided by clear structural and biophysical data.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "The benchmarking data set that we provide may also be valuable for evaluating other and future computational tools for ternary complex modeling.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "conditions": [
+    {
+      "value": "Benchmarking Methods for PROTAC Ternary Complex Structure Prediction This study benchmarks three computational tools for predicting PROTAC ternary complexes, revealing that while these methods can generate experimentally observed structures, they also produce many inaccurate models, highlighting both the potential and limitations of current approaches and the importance of structural and biophysical data for accurate predictions.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "mechanisms": [],
+  "outcomes": [
+    {
+      "value": "Therapeutics",
+      "source": "csv_applied_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "Artificial Intelligence & Data Science",
+    "Biology",
+    "Therapeutics"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.53,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": false,
+      "properties": false,
+      "measurements": true,
+      "conditions": true,
+      "mechanisms": false,
+      "outcomes": true,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "materials",
+      "properties",
+      "mechanisms",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

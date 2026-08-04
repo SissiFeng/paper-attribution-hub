@@ -1,0 +1,231 @@
+{
+  "paper_id": "acfocus_d7d2f0c7d66e",
+  "title": "Application-Driven Innovation in Machine Learning",
+  "metadata": {
+    "doi": "10.48550/arxiv.2403.17381",
+    "url": "https://arxiv.org/abs/2403.17381",
+    "year": "2024",
+    "authors": "Rolnick D, Aspuru-Guzik A, Beery S, Dilkina B, Donti PL, Ghassemi M, Kerner H, Monteleoni C, Rolf E, Tambe M, White A",
+    "venue": "arxiv",
+    "category": "Preprint",
+    "peer_reviewed": "Non Peer Reviewed",
+    "ac_members": [
+      "Alán Aspuru-Guzik"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "This paper argues that application-driven research in machine learning is undervalued despite its potential for significant impact, and suggests improvements to reviewing, hiring, and teaching practices to better support such innovation.",
+  "abstract": "In this position paper, we argue that application-driven research has been systemically under-valued in the machine learning community. As applications of machine learning proliferate, innovative algorithms inspired by specific real-world challenges have become increasingly important. Such work offers the potential for significant impact not merely in domains of application but also in machine learning itself. In this paper, we describe the paradigm of application-driven research in machine learning, contrasting it with the more standard paradigm of methods-driven research. We illustrate the benefits of application-driven machine learning and how this approach can productively synergize with methods-driven work. Despite these benefits, we find that reviewing, hiring, and teaching practices in machine learning often hold back application-driven innovation. We outline how these processes may be improved.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "The paper contrasts ADML with methods-driven research, discusses the benefits of ADML, and suggests improvements to reviewing, hiring, and teaching practices.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "problems": [
+    {
+      "value": "The under-valuation of application-driven research in the machine learning community.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "hypotheses": [
+    {
+      "value": "Application-driven machine learning (ADML) can significantly contribute to machine learning innovation and broader societal impact.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "evidence": [
+    {
+      "value": "The paper cites various examples of ADML contributions, such as Fourier Neural Operators, and discusses the importance of real-world tasks and domain-specific evaluation metrics.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "conclusions": [
+    {
+      "value": "The paper concludes that ADML is a vital part of the machine learning innovation landscape and provides recommendations for integrating ADML into mainstream ML practices.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "entities": [
+    {
+      "value": "Machine learning algorithms",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Real-world tasks and data",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Application-specific benchmarks",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Domain knowledge",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "materials": [],
+  "properties": [],
+  "measurements": [],
+  "conditions": [],
+  "mechanisms": [
+    {
+      "value": "Designing algorithms to meet specific application challenges",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Incorporating domain knowledge and auxiliary information",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Evaluating algorithms based on real-world performance and impact",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "outcomes": [
+    {
+      "value": "Improved performance of ML in specific applications",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Broader innovation in ML methods",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Diversification of research directions in ML",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "Artificial Intelligence & Data Science"
+  ],
+  "reasoning_motifs": [
+    {
+      "value": "Real-world applicability → Algorithm innovation",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Domain knowledge integration → Enhanced algorithm performance",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Diverse stakeholder needs → Diversified research directions",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "general_principles": [
+    {
+      "value": "Innovation through practical application",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Value of interdisciplinary collaboration",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Importance of stakeholder engagement in research direction",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "failure_paths": [
+    {
+      "value": "failure: Publishing ADML papers in mainstream ML venues. Evidence: The paper discusses common criticisms and systemic weaknesses in the review process that often exclude ADML papers.",
+      "source": "cross_sdl_phase4",
+      "confidence": 0.75,
+      "evidence": ""
+    },
+    {
+      "value": "failure: Hiring and retaining ADML researchers within ML research centers. Evidence: The paper notes that ADML researchers often do not fit the traditional mold expected within the ML community, leading to systemic obstacles to advancement.",
+      "source": "cross_sdl_phase4",
+      "confidence": 0.75,
+      "evidence": ""
+    }
+  ],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "acgold_5ef4de817c8b",
+    "cross_sdl_reasoning_json": "/Users/sissifeng/Downloads/cross-sdl_knowledge_transfer_engine/data/reasoning/acgold_5ef4de817c8b.json",
+    "cross_sdl_extraction_quality": 0.8,
+    "cross_sdl_notes": "The paper provides a clear contrast between ADML and methods-driven research, but some inferences were necessary to extract the reasoning structure, especially regarding the failures and exploration narrative."
+  },
+  "validation": {
+    "score": 0.66,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": true,
+      "entities": true,
+      "materials": false,
+      "properties": false,
+      "measurements": false,
+      "conditions": false,
+      "mechanisms": true,
+      "outcomes": true,
+      "cross_sdl_match": true
+    },
+    "missing": [
+      "hardware",
+      "materials",
+      "properties",
+      "measurements",
+      "conditions"
+    ],
+    "notes": [
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

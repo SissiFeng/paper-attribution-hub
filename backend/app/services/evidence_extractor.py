@@ -21,6 +21,7 @@ v0.7 changes:
     score is halved because just naming the institution isn't proof of
     funding).
 """
+
 from __future__ import annotations
 
 import uuid
@@ -29,6 +30,10 @@ from dataclasses import dataclass
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
+from app.attribution_evidence_contract import (
+    ATTRIBUTION_EVIDENCE_METADATA_NAMESPACE,
+    AttributionEvidenceMetadata,
+)
 from app.models import PaperChunk, PaperEvidence
 from app.services.text_utils import (
     TermHit,
@@ -75,6 +80,10 @@ SDL_METHODOLOGY_TERMS = [
     *sdl_methodology_terms(),
 ]
 SDL_METHODOLOGY_TERMS = list(dict.fromkeys(SDL_METHODOLOGY_TERMS))
+
+_RULE_EVIDENCE_METADATA = AttributionEvidenceMetadata(
+    detector_type="rule_evidence_extractor"
+).model_dump(exclude_none=True)
 
 # v0.7: blacklist for SDL-look-alikes in figure captions / methods that come
 # from unrelated domains.
@@ -205,8 +214,7 @@ def extract_evidence_for_paper(
                         evidence_type="funding_acknowledgement",
                         evidence_source=section,
                         evidence_text=_excerpt_around(text, hit),
-                        score=EVIDENCE_WEIGHTS["funding_acknowledgement"][0]
-                        * mult,
+                        score=EVIDENCE_WEIGHTS["funding_acknowledgement"][0] * mult,
                         chunk_id=chunk.id,
                     )
                 )
@@ -218,18 +226,14 @@ def extract_evidence_for_paper(
                         evidence_type="partner_institution_acknowledgement",
                         evidence_source=section,
                         evidence_text=_excerpt_around(text, hit),
-                        score=EVIDENCE_WEIGHTS[
-                            "partner_institution_acknowledgement"
-                        ][0]
+                        score=EVIDENCE_WEIGHTS["partner_institution_acknowledgement"][0]
                         * mult,
                         chunk_id=chunk.id,
                     )
                 )
 
         if section == "methods":
-            for term, hit, _mult in _scan_with_context(
-                lower, SDL_METHODOLOGY_TERMS
-            ):
+            for term, hit, _mult in _scan_with_context(lower, SDL_METHODOLOGY_TERMS):
                 records.append(
                     EvidenceRecord(
                         evidence_type="sdl_methodology",
@@ -241,9 +245,7 @@ def extract_evidence_for_paper(
                 )
 
         if section == "figure_caption":
-            for term, hit, _mult in _scan_with_context(
-                lower, SDL_METHODOLOGY_TERMS
-            ):
+            for term, hit, _mult in _scan_with_context(lower, SDL_METHODOLOGY_TERMS):
                 records.append(
                     EvidenceRecord(
                         evidence_type="figure_caption_sdl",
@@ -280,7 +282,10 @@ def persist_evidence(session: Session, paper_id: str) -> tuple[int, float]:
     """Re-run extraction for a paper, replace its rows, return (count, score)."""
     existing = (
         session.execute(
-            select(PaperEvidence).where(PaperEvidence.paper_id == paper_id)
+            select(PaperEvidence).where(
+                PaperEvidence.paper_id == paper_id,
+                PaperEvidence.evidence_type != "disqualifying",
+            )
         )
         .scalars()
         .all()
@@ -300,6 +305,11 @@ def persist_evidence(session: Session, paper_id: str) -> tuple[int, float]:
                 evidence_source=rec.evidence_source,
                 evidence_text=rec.evidence_text,
                 score=rec.score,
+                extra={
+                    ATTRIBUTION_EVIDENCE_METADATA_NAMESPACE: (
+                        _RULE_EVIDENCE_METADATA.copy()
+                    )
+                },
             )
         )
     session.flush()
@@ -327,6 +337,12 @@ def add_disqualifying_evidence(
         evidence_source=source,
         evidence_text=snippet,
         score=EVIDENCE_WEIGHTS["disqualifying"][0],
+        extra={
+            ATTRIBUTION_EVIDENCE_METADATA_NAMESPACE: AttributionEvidenceMetadata(
+                polarity="negative",
+                detector_type="disqualifying_evidence",
+            ).model_dump(exclude_none=True)
+        },
     )
     session.add(row)
     session.flush()

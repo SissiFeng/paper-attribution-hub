@@ -1,0 +1,305 @@
+{
+  "paper_id": "acfocus_a199a4abb33d",
+  "title": "Autonomous cementitious materials formulation platform for critical infrastructure repair",
+  "metadata": {
+    "doi": "10.1039/d3dd00211j",
+    "url": "https://xlink.rsc.org/?DOI=D3DD00211J",
+    "year": "2024",
+    "authors": "Joress H, Cook R, McDannald A, Kozdras M, Hattrick-Simpers J, Newman A, Jones S",
+    "venue": "Digital Discovery",
+    "category": "Journal article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Jason Hattrick-Simpers"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "checked",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "An autonomous platform is proposed to revolutionize the rapid formulation and testing of novel cement patch materials, addressing critical gaps in knowledge and the urgent global need for improved infrastructure repair solutions.",
+  "abstract": "Novel cement formulations are critical for meeting the global need for infrastructure repair. Despite the long history of cement and concrete development and use, there are still large gaps in the fundamental knowledge of their properties, frustrating the design of new formulations. The dire need for improved cementitious repair materials, therefore, requires a revolution in the way they are formulated and tested. Here we suggest an autonomous platform that could be leveraged to rapidly formulate and test designed-for-purpose cement patch materials.",
+  "hardware": [
+    {
+      "value": "An autonomous platform is proposed to revolutionize the rapid formulation and testing of novel cement patch materials, addressing critical gaps in knowledge and the urgent global need for improved infrastructure repair solutions.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Here we suggest an autonomous platform that could be leveraged to rapidly formulate and test designed-for-purpose cement patch materials.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "The proposed method involves creating an automated platform for mixing, dispensing, and testing cementitious materials, controlled by a set of autonomous ML agents directing an active learning feedback loop.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "methods": [
+    {
+      "value": "The proposed method involves creating an automated platform for mixing, dispensing, and testing cementitious materials, controlled by a set of autonomous ML agents directing an active learning feedback loop.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "problems": [
+    {
+      "value": "Development of repair materials that are both critical for infrastructure repair and a dynamic design challenge due to the need to match materials with specific applications over a range of properties.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "hypotheses": [
+    {
+      "value": "An autonomous system for synthesis and testing of cementitious materials, paired with a surrogate machine learning (ML) model, would be a powerful tool for rapidly formulating fit-for-purpose repair material.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "evidence": [
+    {
+      "value": "The paper discusses the potential of such a system to reduce CO2 emissions, save fiscal costs, and improve public safety by repairing existing infrastructure rather than replacing it. It also outlines the feasibility of automating measurements and tests on cementitious materials.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "conclusions": [
+    {
+      "value": "The proposed autonomous system has the potential to revolutionize the formulation and testing of cementitious repair materials, addressing critical societal needs for infrastructure repair and environmental sustainability.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "entities": [
+    {
+      "value": "Cementitious materials",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Autonomous platform",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Machine learning agents",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Repair material properties",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "Cementitious materials",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Repair material properties",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Autonomous cementitious materials formulation platform for critical infrastructure repair An autonomous platform is proposed to revolutionize the rapid formulation and testing of novel cement patch materials, addressing critical gaps in knowledge and the urgent global need for improved infrastructure repair solutions.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "The dire need for improved cementitious repair materials, therefore, requires a revolution in the way they are formulated and tested.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Here we suggest an autonomous platform that could be leveraged to rapidly formulate and test designed-for-purpose cement patch materials.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [
+    {
+      "value": "Despite the long history of cement and concrete development and use, there are still large gaps in the fundamental knowledge of their properties, frustrating the design of new formulations.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Cementitious materials Autonomous platform Machine learning agents Repair material properties Rapid formulation of designed-for-purpose cement patch materials Efficient allocation of resources for material testing Identification of candidate materials matching specific repair needs",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [
+    {
+      "value": "The dire need for improved cementitious repair materials, therefore, requires a revolution in the way they are formulated and tested.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "It also outlines the feasibility of automating measurements and tests on cementitious materials.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "conditions": [],
+  "mechanisms": [
+    {
+      "value": "Automated mixing and dispensing of cementitious materials",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Active learning feedback loop for dynamic data generation",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Surrogate ML model mapping input material properties to output performance",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "outcomes": [
+    {
+      "value": "Rapid formulation of designed-for-purpose cement patch materials",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Efficient allocation of resources for material testing",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Identification of candidate materials matching specific repair needs",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "Artificial Intelligence & Data Science",
+    "Automation and Robotics",
+    "Materials Science",
+    "Advanced Materials",
+    "Sustainable Materials"
+  ],
+  "reasoning_motifs": [
+    {
+      "value": "Automation → Efficiency",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Data Integration → Predictive Modeling",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Parallel Experimentation → Knowledge Acceleration",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "general_principles": [
+    {
+      "value": "Optimization Through Feedback",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Adaptation Through Learning",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Precision Through Standardization",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "failure_paths": [
+    {
+      "value": "partial: Automating characterization methods that are described by ASTM and other standards. Evidence: While some measurements are readily automatable, others may require modifications in method or scale, and it will be necessary to demonstrate the results are consistent with those generated using standard methods.",
+      "source": "cross_sdl_phase4",
+      "confidence": 0.75,
+      "evidence": ""
+    },
+    {
+      "value": "partial: Creating a ML based model that can take into account the specific chemistry and structure of the input materials. Evidence: This ML agent will likely be composed of Gaussian process models, which are well suited for identifying unexplored regions of parameter space, but more tailored models can be added to boost the predictive power of the model in this high-dimensional synthesis space.",
+      "source": "cross_sdl_phase4",
+      "confidence": 0.75,
+      "evidence": ""
+    }
+  ],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "acgold_c5f3a22c1cd7",
+    "cross_sdl_reasoning_json": "/Users/sissifeng/Downloads/cross-sdl_knowledge_transfer_engine/data/reasoning/acgold_c5f3a22c1cd7.json",
+    "cross_sdl_extraction_quality": 0.7,
+    "cross_sdl_notes": "The paper presents a novel perspective on an autonomous platform for cementitious materials testing, but the specific mechanisms and motifs are not explicitly stated and had to be inferred from the proposed system and its potential outcomes. The paper also does not provide explicit evidence or results from the actual implementation of the proposed system, making it challenging to fully assess the reliability of the extracted mechanisms and motifs."
+  },
+  "validation": {
+    "score": 0.96,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": true,
+      "method": true,
+      "evidence": true,
+      "entities": true,
+      "materials": true,
+      "properties": true,
+      "measurements": true,
+      "conditions": false,
+      "mechanisms": true,
+      "outcomes": true,
+      "cross_sdl_match": true
+    },
+    "missing": [
+      "conditions"
+    ],
+    "notes": []
+  }
+}

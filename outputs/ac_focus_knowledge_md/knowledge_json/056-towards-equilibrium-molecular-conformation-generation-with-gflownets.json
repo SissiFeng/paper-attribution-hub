@@ -1,0 +1,250 @@
+{
+  "paper_id": "acfocus_1b9d2c8f0a08",
+  "title": "Towards equilibrium molecular conformation generation with GFlowNets",
+  "metadata": {
+    "doi": "10.48550/arxiv.2310.14782",
+    "url": "https://arxiv.org/abs/2310.14782",
+    "year": "2023",
+    "authors": "Volokhova, Alexandra; Koziarski, Michał; Hernández-García, Alex; Liu, Cheng-Hao; Miret, Santiago; Lemos, Pablo; Thiede, Luca; Yan, Zichao; Aspuru-Guzik, Alán; Bengio, Yoshua",
+    "venue": "arxiv",
+    "category": "Preprint",
+    "peer_reviewed": "Non Peer Reviewed",
+    "ac_members": [
+      "Alán Aspuru-Guzik"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "The paper proposes using GFlowNet to sample diverse, low-energy molecular conformations from the Boltzmann distribution, enabling accurate reproduction of molecular potential energy surfaces for flexible drug-like molecules.",
+  "abstract": "Sampling diverse, thermodynamically feasible molecular conformations plays a crucial role in predicting properties of a molecule. In this paper we propose to use GFlowNet for sampling conformations of small molecules from the Boltzmann distribution, as determined by the molecule's energy. The proposed approach can be used in combination with energy estimation methods of different fidelity and discovers a diverse set of low-energy conformations for highly flexible drug-like molecules. We demonstrate that GFlowNet can reproduce molecular potential energy surfaces by sampling proportionally to the Boltzmann distribution.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "Use of GFlowNet for sampling molecular equilibrium conformations from the Boltzmann distribution, focusing on torsion angles of a molecule",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "problems": [
+    {
+      "value": "Sampling diverse, thermodynamically feasible molecular conformations to predict properties of a molecule",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "hypotheses": [
+    {
+      "value": "GFlowNet can sample conformations of small molecules from the Boltzmann distribution as determined by the molecule’s energy",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "evidence": [
+    {
+      "value": "The proposed approach can sample molecular conformations from the Boltzmann distribution, producing diverse, low-energy conformations for a wide range of drug-like molecules with varying numbers of torsion angles",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "conclusions": [
+    {
+      "value": "GFlowNet can reproduce molecular potential energy surfaces by sampling proportionally to the Boltzmann distribution",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "entities": [
+    {
+      "value": "Molecular conformations",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Torsion angles",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Boltzmann distribution",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "GFlowNet",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "Towards equilibrium molecular conformation generation with GFlowNets The paper proposes using GFlowNet to sample diverse, low-energy molecular conformations from the Boltzmann distribution, enabling accurate reproduction of molecular potential energy surfaces for flexible drug-like molecules.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Sampling diverse, thermodynamically feasible molecular conformations plays a crucial role in predicting properties of a molecule.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "In this paper we propose to use GFlowNet for sampling conformations of small molecules from the Boltzmann distribution, as determined by the molecule's energy.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [
+    {
+      "value": "Towards equilibrium molecular conformation generation with GFlowNets The paper proposes using GFlowNet to sample diverse, low-energy molecular conformations from the Boltzmann distribution, enabling accurate reproduction of molecular potential energy surfaces for flexible drug-like molecules.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Sampling diverse, thermodynamically feasible molecular conformations plays a crucial role in predicting properties of a molecule.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "In this paper we propose to use GFlowNet for sampling conformations of small molecules from the Boltzmann distribution, as determined by the molecule's energy.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "The proposed approach can be used in combination with energy estimation methods of different fidelity and discovers a diverse set of low-energy conformations for highly flexible drug-like molecules.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "We demonstrate that GFlowNet can reproduce molecular potential energy surfaces by sampling proportionally to the Boltzmann distribution.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [],
+  "conditions": [],
+  "mechanisms": [
+    {
+      "value": "Sampling from an unnormalized probability density represented as a reward function over the sample space",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Parameterization of forward and backward policies with a multilayer perceptron (MLP) for mixture of von Mises distribution",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Training GFlowNets with the Trajectory Balance objective",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "outcomes": [
+    {
+      "value": "Diverse, low-energy conformations for highly flexible drug-like molecules",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Reproduction of molecular potential energy surfaces",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Combination with energy estimation methods of different fidelity",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "Artificial Intelligence & Data Science",
+    "Chemistry",
+    "Therapeutics"
+  ],
+  "reasoning_motifs": [
+    {
+      "value": "Information Integration → Diverse Sampling",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Model Complexity → Sampling Accuracy",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "general_principles": [
+    {
+      "value": "Emergent Order",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "acgold_c0b1ddb2e676",
+    "cross_sdl_reasoning_json": "/Users/sissifeng/Downloads/cross-sdl_knowledge_transfer_engine/data/reasoning/acgold_c0b1ddb2e676.json",
+    "cross_sdl_extraction_quality": 0.8,
+    "cross_sdl_notes": "The paper presents a novel approach for sampling molecular conformations using GFlowNet, with a clear problem statement, hypothesis, and methodology. However, the reasoning structure is not explicitly broken down into phases, requiring some inference to extract the underlying mechanisms and outcomes."
+  },
+  "validation": {
+    "score": 0.8,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": true,
+      "entities": true,
+      "materials": true,
+      "properties": true,
+      "measurements": false,
+      "conditions": false,
+      "mechanisms": true,
+      "outcomes": true,
+      "cross_sdl_match": true
+    },
+    "missing": [
+      "hardware",
+      "measurements",
+      "conditions"
+    ],
+    "notes": [
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

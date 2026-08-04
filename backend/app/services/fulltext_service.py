@@ -34,7 +34,6 @@ from app.services.chunking_service import (
 from app.services.evidence_extractor import persist_evidence
 from app.services.normalization_service import normalize_doi
 from app.services.pdf_parser import (
-    ParsedDocument,
     ParsedReferenceRecord,
     ParsedSection,
     SUPPORTED_FULLTEXT_SUFFIXES,

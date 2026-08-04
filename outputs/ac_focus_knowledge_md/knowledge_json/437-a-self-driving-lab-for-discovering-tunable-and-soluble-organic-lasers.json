@@ -1,0 +1,128 @@
+{
+  "paper_id": "acfocus_a684ee07450a",
+  "title": "A self-driving lab for discovering tunable and soluble organic lasers",
+  "metadata": {
+    "doi": "10.26434/chemrxiv-2025-0vr9f",
+    "url": "https://chemrxiv.org/doi/full/10.26434/chemrxiv-2025-0vr9f-v2",
+    "year": "2025",
+    "authors": "H. S. Park; M. Mazaheri; C. Choi; H. Hao; D. Avagliano; A. Aspuru-Guzik",
+    "venue": "ChemRxiv",
+    "category": "Preprint",
+    "peer_reviewed": "Non Peer Reviewed",
+    "ac_members": [
+      "Alán Aspuru-Guzik"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "We used a self-driving laboratory to systematically explore 52 solution-processable fluorene-based organic laser oligomers, identifying diketopyrrolopyrrole and benzodiazole derivatives for red-shifted emissions and confirming experimental findings with computational methods.",
+  "abstract": "We have recently demonstrated the ability of using self-driving laboratories for AI-driven searches of new emitters for organic solid-state lasing devices. Our past workflow featured solubility challenges for such large molecular moieties. In this next-generation study, we returned to the drawing board to explore a family of compounds that were much solution processable and composed of a set of electronic cores that would give a broader color response. Out of 252 potential candidates, we selectively performed a comprehensive study exploring 52 fluorene-based A-B-A type organic laser oligomers, armed with our self-driving lab. The candidates ranged from simple hydrocarbon molecules to complex hetero atom-mixed molecules. As a result of this study, we highlight diketopyrrolopyrrole and benzodiazole derivatives for largely red-shifted emissions. Furthermore, we investigated the effect of color change from hetero atom permutation, fluorine addition, thiophene coupling, and a combination of fluorine addition and thiophene coupling. The computational study with density functional theory and natural transition orbital method confirmed the experimental results.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "We used a self-driving laboratory to systematically explore 52 solution-processable fluorene-based organic laser oligomers, identifying diketopyrrolopyrrole and benzodiazole derivatives for red-shifted emissions and confirming experimental findings with computational methods.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Automation and Robotics",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Artificial Intelligence & Data Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Chemistry",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "The candidates ranged from simple hydrocarbon molecules to complex hetero atom-mixed molecules.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [],
+  "measurements": [],
+  "conditions": [],
+  "mechanisms": [],
+  "outcomes": [
+    {
+      "value": "Optical Materials",
+      "source": "csv_applied_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "Automation and Robotics",
+    "Artificial Intelligence & Data Science",
+    "Chemistry",
+    "Optical Materials"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.5,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": true,
+      "properties": false,
+      "measurements": false,
+      "conditions": false,
+      "mechanisms": false,
+      "outcomes": true,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "properties",
+      "measurements",
+      "conditions",
+      "mechanisms",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

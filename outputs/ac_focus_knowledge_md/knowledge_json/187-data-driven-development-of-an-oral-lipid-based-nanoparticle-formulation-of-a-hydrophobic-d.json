@@ -1,0 +1,134 @@
+{
+  "paper_id": "acfocus_8a8385944c52",
+  "title": "Data-driven development of an oral lipid-based nanoparticle formulation of a hydrophobic drug",
+  "metadata": {
+    "doi": "10.1007/s13346-023-01491-9",
+    "url": "https://link.springer.com/article/10.1007/s13346-023-01491-9",
+    "year": "2024",
+    "authors": "Bao Z, Yung F, Hickman RJ, Aspuru-Guzik A, Bannigan P, Allen C",
+    "venue": "Drug Delivery and Translational Research",
+    "category": "Journal article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Christine Allen",
+      "Alán Aspuru-Guzik",
+      "Zeqing Bao"
+    ],
+    "ac_programs": [
+      "Core Development Grants_Christine Allen_2023-24"
+    ],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance",
+      "AC Full Member",
+      "AC Governance",
+      "AC Staff"
+    ],
+    "flags": {
+      "acknowledges_ac": "checked",
+      "highly_relevant": "checked",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "A data-driven approach combining experimental automation and machine learning enabled the rapid design of solid lipid nanoparticles and nanostructured lipid carriers for oral delivery of cannabidiol, resulting in formulations that dramatically improved drug solubility and bioavailability, matching the performance of FDA-approved Epidiolex®.",
+  "abstract": "Due to its cost-effectiveness, convenience, and high patient adherence, oral drug administration normally remains the preferred approach. Yet, the effective delivery of hydrophobic drugs via the oral route is often hindered by their limited water solubility and first-pass metabolism. To mitigate these challenges, advanced delivery systems such as solid lipid nanoparticles (SLNs) and nanostructured lipid carriers (NLCs) have been developed to encapsulate hydrophobic drugs and enhance their bioavailability. However, traditional design methodologies for these complex formulations often present intricate challenges because they are restricted to a relatively narrow design space. Here, we present a data-driven approach for the accelerated design of SLNs/NLCs encapsulating a model hydrophobic drug, cannabidiol, that combines experimental automation and machine learning. A small subset of formulations, comprising 10% of all formulations in the design space, was prepared in-house, leveraging miniaturized experimental automation to improve throughput and decrease the quantity of drug and materials required. Machine learning models were then trained on the data generated from these formulations and used to predict properties of all SLNs/NLCs within this design space (i.e., 1215 formulations). Notably, formulations predicted to be high-performers via this approach were confirmed to significantly enhance the solubility of the drug by up to 3000-fold and prevented degradation of drug. Moreover, the high-performance formulations significantly enhanced the oral bioavailability of the drug compared to both its free form and an over-the-counter version. Furthermore, this bioavailability matched that of a formulation equivalent in composition to the FDA-approved product, Epidiolex®. Graphical Abstract: (Figure presented.)",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "A data-driven approach combining experimental automation and machine learning enabled the rapid design of solid lipid nanoparticles and nanostructured lipid carriers for oral delivery of cannabidiol, resulting in formulations that dramatically improved drug solubility and bioavailability, matching the performance of FDA-approved Epidiolex®.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Artificial Intelligence & Data Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Automation and Robotics",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "A small subset of formulations, comprising 10% of all formulations in the design space, was prepared in-house, leveraging miniaturized experimental automation to improve throughput and decrease the quantity of drug and materials required.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [
+    {
+      "value": "Machine learning models were then trained on the data generated from these formulations and used to predict properties of all SLNs/NLCs within this design space (i.e., 1215 formulations).",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [],
+  "conditions": [],
+  "mechanisms": [],
+  "outcomes": [
+    {
+      "value": "Formulations",
+      "source": "csv_applied_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "Artificial Intelligence & Data Science",
+    "Automation and Robotics",
+    "Formulations"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.57,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": true,
+      "properties": true,
+      "measurements": false,
+      "conditions": false,
+      "mechanisms": false,
+      "outcomes": true,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "measurements",
+      "conditions",
+      "mechanisms",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

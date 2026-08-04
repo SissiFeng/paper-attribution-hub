@@ -1,0 +1,234 @@
+{
+  "paper_id": "acfocus_cec5e0d2199b",
+  "title": "A Sober Look at LLMs for Material Discovery: Are They Actually Good for Bayesian Optimization Over Molecules?",
+  "metadata": {
+    "doi": "10.48550/arxiv.2402.05015",
+    "url": "https://arxiv.org/abs/2402.05015",
+    "year": "2024",
+    "authors": "Kristiadi A, Strieth-Kalthoff F, Skreta M, Poupart P, Aspuru-Guzik A, Pleiss G",
+    "venue": "arxiv",
+    "category": "Preprint",
+    "peer_reviewed": "Non Peer Reviewed",
+    "ac_members": [
+      "Alán Aspuru-Guzik"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "checked",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "",
+  "abstract": "A Sober Look at LLMs for Material Discovery:\nAre They Actually Good for Bayesian Optimization Over Molecules?\nAgustinus Kristiadi 1 Felix Strieth-Kalthoff 2 Marta Skreta 2 1 Pascal Poupart 3 1 Al´an Aspuru-Guzik 2 1\nGeoff Pleiss 4 1\nhttps://github.com/wiseodd/lapeft-bayesopt\nAbstract\nAutomation is one of the cornerstones of contem-\nporary material discovery. Bayesian optimization\n(BO) is an essential part of such workflows, en-\nabling scientists to leverage prior domain knowl-\nedge into efficient exploration of a large molecu-\nlar space. While such prior knowledge can take\nmany forms, there has been significant fanfare\naround the ancillary scientific knowledge encap-\nsulated in large language models (LLMs). How-\never, existing work thus far has only explored\nLLMs for heuristic materials searches. Indeed,\nrecent work obtains the uncertainty estimate—an\nintegral part of BO—from point-estimated, non-\nBayesian LLMs. In this work, we study the ques-\ntion of whether LLMs are actually useful to ac-\ncelerate principled Bayesian optimization in the\nmolecular space. We take a sober, dispassionate\nstance in answering this question. This is done\nby carefully (i) viewing LLMs as fixed feature ex-\ntractors for standard but principled BO surrogate\nmodels and by (ii) leveraging parameter-efficient\nfinetuning methods and Bayesian neural networks\nto obtain the posterior of the LLM surrogate. Our\nextensive experiments with real-world chemistry\nproblems show that LLMs can be useful for BO\nover molecules, but only if they have been pre-\ntrained or finetuned with domain-specific data.\n1. Introduction\nMaterial discovery describes the inherently laborious, iter-\native process of designing materials candidates, preparing\nthem experimentally, testing their properties, and eventually\n1Vector Institute 2University of Toronto 3University of Waterloo\n4University of British Columbia. Correspondence to: Agustinus\nKristiadi <akristiadi@vectorinstitute.ai>.\nProceedings of the 41 st International Con",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "Compare BO performance using LLMs as fixed feature extractors versus finetuned LLMs, with domain-specific and general-purpose LLMs.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "problems": [
+    {
+      "value": "Determine whether large language models (LLMs) are effective for accelerating Bayesian optimization (BO) in molecular space.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "hypotheses": [
+    {
+      "value": "LLMs can provide useful features for BO over molecules when pretrained or finetuned with domain-specific data.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "evidence": [
+    {
+      "value": "Experiments with 8 real-world chemistry problems using various LLMs show that domain-specific LLMs and finetuned LLMs improve BO performance.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "conclusions": [
+    {
+      "value": "LLMs can be useful for BO over molecules if they are pretrained or finetuned with domain-specific data.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "entities": [
+    {
+      "value": "Large language models (LLMs)",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Bayesian optimization (BO) surrogate models",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Domain-specific data",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "A Sober Look at LLMs for Material Discovery: Are They Actually Good for Bayesian Optimization Over Molecules?",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [],
+  "measurements": [],
+  "conditions": [],
+  "mechanisms": [
+    {
+      "value": "Feature extraction from LLMs for BO",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Parameter-efficient finetuning of LLMs",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Incorporation of domain-specific data in LLM training",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "outcomes": [
+    {
+      "value": "Improved BO performance with domain-specific LLMs",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Enhanced BO performance through finetuning",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Better generalization of LLMs to chemistry problems with domain-specific training",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "Artificial Intelligence & Data Science",
+    "Chemistry",
+    "Materials Science"
+  ],
+  "reasoning_motifs": [
+    {
+      "value": "Domain-specific data → Improved generalization",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Finetuning → Enhanced performance",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Feature quality → BO efficiency",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "general_principles": [
+    {
+      "value": "Adaptation through domain-specific learning",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Performance enhancement through targeted finetuning",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Efficiency through feature relevance",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "failure_paths": [
+    {
+      "value": "failure: Using general-purpose LLMs as feature extractors for BO. Evidence: General-purpose LLMs tend to underperform compared to domain-specific LLMs.",
+      "source": "cross_sdl_phase4",
+      "confidence": 0.75,
+      "evidence": ""
+    },
+    {
+      "value": "failure: Employing in-context learning with non-Bayesian LLMs for BO. Evidence: Non-Bayesian uncertainties from in-context learning may not be optimal for the exploration-exploitation tradeoff in BO.",
+      "source": "cross_sdl_phase4",
+      "confidence": 0.75,
+      "evidence": ""
+    }
+  ],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "acgold_9bd23f1c5c24",
+    "cross_sdl_reasoning_json": "/Users/sissifeng/Downloads/cross-sdl_knowledge_transfer_engine/data/reasoning/acgold_9bd23f1c5c24.json",
+    "cross_sdl_extraction_quality": 0.8,
+    "cross_sdl_notes": "The paper provides a structured exploration of LLMs in the context of BO for molecular discovery, allowing for a clear extraction of the scientific reasoning. However, some details on the specific experimental setups and data preprocessing steps were not fully detailed, requiring some assumptions during extraction."
+  },
+  "validation": {
+    "score": 0.65,
+    "coverage": {
+      "source_summary": false,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": true,
+      "entities": true,
+      "materials": true,
+      "properties": false,
+      "measurements": false,
+      "conditions": false,
+      "mechanisms": true,
+      "outcomes": true,
+      "cross_sdl_match": true
+    },
+    "missing": [
+      "source_summary",
+      "hardware",
+      "properties",
+      "measurements",
+      "conditions"
+    ],
+    "notes": [
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

@@ -1,0 +1,244 @@
+{
+  "paper_id": "acfocus_906737e01fce",
+  "title": "Chemspyd: An Open-Source Python Interface for Chemspeed Robotic Chemistry and Materials Platforms",
+  "metadata": {
+    "doi": "10.26434/chemrxiv-2024-33sfl-v2",
+    "url": "https://chemrxiv.org/doi/full/10.26434/chemrxiv-2024-33sfl-v2",
+    "year": "2024",
+    "authors": "Seifrid M, Strieth-Kalthoff F, Haddadnia M, Wu T, Alca E, Bodo L, Arellano-Rubach S, Yoshikawa N, Skreta M, Keunen R, Aspuru-Guzik A",
+    "venue": "ChemRxiv",
+    "category": "Preprint",
+    "peer_reviewed": "Non Peer Reviewed",
+    "ac_members": [
+      "Alán Aspuru-Guzik"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "",
+  "abstract": "Chemspyd: an open-source python interface for\nChemspeed robotic chemistry and materials\nplatforms†\nMartin Seifrid,\n‡abc Felix Strieth-Kalthoﬀ,\n‡bc Mohammad Haddadnia,\nbd\nTony C. Wu,bc Emre Alca,§b Leticia Bodo,b Sebastian Arellano-Rubach,e\nNaruki Yoshikawa,\ncd Marta Skreta,cd Rachel Keunenbf and Al´an Aspuru-\nGuzik*bcdfghi\nWe introduce Chemspyd, a lightweight, open-source Python package for operating the popular laboratory\nrobotic platforms from Chemspeed Technologies. As an add-on to the existing proprietary software suite,\nChemspyd enables dynamic communication with the automated platform, laying the foundation for its\nmodular integration into customizable, higher-level laboratory workﬂows. We show the applicability of\nChemspyd in a set of case studies from chemistry and materials science. We demonstrate how the\npackage can be used with large language models to provide a natural language interface. By providing\nan open-source software interface for a commercial robotic platform, we hope to inspire the\ndevelopment of open interfaces that facilitate the ﬂexible, adaptive integration of existing laboratory\nequipment into automated laboratories.\nIntroduction\nLaboratory automation has been identied as a key strategy for\nincreasing the rate at which new discoveries are made in\nchemistry and materials science.1–6 Automation serves two\ncentral purposes: (1) to increase the experimental throughput\nvia continuous and/or parallel execution of otherwise repetitive,\nmanual tasks, and (2) to foster more standardized and repro-\nducible results. While the history of automation in chemistry\ntraces back to the mid-20th century,1 recent years have seen\na “renaissance” of automation in both academic and industrial\nlaboratories. Advances in robotics and engineering have\nenabled the automation of increasingly challenging laboratory\noperations such as thin-lm fabrication,7 sample handling\nunder inert gas,8,9 or dosing of powders, gels and slurries.10,11\nIntegrating such automated modu",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "Development of Chemspyd, a lightweight Python API for Chemspeed platforms, following object-oriented design principles and enabling real-time, adaptive control.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "problems": [
+    {
+      "value": "Lack of open-source software interfaces for integrating Chemspeed robotic platforms into customizable, higher-level laboratory workflows.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "hypotheses": [
+    {
+      "value": "An open-source Python package can enable dynamic communication with Chemspeed platforms, facilitating their integration into automated laboratories.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "evidence": [
+    {
+      "value": "Successful implementation of Chemspyd in experimental case studies from chemistry and materials science, demonstrating its applicability and effectiveness.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "conclusions": [
+    {
+      "value": "Chemspyd enables the dynamic control of Chemspeed instruments and their seamless integration into custom workflows and automated laboratories.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "entities": [
+    {
+      "value": "Chemspeed robotic platforms",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Python API",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "AutoSuite software",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "CSV files",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Manager application file",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "Chemspyd: An Open-Source Python Interface for Chemspeed Robotic Chemistry and Materials Platforms Development of Chemspyd, a lightweight Python API for Chemspeed platforms, following object-oriented design principles and enabling real-time, adaptive control.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Successful implementation of Chemspyd in experimental case studies from chemistry and materials science, demonstrating its applicability and effectiveness.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [],
+  "measurements": [],
+  "conditions": [
+    {
+      "value": "Chemspyd: An Open-Source Python Interface for Chemspeed Robotic Chemistry and Materials Platforms Development of Chemspyd, a lightweight Python API for Chemspeed platforms, following object-oriented design principles and enabling real-time, adaptive control.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "mechanisms": [
+    {
+      "value": "Dynamic communication between Chemspyd and Chemspeed's AutoSuite software via CSV files",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Execution of actions based on keywords and parameters provided by Chemspyd",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Integration of Chemspeed robots into custom workflows through Python scripting",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "outcomes": [
+    {
+      "value": "Fine-grained control over Chemspeed instruments",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Adaptive workflow development in Python",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Seamless integration of Chemspeed robots into automated or self-driving laboratories",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "Automation and Robotics",
+    "Chemistry"
+  ],
+  "reasoning_motifs": [
+    {
+      "value": "Modular Design → Customizability",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Open-source Interface → Community-driven Development",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Real-time Control → Adaptive Decision-making",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "general_principles": [
+    {
+      "value": "Interoperability through Open Standards",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Decentralized Control for Enhanced Flexibility",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "User-centric Design for Broad Accessibility",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "acgold_17cadec56313",
+    "cross_sdl_reasoning_json": "/Users/sissifeng/Downloads/cross-sdl_knowledge_transfer_engine/data/reasoning/acgold_17cadec56313.json",
+    "cross_sdl_extraction_quality": 0.9,
+    "cross_sdl_notes": "The paper provides a clear structure, with explicit statements of the problem, hypothesis, method, evidence, and conclusion. The reasoning is well-organized, making it easy to extract the scientific reasoning components. The only minor challenge was ensuring that the extracted motifs and principles were domain-agnostic, but the paper's focus on open-source software and automation in laboratories made this feasible."
+  },
+  "validation": {
+    "score": 0.69,
+    "coverage": {
+      "source_summary": false,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": true,
+      "entities": true,
+      "materials": true,
+      "properties": false,
+      "measurements": false,
+      "conditions": true,
+      "mechanisms": true,
+      "outcomes": true,
+      "cross_sdl_match": true
+    },
+    "missing": [
+      "source_summary",
+      "hardware",
+      "properties",
+      "measurements"
+    ],
+    "notes": [
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

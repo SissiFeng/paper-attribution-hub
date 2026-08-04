@@ -1,8 +1,13 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 
 import { FilterBar } from "@/components/FilterBar";
 import { generateReport, API_BASE } from "@/lib/api";
+import {
+  isLatestRequest,
+  resultForScope,
+  type ScopedResult,
+} from "@/lib/scopedResult";
 import type { ReportResult } from "@/types";
 
 const SECTIONS: { key: string; label: string }[] = [
@@ -16,6 +21,21 @@ const SECTIONS: { key: string; label: string }[] = [
 const BACKENDS = [
   { key: "template", label: "Templated (deterministic, no LLM)" },
   { key: "anthropic", label: "Anthropic Claude rewriter (optional)" },
+];
+
+const REPORT_ENTITIES: { key: string; label: string }[] = [
+  { key: "none", label: "No entity restriction" },
+  { key: "university_of_toronto", label: "University of Toronto" },
+  { key: "toronto", label: "Toronto institutions" },
+  { key: "ac_activity", label: "AC member activity" },
+  { key: "ac_sdl_overlap", label: "AC + strict SDL overlap" },
+];
+
+const EVIDENCE_MODES: { key: string; label: string }[] = [
+  { key: "human_only", label: "Human-confirmed SDL only" },
+  { key: "human_high_confidence", label: "Human + high-confidence model SDL" },
+  { key: "human_plus_probable", label: "Human + probable SDL" },
+  { key: "all_threshold", label: "All model-classified (threshold)" },
 ];
 
 /**
@@ -72,27 +92,72 @@ function ProseWithLinks({
 
 export default function ReportPage() {
   const [searchParams] = useSearchParams();
-  const [report, setReport] = useState<ReportResult | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [generating, setGenerating] = useState(false);
   const [enabledSections, setEnabledSections] = useState<string[]>(
     SECTIONS.map((s) => s.key)
   );
   const [backend, setBackend] = useState<string>("template");
+  const [reportEntity, setReportEntity] = useState<string>("none");
+  const [evidenceMode, setEvidenceMode] = useState<string>("human_plus_probable");
+  const [confidenceThreshold, setConfidenceThreshold] = useState<number>(0.8);
+  const [allowNeedsFulltext, setAllowNeedsFulltext] = useState(false);
+  const [allowAbstractOnly, setAllowAbstractOnly] = useState(false);
+  const [excludeUnreviewedBroad, setExcludeUnreviewedBroad] = useState(true);
+  const [includeModelOnly, setIncludeModelOnly] = useState(false);
+  const searchKey = searchParams.toString();
+  const policyState = JSON.stringify([
+    reportEntity,
+    evidenceMode,
+    confidenceThreshold,
+    allowNeedsFulltext,
+    allowAbstractOnly,
+    excludeUnreviewedBroad,
+    includeModelOnly,
+  ]);
+  const scopeKey = JSON.stringify([searchKey, enabledSections, backend, policyState]);
+  const [reportResult, setReportResult] = useState<
+    ScopedResult<ReportResult> | null
+  >(null);
+  const report = resultForScope(reportResult, scopeKey);
+  const requestGeneration = useRef(0);
+
+  useEffect(() => {
+    requestGeneration.current += 1;
+    setError(null);
+    setGenerating(false);
+  }, [scopeKey]);
 
   const handleGenerate = async () => {
+    const generation = ++requestGeneration.current;
+    const requestScopeKey = scopeKey;
     setGenerating(true);
     setError(null);
     try {
-      const r = await generateReport(
-        { sections: enabledSections, backend },
-        searchParams
+      const nextReport = await generateReport(
+        {
+          sections: enabledSections,
+          backend,
+          report_entity: reportEntity,
+          report_evidence_mode: evidenceMode,
+          report_evidence_confidence_threshold: confidenceThreshold,
+          report_evidence_include_model_only: includeModelOnly,
+          report_evidence_allow_needs_fulltext: allowNeedsFulltext,
+          report_evidence_allow_abstract_only: allowAbstractOnly,
+          report_evidence_exclude_unreviewed_broad: excludeUnreviewedBroad,
+        },
+        new URLSearchParams(searchKey)
       );
-      setReport(r);
+      if (isLatestRequest(generation, requestGeneration.current)) {
+        setReportResult({ scopeKey: requestScopeKey, payload: nextReport });
+      }
     } catch (err) {
-      setError(err instanceof Error ? err.message : String(err));
+      if (isLatestRequest(generation, requestGeneration.current)) {
+        setError(err instanceof Error ? err.message : String(err));
+        setReportResult(null);
+      }
     } finally {
-      setGenerating(false);
+      if (isLatestRequest(generation, requestGeneration.current)) setGenerating(false);
     }
   };
 
@@ -118,6 +183,19 @@ export default function ReportPage() {
           ))}
         </div>
         <label>
+          Reporting entity:&nbsp;
+          <select
+            value={reportEntity}
+            onChange={(e) => setReportEntity(e.target.value)}
+          >
+            {REPORT_ENTITIES.map((r) => (
+              <option key={r.key} value={r.key}>
+                {r.label}
+              </option>
+            ))}
+          </select>
+        </label>
+        <label>
           Backend:&nbsp;
           <select value={backend} onChange={(e) => setBackend(e.target.value)}>
             {BACKENDS.map((b) => (
@@ -126,6 +204,66 @@ export default function ReportPage() {
               </option>
             ))}
           </select>
+        </label>
+        <label>
+          Evidence scope:&nbsp;
+          <select
+            value={evidenceMode}
+            onChange={(e) => setEvidenceMode(e.target.value)}
+          >
+            {EVIDENCE_MODES.map((m) => (
+              <option key={m.key} value={m.key}>
+                {m.label}
+              </option>
+            ))}
+          </select>
+        </label>
+        {(evidenceMode === "human_high_confidence" ||
+          evidenceMode === "all_threshold") && (
+          <label>
+            Confidence:&nbsp;
+            <input
+              type="number"
+              min={0}
+              max={1}
+              step={0.05}
+              value={confidenceThreshold}
+              onChange={(e) => setConfidenceThreshold(Number(e.target.value))}
+              style={{ width: "5rem" }}
+            />
+          </label>
+        )}
+        <label className="chip-toggle">
+          <input
+            type="checkbox"
+            checked={allowNeedsFulltext}
+            onChange={(e) => setAllowNeedsFulltext(e.target.checked)}
+          />
+          Allow NEEDS_FULLTEXT
+        </label>
+        <label className="chip-toggle">
+          <input
+            type="checkbox"
+            checked={allowAbstractOnly}
+            onChange={(e) => setAllowAbstractOnly(e.target.checked)}
+          />
+          Allow abstract-only
+        </label>
+        <label className="chip-toggle">
+          <input
+            type="checkbox"
+            checked={excludeUnreviewedBroad}
+            onChange={(e) => setExcludeUnreviewedBroad(e.target.checked)}
+          />
+          Exclude unreviewed broad retrieval
+        </label>
+        <label className="chip-toggle">
+          <input
+            type="checkbox"
+            checked={includeModelOnly}
+            onChange={(e) => setIncludeModelOnly(e.target.checked)}
+          />
+          Show model-only separately
         </label>
         <button onClick={() => void handleGenerate()} disabled={generating}>
           {generating ? "Generating…" : "Generate report"}
@@ -150,6 +288,16 @@ export default function ReportPage() {
           <div className="report-meta">
             <span>Period: <strong>{report.period_label}</strong></span>
             <span>Backend: <strong>{report.backend}</strong></span>
+            <span>
+              Evidence:{" "}
+              <strong>
+                {report.evidence_policy?.mode ?? evidenceMode}
+                {report.evidence_policy?.confidence_threshold !== undefined &&
+                report.evidence_policy.confidence_threshold > 0
+                  ? ` ≥ ${report.evidence_policy.confidence_threshold}`
+                  : ""}
+              </strong>
+            </span>
             <span>Generated: <strong>{new Date(report.generated_at).toLocaleString()}</strong></span>
           </div>
 

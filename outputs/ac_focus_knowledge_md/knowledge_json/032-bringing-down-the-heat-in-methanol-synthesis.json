@@ -1,0 +1,168 @@
+{
+  "paper_id": "acfocus_f094f708cf2e",
+  "title": "Bringing down the heat in methanol synthesis",
+  "metadata": {
+    "doi": "10.1016/j.matt.2023.05.022",
+    "url": "https://www.cell.com/matter/fulltext/S2590-2385(23)00240-0?_returnURL=https%3A%2F%2Flinkinghub.elsevier.com%2Fretrieve%2Fpii%2FS2590238523002400%3Fshowall%3Dtrue",
+    "year": "2023",
+    "authors": "Wang, Andrew; Tountas, Athanasios A.; Aspuru-Guzik, Alán; Ozin, Geoffrey A.",
+    "venue": "Matter",
+    "category": "Journal article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Alán Aspuru-Guzik"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "checked",
+      "high_impact": "checked"
+    }
+  },
+  "source_summary": "The text discusses the rapid growth of the methanol economy, highlighting efforts to improve methanol synthesis by developing advanced metal oxide catalysts and exploring solar-powered processes to reduce energy use and carbon footprint, ultimately aiming for sustainable solar methanol refineries.",
+  "abstract": "The methanol economy envisioned by Nobel laureate George Olah is growing by leaps and bounds. This growth is spurred by its burgeoning use not only as a major feedstock for a vast range of commodity chemicals and fuels but as a high-capacity and secure hydrogen (H2) storage, transportation, and delivery medium to power the hydrogen economy these days. Methanol is currently produced industrially at more than 100 million metric ton scales from fossil-sourced syngas, CO-H2, and by conventional fossil-powered heterogeneous catalysis, operated under high temperature and pressure conditions. The synthesis process is enabled by a ternary copper-zinc oxide-alumina composite (CZA), the performance metrics of which have remained pre-eminent for the past two decades. There are, however, incentives to lower the energy, economic, and environmental impact of the commercial methanol process, which functions at 250°C and 8 MPa, and to reduce its carbon footprint by switching to a CO2-H2 feedstock rather than continuing the use of CO-H2. Herein, to go beyond CZA, a surface coordination materials chemistry perspective is presented for the thermally enabled adsorption, activation, reaction, and desorption steps of CO2-H2 that ensue on metal oxide catalysts as a function of temperature and pressure. The objective is to identify periodic trends in the chemical and physical properties of the metal oxide that determine its activity and selectivity toward methanol synthesis versus the competitive reverse water gas shift carbon monoxide product. Armed with this materials chemistry perspective of methanol synthesis enabled by CZA, an enquiry is launched into how to rationally envision and design, by human-to-artificial intelligence, low-temperature metal oxide catalysts able to enhance methanol yield and reduce the energy requirement of the reaction. This chimie douce investigation culminates with an exploration of what it will take to power the methanol synthesis reaction directly with light rather than heat to ultimately reduce the dream of solar methanol refineries to practice and realize the solar advantage.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "The text discusses the rapid growth of the methanol economy, highlighting efforts to improve methanol synthesis by developing advanced metal oxide catalysts and exploring solar-powered processes to reduce energy use and carbon footprint, ultimately aiming for sustainable solar methanol refineries.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Chemistry",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Materials Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "Bringing down the heat in methanol synthesis The text discusses the rapid growth of the methanol economy, highlighting efforts to improve methanol synthesis by developing advanced metal oxide catalysts and exploring solar-powered processes to reduce energy use and carbon footprint, ultimately aiming for sustainable solar methanol refineries.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Herein, to go beyond CZA, a surface coordination materials chemistry perspective is presented for the thermally enabled adsorption, activation, reaction, and desorption steps of CO2-H2 that ensue on metal oxide catalysts as a function of temperature and pressure.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Armed with this materials chemistry perspective of methanol synthesis enabled by CZA, an enquiry is launched into how to rationally envision and design, by human-to-artificial intelligence, low-temperature metal oxide catalysts able to enhance methanol yield and reduce the energy requirement of the reaction.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [
+    {
+      "value": "Bringing down the heat in methanol synthesis The text discusses the rapid growth of the methanol economy, highlighting efforts to improve methanol synthesis by developing advanced metal oxide catalysts and exploring solar-powered processes to reduce energy use and carbon footprint, ultimately aiming for sustainable solar methanol refineries.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "There are, however, incentives to lower the energy, economic, and environmental impact of the commercial methanol process, which functions at 250°C and 8 MPa, and to reduce its carbon footprint by switching to a CO2-H2 feedstock rather than continuing the use of CO-H2.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "The objective is to identify periodic trends in the chemical and physical properties of the metal oxide that determine its activity and selectivity toward methanol synthesis versus the competitive reverse water gas shift carbon monoxide product.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Armed with this materials chemistry perspective of methanol synthesis enabled by CZA, an enquiry is launched into how to rationally envision and design, by human-to-artificial intelligence, low-temperature metal oxide catalysts able to enhance methanol yield and reduce the energy requirement of the reaction.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [],
+  "conditions": [
+    {
+      "value": "Methanol is currently produced industrially at more than 100 million metric ton scales from fossil-sourced syngas, CO-H2, and by conventional fossil-powered heterogeneous catalysis, operated under high temperature and pressure conditions.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Herein, to go beyond CZA, a surface coordination materials chemistry perspective is presented for the thermally enabled adsorption, activation, reaction, and desorption steps of CO2-H2 that ensue on metal oxide catalysts as a function of temperature and pressure.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Armed with this materials chemistry perspective of methanol synthesis enabled by CZA, an enquiry is launched into how to rationally envision and design, by human-to-artificial intelligence, low-temperature metal oxide catalysts able to enhance methanol yield and reduce the energy requirement of the reaction.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "mechanisms": [],
+  "outcomes": [],
+  "sdl_tags": [
+    "Chemistry",
+    "Materials Science"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.55,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": true,
+      "properties": true,
+      "measurements": false,
+      "conditions": true,
+      "mechanisms": false,
+      "outcomes": false,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "measurements",
+      "mechanisms",
+      "outcomes",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

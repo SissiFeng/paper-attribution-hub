@@ -1,0 +1,169 @@
+{
+  "paper_id": "acfocus_883172f997f1",
+  "title": "Continuous synthesis of high-entropy alloy nanoparticles by in-flight alloying of elemental metals",
+  "metadata": {
+    "doi": "10.1038/s41467-024-45731-z",
+    "url": "https://www.nature.com/articles/s41467-024-45731-z",
+    "year": "2024",
+    "authors": "Kim KS, Couillard M, Tang Z, Shin H, Poitras D, Cheng C, Naboka O, Ruth D, Plunkett M, Chen L, Gaburici L, Lacelle T, Nganbe M, Zou Y",
+    "venue": "Nature Communications",
+    "category": "Journal article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Yu Zou"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "checked",
+      "high_impact": "checked"
+    }
+  },
+  "source_summary": "Researchers developed an ultrafast, one-step plasma jet method to continuously synthesize high-entropy alloy nanoparticles directly from metal powders, achieving high production rates and tunable properties, which holds promise for large-scale industrial applications and efficient solar energy conversion.",
+  "abstract": "High-entropy alloy (HEA) nanoparticles (NPs) exhibit unusual combinations of functional properties. However, their scalable synthesis remains a significant challenge requiring extreme fabrication conditions. Metal salts are often employed as precursors because of their low decomposition temperatures, yet contain potential impurities. Here, we propose an ultrafast (< 100 ms), one-step method that enables the continuous synthesis of HEA NPs directly from elemental metal powders via in-flight alloying. A high-temperature plasma jet (> 5000 K) is employed for rapid heating/cooling (103 − 105K s−1), and demonstrates the synthesis of CrFeCoNiMo HEA NPs (~ 50 nm) at a high rate approaching 35 g h−1 with a conversion efficiency of 42%. Our thermofluid simulation reveals that the properties of HEA NPs can be tailored by the plasma gas which affects the thermal history of NPs. The HEA NPs demonstrate an excellent light absorption of > 96% over a wide spectrum, representing great potential for photothermal conversion of solar energy at large scales. Our work shows that the thermal plasma process developed could provide a promising route towards industrial scale production of HEA NPs.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "Researchers developed an ultrafast, one-step plasma jet method to continuously synthesize high-entropy alloy nanoparticles directly from metal powders, achieving high production rates and tunable properties, which holds promise for large-scale industrial applications and efficient solar energy conversion.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Automation and Robotics",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Materials Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Engineering",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "Continuous synthesis of high-entropy alloy nanoparticles by in-flight alloying of elemental metals Researchers developed an ultrafast, one-step plasma jet method to continuously synthesize high-entropy alloy nanoparticles directly from metal powders, achieving high production rates and tunable properties, which holds promise for large-scale industrial applications and efficient solar energy conversion.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "High-entropy alloy (HEA) nanoparticles (NPs) exhibit unusual combinations of functional properties.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [
+    {
+      "value": "Continuous synthesis of high-entropy alloy nanoparticles by in-flight alloying of elemental metals Researchers developed an ultrafast, one-step plasma jet method to continuously synthesize high-entropy alloy nanoparticles directly from metal powders, achieving high production rates and tunable properties, which holds promise for large-scale industrial applications and efficient solar energy conversion.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "High-entropy alloy (HEA) nanoparticles (NPs) exhibit unusual combinations of functional properties.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Our thermofluid simulation reveals that the properties of HEA NPs can be tailored by the plasma gas which affects the thermal history of NPs.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "The HEA NPs demonstrate an excellent light absorption of > 96% over a wide spectrum, representing great potential for photothermal conversion of solar energy at large scales.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [],
+  "conditions": [
+    {
+      "value": "However, their scalable synthesis remains a significant challenge requiring extreme fabrication conditions.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "A high-temperature plasma jet (> 5000 K) is employed for rapid heating/cooling (103 − 105K s−1), and demonstrates the synthesis of CrFeCoNiMo HEA NPs (~ 50 nm) at a high rate approaching 35 g h−1 with a conversion efficiency of 42%.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "mechanisms": [],
+  "outcomes": [
+    {
+      "value": "Additive Manufacturing",
+      "source": "csv_applied_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "Automation and Robotics",
+    "Materials Science",
+    "Engineering",
+    "Additive Manufacturing"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.61,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": true,
+      "properties": true,
+      "measurements": false,
+      "conditions": true,
+      "mechanisms": false,
+      "outcomes": true,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "measurements",
+      "mechanisms",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

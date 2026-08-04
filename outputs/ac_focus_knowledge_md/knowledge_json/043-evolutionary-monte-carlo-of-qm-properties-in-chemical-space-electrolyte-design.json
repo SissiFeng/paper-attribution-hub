@@ -1,0 +1,269 @@
+{
+  "paper_id": "acfocus_a436e35efb8e",
+  "title": "Evolutionary Monte Carlo of QM properties in chemical space: Electrolyte design",
+  "metadata": {
+    "doi": "10.48550/arxiv.2307.15563",
+    "url": "https://arxiv.org/abs/2307.15563",
+    "year": "2023",
+    "authors": "Karandashev, Konstantin; Weinreich, Jan; Heinen, Stefan; Arrieta, Daniel Jose Arismendi; von Rudorff, Guido Falk; Hermansson, Kersti; von Lilienfeld, O. Anatole",
+    "venue": "arxiv",
+    "category": "Preprint",
+    "peer_reviewed": "Non Peer Reviewed",
+    "ac_members": [
+      "Anatole von Lilienfeld"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance"
+    ],
+    "flags": {
+      "acknowledges_ac": "checked",
+      "highly_relevant": "checked",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "The paper introduces MOSAiCS, an Evolutionary Monte Carlo algorithm that efficiently optimizes molecular properties by balancing exploration and exploitation, outperforming existing datasets in tasks like minimizing solvation energy and maximizing dipole moment, and discusses future acceleration using machine learning.",
+  "abstract": "Optimizing a target function over the space of organic molecules is an important problem appearing in many fields of applied science, but also a very difficult one due to the vast number of possible molecular systems. We propose an Evolutionary Monte Carlo algorithm for solving such problems which is capable of straightforwardly tuning both exploration and exploitation characteristics of an optimization procedure while retaining favourable properties of genetic algorithms. The method, dubbed MOSAiCS (Metropolis Optimization by Sampling Adaptively in Chemical Space), is tested on problems related to optimizing components of battery electrolytes, namely minimizing solvation energy in water or maximizing dipole moment while enforcing a lower bound on the HOMO-LUMO gap; optimization was done over sets of molecular graphs inspired by QM9 and Electrolyte Genome Project (EGP) datasets. MOSAiCS reliably generated molecular candidates with good target quantity values, which were in most cases better than the ones found in QM9 or EGP. While the optimization results presented in this work sometimes required up to $10^{6}$ QM calculations and were thus only feasible thanks to computationally efficient ab initio approximations of properties of interest, we discuss possible strategies for accelerating MOSAiCS using machine learning approaches.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "Implementing an Evolutionary Monte Carlo algorithm named MOSAiCS to optimize components of battery electrolytes by minimizing solvation energy in water or maximizing dipole moment while enforcing a lower bound on the HOMO-LUMO gap",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "problems": [
+    {
+      "value": "Optimizing target functions over chemical space for applications such as lithium battery electrolyte design",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "hypotheses": [
+    {
+      "value": "An Evolutionary Monte Carlo algorithm can effectively optimize molecular properties within chemical space",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "evidence": [
+    {
+      "value": "MOSAiCS reliably generated molecular candidates with good target quantity values, which were in most cases better than the ones found in QM9 or EGP",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "conclusions": [
+    {
+      "value": "MOSAiCS is an effective algorithm for optimization in chemical space with potential applications in battery electrolyte design and other molecular optimization problems",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "entities": [
+    {
+      "value": "Molecular graphs",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "HOMO-LUMO gap",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Dipole moment",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Solvation energy",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "Evolutionary Monte Carlo of QM properties in chemical space: Electrolyte design The paper introduces MOSAiCS, an Evolutionary Monte Carlo algorithm that efficiently optimizes molecular properties by balancing exploration and exploitation, outperforming existing datasets in tasks like minimizing solvation energy and maximizing dipole moment, and discusses future acceleration using machine learning.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Optimizing a target function over the space of organic molecules is an important problem appearing in many fields of applied science, but also a very difficult one due to the vast number of possible molecular systems.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "The method, dubbed MOSAiCS (Metropolis Optimization by Sampling Adaptively in Chemical Space), is tested on problems related to optimizing components of battery electrolytes, namely minimizing solvation energy in water or maximizing dipole moment while enforcing a lower bound on the HOMO-LUMO gap; optimization was done over sets of molecular graphs inspired by QM9 and Electrolyte Genome Project (EGP) datasets.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [
+    {
+      "value": "Evolutionary Monte Carlo of QM properties in chemical space: Electrolyte design The paper introduces MOSAiCS, an Evolutionary Monte Carlo algorithm that efficiently optimizes molecular properties by balancing exploration and exploitation, outperforming existing datasets in tasks like minimizing solvation energy and maximizing dipole moment, and discusses future acceleration using machine learning.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "We propose an Evolutionary Monte Carlo algorithm for solving such problems which is capable of straightforwardly tuning both exploration and exploitation characteristics of an optimization procedure while retaining favourable properties of genetic algorithms.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "The method, dubbed MOSAiCS (Metropolis Optimization by Sampling Adaptively in Chemical Space), is tested on problems related to optimizing components of battery electrolytes, namely minimizing solvation energy in water or maximizing dipole moment while enforcing a lower bound on the HOMO-LUMO gap; optimization was done over sets of molecular graphs inspired by QM9 and Electrolyte Genome Project (EGP) datasets.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "While the optimization results presented in this work sometimes required up to $10^{6}$ QM calculations and were thus only feasible thanks to computationally efficient ab initio approximations of properties of interest, we discuss possible strategies for accelerating MOSAiCS using machine learning approaches.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Implementing an Evolutionary Monte Carlo algorithm named MOSAiCS to optimize components of battery electrolytes by minimizing solvation energy in water or maximizing dipole moment while enforcing a lower bound on the HOMO-LUMO gap MOSAiCS reliably generated molecular candidates with good target quantity values, which were in most cases better than the ones found in QM9 or EGP Molecular graphs HOMO-LUMO gap Dipole moment Solvation energy Optimized molecular candidates with improved target property values",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [
+    {
+      "value": "The method, dubbed MOSAiCS (Metropolis Optimization by Sampling Adaptively in Chemical Space), is tested on problems related to optimizing components of battery electrolytes, namely minimizing solvation energy in water or maximizing dipole moment while enforcing a lower bound on the HOMO-LUMO gap; optimization was done over sets of molecular graphs inspired by QM9 and Electrolyte Genome Project (EGP) datasets.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "conditions": [],
+  "mechanisms": [
+    {
+      "value": "Metropolis Optimization by Sampling Adaptively in Chemical Space (MOSAiCS)",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Markov chain Monte Carlo simulations",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Elementary mutations and crossover moves to propose new molecular configurations",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "outcomes": [
+    {
+      "value": "Optimized molecular candidates with improved target property values",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "Artificial Intelligence & Data Science",
+    "Chemistry",
+    "Energy Storage"
+  ],
+  "reasoning_motifs": [
+    {
+      "value": "Diversity → Robustness",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Constraint → Stability",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Feedback → Adaptation",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "general_principles": [
+    {
+      "value": "Multi-scale Coupling",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Control Through Constraints",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "failure_paths": [
+    {
+      "value": "partial: Optimizing dipole moment under strong HOMO-LUMO gap constraint in QM9* Evidence: Simulations agreed less frequently on candidate molecules compared to other optimization problems",
+      "source": "cross_sdl_phase4",
+      "confidence": 0.75,
+      "evidence": ""
+    },
+    {
+      "value": "success: Using non-zero αb to increase diversity of molecules encountered during simulations Evidence: Increasing αb tended to increase diversity of molecules encountered during the simulations, but this was mainly done by considering more molecules in regions of chemical space with larger values of solvation energy",
+      "source": "cross_sdl_phase4",
+      "confidence": 0.75,
+      "evidence": ""
+    }
+  ],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "acgold_1e9ddd3dc480",
+    "cross_sdl_reasoning_json": "/Users/sissifeng/Downloads/cross-sdl_knowledge_transfer_engine/data/reasoning/acgold_1e9ddd3dc480.json",
+    "cross_sdl_extraction_quality": 0.7,
+    "cross_sdl_notes": "The paper presents a structured approach to optimizing molecular properties using an Evolutionary Monte Carlo algorithm, but some details of the reasoning structure had to be inferred from the experimental setup and results discussion"
+  },
+  "validation": {
+    "score": 0.86,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": true,
+      "entities": true,
+      "materials": true,
+      "properties": true,
+      "measurements": true,
+      "conditions": false,
+      "mechanisms": true,
+      "outcomes": true,
+      "cross_sdl_match": true
+    },
+    "missing": [
+      "hardware",
+      "conditions"
+    ],
+    "notes": [
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

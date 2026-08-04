@@ -1,0 +1,123 @@
+{
+  "paper_id": "acfocus_f72d41a9f53a",
+  "title": "Disorder unlocks the strength-toughness trade-off in metamaterials",
+  "metadata": {
+    "doi": "10.1016/j.apmt.2024.102579",
+    "url": "https://www.sciencedirect.com/science/article/pii/S2352940724005249",
+    "year": "2025",
+    "authors": "S. Choukir; N. Manohara; C. V. Singh",
+    "venue": "Applied Materials Today",
+    "category": "Journal Article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Chandra Veer Singh"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "By generating and analyzing 50,000 Voronoi network architectures with varying disorder, the study found that certain disordered structures can surpass regular honeycombs in strength and toughness, revealing that disorder—driven by local geometry—can enhance mechanical performance and be harnessed for designing superior metamaterials.",
+  "abstract": "Disorder is ubiquitous in nature, found in both soft biological materials like leaves and strong, tough structures such as diatoms. However, its effect on mechanical properties – whether enhancing or degrading – remains poorly understood. To explore this, we generated 50,000 Voronoi network architectures with varying degrees of disorder and evaluated their mechanical response under uniaxial tensile stress using high-throughput finite-element simulations. Our analysis revealed two distinct failure mechanisms, with some disordered networks outperforming regular hexagonal honeycombs by up to 20% in strength and 100% in toughness, effectively overcoming the conventional strength-toughness trade-off. Remarkably, optimal architectures emerged across all disorder levels, challenging prior assumptions that such performance is achievable only with quasi-order. The mechanical impact of disorder is driven by local geometric features that determine whether the disorder has a positive or negative effect. By training Convolutional Neural Networks (CNNs) on this dataset, we accurately predicted mechanical properties, quickly identifying configurations that exceed traditional limits. This approach offers a pathway for designing lightweight, strong, and tough metamaterials by utilizing disorder to enhance mechanical performance.",
+  "hardware": [
+    {
+      "value": "To explore this, we generated 50,000 Voronoi network architectures with varying degrees of disorder and evaluated their mechanical response under uniaxial tensile stress using high-throughput finite-element simulations.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "methods": [
+    {
+      "value": "By generating and analyzing 50,000 Voronoi network architectures with varying disorder, the study found that certain disordered structures can surpass regular honeycombs in strength and toughness, revealing that disorder—driven by local geometry—can enhance mechanical performance and be harnessed for designing superior metamaterials.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Materials Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "Disorder is ubiquitous in nature, found in both soft biological materials like leaves and strong, tough structures such as diatoms.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [
+    {
+      "value": "However, its effect on mechanical properties – whether enhancing or degrading – remains poorly understood.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "By training Convolutional Neural Networks (CNNs) on this dataset, we accurately predicted mechanical properties, quickly identifying configurations that exceed traditional limits.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [],
+  "conditions": [],
+  "mechanisms": [],
+  "outcomes": [],
+  "sdl_tags": [
+    "Materials Science"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.61,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": true,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": true,
+      "properties": true,
+      "measurements": false,
+      "conditions": false,
+      "mechanisms": false,
+      "outcomes": false,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "evidence",
+      "measurements",
+      "conditions",
+      "mechanisms",
+      "outcomes",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only."
+    ]
+  }
+}

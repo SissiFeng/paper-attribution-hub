@@ -1,0 +1,182 @@
+{
+  "paper_id": "acfocus_c7a0eff35fdd",
+  "title": "Closed-loop transfer enables artificial intelligence to yield chemical knowledge",
+  "metadata": {
+    "doi": "10.1038/s41586-024-07892-1",
+    "url": "https://www.nature.com/articles/s41586-024-07892-1",
+    "year": "2024",
+    "authors": "Angello NH, Friday DM, Hwang C, Yi S, Cheng AH, Torres-Flores TC, Jira ER, Wang W, Aspuru-Guzik A, Burke MD, Schroeder CM, Diao Y, Jackson NE",
+    "venue": "Nature",
+    "category": "Journal article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Alán Aspuru-Guzik"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance"
+    ],
+    "flags": {
+      "acknowledges_ac": "checked",
+      "highly_relevant": "checked",
+      "high_impact": "checked"
+    }
+  },
+  "source_summary": "The study introduces closed-loop transfer (CLT), a method that integrates closed-loop experimentation with physics-based feature selection and supervised learning to simultaneously optimize objective functions and uncover fundamental chemical insights, demonstrating its effectiveness and generalizability in understanding and improving the photostability of light-harvesting molecules.",
+  "abstract": "Artificial intelligence-guided closed-loop experimentation has emerged as a promising method for optimization of objective functions1,2, but the substantial potential of this traditionally black-box approach to uncovering new chemical knowledge has remained largely untapped. Here we report the integration of closed-loop experiments with physics-based feature selection and supervised learning, denoted as closed-loop transfer (CLT), to yield chemical insights in parallel with optimization of objective functions. CLT was used to examine the factors dictating the photostability in solution of light-harvesting donor–acceptor molecules used in a variety of organic electronics applications, and showed fundamental insights including the importance of high-energy regions of the triplet state manifold. This was possible following automated modular synthesis and experimental characterization of only around 1.5% of the theoretical chemical space. This physics-informed model for photostability was strengthened using multiple experimental test sets and validated by tuning the triplet excited-state energy of the solvent to break out of the observed plateau in the closed-loop photostability optimization process. Further applications of CLT to additional materials systems support the generalizability of this strategy for augmenting closed-loop strategies. Broadly, these findings show that combining interpretable supervised learning models and physics-based features with closed-loop discovery processes can rapidly provide fundamental chemical insights.",
+  "hardware": [
+    {
+      "value": "This was possible following automated modular synthesis and experimental characterization of only around 1.5% of the theoretical chemical space.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "methods": [
+    {
+      "value": "The study introduces closed-loop transfer (CLT), a method that integrates closed-loop experimentation with physics-based feature selection and supervised learning to simultaneously optimize objective functions and uncover fundamental chemical insights, demonstrating its effectiveness and generalizability in understanding and improving the photostability of light-harvesting molecules.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Artificial Intelligence & Data Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Automation and Robotics",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Chemistry",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "Closed-loop transfer enables artificial intelligence to yield chemical knowledge The study introduces closed-loop transfer (CLT), a method that integrates closed-loop experimentation with physics-based feature selection and supervised learning to simultaneously optimize objective functions and uncover fundamental chemical insights, demonstrating its effectiveness and generalizability in understanding and improving the photostability of light-harvesting molecules.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "CLT was used to examine the factors dictating the photostability in solution of light-harvesting donor–acceptor molecules used in a variety of organic electronics applications, and showed fundamental insights including the importance of high-energy regions of the triplet state manifold.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Further applications of CLT to additional materials systems support the generalizability of this strategy for augmenting closed-loop strategies.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [
+    {
+      "value": "Closed-loop transfer enables artificial intelligence to yield chemical knowledge The study introduces closed-loop transfer (CLT), a method that integrates closed-loop experimentation with physics-based feature selection and supervised learning to simultaneously optimize objective functions and uncover fundamental chemical insights, demonstrating its effectiveness and generalizability in understanding and improving the photostability of light-harvesting molecules.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Here we report the integration of closed-loop experiments with physics-based feature selection and supervised learning, denoted as closed-loop transfer (CLT), to yield chemical insights in parallel with optimization of objective functions.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "CLT was used to examine the factors dictating the photostability in solution of light-harvesting donor–acceptor molecules used in a variety of organic electronics applications, and showed fundamental insights including the importance of high-energy regions of the triplet state manifold.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "This physics-informed model for photostability was strengthened using multiple experimental test sets and validated by tuning the triplet excited-state energy of the solvent to break out of the observed plateau in the closed-loop photostability optimization process.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [
+    {
+      "value": "This was possible following automated modular synthesis and experimental characterization of only around 1.5% of the theoretical chemical space.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "conditions": [],
+  "mechanisms": [],
+  "outcomes": [
+    {
+      "value": "Electronics",
+      "source": "csv_applied_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Optical Materials",
+      "source": "csv_applied_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "Artificial Intelligence & Data Science",
+    "Automation and Robotics",
+    "Chemistry",
+    "Electronics",
+    "Optical Materials"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.73,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": true,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": true,
+      "properties": true,
+      "measurements": true,
+      "conditions": false,
+      "mechanisms": false,
+      "outcomes": true,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "evidence",
+      "conditions",
+      "mechanisms",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only."
+    ]
+  }
+}

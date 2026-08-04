@@ -1,0 +1,304 @@
+{
+  "paper_id": "acfocus_ed793253b23c",
+  "title": "Spiers Memorial Lecture: How to do impactful research in artificial intelligence for chemistry and materials science",
+  "metadata": {
+    "doi": "10.1039/d4fd00153b",
+    "url": "https://pubs.rsc.org/en/content/articlelanding/2025/fd/d4fd00153b",
+    "year": "2024",
+    "authors": "Cheng AH, Ser CT, Skreta M, Guzmán-Cordero A, Thiede L, Burger A, Aldossary A, Leong SX, Pablo-García S, Strieth-Kalthoff F, Aspuru-Guzik A",
+    "venue": "Faraday Discussions",
+    "category": "Journal article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Alán Aspuru-Guzik",
+      "Sergio Pablo-García Carrillo",
+      "Felix Strieth-Kalthoff"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance",
+      "AC Staff",
+      "AC Affiliate Member"
+    ],
+    "flags": {
+      "acknowledges_ac": "checked",
+      "highly_relevant": "checked",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "Machine learning is increasingly influencing chemistry and materials science, but has yet to reach its full potential, prompting a review of current applications, research approaches, and strategies for maximizing its impact in the field.",
+  "abstract": "Machine learning has been pervasively touching many fields of science. Chemistry and materials science are no exception. While machine learning has been making a great impact, it is still not reaching its full potential or maturity. In this perspective, we first outline current applications across a diversity of problems in chemistry. Then, we discuss how machine learning researchers view and approach problems in the field. Finally, we provide our considerations for maximizing impact when researching machine learning for chemistry.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "Perspective discussion on the current applications and potential of machine learning in chemistry, including outlining a taxonomy of problems and discussing the practices and values of ML and chemistry communities.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "problems": [
+    {
+      "value": "Maximizing the impact of machine learning in chemistry and materials science.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "hypotheses": [
+    {
+      "value": "Machine learning has not reached its full potential in advancing chemistry and materials science.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "evidence": [
+    {
+      "value": "The paper discusses a wide range of applications of ML in chemistry, from property prediction to self-driving labs, and highlights open problems and areas for future research.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "conclusions": [
+    {
+      "value": "The paper concludes that there is significant room for growth in the application of ML in chemistry and materials science, particularly in terms of breadth, depth, and scale.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "entities": [
+    {
+      "value": "Chemical structure",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Molecular properties",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Reaction conditions",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Spectral data",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "Spiers Memorial Lecture: How to do impactful research in artificial intelligence for chemistry and materials science Machine learning is increasingly influencing chemistry and materials science, but has yet to reach its full potential, prompting a review of current applications, research approaches, and strategies for maximizing its impact in the field.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Chemistry and materials science are no exception.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Chemical structure Molecular properties Reaction conditions Spectral data Improved prediction accuracy for molecular properties Discovery of new molecules with targeted properties Enhanced reaction outcomes through optimized conditions Automated identification of molecular structures from spectra",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [
+    {
+      "value": "The paper discusses a wide range of applications of ML in chemistry, from property prediction to self-driving labs, and highlights open problems and areas for future research.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Chemical structure Molecular properties Reaction conditions Spectral data Improved prediction accuracy for molecular properties Discovery of new molecules with targeted properties Enhanced reaction outcomes through optimized conditions Automated identification of molecular structures from spectra",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [],
+  "conditions": [
+    {
+      "value": "Spiers Memorial Lecture: How to do impactful research in artificial intelligence for chemistry and materials science Machine learning is increasingly influencing chemistry and materials science, but has yet to reach its full potential, prompting a review of current applications, research approaches, and strategies for maximizing its impact in the field.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "In this perspective, we first outline current applications across a diversity of problems in chemistry.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Perspective discussion on the current applications and potential of machine learning in chemistry, including outlining a taxonomy of problems and discussing the practices and values of ML and chemistry communities.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Chemical structure Molecular properties Reaction conditions Spectral data Improved prediction accuracy for molecular properties Discovery of new molecules with targeted properties Enhanced reaction outcomes through optimized conditions Automated identification of molecular structures from spectra",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "mechanisms": [
+    {
+      "value": "Data-driven property prediction from chemical structures",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Inverse design of molecules with desired properties",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Optimization of reaction conditions for yield and efficiency",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Structure elucidation from spectroscopic data",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "outcomes": [
+    {
+      "value": "Improved prediction accuracy for molecular properties",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Discovery of new molecules with targeted properties",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Enhanced reaction outcomes through optimized conditions",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Automated identification of molecular structures from spectra",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "SDL 0 - AI & Automation",
+    "Artificial Intelligence & Data Science",
+    "Chemistry",
+    "Materials Science"
+  ],
+  "reasoning_motifs": [
+    {
+      "value": "Data Representation → Prediction Accuracy",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Model Complexity → Generalization Ability",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Feedback Integration → System Optimization",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "general_principles": [
+    {
+      "value": "Information Compression",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Iterative Refinement",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Multimodal Learning",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "failure_paths": [
+    {
+      "value": "partial: Applying machine learning to various chemical problems without a unifying framework. Evidence: While ML has been applied to diverse problems in chemistry, the authors argue that a more systematic approach could lead to greater impact.",
+      "source": "cross_sdl_phase4",
+      "confidence": 0.75,
+      "evidence": ""
+    },
+    {
+      "value": "partial: Leveraging large language models for chemistry without considering the unique challenges of the domain. Evidence: The paper discusses the need for chemistry-aware language models and the limitations of applying general-purpose models directly to chemical problems.",
+      "source": "cross_sdl_phase4",
+      "confidence": 0.75,
+      "evidence": ""
+    }
+  ],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "acgold_aca7d19be7e9",
+    "cross_sdl_reasoning_json": "/Users/sissifeng/Downloads/cross-sdl_knowledge_transfer_engine/data/reasoning/acgold_aca7d19be7e9.json",
+    "cross_sdl_extraction_quality": 0.7,
+    "cross_sdl_notes": "The paper provides a high-level perspective on the application of machine learning in chemistry, but does not present explicit hypotheses or methods in a structured format. The reasoning is implicit and requires inference from the discussion."
+  },
+  "validation": {
+    "score": 0.84,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": true,
+      "entities": true,
+      "materials": true,
+      "properties": true,
+      "measurements": false,
+      "conditions": true,
+      "mechanisms": true,
+      "outcomes": true,
+      "cross_sdl_match": true
+    },
+    "missing": [
+      "hardware",
+      "measurements"
+    ],
+    "notes": [
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

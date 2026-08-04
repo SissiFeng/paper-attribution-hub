@@ -4,6 +4,8 @@ from __future__ import annotations
 import csv
 from pathlib import Path
 
+import pytest
+
 from app.config import settings
 from app.models import Paper, PaperClassification
 from app.scripts.build_silver_eval_labels import (
@@ -98,11 +100,16 @@ def test_output_schema_matches_hand_curated_csv(session, tmp_path):
 
     hand_header = settings.eval_labels_csv.read_text().splitlines()[0]
     silver_header = out.read_text().splitlines()[0]
-    assert silver_header == hand_header == "paper_id,gold_label,gold_topics,notes"
+    assert silver_header == hand_header == (
+        "paper_id,gold_label,gold_topics,notes,label_scope,"
+        "annotation_source,evidence_level"
+    )
     with out.open(newline="") as f:
         rows = list(csv.DictReader(f))
     assert len(rows) == 3
     assert all(r["notes"].startswith("silver:") for r in rows)
+    assert all(r["label_scope"] == "AC_REPORTING" for r in rows)
+    assert all(r["annotation_source"] == "ac_metadata_silver" for r in rows)
 
 
 def test_refuses_to_overwrite_hand_curated_file(session, tmp_path):
@@ -148,6 +155,39 @@ def test_run_evaluation_include_silver_merge(session, tmp_path):
         [("SG_E1", "CORE_RELEVANT"), ("SG_E2", "CORE_RELEVANT")],
     )
     report = run_evaluation(session, hand, silver_labels_path=silver)
+    assert report.dataset_role == "diagnostic"
+    assert report.dataset_id.startswith("hand.csv+silver.csv@sha256:")
+    assert len(report.dataset_hash) == 64
+    assert report.includes_silver is True
     assert report.n_evaluated == 2
     # SG_E1 gold=EXCLUDE (hand wins) → wrong; SG_E2 gold=CORE (silver) → right.
     assert report.accuracy == 0.5
+
+
+def test_run_evaluation_rejects_dataset_changed_during_run(
+    session, tmp_path, monkeypatch
+):
+    hand = _write_labels(tmp_path / "hand.csv", [("SG_E1", "EXCLUDE")])
+    session.add(Paper(id="SG_E1", title="paper SG_E1"))
+    session.add(
+        PaperClassification(
+            id="cls_SG_E1",
+            paper_id="SG_E1",
+            label="EXCLUDE",
+            confidence=0.9,
+        )
+    )
+    session.commit()
+    identities = iter(
+        [
+            ("hand.csv@sha256:aaa", "a" * 64),
+            ("hand.csv@sha256:bbb", "b" * 64),
+        ]
+    )
+    monkeypatch.setattr(
+        "app.services.eval_service.evaluation_dataset_identity",
+        lambda *args, **kwargs: next(identities),
+    )
+
+    with pytest.raises(RuntimeError, match="changed while metrics were running"):
+        run_evaluation(session, hand)

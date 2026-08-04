@@ -1,0 +1,103 @@
+{
+  "paper_id": "acfocus_70f630faaab1",
+  "title": "Machine learning-assisted exploration of multidrug-drug administration regimens for organoid arrays",
+  "metadata": {
+    "doi": "10.1126/sciadv.adt1851",
+    "url": "https://www.science.org/doi/10.1126/sciadv.adt1851",
+    "year": "2025",
+    "authors": "I. Yakavets; S. Kheiri; J. Cruickshank; R. J. Hickman; F. Rakhshani; M. Aldeghi; E. M. Rajaonson; E. W. K. Young; A. Aspuru-Guzik; D. W. Cescon; E. Kumacheva",
+    "venue": "Science Advances",
+    "category": "Journal Article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Alán Aspuru-Guzik",
+      "Eugenia Kumacheva",
+      "Ilya Yakavets"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance",
+      "AC Full Member",
+      "AC Staff"
+    ],
+    "flags": {
+      "acknowledges_ac": "checked",
+      "highly_relevant": "checked",
+      "high_impact": "checked"
+    }
+  },
+  "source_summary": "The integration of machine learning, automation, and microfluidic arrays with cancer organoids accelerates the discovery of effective multidrug regimens, enabling dose reductions and synergy optimization for both approved and experimental cancer therapies.",
+  "abstract": "Combination therapies enhance the therapeutic effect of cancer treatment; however, identifying effective interdependent doses, durations, and sequences of multidrug administration regimens is a time- and labor-intensive task. Here, we integrated machine learning, automation, and large microfluidic arrays of cancer spheroids or patient-derived organoids formed in a tissue-mimetic hydrogel to achieve notable acceleration of the discovery of effective multidrug administration regimens. For the clinically approved drug combination, we found a sequential administration regimen leading to a substantial reduction in the total drug dose, in comparison with concurrent drug supply, both at comparable drug efficacy. For the drugs that are currently under clinical development, we found a synergistic effect of concurrently administered drugs and showed that the synergy diminishes for the sequential drug supply. The developed strategy holds promise for the discovery of effective combination therapies for advanced cancer treatment, including personalized chemotherapies.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "The integration of machine learning, automation, and microfluidic arrays with cancer organoids accelerates the discovery of effective multidrug regimens, enabling dose reductions and synergy optimization for both approved and experimental cancer therapies.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [],
+  "materials": [],
+  "properties": [],
+  "measurements": [],
+  "conditions": [
+    {
+      "value": "Combination therapies enhance the therapeutic effect of cancer treatment; however, identifying effective interdependent doses, durations, and sequences of multidrug administration regimens is a time- and labor-intensive task.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "mechanisms": [],
+  "outcomes": [],
+  "sdl_tags": [],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.34,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": false,
+      "materials": false,
+      "properties": false,
+      "measurements": false,
+      "conditions": true,
+      "mechanisms": false,
+      "outcomes": false,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "entities",
+      "materials",
+      "properties",
+      "measurements",
+      "mechanisms",
+      "outcomes",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

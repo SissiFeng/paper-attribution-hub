@@ -1,0 +1,292 @@
+{
+  "paper_id": "acfocus_d27292a1b7a9",
+  "title": "Inverse design of porous materials: a diffusion model approach",
+  "metadata": {
+    "doi": "10.1039/d3ta06274k",
+    "url": "https://pubs.rsc.org/en/content/articlehtml/2024/ta/d3ta06274k",
+    "year": "2024",
+    "authors": "Park J, Gill APS, Moosavi SM, Kim J",
+    "venue": "Journal of Materials Chemistry A",
+    "category": "Journal article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Mohamad Moosavi"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "checked",
+      "high_impact": "checked"
+    }
+  },
+  "source_summary": "A newly developed diffusion model for generating pure silica zeolite demonstrates superior performance over GANs in creating novel crystalline porous materials and excels in inverse design tasks, highlighting the transformative potential of diffusion models in material discovery.",
+  "abstract": "The success of diffusion models in the field of image processing has propelled the creation of software such as Dall-E, Midjourney and Stable Diffusion, which are tools used for text-to-image generation. Mapping this workflow onto material discovery, a new diffusion model was developed for the generation of pure silica zeolite, marking one of the first applications of diffusion models to porous materials. Our model demonstrates the ability to generate novel crystalline porous materials that are not present in the training dataset, while exhibiting exceptional performance in inverse design tasks targeted on various chemical properties including the void fraction, Henry coefficient and heat of adsorption. Comparing our model with a Generative Adversarial Network (GAN) revealed that the diffusion model outperforms the GAN in terms of structure validity, exhibiting an over 2000-fold improvement in performance. We firmly believe that diffusion models (along with other deep generative models) hold immense potential in revolutionizing the design of new materials, and anticipate the wide extension of our model to other classes of porous materials.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "The authors developed a new diffusion model named zeolite diffusion (ZeoDiﬀ) based on the Denoising Diﬀusion Probabilistic Model (DDPM) framework, using three-dimensional grids composed of energy, silicon, and oxygen channels as input representation.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "problems": [
+    {
+      "value": "The generation of porous materials using diffusion models remains unexplored due to challenges arising from the relatively large number of atoms and the difficulty in capturing essential topological features.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "hypotheses": [
+    {
+      "value": "A diffusion model can be developed to generate pure silica zeolites, marking one of the first applications of diffusion models to porous materials.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "evidence": [
+    {
+      "value": "The model successfully generated structures with high validity while exhibiting exceptional capabilities in inverse design at the same time. Quantitative comparisons with GAN demonstrated that the diffusion model outperforms GAN by more than 2000 times in terms of structure validity.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "conclusions": [
+    {
+      "value": "The diffusion model developed in this work can generate new zeolite structures unseen during the training phase and demonstrates vast improvement over the GAN model under the same conditions.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "entities": [
+    {
+      "value": "pure silica zeolites",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Denoising Diﬀusion Probabilistic Model (DDPM)",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "zeolite structures",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "energy grid",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "silicon grid",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "oxygen grid",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "Inverse design of porous materials: a diffusion model approach A newly developed diffusion model for generating pure silica zeolite demonstrates superior performance over GANs in creating novel crystalline porous materials and excels in inverse design tasks, highlighting the transformative potential of diffusion models in material discovery.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Mapping this workflow onto material discovery, a new diffusion model was developed for the generation of pure silica zeolite, marking one of the first applications of diffusion models to porous materials.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Our model demonstrates the ability to generate novel crystalline porous materials that are not present in the training dataset, while exhibiting exceptional performance in inverse design tasks targeted on various chemical properties including the void fraction, Henry coefficient and heat of adsorption.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [
+    {
+      "value": "Our model demonstrates the ability to generate novel crystalline porous materials that are not present in the training dataset, while exhibiting exceptional performance in inverse design tasks targeted on various chemical properties including the void fraction, Henry coefficient and heat of adsorption.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "The authors developed a new diffusion model named zeolite diffusion (ZeoDiﬀ) based on the Denoising Diﬀusion Probabilistic Model (DDPM) framework, using three-dimensional grids composed of energy, silicon, and oxygen channels as input representation.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "pure silica zeolites Denoising Diﬀusion Probabilistic Model (DDPM) zeolite structures energy grid silicon grid oxygen grid generation of novel crystalline porous materials not present in the training dataset exceptional performance in inverse design tasks targeted on various chemical properties over 2000-fold improvement in performance compared to GAN in terms of structure validity",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [],
+  "conditions": [
+    {
+      "value": "The model successfully generated structures with high validity while exhibiting exceptional capabilities in inverse design at the same time.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "mechanisms": [
+    {
+      "value": "generation of new samples from random noises through the denoising process",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "representation of zeolite structures by three-dimensional grids",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "calculation of interaction energy between methane and zeolite framework for energy grid preparation",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "application of Gaussian functions centered at zeolite atoms' positions for silicon and oxygen grid preparation",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "outcomes": [
+    {
+      "value": "generation of novel crystalline porous materials not present in the training dataset",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "exceptional performance in inverse design tasks targeted on various chemical properties",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "over 2000-fold improvement in performance compared to GAN in terms of structure validity",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "Artificial Intelligence & Data Science",
+    "Chemistry",
+    "Materials Science"
+  ],
+  "reasoning_motifs": [
+    {
+      "value": "Data Representation → Model Performance",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Input Dimensionality → Consistency",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Grid Information → Structural Validity",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "general_principles": [
+    {
+      "value": "Information Representation",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Consistency and Invariance",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Validation and Verification",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "failure_paths": [
+    {
+      "value": "failure: Deem and coworkers employed the Monte Carlo approach for zeolite design. Evidence: lacked the ability to generate structures with user-desired properties",
+      "source": "cross_sdl_phase4",
+      "confidence": 0.75,
+      "evidence": ""
+    },
+    {
+      "value": "failure: Kim et al. used the GAN architecture to generate new zeolite structures. Evidence: structures generated exhibited poor structural validity",
+      "source": "cross_sdl_phase4",
+      "confidence": 0.75,
+      "evidence": ""
+    }
+  ],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "acgold_626d9fac0070",
+    "cross_sdl_reasoning_json": "/Users/sissifeng/Downloads/cross-sdl_knowledge_transfer_engine/data/reasoning/acgold_626d9fac0070.json",
+    "cross_sdl_extraction_quality": 0.8,
+    "cross_sdl_notes": "The paper provides a clear problem statement, hypothesis, and methodology. The reasoning structure is well-organized, but some details on the layer3 motifs and layer4 principles had to be inferred."
+  },
+  "validation": {
+    "score": 0.84,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": true,
+      "entities": true,
+      "materials": true,
+      "properties": true,
+      "measurements": false,
+      "conditions": true,
+      "mechanisms": true,
+      "outcomes": true,
+      "cross_sdl_match": true
+    },
+    "missing": [
+      "hardware",
+      "measurements"
+    ],
+    "notes": [
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

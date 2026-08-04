@@ -1,0 +1,175 @@
+{
+  "paper_id": "acfocus_3c2a2036dc87",
+  "title": "Machine learning models for the discovery of direct band gap materials for light emission and photovoltaics",
+  "metadata": {
+    "doi": "10.1016/j.commatsci.2023.112580",
+    "url": "https://www.sciencedirect.com/science/article/abs/pii/S0927025623005748",
+    "year": "2024",
+    "authors": "Dinic F, Neporozhnii I, Voznyy O",
+    "venue": "Computational Materials Science",
+    "category": "Journal article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Oleksandr Voznyy"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "checked",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "This study develops and applies machine learning models to rapidly predict both the size and type (direct or indirect) of material band gaps, achieving up to 90% accuracy and identifying around 30 new candidate materials for optoelectronic applications.",
+  "abstract": "Screening large materials spaces to find suitable candidates for optoelectronic applications requires a fast estimation of the material's band gap and whether it is direct or indirect band gap. Obtaining accurate band structures with density functional theory (DFT) remains prohibitively computationally expensive. Machine learning is a promising approach to making such predictions faster. Multiple band gap prediction models have been demonstrated so far. Here, we expand such models to predict the direct–indirect band gap nature of the gap and apply them to discover new materials with desired properties. We explore two different models, a binary classifier and a regression-based model predicting the difference between the true band gap and the gamma point band gap. Our models achieved a true positive rate of up to 90 % in predicting the band gap type of materials. Starting from indirect band gap materials with band gaps relevant for PV and LED applications, we generate alloys that become direct-gap band gap materials, resulting in ∼30 candidates validated with DFT.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "This study develops and applies machine learning models to rapidly predict both the size and type (direct or indirect) of material band gaps, achieving up to 90% accuracy and identifying around 30 new candidate materials for optoelectronic applications.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Artificial Intelligence & Data Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Materials Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "Machine learning models for the discovery of direct band gap materials for light emission and photovoltaics This study develops and applies machine learning models to rapidly predict both the size and type (direct or indirect) of material band gaps, achieving up to 90% accuracy and identifying around 30 new candidate materials for optoelectronic applications.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Screening large materials spaces to find suitable candidates for optoelectronic applications requires a fast estimation of the material's band gap and whether it is direct or indirect band gap.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Here, we expand such models to predict the direct–indirect band gap nature of the gap and apply them to discover new materials with desired properties.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [
+    {
+      "value": "Machine learning models for the discovery of direct band gap materials for light emission and photovoltaics This study develops and applies machine learning models to rapidly predict both the size and type (direct or indirect) of material band gaps, achieving up to 90% accuracy and identifying around 30 new candidate materials for optoelectronic applications.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Screening large materials spaces to find suitable candidates for optoelectronic applications requires a fast estimation of the material's band gap and whether it is direct or indirect band gap.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Multiple band gap prediction models have been demonstrated so far.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Here, we expand such models to predict the direct–indirect band gap nature of the gap and apply them to discover new materials with desired properties.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "We explore two different models, a binary classifier and a regression-based model predicting the difference between the true band gap and the gamma point band gap.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [],
+  "conditions": [
+    {
+      "value": "Our models achieved a true positive rate of up to 90 % in predicting the band gap type of materials.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "mechanisms": [],
+  "outcomes": [
+    {
+      "value": "Clean energy",
+      "source": "csv_applied_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Optical Materials",
+      "source": "csv_applied_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "Artificial Intelligence & Data Science",
+    "Materials Science",
+    "Clean energy",
+    "Optical Materials"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.61,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": true,
+      "properties": true,
+      "measurements": false,
+      "conditions": true,
+      "mechanisms": false,
+      "outcomes": true,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "measurements",
+      "mechanisms",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

@@ -1,0 +1,132 @@
+{
+  "paper_id": "acfocus_a6a6bceeb6c7",
+  "title": "Probing out-of-distribution generalization in machine learning for materials",
+  "metadata": {
+    "doi": "10.1038/s43246-024-00731-w",
+    "url": "https://www.scopus.com/inward/record.uri?eid=2-s2.0-85218120127&doi=10.1038%2fs43246-024-00731-w&partnerID=40&md5=3dfda0bf11eb718a591bc54a5a87da5e",
+    "year": "2025",
+    "authors": "Li K., Rubungo A.N., Lei X., Persaud D., Choudhary K., DeCost B., Dieng A.B., Hattrick-Simpers J.",
+    "venue": "Communications Materials",
+    "category": "Journal article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Jason Hattrick-Simpers"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance"
+    ],
+    "flags": {
+      "acknowledges_ac": "checked",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "Heuristic evaluations of machine learning generalizability in materials science often overestimate model performance and neural scaling benefits, as most out-of-distribution tests actually reflect interpolation within well-covered training regions rather than true extrapolation, highlighting the need for more rigorous OOD benchmarks.",
+  "abstract": "Scientific machine learning (ML) aims to develop generalizable models, yet assessments of generalizability often rely on heuristics. Here, we demonstrate in the materials science setting that heuristic evaluations lead to biased conclusions of ML generalizability and benefits of neural scaling, through evaluations of out-of-distribution (OOD) tasks involving unseen chemistry or structural symmetries. Surprisingly, many tasks demonstrate good performance across models, including boosted trees. However, analysis of the materials representation space shows that most test data reside within regions well-covered by training data, while poorly-performing tasks involve data outside the training domain. For these challenging tasks, increasing training size or time yields limited or adverse effects, contrary to traditional neural scaling trends. Our findings highlight that most OOD tests reflect interpolation, not true extrapolation, leading to overestimations of generalizability and scaling benefits. This emphasizes the need for rigorously challenging OOD benchmarks. © The Author(s) 2025.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "Heuristic evaluations of machine learning generalizability in materials science often overestimate model performance and neural scaling benefits, as most out-of-distribution tests actually reflect interpolation within well-covered training regions rather than true extrapolation, highlighting the need for more rigorous OOD benchmarks.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Artificial Intelligence & Data Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Materials Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "Probing out-of-distribution generalization in machine learning for materials Heuristic evaluations of machine learning generalizability in materials science often overestimate model performance and neural scaling benefits, as most out-of-distribution tests actually reflect interpolation within well-covered training regions rather than true extrapolation, highlighting the need for more rigorous OOD benchmarks.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Here, we demonstrate in the materials science setting that heuristic evaluations lead to biased conclusions of ML generalizability and benefits of neural scaling, through evaluations of out-of-distribution (OOD) tasks involving unseen chemistry or structural symmetries.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "However, analysis of the materials representation space shows that most test data reside within regions well-covered by training data, while poorly-performing tasks involve data outside the training domain.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [],
+  "measurements": [],
+  "conditions": [
+    {
+      "value": "For these challenging tasks, increasing training size or time yields limited or adverse effects, contrary to traditional neural scaling trends.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "mechanisms": [],
+  "outcomes": [],
+  "sdl_tags": [
+    "Artificial Intelligence & Data Science",
+    "Materials Science"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.48,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": true,
+      "properties": false,
+      "measurements": false,
+      "conditions": true,
+      "mechanisms": false,
+      "outcomes": false,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "properties",
+      "measurements",
+      "mechanisms",
+      "outcomes",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

@@ -1,7 +1,7 @@
 """Derive silver eval labels from the curated AC Publications gold set.
 
 Writes `data/eval_labels_silver.csv` with the same schema as the hand-curated
-`data/eval_labels.csv` (paper_id,gold_label,gold_topics,notes). The notes
+`data/eval_labels.csv`. The notes
 field starts with "silver:" + the rule name. The hand-curated file is never
 written to, and paper_ids already present there are skipped.
 
@@ -50,7 +50,15 @@ _LABEL_BY_RULE = {
     RULE_NO_MEMBER: "RELATED_RELEVANT",
 }
 
-_CSV_FIELDS = ["paper_id", "gold_label", "gold_topics", "notes"]
+_CSV_FIELDS = [
+    "paper_id",
+    "gold_label",
+    "gold_topics",
+    "notes",
+    "label_scope",
+    "annotation_source",
+    "evidence_level",
+]
 
 
 def _slug(tag: str) -> str:
@@ -95,6 +103,9 @@ def derive_silver_rows(
                 "gold_label": _LABEL_BY_RULE[rule],
                 "gold_topics": topics,
                 "notes": f"silver:{rule}",
+                "label_scope": "AC_REPORTING",
+                "annotation_source": "ac_metadata_silver",
+                "evidence_level": "METADATA_ONLY",
             }
         )
     return rows, counts

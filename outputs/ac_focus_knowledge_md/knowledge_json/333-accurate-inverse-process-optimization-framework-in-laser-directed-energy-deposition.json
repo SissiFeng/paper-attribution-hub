@@ -1,0 +1,149 @@
+{
+  "paper_id": "acfocus_aae68174dd6f",
+  "title": "Accurate inverse process optimization framework in laser directed energy deposition",
+  "metadata": {
+    "doi": "10.1016/j.addma.2025.104736",
+    "url": "https://www.semanticscholar.org/paper/Accurate-Inverse-Process-Optimization-Framework-in-Shang-Talbot/e189d006795861675e538e45513d6f473aa90fcf",
+    "year": "2025",
+    "authors": "X. Shang; A. Talbot; E. Li; H. Wen; T. Lyu; J. Zhang; Y. Zou",
+    "venue": "Additive Manufacturing",
+    "category": "Journal Article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Yu Zou"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "This study introduces AIDED, a machine learning and genetic algorithm-based framework for laser Directed Energy Deposition that enables rapid, accurate, and transferable process optimization for laser-based metal additive manufacturing, overcoming the limitations of traditional trial-and-error methods and demonstrating effectiveness across different materials and objectives.",
+  "abstract": "In additive manufacturing (AM), particularly in laser-based metal AM, process optimization is crucial to the quality of products and the efficiency of production. The identification of optimal process parameters out of a vast parameter space, however, is a daunting task. Despite advances in simulations, the process optimization for specific materials and geometries is developed through a sequential and time-consuming trial-and-error approach and often lacks the versatility to address multiple optimization objectives. Machine learning (ML) provides a powerful tool to accelerate the optimization process, but most current studies focus on simple single-track prints, which hardly translate to manufacturing 3D bulk components for engineering applications. In this study, we develop an Accurate Inverse process optimization framework in laser Directed Energy Deposition (AIDED), based on machine learning models and a genetic algorithm, to aid the process optimization in laser DED. Using AIDED, we demonstrate the following: (i) Accurate prediction of the area of single-track melt pool (R<sup>2</sup> score 0.995), the tilt angle of multi-track melt pool (R<sup>2</sup> score 0.969), and the cross-sectional geometries of multi-layer melt pool (1.75 % and 12.04 % errors in width and height, respectively) directly from process parameters; (ii) Determination of appropriate hatch spacing and layer thickness for fabricating fully dense (density > 99.9 %) multi-track and multi-layer prints; (iii) Inverse identification of optimal process parameters directly from customizable application objectives within 1–3 hours. We also validate the effectiveness of the AIDED experimentally by solving a multi-objective optimization problem to identify the optimal process parameters for achieving high print speeds with small effective track widths. Furthermore, we show the transferability of the framework from stainless steel to pure nickel using a small amount of additional data on pure nickel. With such transferability in AIDED, we pave a new way for “aiding” the process optimization of the laser-based AM processes that applies to a wide range of materials.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "This study introduces AIDED, a machine learning and genetic algorithm-based framework for laser Directed Energy Deposition that enables rapid, accurate, and transferable process optimization for laser-based metal additive manufacturing, overcoming the limitations of traditional trial-and-error methods and demonstrating effectiveness across different materials and objectives.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Artificial Intelligence & Data Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "Accurate inverse process optimization framework in laser directed energy deposition This study introduces AIDED, a machine learning and genetic algorithm-based framework for laser Directed Energy Deposition that enables rapid, accurate, and transferable process optimization for laser-based metal additive manufacturing, overcoming the limitations of traditional trial-and-error methods and demonstrating effectiveness across different materials and objectives.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Despite advances in simulations, the process optimization for specific materials and geometries is developed through a sequential and time-consuming trial-and-error approach and often lacks the versatility to address multiple optimization objectives.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "With such transferability in AIDED, we pave a new way for “aiding” the process optimization of the laser-based AM processes that applies to a wide range of materials.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [
+    {
+      "value": "Accurate inverse process optimization framework in laser directed energy deposition This study introduces AIDED, a machine learning and genetic algorithm-based framework for laser Directed Energy Deposition that enables rapid, accurate, and transferable process optimization for laser-based metal additive manufacturing, overcoming the limitations of traditional trial-and-error methods and demonstrating effectiveness across different materials and objectives.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "In this study, we develop an Accurate Inverse process optimization framework in laser Directed Energy Deposition (AIDED), based on machine learning models and a genetic algorithm, to aid the process optimization in laser DED.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [],
+  "conditions": [
+    {
+      "value": "Despite advances in simulations, the process optimization for specific materials and geometries is developed through a sequential and time-consuming trial-and-error approach and often lacks the versatility to address multiple optimization objectives.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Machine learning (ML) provides a powerful tool to accelerate the optimization process, but most current studies focus on simple single-track prints, which hardly translate to manufacturing 3D bulk components for engineering applications.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "mechanisms": [],
+  "outcomes": [
+    {
+      "value": "Additive Manufacturing",
+      "source": "csv_applied_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "Artificial Intelligence & Data Science",
+    "Additive Manufacturing"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.61,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": true,
+      "properties": true,
+      "measurements": false,
+      "conditions": true,
+      "mechanisms": false,
+      "outcomes": true,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "measurements",
+      "mechanisms",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

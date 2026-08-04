@@ -1,0 +1,119 @@
+{
+  "paper_id": "acfocus_054be2e68a86",
+  "title": "CP-Net: Instance-aware part segmentation network for biological cell parsing",
+  "metadata": {
+    "doi": "10.1016/j.media.2024.103243",
+    "url": "https://www.sciencedirect.com/science/article/pii/S1361841524001683",
+    "year": "2024",
+    "authors": "Chen W, Song H, Dai C, Huang Z, Wu A, Shan G, Liu H, Jiang A, Liu X, Ru C, Abdalla K, Dhanani SN, Moosavi KF, Pathak S, Librach C, Zhang Z, Sun Y",
+    "venue": "Medical Image Analysis",
+    "category": "Journal article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Yu Sun"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "checked",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "The study introduces CP-Net, a novel instance-aware part segmentation network with attention-based feature fusion and coarse-to-fine modules, which accurately segments individual cells and their subcellular structures—demonstrated on a new sperm cell dataset—outperforming existing methods in cell parsing and subcellular analysis.",
+  "abstract": "Instance segmentation of biological cells is important in medical image analysis for identifying and segmenting individual cells, and quantitative measurement of subcellular structures requires further cell-level subcellular part segmentation. Subcellular structure measurements are critical for cell phenotyping and quality analysis. For these purposes, instance-aware part segmentation network is first introduced to distinguish individual cells and segment subcellular structures for each detected cell. This approach is demonstrated on human sperm cells since the World Health Organization has established quantitative standards for sperm quality assessment. Specifically, a novel Cell Parsing Net (CP-Net) is proposed for accurate instance-level cell parsing. An attention-based feature fusion module is designed to alleviate contour misalignments for cells with an irregular shape by using instance masks as spatial cues instead of as strict constraints to differentiate various instances. A coarse-to-fine segmentation module is developed to effectively segment tiny subcellular structures within a cell through hierarchical segmentation from whole to part instead of directly segmenting each cell part. Moreover, a sperm parsing dataset is built including 320 annotated sperm images with five semantic subcellular part labels. Extensive experiments on the collected dataset demonstrate that the proposed CP-Net outperforms state-of-the-art instance-aware part segmentation networks.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "The study introduces CP-Net, a novel instance-aware part segmentation network with attention-based feature fusion and coarse-to-fine modules, which accurately segments individual cells and their subcellular structures—demonstrated on a new sperm cell dataset—outperforming existing methods in cell parsing and subcellular analysis.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Artificial Intelligence & Data Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Biology",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [],
+  "properties": [],
+  "measurements": [
+    {
+      "value": "Instance segmentation of biological cells is important in medical image analysis for identifying and segmenting individual cells, and quantitative measurement of subcellular structures requires further cell-level subcellular part segmentation.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Subcellular structure measurements are critical for cell phenotyping and quality analysis.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "conditions": [],
+  "mechanisms": [],
+  "outcomes": [],
+  "sdl_tags": [
+    "Artificial Intelligence & Data Science",
+    "Biology"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.43,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": false,
+      "properties": false,
+      "measurements": true,
+      "conditions": false,
+      "mechanisms": false,
+      "outcomes": false,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "materials",
+      "properties",
+      "conditions",
+      "mechanisms",
+      "outcomes",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

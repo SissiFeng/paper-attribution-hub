@@ -1,0 +1,1542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SDL Research Intelligence System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Bebas+Neue&family=JetBrains+Mono:ital,wght@0,300;0,400;0,600;1,300&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:    #07090f;
+  --bg2:   #0c1020;
+  --bg3:   #111828;
+  --cyan:  #00c6e0;
+  --gold:  #f0b429;
+  --green: #3fd68f;
+  --rose:  #f4617a;
+  --text:  #dde3f0;
+  --muted: #5a6680;
+  --card:  rgba(255,255,255,0.04);
+  --border:rgba(255,255,255,0.07);
+  --glow:  0 0 40px rgba(0,198,224,0.15);
+}
+
+html, body {
+  width: 100%; height: 100%; overflow: hidden;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── SLIDE CONTAINER ─────────────────────────────── */
+#deck {
+  width: 100vw; height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px;
+  opacity: 0;
+  transform: translateX(60px);
+  transition: opacity 0.55s cubic-bezier(.4,0,.2,1),
+              transform 0.55s cubic-bezier(.4,0,.2,1);
+  pointer-events: none;
+}
+.slide.active {
+  opacity: 1;
+  transform: translateX(0);
+  pointer-events: all;
+}
+.slide.out {
+  opacity: 0;
+  transform: translateX(-60px);
+}
+
+/* ── PROGRESS ────────────────────────────────────── */
+#progress-bar {
+  position: fixed; top: 0; left: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--cyan), var(--gold));
+  transition: width 0.4s ease;
+  z-index: 100;
+  box-shadow: 0 0 8px var(--cyan);
+}
+#slide-counter {
+  position: fixed; bottom: 28px; right: 36px;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 13px;
+  letter-spacing: 2px;
+  color: var(--muted);
+  z-index: 100;
+}
+#nav-hint {
+  position: fixed; bottom: 28px; left: 50%;
+  transform: translateX(-50%);
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  color: var(--muted);
+  opacity: 0.6;
+  z-index: 100;
+}
+
+/* ── CANVAS BACKGROUND ───────────────────────────── */
+#network-canvas {
+  position: fixed; inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.35;
+}
+
+/* ── TYPOGRAPHY ──────────────────────────────────── */
+.slide-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--cyan);
+  margin-bottom: 20px;
+  opacity: 0.8;
+}
+h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(38px, 5.5vw, 72px);
+  font-weight: 600;
+  line-height: 1.05;
+  color: var(--text);
+  letter-spacing: -0.5px;
+}
+h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(28px, 3.8vw, 52px);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.3px;
+}
+h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(20px, 2.4vw, 32px);
+  font-weight: 400;
+  font-style: italic;
+}
+p { line-height: 1.65; font-weight: 300; }
+.accent { color: var(--cyan); }
+.gold   { color: var(--gold); }
+.green  { color: var(--green); }
+.rose   { color: var(--rose); }
+.mono   { font-family: 'JetBrains Mono', monospace; }
+strong  { font-weight: 500; }
+
+/* ── DIVIDER ─────────────────────────────────────── */
+.divider {
+  width: 48px; height: 1px;
+  background: var(--cyan);
+  margin: 20px auto;
+  opacity: 0.5;
+}
+.divider-left {
+  margin: 20px 0;
+}
+
+/* ── CARD ────────────────────────────────────────── */
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 28px 32px;
+  backdrop-filter: blur(8px);
+}
+.card-glow {
+  box-shadow: var(--glow);
+}
+
+/* ── BIG NUMBER ──────────────────────────────────── */
+.big-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(56px, 8vw, 110px);
+  line-height: 0.9;
+  letter-spacing: 1px;
+}
+
+/* ──────────────────────────────────────────────────
+   SLIDE 1 — COVER
+────────────────────────────────────────────────── */
+#s1 { gap: 0; background: transparent; }
+.cover-content {
+  text-align: center;
+  position: relative;
+  z-index: 2;
+  max-width: 820px;
+}
+.cover-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--cyan);
+  margin-bottom: 32px;
+  background: rgba(0,198,224,0.08);
+  border: 1px solid rgba(0,198,224,0.2);
+  padding: 8px 18px;
+  border-radius: 24px;
+}
+.cover-eyebrow::before {
+  content: '';
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--cyan);
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%,100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.7); }
+}
+.cover-title {
+  font-size: clamp(46px, 6.5vw, 88px);
+  font-weight: 700;
+  letter-spacing: -1.5px;
+  line-height: 0.95;
+  margin-bottom: 10px;
+  background: linear-gradient(135deg, #dde3f0 0%, #9bacd0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.cover-sub {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(18px, 2.2vw, 26px);
+  font-style: italic;
+  font-weight: 300;
+  color: var(--gold);
+  margin-bottom: 40px;
+}
+.cover-stats {
+  display: flex;
+  gap: 36px;
+  justify-content: center;
+  margin-top: 40px;
+}
+.cover-stat {
+  text-align: center;
+}
+.cover-stat .n {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 36px;
+  color: var(--cyan);
+  display: block;
+}
+.cover-stat .l {
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  color: var(--muted);
+  font-family: 'JetBrains Mono', monospace;
+}
+.cover-sep { width: 1px; background: var(--border); }
+
+/* ──────────────────────────────────────────────────
+   SLIDE 2 — THE PROBLEM
+────────────────────────────────────────────────── */
+#s2 { align-items: flex-start; }
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  width: 100%;
+  max-width: 1000px;
+}
+.problem-before {
+  background: rgba(244,97,122,0.06);
+  border: 1px solid rgba(244,97,122,0.15);
+  border-radius: 12px;
+  padding: 32px;
+}
+.problem-after {
+  background: rgba(0,198,224,0.06);
+  border: 1px solid rgba(0,198,224,0.15);
+  border-radius: 12px;
+  padding: 32px;
+}
+.problem-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  display: block;
+}
+.pain-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 16px;
+}
+.pain-list li {
+  display: flex;
+  gap: 10px;
+  font-size: 14px;
+  line-height: 1.4;
+  font-weight: 300;
+}
+.pain-list li::before {
+  content: '—';
+  color: var(--muted);
+  flex-shrink: 0;
+}
+.gain-list li::before { content: '✦'; color: var(--cyan); font-size: 11px; margin-top: 2px; flex-shrink: 0; }
+
+/* ──────────────────────────────────────────────────
+   SLIDE 3 — SCALE
+────────────────────────────────────────────────── */
+#s3 { }
+.scale-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  width: 100%;
+  max-width: 900px;
+  margin-top: 40px;
+}
+.scale-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 32px 24px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.scale-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.scale-card.c1::before { background: radial-gradient(circle at 50% 0%, rgba(0,198,224,0.12), transparent 70%); }
+.scale-card.c2::before { background: radial-gradient(circle at 50% 0%, rgba(240,180,41,0.12), transparent 70%); }
+.scale-card.c3::before { background: radial-gradient(circle at 50% 0%, rgba(63,214,143,0.12), transparent 70%); }
+.scale-card:hover::before { opacity: 1; }
+.scale-card .num { font-family: 'Bebas Neue', sans-serif; font-size: 72px; line-height: 1; }
+.scale-card .unit { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 2px; color: var(--muted); margin-top: 8px; }
+.scale-card .desc { font-size: 13px; color: var(--muted); margin-top: 12px; font-weight: 300; }
+.scale-row {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+  width: 100%;
+  max-width: 900px;
+  margin-top: 20px;
+}
+.label-chip {
+  border-radius: 8px;
+  padding: 14px 10px;
+  text-align: center;
+  font-size: 12px;
+  font-family: 'JetBrains Mono', monospace;
+}
+.label-chip .count { font-family: 'Bebas Neue', sans-serif; font-size: 28px; display: block; }
+.label-chip .name { font-size: 9px; letter-spacing: 0.5px; color: var(--muted); display: block; margin-top: 4px; line-height: 1.3; }
+.lc-core    { background: rgba(0,198,224,0.1); border: 1px solid rgba(0,198,224,0.25); }
+.lc-related { background: rgba(63,214,143,0.1); border: 1px solid rgba(63,214,143,0.25); }
+.lc-sdl     { background: rgba(240,180,41,0.1); border: 1px solid rgba(240,180,41,0.25); }
+.lc-adj     { background: rgba(255,255,255,0.05); border: 1px solid var(--border); }
+.lc-unc     { background: rgba(244,97,122,0.08); border: 1px solid rgba(244,97,122,0.2); }
+
+/* ──────────────────────────────────────────────────
+   SLIDE 4 — PIPELINE
+────────────────────────────────────────────────── */
+#s4 { }
+.pipeline-flow {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  width: 100%;
+  max-width: 960px;
+  margin-top: 36px;
+  position: relative;
+}
+.pipe-step {
+  flex: 1;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 20px 14px;
+  text-align: center;
+  position: relative;
+}
+.pipe-step .icon {
+  font-size: 24px;
+  margin-bottom: 10px;
+  display: block;
+}
+.pipe-step .name {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 1px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  display: block;
+}
+.pipe-step .detail {
+  font-size: 11px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+.pipe-arrow {
+  color: var(--cyan);
+  font-size: 20px;
+  flex-shrink: 0;
+  padding: 0 4px;
+  opacity: 0.6;
+}
+.pipeline-sub {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  width: 100%;
+  max-width: 960px;
+  margin-top: 20px;
+}
+.pipe-detail-card {
+  background: rgba(0,198,224,0.04);
+  border: 1px solid rgba(0,198,224,0.1);
+  border-radius: 8px;
+  padding: 14px 16px;
+}
+.pipe-detail-card h4 {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: var(--cyan);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+.pipe-detail-card p {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+/* ──────────────────────────────────────────────────
+   SLIDE 5 — KNOWLEDGE GRAPH
+────────────────────────────────────────────────── */
+#s5 { flex-direction: row; gap: 60px; align-items: center; }
+.graph-diagram {
+  flex-shrink: 0;
+  width: 380px;
+  height: 380px;
+  position: relative;
+}
+.graph-info { flex: 1; max-width: 440px; }
+.layer-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 28px;
+}
+.layer-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px 16px;
+}
+.layer-dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.layer-item .lname {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  font-weight: 600;
+  flex: 1;
+}
+.layer-item .lcount {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 20px;
+  opacity: 0.8;
+}
+
+/* ──────────────────────────────────────────────────
+   SLIDE 6 — ALGORITHM: PPR
+────────────────────────────────────────────────── */
+#s6 { align-items: flex-start; }
+.algo-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 36px;
+  width: 100%;
+  max-width: 1020px;
+  margin-top: 32px;
+  align-items: start;
+}
+.formula-block {
+  background: #0a0e1a;
+  border: 1px solid rgba(0,198,224,0.2);
+  border-radius: 12px;
+  padding: 32px;
+  font-family: 'JetBrains Mono', monospace;
+}
+.formula-block .f-title {
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: var(--cyan);
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  opacity: 0.7;
+}
+.formula-main {
+  font-size: 18px;
+  line-height: 2.2;
+  color: var(--text);
+}
+.formula-main .f-var { color: var(--gold); }
+.formula-main .f-const { color: var(--cyan); }
+.formula-main .f-op { color: var(--muted); }
+.formula-note {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+  font-size: 11px;
+  color: var(--muted);
+  line-height: 1.8;
+}
+.formula-note span { color: var(--gold); }
+.insight-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.insight-item {
+  background: var(--card);
+  border-left: 2px solid var(--cyan);
+  border-radius: 0 8px 8px 0;
+  padding: 16px 20px;
+}
+.insight-item .i-head {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--cyan);
+  letter-spacing: 1px;
+  margin-bottom: 6px;
+}
+.insight-item p {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.55;
+}
+.walrus-visual {
+  margin-top: 20px;
+  background: rgba(0,198,224,0.05);
+  border: 1px solid rgba(0,198,224,0.1);
+  border-radius: 8px;
+  padding: 16px;
+  font-size: 12px;
+  line-height: 1.8;
+  color: var(--muted);
+}
+.walrus-visual .hi { color: var(--cyan); }
+
+/* ──────────────────────────────────────────────────
+   SLIDE 7 — EVANS & CHEN
+────────────────────────────────────────────────── */
+#s7 { align-items: flex-start; }
+.ec-layout {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 36px;
+  width: 100%;
+  max-width: 1020px;
+  margin-top: 28px;
+  align-items: start;
+}
+.c-norm-scale {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 24px;
+}
+.cnorm-bar {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 16px;
+  border-radius: 8px;
+}
+.cnorm-bar .val {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 26px;
+  width: 60px;
+  flex-shrink: 0;
+}
+.cnorm-bar .interp { font-size: 13px; line-height: 1.4; }
+.cnorm-bar .badge {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 1px;
+  padding: 3px 8px;
+  border-radius: 12px;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+.cnorm-gt { background: rgba(0,198,224,0.07); border: 1px solid rgba(0,198,224,0.2); }
+.cnorm-eq { background: rgba(255,255,255,0.04); border: 1px solid var(--border); }
+.cnorm-lt { background: rgba(244,97,122,0.06); border: 1px solid rgba(244,97,122,0.15); }
+.cnorm-gt .val { color: var(--cyan); }
+.cnorm-eq .val { color: var(--muted); }
+.cnorm-lt .val { color: var(--rose); }
+.cnorm-gt .badge { background: rgba(0,198,224,0.15); color: var(--cyan); }
+.cnorm-lt .badge { background: rgba(244,97,122,0.15); color: var(--rose); }
+
+/* ──────────────────────────────────────────────────
+   SLIDE 8 — BRIDGE SCORE
+────────────────────────────────────────────────── */
+#s8 { }
+.bridge-formula {
+  background: #080c17;
+  border: 1px solid rgba(240,180,41,0.25);
+  border-radius: 16px;
+  padding: 44px 48px;
+  max-width: 880px;
+  width: 100%;
+  margin-top: 32px;
+  text-align: center;
+  box-shadow: 0 0 60px rgba(240,180,41,0.07);
+}
+.bridge-eq {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: clamp(14px, 1.8vw, 20px);
+  line-height: 2.4;
+  color: var(--text);
+  letter-spacing: 0.3px;
+}
+.bridge-eq .bv { color: var(--gold); font-size: 1.1em; }
+.bridge-eq .bc { color: var(--cyan); }
+.bridge-eq .bg { color: var(--green); }
+.bridge-eq .br { color: var(--rose); }
+.bridge-eq .bop { color: var(--muted); }
+.bridge-parts {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  width: 100%;
+  max-width: 880px;
+  margin-top: 24px;
+}
+.bp-card {
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+}
+.bp-card.p1 { background: rgba(0,198,224,0.07); border: 1px solid rgba(0,198,224,0.2); }
+.bp-card.p2 { background: rgba(240,180,41,0.07); border: 1px solid rgba(240,180,41,0.2); }
+.bp-card.p3 { background: rgba(63,214,143,0.07); border: 1px solid rgba(63,214,143,0.2); }
+.bp-card .bp-name {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+  display: block;
+}
+.bp-card .bp-desc { font-size: 12px; color: var(--muted); line-height: 1.5; }
+
+/* ──────────────────────────────────────────────────
+   SLIDE 9 — LLM WIKI
+────────────────────────────────────────────────── */
+#s9 { align-items: flex-start; }
+.wiki-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  width: 100%;
+  max-width: 1020px;
+  margin-top: 28px;
+  align-items: start;
+}
+.wiki-compare {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.compare-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  font-size: 13px;
+}
+.compare-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--muted);
+  letter-spacing: 1.5px;
+  margin-bottom: 10px;
+  grid-column: 1/-1;
+  text-transform: uppercase;
+}
+.cmp-bad {
+  background: rgba(244,97,122,0.07);
+  border: 1px solid rgba(244,97,122,0.15);
+  border-radius: 8px;
+  padding: 12px;
+  color: var(--muted);
+}
+.cmp-good {
+  background: rgba(63,214,143,0.07);
+  border: 1px solid rgba(63,214,143,0.15);
+  border-radius: 8px;
+  padding: 12px;
+}
+.cmp-bad::before { content: 'Plain RAG  '; font-family: 'JetBrains Mono',monospace; font-size: 9px; letter-spacing:1px; color: var(--rose); display: block; margin-bottom: 6px; }
+.cmp-good::before { content: 'LLM Wiki  '; font-family: 'JetBrains Mono',monospace; font-size: 9px; letter-spacing:1px; color: var(--green); display: block; margin-bottom: 6px; }
+.wiki-pages {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.wiki-page-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 14px 16px;
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+.wiki-page-icon {
+  font-size: 20px;
+  flex-shrink: 0;
+}
+.wiki-page-info .name {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--cyan);
+}
+.wiki-page-info .fields {
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 3px;
+  line-height: 1.5;
+}
+
+/* ──────────────────────────────────────────────────
+   SLIDE 10 — ANALYTICS
+────────────────────────────────────────────────── */
+#s10 { }
+.analytics-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  width: 100%;
+  max-width: 960px;
+  margin-top: 32px;
+}
+.analytics-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 20px;
+  transition: border-color 0.25s, background 0.25s;
+  cursor: default;
+}
+.analytics-card:hover {
+  border-color: rgba(0,198,224,0.25);
+  background: rgba(0,198,224,0.04);
+}
+.analytics-card .a-icon { font-size: 22px; margin-bottom: 10px; display: block; }
+.analytics-card .a-name {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 1px;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+.analytics-card .a-desc { font-size: 12px; color: var(--muted); line-height: 1.5; }
+
+/* ──────────────────────────────────────────────────
+   SLIDE 11 — SUMMARY
+────────────────────────────────────────────────── */
+#s11 { }
+.summary-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  width: 100%;
+  max-width: 900px;
+  margin-top: 36px;
+}
+.sum-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 24px 28px;
+}
+.sum-card .s-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 48px;
+  color: var(--cyan);
+  display: block;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.sum-card .s-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: var(--muted);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  display: block;
+}
+.sum-card p { font-size: 13px; color: var(--muted); line-height: 1.55; }
+.closing-line {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(16px, 2vw, 22px);
+  font-style: italic;
+  font-weight: 300;
+  color: var(--muted);
+  text-align: center;
+  margin-top: 32px;
+  max-width: 680px;
+}
+
+/* ── UTIL ─────────────────────────────────────────── */
+.mt4 { margin-top: 4px; }
+.mt8 { margin-top: 8px; }
+.mt12 { margin-top: 12px; }
+.mt16 { margin-top: 16px; }
+.mt24 { margin-top: 24px; }
+.w-full { width: 100%; }
+.max-w { max-width: 840px; width: 100%; }
+.text-center { text-align: center; }
+
+/* SVG graph */
+#graph-svg text { fill: var(--text); font-family: 'JetBrains Mono', monospace; font-size: 10px; }
+</style>
+</head>
+<body>
+
+<canvas id="network-canvas"></canvas>
+<div id="progress-bar"></div>
+<div id="slide-counter"></div>
+<div id="nav-hint">← → Arrow Keys &nbsp;·&nbsp; Click to advance</div>
+
+<div id="deck">
+
+<!-- ════════════════════════════════════════
+     SLIDE 1 — COVER
+═══════════════════════════════════════════ -->
+<div class="slide" id="s1">
+  <div class="cover-content">
+    <div class="cover-eyebrow">Acceleration Consortium · Research Intelligence</div>
+    <h1 class="cover-title">SDL Bibliometrics<br>&amp; Research Graph</h1>
+    <div class="cover-sub">From 483 known papers to a living knowledge infrastructure</div>
+    <div class="divider"></div>
+    <div class="cover-stats">
+      <div class="cover-stat">
+        <span class="n">10,715</span>
+        <span class="l">Papers Screened</span>
+      </div>
+      <div class="cover-sep"></div>
+      <div class="cover-stat">
+        <span class="n">44,035</span>
+        <span class="l">Authors Indexed</span>
+      </div>
+      <div class="cover-sep"></div>
+      <div class="cover-stat">
+        <span class="n">7,286</span>
+        <span class="l">Institutions Mapped</span>
+      </div>
+      <div class="cover-sep"></div>
+      <div class="cover-stat">
+        <span class="n">54,427</span>
+        <span class="l">Authorship Links</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     SLIDE 2 — THE PROBLEM
+═══════════════════════════════════════════ -->
+<div class="slide" id="s2">
+  <div style="max-width:980px;width:100%">
+    <div class="slide-label">01 — Context</div>
+    <h2>What existed before,<br><em style="color:var(--gold)">and what was missing</em></h2>
+    <div class="two-col" style="margin-top:36px">
+      <div class="problem-before">
+        <span class="problem-tag" style="color:var(--rose)">Before</span>
+        <h3 style="color:var(--muted); font-size:18px;">Manual &amp; fragmented</h3>
+        <ul class="pain-list mt12">
+          <li>483 AC-attributed papers in a CSV — no systematic retrieval</li>
+          <li>No way to know which of the ~100K SDL papers globally are AC-relevant</li>
+          <li>LLM classification = fresh read every time, no memory</li>
+          <li>Centrality metrics penalised emerging researchers by paper count</li>
+          <li>No lint / quality checks — website accuracy not guaranteed</li>
+          <li>Co-authorship and cross-SDL connections invisible</li>
+        </ul>
+      </div>
+      <div class="problem-after">
+        <span class="problem-tag" style="color:var(--cyan)">After</span>
+        <h3 style="font-size:18px;">Systematic intelligence layer</h3>
+        <ul class="pain-list gain-list mt12">
+          <li>10,715 papers systematically retrieved from Scopus Tier 1 + Tier 2</li>
+          <li>Structured knowledge pages per paper / author / institution / SDL</li>
+          <li>Custom graph algorithms detect structural bridge nodes</li>
+          <li>Lint checks enforce evidence-backed labels before publishing</li>
+          <li>Live dashboards: geographic, temporal, co-authorship, Sankey</li>
+          <li>Full provenance chain: raw CSV → compiled claim → evidence</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     SLIDE 3 — SCALE
+═══════════════════════════════════════════ -->
+<div class="slide" id="s3">
+  <div style="max-width:960px;width:100%;text-align:center">
+    <div class="slide-label">02 — Scale</div>
+    <h2>What the system has ingested</h2>
+    <div class="scale-grid">
+      <div class="scale-card c1">
+        <div class="num accent">10,715</div>
+        <div class="unit">Total Papers</div>
+        <div class="desc">Tier 1 targeted + Tier 2 broad SDL field + AC gold set</div>
+      </div>
+      <div class="scale-card c2">
+        <div class="num gold">44,035</div>
+        <div class="unit">Authors</div>
+        <div class="desc">Canonical names, institutions, AC membership flags</div>
+      </div>
+      <div class="scale-card c3">
+        <div class="num green">7,286</div>
+        <div class="unit">Institutions</div>
+        <div class="desc">With country, canonical name, AC partner flag</div>
+      </div>
+    </div>
+    <div style="margin-top:20px; font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--muted); letter-spacing:1px; text-transform:uppercase; margin-bottom:12px">Classification distribution</div>
+    <div class="scale-row">
+      <div class="label-chip lc-core">
+        <span class="count accent">15</span>
+        <span class="name">CORE<br>RELEVANT</span>
+      </div>
+      <div class="label-chip lc-related">
+        <span class="count green">159</span>
+        <span class="name">RELATED<br>RELEVANT</span>
+      </div>
+      <div class="label-chip lc-sdl">
+        <span class="count gold">4,127</span>
+        <span class="name">SDL FIELD<br>RELEVANT</span>
+      </div>
+      <div class="label-chip lc-adj">
+        <span class="count" style="color:var(--muted)">1,096</span>
+        <span class="name">ADJACENT</span>
+      </div>
+      <div class="label-chip lc-unc">
+        <span class="count rose">96</span>
+        <span class="name">UNCERTAIN</span>
+      </div>
+    </div>
+    <div style="margin-top:16px; font-size:12px; color:var(--muted)">
+      Tier 1: <span class="accent">1,026</span> papers &nbsp;·&nbsp;
+      Tier 2: <span class="gold">9,283</span> papers &nbsp;·&nbsp;
+      AC Gold (not in Scopus pool): <span class="green">406</span> papers &nbsp;·&nbsp;
+      Duplicates removed: <span style="color:var(--muted)">581</span>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     SLIDE 4 — PIPELINE
+═══════════════════════════════════════════ -->
+<div class="slide" id="s4">
+  <div style="max-width:980px;width:100%">
+    <div class="slide-label">03 — Architecture</div>
+    <h2>End-to-end data pipeline</h2>
+    <div class="pipeline-flow">
+      <div class="pipe-step">
+        <span class="icon">📄</span>
+        <span class="name accent">RAW DATA</span>
+        <div class="detail">Scopus CSV exports<br>AC Publications CSV<br>PDF full text</div>
+      </div>
+      <div class="pipe-arrow">→</div>
+      <div class="pipe-step">
+        <span class="icon">⚙️</span>
+        <span class="name" style="color:var(--gold)">INGEST</span>
+        <div class="detail">Normalize DOI/title<br>Deduplicate (581 removed)<br>Author/institution extraction</div>
+      </div>
+      <div class="pipe-arrow">→</div>
+      <div class="pipe-step">
+        <span class="icon">🗄️</span>
+        <span class="name" style="color:var(--green)">DATABASE</span>
+        <div class="detail">PostgreSQL<br>Alembic migrations<br>Structured knowledge pages</div>
+      </div>
+      <div class="pipe-arrow">→</div>
+      <div class="pipe-step">
+        <span class="icon">🕸️</span>
+        <span class="name" style="color:var(--cyan)">GRAPH</span>
+        <div class="detail">Multi-layer NetworkX<br>PPR + Evans &amp; Chen<br>Bridge scoring</div>
+      </div>
+      <div class="pipe-arrow">→</div>
+      <div class="pipe-step">
+        <span class="icon">📊</span>
+        <span class="name" style="color:var(--rose)">DASHBOARD</span>
+        <div class="detail">FastAPI + React<br>10+ analytics views<br>Live on Vercel/Render</div>
+      </div>
+    </div>
+    <div class="pipeline-sub">
+      <div class="pipe-detail-card">
+        <h4>Deduplication</h4>
+        <p>Three-tier matching: DOI exact match → EID match → normalised title + year + first-author trigram. 581 duplicates removed from 10,890 raw rows.</p>
+      </div>
+      <div class="pipe-detail-card">
+        <h4>AC Gold Matching</h4>
+        <p>483 known AC papers matched against Scopus pool. 66 found and enriched; 406 added as provenance=ac_gold for papers not yet in Scopus retrieval.</p>
+      </div>
+      <div class="pipe-detail-card">
+        <h4>Evidence Chain</h4>
+        <p>Every compiled claim traces back: structured page → evidence snippet → original Scopus row / PDF text. Lint checks run after each ingest.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     SLIDE 5 — KNOWLEDGE GRAPH
+═══════════════════════════════════════════ -->
+<div class="slide" id="s5">
+  <div class="graph-diagram">
+    <svg id="graph-svg" width="380" height="380" viewBox="0 0 380 380">
+      <defs>
+        <radialGradient id="glow-cyan" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#00c6e0" stop-opacity="0.4"/>
+          <stop offset="100%" stop-color="#00c6e0" stop-opacity="0"/>
+        </radialGradient>
+        <filter id="blur-sm"><feGaussianBlur stdDeviation="2"/></filter>
+      </defs>
+      <!-- Central node: Papers -->
+      <circle cx="190" cy="190" r="28" fill="rgba(0,198,224,0.15)" stroke="#00c6e0" stroke-width="1.5"/>
+      <text x="190" y="187" text-anchor="middle" fill="#00c6e0" font-size="9" font-weight="600">PAPERS</text>
+      <text x="190" y="198" text-anchor="middle" fill="#5a6680" font-size="8">10,715</text>
+      <!-- Authors -->
+      <line x1="190" y1="162" x2="190" y2="108" stroke="rgba(240,180,41,0.3)" stroke-width="1"/>
+      <circle cx="190" cy="90" r="22" fill="rgba(240,180,41,0.1)" stroke="#f0b429" stroke-width="1.5"/>
+      <text x="190" y="87" text-anchor="middle" fill="#f0b429" font-size="8" font-weight="600">AUTHORS</text>
+      <text x="190" y="97" text-anchor="middle" fill="#5a6680" font-size="8">44K</text>
+      <!-- Institutions -->
+      <line x1="218" y1="210" x2="276" y2="248" stroke="rgba(63,214,143,0.3)" stroke-width="1"/>
+      <circle cx="294" cy="258" r="22" fill="rgba(63,214,143,0.1)" stroke="#3fd68f" stroke-width="1.5"/>
+      <text x="294" y="255" text-anchor="middle" fill="#3fd68f" font-size="8" font-weight="600">INST.</text>
+      <text x="294" y="265" text-anchor="middle" fill="#5a6680" font-size="8">7,286</text>
+      <!-- Topics -->
+      <line x1="162" y1="210" x2="104" y2="248" stroke="rgba(244,97,122,0.3)" stroke-width="1"/>
+      <circle cx="86" cy="258" r="22" fill="rgba(244,97,122,0.1)" stroke="#f4617a" stroke-width="1.5"/>
+      <text x="86" y="255" text-anchor="middle" fill="#f4617a" font-size="8" font-weight="600">TOPICS</text>
+      <text x="86" y="265" text-anchor="middle" fill="#5a6680" font-size="8">6 SDL</text>
+      <!-- SDL / References -->
+      <line x1="218" y1="170" x2="276" y2="132" stroke="rgba(156,120,255,0.3)" stroke-width="1"/>
+      <circle cx="294" cy="122" r="22" fill="rgba(156,120,255,0.1)" stroke="#9c78ff" stroke-width="1.5"/>
+      <text x="294" y="119" text-anchor="middle" fill="#9c78ff" font-size="8" font-weight="600">REFS</text>
+      <text x="294" y="129" text-anchor="middle" fill="#5a6680" font-size="8">citations</text>
+      <!-- Classification -->
+      <line x1="162" y1="170" x2="104" y2="132" stroke="rgba(255,200,50,0.3)" stroke-width="1"/>
+      <circle cx="86" cy="122" r="22" fill="rgba(255,200,50,0.1)" stroke="#ffc832" stroke-width="1.5"/>
+      <text x="86" y="119" text-anchor="middle" fill="#ffc832" font-size="8" font-weight="600">CLASS.</text>
+      <text x="86" y="129" text-anchor="middle" fill="#5a6680" font-size="8">labels</text>
+      <!-- Secondary edges -->
+      <line x1="190" y1="68" x2="190" y2="30" stroke="rgba(240,180,41,0.15)" stroke-width="0.5" stroke-dasharray="3,3"/>
+      <text x="190" y="24" text-anchor="middle" fill="#5a6680" font-size="8">AC members</text>
+      <!-- Animated glow on center -->
+      <circle cx="190" cy="190" r="28" fill="none" stroke="#00c6e0" stroke-width="1.5" opacity="0.3">
+        <animate attributeName="r" values="28;36;28" dur="3s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0.3;0;0.3" dur="3s" repeatCount="indefinite"/>
+      </circle>
+    </svg>
+  </div>
+  <div class="graph-info">
+    <div class="slide-label">04 — Knowledge Graph</div>
+    <h2>Multi-layer<br><em style="color:var(--cyan)">research graph</em></h2>
+    <div class="divider-left"></div>
+    <p style="font-size:14px;color:var(--muted)">Six entity types, richly interconnected. Each paper is not just a CSV row — it's a node with typed edges to authors, institutions, SDL topics, citations, and classification evidence.</p>
+    <div class="layer-list">
+      <div class="layer-item">
+        <div class="layer-dot" style="background:#00c6e0"></div>
+        <span class="lname">Papers</span>
+        <span class="lcount accent">10,715</span>
+      </div>
+      <div class="layer-item">
+        <div class="layer-dot" style="background:#f0b429"></div>
+        <span class="lname">Authors</span>
+        <span class="lcount gold">44,035</span>
+      </div>
+      <div class="layer-item">
+        <div class="layer-dot" style="background:#3fd68f"></div>
+        <span class="lname">Institutions</span>
+        <span class="lcount green">7,286</span>
+      </div>
+      <div class="layer-item">
+        <div class="layer-dot" style="background:#f4617a"></div>
+        <span class="lname">SDL Topic Areas</span>
+        <span class="lcount rose">6</span>
+      </div>
+      <div class="layer-item">
+        <div class="layer-dot" style="background:#9c78ff"></div>
+        <span class="lname">Authorship Links</span>
+        <span class="lcount" style="color:#9c78ff">54,427</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     SLIDE 6 — ALGORITHM: PPR
+═══════════════════════════════════════════ -->
+<div class="slide" id="s6">
+  <div style="max-width:1020px;width:100%">
+    <div class="slide-label">05 — Algorithm I</div>
+    <h2>Personalized PageRank<br><em style="color:var(--cyan)">toward AC seed nodes</em></h2>
+    <div class="algo-layout">
+      <div>
+        <div class="formula-block">
+          <div class="f-title">PPR_AC — Steady-state equation</div>
+          <div class="formula-main">
+            <span class="f-var">π</span> <span class="f-op">=</span> <span class="f-const">α</span><span class="f-op">·</span><span class="f-var">p</span> <span class="f-op">+</span> <span class="f-op">(</span><span class="f-const">1−α</span><span class="f-op">)·</span><span class="f-var">W</span><span style="vertical-align:super;font-size:0.7em">T</span><span class="f-op">·</span><span class="f-var">π</span>
+          </div>
+          <div class="formula-note">
+            where <span>p<sub>i</sub></span> = <span>1/|AC|</span> if author<sub>i</sub> ∈ AC members, else 0<br>
+            <span>α = 0.85</span> &nbsp;·&nbsp; <span>W</span> = normalized co-authorship weight matrix<br>
+            <span>w<sub>uv</sub> = count(shared papers) / min(papers_u, papers_v)</span>
+          </div>
+        </div>
+        <div class="walrus-visual mt16">
+          <span class="hi">Intuition:</span> A random walker on the co-authorship graph
+          restarts toward AC members with probability <span class="hi">(1−α)</span> at each step.
+          The steady-state probability of finding the walker at author <em>i</em>
+          directly measures <span class="hi">"how much AC influence structurally flows through this person"</span> —
+          regardless of how many papers they've published.
+        </div>
+      </div>
+      <div class="insight-list">
+        <div class="insight-item">
+          <div class="i-head">Why not plain PageRank?</div>
+          <p>Standard PageRank treats all nodes as equal seeds. PPR_AC seeds <em>only from AC members</em>, so it captures proximity to AC's actual research community — not overall network prominence.</p>
+        </div>
+        <div class="insight-item">
+          <div class="i-head">Why normalized edge weights?</div>
+          <p>A senior PI co-authoring 200 papers would dominate unweighted graphs. Normalizing by <code style="font-size:11px">min(deg_u, deg_v)</code> discounts co-authorship that is explained by productivity.</p>
+        </div>
+        <div class="insight-item">
+          <div class="i-head">What it answers</div>
+          <p>Which researchers — perhaps not yet AC-funded — sit structurally close to AC's knowledge frontier? Who should be on our radar next?</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     SLIDE 7 — EVANS & CHEN
+═══════════════════════════════════════════ -->
+<div class="slide" id="s7">
+  <div style="max-width:1020px;width:100%">
+    <div class="slide-label">06 — Algorithm II</div>
+    <h2>Evans &amp; Chen normalized centrality<br><em style="color:var(--gold)">separating importance from productivity</em></h2>
+    <div class="ec-layout">
+      <div>
+        <div class="formula-block">
+          <div class="f-title">Normalized closeness — Evans &amp; Chen (2022), extended</div>
+          <div class="formula-main" style="font-size:15px">
+            <span class="f-var">c̃</span><sub style="font-size:0.7em">r</sub>(k<sub style="font-size:0.7em">r</sub>) <span class="f-op">=</span>
+            <span style="display:inline-block;text-align:center;vertical-align:middle;padding: 0 4px">
+              <span style="display:block;border-bottom:1px solid var(--muted);padding-bottom:2px"><span class="f-const">1</span></span>
+              <span style="display:block;padding-top:2px"><span class="f-var">β</span> <span class="f-op">−</span> <span style="display:inline-block;text-align:center;vertical-align:middle"><span style="display:block;border-bottom:1px solid var(--muted);padding-bottom:1px">ln(k<sub style="font-size:0.65em">r</sub>)</span><span style="display:block;padding-top:1px">ln(z̄)</span></span></span>
+            </span>
+            <br><br>
+            <span class="f-const">c</span><sub style="font-size:0.7em">norm</sub>(r) <span class="f-op">=</span>
+            <span style="display:inline-block;text-align:center;vertical-align:middle;padding:0 4px">
+              <span style="display:block;border-bottom:1px solid var(--muted);padding-bottom:2px"><span class="f-var">c</span><sub style="font-size:0.7em">actual</sub>(r)</span>
+              <span style="display:block;padding-top:2px"><span class="f-var">c̃</span><sub style="font-size:0.7em">r</sub>(k<sub style="font-size:0.7em">r</sub>)</span>
+            </span>
+          </div>
+          <div class="formula-note">
+            <span>k<sub>r</sub></span> = degree (distinct collaborators) &nbsp;·&nbsp; <span>z̄</span> = mean degree<br>
+            <span>β</span> calibrated from the empirical degree-closeness fit of the full graph<br>
+            Our extension: weighted harmonic centrality (Opsahl 2010) on 1/w distances
+          </div>
+        </div>
+      </div>
+      <div>
+        <p style="font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:20px">In most networks, closeness is <em>largely explained by degree</em>. Evans &amp; Chen show that the <strong style="color:var(--text)">residual</strong> — actual closeness vs. degree-predicted closeness — is what reveals truly strategic nodes.</p>
+        <div class="c-norm-scale">
+          <div class="cnorm-bar cnorm-gt">
+            <span class="val">c &gt; 1</span>
+            <span class="interp"><strong style="color:var(--text)">Bridge node.</strong> More central than its collaboration count predicts. Cross-SDL connector, interdisciplinary pivot.</span>
+            <span class="badge">BRIDGE</span>
+          </div>
+          <div class="cnorm-bar cnorm-eq">
+            <span class="val" >c ≈ 1</span>
+            <span class="interp">Centrality fully explained by productivity. Prominent, but not strategically exceptional.</span>
+          </div>
+          <div class="cnorm-bar cnorm-lt">
+            <span class="val">c &lt; 1</span>
+            <span class="interp">Structurally peripheral relative to their paper count. Large producer in a silo.</span>
+            <span class="badge">SILO</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     SLIDE 8 — BRIDGE SCORE
+═══════════════════════════════════════════ -->
+<div class="slide" id="s8">
+  <div style="width:100%;max-width:920px;text-align:center">
+    <div class="slide-label">07 — Algorithm III · The Combined Score</div>
+    <h2>Bridge Score — <em style="color:var(--gold)">the crown metric</em></h2>
+    <div class="bridge-formula">
+      <div class="bridge-eq">
+        <span class="bv">bridge</span>(r) <span class="bop">=</span>
+        <span class="bc">PPR<sub style="font-size:0.65em">AC</sub></span>(r)
+        <span class="bop"> × </span>
+        <span class="bop">[</span><span class="bop">1 + </span><span class="br">λ</span> <span class="bop">·</span> max<span class="bop">(</span><span class="bop">0, </span> <span class="bg">c<sub style="font-size:0.65em">norm</sub></span>(r) <span class="bop">− 1)</span><span class="bop">]</span>
+        <span class="bop"> × </span>
+        <span class="bg">diversity</span>(r)
+      </div>
+      <div style="margin-top:24px; font-size:12px; color:var(--muted); font-family:'JetBrains Mono',monospace">
+        λ = 0.5 &nbsp;·&nbsp; diversity = log(1 + |SDL topics connected|) / log(1 + max_topics) &nbsp;·&nbsp; score ∈ [0, 1]
+      </div>
+    </div>
+    <div class="bridge-parts">
+      <div class="bp-card p1">
+        <span class="bp-name accent">PPR_AC</span>
+        <div class="bp-desc">Structural proximity to AC's research community via the co-authorship graph. Captures latent influence flow.</div>
+      </div>
+      <div class="bp-card p2">
+        <span class="bp-name gold">Evans &amp; Chen boost</span>
+        <div class="bp-desc">Amplifies nodes that are <em>more central than their productivity predicts</em>. Demotes prolific silos. Rewards true bridges.</div>
+      </div>
+      <div class="bp-card p3">
+        <span class="bp-name green">Cross-SDL diversity</span>
+        <div class="bp-desc">Log-scaled count of SDL topics connected. Identifies researchers linking AI decision-making, automation, and closed-loop control.</div>
+      </div>
+    </div>
+    <div style="margin-top:20px;font-size:13px;color:var(--muted);max-width:700px;margin-left:auto;margin-right:auto">
+      High bridge score = <span class="accent">AC-adjacent</span> + <span class="gold">structurally exceptional</span> + <span class="green">cross-disciplinary</span>.
+      Not just "who published most" — but "who holds the field together."
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     SLIDE 9 — LLM WIKI
+═══════════════════════════════════════════ -->
+<div class="slide" id="s9">
+  <div style="max-width:1020px;width:100%">
+    <div class="slide-label">08 — Knowledge Architecture</div>
+    <h2>From RAG to<br><em style="color:var(--green)">structured knowledge pages</em></h2>
+    <div class="wiki-layout">
+      <div>
+        <div class="compare-row">
+          <div class="compare-label">Knowledge persistence model</div>
+          <div class="cmp-bad">Every query re-reads raw text. No memory of previous reasoning. Classification results thrown away.</div>
+          <div class="cmp-good">Each paper/author/institution gets a <strong>structured wiki page</strong>. Classification rationale stored permanently. Future queries start from compiled knowledge.</div>
+        </div>
+        <div class="compare-row" style="margin-top:16px">
+          <div class="cmp-bad">Dual-model disagreement = human reviews and forgets the outcome.</div>
+          <div class="cmp-good">Disagreement + human label + rationale → <strong>permanent rule asset</strong>. Lint checks enforce it automatically on all future papers.</div>
+        </div>
+        <div class="compare-row" style="margin-top:16px">
+          <div class="cmp-bad">Accuracy depends on freshness of retrieval context.</div>
+          <div class="cmp-good">Accuracy depends on quality of <strong>maintained knowledge base</strong>. Improves over time without re-reading everything.</div>
+        </div>
+      </div>
+      <div class="wiki-pages">
+        <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:2px; color:var(--muted); text-transform:uppercase; margin-bottom:8px">Structured page types</div>
+        <div class="wiki-page-card">
+          <span class="wiki-page-icon">📄</span>
+          <div class="wiki-page-info">
+            <div class="name">Paper Page</div>
+            <div class="fields">DOI · year · SDL evidence · AC evidence · classification + rationale · network role · review status</div>
+          </div>
+        </div>
+        <div class="wiki-page-card">
+          <span class="wiki-page-icon">👤</span>
+          <div class="wiki-page-info">
+            <div class="name">Author Page</div>
+            <div class="fields">Canonical name · institution · AC membership · PPR score · bridge score · paper list</div>
+          </div>
+        </div>
+        <div class="wiki-page-card">
+          <span class="wiki-page-icon">🏛️</span>
+          <div class="wiki-page-info">
+            <div class="name">Institution Page</div>
+            <div class="fields">Country · AC partner flag · collaboration network · paper count over time</div>
+          </div>
+        </div>
+        <div class="wiki-page-card">
+          <span class="wiki-page-icon">🔬</span>
+          <div class="wiki-page-info">
+            <div class="name">SDL Topic Page</div>
+            <div class="fields">AI decision-making · Automation · Closed-loop control · Cross-SDL bridge papers</div>
+          </div>
+        </div>
+        <div class="wiki-page-card">
+          <span class="wiki-page-icon">✅</span>
+          <div class="wiki-page-info">
+            <div class="name" style="color:var(--rose)">Lint Report</div>
+            <div class="fields">CORE label with no AC evidence · duplicate DOI · model-human label conflict · high-impact unreviewed</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     SLIDE 10 — ANALYTICS
+═══════════════════════════════════════════ -->
+<div class="slide" id="s10">
+  <div style="max-width:980px;width:100%;text-align:center">
+    <div class="slide-label">09 — Live Dashboard</div>
+    <h2>What the system can answer <em style="color:var(--cyan)">today</em></h2>
+    <div class="analytics-grid">
+      <div class="analytics-card">
+        <span class="a-icon">🌍</span>
+        <div class="a-name">Geographic Distribution</div>
+        <div class="a-desc">Where is SDL research happening? Which countries are AC partners? Interactive world map with drill-down.</div>
+      </div>
+      <div class="analytics-card">
+        <span class="a-icon">📈</span>
+        <div class="a-name">Publication Timeline</div>
+        <div class="a-desc">Year-over-year growth by SDL topic or classification label. Field momentum vs. AC contribution trends.</div>
+      </div>
+      <div class="analytics-card">
+        <span class="a-icon">🔀</span>
+        <div class="a-name">Sankey: Institution → Topic → Label</div>
+        <div class="a-desc">Which institutions contribute to which SDL topics with what classification? Flow of research attribution.</div>
+      </div>
+      <div class="analytics-card">
+        <span class="a-icon">🕸️</span>
+        <div class="a-name">Co-author Network</div>
+        <div class="a-desc">PPR-ranked author graph. Nodes sized by bridge score. AC members highlighted. Evans &amp; Chen bridge rings.</div>
+      </div>
+      <div class="analytics-card">
+        <span class="a-icon">🏛️</span>
+        <div class="a-name">Institution Collaboration</div>
+        <div class="a-desc">Which institutions collaborate on SDL? Cross-institution edge weights. AC partner highlighting.</div>
+      </div>
+      <div class="analytics-card">
+        <span class="a-icon">📊</span>
+        <div class="a-name">Network Growth</div>
+        <div class="a-desc">YoY growth of co-authorship network. New nodes, new edges, AC-attributed paper rate. Citation impact over time.</div>
+      </div>
+      <div class="analytics-card">
+        <span class="a-icon">🗺️</span>
+        <div class="a-name">Multi-Entity Graph</div>
+        <div class="a-desc">Papers + Authors + Institutions + Topics in one interactive graph. Filter by year, SDL type, classification.</div>
+      </div>
+      <div class="analytics-card">
+        <span class="a-icon">🔍</span>
+        <div class="a-name">Paper Review Queue</div>
+        <div class="a-desc">Human-in-the-loop review for uncertain labels. Dual-model disagreements surfaced first. Rationale persisted.</div>
+      </div>
+      <div class="analytics-card">
+        <span class="a-icon">🧹</span>
+        <div class="a-name">Lint Report</div>
+        <div class="a-desc">Automatic quality checks after every ingest. Flags CORE labels without AC evidence, duplicate DOIs, conflicts.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     SLIDE 11 — SUMMARY
+═══════════════════════════════════════════ -->
+<div class="slide" id="s11">
+  <div style="max-width:900px;width:100%;text-align:center">
+    <div class="slide-label">10 — Summary</div>
+    <h2>From spreadsheet to<br><em style="color:var(--gold)">knowledge infrastructure</em></h2>
+    <div class="summary-grid">
+      <div class="sum-card">
+        <span class="s-num">10,715</span>
+        <span class="s-label">Papers systematically retrieved</span>
+        <p>vs. 483 previously known. Tier 1 + Tier 2 + AC gold set, fully deduplicated, with provenance tracking.</p>
+      </div>
+      <div class="sum-card">
+        <span class="s-num" style="color:var(--gold)">3</span>
+        <span class="s-label">Novel algorithms combined</span>
+        <p>PPR_AC + Evans &amp; Chen c_norm + cross-SDL diversity into a single bridge score that distinguishes structural importance from productivity.</p>
+      </div>
+      <div class="sum-card">
+        <span class="s-num" style="color:var(--green)">10+</span>
+        <span class="s-label">Live analytics views</span>
+        <p>Geographic, timeline, Sankey, co-author network, multi-entity graph, lint report — all live on Vercel + Render.</p>
+      </div>
+      <div class="sum-card">
+        <span class="s-num" style="color:var(--rose)">∞</span>
+        <span class="s-label">Self-improving knowledge base</span>
+        <p>Each human review generates a permanent rule asset. Classification rationale never discarded. Lint enforces quality automatically.</p>
+      </div>
+    </div>
+    <div class="closing-line">
+      "Not just classification — a living research intelligence system<br>that gets smarter with every reviewed paper."
+    </div>
+  </div>
+</div>
+
+</div><!-- #deck -->
+
+<script>
+// ── SLIDES & NAVIGATION ─────────────────────────────
+const slides = Array.from(document.querySelectorAll('.slide'));
+let current = 0;
+const total = slides.length;
+
+function goTo(idx) {
+  if (idx < 0 || idx >= total) return;
+  slides[current].classList.remove('active');
+  slides[current].classList.add('out');
+  setTimeout(() => slides[current - (current > idx ? 0 : 0)].classList.remove('out'), 600);
+  // fix: remove out from old
+  const prev = current;
+  current = idx;
+  slides[prev].classList.remove('active');
+  slides[prev].classList.add('out');
+  setTimeout(() => slides[prev].classList.remove('out'), 600);
+  slides[current].classList.add('active');
+  updateUI();
+}
+
+function updateUI() {
+  document.getElementById('progress-bar').style.width = ((current + 1) / total * 100) + '%';
+  document.getElementById('slide-counter').textContent = `${String(current + 1).padStart(2, '0')} / ${String(total).padStart(2, '0')}`;
+}
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') { e.preventDefault(); goTo(current + 1); }
+  if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')                    { e.preventDefault(); goTo(current - 1); }
+  if (e.key === 'Home') goTo(0);
+  if (e.key === 'End')  goTo(total - 1);
+});
+document.getElementById('deck').addEventListener('click', () => goTo(current + 1));
+
+goTo(0);
+
+// ── CANVAS NETWORK ANIMATION ────────────────────────
+(function() {
+  const canvas = document.getElementById('network-canvas');
+  const ctx = canvas.getContext('2d');
+  let W, H, nodes = [], animId;
+
+  function resize() {
+    W = canvas.width  = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  }
+
+  function initNodes(n) {
+    nodes = [];
+    for (let i = 0; i < n; i++) {
+      nodes.push({
+        x: Math.random() * W,
+        y: Math.random() * H,
+        vx: (Math.random() - 0.5) * 0.3,
+        vy: (Math.random() - 0.5) * 0.3,
+        r: Math.random() * 2 + 1,
+        hue: Math.random() < 0.7 ? 190 : (Math.random() < 0.5 ? 36 : 145),
+        phase: Math.random() * Math.PI * 2,
+      });
+    }
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    const t = Date.now() * 0.001;
+
+    // edges
+    for (let i = 0; i < nodes.length; i++) {
+      for (let j = i + 1; j < nodes.length; j++) {
+        const a = nodes[i], b = nodes[j];
+        const dx = a.x - b.x, dy = a.y - b.y;
+        const d = Math.sqrt(dx*dx + dy*dy);
+        if (d < 150) {
+          const alpha = (1 - d / 150) * 0.3;
+          ctx.beginPath();
+          ctx.moveTo(a.x, a.y);
+          ctx.lineTo(b.x, b.y);
+          ctx.strokeStyle = `hsla(${a.hue}, 80%, 60%, ${alpha})`;
+          ctx.lineWidth = 0.5;
+          ctx.stroke();
+        }
+      }
+    }
+    // nodes
+    nodes.forEach(n => {
+      const pulse = 0.7 + 0.3 * Math.sin(t * 1.5 + n.phase);
+      const alpha = 0.5 + 0.3 * Math.sin(t + n.phase);
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, n.r * pulse, 0, Math.PI * 2);
+      ctx.fillStyle = `hsla(${n.hue}, 80%, 60%, ${alpha})`;
+      ctx.fill();
+      // update
+      n.x += n.vx;
+      n.y += n.vy;
+      if (n.x < 0 || n.x > W) n.vx *= -1;
+      if (n.y < 0 || n.y > H) n.vy *= -1;
+    });
+
+    animId = requestAnimationFrame(draw);
+  }
+
+  resize();
+  initNodes(60);
+  draw();
+  window.addEventListener('resize', () => { resize(); initNodes(60); });
+})();
+
+// ── COUNTER ANIMATION ───────────────────────────────
+function animateCounters() {
+  document.querySelectorAll('[data-count]').forEach(el => {
+    const target = parseInt(el.dataset.count);
+    let start = 0;
+    const step = target / 60;
+    const timer = setInterval(() => {
+      start += step;
+      if (start >= target) { el.textContent = target.toLocaleString(); clearInterval(timer); }
+      else el.textContent = Math.floor(start).toLocaleString();
+    }, 16);
+  });
+}
+
+// observe slide 3 for counter animation
+const s3 = document.getElementById('s3');
+const obs = new MutationObserver(mutations => {
+  mutations.forEach(m => {
+    if (m.target.classList.contains('active')) animateCounters();
+  });
+});
+obs.observe(s3, { attributes: true, attributeFilter: ['class'] });
+</script>
+</body>
+</html>

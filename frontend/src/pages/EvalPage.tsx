@@ -38,6 +38,19 @@ export default function EvalPage() {
 
   return (
     <div>
+      <div className="eval-scope-notice" role="note">
+        <strong>{report.label_scope ?? "UNSPECIFIED"} reference set</strong>
+        <span>
+          {report.allowed_claim ??
+            "The label scope is not documented; treat these metrics as diagnostic."}
+        </span>
+        {(report.annotation_sources?.length ?? 0) > 0 && (
+          <small>
+            Annotation source: {report.annotation_sources?.join(", ")} · Evidence:{" "}
+            {report.evidence_levels?.join(", ")}
+          </small>
+        )}
+      </div>
       <div className="eval-headline">
         <div className="cell">
           <div className="label">Accuracy</div>
@@ -106,7 +119,9 @@ export default function EvalPage() {
         </tbody>
       </table>
 
-      <h3 style={{ marginTop: "1.6rem" }}>Confusion matrix (rows = gold, cols = pred)</h3>
+      <h3 style={{ marginTop: "1.6rem" }}>
+        Confusion matrix (rows = reference, cols = prediction)
+      </h3>
       <table className="eval-table">
         <thead>
           <tr>

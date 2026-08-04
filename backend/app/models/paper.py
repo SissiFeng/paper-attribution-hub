@@ -26,10 +26,22 @@ class Paper(Base):
     #   csv | pdf | openalex | semantic_scholar | crossref |
     #   discovered_auto | discovered_approved | manual_upload
     provenance: Mapped[str] = mapped_column(String, default="csv", index=True)
+    # One paper may enter through multiple retrieval routes. This explicit list
+    # is the reporting contract; `source`/`provenance` remain for compatibility.
+    corpus_sources: Mapped[list[str]] = mapped_column(JSON, default=list)
     keywords: Mapped[list[str] | None] = mapped_column(JSON)
     full_text_available: Mapped[bool] = mapped_column(Boolean, default=False)
     pdf_path: Mapped[str | None] = mapped_column(String)
     raw_metadata: Mapped[dict | None] = mapped_column(JSON)
+
+    # External citation snapshots are deliberately stored with provenance and
+    # time. Citation counts grow, so analytics must never present them as
+    # timeless facts.
+    citation_count: Mapped[int | None] = mapped_column(Integer, nullable=True)
+    citation_count_source: Mapped[str | None] = mapped_column(String, nullable=True)
+    citation_count_updated_at: Mapped[datetime | None] = mapped_column(
+        DateTime(timezone=True), nullable=True
+    )
 
     # Scopus Indexed Keywords (separate from author-assigned keywords)
     indexed_keywords: Mapped[list[str] | None] = mapped_column(JSON, nullable=True)

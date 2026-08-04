@@ -1,0 +1,114 @@
+{
+  "paper_id": "acfocus_a88ac66f37e5",
+  "title": "Artificial Intelligence for Science in Quantum, Atomistic, and Continuum Systems",
+  "metadata": {
+    "doi": "10.1561/2200000115",
+    "url": "https://www.researchgate.net/publication/393939641_Artificial_Intelligence_for_Science_in_Quantum_Atomistic_and_Continuum_Systems",
+    "year": "2025",
+    "authors": "X. Zhang; L. Wang; J. Helwig; Y. Luo; C. Fu; Y. Xie; M. Liu; Y. Lin; Z. Xu; K. Yan; K. Adams; M. Weiler; X. Li; T. Fu; Y. Wang; A. Strasser; H. Yu; Y. Xie; X. Fu; S. Xu; Y. Liu; Y. Du; A. Saxton; H. Ling; H. Lawrence; H. Stärk; S. Gui; C. Edwards; N. Gao; A. Ladera; T. Wu; E. F. Hofgard; A. M. Tehrani; R. Wang; A. Daigavane; M. Bohde; J. Kurtin; Q. Huang; T. Phung; M. Xu; C. K. Joshi; S. V. Mathis; K. Azizzadenesheli; A. Fang; A. Aspuru-Guzik; E. Bekkers; M. Bronstein; M. Zitnik; A. Anandkumar; S. Ermon; P. Liò; R. Yu; S. Günnemann; J. Leskovec; H. Ji; J. Sun; R. Barzilay; T. Jaakkola; C. W. Coley; X. Qian; X. Qian; T. Smidt; S. Ji",
+    "venue": "Foundations and Trends® in Machine Learning",
+    "category": "Book Section",
+    "peer_reviewed": "Non Peer Reviewed",
+    "ac_members": [
+      "Alán Aspuru-Guzik"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "This work provides a comprehensive overview of AI for quantum, atomistic, and continuum systems within the emerging interdisciplinary field of AI4Science, focusing on unified technical challenges such as capturing physical symmetries with deep learning and addressing issues like explainability, generalization, knowledge transfer, and uncertainty quantification.",
+  "abstract": "Advances in artificial intelligence (AI) are fueling a new paradigm of discoveries in natural sciences. Today, AI has started to advance natural sciences by improving, accelerating, and enabling our understanding of natural phenomena at a wide range of spatial and temporal scales, giving rise to a new area of research known as AI for science (AI4Science). Being an emerging research paradigm, AI4Science is unique in that it is an enormous and highly interdisciplinary area. Thus, a unified and technical treatment of this field is needed, yet challenging. This work aims to provide a technically thorough account of a subarea of AI4Science; namely, AI for quantum, atomistic, and continuum systems. These areas aim at understanding the physical world from the subatomic (wavefunctions and electron density), atomic (molecules, proteins, materials, and interactions), to macro (fluids, climate, and subsurface) scales and form an important subarea of AI4Science. A unique advantage of focusing on these areas is that they largely share a common set of challenges, thereby allowing a unified and foundational treatment. A key common challenge is how to capture physics first principles, especially symmetries, in natural systems by deep learning methods. We provide an in-depth yet intuitive account of techniques to achieve equivariance to symmetry transformations. We also discuss other common technical challenges, including explainability, out-of-distribution generalization, knowledge transfer with foundation and large language models, and uncertainty quantification. To facilitate learning and education, we provide categorized lists of resources that we found to be useful. We strive to be thorough and unified and hope this initial effort may trigger more community interests and efforts to further advance AI4Science.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "This work provides a comprehensive overview of AI for quantum, atomistic, and continuum systems within the emerging interdisciplinary field of AI4Science, focusing on unified technical challenges such as capturing physical symmetries with deep learning and addressing issues like explainability, generalization, knowledge transfer, and uncertainty quantification.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Artificial Intelligence & Data Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Quantum",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "These areas aim at understanding the physical world from the subatomic (wavefunctions and electron density), atomic (molecules, proteins, materials, and interactions), to macro (fluids, climate, and subsurface) scales and form an important subarea of AI4Science.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [],
+  "measurements": [],
+  "conditions": [],
+  "mechanisms": [],
+  "outcomes": [],
+  "sdl_tags": [
+    "Artificial Intelligence & Data Science",
+    "Quantum"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.44,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": true,
+      "properties": false,
+      "measurements": false,
+      "conditions": false,
+      "mechanisms": false,
+      "outcomes": false,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "properties",
+      "measurements",
+      "conditions",
+      "mechanisms",
+      "outcomes",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

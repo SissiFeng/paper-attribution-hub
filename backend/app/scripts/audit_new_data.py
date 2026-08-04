@@ -198,11 +198,9 @@ def match_ac_to_tier(tier: pd.DataFrame, ac: pd.DataFrame) -> dict:
 # ---------------------------------------------------------------------------
 
 def matched_tier_distribution(tier: pd.DataFrame, match_result: dict) -> dict:
-    all_matched_tier_idx = set()
     # rebuild from match result — re-run lightweight match to get tier idx
     # (we already have indices but only tier_matched_idx set — recompute)
     # Simpler: just filter tier rows whose DOI is in AC DOIs
-    ac_dois = set()  # filled by caller
     return {}  # placeholder; real impl below
 
 
@@ -342,7 +340,7 @@ def fmt_dict(d: dict, indent: int = 2) -> str:
 def run_audit() -> str:
     lines: list[str] = []
     lines.append("PAPER ATTRIBUTION SYSTEM — DATA AUDIT REPORT")
-    lines.append(f"Files audited:")
+    lines.append("Files audited:")
     lines.append(f"  tier1_tier2: {TIER_CSV.name}")
     lines.append(f"  ac_gold:     {AC_CSV.name}")
     lines.append("")

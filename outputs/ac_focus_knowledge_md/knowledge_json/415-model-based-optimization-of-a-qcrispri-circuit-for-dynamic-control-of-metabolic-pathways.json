@@ -1,0 +1,98 @@
+{
+  "paper_id": "acfocus_316fbfce724a",
+  "title": "Model-Based Optimization of a qCRISPRi Circuit for Dynamic Control of Metabolic Pathways",
+  "metadata": {
+    "doi": "10.1021/acssynbio.5c00095",
+    "url": "https://pubs.acs.org/doi/10.1021/acssynbio.5c00095",
+    "year": "2025",
+    "authors": "S. A. Golla; M. Abo-Hashesh; D. Gupta; Y. Liu; R. Mahadevan",
+    "venue": "ACS Synthetic Biology",
+    "category": "Journal Article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Radhakrishnan (Krishna) Mahadevan"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "This study demonstrates that optimizing LuxR stringency in quorum sensing-regulated CRISPR interference circuits enhances dynamic control of metabolic pathways by reducing leaky expression and improving switching precision, providing a quantitative framework for designing robust regulatory systems in metabolic engineering.",
+  "abstract": "Metabolic engineering enables sustainable chemical production but often imposes metabolic burdens that reduce cellular viability and productivity. Dynamic control strategies, such as quorum sensing (QS)-based circuits, can mitigate these effects by autonomously regulating gene expression in response to cell density. In this study, we investigated a QS-regulated CRISPR interference (qCRISPRi) circuit for the dynamic control of metabolic pathways, focusing on the role of leaky expression and regulator stringency. Using a combination of mathematical modeling and experiments, we evaluated how promoter leakiness and LuxR stringency influence key switching characteristics including maximum gene expression, switching density, fold repression, and transition time. Our results show that high leaky expression of dCas9 reduces switching density and represses GFP prematurely, whereas a high-stringency LuxR variant enhances switching precision by reducing leakiness and enabling sharper transitions. These model predictions were validated experimentally in E. coli, confirming that LuxR stringency improves dynamic circuit performance. Together, this work provides a quantitative framework for optimizing QS-based regulatory systems and offers generalizable design insights for implementing dynamic control in metabolic engineering. © 2025 American Chemical Society",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "This study demonstrates that optimizing LuxR stringency in quorum sensing-regulated CRISPR interference circuits enhances dynamic control of metabolic pathways by reducing leaky expression and improving switching precision, providing a quantitative framework for designing robust regulatory systems in metabolic engineering.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [],
+  "materials": [],
+  "properties": [],
+  "measurements": [],
+  "conditions": [
+    {
+      "value": "Using a combination of mathematical modeling and experiments, we evaluated how promoter leakiness and LuxR stringency influence key switching characteristics including maximum gene expression, switching density, fold repression, and transition time.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "mechanisms": [],
+  "outcomes": [],
+  "sdl_tags": [],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.34,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": false,
+      "materials": false,
+      "properties": false,
+      "measurements": false,
+      "conditions": true,
+      "mechanisms": false,
+      "outcomes": false,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "entities",
+      "materials",
+      "properties",
+      "measurements",
+      "mechanisms",
+      "outcomes",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

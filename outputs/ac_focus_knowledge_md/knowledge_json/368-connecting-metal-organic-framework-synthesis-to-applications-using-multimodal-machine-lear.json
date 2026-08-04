@@ -1,0 +1,175 @@
+{
+  "paper_id": "acfocus_ecfbc8f126f4",
+  "title": "Connecting metal-organic framework synthesis to applications using multimodal machine learning",
+  "metadata": {
+    "doi": "10.1038/s41467-025-60796-0",
+    "url": "https://www.nature.com/articles/s41467-025-60796-0",
+    "year": "2025",
+    "authors": "S. T. Khan; S. M. Moosavi",
+    "venue": "Nature Communications",
+    "category": "Journal Article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Mohamad Moosavi"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member"
+    ],
+    "flags": {
+      "acknowledges_ac": "checked",
+      "highly_relevant": "checked",
+      "high_impact": "checked"
+    }
+  },
+  "source_summary": "Researchers developed a multimodal, self-supervised model that uses early synthesis data to accurately predict the properties and potential applications of new metal-organic frameworks (MOFs), enabling a synthesis-to-application map and a recommendation system to identify promising MOFs for diverse industrial uses.",
+  "abstract": "Every year, researchers create hundreds of thousands of new materials, each with unique structures and properties. For example, over 5000 new metal-organic frameworks (MOFs) were reported in the past year alone. While these materials are often synthesized for specific applications, they may have potential uses in entirely different domains. However, linking these new materials to their best applications remains a significant challenge. In this study, we demonstrate a multimodal approach that uses the information available as soon as a MOF is synthesized, specifically its powder X-ray diffraction pattern (PXRD) and the chemicals used in its synthesis, to predict its potential properties and uses. By self-supervised pretraining of this model on crystal structures accessible from MOF databases, our model achieves accurate predictions for various properties, across pore structure, chemistry-reliant, and quantum-chemical properties, even when small data is available. We further assess the robustness of this method in the presence of experimental measurement imperfections. Utilizing this approach, we create a synthesis-to-application map for MOFs, offering insights into optimal material classes for diverse applications. Finally, by augmenting this model with a recommendation system, we identify promising MOFs for applications that are different from the originally reported applications. We provide this tool as an open source code and a web app to accelerate the matching of new materials with their potential industrial applications.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "Researchers developed a multimodal, self-supervised model that uses early synthesis data to accurately predict the properties and potential applications of new metal-organic frameworks (MOFs), enabling a synthesis-to-application map and a recommendation system to identify promising MOFs for diverse industrial uses.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Artificial Intelligence & Data Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Automation and Robotics",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Materials Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "Every year, researchers create hundreds of thousands of new materials, each with unique structures and properties.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "While these materials are often synthesized for specific applications, they may have potential uses in entirely different domains.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "However, linking these new materials to their best applications remains a significant challenge.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [
+    {
+      "value": "Connecting metal-organic framework synthesis to applications using multimodal machine learning Researchers developed a multimodal, self-supervised model that uses early synthesis data to accurately predict the properties and potential applications of new metal-organic frameworks (MOFs), enabling a synthesis-to-application map and a recommendation system to identify promising MOFs for diverse industrial uses.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Every year, researchers create hundreds of thousands of new materials, each with unique structures and properties.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "In this study, we demonstrate a multimodal approach that uses the information available as soon as a MOF is synthesized, specifically its powder X-ray diffraction pattern (PXRD) and the chemicals used in its synthesis, to predict its potential properties and uses.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "By self-supervised pretraining of this model on crystal structures accessible from MOF databases, our model achieves accurate predictions for various properties, across pore structure, chemistry-reliant, and quantum-chemical properties, even when small data is available.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [
+    {
+      "value": "In this study, we demonstrate a multimodal approach that uses the information available as soon as a MOF is synthesized, specifically its powder X-ray diffraction pattern (PXRD) and the chemicals used in its synthesis, to predict its potential properties and uses.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "We further assess the robustness of this method in the presence of experimental measurement imperfections.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "conditions": [],
+  "mechanisms": [],
+  "outcomes": [
+    {
+      "value": "Catalysis",
+      "source": "csv_applied_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "Artificial Intelligence & Data Science",
+    "Automation and Robotics",
+    "Materials Science",
+    "Catalysis"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.63,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": true,
+      "properties": true,
+      "measurements": true,
+      "conditions": false,
+      "mechanisms": false,
+      "outcomes": true,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "conditions",
+      "mechanisms",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

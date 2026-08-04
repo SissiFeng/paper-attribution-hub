@@ -1,0 +1,157 @@
+{
+  "paper_id": "acfocus_ce5b974c07bf",
+  "title": "Comprehensive Analysis on Machine Learning Approaches for Interpretable and Stable Soft Sensors",
+  "metadata": {
+    "doi": "10.1109/tim.2025.3556830",
+    "url": "https://ieeexplore.ieee.org/document/10967512",
+    "year": "2025",
+    "authors": "L. Cao; J. Wang; J. Su; Y. Luo; Y. Cao; R. D. Braatz; R. B. Gopaluni",
+    "venue": "IEEE Transactions on Instrumentation and Measurement",
+    "category": "Journal Article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Yang Cao"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Staff"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "This article reviews methodologies to improve the interpretability and stability of soft sensor models in industrial process monitoring, focusing on interpretable and causal machine learning techniques and open-source tools to enhance transparency and reliability in dynamic environments.",
+  "abstract": "Soft sensors play a vital role in industrial process monitoring and control by estimating difficult-to-measure quality variables. While significant progress has been made in improving the accuracy of soft sensor models, challenges remain in ensuring their interpretability and stability in dynamic industrial environments. From a measurement science perspective, ensuring transparency and reliable performance under varying process conditions is becoming increasingly critical, particularly in high-stakes industrial applications. This article provides a comprehensive review of methodologies to enhance the interpretability and stability of soft sensor models. To address interpretability, we analyze various interpretable machine learning techniques applicable to soft sensors and discuss open-source projects that facilitate the implementation of these techniques. For improving stability, we emphasize the role of causal machine learning, detailing methods for causal discovery in industrial processes and highlighting relevant open-source tools. By highlighting current limitations and identifying areas for improvement, we aim to provide valuable insights and practical tools for researchers and practitioners. These insights will guide the development of more transparent and reliable soft sensors, ultimately enhancing industrial process monitoring and control. © 1963-2012 IEEE.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "This article reviews methodologies to improve the interpretability and stability of soft sensor models in industrial process monitoring, focusing on interpretable and causal machine learning techniques and open-source tools to enhance transparency and reliability in dynamic environments.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Automation and Robotics",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Artificial Intelligence & Data Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Chemistry",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [],
+  "properties": [
+    {
+      "value": "Comprehensive Analysis on Machine Learning Approaches for Interpretable and Stable Soft Sensors This article reviews methodologies to improve the interpretability and stability of soft sensor models in industrial process monitoring, focusing on interpretable and causal machine learning techniques and open-source tools to enhance transparency and reliability in dynamic environments.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "While significant progress has been made in improving the accuracy of soft sensor models, challenges remain in ensuring their interpretability and stability in dynamic industrial environments.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "This article provides a comprehensive review of methodologies to enhance the interpretability and stability of soft sensor models.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "For improving stability, we emphasize the role of causal machine learning, detailing methods for causal discovery in industrial processes and highlighting relevant open-source tools.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [
+    {
+      "value": "From a measurement science perspective, ensuring transparency and reliable performance under varying process conditions is becoming increasingly critical, particularly in high-stakes industrial applications.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "conditions": [
+    {
+      "value": "From a measurement science perspective, ensuring transparency and reliable performance under varying process conditions is becoming increasingly critical, particularly in high-stakes industrial applications.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "By highlighting current limitations and identifying areas for improvement, we aim to provide valuable insights and practical tools for researchers and practitioners.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "mechanisms": [],
+  "outcomes": [],
+  "sdl_tags": [
+    "SDL 2 - Organic",
+    "Automation and Robotics",
+    "Artificial Intelligence & Data Science",
+    "Chemistry"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.54,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": false,
+      "properties": true,
+      "measurements": true,
+      "conditions": true,
+      "mechanisms": false,
+      "outcomes": false,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "materials",
+      "mechanisms",
+      "outcomes",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

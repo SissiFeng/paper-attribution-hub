@@ -21,9 +21,23 @@ from datetime import UTC, datetime
 from sqlalchemy import select
 from sqlalchemy.orm import Session, selectinload
 
+from app.classification_labels import (
+    LABEL_ADJACENT,
+    LABEL_CORE,
+    LABEL_EXCLUDE,
+    LABEL_RELATED,
+    LABEL_SDL_FIELD as LABEL_SDL_FIELD,
+    LABEL_UNCERTAIN,
+)
 from app.config import settings
 from app.models import Author, Institution, Paper, PaperAuthor, PaperClassification, PaperEntity, PaperEvidence, Topic
 from app.services.author_matcher import AuthorMatch, AuthorMatcher
+from app.services.attribution_evidence_scoring import (
+    SCORING_VERSION,
+    AttributionEvidenceSignals,
+    has_ac_funding_in_text,
+    score_attribution_evidence,
+)
 from app.services.normalization_service import normalize_name
 from app.services.evidence_extractor import _aggregate_score
 from app.services.graph_service import GraphSignals, compute_graph_signals
@@ -33,14 +47,6 @@ from app.services.sdl_dimensions import (
     merge_dimensions_into_evidence_summary,
 )
 from app.services.topic_classifier import ClassifyResult, TopicClassifier, TopicMatch
-
-LABEL_CORE = "CORE_RELEVANT"
-LABEL_RELATED = "RELATED_RELEVANT"
-LABEL_SDL_FIELD = "SDL_FIELD_RELEVANT"   # SDL-relevant but no direct AC connection
-LABEL_ADJACENT = "ADJACENT"
-LABEL_UNCERTAIN = "UNCERTAIN"
-LABEL_EXCLUDE = "EXCLUDE"
-
 
 @dataclass
 class FulltextEvidenceSnapshot:
@@ -76,34 +82,14 @@ class ClassificationResult:
     judge_applied: bool = False
     learned_label: str | None = None
     learned_confidence: float | None = None
+    learned_model_version: str | None = None
+    attribution_evidence: AttributionEvidenceSignals | None = None
+    aet_applied: bool = False
 
 
 # ---------------------------------------------------------------------------
 # Per-paper classification
 # ---------------------------------------------------------------------------
-
-_AC_FUNDING_PATTERNS = (
-    r"acceleration\s+consortium",
-    r"accelerat\w*\s+consortium",
-    r"canada\s+first\s+research\s+excellence\s+fund",
-    r"\bCFREF\b.*accel",
-    r"\bA[Cc]\b.{0,20}(?:fund|grant|support|fellowship)",
-    r"AC\s+(?:PDF|Core\s+Development|Research\s+Moonshot|Translation)\s+Grant",
-    r"(?:fund|support)\w*\s+by\s+the\s+(?:Acceleration|AC\b)",
-)
-
-import re as _re
-
-def _has_ac_funding_in_text(*texts: str | None) -> bool:
-    """Return True if any of the text fields contain an AC funding acknowledgement."""
-    combined = " ".join(t for t in texts if t)
-    if not combined:
-        return False
-    for pat in _AC_FUNDING_PATTERNS:
-        if _re.search(pat, combined, _re.IGNORECASE):
-            return True
-    return False
-
 
 def _classify_paper(
     paper: Paper,
@@ -113,6 +99,7 @@ def _classify_paper(
     evidence_index: dict[str, list[PaperEvidence]] | None = None,
     graph_signals: GraphSignals | None = None,
     entity_index: dict[str, list[PaperEntity]] | None = None,
+    use_attribution_evidence: bool = False,
 ) -> ClassificationResult:
     # ---- Authors with contextual disambiguation -----------------------
     raw_author_names = [
@@ -233,7 +220,7 @@ def _classify_paper(
     # Use Scopus metadata funding fields when no full-text is available.
     # ac_acknowledged is set by ingest; also scan funding_text directly.
     if not has_funding_evidence:
-        has_funding_evidence = bool(paper.ac_acknowledged) or _has_ac_funding_in_text(
+        has_funding_evidence = bool(paper.ac_acknowledged) or has_ac_funding_in_text(
             paper.funding_text, paper.ac_programs
         )
 
@@ -242,6 +229,9 @@ def _classify_paper(
     entity_score, entity_summary = _entity_signal(entity_rows)
 
     # ---- Apply rules --------------------------------------------------
+    has_core_topic_match = any(
+        match.is_core and match.score > 0 for match in matched_topics
+    )
     label, confidence = _apply_rules(
         author_score=author_score,
         institution_score=institution_score,
@@ -254,10 +244,28 @@ def _classify_paper(
         cites_ac_core=cites_ac_core,
         topic_density=topic_density,
         disqualifying_count=disqualifying_count,
-        has_core_topic_match=any(m.is_core and m.score > 0 for m in matched_topics),
+        has_core_topic_match=has_core_topic_match,
         ac_known_publication=bool(paper.ac_known_publication),
         entity_score=entity_score,
     )
+    attribution_evidence: AttributionEvidenceSignals | None = None
+    aet_reason: str | None = None
+    if use_attribution_evidence:
+        attribution_evidence = score_attribution_evidence(
+            evidence_rows=fulltext_records,
+            author_score=author_score,
+            institution_score=institution_score,
+            topic_score=topic_score,
+            network_score=network_score,
+            citation_score=citation_score,
+            has_funding_evidence=has_funding_evidence,
+            has_second_degree=has_second_degree,
+            cites_ac_core=cites_ac_core,
+            has_core_topic_match=has_core_topic_match,
+        )
+        label, confidence, aet_reason = _apply_attribution_evidence_decision(
+            label, confidence, attribution_evidence
+        )
 
     reasons = _build_reasons(
         label=label,
@@ -270,6 +278,12 @@ def _classify_paper(
         disqualifying_count=disqualifying_count,
         entity_summary=entity_summary,
     )
+    if aet_reason and attribution_evidence:
+        reasons.append(
+            f"{aet_reason}: score={attribution_evidence.score:.2f}; "
+            f"positive_paths={','.join(attribution_evidence.positive_path_ids) or 'none'}; "
+            f"negative_paths={','.join(attribution_evidence.negative_path_ids) or 'none'}."
+        )
 
     return ClassificationResult(
         label=label,
@@ -290,6 +304,8 @@ def _classify_paper(
         topic_density=topic_density,
         negated_topic_hits=topic_result.negated_hit_count,
         disqualifying_count=disqualifying_count,
+        attribution_evidence=attribution_evidence,
+        aet_applied=use_attribution_evidence,
     )
 
 
@@ -334,6 +350,41 @@ def _aggregate_score_from_rows(rows: list[PaperEvidence]) -> float:
         for r in rows
     ]
     return _aggregate_score(records)
+
+
+def _apply_attribution_evidence_decision(
+    label: str,
+    confidence: float,
+    signals: AttributionEvidenceSignals,
+) -> tuple[str, float, str | None]:
+    """Apply conservative, auditable label changes from independent AET paths."""
+    if signals.negative_score >= 0.25:
+        if signals.has_strong_ac_evidence:
+            return label, min(confidence, 0.75), "AET_CONFLICTING_EVIDENCE"
+        if label in {LABEL_CORE, LABEL_RELATED}:
+            return LABEL_ADJACENT, min(confidence, 0.6), "AET_STRONG_NEGATIVE"
+        if label in {LABEL_ADJACENT, LABEL_UNCERTAIN}:
+            return LABEL_EXCLUDE, min(confidence, 0.4), "AET_STRONG_NEGATIVE"
+
+    if (
+        label != LABEL_CORE
+        and signals.score >= 0.5
+        and signals.has_core_topic
+        and signals.has_partner_affiliation
+        and signals.has_collaboration
+    ):
+        return LABEL_CORE, max(confidence, 0.85), "AET_CORROBORATED_CORE"
+
+    if (
+        label in {LABEL_EXCLUDE, LABEL_UNCERTAIN}
+        and signals.has_partner_affiliation
+        and signals.has_collaboration
+        and not signals.has_core_topic
+        and not signals.has_sdl_method
+    ):
+        return LABEL_ADJACENT, max(confidence, 0.55), "AET_COLLABORATION_ONLY"
+
+    return label, confidence, None
 
 
 # ---------------------------------------------------------------------------
@@ -721,6 +772,7 @@ def classify_all(
     *,
     use_learned: bool | None = None,
     use_judge: bool | None = None,
+    use_attribution_evidence: bool | None = None,
     judge=None,  # LLMJudge override (tests)
     embedder=None,  # Embedder override (tests)
 ) -> list[Paper]:
@@ -731,7 +783,13 @@ def classify_all(
         model and use its prediction as a soft override.
       use_judge: if True (or PAS_LLM_JUDGE=1), invoke the LLM judge on the
         UNCERTAIN bucket.
+      use_attribution_evidence: apply AET path scoring when explicitly enabled
+        or when PAS_ATTRIBUTION_EVIDENCE_CLASSIFIER_ENABLED=1.
     """
+    if use_attribution_evidence is None:
+        use_attribution_evidence = (
+            settings.attribution_evidence_classifier_enabled
+        )
     authors = list(session.execute(select(Author)).scalars())
     institutions = list(session.execute(select(Institution)).scalars())
     topics = list(session.execute(select(Topic)).scalars())
@@ -805,6 +863,7 @@ def classify_all(
                 evidence_index=evidence_index,
                 graph_signals=graph_signals_by_paper.get(paper.id),
                 entity_index=entity_index,
+                use_attribution_evidence=use_attribution_evidence,
             )
             batch_results[paper.id] = result
             papers.append(paper)
@@ -843,6 +902,9 @@ def classify_all(
                 cls.evidence_summary,
                 infer_sdl_dimensions(paper, topic_score=result.topic_score),
             )
+            cls.evidence_summary = _merge_attribution_evidence_summary(
+                cls.evidence_summary, result.attribution_evidence
+            )
             cls.model_version = _model_version_for(result)
             cls.matched_people = _serialize_matched_people(result.matched_people)
             cls.matched_institutions = _serialize_matched_institutions(result.matched_institutions)
@@ -867,9 +929,9 @@ def classify_all(
 
     # v0.7: learned classifier post-hoc soft override.
     if use_learned is None:
-        use_learned = os.environ.get("PAS_LEARNED_CLASSIFIER", "0") == "1"
+        use_learned = os.environ.get("PAS_LEARNED_CLASSIFIER", "1") == "1"
     if use_learned:
-        _apply_learned_override(papers, results)
+        _apply_learned_override(papers, results, session=session)
 
     # All papers already persisted per-batch above.
     # v0.4: refresh proposition table once all classifications are settled.
@@ -891,6 +953,36 @@ def classify_all(
 CURRENT_MODEL_VERSION = "rules-v0.7"
 
 
+def _configured_model_version(
+    use_attribution_evidence: bool | None = None,
+    use_learned: bool | None = None,
+    session: Session | None = None,
+) -> str:
+    attribution_enabled = (
+        settings.attribution_evidence_classifier_enabled
+        if use_attribution_evidence is None
+        else use_attribution_evidence
+    )
+    learned_enabled = (
+        os.environ.get("PAS_LEARNED_CLASSIFIER", "1") == "1"
+        if use_learned is None
+        else use_learned
+    )
+    base = CURRENT_MODEL_VERSION
+    if learned_enabled:
+        from app.services.learned_classifier import load_default_model
+
+        learned = load_default_model(session)
+        if learned is not None:
+            base = learned.model_version or "learned-v0.7"
+    return f"{base}+{SCORING_VERSION}" if attribution_enabled else base
+
+
+def _operational_model_version(version: str | None) -> str:
+    parts = (version or "").split("+")
+    return "+".join(part for part in parts if part not in {"judge", "rerank"})
+
+
 def papers_needing_classification(
     session: Session, *, current_version: str | None = None
 ) -> list[Paper]:
@@ -905,7 +997,9 @@ def papers_needing_classification(
     Human-confirmed papers are excluded — their label is locked and should
     only be touched via /reviews/{id}.
     """
-    target_version = current_version or CURRENT_MODEL_VERSION
+    target_version = current_version or _configured_model_version(
+        session=session
+    )
 
     candidates: list[Paper] = []
     for paper in session.execute(select(Paper)).scalars():
@@ -916,7 +1010,7 @@ def papers_needing_classification(
         if cls.human_confirmed:
             continue
         # Stale model_version, e.g. "rules-v0.1" needs an upgrade pass.
-        if (cls.model_version or "").rsplit("+", 1)[0] != target_version:
+        if _operational_model_version(cls.model_version) != target_version:
             candidates.append(paper)
             continue
         # Paper edited since last classification (e.g. full text added).
@@ -941,6 +1035,7 @@ def classify_new(
     force: bool = False,
     use_learned: bool | None = None,
     use_judge: bool | None = None,
+    use_attribution_evidence: bool | None = None,
     judge=None,
     embedder=None,
 ) -> tuple[list[Paper], int, int]:
@@ -959,6 +1054,7 @@ def classify_new(
             session,
             use_learned=use_learned,
             use_judge=use_judge,
+            use_attribution_evidence=use_attribution_evidence,
             judge=judge,
             embedder=embedder,
         )
@@ -966,7 +1062,14 @@ def classify_new(
         refreshed = len(papers) - new
         return papers, new, refreshed
 
-    needing = papers_needing_classification(session)
+    target_version = _configured_model_version(
+        use_attribution_evidence,
+        use_learned,
+        session,
+    )
+    needing = papers_needing_classification(
+        session, current_version=target_version
+    )
     if not needing:
         return [], 0, 0
 
@@ -982,6 +1085,7 @@ def classify_new(
         needing,
         use_learned=use_learned,
         use_judge=use_judge,
+        use_attribution_evidence=use_attribution_evidence,
         judge=judge,
         embedder=embedder,
     )
@@ -994,12 +1098,17 @@ def _classify_subset(
     *,
     use_learned: bool | None,
     use_judge: bool | None,
+    use_attribution_evidence: bool | None,
     judge,
     embedder,
 ) -> None:
     """Apply the full classification stack to a subset of papers in place."""
     if not papers:
         return
+    if use_attribution_evidence is None:
+        use_attribution_evidence = (
+            settings.attribution_evidence_classifier_enabled
+        )
 
     from app.services.author_matcher import AuthorMatcher
     from app.services.graph_service import compute_graph_signals
@@ -1045,6 +1154,7 @@ def _classify_subset(
             evidence_index=evidence_index,
             graph_signals=graph_signals.get(paper.id),
             entity_index=entity_index,
+            use_attribution_evidence=use_attribution_evidence,
         )
 
     _apply_rerank_to_borderline(papers, results)
@@ -1055,9 +1165,9 @@ def _classify_subset(
         _apply_judge_to_uncertain(papers, results, judge=judge, session=session)
 
     if use_learned is None:
-        use_learned = os.environ.get("PAS_LEARNED_CLASSIFIER", "0") == "1"
+        use_learned = os.environ.get("PAS_LEARNED_CLASSIFIER", "1") == "1"
     if use_learned:
-        _apply_learned_override(papers, results)
+        _apply_learned_override(papers, results, session=session)
 
     for paper in papers:
         result = results[paper.id]
@@ -1093,6 +1203,9 @@ def _classify_subset(
             cls.evidence_summary,
             infer_sdl_dimensions(paper, topic_score=result.topic_score),
         )
+        cls.evidence_summary = _merge_attribution_evidence_summary(
+            cls.evidence_summary, result.attribution_evidence
+        )
         cls.model_version = _model_version_for(result)
         cls.matched_people = _serialize_matched_people(result.matched_people)
         cls.matched_institutions = _serialize_matched_institutions(
@@ -1115,6 +1228,20 @@ def _classify_subset(
         cls.last_classified_at = datetime.now(UTC)
 
     session.commit()
+
+
+def _merge_attribution_evidence_summary(
+    summary: list[dict] | None,
+    signals: AttributionEvidenceSignals | None,
+) -> list[dict]:
+    rows = [
+        row
+        for row in (summary or [])
+        if row.get("type") != "attribution_evidence_decision"
+    ]
+    if signals is not None:
+        rows.append(signals.to_summary())
+    return rows
 
 
 def _serialize_matched_people(matches: list[AuthorMatch]) -> list[dict]:
@@ -1184,18 +1311,17 @@ def _ac_memory_label(
 
 def _model_version_for(result: ClassificationResult) -> str:
     if result.learned_label is not None:
-        return "learned-v0.7"
+        base = result.learned_model_version or "learned-v0.7"
+    else:
+        base = CURRENT_MODEL_VERSION
+    suffixes: list[str] = []
+    if result.aet_applied:
+        suffixes.append(SCORING_VERSION)
     if result.judge_applied:
-        return "rules-v0.7+judge"
-    if result.rerank_applied:
-        return "rules-v0.7+rerank"
-    if result.citation_score > 0 or (
-        result.graph_signals and result.graph_signals.second_degree_paths
-    ):
-        return "rules-v0.7"
-    if result.fulltext_evidence_score > 0:
-        return "rules-v0.7"
-    return "rules-v0.7"
+        suffixes.append("judge")
+    elif result.rerank_applied:
+        suffixes.append("rerank")
+    return "+".join([base, *suffixes])
 
 
 def _apply_judge_to_uncertain(
@@ -1259,12 +1385,15 @@ def _apply_judge_to_uncertain(
 
 
 def _apply_learned_override(
-    papers: list[Paper], results: dict[str, ClassificationResult]
+    papers: list[Paper],
+    results: dict[str, ClassificationResult],
+    *,
+    session: Session | None = None,
 ) -> None:
     """If a learned classifier is available, fuse its prediction in."""
     from app.services.learned_classifier import load_default_model
 
-    model = load_default_model()
+    model = load_default_model(session)
     if model is None:
         return
     for p in papers:
@@ -1277,6 +1406,7 @@ def _apply_learned_override(
             continue
         r.learned_label = pred_label
         r.learned_confidence = round(pred_conf, 3)
+        r.learned_model_version = model.model_version
         # Hard override only if the model is much more confident than rules.
         if (
             pred_label != r.label

@@ -1,0 +1,127 @@
+{
+  "paper_id": "acfocus_e485728aec89",
+  "title": "Characterizing the impacts of dataset imbalance on single-cell data integration",
+  "metadata": {
+    "doi": "10.1038/s41587-023-02097-9",
+    "url": "https://www.nature.com/articles/s41587-023-02097-9",
+    "year": "2024",
+    "authors": "Maan H, Zhang L, Yu C, Geuenich MJ, Campbell KR, Wang B",
+    "venue": "Nature Biotechnology",
+    "category": "Journal article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Kieran Campbell",
+      "Bo Wang"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Full Member"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "checked",
+      "high_impact": "checked"
+    }
+  },
+  "source_summary": "This study demonstrates that imbalances in cell type representation across single-cell transcriptomic datasets significantly affect integration outcomes, and introduces the Iniquitate pipeline, new evaluation metrics, and practical guidelines to assess and mitigate these impacts.",
+  "abstract": "Computational methods for integrating single-cell transcriptomic data from multiple samples and conditions do not generally account for imbalances in the cell types measured in different datasets. In this study, we examined how differences in the cell types present, the number of cells per cell type and the cell type proportions across samples affect downstream analyses after integration. The Iniquitate pipeline assesses the robustness of integration results after perturbing the degree of imbalance between datasets. Benchmarking of five state-of-the-art single-cell RNA sequencing integration techniques in 2,600 integration experiments indicates that sample imbalance has substantial impacts on downstream analyses and the biological interpretation of integration results. Imbalance perturbation led to statistically significant variation in unsupervised clustering, cell type classification, differential expression and marker gene annotation, query-to-reference mapping and trajectory inference. We quantified the impacts of imbalance through newly introduced properties—aggregate cell type support and minimum cell type center distance. To better characterize and mitigate impacts of imbalance, we introduce balanced clustering metrics and imbalanced integration guidelines for integration method users.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "This study demonstrates that imbalances in cell type representation across single-cell transcriptomic datasets significantly affect integration outcomes, and introduces the Iniquitate pipeline, new evaluation metrics, and practical guidelines to assess and mitigate these impacts.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Artificial Intelligence & Data Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Biology",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [],
+  "properties": [
+    {
+      "value": "We quantified the impacts of imbalance through newly introduced properties—aggregate cell type support and minimum cell type center distance.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [
+    {
+      "value": "Benchmarking of five state-of-the-art single-cell RNA sequencing integration techniques in 2,600 integration experiments indicates that sample imbalance has substantial impacts on downstream analyses and the biological interpretation of integration results.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "conditions": [
+    {
+      "value": "Computational methods for integrating single-cell transcriptomic data from multiple samples and conditions do not generally account for imbalances in the cell types measured in different datasets.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "mechanisms": [],
+  "outcomes": [],
+  "sdl_tags": [
+    "Artificial Intelligence & Data Science",
+    "Biology"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.54,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": false,
+      "properties": true,
+      "measurements": true,
+      "conditions": true,
+      "mechanisms": false,
+      "outcomes": false,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "materials",
+      "mechanisms",
+      "outcomes",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

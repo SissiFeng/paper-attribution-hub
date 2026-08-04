@@ -1,0 +1,281 @@
+{
+  "paper_id": "acfocus_108bfdf82890",
+  "title": "A composite measurement scheme for efficient quantum observable estimation",
+  "metadata": {
+    "doi": "10.48550/arxiv.2305.02439",
+    "url": "https://arxiv.org/abs/2305.02439",
+    "year": "2023",
+    "authors": "Zhang, Zi-Jian; Nakaji, Kouhei; Choi, Matthew; Aspuru-Guzik, Alán",
+    "venue": "arxiv",
+    "category": "Preprint",
+    "peer_reviewed": "Non Peer Reviewed",
+    "ac_members": [
+      "Alán Aspuru-Guzik"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "The paper introduces a composite measurement scheme called Composite-LBCS (C-LBCS) that optimally distributes measurement shots among multiple schemes, demonstrating improved efficiency and performance in observable estimation for large quantum systems compared to previous methods.",
+  "abstract": "Estimation of the expectation value of observables is a key subroutine in quantum computing and is also the bottleneck of the performance of many near-term quantum algorithms. Many works have been proposed to reduce the number of measurements needed for this task and they provide different measurement schemes for generating the measurements to perform. In this paper, we propose a new approach, composite measurement scheme, which composes multiple measurement schemes by distributing shots to them with a trainable ratio. As an example of our method, we study the case where only Pauli measurements are allowed and propose Composite-LBCS (C-LBCS), a composite measurement scheme made by composing locally-biased classical shadows. We numerically demonstrate C-LBCS on molecular systems up to $\\mathrm{CO}_2$ (30 qubits) and show that C-LBCS outperforms the previous state-of-the-art methods despite its simplicity. We also show that C-LBCS can be efficiently optimized by stochastic gradient descent and is trainable even when the observable contains a large number of terms. We believe our method opens up a reliable way toward efficient observable estimation on large quantum systems.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "The authors propose a composite measurement scheme, Composite-LBCS (C-LBCS), which combines multiple locally-biased classical shadows by distributing shots to them with trainable probabilities. They use stochastic gradient descent and a two-time-scale update rule for optimization.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "problems": [
+    {
+      "value": "Estimation of the expectation value of observables is a key subroutine in quantum computing and is also the bottleneck of the performance of many near-term quantum algorithms.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "hypotheses": [
+    {
+      "value": "A composite measurement scheme that composes multiple measurement schemes by distributing shots to them with a trainable ratio can improve the efficiency of observable estimation.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "evidence": [
+    {
+      "value": "Numerical demonstrations on molecular systems up to CO2 (30 qubits) show that C-LBCS outperforms previous state-of-the-art methods despite its simplicity.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "conclusions": [
+    {
+      "value": "The composite measurement scheme opens up a reliable way toward efficient observable estimation on large quantum systems.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "entities": [
+    {
+      "value": "Quantum observables",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Quantum measurements",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Pauli operators",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Locally-biased classical shadows (LBCS)",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Composite measurement scheme (CMS)",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "materials": [],
+  "properties": [],
+  "measurements": [
+    {
+      "value": "A composite measurement scheme for efficient quantum observable estimation The paper introduces a composite measurement scheme called Composite-LBCS (C-LBCS) that optimally distributes measurement shots among multiple schemes, demonstrating improved efficiency and performance in observable estimation for large quantum systems compared to previous methods.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Many works have been proposed to reduce the number of measurements needed for this task and they provide different measurement schemes for generating the measurements to perform.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "In this paper, we propose a new approach, composite measurement scheme, which composes multiple measurement schemes by distributing shots to them with a trainable ratio.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "As an example of our method, we study the case where only Pauli measurements are allowed and propose Composite-LBCS (C-LBCS), a composite measurement scheme made by composing locally-biased classical shadows.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "The authors propose a composite measurement scheme, Composite-LBCS (C-LBCS), which combines multiple locally-biased classical shadows by distributing shots to them with trainable probabilities.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "conditions": [
+    {
+      "value": "They use stochastic gradient descent and a two-time-scale update rule for optimization.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "mechanisms": [
+    {
+      "value": "Estimation of expectation values from quantum measurements",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Combination of multiple measurement schemes into a composite scheme",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Optimization of the composite scheme using stochastic gradient descent",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Reduction of variance in observable estimation",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "outcomes": [
+    {
+      "value": "Improved efficiency in estimating quantum observables",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Scalability of the measurement scheme to large quantum systems",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "State-of-the-art measurement efficiency despite simplicity",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "Quantum",
+    "Chemistry",
+    "Artificial Intelligence & Data Science"
+  ],
+  "reasoning_motifs": [
+    {
+      "value": "Combination → Enhanced Representation Power",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Optimization → Performance Improvement",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Variance Reduction → Estimation Efficiency",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "general_principles": [
+    {
+      "value": "Control Through Combinations",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Optimization Leads to Efficiency",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Precision Through Variance Minimization",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "failure_paths": [
+    {
+      "value": "success: Applying the Rescale and TTUR strategies in training C-LBCS Evidence: Applying both strategies provides the best result in most cases.",
+      "source": "cross_sdl_phase4",
+      "confidence": 0.75,
+      "evidence": ""
+    },
+    {
+      "value": "success: Training C-LBCS with different batch sizes Evidence: The cost function converges to similar values, indicating training is not sensitive to batch size.",
+      "source": "cross_sdl_phase4",
+      "confidence": 0.75,
+      "evidence": ""
+    }
+  ],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "acgold_8e5ff347de93",
+    "cross_sdl_reasoning_json": "/Users/sissifeng/Downloads/cross-sdl_knowledge_transfer_engine/data/reasoning/acgold_8e5ff347de93.json",
+    "cross_sdl_extraction_quality": 0.8,
+    "cross_sdl_notes": "The paper presents a clear hypothesis, method, and results, but some details of the exploration narrative had to be inferred from the discussion of results and methods. The reasoning structure is well-defined, but the paper does not explicitly state some of the higher-level motifs and principles, which required interpretation."
+  },
+  "validation": {
+    "score": 0.76,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": true,
+      "entities": true,
+      "materials": false,
+      "properties": false,
+      "measurements": true,
+      "conditions": true,
+      "mechanisms": true,
+      "outcomes": true,
+      "cross_sdl_match": true
+    },
+    "missing": [
+      "hardware",
+      "materials",
+      "properties"
+    ],
+    "notes": [
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

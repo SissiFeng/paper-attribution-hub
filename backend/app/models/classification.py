@@ -44,6 +44,15 @@ class PaperClassification(Base):
     needs_review: Mapped[bool] = mapped_column(Boolean, default=False, index=True)
     # Priority score (0-1). Higher = surface sooner in the queue.
     review_priority: Mapped[float] = mapped_column(Float, default=0.0)
+    # P2 staged-screening state. The classifier still owns label/confidence;
+    # these fields record how that output is routed through the corpus funnel.
+    screening_stage: Mapped[str | None] = mapped_column(
+        String, nullable=True, index=True
+    )
+    screening_route: Mapped[str | None] = mapped_column(
+        String, nullable=True, index=True
+    )
+    screening_reason: Mapped[str | None] = mapped_column(Text, nullable=True)
     # Bumped when a reviewer hits /confirm or /reviews/{id}. Once human_confirmed
     # is True the daily pipeline never overwrites the label automatically.
     human_confirmed: Mapped[bool] = mapped_column(Boolean, default=False, index=True)
@@ -51,6 +60,16 @@ class PaperClassification(Base):
         DateTime(timezone=True), nullable=True
     )
     human_confirmed_by: Mapped[str | None] = mapped_column(String, nullable=True)
+
+    # Optional work allocation for collaborative human review. Assignment is
+    # independent of the reviewer recorded on the final HumanReview row.
+    review_assignee: Mapped[str | None] = mapped_column(
+        String, nullable=True, index=True
+    )
+    review_assigned_at: Mapped[datetime | None] = mapped_column(
+        DateTime(timezone=True), nullable=True
+    )
+    review_assigned_by: Mapped[str | None] = mapped_column(String, nullable=True)
 
     # ── Scopus-sourced evidence signals ──────────────────────────────────
     # Each 0-1 float; set by scopus_classifier before the LLM judge runs.

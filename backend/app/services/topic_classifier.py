@@ -30,7 +30,6 @@ from typing import Optional
 
 from app.models import Topic
 from app.services.text_utils import (
-    TermHit,
     find_term_hits,
     normalize_lower,
     split_paragraphs,
