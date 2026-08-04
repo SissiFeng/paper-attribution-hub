@@ -82,3 +82,5 @@ jobs:
         working-directory: frontend
       - run: npm run check:chat
         working-directory: frontend
+      - run: npm run check:transfer
+        working-directory: frontend
