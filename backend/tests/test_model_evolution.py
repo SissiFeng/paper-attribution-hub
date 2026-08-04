@@ -51,6 +51,7 @@ def _configure_learning_paths(tmp_path, monkeypatch) -> None:
     monkeypatch.setattr(settings, "training_labels_csv", training)
     monkeypatch.setattr(settings, "validation_labels_csv", validation)
     monkeypatch.setattr(settings, "eval_labels_csv", holdout)
+    monkeypatch.setenv("PAS_MODEL_AUTO_PROMOTE", "1")
 
 
 def _add_feedback(
@@ -108,6 +109,14 @@ def test_default_retrain_batch_is_twenty(monkeypatch):
     monkeypatch.delenv("PAS_ACTIVE_RETRAIN_EVERY", raising=False)
 
     assert model_evolution.retrain_batch_size() == 20
+
+
+def test_automatic_production_promotion_is_disabled_by_default(monkeypatch):
+    from app.services import model_evolution
+
+    monkeypatch.delenv("PAS_MODEL_AUTO_PROMOTE", raising=False)
+
+    assert model_evolution.auto_promotion_enabled() is False
 
 
 def test_invalid_batch_configuration_falls_back_safely(monkeypatch):
@@ -399,6 +408,45 @@ def test_full_retrain_promotes_only_after_exact_batch(
 
     events = seeded_session.execute(select(TrainingFeedbackEvent)).scalars().all()
     assert {event.consumed_by_run_id for event in events} == {run.id}
+
+
+def test_passing_candidate_is_staged_when_auto_promotion_is_disabled(
+    seeded_session,
+    tmp_path,
+    monkeypatch,
+):
+    from app.services import model_evolution
+
+    classify_all(seeded_session)
+    _configure_learning_paths(tmp_path, monkeypatch)
+    monkeypatch.setenv("PAS_ACTIVE_RETRAIN_EVERY", "4")
+    monkeypatch.setenv("PAS_MODEL_AUTO_PROMOTE", "0")
+    production_path = tmp_path / "learned_classifier.joblib"
+    registry_path = tmp_path / "registry"
+    monkeypatch.setenv("PAS_LEARNED_MODEL_PATH", str(production_path))
+    monkeypatch.setenv("PAS_MODEL_REGISTRY_DIR", str(registry_path))
+    monkeypatch.setattr(
+        model_evolution,
+        "evaluate_candidate_for_promotion",
+        lambda *args, **kwargs: _accepted_decision(),
+    )
+    for paper_id, label in (
+        ("P001", "CORE_RELEVANT"),
+        ("P003", "EXCLUDE"),
+        ("P006", "CORE_RELEVANT"),
+        ("P007", "EXCLUDE"),
+    ):
+        _add_feedback(seeded_session, paper_id, label)
+
+    run = maybe_run_model_evolution(seeded_session)
+
+    assert run is not None and run.status == "STAGED"
+    assert "automatic production promotion is disabled" in run.promotion_reason
+    assert production_path.exists() is False
+    assert (registry_path / run.id / "model.joblib").exists()
+    state = seeded_session.get(ModelTrainingState, "learned_classifier")
+    assert state.production_run_id is None
+    assert state.active_run_id is None
 
 
 def test_next_gate_uses_database_incumbent_when_cache_is_missing(
@@ -976,7 +1024,7 @@ def test_model_evolution_status_api_reports_pending_progress(
     assert body["validation_gate"]["required_examples"] == 20
 
 
-def test_review_api_schedules_model_training_after_feedback_commit(
+def test_review_api_records_feedback_without_running_training_inline(
     seeded_session,
     tmp_path,
     monkeypatch,
@@ -984,10 +1032,11 @@ def test_review_api_schedules_model_training_after_feedback_commit(
     classify_all(seeded_session)
     _configure_learning_paths(tmp_path, monkeypatch)
     monkeypatch.setenv("PAS_ACTIVE_LEARNING", "1")
-    calls: list[str] = []
     monkeypatch.setattr(
-        "app.services.model_evolution.run_model_evolution_background",
-        lambda: calls.append("ran"),
+        "app.services.model_evolution.run_pending_model_evolution",
+        lambda *args, **kwargs: pytest.fail(
+            "web request must not run model evolution"
+        ),
     )
 
     response = TestClient(app).post(
@@ -1004,8 +1053,8 @@ def test_review_api_schedules_model_training_after_feedback_commit(
     )
 
     assert response.status_code == 200
-    assert calls == ["ran"]
     assert pending_review_count(seeded_session) == 1
+    assert seeded_session.execute(select(ModelTrainingRun)).scalars().all() == []
 
 
 def test_training_run_audit_keeps_candidate_and_incumbent_metrics(

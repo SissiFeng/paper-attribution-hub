@@ -714,7 +714,7 @@ export interface ModelMetricSummary {
 
 export interface ModelTrainingRun {
   run_id: string;
-  status: "RUNNING" | "PROMOTED" | "REJECTED" | "INVALIDATED" | "FAILED";
+  status: "RUNNING" | "PROMOTED" | "STAGED" | "REJECTED" | "INVALIDATED" | "FAILED";
   trigger_review_count: number;
   trigger_event_ids: string[];
   trigger_paper_ids: string[];

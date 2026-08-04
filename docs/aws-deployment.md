@@ -11,12 +11,17 @@ Internet
                                       ├── S3 (static React SPA)
                                       └── /api/* → ALB → ECS Fargate → RDS PostgreSQL + pgvector
 
+EventBridge
+    ├── every 5 min → short-lived Fargate model worker → RDS + model registry
+    └── daily 06:00 UTC → short-lived Fargate ETL worker → RDS + review queue
+
 Side services:
     S3 (review artifacts, model snapshots, exports)
     SSM Parameter Store (API keys)
     Secrets Manager (database credentials)
     ECR (Docker images)
-    CloudWatch (logs, metrics, alarms)
+    CloudWatch (API/worker logs, metrics, alarms)
+    SQS (worker invocation and non-zero-exit failure queue)
 ```
 
 ## File Structure
@@ -32,6 +37,7 @@ aws/
 │   ├── vpc.tf           # VPC, subnets, NAT, endpoints
 │   ├── security_groups.tf
 │   ├── ecs.tf           # Fargate cluster, service, task
+│   ├── workers.tf       # EventBridge, short-lived worker task, failure queue
 │   ├── alb.tf           # Load balancer, target group
 │   ├── ecr.tf           # Docker registry
 │   ├── rds.tf           # PostgreSQL 16 + pgvector
@@ -97,6 +103,30 @@ Authentication uses OIDC — no AWS access keys stored in GitHub.
 | `PAS_S3_ARTIFACTS_BUCKET` | S3 bucket name |
 | `PAS_AWS_REGION` | Primary region |
 | `PAS_KIMI_MODEL` | From `var.kimi_model` tfvars |
+| `PAS_ACTIVE_RETRAIN_EVERY` | Review batch size (20 by default) |
+| `PAS_MODEL_AUTO_PROMOTE` | `false` by default; passing candidates stay staged |
+| `PAS_BUILD_REVISION` | Immutable image tag used for audit lineage |
+
+## Scheduled data and model workers
+
+The API service is kept responsive and does not train models inside a web
+request. Every five minutes EventBridge starts a short-lived Fargate task that
+reconciles durable review feedback and trains only complete 20-paper batches.
+At 06:00 UTC another task incrementally classifies unscored/stale papers and
+refreshes staged screening. Both tasks use the same repository and image; ETL
+is not split into a second repository.
+
+The worker is sized at 2 vCPU, 4 GiB RAM, and 40 GiB ephemeral storage. This
+corpus is currently a bounded, intermittent job, so Fargate is simpler and
+cheaper operationally than maintaining EC2 instances. If measured training
+duration or memory later exceeds this profile, the same container can move to
+AWS Batch on EC2 Spot; that is a capacity change, not a reason to weaken model
+validation or automatic-promotion controls.
+
+EventBridge delivery failures, tasks that fail to start, and non-zero container
+exits are routed to the worker failure SQS queue. A CloudWatch alarm fires when
+the queue becomes non-empty. Model-training concurrency is additionally guarded
+by the database lease in `model_training_state`.
 
 ## S3 Artifact Storage
 
@@ -171,6 +201,7 @@ terraform apply
 ```bash
 # CloudWatch Logs
 aws logs tail /ecs/paper-attribution-prod-backend --follow
+aws logs tail /ecs/paper-attribution-prod-worker --follow
 
 # Or via AWS Console: CloudWatch → Log groups → /ecs/paper-attribution-prod-backend
 ```

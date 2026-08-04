@@ -9,8 +9,9 @@ The daily job glues six steps:
   2. **Full-text evidence** — fetches and extracts eligible full text when
      enabled.
 
-  3. **Model evolution recovery** — claims any complete human-review batch
-     whose response-time background task did not finish.
+  3. **Model evolution recovery** — reconciles feedback and claims any complete
+     human-review batch. The dedicated model worker normally handles this;
+     the daily pipeline is a second recovery path.
 
   4. **Incremental classify** — `classify_new` scores every paper that
      wasn't already classified (and every paper whose model_version is

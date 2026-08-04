@@ -43,6 +43,10 @@ resource "aws_ecs_task_definition" "backend" {
         { name = "PAS_S3_ARTIFACTS_BUCKET", value = aws_s3_bucket.artifacts.id },
         { name = "PAS_AWS_REGION", value = var.aws_region },
         { name = "PAS_KIMI_MODEL", value = var.kimi_model },
+        { name = "PAS_ACTIVE_LEARNING", value = "1" },
+        { name = "PAS_ACTIVE_RETRAIN_EVERY", value = tostring(var.active_retrain_every) },
+        { name = "PAS_MODEL_AUTO_PROMOTE", value = tostring(var.model_auto_promote) },
+        { name = "PAS_BUILD_REVISION", value = var.image_tag },
       ]
 
       # Secrets from SSM Parameter Store (injected by ECS agent at startup)
