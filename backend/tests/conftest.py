@@ -2,8 +2,11 @@
 from __future__ import annotations
 
 import os
+from pathlib import Path
 
 import pytest
+
+FULLTEXT_FIXTURES = Path(__file__).parent / "fixtures" / "fulltexts"
 
 
 @pytest.fixture(scope="session", autouse=True)
@@ -46,12 +49,11 @@ def seeded_session(session):
 @pytest.fixture()
 def fulltext_seeded_session(seeded_session):
     """Seeded DB + every sample full-text ingested + embeddings built."""
-    from app.config import settings as _settings
     from app.services.fulltext_service import (
         build_chunk_embeddings,
         ingest_fulltext_directory,
     )
 
-    ingest_fulltext_directory(seeded_session, _settings.fulltexts_dir)
+    ingest_fulltext_directory(seeded_session, FULLTEXT_FIXTURES)
     build_chunk_embeddings(seeded_session)
     return seeded_session

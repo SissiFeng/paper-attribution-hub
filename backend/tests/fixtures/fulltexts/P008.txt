@@ -1,0 +1,22 @@
+Robotic automation in pharmaceutical compound screening
+
+Abstract
+We describe a robotic platform for high-throughput pharmaceutical compound screening with on-line UV/Vis readout.
+
+Introduction
+Modern compound libraries contain millions of candidates; robotic screening is required for tractable evaluation.
+
+Methods
+We deploy a six-arm robotic platform with high-throughput screening (10000 compounds per day) and integrated UV/Vis spectroscopy. Compound selection is rule-based; no Bayesian optimization or active learning is used.
+
+Results
+The platform screened 2.5 million pharma compounds over 240 days with a hit rate of 0.4%.
+
+Discussion
+While the throughput is substantial, the screening protocol is open-loop and does not adapt based on intermediate results.
+
+Acknowledgements
+Funded by Sanofi Research and the Riken pharma initiative. No external academic collaborators contributed to this work.
+
+References
+1. Hertzberg, R.; Pope, A. High-throughput screening: new technology for the 21st century. Curr Opin Chem Biol 2000.

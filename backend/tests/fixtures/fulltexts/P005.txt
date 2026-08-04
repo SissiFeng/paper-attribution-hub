@@ -1,0 +1,22 @@
+Active learning for molecular property prediction
+
+Abstract
+Active learning strategies are applied to reduce labeling cost in molecular property prediction. We benchmark on QM9 and a custom dataset.
+
+Introduction
+Modern molecular machine learning increasingly relies on labels that are expensive to acquire, motivating careful sample selection.
+
+Methods
+We compare uncertainty-based, diversity-based, and committee-based active learning strategies across a 1024-dimensional Morgan fingerprint representation. All experiments are run on a single workstation; no robotic platform is involved.
+
+Results
+On QM9 we achieve 95% of full-data performance using only 18% of labels.
+
+Discussion
+These results suggest active learning can substantially reduce computational cost for property prediction tasks.
+
+Acknowledgements
+We thank the German Research Foundation (DFG) and TU Munich for funding this work. We acknowledge support from the Bavarian State Ministry of Science and the Arts.
+
+References
+1. Reker, D.; Schneider, G. Active-Learning Strategies in Computer-Assisted Drug Discovery. Drug Discovery Today 2015.
