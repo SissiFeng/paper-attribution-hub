@@ -1,0 +1,122 @@
+{
+  "paper_id": "acfocus_f8ef10408c95",
+  "title": "Improved decision making with similarity based machine learning: applications in chemistry",
+  "metadata": {
+    "doi": "10.1088/2632-2153/ad0fa3",
+    "url": "https://iopscience.iop.org/article/10.1088/2632-2153/ad0fa3",
+    "year": "2023",
+    "authors": "Lemm, Dominik; Falk von Rudorff, Guido; Anatole von Lilienfeld O.",
+    "venue": "Machine Learning: Science and Technology",
+    "category": "Journal article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Anatole von Lilienfeld"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance"
+    ],
+    "flags": {
+      "acknowledges_ac": "checked",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "The article introduces similarity-based machine learning (SML), a method that enables effective decision-making in chemistry with limited data by selecting and training models on-the-fly using only data points close to the query, thus achieving competitive performance with a fraction of the data typically required.",
+  "abstract": "Despite the fundamental progress in autonomous molecular and materials discovery, data scarcity throughout chemical compound space still severely hampers the use of modern ready-made machine learning models as they rely heavily on the paradigm, ‘the bigger the data the better’. Presenting similarity based machine learning (SML), we show an approach to select data and train a model on-the-fly for specific queries, enabling decision making in data scarce scenarios in chemistry. By solely relying on query and training data proximity to choose training points, only a fraction of data is necessary to converge to competitive performance. After introducing SML for the harmonic oscillator and the Rosenbrock function, we describe applications to scarce data scenarios in chemistry which include quantum mechanics based molecular design and organic synthesis planning. Finally, we derive a relationship between the intrinsic dimensionality and volume of feature space, governing the overall model accuracy. © 2023 The Author(s). Published by IOP Publishing Ltd.",
+  "hardware": [
+    {
+      "value": "Despite the fundamental progress in autonomous molecular and materials discovery, data scarcity throughout chemical compound space still severely hampers the use of modern ready-made machine learning models as they rely heavily on the paradigm, ‘the bigger the data the better’.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "methods": [
+    {
+      "value": "The article introduces similarity-based machine learning (SML), a method that enables effective decision-making in chemistry with limited data by selecting and training models on-the-fly using only data points close to the query, thus achieving competitive performance with a fraction of the data typically required.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Artificial Intelligence & Data Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Chemistry",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "Despite the fundamental progress in autonomous molecular and materials discovery, data scarcity throughout chemical compound space still severely hampers the use of modern ready-made machine learning models as they rely heavily on the paradigm, ‘the bigger the data the better’.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [
+    {
+      "value": "Finally, we derive a relationship between the intrinsic dimensionality and volume of feature space, governing the overall model accuracy.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [],
+  "conditions": [],
+  "mechanisms": [],
+  "outcomes": [],
+  "sdl_tags": [
+    "Artificial Intelligence & Data Science",
+    "Chemistry"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "acgold_e1a43e628a23",
+    "cross_sdl_reasoning_json": "/Users/sissifeng/Downloads/cross-sdl_knowledge_transfer_engine/data/reasoning/acgold_e1a43e628a23.json",
+    "cross_sdl_extraction_quality": 0.0,
+    "cross_sdl_notes": "Extraction failed — parse error: Expecting ',' delimiter: line 64 column 4 (char 3276)"
+  },
+  "validation": {
+    "score": 0.66,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": true,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": true,
+      "properties": true,
+      "measurements": false,
+      "conditions": false,
+      "mechanisms": false,
+      "outcomes": false,
+      "cross_sdl_match": true
+    },
+    "missing": [
+      "evidence",
+      "measurements",
+      "conditions",
+      "mechanisms",
+      "outcomes"
+    ],
+    "notes": []
+  }
+}

@@ -1,0 +1,137 @@
+{
+  "paper_id": "acfocus_d36b6d084012",
+  "title": "Deep learning for automatic organ and tumor segmentation in nanomedicine pharmacokinetics",
+  "metadata": {
+    "doi": "10.7150/thno.90246",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10797295/",
+    "year": "2024",
+    "authors": "Dhaliwal A, Ma J, Zheng M, Lyu Q, Rajora MA, Ma S, Oliva L, Ku A, Valic M, Wang B, Zheng G",
+    "venue": "Theranostics",
+    "category": "Journal article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Bo Wang"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "checked",
+      "high_impact": "checked"
+    }
+  },
+  "source_summary": "NanoMASK is a publicly available, deep learning-based tool that enables rapid, accurate, and automatic 3D organ segmentation and pharmacokinetic analysis from multimodal imaging data in nanomedicine research, significantly improving throughput and generalizability across various nanoparticle types.",
+  "abstract": "Rationale: Multimodal imaging provides important pharmacokinetic and dosimetry information during nanomedicine development and optimization. However, accurate quantitation is time-consuming, resource intensive, and requires anatomical expertise. Methods: We present NanoMASK: a 3D U-Net adapted deep learning tool capable of rapid, automatic organ segmentation of multimodal imaging data that can output key clinical dosimetry metrics without manual intervention. This model was trained on 355 manually-contoured PET/CT data volumes of mice injected with a variety of nanomaterials and imaged over 48 hours. Results: NanoMASK produced 3-dimensional contours of the heart, lungs, liver, spleen, kidneys, and tumor with high volumetric accuracy (pan-organ average %DSC of 92.5). Pharmacokinetic metrics including %ID/cc, %ID, and SUVmax achieved correlation coefficients exceeding R = 0.987 and relative mean errors below 0.2%. NanoMASK was applied to novel datasets of lipid nanoparticles and antibody-drug conjugates with a minimal drop in accuracy, illustrating its generalizability to different classes of nanomedicines. Furthermore, 20 additional auto-segmentation models were developed using training data subsets based on image modality, experimental imaging timepoint, and tumor status. These were used to explore the fundamental biases and dependencies of auto-segmentation models built on a 3D U-Net architecture, revealing significant differential impacts on organ segmentation accuracy. Conclusions: NanoMASK is an easy-to-use, adaptable tool for improving accuracy and throughput in imaging-based pharmacokinetic studies of nanomedicine. It has been made publicly available to all readers for automatic segmentation and pharmacokinetic analysis across a diverse array of nanoparticles, expediting agent development.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "NanoMASK is a publicly available, deep learning-based tool that enables rapid, accurate, and automatic 3D organ segmentation and pharmacokinetic analysis from multimodal imaging data in nanomedicine research, significantly improving throughput and generalizability across various nanoparticle types.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Artificial Intelligence & Data Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Biology",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [],
+  "properties": [
+    {
+      "value": "Results: NanoMASK produced 3-dimensional contours of the heart, lungs, liver, spleen, kidneys, and tumor with high volumetric accuracy (pan-organ average %DSC of 92.5).",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "NanoMASK was applied to novel datasets of lipid nanoparticles and antibody-drug conjugates with a minimal drop in accuracy, illustrating its generalizability to different classes of nanomedicines.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "These were used to explore the fundamental biases and dependencies of auto-segmentation models built on a 3D U-Net architecture, revealing significant differential impacts on organ segmentation accuracy.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Conclusions: NanoMASK is an easy-to-use, adaptable tool for improving accuracy and throughput in imaging-based pharmacokinetic studies of nanomedicine.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [],
+  "conditions": [
+    {
+      "value": "However, accurate quantitation is time-consuming, resource intensive, and requires anatomical expertise.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "mechanisms": [],
+  "outcomes": [],
+  "sdl_tags": [
+    "Artificial Intelligence & Data Science",
+    "Biology"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.48,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": false,
+      "properties": true,
+      "measurements": false,
+      "conditions": true,
+      "mechanisms": false,
+      "outcomes": false,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "materials",
+      "measurements",
+      "mechanisms",
+      "outcomes",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

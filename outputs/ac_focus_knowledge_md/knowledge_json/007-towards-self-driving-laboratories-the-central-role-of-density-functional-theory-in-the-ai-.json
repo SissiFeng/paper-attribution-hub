@@ -1,0 +1,139 @@
+{
+  "paper_id": "acfocus_0cfddde2e159",
+  "title": "Towards self-driving laboratories: The central role of density functional theory in the AI age",
+  "metadata": {
+    "doi": "10.48550/arxiv.2304.03272",
+    "url": "https://arxiv.org/abs/2304.03272",
+    "year": "2023",
+    "authors": "Huang, Bing; von Rudorff, Guido Falk; von Lilienfeld, O. Anatole",
+    "venue": "arxiv",
+    "category": "Preprint",
+    "peer_reviewed": "Non Peer Reviewed",
+    "ac_members": [
+      "Anatole von Lilienfeld"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "checked",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "Recent advances in machine learning models, heavily reliant on density functional theory (DFT) for data generation and architecture design, have led to highly efficient, accurate, scalable, and transferable (EAST) DFT-based models, paving the way for routine experimental planning in self-driving laboratories within chemical and materials sciences.",
+  "abstract": "Density functional theory (DFT) plays a pivotal role for the chemical and materials science due to its relatively high predictive power, applicability, versatility and computational efficiency. We review recent progress in machine learning model developments which has relied heavily on density functional theory for synthetic data generation and for the design of model architectures. The general relevance of these developments is placed in some broader context for the chemical and materials sciences. Resulting in DFT based machine learning models with high efficiency, accuracy, scalability, and transferability (EAST), recent progress indicates probable ways for the routine use of successful experimental planning software within self-driving laboratories.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "Recent advances in machine learning models, heavily reliant on density functional theory (DFT) for data generation and architecture design, have led to highly efficient, accurate, scalable, and transferable (EAST) DFT-based models, paving the way for routine experimental planning in self-driving laboratories within chemical and materials sciences.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Artificial Intelligence & Data Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Chemistry",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Materials Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "Towards self-driving laboratories: The central role of density functional theory in the AI age Recent advances in machine learning models, heavily reliant on density functional theory (DFT) for data generation and architecture design, have led to highly efficient, accurate, scalable, and transferable (EAST) DFT-based models, paving the way for routine experimental planning in self-driving laboratories within chemical and materials sciences.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Density functional theory (DFT) plays a pivotal role for the chemical and materials science due to its relatively high predictive power, applicability, versatility and computational efficiency.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "The general relevance of these developments is placed in some broader context for the chemical and materials sciences.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [
+    {
+      "value": "Resulting in DFT based machine learning models with high efficiency, accuracy, scalability, and transferability (EAST), recent progress indicates probable ways for the routine use of successful experimental planning software within self-driving laboratories.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [],
+  "conditions": [],
+  "mechanisms": [],
+  "outcomes": [],
+  "sdl_tags": [
+    "Artificial Intelligence & Data Science",
+    "Chemistry",
+    "Materials Science"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.51,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": true,
+      "properties": true,
+      "measurements": false,
+      "conditions": false,
+      "mechanisms": false,
+      "outcomes": false,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "measurements",
+      "conditions",
+      "mechanisms",
+      "outcomes",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

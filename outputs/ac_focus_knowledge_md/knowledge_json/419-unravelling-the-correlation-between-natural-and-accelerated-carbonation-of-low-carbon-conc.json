@@ -1,0 +1,116 @@
+{
+  "paper_id": "acfocus_9cbb831a8ff9",
+  "title": "Unravelling the correlation between natural and accelerated carbonation of low-carbon concrete using machine learning",
+  "metadata": {
+    "doi": "10.1016/j.susmat.2025.e01561",
+    "url": "https://www.sciencedirect.com/science/article/pii/S221499372500329X",
+    "year": "2025",
+    "authors": "A. Marani; D. K. Panesar",
+    "venue": "Sustainable Materials and Technologies",
+    "category": "Journal Article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Daman Panesar"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member"
+    ],
+    "flags": {
+      "acknowledges_ac": "checked",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "This research introduces a machine learning framework that accurately predicts the correlation between accelerated and natural carbonation in low-carbon concrete, enabling rapid, region-specific evaluation of long-term carbonation resistance based on mix design and environmental exposure.",
+  "abstract": "Understanding correlation between accelerated and natural carbonation is paramount to accurately predicting concrete's long-term carbonation resistance in real-world conditions. However, this relationship is highly dependent on material properties, mix design, and environmental exposure, making the development of a generalized correlation formula unrealistic and nonviable. To address this complexity, this research proposes a machine learning framework to estimate the correlation index for “low-carbon” concrete specific to mix design and regionally relevant climatic exposures. Two probabilistic deep learning models, achieving testing R2 of 0.95 in predicting natural and accelerated carbonation depths, were utilized to perform 768 carbonation simulations. The results demonstrate that the developed models provide a unique capability to link the carbonation rates of mixtures under different accelerated testing conditions (e.g., CO<inf>2</inf> concentrations) to the carbonation rates of the same mixtures under region-specific climatic exposure. This framework offers a practical tool for the rapid evaluation of long-term carbonation in low-carbon concrete. © 2025 The Authors",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "This research introduces a machine learning framework that accurately predicts the correlation between accelerated and natural carbonation in low-carbon concrete, enabling rapid, region-specific evaluation of long-term carbonation resistance based on mix design and environmental exposure.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [],
+  "materials": [
+    {
+      "value": "However, this relationship is highly dependent on material properties, mix design, and environmental exposure, making the development of a generalized correlation formula unrealistic and nonviable.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [
+    {
+      "value": "However, this relationship is highly dependent on material properties, mix design, and environmental exposure, making the development of a generalized correlation formula unrealistic and nonviable.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [],
+  "conditions": [
+    {
+      "value": "Understanding correlation between accelerated and natural carbonation is paramount to accurately predicting concrete's long-term carbonation resistance in real-world conditions.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "The results demonstrate that the developed models provide a unique capability to link the carbonation rates of mixtures under different accelerated testing conditions (e.g., CO<inf>2</inf> concentrations) to the carbonation rates of the same mixtures under region-specific climatic exposure.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "mechanisms": [],
+  "outcomes": [],
+  "sdl_tags": [],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.48,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": false,
+      "materials": true,
+      "properties": true,
+      "measurements": false,
+      "conditions": true,
+      "mechanisms": false,
+      "outcomes": false,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "entities",
+      "measurements",
+      "mechanisms",
+      "outcomes",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

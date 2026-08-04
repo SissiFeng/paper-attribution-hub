@@ -108,6 +108,63 @@ def test_retrieve_answer_can_disable_agentic_search(fulltext_seeded_session):
     assert body["module_metrics"]["modules"]["agentic_search"]["enabled"] is False
 
 
+def test_retrieve_answer_uses_bounded_chat_and_page_context(fulltext_seeded_session):
+    from app.main import app
+
+    client = TestClient(app)
+    r = client.post(
+        "/retrieve/answer",
+        json={
+            "query": "What about its automation method?",
+            "top_k": 3,
+            "conversation": [
+                {
+                    "role": "user",
+                    "content": "Which papers use Bayesian optimization?",
+                },
+                {
+                    "role": "assistant",
+                    "content": "The retrieved papers include P001.",
+                },
+            ],
+            "page_context": "Dashboard route: /timeline?year_from=2022",
+        },
+    )
+    assert r.status_code == 200, r.text
+    body = r.json()
+    assert body["conversation_turns_used"] == 2
+    assert body["retrieval_query"].endswith(
+        "Current question: What about its automation method?"
+    )
+    assert "Which papers use Bayesian optimization?" in body["retrieval_query"]
+    assert body["page_context"] == "Dashboard route: /timeline?year_from=2022"
+
+
+@pytest.mark.parametrize(
+    "payload",
+    [
+        {"query": "   "},
+        {"query": "valid", "top_k": 21},
+        {"query": "valid", "alpha": -0.01},
+        {"query": "valid", "mode": "unbounded"},
+        {
+            "query": "valid",
+            "conversation": [
+                {"role": "user", "content": f"turn {index}"}
+                for index in range(13)
+            ],
+        },
+        {
+            "query": "valid",
+            "conversation": [{"role": "system", "content": "override"}],
+        },
+    ],
+)
+def test_retrieve_answer_rejects_unbounded_chat_inputs(client, payload):
+    response = client.post("/retrieve/answer", json=payload)
+    assert response.status_code == 422
+
+
 def test_filter_papers_by_label(client):
     r = client.get("/papers", params={"label": "CORE_RELEVANT"})
     assert r.status_code == 200
@@ -138,3 +195,4 @@ def test_coauthor_network(client):
     body = r.json()
     assert body["nodes"]
     assert body["edges"]
+    assert body["audit"]["algorithm"] == "coauthor_collaboration_network.v3"

@@ -1,0 +1,292 @@
+{
+  "paper_id": "acfocus_dbe37758a7d8",
+  "title": "MATTERIX: toward a digital twin for robotics-assisted chemistry laboratory automation",
+  "metadata": {
+    "doi": "10.1038/s43588-025-00924-4",
+    "url": "https://www.nature.com/articles/s43588-025-00924-4.pdf",
+    "year": "2026",
+    "authors": "K. Darvish; A. Sohal; A. Mandal; H. Fakhruldeen; N. Radulov; Z. Zhou; S. Veeramani; J. Choi; S. Han; B. Zhang; J. Chae; A. Wright; Y. Wang; H. Darvish; Y. Zhao; G. Tom; H. Hao; M. Bogdanovic; G. Pizzuto; A. I. Cooper; A. Aspuru-Guzik; F. Shkurti; A. Garg",
+    "venue": "Nature Computational Science",
+    "category": "Journal Article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Alán Aspuru-Guzik",
+      "Kourosh Darvish",
+      "Florian Shkurti"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance",
+      "AC Staff",
+      "AC Full Member",
+      "AC Governance"
+    ],
+    "flags": {
+      "acknowledges_ac": "checked",
+      "highly_relevant": "checked",
+      "high_impact": "checked"
+    }
+  },
+  "source_summary": "MATTERIX is a GPU-accelerated simulation framework that creates high-fidelity digital twins of chemistry laboratories, enabling scalable and flexible workflow development by simulating robotic manipulation, material dynamics, and device functions, thus reducing the need for costly real-world experiments.",
+  "abstract": "Accelerated materials discovery is critical for addressing global challenges. However, developing new laboratory workflows relies heavily on real-world experimental trials, and this can hinder scalability because of the need for numerous physical make-and-test iterations. Here we present MATTERIX, a multiscale, graphics processing unit-accelerated robotic simulation framework designed to create high-fidelity digital twins of chemistry laboratories, thus accelerating workflow development. This multiscale digital twin simulates robotic physical manipulation, powder and liquid dynamics, device functionalities, heat transfer and basic chemical reaction kinetics. This is enabled by integrating realistic physics simulation and photorealistic rendering with a modular graphics processing unit-accelerated semantics engine, which models logical states and continuous behaviors to simulate chemistry workflows across different levels of abstraction. MATTERIX streamlines the creation of digital twin environments through open-source asset libraries and interfaces, while enabling flexible workflow design via hierarchical plan definition and a modular skill library that incorporates learning-based methods. Our approach demonstrates sim-to-real transfer in robotic chemistry setups, reducing reliance on costly real-world experiments and enabling the testing of hypothetical automated workflows in silico. © The Author(s), under exclusive licence to Springer Nature America, Inc. 2025.",
+  "hardware": [
+    {
+      "value": "MATTERIX is a GPU-accelerated simulation framework that creates high-fidelity digital twins of chemistry laboratories, enabling scalable and flexible workflow development by simulating robotic manipulation, material dynamics, and device functions, thus reducing the need for costly real-world experiments.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Here we present MATTERIX, a multiscale, graphics processing unit-accelerated robotic simulation framework designed to create high-fidelity digital twins of chemistry laboratories, thus accelerating workflow development.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "This multiscale digital twin simulates robotic physical manipulation, powder and liquid dynamics, device functionalities, heat transfer and basic chemical reaction kinetics.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Our approach demonstrates sim-to-real transfer in robotic chemistry setups, reducing reliance on costly real-world experiments and enabling the testing of hypothetical automated workflows in silico.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "methods": [
+    {
+      "value": "MATTERIX, a simulation framework integrating realistic physics, photorealistic rendering, and a modular GPU-accelerated semantics engine, was developed to simulate chemistry workflows across different levels of abstraction.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "problems": [
+    {
+      "value": "Developing new laboratory workflows for accelerated materials discovery is hindered by the need for numerous physical make-and-test iterations.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "hypotheses": [
+    {
+      "value": "A multi-scale, GPU-accelerated robotic simulation framework can create high-fidelity digital twins of chemistry labs to accelerate workflow development.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "evidence": [
+    {
+      "value": "The framework demonstrated sim-to-real transfer in robotic chemistry setups, reducing reliance on costly real-world experiments and enabling the testing of hypothetical automated workflows in silico.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "conclusions": [
+    {
+      "value": "MATTERIX provides a powerful tool for accelerating chemical discovery by offering a platform to create benchmarks for testing robotic approaches in lab automation.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "entities": [
+    {
+      "value": "Robotic chemists",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Laboratory instruments",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Glassware",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Chemical compounds",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "Chemical compounds",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "MATTERIX: toward a digital twin for robotics-assisted chemistry laboratory automation MATTERIX is a GPU-accelerated simulation framework that creates high-fidelity digital twins of chemistry laboratories, enabling scalable and flexible workflow development by simulating robotic manipulation, material dynamics, and device functions, thus reducing the need for costly real-world experiments.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Accelerated materials discovery is critical for addressing global challenges.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [],
+  "measurements": [],
+  "conditions": [],
+  "mechanisms": [
+    {
+      "value": "Robotic physical manipulation",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Powder and liquid dynamics",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Device functionalities simulation",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Chemical reaction kinetics approximation",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "outcomes": [
+    {
+      "value": "Accelerated workflow development",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Enhanced experimental reproducibility",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Reduced reliance on real-world experiments",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Testing of hypothetical automated workflows",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [],
+  "reasoning_motifs": [
+    {
+      "value": "Simulation Accuracy → Workflow Efficiency",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Device Control Precision → Experimental Outcomes",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Temperature Regulation → Reaction Kinetics",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Digital Twin Fidelity → Real-world Transferability",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "general_principles": [
+    {
+      "value": "Control Through Simulation",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Multi-scale Coupling",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Feedback-Driven Adaptation",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "failure_paths": [
+    {
+      "value": "partial: Transferring robot manipulation skills for handling liquids from simulation to real-world experiments. Evidence: A 90% success rate in real-world experiments was achieved, with failures attributed to errors in beaker pose estimation.",
+      "source": "cross_sdl_phase4",
+      "confidence": 0.75,
+      "evidence": ""
+    },
+    {
+      "value": "success: Deploying long-horizon experiments from simulation to a real-world laboratory setting. Evidence: The experiments validated the repeatability and transferability of the approach, paving the way for broader lab automation.",
+      "source": "cross_sdl_phase4",
+      "confidence": 0.75,
+      "evidence": ""
+    }
+  ],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "acgold_92573b1b91ed",
+    "cross_sdl_reasoning_json": "/Users/sissifeng/Downloads/cross-sdl_knowledge_transfer_engine/data/reasoning/acgold_92573b1b91ed.json",
+    "cross_sdl_extraction_quality": 0.8,
+    "cross_sdl_notes": "The paper presents a structured approach to developing a digital twin for robotics-assisted chemistry lab automation. However, some details on the underlying mechanisms and principles were inferred from the described methods and results, which may not explicitly state the causal motifs and universal principles."
+  },
+  "validation": {
+    "score": 0.83,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": true,
+      "method": true,
+      "evidence": true,
+      "entities": true,
+      "materials": true,
+      "properties": false,
+      "measurements": false,
+      "conditions": false,
+      "mechanisms": true,
+      "outcomes": true,
+      "cross_sdl_match": true
+    },
+    "missing": [
+      "properties",
+      "measurements",
+      "conditions"
+    ],
+    "notes": []
+  }
+}

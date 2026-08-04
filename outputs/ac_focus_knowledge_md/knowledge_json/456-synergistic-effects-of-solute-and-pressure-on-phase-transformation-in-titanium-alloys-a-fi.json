@@ -1,0 +1,179 @@
+{
+  "paper_id": "acfocus_135c042b9e8a",
+  "title": "Synergistic effects of solute and pressure on phase transformation in titanium alloys: A first-principles study",
+  "metadata": {
+    "doi": "10.1063/5.0295997",
+    "url": "https://pubs.aip.org/aip/jap/article/138/23/235103/3374834/Synergistic-effects-of-solute-and-pressure-on",
+    "year": "2025",
+    "authors": "H. Chen; C. Shao; Z. Xie; J. Song; Y. Zou",
+    "venue": "Journal of Applied Physics",
+    "category": "Journal article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Yu Zou"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member"
+    ],
+    "flags": {
+      "acknowledges_ac": "checked",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "This study reveals that both solute alloying elements and external hydrostatic pressure synergistically lower the phase transformation barriers between hcp α-phase and bcc β-phase in titanium alloys, with specific elements like Al and Mo being most effective at ambient conditions and others like Nb, V, Zr, and Sn enhancing transformation kinetics under stress, thereby offering atomistic insights for designing Ti alloys with improved phase stability and mechanical properties.",
+  "abstract": "The phase stability and transformation between hexagonal close-packed (hcp) α-phase and body-centered cubic (bcc) β-phase in titanium (Ti) alloys are critical to their mechanical properties and manufacturing processes for a wide range of engineering applications. However, many factors, both intrinsic and extrinsic (e.g., solute elements and external pressures, respectively), may govern their phase transformations dynamically, which is crucial to the design of new Ti alloys with desired properties. In this work, we study the effects of various solute elements and external hydrostatic pressures on the solid-state phase transformations in Ti alloys using density functional theory and nudged elastic band calculations. The results show that both alloying and applied pressure reduce transformation barriers, with Al and Mo being most effective under ambient conditions, while Nb, V, Zr, and Sn show enhanced transformation kinetics under stress. Solute-induced modifications to the local electronic structure and bonding environment, particularly under pressure, contribute to variations in phase stability. We identify a synergistic interaction between solute effects and external stress, facilitating phase transitions that are unachievable under static conditions. These findings provide atomistic insights into the coupled chemical-mechanical mechanisms underlying phase transformations in Ti alloys with improved phase stability and mechanical performance.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "This study reveals that both solute alloying elements and external hydrostatic pressure synergistically lower the phase transformation barriers between hcp α-phase and bcc β-phase in titanium alloys, with specific elements like Al and Mo being most effective at ambient conditions and others like Nb, V, Zr, and Sn enhancing transformation kinetics under stress, thereby offering atomistic insights for designing Ti alloys with improved phase stability and mechanical properties.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Materials Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Physics",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "Synergistic effects of solute and pressure on phase transformation in titanium alloys: A first-principles study This study reveals that both solute alloying elements and external hydrostatic pressure synergistically lower the phase transformation barriers between hcp α-phase and bcc β-phase in titanium alloys, with specific elements like Al and Mo being most effective at ambient conditions and others like Nb, V, Zr, and Sn enhancing transformation kinetics under stress, thereby offering atomistic insights for designing Ti alloys with improved phase stability and mechanical properties.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "The phase stability and transformation between hexagonal close-packed (hcp) α-phase and body-centered cubic (bcc) β-phase in titanium (Ti) alloys are critical to their mechanical properties and manufacturing processes for a wide range of engineering applications.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "However, many factors, both intrinsic and extrinsic (e.g., solute elements and external pressures, respectively), may govern their phase transformations dynamically, which is crucial to the design of new Ti alloys with desired properties.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [
+    {
+      "value": "Synergistic effects of solute and pressure on phase transformation in titanium alloys: A first-principles study This study reveals that both solute alloying elements and external hydrostatic pressure synergistically lower the phase transformation barriers between hcp α-phase and bcc β-phase in titanium alloys, with specific elements like Al and Mo being most effective at ambient conditions and others like Nb, V, Zr, and Sn enhancing transformation kinetics under stress, thereby offering atomistic insights for designing Ti alloys with improved phase stability and mechanical properties.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "The phase stability and transformation between hexagonal close-packed (hcp) α-phase and body-centered cubic (bcc) β-phase in titanium (Ti) alloys are critical to their mechanical properties and manufacturing processes for a wide range of engineering applications.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "However, many factors, both intrinsic and extrinsic (e.g., solute elements and external pressures, respectively), may govern their phase transformations dynamically, which is crucial to the design of new Ti alloys with desired properties.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Solute-induced modifications to the local electronic structure and bonding environment, particularly under pressure, contribute to variations in phase stability.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "These findings provide atomistic insights into the coupled chemical-mechanical mechanisms underlying phase transformations in Ti alloys with improved phase stability and mechanical performance.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [],
+  "conditions": [
+    {
+      "value": "Synergistic effects of solute and pressure on phase transformation in titanium alloys: A first-principles study This study reveals that both solute alloying elements and external hydrostatic pressure synergistically lower the phase transformation barriers between hcp α-phase and bcc β-phase in titanium alloys, with specific elements like Al and Mo being most effective at ambient conditions and others like Nb, V, Zr, and Sn enhancing transformation kinetics under stress, thereby offering atomistic insights for designing Ti alloys with improved phase stability and mechanical properties.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "The results show that both alloying and applied pressure reduce transformation barriers, with Al and Mo being most effective under ambient conditions, while Nb, V, Zr, and Sn show enhanced transformation kinetics under stress.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Solute-induced modifications to the local electronic structure and bonding environment, particularly under pressure, contribute to variations in phase stability.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "We identify a synergistic interaction between solute effects and external stress, facilitating phase transitions that are unachievable under static conditions.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "mechanisms": [],
+  "outcomes": [],
+  "sdl_tags": [
+    "Materials Science",
+    "Physics"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.55,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": true,
+      "properties": true,
+      "measurements": false,
+      "conditions": true,
+      "mechanisms": false,
+      "outcomes": false,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "measurements",
+      "mechanisms",
+      "outcomes",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

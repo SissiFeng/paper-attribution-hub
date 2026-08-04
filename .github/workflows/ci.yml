@@ -7,11 +7,46 @@ on:
     branches: [main]
 
 jobs:
-  test:
+  backend:
     runs-on: ubuntu-latest
-    timeout-minutes: 12
+    timeout-minutes: 15
     env:
-      PAS_DATABASE_URL: sqlite:////tmp/ci.db
+      PAS_DATABASE_URL: sqlite:////tmp/pas-ci.db
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: |
+            backend/requirements.txt
+            backend/requirements-dev.txt
+      - run: pip install -r backend/requirements-dev.txt
+      - name: Ruff
+        run: ruff check backend
+      - name: Full backend test suite
+        run: pytest -q
+        working-directory: backend
+
+  postgres-migrations:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    services:
+      postgres:
+        image: pgvector/pgvector:pg16
+        env:
+          POSTGRES_DB: pas
+          POSTGRES_USER: pas
+          POSTGRES_PASSWORD: pas
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U pas -d pas"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    env:
+      PAS_DATABASE_URL: postgresql+psycopg2://pas:pas@localhost:5432/pas
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -20,36 +55,30 @@ jobs:
           cache: pip
           cache-dependency-path: backend/requirements.txt
       - run: pip install -r backend/requirements.txt
-      - name: Backend app import smoke
-        timeout-minutes: 2
-        run: python -c "from app.main import app; print(app.title)"
+      - name: PostgreSQL migration round trip
         working-directory: backend
-      - name: KB SAG GNN tests
-        timeout-minutes: 4
-        run: >
-          pytest -q
-          tests/test_kb_service.py
-          tests/test_lab_service.py
-          tests/test_sag_lite_service.py
-          tests/test_attribution_evidence_tree.py
-          tests/test_attribution_evidence_scoring.py
-          tests/test_eval_before_after.py
-          tests/test_graph_ml_dataset_service.py
-          tests/test_export_kb_md.py
-          tests/test_entity_extractor.py
-          tests/test_build_lab_registry.py
-        working-directory: backend
-      - name: Transfer API tests
-        timeout-minutes: 4
-        run: >
-          pytest -q
-          tests/test_api.py
-          tests/test_auth.py
-          tests/test_transfer_service.py
-          tests/test_transfer_designer.py
-          tests/test_evolutionary_transfer_service.py
-          tests/test_tku_extractor.py
-          --deselect tests/test_api.py::test_list_papers_reports_fulltext_rag_ready
-          --deselect tests/test_api.py::test_retrieve_answer_returns_modular_trace
-          --deselect tests/test_api.py::test_retrieve_answer_can_disable_agentic_search
-        working-directory: backend
+        run: |
+          alembic upgrade head
+          alembic check
+          alembic downgrade base
+          alembic upgrade head
+          alembic check
+
+  frontend:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - run: npm ci
+        working-directory: frontend
+      - run: npm run build
+        working-directory: frontend
+      - run: npm run check:filter
+        working-directory: frontend
+      - run: npm run check:chat
+        working-directory: frontend

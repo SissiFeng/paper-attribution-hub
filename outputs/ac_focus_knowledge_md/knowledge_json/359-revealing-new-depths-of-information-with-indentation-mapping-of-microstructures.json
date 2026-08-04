@@ -1,0 +1,146 @@
+{
+  "paper_id": "acfocus_7e44ba057ea0",
+  "title": "Revealing new depths of information with indentation mapping of microstructures",
+  "metadata": {
+    "doi": "10.1557/s43577-025-00919-6",
+    "url": "https://link.springer.com/article/10.1557/s43577-025-00919-6",
+    "year": "2025",
+    "authors": "E. Rossi; C. Tromas; Z. Liu; Y. Zou; J. M. Wheeler",
+    "venue": "MRS Bulletin",
+    "category": "Journal Article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Yu Zou"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "High-speed nanoindentation mapping has transformed nanoindentation from a localized measurement into a scanning-probe-like technique that rapidly generates large-area, high-resolution mechanical property maps, enabling detailed analysis of material heterogeneity and requiring advanced data analytics to interpret complex, multidimensional datasets for improved understanding and design of materials.",
+  "abstract": "Nanoindentation is crucial in materials science for assessing mechanical properties in submicrometer volumes, and high-speed nanoindentation mapping has evolved it from a localized measurement technique into a scanning-probe-like approach for microstructures, delivering large-area, high-resolution mechanical property maps with more than 200,000 indents in hours. Such mapping enables direct imaging of hardness and modulus variations, phase boundaries, and local deformation behaviors in materials where heterogeneity governs mechanical performance. By correlating these mechanical maps with composition, orientation, and phase data from complementary analytical techniques, deep multidimensional data sets reveal the complex interplay between structure, processing, and properties. Such data sets increasingly demand advanced statistical clustering, machine learning, and deep learning for classification, trend extraction, and phase identification. Moving forward, high-speed nanoindentation is anticipated to operate under operando conditions and advanced mechanical modalities, offering new insights into interfacial deformation, anisotropic behavior, and the broader challenges of materials design and performance.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "High-speed nanoindentation mapping has transformed nanoindentation from a localized measurement into a scanning-probe-like technique that rapidly generates large-area, high-resolution mechanical property maps, enabling detailed analysis of material heterogeneity and requiring advanced data analytics to interpret complex, multidimensional datasets for improved understanding and design of materials.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [],
+  "materials": [
+    {
+      "value": "Revealing new depths of information with indentation mapping of microstructures High-speed nanoindentation mapping has transformed nanoindentation from a localized measurement into a scanning-probe-like technique that rapidly generates large-area, high-resolution mechanical property maps, enabling detailed analysis of material heterogeneity and requiring advanced data analytics to interpret complex, multidimensional datasets for improved understanding and design of materials.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Nanoindentation is crucial in materials science for assessing mechanical properties in submicrometer volumes, and high-speed nanoindentation mapping has evolved it from a localized measurement technique into a scanning-probe-like approach for microstructures, delivering large-area, high-resolution mechanical property maps with more than 200,000 indents in hours.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Such mapping enables direct imaging of hardness and modulus variations, phase boundaries, and local deformation behaviors in materials where heterogeneity governs mechanical performance.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [
+    {
+      "value": "Revealing new depths of information with indentation mapping of microstructures High-speed nanoindentation mapping has transformed nanoindentation from a localized measurement into a scanning-probe-like technique that rapidly generates large-area, high-resolution mechanical property maps, enabling detailed analysis of material heterogeneity and requiring advanced data analytics to interpret complex, multidimensional datasets for improved understanding and design of materials.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Nanoindentation is crucial in materials science for assessing mechanical properties in submicrometer volumes, and high-speed nanoindentation mapping has evolved it from a localized measurement technique into a scanning-probe-like approach for microstructures, delivering large-area, high-resolution mechanical property maps with more than 200,000 indents in hours.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "By correlating these mechanical maps with composition, orientation, and phase data from complementary analytical techniques, deep multidimensional data sets reveal the complex interplay between structure, processing, and properties.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [
+    {
+      "value": "Revealing new depths of information with indentation mapping of microstructures High-speed nanoindentation mapping has transformed nanoindentation from a localized measurement into a scanning-probe-like technique that rapidly generates large-area, high-resolution mechanical property maps, enabling detailed analysis of material heterogeneity and requiring advanced data analytics to interpret complex, multidimensional datasets for improved understanding and design of materials.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Nanoindentation is crucial in materials science for assessing mechanical properties in submicrometer volumes, and high-speed nanoindentation mapping has evolved it from a localized measurement technique into a scanning-probe-like approach for microstructures, delivering large-area, high-resolution mechanical property maps with more than 200,000 indents in hours.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "conditions": [
+    {
+      "value": "Moving forward, high-speed nanoindentation is anticipated to operate under operando conditions and advanced mechanical modalities, offering new insights into interfacial deformation, anisotropic behavior, and the broader challenges of materials design and performance.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "mechanisms": [],
+  "outcomes": [],
+  "sdl_tags": [],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.54,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": false,
+      "materials": true,
+      "properties": true,
+      "measurements": true,
+      "conditions": true,
+      "mechanisms": false,
+      "outcomes": false,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "entities",
+      "mechanisms",
+      "outcomes",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

@@ -1,0 +1,150 @@
+{
+  "paper_id": "acfocus_6c9226eba7af",
+  "title": "From biomass waste to CO2 capture: a multi-fidelity machine learning workflow for high-throughput screening of activated carbons",
+  "metadata": {
+    "doi": "10.1038/s41524-025-01786-0",
+    "url": "https://www.nature.com/articles/s41524-025-01786-0",
+    "year": "2025",
+    "authors": "F. Hajiali; N. Ellis; B. Gopaluni",
+    "venue": "npj Computational Materials",
+    "category": "Journal Article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Bhushan Gopaluni"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "This study introduces a machine learning framework combining a multi-headed 1D convolutional neural network and multi-fidelity Bayesian optimization to efficiently optimize sustainable, waste-derived activated carbons for CO₂ capture, reducing experimental costs by over 75% and accelerating materials discovery for climate solutions.",
+  "abstract": "Rising atmospheric CO<inf>2</inf> levels threaten climate stability, demanding transformative solutions in carbon capture, utilization, and storage. Porous activated carbons (ACs) derived from sustainable waste sources offer a promising route for cost-effective and eco-friendly carbon capture, thanks to their tunable surface chemistry and high surface areas. However, optimizing ACs for peak CO<inf>2</inf> uptake is often hindered by complex, resource-intensive experimental workflows and the scarcity of high-quality data. This study presents a machine learning-driven framework that combines a multi-headed one-dimensional convolutional neural network (MH1DCNN) with multi-fidelity Bayesian optimization (MFBO) to efficiently navigate large design spaces by balancing exploration of uncertain regions with exploitation of known high-performing candidates. The MH1DCNN captures nonlinear relationships between physicochemical properties and CO<inf>2</inf> uptake, serving as a deployable low-fidelity model. Using 841 literature-reported samples as high-cost, high-fidelity data and MH1DCNN-generated predictions as low-cost, low-fidelity evaluations, MFBO fuses these information sources through a probabilistic surrogate model, enabling rapid and cost-effective optimization. This approach reduces high-fidelity evaluation requirements by over 75% and identifies top-performing candidates using only 13 high-fidelity acquisitions. This scalable, data-driven strategy supports the development of closed-loop experiment-analysis-planning systems for future autonomous laboratories and accelerates sustainable materials discovery. © The Author(s) 2025.",
+  "hardware": [
+    {
+      "value": "This scalable, data-driven strategy supports the development of closed-loop experiment-analysis-planning systems for future autonomous laboratories and accelerates sustainable materials discovery.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "methods": [
+    {
+      "value": "This study introduces a machine learning framework combining a multi-headed 1D convolutional neural network and multi-fidelity Bayesian optimization to efficiently optimize sustainable, waste-derived activated carbons for CO₂ capture, reducing experimental costs by over 75% and accelerating materials discovery for climate solutions.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Artificial Intelligence & Data Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Automation and Robotics",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Chemistry",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "From biomass waste to CO2 capture: a multi-fidelity machine learning workflow for high-throughput screening of activated carbons This study introduces a machine learning framework combining a multi-headed 1D convolutional neural network and multi-fidelity Bayesian optimization to efficiently optimize sustainable, waste-derived activated carbons for CO₂ capture, reducing experimental costs by over 75% and accelerating materials discovery for climate solutions.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "This scalable, data-driven strategy supports the development of closed-loop experiment-analysis-planning systems for future autonomous laboratories and accelerates sustainable materials discovery.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [
+    {
+      "value": "Rising atmospheric CO<inf>2</inf> levels threaten climate stability, demanding transformative solutions in carbon capture, utilization, and storage.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "The MH1DCNN captures nonlinear relationships between physicochemical properties and CO<inf>2</inf> uptake, serving as a deployable low-fidelity model.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [],
+  "conditions": [],
+  "mechanisms": [],
+  "outcomes": [
+    {
+      "value": "Clean energy",
+      "source": "csv_applied_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "Artificial Intelligence & Data Science",
+    "Automation and Robotics",
+    "Chemistry",
+    "Clean energy"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.67,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": true,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": true,
+      "properties": true,
+      "measurements": false,
+      "conditions": false,
+      "mechanisms": false,
+      "outcomes": true,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "evidence",
+      "measurements",
+      "conditions",
+      "mechanisms",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only."
+    ]
+  }
+}

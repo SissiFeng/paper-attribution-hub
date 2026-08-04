@@ -1,0 +1,158 @@
+{
+  "paper_id": "acfocus_d3987378ddc0",
+  "title": "A novel, covalent broad-spectrum inhibitor targeting human coronavirus Mpro",
+  "metadata": {
+    "doi": "10.1038/s41467-025-59870-4",
+    "url": "https://www.nature.com/articles/s41467-025-59870-4",
+    "year": "2025",
+    "authors": "J. Sun; D. Sun; Q. Yang; D. Wang; J. Peng; H. Guo; X. Ding; Z. Chen; B. Yuan; Y. A. Ivanenkov; J. Yuan; B. A. Zagribelnyy; Y. He; J. Su; L. Wang; J. Tang; Z. Li; R. Li; T. Li; X. Hu; X. Liang; A. Zhu; P. Wei; Y. Fan; S. Liu; J. Zheng; X. Guan; A. Aliper; M. Yang; D. S. Bezrukov; Z. Xie; V. A. Terentiev; G. Peng; D. A. Polykovskiy; A. S. Malyshev; M. N. Malkov; Q. Zhu; A. Aspuru-Guzik; X. Ding; X. Cai; M. Zhang; J. Zhao; N. Zhong; F. Ren; X. Chen; A. Zhavoronkov; J. Zhao",
+    "venue": "Nature Communications",
+    "category": "Journal Article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Alán Aspuru-Guzik"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "ISM3312, a novel small-molecule inhibitor designed using advanced generative chemistry, targets the highly conserved main protease of human coronaviruses and demonstrates broad, potent antiviral activity—including against Nirmatrelvir-resistant strains—offering promise for improved coronavirus treatment and preparedness.",
+  "abstract": "Human coronaviruses (CoV) cause respiratory infections that range from mild to severe. CoVs are a large family of viruses with considerable genetic heterogeneity and a multitude of viral types, making preventing and treating these viruses difficult. Comprehensive treatments that inhibit CoV infections fulfill a pressing medical need and may be immensely valuable in managing emerging and endemic CoV infections. As the main protease (M<sup>pro</sup>) is highly conserved across many CoVs, this protease has been identified as a route for broad CoV inhibition. We utilize the advanced generative chemistry platform Chemistry42 for de novo molecular design and obtained novel small-molecule, non-peptide-like inhibitors targeting the SARS-CoV-2 M<sup>pro</sup>. ISM3312 is identified as an irreversible, covalent M<sup>pro</sup> inhibitor from extensive virtual screening and structure-based optimization efforts. ISM3312 exhibits low off-target risk and outstanding antiviral activity against multiple human coronaviruses, including SARS-CoV-2, MERS-CoV, 229E, OC43, NL63, and HKU1 independent of P-glycoprotein (P-gp) inhibition. Furthermore, ISM3312 shows significant inhibitory effects against Nirmatrelvir-resistant M<sup>pro</sup> mutants, suggesting ISM3312 may contribute to reduced viral escape in these settings. Incorporating ISM3312 and Nirmatrelvir into antiviral strategy could improve preparedness and reinforce defenses against future coronavirus threats.",
+  "hardware": [
+    {
+      "value": "We utilize the advanced generative chemistry platform Chemistry42 for de novo molecular design and obtained novel small-molecule, non-peptide-like inhibitors targeting the SARS-CoV-2 M<sup>pro</sup>.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "methods": [
+    {
+      "value": "ISM3312, a novel small-molecule inhibitor designed using advanced generative chemistry, targets the highly conserved main protease of human coronaviruses and demonstrates broad, potent antiviral activity—including against Nirmatrelvir-resistant strains—offering promise for improved coronavirus treatment and preparedness.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Artificial Intelligence & Data Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Chemistry",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Biochemistry",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Biology",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "A novel, covalent broad-spectrum inhibitor targeting human coronavirus Mpro ISM3312, a novel small-molecule inhibitor designed using advanced generative chemistry, targets the highly conserved main protease of human coronaviruses and demonstrates broad, potent antiviral activity—including against Nirmatrelvir-resistant strains—offering promise for improved coronavirus treatment and preparedness.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "We utilize the advanced generative chemistry platform Chemistry42 for de novo molecular design and obtained novel small-molecule, non-peptide-like inhibitors targeting the SARS-CoV-2 M<sup>pro</sup>.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [
+    {
+      "value": "A novel, covalent broad-spectrum inhibitor targeting human coronavirus Mpro ISM3312, a novel small-molecule inhibitor designed using advanced generative chemistry, targets the highly conserved main protease of human coronaviruses and demonstrates broad, potent antiviral activity—including against Nirmatrelvir-resistant strains—offering promise for improved coronavirus treatment and preparedness.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "ISM3312 exhibits low off-target risk and outstanding antiviral activity against multiple human coronaviruses, including SARS-CoV-2, MERS-CoV, 229E, OC43, NL63, and HKU1 independent of P-glycoprotein (P-gp) inhibition.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [],
+  "conditions": [],
+  "mechanisms": [],
+  "outcomes": [
+    {
+      "value": "Therapeutics",
+      "source": "csv_applied_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "Artificial Intelligence & Data Science",
+    "Chemistry",
+    "Biochemistry",
+    "Biology",
+    "Therapeutics"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.67,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": true,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": true,
+      "properties": true,
+      "measurements": false,
+      "conditions": false,
+      "mechanisms": false,
+      "outcomes": true,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "evidence",
+      "measurements",
+      "conditions",
+      "mechanisms",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only."
+    ]
+  }
+}

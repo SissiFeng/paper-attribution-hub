@@ -1,0 +1,260 @@
+{
+  "paper_id": "acfocus_2bdc1aefd71e",
+  "title": "A split intein and split luciferase-coupled system for detecting protein-protein interactions",
+  "metadata": {
+    "doi": "10.1038/s44320-024-00081-2",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/39668253/",
+    "year": "2025",
+    "authors": "Z. Yao; J. Kim; B. Geng; J. Chen; V. Wong; A. Lyakisheva; J. Snider; M. R. Dimlić; S. Raić; I. Stagljar",
+    "venue": "Molecular Systems Biology",
+    "category": "Journal Article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Igor Stagljar"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "The new SIMPL2 platform, which integrates tripart nanoluciferase into the original SIMPL assay, offers improved sensitivity, specificity, and flexibility for high-throughput screening of protein-protein interactions and drug discovery applications.",
+  "abstract": "Elucidation of protein-protein interactions (PPIs) represents one of the most important methods in biomedical research. Recently, PPIs have started to be exploited for drug discovery purposes and have thus attracted much attention from both the academic and pharmaceutical sectors. We previously developed a sensitive method, Split Intein-Mediated Protein Ligation (SIMPL), for detecting binary PPIs via irreversible splicing of the interacting proteins being investigated. Here, we incorporated tripart nanoluciferase (tNLuc) into the system, providing a luminescence signal which, in conjunction with homogenous liquid phase operation, improves the quantifiability and operability of the assay. Using a reference PPI set, we demonstrated an improvement in both sensitivity and specificity over the original SIMPL assay. Moreover, we designed the new SIMPL-tNLuc (‘SIMPL2’) platform with an inherent modularity allowing for flexible measurement of molecular modulators of target PPIs, including inhibitors, molecular glues and PROTACs. Our results demonstrate that SIMPL2 is a sensitive, cost- and labor-effective tool suitable for high-throughput screening (HTS) in both PPI mapping and drug discovery applications. © The Author(s) 2024.",
+  "hardware": [
+    {
+      "value": "The new SIMPL2 platform, which integrates tripart nanoluciferase into the original SIMPL assay, offers improved sensitivity, specificity, and flexibility for high-throughput screening of protein-protein interactions and drug discovery applications.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Moreover, we designed the new SIMPL-tNLuc (‘SIMPL2’) platform with an inherent modularity allowing for flexible measurement of molecular modulators of target PPIs, including inhibitors, molecular glues and PROTACs.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Our results demonstrate that SIMPL2 is a sensitive, cost- and labor-effective tool suitable for high-throughput screening (HTS) in both PPI mapping and drug discovery applications.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "methods": [
+    {
+      "value": "The SIMPL system was modified to include tNLuc, creating SIMPL2, and was tested using a reference PPI set and compared with existing methods like SIMPL-ELISA and NanoBiT.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "problems": [
+    {
+      "value": "Elucidation of protein-protein interactions (PPIs) and their exploitation for drug discovery purposes.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "hypotheses": [
+    {
+      "value": "Incorporating tripart nanoluciferase (tNLuc) into the Split Intein-Mediated Protein Ligation (SIMPL) system will improve sensitivity and specificity for detecting binary PPIs.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "evidence": [
+    {
+      "value": "SIMPL2 demonstrated improved sensitivity and specificity over the original SIMPL assay and was comparable in performance to NanoBiT. The system was also able to detect the effects of PPI modulators like inhibitors, molecular glues, and PROTACs.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "conclusions": [
+    {
+      "value": "SIMPL2 is a sensitive, cost- and labor-effective tool suitable for high-throughput screening in both PPI mapping and drug discovery applications.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "entities": [
+    {
+      "value": "Split Intein",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Nanoluciferase (tNLuc)",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Protein-Protein Interactions (PPIs)",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Inhibitors",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Molecular glues",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "PROTACs",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "Protein-Protein Interactions (PPIs)",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [],
+  "measurements": [
+    {
+      "value": "Moreover, we designed the new SIMPL-tNLuc (‘SIMPL2’) platform with an inherent modularity allowing for flexible measurement of molecular modulators of target PPIs, including inhibitors, molecular glues and PROTACs.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "The SIMPL system was modified to include tNLuc, creating SIMPL2, and was tested using a reference PPI set and compared with existing methods like SIMPL-ELISA and NanoBiT.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "conditions": [],
+  "mechanisms": [
+    {
+      "value": "Irreversible splicing of interacting proteins",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Luminescence signal production upon interaction",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Reconstitution of functional enzyme upon PPI occurrence",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "outcomes": [
+    {
+      "value": "Enhanced quantifiability and operability of the assay",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Sensitive detection of PPIs and their modulation by drugs",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "Biology",
+    "Biochemistry",
+    "Therapeutics"
+  ],
+  "reasoning_motifs": [
+    {
+      "value": "Signal Amplification → Sensitivity",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Modularity → Versatility",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "general_principles": [
+    {
+      "value": "Enhanced Signal Detection through Amplification",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Adaptability through Modular Design",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "failure_paths": [
+    {
+      "value": "success: Comparison of SIMPL2 with SIMPL-ELISA and NanoBiT assays. Evidence: SIMPL2 showed improved sensitivity and specificity and was more sensitive in detecting weak PPIs or induced proximity interactions compared to NanoBiT.",
+      "source": "cross_sdl_phase4",
+      "confidence": 0.75,
+      "evidence": ""
+    },
+    {
+      "value": "success: Use of SIMPL2 to detect the effects of PPI modulators. Evidence: SIMPL2 successfully detected the specific action of inhibitors, molecular glues, and PROTACs against their corresponding targets.",
+      "source": "cross_sdl_phase4",
+      "confidence": 0.75,
+      "evidence": ""
+    }
+  ],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "acgold_114be9ce2578",
+    "cross_sdl_reasoning_json": "/Users/sissifeng/Downloads/cross-sdl_knowledge_transfer_engine/data/reasoning/acgold_114be9ce2578.json",
+    "cross_sdl_extraction_quality": 0.9,
+    "cross_sdl_notes": "The paper presents a clear hypothesis, method, and results, making the extraction of scientific reasoning straightforward. The mechanisms and outcomes are well-defined, and the paper's structure facilitates the identification of the underlying processes and their broader implications."
+  },
+  "validation": {
+    "score": 0.89,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": true,
+      "method": true,
+      "evidence": true,
+      "entities": true,
+      "materials": true,
+      "properties": false,
+      "measurements": true,
+      "conditions": false,
+      "mechanisms": true,
+      "outcomes": true,
+      "cross_sdl_match": true
+    },
+    "missing": [
+      "properties",
+      "conditions"
+    ],
+    "notes": []
+  }
+}

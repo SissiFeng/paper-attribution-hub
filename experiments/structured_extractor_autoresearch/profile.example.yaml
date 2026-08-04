@@ -1,0 +1,188 @@
+profile_version: structured-extractor-factory.v1
+profile_id: cross_sdl_extraction_v1_example
+working_directory: ../..
+
+inputs:
+  # Smoke fixtures only. Replace both with separately reviewed, immutable corpora.
+  seed_train: fixtures/seed_train.example.jsonl
+  benchmark_test: fixtures/gold_test.example.jsonl
+  extraction_schema: contracts/extraction_schema.json
+  ontology_version: contracts/ontology_version.json
+  prompt_version: contracts/prompt_version.txt
+  model_config: contracts/model_config.json
+
+boundary:
+  identity_fields: [record_id, paper_id, chunk_id]
+  content_fields: [input_text]
+  record_id_field: record_id
+  provenance_kind_field: provenance.kind
+  source_split_field: provenance.source_split
+  source_record_ids_field: provenance.source_record_ids
+  near_duplicate_threshold: 0.92
+  allowed_provenance_kinds:
+    - human_gold
+    - curated_real
+    - synthetic_smoke
+    - hard_negative
+    - counterfactual
+    - cross_domain_paraphrase
+  trusted_root_kinds: [human_gold, curated_real, synthetic_smoke]
+  generated_kinds:
+    - hard_negative
+    - counterfactual
+    - cross_domain_paraphrase
+
+budget:
+  max_attempts: 6
+  max_wall_clock_seconds: 14400
+  max_cost_usd: 100
+  max_tokens: 2000000
+  max_human_review_records: 200
+  max_training_records: 10000
+
+effectiveness:
+  # This repository fixture is an adversarial smoke benchmark, not evidence of
+  # scientific release performance.
+  benchmark_tier: smoke
+  required_case_types:
+    - standard
+    - hard_negative
+    - counterfactual
+    - cross_domain_transfer
+  min_records_per_case: 1
+  min_domains: 2
+
+selection:
+  primary_metric: transfer.utility_score
+  direction: maximize
+  gates:
+    - metric: evidence.unsupported_claim_rate
+      operator: <=
+      value: 0.02
+    - metric: evidence.span_f1
+      operator: ">="
+      value: 0.80
+    - metric: structured.strategy_macro_f1
+      operator: ">="
+      value: 0.75
+    - metric: structured.condition_f1
+      operator: ">="
+      value: 0.70
+    - metric: normalization.hierarchical_f1
+      operator: ">="
+      value: 0.75
+    - metric: transfer.negative_transfer_risk
+      operator: <=
+      value: 0.15
+    - metric: system.overall_accuracy
+      operator: ">="
+      value: 0.75
+    - metric: system.verifier_gold_exact_agreement
+      operator: ">="
+      value: 0.80
+    - metric: system.hard_negative_transfer_false_positive_rate
+      operator: <=
+      value: 0.05
+    - metric: system.hard_negative_claim_false_positive_rate
+      operator: <=
+      value: 0.05
+    - metric: system.counterfactual_pair_accuracy
+      operator: ">="
+      value: 0.80
+    - metric: system.counterfactual_sensitivity
+      operator: ">="
+      value: 0.80
+    - metric: system.cross_domain_transfer_accuracy
+      operator: ">="
+      value: 0.75
+    - metric: system.worst_domain_accuracy
+      operator: ">="
+      value: 0.70
+  tie_breakers:
+    - metric: evidence.unsupported_claim_rate
+      direction: minimize
+    - metric: structured.strategy_macro_f1
+      direction: maximize
+
+execution:
+  # Profiles select only code adapters that have already been reviewed.
+  allowed_executables: [python]
+  allowed_python_module_prefixes: [pas_factory_adapters.]
+
+commands:
+  # Commands are argv lists and never run through a shell. Replace the module
+  # names with reviewed, installed adapters. Every step receives
+  # PAS_FACTORY_STEP_USAGE and PAS_FACTORY_USAGE_NONCE and must atomically
+  # report its nonce-bound usage before returning.
+  generate:
+    - python
+    - -m
+    - pas_factory_adapters.data_generator
+    - --seed-train
+    - "{seed_train}"
+    - --previous-train
+    - "{previous_train_records}"
+    - --previous-errors
+    - "{previous_error_analysis}"
+    - --out
+    - "{train_records}"
+    - --remaining-cost-usd
+    - "{remaining_cost_usd}"
+    - --remaining-human-review-records
+    - "{remaining_human_review_records}"
+  train_lora:
+    - python
+    - -m
+    - pas_factory_adapters.lora_trainer
+    - --train
+    - "{train_records}"
+    - --model-config
+    - "{model_config}"
+    - --out
+    - "{checkpoint_dir}"
+  evaluate:
+    - python
+    - -m
+    - pas_factory_adapters.checkpoint_inference
+    - --checkpoint
+    - "{checkpoint_dir}"
+    - --benchmark
+    - "{benchmark_inputs}"
+    - --checkpoint-sha256
+    - "{checkpoint_sha256}"
+    - --predictions-out
+    - "{predictions}"
+  verify:
+    - python
+    - -m
+    - pas_factory_adapters.fixed_evaluator
+    - --benchmark
+    - "{benchmark_test}"
+    - --predictions
+    - "{predictions}"
+    - --predictions-sha256
+    - "{predictions_sha256}"
+    - --schema
+    - "{extraction_schema}"
+    - --ontology
+    - "{ontology_version}"
+    - --evaluation-profile-sha256
+    - "{evaluation_profile_sha256}"
+    - --checkpoint-sha256
+    - "{checkpoint_sha256}"
+    - --verification-records-out
+    - "{verification_records}"
+    - --metrics-out
+    - "{metrics}"
+  analyze:
+    - python
+    - -m
+    - pas_factory_adapters.error_analyzer
+    - --predictions
+    - "{predictions}"
+    - --metrics
+    - "{metrics}"
+    - --verification-records
+    - "{verification_records}"
+    - --out
+    - "{error_analysis}"

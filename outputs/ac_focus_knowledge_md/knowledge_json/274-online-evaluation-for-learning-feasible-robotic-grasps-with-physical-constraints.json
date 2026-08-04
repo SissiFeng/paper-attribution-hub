@@ -1,0 +1,124 @@
+{
+  "paper_id": "acfocus_9bf7716326f7",
+  "title": "Online Evaluation for Learning Feasible Robotic Grasps with Physical Constraints",
+  "metadata": {
+    "doi": "10.1109/tmech.2024.3451228",
+    "url": "https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=10679594",
+    "year": "2024",
+    "authors": "Liu D, Chen R, Luo J, Liu X, Sun Y",
+    "venue": "IEEE/ASME transactions on mechatronics",
+    "category": "Journal article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Yu Sun"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "checked",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "This article introduces a framework that integrates physical constraints into grasp learning through online evaluation, enabling networks to learn from real-time errors and object geometries, which significantly reduces false predictions and improves real-world grasping success rates compared to traditional methods.",
+  "abstract": "Existing grasp planning networks often learn from labeled images with grasp examples to eliminate the need for training through physical grasp attempts. As a result, trained networks lack an understanding of the physical constraints involved in successful grasps, leading to infeasible predictions and inaccurate evaluation. In this article, we propose a framework for integrating physical constraints, e.g., collision avoidance, into grasp learning through on-line grasp evaluation. During training, the proposed framework initially evaluates the feasibility of network predictions using physical constraints. Subsequently, physical supervision is generated based on both the feasible predictions and the geometries of the objects. In this manner, the network learns from its real-time errors and the object shape, in addition to labeled data. Experimental results demonstrated that our evaluation method achieved a significantly lower false rate (5.5%) than the commonly used metrics (intersection over union: 19.0%, SGT: 17.5%). Furthermore, the proposed framework effectively improves the network's real-world grasping success rate on EGAD objects by 18.7% for isolated objects (2450 attempts) and 15.8% for cluttered scenes (331 attempts). These results highlight the effectiveness of integrating physical constraints for feasible grasp prediction and accurate evaluation.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "This article introduces a framework that integrates physical constraints into grasp learning through online evaluation, enabling networks to learn from real-time errors and object geometries, which significantly reduces false predictions and improves real-world grasping success rates compared to traditional methods.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Artificial Intelligence & Data Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [],
+  "properties": [],
+  "measurements": [],
+  "conditions": [
+    {
+      "value": "Online Evaluation for Learning Feasible Robotic Grasps with Physical Constraints This article introduces a framework that integrates physical constraints into grasp learning through online evaluation, enabling networks to learn from real-time errors and object geometries, which significantly reduces false predictions and improves real-world grasping success rates compared to traditional methods.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "In this manner, the network learns from its real-time errors and the object shape, in addition to labeled data.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Experimental results demonstrated that our evaluation method achieved a significantly lower false rate (5.5%) than the commonly used metrics (intersection over union: 19.0%, SGT: 17.5%).",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Furthermore, the proposed framework effectively improves the network's real-world grasping success rate on EGAD objects by 18.7% for isolated objects (2450 attempts) and 15.8% for cluttered scenes (331 attempts).",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "mechanisms": [],
+  "outcomes": [],
+  "sdl_tags": [
+    "Artificial Intelligence & Data Science"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.41,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": false,
+      "properties": false,
+      "measurements": false,
+      "conditions": true,
+      "mechanisms": false,
+      "outcomes": false,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "materials",
+      "properties",
+      "measurements",
+      "mechanisms",
+      "outcomes",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

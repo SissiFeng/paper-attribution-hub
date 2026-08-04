@@ -1,0 +1,175 @@
+{
+  "paper_id": "acfocus_8ccbff9225c8",
+  "title": "Active Learning-Guided Hit Optimization for the Leucine-Rich Repeat Kinase 2 WDR Domain Based on In Silico Ligand-Binding Affinities",
+  "metadata": {
+    "doi": "10.1021/acs.jcim.5c00588",
+    "url": "https://pubs.acs.org/doi/10.1021/acs.jcim.5c00588",
+    "year": "2025",
+    "authors": "F. Gusev; E. Gutkin; F. Gentile; F. Ban; S. B. Koby; F. Li; I. Chau; S. Ackloo; C. H. Arrowsmith; A. Bolotokova; P. Ghiabi; E. Gibson; L. Halabelian; S. Houliston; R. Harding; A. Hutchinson; P. Loppnau; S. Perveen; A. Seitova; H. Zeng; M. Schapira; A. Cherkasov; O. Isayev; M. G. Kurnikova",
+    "venue": "Journal of Chemical Information and Modeling",
+    "category": "Journal Article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Matthieu Schapira"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "checked",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "Researchers used an active learning machine learning workflow with free-energy molecular dynamics simulations to design and experimentally confirm eight novel inhibitors of the LRRK2 WDR domain, a key drug target in Parkinson’s disease, demonstrating a 23% hit rate and broad applicability for efficient small-molecule screening.",
+  "abstract": "The leucine-rich repeat kinase 2 (LRRK2) is the most mutated gene in familial Parkinson’s disease, and its mutations lead to pathogenic hallmarks of the disease. The LRRK2 WDR domain is an understudied drug target for Parkinson’s disease, with no known inhibitors prior to the first phase of the Critical Assessment of Computational Hit-Finding Experiments (CACHE) Challenge. A unique advantage of the CACHE Challenge is that the predicted molecules are experimentally validated in-house. Here, we report the design and experimental confirmation of LRRK2 WDR inhibitor molecules. We used an active learning (AL) machine learning (ML) workflow based on optimized free-energy molecular dynamics (MD) simulations utilizing the thermodynamic integration (TI) framework to expand a chemical series around two of our previously confirmed hit molecules. We identified 8 experimentally verified novel inhibitors out of 35 experimentally tested (23% hit rate). These results demonstrate the efficacy of our free-energy-based active learning workflow to explore large chemical spaces quickly and efficiently while minimizing the number and length of expensive simulations. This workflow is widely applicable to screening any chemical space for small-molecule analogs with increased affinity, subject to the general constraints of RBFE calculations. The mean absolute error of the TI MD calculations was 2.69 kcal/mol, with respect to the measured K<inf>D</inf> of hit compounds. © 2025 The Authors. Published by American Chemical Society.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "Researchers used an active learning machine learning workflow with free-energy molecular dynamics simulations to design and experimentally confirm eight novel inhibitors of the LRRK2 WDR domain, a key drug target in Parkinson’s disease, demonstrating a 23% hit rate and broad applicability for efficient small-molecule screening.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Artificial Intelligence & Data Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Biology",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Biochemistry",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "Active Learning-Guided Hit Optimization for the Leucine-Rich Repeat Kinase 2 WDR Domain Based on In Silico Ligand-Binding Affinities Researchers used an active learning machine learning workflow with free-energy molecular dynamics simulations to design and experimentally confirm eight novel inhibitors of the LRRK2 WDR domain, a key drug target in Parkinson’s disease, demonstrating a 23% hit rate and broad applicability for efficient small-molecule screening.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "A unique advantage of the CACHE Challenge is that the predicted molecules are experimentally validated in-house.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Here, we report the design and experimental confirmation of LRRK2 WDR inhibitor molecules.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [
+    {
+      "value": "Active Learning-Guided Hit Optimization for the Leucine-Rich Repeat Kinase 2 WDR Domain Based on In Silico Ligand-Binding Affinities Researchers used an active learning machine learning workflow with free-energy molecular dynamics simulations to design and experimentally confirm eight novel inhibitors of the LRRK2 WDR domain, a key drug target in Parkinson’s disease, demonstrating a 23% hit rate and broad applicability for efficient small-molecule screening.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "We used an active learning (AL) machine learning (ML) workflow based on optimized free-energy molecular dynamics (MD) simulations utilizing the thermodynamic integration (TI) framework to expand a chemical series around two of our previously confirmed hit molecules.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "These results demonstrate the efficacy of our free-energy-based active learning workflow to explore large chemical spaces quickly and efficiently while minimizing the number and length of expensive simulations.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [
+    {
+      "value": "We identified 8 experimentally verified novel inhibitors out of 35 experimentally tested (23% hit rate).",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "conditions": [
+    {
+      "value": "Active Learning-Guided Hit Optimization for the Leucine-Rich Repeat Kinase 2 WDR Domain Based on In Silico Ligand-Binding Affinities Researchers used an active learning machine learning workflow with free-energy molecular dynamics simulations to design and experimentally confirm eight novel inhibitors of the LRRK2 WDR domain, a key drug target in Parkinson’s disease, demonstrating a 23% hit rate and broad applicability for efficient small-molecule screening.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "We identified 8 experimentally verified novel inhibitors out of 35 experimentally tested (23% hit rate).",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "mechanisms": [],
+  "outcomes": [
+    {
+      "value": "Therapeutics",
+      "source": "csv_applied_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "Artificial Intelligence & Data Science",
+    "Biology",
+    "Biochemistry",
+    "Therapeutics"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.67,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": true,
+      "properties": true,
+      "measurements": true,
+      "conditions": true,
+      "mechanisms": false,
+      "outcomes": true,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "mechanisms",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

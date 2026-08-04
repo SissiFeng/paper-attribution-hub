@@ -18,7 +18,8 @@ def rag_status_by_paper(session: Session, paper_ids: list[str]) -> dict[str, Rag
     embedded_count: dict[str, int] = defaultdict(int)
     for pid, emb in chunk_rows:
         chunk_count[pid] += 1
-        if emb: embedded_count[pid] += 1
+        if emb:
+            embedded_count[pid] += 1
     ev_rows = session.execute(
         select(PaperEvidence.paper_id, PaperEvidence.evidence_type).where(PaperEvidence.paper_id.in_(paper_ids))
     ).all()
@@ -26,7 +27,8 @@ def rag_status_by_paper(session: Session, paper_ids: list[str]) -> dict[str, Rag
     attr_ev_count: dict[str, int] = defaultdict(int)
     for pid, ev_type in ev_rows:
         ev_count[pid] += 1
-        if ev_type in ATTRIBUTION_EVIDENCE_TYPES: attr_ev_count[pid] += 1
+        if ev_type in ATTRIBUTION_EVIDENCE_TYPES:
+            attr_ev_count[pid] += 1
     ft_map = dict(session.execute(
         select(Paper.id, Paper.full_text_available).where(Paper.id.in_(paper_ids))
     ).all())

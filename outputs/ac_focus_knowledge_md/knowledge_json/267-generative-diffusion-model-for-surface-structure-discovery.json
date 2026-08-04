@@ -1,0 +1,114 @@
+{
+  "paper_id": "acfocus_eeaaa8ce63d6",
+  "title": "Generative diffusion model for surface structure discovery",
+  "metadata": {
+    "doi": "10.1103/physrevb.110.235427",
+    "url": "https://journals.aps.org/prb/abstract/10.1103/PhysRevB.110.235427",
+    "year": "2024",
+    "authors": "Rønne N, Aspuru-Guzik A, Hammer B",
+    "venue": "Physical review B (PRB)",
+    "category": "Journal article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Alán Aspuru-Guzik"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance"
+    ],
+    "flags": {
+      "acknowledges_ac": "checked",
+      "highly_relevant": "checked",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "The authors introduce a generative diffusion model using a rotational equivariant neural network to discover surface structures by accounting for substrate registry and periodicity, training a denoiser network with data augmentation for scalable structure generation, and demonstrate its effectiveness on various surface systems, including proposing a large atomistic model for a silver-oxide domain boundary.",
+  "abstract": "We present a generative diffusion model specifically tailored to the discovery of surface structures. The generative model takes into account substrate registry and periodicity by including fixed substrate atoms and z-directional confinement. Using a rotational equivariant neural network architecture, we design a method that trains a denoiser network for diffusion alongside a forcefield for guided sampling of low-energy surface phases. An effective data-augmentation scheme for training the denoiser network is introduced to allow for scaling the structure generation far beyond structure sizes represented in the training data. We showcase the generative model by investigating multiple surface systems and propose an atomistic structure model for a silver-oxide domain boundary of unprecedented size.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "The authors introduce a generative diffusion model using a rotational equivariant neural network to discover surface structures by accounting for substrate registry and periodicity, training a denoiser network with data augmentation for scalable structure generation, and demonstrate its effectiveness on various surface systems, including proposing a large atomistic model for a silver-oxide domain boundary.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Artificial Intelligence & Data Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Materials Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [],
+  "properties": [
+    {
+      "value": "Using a rotational equivariant neural network architecture, we design a method that trains a denoiser network for diffusion alongside a forcefield for guided sampling of low-energy surface phases.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [],
+  "conditions": [],
+  "mechanisms": [],
+  "outcomes": [],
+  "sdl_tags": [
+    "Artificial Intelligence & Data Science",
+    "Materials Science"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.44,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": false,
+      "properties": true,
+      "measurements": false,
+      "conditions": false,
+      "mechanisms": false,
+      "outcomes": false,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "materials",
+      "measurements",
+      "conditions",
+      "mechanisms",
+      "outcomes",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

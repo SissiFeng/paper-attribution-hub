@@ -1,0 +1,262 @@
+{
+  "paper_id": "acfocus_752322d0d603",
+  "title": "Automated electrosynthesis reaction mining with multimodal large language models (MLLMs)",
+  "metadata": {
+    "doi": "10.26434/chemrxiv-2024-7fwxv",
+    "url": "https://chemrxiv.org/doi/full/10.26434/chemrxiv-2024-7fwxv",
+    "year": "2024",
+    "authors": "Leong SX, Pablo-García S, Zhang Z, Aspuru-Guzik A",
+    "venue": "ChemRxiv",
+    "category": "Preprint",
+    "peer_reviewed": "Non Peer Reviewed",
+    "ac_members": [
+      "Alán Aspuru-Guzik"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "checked",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "This work introduces MERMES, an end-to-end multimodal large language model (MLLM)-powered toolkit that integrates article retrieval, information extraction, and multimodal analysis to automate and streamline knowledge extraction from diverse data formats in electrosynthesis research, achieving ≥96% accuracy in key tasks and paving the way for accelerated digitization of chemistry knowledge.",
+  "abstract": "Leveraging the chemical data that is available in legacy formats such as publications and patents is a significant challenge for the community. Automated reaction mining offers a promising solution to unleash this knowledge into a learnable digital form and therefore help expedite materials and reaction discovery. However, existing reaction mining toolkits are limited to single input modalities (text or images) and cannot effectively integrate heterogeneous data that is scattered across different modalities including text, tables, and figures. In this work, we go beyond single input modalities and explore multimodal large language models (MLLMs) for the analysis of diverse data inputs for automated electrosynthesis reaction mining. We compiled a test dataset of 65 articles and employed it to benchmark five prominent MLLMs against two critical tasks: (i) reaction diagram parsing and (ii) resolving cross-modality data interdependencies. The frontrunner MLLM achieved ≥ 96% accuracy in both tasks, with the strategic integration of single-shot visual prompts and image pre-processing techniques. We integrate this capability into a toolkit named MERMES (Multimodal Reaction Mining pipeline for ElectroSynthesis). Our toolkit functions as an end-to-end MLLM-powered pipeline that integrates article retrieval, information extraction and multimodal analysis for streamlining and automating knowledge extraction. This work lays the groundwork for the increased utilization of MLLMs to accelerate the digitization of chemistry knowledge for data-driven research.",
+  "hardware": [
+    {
+      "value": "Automated reaction mining offers a promising solution to unleash this knowledge into a learnable digital form and therefore help expedite materials and reaction discovery.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "In this work, we go beyond single input modalities and explore multimodal large language models (MLLMs) for the analysis of diverse data inputs for automated electrosynthesis reaction mining.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "methods": [
+    {
+      "value": "Benchmarking five prominent MLLMs against two critical tasks: reaction diagram parsing and resolving cross-modality data interdependencies using a test dataset of 65 articles (MERMES-T24 set).",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "problems": [
+    {
+      "value": "Leveraging chemical data available in legacy formats such as publications and patents for materials and reaction discovery",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "hypotheses": [
+    {
+      "value": "Multimodal large language models (MLLMs) can effectively process and integrate textual and visual inputs from scientific literature for specialized, domain-specific tasks such as reaction mining.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "evidence": [
+    {
+      "value": "The frontrunner MLLM achieved 96% accuracy in both tasks, with the strategic integration of single-shot visual prompts and image pre-processing techniques.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "conclusions": [
+    {
+      "value": "MLLMs exhibit multi-modal cognition capabilities that are suitable for chemical applications, laying the groundwork for the increased utilization of MLLMs to accelerate the digitization of chemistry knowledge for data-driven research.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "entities": [
+    {
+      "value": "MLLMs",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "reaction diagrams",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "cross-modality data interdependencies",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "Automated reaction mining offers a promising solution to unleash this knowledge into a learnable digital form and therefore help expedite materials and reaction discovery.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [
+    {
+      "value": "Automated electrosynthesis reaction mining with multimodal large language models (MLLMs) This work introduces MERMES, an end-to-end multimodal large language model (MLLM)-powered toolkit that integrates article retrieval, information extraction, and multimodal analysis to automate and streamline knowledge extraction from diverse data formats in electrosynthesis research, achieving ≥96% accuracy in key tasks and paving the way for accelerated digitization of chemistry knowledge.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "The frontrunner MLLM achieved ≥ 96% accuracy in both tasks, with the strategic integration of single-shot visual prompts and image pre-processing techniques.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "The frontrunner MLLM achieved 96% accuracy in both tasks, with the strategic integration of single-shot visual prompts and image pre-processing techniques.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [
+    {
+      "value": "We compiled a test dataset of 65 articles and employed it to benchmark five prominent MLLMs against two critical tasks: (i) reaction diagram parsing and (ii) resolving cross-modality data interdependencies.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Benchmarking five prominent MLLMs against two critical tasks: reaction diagram parsing and resolving cross-modality data interdependencies using a test dataset of 65 articles (MERMES-T24 set).",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "conditions": [],
+  "mechanisms": [
+    {
+      "value": "multimodal cognition skills for information assimilation",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "text-based preconditioning prompts for in-context learning",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "image cropping for information overload management",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "outcomes": [
+    {
+      "value": "accurate parameter identification and role assignment in reaction diagrams",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "resolution of cross-modality data interdependencies with high F1 scores",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "SDL 0 - AI & Automation",
+    "Chemistry",
+    "Materials Science",
+    "Artificial Intelligence & Data Science"
+  ],
+  "reasoning_motifs": [
+    {
+      "value": "Data Integration → Comprehensive Knowledge",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Contextual Cues → Accurate Interpretation",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Preprocessing → Enhanced Performance",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "general_principles": [
+    {
+      "value": "Information Integration for Enhanced Understanding",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Adaptability through Contextual Learning",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Optimization of Data Processing",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "failure_paths": [
+    {
+      "value": "failure: Benchmarking ReactionDataExtractor2.0 and RxnScribe against MLLMs for reaction diagram parsing. Evidence: ReactionDataExtractor2.0 and RxnScribe struggled to parse electrosynthesis reaction diagrams accurately, achieving softmatch accuracies ranging from 23–36% to 50–99% on the test dataset.",
+      "source": "cross_sdl_phase4",
+      "confidence": 0.75,
+      "evidence": ""
+    }
+  ],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "acgold_080d923904b3",
+    "cross_sdl_reasoning_json": "/Users/sissifeng/Downloads/cross-sdl_knowledge_transfer_engine/data/reasoning/acgold_080d923904b3.json",
+    "cross_sdl_extraction_quality": 0.8,
+    "cross_sdl_notes": "The paper presents a structured approach to evaluating MLLMs for reaction mining tasks, but some details of the reasoning process, such as specific challenges faced during the development of MERMES, are not explicitly detailed."
+  },
+  "validation": {
+    "score": 0.96,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": true,
+      "method": true,
+      "evidence": true,
+      "entities": true,
+      "materials": true,
+      "properties": true,
+      "measurements": true,
+      "conditions": false,
+      "mechanisms": true,
+      "outcomes": true,
+      "cross_sdl_match": true
+    },
+    "missing": [
+      "conditions"
+    ],
+    "notes": []
+  }
+}

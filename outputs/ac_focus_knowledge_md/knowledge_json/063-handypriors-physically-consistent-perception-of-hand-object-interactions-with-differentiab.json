@@ -1,0 +1,265 @@
+{
+  "paper_id": "acfocus_58ed3a80d71f",
+  "title": "HandyPriors: Physically Consistent Perception of Hand-Object Interactions with Differentiable Priors",
+  "metadata": {
+    "doi": "10.48550/arxiv.2311.16552",
+    "url": "https://arxiv.org/abs/2311.16552",
+    "year": "2023",
+    "authors": "Zhang, Shutong; Qiao, Yi-Ling; Zhu, Guanglei; Heiden, Eric; Turpin, Dylan; Liu, Jingzhou; Lin, Ming; Macklin, Miles; Garg, Animesh",
+    "venue": "arxiv",
+    "category": "Preprint",
+    "peer_reviewed": "Non Peer Reviewed",
+    "ac_members": [
+      "Animesh Garg"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "HandyPriors is a unified pipeline for hand-object pose estimation that leverages differentiable physics and rendering to improve accuracy and efficiency, offering both optimization-based and filtering-based methods, and demonstrates strong performance and generalization to various perception tasks.",
+  "abstract": "Various heuristic objectives for modeling hand-object interaction have been proposed in past work. However, due to the lack of a cohesive framework, these objectives often possess a narrow scope of applicability and are limited by their efficiency or accuracy. In this paper, we propose HandyPriors, a unified and general pipeline for pose estimation in human-object interaction scenes by leveraging recent advances in differentiable physics and rendering. Our approach employs rendering priors to align with input images and segmentation masks along with physics priors to mitigate penetration and relative-sliding across frames. Furthermore, we present two alternatives for hand and object pose estimation. The optimization-based pose estimation achieves higher accuracy, while the filtering-based tracking, which utilizes the differentiable priors as dynamics and observation models, executes faster. We demonstrate that HandyPriors attains comparable or superior results in the pose estimation task, and that the differentiable physics module can predict contact information for pose refinement. We also show that our approach generalizes to perception tasks, including robotic hand manipulation and human-object pose estimation in the wild.",
+  "hardware": [
+    {
+      "value": "We also show that our approach generalizes to perception tasks, including robotic hand manipulation and human-object pose estimation in the wild.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "methods": [
+    {
+      "value": "Proposing HANDYPRIORS, a pipeline integrating differentiable rendering and physics priors for pose estimation in human-object interaction scenes",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "problems": [
+    {
+      "value": "Estimating hand and object interaction in complex scenes with accuracy and efficiency",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "hypotheses": [
+    {
+      "value": "A unified pipeline leveraging differentiable physics and rendering can improve hand-object interaction pose estimation",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "evidence": [
+    {
+      "value": "Experiments show comparable or superior results in pose estimation tasks and the ability to generalize to robotic manipulation and human-object pose estimation",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "conclusions": [
+    {
+      "value": "HANDYPRIORS successfully leverages differentiable priors for accurate and efficient pose estimation in hand-object interaction scenes",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "entities": [
+    {
+      "value": "Hand pose",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Object pose",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "RGB image",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Segmentation mask",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Signed distance function (SDF)",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "materials": [],
+  "properties": [
+    {
+      "value": "HandyPriors: Physically Consistent Perception of Hand-Object Interactions with Differentiable Priors HandyPriors is a unified pipeline for hand-object pose estimation that leverages differentiable physics and rendering to improve accuracy and efficiency, offering both optimization-based and filtering-based methods, and demonstrates strong performance and generalization to various perception tasks.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "However, due to the lack of a cohesive framework, these objectives often possess a narrow scope of applicability and are limited by their efficiency or accuracy.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "The optimization-based pose estimation achieves higher accuracy, while the filtering-based tracking, which utilizes the differentiable priors as dynamics and observation models, executes faster.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Proposing HANDYPRIORS, a pipeline integrating differentiable rendering and physics priors for pose estimation in human-object interaction scenes Experiments show comparable or superior results in pose estimation tasks and the ability to generalize to robotic manipulation and human-object pose estimation Hand pose Object pose RGB image Segmentation mask Signed distance function (SDF) Improved accuracy in hand and object pose estimation Reduction in penetration and oscillation in predicted sequences Faster tracking using filtering-based methods like Extended Kalman Filter",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [],
+  "conditions": [],
+  "mechanisms": [
+    {
+      "value": "Differentiable rendering for aligning 3D models with 2D images",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Physics simulation for mitigating penetration and relative-sliding across frames",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Gradient-based optimization for refining pose estimation",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "outcomes": [
+    {
+      "value": "Improved accuracy in hand and object pose estimation",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Reduction in penetration and oscillation in predicted sequences",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Faster tracking using filtering-based methods like Extended Kalman Filter",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "Artificial Intelligence & Data Science",
+    "Automation and Robotics"
+  ],
+  "reasoning_motifs": [
+    {
+      "value": "Data Alignment → Accuracy Improvement",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Constraint Enforcement → Stability",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Feedback Loop → Adaptation",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "general_principles": [
+    {
+      "value": "Optimization Through Constraints",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Stability Through Feedback",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Accuracy Through Alignment",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "failure_paths": [
+    {
+      "value": "partial: Using only RGB images for initial pose estimation Evidence: Initial pose estimation had large errors in object pose estimation, requiring further refinement",
+      "source": "cross_sdl_phase4",
+      "confidence": 0.75,
+      "evidence": ""
+    },
+    {
+      "value": "success: Incorporating differentiable physics and rendering for pose refinement Evidence: Refinement process improved pose estimation accuracy and reduced penetrations",
+      "source": "cross_sdl_phase4",
+      "confidence": 0.75,
+      "evidence": ""
+    }
+  ],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "acgold_dca70bbae2fb",
+    "cross_sdl_reasoning_json": "/Users/sissifeng/Downloads/cross-sdl_knowledge_transfer_engine/data/reasoning/acgold_dca70bbae2fb.json",
+    "cross_sdl_extraction_quality": 0.8,
+    "cross_sdl_notes": "The paper provides a clear structure and explicit statements of the hypothesis, methods, and conclusions, making the extraction process relatively straightforward. However, some details in the layer3_motifs and layer4_principles required inference based on the overall narrative and goals of the paper."
+  },
+  "validation": {
+    "score": 0.83,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": true,
+      "method": true,
+      "evidence": true,
+      "entities": true,
+      "materials": false,
+      "properties": true,
+      "measurements": false,
+      "conditions": false,
+      "mechanisms": true,
+      "outcomes": true,
+      "cross_sdl_match": true
+    },
+    "missing": [
+      "materials",
+      "measurements",
+      "conditions"
+    ],
+    "notes": []
+  }
+}

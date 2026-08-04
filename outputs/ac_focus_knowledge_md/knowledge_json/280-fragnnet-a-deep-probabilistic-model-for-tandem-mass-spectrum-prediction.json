@@ -1,0 +1,150 @@
+{
+  "paper_id": "acfocus_20c986491122",
+  "title": "FraGNNet: A Deep Probabilistic Model for Tandem Mass Spectrum Prediction",
+  "metadata": {
+    "doi": "",
+    "url": "https://www.scopus.com/inward/record.uri?eid=2-s2.0-105016257482&partnerID=40&md5=e24f5769407b49686fd8a5c5723fa565",
+    "year": "2025",
+    "authors": "A. Young; F. Wang; D. S. Wishart; B. Wang; R. Greiner; H. Röst",
+    "venue": "Transactions on Machine Learning Research",
+    "category": "Journal Article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Bo Wang"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "FraGNNet is a new probabilistic method for predicting MS/MS spectra from compounds that achieves state-of-the-art accuracy and improves compound identification by learning a distribution over molecule fragments, outperforming existing models in both prediction error and retrieval tasks.",
+  "abstract": "Compound identification from tandem mass spectrometry (MS/MS) data isa critical step in the analysis of complex mixtures. Typical solutions for theMS/MS spectrum to com pound (MS2C) problem involve comparing the unknown spectrum against a library of known spectrum-molecule pairs, an approach that is limited by incomplete library coverage. Com pound to MS/MS spectrum (C2MS) models can improve retrieval rates by augmenting real libraries with predicted MS/MS spectra. Unfortunately, many existing C2MS models suffer from problems with mass accuracy, generalization, or interpretability. We develop a new probabilistic method for C2MS prediction, FraGNNet, that can efficiently and accurately simulate MS/MS spectra with high mass accuracy. Our approach formulates the C2MS prob lem as learning a distribution over molecule fragments. FraGNNet achieves state-of-the-art performance in terms of prediction error and surpasses existing C2MS models as a tool for retrieval-based MS2C. © 2025, Transactions on Machine Learning Research. All rights reserved.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "FraGNNet is a new probabilistic method for predicting MS/MS spectra from compounds that achieves state-of-the-art accuracy and improves compound identification by learning a distribution over molecule fragments, outperforming existing models in both prediction error and retrieval tasks.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Artificial Intelligence & Data Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Chemistry",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Physics",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "FraGNNet: A Deep Probabilistic Model for Tandem Mass Spectrum Prediction FraGNNet is a new probabilistic method for predicting MS/MS spectra from compounds that achieves state-of-the-art accuracy and improves compound identification by learning a distribution over molecule fragments, outperforming existing models in both prediction error and retrieval tasks.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Typical solutions for theMS/MS spectrum to com pound (MS2C) problem involve comparing the unknown spectrum against a library of known spectrum-molecule pairs, an approach that is limited by incomplete library coverage.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Our approach formulates the C2MS prob lem as learning a distribution over molecule fragments.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [
+    {
+      "value": "FraGNNet: A Deep Probabilistic Model for Tandem Mass Spectrum Prediction FraGNNet is a new probabilistic method for predicting MS/MS spectra from compounds that achieves state-of-the-art accuracy and improves compound identification by learning a distribution over molecule fragments, outperforming existing models in both prediction error and retrieval tasks.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Unfortunately, many existing C2MS models suffer from problems with mass accuracy, generalization, or interpretability.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "We develop a new probabilistic method for C2MS prediction, FraGNNet, that can efficiently and accurately simulate MS/MS spectra with high mass accuracy.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [],
+  "conditions": [],
+  "mechanisms": [],
+  "outcomes": [],
+  "sdl_tags": [
+    "Artificial Intelligence & Data Science",
+    "Chemistry",
+    "Physics"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.51,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": true,
+      "properties": true,
+      "measurements": false,
+      "conditions": false,
+      "mechanisms": false,
+      "outcomes": false,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "measurements",
+      "conditions",
+      "mechanisms",
+      "outcomes",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

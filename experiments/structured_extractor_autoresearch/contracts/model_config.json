@@ -1,0 +1,9 @@
+{
+  "trainer": "external_lora_adapter",
+  "base_model": "REPLACE_WITH_PINNED_MODEL_REVISION",
+  "base_model_revision": "REPLACE_WITH_IMMUTABLE_REVISION",
+  "adapter_type": "lora",
+  "seed": 7,
+  "temperature": 0,
+  "notes": "The trainer must use the pinned model, enforce the remaining provider budget, write checkpoint/, and atomically report nonce-bound step usage."
+}

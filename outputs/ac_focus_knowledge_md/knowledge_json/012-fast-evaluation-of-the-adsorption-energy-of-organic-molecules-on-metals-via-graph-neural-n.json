@@ -1,0 +1,153 @@
+{
+  "paper_id": "acfocus_2d7628aad1ce",
+  "title": "Fast evaluation of the adsorption energy of organic molecules on metals via graph neural networks",
+  "metadata": {
+    "doi": "10.1038/s43588-023-00437-y",
+    "url": "https://www.nature.com/articles/s43588-023-00437-y",
+    "year": "2023",
+    "authors": "Pablo-García, Sergio; Morandi, Santiago; Vargas-Hernández, Rodrigo A.; Jorner, Kjell; Ivković, Žarko; López, Núria; Aspuru-Guzik, Alán",
+    "venue": "Nature Computational Science",
+    "category": "Journal article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Alán Aspuru-Guzik",
+      "Sergio Pablo-García Carrillo"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance",
+      "AC Staff"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "checked",
+      "high_impact": "checked"
+    }
+  },
+  "source_summary": "GAME-Net is a graph neural network that rapidly predicts adsorption energies of large, diverse organic molecules on surfaces with high accuracy, offering a computationally efficient alternative to density functional theory for heterogeneous catalysis modeling.",
+  "abstract": "Abstract                            Modeling in heterogeneous catalysis requires the extensive evaluation of the energy of molecules adsorbed on surfaces. This is done via density functional theory but for large organic molecules it requires enormous computational time, compromising the viability of the approach. Here we present GAME-Net, a graph neural network to quickly evaluate the adsorption energy. GAME-Net is trained on a well-balanced chemically diverse dataset with C               1–4               molecules with functional groups including N, O, S and C               6–10               aromatic rings. The model yields a mean absolute error of 0.18 eV on the test set and is 6 orders of magnitude faster than density functional theory. Applied to biomass and plastics (up to 30 heteroatoms), adsorption energies are predicted with a mean absolute error of 0.016 eV per atom. The framework represents a tool for the fast screening of catalytic materials, particularly for systems that cannot be simulated by traditional methods.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "GAME-Net is a graph neural network that rapidly predicts adsorption energies of large, diverse organic molecules on surfaces with high accuracy, offering a computationally efficient alternative to density functional theory for heterogeneous catalysis modeling.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Chemistry",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Artificial Intelligence & Data Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "Fast evaluation of the adsorption energy of organic molecules on metals via graph neural networks GAME-Net is a graph neural network that rapidly predicts adsorption energies of large, diverse organic molecules on surfaces with high accuracy, offering a computationally efficient alternative to density functional theory for heterogeneous catalysis modeling.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Abstract                            Modeling in heterogeneous catalysis requires the extensive evaluation of the energy of molecules adsorbed on surfaces.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "This is done via density functional theory but for large organic molecules it requires enormous computational time, compromising the viability of the approach.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [
+    {
+      "value": "Fast evaluation of the adsorption energy of organic molecules on metals via graph neural networks GAME-Net is a graph neural network that rapidly predicts adsorption energies of large, diverse organic molecules on surfaces with high accuracy, offering a computationally efficient alternative to density functional theory for heterogeneous catalysis modeling.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Abstract                            Modeling in heterogeneous catalysis requires the extensive evaluation of the energy of molecules adsorbed on surfaces.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Here we present GAME-Net, a graph neural network to quickly evaluate the adsorption energy.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [],
+  "conditions": [
+    {
+      "value": "This is done via density functional theory but for large organic molecules it requires enormous computational time, compromising the viability of the approach.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "mechanisms": [],
+  "outcomes": [],
+  "sdl_tags": [
+    "SDL 0 - AI & Automation",
+    "Chemistry",
+    "Artificial Intelligence & Data Science"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.55,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": true,
+      "properties": true,
+      "measurements": false,
+      "conditions": true,
+      "mechanisms": false,
+      "outcomes": false,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "measurements",
+      "mechanisms",
+      "outcomes",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

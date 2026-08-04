@@ -1,0 +1,130 @@
+{
+  "paper_id": "acfocus_1e2d98729ab9",
+  "title": "Review of low-cost self-driving laboratories in chemistry and materials science: the “frugal twin” concept",
+  "metadata": {
+    "doi": "10.1039/d3dd00223c",
+    "url": "https://pubs.rsc.org/en/content/articlelanding/2024/dd/d3dd00223c",
+    "year": "2024",
+    "authors": "Lo S, Baird SG, Schrier J, Blaiszik B, Carson N, Foster I, Aguilar-Granda A, Kalinin SV, Maruyama B, Politi M, Tran H, Sparks TD, Aspuru-Guzik A",
+    "venue": "Digital Discovery",
+    "category": "Journal article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Alán Aspuru-Guzik",
+      "Sterling Baird",
+      "Taylor Sparks",
+      "Helen Tran"
+    ],
+    "ac_programs": [
+      "Core Development Grants_Helen Tran_2023-24"
+    ],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance",
+      "N/A",
+      "AC Full Member",
+      "AC Full Member",
+      "AC Governance"
+    ],
+    "flags": {
+      "acknowledges_ac": "checked",
+      "highly_relevant": "checked",
+      "high_impact": "checked"
+    }
+  },
+  "source_summary": "This review introduces the concept of a \"frugal twin\"—a low-cost, physical surrogate for expensive research systems—highlighting its potential to democratize self-driving laboratories, facilitate software prototyping, and lower barriers to scientific experimentation, while discussing areas for improvement and ethical considerations.",
+  "abstract": "This review proposes the concept of a “frugal twin,” similar to a digital twin, but for physical experiments. Frugal twins range from simple toy examples to low-cost surrogates of high-cost research systems. For example, a color-mixing self-driving laboratory (SDL) can serve as a low-cost version of a costly multi-step chemical discovery SDL. Frugal twins already provide hands-on experience for SDLs with low costs and low risks. They can also offer as test beds for software prototyping (e.g., optimization, data infrastructure), and a low barrier to entry for democratizing SDLs. However, there is room for improvement. The true value of frugal twins can be realized in three core areas. Firstly, hardware and software modularity; secondly, purpose-built design (human-inspired vs. hardware-centric vs. human-in-the-loop); and thirdly state-of-the-art (SOTA) software (e.g., multi-fidelity optimization). We also describe the ethical benefits and risks that come with the democratization of science through frugal twins. For future work, we suggest ideas for new frugal twins, SDL educational course outcomes, and a classification scheme for autonomy levels.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "This review introduces the concept of a \"frugal twin\"—a low-cost, physical surrogate for expensive research systems—highlighting its potential to democratize self-driving laboratories, facilitate software prototyping, and lower barriers to scientific experimentation, while discussing areas for improvement and ethical considerations.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Artificial Intelligence & Data Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Automation and Robotics",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Chemistry",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "Review of low-cost self-driving laboratories in chemistry and materials science: the “frugal twin” concept This review introduces the concept of a \"frugal twin\"—a low-cost, physical surrogate for expensive research systems—highlighting its potential to democratize self-driving laboratories, facilitate software prototyping, and lower barriers to scientific experimentation, while discussing areas for improvement and ethical considerations.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [],
+  "measurements": [],
+  "conditions": [],
+  "mechanisms": [],
+  "outcomes": [],
+  "sdl_tags": [
+    "Artificial Intelligence & Data Science",
+    "Automation and Robotics",
+    "Chemistry"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.44,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": true,
+      "properties": false,
+      "measurements": false,
+      "conditions": false,
+      "mechanisms": false,
+      "outcomes": false,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "properties",
+      "measurements",
+      "conditions",
+      "mechanisms",
+      "outcomes",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

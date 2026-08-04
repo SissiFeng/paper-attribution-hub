@@ -1,0 +1,292 @@
+{
+  "paper_id": "acfocus_139e1dfbfcdc",
+  "title": "Using GNN property predictors as molecule generators",
+  "metadata": {
+    "doi": "10.1038/s41467-025-59439-1",
+    "url": "https://www.nature.com/articles/s41467-025-59439-1",
+    "year": "2025",
+    "authors": "F. Therrien; E. H. Sargent; O. Voznyy",
+    "venue": "Nature Communications",
+    "category": "Journal Article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Oleksandr Voznyy"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "checked",
+      "high_impact": "checked"
+    }
+  },
+  "source_summary": "This article presents a method that leverages invertible graph neural networks to directly generate molecular structures with desired electronic properties by optimizing molecular graphs via gradient ascent, achieving target properties and molecular diversity comparable to or better than state-of-the-art generative models, and introduces a new dataset of 1617 molecules with DFT-calculated properties.",
+  "abstract": "Graph neural networks (GNNs) have emerged as powerful tools to accurately predict materials and molecular properties in computational and automated discovery pipelines. In this article, we exploit the invertible nature of these neural networks to directly generate molecular structures with desired electronic properties. Starting from a random graph or an existing molecule, we perform a gradient ascent while holding the GNN weights fixed in order to optimize its input, the molecular graph, towards the target property. Valence rules are enforced strictly through a judicious graph construction. The method relies entirely on the property predictor; no additional training is required on molecular structures. We demonstrate the application of this method by generating molecules with specific energy gaps verified with density functional theory (DFT) and with specific octanol-water partition coefficients (logP). Our approach hits target properties with rates comparable to or better than state-of-the-art generative models while consistently generating more diverse molecules. Moreover, while validating our framework we created a dataset of 1617 new molecules and their corresponding DFT-calculated properties that could serve as an out-of-distribution test set for QM9-trained models.",
+  "hardware": [
+    {
+      "value": "Graph neural networks (GNNs) have emerged as powerful tools to accurately predict materials and molecular properties in computational and automated discovery pipelines.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "methods": [
+    {
+      "value": "Exploit the invertible nature of GNNs to perform gradient ascent on the molecular graph input towards a target property while strictly enforcing valence rules through judicious graph construction.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "problems": [
+    {
+      "value": "Rapid uncovering of material structures and compositions with specific properties in fields such as pharmacy and materials for energy and sustainability.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "hypotheses": [
+    {
+      "value": "Graph neural networks (GNNs) can be inverted to generate molecular structures with desired electronic properties directly from property predictors without additional training.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "evidence": [
+    {
+      "value": "Generated molecules with specific DFT-verified energy gaps and octanol-water partition coefficients (logP), demonstrating comparable or better performance than state-of-the-art generative models in hitting target properties and generating more diverse molecules.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "conclusions": [
+    {
+      "value": "A property predicting GNN can be turned into a diverse conditional generator without additional training by carefully constraining the representation of molecules.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "entities": [
+    {
+      "value": "Graph neural networks (GNNs)",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Molecular graphs",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Property predictors",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Density functional theory (DFT)",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Octanol-water partition coefficient (logP)",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "Using GNN property predictors as molecule generators This article presents a method that leverages invertible graph neural networks to directly generate molecular structures with desired electronic properties by optimizing molecular graphs via gradient ascent, achieving target properties and molecular diversity comparable to or better than state-of-the-art generative models, and introduces a new dataset of 1617 molecules with DFT-calculated properties.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Graph neural networks (GNNs) have emerged as powerful tools to accurately predict materials and molecular properties in computational and automated discovery pipelines.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Starting from a random graph or an existing molecule, we perform a gradient ascent while holding the GNN weights fixed in order to optimize its input, the molecular graph, towards the target property.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [
+    {
+      "value": "Using GNN property predictors as molecule generators This article presents a method that leverages invertible graph neural networks to directly generate molecular structures with desired electronic properties by optimizing molecular graphs via gradient ascent, achieving target properties and molecular diversity comparable to or better than state-of-the-art generative models, and introduces a new dataset of 1617 molecules with DFT-calculated properties.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Graph neural networks (GNNs) have emerged as powerful tools to accurately predict materials and molecular properties in computational and automated discovery pipelines.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "In this article, we exploit the invertible nature of these neural networks to directly generate molecular structures with desired electronic properties.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Starting from a random graph or an existing molecule, we perform a gradient ascent while holding the GNN weights fixed in order to optimize its input, the molecular graph, towards the target property.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "The method relies entirely on the property predictor; no additional training is required on molecular structures.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [],
+  "conditions": [],
+  "mechanisms": [
+    {
+      "value": "Gradient ascent on molecular graph input",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Enforcement of valence rules in graph construction",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Optimization of molecular graph towards target property",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Validation of generated molecules through DFT calculations",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "outcomes": [
+    {
+      "value": "Generation of molecules with desired electronic properties",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Achievement of target properties comparable to or better than state-of-the-art models",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Generation of more diverse molecules",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [],
+  "reasoning_motifs": [
+    {
+      "value": "Optimization → Property Achievement",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Diversity → Solution Space Coverage",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Rule Enforcement → Validity Assurance",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "general_principles": [
+    {
+      "value": "Inverse Design Paradigm",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Generalizability Through Constraints",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Diversity for Multi-Criteria Optimization",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "failure_paths": [
+    {
+      "value": "success: Generating molecules with specific energy gaps and logP values using the proposed method. Evidence: Generated molecules achieved target properties with rates comparable to or better than state-of-the-art generative models and consistently generated more diverse molecules.",
+      "source": "cross_sdl_phase4",
+      "confidence": 0.75,
+      "evidence": ""
+    },
+    {
+      "value": "success: Comparison of the proposed method with JANUS, a state-of-the-art genetic algorithm. Evidence: The proposed method nearly matched or outperformed JANUS in all metrics, demonstrating its effectiveness.",
+      "source": "cross_sdl_phase4",
+      "confidence": 0.75,
+      "evidence": ""
+    }
+  ],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "acgold_7eff49bccb7c",
+    "cross_sdl_reasoning_json": "/Users/sissifeng/Downloads/cross-sdl_knowledge_transfer_engine/data/reasoning/acgold_7eff49bccb7c.json",
+    "cross_sdl_extraction_quality": 0.9,
+    "cross_sdl_notes": "The paper is highly structured with explicit hypotheses, methods, and results, making the extraction process straightforward. The reasoning is clear and well-documented, allowing for a reliable extraction of the scientific reasoning structure."
+  },
+  "validation": {
+    "score": 0.9,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": true,
+      "method": true,
+      "evidence": true,
+      "entities": true,
+      "materials": true,
+      "properties": true,
+      "measurements": false,
+      "conditions": false,
+      "mechanisms": true,
+      "outcomes": true,
+      "cross_sdl_match": true
+    },
+    "missing": [
+      "measurements",
+      "conditions"
+    ],
+    "notes": []
+  }
+}

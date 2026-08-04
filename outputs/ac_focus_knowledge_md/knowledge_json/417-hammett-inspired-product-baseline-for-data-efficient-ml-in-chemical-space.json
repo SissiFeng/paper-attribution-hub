@@ -1,0 +1,220 @@
+{
+  "paper_id": "acfocus_8580deac58a1",
+  "title": "Hammett-Inspired Product Baseline for Data-Efficient Δ-ML in Chemical Space",
+  "metadata": {
+    "doi": "10.1021/acs.jctc.5c00848",
+    "url": "https://pubs.acs.org/doi/abs/10.1021/acs.jctc.5c00848",
+    "year": "2025",
+    "authors": "V. D. Rakotonirina; M. Bragato; G. Falk von Rudorff; O. A. von Lilienfeld",
+    "venue": "Journal of Chemical Theory and Computation",
+    "category": "Journal Article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Anatole von Lilienfeld"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance"
+    ],
+    "flags": {
+      "acknowledges_ac": "checked",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "A generic coarse-graining Hammett-inspired product (HIP) model is introduced as an effective, data-efficient baseline for machine learning in molecular and materials design, generalizing the Hammett equation to diverse systems and properties and outperforming specialized models in data efficiency after calibration.",
+  "abstract": "Data-hungry machine learning methods have become a new standard to efficiently navigate chemical compound space for molecular and materials design and discovery. Due to the severe scarcity and cost of high-quality experimental or synthetic simulated training data, however, data-acquisition costs can be considerable. Relying on reasonably accurate approximate legacy baseline labels with low computational complexity represents one of the most effective strategies to curb data-needs, e.g. through Δ-, transfer-, or multifidelity learning. A surprisingly effective and data-efficient baseline model is presented in the form of a generic coarse-graining Hammett-inspired product (HIP) Ansatz, generalizing the empirical Hammett equation toward arbitrary systems and properties. Numerical evidence for the applicability of HIP includes solvation free energies of molecules, formation energies of quaternary elpasolite crystals, carbon adsorption energies on heterogeneous catalytic surfaces, HOMO–LUMO gaps of metallorganic complexes, activation energies for S<inf>N</inf>2 reactions, and catalyst–substrate binding energies in cross-coupling reactions. After calibration on the same training sets, HIP yields an effective baseline for improved Δ-machine learning models with superior data-efficiency when compared to previously introduced specialized domain-specific models. © 2025 American Chemical Society",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "The HIP model generalizes the empirical Hammett equation towards arbitrary systems and properties, using a product of two scalars to predict chemical properties.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "problems": [
+    {
+      "value": "Data-hungry machine learning methods have limitations due to the scarcity and cost of high-quality experimental or synthetic simulated training data in chemical compound space exploration.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "hypotheses": [
+    {
+      "value": "A Hammett-Inspired Product (HIP) model can serve as a reasonably accurate and data-efficient baseline for ∆-machine learning models to curb data-needs.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "evidence": [
+    {
+      "value": "Numerical evidence includes solvation free energies, formation energies of crystals, carbon adsorption energies, HOMO-LUMO gaps, activation energies for reactions, and catalyst-substrate binding energies.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "conclusions": [
+    {
+      "value": "The HIP model demonstrates broad applicability and data-efficiency across chemically diverse systems, providing a fast and interpretable baseline for exploring chemical compound space.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "entities": [
+    {
+      "value": "Hammett-Inspired Product (HIP) model",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Chemical properties across different systems",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "Hammett-Inspired Product Baseline for Data-Efficient Δ-ML in Chemical Space A generic coarse-graining Hammett-inspired product (HIP) model is introduced as an effective, data-efficient baseline for machine learning in molecular and materials design, generalizing the Hammett equation to diverse systems and properties and outperforming specialized models in data efficiency after calibration.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Data-hungry machine learning methods have become a new standard to efficiently navigate chemical compound space for molecular and materials design and discovery.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Numerical evidence for the applicability of HIP includes solvation free energies of molecules, formation energies of quaternary elpasolite crystals, carbon adsorption energies on heterogeneous catalytic surfaces, HOMO–LUMO gaps of metallorganic complexes, activation energies for S<inf>N</inf>2 reactions, and catalyst–substrate binding energies in cross-coupling reactions.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [
+    {
+      "value": "Hammett-Inspired Product Baseline for Data-Efficient Δ-ML in Chemical Space A generic coarse-graining Hammett-inspired product (HIP) model is introduced as an effective, data-efficient baseline for machine learning in molecular and materials design, generalizing the Hammett equation to diverse systems and properties and outperforming specialized models in data efficiency after calibration.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "A surprisingly effective and data-efficient baseline model is presented in the form of a generic coarse-graining Hammett-inspired product (HIP) Ansatz, generalizing the empirical Hammett equation toward arbitrary systems and properties.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "© 2025 American Chemical Society The HIP model generalizes the empirical Hammett equation towards arbitrary systems and properties, using a product of two scalars to predict chemical properties.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Hammett-Inspired Product (HIP) model Chemical properties across different systems Improved data-efficiency in machine learning models Effective baseline for ∆-machine learning applications",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [],
+  "conditions": [],
+  "mechanisms": [
+    {
+      "value": "Generalization of Hammett equation for arbitrary systems",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Use of two scalars to predict properties",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "outcomes": [
+    {
+      "value": "Improved data-efficiency in machine learning models",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Effective baseline for ∆-machine learning applications",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "Artificial Intelligence & Data Science",
+    "Chemistry",
+    "Materials Science"
+  ],
+  "reasoning_motifs": [
+    {
+      "value": "Simplicity → Transferability",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Coarse-graining → Data-efficiency",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "general_principles": [
+    {
+      "value": "parsimony in modeling",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "acgold_b83a0eb8f82f",
+    "cross_sdl_reasoning_json": "/Users/sissifeng/Downloads/cross-sdl_knowledge_transfer_engine/data/reasoning/acgold_b83a0eb8f82f.json",
+    "cross_sdl_extraction_quality": 0.8,
+    "cross_sdl_notes": "The paper presents a clear hypothesis, method, and conclusion. However, the exploration narrative is inferred from the paper's structure rather than explicitly stated."
+  },
+  "validation": {
+    "score": 0.8,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": true,
+      "entities": true,
+      "materials": true,
+      "properties": true,
+      "measurements": false,
+      "conditions": false,
+      "mechanisms": true,
+      "outcomes": true,
+      "cross_sdl_match": true
+    },
+    "missing": [
+      "hardware",
+      "measurements",
+      "conditions"
+    ],
+    "notes": [
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

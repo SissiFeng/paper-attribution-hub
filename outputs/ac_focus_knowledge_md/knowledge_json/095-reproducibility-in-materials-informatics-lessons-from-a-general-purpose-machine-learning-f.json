@@ -1,0 +1,268 @@
+{
+  "paper_id": "acfocus_de0ba599cb38",
+  "title": "Reproducibility in materials informatics: lessons from ‘A general-purpose machine learning framework for predicting properties of inorganic materials’",
+  "metadata": {
+    "doi": "10.1039/d3dd00199g",
+    "url": "https://xlink.rsc.org/?DOI=D3DD00199G",
+    "year": "2024",
+    "authors": "Persaud D, Ward L, Hattrick-Simpers J",
+    "venue": "Digital Discovery",
+    "category": "Journal article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Jason Hattrick-Simpers"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "checked",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "This study highlights the difficulty and failure in reproducing results from the foundational materials informatics tool MAGPIE, identifies key reproducibility challenges, and proposes actionable steps to improve the accessibility and trustworthiness of materials informatics tools for the research community.",
+  "abstract": "Reproducing results from a foundational materials informatics tool (magpie) is difficult and in this study, a failure. This failure yields tangible suggestions to promote easy adoption and trust of materials informatics in the future.           ,              The integration of machine learning techniques in materials discovery has become prominent in materials science research and has been accompanied by an increasing trend towards open data and open-source tools to propel the field. Despite the increasing usefulness and capabilities of these tools, developers neglecting to follow reproducible practices presents a significant barrier for other researchers looking to use or build upon their work. In this study, we investigate the challenges encountered while attempting to reproduce a section of the results presented in “A general-purpose machine learning framework for predicting properties of inorganic materials.” Our analysis identifies four major categories of challenges: (1) reporting software dependencies, (2) recording and sharing version logs, (3) sequential code organization, and (4) clarifying code references within the manuscript. The result is a proposed set of tangible action items for those aiming to make material informatics tools accessible to, and useful for the community.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "Attempt to replicate the original study's results by recreating the computational environment and scripts, and analyzing the challenges encountered.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "problems": [
+    {
+      "value": "Reproducibility in materials informatics, specifically the inability to reproduce results from a machine learning framework for predicting properties of inorganic materials.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "hypotheses": [
+    {
+      "value": "The original framework and its associated scripts are incomplete or have evolved, leading to irreproducibility.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "evidence": [
+    {
+      "value": "Inability to replicate the original predictions, sensitivity to pseudo-random seed variations, and the lack of original scripts and version logs.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "conclusions": [
+    {
+      "value": "Reproducibility in materials informatics requires deliberate efforts such as version control, clear code references, and containerization of dependencies.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "entities": [
+    {
+      "value": "Magpie software",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Java Runtime Environment (JRE)",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Open Quantum Materials Database (OQMD)",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Reduced Pruning Error Trees (REPTrees)",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "Open Quantum Materials Database (OQMD)",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Reproducibility in materials informatics: lessons from ‘A general-purpose machine learning framework for predicting properties of inorganic materials’ This study highlights the difficulty and failure in reproducing results from the foundational materials informatics tool MAGPIE, identifies key reproducibility challenges, and proposes actionable steps to improve the accessibility and trustworthiness of materials informatics tools for the research community.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Reproducing results from a foundational materials informatics tool (magpie) is difficult and in this study, a failure.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "This failure yields tangible suggestions to promote easy adoption and trust of materials informatics in the future.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [
+    {
+      "value": "Reproducibility in materials informatics: lessons from ‘A general-purpose machine learning framework for predicting properties of inorganic materials’ This study highlights the difficulty and failure in reproducing results from the foundational materials informatics tool MAGPIE, identifies key reproducibility challenges, and proposes actionable steps to improve the accessibility and trustworthiness of materials informatics tools for the research community.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "In this study, we investigate the challenges encountered while attempting to reproduce a section of the results presented in “A general-purpose machine learning framework for predicting properties of inorganic materials.” Our analysis identifies four major categories of challenges: (1) reporting software dependencies, (2) recording and sharing version logs, (3) sequential code organization, and (4) clarifying code references within the manuscript.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [],
+  "conditions": [],
+  "mechanisms": [
+    {
+      "value": "Containerization of software environments",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Version control system for tracking code evolution",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Pseudo-random seed sensitivity in machine learning models",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "outcomes": [
+    {
+      "value": "Enhanced reproducibility of computational experiments",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Transparent and trustworthy record of development process",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Reduction in sensitivity and improvement in model generalization",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "Artificial Intelligence & Data Science",
+    "Materials Science"
+  ],
+  "reasoning_motifs": [
+    {
+      "value": "Incompatibility → Reproducibility Barrier",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Version Control → Traceability",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Sensitivity Analysis → Model Robustness",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "general_principles": [
+    {
+      "value": "Control Through Constraints",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Transparency Enhances Trust",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "failure_paths": [
+    {
+      "value": "failure: Replicate the original study's predictions using the provided scripts and data. Evidence: The bandgaps predicted by our model deviate significantly from the reported values.",
+      "source": "cross_sdl_phase4",
+      "confidence": 0.75,
+      "evidence": ""
+    },
+    {
+      "value": "partial: Recreate the extensibility analysis scripts due to their absence. Evidence: Scripts were recreated with some success, but the predictions could not be fully replicated.",
+      "source": "cross_sdl_phase4",
+      "confidence": 0.75,
+      "evidence": ""
+    },
+    {
+      "value": "success: Use of different machine learning models (RF and XGB) to assess sensitivity. Evidence: RF model proved less sensitive to variations in the random seed, and XGB model displayed no sensitivity at all.",
+      "source": "cross_sdl_phase4",
+      "confidence": 0.75,
+      "evidence": ""
+    }
+  ],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "acgold_fb37db823976",
+    "cross_sdl_reasoning_json": "/Users/sissifeng/Downloads/cross-sdl_knowledge_transfer_engine/data/reasoning/acgold_fb37db823976.json",
+    "cross_sdl_extraction_quality": 0.7,
+    "cross_sdl_notes": "The paper provides a clear narrative of the challenges encountered during the replication attempt and the solutions proposed. However, the reasoning structure is implicit in parts, requiring inference from the descriptive text. The paper does not explicitly state universal scientific principles, which required their derivation from the motifs and practices described."
+  },
+  "validation": {
+    "score": 0.8,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": true,
+      "entities": true,
+      "materials": true,
+      "properties": true,
+      "measurements": false,
+      "conditions": false,
+      "mechanisms": true,
+      "outcomes": true,
+      "cross_sdl_match": true
+    },
+    "missing": [
+      "hardware",
+      "measurements",
+      "conditions"
+    ],
+    "notes": [
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

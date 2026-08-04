@@ -34,6 +34,7 @@ from app.services.multi_graph.types import (
     MultiGraphFilter,
     MultiGraphPayload,
 )
+from app.services.filter_spec import build_filter_audit
 
 
 _GROUP_COLORS = [
@@ -71,7 +72,7 @@ def _materialize_edges(
 ) -> list[GraphEdge]:
     edges: list[GraphEdge] = []
     active_types = set(filt.node_types)
-    for edge_type in filt.edge_types:
+    for edge_type in dict.fromkeys(filt.edge_types):
         provider = EDGE_PROVIDERS.get(edge_type)
         if provider is None:
             continue
@@ -82,6 +83,91 @@ def _materialize_edges(
             if e.weight >= filt.min_edge_weight:
                 edges.append(e)
     return edges
+
+
+def _apply_network_thresholds(
+    nodes: dict[str, GraphNode],
+    edges: list[GraphEdge],
+    filt: MultiGraphFilter,
+) -> tuple[dict[str, GraphNode], list[GraphEdge]]:
+    """Apply deterministic entity thresholds without dropping paper evidence early."""
+    keep = set(nodes) - set(filt.excluded_node_ids)
+    ranked_types = {
+        node.type
+        for node in nodes.values()
+        if node.type != "paper" and "paper_count" in node.metadata
+    }
+    for node_type in ranked_types:
+        candidates = [
+            node
+            for node in nodes.values()
+            if node.type == node_type
+            and node.id in keep
+            and int(node.metadata.get("paper_count", 0)) >= filt.min_papers
+        ]
+        candidates.sort(
+            key=lambda node: (
+                -int(node.metadata.get("paper_count", 0)),
+                node.label.lower(),
+                node.id,
+            )
+        )
+        allowed = {
+            node.id
+            for node in (
+                candidates[: filt.top_n]
+                if filt.top_n is not None
+                else candidates
+            )
+        }
+        keep -= {
+            node.id for node in nodes.values() if node.type == node_type
+        }
+        keep |= allowed
+
+    edges = [
+        edge
+        for edge in edges
+        if edge.source in keep and edge.target in keep
+    ]
+    if filt.min_degree > 0:
+        while True:
+            neighbors: dict[str, set[str]] = {
+                node_id: set() for node_id in keep
+            }
+            for edge in edges:
+                neighbors[edge.source].add(edge.target)
+                neighbors[edge.target].add(edge.source)
+            below_threshold = {
+                node_id
+                for node_id in keep
+                if nodes[node_id].type != "paper"
+                and len(neighbors[node_id]) < filt.min_degree
+            }
+            if not below_threshold:
+                break
+            keep -= below_threshold
+            edges = [
+                edge
+                for edge in edges
+                if edge.source in keep and edge.target in keep
+            ]
+
+    if filt.min_papers > 1 or filt.min_degree > 0 or filt.top_n is not None:
+        connected = {edge.source for edge in edges} | {
+            edge.target for edge in edges
+        }
+        keep = {
+            node_id
+            for node_id in keep
+            if nodes[node_id].type != "paper" or node_id in connected
+        }
+        edges = [
+            edge
+            for edge in edges
+            if edge.source in keep and edge.target in keep
+        ]
+    return {node_id: nodes[node_id] for node_id in keep}, edges
 
 
 def _ego_subgraph(
@@ -169,6 +255,10 @@ def build_multi_graph(
     _filtered_papers(session, filt)
     nodes_map = _materialize_nodes(session, filt)
     edges = _materialize_edges(session, filt, set(nodes_map.keys()))
+    materialized_node_ids = set(nodes_map)
+    raw_node_count = len(nodes_map)
+    raw_edge_count = len(edges)
+    nodes_map, edges = _apply_network_thresholds(nodes_map, edges, filt)
 
     if filt.center_id:
         nodes_map, edges = _ego_subgraph(
@@ -180,6 +270,40 @@ def build_multi_graph(
     for n in nodes_list:
         n.group = assignment.get(n.id)
 
+    audit = build_filter_audit(
+        session,
+        filt.paper_filter,
+        algorithm="multi_graph.v1",
+        metric_definitions={
+            "node_paper_count": "Distinct filtered papers attached to the entity.",
+            "coauthored_weight": "Distinct filtered papers shared by two authors.",
+            "institution_collaboration_weight": "Distinct filtered papers shared by two institutions.",
+            "country_collaboration_weight": "Distinct filtered papers shared by two countries.",
+            "edge_threshold": "Edges with weight below min_edge_weight are excluded.",
+        },
+        projection={
+            "node_types": list(dict.fromkeys(filt.node_types)),
+            "edge_types": list(dict.fromkeys(filt.edge_types)),
+            "group_by": filt.group_by,
+            "center_id": filt.center_id,
+            "hop_limit": filt.hop_limit,
+            "similarity_min": filt.similarity_min,
+            "similarity_top_k": filt.similarity_top_k,
+            "min_edge_weight": filt.min_edge_weight,
+            "min_papers": filt.min_papers,
+            "min_degree": filt.min_degree,
+            "top_n_per_type": filt.top_n,
+            "excluded_node_ids": sorted(set(filt.excluded_node_ids)),
+            "excluded_node_count": len(
+                set(filt.excluded_node_ids) & materialized_node_ids
+            ),
+            "raw_node_count": raw_node_count,
+            "raw_edge_count": raw_edge_count,
+            "visible_node_count": len(nodes_list),
+            "visible_edge_count": len(edges),
+        },
+    )
+    audit["graph_filter"] = audit["projection"]
     return MultiGraphPayload(
         nodes=nodes_list,
         edges=edges,
@@ -187,4 +311,5 @@ def build_multi_graph(
         available_node_types=available_node_types(),
         available_edge_types=available_edge_types(),
         available_group_keys=available_group_keys(),
+        audit=audit,
     )

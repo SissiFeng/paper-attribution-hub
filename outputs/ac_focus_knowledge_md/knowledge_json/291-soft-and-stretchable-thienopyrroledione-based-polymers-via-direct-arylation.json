@@ -1,0 +1,158 @@
+{
+  "paper_id": "acfocus_8f89cd041a7e",
+  "title": "Soft and Stretchable Thienopyrroledione-Based Polymers via Direct Arylation",
+  "metadata": {
+    "doi": "10.1002/aelm.202400756",
+    "url": "https://www.scopus.com/inward/record.uri?eid=2-s2.0-85216723166&doi=10.1002%2faelm.202400756&partnerID=40&md5=13fef66dfed1c8d8ccbb530448eeaebc",
+    "year": "2025",
+    "authors": "Lin A., Guio L., LeCroy G., Lo S., Sharif A., Wang Y., Salleo A., Gu X., Luscombe C.K., Tran H.",
+    "venue": "Advanced Electronic Materials",
+    "category": "Journal article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Helen Tran"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance"
+    ],
+    "flags": {
+      "acknowledges_ac": "checked",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "This study demonstrates that optimizing the molecular weight of poly(indacenodithiophene-co-thienopyrroledione) (p(IDTC16-TPDC8)) yields a π-conjugated polymer with exceptional stretchability and maintained softness, outperforming previous materials, and highlights the complex relationship between molecular modifications and charge transport in IDT-based polymers.",
+  "abstract": "π-conjugated polymers (CPs) that are concurrently soft and stretchable are needed for deformable electronics. Molecular-level modification of indacenodithiophene (IDT) copolymers, a class of CPs that exhibit high hole mobilities ((Formula presented.) hole), is an approach that can help realize intrinsically soft and stretchable CPs. Numerous examples of design strategies to adjust the stretchability of CPs exist, but imparting softness is comparatively less studied. In this study, a systematic molecular weight (MW) series is constructed on a promising candidate for soft CPs, poly(indacenodithiophene-co-thienopyrroledione) (p(IDTC16-TPDC8)), by optimizing direct arylation polymerization conditions in hopes of improving stretchability and μhole without significantly impacting softness. We found p(IDTC16-TPDC8) at a degree of polymerization of 32 shows high stretchability (crack onset strain, CoS &gt; 100%) without significantly impacting softness (elastic modulus, E = 32 MPa), which to the best of our knowledge outperforms previously reported stretchable and soft CPs. To further study how molecular-level modifications impact polymer properties, a MW series of a new extended donor unit polymer, poly(indacenodithienothiophene-co-thienopyrroledione) (p(IDTTC16-TPDC8)), was synthesized. The IDTTC16 copolymers did not result in a greater average μhole when comparing between p(IDTTC16-TPDC8) and p(IDTC16-TPDC8) despite their higher crystallinity observed by GIWAXS. While these findings warrant further investigation, this study points toward unique charge transport properties of IDT-based polymers. © 2024 The Author(s). Advanced Electronic Materials published by Wiley-VCH GmbH.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "This study demonstrates that optimizing the molecular weight of poly(indacenodithiophene-co-thienopyrroledione) (p(IDTC16-TPDC8)) yields a π-conjugated polymer with exceptional stretchability and maintained softness, outperforming previous materials, and highlights the complex relationship between molecular modifications and charge transport in IDT-based polymers.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Biology",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Chemistry",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Materials Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "Soft and Stretchable Thienopyrroledione-Based Polymers via Direct Arylation This study demonstrates that optimizing the molecular weight of poly(indacenodithiophene-co-thienopyrroledione) (p(IDTC16-TPDC8)) yields a π-conjugated polymer with exceptional stretchability and maintained softness, outperforming previous materials, and highlights the complex relationship between molecular modifications and charge transport in IDT-based polymers.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "π-conjugated polymers (CPs) that are concurrently soft and stretchable are needed for deformable electronics.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "To further study how molecular-level modifications impact polymer properties, a MW series of a new extended donor unit polymer, poly(indacenodithienothiophene-co-thienopyrroledione) (p(IDTTC16-TPDC8)), was synthesized.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [
+    {
+      "value": "To further study how molecular-level modifications impact polymer properties, a MW series of a new extended donor unit polymer, poly(indacenodithienothiophene-co-thienopyrroledione) (p(IDTTC16-TPDC8)), was synthesized.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "While these findings warrant further investigation, this study points toward unique charge transport properties of IDT-based polymers.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [],
+  "conditions": [
+    {
+      "value": "In this study, a systematic molecular weight (MW) series is constructed on a promising candidate for soft CPs, poly(indacenodithiophene-co-thienopyrroledione) (p(IDTC16-TPDC8)), by optimizing direct arylation polymerization conditions in hopes of improving stretchability and μhole without significantly impacting softness.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "mechanisms": [],
+  "outcomes": [
+    {
+      "value": "Therapeutics",
+      "source": "csv_applied_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "Biology",
+    "Chemistry",
+    "Materials Science",
+    "Therapeutics"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.61,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": true,
+      "properties": true,
+      "measurements": false,
+      "conditions": true,
+      "mechanisms": false,
+      "outcomes": true,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "measurements",
+      "mechanisms",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

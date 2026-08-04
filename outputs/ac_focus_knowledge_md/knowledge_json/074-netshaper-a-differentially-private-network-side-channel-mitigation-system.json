@@ -1,0 +1,223 @@
+{
+  "paper_id": "acfocus_20a4e96fbd76",
+  "title": "NetShaper: A Differentially Private Network Side-Channel Mitigation System",
+  "metadata": {
+    "doi": "10.48550/arxiv.2310.06293",
+    "url": "https://arxiv.org/abs/2310.06293",
+    "year": "2024",
+    "authors": "Sabzi A.; Vora R.; Goswami S.; Seltzer M.; Lécuyer M.; Mehta A.",
+    "venue": "Proceedings of the 33rd USENIX Security Symposium",
+    "category": "Conference paper",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Margo Seltzer"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "checked",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "",
+  "abstract": "NetShaper: A Differentially Private Network Side-Channel Mitigation System\nAmir Sabzi, Rut Vora, Swati Goswami, Margo Seltzer, Mathias Lécuyer, Aastha Mehta\nThe University of British Columbia\nAbstract\nThe widespread adoption of encryption in network proto-\ncols has significantly improved the overall security of many\nInternet applications. However, these protocols cannot prevent\nnetwork side-channel leaks—leaks of sensitive information\nthrough the sizes and timing of network packets. We present\nNetShaper, a system that mitigates such leaks based on the\nprinciple of traffic shaping. NetShaper’s traffic shaping pro-\nvides differential privacy guarantees while adapting to the\nprevailing workload and congestion condition, and allows\nconfiguring a tradeoff between privacy guarantees, bandwidth\nand latency overheads. Furthermore, NetShaper provides a\nmodular and portable tunnel endpoint design that can support\ndiverse applications. We present a middlebox-based imple-\nmentation of NetShaper and demonstrate its applicability in a\nvideo streaming and a web service application.\n1\nIntroduction\nWith the proliferation of TLS and VPN, traffic encryption has\nbecome the de facto standard for securing data in transit in In-\nternet applications. Traffic can be encrypted at various layers,\nsuch as HTTPS, QUIC, and IPSec. While these protocols pre-\nvent direct data breaches on the Internet, they cannot prevent\nleaks through indirect observations of the encrypted traffic.\nIndeed, encryption cannot conceal the shape of an applica-\ntion’s traffic, i.e., the sizes, timing, and number of packets sent\nand received by an application. In many applications, these\nparameters strongly correlate with sensitive information. For\ninstance, traffic shape can reveal video streams [54], website\nvisits [14, 66], the content of VoIP conversations [69], and\neven users’ medical and financial secrets [19].\nIn such network side-channel leaks, an adversary (e.g., a\nmalicious or a compromised ISP) observes the s",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "Developing NetShaper, a system for mitigating network side-channel leaks based on traffic shaping that provides differential privacy guarantees and adapting to workload and congestion conditions.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "problems": [
+    {
+      "value": "Preventing network side-channel leaks of sensitive information through the sizes and timing of network packets.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "hypotheses": [
+    {
+      "value": "A differential privacy-based traffic shaping strategy can provide quantifiable and tunable privacy guarantees against network side-channel leaks.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "evidence": [
+    {
+      "value": "NetShaper demonstrated efficacy in defeating state-of-the-art classifiers and showed modest overheads in video streaming and web service applications.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "conclusions": [
+    {
+      "value": "NetShaper provides dynamic traffic shaping with quantifiable and tunable privacy guarantees based on differential privacy, applicable to diverse applications with modest overheads.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "entities": [
+    {
+      "value": "Network traffic",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Sensitive information",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Differential privacy parameters (ε, δ, ∆W, W, T)",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "materials": [],
+  "properties": [],
+  "measurements": [],
+  "conditions": [
+    {
+      "value": "NetShaper: A Differentially Private Network Side-Channel Mitigation System Developing NetShaper, a system for mitigating network side-channel leaks based on traffic shaping that provides differential privacy guarantees and adapting to workload and congestion conditions.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "mechanisms": [
+    {
+      "value": "Traffic shaping to modify packet sizes and timing",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Differential privacy-based shaping strategy to ensure privacy guarantees",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Adaptation to workload and congestion conditions",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "outcomes": [
+    {
+      "value": "Mitigation of network side-channel leaks",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Configurable tradeoff between privacy guarantees, bandwidth, and latency overheads",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [],
+  "reasoning_motifs": [
+    {
+      "value": "Privacy → Security",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Adaptation → Efficiency",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Modulation → Obfuscation",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "general_principles": [
+    {
+      "value": "Privacy as a Design Principle",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Adaptive Systems for Efficiency",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Signal Modulation for Information Hiding",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "failure_paths": [
+    {
+      "value": "success: Defeating state-of-the-art classifiers with NetShaper's traffic shaping. Evidence: NetShaper effectively defeated classifiers with modest overheads.",
+      "source": "cross_sdl_phase4",
+      "confidence": 0.75,
+      "evidence": ""
+    },
+    {
+      "value": "success: Applying NetShaper to video streaming and web service applications. Evidence: NetShaper demonstrated applicability with low bandwidth overheads and no impact on streaming experience.",
+      "source": "cross_sdl_phase4",
+      "confidence": 0.75,
+      "evidence": ""
+    }
+  ],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "acgold_8699a210c5ee",
+    "cross_sdl_reasoning_json": "/Users/sissifeng/Downloads/cross-sdl_knowledge_transfer_engine/data/reasoning/acgold_8699a210c5ee.json",
+    "cross_sdl_extraction_quality": 0.9,
+    "cross_sdl_notes": "The paper provides a structured approach to mitigating network side-channel leaks using differential privacy, with clear hypotheses, methods, and evaluation. The reasoning is explicit and well-organized, making the extraction process straightforward."
+  },
+  "validation": {
+    "score": 0.62,
+    "coverage": {
+      "source_summary": false,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": true,
+      "entities": true,
+      "materials": false,
+      "properties": false,
+      "measurements": false,
+      "conditions": true,
+      "mechanisms": true,
+      "outcomes": true,
+      "cross_sdl_match": true
+    },
+    "missing": [
+      "source_summary",
+      "hardware",
+      "materials",
+      "properties",
+      "measurements"
+    ],
+    "notes": [
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

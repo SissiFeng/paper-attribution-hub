@@ -1,0 +1,248 @@
+{
+  "paper_id": "acfocus_18f51cffd4a7",
+  "title": "CheMixHub: Datasets and Benchmarks for Chemical Mixture Property Prediction",
+  "metadata": {
+    "doi": "10.48550/arxiv.2506.12231",
+    "url": "https://arxiv.org/html/2506.12231v1",
+    "year": "2025",
+    "authors": "Ella Miray Rajaonson1,2\nMahyar Rajabi Kochi1\nLuis Martin Mejía Mendoza3\nSeyed Mohamad Moosavi1,2\nBenjamin Sanchez-Lengeling1,2",
+    "venue": "arxiv",
+    "category": "Preprint",
+    "peer_reviewed": "Non Peer Reviewed",
+    "ac_members": [
+      "Mohamad Moosavi",
+      "Benjamin Sanchez"
+    ],
+    "ac_programs": [
+      "Collaborative Funding Opportunity_Mohamad Moosavi_2024-25"
+    ],
+    "membership_status": [
+      "AC Full Member",
+      "AC Full Member"
+    ],
+    "flags": {
+      "acknowledges_ac": "checked",
+      "highly_relevant": "checked",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "",
+  "abstract": "CheMixHub: Datasets and Benchmarks for Chemical\nMixture Property Prediction\nElla Miray Rajaonson1,2\nMahyar Rajabi Kochi1\nLuis Martin Mejía Mendoza3\nSeyed Mohamad Moosavi1,2\nBenjamin Sanchez-Lengeling1,2\nben.sanchez@utoronto.ca\n1 University of Toronto, Canada\n2 Vector Institute for Artificial Intelligence, Canada\n3 Clean Energy Innovation Research Center, National Research Council, Canada\nAbstract\nDeveloping improved predictive models for multi-molecular systems is crucial, as\nnearly every chemical product used results from a mixture of chemicals. While\nbeing a vital part of the industry pipeline, the chemical mixture space remains\nrelatively unexplored by the Machine Learning (ML) community. In this paper,\nwe introduce CheMixHub, a holistic benchmark for molecular mixtures spanning\na corpus of 11 chemical mixtures property prediction tasks. With applications\nranging from drug delivery formulations to battery electrolytes, CheMixHub cur-\nrently totals approximately 500k data points gathered and curated from 7 publicly\navailable datasets. We devise various data splitting techniques to assess context-\nspecific generalization and model robustness, providing a foundation for the de-\nvelopment of predictive models for chemical mixture properties. Furthermore,\nwe map out the modelling space of deep learning models for chemical mixtures,\nestablishing initial benchmarks for the community. This dataset has the potential\nto accelerate chemical mixture development, encompassing reformulation, opti-\nmization, and discovery. The dataset and code for the benchmarks can be found at:\nhttps://github.com/chemcognition-lab/chemixhub\n1\nIntroduction\nMixtures of molecules are integral to our daily experiences: from the perfumes we smell [59] to\nthe remedies we take [3, 75]. Understanding the interactions and behaviors of molecular mixtures\nis therefore essential for advancements in biochemistry [17], drug discovery [3] and environmental\nscience [24]. Mixtures are particularly appealing be",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "Introduced CheMixHub, a benchmark for molecular mixtures spanning 11 chemical mixtures property prediction tasks, using various data splitting techniques to assess context-specific generalization and model robustness.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "problems": [
+    {
+      "value": "Developing improved predictive models for multi-molecular systems, which is crucial for various chemical industries but remains relatively unexplored in the Machine Learning (ML) community.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "hypotheses": [
+    {
+      "value": "A holistic benchmark for molecular mixtures can facilitate the development of predictive models for chemical mixture properties.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "evidence": [
+    {
+      "value": "CheMixHub provides approximately 500k data points gathered from 7 publicly available datasets, with applications ranging from drug delivery formulations to battery electrolytes.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "conclusions": [
+    {
+      "value": "CheMixHub has the potential to accelerate chemical mixture development, encompassing reformulation, optimization, and discovery.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "entities": [
+    {
+      "value": "Chemical mixtures",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Molecular representations",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Deep learning models",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "CheMixHub provides approximately 500k data points gathered from 7 publicly available datasets, with applications ranging from drug delivery formulations to battery electrolytes.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [
+    {
+      "value": "CheMixHub: Datasets and Benchmarks for Chemical Mixture Property Prediction Introduced CheMixHub, a benchmark for molecular mixtures spanning 11 chemical mixtures property prediction tasks, using various data splitting techniques to assess context-specific generalization and model robustness.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [
+    {
+      "value": "CheMixHub: Datasets and Benchmarks for Chemical Mixture Property Prediction Introduced CheMixHub, a benchmark for molecular mixtures spanning 11 chemical mixtures property prediction tasks, using various data splitting techniques to assess context-specific generalization and model robustness.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "conditions": [],
+  "mechanisms": [
+    {
+      "value": "Data curation and standardization",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Permutation invariant set functions",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Predictive modeling using ML",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "outcomes": [
+    {
+      "value": "Enabling systematic exploration of research questions",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Establishing initial benchmarks for the community",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Accelerating chemical mixture development",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "Chemistry",
+    "Artificial Intelligence & Data Science"
+  ],
+  "reasoning_motifs": [
+    {
+      "value": "Data aggregation → Property prediction",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Model robustness → Generalization capability",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Permutation invariance → Accurate mixture representation",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "general_principles": [
+    {
+      "value": "Multi-scale coupling",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Emergent order",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Control through constraints",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "failure_paths": [
+    {
+      "value": "success: Incorporating physics-based constraints into ML models for property prediction. Evidence: Incorporating known physical or chemical constraints into ML models can improve accuracy and generalizability of model predictions.",
+      "source": "cross_sdl_phase4",
+      "confidence": 0.75,
+      "evidence": ""
+    },
+    {
+      "value": "partial: Exploring transfer learning capabilities of models within and across datasets. Evidence: Models initially trained to predict highly non-linear properties perform well when fine-tuned to predict less complex properties, but not vice versa.",
+      "source": "cross_sdl_phase4",
+      "confidence": 0.75,
+      "evidence": ""
+    }
+  ],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "acgold_f337928a7b03",
+    "cross_sdl_reasoning_json": "/Users/sissifeng/Downloads/cross-sdl_knowledge_transfer_engine/data/reasoning/acgold_f337928a7b03.json",
+    "cross_sdl_extraction_quality": 0.8,
+    "cross_sdl_notes": "The paper provides a structured approach to introducing a new benchmark for chemical mixture property prediction. However, some details on the underlying mechanisms and principles could be further elaborated."
+  },
+  "validation": {
+    "score": 0.78,
+    "coverage": {
+      "source_summary": false,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": true,
+      "entities": true,
+      "materials": true,
+      "properties": true,
+      "measurements": true,
+      "conditions": false,
+      "mechanisms": true,
+      "outcomes": true,
+      "cross_sdl_match": true
+    },
+    "missing": [
+      "source_summary",
+      "hardware",
+      "conditions"
+    ],
+    "notes": [
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

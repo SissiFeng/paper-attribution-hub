@@ -1,0 +1,107 @@
+{
+  "paper_id": "acfocus_b0da44ae8326",
+  "title": "MERMaid: Universal multimodal mining of chemical reactions from PDFs using vision-language models",
+  "metadata": {
+    "doi": "10.1016/j.matt.2025.102331",
+    "url": "https://www.sciencedirect.com/science/article/pii/S2590238525003741",
+    "year": "2025",
+    "authors": "S. X. Leong; S. Pablo-García; B. Wong; A. Aspuru-Guzik",
+    "venue": "Matter",
+    "category": "Journal Article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Alán Aspuru-Guzik",
+      "Sergio Pablo-García Carrillo"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance",
+      "AC Staff"
+    ],
+    "flags": {
+      "acknowledges_ac": "checked",
+      "highly_relevant": "checked",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "MERMaid is an end-to-end pipeline that uses vision-language models to extract and structure complex visual data from scientific PDFs into coherent knowledge graphs, achieving 87% accuracy in chemical domains and enabling advanced, data-driven research.",
+  "abstract": "Data digitization of scientific literature is essential for creating machine-actionable knowledge bases to advance data-driven research and integrate with self-driving laboratories. It is especially critical to extract, interpret, and structure data from graphical elements, the primary medium for conveying complex scientific insights. However, this remains challenging due to the inherent lack of semantic structure in the prevalent PDF format, the complexity of visual content, and the need for multimodal integration. We present MERMaid (multimodal aid for reaction mining), an end-to-end pipeline that converts disparate visual data across PDFs into a coherent knowledge graph. Leveraging the emergent visual cognition and reasoning capabilities of vision-language models, MERMaid demonstrates chemical context awareness, self-directed context completion, and robust coreference resolution to achieve 87% end-to-end accuracy across three chemical domains. Its modular design facilitates future application to diverse data beyond reaction mining, promising to unlock the full potential of scientific literature for knowledge-intensive applications.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "MERMaid is an end-to-end pipeline that uses vision-language models to extract and structure complex visual data from scientific PDFs into coherent knowledge graphs, achieving 87% accuracy in chemical domains and enabling advanced, data-driven research.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [],
+  "materials": [],
+  "properties": [
+    {
+      "value": "MERMaid: Universal multimodal mining of chemical reactions from PDFs using vision-language models MERMaid is an end-to-end pipeline that uses vision-language models to extract and structure complex visual data from scientific PDFs into coherent knowledge graphs, achieving 87% accuracy in chemical domains and enabling advanced, data-driven research.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Leveraging the emergent visual cognition and reasoning capabilities of vision-language models, MERMaid demonstrates chemical context awareness, self-directed context completion, and robust coreference resolution to achieve 87% end-to-end accuracy across three chemical domains.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [],
+  "conditions": [],
+  "mechanisms": [],
+  "outcomes": [],
+  "sdl_tags": [],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.37,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": false,
+      "materials": false,
+      "properties": true,
+      "measurements": false,
+      "conditions": false,
+      "mechanisms": false,
+      "outcomes": false,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "entities",
+      "materials",
+      "measurements",
+      "conditions",
+      "mechanisms",
+      "outcomes",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

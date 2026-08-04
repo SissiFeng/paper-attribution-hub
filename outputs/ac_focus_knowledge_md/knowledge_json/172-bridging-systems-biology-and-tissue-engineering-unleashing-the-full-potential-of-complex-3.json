@@ -1,0 +1,113 @@
+{
+  "paper_id": "acfocus_b5096e8c2c8e",
+  "title": "Bridging systems biology and tissue engineering: Unleashing the full potential of complex 3D in vitro tissue models of disease",
+  "metadata": {
+    "doi": "10.1063/5.0179125",
+    "url": "https://pubs.aip.org/aip/bpr/article/5/2/021301/3282465/Bridging-systems-biology-and-tissue-engineering",
+    "year": "2024",
+    "authors": "Cadavid JL, Li NT, McGuigan AP",
+    "venue": "Biophysical Reviews",
+    "category": "Journal article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Alison McGuigan"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "checked",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "This review highlights how integrating systems biology with advanced 3D in vitro tissue models can unlock new insights and translational advances, summarizes current synergies and applications, and proposes future research directions for deeper interdisciplinary collaboration.",
+  "abstract": "Rapid advances in tissue engineering have resulted in more complex and physiologically relevant 3D in vitro tissue models with applications in fundamental biology and therapeutic development. However, the complexity provided by these models is often not leveraged fully due to the reductionist methods used to analyze them. Computational and mathematical models developed in the field of systems biology can address this issue. Yet, traditional systems biology has been mostly applied to simpler in vitro models with little physiological relevance and limited cellular complexity. Therefore, integrating these two inherently interdisciplinary fields can result in new insights and move both disciplines forward. In this review, we provide a systematic overview of how systems biology has been integrated with 3D in vitro tissue models and discuss key application areas where the synergies between both fields have led to important advances with potential translational impact. We then outline key directions for future research and discuss a framework for further integration between fields.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "This review highlights how integrating systems biology with advanced 3D in vitro tissue models can unlock new insights and translational advances, summarizes current synergies and applications, and proposes future research directions for deeper interdisciplinary collaboration.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Biology",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [],
+  "properties": [],
+  "measurements": [],
+  "conditions": [
+    {
+      "value": "Bridging systems biology and tissue engineering: Unleashing the full potential of complex 3D in vitro tissue models of disease This review highlights how integrating systems biology with advanced 3D in vitro tissue models can unlock new insights and translational advances, summarizes current synergies and applications, and proposes future research directions for deeper interdisciplinary collaboration.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "mechanisms": [],
+  "outcomes": [
+    {
+      "value": "Tissue Engineering",
+      "source": "csv_applied_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "Biology",
+    "Tissue Engineering"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.47,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": false,
+      "properties": false,
+      "measurements": false,
+      "conditions": true,
+      "mechanisms": false,
+      "outcomes": true,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "materials",
+      "properties",
+      "measurements",
+      "mechanisms",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

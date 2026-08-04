@@ -1,0 +1,162 @@
+{
+  "paper_id": "acfocus_c4827e3093d4",
+  "title": "Machine Learning Enabled Prediction of High Stiffness 2D Materials",
+  "metadata": {
+    "doi": "10.1021/acsmaterialslett.3c01322",
+    "url": "https://pubs.acs.org/doi/10.1021/acsmaterialslett.3c01322",
+    "year": "2024",
+    "authors": "Nadella HR, Mukherjee S, Anand A, Singh CV",
+    "venue": "ACS Materials Letters",
+    "category": "Journal article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Chandra Veer Singh"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "checked",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "The study developed Gaussian Process Regression machine learning models to predict and identify high-stiffness two-dimensional materials, significantly increasing the probability of discovering such materials and providing insights into their elastic properties and potential applications in nanocomposites, flexible electronics, and resonant sensors.",
+  "abstract": "Persistent exploration of high stiffness two-dimensional (2D) materials is necessary for advancements in applications such as nanocomposites, flexible electronics, and resonant sensors, all of which demand elevated resistance to deformation. However, data-centric material models developed for this purpose remain in their early stages, often due to incomplete stiffness estimation or limited transferability to unseen 2D materials. In this context, we examined stiffness trends among different classes of 2D materials and identified the elastic constants pivotal for estimating the 2D material stiffness irrespective of their crystal symmetry. Subsequently, we developed Gaussian Process Regression machine learning models with the capability of relative stiffness comparison, which are used to predict high stiffness candidates across a broad spectrum of unseen 2D materials during model training. The probability of finding high stiffness 2D materials increased significantly, from a mere 1% in the training data set to a notable 47% in the set of machine learning-predicted 2D materials. We also discussed potential stiffening mechanisms, competing stiffness characteristics, and complementary properties of these predicted high-stiffness 2D materials that are crucial for enhancing the effectiveness of the aforementioned applications.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "The study developed Gaussian Process Regression machine learning models to predict and identify high-stiffness two-dimensional materials, significantly increasing the probability of discovering such materials and providing insights into their elastic properties and potential applications in nanocomposites, flexible electronics, and resonant sensors.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Artificial Intelligence & Data Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Materials Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "Machine Learning Enabled Prediction of High Stiffness 2D Materials The study developed Gaussian Process Regression machine learning models to predict and identify high-stiffness two-dimensional materials, significantly increasing the probability of discovering such materials and providing insights into their elastic properties and potential applications in nanocomposites, flexible electronics, and resonant sensors.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Persistent exploration of high stiffness two-dimensional (2D) materials is necessary for advancements in applications such as nanocomposites, flexible electronics, and resonant sensors, all of which demand elevated resistance to deformation.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "However, data-centric material models developed for this purpose remain in their early stages, often due to incomplete stiffness estimation or limited transferability to unseen 2D materials.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [
+    {
+      "value": "Machine Learning Enabled Prediction of High Stiffness 2D Materials The study developed Gaussian Process Regression machine learning models to predict and identify high-stiffness two-dimensional materials, significantly increasing the probability of discovering such materials and providing insights into their elastic properties and potential applications in nanocomposites, flexible electronics, and resonant sensors.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Persistent exploration of high stiffness two-dimensional (2D) materials is necessary for advancements in applications such as nanocomposites, flexible electronics, and resonant sensors, all of which demand elevated resistance to deformation.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "However, data-centric material models developed for this purpose remain in their early stages, often due to incomplete stiffness estimation or limited transferability to unseen 2D materials.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "In this context, we examined stiffness trends among different classes of 2D materials and identified the elastic constants pivotal for estimating the 2D material stiffness irrespective of their crystal symmetry.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Subsequently, we developed Gaussian Process Regression machine learning models with the capability of relative stiffness comparison, which are used to predict high stiffness candidates across a broad spectrum of unseen 2D materials during model training.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [],
+  "conditions": [],
+  "mechanisms": [],
+  "outcomes": [
+    {
+      "value": "Advanced Materials",
+      "source": "csv_applied_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "Artificial Intelligence & Data Science",
+    "Materials Science",
+    "Advanced Materials"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.57,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": true,
+      "properties": true,
+      "measurements": false,
+      "conditions": false,
+      "mechanisms": false,
+      "outcomes": true,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "measurements",
+      "conditions",
+      "mechanisms",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

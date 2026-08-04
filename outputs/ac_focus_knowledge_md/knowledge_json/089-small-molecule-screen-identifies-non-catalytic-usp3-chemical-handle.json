@@ -1,0 +1,124 @@
+{
+  "paper_id": "acfocus_c7c9770f565a",
+  "title": "Small Molecule Screen Identifies Non-catalytic USP3 Chemical Handle",
+  "metadata": {
+    "doi": "10.1021/acsomega.3c07070",
+    "url": "https://pubs.acs.org/doi/10.1021/acsomega.3c07070",
+    "year": "2024",
+    "authors": "Mann MK, Wolf E, Silva M, Kwak HA, Wilson B, Bolotokova A, Wilson DJ, Harding RJ, Schapira M",
+    "venue": "ACS Omega",
+    "category": "Journal article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Matthieu Schapira"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "checked",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "A focused small molecule screen identified compound 59 as a ligand that selectively binds the ZnF-UBD of USP3 without inhibiting its catalytic activity, providing a chemical starting point for developing tools to study USP3 function and its recruitment to ubiquitylated proteins.",
+  "abstract": "Zinc-finger ubiquitin-binding domains (ZnF-UBDs) are noncatalytic domains mostly found in deubiquitylases (DUBs) such as USP3. They represent an underexplored opportunity for the development of deubiquitylase-targeting chimeras (DUBTACs) to pharmacologically induce the deubiquitylation of target proteins. We previously showed that ZnF-UBDs are ligandable domains. Here, a focused small molecule library screen against a panel of 11 ZnF-UBDs led to the identification of compound 59, a ligand engaging the ZnF-UBD of USP3 with a KD of 14 μM. The compound binds the expected C-terminal ubiquitin binding pocket of USP3 as shown by hydrogen-deuterium exchange mass spectrometry experiments and does not inhibit the cleavage of K48-linked diubiquitin by USP3. As such, this molecule is a chemical starting point toward chemical tools that could be used to interrogate the function of the USP3 Znf-UBD and the consequences of recruiting USP3 to ubiquitylated proteins.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "A focused small molecule screen identified compound 59 as a ligand that selectively binds the ZnF-UBD of USP3 without inhibiting its catalytic activity, providing a chemical starting point for developing tools to study USP3 function and its recruitment to ubiquitylated proteins.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Chemistry",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "Small Molecule Screen Identifies Non-catalytic USP3 Chemical Handle A focused small molecule screen identified compound 59 as a ligand that selectively binds the ZnF-UBD of USP3 without inhibiting its catalytic activity, providing a chemical starting point for developing tools to study USP3 function and its recruitment to ubiquitylated proteins.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Here, a focused small molecule library screen against a panel of 11 ZnF-UBDs led to the identification of compound 59, a ligand engaging the ZnF-UBD of USP3 with a KD of 14 μM.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "As such, this molecule is a chemical starting point toward chemical tools that could be used to interrogate the function of the USP3 Znf-UBD and the consequences of recruiting USP3 to ubiquitylated proteins.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [
+    {
+      "value": "Small Molecule Screen Identifies Non-catalytic USP3 Chemical Handle A focused small molecule screen identified compound 59 as a ligand that selectively binds the ZnF-UBD of USP3 without inhibiting its catalytic activity, providing a chemical starting point for developing tools to study USP3 function and its recruitment to ubiquitylated proteins.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [],
+  "conditions": [],
+  "mechanisms": [],
+  "outcomes": [],
+  "sdl_tags": [
+    "Chemistry"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.51,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": true,
+      "properties": true,
+      "measurements": false,
+      "conditions": false,
+      "mechanisms": false,
+      "outcomes": false,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "measurements",
+      "conditions",
+      "mechanisms",
+      "outcomes",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

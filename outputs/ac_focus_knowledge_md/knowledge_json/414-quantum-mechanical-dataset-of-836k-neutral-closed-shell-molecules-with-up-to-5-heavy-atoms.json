@@ -1,0 +1,141 @@
+{
+  "paper_id": "acfocus_f9d85546d59f",
+  "title": "Quantum mechanical dataset of 836k neutral closed-shell molecules with up to 5 heavy atoms from C, N, O, F, Si, P, S, Cl, Br",
+  "metadata": {
+    "doi": "10.1038/s41597-025-05428-4",
+    "url": "https://www.nature.com/articles/s41597-025-05428-4",
+    "year": "2025",
+    "authors": "D. Khan; A. Benali; S. Y. H. Kim; G. F. von Rudorff; O. A. von Lilienfeld",
+    "venue": "Scientific Data",
+    "category": "Journal Article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Anatole von Lilienfeld"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance"
+    ],
+    "flags": {
+      "acknowledges_ac": "checked",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "The Vector-QM24 (VQM24) dataset comprehensively enumerates all neutral closed-shell small organic and inorganic molecules with up to five p-block heavy atoms, providing extensive quantum chemical data—including structures, energies, thermodynamic and electronic properties—for 577,000 conformers, and serves as a rigorous benchmark for quantum machine learning models, revealing greater complexity than previous datasets like QM9.",
+  "abstract": "We introduce the Vector-QM24 (VQM24) dataset comprehensively covering all possible neutral closed-shell small organic and inorganic molecules with up to five heavy (p-block) atoms: C, N, O, F, Si, P, S, Cl, Br. All valid stoichiometries, Lewis-rule-consistent graphs, and stable conformers (identified via GFN2-xTB) were enumerated combinatorially, yielding 577k conformational isomers spanning 258k constitutional isomers and 5,599 unique stoichiometries. DFT (ωB97X-D3/cc-pVDZ) optimizations were performed for all, and diffusion quantum Monte Carlo (DMC@PBE0(ccECP/cc-pVQZ)) energies are provided for 10,793 lowest-energy conformers with up to 4 heavy atoms. VQM24 includes structures, vibrational modes, rotational constants, thermodynamic properties (Gibbs free energies, enthalpies, ZPVEs, entropies, heat capacities), and electronic properties such as atomization, electron interaction, exchange-correlation, dispersion energies, multipole moments (dipole to hexadecapole), alchemical potentials, Mulliken charges, and wavefunctions. Machine learning models of atomization energies on this dataset reveal significantly higher complexity than QM9, with none achieving chemical accuracy. VQM24 offers a rigorous, high-fidelity benchmark for evaluating quantum machine learning models. © The Author(s) 2025.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "The Vector-QM24 (VQM24) dataset comprehensively enumerates all neutral closed-shell small organic and inorganic molecules with up to five p-block heavy atoms, providing extensive quantum chemical data—including structures, energies, thermodynamic and electronic properties—for 577,000 conformers, and serves as a rigorous benchmark for quantum machine learning models, revealing greater complexity than previous datasets like QM9.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [],
+  "materials": [
+    {
+      "value": "Quantum mechanical dataset of 836k neutral closed-shell molecules with up to 5 heavy atoms from C, N, O, F, Si, P, S, Cl, Br The Vector-QM24 (VQM24) dataset comprehensively enumerates all neutral closed-shell small organic and inorganic molecules with up to five p-block heavy atoms, providing extensive quantum chemical data—including structures, energies, thermodynamic and electronic properties—for 577,000 conformers, and serves as a rigorous benchmark for quantum machine learning models, revealing greater complexity than previous datasets like QM9.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "We introduce the Vector-QM24 (VQM24) dataset comprehensively covering all possible neutral closed-shell small organic and inorganic molecules with up to five heavy (p-block) atoms: C, N, O, F, Si, P, S, Cl, Br.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [
+    {
+      "value": "Quantum mechanical dataset of 836k neutral closed-shell molecules with up to 5 heavy atoms from C, N, O, F, Si, P, S, Cl, Br The Vector-QM24 (VQM24) dataset comprehensively enumerates all neutral closed-shell small organic and inorganic molecules with up to five p-block heavy atoms, providing extensive quantum chemical data—including structures, energies, thermodynamic and electronic properties—for 577,000 conformers, and serves as a rigorous benchmark for quantum machine learning models, revealing greater complexity than previous datasets like QM9.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "DFT (ωB97X-D3/cc-pVDZ) optimizations were performed for all, and diffusion quantum Monte Carlo (DMC@PBE0(ccECP/cc-pVQZ)) energies are provided for 10,793 lowest-energy conformers with up to 4 heavy atoms.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "VQM24 includes structures, vibrational modes, rotational constants, thermodynamic properties (Gibbs free energies, enthalpies, ZPVEs, entropies, heat capacities), and electronic properties such as atomization, electron interaction, exchange-correlation, dispersion energies, multipole moments (dipole to hexadecapole), alchemical potentials, Mulliken charges, and wavefunctions.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Machine learning models of atomization energies on this dataset reveal significantly higher complexity than QM9, with none achieving chemical accuracy.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [
+    {
+      "value": "Quantum mechanical dataset of 836k neutral closed-shell molecules with up to 5 heavy atoms from C, N, O, F, Si, P, S, Cl, Br The Vector-QM24 (VQM24) dataset comprehensively enumerates all neutral closed-shell small organic and inorganic molecules with up to five p-block heavy atoms, providing extensive quantum chemical data—including structures, energies, thermodynamic and electronic properties—for 577,000 conformers, and serves as a rigorous benchmark for quantum machine learning models, revealing greater complexity than previous datasets like QM9.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "VQM24 offers a rigorous, high-fidelity benchmark for evaluating quantum machine learning models.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "conditions": [],
+  "mechanisms": [],
+  "outcomes": [],
+  "sdl_tags": [],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.5,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": false,
+      "materials": true,
+      "properties": true,
+      "measurements": true,
+      "conditions": false,
+      "mechanisms": false,
+      "outcomes": false,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "entities",
+      "conditions",
+      "mechanisms",
+      "outcomes",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

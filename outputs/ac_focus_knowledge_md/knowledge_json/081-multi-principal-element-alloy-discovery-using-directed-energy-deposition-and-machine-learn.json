@@ -1,0 +1,205 @@
+{
+  "paper_id": "acfocus_ef189d7aa88a",
+  "title": "Multi-principal element alloy discovery using directed energy deposition and machine learning",
+  "metadata": {
+    "doi": "10.1016/j.msea.2023.145945",
+    "url": "https://www.sciencedirect.com/science/article/abs/pii/S0921509323013692",
+    "year": "2024",
+    "authors": "Nelaturu P, Hattrick-Simpers JR, Moorehead M, Jambur V, Szlufarska I, Couet A, Thoma DJ",
+    "venue": "Materials Science & Engineering: A",
+    "category": "Journal article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Jason Hattrick-Simpers"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "checked",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "The study demonstrates that combining high-throughput additive manufacturing, automated characterization, and active machine learning enables rapid discovery and design of significantly stronger alloys in the Cr-Fe-Mn-Ni system by efficiently exploring large compositional spaces.",
+  "abstract": "Multi-principal element alloys open large composition spaces for alloy development. The large compositional space necessitates rapid synthesis and characterization to identify promising materials, as well as predictive strategies for alloy design. Additive manufacturing via directed energy deposition is demonstrated as a high-throughput technique for synthesizing alloys in the Cr-Fe-Mn-Ni quaternary system. More than 100 compositions are synthesized in a week, exploring a broad range of compositional space. Uniform compositional control to within ±5 at% is achievable. The rapid synthesis is combined with conjoint sample heat treatment (25 samples vs 1 sample), and automated characterization including X-ray diffraction, energy-dispersive X-ray spectroscopy, and nano-hardness measurements. The datasets of measured properties are then used for a predictive strengthening model using an active machine learning algorithm that balances exploitation and exploration. A learned parameter that represents lattice distortion is trained using the alloy compositions. This combination of rapid synthesis, characterization, and active learning model results in new alloys that are significantly stronger than previous investigated alloys.",
+  "hardware": [
+    {
+      "value": "The study demonstrates that combining high-throughput additive manufacturing, automated characterization, and active machine learning enables rapid discovery and design of significantly stronger alloys in the Cr-Fe-Mn-Ni system by efficiently exploring large compositional spaces.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Additive manufacturing via directed energy deposition is demonstrated as a high-throughput technique for synthesizing alloys in the Cr-Fe-Mn-Ni quaternary system.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "The rapid synthesis is combined with conjoint sample heat treatment (25 samples vs 1 sample), and automated characterization including X-ray diffraction, energy-dispersive X-ray spectroscopy, and nano-hardness measurements.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "methods": [
+    {
+      "value": "The study demonstrates that combining high-throughput additive manufacturing, automated characterization, and active machine learning enables rapid discovery and design of significantly stronger alloys in the Cr-Fe-Mn-Ni system by efficiently exploring large compositional spaces.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Artificial Intelligence & Data Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Automation and Robotics",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Materials Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "Multi-principal element alloy discovery using directed energy deposition and machine learning The study demonstrates that combining high-throughput additive manufacturing, automated characterization, and active machine learning enables rapid discovery and design of significantly stronger alloys in the Cr-Fe-Mn-Ni system by efficiently exploring large compositional spaces.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Multi-principal element alloys open large composition spaces for alloy development.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "The large compositional space necessitates rapid synthesis and characterization to identify promising materials, as well as predictive strategies for alloy design.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [
+    {
+      "value": "Multi-principal element alloy discovery using directed energy deposition and machine learning The study demonstrates that combining high-throughput additive manufacturing, automated characterization, and active machine learning enables rapid discovery and design of significantly stronger alloys in the Cr-Fe-Mn-Ni system by efficiently exploring large compositional spaces.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Additive manufacturing via directed energy deposition is demonstrated as a high-throughput technique for synthesizing alloys in the Cr-Fe-Mn-Ni quaternary system.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "The rapid synthesis is combined with conjoint sample heat treatment (25 samples vs 1 sample), and automated characterization including X-ray diffraction, energy-dispersive X-ray spectroscopy, and nano-hardness measurements.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "The datasets of measured properties are then used for a predictive strengthening model using an active machine learning algorithm that balances exploitation and exploration.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [
+    {
+      "value": "Multi-principal element alloy discovery using directed energy deposition and machine learning The study demonstrates that combining high-throughput additive manufacturing, automated characterization, and active machine learning enables rapid discovery and design of significantly stronger alloys in the Cr-Fe-Mn-Ni system by efficiently exploring large compositional spaces.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "The large compositional space necessitates rapid synthesis and characterization to identify promising materials, as well as predictive strategies for alloy design.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "The rapid synthesis is combined with conjoint sample heat treatment (25 samples vs 1 sample), and automated characterization including X-ray diffraction, energy-dispersive X-ray spectroscopy, and nano-hardness measurements.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "This combination of rapid synthesis, characterization, and active learning model results in new alloys that are significantly stronger than previous investigated alloys.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "conditions": [],
+  "mechanisms": [],
+  "outcomes": [
+    {
+      "value": "Additive Manufacturing",
+      "source": "csv_applied_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "Artificial Intelligence & Data Science",
+    "Automation and Robotics",
+    "Materials Science",
+    "Additive Manufacturing"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.73,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": true,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": true,
+      "properties": true,
+      "measurements": true,
+      "conditions": false,
+      "mechanisms": false,
+      "outcomes": true,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "evidence",
+      "conditions",
+      "mechanisms",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only."
+    ]
+  }
+}

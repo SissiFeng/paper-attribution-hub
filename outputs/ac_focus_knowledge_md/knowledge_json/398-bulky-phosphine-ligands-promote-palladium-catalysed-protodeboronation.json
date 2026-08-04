@@ -1,0 +1,126 @@
+{
+  "paper_id": "acfocus_f3282f1d7593",
+  "title": "Bulky phosphine ligands promote palladium-catalysed protodeboronation",
+  "metadata": {
+    "doi": "10.26434/chemrxiv-2024-cw8cs",
+    "url": "https://chemrxiv.org/doi/full/10.26434/chemrxiv-2024-cw8cs-v3",
+    "year": "2025",
+    "authors": "C. T. Ser; H. Hao; S. Pablo-García; K. Jorner; S. Li; R. Pollice; A. Aspuru-Guzik",
+    "venue": "ChemRxiv",
+    "category": "Preprint",
+    "peer_reviewed": "Non Peer Reviewed",
+    "ac_members": [
+      "Alán Aspuru-Guzik",
+      "Sergio Pablo-García Carrillo"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance",
+      "AC Staff"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "This study reveals that palladium(II) complexes with bulky phosphine ligands, commonly used to facilitate challenging Suzuki-Miyaura cross-couplings, can paradoxically accelerate undesirable protodeboronation, highlighting the need for careful ligand selection.",
+  "abstract": "The Suzuki-Miyaura cross-coupling reaction is plagued by protodeboronation, an undesirable side reaction with water that consumes the boronic acid derivatives required for the cross-coupling reaction. Meticulous mechanistic studies have previously established protodeboronation to be highly sensitive to the nature of the boronic reagent and reaction conditions. Particularly, the presence of bases, which are essential for the Suzuki-Miyaura coupling, is known to catalyse protodeboronation. However, protodeboronation catalysed by palladium-phosphine complexes, the benchmark catalyst system for Suzuki-Miyaura cross-coupling, has been largely overlooked. We demonstrate, using automated high-throughput experimentation, comprehensive computational mechanistic analyses and kinetic modelling, that protodeboronation is accelerated by palladium(II) complexes bound to bulky phosphine ligands. While sterically hindered ligands are typically used to facilitate difficult cross-couplings, these ligands can instead paradoxically impede cross-coupling product formation, requiring careful and judicious consideration when choosing ligands for Suzuki-Miyaura cross-couplings.",
+  "hardware": [
+    {
+      "value": "We demonstrate, using automated high-throughput experimentation, comprehensive computational mechanistic analyses and kinetic modelling, that protodeboronation is accelerated by palladium(II) complexes bound to bulky phosphine ligands.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "methods": [
+    {
+      "value": "This study reveals that palladium(II) complexes with bulky phosphine ligands, commonly used to facilitate challenging Suzuki-Miyaura cross-couplings, can paradoxically accelerate undesirable protodeboronation, highlighting the need for careful ligand selection.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Chemistry",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "However, protodeboronation catalysed by palladium-phosphine complexes, the benchmark catalyst system for Suzuki-Miyaura cross-coupling, has been largely overlooked.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [],
+  "measurements": [
+    {
+      "value": "However, protodeboronation catalysed by palladium-phosphine complexes, the benchmark catalyst system for Suzuki-Miyaura cross-coupling, has been largely overlooked.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "conditions": [
+    {
+      "value": "Meticulous mechanistic studies have previously established protodeboronation to be highly sensitive to the nature of the boronic reagent and reaction conditions.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "mechanisms": [],
+  "outcomes": [],
+  "sdl_tags": [
+    "Chemistry"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.64,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": true,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": true,
+      "properties": false,
+      "measurements": true,
+      "conditions": true,
+      "mechanisms": false,
+      "outcomes": false,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "evidence",
+      "properties",
+      "mechanisms",
+      "outcomes",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only."
+    ]
+  }
+}

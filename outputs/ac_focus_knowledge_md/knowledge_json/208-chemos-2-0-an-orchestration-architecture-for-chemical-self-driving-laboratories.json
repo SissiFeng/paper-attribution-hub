@@ -1,0 +1,149 @@
+{
+  "paper_id": "acfocus_944ee2898297",
+  "title": "ChemOS 2.0: An orchestration architecture for chemical self-driving laboratories",
+  "metadata": {
+    "doi": "10.1016/j.matt.2024.04.022",
+    "url": "https://www.sciencedirect.com/science/article/pii/S2590238524001954",
+    "year": "2024",
+    "authors": "Sim M, Vakili MG, Strieth-Kalthoff F, Hao H, Hickman RJ, Miret S, Pablo-García S, Aspuru-Guzik A",
+    "venue": "Matter",
+    "category": "Journal article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Alán Aspuru-Guzik",
+      "Sergio Pablo-García Carrillo",
+      "Felix Strieth-Kalthoff"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance",
+      "AC Staff",
+      "AC Affiliate Member"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "checked",
+      "high_impact": "checked"
+    }
+  },
+  "source_summary": "ChemOS 2.0 is a modular orchestration architecture for self-driving laboratories that efficiently coordinates experimental hardware and computational planning, demonstrated to accelerate materials discovery by integrating diverse laboratory components and guiding closed-loop operations.",
+  "abstract": "Self-driving laboratories (SDLs), which combine automated experimental hardware with computational experiment planning, have emerged as powerful tools for accelerating materials discovery. The intrinsic complexity created by their multitude of components requires an effective orchestration platform to ensure the correct operation of diverse experimental setups. Existing orchestration frameworks, however, are either tailored to specific setups or have not been implemented for real-world synthesis. To address these issues, we introduce ChemOS 2.0, an orchestration architecture that efficiently coordinates communication, data exchange, and instruction management among modular laboratory components. By treating the laboratory as an “operating system,” ChemOS 2.0 combines ab initio calculations, experimental orchestration, and statistical algorithms to guide closed-loop operations. To demonstrate its capabilities, we showcase ChemOS 2.0 in a case study focused on discovering organic laser molecules. The results confirm ChemOS 2.0’s prowess in accelerating materials research and demonstrate its potential as a valuable design for future SDL platforms.",
+  "hardware": [
+    {
+      "value": "Self-driving laboratories (SDLs), which combine automated experimental hardware with computational experiment planning, have emerged as powerful tools for accelerating materials discovery.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "The intrinsic complexity created by their multitude of components requires an effective orchestration platform to ensure the correct operation of diverse experimental setups.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "methods": [
+    {
+      "value": "ChemOS 2.0 is a modular orchestration architecture for self-driving laboratories that efficiently coordinates experimental hardware and computational planning, demonstrated to accelerate materials discovery by integrating diverse laboratory components and guiding closed-loop operations.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Automation and Robotics",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Chemistry",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Materials Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "ChemOS 2.0: An orchestration architecture for chemical self-driving laboratories ChemOS 2.0 is a modular orchestration architecture for self-driving laboratories that efficiently coordinates experimental hardware and computational planning, demonstrated to accelerate materials discovery by integrating diverse laboratory components and guiding closed-loop operations.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Self-driving laboratories (SDLs), which combine automated experimental hardware with computational experiment planning, have emerged as powerful tools for accelerating materials discovery.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "To demonstrate its capabilities, we showcase ChemOS 2.0 in a case study focused on discovering organic laser molecules.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [],
+  "measurements": [],
+  "conditions": [],
+  "mechanisms": [],
+  "outcomes": [],
+  "sdl_tags": [
+    "SDL 0 - AI & Automation",
+    "Automation and Robotics",
+    "Chemistry",
+    "Materials Science"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.54,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": true,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": true,
+      "properties": false,
+      "measurements": false,
+      "conditions": false,
+      "mechanisms": false,
+      "outcomes": false,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "evidence",
+      "properties",
+      "measurements",
+      "conditions",
+      "mechanisms",
+      "outcomes",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only."
+    ]
+  }
+}

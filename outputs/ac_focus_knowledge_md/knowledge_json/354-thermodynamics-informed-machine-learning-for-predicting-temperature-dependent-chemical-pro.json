@@ -1,0 +1,176 @@
+{
+  "paper_id": "acfocus_bbe5f295d1cc",
+  "title": "Thermodynamics-informed machine learning for predicting temperature-dependent chemical properties",
+  "metadata": {
+    "doi": "10.26434/chemrxiv-2025-vfsvt",
+    "url": "https://chemrxiv.org/doi/10.26434/chemrxiv-2025-vfsvt",
+    "year": "2025",
+    "authors": "M. Rajabi Kochi; H. Rezaei; S. Takrim Khan; B. T. Mamillapalli; M. Ebrahimiazar; H. Ye; R. Moosavian; M. Zargartalebi; D. Sinton; S. M. Moosavi",
+    "venue": "ChemRxiv",
+    "category": "Preprint",
+    "peer_reviewed": "Non Peer Reviewed",
+    "ac_members": [
+      "Mohamad Moosavi",
+      "David Sinton"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Full Member",
+      "AC Governance"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "A thermodynamics-informed machine learning framework that incorporates physical relationships like the Arrhenius equation enables accurate prediction of temperature-dependent fluid properties, overcoming limitations of traditional models and improving materials discovery and selection for energy and electronic systems.",
+  "abstract": "Emerging energy and electronic systems rely on the thermodynamic properties of chemical and cooling fluids. These properties are a function of both chemical structure and temperature. For instance, the dynamic viscosity of a fluid can vary by orders of magnitude across the operating range of a cooling system. However, capturing this behavior remains a challenge for experimental and modelling approaches. Machine learning models, although powerful for fixed temperatures, fail to generalize across temperatures due to a lack of data and a lack of embedded physical constraints. Here, we introduce a thermodynamics-informed machine learning framework that incorporates established physical relationships, such as the Arrhenius equation, to capture both chemical diversity and temperature dependence. We show that decoupling chemistry from thermodynamic conditions enables accurate prediction of temperature-dependent dynamic viscosity, which we validated experimentally. Through a materials-discovery campaign for cooling applications, we show that neglecting temperature effects can cause over 90% errors in performance evaluation, leading to inaccurate materials ranking and suboptimal fluid selection. Finally, we extend the framework to other properties, such as vapor pressure and diffusion coefficient, highlighting a generalizable strategy for accelerating fluid property prediction and design for sustainable technologies.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "A thermodynamics-informed machine learning framework that incorporates physical relationships like the Arrhenius equation enables accurate prediction of temperature-dependent fluid properties, overcoming limitations of traditional models and improving materials discovery and selection for energy and electronic systems.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Artificial Intelligence & Data Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Chemistry",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "Thermodynamics-informed machine learning for predicting temperature-dependent chemical properties A thermodynamics-informed machine learning framework that incorporates physical relationships like the Arrhenius equation enables accurate prediction of temperature-dependent fluid properties, overcoming limitations of traditional models and improving materials discovery and selection for energy and electronic systems.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Through a materials-discovery campaign for cooling applications, we show that neglecting temperature effects can cause over 90% errors in performance evaluation, leading to inaccurate materials ranking and suboptimal fluid selection.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [
+    {
+      "value": "Thermodynamics-informed machine learning for predicting temperature-dependent chemical properties A thermodynamics-informed machine learning framework that incorporates physical relationships like the Arrhenius equation enables accurate prediction of temperature-dependent fluid properties, overcoming limitations of traditional models and improving materials discovery and selection for energy and electronic systems.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Emerging energy and electronic systems rely on the thermodynamic properties of chemical and cooling fluids.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "These properties are a function of both chemical structure and temperature.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Finally, we extend the framework to other properties, such as vapor pressure and diffusion coefficient, highlighting a generalizable strategy for accelerating fluid property prediction and design for sustainable technologies.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [],
+  "conditions": [
+    {
+      "value": "Thermodynamics-informed machine learning for predicting temperature-dependent chemical properties A thermodynamics-informed machine learning framework that incorporates physical relationships like the Arrhenius equation enables accurate prediction of temperature-dependent fluid properties, overcoming limitations of traditional models and improving materials discovery and selection for energy and electronic systems.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "These properties are a function of both chemical structure and temperature.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Here, we introduce a thermodynamics-informed machine learning framework that incorporates established physical relationships, such as the Arrhenius equation, to capture both chemical diversity and temperature dependence.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "We show that decoupling chemistry from thermodynamic conditions enables accurate prediction of temperature-dependent dynamic viscosity, which we validated experimentally.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Through a materials-discovery campaign for cooling applications, we show that neglecting temperature effects can cause over 90% errors in performance evaluation, leading to inaccurate materials ranking and suboptimal fluid selection.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "mechanisms": [],
+  "outcomes": [],
+  "sdl_tags": [
+    "Artificial Intelligence & Data Science",
+    "Chemistry"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.55,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": true,
+      "properties": true,
+      "measurements": false,
+      "conditions": true,
+      "mechanisms": false,
+      "outcomes": false,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "measurements",
+      "mechanisms",
+      "outcomes",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

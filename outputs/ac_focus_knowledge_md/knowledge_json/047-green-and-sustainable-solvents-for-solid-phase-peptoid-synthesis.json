@@ -1,0 +1,137 @@
+{
+  "paper_id": "acfocus_3e5177a301d4",
+  "title": "Green and Sustainable Solvents for Solid-Phase Peptoid Synthesis",
+  "metadata": {
+    "doi": "10.1021/acssuschemeng.3c02813",
+    "url": "https://pubs.acs.org/doi/abs/10.1021/acssuschemeng.3c02813",
+    "year": "2023",
+    "authors": "Clapperton, Abigail Mae; Marín Vera, Katya Naomi; Babi, Jon; Tran, Helen",
+    "venue": "ACS Sustainable Chemistry and Engineering",
+    "category": "Journal article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Helen Tran"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance"
+    ],
+    "flags": {
+      "acknowledges_ac": "checked",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "This study demonstrates that solid-phase peptoid synthesis can be performed without hazardous solvents DMF and NMP by using greener alternatives, maintaining product quality and yield, and advancing the sustainability and industrial applicability of peptoid research.",
+  "abstract": "Peptoids are a class of sequence-controlled polymers that provide a versatile platform for the design of bioinspired materials. Solid-phase synthetic methods offer absolute control over the polypeptoid sequence and have been optimized to improve reaction efficiency and versatility. However, these solid-phase strategies rely on the use of reprotoxic and restricted solvents, N,N-dimethylformamide (DMF) and N-methyl-2-pyrrolidone (NMP), resulting in significant hazardous solvent consumption and waste generation. Here, we report the solid-phase synthesis of peptoids with complete elimination of DMF and NMP and their replacement with greener solvents and binary mixtures to minimize the environmental impact and improve the sustainability of peptoid synthesis. We investigate the resin swelling performance of the green solvents (gamma-valerolactone, dimethyl sulfoxide, ethyl acetate, and binary mixtures) and show that the purity profile and yield of the final peptoids are not adversely affected when compared to those synthesized in traditional solid-phase solvents. Furthermore, we adapt these greener methods for use in automated synthesizers for the synthesis of peptoids with different sequences and long chain lengths. The replacement of hazardous solvents in solid-phase peptoid synthesis represents an advancement in the sustainability of peptoid research, which could improve the translation of peptoids from academic labs to industry. © 2023 American Chemical Society.",
+  "hardware": [
+    {
+      "value": "Peptoids are a class of sequence-controlled polymers that provide a versatile platform for the design of bioinspired materials.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Furthermore, we adapt these greener methods for use in automated synthesizers for the synthesis of peptoids with different sequences and long chain lengths.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "methods": [
+    {
+      "value": "This study demonstrates that solid-phase peptoid synthesis can be performed without hazardous solvents DMF and NMP by using greener alternatives, maintaining product quality and yield, and advancing the sustainability and industrial applicability of peptoid research.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Chemistry",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "Peptoids are a class of sequence-controlled polymers that provide a versatile platform for the design of bioinspired materials.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [
+    {
+      "value": "Green and Sustainable Solvents for Solid-Phase Peptoid Synthesis This study demonstrates that solid-phase peptoid synthesis can be performed without hazardous solvents DMF and NMP by using greener alternatives, maintaining product quality and yield, and advancing the sustainability and industrial applicability of peptoid research.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "We investigate the resin swelling performance of the green solvents (gamma-valerolactone, dimethyl sulfoxide, ethyl acetate, and binary mixtures) and show that the purity profile and yield of the final peptoids are not adversely affected when compared to those synthesized in traditional solid-phase solvents.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [],
+  "conditions": [],
+  "mechanisms": [],
+  "outcomes": [
+    {
+      "value": "Sustainable Materials",
+      "source": "csv_applied_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "Chemistry",
+    "Sustainable Materials"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.67,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": true,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": true,
+      "properties": true,
+      "measurements": false,
+      "conditions": false,
+      "mechanisms": false,
+      "outcomes": true,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "evidence",
+      "measurements",
+      "conditions",
+      "mechanisms",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only."
+    ]
+  }
+}

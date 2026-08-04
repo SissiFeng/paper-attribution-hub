@@ -1,0 +1,93 @@
+{
+  "paper_id": "acfocus_831b2cbd27f2",
+  "title": "The rise of agents: Computational chemistry is ready for (R)evolution",
+  "metadata": {
+    "doi": "10.1016/j.poly.2025.117707",
+    "url": "https://www.sciencedirect.com/science/article/abs/pii/S0277538725003213",
+    "year": "2025",
+    "authors": "A. Aspuru-Guzik; V. Bernales",
+    "venue": "Polyhedron",
+    "category": "Journal Article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Alán Aspuru-Guzik"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance"
+    ],
+    "flags": {
+      "acknowledges_ac": "checked",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "This perspective reviews the historical development of modern quantum chemistry, argues that artificial intelligence will democratize the field, and discusses how advances from 2025 to 2030—particularly agentic quantum chemistry—will reshape the profession and the role of computational chemists.",
+  "abstract": "In this perspective, we take a historical view of the development of modern quantum chemistry from the 1950s to the present. We argue that we are at a crossroads where artificial intelligence will further democratize our discipline. Historically, the computational chemistry tasks that a chemist could conceive and execute were inherently bound to the computational capabilities of the period. We focus on the second half of this decade, from 2025 to 2030, where we believe the artificial intelligence revolution will enable us to rethink how quantum chemistry is conducted. In particular, we will review the recent development of our agentic quantum chemistry, discuss what we believe are its implications for the capabilities and future of the chemical profession in general, and explore what it may mean to be a computational chemist in the future.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "This perspective reviews the historical development of modern quantum chemistry, argues that artificial intelligence will democratize the field, and discusses how advances from 2025 to 2030—particularly agentic quantum chemistry—will reshape the profession and the role of computational chemists.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [],
+  "materials": [],
+  "properties": [],
+  "measurements": [],
+  "conditions": [],
+  "mechanisms": [],
+  "outcomes": [],
+  "sdl_tags": [],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.3,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": false,
+      "materials": false,
+      "properties": false,
+      "measurements": false,
+      "conditions": false,
+      "mechanisms": false,
+      "outcomes": false,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "entities",
+      "materials",
+      "properties",
+      "measurements",
+      "conditions",
+      "mechanisms",
+      "outcomes",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

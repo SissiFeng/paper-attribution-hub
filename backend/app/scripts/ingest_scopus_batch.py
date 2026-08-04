@@ -635,6 +635,21 @@ def _build_rows(tier: pd.DataFrame, ac: pd.DataFrame, matches: dict[int, int]) -
             "venue": _str_or_none(row.get("Source_Title")),
             "source": "scopus",
             "provenance": "scopus_batch",
+            "corpus_sources": (
+                ["AC_MEMBER_CORPUS"]
+                if bool(row.get("_ac_known", False))
+                else []
+            )
+            + (
+                ["STRICT_SDL_KEYWORD"]
+                if "tier1" in str(row.get("RETRIEVAL_TIER") or "").lower()
+                else []
+            )
+            + (
+                ["ARCHITECTURE_BROAD_RETRIEVAL"]
+                if "tier2" in str(row.get("RETRIEVAL_TIER") or "").lower()
+                else []
+            ),
             "keywords": _split_tags(author_kw),
             "indexed_keywords": _split_tags(indexed_kw),
             # Scopus provenance
@@ -707,6 +722,7 @@ def _build_ac_only_rows(
             "venue": _str_or_none(row.get("Publication Title")),
             "source": "ac_gold",
             "provenance": "ac_gold",
+            "corpus_sources": ["AC_MEMBER_CORPUS"],
             "keywords": _split_tags(row.get("Research Tags")),
             # AC gold signals (all from AC Publications directly)
             "ac_known_publication": True,

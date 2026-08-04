@@ -1,0 +1,228 @@
+{
+  "paper_id": "acfocus_7120149978ab",
+  "title": "Evolutionary Monte Carlo of QM Properties in Chemical Space: Electrolyte Design",
+  "metadata": {
+    "doi": "10.1021/acs.jctc.3c00822",
+    "url": "https://pubs.acs.org/doi/10.1021/acs.jctc.3c00822",
+    "year": "2023",
+    "authors": "Karandashev, Konstantin; Weinreich, Jan; Heinen, Stefan; Arismendi Arrieta, Daniel Jose; von Rudorff, Guido Falk; Hermansson, Kersti; von Lilienfeld, O. Anatole",
+    "venue": "Journal of Chemical Theory and Computation",
+    "category": "Journal article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Anatole von Lilienfeld"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance"
+    ],
+    "flags": {
+      "acknowledges_ac": "checked",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "",
+  "abstract": "Evolutionary Monte Carlo of QM properties in\nchemical space: Electrolyte design\nKonstantin Karandashev,∗,† Jan Weinreich,† Stefan Heinen,‡ Daniel Jose\nArismendi Arrieta,¶ Guido Falk von Rudorff,§,∥Kersti Hermansson,¶ and O.\nAnatole von Lilienfeld‡,⊥,#\n†University of Vienna, Faculty of Physics, Kolingasse 14-16, AT-1090 Wien, Austria\n‡Vector Institute for Artificial Intelligence, Toronto, ON, M5S 1M1, Canada\n¶Department of Chemistry-˚\nAngstr¨om Laboratory, Uppsala University, Box 538, SE-75121\nUppsala, Sweden\n§University Kassel, Department of Chemistry, Heinrich-Plett-Str.40, 34132 Kassel,\nGermany\n∥Center for Interdisciplinary Nanostructure Science and Technology (CINSaT),\nHeinrich-Plett-Straße 40, 34132 Kassel\n⊥Departments of Chemistry, Materials Science and Engineering, and Physics, University\nof Toronto, St. George Campus, Toronto, ON, Canada\n#Machine Learning Group, Technische Universit¨at Berlin and Institute for the\nFoundations of Learning and Data, 10587 Berlin, Germany\nE-mail: konstantin.karandashev@univie.ac.at\nAbstract\nOptimizing a target function over the space\nof organic molecules is an important problem\nappearing in many fields of applied science,\nbut also a very difficult one due to the vast\nnumber of possible molecular systems.\nWe\npropose an Evolutionary Monte Carlo algo-\nrithm for solving such problems which is ca-\npable of straightforwardly tuning both explo-\nration and exploitation characteristics of an op-\ntimization procedure while retaining favourable\nproperties of genetic algorithms. The method,\ndubbed MOSAiCS (Metropolis Optimization\nby Sampling Adaptively in Chemical Space), is\ntested on problems related to optimizing com-\nponents of battery electrolytes, namely mini-\nmizing solvation energy in water or maximizing\ndipole moment while enforcing a lower bound\non the HOMO-LUMO gap; optimization was\ndone over sets of molecular graphs inspired by\nQM9 and Electrolyte Genome Project (EGP)\ndatasets. MOSAiCS reliably generated molec-\nular candidates wi",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "Implementing an Evolutionary Monte Carlo algorithm named MOSAiCS to optimize components of battery electrolytes by minimizing solvation energy in water or maximizing dipole moment while enforcing a lower bound on the HOMO-LUMO gap",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "problems": [
+    {
+      "value": "Optimizing target functions over chemical space for applications such as lithium battery electrolyte design",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "hypotheses": [
+    {
+      "value": "An Evolutionary Monte Carlo algorithm can effectively optimize molecular properties within chemical space",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "evidence": [
+    {
+      "value": "MOSAiCS reliably generated molecular candidates with good target quantity values, which were in most cases better than the ones found in QM9 or EGP",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "conclusions": [
+    {
+      "value": "MOSAiCS is an effective algorithm for optimization in chemical space with potential applications in battery electrolyte design and other molecular optimization problems",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "entities": [
+    {
+      "value": "Molecular graphs",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "HOMO-LUMO gap",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Dipole moment",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Solvation energy",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "Evolutionary Monte Carlo of QM Properties in Chemical Space: Electrolyte Design Implementing an Evolutionary Monte Carlo algorithm named MOSAiCS to optimize components of battery electrolytes by minimizing solvation energy in water or maximizing dipole moment while enforcing a lower bound on the HOMO-LUMO gap MOSAiCS reliably generated molecular candidates with good target quantity values, which were in most cases better than the ones found in QM9 or EGP Molecular graphs HOMO-LUMO gap Dipole moment Solvation energy Optimized molecular candidates with improved target property values",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [
+    {
+      "value": "Evolutionary Monte Carlo of QM Properties in Chemical Space: Electrolyte Design Implementing an Evolutionary Monte Carlo algorithm named MOSAiCS to optimize components of battery electrolytes by minimizing solvation energy in water or maximizing dipole moment while enforcing a lower bound on the HOMO-LUMO gap MOSAiCS reliably generated molecular candidates with good target quantity values, which were in most cases better than the ones found in QM9 or EGP Molecular graphs HOMO-LUMO gap Dipole moment Solvation energy Optimized molecular candidates with improved target property values",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [],
+  "conditions": [],
+  "mechanisms": [
+    {
+      "value": "Metropolis Optimization by Sampling Adaptively in Chemical Space (MOSAiCS)",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Markov chain Monte Carlo simulations",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Elementary mutations and crossover moves to propose new molecular configurations",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "outcomes": [
+    {
+      "value": "Optimized molecular candidates with improved target property values",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "Artificial Intelligence & Data Science",
+    "Chemistry",
+    "Clean energy"
+  ],
+  "reasoning_motifs": [
+    {
+      "value": "Diversity → Robustness",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Constraint → Stability",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Feedback → Adaptation",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "general_principles": [
+    {
+      "value": "Multi-scale Coupling",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Control Through Constraints",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "failure_paths": [
+    {
+      "value": "partial: Optimizing dipole moment under strong HOMO-LUMO gap constraint in QM9* Evidence: Simulations agreed less frequently on candidate molecules compared to other optimization problems",
+      "source": "cross_sdl_phase4",
+      "confidence": 0.75,
+      "evidence": ""
+    },
+    {
+      "value": "success: Using non-zero αb to increase diversity of molecules encountered during simulations Evidence: Increasing αb tended to increase diversity of molecules encountered during the simulations, but this was mainly done by considering more molecules in regions of chemical space with larger values of solvation energy",
+      "source": "cross_sdl_phase4",
+      "confidence": 0.75,
+      "evidence": ""
+    }
+  ],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "acgold_1e9ddd3dc480",
+    "cross_sdl_reasoning_json": "/Users/sissifeng/Downloads/cross-sdl_knowledge_transfer_engine/data/reasoning/acgold_1e9ddd3dc480.json",
+    "cross_sdl_extraction_quality": 0.7,
+    "cross_sdl_notes": "The paper presents a structured approach to optimizing molecular properties using an Evolutionary Monte Carlo algorithm, but some details of the reasoning structure had to be inferred from the experimental setup and results discussion"
+  },
+  "validation": {
+    "score": 0.72,
+    "coverage": {
+      "source_summary": false,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": true,
+      "entities": true,
+      "materials": true,
+      "properties": true,
+      "measurements": false,
+      "conditions": false,
+      "mechanisms": true,
+      "outcomes": true,
+      "cross_sdl_match": true
+    },
+    "missing": [
+      "source_summary",
+      "hardware",
+      "measurements",
+      "conditions"
+    ],
+    "notes": [
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

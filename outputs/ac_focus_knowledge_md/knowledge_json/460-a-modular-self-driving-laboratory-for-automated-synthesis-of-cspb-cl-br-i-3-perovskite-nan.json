@@ -1,0 +1,127 @@
+{
+  "paper_id": "acfocus_a055c1b6aa23",
+  "title": "A Modular Self-Driving Laboratory for Automated Synthesis of CsPb(Cl/Br/I)3 Perovskite Nanocrystals",
+  "metadata": {
+    "doi": "10.1021/acs.nanolett.5c05581",
+    "url": "https://pubs.acs.org/doi/10.1021/acs.nanolett.5c05581",
+    "year": "2025",
+    "authors": "Yixuan Chen, Mahyar Rajabi-Kochi, Guanqi Huang, Jiaze Wu, Siyue Wang, Joanna Xu, Seyed Mohamad Moosavi, Kai Huang*",
+    "venue": "Nano Letters",
+    "category": "Journal article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Kai Huang",
+      "Mohamad Moosavi"
+    ],
+    "ac_programs": [
+      "Research Moonshot Grant_Kai Huang_2024-25"
+    ],
+    "membership_status": [
+      "AC Full Member",
+      "AC Full Member"
+    ],
+    "flags": {
+      "acknowledges_ac": "checked",
+      "highly_relevant": "checked",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "",
+  "abstract": "",
+  "hardware": [],
+  "methods": [],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Artificial Intelligence & Data Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Automation and Robotics",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Materials Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "A Modular Self-Driving Laboratory for Automated Synthesis of CsPb(Cl/Br/I)3 Perovskite Nanocrystals",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [],
+  "measurements": [],
+  "conditions": [],
+  "mechanisms": [],
+  "outcomes": [
+    {
+      "value": "Optical Materials",
+      "source": "csv_applied_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "Artificial Intelligence & Data Science",
+    "Automation and Robotics",
+    "Materials Science",
+    "Optical Materials"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.2,
+    "coverage": {
+      "source_summary": false,
+      "abstract": false,
+      "hardware": false,
+      "method": false,
+      "evidence": false,
+      "entities": true,
+      "materials": true,
+      "properties": false,
+      "measurements": false,
+      "conditions": false,
+      "mechanisms": false,
+      "outcomes": true,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "source_summary",
+      "abstract",
+      "hardware",
+      "method",
+      "evidence",
+      "properties",
+      "measurements",
+      "conditions",
+      "mechanisms",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

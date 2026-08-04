@@ -1,0 +1,144 @@
+{
+  "paper_id": "acfocus_87df858134d0",
+  "title": "Quantum-computing-enhanced algorithm unveils potential KRAS inhibitors",
+  "metadata": {
+    "doi": "10.1038/s41587-024-02526-3",
+    "url": "https://www.nature.com/articles/s41587-024-02526-3",
+    "year": "2025",
+    "authors": "Ghazi Vakili M., Gorgulla C., Snider J., Nigam A., Bezrukov D., Varoli D., Aliper A., Polykovsky D., Padmanabha Das K.M., Cox III H., Lyakisheva A., Hosseini Mansob A., Yao Z., Bitar L., Tahoulas D., Čerina D., Radchenko E., Ding X., Liu J., Meng F., Ren F., Cao Y., Stagljar I., Aspuru-Guzik A., Zhavoronkov A.",
+    "venue": "Nature Biotechnology",
+    "category": "Journal article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Alán Aspuru-Guzik",
+      "Yang Cao",
+      "Igor Stagljar"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance",
+      "AC Staff",
+      "AC Full Member"
+    ],
+    "flags": {
+      "acknowledges_ac": "checked",
+      "highly_relevant": "blank",
+      "high_impact": "checked"
+    }
+  },
+  "source_summary": "The study presents a quantum–classical generative model for designing KRAS inhibitors, successfully synthesizing 15 candidate molecules—two of which show promise as inhibitors—demonstrating quantum computing's potential to generate experimentally validated drug candidates that rival classical approaches.",
+  "abstract": "We introduce a quantum–classical generative model for small-molecule design, specifically targeting KRAS inhibitors for cancer therapy. We apply the method to design, select and synthesize 15 proposed molecules that could notably engage with KRAS for cancer therapy, with two holding promise for future development as inhibitors. This work showcases the potential of quantum computing to generate experimentally validated hits that compare favorably against classical models. © The Author(s) 2025.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "The study presents a quantum–classical generative model for designing KRAS inhibitors, successfully synthesizing 15 candidate molecules—two of which show promise as inhibitors—demonstrating quantum computing's potential to generate experimentally validated drug candidates that rival classical approaches.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Quantum",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Biology",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Artificial Intelligence & Data Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "Quantum-computing-enhanced algorithm unveils potential KRAS inhibitors The study presents a quantum–classical generative model for designing KRAS inhibitors, successfully synthesizing 15 candidate molecules—two of which show promise as inhibitors—demonstrating quantum computing's potential to generate experimentally validated drug candidates that rival classical approaches.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "We introduce a quantum–classical generative model for small-molecule design, specifically targeting KRAS inhibitors for cancer therapy.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "We apply the method to design, select and synthesize 15 proposed molecules that could notably engage with KRAS for cancer therapy, with two holding promise for future development as inhibitors.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [],
+  "measurements": [],
+  "conditions": [],
+  "mechanisms": [],
+  "outcomes": [
+    {
+      "value": "Therapeutics",
+      "source": "csv_applied_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "Quantum",
+    "Biology",
+    "Artificial Intelligence & Data Science",
+    "Therapeutics"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.5,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": true,
+      "properties": false,
+      "measurements": false,
+      "conditions": false,
+      "mechanisms": false,
+      "outcomes": true,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "properties",
+      "measurements",
+      "conditions",
+      "mechanisms",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

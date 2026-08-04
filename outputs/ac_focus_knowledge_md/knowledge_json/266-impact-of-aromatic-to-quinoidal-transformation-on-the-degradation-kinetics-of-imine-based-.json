@@ -1,0 +1,167 @@
+{
+  "paper_id": "acfocus_89aaa4014fc1",
+  "title": "Impact of aromatic to quinoidal transformation on the degradation kinetics of imine-based semiconducting polymers",
+  "metadata": {
+    "doi": "10.1039/d4lp00310a",
+    "url": "https://pubs.rsc.org/en/content/articlelanding/2025/lp/d4lp00310a",
+    "year": "2024",
+    "authors": "Nozaki, Naoya; Uva, Azalea; Iwahashi, Takashi; Matsumoto, Hidetoshi; Tran, Helen; Ashizawa, Minoru",
+    "venue": "RSC Applied Polymers",
+    "category": "Journal article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Helen Tran"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance"
+    ],
+    "flags": {
+      "acknowledges_ac": "checked",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "This study demonstrates that inserting a thieno[3,2-b]thiophene unit into imine-based semiconducting polymers induces an aromatic-to-quinoidal transformation upon acidification, significantly slowing degradation and enhancing both stability and electrical performance compared to previous designs.",
+  "abstract": "Degradable semiconducting polymers featuring acid-labile imine bonds are often investigated for use in transient electronics. However, the structure-property relationship of these polymers, particularly regarding degradation kinetics, remains underexplored. Herein, we designed and synthesized two imine-based semiconducting polymers which undergo an aromatic to quinoidal transformation upon acidification, leading to slower degradation rates compared to previously reported imine-based polymers. By utilizing a thieno[3,2-b]thiophene (TT)-inserted thienoisoindigo (TII)-dimer unit (TT-(TII-CHO)2) and two diamines, p-phenylenediamine (PD) and 2,6-naphthalenediamine (2,6ND), we generated polymers p(TT-TII-PD) and p(TT-TII-2,6ND). The insertion of the TT unit between TII units results in high lying HOMO and low lying LUMO levels, facilitating a shift from an aromatic to quinoidal structure in the polymer backbone. Using ultraviolet-visible-near infrared (UV-vis-NIR) spectroscopy, infrared (IR) spectroscopy, and density functional theory (DFT) calculations, we investigated the influence of the quinoidal form on the degradation properties of these polymers. Notably, complete degradation of p(TT-TII-2,6ND) required over 30 days, indicating enhanced stability towards acid compared to previously reported TII-based polymers without the TT unit. Additionally, the protonated polymers demonstrated improved electrical properties compared to the pristine polymers, with field-effect transistor mobilities in the order of 10−2 cm2 V−1 s−1. These findings highlight the importance of quinoidal stability in modulating lifetimes and improving charge carrier transport in imine-based semiconducting polymers. © 2025 RSC.",
+  "hardware": [
+    {
+      "value": "Using ultraviolet-visible-near infrared (UV-vis-NIR) spectroscopy, infrared (IR) spectroscopy, and density functional theory (DFT) calculations, we investigated the influence of the quinoidal form on the degradation properties of these polymers.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "methods": [
+    {
+      "value": "This study demonstrates that inserting a thieno[3,2-b]thiophene unit into imine-based semiconducting polymers induces an aromatic-to-quinoidal transformation upon acidification, significantly slowing degradation and enhancing both stability and electrical performance compared to previous designs.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Chemistry",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "Impact of aromatic to quinoidal transformation on the degradation kinetics of imine-based semiconducting polymers This study demonstrates that inserting a thieno[3,2-b]thiophene unit into imine-based semiconducting polymers induces an aromatic-to-quinoidal transformation upon acidification, significantly slowing degradation and enhancing both stability and electrical performance compared to previous designs.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Degradable semiconducting polymers featuring acid-labile imine bonds are often investigated for use in transient electronics.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "However, the structure-property relationship of these polymers, particularly regarding degradation kinetics, remains underexplored.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [
+    {
+      "value": "Impact of aromatic to quinoidal transformation on the degradation kinetics of imine-based semiconducting polymers This study demonstrates that inserting a thieno[3,2-b]thiophene unit into imine-based semiconducting polymers induces an aromatic-to-quinoidal transformation upon acidification, significantly slowing degradation and enhancing both stability and electrical performance compared to previous designs.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "However, the structure-property relationship of these polymers, particularly regarding degradation kinetics, remains underexplored.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Using ultraviolet-visible-near infrared (UV-vis-NIR) spectroscopy, infrared (IR) spectroscopy, and density functional theory (DFT) calculations, we investigated the influence of the quinoidal form on the degradation properties of these polymers.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Notably, complete degradation of p(TT-TII-2,6ND) required over 30 days, indicating enhanced stability towards acid compared to previously reported TII-based polymers without the TT unit.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Additionally, the protonated polymers demonstrated improved electrical properties compared to the pristine polymers, with field-effect transistor mobilities in the order of 10−2 cm2 V−1 s−1.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [
+    {
+      "value": "Using ultraviolet-visible-near infrared (UV-vis-NIR) spectroscopy, infrared (IR) spectroscopy, and density functional theory (DFT) calculations, we investigated the influence of the quinoidal form on the degradation properties of these polymers.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "conditions": [],
+  "mechanisms": [],
+  "outcomes": [
+    {
+      "value": "Electronics",
+      "source": "csv_applied_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "Chemistry",
+    "Electronics"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.73,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": true,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": true,
+      "properties": true,
+      "measurements": true,
+      "conditions": false,
+      "mechanisms": false,
+      "outcomes": true,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "evidence",
+      "conditions",
+      "mechanisms",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only."
+    ]
+  }
+}

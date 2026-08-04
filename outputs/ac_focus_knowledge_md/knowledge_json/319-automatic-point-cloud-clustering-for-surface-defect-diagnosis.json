@@ -1,0 +1,130 @@
+{
+  "paper_id": "acfocus_75de2252b5c6",
+  "title": "Automatic Point Cloud Clustering for Surface Defect Diagnosis",
+  "metadata": {
+    "doi": "10.1109/tase.2025.3542076",
+    "url": "https://ieeexplore.ieee.org/document/10887345",
+    "year": "2025",
+    "authors": "J. Ye; X. Liu; H. Madhusudanan; Y. Wang; J. Zhu; Y. Wang; C. Ru; X. Liu; Y. Sun",
+    "venue": "IEEE Transactions on Automation Science and Engineering",
+    "category": "Journal Article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Yu Sun"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "This paper presents an automatic, coarse-to-fine point cloud clustering method for 3D surface defect diagnosis in manufacturing, which eliminates manual parameter selection by using KNN graph analysis and a modified DBSCAN algorithm, achieving higher accuracy and speed than traditional methods.",
+  "abstract": "Point cloud clustering is a promising method for 3D surface defect diagnosis in manufacturing but requires manual clustering parameter selection, reducing usability. This paper proposes an automatic point cloud clustering method to address this issue. It employs a strategy that progresses from coarse to fine. In the coarse searching stage, a K-Nearest Neighbor (KNN) graph analysis technique is developed to recognize potential defective regions in parallel. Moving on to the fine stage of extracting detailed defects, a modified DBSCAN algorithm is proposed, in which the clustering parameters are calculated automatically from the KNN graph analysis results. Experimental results showed that the proposed method achieved cloud clustering with automatically calculated clustering parameters for surface defect diagnosis. The proposed method outperformed the traditional region growing algorithm in accuracy (0.942 vs. 0.680) and processing speed (21500 points/sec vs. 8740 points/sec) without requiring manual intervention.Note to Practitioners - This paper presents a method for diagnosing defects on automobile and flat steel surfaces. Current 3D point cloud techniques for surface defect diagnosis require manual parameter adjustments, reducing usability. This paper proposes an automatic method without manual intervention. The proposed method uses a coarse-to-fine strategy. The 3D point cloud is divided into sub-blocks to locate potential defects, and a clustering algorithm then extracts detailed defects with automatically determined parameters. We mathematically characterize changes in point density caused by surface defects and show how these features can be used for clustering parameter calculation. Experimental results demonstrate the method's efficiency on flat as well as some curved surfaces, but it has yet to be evaluated on complex structures. Future work will aim to broaden its application to include a more extensive variety of surfaces and integrate it with robotic vision systems. © 2025 IEEE.",
+  "hardware": [
+    {
+      "value": "Future work will aim to broaden its application to include a more extensive variety of surfaces and integrate it with robotic vision systems.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "methods": [
+    {
+      "value": "This paper presents an automatic, coarse-to-fine point cloud clustering method for 3D surface defect diagnosis in manufacturing, which eliminates manual parameter selection by using KNN graph analysis and a modified DBSCAN algorithm, achieving higher accuracy and speed than traditional methods.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Artificial Intelligence & Data Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Materials Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [],
+  "properties": [
+    {
+      "value": "Automatic Point Cloud Clustering for Surface Defect Diagnosis This paper presents an automatic, coarse-to-fine point cloud clustering method for 3D surface defect diagnosis in manufacturing, which eliminates manual parameter selection by using KNN graph analysis and a modified DBSCAN algorithm, achieving higher accuracy and speed than traditional methods.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "The proposed method outperformed the traditional region growing algorithm in accuracy (0.942 vs.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [],
+  "conditions": [
+    {
+      "value": "Current 3D point cloud techniques for surface defect diagnosis require manual parameter adjustments, reducing usability.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "mechanisms": [],
+  "outcomes": [],
+  "sdl_tags": [
+    "Artificial Intelligence & Data Science",
+    "Materials Science"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.58,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": true,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": false,
+      "properties": true,
+      "measurements": false,
+      "conditions": true,
+      "mechanisms": false,
+      "outcomes": false,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "evidence",
+      "materials",
+      "measurements",
+      "mechanisms",
+      "outcomes",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only."
+    ]
+  }
+}

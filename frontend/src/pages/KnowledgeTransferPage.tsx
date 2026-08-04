@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 import { EChart } from "@/components/EChart";
 import { getTransferAdoption, getTransferFlows, getTransferSummary } from "@/lib/api";
+import { transferFlowTooltip } from "@/lib/chartTooltips";
 import type { AdoptionLag, TransferFlows, TransferSummary } from "@/types";
 
 const ENTITY_TYPES = ["all", "method", "material", "instrument", "software"];
@@ -23,7 +24,11 @@ function heatmapOption(flows: TransferFlows) {
   return {
     tooltip: {
       formatter: (p: any) =>
-        `${labels[p.value[1]]} cites ${labels[p.value[0]]}: <b>${p.value[2]}</b>`,
+        transferFlowTooltip(
+          labels[p.value[1]],
+          labels[p.value[0]],
+          p.value[2],
+        ),
     },
     grid: { left: 140, right: 40, top: 10, bottom: 60 },
     xAxis: {

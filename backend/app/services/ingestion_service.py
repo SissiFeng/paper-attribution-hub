@@ -12,6 +12,7 @@ import pandas as pd
 from app.adapters.base import PaperSource
 from app.config import settings
 from app.models import AcCorePaper, Author, Institution, Paper, PaperAuthor, Topic
+from app.review_contract import infer_corpus_sources
 from app.services.normalization_service import normalize_doi, normalize_name
 
 
@@ -157,6 +158,10 @@ def ingest_papers(session: Session, source: PaperSource) -> tuple[int, int]:
                 year=rec.year,
                 venue=rec.venue,
                 source=rec.source,
+                corpus_sources=infer_corpus_sources(
+                    provenance="csv",
+                    source=rec.source,
+                ),
                 keywords=rec.keywords,
                 raw_metadata=rec.raw,
             )
@@ -169,12 +174,29 @@ def ingest_papers(session: Session, source: PaperSource) -> tuple[int, int]:
             paper.doi = rec.doi
             paper.year = rec.year
             paper.venue = rec.venue
+            if not paper.corpus_sources:
+                paper.corpus_sources = infer_corpus_sources(
+                    provenance=paper.provenance,
+                    source=rec.source,
+                )
             paper.keywords = rec.keywords
             paper.raw_metadata = rec.raw
             # Wipe existing paper_authors so we can rebuild from current source.
             for pa in list(paper.authors):
                 session.delete(pa)
             session.flush()
+
+        from app.services.citation_snapshot_service import (
+            apply_citation_snapshot,
+            citation_snapshot_from_raw,
+        )
+
+        citation_snapshot = citation_snapshot_from_raw(
+            rec.raw,
+            source=rec.source,
+        )
+        if citation_snapshot is not None:
+            apply_citation_snapshot(paper, citation_snapshot)
 
         if rec.doi:
             seen_dois.add(rec.doi)

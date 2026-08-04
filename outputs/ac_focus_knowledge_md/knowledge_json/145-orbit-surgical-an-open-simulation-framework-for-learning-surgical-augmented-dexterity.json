@@ -1,0 +1,265 @@
+{
+  "paper_id": "acfocus_fe8f6d2b6d95",
+  "title": "ORBIT-Surgical: An Open-Simulation Framework for Learning Surgical Augmented Dexterity",
+  "metadata": {
+    "doi": "10.48550/arxiv.2404.16027",
+    "url": "https://arxiv.org/abs/2404.16027",
+    "year": "2024",
+    "authors": "Yu, Qinxi; Moghani, Masoud; Dharmarajan, Karthik; Schorp, Vincent; Panitch, William Chung-Ho; Liu, Jingzhou; Hari, Kush; Huang, Huang; Mittal, Mayank; Goldberg, Ken; Garg, Animesh",
+    "venue": "arxiv",
+    "category": "Preprint",
+    "peer_reviewed": "Non Peer Reviewed",
+    "ac_members": [
+      "Animesh Garg"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "ORBIT-Surgical is a physics-based surgical robot simulation framework with photorealistic rendering that enables reinforcement and imitation learning for surgical tasks, provides benchmarks for dVRK and STAR robots, supports realistic data generation, and demonstrates sim-to-real policy transfer.",
+  "abstract": "Physics-based simulations have accelerated progress in robot learning for driving, manipulation, and locomotion. Yet, a fast, accurate, and robust surgical simulation environment remains a challenge. In this paper, we present ORBIT-Surgical, a physics-based surgical robot simulation framework with photorealistic rendering in NVIDIA Omniverse. We provide 14 benchmark surgical tasks for the da Vinci Research Kit (dVRK) and Smart Tissue Autonomous Robot (STAR) which represent common subtasks in surgical training. ORBIT-Surgical leverages GPU parallelization to train reinforcement learning and imitation learning algorithms to facilitate study of robot learning to augment human surgical skills. ORBIT-Surgical also facilitates realistic synthetic data generation for active perception tasks. We demonstrate ORBIT-Surgical sim-to-real transfer of learned policies onto a physical dVRK robot. Project website: orbit-surgical.github.io",
+  "hardware": [
+    {
+      "value": "ORBIT-Surgical is a physics-based surgical robot simulation framework with photorealistic rendering that enables reinforcement and imitation learning for surgical tasks, provides benchmarks for dVRK and STAR robots, supports realistic data generation, and demonstrates sim-to-real policy transfer.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Physics-based simulations have accelerated progress in robot learning for driving, manipulation, and locomotion.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "In this paper, we present ORBIT-Surgical, a physics-based surgical robot simulation framework with photorealistic rendering in NVIDIA Omniverse.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "We provide 14 benchmark surgical tasks for the da Vinci Research Kit (dVRK) and Smart Tissue Autonomous Robot (STAR) which represent common subtasks in surgical training.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "methods": [
+    {
+      "value": "Creation of ORBIT-Surgical, a simulation framework based on NVIDIA Isaac Sim, providing GPU-accelerated physics, contact-rich physical interactions, and high-fidelity rendering.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "problems": [
+    {
+      "value": "Developing a fast, accurate, and robust surgical simulation environment for robot learning.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "hypotheses": [
+    {
+      "value": "A physics-based surgical robot simulation framework with photorealistic rendering can facilitate study of robot learning to augment human surgical skills.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "evidence": [
+    {
+      "value": "Successful sim-to-real transfer of learned policies onto a physical dVRK robot, high learning speed facilitated by ORBIT-Surgical, and improved perception performance by over 2× using synthetic data generation.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "conclusions": [
+    {
+      "value": "ORBIT-Surgical enables efficient training of reinforcement learning policies for surgical robotics tasks and high-fidelity synthetic data generation, accelerating progress in learning-based assistive autonomy in robotic surgery.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "entities": [
+    {
+      "value": "ORBIT-Surgical simulation framework",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "da Vinci Research Kit (dVRK)",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Smart Tissue Autonomous Robot (STAR)",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Rigid and deformable surgical materials",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "Rigid and deformable surgical materials",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "ORBIT-Surgical simulation framework da Vinci Research Kit (dVRK) Smart Tissue Autonomous Robot (STAR) Rigid and deformable surgical materials Augmented human surgical skills through robot learning Realistic interactions with both rigid and deformable materials in surgical training Improved perception performance in surgical tool segmentation",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [],
+  "measurements": [
+    {
+      "value": "We provide 14 benchmark surgical tasks for the da Vinci Research Kit (dVRK) and Smart Tissue Autonomous Robot (STAR) which represent common subtasks in surgical training.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "conditions": [],
+  "mechanisms": [
+    {
+      "value": "GPU parallelization for fast simulation",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Reinforcement learning and imitation learning algorithms for policy training",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Synthetic data generation for active perception tasks",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "outcomes": [
+    {
+      "value": "Augmented human surgical skills through robot learning",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Realistic interactions with both rigid and deformable materials in surgical training",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Improved perception performance in surgical tool segmentation",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "Artificial Intelligence & Data Science",
+    "Automation and Robotics"
+  ],
+  "reasoning_motifs": [
+    {
+      "value": "Simulation Fidelity → Real-World Performance",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Data Augmentation → Improved Perception",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Parallelization → Accelerated Learning",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "general_principles": [
+    {
+      "value": "High Fidelity Simulation Enhances Learning",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Data Augmentation Improves Model Generalization",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Parallel Processing Accelerates Computational Tasks",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "failure_paths": [
+    {
+      "value": "partial: Deploying a PPO policy trained with RSL-rl on the Suture Needle Lift task in Cartesian space on a real dVRK setup. Evidence: The transferred policy achieved a 50% success rate.",
+      "source": "cross_sdl_phase4",
+      "confidence": 0.75,
+      "evidence": ""
+    }
+  ],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "acgold_bcb5f344c646",
+    "cross_sdl_reasoning_json": "/Users/sissifeng/Downloads/cross-sdl_knowledge_transfer_engine/data/reasoning/acgold_bcb5f344c646.json",
+    "cross_sdl_extraction_quality": 0.8,
+    "cross_sdl_notes": "The paper provides a clear structure for the development and evaluation of the ORBIT-Surgical simulation framework, with explicit hypotheses, methods, and results. However, some details on the underlying mechanisms and principles were inferred from the paper's content, as not all causal relationships were explicitly stated."
+  },
+  "validation": {
+    "score": 0.89,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": true,
+      "method": true,
+      "evidence": true,
+      "entities": true,
+      "materials": true,
+      "properties": false,
+      "measurements": true,
+      "conditions": false,
+      "mechanisms": true,
+      "outcomes": true,
+      "cross_sdl_match": true
+    },
+    "missing": [
+      "properties",
+      "conditions"
+    ],
+    "notes": []
+  }
+}

@@ -1,0 +1,122 @@
+{
+  "paper_id": "acfocus_68f7743eb3ba",
+  "title": "Rapid screening of CO2 capture fluids",
+  "metadata": {
+    "doi": "10.1039/d4lc00772g",
+    "url": "https://pubs.rsc.org/en/journals/journalissues/lc#!recentarticles&adv",
+    "year": "2025",
+    "authors": "Y. Guo; F. Li; S. Saber; M. Zargartalebi; S. S. Sun; Y. C. Xiao; B. Bao; Z. Xu; D. Sinton",
+    "venue": "Lab on A Chip",
+    "category": "Journal Article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "David Sinton"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "A novel microfluidic approach combined with automated image processing and density functional theory enables rapid, comprehensive screening of amine-based CO₂ capture fluids, significantly accelerating the assessment of their kinetics and thermodynamic properties compared to conventional methods.",
+  "abstract": "The evaluation of CO<inf>2</inf> capture fluids is crucial for the advancement of carbon capture technologies. Recent advancements in amine-based carbon capture fluids motivate a broad search for high-performance fluids and the development of methods capable of exploring a large chemical space. Here, we present a microfluidic approach paired with automated image processing and density functional theory simulations that enables comprehensive rapid screening of capture fluids. The principle of measurement leverages the ability to monitor phase expansion and contraction in fixed-volume dead-end channels. This approach enables fast comparative assessments of reaction kinetics and thermodynamic parameters, including CO<inf>2</inf> absorption rate (∼30 s), desorption rate (∼30 s), absorption capacity (∼20 min), and vapor pressure (∼5 min), exceeding the speed of conventional methods by two orders of magnitude. The method is broadly applicable, effective for primary, secondary, and tertiary amine types. Rapid screening of capture fluids holds promise for the accelerated discovery of improved CO<inf>2</inf> capture processes and an opportunity for the microfluidics community to contribute to decarbonization efforts.",
+  "hardware": [
+    {
+      "value": "A novel microfluidic approach combined with automated image processing and density functional theory enables rapid, comprehensive screening of amine-based CO₂ capture fluids, significantly accelerating the assessment of their kinetics and thermodynamic properties compared to conventional methods.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Here, we present a microfluidic approach paired with automated image processing and density functional theory simulations that enables comprehensive rapid screening of capture fluids.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "methods": [
+    {
+      "value": "A novel microfluidic approach combined with automated image processing and density functional theory enables rapid, comprehensive screening of amine-based CO₂ capture fluids, significantly accelerating the assessment of their kinetics and thermodynamic properties compared to conventional methods.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [],
+  "materials": [],
+  "properties": [
+    {
+      "value": "Rapid screening of CO2 capture fluids A novel microfluidic approach combined with automated image processing and density functional theory enables rapid, comprehensive screening of amine-based CO₂ capture fluids, significantly accelerating the assessment of their kinetics and thermodynamic properties compared to conventional methods.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [
+    {
+      "value": "The principle of measurement leverages the ability to monitor phase expansion and contraction in fixed-volume dead-end channels.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "conditions": [
+    {
+      "value": "This approach enables fast comparative assessments of reaction kinetics and thermodynamic parameters, including CO<inf>2</inf> absorption rate (∼30 s), desorption rate (∼30 s), absorption capacity (∼20 min), and vapor pressure (∼5 min), exceeding the speed of conventional methods by two orders of magnitude.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "mechanisms": [],
+  "outcomes": [],
+  "sdl_tags": [],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.57,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": true,
+      "method": true,
+      "evidence": false,
+      "entities": false,
+      "materials": false,
+      "properties": true,
+      "measurements": true,
+      "conditions": true,
+      "mechanisms": false,
+      "outcomes": false,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "evidence",
+      "entities",
+      "materials",
+      "mechanisms",
+      "outcomes",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only."
+    ]
+  }
+}

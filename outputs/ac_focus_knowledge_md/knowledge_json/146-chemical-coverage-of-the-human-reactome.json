@@ -1,0 +1,120 @@
+{
+  "paper_id": "acfocus_c7a5ad462005",
+  "title": "Chemical Coverage of the Human Reactome",
+  "metadata": {
+    "doi": "10.1101/2024.04.23.590739",
+    "url": "https://www.biorxiv.org/content/10.1101/2024.04.23.590739v1",
+    "year": "2024",
+    "authors": "Kwak HA, Liu L, Tredup C, Röhm S, Prinos P, Böttcher J, Schapira M",
+    "venue": "biorxiv",
+    "category": "Preprint",
+    "peer_reviewed": "Non Peer Reviewed",
+    "ac_members": [
+      "Matthieu Schapira"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "Chemical probes and chemogenomic compounds, though currently targeting only 3% of the human proteome, already cover 53% of the human Reactome due to protein involvement in multiple pathways, making them versatile tools for exploring human biology and advancing the Target 2035 mission to develop chemical tools for all druggable proteins.",
+  "abstract": "Chemical probes and chemogenomic compounds are valuable tools to link gene to phenotype, explore human biology and uncover novel targets for precision medicine. A growing federation of scientists is contributing to the mission of Target 2035 – discovering chemical tools for all druggable human proteins by the year 2035. It is expected that these compounds will enable the understanding of the regulation of cellular machineries and biological processes across the compendium of signaling pathways that animate cellular life. Here, we draw a landscape of the current chemical coverage of the human Reactome. We find that even though available chemical probes and chemogenomic compounds are targeting only 3% of the human proteome, they cover 53% of the human Reactome, due to the fact that 46% of human proteins are involved in more than one cellular pathway. As such, existing chemical probes and chemogenomic compounds already represent a versatile toolkit to manipulate a vast portion of human biology. Pathways targeted by existing drugs may be enriched in unknown but valid drug targets and could be prioritized in future Target 2035 efforts.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "Chemical probes and chemogenomic compounds, though currently targeting only 3% of the human proteome, already cover 53% of the human Reactome due to protein involvement in multiple pathways, making them versatile tools for exploring human biology and advancing the Target 2035 mission to develop chemical tools for all druggable proteins.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Biology",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Biochemistry",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [],
+  "properties": [],
+  "measurements": [],
+  "conditions": [
+    {
+      "value": "Here, we draw a landscape of the current chemical coverage of the human Reactome.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "mechanisms": [],
+  "outcomes": [
+    {
+      "value": "Therapeutics",
+      "source": "csv_applied_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "Biology",
+    "Biochemistry",
+    "Therapeutics"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.47,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": false,
+      "properties": false,
+      "measurements": false,
+      "conditions": true,
+      "mechanisms": false,
+      "outcomes": true,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "materials",
+      "properties",
+      "measurements",
+      "mechanisms",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

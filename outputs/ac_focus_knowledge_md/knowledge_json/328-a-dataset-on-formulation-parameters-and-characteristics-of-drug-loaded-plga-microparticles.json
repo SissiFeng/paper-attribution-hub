@@ -1,0 +1,144 @@
+{
+  "paper_id": "acfocus_3f64ca4ea8be",
+  "title": "A dataset on formulation parameters and characteristics of drug-loaded PLGA microparticles",
+  "metadata": {
+    "doi": "10.1038/s41597-025-04621-9",
+    "url": "https://www.nature.com/articles/s41597-025-04621-9",
+    "year": "2025",
+    "authors": "Z. Bao; J. Kim; C. Kwok; F. Le Dévédec; C. Allen",
+    "venue": "Scientific Data",
+    "category": "Journal Article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Christine Allen",
+      "Zeqing Bao",
+      "Frantz le Dévédec"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance",
+      "AC Staff",
+      "AC Staff"
+    ],
+    "flags": {
+      "acknowledges_ac": "checked",
+      "highly_relevant": "checked",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "A comprehensive open-access dataset of 321 in vitro release studies on PLGA-based polymer microparticles, covering 89 drugs, has been compiled to support data-driven development and broaden the design space for long-acting injectable formulations.",
+  "abstract": "Polymer microparticles (MPs) are widely used to create long-acting injectable formulations due to their ability to enable sustained drug release. This feature can significantly benefit chronic disease management by reducing dosing frequency and improving patient adherence. To support the design and development of polymer MPs, we have compiled a dataset on MPs formed from poly(lactide-co-glycolide) (PLGA), the most commonly used polymer in commercial MP drug products. This dataset, derived from the literature, covers 321 in vitro release studies involving 89 different drugs. It aims to streamline future MP development by providing a reference for the current PLGA MP design space and supporting data-driven approaches such as machine learning. Published with open access, this dataset encourages broad utilization and aims to expand the range of available MP formulations.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "A comprehensive open-access dataset of 321 in vitro release studies on PLGA-based polymer microparticles, covering 89 drugs, has been compiled to support data-driven development and broaden the design space for long-acting injectable formulations.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Artificial Intelligence & Data Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "A dataset on formulation parameters and characteristics of drug-loaded PLGA microparticles A comprehensive open-access dataset of 321 in vitro release studies on PLGA-based polymer microparticles, covering 89 drugs, has been compiled to support data-driven development and broaden the design space for long-acting injectable formulations.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Polymer microparticles (MPs) are widely used to create long-acting injectable formulations due to their ability to enable sustained drug release.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "To support the design and development of polymer MPs, we have compiled a dataset on MPs formed from poly(lactide-co-glycolide) (PLGA), the most commonly used polymer in commercial MP drug products.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [],
+  "measurements": [],
+  "conditions": [
+    {
+      "value": "It aims to streamline future MP development by providing a reference for the current PLGA MP design space and supporting data-driven approaches such as machine learning.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "mechanisms": [],
+  "outcomes": [
+    {
+      "value": "Formulations",
+      "source": "csv_applied_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Therapeutics",
+      "source": "csv_applied_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "SDL 5 - Formulations",
+    "Artificial Intelligence & Data Science",
+    "Formulations",
+    "Therapeutics"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.54,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": true,
+      "properties": false,
+      "measurements": false,
+      "conditions": true,
+      "mechanisms": false,
+      "outcomes": true,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "properties",
+      "measurements",
+      "mechanisms",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

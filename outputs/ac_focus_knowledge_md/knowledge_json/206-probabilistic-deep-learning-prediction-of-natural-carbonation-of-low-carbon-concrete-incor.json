@@ -1,0 +1,149 @@
+{
+  "paper_id": "acfocus_ba4d343b533a",
+  "title": "Probabilistic deep learning prediction of natural carbonation of low-carbon concrete incorporating SCMs",
+  "metadata": {
+    "doi": "10.1016/j.cemconcomp.2024.105635",
+    "url": "https://www.sciencedirect.com/science/article/abs/pii/S0958946524002075",
+    "year": "2024",
+    "authors": "Marani A, Oyinkanola T, Panesar DK",
+    "venue": "Cement and Concrete Composites",
+    "category": "Journal article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Afshin Marani",
+      "Daman Panesar"
+    ],
+    "ac_programs": [
+      "AC PDF_Daman Panesar_2023-24"
+    ],
+    "membership_status": [
+      "AC Trainee",
+      "AC Full Member"
+    ],
+    "flags": {
+      "acknowledges_ac": "checked",
+      "highly_relevant": "checked",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "This study developed a highly accurate probabilistic neural network model using extensive laboratory data to predict the natural carbonation depth of concrete mixtures under various environmental conditions, enabling long-term simulations and uncertainty quantification that support the design of durable and sustainable concrete blends.",
+  "abstract": "This study develops a probabilistic neural network (PNN) based on 2165 laboratory data incorporating mixture constituents and environmental conditions parameters to estimate the natural carbonation depth of concrete. The high prediction accuracy and certainty level of the model, achieving a testing R2 of 0.95 and negative log-likelihood of 1.82, enabled performing numerical simulations of carbonation depth and rate evolution of 576 binary and ternary blends for 12 years of exposure under different climatic conditions of two cities, Toronto and Vancouver. Mixtures containing ordinary Portland cement (OPC), fly ash, ground granulated blast furnace slag (GGBFS), and limestone calcined clay with water-to-binder ratios of 0.35–0.55, OPC replacement levels of 0–0.6, and binder contents of 350–500 kg/m3 were studied. Results indicated that OPC-GGBFS binary binders and OPC-GGBFS-fly ash ternary binders showed the lowest natural carbonation rates of 1.03–4.78 and 1.10–3.76 mm/year0.5, respectively. The uncertainty quantification of model's predictions can facilitate informed and confident decision-making for designing durable and sustainable concrete mixtures.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "This study developed a highly accurate probabilistic neural network model using extensive laboratory data to predict the natural carbonation depth of concrete mixtures under various environmental conditions, enabling long-term simulations and uncertainty quantification that support the design of durable and sustainable concrete blends.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Artificial Intelligence & Data Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Materials Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Engineering",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [],
+  "properties": [
+    {
+      "value": "The high prediction accuracy and certainty level of the model, achieving a testing R2 of 0.95 and negative log-likelihood of 1.82, enabled performing numerical simulations of carbonation depth and rate evolution of 576 binary and ternary blends for 12 years of exposure under different climatic conditions of two cities, Toronto and Vancouver.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [],
+  "conditions": [
+    {
+      "value": "Probabilistic deep learning prediction of natural carbonation of low-carbon concrete incorporating SCMs This study developed a highly accurate probabilistic neural network model using extensive laboratory data to predict the natural carbonation depth of concrete mixtures under various environmental conditions, enabling long-term simulations and uncertainty quantification that support the design of durable and sustainable concrete blends.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "This study develops a probabilistic neural network (PNN) based on 2165 laboratory data incorporating mixture constituents and environmental conditions parameters to estimate the natural carbonation depth of concrete.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "The high prediction accuracy and certainty level of the model, achieving a testing R2 of 0.95 and negative log-likelihood of 1.82, enabled performing numerical simulations of carbonation depth and rate evolution of 576 binary and ternary blends for 12 years of exposure under different climatic conditions of two cities, Toronto and Vancouver.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "mechanisms": [],
+  "outcomes": [
+    {
+      "value": "Sustainable Materials",
+      "source": "csv_applied_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "Artificial Intelligence & Data Science",
+    "Materials Science",
+    "Engineering",
+    "Sustainable Materials"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.54,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": false,
+      "properties": true,
+      "measurements": false,
+      "conditions": true,
+      "mechanisms": false,
+      "outcomes": true,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "materials",
+      "measurements",
+      "mechanisms",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

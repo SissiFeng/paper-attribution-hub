@@ -1,0 +1,198 @@
+{
+  "paper_id": "acfocus_bdd44a54ff55",
+  "title": "Hammett-Inspired Product Baseline for Data-efficient Δ-ML in Chemical Space",
+  "metadata": {
+    "doi": "10.48550/arxiv.2305.07010",
+    "url": "https://arxiv.org/abs/2305.07010",
+    "year": "2025",
+    "authors": "V. Diana Rakotonirina, Marco Bragato, Guido Falk von Rudorff, O. Anatole von Lilienfeld",
+    "venue": "arxiv",
+    "category": "Preprint",
+    "peer_reviewed": "Non Peer Reviewed",
+    "ac_members": [
+      "Anatole von Lilienfeld"
+    ],
+    "ac_programs": [
+      "Core Development Grants_Anatole von Lilienfeld_2024-25"
+    ],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "checked",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "",
+  "abstract": "Hammett-Inspired Product Baseline for Data-efficient ∆-ML in Chemical Space\nV. Diana Rakotonirina,1 Marco Bragato,2 Guido Falk von Rudorff,3 and O. Anatole von Lilienfeld4, 5, 6, 7, 8, 1, 9, ∗\n1Department of Materials Science and Engineering,\nUniversity of Toronto, St.\nGeorge campus, Toronto, ON, Canada\n2Faculty of Physics, University of Vienna, Kolingasse 1416, AT1090 Wien, Austria\n3Department of Chemistry, University Kassel,Heinrich-Plett-Str.40, 34132 Kassel, Germany\nCenter for Interdisciplinary Nanostructure Science and Technology (CINSaT)\n4Machine Learning Group, Technische Universität Berlin\n5Vector Institute for Artificial Intelligence, Toronto, ON, M5S 1M1, Canada\n6Department of Chemistry, University of Toronto, St. George campus, Toronto, ON, Canada\n7Berlin Institute for the Foundations of Learning and Data, Berlin, Germany\n8Acceleration Consortium, University of Toronto. 80 St George St, Toronto, ON M5S 3H6\n9Department of Physics, University of Toronto, St. George campus, Toronto, ON, Canada\nData-hungry machine learning methods have become a new standard to efficiently navigate chem-\nical compound space for molecular and materials design and discovery. Due to the severe scarcity\nand cost of high-quality experimental or synthetic simulated training data, however, data-acquisition\ncosts can be considerable. Relying on reasonably accurate approximate legacy baseline labels with\nlow computational complexity represents one of the most effective strategies to curb data-needs,\ne.g. through ∆-, transfer-, or multi-fidelity learning. A surprisingly effective and data-efficient base-\nline model is presented in the form of a generic coarse-graining Hammett-Inspired Product (HIP)\nAnsatz, generalizing the empirical Hammett equation towards arbitrary systems and properties. Nu-\nmerical evidence for the applicability of HIP includes solvation free energies of molecules, formation\nenergies of quaternary elpasolite crystals, carbon adsorption energies on heterogeneous cata",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "The HIP model generalizes the empirical Hammett equation towards arbitrary systems and properties, using a product of two scalars to predict chemical properties.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "problems": [
+    {
+      "value": "Data-hungry machine learning methods have limitations due to the scarcity and cost of high-quality experimental or synthetic simulated training data in chemical compound space exploration.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "hypotheses": [
+    {
+      "value": "A Hammett-Inspired Product (HIP) model can serve as a reasonably accurate and data-efficient baseline for ∆-machine learning models to curb data-needs.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "evidence": [
+    {
+      "value": "Numerical evidence includes solvation free energies, formation energies of crystals, carbon adsorption energies, HOMO-LUMO gaps, activation energies for reactions, and catalyst-substrate binding energies.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "conclusions": [
+    {
+      "value": "The HIP model demonstrates broad applicability and data-efficiency across chemically diverse systems, providing a fast and interpretable baseline for exploring chemical compound space.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "entities": [
+    {
+      "value": "Hammett-Inspired Product (HIP) model",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Chemical properties across different systems",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "Numerical evidence includes solvation free energies, formation energies of crystals, carbon adsorption energies, HOMO-LUMO gaps, activation energies for reactions, and catalyst-substrate binding energies.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [
+    {
+      "value": "Hammett-Inspired Product Baseline for Data-efficient Δ-ML in Chemical Space The HIP model generalizes the empirical Hammett equation towards arbitrary systems and properties, using a product of two scalars to predict chemical properties.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Hammett-Inspired Product (HIP) model Chemical properties across different systems Improved data-efficiency in machine learning models Effective baseline for ∆-machine learning applications",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [],
+  "conditions": [],
+  "mechanisms": [
+    {
+      "value": "Generalization of Hammett equation for arbitrary systems",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Use of two scalars to predict properties",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "outcomes": [
+    {
+      "value": "Improved data-efficiency in machine learning models",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Effective baseline for ∆-machine learning applications",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "Artificial Intelligence & Data Science",
+    "Chemistry"
+  ],
+  "reasoning_motifs": [
+    {
+      "value": "Simplicity → Transferability",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Coarse-graining → Data-efficiency",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "general_principles": [
+    {
+      "value": "parsimony in modeling",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "acgold_b83a0eb8f82f",
+    "cross_sdl_reasoning_json": "/Users/sissifeng/Downloads/cross-sdl_knowledge_transfer_engine/data/reasoning/acgold_b83a0eb8f82f.json",
+    "cross_sdl_extraction_quality": 0.8,
+    "cross_sdl_notes": "The paper presents a clear hypothesis, method, and conclusion. However, the exploration narrative is inferred from the paper's structure rather than explicitly stated."
+  },
+  "validation": {
+    "score": 0.72,
+    "coverage": {
+      "source_summary": false,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": true,
+      "entities": true,
+      "materials": true,
+      "properties": true,
+      "measurements": false,
+      "conditions": false,
+      "mechanisms": true,
+      "outcomes": true,
+      "cross_sdl_match": true
+    },
+    "missing": [
+      "source_summary",
+      "hardware",
+      "measurements",
+      "conditions"
+    ],
+    "notes": [
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

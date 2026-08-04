@@ -1,0 +1,103 @@
+{
+  "paper_id": "acfocus_7e47c58cf4bc",
+  "title": "QueST: Self-Supervised Skill Abstractions for Learning Continuous Control",
+  "metadata": {
+    "doi": "10.52202/079017-0133",
+    "url": "https://proceedings.neurips.cc/paper_files/paper/2024/file/076c3e48fa502c660902105965fdd9f6-Paper-Conference.pdf",
+    "year": "2024",
+    "authors": "Mete A, Xue H, Wilcox A, Chen Y, Garg A",
+    "venue": "Advances in Neural Information Processing Systems",
+    "category": "Conference",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Animesh Garg"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "checked",
+      "high_impact": "checked"
+    }
+  },
+  "source_summary": "The paper introduces Quantized Skill Transformer (QueST), a latent variable model that improves generalization in robot learning by learning flexible, causally-structured latent representations of low-level skills, outperforming existing imitation learning and LVM baselines on multitask and few-shot benchmarks.",
+  "abstract": "Generalization capabilities, or rather a lack thereof, is one of the most important unsolved problems in the field of robot learning, and while several large scale efforts have set out to tackle this problem, unsolved it remains. In this paper, we hypothesize that learning temporal action abstractions using latent variable models (LVMs), which learn to map data to a compressed latent space and back, is a promising direction towards low-level skills that can readily be used for new tasks. Although several works have attempted to show this, they have generally been limited by architectures that do not faithfully capture sharable representations. To address this we present Quantized Skill Transformer (QueST), which learns a larger and more flexible latent encoding that is more capable of modeling the breadth of low-level skills necessary for a variety of tasks. To make use of this extra flexibility, QueST imparts causal inductive bias from the action sequence data into the latent space, leading to more semantically useful and transferable representations. We compare to state-of-the-art imitation learning and LVM baselines and see that QueST's architecture leads to strong performance on several multitask and fewshot learning benchmarks. Further results and videos are available at https://quest-model.github.io.",
+  "hardware": [
+    {
+      "value": "The paper introduces Quantized Skill Transformer (QueST), a latent variable model that improves generalization in robot learning by learning flexible, causally-structured latent representations of low-level skills, outperforming existing imitation learning and LVM baselines on multitask and few-shot benchmarks.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Generalization capabilities, or rather a lack thereof, is one of the most important unsolved problems in the field of robot learning, and while several large scale efforts have set out to tackle this problem, unsolved it remains.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "methods": [
+    {
+      "value": "The paper introduces Quantized Skill Transformer (QueST), a latent variable model that improves generalization in robot learning by learning flexible, causally-structured latent representations of low-level skills, outperforming existing imitation learning and LVM baselines on multitask and few-shot benchmarks.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [],
+  "materials": [],
+  "properties": [],
+  "measurements": [],
+  "conditions": [],
+  "mechanisms": [],
+  "outcomes": [],
+  "sdl_tags": [],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.4,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": true,
+      "method": true,
+      "evidence": false,
+      "entities": false,
+      "materials": false,
+      "properties": false,
+      "measurements": false,
+      "conditions": false,
+      "mechanisms": false,
+      "outcomes": false,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "evidence",
+      "entities",
+      "materials",
+      "properties",
+      "measurements",
+      "conditions",
+      "mechanisms",
+      "outcomes",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only."
+    ]
+  }
+}

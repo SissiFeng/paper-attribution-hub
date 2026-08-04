@@ -1,0 +1,144 @@
+{
+  "paper_id": "acfocus_30e353d86fc0",
+  "title": "Alchemical diastereomers from antisymmetric alchemical perturbations",
+  "metadata": {
+    "doi": "10.1063/5.0283286",
+    "url": "https://www.scopus.com/pages/publications/105019269923",
+    "year": "2025",
+    "authors": "O. A. von Lilienfeld; G. Domenichini",
+    "venue": "Journal of Chemical Physics",
+    "category": "Journal article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Anatole von Lilienfeld"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance"
+    ],
+    "flags": {
+      "acknowledges_ac": "checked",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "The energy difference between any pair of iso-electronic systems (“alchemical diastereomers”) can be efficiently and accurately estimated using a first-order Hellmann-Feynman derivative evaluated at the averaged Hamiltonian, requiring only a single self-consistent field calculation per reference, with this approach validated across various molecules and configurations and yielding small errors.",
+  "abstract": "The energy difference between two iso-electronic systems can be approximated by the first order Hellmann-Feynman derivative with respect to the linear alchemical coupling parameter, evaluated using the electron density of the corresponding averaged Hamiltonian. This approximation is exact up to third order because even-order contributions cancel out. This finding holds for any iso-electronic compound pair (dubbed “alchemical diastereomers”), regardless of differences in configuration, composition, or energy, and consequently, relative energy estimates for all possible iso-electronic alchemical diastereomer pairs require only O(1) self-consistent field cycles for any given averaging reference Hamiltonian. We discuss the relation to the Verlet algorithm, alchemical harmonic approximation (AHA) [Krug et al., J. Chem. Phys. 162, 044101 (2025)], relative properties such as forces, ionization potential or electron affinities, and Levy’s formula for relative energies among iso-electronic systems that uses the averaged electron density of the two systems [Levy, J. Chem. Phys. 70, 1573 (1979)]. Density functional theory based estimates accurately reflect trends in the charge-neutral iso-electronic diatomic molecule series with 14 protons (N<inf>2</inf>, CO, BF, BeNe, LiNa, HeMg, HAl), with systematically increasing errors. Using alchemical Hellmann-Feynman derivatives for toluene, we demonstrate the concept’s broader applicability by estimating relative energies for all 36 possible alchemical diastereomer pairs from vertical iso-electronic charge-neutral antisymmetric BN doping of toluene’s aromatic ring, with mean absolute errors of a few milli-Hartrees. © 2025 Author(s).",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "The energy difference between any pair of iso-electronic systems (“alchemical diastereomers”) can be efficiently and accurately estimated using a first-order Hellmann-Feynman derivative evaluated at the averaged Hamiltonian, requiring only a single self-consistent field calculation per reference, with this approach validated across various molecules and configurations and yielding small errors.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Artificial Intelligence & Data Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Chemistry",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "Alchemical diastereomers from antisymmetric alchemical perturbations The energy difference between any pair of iso-electronic systems (“alchemical diastereomers”) can be efficiently and accurately estimated using a first-order Hellmann-Feynman derivative evaluated at the averaged Hamiltonian, requiring only a single self-consistent field calculation per reference, with this approach validated across various molecules and configurations and yielding small errors.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Density functional theory based estimates accurately reflect trends in the charge-neutral iso-electronic diatomic molecule series with 14 protons (N<inf>2</inf>, CO, BF, BeNe, LiNa, HeMg, HAl), with systematically increasing errors.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [
+    {
+      "value": "Alchemical diastereomers from antisymmetric alchemical perturbations The energy difference between any pair of iso-electronic systems (“alchemical diastereomers”) can be efficiently and accurately estimated using a first-order Hellmann-Feynman derivative evaluated at the averaged Hamiltonian, requiring only a single self-consistent field calculation per reference, with this approach validated across various molecules and configurations and yielding small errors.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "The energy difference between two iso-electronic systems can be approximated by the first order Hellmann-Feynman derivative with respect to the linear alchemical coupling parameter, evaluated using the electron density of the corresponding averaged Hamiltonian.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "This finding holds for any iso-electronic compound pair (dubbed “alchemical diastereomers”), regardless of differences in configuration, composition, or energy, and consequently, relative energy estimates for all possible iso-electronic alchemical diastereomer pairs require only O(1) self-consistent field cycles for any given averaging reference Hamiltonian.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "162, 044101 (2025)], relative properties such as forces, ionization potential or electron affinities, and Levy’s formula for relative energies among iso-electronic systems that uses the averaged electron density of the two systems [Levy, J.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [],
+  "conditions": [],
+  "mechanisms": [],
+  "outcomes": [],
+  "sdl_tags": [
+    "Artificial Intelligence & Data Science",
+    "Chemistry"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.51,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": true,
+      "properties": true,
+      "measurements": false,
+      "conditions": false,
+      "mechanisms": false,
+      "outcomes": false,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "measurements",
+      "conditions",
+      "mechanisms",
+      "outcomes",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

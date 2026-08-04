@@ -1,0 +1,122 @@
+{
+  "paper_id": "acfocus_16736c17fc79",
+  "title": "Material intelligence by the convergence of artificial intelligence and robotic platforms",
+  "metadata": {
+    "doi": "10.1016/j.ynexs.2025.100083",
+    "url": "https://www.sciencedirect.com/science/article/pii/S2950160125000300",
+    "year": "2025",
+    "authors": "X. Zhang; Z. Chen; F. Chen; B. Fanady; B. Wang; Z. Ni; S. Zhou; J. Ye; G. Chen; J. Liu; R. L. Z. Hoye; X. Li; S. Y. Chong; W. Feng; C. Y. Chung; C. C. Chan; L. Chen; H. Hao; A. Aspuru-Guzik; J. Jiang; H. Zhao",
+    "venue": "Nexus",
+    "category": "Journal Article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Alán Aspuru-Guzik"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "This review discusses how the convergence of artificial intelligence, robotics, and material informatics is revolutionizing materials research by unifying data-guided design, automation-enabled synthesis, and autonomy-facilitated inverse design into a closed-loop paradigm that enhances precision, efficiency, and intelligence in chemistry and material science.",
+  "abstract": "The emerging interdisciplinary research of material intelligence through the convergence of artificial intelligence, robotic platforms, and material informatics has revolutionized the field of chemistry and material science. This shift enables precision and intelligence in materials research to avoid the problems of trial-and-error synthesis and labor-intensive characterization. The aim of this review is to present a comprehensive methodology that unifies three interlinked domains: data-guided rational design (“reading”), automation-enabled controllable synthesis (“doing”), and autonomy-facilitated inverse design (“thinking”). We critically examine how the integration of materials common discipline (i.e., rational design, controllable synthesis, inverse design) with interdisciplinary research (i.e., data, automation, autonomy), with an emphasis on cutting-edge research of artificial intelligence and robotics, collectively shape a closed-loop next paradigm of material intelligence, revolutionizing experimental, theoretical, software-driven and data-driven paradigms. Ultimately, this paper discusses how these insights drive the new paradigm of materials research, which seamlessly combines database, robotics, artificial intelligence, and even embodied intelligence to empower the full potential of material intelligence.",
+  "hardware": [
+    {
+      "value": "The emerging interdisciplinary research of material intelligence through the convergence of artificial intelligence, robotic platforms, and material informatics has revolutionized the field of chemistry and material science.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "methods": [
+    {
+      "value": "This review discusses how the convergence of artificial intelligence, robotics, and material informatics is revolutionizing materials research by unifying data-guided design, automation-enabled synthesis, and autonomy-facilitated inverse design into a closed-loop paradigm that enhances precision, efficiency, and intelligence in chemistry and material science.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [],
+  "materials": [
+    {
+      "value": "Material intelligence by the convergence of artificial intelligence and robotic platforms This review discusses how the convergence of artificial intelligence, robotics, and material informatics is revolutionizing materials research by unifying data-guided design, automation-enabled synthesis, and autonomy-facilitated inverse design into a closed-loop paradigm that enhances precision, efficiency, and intelligence in chemistry and material science.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "The emerging interdisciplinary research of material intelligence through the convergence of artificial intelligence, robotic platforms, and material informatics has revolutionized the field of chemistry and material science.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "This shift enables precision and intelligence in materials research to avoid the problems of trial-and-error synthesis and labor-intensive characterization.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [],
+  "measurements": [
+    {
+      "value": "This shift enables precision and intelligence in materials research to avoid the problems of trial-and-error synthesis and labor-intensive characterization.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "conditions": [],
+  "mechanisms": [],
+  "outcomes": [],
+  "sdl_tags": [],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.53,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": true,
+      "method": true,
+      "evidence": false,
+      "entities": false,
+      "materials": true,
+      "properties": false,
+      "measurements": true,
+      "conditions": false,
+      "mechanisms": false,
+      "outcomes": false,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "evidence",
+      "entities",
+      "properties",
+      "conditions",
+      "mechanisms",
+      "outcomes",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only."
+    ]
+  }
+}

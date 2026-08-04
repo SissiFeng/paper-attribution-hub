@@ -1,0 +1,250 @@
+{
+  "paper_id": "acfocus_b16848c76770",
+  "title": "Encrypted machine learning of molecular quantum properties",
+  "metadata": {
+    "doi": "10.1088/2632-2153/acc928",
+    "url": "https://iopscience.iop.org/article/10.1088/2632-2153/acc928",
+    "year": "2023",
+    "authors": "Weinreich, Jan; Falk Von Rudorff, Guido; Anatole Von Lilienfeld, O",
+    "venue": "Machine Learning: Science and Technology",
+    "category": "Journal article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Anatole von Lilienfeld"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "checked",
+      "high_impact": "checked"
+    }
+  },
+  "source_summary": "The authors present a secure and computationally feasible method for encrypted machine learning predictions of molecular quantum properties using oblivious transfer, but find that such encrypted predictions are vastly more expensive than unencrypted ones, highlighting the urgent need for more compact and efficient model architectures.",
+  "abstract": "Abstract             Large machine learning (ML) models with improved predictions have become widely available in the chemical sciences. Unfortunately, these models do not protect the privacy necessary within commercial settings, prohibiting the use of potentially extremely valuable data by others. Encrypting the prediction process can solve this problem by double-blind model evaluation and prohibits the extraction of training or query data. However, contemporary ML models based on fully homomorphic encryption or federated learning are either too expensive for practical use or have to trade higher speed for weaker security. We have implemented secure and computationally feasible encrypted ML models using oblivious transfer enabling and secure predictions of molecular quantum properties across chemical compound space. However, we find that encrypted predictions using kernel ridge regression models are a million times more expensive than without encryption. This demonstrates a dire need for a compact ML model architecture, including molecular representation and kernel matrix size, that minimizes model evaluation costs.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "Implementation of secure and computationally feasible encrypted ML models using oblivious transfer enabling secure predictions.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "problems": [
+    {
+      "value": "Privacy preservation in machine learning models to protect sensitive data within commercial settings.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "hypotheses": [
+    {
+      "value": "Encrypted machine learning can enable secure predictions of molecular quantum properties without disclosing training or query data.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "evidence": [
+    {
+      "value": "Encrypted predictions using kernel ridge regression models accurately reproduce unencrypted calculations' results.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "conclusions": [
+    {
+      "value": "Encrypted machine learning models can securely predict molecular properties without compromising data privacy.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "entities": [
+    {
+      "value": "Molecular quantum properties",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Encrypted machine learning models",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Kernel ridge regression",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Molecular representation vectors (Coulomb matrix and FCHL19)",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "materials": [],
+  "properties": [
+    {
+      "value": "Encrypted machine learning of molecular quantum properties The authors present a secure and computationally feasible method for encrypted machine learning predictions of molecular quantum properties using oblivious transfer, but find that such encrypted predictions are vastly more expensive than unencrypted ones, highlighting the urgent need for more compact and efficient model architectures.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "We have implemented secure and computationally feasible encrypted ML models using oblivious transfer enabling and secure predictions of molecular quantum properties across chemical compound space.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Molecular quantum properties Encrypted machine learning models Kernel ridge regression Molecular representation vectors (Coulomb matrix and FCHL19) Secure predictions of molecular properties Privacy preservation of training and query data Reduction of computational costs through compact molecular representations",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [],
+  "conditions": [],
+  "mechanisms": [
+    {
+      "value": "Oblivious transfer for secure data exchange",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Kernel ridge regression for supervised learning",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Molecular representation for feature extraction",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "outcomes": [
+    {
+      "value": "Secure predictions of molecular properties",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Privacy preservation of training and query data",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Reduction of computational costs through compact molecular representations",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "Chemistry",
+    "Artificial Intelligence & Data Science"
+  ],
+  "reasoning_motifs": [
+    {
+      "value": "Privacy → Security",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Feature Complexity → Computational Efficiency",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Model Compactness → Prediction Cost",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "general_principles": [
+    {
+      "value": "Security through encryption",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Computational efficiency through model optimization",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Cost-effectiveness through algorithmic simplicity",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "failure_paths": [
+    {
+      "value": "success: Using encrypted predictions for molecular properties to maintain data privacy. Evidence: Encrypted predictions accurately reproduce unencrypted calculations' results.",
+      "source": "cross_sdl_phase4",
+      "confidence": 0.75,
+      "evidence": ""
+    },
+    {
+      "value": "partial: Comparing encrypted predictions using different molecular representations (Coulomb matrix and FCHL19). Evidence: While both representations are effective, the compactness of the Coulomb matrix reduces prediction time and data transfer.",
+      "source": "cross_sdl_phase4",
+      "confidence": 0.75,
+      "evidence": ""
+    }
+  ],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "acgold_81ec999121aa",
+    "cross_sdl_reasoning_json": "/Users/sissifeng/Downloads/cross-sdl_knowledge_transfer_engine/data/reasoning/acgold_81ec999121aa.json",
+    "cross_sdl_extraction_quality": 0.8,
+    "cross_sdl_notes": "The paper provides a clear structure for the problem, hypothesis, method, and results. However, the extraction of layer4_principles is somewhat inferred based on the overall scientific context rather than explicitly stated in the paper."
+  },
+  "validation": {
+    "score": 0.73,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": true,
+      "entities": true,
+      "materials": false,
+      "properties": true,
+      "measurements": false,
+      "conditions": false,
+      "mechanisms": true,
+      "outcomes": true,
+      "cross_sdl_match": true
+    },
+    "missing": [
+      "hardware",
+      "materials",
+      "measurements",
+      "conditions"
+    ],
+    "notes": [
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

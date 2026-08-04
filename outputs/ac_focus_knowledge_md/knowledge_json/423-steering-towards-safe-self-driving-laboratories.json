@@ -1,0 +1,116 @@
+{
+  "paper_id": "acfocus_d4b1bbaaaed4",
+  "title": "Steering towards safe self-driving laboratories",
+  "metadata": {
+    "doi": "10.1038/s41570-025-00747-x",
+    "url": "https://www.nature.com/articles/s41570-025-00747-x.pdf",
+    "year": "2025",
+    "authors": "S. X. Leong; C. E. Griesbach; R. Zhang; K. Darvish; Y. Zhao; A. Mandal; Y. Zou; H. Hao; V. Bernales; A. Aspuru-Guzik",
+    "venue": "Nature Reviews Chemistry",
+    "category": "Journal Article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Alán Aspuru-Guzik"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "This Perspective reviews the rapid development of self-driving laboratories (SDLs), compares their evolution and safety challenges to other autonomous technologies, and highlights the need for prioritizing safety measures as SDLs expand their capabilities in scientific research.",
+  "abstract": "The past decade has witnessed remarkable advancements in autonomous systems, such as automobiles that are evolving from traditional vehicles to ones capable of navigating complex environments without human intervention. Similarly, the rise of self-driving laboratories (SDLs), which leverage robotics and artificial intelligence to accelerate discovery, is driving a paradigm shift in scientific research. As SDLs evolve to expand the scope of chemical processes that can be performed, it is essential to bring safety to the forefront to ensure that the necessary safeguards are in place to mitigate against potential accidents that range from near-misses to catastrophic failures. This Perspective examines the development trajectory of SDLs, juxtaposing their development with those of other autonomous technologies, with a particular focus on safety. We explore current safety status and concerns, identify opportunities for innovation to shape this rapidly evolving landscape, and reflect on the actions the SDL community can take moving forward. (Figure presented.)",
+  "hardware": [
+    {
+      "value": "This Perspective reviews the rapid development of self-driving laboratories (SDLs), compares their evolution and safety challenges to other autonomous technologies, and highlights the need for prioritizing safety measures as SDLs expand their capabilities in scientific research.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "The past decade has witnessed remarkable advancements in autonomous systems, such as automobiles that are evolving from traditional vehicles to ones capable of navigating complex environments without human intervention.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "This Perspective examines the development trajectory of SDLs, juxtaposing their development with those of other autonomous technologies, with a particular focus on safety.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "methods": [
+    {
+      "value": "This Perspective reviews the rapid development of self-driving laboratories (SDLs), compares their evolution and safety challenges to other autonomous technologies, and highlights the need for prioritizing safety measures as SDLs expand their capabilities in scientific research.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [],
+  "materials": [],
+  "properties": [],
+  "measurements": [],
+  "conditions": [
+    {
+      "value": "We explore current safety status and concerns, identify opportunities for innovation to shape this rapidly evolving landscape, and reflect on the actions the SDL community can take moving forward.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "mechanisms": [],
+  "outcomes": [],
+  "sdl_tags": [],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.44,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": true,
+      "method": true,
+      "evidence": false,
+      "entities": false,
+      "materials": false,
+      "properties": false,
+      "measurements": false,
+      "conditions": true,
+      "mechanisms": false,
+      "outcomes": false,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "evidence",
+      "entities",
+      "materials",
+      "properties",
+      "measurements",
+      "mechanisms",
+      "outcomes",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only."
+    ]
+  }
+}

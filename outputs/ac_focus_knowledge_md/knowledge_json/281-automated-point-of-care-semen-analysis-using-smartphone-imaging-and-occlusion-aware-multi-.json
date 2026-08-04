@@ -1,0 +1,171 @@
+{
+  "paper_id": "acfocus_fb70d97c504d",
+  "title": "Automated Point-of-Care Semen Analysis Using Smartphone Imaging and Occlusion-Aware Multi-Object Tracking",
+  "metadata": {
+    "doi": "10.1109/tase.2024.3378702",
+    "url": "https://ieeexplore.ieee.org/document/10494043",
+    "year": "2025",
+    "authors": "A. Jiang; M. Hao; Y. Li; J. Wang; C. Yue; Z. Huang; Y. Yang; M. Ma; R. Zhai; J. Zhu; C. Ru; Q. Lyu; Y. Sun; Z. Zhang",
+    "venue": "IEEE Transactions on Automation Science and Engineering",
+    "category": "Journal Article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Yu Sun"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "This paper introduces a smartphone-based, automated point-of-care semen analysis method using advanced imaging and occlusion-aware tracking algorithms to accurately measure sperm concentration and motility, achieving clinical-level performance and reliability comparable to professional laboratory systems.",
+  "abstract": "This paper presents an automated point-of-care semen analysis method that uses smartphone imaging to visually measure sperm concentration and motility of semen samples. The proposed method follows the same visual tracking scheme as laboratory semen analysis systems, aiming to match clinical standards while being suitable for point-of-care use. A boundary-sensitive segmentation network is developed to identify and distinguish sperm from impurities in raw semen. A novel occlusion-aware multi-sperm tracking algorithm is proposed to tackle challenges posed by smartphone imaging and undiluted raw semen samples. For automated motility measurement, an occlusion-awareness module is proposed to robustly track multiple sperm during frequent sperm crossover/occlusion. The module combines the segmented contour and kinematic-based probabilistic modeling to determine the occlusion status of both targets and measurements, facilitating fundamental improvement to feasible joint event enumeration to enable robust data association. The proposed method achieved a high success rate of 95.14% for tracking occluded sperm, with low mean errors for sperm concentration (2.03 million/ml) and motility (1.58%), outperforming existing multi-sperm tracking methods. In clinical tests involving 50 participants, our method exhibited good agreement with clinical standards (Spearman rank correlation coefficients of 0.94 for concentration and 0.89 for motility) even when used by inexperienced users. Note to Practitioners - Semen analysis is the gold standard method for assessing male reproductive capacity. Clinical semen analysis routinely uses professional computer-assisted semen analysis (CASA) systems to examine sperm concentration and motility; however, clinical visits for semen analysis are not always feasible due to the unavailability of such professional systems and the mental stress brought by clinical visits. This work provides a point-of-care semen analysis method. For hardware, a smartphone microscopic imaging modality was developed to enable clear visualization of sperm with the built-in smartphone camera. For software, an occlusion-aware multi-sperm tracking algorithm was proposed to automatically measure sperm concentration and motility. In addition to intensively validating the proposed point-of-care method against clinical CASA systems, this work also analyzed different types of tracking failure and quantified their effects on the automated evaluation of sperm concentration and motility. The techniques pave the way for further improvement in both point-of-care and clinical semen analysis. Overall, this work offers an accessible and reliable tool for automated male fertility evaluation. © 2024 IEEE.",
+  "hardware": [
+    {
+      "value": "This paper introduces a smartphone-based, automated point-of-care semen analysis method using advanced imaging and occlusion-aware tracking algorithms to accurately measure sperm concentration and motility, achieving clinical-level performance and reliability comparable to professional laboratory systems.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "This paper presents an automated point-of-care semen analysis method that uses smartphone imaging to visually measure sperm concentration and motility of semen samples.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "For automated motility measurement, an occlusion-awareness module is proposed to robustly track multiple sperm during frequent sperm crossover/occlusion.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "In addition to intensively validating the proposed point-of-care method against clinical CASA systems, this work also analyzed different types of tracking failure and quantified their effects on the automated evaluation of sperm concentration and motility.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "methods": [
+    {
+      "value": "This paper introduces a smartphone-based, automated point-of-care semen analysis method using advanced imaging and occlusion-aware tracking algorithms to accurately measure sperm concentration and motility, achieving clinical-level performance and reliability comparable to professional laboratory systems.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Automation and Robotics",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [],
+  "properties": [],
+  "measurements": [
+    {
+      "value": "For automated motility measurement, an occlusion-awareness module is proposed to robustly track multiple sperm during frequent sperm crossover/occlusion.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "The module combines the segmented contour and kinematic-based probabilistic modeling to determine the occlusion status of both targets and measurements, facilitating fundamental improvement to feasible joint event enumeration to enable robust data association.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "For hardware, a smartphone microscopic imaging modality was developed to enable clear visualization of sperm with the built-in smartphone camera.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "conditions": [
+    {
+      "value": "Automated Point-of-Care Semen Analysis Using Smartphone Imaging and Occlusion-Aware Multi-Object Tracking This paper introduces a smartphone-based, automated point-of-care semen analysis method using advanced imaging and occlusion-aware tracking algorithms to accurately measure sperm concentration and motility, achieving clinical-level performance and reliability comparable to professional laboratory systems.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "This paper presents an automated point-of-care semen analysis method that uses smartphone imaging to visually measure sperm concentration and motility of semen samples.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "The proposed method achieved a high success rate of 95.14% for tracking occluded sperm, with low mean errors for sperm concentration (2.03 million/ml) and motility (1.58%), outperforming existing multi-sperm tracking methods.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "In clinical tests involving 50 participants, our method exhibited good agreement with clinical standards (Spearman rank correlation coefficients of 0.94 for concentration and 0.89 for motility) even when used by inexperienced users.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Clinical semen analysis routinely uses professional computer-assisted semen analysis (CASA) systems to examine sperm concentration and motility; however, clinical visits for semen analysis are not always feasible due to the unavailability of such professional systems and the mental stress brought by clinical visits.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "mechanisms": [],
+  "outcomes": [],
+  "sdl_tags": [
+    "Automation and Robotics"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.57,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": true,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": false,
+      "properties": false,
+      "measurements": true,
+      "conditions": true,
+      "mechanisms": false,
+      "outcomes": false,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "evidence",
+      "materials",
+      "properties",
+      "mechanisms",
+      "outcomes",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only."
+    ]
+  }
+}

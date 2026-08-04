@@ -1,0 +1,169 @@
+{
+  "paper_id": "acfocus_3302941b7a5e",
+  "title": "Artificial intelligence for advanced functional materials: exploring current and future directions",
+  "metadata": {
+    "doi": "10.1088/2515-7639/adc29d",
+    "url": "https://www.scopus.com/inward/record.uri?eid=2-s2.0-105003766969&doi=10.1088%2f2515-7639%2fadc29d&partnerID=40&md5=a42a92a69bcb8fe36bb3d2f220a0f6c6",
+    "year": "2025",
+    "authors": "Malica C., Novoselov K.S., Barnard A.S., Kalinin S.V., Spurgeon S.R., Reuter K., Alducin M., Deringer V.L., Csányi G., Marzari N., Huang S., Cuniberti G., Deng Q., Ordejón P., Cole I., Choudhary K., Hippalgaonkar K., Zhu R., von Lilienfeld O.A., Hibat-Allah M., Carrasquilla J., Cisotto G., Zancanaro A., Wenzel W., Ferrari A.C., Ustyuzhanin A., Roche S.",
+    "venue": "JPhys Materials",
+    "category": "Journal article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Anatole von Lilienfeld"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance"
+    ],
+    "flags": {
+      "acknowledges_ac": "checked",
+      "highly_relevant": "checked",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "This perspective explores how artificial intelligence is advancing innovation in functional materials design, discovery, and engineering for applications like energy storage and biomedicine, highlighting expert insights on challenges, opportunities, and recent progress in AI-driven materials databases, production, and large-scale atomic simulations.",
+  "abstract": "This perspective addresses the topic of harnessing the tools of artificial intelligence (AI) for boosting innovation in functional materials design and engineering as well as discovering new materials for targeted applications in energy storage, biomedicine, composites, nanoelectronics or quantum technologies. It gives a current view of experts in the field, insisting on challenges and opportunities provided by the development of large materials databases, novel schemes for implementing AI into materials production and characterization as well as progress in the quest of simulating physical and chemical properties of realistic atomic models reaching the trillion atoms scale and with near ab initio accuracy. © 2025 The Author(s). Published by IOP Publishing Ltd.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "This perspective explores how artificial intelligence is advancing innovation in functional materials design, discovery, and engineering for applications like energy storage and biomedicine, highlighting expert insights on challenges, opportunities, and recent progress in AI-driven materials databases, production, and large-scale atomic simulations.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Artificial Intelligence & Data Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Chemistry",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Materials Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "Artificial intelligence for advanced functional materials: exploring current and future directions This perspective explores how artificial intelligence is advancing innovation in functional materials design, discovery, and engineering for applications like energy storage and biomedicine, highlighting expert insights on challenges, opportunities, and recent progress in AI-driven materials databases, production, and large-scale atomic simulations.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "This perspective addresses the topic of harnessing the tools of artificial intelligence (AI) for boosting innovation in functional materials design and engineering as well as discovering new materials for targeted applications in energy storage, biomedicine, composites, nanoelectronics or quantum technologies.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "It gives a current view of experts in the field, insisting on challenges and opportunities provided by the development of large materials databases, novel schemes for implementing AI into materials production and characterization as well as progress in the quest of simulating physical and chemical properties of realistic atomic models reaching the trillion atoms scale and with near ab initio accuracy.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [
+    {
+      "value": "Artificial intelligence for advanced functional materials: exploring current and future directions This perspective explores how artificial intelligence is advancing innovation in functional materials design, discovery, and engineering for applications like energy storage and biomedicine, highlighting expert insights on challenges, opportunities, and recent progress in AI-driven materials databases, production, and large-scale atomic simulations.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "This perspective addresses the topic of harnessing the tools of artificial intelligence (AI) for boosting innovation in functional materials design and engineering as well as discovering new materials for targeted applications in energy storage, biomedicine, composites, nanoelectronics or quantum technologies.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "It gives a current view of experts in the field, insisting on challenges and opportunities provided by the development of large materials databases, novel schemes for implementing AI into materials production and characterization as well as progress in the quest of simulating physical and chemical properties of realistic atomic models reaching the trillion atoms scale and with near ab initio accuracy.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [
+    {
+      "value": "It gives a current view of experts in the field, insisting on challenges and opportunities provided by the development of large materials databases, novel schemes for implementing AI into materials production and characterization as well as progress in the quest of simulating physical and chemical properties of realistic atomic models reaching the trillion atoms scale and with near ab initio accuracy.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "conditions": [
+    {
+      "value": "Artificial intelligence for advanced functional materials: exploring current and future directions This perspective explores how artificial intelligence is advancing innovation in functional materials design, discovery, and engineering for applications like energy storage and biomedicine, highlighting expert insights on challenges, opportunities, and recent progress in AI-driven materials databases, production, and large-scale atomic simulations.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "It gives a current view of experts in the field, insisting on challenges and opportunities provided by the development of large materials databases, novel schemes for implementing AI into materials production and characterization as well as progress in the quest of simulating physical and chemical properties of realistic atomic models reaching the trillion atoms scale and with near ab initio accuracy.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "mechanisms": [],
+  "outcomes": [],
+  "sdl_tags": [
+    "Artificial Intelligence & Data Science",
+    "Chemistry",
+    "Materials Science"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.61,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": true,
+      "properties": true,
+      "measurements": true,
+      "conditions": true,
+      "mechanisms": false,
+      "outcomes": false,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "mechanisms",
+      "outcomes",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

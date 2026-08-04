@@ -1,0 +1,243 @@
+{
+  "paper_id": "acfocus_7fc8fece34da",
+  "title": "StepFormer: Self-supervised Step Discovery and Localization in Instructional Videos",
+  "metadata": {
+    "doi": "10.48550/arxiv.2304.13265",
+    "url": "https://arxiv.org/abs/2304.13265",
+    "year": "2023",
+    "authors": "Dvornik, Nikita; Hadji, Isma; Zhang, Ran; Derpanis, Konstantinos G.; Garg, Animesh; Wildes, Richard P.; Jepson, Allan D.",
+    "venue": "arxiv",
+    "category": "Preprint",
+    "peer_reviewed": "Non Peer Reviewed",
+    "ac_members": [
+      "Animesh Garg"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "StepFormer is a self-supervised transformer model that uses only automatically-generated subtitles to discover and localize key instruction steps in instructional videos, outperforming previous unsupervised and weakly-supervised methods on multiple benchmarks.",
+  "abstract": "Instructional videos are an important resource to learn procedural tasks from human demonstrations. However, the instruction steps in such videos are typically short and sparse, with most of the video being irrelevant to the procedure. This motivates the need to temporally localize the instruction steps in such videos, i.e. the task called key-step localization. Traditional methods for key-step localization require video-level human annotations and thus do not scale to large datasets. In this work, we tackle the problem with no human supervision and introduce StepFormer, a self-supervised model that discovers and localizes instruction steps in a video. StepFormer is a transformer decoder that attends to the video with learnable queries, and produces a sequence of slots capturing the key-steps in the video. We train our system on a large dataset of instructional videos, using their automatically-generated subtitles as the only source of supervision. In particular, we supervise our system with a sequence of text narrations using an order-aware loss function that filters out irrelevant phrases. We show that our model outperforms all previous unsupervised and weakly-supervised approaches on step detection and localization by a large margin on three challenging benchmarks. Moreover, our model demonstrates an emergent property to solve zero-shot multi-step localization and outperforms all relevant baselines at this task.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "The proposed model, StepFormer, is a transformer decoder that attends to the video with learnable queries and produces a sequence of slots capturing the key-steps in the video. It is trained using an order-aware loss function that filters out irrelevant phrases from the subtitles.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "problems": [
+    {
+      "value": "Temporally localizing instruction steps in instructional videos, which are typically long and noisy with only a limited number of frames corresponding to the instruction steps.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "hypotheses": [
+    {
+      "value": "A self-supervised model can discover and localize instruction steps in videos without human annotations by using automatically-generated subtitles as the only source of supervision.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "evidence": [
+    {
+      "value": "The model outperforms previous unsupervised and weakly-supervised approaches on step detection and localization across three challenging benchmarks: CrossTask, ProceL, and COIN.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "conclusions": [
+    {
+      "value": "StepFormer demonstrates the ability to effectively discover and localize instruction steps in instructional videos in a self-supervised manner, establishing a new state of the art in this domain.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "entities": [
+    {
+      "value": "Instructional videos",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Subtitles (text narrations)",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Step slots (output of StepFormer)",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "materials": [],
+  "properties": [
+    {
+      "value": "Moreover, our model demonstrates an emergent property to solve zero-shot multi-step localization and outperforms all relevant baselines at this task.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Instructional videos Subtitles (text narrations) Step slots (output of StepFormer) Improved step detection and localization in instructional videos Model generalizes well across different datasets without fine-tuning Emergent property of zero-shot multi-step localization from text prompts",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [],
+  "conditions": [],
+  "mechanisms": [
+    {
+      "value": "Sequence-to-sequence alignment for matching video content with subtitle narrations",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Order-aware loss function for enforcing the temporal order of step slots",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Self-supervised training using automatically-generated subtitles as the only supervision source",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "outcomes": [
+    {
+      "value": "Improved step detection and localization in instructional videos",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Model generalizes well across different datasets without fine-tuning",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Emergent property of zero-shot multi-step localization from text prompts",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "Artificial Intelligence & Data Science",
+    "Automation and Robotics"
+  ],
+  "reasoning_motifs": [
+    {
+      "value": "Sequence alignment → Temporal correspondence",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Irrelevant content filtering → Relevant signal enhancement",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Self-supervision → Generalization",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "general_principles": [
+    {
+      "value": "Signal enhancement through noise reduction",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Generalization through minimal supervision",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "failure_paths": [
+    {
+      "value": "failure: Training StepFormer without the sequence-to-sequence alignment loss (Lseq). Evidence: Performance severely degraded, especially on zero-shot key-step localization.",
+      "source": "cross_sdl_phase4",
+      "confidence": 0.75,
+      "evidence": ""
+    },
+    {
+      "value": "failure: Training StepFormer without the global contrastive learning loss (Lglobal). Evidence: Impaired performance on both unsupervised step segmentation and zero-shot key-step localization.",
+      "source": "cross_sdl_phase4",
+      "confidence": 0.75,
+      "evidence": ""
+    },
+    {
+      "value": "partial: Training StepFormer without diversity (Ldiv) and smoothness (Lsmooth) regularizers. Evidence: Mildly hurts unsupervised step segmentation performance, more noticeable drop in zero-shot key-step localization.",
+      "source": "cross_sdl_phase4",
+      "confidence": 0.75,
+      "evidence": ""
+    },
+    {
+      "value": "failure: Replacing Drop-DTW sequence alignment in inference with an order-agnostic procedure. Evidence: Notable drop in performance on zero-shot key-step localization where step order is essential.",
+      "source": "cross_sdl_phase4",
+      "confidence": 0.75,
+      "evidence": ""
+    }
+  ],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "acgold_1bf9ddc41484",
+    "cross_sdl_reasoning_json": "/Users/sissifeng/Downloads/cross-sdl_knowledge_transfer_engine/data/reasoning/acgold_1bf9ddc41484.json",
+    "cross_sdl_extraction_quality": 0.9,
+    "cross_sdl_notes": "The paper is highly structured with explicit hypotheses, methods, and results, making the extraction process straightforward. The reasoning is clear, and the conclusions are well-supported by the experiments."
+  },
+  "validation": {
+    "score": 0.73,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": true,
+      "entities": true,
+      "materials": false,
+      "properties": true,
+      "measurements": false,
+      "conditions": false,
+      "mechanisms": true,
+      "outcomes": true,
+      "cross_sdl_match": true
+    },
+    "missing": [
+      "hardware",
+      "materials",
+      "measurements",
+      "conditions"
+    ],
+    "notes": [
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

@@ -11,12 +11,11 @@ records to display "why" panels — it never invents new edges.
 from __future__ import annotations
 
 import math
-from collections.abc import Iterable
 from dataclasses import dataclass, field
 
 import networkx as nx
-from sqlalchemy import select
-from sqlalchemy.orm import Session, selectinload
+from sqlalchemy import func, select
+from sqlalchemy.orm import Session
 
 from app.models import (
     AcCorePaper,
@@ -27,6 +26,7 @@ from app.models import (
     PaperReference,
 )
 from app.services.author_matcher import preferred_author_display_name
+from app.services.filter_spec import PaperFilter, apply_filter
 
 _EXACT_C_NORM_NODE_LIMIT = 5000
 
@@ -94,7 +94,12 @@ class GraphSignals:
         }
 
 
-def build_coauthor_graph(session: Session, only_relevant: bool = False) -> nx.Graph:
+def build_coauthor_graph(
+    session: Session,
+    only_relevant: bool = False,
+    *,
+    filt: PaperFilter | None = None,
+) -> nx.Graph:
     """Author-level co-authorship graph (used by v0.1 endpoint + graph signals).
 
     Uses lean SQL queries instead of loading full Paper ORM objects to stay
@@ -106,16 +111,42 @@ def build_coauthor_graph(session: Session, only_relevant: bool = False) -> nx.Gr
     g = nx.Graph()
 
     # Query 1: paper-level data (id, sdl_tags, label, matched_topics).
-    paper_cls_stmt = (
-        select(
-            Paper.id,
-            Paper.year,
-            Paper.sdl_tags,
-            PaperClassification.label,
-            PaperClassification.matched_topics,
+    if filt is not None:
+        # Isolate the shared paper filter before joining the classification row.
+        # Some filter predicates use a correlated classification EXISTS; applying
+        # them to a statement that also joins that table makes SQLAlchemy remove
+        # every FROM clause through auto-correlation.
+        filtered_ids = apply_filter(
+            select(Paper.id.label("paper_id")), filt
+        ).subquery()
+        paper_cls_stmt = (
+            select(
+                Paper.id,
+                Paper.year,
+                Paper.sdl_tags,
+                PaperClassification.label,
+                PaperClassification.matched_topics,
+            )
+            .join(filtered_ids, filtered_ids.c.paper_id == Paper.id)
+            .outerjoin(
+                PaperClassification,
+                PaperClassification.paper_id == Paper.id,
+            )
         )
-        .outerjoin(PaperClassification, PaperClassification.paper_id == Paper.id)
-    )
+    else:
+        paper_cls_stmt = (
+            select(
+                Paper.id,
+                Paper.year,
+                Paper.sdl_tags,
+                PaperClassification.label,
+                PaperClassification.matched_topics,
+            )
+            .outerjoin(
+                PaperClassification,
+                PaperClassification.paper_id == Paper.id,
+            )
+        )
     if only_relevant:
         paper_cls_stmt = paper_cls_stmt.where(
             PaperClassification.label.in_({"CORE_RELEVANT", "RELATED_RELEVANT"})
@@ -127,6 +158,8 @@ def build_coauthor_graph(session: Session, only_relevant: bool = False) -> nx.Gr
             "sdl_tags": sdl_tags or [],
             "matched_topics": matched_topics or [],
         }
+
+    g.graph["filtered_paper_count"] = len(paper_data)
 
     if not paper_data:
         return g
@@ -150,6 +183,33 @@ def build_coauthor_graph(session: Session, only_relevant: bool = False) -> nx.Gr
             "institution_id": inst_id,
         }
         for a_id, name, is_ac, inst_id, inst_name in author_rows
+    }
+
+    # Keep the analysis count distinct from the full ingested-corpus count.
+    # The former follows ``filt`` and is used by every graph metric; the latter
+    # is display-only context that explains why a filtered view may show fewer
+    # papers than an author's complete PAS corpus record.
+    corpus_paper_counts = dict(
+        session.execute(
+            select(
+                PaperAuthor.author_id,
+                func.count(func.distinct(PaperAuthor.paper_id)),
+            ).group_by(PaperAuthor.author_id)
+        ).all()
+    )
+
+    # Citation affinity is about resolved links to curated AC-core papers, not
+    # raw citation volume. Multiple parsed reference rows from the same paper
+    # intentionally count once.
+    reference_rows = session.execute(
+        select(
+            PaperReference.citing_paper_id,
+            PaperReference.cited_ac_core_id,
+        ).where(PaperReference.citing_paper_id.in_(list(paper_data)))
+    ).all()
+    reference_evidence_papers = {paper_id for paper_id, _core_id in reference_rows}
+    ac_core_citing_papers = {
+        paper_id for paper_id, core_id in reference_rows if core_id is not None
     }
 
     # Query 3: paper-author associations (only for papers we care about).
@@ -179,12 +239,20 @@ def build_coauthor_graph(session: Session, only_relevant: bool = False) -> nx.Gr
                     label=info["label"],
                     is_ac_member=info["is_ac_member"],
                     institution=info["institution"],
+                    institution_id=info["institution_id"],
                     paper_count=0,
+                    corpus_paper_count=int(corpus_paper_counts.get(a_id, 0)),
                     active_years=set(),
                     sdl_contexts=set(),
                     institution_contexts=set(),
+                    reference_evidence_papers=set(),
+                    ac_core_citing_papers=set(),
                 )
             g.nodes[a_id]["paper_count"] += 1
+            if paper_id in reference_evidence_papers:
+                g.nodes[a_id]["reference_evidence_papers"].add(paper_id)
+            if paper_id in ac_core_citing_papers:
+                g.nodes[a_id]["ac_core_citing_papers"].add(paper_id)
             if pdata["year"] is not None:
                 g.nodes[a_id]["active_years"].add(int(pdata["year"]))
             g.nodes[a_id]["sdl_contexts"].update(sdl_ctx)
@@ -322,8 +390,8 @@ def ppr_toward_ac(g: nx.Graph, ac_ids: set[str]) -> dict[str, float]:
     Solves π = α·p + (1−α)·W^T·π where p_i = 1/|AC| if i∈AC, else 0.
 
     Interpretation: steady-state probability that a random walker, restarting
-    toward AC members with probability (1−α), is found at node i. Directly
-    models "how much AC influence structurally flows to this author."
+    toward AC members with probability (1−α), is found at node i. This models
+    structural proximity to the AC-seeded coauthor network, not causal influence.
 
     Returns scores normalized to [0, 1] so the best-positioned AC-adjacent
     author maps to 1.0 and distant authors approach 0.
@@ -434,6 +502,19 @@ def evans_chen_c_norm(g: nx.Graph) -> dict[str, float]:
     return c_norm
 
 
+def excess_centrality_mode(g: nx.Graph) -> str:
+    """Describe whether c_norm is computed or deliberately neutralized."""
+    node_count = g.number_of_nodes()
+    if node_count < 4:
+        return "neutral_insufficient_nodes"
+    if node_count > _EXACT_C_NORM_NODE_LIMIT:
+        return "neutral_large_graph_fallback"
+    mean_degree = sum(dict(g.degree()).values()) / node_count
+    if mean_degree <= 1.0:
+        return "neutral_sparse_graph"
+    return "exact_weighted_harmonic"
+
+
 def compute_graph_signals(session: Session) -> dict[str, GraphSignals]:
     """For every paper, compute network_score + citation_score + supporting paths.
 
@@ -443,7 +524,7 @@ def compute_graph_signals(session: Session) -> dict[str, GraphSignals]:
           PPR_AC(author) × (1 + λ · max(0, c_norm(author) − 1))
       where
           PPR_AC  = AC-Personalized PageRank (α=0.85, weighted by normalized_weight)
-                    models how much AC influence flows to this author via the network
+                    models structural proximity to the AC-seeded coauthor network
           c_norm  = Evans & Chen (2022) excess centrality extended to weighted graphs:
                     c_norm = c_actual / c_fit, c_fit = 1/(β − ln(k_w)/ln(z̄_w))
                     captures authors who are MORE central than their degree predicts

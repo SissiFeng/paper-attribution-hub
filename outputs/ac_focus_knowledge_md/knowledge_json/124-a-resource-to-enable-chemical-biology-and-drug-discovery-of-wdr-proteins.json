@@ -1,0 +1,113 @@
+{
+  "paper_id": "acfocus_d14ec5647912",
+  "title": "A resource to enable chemical biology and drug discovery of WDR Proteins",
+  "metadata": {
+    "doi": "10.1101/2024.03.03.583197",
+    "url": "https://www.biorxiv.org/content/10.1101/2024.03.03.583197v1",
+    "year": "2024",
+    "authors": "Ackloo S, Li F, Szewczyk M, Seitova A, Loppnau P, Zeng H, Xu J, Ahmad S, Arnautova YA, Baghaie A, Beldar S, Bolotokova A, Centrella PA, Chau I, Clark MA, Cuozzo JW, Dehghani-Tafti S, Disch JS, Dong A, Dumas A, Feng JA, Ghiabi P, Gibson E, Gilmer J, Goldman B, Green SR, Guié M-A, Guilinger JP, Harms N, Herasymenko O, Houliston S, Hutchinson A, Kearnes S, Keefe AD, Kimani SW, Kramer T, Kutera M, Kwak HA, Lento C, Li Y, Liu J, Loup J, Machado RA, Mulhern CJ, Perveen S, Righetto GL, Riley P, Shrestha S, Sigel EA, Silva M, Sintchak MD, Slakman BL, Taylor RD, Thompson J, Torng W, Underkoffler C, von Rechenberg M, Watson I, Wilson DJ, Wolf E, Yadav M, Yazdi AK, Zhang J, Zhang Y, Santhakumar V, Edwards AM, Barsyte-Lovejoy D, Schapira M, Brown PJ, Halabelian L, Arrowsmith CH",
+    "venue": "biorxiv",
+    "category": "Preprint",
+    "peer_reviewed": "Non Peer Reviewed",
+    "ac_members": [
+      "Cheryl Arrowsmith",
+      "Matthieu Schapira"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance",
+      "AC Full Member"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "",
+  "abstract": "",
+  "hardware": [],
+  "methods": [],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Artificial Intelligence & Data Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Biology",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [],
+  "properties": [],
+  "measurements": [],
+  "conditions": [],
+  "mechanisms": [],
+  "outcomes": [
+    {
+      "value": "Therapeutics",
+      "source": "csv_applied_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "Artificial Intelligence & Data Science",
+    "Biology",
+    "Therapeutics"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.13,
+    "coverage": {
+      "source_summary": false,
+      "abstract": false,
+      "hardware": false,
+      "method": false,
+      "evidence": false,
+      "entities": true,
+      "materials": false,
+      "properties": false,
+      "measurements": false,
+      "conditions": false,
+      "mechanisms": false,
+      "outcomes": true,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "source_summary",
+      "abstract",
+      "hardware",
+      "method",
+      "evidence",
+      "materials",
+      "properties",
+      "measurements",
+      "conditions",
+      "mechanisms",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

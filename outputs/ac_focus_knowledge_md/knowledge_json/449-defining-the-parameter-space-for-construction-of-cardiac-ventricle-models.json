@@ -1,0 +1,133 @@
+{
+  "paper_id": "acfocus_b8466bd4e56b",
+  "title": "Defining the parameter space for construction of cardiac ventricle models",
+  "metadata": {
+    "doi": "10.1063/5.0272634",
+    "url": "https://pubs.aip.org/aip/bpr/article-abstract/6/4/041303/3374723/Defining-the-parameter-space-for-construction-of?redirectedFrom=fulltext",
+    "year": "2025",
+    "authors": "S. Okhovatian; M. Radisic",
+    "venue": "Biophysics Reviews",
+    "category": "Journal Article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Milica Radisic"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "The human heart’s complex structure and function, particularly the left ventricle’s unique fiber orientation and cellular composition, are being increasingly replicated through advanced fabrication techniques to create sophisticated LV models that enhance drug screening, provide insight into cardiac abnormalities, and hold potential for future therapeutic applications in cardiovascular medicine.",
+  "abstract": "The human heart is essential for circulation of nutrients, oxygen, and signalling molecules, with the left ventricle (LV) ejecting approximately 2000 gallons of blood per day. At the μm-scale, the myocardium is comprised of diverse cell types, with multinucleated and elongated cardiomyocytes being the main driver of cardiac contractions. At the mm scale, the myocardium is composed of cardiac myofibers aligned in directions ranging from 60° to –60°. This unique fiber orientation drives the cardiac wringing motion, with the base rotating clockwise and the apex counterclockwise, to enhance the ejection fraction. Novel fabrication techniques have enabled creation of sophisticated and functionally relevant cardiac structures capturing various aspects of heart architecture, such as conical shape of the ventricle as well as multilayered and helical fiber directionality. Designing models of LV cavity faces complex challenges such as consideration of cell type and density, scaling, biomaterials of choice, fabrication technique and vascularization. Advancements in adjacent fields such as organoid biology, heart-on-a-chips and biomaterial design could inspire high-throughput fabrication of LV models for enhanced drug screening and enhanced insight into impacts of anatomical abnormalities. LV models also hold promise for upsizing them to human-sized transplantable ventricles that aid therapeutic strategies in cardiovascular medicine.",
+  "hardware": [
+    {
+      "value": "Advancements in adjacent fields such as organoid biology, heart-on-a-chips and biomaterial design could inspire high-throughput fabrication of LV models for enhanced drug screening and enhanced insight into impacts of anatomical abnormalities.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "methods": [
+    {
+      "value": "The human heart’s complex structure and function, particularly the left ventricle’s unique fiber orientation and cellular composition, are being increasingly replicated through advanced fabrication techniques to create sophisticated LV models that enhance drug screening, provide insight into cardiac abnormalities, and hold potential for future therapeutic applications in cardiovascular medicine.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Artificial Intelligence & Data Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Biology",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "The human heart is essential for circulation of nutrients, oxygen, and signalling molecules, with the left ventricle (LV) ejecting approximately 2000 gallons of blood per day.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [],
+  "measurements": [],
+  "conditions": [],
+  "mechanisms": [],
+  "outcomes": [
+    {
+      "value": "Therapeutics",
+      "source": "csv_applied_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Tissue Engineering",
+      "source": "csv_applied_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "Artificial Intelligence & Data Science",
+    "Biology",
+    "Therapeutics",
+    "Tissue Engineering"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.6,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": true,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": true,
+      "properties": false,
+      "measurements": false,
+      "conditions": false,
+      "mechanisms": false,
+      "outcomes": true,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "evidence",
+      "properties",
+      "measurements",
+      "conditions",
+      "mechanisms",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only."
+    ]
+  }
+}

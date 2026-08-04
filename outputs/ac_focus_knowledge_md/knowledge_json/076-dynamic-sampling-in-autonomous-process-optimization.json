@@ -1,0 +1,256 @@
+{
+  "paper_id": "acfocus_afb5e9167b38",
+  "title": "Dynamic sampling in autonomous process optimization",
+  "metadata": {
+    "doi": "10.1039/d3sc06884f",
+    "url": "https://pubs.rsc.org/en/content/articlelanding/2024/sc/d3sc06884f",
+    "year": "2024",
+    "authors": "Christensen M.; Xu Y.; Kwan E.E.; Di Maso M.J.; Ji Y.; Reibarkh M.; Sun A.C.; Liaw A.; Fier P.S.; Grosser S.; Hein J.E.",
+    "venue": "Chemical Science",
+    "category": "Article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Jason Hein"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "checked",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "",
+  "abstract": "Dynamic sampling in autonomous process\noptimization†\nMelodie Christensen,\n*ab Yuting Xu,b Eugene E. Kwan,b Michael J. Di Maso,\nb\nYining Ji,\nb Mikhail Reibarkh,b Alexandra C. Sun,b Andy Liaw,b Patrick S. Fier,\nb\nShane Grosser\nb and Jason E. Hein\n*acd\nAutonomous process optimization (APO) is a technology that has recently found utility in a multitude of\nprocess optimization challenges. In contrast to most APO examples in microﬂow reactor systems, we\nrecently presented a system capable of optimization in high-throughput batch reactor systems. The\ndrawback of APO in a high-throughput batch reactor system is the reliance on reaction sampling at\na predetermined static timepoint rather than a dynamic endpoint. Static timepoint sampling can lead to\nthe inconsistent capture of the process performance under each process parameter permutation. This is\nimportant because critical process behaviors such as rate acceleration accompanied by decomposition\ncould be missed entirely. To address this drawback, we implemented a dynamic reaction endpoint\ndetermination strategy to capture the product purity once the process stream stabilized. We\naccomplished this through the incorporation of a real-time plateau detection algorithm into the APO\nworkﬂow to measure and report the product purity at the dynamically determined reaction endpoint. We\nthen applied this strategy to the autonomous optimization of a photobromination reaction towards the\nsynthesis of a pharmaceutically relevant intermediate. In doing so, we not only uncovered process\nconditions to access the desired monohalogenation product in 85 UPLC area % purity with minimal\ndecomposition risk, but also measured the eﬀect of each parameter on the process performance. Our\nresults highlight the advantage of incorporating dynamic sampling in APO workﬂows to drive\noptimization toward a stable and high-performing process.\nIntroduction\nArticial\nintelligence (AI)\nhas\nmultiple denitions, but\nperhaps the most comprehensive description was ",
+  "hardware": [
+    {
+      "value": "Incorporation of a real-time plateau detection algorithm into the APO workflow to measure and report the product purity at the dynamically determined reaction endpoint, applied to the autonomous optimization of a photobromination reaction.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "methods": [
+    {
+      "value": "Incorporation of a real-time plateau detection algorithm into the APO workflow to measure and report the product purity at the dynamically determined reaction endpoint, applied to the autonomous optimization of a photobromination reaction.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "problems": [
+    {
+      "value": "The reliance on reaction sampling at a predetermined static timepoint rather than a dynamic endpoint in high-throughput batch reactor systems for autonomous process optimization (APO).",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "hypotheses": [
+    {
+      "value": "Implementing a dynamic reaction endpoint determination strategy to capture the product purity once the process stream stabilized would improve APO.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "evidence": [
+    {
+      "value": "Uncovered process conditions to access the desired monohalogenation product in 85 UPLC area % purity with minimal decomposition risk, and measured the effect of each parameter on the process performance.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "conclusions": [
+    {
+      "value": "Incorporating dynamic sampling in APO workflows drives optimization toward a stable and high-performing process.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "entities": [
+    {
+      "value": "photobromination reaction",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "real-time plateau detection algorithm",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "product purity",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "process stream stability",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "materials": [],
+  "properties": [
+    {
+      "value": "photobromination reaction real-time plateau detection algorithm product purity process stream stability improved process optimization accurate capture of process performance minimized decomposition risk",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [],
+  "conditions": [
+    {
+      "value": "Dynamic sampling in autonomous process optimization Incorporation of a real-time plateau detection algorithm into the APO workflow to measure and report the product purity at the dynamically determined reaction endpoint, applied to the autonomous optimization of a photobromination reaction.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Uncovered process conditions to access the desired monohalogenation product in 85 UPLC area % purity with minimal decomposition risk, and measured the effect of each parameter on the process performance.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "photobromination reaction real-time plateau detection algorithm product purity process stream stability improved process optimization accurate capture of process performance minimized decomposition risk",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "mechanisms": [
+    {
+      "value": "dynamic reaction endpoint determination",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "real-time plateau detection",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "product purity measurement",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "outcomes": [
+    {
+      "value": "improved process optimization",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "accurate capture of process performance",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "minimized decomposition risk",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "Artificial Intelligence & Data Science",
+    "Chemistry",
+    "Chemical Engineering"
+  ],
+  "reasoning_motifs": [
+    {
+      "value": "Rate Acceleration → Decomposition Risk",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Stability → Process Performance",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Parameter Variation → Outcome Distribution",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "general_principles": [
+    {
+      "value": "Optimization Through Dynamic Endpoints",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Stability-Performance Tradeoff",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Multi-parametric Process Control",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "failure_paths": [
+    {
+      "value": "failure: Initial attempts at optimization without dynamic sampling, which led to inconsistent capture of process performance. Evidence: Static timepoint sampling could miss critical process behaviors such as rate acceleration accompanied by decomposition.",
+      "source": "cross_sdl_phase4",
+      "confidence": 0.75,
+      "evidence": ""
+    }
+  ],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "acgold_f8bcbc240246",
+    "cross_sdl_reasoning_json": "/Users/sissifeng/Downloads/cross-sdl_knowledge_transfer_engine/data/reasoning/acgold_f8bcbc240246.json",
+    "cross_sdl_extraction_quality": 0.8,
+    "cross_sdl_notes": "The paper provides a clear structure for the problem, hypothesis, method, evidence, and conclusion, facilitating a reliable extraction. However, some inferences were necessary to fill in the reasoning structure, particularly in identifying the underlying mechanisms and outcomes without explicit statements in the paper."
+  },
+  "validation": {
+    "score": 0.79,
+    "coverage": {
+      "source_summary": false,
+      "abstract": true,
+      "hardware": true,
+      "method": true,
+      "evidence": true,
+      "entities": true,
+      "materials": false,
+      "properties": true,
+      "measurements": false,
+      "conditions": true,
+      "mechanisms": true,
+      "outcomes": true,
+      "cross_sdl_match": true
+    },
+    "missing": [
+      "source_summary",
+      "materials",
+      "measurements"
+    ],
+    "notes": []
+  }
+}

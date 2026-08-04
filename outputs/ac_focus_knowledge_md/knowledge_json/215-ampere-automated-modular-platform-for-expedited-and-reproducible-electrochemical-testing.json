@@ -1,0 +1,331 @@
+{
+  "paper_id": "acfocus_e13d0d1981cb",
+  "title": "AMPERE: automated modular platform for expedited and reproducible electrochemical testing",
+  "metadata": {
+    "doi": "10.1039/d4dd00203b",
+    "url": "https://pubs.rsc.org/en/content/articlelanding/2024/dd/d4dd00203b",
+    "year": "2024",
+    "authors": "Abed J, Bai Y, Persaud D, Kim J, Witt J, Hattrick-Simpers J, Sargent EH",
+    "venue": "Digital Discovery",
+    "category": "Journal article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Yang Bai",
+      "Jason Hattrick-Simpers",
+      "Daniel Persaud"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Staff",
+      "AC Full Member",
+      "AC Governance",
+      "AC Trainee"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "checked",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "The paper presents AMPERE, an automated and modular platform that streamlines and accelerates large-scale, reproducible electrochemical catalyst screening and optimization, enabling rapid investigation of catalyst ink formulations and their effects on oxygen evolution reaction performance.",
+  "abstract": "Rapid and reliable electrochemical screening is critical to accelerate the development of catalysts for sustainable energy generation and storage. This paper introduces an automated and modular platform for expedited and reproducible electrochemical testing (AMPERE), designed to enhance the efficiency and reliability of multivariate optimization. The platform integrates a liquid-handling robot with custom-made modular array reactors, offering sample preparation and electrochemical testing in the same platform. Additionally, we use offline inductively coupled plasma optical emission spectroscopy (ICP-OES) to measure metal concentrations in the electrolyte after the reaction, which serves as a proxy for assessing the electrochemical stability. We use the platform to conduct 168 experiments continuously in less than 40 hours to examine the influence of catalyst ink formulation on the performance of Ir, Ru, IrO2, and RuO2 for the oxygen evolution reaction (OER) in acid. We specifically investigate the role of solvent type and concentration, catalyst concentration, and binder content on the performance. We find that Ru/RuO2 catalysts show improvements in activity that are not directly linked to improvements in the electrochemical surface area or inversely correlated to Ru dissolution. This suggests a complex interplay between the catalytic performance of the drop-casted catalyst film and ink formulation. AMPERE simplifies catalyst preparation and testing at large scale, making it faster, more reliable, and accessible for widespread use.",
+  "hardware": [
+    {
+      "value": "The paper presents AMPERE, an automated and modular platform that streamlines and accelerates large-scale, reproducible electrochemical catalyst screening and optimization, enabling rapid investigation of catalyst ink formulations and their effects on oxygen evolution reaction performance.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "This paper introduces an automated and modular platform for expedited and reproducible electrochemical testing (AMPERE), designed to enhance the efficiency and reliability of multivariate optimization.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "The platform integrates a liquid-handling robot with custom-made modular array reactors, offering sample preparation and electrochemical testing in the same platform.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Additionally, we use offline inductively coupled plasma optical emission spectroscopy (ICP-OES) to measure metal concentrations in the electrolyte after the reaction, which serves as a proxy for assessing the electrochemical stability.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "methods": [
+    {
+      "value": "Development and implementation of AMPERE, integrating a liquid-handling robot with custom-made modular array reactors for sample preparation and electrochemical testing.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "problems": [
+    {
+      "value": "Rapid and reliable electrochemical screening to accelerate the development of catalysts for sustainable energy generation and storage.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "hypotheses": [
+    {
+      "value": "An automated and modular platform for expedited and reproducible electrochemical testing can enhance efficiency and reliability in multivariate optimization of catalyst ink formulations.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "evidence": [
+    {
+      "value": "AMPERE conducted 168 experiments in less than 40 hours, examining the influence of catalyst ink formulation on the performance of Ir, Ru, IrO2, and RuO2 for the oxygen evolution reaction (OER) in acid.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "conclusions": [
+    {
+      "value": "AMPERE simplifies catalyst preparation and testing at large scale, making it faster, more reliable, and accessible for widespread use.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "entities": [
+    {
+      "value": "Ir, Ru, IrO2, and RuO2 catalysts",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Catalyst ink formulation",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Electrochemical surface area (ECSA)",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Metal dissolution",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "Ir, Ru, IrO2, and RuO2 catalysts",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Catalyst ink formulation",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Metal dissolution",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "AMPERE: automated modular platform for expedited and reproducible electrochemical testing The paper presents AMPERE, an automated and modular platform that streamlines and accelerates large-scale, reproducible electrochemical catalyst screening and optimization, enabling rapid investigation of catalyst ink formulations and their effects on oxygen evolution reaction performance.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Rapid and reliable electrochemical screening is critical to accelerate the development of catalysts for sustainable energy generation and storage.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Additionally, we use offline inductively coupled plasma optical emission spectroscopy (ICP-OES) to measure metal concentrations in the electrolyte after the reaction, which serves as a proxy for assessing the electrochemical stability.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [
+    {
+      "value": "Rapid and reliable electrochemical screening is critical to accelerate the development of catalysts for sustainable energy generation and storage.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Additionally, we use offline inductively coupled plasma optical emission spectroscopy (ICP-OES) to measure metal concentrations in the electrolyte after the reaction, which serves as a proxy for assessing the electrochemical stability.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "We find that Ru/RuO2 catalysts show improvements in activity that are not directly linked to improvements in the electrochemical surface area or inversely correlated to Ru dissolution.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Ir, Ru, IrO2, and RuO2 catalysts Catalyst ink formulation Electrochemical surface area (ECSA) Metal dissolution Improved activity and stability of catalysts Enhanced efficiency and reproducibility in electrochemical testing Streamlined sample preparation and testing process",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [
+    {
+      "value": "Additionally, we use offline inductively coupled plasma optical emission spectroscopy (ICP-OES) to measure metal concentrations in the electrolyte after the reaction, which serves as a proxy for assessing the electrochemical stability.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "conditions": [
+    {
+      "value": "We specifically investigate the role of solvent type and concentration, catalyst concentration, and binder content on the performance.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "mechanisms": [
+    {
+      "value": "Optimization of catalyst ink formulation for enhanced electrochemical performance",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Assessment of electrochemical stability via metal dissolution measurement",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Determination of ECSA to estimate the number of active sites available for the reaction",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "outcomes": [
+    {
+      "value": "Improved activity and stability of catalysts",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Enhanced efficiency and reproducibility in electrochemical testing",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Streamlined sample preparation and testing process",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "SDL 1 - Inorganic",
+    "Automation and Robotics",
+    "Materials Science",
+    "Catalysis"
+  ],
+  "reasoning_motifs": [
+    {
+      "value": "Formulation Optimization → Enhanced Performance",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Stability Assessment → Material Selection",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Surface Area Estimation → Activity Prediction",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "general_principles": [
+    {
+      "value": "Control Through Optimization",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Measurement Precision → Outcome Fidelity",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Surface Area → Catalytic Activity",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "failure_paths": [
+    {
+      "value": "failure: Use of FTO glass as a substrate for drop-casted films. Evidence: FTO glass resulted in erroneous measurements lowering the success rate due to detachment of the catalyst layer during electrochemical testing.",
+      "source": "cross_sdl_phase4",
+      "confidence": 0.75,
+      "evidence": ""
+    },
+    {
+      "value": "failure: Use of glassy carbon as a substrate for standard testing and ECSA measurement. Evidence: Glassy carbon introduced significant measurement errors due to excessive oxygen bubbling at high current densities and was not entirely inert under high current densities.",
+      "source": "cross_sdl_phase4",
+      "confidence": 0.75,
+      "evidence": ""
+    }
+  ],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "acgold_bd55574990ed",
+    "cross_sdl_reasoning_json": "/Users/sissifeng/Downloads/cross-sdl_knowledge_transfer_engine/data/reasoning/acgold_bd55574990ed.json",
+    "cross_sdl_extraction_quality": 0.8,
+    "cross_sdl_notes": "The paper provides a clear structure of the problem, hypothesis, method, evidence, and conclusion. However, the reasoning behind the choice of specific ink formulation parameters and their expected impact on catalyst performance is not explicitly stated, requiring some inference."
+  },
+  "validation": {
+    "score": 1.0,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": true,
+      "method": true,
+      "evidence": true,
+      "entities": true,
+      "materials": true,
+      "properties": true,
+      "measurements": true,
+      "conditions": true,
+      "mechanisms": true,
+      "outcomes": true,
+      "cross_sdl_match": true
+    },
+    "missing": [],
+    "notes": []
+  }
+}

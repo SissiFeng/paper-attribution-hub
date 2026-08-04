@@ -1,0 +1,273 @@
+{
+  "paper_id": "acfocus_a6f1570b6cf6",
+  "title": "Training-Free Active Learning Framework in Materials Science with Large Language Models",
+  "metadata": {
+    "doi": "10.48550/arxiv.2511.19730",
+    "url": "https://arxiv.org/abs/2511.19730",
+    "year": "2025",
+    "authors": "H. Wang; R. E. CastaÃ±eda; J. R. Werber; Y. Fehlis; E. Kim; J. Hattrick-Simpers",
+    "venue": "arXiv",
+    "category": "Preprint",
+    "peer_reviewed": "Non Peer Reviewed",
+    "ac_members": [
+      "Jason Hattrick-Simpers"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "An LLM-based active learning framework (LLM-AL) outperforms traditional machine learning models by leveraging pretrained knowledge and flexible text-based inputs to efficiently and consistently prioritize experiments, reducing the number needed to find top candidates by over 70% across diverse materials science datasets and demonstrating broad generalizability and interpretability.",
+  "abstract": "Active learning (AL) accelerates scientific discovery by prioritizing the most informative experiments, but traditional machine learning (ML) models used in AL suffer from cold-start limitations and domain-specific feature engineering, restricting their generalizability. Large language models (LLMs) offer a new paradigm by leveraging their pretrained knowledge and universal token-based representations to propose experiments directly from text-based descriptions. Here, we introduce an LLM-based active learning framework (LLM-AL) that operates in an iterative few-shot setting and benchmark it against conventional ML models across four diverse materials science datasets. We explored two prompting strategies: one using concise numerical inputs suited for datasets with more compositional and structured features, and another using expanded descriptive text suited for datasets with more experimental and procedural features to provide additional context. Across all datasets, LLM-AL could reduce the number of experiments needed to reach top-performing candidates by over 70% and consistently outperformed traditional ML models. We found that LLM-AL performs broader and more exploratory searches while still reaching the optima with fewer iterations. We further examined the stability boundaries of LLM-AL given the inherent non-determinism of LLMs and found its performance to be broadly consistent across runs, within the variability range typically observed for traditional ML approaches. These results demonstrate that LLM-AL can serve as a generalizable alternative to conventional AL pipelines for more efficient and interpretable experiment selection and potential LLM-driven autonomous discovery.",
+  "hardware": [
+    {
+      "value": "These results demonstrate that LLM-AL can serve as a generalizable alternative to conventional AL pipelines for more efficient and interpretable experiment selection and potential LLM-driven autonomous discovery.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "methods": [
+    {
+      "value": "Benchmarking LLM-based active learning framework (LLM-AL) against conventional machine learning models across four diverse materials science datasets",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "problems": [
+    {
+      "value": "Accelerating scientific discovery in materials science by prioritizing the most informative experiments",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "hypotheses": [
+    {
+      "value": "Large language models (LLMs) can effectively guide active learning (AL) in materials science by leveraging their pretrained knowledge and universal token-based representations",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "evidence": [
+    {
+      "value": "LLM-AL reduced the number of experiments needed to reach top-performing candidates by over 70% and consistently outperformed traditional ML models",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "conclusions": [
+    {
+      "value": "LLM-AL serves as a generalizable alternative to conventional AL pipelines for more efficient and interpretable experiment selection and potential LLM-driven autonomous discovery",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "entities": [
+    {
+      "value": "Large language models (LLMs)",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Traditional machine learning models",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Materials science datasets (matbench_steels, P3HT/CNT, Perovskite, Membrane)",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "Materials science datasets (matbench_steels, P3HT/CNT, Perovskite, Membrane)",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Training-Free Active Learning Framework in Materials Science with Large Language Models An LLM-based active learning framework (LLM-AL) outperforms traditional machine learning models by leveraging pretrained knowledge and flexible text-based inputs to efficiently and consistently prioritize experiments, reducing the number needed to find top candidates by over 70% across diverse materials science datasets and demonstrating broad generalizability and interpretability.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Here, we introduce an LLM-based active learning framework (LLM-AL) that operates in an iterative few-shot setting and benchmark it against conventional ML models across four diverse materials science datasets.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Benchmarking LLM-based active learning framework (LLM-AL) against conventional machine learning models across four diverse materials science datasets LLM-AL reduced the number of experiments needed to reach top-performing candidates by over 70% and consistently outperformed traditional ML models Large language models (LLMs) Traditional machine learning models Materials science datasets (matbench_steels, P3HT/CNT, Perovskite, Membrane) LLM-AL achieves faster convergence and better generalization across diverse scientific domains Reduction in the number of experiments needed to identify optimal material candidates Enhanced data efficiency and interpretability in experimental decision making",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [
+    {
+      "value": "We further examined the stability boundaries of LLM-AL given the inherent non-determinism of LLMs and found its performance to be broadly consistent across runs, within the variability range typically observed for traditional ML approaches.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [
+    {
+      "value": "Here, we introduce an LLM-based active learning framework (LLM-AL) that operates in an iterative few-shot setting and benchmark it against conventional ML models across four diverse materials science datasets.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Benchmarking LLM-based active learning framework (LLM-AL) against conventional machine learning models across four diverse materials science datasets LLM-AL reduced the number of experiments needed to reach top-performing candidates by over 70% and consistently outperformed traditional ML models Large language models (LLMs) Traditional machine learning models Materials science datasets (matbench_steels, P3HT/CNT, Perovskite, Membrane) LLM-AL achieves faster convergence and better generalization across diverse scientific domains Reduction in the number of experiments needed to identify optimal material candidates Enhanced data efficiency and interpretability in experimental decision making",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "conditions": [],
+  "mechanisms": [
+    {
+      "value": "Text-based representation and reasoning by LLMs",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Feature engineering and predictive modeling by traditional ML",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Few-shot learning and iterative experiment proposal by LLM-AL",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "outcomes": [
+    {
+      "value": "LLM-AL achieves faster convergence and better generalization across diverse scientific domains",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Reduction in the number of experiments needed to identify optimal material candidates",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Enhanced data efficiency and interpretability in experimental decision making",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "Materials Science",
+    "Artificial Intelligence & Data Science",
+    "Sustainable Materials"
+  ],
+  "reasoning_motifs": [
+    {
+      "value": "Knowledge → Generalization",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Representation → Efficiency",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Iterative Improvement → Optimality",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "general_principles": [
+    {
+      "value": "Exploiting prior knowledge for efficient exploration",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Leveraging universal representations for cross-domain generalization",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Iterative refinement for optimal solution discovery",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "failure_paths": [
+    {
+      "value": "partial: Applying LLM-AL to datasets with high-dimensional compositional features (matbench_steels) Evidence: LLM-AL underperformed compared to traditional ML models, likely due to the complexity of descriptive text adding unnecessary details",
+      "source": "cross_sdl_phase4",
+      "confidence": 0.75,
+      "evidence": ""
+    },
+    {
+      "value": "success: Applying LLM-AL to datasets with rich procedural context (Membrane) Evidence: LLM-AL demonstrated particularly strong performance, suggesting effective extraction of latent contextual information",
+      "source": "cross_sdl_phase4",
+      "confidence": 0.75,
+      "evidence": ""
+    }
+  ],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "acgold_0e2801e64f6f",
+    "cross_sdl_reasoning_json": "/Users/sissifeng/Downloads/cross-sdl_knowledge_transfer_engine/data/reasoning/acgold_0e2801e64f6f.json",
+    "cross_sdl_extraction_quality": 0.8,
+    "cross_sdl_notes": "The paper provides a structured comparison of LLM-AL against traditional ML models, but some aspects of the reasoning, such as the exact mechanisms behind LLM-AL's performance, remain implicit and require further interpretation."
+  },
+  "validation": {
+    "score": 0.96,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": true,
+      "method": true,
+      "evidence": true,
+      "entities": true,
+      "materials": true,
+      "properties": true,
+      "measurements": true,
+      "conditions": false,
+      "mechanisms": true,
+      "outcomes": true,
+      "cross_sdl_match": true
+    },
+    "missing": [
+      "conditions"
+    ],
+    "notes": []
+  }
+}

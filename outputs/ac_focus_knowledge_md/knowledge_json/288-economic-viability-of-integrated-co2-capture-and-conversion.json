@@ -1,0 +1,153 @@
+{
+  "paper_id": "acfocus_e4cec684af6c",
+  "title": "Economic Viability of Integrated CO2 Capture and Conversion",
+  "metadata": {
+    "doi": "10.1021/acsenergylett.4c02852",
+    "url": "https://pubs.acs.org/doi/10.1021/acsenergylett.4c02852",
+    "year": "2025",
+    "authors": "Y. Kim; M. Namdari; A. M. L. Jewlal; Y. Chen; D. J. D. Pimlott; M. Stolar; C. P. Berlinguette",
+    "venue": "ACS Energy Letters",
+    "category": "Journal Article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Curtis Berlinguette"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "Integrating a bicarbonate electrolyzer with a CO₂ capture unit enables efficient, electrochemical CO₂ release and conversion to valuable products at a commercially viable cost, despite challenges in aligning optimal pH conditions for both processes.",
+  "abstract": "The capture of CO<inf>2</inf> using alkaline solutions requires significant thermal energy to release CO<inf>2</inf> from a (bi)carbonate-enriched solution. This release of CO<inf>2</inf> can instead be performed electrochemically with a “bicarbonate electrolyzer”. The bicarbonate electrolyzer forms acid equivalents to convert a (bi)carbonate-enriched eluent from a CO<inf>2</inf> capture unit into CO<inf>2</inf> and, in turn, an upgraded carbon product such as CO and ethylene. There exists a tension for this closed-loop cycle to be put into practice: a smaller CO<inf>2</inf> capture unit is required when using a more caustic CO<inf>2</inf> capture solution, yet the electrolyzer works more effectively at a lower pH. Here, we elaborate on three different methods to align different pH regimes to couple air capture to CO<inf>2</inf> electrolysis. We also use a mass-balance model to assess the commercial viability of a reactive carbon capture system that integrates the CO<inf>2</inf> capture unit with a bicarbonate electrolyzer to show a levelized CO breakeven price below $1 kg<inf>CO</inf>-1. These economics, coupled with the other practical advantages of providing an electrolyzer with a liquid feedstock, present a compelling case for reactive carbon capture. © 2024 American Chemical Society.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "Integrating a bicarbonate electrolyzer with a CO₂ capture unit enables efficient, electrochemical CO₂ release and conversion to valuable products at a commercially viable cost, despite challenges in aligning optimal pH conditions for both processes.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Automation and Robotics",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Artificial Intelligence & Data Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Materials Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [],
+  "properties": [
+    {
+      "value": "The capture of CO<inf>2</inf> using alkaline solutions requires significant thermal energy to release CO<inf>2</inf> from a (bi)carbonate-enriched solution.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [],
+  "conditions": [
+    {
+      "value": "Economic Viability of Integrated CO2 Capture and Conversion Integrating a bicarbonate electrolyzer with a CO₂ capture unit enables efficient, electrochemical CO₂ release and conversion to valuable products at a commercially viable cost, despite challenges in aligning optimal pH conditions for both processes.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "There exists a tension for this closed-loop cycle to be put into practice: a smaller CO<inf>2</inf> capture unit is required when using a more caustic CO<inf>2</inf> capture solution, yet the electrolyzer works more effectively at a lower pH.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Here, we elaborate on three different methods to align different pH regimes to couple air capture to CO<inf>2</inf> electrolysis.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "mechanisms": [],
+  "outcomes": [
+    {
+      "value": "Catalysis",
+      "source": "csv_applied_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Clean energy",
+      "source": "csv_applied_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "Automation and Robotics",
+    "Artificial Intelligence & Data Science",
+    "Materials Science",
+    "Catalysis",
+    "Clean energy"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.54,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": false,
+      "properties": true,
+      "measurements": false,
+      "conditions": true,
+      "mechanisms": false,
+      "outcomes": true,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "materials",
+      "measurements",
+      "mechanisms",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

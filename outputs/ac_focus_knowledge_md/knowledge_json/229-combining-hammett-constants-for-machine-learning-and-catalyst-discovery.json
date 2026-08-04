@@ -1,0 +1,255 @@
+{
+  "paper_id": "acfocus_594b9b1922b8",
+  "title": "Combining Hammett σ constants for Δ-machine learning and catalyst discovery",
+  "metadata": {
+    "doi": "10.1039/d4dd00228h",
+    "url": "https://pubs.rsc.org/en/content/articlelanding/2024/dd/d4dd00228h",
+    "year": "2024",
+    "authors": "Rakotonirina, V. Diana; Bragato, Marco; Heinen, Stefan; von Lilienfeld, O. Anatole",
+    "venue": "Digital Discovery",
+    "category": "Journal article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Anatole von Lilienfeld"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance"
+    ],
+    "flags": {
+      "acknowledges_ac": "checked",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "The study demonstrates that the Hammett-inspired product (HIP) Ansatz, with an additive combination rule for ligand constants (cHIP), improves data efficiency and predictive accuracy in computational ligand tuning for organometallic catalysis, enabling effective Δ-machine learning baselines and identification of promising novel catalysts, particularly for the Suzuki-Miyaura reaction.",
+  "abstract": "We study the applicability of the Hammett-inspired product (HIP) Ansatz to model relative substrate binding within homogenous organometallic catalysis, assigning σ and ρ to ligands and metals, respectively. Implementing an additive combination (c) rule for obtaining σ constants for any ligand pair combination results in a cHIP model that enhances data efficiency in computational ligand tuning. We show its usefulness (i) as a baseline for Δ-machine learning (ML), and (ii) to identify novel catalyst candidates via volcano plots. After testing the combination rule on Hammett constants previously published in the literature, we have generated numerical evidence for the Suzuki-Miyaura (SM) C-C cross-coupling reaction using two synthetic datasets of metallic catalysts (including (10) and (11)-metals Ni, Pd, Pt, and Cu, Ag, Au as well as 96 ligands such as N-heterocyclic carbenes, phosphines, or pyridines). When used as a baseline, Δ-ML prediction errors of relative binding decrease systematically with training set size and reach chemical accuracy (∼1 kcal mol−1) for 20k training instances. Employing the individual ligand constants obtained from cHIP, we report relative substrate binding for a novel dataset consisting of 720 catalysts (not part of training data), of which 145 fall into the most promising range on the volcano plot accounting for oxidative addition, transmetalation, and reductive elimination steps. Multiple Ni-based catalysts, e.g. Aphos-Ni-P(t-Bu)3, are included among these promising candidates, potentially offering dramatic cost savings in experimental applications. © 2024 RSC.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "Implementing an additive combination rule for obtaining s constants for any ligand pair combination, resulting in a cHIP model, tested via D-machine learning and volcano plots for novel catalyst candidate identification",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "problems": [
+    {
+      "value": "Efficient exploration of vast chemical compound space for catalyst discovery",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "hypotheses": [
+    {
+      "value": "The Hammett-inspired product (HIP) Ansatz can model relative substrate binding within homogeneous organometallic catalysis, enhancing data efficiency in computational ligand tuning",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "evidence": [
+    {
+      "value": "D-ML prediction errors of relative binding decrease systematically with training set size, reaching chemical accuracy for 20k training instances; 145 promising catalyst candidates identified using cHIP",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "conclusions": [
+    {
+      "value": "The additive combination rule with Hammett's equation is effective for computational catalyst discovery, particularly for smaller chemical compound subspaces",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "entities": [
+    {
+      "value": "Hammett constants (s and r)",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Ligand-metal catalyst complexes",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Relative binding energies",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Volcano plots",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "Ligand-metal catalyst complexes",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Combining Hammett σ constants for Δ-machine learning and catalyst discovery The study demonstrates that the Hammett-inspired product (HIP) Ansatz, with an additive combination rule for ligand constants (cHIP), improves data efficiency and predictive accuracy in computational ligand tuning for organometallic catalysis, enabling effective Δ-machine learning baselines and identification of promising novel catalysts, particularly for the Suzuki-Miyaura reaction.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "We show its usefulness (i) as a baseline for Δ-machine learning (ML), and (ii) to identify novel catalyst candidates via volcano plots.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "After testing the combination rule on Hammett constants previously published in the literature, we have generated numerical evidence for the Suzuki-Miyaura (SM) C-C cross-coupling reaction using two synthetic datasets of metallic catalysts (including (10) and (11)-metals Ni, Pd, Pt, and Cu, Ag, Au as well as 96 ligands such as N-heterocyclic carbenes, phosphines, or pyridines).",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [
+    {
+      "value": "Combining Hammett σ constants for Δ-machine learning and catalyst discovery The study demonstrates that the Hammett-inspired product (HIP) Ansatz, with an additive combination rule for ligand constants (cHIP), improves data efficiency and predictive accuracy in computational ligand tuning for organometallic catalysis, enabling effective Δ-machine learning baselines and identification of promising novel catalysts, particularly for the Suzuki-Miyaura reaction.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "When used as a baseline, Δ-ML prediction errors of relative binding decrease systematically with training set size and reach chemical accuracy (∼1 kcal mol−1) for 20k training instances.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Implementing an additive combination rule for obtaining s constants for any ligand pair combination, resulting in a cHIP model, tested via D-machine learning and volcano plots for novel catalyst candidate identification D-ML prediction errors of relative binding decrease systematically with training set size, reaching chemical accuracy for 20k training instances; 145 promising catalyst candidates identified using cHIP Hammett constants (s and r) Ligand-metal catalyst complexes Relative binding energies Volcano plots Enhanced data efficiency in computational ligand tuning Identification of novel catalyst candidates Prediction of relative binding energies for catalyst complexes",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [
+    {
+      "value": "Implementing an additive combination rule for obtaining s constants for any ligand pair combination, resulting in a cHIP model, tested via D-machine learning and volcano plots for novel catalyst candidate identification D-ML prediction errors of relative binding decrease systematically with training set size, reaching chemical accuracy for 20k training instances; 145 promising catalyst candidates identified using cHIP Hammett constants (s and r) Ligand-metal catalyst complexes Relative binding energies Volcano plots Enhanced data efficiency in computational ligand tuning Identification of novel catalyst candidates Prediction of relative binding energies for catalyst complexes",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "conditions": [],
+  "mechanisms": [
+    {
+      "value": "Linear free energy relationships partitioning systems into fragments",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Combination rules for estimating thermodynamic properties of mixtures",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "D-machine learning for residual learning and data needs mitigation",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "outcomes": [
+    {
+      "value": "Enhanced data efficiency in computational ligand tuning",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Identification of novel catalyst candidates",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Prediction of relative binding energies for catalyst complexes",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "Artificial Intelligence & Data Science",
+    "Chemistry"
+  ],
+  "reasoning_motifs": [
+    {
+      "value": "Partitioning → Complexity Reduction",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Combination → Property Estimation",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "general_principles": [
+    {
+      "value": "Simplicity Enables Efficiency",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Decomposition Enhances Predictability",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "acgold_320cac94a8b2",
+    "cross_sdl_reasoning_json": "/Users/sissifeng/Downloads/cross-sdl_knowledge_transfer_engine/data/reasoning/acgold_320cac94a8b2.json",
+    "cross_sdl_extraction_quality": 0.8,
+    "cross_sdl_notes": "The paper presents a structured approach to catalyst discovery using computational methods, with clear hypotheses, methods, and outcomes. However, some details on the failure modes or alternative approaches considered were not explicitly discussed, leading to a moderate extraction quality score."
+  },
+  "validation": {
+    "score": 0.86,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": true,
+      "entities": true,
+      "materials": true,
+      "properties": true,
+      "measurements": true,
+      "conditions": false,
+      "mechanisms": true,
+      "outcomes": true,
+      "cross_sdl_match": true
+    },
+    "missing": [
+      "hardware",
+      "conditions"
+    ],
+    "notes": [
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

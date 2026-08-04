@@ -1,22 +1,19 @@
 """Active learning loop (v0.7).
 
 Triggered by `submit_review` whenever a reviewer rejects or corrects a label.
-The loop does three things, all idempotent:
+The learning portion does two things, both idempotent:
 
-  1. **Negative-keyword harvest** — if a reviewer reclassifies CORE/RELATED
-     down to EXCLUDE/ADJACENT, the abstract's top distinguishing n-grams
-     (the ones that survive after the AC vocabulary is removed) become
-     negative_keywords on the topic the system *thought* it matched. This
-     mirrors how a human reviewer adds vetoed phrases.
+  1. **Optional negative-keyword harvest** — retained for explicitly enabled
+     experiments, but off by default because taxonomy mutations do not pass
+     the candidate-model promotion gate.
 
-  2. **Eval label append** — the corrected label is appended to
-     `data/eval_labels.csv` so the next `run_eval` and the next training
-     run pick it up.
+  2. **Retrain hook** — every 20 distinct, eligible reviewed papers become an
+     immutable trigger batch. The complete model is retrained from scratch,
+     evaluated out-of-fold (plus dedicated validation when available), and
+     atomically promoted only if protected metrics do not regress.
 
-  3. **Retrain hook** — when the human_reviews table accumulates N new
-     rows since the last train (default 5), `maybe_retrain` writes a fresh
-     learned_classifier.joblib. This keeps the loop self-driving without
-     a separate cron job.
+The persisted `human_reviews` row is production feedback and may feed model
+training. It never mutates the frozen evaluation holdout.
 
 Everything here is best-effort; failures log and continue, because review
 submission must never be blocked by training-side issues.
@@ -30,23 +27,13 @@ from __future__ import annotations
 import os
 import re
 from collections import Counter
-from pathlib import Path
-from typing import Iterable
 
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
 from app.config import settings
+from app.label_dataset import load_reserved_evaluation_ids
 from app.models import HumanReview, Paper, Topic
-
-# ---------------------------------------------------------------------------
-# Triggering
-# ---------------------------------------------------------------------------
-
-
-def _retrain_every_n_reviews() -> int:
-    return max(1, int(os.environ.get("PAS_ACTIVE_RETRAIN_EVERY", "10")))
-
 
 def on_review_submitted(
     session: Session,
@@ -55,6 +42,7 @@ def on_review_submitted(
     new_label: str,
     previous_label: str | None = None,
     reviewer: str | None = None,
+    run_retraining: bool = True,
 ) -> dict:
     """Main entry point. Called by the review API after persisting the review.
 
@@ -63,8 +51,9 @@ def on_review_submitted(
     """
     actions: dict[str, list[str]] = {
         "negative_keywords_added": [],
-        "eval_labels_updated": [],
+        "training_feedback_recorded": [],
         "retrained": [],
+        "training_runs": [],
         "classification_locked": [],
         "warnings": [],
     }
@@ -74,22 +63,76 @@ def on_review_submitted(
         actions["warnings"].append(f"paper {paper_id} not found")
         return actions
 
+    learning_allowed = False
+    evaluation_boundary_available = False
+    try:
+        reserved_paper_ids = load_reserved_evaluation_ids(
+            validation_path=settings.validation_labels_csv,
+            holdout_path=settings.eval_labels_csv,
+        )
+        evaluation_boundary_available = True
+        learning_allowed = paper_id not in reserved_paper_ids
+    except Exception as e:
+        actions["warnings"].append(
+            f"automatic learning skipped: evaluation boundary unavailable ({e})"
+        )
+
+    review = session.execute(
+        select(HumanReview).where(HumanReview.paper_id == paper_id)
+    ).scalar_one_or_none()
+    if learning_allowed:
+        if review is None:
+            actions["warnings"].append(
+                "training feedback not recorded: human review row is missing"
+            )
+        else:
+            try:
+                from app.services.model_evolution import (
+                    record_training_feedback,
+                )
+
+                event = record_training_feedback(
+                    session,
+                    paper_id=paper_id,
+                    review_id=review.id,
+                    human_label=new_label,
+                    reviewer=reviewer,
+                    incumbent_label=(
+                        paper.classification.label
+                        if paper.classification is not None
+                        else previous_label
+                    ),
+                    incumbent_confidence=(
+                        paper.classification.confidence
+                        if paper.classification is not None
+                        else None
+                    ),
+                )
+                if event is not None:
+                    actions["training_feedback_recorded"].append(paper_id)
+            except Exception as e:
+                actions["warnings"].append(
+                    f"training feedback event failed: {e}"
+                )
+    elif evaluation_boundary_available:
+        actions["warnings"].append(
+            "automatic learning skipped for validation or holdout paper"
+        )
+
     # 1. Negative-keyword harvest on a downgrade.
-    if previous_label and _is_downgrade(previous_label, new_label):
+    if (
+        learning_allowed
+        and os.environ.get("PAS_ACTIVE_KEYWORD_HARVEST", "0") == "1"
+        and previous_label
+        and _is_downgrade(previous_label, new_label)
+    ):
         try:
             added = _harvest_negative_keywords(session, paper, previous_label)
             actions["negative_keywords_added"] = added
         except Exception as e:
             actions["warnings"].append(f"harvest failed: {e}")
 
-    # 2. Append to eval_labels.csv.
-    try:
-        _append_eval_label(paper_id, new_label, reviewer=reviewer)
-        actions["eval_labels_updated"].append(paper_id)
-    except Exception as e:
-        actions["warnings"].append(f"eval append failed: {e}")
-
-    # 3. Lock the classification + clear from review queue.
+    # 2. Lock the classification + clear from review queue.
     try:
         from datetime import UTC, datetime
 
@@ -105,13 +148,18 @@ def on_review_submitted(
     except Exception as e:
         actions["warnings"].append(f"lock failed: {e}")
 
-    # 4. Maybe retrain.
-    try:
-        retrained = maybe_retrain(session)
-        if retrained:
-            actions["retrained"].append(retrained)
-    except Exception as e:
-        actions["warnings"].append(f"retrain failed: {e}")
+    # 3. Maybe retrain.
+    if learning_allowed and run_retraining:
+        try:
+            retrained = maybe_retrain(session)
+            if retrained:
+                actions["training_runs"].append(retrained.id)
+                if retrained.status == "PROMOTED":
+                    actions["retrained"].append(
+                        retrained.model_version or retrained.id
+                    )
+        except Exception as e:
+            actions["warnings"].append(f"retrain failed: {e}")
 
     return actions
 
@@ -214,74 +262,11 @@ def _harvest_negative_keywords(
     return additions
 
 
-def _append_eval_label(
-    paper_id: str, label: str, *, reviewer: str | None
-) -> None:
-    """Idempotently upsert the row in eval_labels.csv."""
-    path = Path(settings.eval_labels_csv)
-    if not path.exists():
-        # Create header if missing.
-        path.parent.mkdir(parents=True, exist_ok=True)
-        path.write_text(
-            "paper_id,gold_label,gold_topics,notes\n", encoding="utf-8"
-        )
+def maybe_retrain(session: Session):
+    """Run one claimed model-evolution batch, if the threshold was reached."""
+    from app.services.model_evolution import maybe_run_model_evolution
 
-    lines = path.read_text(encoding="utf-8").splitlines()
-    if not lines:
-        lines = ["paper_id,gold_label,gold_topics,notes"]
-    header = lines[0]
-    new_lines = [header]
-    found = False
-    for row in lines[1:]:
-        cols = row.split(",", 3)
-        if cols and cols[0].strip() == paper_id:
-            note = f"reviewer:{reviewer}" if reviewer else "reviewer"
-            new_lines.append(
-                f"{paper_id},{label},,{note}"
-            )
-            found = True
-        else:
-            new_lines.append(row)
-    if not found:
-        note = f"reviewer:{reviewer}" if reviewer else "reviewer"
-        new_lines.append(f"{paper_id},{label},,{note}")
-    path.write_text("\n".join(new_lines) + "\n", encoding="utf-8")
-
-
-def maybe_retrain(session: Session) -> str | None:
-    """Retrain when reviewer activity has accumulated enough new examples.
-
-    Returns the path of the new model or None.
-    """
-    n_reviews = session.scalar(select(_count_reviews()))
-    if n_reviews is None:
-        return None
-    # Crude trigger: every N reviews, retrain. Idempotent in the sense that
-    # we always re-train from scratch on the full set.
-    if n_reviews == 0 or n_reviews % _retrain_every_n_reviews() != 0:
-        return None
-    try:
-        from app.services.learned_classifier import (
-            build_training_set,
-            save_model,
-            train_from_examples,
-        )
-
-        examples = build_training_set(session)
-        if len(examples) < 4:
-            return None
-        clf = train_from_examples(examples)
-        out = save_model(clf)
-        return str(out)
-    except Exception:
-        return None
-
-
-def _count_reviews():
-    """select count(*) from human_reviews — broken out to make tests easy."""
-    from sqlalchemy import func
-
-    return func.count(HumanReview.id)
+    return maybe_run_model_evolution(session)
 
 
 # ---------------------------------------------------------------------------

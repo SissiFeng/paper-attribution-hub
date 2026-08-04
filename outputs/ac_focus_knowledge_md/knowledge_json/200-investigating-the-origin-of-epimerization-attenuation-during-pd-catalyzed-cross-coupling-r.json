@@ -1,0 +1,137 @@
+{
+  "paper_id": "acfocus_be8875633fb8",
+  "title": "Investigating the Origin of Epimerization Attenuation during Pd-Catalyzed Cross-Coupling Reactions",
+  "metadata": {
+    "doi": "10.1021/acscatal.4c03401",
+    "url": "https://pubs.acs.org/doi/10.1021/acscatal.4c03401",
+    "year": "2024",
+    "authors": "Cai, Isabelle; Malig, Thomas C.; Kurita, Kenji L.; Derasp, Joshua S.; Sirois, Lauren E.; Hein, Jason E.",
+    "venue": "ACS Catalysis",
+    "category": "Journal article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Jason Hein"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance"
+    ],
+    "flags": {
+      "acknowledges_ac": "checked",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "This study demonstrates that Pd(II) complexes can suppress base-mediated epimerization of sultam stereocenters during Buchwald-Hartwig aminations, with real-time HPLC-MS revealing a correlation between Pd speciation and epimerization, offering practical insights for optimizing C-N cross-coupling reactions involving sensitive substrates.",
+  "abstract": "Palladium-catalyzed cross-couplings remain among the most robust methodologies to form carbon-carbon and carbon-heteroatom bonds. In particular, carbon-nitrogen (C-N) couplings (Buchwald-Hartwig aminations) find widespread use in fine chemicals industries. The use of base in these reactions is critical for catalyst activation and proton sequestration. Base selection also plays an important role in process design, as strongly basic conditions can impact sensitive stereocenters and result in erosion of stereochemical purity. Herein we investigate the role of a Pd catalyst in suppressing base-mediated epimerization of a sultam stereocenter during a C-N cross-coupling reaction to access the RORγ inhibitor GDC-0022. Online high-performance liquid chromatography-mass spectrometry (HPLC-MS) was employed to acquire reaction time course profiles and to delineate epimerization behavior, identify decomposition pathways, and monitor Pd-containing species. Our ability to monitor organopalladium complexes in real time by HPLC-MS provided strong evidence that the degree of epimerization was correlated to the Pd speciation in solution. Specifically, Pd(II) complexes were associated with mitigating epimerization of six-membered sultams. Additional studies showed that the suppression of epimerization in the presence of Pd(II) can impact Pd-catalyzed reactions of other substrates such as enolizable ketones, thus providing practical insight on the execution and optimization of such processes. © 2024 The Authors. Published by American Chemical Society",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "This study demonstrates that Pd(II) complexes can suppress base-mediated epimerization of sultam stereocenters during Buchwald-Hartwig aminations, with real-time HPLC-MS revealing a correlation between Pd speciation and epimerization, offering practical insights for optimizing C-N cross-coupling reactions involving sensitive substrates.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Chemistry",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "The use of base in these reactions is critical for catalyst activation and proton sequestration.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Herein we investigate the role of a Pd catalyst in suppressing base-mediated epimerization of a sultam stereocenter during a C-N cross-coupling reaction to access the RORγ inhibitor GDC-0022.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [],
+  "measurements": [],
+  "conditions": [
+    {
+      "value": "Investigating the Origin of Epimerization Attenuation during Pd-Catalyzed Cross-Coupling Reactions This study demonstrates that Pd(II) complexes can suppress base-mediated epimerization of sultam stereocenters during Buchwald-Hartwig aminations, with real-time HPLC-MS revealing a correlation between Pd speciation and epimerization, offering practical insights for optimizing C-N cross-coupling reactions involving sensitive substrates.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Base selection also plays an important role in process design, as strongly basic conditions can impact sensitive stereocenters and result in erosion of stereochemical purity.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Online high-performance liquid chromatography-mass spectrometry (HPLC-MS) was employed to acquire reaction time course profiles and to delineate epimerization behavior, identify decomposition pathways, and monitor Pd-containing species.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Our ability to monitor organopalladium complexes in real time by HPLC-MS provided strong evidence that the degree of epimerization was correlated to the Pd speciation in solution.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "mechanisms": [],
+  "outcomes": [],
+  "sdl_tags": [
+    "Chemistry"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.48,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": true,
+      "properties": false,
+      "measurements": false,
+      "conditions": true,
+      "mechanisms": false,
+      "outcomes": false,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "properties",
+      "measurements",
+      "mechanisms",
+      "outcomes",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

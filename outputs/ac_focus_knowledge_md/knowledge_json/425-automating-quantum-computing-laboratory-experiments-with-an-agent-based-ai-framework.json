@@ -1,0 +1,132 @@
+{
+  "paper_id": "acfocus_2b77aed2df57",
+  "title": "Automating quantum computing laboratory experiments with an agent-based AI framework",
+  "metadata": {
+    "doi": "10.1016/j.patter.2025.101372",
+    "url": "https://www.sciencedirect.com/science/article/pii/S266638992500220X",
+    "year": "2025",
+    "authors": "S. Cao; Z. Zhang; M. Alghadeer; S. D. Fasciati; M. Piscitelli; M. Bakr; P. Leek; A. Aspuru-Guzik",
+    "venue": "Patterns",
+    "category": "Journal Article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Alán Aspuru-Guzik"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance"
+    ],
+    "flags": {
+      "acknowledges_ac": "checked",
+      "highly_relevant": "checked",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "The “k-agents” framework uses large-language-model-based agents to organize laboratory knowledge and automate experiments through agent-based state machines, enabling autonomous, human-level scientific discovery and closed-loop feedback, as demonstrated on a superconducting quantum processor.",
+  "abstract": "Fully automated self-driving laboratories promise high-throughput, large-scale scientific discovery by reducing repetitive labor. However, they require deep integration of laboratory knowledge, which is often unstructured, multimodal, and hard to incorporate into current AI systems. This paper introduces the “k-agents” framework, designed to support experimentalists in organizing laboratory knowledge and automating experiments with agents. The framework uses large-language-model-based agents to encapsulate laboratory knowledge, including available operations and methods for analyzing results. To automate experiments, execution agents break multistep procedures into agent-based state machines, interact with other agents to execute steps, and analyze results. These results drive state transitions, enabling closed-loop feedback control. We demonstrate the system on a superconducting quantum processor, where agents autonomously planned and executed experiments for hours, successfully producing and characterizing entangled quantum states at human-level performance. Our knowledge-based agent system opens new possibilities for managing laboratory knowledge and accelerating scientific discovery.",
+  "hardware": [
+    {
+      "value": "The “k-agents” framework uses large-language-model-based agents to organize laboratory knowledge and automate experiments through agent-based state machines, enabling autonomous, human-level scientific discovery and closed-loop feedback, as demonstrated on a superconducting quantum processor.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Fully automated self-driving laboratories promise high-throughput, large-scale scientific discovery by reducing repetitive labor.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "methods": [
+    {
+      "value": "The “k-agents” framework uses large-language-model-based agents to organize laboratory knowledge and automate experiments through agent-based state machines, enabling autonomous, human-level scientific discovery and closed-loop feedback, as demonstrated on a superconducting quantum processor.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Artificial Intelligence & Data Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Automation and Robotics",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Quantum",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [],
+  "properties": [],
+  "measurements": [],
+  "conditions": [
+    {
+      "value": "However, they require deep integration of laboratory knowledge, which is often unstructured, multimodal, and hard to incorporate into current AI systems.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "mechanisms": [],
+  "outcomes": [],
+  "sdl_tags": [
+    "Artificial Intelligence & Data Science",
+    "Automation and Robotics",
+    "Quantum"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.51,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": true,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": false,
+      "properties": false,
+      "measurements": false,
+      "conditions": true,
+      "mechanisms": false,
+      "outcomes": false,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "evidence",
+      "materials",
+      "properties",
+      "measurements",
+      "mechanisms",
+      "outcomes",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only."
+    ]
+  }
+}

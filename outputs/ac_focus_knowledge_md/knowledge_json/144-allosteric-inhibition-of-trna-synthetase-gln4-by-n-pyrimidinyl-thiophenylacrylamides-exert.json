@@ -1,0 +1,139 @@
+{
+  "paper_id": "acfocus_419336bc941f",
+  "title": "Allosteric inhibition of tRNA synthetase Gln4 by N-pyrimidinyl-β-thiophenylacrylamides exerts highly selective antifungal activity",
+  "metadata": {
+    "doi": "10.1016/j.chembiol.2024.01.010",
+    "url": "https://www.sciencedirect.com/science/article/pii/S2451945624000461",
+    "year": "2024",
+    "authors": "Puumala, Emily; Sychantha, David; Lach, Elizabeth; Reeves, Shawn; Nabeela, Sunna; Fogal, Meea; Nigam, AkshatKumar; Johnson, Jarrod; Aspuru-Guzik, Alán; Shapiro, Rebecca S.; Uppuluri, Priya; Kalyaanamoorthy, Subha; Magolan, Jakob; Whitesell, Luke; Robbins, Nicole; Wright, Gerard D.; Cowen, Leah E.",
+    "venue": "Cell Chemical Biology",
+    "category": "Journal article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Alán Aspuru-Guzik"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance"
+    ],
+    "flags": {
+      "acknowledges_ac": "checked",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "Researchers identified and characterized NP-BTA as a potent, species-selective inhibitor of Candida albicans glutaminyl-tRNA synthetase (Gln4), demonstrating its antifungal efficacy in a mouse skin infection model and highlighting its potential for topical therapeutic development.",
+  "abstract": "Candida species are among the most prevalent causes of systemic fungal infections, which account for ∼1.5 million annual fatalities. Here, we build on a compound screen that identified the molecule N-pyrimidinyl-β-thiophenylacrylamide (NP-BTA), which strongly inhibits Candida albicans growth. NP-BTA was hypothesized to target C. albicans glutaminyl-tRNA synthetase, Gln4. Here, we confirmed through in vitro amino-acylation assays NP-BTA is a potent inhibitor of Gln4, and we defined how NP-BTA arrests Gln4’s transferase activity using co-crystallography. This analysis also uncovered Met496 as a critical residue for the compound's species-selective target engagement and potency. Structure-activity relationship (SAR) studies demonstrated the NP-BTA scaffold is subject to oxidative and non-oxidative metabolism, making it unsuitable for systemic administration. In a mouse dermatomycosis model, however, topical application of the compound provided significant therapeutic benefit. This work expands the repertoire of antifungal protein synthesis target mechanisms and provides a path to develop Gln4 inhibitors. © 2024 The Author(s)",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "Researchers identified and characterized NP-BTA as a potent, species-selective inhibitor of Candida albicans glutaminyl-tRNA synthetase (Gln4), demonstrating its antifungal efficacy in a mouse skin infection model and highlighting its potential for topical therapeutic development.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Biology",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Biochemistry",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "Here, we build on a compound screen that identified the molecule N-pyrimidinyl-β-thiophenylacrylamide (NP-BTA), which strongly inhibits Candida albicans growth.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [
+    {
+      "value": "Allosteric inhibition of tRNA synthetase Gln4 by N-pyrimidinyl-β-thiophenylacrylamides exerts highly selective antifungal activity Researchers identified and characterized NP-BTA as a potent, species-selective inhibitor of Candida albicans glutaminyl-tRNA synthetase (Gln4), demonstrating its antifungal efficacy in a mouse skin infection model and highlighting its potential for topical therapeutic development.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Here, we confirmed through in vitro amino-acylation assays NP-BTA is a potent inhibitor of Gln4, and we defined how NP-BTA arrests Gln4’s transferase activity using co-crystallography.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Structure-activity relationship (SAR) studies demonstrated the NP-BTA scaffold is subject to oxidative and non-oxidative metabolism, making it unsuitable for systemic administration.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [],
+  "conditions": [],
+  "mechanisms": [],
+  "outcomes": [
+    {
+      "value": "Therapeutics",
+      "source": "csv_applied_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "Biology",
+    "Biochemistry",
+    "Therapeutics"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.57,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": true,
+      "properties": true,
+      "measurements": false,
+      "conditions": false,
+      "mechanisms": false,
+      "outcomes": true,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "measurements",
+      "conditions",
+      "mechanisms",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

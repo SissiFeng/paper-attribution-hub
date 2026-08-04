@@ -1,0 +1,125 @@
+{
+  "paper_id": "acfocus_ed7279f9c25d",
+  "title": "DeepVelo: deep learning extends RNA velocity to multi-lineage systems with cell-specific kinetics",
+  "metadata": {
+    "doi": "10.1186/s13059-023-03148-9",
+    "url": "https://link.springer.com/article/10.1186/s13059-023-03148-9",
+    "year": "2024",
+    "authors": "Cui H, Maan H, Vladoiu MC, Zhang J, Taylor MD, Wang B",
+    "venue": "Genome Biology",
+    "category": "Journal article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Bo Wang"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "checked",
+      "high_impact": "checked"
+    }
+  },
+  "source_summary": "DeepVelo uses a graph convolution network to generalize RNA velocity estimation in heterogeneous scRNA-seq data by inferring time-varying transcriptional kinetics, recovering cell differentiation stages, and identifying key driver genes, overcoming the limitations of previous methods that rely on constant kinetic rates.",
+  "abstract": "Existing RNA velocity estimation methods strongly rely on predefined dynamics and cell-agnostic constant transcriptional kinetic rates, assumptions often violated in complex and heterogeneous single-cell RNA sequencing (scRNA-seq) data. Using a graph convolution network, DeepVelo overcomes these limitations by generalizing RNA velocity to cell populations containing time-dependent kinetics and multiple lineages. DeepVelo infers time-varying cellular rates of transcription, splicing, and degradation, recovers each cell’s stage in the differentiation process, and detects functionally relevant driver genes regulating these processes. Application to various developmental and pathogenic processes demonstrates DeepVelo’s capacity to study complex differentiation and lineage decision events in heterogeneous scRNA-seq data.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "DeepVelo uses a graph convolution network to generalize RNA velocity estimation in heterogeneous scRNA-seq data by inferring time-varying transcriptional kinetics, recovering cell differentiation stages, and identifying key driver genes, overcoming the limitations of previous methods that rely on constant kinetic rates.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Artificial Intelligence & Data Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Biology",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [],
+  "properties": [],
+  "measurements": [],
+  "conditions": [
+    {
+      "value": "DeepVelo: deep learning extends RNA velocity to multi-lineage systems with cell-specific kinetics DeepVelo uses a graph convolution network to generalize RNA velocity estimation in heterogeneous scRNA-seq data by inferring time-varying transcriptional kinetics, recovering cell differentiation stages, and identifying key driver genes, overcoming the limitations of previous methods that rely on constant kinetic rates.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Using a graph convolution network, DeepVelo overcomes these limitations by generalizing RNA velocity to cell populations containing time-dependent kinetics and multiple lineages.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "DeepVelo infers time-varying cellular rates of transcription, splicing, and degradation, recovers each cell’s stage in the differentiation process, and detects functionally relevant driver genes regulating these processes.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "mechanisms": [],
+  "outcomes": [],
+  "sdl_tags": [
+    "Artificial Intelligence & Data Science",
+    "Biology"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.41,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": false,
+      "properties": false,
+      "measurements": false,
+      "conditions": true,
+      "mechanisms": false,
+      "outcomes": false,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "materials",
+      "properties",
+      "measurements",
+      "mechanisms",
+      "outcomes",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

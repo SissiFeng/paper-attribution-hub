@@ -1,0 +1,124 @@
+{
+  "paper_id": "acfocus_80c8e3bbfc93",
+  "title": "DORA AI Scientist: Multi-agent Virtual Research Team for Scientific Exploration Discovery and Automated Report Generation",
+  "metadata": {
+    "doi": "10.1101/2025.03.06.641840",
+    "url": "https://www.biorxiv.org/content/10.1101/2025.03.06.641840v1",
+    "year": "2025",
+    "authors": "V. Naumov; D. Zagirova; S. Lin; Y. Xie; W. Gou; A. Urban; N. Tikhonova; K. Alawi; M. Durymanov; F. Galkin; S. Chen; D. Sidorenko; M. Korzinkin; M. Scheibye-Knudsen; A. Aspuru-Guzik; E. Izumchenko; D. Gennert; F. W. Pun; M. Zhang; P. Kamya; A. Aliper; F. Ren; A. Zhavoronkov",
+    "venue": "bioRxiv",
+    "category": "Preprint",
+    "peer_reviewed": "Non Peer Reviewed",
+    "ac_members": [
+      "Alán Aspuru-Guzik"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "DORA is a multi-agent research assistant platform that automates or assists with various scientific research tasks—such as hypothesis generation, literature review, data analysis, and manuscript drafting—by leveraging hierarchical teams of AI agents and specialized tools, thereby streamlining research workflows and enabling researchers to focus on high-value discovery.",
+  "abstract": "Abstract Modern goal-oriented scientific research process involves hierarchical teams of researchers of diverse backgrounds performing generalist and domain-specific tasks. Many of these tasks include hypothesis generation, literature review, data collection, cleanup, processing and analysis, experimental design, virtual and physical experiments, research report and academic paper writing, reference management, bibliography and quality control. Most of these tasks can be performed automatically or in a co-pilot mode by the generative reinforcement learning systems. In this paper, we introduce a versatile multi-agent scientific exploration and draft outline research assistant (DORA), which provides multiple templates and workflows for automated or semi-automated research studies and report generation. Under user guidance, it employs hierarchical teams of AI agents based on the plug-and-play generalist and domain-specific large language models (LLMs) exploiting a variety of specialized research tools and open data repositories and generates high-quality research outputs publication drafts with maximally-accurate references. DORA is designed to minimize the time and effort required for manuscript preparation, thereby enabling researchers to devote more attention to high-value discovery tasks. The system is constantly evolving with user feedback with regular feature and resource updates. The platform is available at https://dora.insilico.com .",
+  "hardware": [
+    {
+      "value": "DORA is a multi-agent research assistant platform that automates or assists with various scientific research tasks—such as hypothesis generation, literature review, data analysis, and manuscript drafting—by leveraging hierarchical teams of AI agents and specialized tools, thereby streamlining research workflows and enabling researchers to focus on high-value discovery.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "In this paper, we introduce a versatile multi-agent scientific exploration and draft outline research assistant (DORA), which provides multiple templates and workflows for automated or semi-automated research studies and report generation.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "The platform is available at https://dora.insilico.com .",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "methods": [
+    {
+      "value": "DORA is a multi-agent research assistant platform that automates or assists with various scientific research tasks—such as hypothesis generation, literature review, data analysis, and manuscript drafting—by leveraging hierarchical teams of AI agents and specialized tools, thereby streamlining research workflows and enabling researchers to focus on high-value discovery.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Artificial Intelligence & Data Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [],
+  "properties": [],
+  "measurements": [],
+  "conditions": [
+    {
+      "value": "DORA is designed to minimize the time and effort required for manuscript preparation, thereby enabling researchers to devote more attention to high-value discovery tasks.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "mechanisms": [],
+  "outcomes": [],
+  "sdl_tags": [
+    "Artificial Intelligence & Data Science"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.51,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": true,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": false,
+      "properties": false,
+      "measurements": false,
+      "conditions": true,
+      "mechanisms": false,
+      "outcomes": false,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "evidence",
+      "materials",
+      "properties",
+      "measurements",
+      "mechanisms",
+      "outcomes",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only."
+    ]
+  }
+}

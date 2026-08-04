@@ -1,0 +1,131 @@
+{
+  "paper_id": "acfocus_1ce49ba92dea",
+  "title": "Multi-functional single cell manipulation method based on a multichannel micropipette",
+  "metadata": {
+    "doi": "10.1016/j.sna.2023.114838",
+    "url": "https://www.sciencedirect.com/science/article/abs/pii/S0924424723006878",
+    "year": "2024",
+    "authors": "Zhang D, Yuan H, Yue T, Liu M, Liu N, Sun Y",
+    "venue": "Sensors and Actuators, A: Physical",
+    "category": "Journal article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Yu Sun"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "checked",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "This study introduces a versatile multifunctional micropipette with liquid metal electrodes and negative pressure aspiration, enabling precise single-cell 3D manipulation, trapping, lysis, and aspiration through dielectrophoretic force and electroporation, thereby advancing single-cell research techniques.",
+  "abstract": "Cell manipulation techniques that provide versatility in handling various cell types and performing diverse manipulations are essential for advancing biological research. This study presents a novel and adaptable approach utilizing a multifunctional micropipette for precise single-cell operations, including three-dimensional (3D) manipulation, trapping, lysis, and aspiration. The multifunctional micropipette comprises two liquid metal-based channels with high electrical conductivity, along with a negative pressure-based aspiration channel. By utilizing the liquid metal electrodes, the system enables the application of electrical stimulation, inducing both dielectrophoretic force and electroporation on cells. Through the implementation of dielectrophoretic force and integration with a 3D-movable stage, single cells can be patterned, manipulated in 3D, accurately trapped, and separated with a minimal adjacent distance of 10 µm. By utilizing the electroporation phenomenon, rapid lysis of suspension cells can be achieved within 50 ms, while adherent cells can be lysed within 200 ms, utilizing a square-wave electrical signal with a frequency of 1 kHz and an amplitude of 40 Vpp. Furthermore, the study explores the impact of electrode size on the lysis of adherent cell groups. Additionally, the utilization of negative pressure for lysate aspiration is also demonstrated. In summary, the reported technique is versatile for single cell manipulation.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "This study introduces a versatile multifunctional micropipette with liquid metal electrodes and negative pressure aspiration, enabling precise single-cell 3D manipulation, trapping, lysis, and aspiration through dielectrophoretic force and electroporation, thereby advancing single-cell research techniques.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Automation and Robotics",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Biology",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [],
+  "properties": [
+    {
+      "value": "The multifunctional micropipette comprises two liquid metal-based channels with high electrical conductivity, along with a negative pressure-based aspiration channel.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [],
+  "conditions": [
+    {
+      "value": "Multi-functional single cell manipulation method based on a multichannel micropipette This study introduces a versatile multifunctional micropipette with liquid metal electrodes and negative pressure aspiration, enabling precise single-cell 3D manipulation, trapping, lysis, and aspiration through dielectrophoretic force and electroporation, thereby advancing single-cell research techniques.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "The multifunctional micropipette comprises two liquid metal-based channels with high electrical conductivity, along with a negative pressure-based aspiration channel.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Additionally, the utilization of negative pressure for lysate aspiration is also demonstrated.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "mechanisms": [],
+  "outcomes": [],
+  "sdl_tags": [
+    "Automation and Robotics",
+    "Biology"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.48,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": false,
+      "properties": true,
+      "measurements": false,
+      "conditions": true,
+      "mechanisms": false,
+      "outcomes": false,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "materials",
+      "measurements",
+      "mechanisms",
+      "outcomes",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

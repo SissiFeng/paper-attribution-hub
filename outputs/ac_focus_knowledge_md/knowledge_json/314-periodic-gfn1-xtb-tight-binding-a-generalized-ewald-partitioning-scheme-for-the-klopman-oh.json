@@ -1,0 +1,122 @@
+{
+  "paper_id": "acfocus_a110dcb3c024",
+  "title": "Periodic GFN1-xTB Tight Binding: A Generalized Ewald Partitioning Scheme for the Klopman-Ohno Function",
+  "metadata": {
+    "doi": "10.1021/acs.jctc.4c01234",
+    "url": "https://pubs.acs.org/doi/10.1021/acs.jctc.4c01234",
+    "year": "2025",
+    "authors": "A. Buccheri; R. Li; J. E. Deustua; S. M. Moosavi; P. J. Bygrave; F. R. Manby",
+    "venue": "Journal of Chemical Theory and Computation",
+    "category": "Journal Article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Mohamad Moosavi"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "A novel binomial expansion-based approach for electrostatics in periodic GFN1-xTB enables accurate and general treatment of short- and long-range interactions via generalized Ewald summation, eliminating unphysical behavior and achieving benchmark accuracy comparable to machine-learned force fields.",
+  "abstract": "A novel formulation is presented for the treatment of electrostatics in the periodic GFN1-xTB tight-binding model. Periodic GFN1-xTB is hindered by the functional form of the second-order electrostatics, which only recovers Coulombic behavior at large interatomic distances and lacks a closed-form solution for its Fourier transform. We address this by introducing a binomial expansion of the Klopman-Ohno function to partition short- and long-range interactions, enabling the use of a generalized Ewald summation for the solution of the electrostatic energy. This approach is general and is applicable to any damped potential of the form |R<sup>n</sup> + c|<sup>-m</sup>. Benchmarks on the X23 molecular crystal dataset and a range of prototypical bulk semiconductors demonstrate that this systematic treatment of the electrostatics eliminates unphysical behavior in the equation of state curves. In the bulk systems studied, we observe a mean absolute error in total energy of 35 meV/atom, comparable to the machine-learned universal force field, M3GNet, and sufficiently precise for structure relaxation. These results highlight the promising potential of GFN1-xTB as a universal tight-binding parametrization.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "A novel binomial expansion-based approach for electrostatics in periodic GFN1-xTB enables accurate and general treatment of short- and long-range interactions via generalized Ewald summation, eliminating unphysical behavior and achieving benchmark accuracy comparable to machine-learned force fields.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [],
+  "materials": [
+    {
+      "value": "Benchmarks on the X23 molecular crystal dataset and a range of prototypical bulk semiconductors demonstrate that this systematic treatment of the electrostatics eliminates unphysical behavior in the equation of state curves.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [
+    {
+      "value": "Periodic GFN1-xTB Tight Binding: A Generalized Ewald Partitioning Scheme for the Klopman-Ohno Function A novel binomial expansion-based approach for electrostatics in periodic GFN1-xTB enables accurate and general treatment of short- and long-range interactions via generalized Ewald summation, eliminating unphysical behavior and achieving benchmark accuracy comparable to machine-learned force fields.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "We address this by introducing a binomial expansion of the Klopman-Ohno function to partition short- and long-range interactions, enabling the use of a generalized Ewald summation for the solution of the electrostatic energy.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "In the bulk systems studied, we observe a mean absolute error in total energy of 35 meV/atom, comparable to the machine-learned universal force field, M3GNet, and sufficiently precise for structure relaxation.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [
+    {
+      "value": "Periodic GFN1-xTB Tight Binding: A Generalized Ewald Partitioning Scheme for the Klopman-Ohno Function A novel binomial expansion-based approach for electrostatics in periodic GFN1-xTB enables accurate and general treatment of short- and long-range interactions via generalized Ewald summation, eliminating unphysical behavior and achieving benchmark accuracy comparable to machine-learned force fields.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "conditions": [],
+  "mechanisms": [],
+  "outcomes": [],
+  "sdl_tags": [],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.5,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": false,
+      "materials": true,
+      "properties": true,
+      "measurements": true,
+      "conditions": false,
+      "mechanisms": false,
+      "outcomes": false,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "entities",
+      "conditions",
+      "mechanisms",
+      "outcomes",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

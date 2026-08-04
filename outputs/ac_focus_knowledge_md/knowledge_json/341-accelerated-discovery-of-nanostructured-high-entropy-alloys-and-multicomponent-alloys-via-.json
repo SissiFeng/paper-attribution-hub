@@ -1,0 +1,191 @@
+{
+  "paper_id": "acfocus_d6cc7f616571",
+  "title": "Accelerated discovery of nanostructured high-entropy alloys and multicomponent alloys via high-throughput strategies",
+  "metadata": {
+    "doi": "10.1016/j.pmatsci.2025.101429",
+    "url": "https://www.sciencedirect.com/science/article/pii/S0079642525000040",
+    "year": "2025",
+    "authors": "Cheng C., Zou Y.",
+    "venue": "Progress in Materials Science",
+    "category": "Review",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Yu Zou"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member"
+    ],
+    "flags": {
+      "acknowledges_ac": "checked",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "This review discusses the rapid development and application of high-throughput methods for the accelerated discovery, fabrication, and characterization of thermally stable and mechanically strong nanostructured high-entropy alloys (Ns-HEAs), highlighting recent advances, challenges, and future opportunities in this field.",
+  "abstract": "Nanostructured materials (NsMs) exhibit many interesting and useful properties; yet their grain sizes or phases are generally unstable at elevated temperatures, limiting their process methods and engineering applications. Many emerging alloys, especially high-entropy alloys (HEAs) and related multicomponent alloys, are reported to show enhanced thermal stability and mechanical strength. The identification of mechanically strong and thermally stable multicomponent alloys out of a vast compositional space, however, is a daunting task – many are predominantly developed through sequential and time-consuming trial-and-error approaches. Thus, high-throughput strategies are urgently needed to accelerate the discovery of new and useful nanostructured HEAs (Ns-HEAs). As the fields of Ns-HEAs and high-throughput methods are developing rapidly, an avenue of research on this topic is to be exploited. This review focuses on the literature on the high-throughput fabrication, characterization, and testing of the microstructures, phases, compositions, mechanical properties, and thermal stabilities of a wide range of Ns-HEAs reported over the past two decades. This article also includes recent high-throughput methods that could be potentially used for the discovery of new Ns-HEAs and related multicomponent alloys, as well as various high-throughput data analysis methods such as theoretical screening, simulation, and machine learning. The article concludes with progress, challenges, and opportunities about the future directions in the accelerated discovery of a wide range of complex alloys via high-throughput methodologies. © 2025 The Author(s)",
+  "hardware": [
+    {
+      "value": "This review discusses the rapid development and application of high-throughput methods for the accelerated discovery, fabrication, and characterization of thermally stable and mechanically strong nanostructured high-entropy alloys (Ns-HEAs), highlighting recent advances, challenges, and future opportunities in this field.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Thus, high-throughput strategies are urgently needed to accelerate the discovery of new and useful nanostructured HEAs (Ns-HEAs).",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "As the fields of Ns-HEAs and high-throughput methods are developing rapidly, an avenue of research on this topic is to be exploited.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "This review focuses on the literature on the high-throughput fabrication, characterization, and testing of the microstructures, phases, compositions, mechanical properties, and thermal stabilities of a wide range of Ns-HEAs reported over the past two decades.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "methods": [
+    {
+      "value": "This review discusses the rapid development and application of high-throughput methods for the accelerated discovery, fabrication, and characterization of thermally stable and mechanically strong nanostructured high-entropy alloys (Ns-HEAs), highlighting recent advances, challenges, and future opportunities in this field.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Automation and Robotics",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Materials Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "Accelerated discovery of nanostructured high-entropy alloys and multicomponent alloys via high-throughput strategies This review discusses the rapid development and application of high-throughput methods for the accelerated discovery, fabrication, and characterization of thermally stable and mechanically strong nanostructured high-entropy alloys (Ns-HEAs), highlighting recent advances, challenges, and future opportunities in this field.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Nanostructured materials (NsMs) exhibit many interesting and useful properties; yet their grain sizes or phases are generally unstable at elevated temperatures, limiting their process methods and engineering applications.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Many emerging alloys, especially high-entropy alloys (HEAs) and related multicomponent alloys, are reported to show enhanced thermal stability and mechanical strength.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [
+    {
+      "value": "Nanostructured materials (NsMs) exhibit many interesting and useful properties; yet their grain sizes or phases are generally unstable at elevated temperatures, limiting their process methods and engineering applications.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Many emerging alloys, especially high-entropy alloys (HEAs) and related multicomponent alloys, are reported to show enhanced thermal stability and mechanical strength.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "This review focuses on the literature on the high-throughput fabrication, characterization, and testing of the microstructures, phases, compositions, mechanical properties, and thermal stabilities of a wide range of Ns-HEAs reported over the past two decades.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [
+    {
+      "value": "Accelerated discovery of nanostructured high-entropy alloys and multicomponent alloys via high-throughput strategies This review discusses the rapid development and application of high-throughput methods for the accelerated discovery, fabrication, and characterization of thermally stable and mechanically strong nanostructured high-entropy alloys (Ns-HEAs), highlighting recent advances, challenges, and future opportunities in this field.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "This review focuses on the literature on the high-throughput fabrication, characterization, and testing of the microstructures, phases, compositions, mechanical properties, and thermal stabilities of a wide range of Ns-HEAs reported over the past two decades.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "conditions": [
+    {
+      "value": "The identification of mechanically strong and thermally stable multicomponent alloys out of a vast compositional space, however, is a daunting task – many are predominantly developed through sequential and time-consuming trial-and-error approaches.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "mechanisms": [],
+  "outcomes": [
+    {
+      "value": "Sustainable Materials",
+      "source": "csv_applied_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "Automation and Robotics",
+    "Materials Science",
+    "Sustainable Materials"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.77,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": true,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": true,
+      "properties": true,
+      "measurements": true,
+      "conditions": true,
+      "mechanisms": false,
+      "outcomes": true,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "evidence",
+      "mechanisms",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only."
+    ]
+  }
+}

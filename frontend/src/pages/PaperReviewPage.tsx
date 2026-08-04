@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 
 import { EvidencePanel } from "@/components/EvidencePanel";
@@ -6,6 +6,11 @@ import { FilterBar } from "@/components/FilterBar";
 import { PaperTable } from "@/components/PaperTable";
 import { listPapers } from "@/lib/api";
 import { filterFromSearchParams, filterToSearchParams } from "@/lib/filter";
+import {
+  isLatestRequest,
+  resultForScope,
+  type ScopedResult,
+} from "@/lib/scopedResult";
 import type { Paper } from "@/types";
 
 const LABEL_COLORS: Record<string, string> = {
@@ -19,40 +24,51 @@ const LABEL_COLORS: Record<string, string> = {
 
 export default function PaperReviewPage() {
   const [searchParams] = useSearchParams();
-  const [papers, setPapers] = useState<Paper[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const [offset, setOffset] = useState(0);
   const PAGE_SIZE = 50;
+  const searchKey = searchParams.toString();
+  const scopeKey = JSON.stringify([searchKey, offset, PAGE_SIZE]);
+  const [papersResult, setPapersResult] = useState<
+    ScopedResult<Paper[]> | null
+  >(null);
+  const papers = resultForScope(papersResult, scopeKey) ?? [];
+  const requestGeneration = useRef(0);
 
   const filter = filterFromSearchParams(searchParams);
 
   const load = useCallback(async () => {
+    const generation = ++requestGeneration.current;
     setLoading(true);
     setError(null);
     try {
       // Apply filterFromSearchParams so DEFAULT_FILTER.labels are included
       // even when the URL has no ?labels= params (fresh page load).
-      const filter = filterFromSearchParams(searchParams);
-      const params = filterToSearchParams(filter);
+      const requestFilter = filterFromSearchParams(new URLSearchParams(searchKey));
+      const params = filterToSearchParams(requestFilter);
       params.set("limit", String(PAGE_SIZE));
       params.set("offset", String(offset));
       const fetched = await listPapers(params);
-      setPapers(fetched);
-      // Do NOT auto-select — drawer only opens when user explicitly clicks a row
-      setSelectedId(null);
+      if (isLatestRequest(generation, requestGeneration.current)) {
+        setPapersResult({ scopeKey, payload: fetched });
+        // Do NOT auto-select — drawer only opens when user explicitly clicks a row
+        setSelectedId(null);
+      }
     } catch (err) {
-      setError(err instanceof Error ? err.message : String(err));
+      if (isLatestRequest(generation, requestGeneration.current)) {
+        setError(err instanceof Error ? err.message : String(err));
+        setPapersResult(null);
+      }
     } finally {
-      setLoading(false);
+      if (isLatestRequest(generation, requestGeneration.current)) setLoading(false);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [searchParams.toString(), offset]);
+  }, [offset, scopeKey, searchKey]);
 
   useEffect(() => {
     setOffset(0); // reset page when filter changes
-  }, [searchParams.toString()]);
+  }, [searchKey]);
 
   useEffect(() => {
     void load();
@@ -117,6 +133,8 @@ export default function PaperReviewPage() {
           Backend error: {error}.
         </div>
       )}
+
+      {loading && papers.length === 0 && <div className="empty">Loading papers…</div>}
 
       <PaperTable
         papers={papers}

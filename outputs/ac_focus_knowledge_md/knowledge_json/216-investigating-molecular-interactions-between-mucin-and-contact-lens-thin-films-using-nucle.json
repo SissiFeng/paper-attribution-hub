@@ -1,0 +1,171 @@
+{
+  "paper_id": "acfocus_dd6804dfd0e4",
+  "title": "Investigating Molecular Interactions between Mucin and Contact Lens Thin Films Using Nuclear Magnetic Resonance",
+  "metadata": {
+    "doi": "10.1021/acsapm.4c01844",
+    "url": "https://pubs.acs.org/doi/10.1021/acsapm.4c01844",
+    "year": "2024",
+    "authors": "Mei S, Watchorn J, Oliveira MH, Nazeri M, Gu FX",
+    "venue": "ACS Applied Polymer Materials",
+    "category": "Journal article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Frank Gu",
+      "Jeff Watchorn"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance",
+      "AC Staff"
+    ],
+    "flags": {
+      "acknowledges_ac": "checked",
+      "highly_relevant": "checked",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "This study used a novel NMR-based technique to reveal how varying PVP content in PHEMA-based hydrogels alters mucin-binding profiles and hydrogel porosity, providing atomic-level insights into the structure-activity relationships that govern mucoadhesion in contact lens materials.",
+  "abstract": "Poly(2-hydroxyethyl methacrylate) (PHEMA) and polyvinylpyrrolidone (PVP) are common polymers used in contact lens materials. In these systems, PHEMA forms the hydrogel network and PVP is used as a wetting agent. These lens materials, like other implantable devices, suffer from interactions with biological macromolecules that ultimately foul the surface of the lens. Despite the widespread adoption of contact lenses, the mechanisms of protein adsorption onto lenses are not well understood. To investigate the interactions responsible for fouling on contact lens materials, we developed a spin-coating apparatus to deposit thin polymer films onto NMR tube surfaces. We then used direct saturation compensated (DISCO) NMR on PHEMA-coated NMR tubes to investigate mucin binding at the surface of the coatings and the effect of varying PVP concentrations. Using this technique, this study was able to characterize the binding profiles of PHEMA-only and PHEMA+PVP hydrogels. The results show that the mucin-binding profile of PHEMA evolves as the PVP content increases. In the absence of PVP, the protons in the PHEMA backbone interact with mucin. However, when PHEMA and PVP form a hydrogel network, the protons on the PHEMA side chain become mucoadhesive in addition to the backbone. When the PVP content is further increased, only the side chain protons retain their interaction. Interestingly, the NMR spectra of PHEMA+PVP hydrogels suggest that PVP preferentially accumulates within the PHEMA matrix, with relatively little presenting at the surface of the hydrogels. In conjunction, SEM imaging of the PHEMA and PHEMA+PVP hydrogels shows that an increase in porosity accompanies the change in mucin-binding behavior, indicating that the change in morphology is correlated to the change in mucin-binding behavior rather than solely the change in composition. Overall, this study develops a tool to study the interactions between macromolecules and polymeric surfaces with atomic precision, uncovering structure-activity relationships that govern mucoadhesion of polymeric hydrogels.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "This study used a novel NMR-based technique to reveal how varying PVP content in PHEMA-based hydrogels alters mucin-binding profiles and hydrogel porosity, providing atomic-level insights into the structure-activity relationships that govern mucoadhesion in contact lens materials.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Materials Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "Investigating Molecular Interactions between Mucin and Contact Lens Thin Films Using Nuclear Magnetic Resonance This study used a novel NMR-based technique to reveal how varying PVP content in PHEMA-based hydrogels alters mucin-binding profiles and hydrogel porosity, providing atomic-level insights into the structure-activity relationships that govern mucoadhesion in contact lens materials.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Poly(2-hydroxyethyl methacrylate) (PHEMA) and polyvinylpyrrolidone (PVP) are common polymers used in contact lens materials.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "These lens materials, like other implantable devices, suffer from interactions with biological macromolecules that ultimately foul the surface of the lens.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [
+    {
+      "value": "Investigating Molecular Interactions between Mucin and Contact Lens Thin Films Using Nuclear Magnetic Resonance This study used a novel NMR-based technique to reveal how varying PVP content in PHEMA-based hydrogels alters mucin-binding profiles and hydrogel porosity, providing atomic-level insights into the structure-activity relationships that govern mucoadhesion in contact lens materials.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "In conjunction, SEM imaging of the PHEMA and PHEMA+PVP hydrogels shows that an increase in porosity accompanies the change in mucin-binding behavior, indicating that the change in morphology is correlated to the change in mucin-binding behavior rather than solely the change in composition.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Overall, this study develops a tool to study the interactions between macromolecules and polymeric surfaces with atomic precision, uncovering structure-activity relationships that govern mucoadhesion of polymeric hydrogels.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [
+    {
+      "value": "Investigating Molecular Interactions between Mucin and Contact Lens Thin Films Using Nuclear Magnetic Resonance This study used a novel NMR-based technique to reveal how varying PVP content in PHEMA-based hydrogels alters mucin-binding profiles and hydrogel porosity, providing atomic-level insights into the structure-activity relationships that govern mucoadhesion in contact lens materials.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "To investigate the interactions responsible for fouling on contact lens materials, we developed a spin-coating apparatus to deposit thin polymer films onto NMR tube surfaces.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "We then used direct saturation compensated (DISCO) NMR on PHEMA-coated NMR tubes to investigate mucin binding at the surface of the coatings and the effect of varying PVP concentrations.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Interestingly, the NMR spectra of PHEMA+PVP hydrogels suggest that PVP preferentially accumulates within the PHEMA matrix, with relatively little presenting at the surface of the hydrogels.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "conditions": [],
+  "mechanisms": [],
+  "outcomes": [
+    {
+      "value": "Therapeutics",
+      "source": "csv_applied_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "SDL 5 - Formulations",
+    "Materials Science",
+    "Therapeutics"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.63,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": true,
+      "properties": true,
+      "measurements": true,
+      "conditions": false,
+      "mechanisms": false,
+      "outcomes": true,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "conditions",
+      "mechanisms",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

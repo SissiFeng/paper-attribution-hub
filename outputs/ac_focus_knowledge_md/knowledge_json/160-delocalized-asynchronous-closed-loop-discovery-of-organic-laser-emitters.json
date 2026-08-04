@@ -1,0 +1,177 @@
+{
+  "paper_id": "acfocus_c41d75d3c798",
+  "title": "Delocalized, asynchronous, closed-loop discovery of organic laser emitters",
+  "metadata": {
+    "doi": "10.1126/science.adk9227",
+    "url": "https://www.science.org/doi/10.1126/science.adk9227",
+    "year": "2024",
+    "authors": "Strieth-Kalthoff F, Hao H, Rathore V, Derasp J, Gaudin T, Angello NH, Seifrid M, Trushina E, Guy M, Liu J, Tang X, Mamada M, Wang W, Tsagaantsooj T, Lavigne C, Pollice R, Wu TC, Hotta K, Bodo L, Li S, Haddadnia M, Wołos A, Roszak R, Ser CT, Bozal-Ginesta C, Hickman RJ, Vestfrid J, Aguilar-Granda A, Klimareva EL, Sigerson RC, Hou W, Gahler D, Lach S, Warzybok A, Borodin O, Rohrbach S, Sanchez-Lengeling B, Adachi C, Grzybowski BA, Cronin L, Hein JE, Burke MD, Aspuru-Guzik A",
+    "venue": "Science",
+    "category": "Journal article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Alán Aspuru-Guzik",
+      "Felix Strieth-Kalthoff"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance",
+      "AC Affiliate Member"
+    ],
+    "flags": {
+      "acknowledges_ac": "checked",
+      "highly_relevant": "checked",
+      "high_impact": "checked"
+    }
+  },
+  "source_summary": "A cloud-based, AI-driven workflow integrating distributed robotic synthesis and characterization across five global laboratories enabled the asynchronous discovery and validation of 21 new molecular gain materials for organic solid-state lasers, demonstrating a scalable model for delocalized scientific research.",
+  "abstract": "Contemporary materials discovery requires intricate sequences of synthesis, formulation, and characterization that often span multiple locations with specialized expertise or instrumentation. To accelerate these workflows, we present a cloud-based strategy that enabled delocalized and asynchronous design-make-test-analyze cycles. We showcased this approach through the exploration of molecular gain materials for organic solid-state lasers as a frontier application in molecular optoelectronics. Distributed robotic synthesis and in-line property characterization, orchestrated by a cloud-based artificial intelligence experiment planner, resulted in the discovery of 21 new state-of-the-art materials. Gram-scale synthesis ultimately allowed for the verification of best-in-class stimulated emission in a thin-film device. Demonstrating the asynchronous integration of five laboratories across the globe, this workflow provides a blueprint for delocalizing-and democratizing-scientific discovery.",
+  "hardware": [
+    {
+      "value": "A cloud-based, AI-driven workflow integrating distributed robotic synthesis and characterization across five global laboratories enabled the asynchronous discovery and validation of 21 new molecular gain materials for organic solid-state lasers, demonstrating a scalable model for delocalized scientific research.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Distributed robotic synthesis and in-line property characterization, orchestrated by a cloud-based artificial intelligence experiment planner, resulted in the discovery of 21 new state-of-the-art materials.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "methods": [
+    {
+      "value": "A cloud-based, AI-driven workflow integrating distributed robotic synthesis and characterization across five global laboratories enabled the asynchronous discovery and validation of 21 new molecular gain materials for organic solid-state lasers, demonstrating a scalable model for delocalized scientific research.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Artificial Intelligence & Data Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Automation and Robotics",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Chemistry",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "Delocalized, asynchronous, closed-loop discovery of organic laser emitters A cloud-based, AI-driven workflow integrating distributed robotic synthesis and characterization across five global laboratories enabled the asynchronous discovery and validation of 21 new molecular gain materials for organic solid-state lasers, demonstrating a scalable model for delocalized scientific research.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Contemporary materials discovery requires intricate sequences of synthesis, formulation, and characterization that often span multiple locations with specialized expertise or instrumentation.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "We showcased this approach through the exploration of molecular gain materials for organic solid-state lasers as a frontier application in molecular optoelectronics.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [
+    {
+      "value": "Distributed robotic synthesis and in-line property characterization, orchestrated by a cloud-based artificial intelligence experiment planner, resulted in the discovery of 21 new state-of-the-art materials.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [
+    {
+      "value": "Delocalized, asynchronous, closed-loop discovery of organic laser emitters A cloud-based, AI-driven workflow integrating distributed robotic synthesis and characterization across five global laboratories enabled the asynchronous discovery and validation of 21 new molecular gain materials for organic solid-state lasers, demonstrating a scalable model for delocalized scientific research.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Contemporary materials discovery requires intricate sequences of synthesis, formulation, and characterization that often span multiple locations with specialized expertise or instrumentation.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Distributed robotic synthesis and in-line property characterization, orchestrated by a cloud-based artificial intelligence experiment planner, resulted in the discovery of 21 new state-of-the-art materials.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "conditions": [],
+  "mechanisms": [],
+  "outcomes": [
+    {
+      "value": "Optical Materials",
+      "source": "csv_applied_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "Artificial Intelligence & Data Science",
+    "Automation and Robotics",
+    "Chemistry",
+    "Optical Materials"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.73,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": true,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": true,
+      "properties": true,
+      "measurements": true,
+      "conditions": false,
+      "mechanisms": false,
+      "outcomes": true,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "evidence",
+      "conditions",
+      "mechanisms",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only."
+    ]
+  }
+}

@@ -1,0 +1,231 @@
+{
+  "paper_id": "acfocus_bf1cb7348469",
+  "title": "Sizing up feature descriptors for macromolecular machine learning with polymeric biomaterials",
+  "metadata": {
+    "doi": "10.1038/s41524-023-01040-5",
+    "url": "https://www.nature.com/articles/s41524-023-01040-5",
+    "year": "2023",
+    "authors": "Stuart, Samantha; Watchorn, Jeffrey; Gu, Frank X.",
+    "venue": "npj Computational Materials",
+    "category": "Journal article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Frank Gu",
+      "Jeff Watchorn"
+    ],
+    "ac_programs": [
+      "Core Development Grants_Frank Gu_2023-24"
+    ],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance",
+      "AC Staff"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "checked",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "This abstract reviews popular data representation methods for polymeric biomaterials in machine learning, discusses their strengths and weaknesses, and emphasizes that improving feature engineering knowledge can accelerate clinical translation in biomaterials discovery.",
+  "abstract": "Abstract             It has proved challenging to represent the behavior of polymeric macromolecules as machine learning features for biomaterial interaction prediction. There are several approaches to this representation, yet no consensus for a universal representational framework, in part due to the sensitivity of biomacromolecular interactions to polymer properties. To help navigate the process of feature engineering, we provide an overview of popular classes of data representations for polymeric biomaterial machine learning while discussing their merits and limitations. Generally, increasing the accessibility of polymeric biomaterial feature engineering knowledge will contribute to the goal of accelerating clinical translation from biomaterials discovery.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "The paper provides an overview of popular classes of data representations for polymeric biomaterial machine learning, discussing their merits and limitations, to help navigate the process of feature engineering.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "problems": [
+    {
+      "value": "Challenges in representing the behavior of polymeric macromolecules as machine learning features for biomaterial interaction prediction due to the heterogeneity of polymer properties and lack of a universal representational framework.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "hypotheses": [
+    {
+      "value": "Different data representations can yield different interpretations of training data by the model, and appropriate descriptors should be chosen with care and intention at the outset of a machine-learning project.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "evidence": [
+    {
+      "value": "The paper discusses various approaches to polymer representation, including domain-specific descriptors, molecular fingerprints, string descriptors, and graph representations, and their applications in different studies.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "conclusions": [
+    {
+      "value": "There is a clear need for dedicated macromolecular descriptors that facilitate the training of representative predictive models in the domain of polymeric biomaterials, and a 'one-size-fits-all' approach is unlikely to accommodate all varieties of relevant domain-specific factors.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "entities": [
+    {
+      "value": "Polymeric macromolecules",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Biomacromolecular interactions",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Machine learning models",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Feature descriptors",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "There are several approaches to this representation, yet no consensus for a universal representational framework, in part due to the sensitivity of biomacromolecular interactions to polymer properties.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "The paper discusses various approaches to polymer representation, including domain-specific descriptors, molecular fingerprints, string descriptors, and graph representations, and their applications in different studies.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [
+    {
+      "value": "There are several approaches to this representation, yet no consensus for a universal representational framework, in part due to the sensitivity of biomacromolecular interactions to polymer properties.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [],
+  "conditions": [],
+  "mechanisms": [
+    {
+      "value": "Data representation影响了机器学习模型对训练数据的解释",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Feature engineering指导了设计和选择与训练准确的机器学习模型相关的特征",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Descriptor frameworks影响了模型性能",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "outcomes": [
+    {
+      "value": "Increased accessibility of polymeric biomaterial feature engineering knowledge",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Acceleration of clinical translation from biomaterials discovery",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "SDL 5 - Formulations",
+    "Artificial Intelligence & Data Science",
+    "Chemistry",
+    "Formulations"
+  ],
+  "reasoning_motifs": [
+    {
+      "value": "Data Representation → Model Interpretation",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Feature Selection → Model Accuracy",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Descriptor Framework → Model Performance",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "general_principles": [
+    {
+      "value": "Information Representation Impacts Outcome",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Feature Relevance Dictates Prediction Quality",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "acgold_5e6d32360cf7",
+    "cross_sdl_reasoning_json": "/Users/sissifeng/Downloads/cross-sdl_knowledge_transfer_engine/data/reasoning/acgold_5e6d32360cf7.json",
+    "cross_sdl_extraction_quality": 0.7,
+    "cross_sdl_notes": "The paper is a perspective article that provides an overview and discussion of different data representations for polymeric biomaterial machine learning, rather than a structured scientific paper with a clear hypothesis, method, and conclusion. Some inferences were made to fit the extraction structure."
+  },
+  "validation": {
+    "score": 0.8,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": true,
+      "entities": true,
+      "materials": true,
+      "properties": true,
+      "measurements": false,
+      "conditions": false,
+      "mechanisms": true,
+      "outcomes": true,
+      "cross_sdl_match": true
+    },
+    "missing": [
+      "hardware",
+      "measurements",
+      "conditions"
+    ],
+    "notes": [
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

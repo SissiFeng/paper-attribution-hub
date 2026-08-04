@@ -1,0 +1,126 @@
+{
+  "paper_id": "acfocus_c9b4059666f2",
+  "title": "El Agente: An Autonomous Agent for Quantum Chemistry",
+  "metadata": {
+    "doi": "10.48550/arxiv.2505.02484",
+    "url": "https://arxiv.org/abs/2505.02484",
+    "year": "2025",
+    "authors": "Y. Zou; A. H. Cheng; A. Aldossary; J. Bai; S. X. Leong; J. A. Campos-Gonzalez-Angulo; C. Choi; C. T. Ser; G. Tom; A. Wang; Z. Zhang; I. Yakavets; H. Hao; C. Crebolder; V. Bernales; A. N. Aspuru-Guzik",
+    "venue": "arxiv",
+    "category": "Preprint",
+    "peer_reviewed": "Non Peer Reviewed",
+    "ac_members": [
+      "Alán Aspuru-Guzik",
+      "Han Hao",
+      "Ilya Yakavets"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance",
+      "AC Staff",
+      "AC Staff"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "El Agente Q is an LLM-based multi-agent system that autonomously generates and executes quantum chemistry workflows from natural language prompts, using a novel cognitive architecture to enable flexible, transparent, and accessible problem-solving for both experts and non-specialists.",
+  "abstract": "Computational chemistry tools are widely used to study the behaviour of chemical phenomena. Yet, the complexity of these tools can make them inaccessible to non-specialists and challenging even for experts. In this work, we introduce El Agente Q, an LLM-based multi-agent system that dynamically generates and executes quantum chemistry workflows from natural language user prompts. The system is built on a novel cognitive architecture featuring a hierarchical memory framework that enables flexible task decomposition, adaptive tool selection, post-analysis, and autonomous file handling and submission. El Agente Q is benchmarked on six university-level course exercises and two case studies, demonstrating robust problem-solving performance (averaging >87% task success) and adaptive error handling through in situ debugging. It also supports longer-term, multi-step task execution for more complex workflows, while maintaining transparency through detailed action trace logs. Together, these capabilities lay the foundation for increasingly autonomous and accessible quantum chemistry.",
+  "hardware": [
+    {
+      "value": "The system is built on a novel cognitive architecture featuring a hierarchical memory framework that enables flexible task decomposition, adaptive tool selection, post-analysis, and autonomous file handling and submission.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Together, these capabilities lay the foundation for increasingly autonomous and accessible quantum chemistry.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "methods": [
+    {
+      "value": "El Agente Q is an LLM-based multi-agent system that autonomously generates and executes quantum chemistry workflows from natural language prompts, using a novel cognitive architecture to enable flexible, transparent, and accessible problem-solving for both experts and non-specialists.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Artificial Intelligence & Data Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Chemistry",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [],
+  "properties": [],
+  "measurements": [
+    {
+      "value": "El Agente Q is benchmarked on six university-level course exercises and two case studies, demonstrating robust problem-solving performance (averaging >87% task success) and adaptive error handling through in situ debugging.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "conditions": [],
+  "mechanisms": [],
+  "outcomes": [],
+  "sdl_tags": [
+    "Artificial Intelligence & Data Science",
+    "Chemistry"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "acgold_36cfc5397022",
+    "cross_sdl_reasoning_json": "/Users/sissifeng/Downloads/cross-sdl_knowledge_transfer_engine/data/reasoning/acgold_36cfc5397022.json",
+    "cross_sdl_extraction_quality": 0.0,
+    "cross_sdl_notes": "Extraction failed — parse error: Error code: 400 - {'error': {'message': 'Invalid request: Your request exceeded model token limit: 131072 (requested: 131634)', 'type': 'invalid_request_error'}}"
+  },
+  "validation": {
+    "score": 0.58,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": true,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": false,
+      "properties": false,
+      "measurements": true,
+      "conditions": false,
+      "mechanisms": false,
+      "outcomes": false,
+      "cross_sdl_match": true
+    },
+    "missing": [
+      "evidence",
+      "materials",
+      "properties",
+      "conditions",
+      "mechanisms",
+      "outcomes"
+    ],
+    "notes": []
+  }
+}

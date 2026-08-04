@@ -1,0 +1,219 @@
+{
+  "paper_id": "acfocus_2780edcc2070",
+  "title": "Guidelines for hardware-focused articles",
+  "metadata": {
+    "doi": "10.1039/d4dd90009j",
+    "url": "https://pubs.rsc.org/en/content/articlelanding/2024/dd/d4dd90009j",
+    "year": "2024",
+    "authors": "Hein J.E.; Schrier J.",
+    "venue": "Digital Discovery",
+    "category": "Review",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Jason Hein"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "checked",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "",
+  "abstract": "Guidelines for hardware-focused articles\nJason E. Hein\n*a and Joshua Schrier\n*b\nIn this editorial, we set expectations and requirements for hardware-focused articles to Digital Discovery.\nWe discuss the four criteria that should be addressed by authors and reviewers: (1) relevance to the\ndigitalization of chemical research (broadly deﬁned); (2) comparative analysis of the hardware to existing\nalternatives; (3) replicability and modiﬁcation of the design; (4) instructions for operation and safety.\nThe journey towards realizing autono-\nmous labs is a challenging yet rewarding\ninterdisciplinary endeavor. The integra-\ntion, instrumentation, and oen, the\ninnovative design and construction of\nhardware, are crucial stepping stones in\nthis journey. However, a palpable chal-\nlenge looms in the form of a glaring\nabsence\nof\n“mainstream”\nmaterials-\nscience or chemistry journals that cater\nto researchers engrossed in autonomous\nresearch\nintegration,\ninstrumentation,\nand hardware. Too oen, the description\nof discovery-enabling hardware is teth-\nered to a larger scientic demonstration\nproject.\nThis\ninadvertently\ncreates\na bottleneck, hindering the ow of inno-\nvation and collaborative eﬀorts essential\nfor advancing this domain.\nThe\ninterdisciplinary\nexpansion\nof\ndigital transformation within chemical\nand material science has necessitated\na greater emphasis on articles dedicated\nto\nhardware\nadvancements.\nDigital\nDiscovery\nhas\nwitnessed\na\nsurge\nin\nsubmissions of hardware articles, along-\nside an inux of author and reviewer\nqueries regarding the journal’s expecta-\ntions in this domain. In this editorial we\naddress those questions and set expecta-\ntions and requirements for submissions\ndescribing discovery-enabling hardware.\nEstablishing a peer-reviewed forum for\nthese works serves a dual purpose: it\nassures readers of the relevance, capa-\nbility, feasibility, and usability of the\nhardware in a scientic setting, and it\nalso recognizes the genuine scholarly\ncontributions of hardwa",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "Setting expectations and requirements for hardware-focused articles in Digital Discovery, focusing on four criteria: relevance, comparative analysis, replicability, and operation and safety.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "problems": [
+    {
+      "value": "Lack of a 'mainstream' materials-science or chemistry journal catering to researchers focused on autonomous research integration, instrumentation, and hardware.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "hypotheses": [
+    {
+      "value": "Establishing a peer-reviewed forum for hardware-focused articles will assure readers of the relevance, capability, feasibility, and usability of the hardware in a scientific setting and recognize genuine scholarly contributions in this emerging field.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "evidence": [
+    {
+      "value": "The surge in submissions of hardware articles and influx of author and reviewer queries regarding the journal’s expectations in this domain.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "conclusions": [
+    {
+      "value": "Digital Discovery will specialize in open-source scientific instrumentation that propels digitalization, automation, and autonomy in chemistry, materials research, and biotechnology.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "entities": [
+    {
+      "value": "Hardware articles",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Digitalization",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Automation",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Autonomy",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "materials": [],
+  "properties": [],
+  "measurements": [],
+  "conditions": [],
+  "mechanisms": [
+    {
+      "value": "Setting expectations and requirements for submissions",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Peer review process",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Specialization in open-source scientific instrumentation",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "outcomes": [
+    {
+      "value": "Assurance of relevance, capability, feasibility, and usability of hardware",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Recognition of genuine scholarly contributions",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Promotion of digitalization, automation, and autonomy in scientific research",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "Automation and Robotics"
+  ],
+  "reasoning_motifs": [
+    {
+      "value": "Standardization → Quality Assurance",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Specialization → Domain Advancement",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Collaboration → Innovation",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "general_principles": [
+    {
+      "value": "Quality Control",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Domain-Specific Advancement",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Collaborative Innovation",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "acgold_e0bf76a6d306",
+    "cross_sdl_reasoning_json": "/Users/sissifeng/Downloads/cross-sdl_knowledge_transfer_engine/data/reasoning/acgold_e0bf76a6d306.json",
+    "cross_sdl_extraction_quality": 0.8,
+    "cross_sdl_notes": "The editorial outlines the criteria and expectations for hardware-focused articles in Digital Discovery but does not explicitly detail failed attempts or a detailed exploration narrative."
+  },
+  "validation": {
+    "score": 0.58,
+    "coverage": {
+      "source_summary": false,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": true,
+      "entities": true,
+      "materials": false,
+      "properties": false,
+      "measurements": false,
+      "conditions": false,
+      "mechanisms": true,
+      "outcomes": true,
+      "cross_sdl_match": true
+    },
+    "missing": [
+      "source_summary",
+      "hardware",
+      "materials",
+      "properties",
+      "measurements",
+      "conditions"
+    ],
+    "notes": [
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

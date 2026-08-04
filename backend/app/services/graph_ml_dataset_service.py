@@ -4,6 +4,7 @@ This is deliberately a data-contract layer, not a model-training layer. It
 preserves the existing rule classifier and writes graph artifacts that can feed
 GraphSAGE/GAT/hetero-GNN experiments later.
 """
+
 from __future__ import annotations
 
 import json
@@ -15,6 +16,7 @@ from typing import Any
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
+from app.graph_ml_contract import GRAPH_ML_FORMAT
 from app.models import (
     AcCorePaper,
     Author,
@@ -56,7 +58,9 @@ def collect_graph_ml_dataset(session: Session) -> dict[str, list[dict] | dict]:
 
     def add_node(node_id: str, node_type: str, **attrs: Any) -> None:
         if node_id in nodes:
-            nodes[node_id]["attrs"].update({k: v for k, v in attrs.items() if v is not None})
+            nodes[node_id]["attrs"].update(
+                {k: v for k, v in attrs.items() if v is not None}
+            )
             return
         nodes[node_id] = {
             "id": node_id,
@@ -98,7 +102,9 @@ def collect_graph_ml_dataset(session: Session) -> dict[str, list[dict] | dict]:
             is_ac_member=bool(author.is_ac_member),
         )
 
-    for institution in session.execute(select(Institution).order_by(Institution.id)).scalars():
+    for institution in session.execute(
+        select(Institution).order_by(Institution.id)
+    ).scalars():
         add_node(
             _node_id("institution", institution.id),
             "institution",
@@ -131,7 +137,9 @@ def collect_graph_ml_dataset(session: Session) -> dict[str, list[dict] | dict]:
             venue=core.venue,
         )
 
-    for link in session.execute(select(PaperAuthor).order_by(PaperAuthor.paper_id, PaperAuthor.author_order)).scalars():
+    for link in session.execute(
+        select(PaperAuthor).order_by(PaperAuthor.paper_id, PaperAuthor.author_order)
+    ).scalars():
         add_edge(
             _node_id("paper", link.paper_id),
             _node_id("author", link.author_id),
@@ -184,7 +192,9 @@ def collect_graph_ml_dataset(session: Session) -> dict[str, list[dict] | dict]:
         )
 
     for ref in session.execute(
-        select(PaperReference).order_by(PaperReference.citing_paper_id, PaperReference.id)
+        select(PaperReference).order_by(
+            PaperReference.citing_paper_id, PaperReference.id
+        )
     ).scalars():
         if ref.cited_paper_id:
             add_edge(
@@ -242,17 +252,29 @@ def collect_graph_ml_dataset(session: Session) -> dict[str, list[dict] | dict]:
 
     sorted_nodes = sorted(nodes.values(), key=lambda row: row["id"])
     sorted_edges = sorted(
-        edges, key=lambda row: (row["src"], row["type"], row["dst"], json.dumps(row["attrs"], sort_keys=True))
+        edges,
+        key=lambda row: (
+            row["src"],
+            row["type"],
+            row["dst"],
+            json.dumps(row["attrs"], sort_keys=True),
+        ),
     )
     sorted_labels = sorted(labels, key=lambda row: row["node_id"])
     manifest = {
-        "format": "paper-graph-ml-v0.1",
+        "format": GRAPH_ML_FORMAT,
         "node_count": len(sorted_nodes),
         "edge_count": len(sorted_edges),
         "label_count": len(sorted_labels),
-        "node_types": dict(sorted(Counter(row["type"] for row in sorted_nodes).items())),
-        "edge_types": dict(sorted(Counter(row["type"] for row in sorted_edges).items())),
-        "label_values": dict(sorted(Counter(row["label"] for row in sorted_labels).items())),
+        "node_types": dict(
+            sorted(Counter(row["type"] for row in sorted_nodes).items())
+        ),
+        "edge_types": dict(
+            sorted(Counter(row["type"] for row in sorted_edges).items())
+        ),
+        "label_values": dict(
+            sorted(Counter(row["label"] for row in sorted_labels).items())
+        ),
     }
     return {
         "nodes": sorted_nodes,

@@ -1,0 +1,239 @@
+{
+  "paper_id": "acfocus_1c826a99588f",
+  "title": "Leveraging GPT-4 to transform chemistry from paper to practice",
+  "metadata": {
+    "doi": "10.1039/d4dd00248b",
+    "url": "https://pubs.rsc.org/en/content/articlelanding/2024/dd/d4dd00248b",
+    "year": "2024",
+    "authors": "Zhang W.; Guy M.A.; Yang J.; Hao L.; Liu J.; Hawkins J.M.; Mustakis J.; Monfette S.; Hein J.E.",
+    "venue": "Digital Discovery",
+    "category": "Article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Jason Hein"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance"
+    ],
+    "flags": {
+      "acknowledges_ac": "checked",
+      "highly_relevant": "checked",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "",
+  "abstract": "Leveraging GPT-4 to transform chemistry from\npaper to practice†\nWenyu Zhang,\na Mason A. Guy,a Jerrica Yang,a Lucy Hao,a Junliang Liu,b\nJoel M. Hawkins,c Jason Mustakis,\nc Sebastien Monfette\n*c\nand Jason E. Hein\n*abde\nLarge Language Models (LLMs) have revolutionized numerous industries as well as accelerated scientiﬁc\nresearch. However, their application in planning and conducting experimental science, has been limited.\nIn this study, we introduce an adaptable prompt-set with GPT-4, converting literature experimental\nprocedures into actionable experimental steps for a Mettler Toledo EasyMax automated laboratory\nreactor. Through prompt engineering, we developed a 2-step sequential prompt: the ﬁrst prompt\nconverts literature synthesis procedures into step-by-step instructions for reaction planning; the second\nprompt generates an XML script to communicate these instructions to the EasyMax reactor, automating\nexperimental design and execution. We successfully automated the reproduction of three distinct\nliterature-based synthetic procedures and validated the reactions by monitoring and characterizing the\nproducts. This approach bridges the gap between text-to-procedure transcription and automated\nexecution, and streamlines literature procedure reproduction.\nIntroduction\nSelf-Driving Labs (SDLs) integrate robotic automation with\nmachine learning (ML) to explore chemical space. SDLs accel-\nerate\nresearch\nand\ndiscovery\nacross\nvarious\ndisciplines,\nincluding organic synthesis,1–3 materials chemistry,4–6 photo-7,8\nand\nelectrochemistry.9–11\nAutomation\nliberates\nhuman\nresearchers from time-consuming and repetitive tasks, while\nclosed-loop optimization algorithms and/or computer vision\nfurther reduce the need for human oversight.7,12–14 However, the\nbroader adoption of SDLs remains challenging because the\nrequired expertise in engineering and programming are beyond\nthe scope of many chemistry laboratories. For example,\nprogramming an established automation system to execute\na sin",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "Developing a two-step sequential prompt approach to transcribe literature procedures into step-by-step instructions and XML scripts, utilizing GPT-4's capabilities.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "problems": [
+    {
+      "value": "The challenge of translating literature experimental procedures into actionable steps for automated laboratory reactors.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "hypotheses": [
+    {
+      "value": "A two-step sequential prompt using GPT-4 can convert literature synthesis procedures into executable XML scripts for an automated laboratory reactor.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "evidence": [
+    {
+      "value": "Successful automation of three distinct literature-based synthetic procedures, validated by monitoring and characterizing the products using online HPLC and NMR spectroscopy.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "conclusions": [
+    {
+      "value": "The approach bridges the gap between text-to-procedure transcription and automated execution, streamlining literature procedure reproduction.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "entities": [
+    {
+      "value": "GPT-4",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Mettler Toledo EasyMax automated laboratory reactor",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "XML script",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "literature synthesis procedures",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "materials": [],
+  "properties": [],
+  "measurements": [
+    {
+      "value": "Successful automation of three distinct literature-based synthetic procedures, validated by monitoring and characterizing the products using online HPLC and NMR spectroscopy.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "GPT-4 Mettler Toledo EasyMax automated laboratory reactor XML script literature synthesis procedures Replication of literature-based synthetic procedures Validation of automated execution through product monitoring and characterization",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "conditions": [],
+  "mechanisms": [
+    {
+      "value": "Prompt engineering to convert literature procedures into actionable steps",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "XML script generation for automated reactor communication",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Automated execution of transcriptions",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "outcomes": [
+    {
+      "value": "Replication of literature-based synthetic procedures",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Validation of automated execution through product monitoring and characterization",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "Artificial Intelligence & Data Science",
+    "Chemistry"
+  ],
+  "reasoning_motifs": [
+    {
+      "value": "Textual Description → Actionable Steps",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Actionable Steps → Automated Execution",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Automated Execution → Validated Outcomes",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "general_principles": [
+    {
+      "value": "Information Transduction",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Automation of Sequential Tasks",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Feedback-Driven Validation",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "failure_paths": [
+    {
+      "value": "failure: Translation of lengthy protocols exceeding the token limit of GPT models. Evidence: Lengthy protocols need to be broken down into smaller portions due to token limit issues.",
+      "source": "cross_sdl_phase4",
+      "confidence": 0.75,
+      "evidence": ""
+    },
+    {
+      "value": "partial: GPT-4's accuracy in molecular weight lookup for chemical compounds. Evidence: GPT-4 showed 100% accuracy in density lookup but failed to output the correct molecular weight for 5,6-dichloropyrazine-2,3-dicarbonitrile in all conversations.",
+      "source": "cross_sdl_phase4",
+      "confidence": 0.75,
+      "evidence": ""
+    }
+  ],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "acgold_8592360ada93",
+    "cross_sdl_reasoning_json": "/Users/sissifeng/Downloads/cross-sdl_knowledge_transfer_engine/data/reasoning/acgold_8592360ada93.json",
+    "cross_sdl_extraction_quality": 0.8,
+    "cross_sdl_notes": "The paper provides a structured approach to solving the problem of automating literature procedure transcription. However, some details regarding the failure cases and limitations were inferred from the discussion on robustness evaluation and limitations."
+  },
+  "validation": {
+    "score": 0.64,
+    "coverage": {
+      "source_summary": false,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": true,
+      "entities": true,
+      "materials": false,
+      "properties": false,
+      "measurements": true,
+      "conditions": false,
+      "mechanisms": true,
+      "outcomes": true,
+      "cross_sdl_match": true
+    },
+    "missing": [
+      "source_summary",
+      "hardware",
+      "materials",
+      "properties",
+      "conditions"
+    ],
+    "notes": [
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

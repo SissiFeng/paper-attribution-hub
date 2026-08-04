@@ -1,0 +1,126 @@
+{
+  "paper_id": "acfocus_f23410436308",
+  "title": "Reinforcement Learning in Modern Biostatistics: Constructing Optimal Adaptive Interventions",
+  "metadata": {
+    "doi": "10.1111/insr.12583",
+    "url": "https://onlinelibrary.wiley.com/doi/10.1111/insr.12583",
+    "year": "2024",
+    "authors": "Deliu N, Williams JJ, Chakraborty B",
+    "venue": "International Statistical Review",
+    "category": "Journal article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Joseph Williams"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "checked",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "This work presents the first unified technical survey of reinforcement learning methods for adaptive interventions in healthcare, bridging dynamic treatment regimes and just-in-time adaptive interventions, highlighting their similarities and differences, and outlining future research opportunities and collaborative potential.",
+  "abstract": "In recent years, reinforcement learning (RL) has acquired a prominent position in health-related sequential decision-making problems, gaining traction as a valuable tool for delivering adaptive interventions (AIs). However, in part due to a poor synergy between the methodological and the applied communities, its real-life application is still limited and its potential is still to be realised. To address this gap, our work provides the first unified technical survey on RL methods, complemented with case studies, for constructing various types of AIs in healthcare. In particular, using the common methodological umbrella of RL, we bridge two seemingly different AI domains, dynamic treatment regimes and just-in-time adaptive interventions in mobile health, highlighting similarities and differences between them and discussing the implications of using RL. Open problems and considerations for future research directions are outlined. Finally, we leverage our experience in designing case studies in both areas to showcase the significant collaborative opportunities between statistical, RL and healthcare researchers in advancing AIs.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "This work presents the first unified technical survey of reinforcement learning methods for adaptive interventions in healthcare, bridging dynamic treatment regimes and just-in-time adaptive interventions, highlighting their similarities and differences, and outlining future research opportunities and collaborative potential.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Artificial Intelligence & Data Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Biology",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [],
+  "properties": [],
+  "measurements": [],
+  "conditions": [
+    {
+      "value": "Reinforcement Learning in Modern Biostatistics: Constructing Optimal Adaptive Interventions This work presents the first unified technical survey of reinforcement learning methods for adaptive interventions in healthcare, bridging dynamic treatment regimes and just-in-time adaptive interventions, highlighting their similarities and differences, and outlining future research opportunities and collaborative potential.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "In particular, using the common methodological umbrella of RL, we bridge two seemingly different AI domains, dynamic treatment regimes and just-in-time adaptive interventions in mobile health, highlighting similarities and differences between them and discussing the implications of using RL.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "mechanisms": [],
+  "outcomes": [
+    {
+      "value": "Therapeutics",
+      "source": "csv_applied_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "Artificial Intelligence & Data Science",
+    "Biology",
+    "Therapeutics"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.47,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": false,
+      "properties": false,
+      "measurements": false,
+      "conditions": true,
+      "mechanisms": false,
+      "outcomes": true,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "materials",
+      "properties",
+      "measurements",
+      "mechanisms",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

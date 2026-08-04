@@ -1,0 +1,106 @@
+{
+  "paper_id": "acfocus_bb9f411c2d95",
+  "title": "Artificial intelligence and scientific discovery: a model of prioritized search",
+  "metadata": {
+    "doi": "10.1016/j.respol.2024.104989",
+    "url": "https://www.sciencedirect.com/science/article/abs/pii/S0048733324000386",
+    "year": "2024",
+    "authors": "Agrawal A, McHale J, Oettl A",
+    "venue": "Research Policy",
+    "category": "Journal article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Ajay Agrawal"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Affiliate Member"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "checked",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "The text models hypothesis generation in innovation as a sequential search over a combinatorial space, showing that using AI for higher-fidelity predictions—compared to traditional intuition or theory—can increase the probability of successful innovation, shorten search durations, and boost expected profits, though realizing these gains may require greater investment in testing capacity.",
+  "abstract": "We model a key step in the innovation process, hypothesis generation, as the making of predictions over a vast combinatorial space. Traditionally, scientists and innovators use theory or intuition to guide their search. Increasingly, however, they use artificial intelligence (AI) instead. We model innovation as resulting from sequential search over a combinatorial design space, where the prioritization of costly tests is achieved using a predictive model. The predictive model's ranked output is represented as a hazard function. Discrete survival analysis is used to obtain the main innovation outcomes of interest – the probability of innovation, expected search duration, and expected profit. We describe conditions under which shifting from the traditional method of hypothesis generation, using theory or intuition, to instead using AI that generates higher fidelity predictions, results in a higher likelihood of successful innovation, shorter search durations, and higher expected profits. We then explore the complementarity between hypothesis generation and hypothesis testing; potential gains from AI may not be realized without significant investment in testing capacity. We discuss the policy implications.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "The text models hypothesis generation in innovation as a sequential search over a combinatorial space, showing that using AI for higher-fidelity predictions—compared to traditional intuition or theory—can increase the probability of successful innovation, shorten search durations, and boost expected profits, though realizing these gains may require greater investment in testing capacity.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Economics & Management",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [],
+  "properties": [],
+  "measurements": [],
+  "conditions": [
+    {
+      "value": "We describe conditions under which shifting from the traditional method of hypothesis generation, using theory or intuition, to instead using AI that generates higher fidelity predictions, results in a higher likelihood of successful innovation, shorter search durations, and higher expected profits.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "mechanisms": [],
+  "outcomes": [],
+  "sdl_tags": [
+    "Economics & Management"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.41,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": false,
+      "properties": false,
+      "measurements": false,
+      "conditions": true,
+      "mechanisms": false,
+      "outcomes": false,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "materials",
+      "properties",
+      "measurements",
+      "mechanisms",
+      "outcomes",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

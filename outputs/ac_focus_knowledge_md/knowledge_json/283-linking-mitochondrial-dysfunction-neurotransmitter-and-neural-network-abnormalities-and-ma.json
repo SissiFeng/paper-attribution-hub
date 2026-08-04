@@ -1,0 +1,92 @@
+{
+  "paper_id": "acfocus_c8e000ab1af2",
+  "title": "Linking Mitochondrial Dysfunction, Neurotransmitter, and Neural Network Abnormalities and Mania: Elucidating Neurobiological Mechanisms of the Therapeutic Effect of the Ketogenic Diet in Bipolar Disorder",
+  "metadata": {
+    "doi": "10.1016/j.bpsc.2024.07.011",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/39053576/",
+    "year": "2025",
+    "authors": "Z. Freyberg; A. Andreazza; C. A. McClung; M. L. Phillips",
+    "venue": "Biological Psychiatry: Cognitive Neuroscience and Neuroimaging",
+    "category": "Journal Article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Ana Andreazza"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "This review explores how the ketogenic diet may benefit individuals with bipolar disorder by addressing mitochondrial dysfunction and neurotransmitter abnormalities, discusses the potential neurobiological mechanisms involved, and suggests future research directions to identify biomarkers and novel treatment targets.",
+  "abstract": "There is growing interest in the ketogenic diet as a treatment for bipolar disorder (BD), and there are promising anecdotal and small case study reports of efficacy. However, the neurobiological mechanisms by which diet-induced ketosis might ameliorate BD symptoms remain to be determined, particularly in manic and hypomanic states—defining features of BD. Identifying these mechanisms will provide new markers to guide personalized interventions and provide targets for novel treatment developments for individuals with BD. In this critical review, we describe recent findings highlighting 2 types of neurobiological abnormalities in BD: 1) mitochondrial dysfunction and 2) neurotransmitter and neural network functional abnormalities. We link these abnormalities to mania/hypomania and depression in BD and then describe the biological underpinnings by which the ketogenic diet may have a beneficial effect in individuals with BD. We end the review by describing approaches that can be employed in future studies to elucidate the neurobiology that underlies the therapeutic effect of the ketogenic diet in BD. Doing this may provide marker predictors to identify individuals who will respond well to the ketogenic diet, as well as offer neural targets for novel treatment developments for BD. © 2024 Society of Biological Psychiatry",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "This review explores how the ketogenic diet may benefit individuals with bipolar disorder by addressing mitochondrial dysfunction and neurotransmitter abnormalities, discusses the potential neurobiological mechanisms involved, and suggests future research directions to identify biomarkers and novel treatment targets.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [],
+  "materials": [],
+  "properties": [],
+  "measurements": [],
+  "conditions": [],
+  "mechanisms": [],
+  "outcomes": [],
+  "sdl_tags": [],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.3,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": false,
+      "materials": false,
+      "properties": false,
+      "measurements": false,
+      "conditions": false,
+      "mechanisms": false,
+      "outcomes": false,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "entities",
+      "materials",
+      "properties",
+      "measurements",
+      "conditions",
+      "mechanisms",
+      "outcomes",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

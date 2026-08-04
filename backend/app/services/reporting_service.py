@@ -26,15 +26,30 @@ import re
 from dataclasses import dataclass
 from datetime import UTC, datetime
 
+from sqlalchemy import select
 from sqlalchemy.orm import Session
 
 from app.services.analytics_service import (
-    ATTRIBUTED_LABELS,
     ImpactReport,
     build_impact_report,
 )
 from app.services.drift_service import build_drift_report
-from app.services.filter_spec import PaperFilter
+from app.report_evidence_policy import (
+    ReportEvidencePolicy,
+)
+from app.services.filter_spec import (
+    PaperFilter,
+    apply_filter,
+    canonical_filter_payload,
+    canonical_filter_query_string,
+    filter_fingerprint,
+    filtered_paper_ids,
+    paper_set_sha256,
+)
+from app.models import (
+    Institution,
+    Paper,
+)
 
 
 SUPPORTED_SECTIONS = (
@@ -43,6 +58,22 @@ SUPPORTED_SECTIONS = (
     "themes",
     "emerging",
     "drift",
+)
+
+REPORT_ENTITIES = (
+    "none",
+    "university_of_toronto",
+    "toronto",
+    "ac_activity",
+    "ac_sdl_overlap",
+)
+
+UNIVERSITY_OF_TORONTO_ALIASES = (
+    "university of toronto",
+    "uoft",
+    "u of t",
+    "utoronto",
+    "university toronto",
 )
 
 
@@ -68,6 +99,7 @@ class ReportResult:
     sections: list[ReportSection]
     generated_at: datetime
     backend: str  # "template" or "anthropic"
+    evidence_policy: dict
 
 
 # ---------------------------------------------------------------------------
@@ -75,20 +107,28 @@ class ReportResult:
 # ---------------------------------------------------------------------------
 
 
-def _qs(filt: PaperFilter, **overrides) -> str:
-    """Build a query-string suffix that re-creates this filter for deep linking."""
-    parts: list[str] = []
-    if filt.year_from is not None:
-        parts.append(f"year_from={filt.year_from}")
-    if filt.year_to is not None:
-        parts.append(f"year_to={filt.year_to}")
-    if filt.partner_only:
-        parts.append("partner_only=true")
-    if filt.ac_author_only:
-        parts.append("ac_author_only=true")
-    for k, v in overrides.items():
-        parts.append(f"{k}={v}")
-    return "?" + "&".join(parts) if parts else ""
+def _qs(
+    filt: PaperFilter,
+    *,
+    evidence_policy: ReportEvidencePolicy | None = None,
+    **overrides: object,
+) -> str:
+    """Build a query-string suffix that re-creates this report scope.
+
+    The user filter is encoded as-is; the evidence policy is encoded as
+    explicit report_evidence_* params. The report-metric endpoint rebuilds
+    the effective scope from the same pair, so a deep link replays exactly
+    the same paper set without leaking effective-filter fields into the
+    user-filter URL.
+    """
+    policy_overrides: dict[str, object] = {}
+    if evidence_policy is not None:
+        policy_overrides.update(evidence_policy.query_params())
+    if getattr(filt, "_report_entity", None) is not None:
+        policy_overrides["report_entity"] = filt._report_entity
+    policy_overrides.update(overrides)
+    query = canonical_filter_query_string(filt, **policy_overrides)
+    return f"?{query}" if query else ""
 
 
 def _extract_overview_metrics(
@@ -104,25 +144,27 @@ def _extract_overview_metrics(
             key="overview.total_attributed",
             label="AC-attributed papers in window",
             value=total_attributed,
-            source_link=f"/analytics/overview{_qs(filt)}",
+            source_link="",
         ),
         MetricTriple(
             key="overview.window_from",
             label="window start year",
             value=earliest,
-            source_link=f"/analytics/impact{_qs(filt)}",
+            source_link="",
         ),
         MetricTriple(
             key="overview.window_to",
             label="window end year",
             value=latest,
-            source_link=f"/analytics/impact{_qs(filt)}",
+            source_link="",
         ),
     ]
     return metrics
 
 
 def _extract_growth_metrics(impact: ImpactReport, filt: PaperFilter) -> list[MetricTriple]:
+    del filt  # aggregation already applied the effective scope
+
     pts = impact.yoy_attributed.points
     metrics: list[MetricTriple] = []
     if len(pts) >= 2:
@@ -135,7 +177,7 @@ def _extract_growth_metrics(impact: ImpactReport, filt: PaperFilter) -> list[Met
                 key="growth.first_year_value",
                 label=f"AC-attributed papers in {first.year}",
                 value=first.value,
-                source_link=f"/analytics/timeline{_qs(filt, by='label')}",
+                source_link="",
             )
         )
         metrics.append(
@@ -143,7 +185,7 @@ def _extract_growth_metrics(impact: ImpactReport, filt: PaperFilter) -> list[Met
                 key="growth.last_year_value",
                 label=f"AC-attributed papers in {last.year}",
                 value=last.value,
-                source_link=f"/analytics/timeline{_qs(filt, by='label')}",
+                source_link="",
             )
         )
         if delta is not None:
@@ -152,13 +194,15 @@ def _extract_growth_metrics(impact: ImpactReport, filt: PaperFilter) -> list[Met
                     key="growth.delta_pct",
                     label="growth from first year to last year",
                     value=delta,
-                    source_link=f"/analytics/impact{_qs(filt)}",
+                    source_link="",
                 )
             )
     return metrics
 
 
 def _extract_theme_metrics(impact: ImpactReport, filt: PaperFilter) -> list[MetricTriple]:
+    del filt  # aggregation already applied the effective scope
+
     metrics: list[MetricTriple] = []
     for i, theme in enumerate(impact.top_growing_themes[:3]):
         metrics.append(
@@ -166,7 +210,7 @@ def _extract_theme_metrics(impact: ImpactReport, filt: PaperFilter) -> list[Metr
                 key=f"themes.top_{i}.name",
                 label=f"top growing theme #{i + 1}",
                 value=theme.name,
-                source_link=f"/analytics/timeline{_qs(filt, by='topic')}",
+                source_link="",
             )
         )
         delta_value = theme.delta_pct if theme.delta_pct != float("inf") else "new"
@@ -175,7 +219,7 @@ def _extract_theme_metrics(impact: ImpactReport, filt: PaperFilter) -> list[Metr
                 key=f"themes.top_{i}.delta",
                 label=f"delta percent for {theme.name}",
                 value=delta_value,
-                source_link=f"/analytics/timeline{_qs(filt, by='topic')}",
+                source_link="",
             )
         )
         metrics.append(
@@ -183,13 +227,15 @@ def _extract_theme_metrics(impact: ImpactReport, filt: PaperFilter) -> list[Metr
                 key=f"themes.top_{i}.value_now",
                 label=f"recent paper count for {theme.name}",
                 value=theme.value_now,
-                source_link=f"/analytics/timeline{_qs(filt, by='topic')}",
+                source_link="",
             )
         )
     return metrics
 
 
 def _extract_emerging_metrics(impact: ImpactReport, filt: PaperFilter) -> list[MetricTriple]:
+    del filt  # aggregation already applied the effective scope
+
     metrics: list[MetricTriple] = []
     for i, inst in enumerate(impact.emerging_institutions[:3]):
         metrics.append(
@@ -197,7 +243,7 @@ def _extract_emerging_metrics(impact: ImpactReport, filt: PaperFilter) -> list[M
                 key=f"emerging.institution_{i}.label",
                 label=f"emerging institution #{i + 1}",
                 value=inst.label,
-                source_link=f"/analytics/institution-network{_qs(filt)}",
+                source_link="",
             )
         )
         metrics.append(
@@ -205,7 +251,7 @@ def _extract_emerging_metrics(impact: ImpactReport, filt: PaperFilter) -> list[M
                 key=f"emerging.institution_{i}.first_year",
                 label=f"first year for {inst.label}",
                 value=inst.first_year,
-                source_link=f"/analytics/institution-network{_qs(filt)}",
+                source_link="",
             )
         )
     return metrics
@@ -218,13 +264,13 @@ def _extract_drift_metrics(session: Session, filt: PaperFilter) -> list[MetricTr
             key="drift.threshold",
             label="cosine similarity threshold",
             value=report.drift_threshold,
-            source_link=f"/analytics/drift{_qs(filt)}",
+            source_link="",
         ),
         MetricTriple(
             key="drift.event_count",
             label="drift events detected",
             value=len(report.drift_events),
-            source_link=f"/analytics/drift{_qs(filt)}",
+            source_link="",
         ),
     ]
     if report.drift_events:
@@ -234,7 +280,7 @@ def _extract_drift_metrics(session: Session, filt: PaperFilter) -> list[MetricTr
                 key="drift.first.from_year",
                 label="first drift event from year",
                 value=first.from_year,
-                source_link=f"/analytics/drift{_qs(filt)}",
+                source_link="",
             )
         )
         metrics.append(
@@ -242,7 +288,7 @@ def _extract_drift_metrics(session: Session, filt: PaperFilter) -> list[MetricTr
                 key="drift.first.to_year",
                 label="first drift event to year",
                 value=first.to_year,
-                source_link=f"/analytics/drift{_qs(filt)}",
+                source_link="",
             )
         )
         if first.new_topics:
@@ -251,7 +297,7 @@ def _extract_drift_metrics(session: Session, filt: PaperFilter) -> list[MetricTr
                     key="drift.first.new_topics",
                     label="topics emerging in first drift event",
                     value=", ".join(first.new_topics[:3]),
-                    source_link=f"/analytics/drift{_qs(filt)}",
+                    source_link="",
                 )
             )
     return metrics
@@ -357,8 +403,9 @@ def _render_drift(metrics: list[MetricTriple]) -> str:
     count = by_key.get("drift.event_count")
     if not count or count.value == 0:
         return (
-            "No drift events detected above the configured similarity "
-            "threshold [src:drift.threshold]."
+            "No adjacent-year cosine similarity fell below the configured "
+            "threshold [src:drift.threshold]; 0 drift events were detected "
+            "[src:drift.event_count]."
         )
     parts = [
         f"Detected {count.value} drift event(s) [src:drift.event_count]."
@@ -409,9 +456,21 @@ def build_report(
     *,
     sections: list[str] | None = None,
     backend: str | None = None,
+    evidence_policy: ReportEvidencePolicy | None = None,
+    report_entity: str | None = None,
 ) -> ReportResult:
     sections = sections or list(SUPPORTED_SECTIONS)
-    impact = build_impact_report(session, filt)
+    evidence_policy = evidence_policy or ReportEvidencePolicy()
+    entity_filt = apply_report_entity(session, filt, report_entity)
+    if report_entity:
+        entity_filt._report_entity = report_entity
+    effective_filt = apply_report_evidence_policy(entity_filt, evidence_policy)
+    impact = build_impact_report(session, effective_filt)
+    audit = build_report_evidence_audit(
+        session, entity_filt, effective_filt, evidence_policy
+    )
+    if report_entity and report_entity != "none":
+        audit["report_entity"] = report_entity
 
     backend = (backend or os.environ.get("PAS_LLM_BACKEND") or "template").lower()
     if backend not in {"template", "anthropic"}:
@@ -423,9 +482,20 @@ def build_report(
             continue
         title, extractor, renderer = SECTION_BUILDERS[section_key]
         if section_key == "drift":
-            metrics = _extract_drift_metrics(session, filt)
+            metrics = _extract_drift_metrics(session, effective_filt)
         else:
-            metrics = extractor(impact, filt)
+            metrics = extractor(impact, effective_filt)
+        for metric in metrics:
+            link_filt = (
+                entity_filt if getattr(entity_filt, "_report_entity", None) else filt
+            )
+            metric.source_link = (
+                f"/analytics/report-metric{_qs(
+                    link_filt,
+                    evidence_policy=evidence_policy,
+                    metric_key=metric.key,
+                )}"
+            )
         templated = renderer(metrics)
         _validate_prose(templated, {m.key for m in metrics})
 
@@ -454,6 +524,7 @@ def build_report(
         sections=out_sections,
         generated_at=datetime.now(UTC),
         backend=backend,
+        evidence_policy=audit.get("evidence_policy", evidence_policy.canonical()),
     )
 
 
@@ -525,3 +596,186 @@ def _rewrite_with_anthropic(templated: str, metrics: list[MetricTriple]) -> str:
             chunks.append(block.text)
     rewritten = ("".join(chunks)).strip()
     return rewritten or templated
+
+# ---------------------------------------------------------------------------
+# D21: report corpus evidence policy
+# ---------------------------------------------------------------------------
+
+
+def apply_report_evidence_policy(
+    filt: PaperFilter,
+    policy: ReportEvidencePolicy,
+) -> PaperFilter:
+    """Return the effective PaperFilter that backs externally reported figures.
+
+    The policy is layered on top of the user-selected filter:
+      * SDL judgement scope — the policy (or explicit sdl_judgements) wins,
+        replacing any user-supplied sdl_judgements (reports are SDL figures).
+      * review_statuses — restrict to COMPLETED unless needs-fulltext papers
+        are explicitly allowed.
+      * model-only confidence — applied only to unreviewed model labels; human
+        reviews keep their judgement regardless of the classifier confidence.
+      * abstract-only evidence — excluded unless explicitly allowed.
+      * unreviewed ARCHITECTURE_BROAD_RETRIEVAL papers — excluded unless the
+        user explicitly opted out (default True).
+    """
+    sdl_judgements = policy.effective_sdl_judgements()
+    updates: dict = {
+        "sdl_judgements": sdl_judgements,
+    }
+    if policy.mode == "human_only":
+        updates["require_review"] = True
+        if not policy.allow_needs_fulltext:
+            updates["review_statuses"] = ["COMPLETED"]
+    elif policy.mode == "human_plus_probable":
+        if not policy.allow_needs_fulltext:
+            updates["review_statuses"] = ["COMPLETED"]
+            updates["review_statuses_include_unreviewed"] = True
+        # Unreviewed model papers are only "probable" scope, not confirmed.
+        updates["unreviewed_sdl_labels"] = ["SDL_ADJACENT"]
+    elif not policy.allow_needs_fulltext:
+        # Reviewed papers must be COMPLETED; unreviewed papers are allowed
+        # (subject to the other flags below).
+        updates["review_statuses"] = ["COMPLETED"]
+        updates["review_statuses_include_unreviewed"] = True
+    if policy.mode in {"human_high_confidence", "all_threshold"}:
+        # Model-only (unreviewed) papers require the confidence floor.
+        updates["unreviewed_min_confidence"] = policy.confidence_threshold
+    if not policy.allow_abstract_only:
+        updates["has_fulltext"] = True
+    if policy.exclude_unreviewed_broad_retrieval:
+        updates["exclude_unreviewed_corpus_sources"] = [
+            "ARCHITECTURE_BROAD_RETRIEVAL"
+        ]
+    return filt.model_copy(update=updates)
+
+
+def apply_report_entity(
+    session: Session,
+    filt: PaperFilter,
+    entity: str | None,
+) -> PaperFilter:
+    """Map a D20 reporting entity to an explicit PaperFilter scope.
+
+    university_of_toronto -> the resolved U of T institution id
+    toronto               -> papers with a Toronto-institution affiliation
+    ac_activity           -> papers with at least one AC-member author
+    ac_sdl_overlap        -> AC-member papers that are also in SDL scope
+    """
+    if not entity or entity == "none":
+        return filt
+    updates: dict = {}
+    if entity == "university_of_toronto":
+        inst = _resolve_institution(session, UNIVERSITY_OF_TORONTO_ALIASES)
+        if inst is not None:
+            updates["institution_ids"] = [inst.id]
+    elif entity == "toronto":
+        updates["cities"] = ["Toronto"]
+    elif entity == "ac_activity":
+        updates["ac_author_only"] = True
+    elif entity == "ac_sdl_overlap":
+        updates["ac_author_only"] = True
+        updates["ac_relevance_judgements"] = ["AC_RELEVANT"]
+    return filt.model_copy(update=updates)
+
+
+def _resolve_institution(
+    session: Session, aliases: tuple[str, ...]
+) -> Institution | None:
+    """Resolve a canonical institution by exact name or alias (case-insensitive)."""
+    from sqlalchemy import select
+
+    candidates = list(
+        session.execute(
+            select(Institution).where(
+                Institution.canonical_name.ilike(f"%{aliases[0]}%")
+            )
+        ).scalars()
+    )
+    if candidates:
+        return candidates[0]
+    for institution in session.execute(select(Institution)).scalars():
+        names = {institution.canonical_name, *(institution.aliases or [])}
+        normalized = {str(name).strip().lower() for name in names}
+        if any(alias in normalized for alias in aliases):
+            return institution
+    return None
+
+
+def build_report_evidence_audit(
+    session: Session,
+    user_filt: PaperFilter,
+    effective_filt: PaperFilter,
+    policy: ReportEvidencePolicy,
+) -> dict:
+    """Replayable audit of exactly which persisted paper set backs the report.
+
+    The paper-set hash is computed over the effective (policy-applied) scope,
+    so a change in evidence policy — not just in the shared filter — changes
+    the hash and is always visible to the reader.
+    """
+    paper_ids = filtered_paper_ids(session, effective_filt)
+    breakdown = _evidence_breakdown(session, effective_filt, policy)
+    return {
+        "filter": canonical_filter_payload(user_filt),
+        "filter_fingerprint": filter_fingerprint(user_filt),
+        "effective_filter": canonical_filter_payload(effective_filt),
+        "effective_filter_fingerprint": filter_fingerprint(effective_filt),
+        "paper_set_sha256": paper_set_sha256(paper_ids),
+        "paper_set_encoding": "paper-id-set-json.v1",
+        "included_papers": len(paper_ids),
+        "algorithm": "report_evidence_policy.v1",
+        "evidence_policy": policy.canonical(),
+        "evidence_breakdown": breakdown,
+        "metric_definitions": {
+            "included_papers": (
+                "Distinct persisted papers matching the user filter after applying "
+                "the report evidence policy."
+            ),
+        },
+        "generated_at": datetime.now(UTC).isoformat(),
+    }
+
+
+def _evidence_breakdown(
+    session: Session,
+    effective_filt: PaperFilter,
+    policy: ReportEvidencePolicy,
+) -> dict:
+    """Count evidence composition of the effective paper set."""
+    papers = list(
+        session.execute(
+            apply_filter(select(Paper), effective_filt)
+        ).scalars()
+    )
+    human_confirmed = 0
+    model_only = 0
+    needs_fulltext = 0
+    abstract_only = 0
+    broad_unreviewed = 0
+    for paper in papers:
+        reviewed = paper.review is not None
+        confirmed = bool(paper.classification and paper.classification.human_confirmed)
+        if confirmed:
+            human_confirmed += 1
+        elif not reviewed:
+            model_only += 1
+        if paper.review and paper.review.review_status == "NEEDS_FULLTEXT":
+            needs_fulltext += 1
+        if not (paper.full_text_available or policy.allow_abstract_only):
+            abstract_only += 1
+        sources = paper.corpus_sources or []
+        if (
+            not reviewed
+            and "ARCHITECTURE_BROAD_RETRIEVAL" in sources
+            and policy.exclude_unreviewed_broad_retrieval
+        ):
+            broad_unreviewed += 1
+    return {
+        "total_papers": len(papers),
+        "human_confirmed": human_confirmed,
+        "model_only": model_only,
+        "needs_fulltext": needs_fulltext,
+        "abstract_only": abstract_only,
+        "broad_retrieval_unreviewed": broad_unreviewed,
+    }

@@ -1,0 +1,101 @@
+{
+  "paper_id": "acfocus_6af0cef41968",
+  "title": "Could machine learning be a general purpose technology? A comparison of emerging technologies using data from online job postings",
+  "metadata": {
+    "doi": "10.1016/j.respol.2022.104653",
+    "url": "https://www.researchgate.net/publication/364608310_Could_machine_learning_be_a_general_purpose_technology_A_comparison_of_emerging_technologies_using_data_from_online_job_postings",
+    "year": "2023",
+    "authors": "Goldfarb, Avi, Bledi Taska, and Florenta Teodoridis",
+    "venue": "Research Policy",
+    "category": "Journal article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Avi Goldfarb"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "checked",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "The authors present a method using online job ad data to rank emerging technologies by their likelihood of being General Purpose Technologies (GPTs), finding that machine learning and related data science technologies are especially likely to have broad economic impact.",
+  "abstract": "Many emerging technologies have aspects of General Purpose Technologies (GPTs). However, true GPTs are rare and hold potential for large-scale economic impact. Thus, it is important for policymakers and managers to assess which emerging technologies are likely GPTs. We describe an approach that uses data from online job ads to rank emerging technologies on their GPT likelihood. The approach suggests which technologies are likely to have a broader economic impact, and which are likely to remain useful but narrower enabling technologies. Our approach has at least 5 years predictive power distinct from prevailing patent-based methods of identifying GPTs. We apply our approach to 21 different emerging technologies, and find that a cluster of technologies comprised of machine learning and related data science technologies is relatively likely to be a GPT.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "The authors present a method using online job ad data to rank emerging technologies by their likelihood of being General Purpose Technologies (GPTs), finding that machine learning and related data science technologies are especially likely to have broad economic impact.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Economics & Management",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [],
+  "properties": [],
+  "measurements": [],
+  "conditions": [],
+  "mechanisms": [],
+  "outcomes": [],
+  "sdl_tags": [
+    "Economics & Management"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.37,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": false,
+      "properties": false,
+      "measurements": false,
+      "conditions": false,
+      "mechanisms": false,
+      "outcomes": false,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "materials",
+      "properties",
+      "measurements",
+      "conditions",
+      "mechanisms",
+      "outcomes",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

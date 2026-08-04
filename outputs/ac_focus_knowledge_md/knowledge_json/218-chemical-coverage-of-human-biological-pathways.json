@@ -1,0 +1,127 @@
+{
+  "paper_id": "acfocus_33521126cb31",
+  "title": "Chemical coverage of human biological pathways",
+  "metadata": {
+    "doi": "10.1016/j.drudis.2024.104144",
+    "url": "https://www.sciencedirect.com/science/article/pii/S1359644624002691",
+    "year": "2024",
+    "authors": "Kwak HA, Liu L, Tredup C, Röhm S, Prinos P, Böttcher J, Schapira M",
+    "venue": "Drug Discovery Today",
+    "category": "Journal article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Matthieu Schapira"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "checked",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "Chemical probes currently target only 3% of the human proteome but already cover 53% of biological pathways, highlighting their value and the Target 2035 initiative’s goal to develop chemical tools for all human proteins by 2035.",
+  "abstract": "Chemical probes and chemogenomic compounds are valuable tools to link gene to phenotype, explore human biology, and uncover novel targets for precision medicine. The mission of the Target 2035 initiative is to discover chemical tools for all human proteins by the year 2035. Here, we draw a landscape of the current chemical coverage of human biological pathways. Although available chemical tools target only 3% of the human proteome, they already cover 53% of human biological pathways and represent a versatile toolkit to dissect a vast portion of human biology. Pathways targeted by existing drugs may be enriched in unknown but valid drug targets and could be prioritized in future Target 2035 efforts.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "Chemical probes currently target only 3% of the human proteome but already cover 53% of biological pathways, highlighting their value and the Target 2035 initiative’s goal to develop chemical tools for all human proteins by 2035.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Biochemistry",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Biology",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Computational Biology",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [],
+  "properties": [],
+  "measurements": [],
+  "conditions": [
+    {
+      "value": "Here, we draw a landscape of the current chemical coverage of human biological pathways.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "mechanisms": [],
+  "outcomes": [
+    {
+      "value": "Therapeutics",
+      "source": "csv_applied_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "Biochemistry",
+    "Biology",
+    "Computational Biology",
+    "Therapeutics"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.47,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": false,
+      "properties": false,
+      "measurements": false,
+      "conditions": true,
+      "mechanisms": false,
+      "outcomes": true,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "materials",
+      "properties",
+      "measurements",
+      "mechanisms",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

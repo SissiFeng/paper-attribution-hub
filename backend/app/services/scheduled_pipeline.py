@@ -1,22 +1,27 @@
 """Scheduled-pipeline orchestrator.
 
-The daily job glues four steps:
+The daily job glues six steps:
 
   1. **Discovery** — `run_discovery` pulls candidates from OpenAlex /
      Semantic Scholar / Crossref. Auto-eligible candidates land in the
      `papers` table; the rest sit in `discovery_candidates`.
 
-  2. **Incremental classify** — `classify_new` scores every paper that
+  2. **Full-text evidence** — fetches and extracts eligible full text when
+     enabled.
+
+  3. **Model evolution recovery** — claims any complete human-review batch
+     whose response-time background task did not finish.
+
+  4. **Incremental classify** — `classify_new` scores every paper that
      wasn't already classified (and every paper whose model_version is
      out of date). Human-confirmed labels are never overwritten.
 
-  3. **Re-prioritize the review queue** — `refresh_queue` recomputes
-     priority for everything and sets `needs_review` on the high-priority
-     subset.
+  5. **Staged screening** — `refresh_queue` persists a route for every scored
+     paper and queues only positive, uncertain, or full-text-needed subsets.
 
-  4. **Audit log** — every run is persisted to the `pipeline_runs` table so
+  6. **Audit log** — every run is persisted to the `pipeline_runs` table so
      the API / dashboard can show "last run @ 06:00, classified 12 new
-     papers, 3 flagged for review".
+     papers, 3 routed to review, 9 screened out".
 
 Skips heavy steps when their inputs are missing (no discovery clients
 configured, no full text available, etc.), which keeps the cron job
@@ -152,7 +157,57 @@ def run_daily_pipeline(
         else:
             result.steps.append({"name": "fulltext_evidence", "status": "disabled"})
 
-        # 3. Incremental classify -------------------------------------
+        # 3. Recover/execute any complete model-evolution batch --------
+        step = {
+            "name": "model_evolution",
+            "started_at": _isoformat_now(),
+        }
+        logger.info("stage=model_evolution status=start run_id=%s", run_id)
+        stage_t0 = time.monotonic()
+        try:
+            if os.environ.get("PAS_ACTIVE_LEARNING", "1") != "1":
+                step["status"] = "disabled"
+                step["outcome"] = "disabled"
+            else:
+                from app.services.model_evolution import (
+                    pending_review_count,
+                    reconcile_training_feedback,
+                    run_pending_model_evolution,
+                )
+
+                step["reconciled_feedback"] = reconcile_training_feedback(
+                    session
+                )
+                training_runs = run_pending_model_evolution(session)
+                step["status"] = "ok"
+                step["pending_reviews"] = pending_review_count(session)
+                step["training_run_count"] = len(training_runs)
+                step["training_run_ids"] = [
+                    training_run.id for training_run in training_runs
+                ]
+                if not training_runs:
+                    step["outcome"] = "idle"
+                else:
+                    training_run = training_runs[-1]
+                    step["outcome"] = training_run.status.lower()
+                    step["training_run_id"] = training_run.id
+                    step["model_version"] = training_run.model_version
+            logger.info(
+                "stage=model_evolution status=end outcome=%s elapsed_s=%.1f",
+                step["outcome"],
+                time.monotonic() - stage_t0,
+            )
+        except Exception as e:
+            step["status"] = "skipped"
+            step["error"] = f"{type(e).__name__}: {e}"
+            logger.warning(
+                "stage=model_evolution status=skipped error=%r elapsed_s=%.1f",
+                step["error"],
+                time.monotonic() - stage_t0,
+            )
+        result.steps.append(step)
+
+        # 4. Incremental classify -------------------------------------
         step = {"name": "classify_new", "started_at": _isoformat_now()}
         logger.info("stage=classify status=start run_id=%s", run_id)
         stage_t0 = time.monotonic()
@@ -184,20 +239,27 @@ def run_daily_pipeline(
             raise
         result.steps.append(step)
 
-        # 4. Re-prioritize the review queue ---------------------------
-        step = {"name": "refresh_queue", "started_at": _isoformat_now()}
+        # 5. Route the scored corpus into the human-review subset ------
+        step = {"name": "staged_screening", "started_at": _isoformat_now()}
         logger.info("stage=review_queue_refresh status=start run_id=%s", run_id)
         stage_t0 = time.monotonic()
         try:
             from app.services.review_queue import refresh_queue
+            from app.services.staged_screening import staged_screening_summary
 
             flagged = refresh_queue(session)
+            screening = staged_screening_summary(session)
             result.enqueued_for_review = flagged
             step["status"] = "ok"
-            step["flagged"] = flagged
+            step.update(screening.pipeline_fields())
+            step["queued_now"] = flagged
             logger.info(
-                "stage=review_queue_refresh status=end flagged=%d elapsed_s=%.1f",
-                flagged, time.monotonic() - stage_t0,
+                "stage=review_queue_refresh status=end scored=%d "
+                "review_subset=%d queued_now=%d elapsed_s=%.1f",
+                screening.scored,
+                screening.review_subset,
+                flagged,
+                time.monotonic() - stage_t0,
             )
         except Exception as e:
             step["status"] = "failed"

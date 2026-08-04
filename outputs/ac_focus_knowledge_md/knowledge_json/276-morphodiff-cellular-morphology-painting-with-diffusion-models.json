@@ -1,0 +1,98 @@
+{
+  "paper_id": "acfocus_cd05a4c5842b",
+  "title": "MORPHODIFF: CELLULAR MORPHOLOGY PAINTING WITH DIFFUSION MODELS",
+  "metadata": {
+    "doi": "",
+    "url": "https://www.scopus.com/inward/record.uri?eid=2-s2.0-105010285499&partnerID=40&md5=a31a3b10110294aa7e6a2727c9a7fe34",
+    "year": "2025",
+    "authors": "Z. Navidi; J. Ma; E. A. Miglietta; L. Liu; A. E. Carpenter; B. A. Cimini; B. Haibe-Kains; B. Wang",
+    "venue": "13th International Conference on Learning Representations, ICLR 2025",
+    "category": "Conference Proceedings",
+    "peer_reviewed": "Non Peer Reviewed",
+    "ac_members": [
+      "Bo Wang"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "MorphoDiff is a novel generative pipeline that predicts high-resolution cell morphological responses to diverse chemical and genetic interventions using perturbation encoding, enabling efficient in silico exploration of cellular phenotypes for drug discovery.",
+  "abstract": "Understanding cellular responses to external stimuli is critical for parsing biological mechanisms and advancing therapeutic development. High-content image-based assays provide a cost-effective approach to examine cellular phenotypes induced by diverse interventions, which offers valuable insights into biological processes and cellular states. We introduce MorphoDiff, a generative pipeline to predict high-resolution cell morphological responses under different conditions based on perturbation encoding. To the best of our knowledge, MorphoDiff is the first framework capable of producing guided, high-resolution predictions of cell morphology that generalize across both chemical and genetic interventions. The model integrates perturbation embeddings as guiding signals within a 2D latent diffusion model. The comprehensive computational, biological, and visual validations across three open-source Cell Painting datasets show that MorphoDiff can generate high-fidelity images and produce meaningful biology signals under various interventions. We envision the model will facilitate efficient in silico exploration of perturbational landscapes towards more effective drug discovery studies. © 2025 13th International Conference on Learning Representations, ICLR 2025. All rights reserved.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "MorphoDiff is a novel generative pipeline that predicts high-resolution cell morphological responses to diverse chemical and genetic interventions using perturbation encoding, enabling efficient in silico exploration of cellular phenotypes for drug discovery.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [],
+  "materials": [],
+  "properties": [],
+  "measurements": [],
+  "conditions": [
+    {
+      "value": "We introduce MorphoDiff, a generative pipeline to predict high-resolution cell morphological responses under different conditions based on perturbation encoding.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "mechanisms": [],
+  "outcomes": [],
+  "sdl_tags": [],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.34,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": false,
+      "materials": false,
+      "properties": false,
+      "measurements": false,
+      "conditions": true,
+      "mechanisms": false,
+      "outcomes": false,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "entities",
+      "materials",
+      "properties",
+      "measurements",
+      "mechanisms",
+      "outcomes",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

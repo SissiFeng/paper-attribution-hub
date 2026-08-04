@@ -1,0 +1,209 @@
+{
+  "paper_id": "acfocus_0104b2455fa6",
+  "title": "Ranking over Regression for Bayesian Optimization and Molecule Selection",
+  "metadata": {
+    "doi": "10.48550/arxiv.2410.09290",
+    "url": "https://arxiv.org/abs/2410.09290",
+    "year": "2024",
+    "authors": "Tom G, Lo S, Corapi S, Aspuru-Guzik A, Sanchez-Lengeling B",
+    "venue": "arxiv",
+    "category": "Preprint",
+    "peer_reviewed": "Non Peer Reviewed",
+    "ac_members": [
+      "Alán Aspuru-Guzik"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "",
+  "abstract": "Ranking over Regression for Bayesian Optimization\nand Molecule Selection\nGary Tom\nUniversity of Toronto\nVector Institute for Artificial Intelligence\nToronto, ON, Canada\ngtom@cs.utoronto.ca\nStanley Lo\nUniversity of Toronto\nVector Institute for Artificial Intelligence\nToronto, ON, Canada\nSamantha Corapi\nUniversity of Toronto\nVector Institute for Artificial Intelligence\nToronto, ON, Canada\nAlán Aspuru-Guzik∗\nUniversity of Toronto\nVector Institute for Artificial Intelligence\nToronto, ON, Canada\nalan@aspuru.com\nBenjamin Sanchez-Lengeling\nUniversity of Toronto\nVector Institute for Artificial Intelligence\nToronto, ON, Canada\nben.sanchez@utoronto.ca\nAbstract\nBayesian optimization (BO) has become an indispensable tool for autonomous\ndecision-making across diverse applications from autonomous vehicle control to\naccelerated drug and materials discovery. With the growing interest in self-driving\nlaboratories, BO of chemical systems is crucial for machine learning (ML) guided\nexperimental planning. Typically, BO employs a regression surrogate model to pre-\ndict the distribution of unseen parts of the search space. However, for the selection\nof molecules, picking the top candidates with respect to a distribution, the relative\nordering of their properties may be more important than their exact values. In\nthis paper, we introduce Rank-based Bayesian Optimization (RBO), which utilizes\na ranking model as the surrogate. We present a comprehensive investigation of\nRBO’s optimization performance compared to conventional BO on various chemi-\ncal datasets. Our results demonstrate similar or improved optimization performance\nusing ranking models, particularly for datasets with rough structure-property land-\nscapes and activity cliffs. Furthermore, we observe a high correlation between the\nsurrogate ranking ability and BO performance, and this ability is maintained even\nat early iterations of BO optimization when using ranking surrogate models. We\nconclude that RBO is an effective alternati",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "Comparative analysis of RBO and conventional BO on various chemical datasets, utilizing deep learning ranking models and traditional regression models as surrogates",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "problems": [
+    {
+      "value": "Bayesian optimization (BO) of chemical systems for molecular discovery, where the relative ordering of molecular properties may be more important than their exact values",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "hypotheses": [
+    {
+      "value": "Rank-based Bayesian Optimization (RBO) using a ranking model as the surrogate will demonstrate similar or improved optimization performance compared to conventional regression-based BO",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "evidence": [
+    {
+      "value": "Results demonstrate higher BO-AUC scores for RBO, indicating faster and better optimization performance, especially on datasets with rough structure-property landscapes and activity cliffs",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "conclusions": [
+    {
+      "value": "RBO is an effective alternative to regression-based BO, particularly for optimizing novel chemical compounds",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "entities": [
+    {
+      "value": "Molecular properties",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Ranking models",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Regression models",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "Ranking over Regression for Bayesian Optimization and Molecule Selection Comparative analysis of RBO and conventional BO on various chemical datasets, utilizing deep learning ranking models and traditional regression models as surrogates Results demonstrate higher BO-AUC scores for RBO, indicating faster and better optimization performance, especially on datasets with rough structure-property landscapes and activity cliffs Molecular properties Ranking models Regression models Ranking models enable faster identification of top-performing molecules Regression models struggle with rough datasets and activity cliffs",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [
+    {
+      "value": "Ranking over Regression for Bayesian Optimization and Molecule Selection Comparative analysis of RBO and conventional BO on various chemical datasets, utilizing deep learning ranking models and traditional regression models as surrogates Results demonstrate higher BO-AUC scores for RBO, indicating faster and better optimization performance, especially on datasets with rough structure-property landscapes and activity cliffs Molecular properties Ranking models Regression models Ranking models enable faster identification of top-performing molecules Regression models struggle with rough datasets and activity cliffs",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [],
+  "conditions": [],
+  "mechanisms": [
+    {
+      "value": "Ranking model training to learn relative ordering of molecules",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Regression model training to predict exact target values of molecules",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "outcomes": [
+    {
+      "value": "Ranking models enable faster identification of top-performing molecules",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Regression models struggle with rough datasets and activity cliffs",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "Artificial Intelligence & Data Science",
+    "Chemistry"
+  ],
+  "reasoning_motifs": [
+    {
+      "value": "Robustness to noise → Improved optimization performance",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Roughness in data → Decreased predictive accuracy",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "general_principles": [
+    {
+      "value": "Optimization performance is enhanced by models that are robust to data noise and variability",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "failure_paths": [
+    {
+      "value": "success: Applying RBO to chemical datasets with varying degrees of roughness Evidence: RBO demonstrated similar or improved optimization performance compared to conventional BO",
+      "source": "cross_sdl_phase4",
+      "confidence": 0.75,
+      "evidence": ""
+    },
+    {
+      "value": "success: Using ranking models on datasets with activity cliffs Evidence: Ranking models showed superior performance on datasets with activity cliffs",
+      "source": "cross_sdl_phase4",
+      "confidence": 0.75,
+      "evidence": ""
+    }
+  ],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "acgold_aa6fc8d0e4a3",
+    "cross_sdl_reasoning_json": "/Users/sissifeng/Downloads/cross-sdl_knowledge_transfer_engine/data/reasoning/acgold_aa6fc8d0e4a3.json",
+    "cross_sdl_extraction_quality": 0.8,
+    "cross_sdl_notes": "The paper presents a clear hypothesis and method, with a structured comparison of RBO and conventional BO. However, the extraction of layer3_motifs and layer4_principles required some inference based on the paper's findings and the general principles of optimization in noisy or variable datasets."
+  },
+  "validation": {
+    "score": 0.72,
+    "coverage": {
+      "source_summary": false,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": true,
+      "entities": true,
+      "materials": true,
+      "properties": true,
+      "measurements": false,
+      "conditions": false,
+      "mechanisms": true,
+      "outcomes": true,
+      "cross_sdl_match": true
+    },
+    "missing": [
+      "source_summary",
+      "hardware",
+      "measurements",
+      "conditions"
+    ],
+    "notes": [
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

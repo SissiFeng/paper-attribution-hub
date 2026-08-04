@@ -1,0 +1,214 @@
+{
+  "paper_id": "acfocus_09fa4853cf0f",
+  "title": "nach0: multimodal natural and chemical languages foundation model",
+  "metadata": {
+    "doi": "10.1039/d4sc00966e",
+    "url": "https://pubs.rsc.org/en/content/articlelanding/2024/sc/d4sc00966e",
+    "year": "2024",
+    "authors": "Livne M, Miftahutdinov Z, Tutubalina E, Kuznetsov M, Polykovskiy D, Brundyn A, Jhunjhunwala A, Costa A, Aliper A, Aspuru-Guzik A, Zhavoronkov A",
+    "venue": "Chemical Science",
+    "category": "Journal article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Alán Aspuru-Guzik"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "checked",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "The paper presents nach0, a multi-domain, multi-task encoder-decoder large language model pre-trained on scientific texts and molecule strings, which, through instruction tuning and the NeMo framework, achieves state-of-the-art performance across various chemical and biological tasks, including molecular generation and biomedical question answering.",
+  "abstract": "Large Language Models (LLMs) have substantially driven scientific progress in various domains, and many papers have demonstrated their ability to tackle complex problems with creative solutions. Our paper introduces a new foundation model, nach0, capable of solving various chemical and biological tasks: biomedical question answering, named entity recognition, molecular generation, molecular synthesis, attributes prediction, and others. nach0 is a multi-domain and multi-task encoder-decoder LLM pre-trained on unlabeled text from scientific literature, patents, and molecule strings to incorporate a range of chemical and linguistic knowledge. We employed instruction tuning, where specific task-related instructions are utilized to fine-tune nach0 for the final set of tasks. To train nach0 effectively, we leverage the NeMo framework, enabling efficient parallel optimization of both base and large model versions. Extensive experiments demonstrate that our model outperforms state-of-the-art baselines on single-domain and cross-domain tasks. Furthermore, it can generate high-quality outputs in molecular and textual formats, showcasing its effectiveness in multi-domain setups.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "Pre-training the model 'nach0' on a diverse dataset comprising chemical SMILES data and textual data from scientific articles and patents, followed by fine-tuning on a variety of tasks using instruction tuning.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "problems": [
+    {
+      "value": "Developing a foundation model capable of solving various chemical and biological tasks including biomedical question answering, named entity recognition, molecular generation, molecular synthesis, attributes prediction, etc.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "hypotheses": [
+    {
+      "value": "A multi-domain and multi-task encoder-decoder Large Language Model (LLM) pre-trained on unlabeled text from scientific literature, patents, and molecule strings can incorporate a range of chemical and linguistic knowledge and perform well on diverse chemical and biological tasks.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "evidence": [
+    {
+      "value": "The model demonstrated superior performance over state-of-the-art baselines on both single-domain and cross-domain tasks as shown in extensive experiments and benchmark dataset evaluations.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "conclusions": [
+    {
+      "value": "The model 'nach0' is effective in handling multi-domain setups, showcasing its capabilities in translating between natural language and chemical language for various tasks in chemical research and drug design.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "entities": [
+    {
+      "value": "Large Language Model (LLM)",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Chemical SMILES data",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Textual data from scientific articles and patents",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "nach0: multimodal natural and chemical languages foundation model The paper presents nach0, a multi-domain, multi-task encoder-decoder large language model pre-trained on scientific texts and molecule strings, which, through instruction tuning and the NeMo framework, achieves state-of-the-art performance across various chemical and biological tasks, including molecular generation and biomedical question answering.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "nach0 is a multi-domain and multi-task encoder-decoder LLM pre-trained on unlabeled text from scientific literature, patents, and molecule strings to incorporate a range of chemical and linguistic knowledge.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [
+    {
+      "value": "Large Language Model (LLM) Chemical SMILES data Textual data from scientific articles and patents Improved performance on a range of chemical and biological tasks including NLP problems and molecular property prediction",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [
+    {
+      "value": "The model demonstrated superior performance over state-of-the-art baselines on both single-domain and cross-domain tasks as shown in extensive experiments and benchmark dataset evaluations.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "conditions": [],
+  "mechanisms": [
+    {
+      "value": "Pre-training on unlabeled multi-domain data to incorporate chemical and linguistic knowledge",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Instruction tuning for fine-tuning the pre-trained model on specific tasks",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "outcomes": [
+    {
+      "value": "Improved performance on a range of chemical and biological tasks including NLP problems and molecular property prediction",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "Artificial Intelligence & Data Science",
+    "Chemistry"
+  ],
+  "reasoning_motifs": [
+    {
+      "value": "Diverse Data Integration → Enhanced Model Generalization",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Task-specific Fine-tuning → Improved Performance",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "general_principles": [
+    {
+      "value": "Data-driven Model Enrichment",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Adaptability Through Modular Training",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "failure_paths": [
+    {
+      "value": "partial: Replacing all 42 generative models in Chemistry42 platform with nach0 for molecule generation. Evidence: Nach0 discovered 8 molecules satisfying all the 2D and 3D requirements within 45 minutes, although the quality was worse than 72-hour generations in Chemistry42.",
+      "source": "cross_sdl_phase4",
+      "confidence": 0.75,
+      "evidence": ""
+    }
+  ],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "acgold_27d0a79680ac",
+    "cross_sdl_reasoning_json": "/Users/sissifeng/Downloads/cross-sdl_knowledge_transfer_engine/data/reasoning/acgold_27d0a79680ac.json",
+    "cross_sdl_extraction_quality": 0.8,
+    "cross_sdl_notes": "The paper provides a structured approach to introducing the model, its training, and evaluation. However, some inferences were necessary to fill in details regarding the underlying mechanisms and broader motifs due to the paper's focus on the model's application in chemical and biological tasks."
+  },
+  "validation": {
+    "score": 0.86,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": true,
+      "entities": true,
+      "materials": true,
+      "properties": true,
+      "measurements": true,
+      "conditions": false,
+      "mechanisms": true,
+      "outcomes": true,
+      "cross_sdl_match": true
+    },
+    "missing": [
+      "hardware",
+      "conditions"
+    ],
+    "notes": [
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

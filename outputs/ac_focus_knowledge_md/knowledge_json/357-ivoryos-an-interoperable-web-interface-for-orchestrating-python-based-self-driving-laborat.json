@@ -1,0 +1,98 @@
+{
+  "paper_id": "acfocus_bf7c6dbd8ea2",
+  "title": "IvoryOS: an interoperable web interface for orchestrating Python-based self-driving laboratories",
+  "metadata": {
+    "doi": "10.1038/s41467-025-60514-w",
+    "url": "https://www.nature.com/articles/s41467-025-60514-w",
+    "year": "2025",
+    "authors": "W. Zhang; L. Hao; V. Lai; R. Corkery; J. Jessiman; J. Zhang; J. Liu; Y. Sato; M. Politi; M. E. Reish; R. Greenwood; N. Depner; J. Min; R. El-Khawaldeh; P. Prieto; E. Trushina; J. Hein",
+    "venue": "Nature Communications",
+    "category": "Journal Article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Jason Hein"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance"
+    ],
+    "flags": {
+      "acknowledges_ac": "checked",
+      "highly_relevant": "checked",
+      "high_impact": "checked"
+    }
+  },
+  "source_summary": "IvoryOS is an open-source orchestrator that generates dynamic, drag-and-drop web interfaces for Python-based self-driving laboratories, enabling interoperability, no-code workflow design, and easy integration across diverse SDL platforms to accelerate scientific discovery.",
+  "abstract": "Self-driving laboratories (SDLs), powered by robotics, automation and artificial intelligence, accelerate scientific discoveries through autonomous experimentation. However, their adoption and transferability are limited by the lack of standardized software across diverse SDLs. In this work, we introduce IvoryOS – an open-source orchestrator that automatically generates web interfaces for Python-based SDLs. It ensures interoperability by dynamically updating the user interfaces with the plugged components and their functionalities. The interfaces enable users to directly control SDLs and design workflows through a drag-and-drop user interface. Additionally, the workflow manager provides no-code configuration for iterative execution, supporting both human-in-the-loop and closed-loop experimentation. We demonstrate the integration of IvoryOS with six SDLs across two institutes, showcasing its adaptability and utility across platforms at various development stages. The plug-and-play and low-code feature of IvoryOS addresses the rapidly evolving demands of SDL development and significantly lowers the barrier to entry for building and managing SDLs. © The Author(s) 2025.",
+  "hardware": [
+    {
+      "value": "Self-driving laboratories (SDLs), powered by robotics, automation and artificial intelligence, accelerate scientific discoveries through autonomous experimentation.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "methods": [
+    {
+      "value": "IvoryOS is an open-source orchestrator that generates dynamic, drag-and-drop web interfaces for Python-based self-driving laboratories, enabling interoperability, no-code workflow design, and easy integration across diverse SDL platforms to accelerate scientific discovery.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [],
+  "materials": [],
+  "properties": [],
+  "measurements": [],
+  "conditions": [],
+  "mechanisms": [],
+  "outcomes": [],
+  "sdl_tags": [],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.4,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": true,
+      "method": true,
+      "evidence": false,
+      "entities": false,
+      "materials": false,
+      "properties": false,
+      "measurements": false,
+      "conditions": false,
+      "mechanisms": false,
+      "outcomes": false,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "evidence",
+      "entities",
+      "materials",
+      "properties",
+      "measurements",
+      "conditions",
+      "mechanisms",
+      "outcomes",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only."
+    ]
+  }
+}

@@ -1,0 +1,315 @@
+{
+  "paper_id": "acfocus_591858fc6f39",
+  "title": "Stability and transferability of machine learning force fields for molecular dynamics applications",
+  "metadata": {
+    "doi": "10.1039/d4dd00140k",
+    "url": "https://pubs.rsc.org/en/content/articlehtml/2024/dd/d4dd00140k",
+    "year": "2024",
+    "authors": "Duangdangchote S, Seferos DS, Voznyy O",
+    "venue": "Digital Discovery",
+    "category": "Journal article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Dwight Seferos",
+      "Oleksandr Voznyy"
+    ],
+    "ac_programs": [
+      "AC PDF_Oleksandr Voznyy_2021-22"
+    ],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance",
+      "AC Full Member"
+    ],
+    "flags": {
+      "acknowledges_ac": "checked",
+      "highly_relevant": "checked",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "This study streamlines the creation of Machine Learning Force Fields for molecular dynamics simulations of inorganic materials by evaluating and benchmarking graph neural network models, with a focus on computational efficiency and application to lithium-ion conductors for energy storage technologies.",
+  "abstract": "In this study, we focus on simplifying the generation of Machine Learning Force Fields (MLFFs) for Molecular Dynamics (MD) simulations of inorganic materials, with an emphasis on sustainable use of computational resources. We evaluate the efficiency and accuracy of existing state-of-the-art graph neural network (GNN) models and introduce new benchmarks that go beyond conventional mean absolute error on forces and energies. We showcase our methodology on the example of lithium-ion conductor materials, paving the way to a broader screening of ionic conductors for batteries and fuel cells.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "Evaluating efficiency and accuracy of existing state-of-the-art Graph Neural Network (GNN) models and introducing new benchmarks beyond conventional mean absolute error on forces and energies; showcasing methodology on lithium-ion conductor materials.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "problems": [
+    {
+      "value": "Simplifying the generation of Machine Learning Force Fields (MLFFs) for Molecular Dynamics (MD) simulations of inorganic materials with sustainable use of computational resources.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "hypotheses": [
+    {
+      "value": "Transferable MLFFs can be generated with limited resources, maintaining high accuracy and applicability across different material systems.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "evidence": [
+    {
+      "value": "Most GNN models showed good predictions of energy and forces on unseen portion of training Li10GeP2S12 dataset with high R2 (>0.98) on forces. DimeNet and DimeNet++ showed the best room-temperature ionic conductivity predictions compared to AIMD.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "conclusions": [
+    {
+      "value": "The concept of a transferable MLFF for common elements can be achieved, with dynamic diffusion predicted in good agreement with AIMD references.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "entities": [
+    {
+      "value": "Graph Neural Network (GNN) models",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Lithium-ion conductor materials",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Force Fields (MLFFs)",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Molecular Dynamics (MD) simulations",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "Lithium-ion conductor materials",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Stability and transferability of machine learning force fields for molecular dynamics applications This study streamlines the creation of Machine Learning Force Fields for molecular dynamics simulations of inorganic materials by evaluating and benchmarking graph neural network models, with a focus on computational efficiency and application to lithium-ion conductors for energy storage technologies.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "In this study, we focus on simplifying the generation of Machine Learning Force Fields (MLFFs) for Molecular Dynamics (MD) simulations of inorganic materials, with an emphasis on sustainable use of computational resources.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "We showcase our methodology on the example of lithium-ion conductor materials, paving the way to a broader screening of ionic conductors for batteries and fuel cells.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [
+    {
+      "value": "Stability and transferability of machine learning force fields for molecular dynamics applications This study streamlines the creation of Machine Learning Force Fields for molecular dynamics simulations of inorganic materials by evaluating and benchmarking graph neural network models, with a focus on computational efficiency and application to lithium-ion conductors for energy storage technologies.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "We evaluate the efficiency and accuracy of existing state-of-the-art graph neural network (GNN) models and introduce new benchmarks that go beyond conventional mean absolute error on forces and energies.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Evaluating efficiency and accuracy of existing state-of-the-art Graph Neural Network (GNN) models and introducing new benchmarks beyond conventional mean absolute error on forces and energies; showcasing methodology on lithium-ion conductor materials.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Most GNN models showed good predictions of energy and forces on unseen portion of training Li10GeP2S12 dataset with high R2 (>0.98) on forces.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "DimeNet and DimeNet++ showed the best room-temperature ionic conductivity predictions compared to AIMD.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [
+    {
+      "value": "Stability and transferability of machine learning force fields for molecular dynamics applications This study streamlines the creation of Machine Learning Force Fields for molecular dynamics simulations of inorganic materials by evaluating and benchmarking graph neural network models, with a focus on computational efficiency and application to lithium-ion conductors for energy storage technologies.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "conditions": [
+    {
+      "value": "DimeNet and DimeNet++ showed the best room-temperature ionic conductivity predictions compared to AIMD.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "mechanisms": [
+    {
+      "value": "Training MLFFs directly from quantum mechanical calculations",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Representing atoms as nodes and bonds/interactions as edges in GNNs",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Predicting material properties from diverse databases",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Evaluating MLFFs using new benchmarks beyond conventional mean absolute error",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "outcomes": [
+    {
+      "value": "Capture complex interactions and chemical environments with high precision",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Respect permutation invariance and locality of atomic environments",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Enable broader screening of ionic conductors for batteries and fuel cells",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Improve accuracy and transferability of MLFFs across different material systems",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "Artificial Intelligence & Data Science",
+    "Chemistry",
+    "Energy Storage"
+  ],
+  "reasoning_motifs": [
+    {
+      "value": "Data-driven model accuracy → Improved material property prediction",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Model transferability → Broader applicability across material systems",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "High model complexity → Detailed interaction capture",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "general_principles": [
+    {
+      "value": "Data-driven models enhance prediction accuracy",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Model transferability enables broader applicability",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Complexity enables detailed interaction capture",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "failure_paths": [
+    {
+      "value": "partial: Evaluating the transferability performance of MLFFs trained on Li10GeP2S12 on test materials Li3PS4 and Li4GeS4. Evidence: Most models achieved moderately high R2 scores (greater than 0.96 for Li3PS4 and Li5GeS4), but some showed clearly incorrect force predictions in multiple dimensions.",
+      "source": "cross_sdl_phase4",
+      "confidence": 0.75,
+      "evidence": ""
+    },
+    {
+      "value": "failure: Assessing the reliability of MLFF-MD results, particularly the divergence in diffusion paths compared to AIMD counterparts. Evidence: Some models suggested diffusion that does not occur through proper channels but instead results from random movement of atoms or the movement of the entire unit cell.",
+      "source": "cross_sdl_phase4",
+      "confidence": 0.75,
+      "evidence": ""
+    }
+  ],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "acgold_c759bd1c441b",
+    "cross_sdl_reasoning_json": "/Users/sissifeng/Downloads/cross-sdl_knowledge_transfer_engine/data/reasoning/acgold_c759bd1c441b.json",
+    "cross_sdl_extraction_quality": 0.8,
+    "cross_sdl_notes": "The paper provides a structured approach to evaluating and comparing MLFFs for MD simulations. However, some details on the specific mechanisms and outcomes enabled by the MLFFs are scattered across the text and require careful extraction."
+  },
+  "validation": {
+    "score": 0.9,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": true,
+      "entities": true,
+      "materials": true,
+      "properties": true,
+      "measurements": true,
+      "conditions": true,
+      "mechanisms": true,
+      "outcomes": true,
+      "cross_sdl_match": true
+    },
+    "missing": [
+      "hardware"
+    ],
+    "notes": [
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

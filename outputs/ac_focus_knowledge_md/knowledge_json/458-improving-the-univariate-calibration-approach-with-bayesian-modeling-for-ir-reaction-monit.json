@@ -1,0 +1,149 @@
+{
+  "paper_id": "acfocus_331221d61275",
+  "title": "Improving the univariate calibration approach with Bayesian modeling for IR reaction monitoring",
+  "metadata": {
+    "doi": "10.1039/d5re00400d",
+    "url": "https://pubs.rsc.org/en/content/articlelanding/2026/re/d5re00400d",
+    "year": "2025",
+    "authors": "J. Zhang; J. Hein",
+    "venue": "Reaction Chemistry and Engineering",
+    "category": "Journal Article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Jason Hein"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance"
+    ],
+    "flags": {
+      "acknowledges_ac": "checked",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "A novel Bayesian workflow is introduced to enhance univariate calibration in IR reaction monitoring by using diagnostic probabilistic models and data-preprocessing selection to identify IR signals that improve prediction accuracy, reducing error by over 50% in a test system compared to traditional methods.",
+  "abstract": "Infrared (IR) spectroscopy is a powerful tool for real-time reaction monitoring in chemical synthesis. For applications that require tracking concentration profiles of reactive species, univariate linear calibration models are commonly used to relate IR signals to analyte concentrations. Despite their simplicity, the accuracy of these models can be limited by spectral overlap and other effects that distort the linear relationship between concentration and signal. To address this limitation, chemometric models are often employed, typically without further examination of opportunities to improve univariate calibration performance itself. Here, we present a novel workflow based on Bayesian statistics to enhance univariate calibration for IR reaction monitoring. The central feature of this workflow is the use of three diagnostic Bayesian probabilistic models, combined with data-preprocessing selection, to screen for IR signals that can potentially improve univariate calibration performance when non-linear effects are present. We applied the workflow to a test reaction system and identified an IR signal in the fingerprint region, along with an uncommon preprocessing strategy, that reduced prediction error by more than 50% compared with the univariate model using the original preprocessing steps. Overall, our workflow aims to improve the usability of univariate calibration approaches and expand the toolbox available to chemists for IR monitoring of complex chemical processes. This journal is © The Royal Society of Chemistry, 2026",
+  "hardware": [
+    {
+      "value": "Infrared (IR) spectroscopy is a powerful tool for real-time reaction monitoring in chemical synthesis.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "methods": [
+    {
+      "value": "A novel Bayesian workflow is introduced to enhance univariate calibration in IR reaction monitoring by using diagnostic probabilistic models and data-preprocessing selection to identify IR signals that improve prediction accuracy, reducing error by over 50% in a test system compared to traditional methods.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Chemistry",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Physics",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [],
+  "properties": [
+    {
+      "value": "Improving the univariate calibration approach with Bayesian modeling for IR reaction monitoring A novel Bayesian workflow is introduced to enhance univariate calibration in IR reaction monitoring by using diagnostic probabilistic models and data-preprocessing selection to identify IR signals that improve prediction accuracy, reducing error by over 50% in a test system compared to traditional methods.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Despite their simplicity, the accuracy of these models can be limited by spectral overlap and other effects that distort the linear relationship between concentration and signal.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [
+    {
+      "value": "Infrared (IR) spectroscopy is a powerful tool for real-time reaction monitoring in chemical synthesis.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "conditions": [
+    {
+      "value": "Infrared (IR) spectroscopy is a powerful tool for real-time reaction monitoring in chemical synthesis.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "For applications that require tracking concentration profiles of reactive species, univariate linear calibration models are commonly used to relate IR signals to analyte concentrations.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Despite their simplicity, the accuracy of these models can be limited by spectral overlap and other effects that distort the linear relationship between concentration and signal.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "mechanisms": [],
+  "outcomes": [],
+  "sdl_tags": [
+    "Chemistry",
+    "Physics"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.64,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": true,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": false,
+      "properties": true,
+      "measurements": true,
+      "conditions": true,
+      "mechanisms": false,
+      "outcomes": false,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "evidence",
+      "materials",
+      "mechanisms",
+      "outcomes",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only."
+    ]
+  }
+}

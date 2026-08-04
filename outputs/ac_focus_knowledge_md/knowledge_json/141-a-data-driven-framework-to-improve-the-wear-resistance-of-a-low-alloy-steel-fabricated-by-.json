@@ -1,0 +1,147 @@
+{
+  "paper_id": "acfocus_88bc98ee5bfd",
+  "title": "A data-driven framework to improve the wear resistance of a low-alloy steel fabricated by laser powder bed fusion",
+  "metadata": {
+    "doi": "10.1016/j.jmapro.2024.01.083",
+    "url": "https://www.sciencedirect.com/science/article/abs/pii/S1526612524001208",
+    "year": "2024",
+    "authors": "Zhang J, Patel S, Liu Z, Lyu T, Wang Y, Hua Y, Wang W, Hattrick-Simpers J, Vlasea M, Zou Y",
+    "venue": "Journal of Manufacturing Processes",
+    "category": "Journal article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Jason Hattrick-Simpers",
+      "Yu Zou"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance",
+      "AC Full Member"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "checked",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "This study presents a physics-informed, data-driven framework using Gaussian process regression and Bayesian optimization to efficiently create a 3D process map and optimize laser powder bed fusion parameters for low-alloy steel, resulting in superior wear-resistant components with improved density and hardness compared to non-optimized and previously reported materials.",
+  "abstract": "The laser powder bed fusion (LPBF) technique provides an opportunity to precisely control process parameters and produce materials with desired microstructure, which play an important role in developing wear-resistance components. An accurate and efficient determination of the optimal process window for new materials, however, remains a highly sought yet challenging task due to a high experimental cost by trial and error. In this study, we demonstrate a physics-informed data-driven framework to create a 3D process map and optimize printing parameters (i.e., laser power (P), scan speed (v), and hatch distance (h)) for a newly designed low-alloy steel. First, we establish a highly precise P-v process map by thoroughly exploring kernel selection and parameter hyper-tuning in Gaussian process regression (GPR) models. Subsequently, we employ the Bayesian optimization (BO) algorithm with different exploration-exploitation trade-offs to automatically explore all feasible optimized printing recipes within the process map. To efficiently incorporate a third printing parameter (h) alongside P and v with limited additional data points, we integrate a physics-informed pre-analysis and an inverse design strategy. We show that the samples fabricated by our optimized parameters exhibit improvement in relative density and retain a high hardness, resulting in a superior wear rate compared to those produced using non-optimized parameters. Furthermore, our samples outperform LPBF-fabricated steels and metal matrix composites in the literature, which is attributed to the existence of oxidative and fatigue wear. Our study offers a systematic and accurate data-driven approach to design and optimize microstructures and properties of materials made by LPBF.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "This study presents a physics-informed, data-driven framework using Gaussian process regression and Bayesian optimization to efficiently create a 3D process map and optimize laser powder bed fusion parameters for low-alloy steel, resulting in superior wear-resistant components with improved density and hardness compared to non-optimized and previously reported materials.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Artificial Intelligence & Data Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Materials Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "A data-driven framework to improve the wear resistance of a low-alloy steel fabricated by laser powder bed fusion This study presents a physics-informed, data-driven framework using Gaussian process regression and Bayesian optimization to efficiently create a 3D process map and optimize laser powder bed fusion parameters for low-alloy steel, resulting in superior wear-resistant components with improved density and hardness compared to non-optimized and previously reported materials.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "The laser powder bed fusion (LPBF) technique provides an opportunity to precisely control process parameters and produce materials with desired microstructure, which play an important role in developing wear-resistance components.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "An accurate and efficient determination of the optimal process window for new materials, however, remains a highly sought yet challenging task due to a high experimental cost by trial and error.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [
+    {
+      "value": "Our study offers a systematic and accurate data-driven approach to design and optimize microstructures and properties of materials made by LPBF.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [],
+  "conditions": [
+    {
+      "value": "We show that the samples fabricated by our optimized parameters exhibit improvement in relative density and retain a high hardness, resulting in a superior wear rate compared to those produced using non-optimized parameters.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "mechanisms": [],
+  "outcomes": [
+    {
+      "value": "Advanced Materials",
+      "source": "csv_applied_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "Artificial Intelligence & Data Science",
+    "Materials Science",
+    "Advanced Materials"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.61,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": true,
+      "properties": true,
+      "measurements": false,
+      "conditions": true,
+      "mechanisms": false,
+      "outcomes": true,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "measurements",
+      "mechanisms",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

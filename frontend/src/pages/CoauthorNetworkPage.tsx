@@ -1,9 +1,18 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 
 import { EChart } from "@/components/EChart";
+import { AnalysisScopePanel } from "@/components/AnalysisScopePanel";
+import { FilterBar } from "@/components/FilterBar";
+import { coauthorHeatmapTooltip } from "@/lib/chartTooltips";
 import { NetworkGraph } from "@/components/NetworkGraph";
 import { getCoauthorNetwork, getInstitutionNetwork } from "@/lib/api";
+import { filterFromSearchParams } from "@/lib/filter";
+import {
+  isLatestRequest,
+  resultForScope,
+  type ScopedResult,
+} from "@/lib/scopedResult";
 import type {
   ImportanceRadarAxis,
   InstitutionNetworkPayload,
@@ -12,18 +21,18 @@ import type {
 } from "@/types";
 
 const IMPORTANCE_DIMENSIONS = [
-  { key: "ac_proximity", label: "AC proximity" },
-  { key: "relationship_strength", label: "Relationship strength" },
-  { key: "excess_centrality", label: "Excess centrality" },
-  { key: "cross_sdl_diversity", label: "Cross-SDL diversity" },
-  { key: "citation_affinity", label: "Citation affinity" },
-  { key: "recency", label: "Recency" },
+  { key: "ac_proximity", label: "AC proximity", description: "AC-personalized PageRank on the complete filtered coauthor network." },
+  { key: "relationship_strength", label: "Relationship strength", description: "Strongest normalized collaboration tie; AC-connected ties receive full value." },
+  { key: "excess_centrality", label: "Excess centrality", description: "How much centrality exceeds the value expected from the author's degree." },
+  { key: "cross_sdl_diversity", label: "Context diversity", description: "Log-scaled number of distinct SDL/topic and institution contexts." },
+  { key: "citation_affinity", label: "Citation affinity", description: "Share of filtered papers with a stored resolved reference to an AC-core paper; missing reference evidence counts as zero, so inspect coverage." },
+  { key: "recency", label: "Recency", description: "Exponential decay from the latest filtered publication year (four-year time constant)." },
 ] as const;
 
 const IMPORTANCE_PROFILES: Record<string, { label: string; purpose: string; weights: Record<string, number> }> = {
   ac_attribution: {
-    label: "AC attribution",
-    purpose: "Prioritize authors structurally close to AC and directly attributable to AC work.",
+    label: "AC network proximity",
+    purpose: "Prioritize structural proximity to AC and resolved AC-core citations; this is not an attribution decision.",
     weights: { ac_proximity: 0.55, relationship_strength: 0.20, citation_affinity: 0.15, recency: 0.10 },
   },
   bridge_builders: {
@@ -32,18 +41,18 @@ const IMPORTANCE_PROFILES: Record<string, { label: string; purpose: string; weig
     weights: { ac_proximity: 0.35, excess_centrality: 0.30, cross_sdl_diversity: 0.25, relationship_strength: 0.10 },
   },
   institution_hubs: {
-    label: "Institution hubs",
-    purpose: "Emphasize durable collaboration strength and institution-spanning centrality.",
+    label: "Collaboration hubs",
+    purpose: "Emphasize durable collaboration strength and structural centrality; this ranks authors, not institutions.",
     weights: { relationship_strength: 0.30, excess_centrality: 0.25, cross_sdl_diversity: 0.20, ac_proximity: 0.15, citation_affinity: 0.10 },
   },
   emerging_connectors: {
     label: "Emerging connectors",
-    purpose: "Find newer authors with recent activity and early bridge potential.",
+    purpose: "Find recent activity and early bridge potential inside the selected paper scope; this is not a career-stage claim.",
     weights: { recency: 0.30, excess_centrality: 0.25, cross_sdl_diversity: 0.20, ac_proximity: 0.15, relationship_strength: 0.10 },
   },
   topic_diffusion: {
     label: "Topic diffusion",
-    purpose: "Highlight cross-SDL spread and collaborations that move methods between areas.",
+    purpose: "Highlight authors active across more topic contexts; this is descriptive connectivity, not causal diffusion.",
     weights: { cross_sdl_diversity: 0.35, relationship_strength: 0.20, excess_centrality: 0.20, ac_proximity: 0.15, recency: 0.10 },
   },
 };
@@ -60,6 +69,26 @@ function normalizeWeights(weights: Record<string, number>): Record<string, numbe
   const total = Object.values(clean).reduce((sum, value) => sum + value, 0);
   if (total <= 0) return weightsForProfile("bridge_builders");
   return Object.fromEntries(Object.entries(clean).map(([key, value]) => [key, value / total]));
+}
+
+function weightsFromParam(raw: string | null, profile: string): Record<string, number> {
+  if (!raw) return weightsForProfile(profile);
+  const parsed = weightsForProfile(profile);
+  for (const part of raw.split(",")) {
+    const [key, value] = part.split(":", 2);
+    const numeric = Number(value);
+    if (IMPORTANCE_DIMENSIONS.some((dimension) => dimension.key === key) && Number.isFinite(numeric) && numeric >= 0) {
+      parsed[key] = numeric;
+    }
+  }
+  return normalizeWeights(parsed);
+}
+
+function weightsToParam(weights: Record<string, number>): string {
+  const normalized = normalizeWeights(weights);
+  return IMPORTANCE_DIMENSIONS
+    .map((dimension) => `${dimension.key}:${(normalized[dimension.key] ?? 0).toFixed(6)}`)
+    .join(",");
 }
 
 // ── Institution collaboration heatmap (replaces messy force-graph) ───────────
@@ -104,9 +133,12 @@ function buildInstHeatmapOption(payload: InstitutionNetworkPayload) {
         const col = sorted[p.data[0]];
         const v = p.data[2];
         if (!row || !col) return "";
-        if (row.id === col.id)
-          return `<b>${row.label}</b><br/>${v} papers`;
-        return `<b>${row.label}</b><br/>↔ ${col.label}<br/><b>${v}</b> joint papers`;
+        return coauthorHeatmapTooltip(
+          row.label,
+          col.label,
+          v,
+          row.id === col.id,
+        );
       },
     },
     grid: { left: "26%", right: "4%", bottom: "26%", top: "4%" },
@@ -161,7 +193,6 @@ function ImportanceWeightEditor({
 }) {
   const normalized = normalizeWeights(weights);
   const activeProfile = IMPORTANCE_PROFILES[profile] ?? IMPORTANCE_PROFILES.bridge_builders;
-  const total = Object.values(weights).reduce((sum, value) => sum + value, 0);
 
   return (
     <section className="importance-editor" aria-label="Node importance weight editor">
@@ -199,7 +230,7 @@ function ImportanceWeightEditor({
         {IMPORTANCE_DIMENSIONS.map((dimension) => {
           const value = normalized[dimension.key] ?? 0;
           return (
-            <label key={dimension.key} className="weight-row">
+            <label key={dimension.key} className="weight-row" title={dimension.description}>
               <span>
                 <strong>{dimension.label}</strong>
                 <small>{(value * 100).toFixed(0)}%</small>
@@ -224,9 +255,24 @@ function ImportanceWeightEditor({
       </div>
 
       <div className="weight-footer">
-        <span>Normalized total {(total > 0 ? 1 : 0).toFixed(0)}. Scores recompute server-side.</span>
+        <span>Index = Σ normalized weight × dimension value. Scores recompute on the server.</span>
         <span>{IMPORTANCE_DIMENSIONS.length} dimensions</span>
       </div>
+      <details className="importance-method">
+        <summary>What do the six dimensions mean?</summary>
+        <dl>
+          {IMPORTANCE_DIMENSIONS.map((dimension) => (
+            <div key={dimension.key}>
+              <dt>{dimension.label}</dt>
+              <dd>{dimension.description}</dd>
+            </div>
+          ))}
+        </dl>
+        <p>
+          Scores use the complete paper-filtered network. Name search, minimum-paper,
+          institution, and top-N controls only change what is displayed.
+        </p>
+      </details>
     </section>
   );
 }
@@ -305,6 +351,7 @@ function AuthorPanel({
   const pprPct = (node.ppr_score * 100).toFixed(1);
   const importanceScore = node.importance_score ?? node.ppr_score ?? 0;
   const components = node.importance_components ?? {};
+  const corpusPaperCount = node.corpus_paper_count ?? node.paper_count;
 
   return (
     <div style={{
@@ -346,11 +393,13 @@ function AuthorPanel({
 
       {/* Metrics */}
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10, marginBottom: 16 }}>
-        <MetricBox label="Papers" value={String(node.paper_count)} />
-        <MetricBox label="Collaborators" value={String(connectedEdges.length)} />
+        <MetricBox label="Filtered papers" value={String(node.paper_count)} />
+        <MetricBox label="PAS corpus papers" value={String(corpusPaperCount)} />
+        <MetricBox label="Shown collaborators" value={String(connectedEdges.length)} />
+        <MetricBox label="Network index rank" value={node.importance_rank ? `#${node.importance_rank}` : "—"} />
         <div style={{ gridColumn: "span 2" }}>
           <div style={{ color: "var(--muted)", fontSize: 11, marginBottom: 4 }}>
-            AC Influence Score (PPR)
+            AC structural proximity (personalized PageRank)
           </div>
           <div style={{ height: 6, background: "var(--border)", borderRadius: 3, overflow: "hidden" }}>
             <div style={{
@@ -370,10 +419,19 @@ function AuthorPanel({
 
       <div className="importance-panel">
         <div className="importance-panel-title">
-          <span>Importance</span>
+          <span>Selected profile index</span>
           <strong>{(importanceScore * 100).toFixed(1)}%</strong>
         </div>
         <p>{node.importance_explanation ?? "No importance explanation available."}</p>
+        <p className="importance-scope-note">
+          Based on {node.paper_count} distinct filtered paper{node.paper_count === 1 ? "" : "s"}
+          {node.ac_core_citing_paper_count != null
+            ? `; ${node.ac_core_citing_paper_count} cite an AC-core paper`
+            : ""}.
+          {node.reference_evidence_paper_count != null
+            ? ` Parsed-reference rows cover ${node.reference_evidence_paper_count}/${node.paper_count} filtered papers.`
+            : ""}
+        </p>
         <ImportanceRadar axes={node.importance_radar_axes} />
         <div className="component-list">
           {IMPORTANCE_DIMENSIONS.map((dimension) => {
@@ -446,7 +504,10 @@ function ImportanceRanking({
 }) {
   const top = [...nodes]
     .filter((n) => !n.is_ac_member)
-    .sort((a, b) => (b.importance_score ?? b.ppr_score) - (a.importance_score ?? a.ppr_score))
+    .sort((a, b) =>
+      ((a.importance_rank ?? Number.MAX_SAFE_INTEGER) - (b.importance_rank ?? Number.MAX_SAFE_INTEGER))
+      || a.id.localeCompare(b.id)
+    )
     .slice(0, 8);
 
   if (top.length === 0) return null;
@@ -468,7 +529,7 @@ function ImportanceRanking({
             }}
           >
             <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
-              <span style={{ color: "var(--muted)", fontSize: 11, width: 16 }}>#{i + 1}</span>
+              <span style={{ color: "var(--muted)", fontSize: 11, width: 24 }}>#{n.importance_rank ?? i + 1}</span>
               <span style={{ fontWeight: 600, fontSize: 13, color: "var(--text)", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
                 {n.label}
               </span>
@@ -478,7 +539,7 @@ function ImportanceRanking({
               <div style={{ height: "100%", width: `${(n.importance_score ?? n.ppr_score) * 100}%`, background: "#7aa2f7", borderRadius: 2 }} />
             </div>
             <div style={{ fontSize: 11, color: "var(--muted)" }}>
-              Score {((n.importance_score ?? n.ppr_score) * 100).toFixed(1)}% · {n.paper_count} papers
+              Index {((n.importance_score ?? n.ppr_score) * 100).toFixed(1)}% · {n.paper_count} filtered / {n.corpus_paper_count ?? n.paper_count} corpus papers
             </div>
           </button>
         ))}
@@ -491,63 +552,152 @@ function ImportanceRanking({
 type View = "authors" | "institutions";
 
 export default function CoauthorNetworkPage() {
-  const [searchParams] = useSearchParams();
-  const [view, setView] = useState<View>("authors");
-  const [onlyRelevant, setOnlyRelevant] = useState(true);
-  const [minPapers, setMinPapers] = useState(1);
-  const [importanceProfile, setImportanceProfile] = useState("bridge_builders");
-  const [importanceWeights, setImportanceWeights] = useState<Record<string, number>>(
-    () => weightsForProfile("bridge_builders")
+  const [searchParams, setSearchParams] = useSearchParams();
+  const searchKey = searchParams.toString();
+  const filter = useMemo(
+    () => filterFromSearchParams(new URLSearchParams(searchKey)),
+    [searchKey],
   );
-  const [payload, setPayload] = useState<NetworkPayload | null>(null);
-  const [instPayload, setInstPayload] = useState<InstitutionNetworkPayload | null>(null);
+  const view: View = searchParams.get("coauthor_view") === "institutions"
+    ? "institutions"
+    : "authors";
+  const onlyRelevant = searchParams.get("coauthor_relevant") !== "false";
+  const parsedInstitutionMin = Number(searchParams.get("coauthor_inst_min_papers"));
+  const minPapers = Number.isFinite(parsedInstitutionMin) && parsedInstitutionMin >= 1
+    ? Math.min(20, parsedInstitutionMin)
+    : 1;
+  const parsedAuthorMin = Number(searchParams.get("coauthor_author_min_papers"));
+  const authorMinPapers = Number.isFinite(parsedAuthorMin) && parsedAuthorMin >= 1
+    ? Math.min(1000, parsedAuthorMin)
+    : 1;
+  const nodeSearch = searchParams.get("coauthor_node_search") ?? "";
+  const selectedInstitutionsOnly = searchParams.get("coauthor_selected_institutions") === "true";
+  const requestedProfile = searchParams.get("coauthor_importance_profile") ?? "bridge_builders";
+  const importanceProfile = IMPORTANCE_PROFILES[requestedProfile]
+    ? requestedProfile
+    : "bridge_builders";
+  const importanceWeightsParam = searchParams.get("coauthor_importance_weights");
+  const importanceWeights = useMemo(
+    () => weightsFromParam(importanceWeightsParam, importanceProfile),
+    [importanceProfile, importanceWeightsParam],
+  );
+  const [authorResult, setAuthorResult] = useState<
+    ScopedResult<NetworkPayload> | null
+  >(null);
+  const [institutionResult, setInstitutionResult] = useState<
+    ScopedResult<InstitutionNetworkPayload> | null
+  >(null);
   const [selectedId, setSelectedId] = useState<string | null>(null);
-  const [error, setError] = useState<string | null>(null);
+  const [authorError, setAuthorError] = useState<string | null>(null);
+  const [institutionError, setInstitutionError] = useState<string | null>(null);
+  const authorRequestGeneration = useRef(0);
+  const institutionRequestGeneration = useRef(0);
   const normalizedWeights = useMemo(
     () => normalizeWeights(importanceWeights),
     [importanceWeights]
   );
+  const authorScopeKey = JSON.stringify([
+    searchKey,
+    onlyRelevant,
+    authorMinPapers,
+    nodeSearch,
+    selectedInstitutionsOnly ? filter.institutionIds : [],
+    importanceProfile,
+    Object.entries(normalizedWeights).sort(([left], [right]) => left.localeCompare(right)),
+  ]);
+  const institutionScopeKey = JSON.stringify([searchKey, minPapers, 200]);
+  const payload = resultForScope(authorResult, authorScopeKey);
+  const instPayload = resultForScope(institutionResult, institutionScopeKey);
+  const error = view === "authors" ? authorError : institutionError;
+
+  function setProjectionParam(key: string, value: string | null) {
+    const next = new URLSearchParams(searchParams);
+    if (value == null || value === "") next.delete(key);
+    else next.set(key, value);
+    setSearchParams(next);
+    setSelectedId(null);
+  }
+
+  function setProjectionParams(values: Record<string, string | null>) {
+    const next = new URLSearchParams(searchParams);
+    Object.entries(values).forEach(([key, value]) => {
+      if (value == null || value === "") next.delete(key);
+      else next.set(key, value);
+    });
+    setSearchParams(next);
+    setSelectedId(null);
+  }
 
   function handleProfileChange(profile: string) {
-    setImportanceProfile(profile);
-    setImportanceWeights(weightsForProfile(profile));
-    setSelectedId(null);
+    setProjectionParams({
+      coauthor_importance_profile: profile === "bridge_builders" ? null : profile,
+      coauthor_importance_weights: null,
+    });
   }
 
   // Fetch author network
   useEffect(() => {
     let cancelled = false;
-    setError(null);
+    const generation = ++authorRequestGeneration.current;
+    setAuthorError(null);
     getCoauthorNetwork(onlyRelevant, {
       importanceProfile,
       importanceWeights: normalizedWeights,
+      minPapers: authorMinPapers,
+      nodeSearch: nodeSearch || undefined,
+      nodeInstitutionIds: selectedInstitutionsOnly ? filter.institutionIds : [],
+      search: new URLSearchParams(searchKey),
     })
-      .then((p) => { if (!cancelled) setPayload(p); })
-      .catch((e) => { if (!cancelled) setError(e instanceof Error ? e.message : String(e)); });
+      .then((nextPayload) => {
+        if (!cancelled && isLatestRequest(generation, authorRequestGeneration.current)) {
+          setAuthorResult({ scopeKey: authorScopeKey, payload: nextPayload });
+        }
+      })
+      .catch((err) => {
+        if (!cancelled && isLatestRequest(generation, authorRequestGeneration.current)) {
+          setAuthorError(err instanceof Error ? err.message : String(err));
+          setAuthorResult(null);
+        }
+      });
     return () => { cancelled = true; };
-  }, [onlyRelevant, importanceProfile, normalizedWeights]);
+  }, [authorMinPapers, authorScopeKey, filter.institutionIds, importanceProfile, nodeSearch, normalizedWeights, onlyRelevant, searchKey, selectedInstitutionsOnly]);
 
   // Fetch institution network on demand
   useEffect(() => {
     if (view !== "institutions") return;
     let cancelled = false;
-    getInstitutionNetwork(minPapers, searchParams)
-      .then((p) => { if (!cancelled) setInstPayload(p); })
-      .catch(() => {});
+    const generation = ++institutionRequestGeneration.current;
+    setInstitutionError(null);
+    getInstitutionNetwork(minPapers, new URLSearchParams(searchKey))
+      .then((nextPayload) => {
+        if (!cancelled && isLatestRequest(generation, institutionRequestGeneration.current)) {
+          setInstitutionResult({
+            scopeKey: institutionScopeKey,
+            payload: nextPayload,
+          });
+        }
+      })
+      .catch((err) => {
+        if (!cancelled && isLatestRequest(generation, institutionRequestGeneration.current)) {
+          setInstitutionError(err instanceof Error ? err.message : String(err));
+          setInstitutionResult(null);
+        }
+      });
     return () => { cancelled = true; };
-  }, [view, minPapers, searchParams.toString()]);
+  }, [institutionScopeKey, minPapers, searchKey, view]);
 
   const selectedNode = payload?.nodes.find((n) => n.id === selectedId) ?? null;
 
   return (
     <div>
+      <FilterBar />
       {/* View toggle */}
       <div style={{ display: "flex", gap: 8, marginBottom: 12 }}>
         {(["authors", "institutions"] as View[]).map((v) => (
           <button
             key={v}
             className={view === v ? "active" : ""}
-            onClick={() => { setView(v); setSelectedId(null); }}
+            onClick={() => setProjectionParam("coauthor_view", v === "authors" ? null : v)}
             style={{
               padding: "5px 14px", borderRadius: 8, border: "1px solid var(--border)",
               background: view === v ? "var(--accent)" : "var(--surface)",
@@ -555,7 +705,7 @@ export default function CoauthorNetworkPage() {
               cursor: "pointer", fontSize: 13, fontWeight: 500,
             }}
           >
-            {v === "authors" ? "👥 Authors" : "🏛 Institutions"}
+            {v === "authors" ? "Authors" : "Institutions"}
           </button>
         ))}
       </div>
@@ -563,21 +713,64 @@ export default function CoauthorNetworkPage() {
       {/* Controls row */}
       <div style={{ display: "flex", gap: 16, marginBottom: 12, fontSize: 13, alignItems: "center" }}>
         {view === "authors" && (
-          <label style={{ display: "flex", alignItems: "center", gap: 6, color: "var(--muted)" }}>
+          <label
+            style={{ display: "flex", alignItems: "center", gap: 6, color: "var(--muted)" }}
+            title="When disabled, the shared Classification filter above still applies. Choose All classifications there to include every label."
+          >
             <input
               type="checkbox"
               checked={onlyRelevant}
-              onChange={(e) => { setOnlyRelevant(e.target.checked); setSelectedId(null); }}
+              onChange={(e) => setProjectionParam("coauthor_relevant", String(e.target.checked))}
             />
-            Relevant papers only
+            Override labels: CORE + RELATED only
           </label>
+        )}
+        {view === "authors" && (
+          <>
+            <label style={{ display: "flex", alignItems: "center", gap: 6, color: "var(--muted)" }}>
+              Min filtered papers
+              <input
+                type="number"
+                min={1}
+                max={1000}
+                value={authorMinPapers}
+                onChange={(event) => setProjectionParam(
+                  "coauthor_author_min_papers",
+                  String(Math.max(1, Number(event.target.value) || 1)),
+                )}
+                style={{ width: 64 }}
+              />
+            </label>
+            <input
+              type="search"
+              value={nodeSearch}
+              onChange={(event) => setProjectionParam("coauthor_node_search", event.target.value)}
+              placeholder="Search author or institution…"
+              aria-label="Search author or institution nodes"
+            />
+            <label style={{ display: "flex", alignItems: "center", gap: 6, color: "var(--muted)" }}>
+              <input
+                type="checkbox"
+                checked={selectedInstitutionsOnly}
+                disabled={filter.institutionIds.length === 0}
+                onChange={(event) => setProjectionParam(
+                  "coauthor_selected_institutions",
+                  event.target.checked ? "true" : null,
+                )}
+              />
+              People from selected institutions only
+            </label>
+          </>
         )}
         {view === "institutions" && (
           <label style={{ display: "flex", alignItems: "center", gap: 6, color: "var(--muted)" }}>
             Min joint papers:&nbsp;
             <input
               type="number" min={1} max={20} value={minPapers}
-              onChange={(e) => setMinPapers(Math.max(1, Number(e.target.value)))}
+              onChange={(e) => setProjectionParam(
+                "coauthor_inst_min_papers",
+                String(Math.max(1, Number(e.target.value) || 1)),
+              )}
               style={{ width: 60 }}
             />
           </label>
@@ -590,10 +783,19 @@ export default function CoauthorNetworkPage() {
           weights={normalizedWeights}
           onProfileChange={handleProfileChange}
           onWeightsChange={(next) => {
-            setImportanceWeights(next);
-            setSelectedId(null);
+            setProjectionParam("coauthor_importance_weights", weightsToParam(next));
           }}
         />
+      )}
+
+      {view === "authors" && payload?.audit && (
+        <div className="coauthor-scope-summary" role="status">
+          Index values were calculated on the complete filtered network of{
+            ` ${Number(payload.audit.projection?.score_universe_node_count ?? 0)} authors`
+          } from {Number(payload.audit.projection?.score_universe_paper_count ?? payload.audit.included_papers)} papers.
+          The graph displays {payload.nodes.length} authors after presentation controls.
+          “Filtered papers” drives the metrics; “PAS corpus papers” is the author's all-ingested context, not a lifetime-publication count.
+        </div>
       )}
 
       {error && <div style={{ color: "var(--uncertain)", marginBottom: 8 }}>Backend error: {error}</div>}
@@ -634,6 +836,9 @@ export default function CoauthorNetworkPage() {
       {/* Importance ranking (authors view only) */}
       {view === "authors" && payload && (
         <ImportanceRanking nodes={payload.nodes} onSelect={(id) => setSelectedId(id)} />
+      )}
+      {view === "authors" && payload?.audit && (
+        <AnalysisScopePanel audit={payload.audit} title="Coauthor evidence scope" />
       )}
     </div>
   );

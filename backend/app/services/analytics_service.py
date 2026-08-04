@@ -17,6 +17,7 @@ from dataclasses import dataclass
 from sqlalchemy import func, select
 from sqlalchemy.orm import Session
 
+from app.country_normalization import canonical_country_entries
 from app.models import (
     Author,
     Institution,
@@ -25,8 +26,16 @@ from app.models import (
     PaperClassification,
     PaperReference,
 )
-from app.services.filter_spec import PaperFilter, apply_filter
+from app.services.filter_spec import (
+    PAPER_SET_ENCODING,
+    PaperFilter,
+    apply_filter,
+    build_filter_audit,
+    paper_set_sha256,
+    split_semicolon_values,
+)
 from app.services.graph_service import build_institution_graph
+from app.services.topic_identity import canonical_topic_names
 
 
 @dataclass
@@ -88,16 +97,16 @@ def _paper_rows(session: Session, filt: PaperFilter):
     relationships.  Loading only the four columns we actually need cuts memory
     by ~95 % on large unfiltered datasets.
     """
+    filtered_ids = apply_filter(select(Paper.id), filt).subquery()
     return session.execute(
-        apply_filter(
-            select(
-                Paper.id,
-                Paper.year,
-                PaperClassification.label,
-                PaperClassification.matched_topics,
-            ).outerjoin(PaperClassification, PaperClassification.paper_id == Paper.id),
-            filt,
+        select(
+            filtered_ids.c.id,
+            Paper.year,
+            PaperClassification.label,
+            PaperClassification.matched_topics,
         )
+        .join(Paper, Paper.id == filtered_ids.c.id)
+        .outerjoin(PaperClassification, PaperClassification.paper_id == Paper.id)
     ).all()
 
 
@@ -141,85 +150,127 @@ def institution_topic_label_sankey(
         .where(PaperClassification.paper_id.in_(paper_ids))
     ).all()
 
-    inst_to_topic_label: Counter[tuple[str, str, str]] = Counter()
+    path_papers: dict[tuple[str, str, str], set[str]] = defaultdict(set)
     inst_names: dict[str, str] = {}
     topic_names: dict[str, str] = {}
-    label_set: set[str] = set()
 
     for paper_id, label, matched_topics, sdl_tags in cls_rows:
         if label is None:
             continue
-        label_set.add(label)
 
         # Build topic list: matched_topics first, then sdl_tags as fallback.
-        topics: list[tuple[str, str]] = []
+        topics: dict[str, str] = {}
         for t in (matched_topics or []):
             if (t.get("score") or 0) > 0.3 and t.get("topic_id") and t.get("name"):
-                topics.append((t["topic_id"], t["name"]))
+                topics[t["topic_id"]] = t["name"]
         if not topics:
             for tag in (sdl_tags or []):
                 tag = str(tag).strip()
                 if tag:
                     tag_id = f"sdl:{tag.lower().replace(' ', '_')}"
-                    topics.append((tag_id, tag))
+                    topics[tag_id] = tag
 
         if not topics:
             continue  # skip papers with neither matched topics nor sdl_tags
         for inst_id, inst_name in paper_institutions.get(paper_id, set()):
             inst_names[inst_id] = inst_name
-            for topic_id, topic_name in topics:
+            for topic_id, topic_name in topics.items():
                 if topic_id is None:
                     continue
                 topic_names[topic_id] = topic_name
-                inst_to_topic_label[(inst_id, topic_id, label)] += 1
+                path_papers[(inst_id, topic_id, label)].add(paper_id)
 
     # Aggregate institution totals and keep only top_institutions
-    inst_totals: Counter[str] = Counter()
-    for (inst_id, _topic_id, _label), v in inst_to_topic_label.items():
-        inst_totals[inst_id] += v
-    top_inst_ids = {iid for iid, _ in inst_totals.most_common(top_institutions)}
+    inst_totals: dict[str, set[str]] = defaultdict(set)
+    for (inst_id, _topic_id, _label), papers in path_papers.items():
+        inst_totals[inst_id].update(papers)
+    top_inst_ids = {
+        inst_id
+        for inst_id, _papers in sorted(
+            inst_totals.items(), key=lambda item: (-len(item[1]), item[0])
+        )[:top_institutions]
+    }
 
     # Aggregate topic totals and keep only top_topics
-    topic_totals: Counter[str] = Counter()
-    for (_inst_id, topic_id, _label), v in inst_to_topic_label.items():
-        topic_totals[topic_id] += v
-    top_topic_ids = {tid for tid, _ in topic_totals.most_common(top_topics)}
+    topic_totals: dict[str, set[str]] = defaultdict(set)
+    for (_inst_id, topic_id, _label), papers in path_papers.items():
+        topic_totals[topic_id].update(papers)
+    top_topic_ids = {
+        topic_id
+        for topic_id, _papers in sorted(
+            topic_totals.items(), key=lambda item: (-len(item[1]), item[0])
+        )[:top_topics]
+    }
 
     institution_ids = sorted(top_inst_ids)
     topic_ids = sorted(top_topic_ids)
-    label_ids = sorted(label_set)
-
-    nodes = (
-        [SankeyNode(id=f"inst:{i}", name=inst_names[i], layer="institution") for i in institution_ids]
-        + [SankeyNode(id=f"topic:{t}", name=topic_names[t], layer="topic") for t in topic_ids]
-        + [SankeyNode(id=f"label:{l}", name=l.replace("_", " "), layer="label") for l in label_ids]
-    )
-    inst_topic: Counter[tuple[str, str]] = Counter()
-    topic_label: Counter[tuple[str, str]] = Counter()
-    for (inst_id, topic_id, label), value in inst_to_topic_label.items():
+    inst_topic: dict[tuple[str, str], set[str]] = defaultdict(set)
+    topic_label: dict[tuple[str, str], set[str]] = defaultdict(set)
+    for (inst_id, topic_id, label), papers in path_papers.items():
         if inst_id not in top_inst_ids or topic_id not in top_topic_ids:
             continue
-        inst_topic[(inst_id, topic_id)] += value
-        topic_label[(topic_id, label)] += value
+        inst_topic[(inst_id, topic_id)].update(papers)
+        topic_label[(topic_id, label)].update(papers)
+
+    label_ids = sorted({label for _topic, label in topic_label})
+    nodes = (
+        [
+            SankeyNode(
+                id=f"inst:{institution_id}",
+                name=inst_names[institution_id],
+                layer="institution",
+            )
+            for institution_id in institution_ids
+        ]
+        + [
+            SankeyNode(
+                id=f"topic:{topic_id}",
+                name=topic_names[topic_id],
+                layer="topic",
+            )
+            for topic_id in topic_ids
+        ]
+        + [
+            SankeyNode(
+                id=f"label:{label}",
+                name=label.replace("_", " "),
+                layer="label",
+            )
+            for label in label_ids
+        ]
+    )
 
     links = [
-        SankeyLink(source=f"inst:{i}", target=f"topic:{t}", value=v)
-        for (i, t), v in inst_topic.items()
+        SankeyLink(
+            source=f"inst:{institution_id}",
+            target=f"topic:{topic_id}",
+            value=len(papers),
+        )
+        for (institution_id, topic_id), papers in inst_topic.items()
     ] + [
-        SankeyLink(source=f"topic:{t}", target=f"label:{l}", value=v)
-        for (t, l), v in topic_label.items()
+        SankeyLink(
+            source=f"topic:{topic}",
+            target=f"label:{label}",
+            value=len(papers),
+        )
+        for (topic, label), papers in topic_label.items()
     ]
     return SankeyData(nodes=nodes, links=links)
 
 
 def topic_over_time(
-    session: Session, filt: PaperFilter, *, by: str = "topic"
+    session: Session,
+    filt: PaperFilter,
+    *,
+    by: str = "topic",
+    top_n: int | None = None,
 ) -> list[TimelineSeries]:
-    """Year × series counts. `by` ∈ {"topic", "label"}. Uses lean SQL queries."""
+    """Year × distinct-paper counts for a supported grouping dimension."""
     id_subq = apply_filter(
         select(Paper.id, Paper.year).where(Paper.year.is_not(None)), filt
     ).subquery()
     buckets: dict[str, Counter[int]] = defaultdict(Counter)
+    country_display: dict[str, str] = {}
     if by == "label":
         rows = session.execute(
             select(id_subq.c.year, PaperClassification.label, func.count())
@@ -228,36 +279,103 @@ def topic_over_time(
         ).all()
         for year, label, cnt in rows:
             buckets[label or "UNCLASSIFIED"][year] = cnt
+    elif by == "institution":
+        rows = session.execute(
+            select(
+                id_subq.c.year,
+                id_subq.c.id,
+                Institution.canonical_name,
+            )
+            .join(PaperAuthor, PaperAuthor.paper_id == id_subq.c.id)
+            .join(Author, Author.id == PaperAuthor.author_id)
+            .join(Institution, Institution.id == Author.institution_id)
+        ).all()
+        seen: set[tuple[int, str, str]] = set()
+        for year, paper_id, institution_name in rows:
+            key = (year, paper_id, institution_name)
+            if key in seen:
+                continue
+            seen.add(key)
+            buckets[institution_name][year] += 1
+    elif by == "country":
+        rows = session.execute(
+            select(id_subq.c.year, id_subq.c.id, Institution.country)
+            .join(PaperAuthor, PaperAuthor.paper_id == id_subq.c.id)
+            .join(Author, Author.id == PaperAuthor.author_id)
+            .join(Institution, Institution.id == Author.institution_id)
+            .where(Institution.country.is_not(None))
+        ).all()
+        seen: set[tuple[int, str, str]] = set()
+        for year, paper_id, raw_country in rows:
+            for country in canonical_country_entries(raw_country):
+                key = (year, paper_id, country.identity)
+                if key in seen:
+                    continue
+                seen.add(key)
+                country_display[country.identity] = country.display
+                buckets[country.identity][year] += 1
+    elif by == "field":
+        rows = session.execute(
+            select(
+                id_subq.c.year,
+                id_subq.c.id,
+                Paper.sdl_tags,
+                Paper.research_tags,
+            ).join(Paper, Paper.id == id_subq.c.id)
+        ).all()
+        for year, _paper_id, sdl_tags, research_tags in rows:
+            fields = {
+                str(value).strip()
+                for values in (sdl_tags or [], research_tags or [])
+                for value in values
+                if str(value).strip()
+            }
+            if not fields:
+                buckets["(no field)"][year] += 1
+            else:
+                for field in fields:
+                    buckets[field][year] += 1
     else:  # by topic — load only year + matched_topics JSON, no Paper ORM objects
         rows = session.execute(
             select(id_subq.c.year, PaperClassification.matched_topics)
             .outerjoin(PaperClassification, PaperClassification.paper_id == id_subq.c.id)
         ).all()
         for year, matched_topics in rows:
-            topics = [
+            topics = {
                 t["name"]
                 for t in (matched_topics or [])
                 if t.get("is_core") and (t.get("score") or 0) > 0.3
-            ]
+            }
             if not topics:
                 buckets["(no core topic)"][year] += 1
             else:
                 for topic_name in topics:
                     buckets[topic_name][year] += 1
 
+    ranked_names = sorted(
+        buckets,
+        key=lambda name: (
+            -sum(buckets[name].values()),
+            country_display.get(name, name).casefold(),
+            country_display.get(name, name),
+            name,
+        ),
+    )
+    if top_n is not None:
+        ranked_names = ranked_names[:top_n]
     series_list: list[TimelineSeries] = []
-    for name in sorted(buckets):
+    for name in ranked_names:
         data = sorted(buckets[name].items())
-        series_list.append(TimelineSeries(name=name, data=data))
+        series_list.append(
+            TimelineSeries(name=country_display.get(name, name), data=data)
+        )
     return series_list
 
 
 def _norm_field(value: str | None) -> str | None:
-    """Normalize semicolon-concatenated institution fields (e.g. 'China;China' → 'China')."""
-    if not value:
-        return value
-    first = next((v.strip() for v in value.split(";") if v.strip()), None)
-    return first
+    """Normalize a semicolon-concatenated field without dropping values."""
+    normalized = split_semicolon_values(value)
+    return "; ".join(normalized) or None
 
 
 def institution_network(
@@ -271,7 +389,6 @@ def institution_network(
     paper_ids = {row[0] for row in session.execute(apply_filter(select(Paper.id), filt)).all()}
     g = build_institution_graph(session)
 
-    contrib: Counter[str] = Counter()
     paper_contrib: Counter[str] = Counter()
     # Walk edges and accumulate paper counts against the filtered set.
     nodes_in_filter: set[str] = set()
@@ -283,8 +400,6 @@ def institution_network(
         raw_edges.append((src, dst, joint))
         nodes_in_filter.add(src)
         nodes_in_filter.add(dst)
-        contrib[src] += len(joint)
-        contrib[dst] += len(joint)
 
     # Include institutions that appear in filtered papers even when they have
     # no remaining collaboration edge. Partner-only views can otherwise look
@@ -319,8 +434,11 @@ def institution_network(
     edges_filtered: list[InstitutionGraphEdge] = []
     for src, dst, joint in raw_edges:
         weight = len(joint)
-        min_contrib = min(contrib.get(src, 1), contrib.get(dst, 1))
-        normalized = round(weight / max(min_contrib, 1), 4)
+        smaller_endpoint_count = min(
+            paper_contrib.get(src, 0),
+            paper_contrib.get(dst, 0),
+        )
+        normalized = round(weight / max(smaller_endpoint_count, 1), 4)
         edges_filtered.append(
             InstitutionGraphEdge(
                 source=src,
@@ -336,7 +454,7 @@ def institution_network(
     all_nodes: list[InstitutionGraphNode] = []
     for node_id in nodes_in_filter:
         data = g.nodes[node_id]
-        paper_count = paper_contrib.get(node_id, contrib[node_id])
+        paper_count = paper_contrib[node_id]
         if paper_count < min_papers:
             continue
         all_nodes.append(
@@ -396,8 +514,8 @@ class GrowthSeries:
 
 @dataclass
 class EmergingEntity:
-    """An institution or author that appears in the corpus for the first time
-    in a given year. Used to surface 'who's new this year' in impact panels.
+    """An entity whose first paper in the selected non-temporal scope falls in
+    the requested year window. Used to surface "who's new" in impact panels.
     """
 
     entity_type: str  # "institution" | "author"
@@ -418,36 +536,273 @@ class ThemeGrowth:
 
 
 @dataclass
+class InstitutionCitationIndex:
+    institution_id: str
+    institution_name: str
+    paper_count: int
+    normalized_index: float
+
+
+@dataclass
+class NormalizedCitationImpact:
+    metric_name: str
+    normalized_index: float | None
+    covered_papers: int
+    total_papers: int
+    coverage: float
+    snapshot_oldest_at: str | None
+    snapshot_newest_at: str | None
+    source_breakdown: dict[str, int]
+    by_institution: list[InstitutionCitationIndex]
+
+
+@dataclass
 class ImpactReport:
     """Top-level shape for the /analytics/impact endpoint."""
 
     yoy_attributed: GrowthSeries
     yoy_by_label: list[GrowthSeries]
     citation_impact: GrowthSeries
+    normalized_citation_impact: NormalizedCitationImpact
     emerging_institutions: list[EmergingEntity]
     emerging_authors: list[EmergingEntity]
     top_growing_themes: list[ThemeGrowth]
     window_from: int | None
     window_to: int | None
+    audit: dict
+
+
+def _emerging_history_filter(filt: PaperFilter) -> PaperFilter:
+    return filt.model_copy(update={"year_from": None, "year_to": None})
+
+
+def build_emerging_history_audit(session: Session, filt: PaperFilter) -> dict:
+    """Audit the non-temporal paper set used to establish true first years."""
+    history_filter = _emerging_history_filter(filt)
+    audit = build_filter_audit(
+        session,
+        history_filter,
+        algorithm="impact_emerging_history.v1",
+        metric_definitions={
+            "emerging_first_year": "Earliest publication year for an entity among papers in this non-temporal filter scope.",
+        },
+    )
+    audit["purpose"] = (
+        "Historical dependency used to determine institution and author first years; "
+        "all selected filters except year_from/year_to remain active."
+    )
+    return audit
+
+
+def _citation_baseline_filter(filt: PaperFilter) -> PaperFilter:
+    """Keep evidence/classification scope while removing entity selection."""
+    return filt.model_copy(
+        update={
+            "institution_ids": [],
+            "countries": [],
+            "partner_only": False,
+            "ac_author_only": False,
+            "search": None,
+        }
+    )
+
+
+def _primary_citation_field(paper: Paper) -> str:
+    fields = {
+        str(value).strip()
+        for values in (paper.research_tags or [], paper.sdl_tags or [])
+        for value in values
+        if str(value).strip()
+    }
+    if not fields:
+        return "(no field)"
+    return sorted(fields, key=lambda value: (value.casefold(), value))[0]
+
+
+def _normalized_citation_impact(
+    session: Session,
+    filt: PaperFilter,
+    selected_paper_ids: list[str],
+) -> tuple[NormalizedCitationImpact, dict]:
+    baseline_filter = _citation_baseline_filter(filt)
+    baseline_audit = build_filter_audit(
+        session,
+        baseline_filter,
+        algorithm="citation_field_year_baseline.v1",
+        metric_definitions={
+            "expected_citations": "Arithmetic mean of external citation snapshots for papers in the same publication year and deterministic primary field.",
+            "paper_index": "External citation snapshot divided by the field-year expected citation count; zero-over-zero is neutral at 1.0.",
+        },
+    )
+    baseline_papers = list(
+        session.scalars(apply_filter(select(Paper), baseline_filter))
+    )
+    covered_baseline = [
+        paper
+        for paper in baseline_papers
+        if paper.citation_count is not None and paper.year is not None
+    ]
+    baseline_counts: dict[tuple[int, str], list[int]] = defaultdict(list)
+    for paper in covered_baseline:
+        baseline_counts[(paper.year, _primary_citation_field(paper).casefold())].append(
+            int(paper.citation_count)
+        )
+    expected = {
+        key: sum(values) / len(values)
+        for key, values in baseline_counts.items()
+    }
+
+    selected = [
+        paper
+        for paper in session.scalars(
+            select(Paper).where(Paper.id.in_(selected_paper_ids))
+        )
+    ] if selected_paper_ids else []
+    paper_indices: dict[str, float] = {}
+    for paper in selected:
+        if paper.citation_count is None or paper.year is None:
+            continue
+        expected_count = expected.get(
+            (paper.year, _primary_citation_field(paper).casefold())
+        )
+        if expected_count is None:
+            continue
+        index = (
+            float(paper.citation_count) / expected_count
+            if expected_count > 0
+            else 1.0
+        )
+        paper_indices[paper.id] = index
+
+    institution_indices: dict[str, list[tuple[str, float]]] = defaultdict(list)
+    if paper_indices:
+        affiliation_rows = session.execute(
+            select(
+                PaperAuthor.paper_id,
+                Institution.id,
+                Institution.canonical_name,
+            )
+            .join(Author, Author.id == PaperAuthor.author_id)
+            .join(Institution, Institution.id == Author.institution_id)
+            .where(PaperAuthor.paper_id.in_(paper_indices))
+        ).all()
+        seen_affiliations: set[tuple[str, str]] = set()
+        for paper_id, institution_id, institution_name in affiliation_rows:
+            key = (paper_id, institution_id)
+            if key in seen_affiliations:
+                continue
+            seen_affiliations.add(key)
+            institution_indices[institution_id].append(
+                (institution_name, paper_indices[paper_id])
+            )
+    by_institution = [
+        InstitutionCitationIndex(
+            institution_id=institution_id,
+            institution_name=values[0][0],
+            paper_count=len(values),
+            normalized_index=round(
+                sum(value for _name, value in values) / len(values), 3
+            ),
+        )
+        for institution_id, values in institution_indices.items()
+    ]
+    by_institution.sort(
+        key=lambda item: (
+            -item.paper_count,
+            -item.normalized_index,
+            item.institution_name.casefold(),
+            item.institution_id,
+        )
+    )
+
+    covered_selected = [
+        paper for paper in selected if paper.id in paper_indices
+    ]
+    timestamps = sorted(
+        paper.citation_count_updated_at.isoformat()
+        for paper in covered_selected
+        if paper.citation_count_updated_at is not None
+    )
+    sources = Counter(
+        paper.citation_count_source or "unknown"
+        for paper in covered_selected
+    )
+    baseline_audit["snapshot_coverage"] = {
+        "covered_papers": len(covered_baseline),
+        "total_papers": len(baseline_papers),
+        "covered_paper_set_sha256": paper_set_sha256(
+            [paper.id for paper in covered_baseline]
+        ),
+        "paper_set_encoding": PAPER_SET_ENCODING,
+    }
+    normalized = NormalizedCitationImpact(
+        metric_name="corpus_field_year_normalized_citation_index.v1",
+        normalized_index=(
+            round(sum(paper_indices.values()) / len(paper_indices), 3)
+            if paper_indices
+            else None
+        ),
+        covered_papers=len(covered_selected),
+        total_papers=len(selected),
+        coverage=(
+            round(len(covered_selected) / len(selected), 4)
+            if selected
+            else 0.0
+        ),
+        snapshot_oldest_at=timestamps[0] if timestamps else None,
+        snapshot_newest_at=timestamps[-1] if timestamps else None,
+        source_breakdown=dict(sorted(sources.items())),
+        by_institution=by_institution[:10],
+    )
+    return normalized, baseline_audit
 
 
 def build_impact_report(session: Session, filt: PaperFilter) -> ImpactReport:
     """Build all impact metrics using lean SQL queries — no full Paper ORM objects."""
+    audit = build_filter_audit(
+        session,
+        filt,
+        algorithm="research_impact.v4",
+        metric_definitions={
+            "yoy_attributed": "Distinct filtered papers per publication year with a CORE_RELEVANT or RELATED_RELEVANT classification.",
+            "yoy_by_label": "Distinct filtered papers per publication year and classification label.",
+            "citation_impact": "Persisted citation edges from filtered papers, grouped by the citing paper's publication year.",
+            "normalized_citation_impact": "Mean external-citation index per covered paper, normalized to the corresponding corpus field-year baseline; this is not a proprietary global FWCI.",
+            "emerging_first_year": "Earliest publication year among papers satisfying the same filter with only year_from/year_to removed.",
+            "emerging_paper_count": "Distinct filtered papers in the selected window contributed by the entity.",
+            "theme_growth": "Distinct filtered papers containing the core topic in the earlier versus later half of the selected window.",
+        },
+    )
+    history_audit = build_emerging_history_audit(session, filt)
     rows = _paper_rows(session, filt)  # (id, year, label, matched_topics)
+    paper_ids = [row[0] for row in rows]
+    normalized_citations, citation_baseline_audit = _normalized_citation_impact(
+        session,
+        filt,
+        paper_ids,
+    )
+    audit["dependencies"] = {
+        "emerging_history": history_audit,
+        "citation_baseline": citation_baseline_audit,
+    }
     if not rows:
         return ImpactReport(
             yoy_attributed=GrowthSeries(name="ac_attributed_papers", points=[]),
             yoy_by_label=[],
             citation_impact=GrowthSeries(name="corpus_citation_edges", points=[]),
+            normalized_citation_impact=normalized_citations,
             emerging_institutions=[],
             emerging_authors=[],
             top_growing_themes=[],
             window_from=filt.year_from,
             window_to=filt.year_to,
+            audit=audit,
         )
 
-    paper_ids = [r[0] for r in rows]
+    current_paper_ids = set(paper_ids)
     year_by_id = {r[0]: r[1] for r in rows if r[1] is not None}
+    history_filter = _emerging_history_filter(filt)
+    history_paper_ids = [row[0] for row in _paper_rows(session, history_filter)]
 
     # --- YoY attributed & by-label (no DB round-trip needed) ---
     attr_counts: Counter[int] = Counter()
@@ -490,52 +845,74 @@ def build_impact_report(session: Session, filt: PaperFilter) -> ImpactReport:
 
     # --- Emerging institutions (SQL JOIN, no Paper iteration) ---
     inst_pa_rows = session.execute(
-        select(Paper.year, Institution.id, Institution.canonical_name, Institution.is_partner)
+        select(
+            Paper.id,
+            Paper.year,
+            Institution.id,
+            Institution.canonical_name,
+            Institution.is_partner,
+        )
         .join(PaperAuthor, PaperAuthor.paper_id == Paper.id)
         .join(Author, Author.id == PaperAuthor.author_id)
         .join(Institution, Institution.id == Author.institution_id)
-        .where(Paper.id.in_(paper_ids), Paper.year.is_not(None))
+        .where(Paper.id.in_(history_paper_ids), Paper.year.is_not(None))
     ).all()
     inst_first: dict[str, tuple[int, str, bool]] = {}
-    inst_paper_count: Counter[str] = Counter()
-    for yr, inst_id, inst_name, is_partner in inst_pa_rows:
+    inst_window_papers: dict[str, set[str]] = defaultdict(set)
+    for paper_id, yr, inst_id, inst_name, is_partner in inst_pa_rows:
         existing = inst_first.get(inst_id)
         if existing is None or yr < existing[0]:
             inst_first[inst_id] = (yr, inst_name, bool(is_partner))
-        inst_paper_count[inst_id] += 1
+        if paper_id in current_paper_ids:
+            inst_window_papers[inst_id].add(paper_id)
     wf, wt = filt.year_from, filt.year_to
     emerging_institutions = sorted(
         [
             EmergingEntity(entity_type="institution", id=iid, label=lbl, first_year=yr,
-                           paper_count=inst_paper_count[iid], is_partner=isp)
+                           paper_count=len(inst_window_papers[iid]), is_partner=isp)
             for iid, (yr, lbl, isp) in inst_first.items()
+            if iid in inst_window_papers
             if (wf is None or yr >= wf) and (wt is None or yr <= wt)
         ],
-        key=lambda e: (-e.paper_count, e.first_year, e.label),
+        key=lambda entity: (
+            -entity.paper_count,
+            entity.first_year,
+            entity.label.casefold(),
+            entity.label,
+            entity.id,
+        ),
     )[:10]
 
     # --- Emerging authors ---
     auth_pa_rows = session.execute(
-        select(Paper.year, Author.id, Author.canonical_name)
+        select(Paper.id, Paper.year, Author.id, Author.canonical_name)
         .join(PaperAuthor, PaperAuthor.paper_id == Paper.id)
         .join(Author, Author.id == PaperAuthor.author_id)
-        .where(Paper.id.in_(paper_ids), Paper.year.is_not(None))
+        .where(Paper.id.in_(history_paper_ids), Paper.year.is_not(None))
     ).all()
     auth_first: dict[str, tuple[int, str]] = {}
-    auth_count: Counter[str] = Counter()
-    for yr, aid, aname in auth_pa_rows:
+    auth_window_papers: dict[str, set[str]] = defaultdict(set)
+    for paper_id, yr, aid, aname in auth_pa_rows:
         existing = auth_first.get(aid)
         if existing is None or yr < existing[0]:
             auth_first[aid] = (yr, aname)
-        auth_count[aid] += 1
+        if paper_id in current_paper_ids:
+            auth_window_papers[aid].add(paper_id)
     emerging_authors = sorted(
         [
             EmergingEntity(entity_type="author", id=aid, label=lbl, first_year=yr,
-                           paper_count=auth_count[aid])
+                           paper_count=len(auth_window_papers[aid]))
             for aid, (yr, lbl) in auth_first.items()
+            if aid in auth_window_papers
             if (wf is None or yr >= wf) and (wt is None or yr <= wt)
         ],
-        key=lambda e: (-e.paper_count, e.first_year, e.label),
+        key=lambda entity: (
+            -entity.paper_count,
+            entity.first_year,
+            entity.label.casefold(),
+            entity.label,
+            entity.id,
+        ),
     )[:10]
 
     # --- Top growing themes ---
@@ -545,39 +922,64 @@ def build_impact_report(session: Session, filt: PaperFilter) -> ImpactReport:
     top_growing_themes: list[ThemeGrowth] = []
     if tw_from is not None and tw_to is not None and tw_to > tw_from:
         midpoint = (tw_from + tw_to) // 2
-        before: Counter[tuple[str, str]] = Counter()
-        after: Counter[tuple[str, str]] = Counter()
+        before: Counter[str] = Counter()
+        after: Counter[str] = Counter()
+        topic_aliases: dict[str, set[str]] = defaultdict(set)
         for _, year, _, matched_topics in rows:
             if year is None or not (tw_from <= year <= tw_to):
                 continue
+            paper_topics: set[str] = set()
             for tm in (matched_topics or []):
                 if not tm.get("is_core") or (tm.get("score") or 0) < 0.3:
                     continue
-                key = (tm.get("topic_id"), tm.get("name") or tm.get("topic_id"))
+                topic_id = tm.get("topic_id")
+                if not topic_id:
+                    continue
+                paper_topics.add(topic_id)
+                topic_aliases.setdefault(topic_id, set())
+                topic_name = tm.get("name")
+                if topic_name:
+                    topic_aliases[topic_id].add(str(topic_name))
+            for topic_id in paper_topics:
                 if year <= midpoint:
-                    before[key] += 1
+                    before[topic_id] += 1
                 else:
-                    after[key] += 1
+                    after[topic_id] += 1
+        topic_names = canonical_topic_names(session, topic_aliases)
         theme_list = []
-        for key in set(before) | set(after):
-            tid, name = key
-            b, a = before[key], after[key]
+        for topic_id in sorted(set(before) | set(after)):
+            b, a = before[topic_id], after[topic_id]
             if a + b == 0:
                 continue
             dp = float("inf") if b == 0 else round((a - b) / b * 100.0, 1)
-            theme_list.append(ThemeGrowth(topic_id=tid, name=name, value_now=a, value_then=b, delta_pct=dp))
-        theme_list.sort(key=lambda t: (0 if t.delta_pct == float("inf") else 1,
-                                        -(t.value_now + t.value_then),
-                                        -t.delta_pct if t.delta_pct != float("inf") else 0.0))
+            theme_list.append(
+                ThemeGrowth(
+                    topic_id=topic_id,
+                    name=topic_names.get(topic_id, topic_id),
+                    value_now=a,
+                    value_then=b,
+                    delta_pct=dp,
+                )
+            )
+        theme_list.sort(
+            key=lambda theme: (
+                0 if theme.delta_pct == float("inf") else 1,
+                -(theme.value_now + theme.value_then),
+                -theme.delta_pct if theme.delta_pct != float("inf") else 0.0,
+                theme.topic_id,
+            )
+        )
         top_growing_themes = theme_list[:10]
 
     return ImpactReport(
         yoy_attributed=yoy_attributed,
         yoy_by_label=yoy_by_label,
         citation_impact=citation_impact,
+        normalized_citation_impact=normalized_citations,
         emerging_institutions=emerging_institutions,
         emerging_authors=emerging_authors,
         top_growing_themes=top_growing_themes,
         window_from=filt.year_from,
         window_to=filt.year_to,
+        audit=audit,
     )

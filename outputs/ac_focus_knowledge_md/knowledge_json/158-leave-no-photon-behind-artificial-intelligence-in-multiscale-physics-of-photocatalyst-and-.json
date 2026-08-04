@@ -1,0 +1,155 @@
+{
+  "paper_id": "acfocus_106d8c0d410e",
+  "title": "Leave No Photon Behind: Artificial Intelligence in Multiscale Physics of Photocatalyst and Photoreactor Design",
+  "metadata": {
+    "doi": "10.1002/advs.202306604",
+    "url": "https://advanced.onlinelibrary.wiley.com/doi/10.1002/advs.202306604",
+    "year": "2024",
+    "authors": "Loh JYY, Wang A, Mohan A, Tountas AA, Gouda AM, Tavasoli A, Ozin GA",
+    "venue": "Advanced Science",
+    "category": "Journal article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Geoffrey Ozin"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "checked",
+      "high_impact": "checked"
+    }
+  },
+  "source_summary": "Despite advances in photocatalyst materials, the main barrier to scalable solar fuels photocatalysis is optimizing the synergy between materials and photoreactor design, which requires machine learning—especially physics-informed approaches—to analyze complex real-world data and overcome key bottlenecks in charge dynamics, mass transfer, solar collection, and light distribution.",
+  "abstract": "Although solar fuels photocatalysis offers the promise of converting carbon dioxide directly with sunlight as commercially scalable solutions have remained elusive over the past few decades, despite significant advancements in photocatalysis band-gap engineering and atomic site activity. The primary challenge lies not in the discovery of new catalyst materials, which are abundant, but in overcoming the bottlenecks related to material-photoreactor synergy. These factors include achieving photogeneration and charge-carrier recombination at reactive sites, utilizing high mass transfer efficiency supports, maximizing solar collection, and achieving uniform light distribution within a reactor. Addressing this multi-dimensional problem necessitates harnessing machine learning techniques to analyze real-world data from photoreactors and material properties. In this perspective, the challenges are outlined associated with each bottleneck factor, review relevant data analysis studies, and assess the requirements for developing a comprehensive solution that can unlock the full potential of solar fuels photocatalysis technology. Physics-informed machine learning (or Physics Neural Networks) may be the key to advancing this important area from disparate data towards optimal reactor solutions.",
+  "hardware": [
+    {
+      "value": "These factors include achieving photogeneration and charge-carrier recombination at reactive sites, utilizing high mass transfer efficiency supports, maximizing solar collection, and achieving uniform light distribution within a reactor.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Physics-informed machine learning (or Physics Neural Networks) may be the key to advancing this important area from disparate data towards optimal reactor solutions.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "methods": [
+    {
+      "value": "Despite advances in photocatalyst materials, the main barrier to scalable solar fuels photocatalysis is optimizing the synergy between materials and photoreactor design, which requires machine learning—especially physics-informed approaches—to analyze complex real-world data and overcome key bottlenecks in charge dynamics, mass transfer, solar collection, and light distribution.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Artificial Intelligence & Data Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Chemistry",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "Leave No Photon Behind: Artificial Intelligence in Multiscale Physics of Photocatalyst and Photoreactor Design Despite advances in photocatalyst materials, the main barrier to scalable solar fuels photocatalysis is optimizing the synergy between materials and photoreactor design, which requires machine learning—especially physics-informed approaches—to analyze complex real-world data and overcome key bottlenecks in charge dynamics, mass transfer, solar collection, and light distribution.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "The primary challenge lies not in the discovery of new catalyst materials, which are abundant, but in overcoming the bottlenecks related to material-photoreactor synergy.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Addressing this multi-dimensional problem necessitates harnessing machine learning techniques to analyze real-world data from photoreactors and material properties.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [
+    {
+      "value": "Although solar fuels photocatalysis offers the promise of converting carbon dioxide directly with sunlight as commercially scalable solutions have remained elusive over the past few decades, despite significant advancements in photocatalysis band-gap engineering and atomic site activity.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Addressing this multi-dimensional problem necessitates harnessing machine learning techniques to analyze real-world data from photoreactors and material properties.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [],
+  "conditions": [],
+  "mechanisms": [],
+  "outcomes": [
+    {
+      "value": "Catalysis",
+      "source": "csv_applied_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "Artificial Intelligence & Data Science",
+    "Chemistry",
+    "Catalysis"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.67,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": true,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": true,
+      "properties": true,
+      "measurements": false,
+      "conditions": false,
+      "mechanisms": false,
+      "outcomes": true,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "evidence",
+      "measurements",
+      "conditions",
+      "mechanisms",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only."
+    ]
+  }
+}

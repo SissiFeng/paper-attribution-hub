@@ -2,9 +2,7 @@
 from app.services.relevance_classifier import (
     LABEL_ADJACENT,
     LABEL_CORE,
-    LABEL_EXCLUDE,
     LABEL_RELATED,
-    LABEL_UNCERTAIN,
     _apply_rules,
 )
 

@@ -1,0 +1,194 @@
+{
+  "paper_id": "acfocus_0f8a30829eef",
+  "title": "An interpretable machine learning framework for modelling macromolecular interaction mechanisms with nuclear magnetic resonance",
+  "metadata": {
+    "doi": "10.1039/d3dd00009e",
+    "url": "https://xlink.rsc.org/?DOI=D3DD00009E",
+    "year": "2023",
+    "authors": "Stuart, Samantha; Watchorn, Jeffrey; Gu, Frank X.",
+    "venue": "Digital Discovery",
+    "category": "Journal article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Frank Gu",
+      "Jeff Watchorn"
+    ],
+    "ac_programs": [
+      "Core Development Grants_Frank Gu_2023-24"
+    ],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance",
+      "AC Staff"
+    ],
+    "flags": {
+      "acknowledges_ac": "checked",
+      "highly_relevant": "checked",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "A machine learning framework using decision trees and DISCO NMR data was developed to reveal atomic-level structure–activity relationships in polymer–protein binding, enabling accurate prediction and interpretation of glycoprotein interactions with biomedical polymers and identifying undervalued polymer groups for engineering new biomaterials.",
+  "abstract": "We use a glass box approach based on decision trees to understand glycoprotein binding with biomedical polymers.           ,                             Macromolecular interactions, such as polymer–protein binding, determine the biological fate of biomaterials. However, in most macromolecular binding systems, underlying interaction mechanisms are unclear, limiting capabilities for               in vitro               prediction. In particular, the atomic-level structure–activity relationships that drive protein–polymer binding are confounding. To overcome this gap, we developed a machine learning framework that applies interaction data from direct saturation compensated nuclear magnetic resonance (DISCO NMR) to classify polymer proton descriptors to their interactive behaviors with mucin proteins. The framework constructs structure-interaction trends from cross-polymer atomic-level behavior patterns, and identifies “undervalued” inert polymer groups with potential to be engineered towards interaction. Trends are constructed from materials-agnostic interaction descriptors that combine chemical shift fingerprints, molecular weight, and cumulative DISCO effect from saturation transfer buildup, mapping proton chemical, physical, and conformational attributes together. In this work we constructed a fully-trained decision tree classifier to model structure–activity after applying principal component analysis (accuracy = 0.92,               F               1               = 0.87) and interpreted its decision rules to improve scientific understanding of mucin binding. Several undervalued inert protons identified by the model include: HPC 80 kDa (4.58 ppm), HPMC 120 kDa (4.48 ppm), PVA 105 kDa (1.58 ppm), DEX 150 kDa (5.20 ppm), PVP 55 kDa (3.89 ppm), CMC 90 kDa (4.58 ppm), and PEOZ 50 kDa (3.42 ppm). The model additionally suggested a structure–activity relationship is shared by HPC, CMC, DEX, and HPMC protons in the 80–150 kDa range. More broadly, the framework and its descriptors can be applied for data-driven discovery of new polymer formulations using previously obscure cross-polymer sub-group trends, and is similarly applicable to any receptor-ligand system compatible with DISCO-NMR screening.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "A machine learning framework using decision trees and DISCO NMR data was developed to reveal atomic-level structure–activity relationships in polymer–protein binding, enabling accurate prediction and interpretation of glycoprotein interactions with biomedical polymers and identifying undervalued polymer groups for engineering new biomaterials.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Artificial Intelligence & Data Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Materials Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Chemical Engineering",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "An interpretable machine learning framework for modelling macromolecular interaction mechanisms with nuclear magnetic resonance A machine learning framework using decision trees and DISCO NMR data was developed to reveal atomic-level structure–activity relationships in polymer–protein binding, enabling accurate prediction and interpretation of glycoprotein interactions with biomedical polymers and identifying undervalued polymer groups for engineering new biomaterials.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "We use a glass box approach based on decision trees to understand glycoprotein binding with biomedical polymers.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": ",                             Macromolecular interactions, such as polymer–protein binding, determine the biological fate of biomaterials.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [
+    {
+      "value": "An interpretable machine learning framework for modelling macromolecular interaction mechanisms with nuclear magnetic resonance A machine learning framework using decision trees and DISCO NMR data was developed to reveal atomic-level structure–activity relationships in polymer–protein binding, enabling accurate prediction and interpretation of glycoprotein interactions with biomedical polymers and identifying undervalued polymer groups for engineering new biomaterials.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "In particular, the atomic-level structure–activity relationships that drive protein–polymer binding are confounding.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "In this work we constructed a fully-trained decision tree classifier to model structure–activity after applying principal component analysis (accuracy = 0.92,               F               1               = 0.87) and interpreted its decision rules to improve scientific understanding of mucin binding.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "The model additionally suggested a structure–activity relationship is shared by HPC, CMC, DEX, and HPMC protons in the 80–150 kDa range.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [
+    {
+      "value": "An interpretable machine learning framework for modelling macromolecular interaction mechanisms with nuclear magnetic resonance A machine learning framework using decision trees and DISCO NMR data was developed to reveal atomic-level structure–activity relationships in polymer–protein binding, enabling accurate prediction and interpretation of glycoprotein interactions with biomedical polymers and identifying undervalued polymer groups for engineering new biomaterials.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "To overcome this gap, we developed a machine learning framework that applies interaction data from direct saturation compensated nuclear magnetic resonance (DISCO NMR) to classify polymer proton descriptors to their interactive behaviors with mucin proteins.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "More broadly, the framework and its descriptors can be applied for data-driven discovery of new polymer formulations using previously obscure cross-polymer sub-group trends, and is similarly applicable to any receptor-ligand system compatible with DISCO-NMR screening.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "conditions": [],
+  "mechanisms": [],
+  "outcomes": [
+    {
+      "value": "Formulations",
+      "source": "csv_applied_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Therapeutics",
+      "source": "csv_applied_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "SDL 5 - Formulations",
+    "Artificial Intelligence & Data Science",
+    "Materials Science",
+    "Chemical Engineering",
+    "Formulations",
+    "Therapeutics"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.63,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": true,
+      "properties": true,
+      "measurements": true,
+      "conditions": false,
+      "mechanisms": false,
+      "outcomes": true,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "conditions",
+      "mechanisms",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

@@ -1,0 +1,113 @@
+{
+  "paper_id": "acfocus_acbed0c3241f",
+  "title": "Computational design and evaluation of optimal bait sets for scalable proximity proteomics",
+  "metadata": {
+    "doi": "10.1038/s41467-025-64383-1",
+    "url": "https://www.nature.com/articles/s41467-025-64383-1",
+    "year": "2025",
+    "authors": "V. Kasmaeifar; S. Sedighi; A. C. Gingras; K. R. Campbell",
+    "venue": "Nature Communications",
+    "category": "Journal Article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Kieran Campbell"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "The study introduces GENBAIT, a genetic algorithm-based method that optimizes bait protein selection for BioID experiments, enabling efficient and scalable mapping of subcellular proteomes by retaining maximal spatial information with fewer baits.",
+  "abstract": "The spatial organization of proteins within eukaryotic cells underlies essential biological processes and can be mapped by identifying nearby proteins using proximity-dependent biotinylation approaches such as BioID. When applied systematically to hundreds of bait proteins, BioID has localized thousands of endogenous proteins in human cells, generating a comprehensive view of subcellular organization. However, the need for large bait sets limits the scalability of BioID for context-dependent spatial profiling across different cell types, states, or perturbations. To address this, we develop a benchmarking framework with multiple complementary metrics to assess how well a given bait subset recapitulates the structure and coverage of a reference BioID dataset. We also introduce GENBAIT, a genetic algorithm-based method that identifies optimized bait subsets predicted to retain maximal spatial information while reducing the total number of baits. Applied to three large BioID datasets, GENBAIT consistently selected subsets representing less than one-third of the original baits while preserving high coverage and network integrity. This flexible, data-driven approach enables intelligent bait selection for targeted, context-specific studies, thereby expanding the accessibility of large-scale subcellular proteome mapping. © The Author(s) 2025.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "The study introduces GENBAIT, a genetic algorithm-based method that optimizes bait protein selection for BioID experiments, enabling efficient and scalable mapping of subcellular proteomes by retaining maximal spatial information with fewer baits.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Biochemistry",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Computational Biology",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [],
+  "properties": [],
+  "measurements": [
+    {
+      "value": "To address this, we develop a benchmarking framework with multiple complementary metrics to assess how well a given bait subset recapitulates the structure and coverage of a reference BioID dataset.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "conditions": [],
+  "mechanisms": [],
+  "outcomes": [],
+  "sdl_tags": [
+    "Biochemistry",
+    "Computational Biology"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.43,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": false,
+      "properties": false,
+      "measurements": true,
+      "conditions": false,
+      "mechanisms": false,
+      "outcomes": false,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "materials",
+      "properties",
+      "conditions",
+      "mechanisms",
+      "outcomes",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

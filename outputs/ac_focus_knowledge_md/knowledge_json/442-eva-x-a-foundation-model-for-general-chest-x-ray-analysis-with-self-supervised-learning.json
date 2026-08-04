@@ -1,0 +1,138 @@
+{
+  "paper_id": "acfocus_10c03b221cb5",
+  "title": "EVA-X: a foundation model for general chest x-ray analysis with self-supervised learning",
+  "metadata": {
+    "doi": "10.1038/s41746-025-02032-z",
+    "url": "https://www.nature.com/articles/s41746-025-02032-z",
+    "year": "2025",
+    "authors": "J. Yao; X. Wang; Y. Song; H. Zhao; J. Ma; Y. Chen; W. Liu; B. Wang",
+    "venue": "npj Digital Medicine",
+    "category": "Journal Article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Bo Wang"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "EVA-X is a self-supervised foundational model for X-ray images that overcomes annotation limitations by learning from unlabeled data, achieving state-of-the-art performance across multiple chest disease detection tasks and reducing the need for extensive data annotation in medical AI.",
+  "abstract": "Artificial intelligence analysis methods for chest X-ray images are limited by insufficient annotation data and varying levels of annotation, resulting in weak generalization ability and difficulty in clinical dissemination. Here, we present EVA-X, an innovative foundational model based on X-ray images with broad applicability. EVA-X uses a self-supervised learning method capable of capturing both semantic and geometric information from unlabeled images for universal X-ray image representation. It has demonstrated exceptional performance in chest disease analysis and localization, becoming a model capable of spanning over 20 different chest pathologies and achieving leading results in over 11 different pathology detection tasks. Additionally, EVA-X significantly reduces the burden of data annotation in the medical AI field, showcasing strong potential in the domain of few-shot learning. The emergence of EVA-X will greatly propel the development and application of foundational medical models, leading to potential improvements in future medical research and clinical practice. © The Author(s) 2025.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "EVA-X is a self-supervised foundational model for X-ray images that overcomes annotation limitations by learning from unlabeled data, achieving state-of-the-art performance across multiple chest disease detection tasks and reducing the need for extensive data annotation in medical AI.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Artificial Intelligence & Data Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Biology",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [],
+  "properties": [],
+  "measurements": [
+    {
+      "value": "EVA-X: a foundation model for general chest x-ray analysis with self-supervised learning EVA-X is a self-supervised foundational model for X-ray images that overcomes annotation limitations by learning from unlabeled data, achieving state-of-the-art performance across multiple chest disease detection tasks and reducing the need for extensive data annotation in medical AI.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Artificial intelligence analysis methods for chest X-ray images are limited by insufficient annotation data and varying levels of annotation, resulting in weak generalization ability and difficulty in clinical dissemination.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Here, we present EVA-X, an innovative foundational model based on X-ray images with broad applicability.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "EVA-X uses a self-supervised learning method capable of capturing both semantic and geometric information from unlabeled images for universal X-ray image representation.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "conditions": [],
+  "mechanisms": [],
+  "outcomes": [
+    {
+      "value": "Therapeutics",
+      "source": "csv_applied_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "Artificial Intelligence & Data Science",
+    "Biology",
+    "Therapeutics"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.49,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": false,
+      "properties": false,
+      "measurements": true,
+      "conditions": false,
+      "mechanisms": false,
+      "outcomes": true,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "materials",
+      "properties",
+      "conditions",
+      "mechanisms",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

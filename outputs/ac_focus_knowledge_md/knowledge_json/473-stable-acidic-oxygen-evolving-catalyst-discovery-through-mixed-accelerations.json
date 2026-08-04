@@ -1,0 +1,163 @@
+{
+  "paper_id": "acfocus_5526295403b8",
+  "title": "Stable acidic oxygen-evolving catalyst discovery through mixed accelerations",
+  "metadata": {
+    "doi": "10.1038/s41929-025-01463-x",
+    "url": "https://light.utoronto.ca/wp-content/uploads/2026/01/s41929-025-01463-x.pdf",
+    "year": "2026",
+    "authors": "Y. Bai; K. Li; N. Han; J. Kim; R. Zhang; S. Mahesh; A. Shayesteh Zeraati; B. R. Sutherland; K. Chow; Y. Liang; S. Hoogland; J. E. Huang; D. Sinton; E. H. Sargent; J. Hattrick-Simpers",
+    "venue": "Nature Catalysis",
+    "category": "Journal Article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Yang Bai",
+      "Jason Hattrick-Simpers",
+      "David Sinton"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Staff",
+      "AC Full Member",
+      "AC Governance",
+      "AC Full Member",
+      "AC Governance"
+    ],
+    "flags": {
+      "acknowledges_ac": "checked",
+      "highly_relevant": "checked",
+      "high_impact": "checked"
+    }
+  },
+  "source_summary": "A hierarchical \"mixed acceleration\" workflow integrating theoretical and experimental descriptors enabled the discovery of seven ruthenium-based oxides with superior activity and stability for acidic oxygen-evolution reactions, including Ru₀.₅Zr₀.₁Zn₀.₄Oₓ, which outperformed RuO₂ in both overpotential and dissolution rate.",
+  "abstract": "Ruthenium oxides (RuO<inf>x</inf>) are promising alternatives to iridium catalysts for the oxygen-evolution reaction in proton-exchange membrane water electrolysis but lack stability in acid. Alloying with other elements can improve stability and performance but enlarges the search space. Material acceleration platforms combining high-throughput experiments with machine learning can accelerate catalyst discovery, yet predicting and co-optimizing synthesizability, activity and stability remain challenging. A predictive featurization workflow that links a hypothesized catalyst to its actual single- or mixed-phase synthesis and acidic oxygen-evolution reaction properties has not been reported. Here we report a hierarchical workflow, termed mixed acceleration, integrating theoretical and experimental descriptors to predict synthesis, activity and stability. Guided by mixed acceleration through 379 experiments, we identified seven ruthenium-based oxides surpassing the Pareto frontier of activity and stability. The most balanced composition, Ru<inf>0.</inf><inf>5</inf>Zr<inf>0.</inf><inf>1</inf>Zn<inf>0.</inf><inf>4</inf>O<inf>x</inf>, achieved an overpotential of 194 mV at 10 mA cm−2 with a ruthenium dissolution rate 12 times lower than that of RuO<inf>2</inf>. (Figure presented.) © The Author(s), under exclusive licence to Springer Nature Limited 2026.",
+  "hardware": [
+    {
+      "value": "Material acceleration platforms combining high-throughput experiments with machine learning can accelerate catalyst discovery, yet predicting and co-optimizing synthesizability, activity and stability remain challenging.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "methods": [
+    {
+      "value": "A hierarchical \"mixed acceleration\" workflow integrating theoretical and experimental descriptors enabled the discovery of seven ruthenium-based oxides with superior activity and stability for acidic oxygen-evolution reactions, including Ru₀.₅Zr₀.₁Zn₀.₄Oₓ, which outperformed RuO₂ in both overpotential and dissolution rate.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [],
+  "materials": [
+    {
+      "value": "Stable acidic oxygen-evolving catalyst discovery through mixed accelerations A hierarchical \"mixed acceleration\" workflow integrating theoretical and experimental descriptors enabled the discovery of seven ruthenium-based oxides with superior activity and stability for acidic oxygen-evolution reactions, including Ru₀.₅Zr₀.₁Zn₀.₄Oₓ, which outperformed RuO₂ in both overpotential and dissolution rate.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Ruthenium oxides (RuO<inf>x</inf>) are promising alternatives to iridium catalysts for the oxygen-evolution reaction in proton-exchange membrane water electrolysis but lack stability in acid.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Material acceleration platforms combining high-throughput experiments with machine learning can accelerate catalyst discovery, yet predicting and co-optimizing synthesizability, activity and stability remain challenging.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [
+    {
+      "value": "Stable acidic oxygen-evolving catalyst discovery through mixed accelerations A hierarchical \"mixed acceleration\" workflow integrating theoretical and experimental descriptors enabled the discovery of seven ruthenium-based oxides with superior activity and stability for acidic oxygen-evolution reactions, including Ru₀.₅Zr₀.₁Zn₀.₄Oₓ, which outperformed RuO₂ in both overpotential and dissolution rate.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Ruthenium oxides (RuO<inf>x</inf>) are promising alternatives to iridium catalysts for the oxygen-evolution reaction in proton-exchange membrane water electrolysis but lack stability in acid.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Alloying with other elements can improve stability and performance but enlarges the search space.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Material acceleration platforms combining high-throughput experiments with machine learning can accelerate catalyst discovery, yet predicting and co-optimizing synthesizability, activity and stability remain challenging.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "A predictive featurization workflow that links a hypothesized catalyst to its actual single- or mixed-phase synthesis and acidic oxygen-evolution reaction properties has not been reported.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [],
+  "conditions": [
+    {
+      "value": "Stable acidic oxygen-evolving catalyst discovery through mixed accelerations A hierarchical \"mixed acceleration\" workflow integrating theoretical and experimental descriptors enabled the discovery of seven ruthenium-based oxides with superior activity and stability for acidic oxygen-evolution reactions, including Ru₀.₅Zr₀.₁Zn₀.₄Oₓ, which outperformed RuO₂ in both overpotential and dissolution rate.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "The most balanced composition, Ru<inf>0.</inf><inf>5</inf>Zr<inf>0.</inf><inf>1</inf>Zn<inf>0.</inf><inf>4</inf>O<inf>x</inf>, achieved an overpotential of 194 mV at 10 mA cm−2 with a ruthenium dissolution rate 12 times lower than that of RuO<inf>2</inf>.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "mechanisms": [],
+  "outcomes": [],
+  "sdl_tags": [],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.58,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": true,
+      "method": true,
+      "evidence": false,
+      "entities": false,
+      "materials": true,
+      "properties": true,
+      "measurements": false,
+      "conditions": true,
+      "mechanisms": false,
+      "outcomes": false,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "evidence",
+      "entities",
+      "measurements",
+      "mechanisms",
+      "outcomes",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only."
+    ]
+  }
+}

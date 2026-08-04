@@ -1,0 +1,231 @@
+{
+  "paper_id": "acfocus_26001e961d12",
+  "title": "Information flow in parameterized quantum circuits",
+  "metadata": {
+    "doi": "10.1088/2058-9565/ad3eab",
+    "url": "https://iopscience.iop.org/article/10.1088/2058-9565/ad3eab",
+    "year": "2024",
+    "authors": "Anand A, Bjørn Kristensen L, Frohnert F, Sim S, Aspuru-Guzik A",
+    "venue": "Quantum Science and Technology",
+    "category": "Journal article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Alán Aspuru-Guzik"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "checked",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "This work introduces a graph-based method to quantify information flow in parameterized quantum circuits using a mutual information distance metric, and demonstrates its effectiveness in optimizing variational quantum algorithms for both quantum chemistry and classification tasks, showing improved convergence in numerical simulations.",
+  "abstract": "In this work, we introduce a new way to quantify information flow in quantum systems, especially for parameterized quantum circuits (PQCs). We use a graph representation of the circuits and propose a new distance metric using the mutual information between gate nodes. We then present an optimization procedure for variational algorithms using paths based on the distance measure. We explore the features of the algorithm by means of the variational quantum eigensolver, in which we compute the ground state energies of the Heisenberg model. In addition, we employ the method to solve a binary classification problem using variational quantum classification. From numerical simulations, we show that our method can be successfully used for optimizing the PQCs primarily used in near-term algorithms. We further note that information-flow based paths can be used to improve convergence of existing stochastic gradient based methods.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "Introduced a graph representation of quantum circuits and a distance metric using mutual information between gate nodes to define paths for optimization.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "problems": [
+    {
+      "value": "Lack of understanding of how the parameterization of quantum circuits impacts algorithm performance in variational quantum algorithms (VQAs).",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "hypotheses": [
+    {
+      "value": "Characterizing information flow in parameterized quantum circuits (PQCs) can improve the optimization of VQAs.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "evidence": [
+    {
+      "value": "Numerical simulations showed the proposed method outperforms stochastic gradient-based methods in tasks like ground state energy estimation and binary classification.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "conclusions": [
+    {
+      "value": "The proposed method based on paths can successfully optimize PQCs, particularly useful in near-term algorithms.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "entities": [
+    {
+      "value": "Parameterized quantum circuits (PQCs)",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Quantum gates",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Mutual information",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Graph representation of circuits",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "materials": [],
+  "properties": [
+    {
+      "value": "Numerical simulations showed the proposed method outperforms stochastic gradient-based methods in tasks like ground state energy estimation and binary classification.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [],
+  "conditions": [],
+  "mechanisms": [
+    {
+      "value": "Graph representation of quantum circuits to define paths",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Distance metric using mutual information between quantum states",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Optimization procedure for VQAs using paths based on distance measure",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "outcomes": [
+    {
+      "value": "Improved convergence of existing stochastic gradient-based methods",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Reduction in the number of parameter updates required",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Potential for mitigating barren plateau phenomenon in VQAs",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "Quantum"
+  ],
+  "reasoning_motifs": [
+    {
+      "value": "Information flow → Optimization efficiency",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Parameter correlation → Algorithm performance",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "general_principles": [
+    {
+      "value": "Control Through Constraints",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Emergent Order",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "failure_paths": [
+    {
+      "value": "success: Using the strategy based on shortest paths for optimization. Evidence: Shortest path strategy sometimes converges in fewer iterations and has a smaller spread in trajectories.",
+      "source": "cross_sdl_phase4",
+      "confidence": 0.75,
+      "evidence": ""
+    },
+    {
+      "value": "success: Using the strategy based on random paths for optimization. Evidence: Random path strategy allows for a larger reduction in the number of updated parameters and outperforms Nesterov momentum method.",
+      "source": "cross_sdl_phase4",
+      "confidence": 0.75,
+      "evidence": ""
+    },
+    {
+      "value": "success: Using the strategy based on combined paths for optimization. Evidence: Optimization with combined paths outperforms optimization with individual paths, providing the model access to the full data for classification.",
+      "source": "cross_sdl_phase4",
+      "confidence": 0.75,
+      "evidence": ""
+    }
+  ],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "acgold_f405a44125f1",
+    "cross_sdl_reasoning_json": "/Users/sissifeng/Downloads/cross-sdl_knowledge_transfer_engine/data/reasoning/acgold_f405a44125f1.json",
+    "cross_sdl_extraction_quality": 0.8,
+    "cross_sdl_notes": "The paper presents a structured approach to optimizing quantum circuits using information flow, with clear hypotheses, methods, and results. However, some details of the exploration narrative had to be inferred from the discussion of results and methods."
+  },
+  "validation": {
+    "score": 0.73,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": true,
+      "entities": true,
+      "materials": false,
+      "properties": true,
+      "measurements": false,
+      "conditions": false,
+      "mechanisms": true,
+      "outcomes": true,
+      "cross_sdl_match": true
+    },
+    "missing": [
+      "hardware",
+      "materials",
+      "measurements",
+      "conditions"
+    ],
+    "notes": [
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

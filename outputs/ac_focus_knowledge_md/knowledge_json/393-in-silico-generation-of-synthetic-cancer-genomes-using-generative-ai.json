@@ -1,0 +1,138 @@
+{
+  "paper_id": "acfocus_50745d13a9f6",
+  "title": "In silico generation of synthetic cancer genomes using generative AI",
+  "metadata": {
+    "doi": "10.1016/j.xgen.2025.100969",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/40803317/",
+    "year": "2025",
+    "authors": "A. Diaz-Navarro; X. Zhang; W. Jiao; B. Wang; L. Stein",
+    "venue": "Cell Genomics",
+    "category": "Journal Article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Bo Wang"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "checked",
+      "high_impact": "checked"
+    }
+  },
+  "source_summary": "OncoGAN is a generative AI model that creates realistic, privacy-preserving synthetic cancer genomes to facilitate benchmarking and improve analytic tools in precision oncology by accurately reproducing key genomic alterations and enhancing the performance of cancer genome analysis models.",
+  "abstract": "Understanding how genomic alterations drive cancer is key to advancing precision oncology. To detect these alterations, accurate algorithms are used; however, due to privacy concerns, few deeply sequenced cancer genomes can be shared, limiting benchmarking and representing a major obstacle to the improvement of analytic tools. To address this, we developed OncoGAN, a generative AI model combining adversarial networks and variational autoencoders to create realistic synthetic cancer genomes. Trained on large-scale genomic datasets, OncoGAN accurately reproduces somatic mutations, copy number alterations, and structural variants across cancer types while preserving donors’ privacy. The synthetic genomes reflect tumor-specific mutational signatures and positional mutation patterns. Using DeepTumour, we validated the synthetic data’s fidelity, showing high concordance between generated and predicted tumors. Moreover, augmenting the training data with synthetic genomes improved DeepTumour’s accuracy, underscoring OncoGAN’s potential to generate shareable datasets with known ground truths for benchmarking and enhancement of cancer genome analysis tools. © 2025 The Authors.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "OncoGAN is a generative AI model that creates realistic, privacy-preserving synthetic cancer genomes to facilitate benchmarking and improve analytic tools in precision oncology by accurately reproducing key genomic alterations and enhancing the performance of cancer genome analysis models.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Artificial Intelligence & Data Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Biology",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [],
+  "properties": [
+    {
+      "value": "Moreover, augmenting the training data with synthetic genomes improved DeepTumour’s accuracy, underscoring OncoGAN’s potential to generate shareable datasets with known ground truths for benchmarking and enhancement of cancer genome analysis tools.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [
+    {
+      "value": "In silico generation of synthetic cancer genomes using generative AI OncoGAN is a generative AI model that creates realistic, privacy-preserving synthetic cancer genomes to facilitate benchmarking and improve analytic tools in precision oncology by accurately reproducing key genomic alterations and enhancing the performance of cancer genome analysis models.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "To detect these alterations, accurate algorithms are used; however, due to privacy concerns, few deeply sequenced cancer genomes can be shared, limiting benchmarking and representing a major obstacle to the improvement of analytic tools.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Moreover, augmenting the training data with synthetic genomes improved DeepTumour’s accuracy, underscoring OncoGAN’s potential to generate shareable datasets with known ground truths for benchmarking and enhancement of cancer genome analysis tools.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "conditions": [],
+  "mechanisms": [],
+  "outcomes": [
+    {
+      "value": "Therapeutics",
+      "source": "csv_applied_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "Artificial Intelligence & Data Science",
+    "Biology",
+    "Therapeutics"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.56,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": false,
+      "properties": true,
+      "measurements": true,
+      "conditions": false,
+      "mechanisms": false,
+      "outcomes": true,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "materials",
+      "conditions",
+      "mechanisms",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

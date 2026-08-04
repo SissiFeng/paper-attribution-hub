@@ -190,3 +190,41 @@
   background: rgba(33, 60, 81, 0.04);
   color: #6594B1;
 }
+
+@media (max-width: 720px) {
+  .sidebar {
+    min-width: 54px;
+    width: 54px;
+  }
+  .logo {
+    justify-content: center;
+    padding: 14px 8px;
+  }
+  .logo > div:last-child,
+  .sectionLabel {
+    display: none;
+  }
+  .nav {
+    gap: 2px;
+    padding: 8px 5px;
+  }
+  .navItem,
+  .footerLink {
+    font-size: 0;
+    gap: 0;
+    justify-content: center;
+    min-height: 38px;
+    padding: 8px;
+  }
+  .navIcon {
+    height: 18px;
+    width: 18px;
+  }
+  .navIcon svg {
+    height: 16px;
+    width: 16px;
+  }
+  .footer {
+    padding: 6px 5px 10px;
+  }
+}

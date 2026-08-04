@@ -1,7 +1,17 @@
 import { useCallback, useEffect, useState } from "react";
 
-import { listPipelineRuns, runPipeline } from "@/lib/api";
-import type { PipelineRun, PipelineRunInput, PipelineStepLog } from "@/types";
+import {
+  getModelEvolutionStatus,
+  listPipelineRuns,
+  runPipeline,
+} from "@/lib/api";
+import type {
+  ModelEvolutionStatus,
+  ModelMetricSummary,
+  PipelineRun,
+  PipelineRunInput,
+  PipelineStepLog,
+} from "@/types";
 
 interface Toast {
   text: string;
@@ -47,8 +57,34 @@ function stepSummary(step: PipelineStepLog): string {
   return counts.length ? counts.join(" · ") : "";
 }
 
+function stepCount(step: PipelineStepLog | undefined, key: string): number {
+  const value = step?.[key];
+  return typeof value === "number" ? value : 0;
+}
+
+function metricPercent(
+  metrics: ModelMetricSummary | null,
+  key: "accuracy" | "macro_f1"
+): string {
+  const value = metrics?.[key];
+  return typeof value === "number" ? `${(value * 100).toFixed(1)}%` : "—";
+}
+
+function metricDelta(
+  candidate: ModelMetricSummary | null,
+  incumbent: ModelMetricSummary | null,
+  key: "accuracy" | "macro_f1"
+): string {
+  const next = candidate?.[key];
+  const current = incumbent?.[key];
+  if (typeof next !== "number" || typeof current !== "number") return "—";
+  const delta = (next - current) * 100;
+  return `${delta >= 0 ? "+" : ""}${delta.toFixed(1)} pp`;
+}
+
 export default function PipelineStatusPage() {
   const [runs, setRuns] = useState<PipelineRun[]>([]);
+  const [evolution, setEvolution] = useState<ModelEvolutionStatus | null>(null);
   const [loading, setLoading] = useState(false);
   const [triggering, setTriggering] = useState(false);
   const [expandedId, setExpandedId] = useState<string | null>(null);
@@ -56,7 +92,7 @@ export default function PipelineStatusPage() {
   const [opts, setOpts] = useState<PipelineRunInput>({
     do_discovery: false,
     do_fulltext: false,
-    use_learned: false,
+    use_learned: true,
     use_judge: false,
     triggered_by: "manual",
   });
@@ -64,8 +100,12 @@ export default function PipelineStatusPage() {
   const load = useCallback(async () => {
     setLoading(true);
     try {
-      const rows = await listPipelineRuns(30);
+      const [rows, modelStatus] = await Promise.all([
+        listPipelineRuns(30),
+        getModelEvolutionStatus(),
+      ]);
       setRuns(rows);
+      setEvolution(modelStatus);
     } catch (e) {
       setToast({ text: e instanceof Error ? e.message : String(e), kind: "error" });
     } finally {
@@ -103,6 +143,19 @@ export default function PipelineStatusPage() {
   const successCount = runs.filter((r) => r.status === "success").length;
   const totalClassified = runs.reduce((sum, r) => sum + r.classified_new, 0);
   const totalFlagged = runs.reduce((sum, r) => sum + r.enqueued_for_review, 0);
+  const latestScreening = latest?.steps?.find(
+    (step) => step.name === "staged_screening"
+  );
+  const scored = stepCount(latestScreening, "scored");
+  const seedReference = stepCount(latestScreening, "seed_reference");
+  const reviewSubset = stepCount(latestScreening, "review_subset");
+  const positiveReview = stepCount(latestScreening, "positive_review");
+  const uncertainReview = stepCount(latestScreening, "uncertain_review");
+  const fulltextReview = stepCount(latestScreening, "fulltext_review");
+  const screenedOut = stepCount(latestScreening, "screened_out");
+  const learningRun = evolution?.active_run ?? evolution?.latest_run ?? null;
+  const pulseSize = evolution?.batch_size ?? 20;
+  const pulseFilled = Math.min(evolution?.pending_reviews ?? 0, pulseSize);
 
   return (
     <div className="v7-page">
@@ -157,6 +210,215 @@ export default function PipelineStatusPage() {
           <div className="delta">total queued by pipeline</div>
         </div>
       </div>
+
+      {evolution && (
+        <section
+          className="v7-card model-evolution"
+          aria-labelledby="model-evolution-title"
+        >
+          <div className="model-evolution-heading">
+            <div>
+              <span className="review-kicker">Human review → model evolution</span>
+              <h2 id="model-evolution-title">
+                <span className="accent-dot" /> 20-review learning pulse
+              </h2>
+            </div>
+            <span
+              className={`model-evolution-status ${
+                evolution.active_run ? "running" : learningRun?.status.toLowerCase() ?? "idle"
+              }`}
+            >
+              {evolution.active_run ? "training" : learningRun?.status.toLowerCase() ?? "waiting"}
+            </span>
+          </div>
+
+          <div className="model-evolution-body">
+            <div className="learning-pulse-panel">
+              <div className="learning-pulse-copy">
+                <strong>
+                  {evolution.pending_reviews} / {evolution.batch_size}
+                </strong>
+                <span>
+                  {evolution.reviews_until_retrain === 0
+                    ? "batch ready for full retraining"
+                    : `${evolution.reviews_until_retrain} qualified reviews until the next full retrain`}
+                </span>
+              </div>
+              <div
+                className="learning-pulse"
+                role="progressbar"
+                aria-label="Qualified review progress toward full retraining"
+                aria-valuemin={0}
+                aria-valuemax={evolution.batch_size}
+                aria-valuenow={evolution.pending_reviews}
+              >
+                {Array.from({ length: pulseSize }, (_, index) => (
+                  <span
+                    key={index}
+                    className={index < pulseFilled ? "filled" : ""}
+                    aria-hidden="true"
+                  />
+                ))}
+              </div>
+              <div className="learning-pulse-model">
+                <span>Production authority</span>
+                <code>
+                  {evolution.production_authority.status} · {evolution.current_model_version ?? "rules-only baseline"}
+                </code>
+              </div>
+              <div
+                className={`validation-readiness ${
+                  evolution.production_authority.status === "VERIFIED"
+                    || evolution.production_authority.status === "LEGACY_CACHE"
+                    ? "ready"
+                    : "blocked"
+                }`}
+              >
+                <strong>
+                  Serving authority · {evolution.production_authority.status.toLowerCase().replace(/_/g, " ")}
+                </strong>
+                <span>
+                  {evolution.production_authority.error
+                    ?? (evolution.production_authority.status === "RULES_ONLY"
+                      ? "No learned artifact is currently serving; predictions use the rules baseline."
+                      : "The serving artifact passed authority verification.")}
+                </span>
+                <small>
+                  run {evolution.production_authority.production_run_id ?? "none"}
+                  {" · "}artifact {evolution.production_authority.artifact_sha256?.slice(0, 12) ?? "none"}
+                  {" · "}cache {evolution.production_authority.cache_sync_status ?? (evolution.production_authority.cache_present ? "legacy" : "absent")}
+                  {" · "}hash match {String(evolution.production_authority.cache_matches_authority ?? false)}
+                </small>
+              </div>
+              <div
+                className={`validation-readiness ${
+                  evolution.validation_gate.ready ? "ready" : "blocked"
+                }`}
+              >
+                <strong>
+                  Fixed validation · {evolution.validation_gate.ready ? "ready" : "promotion blocked"}
+                </strong>
+                <span>{evolution.validation_gate.reason}</span>
+                <small>
+                  {evolution.validation_gate.observed_examples} / {evolution.validation_gate.required_examples} examples
+                  {" · "}{evolution.validation_gate.observed_labels.length} / {evolution.validation_gate.required_labels} labels
+                </small>
+              </div>
+            </div>
+
+            <div className="model-gate-panel">
+              {learningRun ? (
+                <>
+                  <div className="model-gate-meta">
+                    <span>{learningRun.evaluation_scope ?? "evaluation pending"}</span>
+                    <span>{fmtTime(learningRun.started_at)}</span>
+                  </div>
+                  <div className="model-gate-metrics">
+                    <div>
+                      <span>Macro F1</span>
+                      <strong>{metricPercent(learningRun.candidate_metrics, "macro_f1")}</strong>
+                      <small>
+                        {metricDelta(
+                          learningRun.candidate_metrics,
+                          learningRun.incumbent_metrics,
+                          "macro_f1"
+                        )}
+                      </small>
+                    </div>
+                    <div>
+                      <span>Accuracy</span>
+                      <strong>{metricPercent(learningRun.candidate_metrics, "accuracy")}</strong>
+                      <small>
+                        {metricDelta(
+                          learningRun.candidate_metrics,
+                          learningRun.incumbent_metrics,
+                          "accuracy"
+                        )}
+                      </small>
+                    </div>
+                  </div>
+                  <p>{learningRun.error_message ?? learningRun.promotion_reason}</p>
+                  <details className="analysis-method">
+                    <summary>Training decision audit</summary>
+                    <dl>
+                      <div><dt>Lease</dt><dd><code>{learningRun.lease_generation}</code></dd></div>
+                      <div><dt>Trigger events</dt><dd>{learningRun.trigger_event_ids.length}</dd></div>
+                      <div><dt>Training dataset</dt><dd><code>{learningRun.training_dataset_hash ?? "pending"}</code></dd></div>
+                      <div><dt>Validation dataset</dt><dd><code>{learningRun.validation_dataset_hash ?? "not materialized"}</code></dd></div>
+                      <div><dt>Candidate artifact</dt><dd><code>{learningRun.candidate_model_sha256 ?? "pending"}</code></dd></div>
+                      <div><dt>Incumbent artifact</dt><dd><code>{learningRun.incumbent_model_sha256 ?? "rules-only"}</code></dd></div>
+                      <div><dt>Cache</dt><dd>{learningRun.cache_sync_status ?? "pending"}</dd></div>
+                      <div><dt>Gate</dt><dd><code>{JSON.stringify(learningRun.promotion_gate_config)}</code></dd></div>
+                      <div><dt>Runtime</dt><dd><code>{JSON.stringify(learningRun.runtime_versions)}</code></dd></div>
+                    </dl>
+                  </details>
+                </>
+              ) : (
+                <p className="model-gate-empty">
+                  No retraining attempt yet. The first complete review batch will
+                  establish an auditable candidate-versus-incumbent comparison.
+                </p>
+              )}
+            </div>
+          </div>
+
+          <div className="model-evolution-contract">
+            <span><b>Full retrain</b> on every allowed label</span>
+            <span><b>Leakage-safe gate</b> before promotion</span>
+            <span><b>DB-authoritative promotion</b> with rebuildable cache</span>
+          </div>
+        </section>
+      )}
+
+      {latestScreening && (
+        <section className="v7-card screening-funnel" aria-labelledby="screening-funnel-title">
+          <div className="screening-funnel-heading">
+            <div>
+              <span className="review-kicker">Latest staged screening</span>
+              <h2 id="screening-funnel-title">
+                <span className="accent-dot" /> Broad corpus → focused review
+              </h2>
+            </div>
+            <span className="screening-funnel-run">
+              {latest ? fmtTime(latest.started_at) : "—"}
+            </span>
+          </div>
+          <div className="screening-funnel-rail">
+            <div className="screening-funnel-node seed">
+              <span>01 · labeled foundation</span>
+              <strong>{seedReference.toLocaleString()}</strong>
+              <small>explicit training seeds</small>
+            </div>
+            <span className="screening-funnel-arrow" aria-hidden="true">→</span>
+            <div className="screening-funnel-node scored">
+              <span>02 · machine triage</span>
+              <strong>{scored.toLocaleString()}</strong>
+              <small>papers scored in broad corpus</small>
+            </div>
+            <span className="screening-funnel-arrow" aria-hidden="true">→</span>
+            <div className="screening-funnel-node review">
+              <span>03 · human attention</span>
+              <strong>{reviewSubset.toLocaleString()}</strong>
+              <small>
+                {positiveReview.toLocaleString()} positive ·{" "}
+                {uncertainReview.toLocaleString()} uncertain ·{" "}
+                {fulltextReview.toLocaleString()} full text
+              </small>
+            </div>
+          </div>
+          <div className="screening-funnel-foot">
+            <span>
+              <b>{screenedOut.toLocaleString()}</b> high-confidence non-positive
+              papers remain searchable without entering the review queue.
+            </span>
+            <span>
+              Review load:{" "}
+              <b>{scored ? ((reviewSubset / scored) * 100).toFixed(1) : "0.0"}%</b>
+              {" "}of scored corpus
+            </span>
+          </div>
+        </section>
+      )}
 
       <div className="v7-card">
         <h2>

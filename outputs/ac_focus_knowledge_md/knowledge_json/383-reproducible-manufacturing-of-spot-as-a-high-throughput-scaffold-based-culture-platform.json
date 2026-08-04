@@ -1,0 +1,127 @@
+{
+  "paper_id": "acfocus_b5168965e6e8",
+  "title": "Reproducible Manufacturing of SPOT as a High-throughput Scaffold-based Culture Platform",
+  "metadata": {
+    "doi": "10.3791/68405",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/40824916/",
+    "year": "2025",
+    "authors": "R. Cao; N. T. Li; C. B. Shing; Z. Kutulakos; C. M. Tan; A. P. McGuigan",
+    "venue": "Journal of Visualized Experiments",
+    "category": "Journal Article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Alison McGuigan"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "The Scaffold-supported Platform for Organoid-based Tissues (SPOT) is a high-throughput, user-friendly 3D organoid culture device that streamlines the assembly, seeding, imaging, and analysis of patient-derived organoids for cancer research, enabling scalable and accurate drug screening and translational studies.",
+  "abstract": "Patient-derived organoids (PDOs) are becoming increasingly used in the field of cancer research to model tumors. They combine the benefits of in vivo and traditional in vitro models, recapitulating tissue complexity and heterogeneity while still consisting of human cells. The rise of physiologically representative PDO models has prompted a need for devices that enable straightforward analysis of organoid behavior. This protocol explains how to assemble and use the Scaffold-supported Platform for Organoid-based Tissues (SPOT), a high-throughput, three-dimensional (3D) organoid culture device. This platform eliminates the meniscus typically formed by seeded hydrogels to allow accurate, quick imaging, similar to the imaging process for two-dimensional (2D) cultures. As a result, organoids and co-cultures seeded in SPOT can easily be imaged using high-throughput microscopy. Designed for off-the-shelf use, SPOT is accessible to researchers with basic tissue culture experience and is compatible with both manual and automated seeding workflows. This protocol details the fabrication of SPOT in 96-and 384-well formats, including step-by-step instructions for assembly, seeding, quality control, and troubleshooting. While fabrication requires 3-4 h, excluding idle time, multiple plates can be produced simultaneously, improving scalability. By streamlining PDO culture and analysis, SPOT provides a robust tool for high-throughput drug screening and translational cancer research. © 2025 JoVE Journal of Visualized Experiments.",
+  "hardware": [
+    {
+      "value": "The Scaffold-supported Platform for Organoid-based Tissues (SPOT) is a high-throughput, user-friendly 3D organoid culture device that streamlines the assembly, seeding, imaging, and analysis of patient-derived organoids for cancer research, enabling scalable and accurate drug screening and translational studies.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "This protocol explains how to assemble and use the Scaffold-supported Platform for Organoid-based Tissues (SPOT), a high-throughput, three-dimensional (3D) organoid culture device.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "This platform eliminates the meniscus typically formed by seeded hydrogels to allow accurate, quick imaging, similar to the imaging process for two-dimensional (2D) cultures.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "As a result, organoids and co-cultures seeded in SPOT can easily be imaged using high-throughput microscopy.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "methods": [
+    {
+      "value": "The Scaffold-supported Platform for Organoid-based Tissues (SPOT) is a high-throughput, user-friendly 3D organoid culture device that streamlines the assembly, seeding, imaging, and analysis of patient-derived organoids for cancer research, enabling scalable and accurate drug screening and translational studies.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [],
+  "materials": [],
+  "properties": [],
+  "measurements": [
+    {
+      "value": "As a result, organoids and co-cultures seeded in SPOT can easily be imaged using high-throughput microscopy.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "conditions": [
+    {
+      "value": "While fabrication requires 3-4 h, excluding idle time, multiple plates can be produced simultaneously, improving scalability.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "mechanisms": [],
+  "outcomes": [],
+  "sdl_tags": [],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.5,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": true,
+      "method": true,
+      "evidence": false,
+      "entities": false,
+      "materials": false,
+      "properties": false,
+      "measurements": true,
+      "conditions": true,
+      "mechanisms": false,
+      "outcomes": false,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "evidence",
+      "entities",
+      "materials",
+      "properties",
+      "mechanisms",
+      "outcomes",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only."
+    ]
+  }
+}

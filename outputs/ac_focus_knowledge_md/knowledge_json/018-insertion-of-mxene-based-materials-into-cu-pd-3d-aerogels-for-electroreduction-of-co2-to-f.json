@@ -1,0 +1,167 @@
+{
+  "paper_id": "acfocus_3f709375c24a",
+  "title": "Insertion of MXene-Based Materials into Cu–Pd 3D Aerogels for Electroreduction of CO2 to Formate",
+  "metadata": {
+    "doi": "10.1002/aenm.202300402",
+    "url": "https://advanced.onlinelibrary.wiley.com/doi/full/10.1002/aenm.202300402",
+    "year": "2023",
+    "authors": "Abdinejad, Maryam; Subramanian, Siddhartha; Motlagh, Mozhgan Khorasani; Noroozifar, Meissam; Duangdangchote, Salatan; Neporozhnii, Ihor; Ripepi, Davide; Pinto, Donato; Li, Mengran; Tang, Keith; Middelkoop, Joost; Urakawa, Atsushi; Voznyy, Oleksandr; Kraatz, Heinz-Bernhard; Burdyny, Thomas",
+    "venue": "Advanced Energy Materials",
+    "category": "Journal article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Oleksandr Voznyy"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member"
+    ],
+    "flags": {
+      "acknowledges_ac": "checked",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "A bimetallic Cu–Pd catalyst supported on 3D MXene aerogels enables highly efficient and selective electrochemical CO2-to-formate conversion, achieving record energy efficiency and demonstrating the potential of 3D-MXene-based electrocatalysts for CO2 reduction applications.",
+  "abstract": "The electrochemical CO2 reduction reaction (CO2RR) is an attractive method to produce renewable fuel and chemical feedstock using clean energy sources. Formate production represents one of the most economical target products from CO2RR but is primarily produced using post-transition metal catalysts that require comparatively high overpotentials. Here a composition of bimetallic Cu–Pd is formulated on 2D Ti3C2Tx (MXene) nanosheets that are lyophilized into a highly porous 3D aerogel, resulting in formate production much more efficient than post-transition metals. Using a membrane electrode assembly (MEA), formate selectivities >90% are achieved with a current density of 150 mA cm−2 resulting in the highest ever reported overall energy efficiency of 47% (cell potentials of −2.8 V), over 5 h of operation. A comparable Cu-Pd aerogel achieves near-unity CO production without the MXene templating. This simple strategy represents an important step toward the experimental demonstration of 3D-MXenes-based electrocatalysts for CO2RR application and opens a new platform for the fabrication of macroscale aerogel MXene-based electrocatalysts. © 2023 The Authors. Advanced Energy Materials published by Wiley-VCH GmbH.",
+  "hardware": [
+    {
+      "value": "This simple strategy represents an important step toward the experimental demonstration of 3D-MXenes-based electrocatalysts for CO2RR application and opens a new platform for the fabrication of macroscale aerogel MXene-based electrocatalysts.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "methods": [
+    {
+      "value": "A bimetallic Cu–Pd catalyst supported on 3D MXene aerogels enables highly efficient and selective electrochemical CO2-to-formate conversion, achieving record energy efficiency and demonstrating the potential of 3D-MXene-based electrocatalysts for CO2 reduction applications.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Materials Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "Insertion of MXene-Based Materials into Cu–Pd 3D Aerogels for Electroreduction of CO2 to Formate A bimetallic Cu–Pd catalyst supported on 3D MXene aerogels enables highly efficient and selective electrochemical CO2-to-formate conversion, achieving record energy efficiency and demonstrating the potential of 3D-MXene-based electrocatalysts for CO2 reduction applications.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Formate production represents one of the most economical target products from CO2RR but is primarily produced using post-transition metal catalysts that require comparatively high overpotentials.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Using a membrane electrode assembly (MEA), formate selectivities >90% are achieved with a current density of 150 mA cm−2 resulting in the highest ever reported overall energy efficiency of 47% (cell potentials of −2.8 V), over 5 h of operation.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [
+    {
+      "value": "Insertion of MXene-Based Materials into Cu–Pd 3D Aerogels for Electroreduction of CO2 to Formate A bimetallic Cu–Pd catalyst supported on 3D MXene aerogels enables highly efficient and selective electrochemical CO2-to-formate conversion, achieving record energy efficiency and demonstrating the potential of 3D-MXene-based electrocatalysts for CO2 reduction applications.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "The electrochemical CO2 reduction reaction (CO2RR) is an attractive method to produce renewable fuel and chemical feedstock using clean energy sources.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Using a membrane electrode assembly (MEA), formate selectivities >90% are achieved with a current density of 150 mA cm−2 resulting in the highest ever reported overall energy efficiency of 47% (cell potentials of −2.8 V), over 5 h of operation.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Advanced Energy Materials published by Wiley-VCH GmbH.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [],
+  "conditions": [
+    {
+      "value": "Using a membrane electrode assembly (MEA), formate selectivities >90% are achieved with a current density of 150 mA cm−2 resulting in the highest ever reported overall energy efficiency of 47% (cell potentials of −2.8 V), over 5 h of operation.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "mechanisms": [],
+  "outcomes": [
+    {
+      "value": "Catalysis",
+      "source": "csv_applied_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Clean energy",
+      "source": "csv_applied_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "Materials Science",
+    "Catalysis",
+    "Clean energy"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.71,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": true,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": true,
+      "properties": true,
+      "measurements": false,
+      "conditions": true,
+      "mechanisms": false,
+      "outcomes": true,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "evidence",
+      "measurements",
+      "mechanisms",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only."
+    ]
+  }
+}

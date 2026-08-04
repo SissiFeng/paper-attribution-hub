@@ -1,0 +1,105 @@
+{
+  "paper_id": "acfocus_cb3f2f06ea71",
+  "title": "Artificial Intelligence Adoption and System Change",
+  "metadata": {
+    "doi": "10.1111/jems.12521",
+    "url": "https://onlinelibrary.wiley.com/doi/10.1111/jems.12521",
+    "year": "2023",
+    "authors": "Agrawal, Ajay, Joshua Gans, and Avi Goldfarb",
+    "venue": "Journal of Economics and Management Strategy",
+    "category": "Journal article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Ajay Agrawal",
+      "Joshua Gans",
+      "Avi Goldfarb"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Affiliate Member",
+      "AC Affiliate Member",
+      "AC Full Member",
+      "AC Governance"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "checked",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "AI adoption in organizations is most effective when approached as a system-wide change that considers interdependent tasks, as coordination mechanisms can enhance adoption despite increased decision variation, while reducing interdependencies may ease adoption but at the cost of lost synergies.",
+  "abstract": "Analyses of artificial intelligence (AI) adoption focus on its adoption at the individual task level. What has received significantly less attention is how AI adoption is shaped by the fact that organizations are composed of many interacting tasks. AI adoption may, therefore, require system-wide change, which is both a constraint and an opportunity. We provide the first formal analysis where multiple tasks may be part of an interdependent system. We find that reliance on AI, a prediction tool, increases decision variation, which, in turn, raises challenges if decisions across the organization interact. Reducing inter-dependencies between decisions softens that impact and can facilitate AI adoption. However, it does this at the expense of synergies. By contrast, when there are mechanisms for inter-decision coordination, AI adoption is enhanced when there are more inter-dependencies. Consequently, we show that there are important cases where AI adoption will be enhanced when it can be adopted beyond tasks but as part of a designed organizational system.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "AI adoption in organizations is most effective when approached as a system-wide change that considers interdependent tasks, as coordination mechanisms can enhance adoption despite increased decision variation, while reducing interdependencies may ease adoption but at the cost of lost synergies.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Economics & Management",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [],
+  "properties": [],
+  "measurements": [],
+  "conditions": [],
+  "mechanisms": [],
+  "outcomes": [],
+  "sdl_tags": [
+    "Economics & Management"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.37,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": false,
+      "properties": false,
+      "measurements": false,
+      "conditions": false,
+      "mechanisms": false,
+      "outcomes": false,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "materials",
+      "properties",
+      "measurements",
+      "conditions",
+      "mechanisms",
+      "outcomes",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

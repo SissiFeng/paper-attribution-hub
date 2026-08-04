@@ -1,0 +1,104 @@
+{
+  "paper_id": "acfocus_4fe2928de348",
+  "title": "Δ-Learning of High-Fidelity Electronic Structure Using Graph Neural Networks with Modified Node-Level Features",
+  "metadata": {
+    "doi": "10.1021/acsmaterialslett.5c00857",
+    "url": "https://pubs.acs.org/doi/abs/10.1021/acsmaterialslett.5c00857",
+    "year": "2025",
+    "authors": "N. Karimitari; T. Pakornchote; A. W. Alherz; J. M. Clary; C. Tezak; S. Dey; J. Hu; D. Vigil-Fowler; R. Sundararaman; C. B. Musgrave; C. Sutton",
+    "venue": "ACS Materials Letters",
+    "category": "Journal Article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Chris Sutton"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "This work introduces a Δ-learning graph neural network model that predicts HSE06 eigenvalues for metal and nitrogen doped graphene catalysts using PBE inputs and structural features, achieving robust generalization and mean absolute errors below 0.1 eV.",
+  "abstract": "In this work, we present a Δ-learning approach for predicting the eigenvalues calculated with the hybrid functional HSE06 (ϵ<inf>nk</inf>HSE) for a set of metal and nitrogen doped graphene catalysts (MNCs) from Perdew-Burke-Ernzerhof (PBE) inputs. The model presented here incorporates electronic scalar features along with structural information in a graph neural network (GNN). In particular, the PBE eigenvalues for different bands and k-points and orbital-resolved projectors are combined with the applied potential as node-level features along with structural information within the Atomistic Line Graph Neural Network (ALIGNN) architecture. These features enable flexibility for systems with electrified interfaces, such as in electrocatalysts and achieves mean absolute error (MAE) of less than 0.1 eV. The machine learning model reported here achieves a strong generalization to left-out adsorbates (MAE = 0.074 eV) and leave-one-chemical-space-out (MAE = 0.08 eV) and completely left-out metals (MAE = 0.072 eV), confirming the robustness of the machine learning (ML) model in predicting ϵ<inf>nk</inf>HSE. © 2025 American Chemical Society",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "This work introduces a Δ-learning graph neural network model that predicts HSE06 eigenvalues for metal and nitrogen doped graphene catalysts using PBE inputs and structural features, achieving robust generalization and mean absolute errors below 0.1 eV.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [],
+  "materials": [
+    {
+      "value": "Δ-Learning of High-Fidelity Electronic Structure Using Graph Neural Networks with Modified Node-Level Features This work introduces a Δ-learning graph neural network model that predicts HSE06 eigenvalues for metal and nitrogen doped graphene catalysts using PBE inputs and structural features, achieving robust generalization and mean absolute errors below 0.1 eV.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "In this work, we present a Δ-learning approach for predicting the eigenvalues calculated with the hybrid functional HSE06 (ϵ<inf>nk</inf>HSE) for a set of metal and nitrogen doped graphene catalysts (MNCs) from Perdew-Burke-Ernzerhof (PBE) inputs.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [],
+  "measurements": [],
+  "conditions": [],
+  "mechanisms": [],
+  "outcomes": [],
+  "sdl_tags": [],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.37,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": false,
+      "materials": true,
+      "properties": false,
+      "measurements": false,
+      "conditions": false,
+      "mechanisms": false,
+      "outcomes": false,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "entities",
+      "properties",
+      "measurements",
+      "conditions",
+      "mechanisms",
+      "outcomes",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

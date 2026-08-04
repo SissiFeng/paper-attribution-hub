@@ -1,0 +1,142 @@
+{
+  "paper_id": "acfocus_eb3170266c36",
+  "title": "Optimizing lipid nanoparticles for fetal gene delivery in vitro, ex vivo, and aided with machine learning",
+  "metadata": {
+    "doi": "10.1016/j.jconrel.2024.10.047",
+    "url": "https://www.sciencedirect.com/science/article/pii/S016836592400720X",
+    "year": "2024",
+    "authors": "Abostait A, Abdelkarim M, Bao Z, Miyake Y, Tse WH, Di Ciano-Oliveir C, Buerki-Thurnherr T, Allen C, Keijzer R, Labouta HI",
+    "venue": "Journal of Controlled Release",
+    "category": "Journal article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Christine Allen",
+      "Zeqing Bao"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance",
+      "AC Staff"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "checked",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "Researchers developed and optimized lipid nanoparticles (LNPs) using machine learning to achieve safe, efficient transplacental delivery and targeted gene transfection in fetal lung cells, representing a significant advance toward fetal gene therapy.",
+  "abstract": "There is a clinical need to develop lipid nanoparticles (LNPs) to deliver congenital therapies to the fetus during pregnancy. The aim of these therapies is to restore normal fetal development and prevent irreversible conditions after birth. As a first step, LNPs need to be optimized for transplacental transport, safety on the placental barrier and fetal organs and transfection efficiency. We developed and characterized a library of LNPs of varying compositions and used machine learning (ML) models to delineate the determinants of LNP size and zeta potential. Utilizing different in vitro placental models with the help of a Random Forest algorithm, we could identify the top features driving percentage LNP transport and kinetics at 24 h, out of a total of 18 input features represented by 41 LNP formulations and 48 different transport experiments. We further evaluated the LNPs for safety, placental cell uptake, transfection efficiency in placental trophoblasts and fetal lung fibroblasts. To ensure the integrity of the LNPs following transplacental transport, we screened LNPs for transport and transfection using a high-throughput integrated transport-transfection in vitro model. Finally, we assessed toxicity of the LNPs in a tracheal occlusion fetal lung explant model. LNPs showed little to no toxicity to fetal and placental cells. Immunoglobin G (IgG) orientation on the surface of LNPs, PEGylated lipids, and ionizable lipids had significant effects on placental transport. The Random Forest algorithm identified the top features driving LNPs placental transport percentage and kinetics. Zeta potential emerged in the top driving features. Building on the ML model results, we developed new LNP formulations to further optimize the transport leading to 622 % increase in transport at 24 h versus control LNP formulation. To induce preferential siRNA transfection of fetal lung, we further optimized cationic lipid percentage and the lipid-to-siRNA ratio. Studying LNPs in an integrated placental and fetal lung fibroblasts model showed a strong correlation between zeta potential and fetal lung transfection. Finally, we assessed the toxicity of LNPs in a tracheal occlusion lung explant model. The optimized formulations appeared to be safe on ex vivo fetal lungs as indicated by insignificant changes in apoptosis (Caspase-3) and proliferation (Ki67) markers. In conclusion, we have optimized an LNP formulation that is safe, with high transplacental transport and preferential transfection in fetal lung cells. Our research findings represent an important step toward establishing the safety and effectiveness of LNPs for gene delivery to the fetal organs.",
+  "hardware": [
+    {
+      "value": "To ensure the integrity of the LNPs following transplacental transport, we screened LNPs for transport and transfection using a high-throughput integrated transport-transfection in vitro model.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "methods": [
+    {
+      "value": "Researchers developed and optimized lipid nanoparticles (LNPs) using machine learning to achieve safe, efficient transplacental delivery and targeted gene transfection in fetal lung cells, representing a significant advance toward fetal gene therapy.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Biochemistry",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Chemistry",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Artificial Intelligence & Data Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [],
+  "properties": [],
+  "measurements": [],
+  "conditions": [
+    {
+      "value": "The aim of these therapies is to restore normal fetal development and prevent irreversible conditions after birth.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "mechanisms": [],
+  "outcomes": [
+    {
+      "value": "Therapeutics",
+      "source": "csv_applied_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Formulations",
+      "source": "csv_applied_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "Biochemistry",
+    "Chemistry",
+    "Artificial Intelligence & Data Science",
+    "Therapeutics",
+    "Formulations"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.57,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": true,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": false,
+      "properties": false,
+      "measurements": false,
+      "conditions": true,
+      "mechanisms": false,
+      "outcomes": true,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "evidence",
+      "materials",
+      "properties",
+      "measurements",
+      "mechanisms",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only."
+    ]
+  }
+}

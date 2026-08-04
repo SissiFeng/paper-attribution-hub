@@ -1,0 +1,167 @@
+{
+  "paper_id": "acfocus_a4372a0cf084",
+  "title": "Accelerated identification of microstructure and phase stability in nanostructured refractory medium entropy alloys by combinatorial libraries",
+  "metadata": {
+    "doi": "10.1016/j.mtnano.2025.100660",
+    "url": "https://www.sciencedirect.com/science/article/abs/pii/S2588842025000914",
+    "year": "2025",
+    "authors": "C. Cheng; R. Feng; T. Lyu; Y. Zou",
+    "venue": "Materials Today Nano",
+    "category": "Journal Article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Yu Zou"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member"
+    ],
+    "flags": {
+      "acknowledges_ac": "checked",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "This study systematically investigates the phase stability and microstructural evolution of three nanostructured medium-entropy alloy systems across a range of temperatures, revealing distinct phase behaviors and transformations influenced by Nb and Ta, which advances the accelerated discovery and stability assessment of complex nanostructured alloys.",
+  "abstract": "The stability of nanostructured materials is vital for their applications, particularly at elevated temperatures. The complexity of many emerging multiple-component alloys, such as medium-entropy alloys (MEAs) and high-entropy alloys (HEAs), poses new challenges to identifying stable nanostructured alloys from vast composition and temperature spaces. Here, we have systematically studied three nanostructured MEA systems, (TiZr)<inf>x</inf>Ta<inf>1−x</inf>, (TiZr)<inf>x</inf>Nb<inf>1−x</inf>, and (TiZr)<inf>x</inf>(NbTa)<inf>1−x</inf>, from room temperature to 400 °C, through combinatorial synthesis, annealing, and characterization. Unlike (TiZr)<inf>x</inf>Nb<inf>1−x</inf> and (TiZr)<inf>x</inf>(NbTa)<inf>1−x</inf> exhibiting crystalline body-centered cubic (bcc) phase, the (TiZr)<inf>x</inf>Ta<inf>1−x</inf> library shows anomalous phase formation: metastable face-centered cubic (fcc) structure in the Ta-rich region, while a nanocomposite consisting of bcc nano-grains and amorphous matrix in the TiZr-rich region. Upon annealing, high-resolution TEM images determine that such fcc and nanocomposite structures transform into a fully crystalline bcc phase. This study identifies the individual and synergistic effects of Nb and Ta on the microstructure and phase stability of the MEAs, paving the way for the accelerated discovery of complex nanostructured alloys and the identification of their stability in large composition and temperature dimensions.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "This study systematically investigates the phase stability and microstructural evolution of three nanostructured medium-entropy alloy systems across a range of temperatures, revealing distinct phase behaviors and transformations influenced by Nb and Ta, which advances the accelerated discovery and stability assessment of complex nanostructured alloys.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Materials Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "Accelerated identification of microstructure and phase stability in nanostructured refractory medium entropy alloys by combinatorial libraries This study systematically investigates the phase stability and microstructural evolution of three nanostructured medium-entropy alloy systems across a range of temperatures, revealing distinct phase behaviors and transformations influenced by Nb and Ta, which advances the accelerated discovery and stability assessment of complex nanostructured alloys.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "The stability of nanostructured materials is vital for their applications, particularly at elevated temperatures.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "The complexity of many emerging multiple-component alloys, such as medium-entropy alloys (MEAs) and high-entropy alloys (HEAs), poses new challenges to identifying stable nanostructured alloys from vast composition and temperature spaces.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [
+    {
+      "value": "Accelerated identification of microstructure and phase stability in nanostructured refractory medium entropy alloys by combinatorial libraries This study systematically investigates the phase stability and microstructural evolution of three nanostructured medium-entropy alloy systems across a range of temperatures, revealing distinct phase behaviors and transformations influenced by Nb and Ta, which advances the accelerated discovery and stability assessment of complex nanostructured alloys.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "The stability of nanostructured materials is vital for their applications, particularly at elevated temperatures.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "This study identifies the individual and synergistic effects of Nb and Ta on the microstructure and phase stability of the MEAs, paving the way for the accelerated discovery of complex nanostructured alloys and the identification of their stability in large composition and temperature dimensions.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [
+    {
+      "value": "Here, we have systematically studied three nanostructured MEA systems, (TiZr)<inf>x</inf>Ta<inf>1−x</inf>, (TiZr)<inf>x</inf>Nb<inf>1−x</inf>, and (TiZr)<inf>x</inf>(NbTa)<inf>1−x</inf>, from room temperature to 400 °C, through combinatorial synthesis, annealing, and characterization.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "conditions": [
+    {
+      "value": "The complexity of many emerging multiple-component alloys, such as medium-entropy alloys (MEAs) and high-entropy alloys (HEAs), poses new challenges to identifying stable nanostructured alloys from vast composition and temperature spaces.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Here, we have systematically studied three nanostructured MEA systems, (TiZr)<inf>x</inf>Ta<inf>1−x</inf>, (TiZr)<inf>x</inf>Nb<inf>1−x</inf>, and (TiZr)<inf>x</inf>(NbTa)<inf>1−x</inf>, from room temperature to 400 °C, through combinatorial synthesis, annealing, and characterization.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "This study identifies the individual and synergistic effects of Nb and Ta on the microstructure and phase stability of the MEAs, paving the way for the accelerated discovery of complex nanostructured alloys and the identification of their stability in large composition and temperature dimensions.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "mechanisms": [],
+  "outcomes": [
+    {
+      "value": "Sustainable Materials",
+      "source": "csv_applied_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "Materials Science",
+    "Sustainable Materials"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.67,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": true,
+      "properties": true,
+      "measurements": true,
+      "conditions": true,
+      "mechanisms": false,
+      "outcomes": true,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "mechanisms",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

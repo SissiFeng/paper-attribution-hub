@@ -1,0 +1,137 @@
+{
+  "paper_id": "acfocus_08c8d065a849",
+  "title": "A formulation dataset of poly(lactide-co-glycolide) nanoparticles for small molecule delivery",
+  "metadata": {
+    "doi": "10.1038/s41597-025-05520-9",
+    "url": "https://www.nature.com/articles/s41597-025-05520-9",
+    "year": "2025",
+    "authors": "A. Goren; Z. Bao; J. P. Martinez Lozano; C. Allen",
+    "venue": "Scientific Data",
+    "category": "Journal Article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Christine Allen",
+      "Zeqing Bao"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance",
+      "AC Staff"
+    ],
+    "flags": {
+      "acknowledges_ac": "checked",
+      "highly_relevant": "checked",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "PLGA nanoparticles are promising drug delivery systems, but their formulation is complex and data-limited, so this study presents a literature-curated dataset of 433 PLGA nanoparticle formulations to support research and accelerate development using machine learning.",
+  "abstract": "Poly(lactide-co-glycolide) (PLGA) nanoparticles are promising drug delivery systems, widely recognized for their ability to overcome various limitations associated with conventional formulations. However, designing and optimizing such formulations is a complex and non-trivial process that heavily relies on a lengthy, iterative approach, often involving trial and error. To address the limitations of traditional approaches, formulation scientists are increasingly incorporating artificial intelligence, particularly machine learning, to rationalize and accelerate the process. Despite decades of intensive research into PLGA nanoparticles, a notable shortage remains in the availability of comprehensive open-source datasets essential for driving this accelerated development process forward. Here, we present a literature-curated dataset of 433 PLGA nanoparticle formulations encompassing 65 small molecules. The dataset aims to bridge existing data gaps and provide a comprehensive resource for research on nanoparticle formulations.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "PLGA nanoparticles are promising drug delivery systems, but their formulation is complex and data-limited, so this study presents a literature-curated dataset of 433 PLGA nanoparticle formulations to support research and accelerate development using machine learning.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Artificial Intelligence & Data Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Biology",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "A formulation dataset of poly(lactide-co-glycolide) nanoparticles for small molecule delivery PLGA nanoparticles are promising drug delivery systems, but their formulation is complex and data-limited, so this study presents a literature-curated dataset of 433 PLGA nanoparticle formulations to support research and accelerate development using machine learning.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Here, we present a literature-curated dataset of 433 PLGA nanoparticle formulations encompassing 65 small molecules.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [],
+  "measurements": [],
+  "conditions": [],
+  "mechanisms": [],
+  "outcomes": [
+    {
+      "value": "Formulations",
+      "source": "csv_applied_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Therapeutics",
+      "source": "csv_applied_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "SDL 5 - Formulations",
+    "Artificial Intelligence & Data Science",
+    "Biology",
+    "Formulations",
+    "Therapeutics"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.5,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": true,
+      "properties": false,
+      "measurements": false,
+      "conditions": false,
+      "mechanisms": false,
+      "outcomes": true,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "properties",
+      "measurements",
+      "conditions",
+      "mechanisms",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

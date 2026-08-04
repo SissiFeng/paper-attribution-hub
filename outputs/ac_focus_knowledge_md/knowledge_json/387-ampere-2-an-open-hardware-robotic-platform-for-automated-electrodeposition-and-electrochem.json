@@ -1,0 +1,304 @@
+{
+  "paper_id": "acfocus_99993e8170cc",
+  "title": "AMPERE-2: an open-hardware, robotic platform for automated electrodeposition and electrochemical validation",
+  "metadata": {
+    "doi": "doi.org/10.1039/d5dd00180c",
+    "url": "https://pubs.rsc.org/en/content/articlelanding/2025/dd/d5dd00180c",
+    "year": "2025",
+    "authors": "Nis Fisker-Bødker,  Daniel Persaud,   Yang Bai,  Mark Kozdras,  Tejs Vegge, Jason Hattrick-Simpers   and  Jin Hyun Chang",
+    "venue": "Digital Discovery",
+    "category": "Journal article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Yang Bai",
+      "Nis Fisker-Bødker",
+      "Jason Hattrick-Simpers"
+    ],
+    "ac_programs": [
+      "Core Development Grants_Jason Hattrick-Simpers_2024-25"
+    ],
+    "membership_status": [
+      "AC Staff",
+      "AC Trainee",
+      "AC Full Member",
+      "AC Governance"
+    ],
+    "flags": {
+      "acknowledges_ac": "checked",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "An Opentrons OT-2 robot was used to automate the electrodeposition and electrochemical testing of multi-element catalysts for oxygen evolution reaction, revealing that complexing agents and deposition time significantly affect catalyst performance and reproducibility, with optimal results achieved using both agents or none and deposition times of 30–60 seconds.",
+  "abstract": "An Opentrons OT-2 liquid-handling robot was used as the framework to develop an automated platform for the electrodeposition and electrochemical testing of multi-element catalysts. Catalytic activity was demonstrated via alkaline water splitting, specifically targeting the oxygen evolution reaction (OER). The setup integrates multiple pumps, a flushing tool, custom deposition and electrochemical testing electrodes, and a potentiostat to enable reproducible and efficient electrodeposition and evaluation. Stock solutions of metal chlorides were combined with two complexing agents, ammonium hydroxide and sodium citrate, to stabilize the deposition process and tune the surface morphology. Analysis by cyclic voltammetry and electron microscopy revealed that the complexing agents significantly influenced deposition rates and surface structures, with the most effective catalysts forming either in the absence of additives or when both agents were applied together. Deposition times of 30–60 seconds yielded the lowest OER overpotentials, indicating an optimal catalyst layer thickness. The platform demonstrates robust reproducibility with uncertainty in overpotential measurements at 16 mV.",
+  "hardware": [
+    {
+      "value": "An Opentrons OT-2 robot was used to automate the electrodeposition and electrochemical testing of multi-element catalysts for oxygen evolution reaction, revealing that complexing agents and deposition time significantly affect catalyst performance and reproducibility, with optimal results achieved using both agents or none and deposition times of 30–60 seconds.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "An Opentrons OT-2 liquid-handling robot was used as the framework to develop an automated platform for the electrodeposition and electrochemical testing of multi-element catalysts.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "The platform demonstrates robust reproducibility with uncertainty in overpotential measurements at 16 mV.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Utilizing the Opentrons OT-2 liquid-handling robot as a framework, the authors developed AMPERE-2, an automated platform that integrates multiple pumps, flushing tools, custom electrodes, and a potentiostat to enable reproducible and efficient electrodeposition and evaluation.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "methods": [
+    {
+      "value": "Utilizing the Opentrons OT-2 liquid-handling robot as a framework, the authors developed AMPERE-2, an automated platform that integrates multiple pumps, flushing tools, custom electrodes, and a potentiostat to enable reproducible and efficient electrodeposition and evaluation. The platform's performance was tested using metal chloride precursors for alloy deposition and fully automated catalytic evaluation under alkaline conditions.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "problems": [
+    {
+      "value": "Developing an automated platform for electrodeposition and electrochemical testing of multi-element catalysts to enhance catalytic activity for alkaline water splitting, specifically targeting the oxygen evolution reaction (OER).",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "hypotheses": [
+    {
+      "value": "An automated platform integrating material synthesis via automated electrodeposition with immediate electrochemical evaluation can enhance reproducibility and efficiency in catalyst evaluation.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "evidence": [
+    {
+      "value": "The platform demonstrated robust reproducibility with uncertainty in overpotential measurements at 16 mV. Deposition times of 30–60 seconds yielded the lowest OER overpotentials, indicating an optimal catalyst layer thickness. The inclusion of complexing agents influenced both the deposition process and the resulting surface morphology, with sponge-like textures and increased surface area correlating with improved OER performance.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "conclusions": [
+    {
+      "value": "The AMPERE-2 platform successfully automates electrodeposition and electrochemical testing, improving reproducibility in catalyst development and demonstrating the potential to accelerate materials discovery.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "entities": [
+    {
+      "value": "Opentrons OT-2 liquid-handling robot",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Metal chloride precursors",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Complexing agents (ammonium hydroxide and sodium citrate)",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Electrocatalyst surface morphology",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "Metal chloride precursors",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "AMPERE-2: an open-hardware, robotic platform for automated electrodeposition and electrochemical validation An Opentrons OT-2 robot was used to automate the electrodeposition and electrochemical testing of multi-element catalysts for oxygen evolution reaction, revealing that complexing agents and deposition time significantly affect catalyst performance and reproducibility, with optimal results achieved using both agents or none and deposition times of 30–60 seconds.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "An Opentrons OT-2 liquid-handling robot was used as the framework to develop an automated platform for the electrodeposition and electrochemical testing of multi-element catalysts.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Analysis by cyclic voltammetry and electron microscopy revealed that the complexing agents significantly influenced deposition rates and surface structures, with the most effective catalysts forming either in the absence of additives or when both agents were applied together.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [
+    {
+      "value": "Catalytic activity was demonstrated via alkaline water splitting, specifically targeting the oxygen evolution reaction (OER).",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [
+    {
+      "value": "Analysis by cyclic voltammetry and electron microscopy revealed that the complexing agents significantly influenced deposition rates and surface structures, with the most effective catalysts forming either in the absence of additives or when both agents were applied together.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "The platform demonstrates robust reproducibility with uncertainty in overpotential measurements at 16 mV.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "The platform's performance was tested using metal chloride precursors for alloy deposition and fully automated catalytic evaluation under alkaline conditions.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "The platform demonstrated robust reproducibility with uncertainty in overpotential measurements at 16 mV.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "conditions": [
+    {
+      "value": "AMPERE-2: an open-hardware, robotic platform for automated electrodeposition and electrochemical validation An Opentrons OT-2 robot was used to automate the electrodeposition and electrochemical testing of multi-element catalysts for oxygen evolution reaction, revealing that complexing agents and deposition time significantly affect catalyst performance and reproducibility, with optimal results achieved using both agents or none and deposition times of 30–60 seconds.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "The platform's performance was tested using metal chloride precursors for alloy deposition and fully automated catalytic evaluation under alkaline conditions.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "mechanisms": [
+    {
+      "value": "Automated liquid handling for precise reagent dosing",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Influence of complexing agents on deposition rates and surface structures",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Optimization of catalyst layer thickness for electrochemical performance",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "outcomes": [
+    {
+      "value": "Reproducibility in electrochemical performance",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Enhanced OER performance due to controlled surface morphology",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "SDL 1 - Inorganic",
+    "Artificial Intelligence & Data Science",
+    "Automation and Robotics",
+    "Materials Science",
+    "Catalysis",
+    "Clean energy"
+  ],
+  "reasoning_motifs": [
+    {
+      "value": "Precision → Reproducibility",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Chemical Complexity → Structural Diversity",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Surface Area → Catalytic Activity",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "general_principles": [
+    {
+      "value": "Control Through Automation",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Multi-scale Coupling",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "acgold_9a65368b97dd",
+    "cross_sdl_reasoning_json": "/Users/sissifeng/Downloads/cross-sdl_knowledge_transfer_engine/data/reasoning/acgold_9a65368b97dd.json",
+    "cross_sdl_extraction_quality": 0.8,
+    "cross_sdl_notes": "The paper provides a clear structure of the problem, hypothesis, method, evidence, and conclusion, facilitating the extraction process. However, some inferences were necessary to connect specific experimental actions to underlying mechanisms and broader motifs."
+  },
+  "validation": {
+    "score": 1.0,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": true,
+      "method": true,
+      "evidence": true,
+      "entities": true,
+      "materials": true,
+      "properties": true,
+      "measurements": true,
+      "conditions": true,
+      "mechanisms": true,
+      "outcomes": true,
+      "cross_sdl_match": true
+    },
+    "missing": [],
+    "notes": []
+  }
+}

@@ -1,0 +1,116 @@
+{
+  "paper_id": "acfocus_10b71ba52b76",
+  "title": "Ultrahigh Specific Strength by Bayesian Optimization of Carbon Nanolattices (Adv. Mater. 14/2025)",
+  "metadata": {
+    "doi": "10.1002/adma.202570108",
+    "url": "https://www.researchgate.net/publication/390686366_Ultrahigh_Specific_Strength_by_Bayesian_Optimization_of_Carbon_Nanolattices_Adv_Mater_142025",
+    "year": "2025",
+    "authors": "P. Serles; J. Yeo; M. Haché; P. G. Demingos; J. Kong; P. Kiefer; S. Dhulipala; B. Kumral; K. Jia; S. Yang; T. Feng; C. Jia; P. M. Ajayan; C. M. Portela; M. Wegener; J. Howe; C. V. Singh; Y. Zou; S. Ryu; T. Filleter",
+    "venue": "Advanced Materials",
+    "category": "Journal Article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Yu Zou"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "checked",
+      "high_impact": "checked"
+    }
+  },
+  "source_summary": "Machine learning-driven Bayesian optimization enables the design of carbon nanolattices with record strength-to-weight ratios—matching the strength of steel at the density of Styrofoam—by combining advanced fabrication techniques and significantly outperforming existing lightweight materials.",
+  "abstract": "Bayesian Optimization of Carbon Nanolattices Machine Learning designs new nanolattice geometries with the strength of carbon steel, but the density of Styrofoam, offering record strength‐to‐weight of lightweight materials. By implementing multi‐objective Bayesian optimization in combination with two‐photon polymerization and pyrolysis, these ultrahigh specific strength carbon nanolattices more than double the performance of benchmark materials. More details can be found in article number 2410651 by Peter Serles, Tobin Filleter, Seunghwa Ryu, and co‐workers.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "Machine learning-driven Bayesian optimization enables the design of carbon nanolattices with record strength-to-weight ratios—matching the strength of steel at the density of Styrofoam—by combining advanced fabrication techniques and significantly outperforming existing lightweight materials.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [],
+  "materials": [
+    {
+      "value": "14/2025) Machine learning-driven Bayesian optimization enables the design of carbon nanolattices with record strength-to-weight ratios—matching the strength of steel at the density of Styrofoam—by combining advanced fabrication techniques and significantly outperforming existing lightweight materials.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Bayesian Optimization of Carbon Nanolattices Machine Learning designs new nanolattice geometries with the strength of carbon steel, but the density of Styrofoam, offering record strength‐to‐weight of lightweight materials.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "By implementing multi‐objective Bayesian optimization in combination with two‐photon polymerization and pyrolysis, these ultrahigh specific strength carbon nanolattices more than double the performance of benchmark materials.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [],
+  "measurements": [
+    {
+      "value": "By implementing multi‐objective Bayesian optimization in combination with two‐photon polymerization and pyrolysis, these ultrahigh specific strength carbon nanolattices more than double the performance of benchmark materials.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "conditions": [],
+  "mechanisms": [],
+  "outcomes": [],
+  "sdl_tags": [],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.43,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": false,
+      "materials": true,
+      "properties": false,
+      "measurements": true,
+      "conditions": false,
+      "mechanisms": false,
+      "outcomes": false,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "entities",
+      "properties",
+      "conditions",
+      "mechanisms",
+      "outcomes",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

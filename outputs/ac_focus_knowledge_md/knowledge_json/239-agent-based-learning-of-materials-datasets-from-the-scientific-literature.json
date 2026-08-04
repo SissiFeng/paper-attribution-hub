@@ -1,0 +1,307 @@
+{
+  "paper_id": "acfocus_bfdc4bbaec3f",
+  "title": "Agent-based learning of materials datasets from the scientific literature",
+  "metadata": {
+    "doi": "10.1039/d4dd00252k",
+    "url": "https://pubs.rsc.org/en/content/articlelanding/2024/dd/d4dd00252k",
+    "year": "2024",
+    "authors": "Mehrad Ansari, Seyed Mohamad Moosavi",
+    "venue": "Digital Discovery",
+    "category": "Journal article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Mehrad Gholizadeh Ansari (Deactivated)",
+      "Mohamad Moosavi"
+    ],
+    "ac_programs": [
+      "AC PDF_Mohamad Moosavi_2023-24"
+    ],
+    "membership_status": [
+      "AC Trainee",
+      "AC Full Member"
+    ],
+    "flags": {
+      "acknowledges_ac": "checked",
+      "highly_relevant": "checked",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "The development of Eunomia, an open-source chemist AI agent powered by large language models, enables autonomous extraction and structuring of materials science data from scientific literature, outperforming or matching state-of-the-art methods and simplifying dataset creation for materials discovery.",
+  "abstract": "Advancements in machine learning and artificial intelligence are transforming the discovery of materials. While the vast corpus of scientific literature presents a valuable and rich resource of experimental data that can be used for training machine learning models, the availability and accessibility of these data remains a bottleneck. Accessing these data by manual dataset creation is limited due to issues in maintaining quality and consistency, scalability limitations, and the risk of human error and bias. Therefore, in this work, we develop a chemist AI agent, powered by large language models (LLMs), to overcome these limitations by autonomously creating structured datasets from natural language text, ranging from sentences and paragraphs to extensive scientific research articles and extract guidelines for designing materials with desired properties. Our chemist AI agent, Eunomia, can plan and execute actions by leveraging the existing knowledge from decades of scientific research articles, scientists, the Internet and other tools altogether. We benchmark the performance of our approach in three different information extraction tasks with various levels of complexity, including solid-state impurity doping, metal–organic framework (MOF) chemical formula, and property relationships. Our results demonstrate that our zero-shot agent, with the appropriate tools, is capable of attaining performance that is either superior or comparable to the state-of-the-art fine-tuned material information extraction methods. This approach simplifies compilation of machine learning-ready datasets for the applications of discovery of various materials, and significantly eases the accessibility of advanced natural language processing tools for novice users in natural language. The methodology in this work is developed as open-source software on https://github.com/AI4ChemS/Eunomia.",
+  "hardware": [
+    {
+      "value": "The development of Eunomia, an open-source chemist AI agent powered by large language models, enables autonomous extraction and structuring of materials science data from scientific literature, outperforming or matching state-of-the-art methods and simplifying dataset creation for materials discovery.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "methods": [
+    {
+      "value": "Development and benchmarking of a chemist AI agent, Eunomia, powered by large language models (LLMs), against state-of-the-art fine-tuned material information extraction methods.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "problems": [
+    {
+      "value": "The unstructured format of chemical knowledge in scientific literature hinders effective utilization for experimental design and comprehension of previous studies.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "hypotheses": [
+    {
+      "value": "An AI agent can autonomously create structured datasets from natural language text, extracting guidelines for designing materials with desired properties.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "evidence": [
+    {
+      "value": "Eunomia demonstrated superior or comparable performance to fine-tuned methods in information extraction tasks of varying complexity, including named entity recognition, relation extraction, and argument mining.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "conclusions": [
+    {
+      "value": "Eunomia simplifies the compilation of machine learning-ready datasets, enhancing accessibility of advanced natural language processing tools for novice users.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "entities": [
+    {
+      "value": "AI agent (Eunomia)",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Large language models (LLMs)",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Natural language text (sentences, paragraphs, articles)",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Structured datasets",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Materials properties (e.g., water stability)",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "Materials properties (e.g., water stability)",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Agent-based learning of materials datasets from the scientific literature The development of Eunomia, an open-source chemist AI agent powered by large language models, enables autonomous extraction and structuring of materials science data from scientific literature, outperforming or matching state-of-the-art methods and simplifying dataset creation for materials discovery.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Advancements in machine learning and artificial intelligence are transforming the discovery of materials.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Therefore, in this work, we develop a chemist AI agent, powered by large language models (LLMs), to overcome these limitations by autonomously creating structured datasets from natural language text, ranging from sentences and paragraphs to extensive scientific research articles and extract guidelines for designing materials with desired properties.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [
+    {
+      "value": "Therefore, in this work, we develop a chemist AI agent, powered by large language models (LLMs), to overcome these limitations by autonomously creating structured datasets from natural language text, ranging from sentences and paragraphs to extensive scientific research articles and extract guidelines for designing materials with desired properties.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "We benchmark the performance of our approach in three different information extraction tasks with various levels of complexity, including solid-state impurity doping, metal–organic framework (MOF) chemical formula, and property relationships.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "AI agent (Eunomia) Large language models (LLMs) Natural language text (sentences, paragraphs, articles) Structured datasets Materials properties (e.g., water stability) Creation of structured datasets from scientific literature Extraction of material design guidelines Reduction of human error and bias in dataset creation",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [
+    {
+      "value": "We benchmark the performance of our approach in three different information extraction tasks with various levels of complexity, including solid-state impurity doping, metal–organic framework (MOF) chemical formula, and property relationships.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Development and benchmarking of a chemist AI agent, Eunomia, powered by large language models (LLMs), against state-of-the-art fine-tuned material information extraction methods.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "conditions": [],
+  "mechanisms": [
+    {
+      "value": "Information extraction from unstructured text",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Entity recognition and relation extraction",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Zero-shot learning and natural language prompting",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Chain-of-verification for accuracy enhancement",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "outcomes": [
+    {
+      "value": "Creation of structured datasets from scientific literature",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Extraction of material design guidelines",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Reduction of human error and bias in dataset creation",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "SDL 0 - AI & Automation",
+    "Artificial Intelligence & Data Science",
+    "Chemistry",
+    "Materials Science"
+  ],
+  "reasoning_motifs": [
+    {
+      "value": "Information Extraction → Knowledge Structurization",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Entity Recognition → Data Enrichment",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Iterative Verification → Accuracy",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "general_principles": [
+    {
+      "value": "Data Transformation",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Pattern Recognition",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Quality Assurance",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "failure_paths": [
+    {
+      "value": "partial: Use of Eunomia without chain-of-verification tool for MOF formula and guest species identification. Evidence: Performance was superior for MOF formula extraction but had lower precision for guest species due to exact-word matching metrics.",
+      "source": "cross_sdl_phase4",
+      "confidence": 0.75,
+      "evidence": ""
+    },
+    {
+      "value": "failure: Eunomia's initial confusion between water stability and thermal stability in materials research articles. Evidence: The agent initially misclassified a thermally stable MOF as water-stable, which was later corrected by the chain-of-verification process.",
+      "source": "cross_sdl_phase4",
+      "confidence": 0.75,
+      "evidence": ""
+    }
+  ],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "acgold_8a45b7d7ea32",
+    "cross_sdl_reasoning_json": "/Users/sissifeng/Downloads/cross-sdl_knowledge_transfer_engine/data/reasoning/acgold_8a45b7d7ea32.json",
+    "cross_sdl_extraction_quality": 0.8,
+    "cross_sdl_notes": "The paper provides a clear structure for the development and benchmarking of the AI agent, Eunomia. However, some aspects of the reasoning, particularly around the iterative development and refinement of the agent's capabilities, are implicit rather than explicitly stated."
+  },
+  "validation": {
+    "score": 0.96,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": true,
+      "method": true,
+      "evidence": true,
+      "entities": true,
+      "materials": true,
+      "properties": true,
+      "measurements": true,
+      "conditions": false,
+      "mechanisms": true,
+      "outcomes": true,
+      "cross_sdl_match": true
+    },
+    "missing": [
+      "conditions"
+    ],
+    "notes": []
+  }
+}

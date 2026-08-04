@@ -20,7 +20,6 @@ import csv
 import re
 import unicodedata
 from collections import Counter, defaultdict
-from dataclasses import dataclass
 
 from sqlalchemy import func, select
 from sqlalchemy.orm import Session
@@ -181,7 +180,6 @@ def build_people_grid(session: Session) -> dict:
         top_sdl_full = sdl_counter.most_common(1)[0][0] if sdl_counter else None
         top_sdl = _sdl_category_key(top_sdl_full) if top_sdl_full else "uncategorized"
 
-        top_topic_id = None
         top_topic_name = top_sdl.replace("_", " ").title() if top_sdl != "uncategorized" else "Uncategorized"
         category = top_sdl
         category_paper_counts[category] += paper_count

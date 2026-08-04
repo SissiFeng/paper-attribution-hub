@@ -1,0 +1,135 @@
+{
+  "paper_id": "acfocus_c1f3c4509ef5",
+  "title": "Human-AI synergy in adaptive active learning for continuous lithium carbonate crystallization optimization",
+  "metadata": {
+    "doi": "10.1039/d5dd00285k",
+    "url": "https://pubs.rsc.org/en/content/articlelanding/2025/dd/d5dd00285k",
+    "year": "2025",
+    "authors": "S. M. Masouleh; C. A. Sanz; R. P. Jansonius; C. Cronin; J. Hein; J. Hattrick-Simpers",
+    "venue": "Digital Discovery",
+    "category": "Journal Article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Jason Hattrick-Simpers"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "A Human-in-the-Loop assisted active learning framework was developed to optimize continuous crystallization for producing battery-grade lithium carbonate from low-grade sources like the Smackover Formation, enabling efficient extraction despite high impurity levels and reducing the need for extensive pre-refinement, thus supporting the economic and sustainable use of North American lithium resources.",
+  "abstract": "As the demand for high-purity lithium surges, primarily fueled by the adaptation of the electric vehicle (EV) industry, the need for cost-effective extraction and purification technologies intensifies. The Smackover Formation in southern Arkansas, recently identified as one of the world's largest lithium resources, offers vast potential. This formation is part of a broader array of lithium resources across North America, many of which possess lower-grade lithium compared to renowned sources like South American brines. These alternative formations, while presenting significant opportunities, require innovative purification techniques to make their exploitation economically viable. Continuous crystallization is a promising method to produce battery-grade lithium carbonate from these lower-grade sources. Yet, the optimization of this process is challenging due to its complex parameter space, often constrained by scarce data. This study introduces a Human-in-the-Loop (HITL) assisted active learning framework aimed at adapting and optimizing the continuous crystallization process of lithium carbonate. By integrating human expertise with data-driven insights, this approach significantly accelerates the optimization of lithium extraction from challenging sources. Our results demonstrate the framework's ability to rapidly adapt to new data, improving the process's tolerance to critical impurities, such as magnesium, by industry practices at a few hundred ppm, and extending it to handle contamination levels as high as 6000 ppm. This makes the use of low-grade lithium resources contaminated with such impurities feasible, potentially reducing overhead processes. By leveraging artificial intelligence, we not only refined the operational parameters but also demonstrated a potentially reduced need for extensive pre-refinement, promoting the use of lower-grade materials without sacrificing product quality. This advancement marks a significant step towards economically harnessing North America's lithium reserves, particularly those in the Smackover Formation, thereby contributing to the sustainability of the lithium supply. This journal is © The Royal Society of Chemistry, 2025",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "A Human-in-the-Loop assisted active learning framework was developed to optimize continuous crystallization for producing battery-grade lithium carbonate from low-grade sources like the Smackover Formation, enabling efficient extraction despite high impurity levels and reducing the need for extensive pre-refinement, thus supporting the economic and sustainable use of North American lithium resources.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Artificial Intelligence & Data Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Automation and Robotics",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Chemistry",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Materials Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "By leveraging artificial intelligence, we not only refined the operational parameters but also demonstrated a potentially reduced need for extensive pre-refinement, promoting the use of lower-grade materials without sacrificing product quality.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [],
+  "measurements": [],
+  "conditions": [],
+  "mechanisms": [],
+  "outcomes": [
+    {
+      "value": "Clean energy",
+      "source": "csv_applied_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "Artificial Intelligence & Data Science",
+    "Automation and Robotics",
+    "Chemistry",
+    "Materials Science",
+    "Clean energy"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.5,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": true,
+      "properties": false,
+      "measurements": false,
+      "conditions": false,
+      "mechanisms": false,
+      "outcomes": true,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "properties",
+      "measurements",
+      "conditions",
+      "mechanisms",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

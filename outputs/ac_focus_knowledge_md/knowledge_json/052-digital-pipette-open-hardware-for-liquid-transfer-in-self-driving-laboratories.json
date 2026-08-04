@@ -1,0 +1,280 @@
+{
+  "paper_id": "acfocus_7e86e74325e0",
+  "title": "Digital pipette: open hardware for liquid transfer in self-driving laboratories",
+  "metadata": {
+    "doi": "10.1039/d3dd00115f",
+    "url": "https://pubs.rsc.org/en/content/articlehtml/2023/dd/d3dd00115f",
+    "year": "2023",
+    "authors": "Naruki Yoshikawa, Kourosh Darvish, Mohammad Ghazi Vakili, Animesh Garg and Alán Aspuru-Guzik",
+    "venue": "Digital Discovery",
+    "category": "Journal article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Alán Aspuru-Guzik",
+      "Kourosh Darvish (Deactivated)",
+      "Animesh Garg"
+    ],
+    "ac_programs": [
+      "AC PDF_Florian Shkurti_2022-23",
+      "Core Development Grants_Milica Radisic_2023-24"
+    ],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance",
+      "AC Trainee",
+      "AC Full Member"
+    ],
+    "flags": {
+      "acknowledges_ac": "checked",
+      "highly_relevant": "checked",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "Researchers have developed a low-cost, 3D-printed digital pipette specifically designed for robots in self-driving laboratories, enabling accurate and efficient liquid handling comparable to commercial devices, with assembly in just 10 minutes and a random error of only 0.2% for 10 mL volumes.",
+  "abstract": "Self-driving laboratories are being investigated as a potential means to accelerate the material discovery process. Accurate liquid handling is an essential operation in the context of chemical laboratories, and consequently a self-driving laboratory will require robotic liquid handling and transfer. Although many pipettes are available for human scientists, robots cannot manipulate these pipettes due to the limitations of current robot gripper morphology. We propose an intuitive yet elegant design for a 3D-printed digital pipette designed for robots to carry out chemical experiments. It costs less than 200 USD, and the simple design with three parts enables a new user to assemble one in 10 minutes. We conducted a performance evaluation that closely followed ISO 8655-6. Our results show that robots with the digital pipette could conduct accurate liquid delivery with 0.2% random error for the nominal volume (10 mL). This performance is comparable to commercially available liquid handling devices, whose typical random errors are 0.3%.",
+  "hardware": [
+    {
+      "value": "Researchers have developed a low-cost, 3D-printed digital pipette specifically designed for robots in self-driving laboratories, enabling accurate and efficient liquid handling comparable to commercial devices, with assembly in just 10 minutes and a random error of only 0.2% for 10 mL volumes.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Accurate liquid handling is an essential operation in the context of chemical laboratories, and consequently a self-driving laboratory will require robotic liquid handling and transfer.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Although many pipettes are available for human scientists, robots cannot manipulate these pipettes due to the limitations of current robot gripper morphology.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "We propose an intuitive yet elegant design for a 3D-printed digital pipette designed for robots to carry out chemical experiments.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "methods": [
+    {
+      "value": "The new design incorporates a 3D-printed syringe compatible with commercial pipette tips, enabling the handling of multiple liquids without cross-contamination.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "problems": [
+    {
+      "value": "The initial version of the digital pipette lacked mechanisms to prevent cross-contamination when handling multiple liquids.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "hypotheses": [
+    {
+      "value": "An updated design of the digital pipette that allows robotic arms to exchange pipette tips will mitigate contamination risk.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "evidence": [
+    {
+      "value": "The digital pipette v2 achieved liquid handling accuracy within the permissible error range defined by ISO 8655-2, supporting a broader range of experiments involving multiple liquids.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "conclusions": [
+    {
+      "value": "The digital pipette v2 successfully enables robotic arms to handle multiple liquids without cross-contamination while maintaining accuracy as per international standards.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "entities": [
+    {
+      "value": "digital pipette v2",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "3D-printed syringe",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "pipette tips",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "linear actuator",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Arduino microcontroller",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "Self-driving laboratories are being investigated as a potential means to accelerate the material discovery process.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [
+    {
+      "value": "The digital pipette v2 achieved liquid handling accuracy within the permissible error range defined by ISO 8655-2, supporting a broader range of experiments involving multiple liquids.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [],
+  "conditions": [
+    {
+      "value": "Although many pipettes are available for human scientists, robots cannot manipulate these pipettes due to the limitations of current robot gripper morphology.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "mechanisms": [
+    {
+      "value": "attachment and detachment of pipette tips to prevent cross-contamination",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "electrical control of the linear actuator for precise liquid handling",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "force-feedback-based positioning system for accurate pipette tip alignment",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "outcomes": [
+    {
+      "value": "handling multiple liquids without contamination",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "precise liquid handling through electrical signals",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "reduced calibration effort and improved positioning flexibility",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "Automation and Robotics",
+    "Biology",
+    "Chemistry"
+  ],
+  "reasoning_motifs": [
+    {
+      "value": "Modular Design → Flexibility",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Precision Control → Accuracy",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Feedback → Adaptation",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "general_principles": [
+    {
+      "value": "Control Through Constraints",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Multi-scale Coupling",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "failure_paths": [
+    {
+      "value": "success: Incorporating disposable pipette tips to prevent contamination Evidence: The new design enables the robot to handle multiple liquids without contamination, broadening the range of possible experiments.",
+      "source": "cross_sdl_phase4",
+      "confidence": 0.75,
+      "evidence": ""
+    },
+    {
+      "value": "success: Using a force-feedback-based positioning system for attaching pipette tips Evidence: This system reduces the calibration effort and improves positioning flexibility.",
+      "source": "cross_sdl_phase4",
+      "confidence": 0.75,
+      "evidence": ""
+    }
+  ],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "acgold_5dab18deaebf",
+    "cross_sdl_reasoning_json": "/Users/sissifeng/Downloads/cross-sdl_knowledge_transfer_engine/data/reasoning/acgold_5dab18deaebf.json",
+    "cross_sdl_extraction_quality": 0.8,
+    "cross_sdl_notes": "The paper provides a clear structure of the problem, hypothesis, method, evidence, and conclusion. However, the reasoning behind the choice of specific technical solutions, such as the force-feedback-based positioning system, is not deeply explained, requiring some inference."
+  },
+  "validation": {
+    "score": 0.94,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": true,
+      "method": true,
+      "evidence": true,
+      "entities": true,
+      "materials": true,
+      "properties": true,
+      "measurements": false,
+      "conditions": true,
+      "mechanisms": true,
+      "outcomes": true,
+      "cross_sdl_match": true
+    },
+    "missing": [
+      "measurements"
+    ],
+    "notes": []
+  }
+}

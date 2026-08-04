@@ -1,0 +1,258 @@
+{
+  "paper_id": "acfocus_bb18fc31de9e",
+  "title": "Quantum Computing-Enhanced Algorithm Unveils Novel Inhibitors for KRAS",
+  "metadata": {
+    "doi": "10.48550/arxiv.2402.08210",
+    "url": "https://arxiv.org/abs/2402.08210",
+    "year": "2024",
+    "authors": "Vakili MG, Gorgulla C, Nigam A, Bezrukov D, Varoli D, Aliper A, Polykovsky D, Das KMP, Snider J, Lyakisheva A, Mansob AH, Yao Z, Bitar L, Radchenko E, Ding X, Liu J, Meng F, Ren F, Cao Y, Stagljar I, Aspuru-Guzik A, Zhavoronkov A",
+    "venue": "arxiv",
+    "category": "Preprint",
+    "peer_reviewed": "Non Peer Reviewed",
+    "ac_members": [
+      "Alán Aspuru-Guzik"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "",
+  "abstract": "Quantum Computing-Enhanced Algorithm Unveils Novel Inhibitors for KRAS\nMohammad Ghazi Vakili,1, 2 Christoph Gorgulla,3, 4 AkshatKumar Nigam,5 Dmitry Bezrukov,6 Daniel Varoli,7 Alex\nAliper,6 Daniil Polykovsky,6 Krishna M. Padmanabha Das,8, 9 Jamie Snider,10 Anna Lyakisheva,10 Ardalan Hosseini\nMansob,10, 11 Zhong Yao,10 Lela Bitar,10, 12 Eugene Radchenko,6 Xiao Ding,6 Jinxin Liu,6 Fanye Meng,6 Feng\nRen,6 Yudong Cao,13 Igor Stagljar,10, 14, 11, 15 Al´an Aspuru-Guzik,1, 2, 16, 17, 18, 19, ∗and Alex Zhavoronkov6, †\n1Department of Computer Science, University of Toronto, Canada\n2Department of Chemistry, University of Toronto, Canada\n3Department of Structural Biology, St. Jude Children’s Research Hospital, USA\n4Department of Physics, Harvard University, USA\n5Department of Computer Science, Stanford University\n6Insilico Medicine AI Limited, Abu Dhabi, UAE\n7Zapata AI, 100 Federal St., Boston, MA 02110\n8Department of Cancer Biology, Dana-Farber Cancer Institute, Boston, MA, USA\n9Department of Biological Chemistry and Molecular Pharmacology,\nHarvard Medical School, Harvard University, Boston, MA, USA\n10Donnelly Centre, Temerity, Faculty of Medicine, University of Toronto, ON, Canada\n11Department of Molecular Genetics, University of Toronto, Ontario, Canada\n12Department for Lung Diseases Jordanovac, Clinical Hospital Centre Zagreb, University of Zagreb, Croatia\n13Zapata AI, 100 Federal St., Boston, MA, USA\n14Department of Biochemistry, University of Toronto, Ontario, Canada\n15Mediterranean Institute for Life Sciences, Split, Croatia\n16Department of Chemical Engineering and Applied Chemistry, University of Toronto, Canada\n17Department of Materials Science and Engineering, University of Toronto, Canada\n18Vector Institute for Artificial Intelligence, Toronto, Canada\n19Lebovic Fellow, Canadian Institute for Advanced Research (CIFAR), Toronto, Ontario, Canada\nAbstract The discovery of small molecules with therapeutic potential is a long-standing challenge\nin chemistry and biology. R",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "A hybrid quantum-classical algorithm integrating a Quantum Circuit Born Machine (QCBM) with a classical Long Short-Term Memory (LSTM) network, enhanced with a reward function to generate drug-like small molecules.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "problems": [
+    {
+      "value": "Discovery of small molecules with therapeutic potential, specifically for KRAS protein which is a notorious target in drug discovery.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "hypotheses": [
+    {
+      "value": "A quantum-classical generative model can be used to design novel KRAS inhibitors with improved efficacy.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "evidence": [
+    {
+      "value": "Two molecules, ISM061-018-2 and ISM061-22, demonstrated effective engagement with KRAS, with ISM061-018-2 exhibiting a binding affinity to KRAS-G12D at 1.4µM.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "conclusions": [
+    {
+      "value": "The hybrid quantum-classical algorithm demonstrated the ability to yield experimentally confirmed biological hits, showcasing the practical potential of quantum-assisted drug discovery.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "entities": [
+    {
+      "value": "Quantum Circuit Born Machine (QCBM)",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Long Short-Term Memory (LSTM) network",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "KRAS protein",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "ISM061-018-2 molecule",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "ISM061-22 molecule",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "KRAS protein",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "ISM061-018-2 molecule",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "ISM061-22 molecule",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Quantum Computing-Enhanced Algorithm Unveils Novel Inhibitors for KRAS A hybrid quantum-classical algorithm integrating a Quantum Circuit Born Machine (QCBM) with a classical Long Short-Term Memory (LSTM) network, enhanced with a reward function to generate drug-like small molecules.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Two molecules, ISM061-018-2 and ISM061-22, demonstrated effective engagement with KRAS, with ISM061-018-2 exhibiting a binding affinity to KRAS-G12D at 1.4µM.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Quantum Circuit Born Machine (QCBM) Long Short-Term Memory (LSTM) network KRAS protein ISM061-018-2 molecule ISM061-22 molecule Generation of novel KRAS inhibitors with unique scaffolds Enhanced distribution learning from established datasets Experimental validation of computational predictions",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [],
+  "measurements": [],
+  "conditions": [],
+  "mechanisms": [
+    {
+      "value": "Quantum-classical hybrid generative model for designing small molecules",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Molecular docking techniques for virtual screening",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Reward function using Chemistry42 for AI-driven validation of generated molecules",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "outcomes": [
+    {
+      "value": "Generation of novel KRAS inhibitors with unique scaffolds",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Enhanced distribution learning from established datasets",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Experimental validation of computational predictions",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "Artificial Intelligence & Data Science",
+    "Quantum",
+    "Biology",
+    "Therapeutics"
+  ],
+  "reasoning_motifs": [
+    {
+      "value": "Novelty Generation → Drug Discovery",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Virtual Screening → Lead Identification",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "AI Optimization → Performance Enhancement",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "general_principles": [
+    {
+      "value": "Exploiting Computational Diversity for Innovation",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Integrating Virtual and Experimental Approaches for Validation",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "acgold_7c535fc802dd",
+    "cross_sdl_reasoning_json": "/Users/sissifeng/Downloads/cross-sdl_knowledge_transfer_engine/data/reasoning/acgold_7c535fc802dd.json",
+    "cross_sdl_extraction_quality": 0.8,
+    "cross_sdl_notes": "The paper presents a structured approach to integrating quantum and classical methods for drug discovery, with clear hypotheses, methods, and conclusions. However, some details of the experimental procedures and specific challenges encountered were not explicitly detailed in the abstracted text, leading to a slightly lower extraction quality score."
+  },
+  "validation": {
+    "score": 0.65,
+    "coverage": {
+      "source_summary": false,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": true,
+      "entities": true,
+      "materials": true,
+      "properties": false,
+      "measurements": false,
+      "conditions": false,
+      "mechanisms": true,
+      "outcomes": true,
+      "cross_sdl_match": true
+    },
+    "missing": [
+      "source_summary",
+      "hardware",
+      "properties",
+      "measurements",
+      "conditions"
+    ],
+    "notes": [
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

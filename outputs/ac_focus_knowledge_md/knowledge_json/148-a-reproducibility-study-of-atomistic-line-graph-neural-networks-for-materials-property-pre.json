@@ -1,0 +1,250 @@
+{
+  "paper_id": "acfocus_0c8bdc6e6fee",
+  "title": "A reproducibility study of atomistic line graph neural networks for materials property prediction",
+  "metadata": {
+    "doi": "10.1039/d4dd00064a",
+    "url": "https://pubs.rsc.org/en/content/articlelanding/2024/dd/d4dd00064a",
+    "year": "2024",
+    "authors": "Li K, DeCost B, Choudhary K, Hattrick-Simpers J",
+    "venue": "Digital Discovery",
+    "category": "Journal article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Jason Hattrick-Simpers"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance"
+    ],
+    "flags": {
+      "acknowledges_ac": "checked",
+      "highly_relevant": "checked",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "This study analyzes the reproducibility of a graph neural network model for atomistic prediction tasks in materials science, finding good agreement with the original results and highlighting the benefits of open data and code practices, while suggesting further improvements for reproducibility.",
+  "abstract": "Use of machine learning has been increasingly popular in materials science as data-driven materials discovery is becoming the new paradigm. Reproducibility of findings is paramount for promoting transparency and accountability in research and building trust in the scientific community. Here we conduct a reproducibility analysis of the work by K. Choudhary and B. Brian [npj Comput. Mater., 7, 2021, 185], in which a new graph neural network architecture was developed with improved performance on multiple atomistic prediction tasks. We examine the reproducibility for the model performance on 29 regression tasks and for an ablation analysis of the graph neural network layers. We find that the reproduced results generally exhibit a good quantitative agreement with the initial study, despite minor disparities in model performance and training efficiency that may be resulting from factors such as hardware difference and stochasticity involved in model training and data splits. The ease of conducting these reproducibility experiments confirms the great benefits of open data and code practices to which the initial work adhered. We also discuss some further enhancements in reproducible practices such as code and data archiving and providing data identifiers used in dataset splits.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "Conducting a reproducibility analysis of the ALIGNN model performance on 29 regression tasks and an ablation analysis of the graph neural network layers, using the same datasets and model training procedures as the original study.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "problems": [
+    {
+      "value": "Assessing the reproducibility of findings in machine learning for materials property prediction, specifically focusing on the Atomistic Line Graph Neural Network (ALIGNN) model.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "hypotheses": [
+    {
+      "value": "The ALIGNN model performance on multiple atomistic prediction tasks can be reliably reproduced.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "evidence": [
+    {
+      "value": "The reproduced results generally exhibit good quantitative agreement with the initial study, with minor disparities in model performance and training efficiency.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "conclusions": [
+    {
+      "value": "The ALIGNN model performance and ablation analysis are largely reproducible, confirming the benefits of open data and code practices in facilitating reproducibility in computational materials science.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "entities": [
+    {
+      "value": "ALIGNN model",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Graph Neural Networks (GNNs)",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "JARVIS-DFT dataset",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Python environment",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Deep Graph Library (DGL)",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "A reproducibility study of atomistic line graph neural networks for materials property prediction This study analyzes the reproducibility of a graph neural network model for atomistic prediction tasks in materials science, finding good agreement with the original results and highlighting the benefits of open data and code practices, while suggesting further improvements for reproducibility.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Use of machine learning has been increasingly popular in materials science as data-driven materials discovery is becoming the new paradigm.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [
+    {
+      "value": "A reproducibility study of atomistic line graph neural networks for materials property prediction This study analyzes the reproducibility of a graph neural network model for atomistic prediction tasks in materials science, finding good agreement with the original results and highlighting the benefits of open data and code practices, while suggesting further improvements for reproducibility.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [],
+  "conditions": [],
+  "mechanisms": [
+    {
+      "value": "Data-driven materials discovery",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Graph neural network architecture development",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Model training and evaluation",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Ablation analysis of neural network layers",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "outcomes": [
+    {
+      "value": "Improved performance on multiple atomistic prediction tasks",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Reproducibility of model performance",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Insights into the contributions of individual model components",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "Artificial Intelligence & Data Science",
+    "Materials Science"
+  ],
+  "reasoning_motifs": [
+    {
+      "value": "Open data and code practices → Enhanced reproducibility",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Model performance variation → Training efficiency and hardware configuration sensitivity",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "general_principles": [
+    {
+      "value": "Transparency and accountability in research",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Adaptation to hardware and software environment variations",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "failure_paths": [
+    {
+      "value": "success: Reproducing the ALIGNN model performance on 29 regression tasks from the JARVIS-DFT dataset. Evidence: The reproduced results generally exhibit a good quantitative agreement with the initial study.",
+      "source": "cross_sdl_phase4",
+      "confidence": 0.75,
+      "evidence": ""
+    },
+    {
+      "value": "partial: Reproducing the ablation analysis of the ALIGNN model layers. Evidence: Similar effects of the layers on the model performance are reproduced, but with a maximum deviation of 6% from the original value.",
+      "source": "cross_sdl_phase4",
+      "confidence": 0.75,
+      "evidence": ""
+    }
+  ],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "acgold_7dcc1c51257d",
+    "cross_sdl_reasoning_json": "/Users/sissifeng/Downloads/cross-sdl_knowledge_transfer_engine/data/reasoning/acgold_7dcc1c51257d.json",
+    "cross_sdl_extraction_quality": 0.8,
+    "cross_sdl_notes": "The paper provides a clear structure for reproducibility analysis, but some details on the specific challenges encountered during the reproduction process could be more explicit."
+  },
+  "validation": {
+    "score": 0.8,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": true,
+      "entities": true,
+      "materials": true,
+      "properties": true,
+      "measurements": false,
+      "conditions": false,
+      "mechanisms": true,
+      "outcomes": true,
+      "cross_sdl_match": true
+    },
+    "missing": [
+      "hardware",
+      "measurements",
+      "conditions"
+    ],
+    "notes": [
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

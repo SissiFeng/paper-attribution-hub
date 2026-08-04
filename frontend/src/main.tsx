@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
 
 import { Sidebar } from "@/components/Sidebar";
+import { GlobalChat } from "@/components/GlobalChat";
 import PaperReviewPage from "@/pages/PaperReviewPage";
 import ReviewQueuePage from "@/pages/ReviewQueuePage";
 import PipelineStatusPage from "@/pages/PipelineStatusPage";
@@ -79,6 +80,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
           <Route path="/retrieval" element={<RetrievalPage />} />
         </Route>
       </Routes>
+      <GlobalChat />
     </BrowserRouter>
   </React.StrictMode>
 );

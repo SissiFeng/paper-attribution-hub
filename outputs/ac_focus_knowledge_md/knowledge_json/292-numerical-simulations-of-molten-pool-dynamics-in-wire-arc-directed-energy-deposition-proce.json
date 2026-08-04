@@ -1,0 +1,110 @@
+{
+  "paper_id": "acfocus_b850058700cb",
+  "title": "Numerical simulations of molten pool dynamics in wire-arc directed energy deposition processes: A review",
+  "metadata": {
+    "doi": "10.1016/j.jmapro.2025.01.022",
+    "url": "https://www.semanticscholar.org/paper/Numerical-simulations-of-molten-pool-dynamics-in-A-Yi-Jiao/279ebd1c749246842ad1a9549bb382602f96a095",
+    "year": "2025",
+    "authors": "H. Yi; F. Jiao; H. Cao; J. Zhang; Y. Zou",
+    "venue": "Journal of Manufacturing Processes",
+    "category": "Journal Article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Yu Zou"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "This paper systematically reviews numerical simulation studies of wire-arc direct energy deposition (DED), emphasizing the critical role of molten pool dynamics in component quality, and discusses how simulation advances understanding, theory, and experimental guidance for this technology.",
+  "abstract": "Wire-arc direct energy deposition (DED) technology has proven to offer irreplaceable advantages in the production of complex, large, and ultra-large components, owing to its distinctive characteristics, including cost-effectiveness, rapid processing speeds, and freedom from dimensional constraints. In practical applications, the molten pool dynamics exerts a decisive influence on the quality of the final components, a factor that cannot be overlooked. Solely relying on experiments is difficult to quantitatively and scientifically comprehending the physical mechanisms associated with the deposition process. In contrast, numerical simulation technology has a unique advantage in understanding the scientific nature, perfecting the theoretical framework, and guiding the experiments. To this end, this paper systematically reviews the numerical simulation studies of the wire-arc DED, focusing on molten pool dynamics. Firstly, the physical model and some approximations in the model establishment process are introduced. In addition, the molten pool dynamics under different deposition strategies and in-situ assistance of multi-energy fields are analysed in depth, mainly covering the transient evolution and physical mechanisms of the molten pool. Finally, the future development trends in numerical simulation of molten pool dynamics are predicted, providing valuable insights for enhancing the theoretical framework of wire-arc DED technology.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "This paper systematically reviews numerical simulation studies of wire-arc direct energy deposition (DED), emphasizing the critical role of molten pool dynamics in component quality, and discusses how simulation advances understanding, theory, and experimental guidance for this technology.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [],
+  "materials": [],
+  "properties": [
+    {
+      "value": "Numerical simulations of molten pool dynamics in wire-arc directed energy deposition processes: A review This paper systematically reviews numerical simulation studies of wire-arc direct energy deposition (DED), emphasizing the critical role of molten pool dynamics in component quality, and discusses how simulation advances understanding, theory, and experimental guidance for this technology.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Wire-arc direct energy deposition (DED) technology has proven to offer irreplaceable advantages in the production of complex, large, and ultra-large components, owing to its distinctive characteristics, including cost-effectiveness, rapid processing speeds, and freedom from dimensional constraints.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "In addition, the molten pool dynamics under different deposition strategies and in-situ assistance of multi-energy fields are analysed in depth, mainly covering the transient evolution and physical mechanisms of the molten pool.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [],
+  "conditions": [],
+  "mechanisms": [],
+  "outcomes": [],
+  "sdl_tags": [],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.37,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": false,
+      "materials": false,
+      "properties": true,
+      "measurements": false,
+      "conditions": false,
+      "mechanisms": false,
+      "outcomes": false,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "entities",
+      "materials",
+      "measurements",
+      "conditions",
+      "mechanisms",
+      "outcomes",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

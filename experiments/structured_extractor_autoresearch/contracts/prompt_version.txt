@@ -1,0 +1,11 @@
+PAS cross-SDL structured extractor prompt v1
+
+Use only the supplied evidence spans. Do not infer a field from paper-level
+keywords alone. Return null or an empty list when the spans do not support a
+field. Preserve the source surface form next to any canonical ontology concept.
+Distinguish recommendation from autonomous decision, offline analysis from
+closed-loop control, and predefined workflow from adaptive strategy.
+
+Emit exactly the schema in extraction_schema.json. Every non-null scientific,
+strategy, condition, failure, and transfer claim must cite paper_id, chunk_id,
+the exact text span, and character offsets.

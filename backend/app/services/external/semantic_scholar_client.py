@@ -17,7 +17,7 @@ from __future__ import annotations
 
 import os
 from datetime import timedelta
-from typing import Any, Iterator
+from typing import Any
 
 from sqlalchemy.orm import Session
 

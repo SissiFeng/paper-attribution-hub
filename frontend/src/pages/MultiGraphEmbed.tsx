@@ -5,82 +5,110 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 
+import { AnalysisScopePanel } from "@/components/AnalysisScopePanel";
 import { EChart } from "@/components/EChart";
 import { getMultiGraph } from "@/lib/api";
+import { filterFromSearchParams } from "@/lib/filter";
+import {
+  multiGraphProjectionFromSearchParams,
+  multiGraphProjectionToSearchParams,
+} from "@/lib/multiGraphUrl";
+import {
+  isLatestRequest,
+  resultForScope,
+  type ScopedResult,
+} from "@/lib/scopedResult";
 import type { MultiGraphPayload } from "@/types";
 
 const TYPE_COLOR: Record<string, string> = {
-  author: "#6594B1", institution: "#213C51", paper: "#DDAED3",
+  author: "#6594B1", institution: "#213C51", country: "#8b5cf6", paper: "#DDAED3",
   topic: "#22c55e", method: "#f59e0b", funder: "#a78bfa", ac_core: "#ec4899",
 };
 const EDGE_COLOR: Record<string, string> = {
   authored: "rgba(101,148,177,0.55)", affiliated_with: "rgba(33,60,81,0.40)",
   belongs_to_topic: "rgba(34,197,94,0.45)", coauthored: "rgba(101,148,177,0.55)",
+  institution_collaboration: "rgba(167,139,250,0.45)",
+  country_collaboration: "rgba(139,92,246,0.5)",
+  published_by: "rgba(33,60,81,0.45)",
+  cites: "rgba(221,174,211,0.55)",
+  cites_ac_core: "rgba(236,72,153,0.65)",
+  uses_method: "rgba(245,158,11,0.45)",
+  covers_topic: "rgba(34,197,94,0.45)",
 };
 const DEFAULT_NODE_TYPES = ["author", "institution", "paper", "topic"];
 const DEFAULT_EDGE_TYPES = ["authored", "affiliated_with", "belongs_to_topic"];
-const AC_ATTRIBUTED_LABELS = ["CORE_RELEVANT", "RELATED_RELEVANT"];
 
 export default function MultiGraphEmbed() {
-  const [searchParams] = useSearchParams();
-  const [payload, setPayload] = useState<MultiGraphPayload | null>(null);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [payloadResult, setPayloadResult] = useState<
+    ScopedResult<MultiGraphPayload> | null
+  >(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [activeNodeTypes, setActiveNodeTypes] = useState<string[]>(DEFAULT_NODE_TYPES);
-  const [activeEdgeTypes, setActiveEdgeTypes] = useState<string[]>(DEFAULT_EDGE_TYPES);
   const layoutKey = useRef(0);
+  const requestGeneration = useRef(0);
 
   const yearFrom = Number(searchParams.get("year_from")) || 2021;
   const yearTo   = Number(searchParams.get("year_to"))   || 2025;
+  const searchKey = searchParams.toString();
+  const payload = resultForScope(payloadResult, searchKey);
+  const filter = useMemo(
+    () => filterFromSearchParams(new URLSearchParams(searchKey)),
+    [searchKey],
+  );
+  const currentProjection = useMemo(
+    () => multiGraphProjectionFromSearchParams(
+      new URLSearchParams(searchKey),
+    ),
+    [searchKey],
+  );
+  const {
+    nodeTypes: activeNodeTypes,
+    edgeTypes: activeEdgeTypes,
+  } = currentProjection;
 
   const load = useCallback(async () => {
+    const generation = ++requestGeneration.current;
     setLoading(true);
     setError(null);
     try {
       const data = await getMultiGraph({
+        search: new URLSearchParams(searchKey),
         node_types: activeNodeTypes,
         edge_types: activeEdgeTypes,
-        labels: AC_ATTRIBUTED_LABELS,
-        group_by: "by_institution",
-        hop_limit: 2,
-        min_edge_weight: 0.3,
+        labels: filter.labels,
+        group_by: currentProjection.groupBy,
+        center_id: currentProjection.centerId || undefined,
+        hop_limit: currentProjection.hopLimit,
+        similarity_min: currentProjection.similarityMin,
+        similarity_top_k: currentProjection.similarityTopK,
+        min_edge_weight: currentProjection.minEdgeWeight,
+        min_papers: currentProjection.minPapers,
+        min_degree: currentProjection.minDegree,
+        top_n: currentProjection.topN,
+        excluded_node_ids: currentProjection.excludedNodeIds,
         year_from: yearFrom,
         year_to: yearTo,
       });
-      setPayload(data);
-      layoutKey.current += 1;
+      if (isLatestRequest(generation, requestGeneration.current)) {
+        setPayloadResult({ scopeKey: searchKey, payload: data });
+        layoutKey.current += 1;
+      }
     } catch (e) {
-      setError(e instanceof Error ? e.message : String(e));
+      if (isLatestRequest(generation, requestGeneration.current)) {
+        setError(e instanceof Error ? e.message : String(e));
+        setPayloadResult(null);
+      }
     } finally {
-      setLoading(false);
+      if (isLatestRequest(generation, requestGeneration.current)) setLoading(false);
     }
-  }, [activeNodeTypes, activeEdgeTypes, yearFrom, yearTo]);
+  }, [currentProjection, filter.labels, searchKey, yearFrom, yearTo]);
 
   useEffect(() => { void load(); }, [load]);
 
   const option = useMemo(() => {
-    if (!payload) return null;
-    const paperInRange = new Set(
-      payload.nodes
-        .filter(n => n.type === "paper" &&
-          (n.metadata.year as number) >= yearFrom &&
-          (n.metadata.year as number) <= yearTo)
-        .map(n => n.id)
-    );
-    const reachable = new Set(paperInRange);
-    for (const e of payload.edges) {
-      if (e.type === "authored" && paperInRange.has(e.target)) reachable.add(e.source);
-      if (e.type === "belongs_to_topic" && paperInRange.has(e.source)) reachable.add(e.target);
-    }
-    for (const e of payload.edges) {
-      if (e.type === "affiliated_with" && reachable.has(e.source)) reachable.add(e.target);
-    }
-    const visibleNodes = payload.nodes.filter(n => activeNodeTypes.includes(n.type) && reachable.has(n.id));
-    const visibleIds = new Set(visibleNodes.map(n => n.id));
-    const visibleEdges = payload.edges.filter(e =>
-      activeEdgeTypes.includes(e.type) && visibleIds.has(e.source) && visibleIds.has(e.target)
-    );
-    const data = visibleNodes.map(n => ({
+    if (!payload || payload.nodes.length === 0) return null;
+    const data = payload.nodes.map(n => ({
       id: n.id, name: n.label,
       symbolSize: n.type === "institution" ? 22 + Math.log1p((n.metadata?.paper_count as number) ?? 1) * 8 : 12,
       itemStyle: { color: TYPE_COLOR[n.type] ?? "#9ab1c4" },
@@ -91,7 +119,7 @@ export default function MultiGraphEmbed() {
       },
       node_id: n.id,
     }));
-    const links = visibleEdges.map(e => ({
+    const links = payload.edges.map(e => ({
       source: e.source, target: e.target,
       lineStyle: { color: EDGE_COLOR[e.type] ?? "rgba(101,148,177,0.3)", width: 0.8 + Math.log1p(e.weight) * 0.8 },
     }));
@@ -105,13 +133,28 @@ export default function MultiGraphEmbed() {
         blur: { itemStyle: { opacity: 0.2 }, lineStyle: { opacity: 0.08 } },
       }],
     };
-  }, [payload, activeNodeTypes, activeEdgeTypes, yearFrom, yearTo]);
+  }, [payload]);
 
   const toggle = (kind: "node" | "edge", t: string) => {
-    if (kind === "node")
-      setActiveNodeTypes(p => p.includes(t) ? p.filter(x => x !== t) : [...p, t]);
-    else
-      setActiveEdgeTypes(p => p.includes(t) ? p.filter(x => x !== t) : [...p, t]);
+    const nodeTypes = kind === "node"
+      ? (activeNodeTypes.includes(t)
+        ? activeNodeTypes.filter((value) => value !== t)
+        : [...activeNodeTypes, t])
+      : activeNodeTypes;
+    const edgeTypes = kind === "edge"
+      ? (activeEdgeTypes.includes(t)
+        ? activeEdgeTypes.filter((value) => value !== t)
+        : [...activeEdgeTypes, t])
+      : activeEdgeTypes;
+    if (nodeTypes.length === 0 || edgeTypes.length === 0) return;
+    setSearchParams(
+      multiGraphProjectionToSearchParams(new URLSearchParams(searchKey), {
+        ...currentProjection,
+        nodeTypes,
+        edgeTypes,
+      }),
+      { replace: false },
+    );
   };
 
   return (
@@ -127,6 +170,11 @@ export default function MultiGraphEmbed() {
         </span>
         <span style={{ color: "#9ab1c4", marginRight: 8 }}>
           {payload ? `${payload.nodes.length} nodes · ${payload.edges.length} edges` : loading ? "Loading…" : ""}
+        </span>
+        <span style={{ color: "#657487", marginRight: 8 }}>
+          {filter.labels.length === 0
+            ? "all classifications"
+            : filter.labels.map((label) => label.replace(/_/g, " ")).join(" + ")}
         </span>
 
         {/* Node toggles */}
@@ -171,44 +219,53 @@ export default function MultiGraphEmbed() {
         </button>
       </div>
 
-      {/* Full-height chart */}
-      <div style={{ flex: 1, overflow: "hidden", position: "relative" }}>
-        {loading && (
-          <div style={{
-            position: "absolute", inset: 0, display: "flex", alignItems: "center",
-            justifyContent: "center", background: "#F8FAFC", zIndex: 10,
-            color: "#6594B1", fontSize: 14, fontFamily: "'JetBrains Mono',monospace",
-          }}>
-            ↻ Building graph…
-          </div>
-        )}
-        {error && (
-          <div style={{
-            position: "absolute", inset: 0, display: "flex", flexDirection: "column",
-            alignItems: "center", justifyContent: "center", background: "#F8FAFC", zIndex: 10, gap: 12,
-          }}>
-            <div style={{ color: "#f97316", fontSize: 14, fontFamily: "'JetBrains Mono',monospace" }}>
-              Failed to load graph: {error}
-            </div>
-            <button onClick={() => void load()} style={{
-              padding: "6px 18px", borderRadius: 6, border: "1px solid #d1dce8",
-              background: "#fff", cursor: "pointer", fontSize: 13,
+      <div
+        className={payload ? "multi-graph-embed-body with-audit" : "multi-graph-embed-body"}
+      >
+        {/* Full-height chart */}
+        <div style={{ overflow: "hidden", position: "relative" }}>
+          {loading && (
+            <div style={{
+              position: "absolute", inset: 0, display: "flex", alignItems: "center",
+              justifyContent: "center", background: "#F8FAFC", zIndex: 10,
+              color: "#6594B1", fontSize: 14, fontFamily: "'JetBrains Mono',monospace",
             }}>
-              ↻ Retry
-            </button>
-          </div>
+              ↻ Building graph…
+            </div>
+          )}
+          {error && (
+            <div style={{
+              position: "absolute", inset: 0, display: "flex", flexDirection: "column",
+              alignItems: "center", justifyContent: "center", background: "#F8FAFC", zIndex: 10, gap: 12,
+            }}>
+              <div style={{ color: "#f97316", fontSize: 14, fontFamily: "'JetBrains Mono',monospace" }}>
+                Failed to load graph: {error}
+              </div>
+              <button onClick={() => void load()} style={{
+                padding: "6px 18px", borderRadius: 6, border: "1px solid #d1dce8",
+                background: "#fff", cursor: "pointer", fontSize: 13,
+              }}>
+                ↻ Retry
+              </button>
+            </div>
+          )}
+          {option ? (
+            <EChart key={layoutKey.current} option={option} style={{ height: "100%", width: "100%" }} />
+          ) : !loading && !error ? (
+            <div style={{
+              position: "absolute", inset: 0, display: "flex", alignItems: "center",
+              justifyContent: "center", color: "#9aa3b2", fontSize: 13,
+              fontFamily: "'JetBrains Mono',monospace",
+            }}>
+              No data for the selected filters. Try adjusting node/edge types.
+            </div>
+          ) : null}
+        </div>
+        {payload && (
+          <aside className="multi-graph-embed-audit">
+            <AnalysisScopePanel audit={payload.audit} title="Graph evidence scope" />
+          </aside>
         )}
-        {option ? (
-          <EChart key={layoutKey.current} option={option} style={{ height: "100%", width: "100%" }} />
-        ) : !loading && !error ? (
-          <div style={{
-            position: "absolute", inset: 0, display: "flex", alignItems: "center",
-            justifyContent: "center", color: "#9aa3b2", fontSize: 13,
-            fontFamily: "'JetBrains Mono',monospace",
-          }}>
-            No data for the selected filters. Try adjusting node/edge types.
-          </div>
-        ) : null}
       </div>
     </div>
   );

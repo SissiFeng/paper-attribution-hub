@@ -1,0 +1,56 @@
+{
+  "ontology_id": "pas.cross-sdl-strategy.v1",
+  "status": "benchmark-frozen",
+  "research_goals": [
+    "optimization",
+    "mapping",
+    "discovery",
+    "validation"
+  ],
+  "strategy_concepts": [
+    "sequential_experiment_selection",
+    "bayesian_optimization",
+    "active_learning",
+    "design_of_experiments",
+    "high_throughput_screening",
+    "closed_loop_adaptation",
+    "replicate_aware_sampling",
+    "uncertainty_sampling"
+  ],
+  "decision_operators": [
+    "explore",
+    "exploit",
+    "replicate",
+    "expand_action_space",
+    "tighten_constraint",
+    "switch_model",
+    "stop"
+  ],
+  "evidence_types": [
+    "hypothesis",
+    "mechanism",
+    "decision",
+    "strategy_change",
+    "failure",
+    "transfer_condition"
+  ],
+  "context_conditions": [
+    "small_data",
+    "high_experiment_cost",
+    "measurement_noise",
+    "bounded_action_space",
+    "iterative_experiments",
+    "scalar_objective",
+    "hardware_drift"
+  ],
+  "normalization_contract": {
+    "research_strategy.problem_type": "research_goals",
+    "research_strategy.strategy": "strategy_concepts",
+    "research_strategy.decision": "decision_operators",
+    "research_strategy.constraints": "context_conditions",
+    "transferable_pattern.required_conditions": "context_conditions",
+    "transferable_pattern.failure_conditions": "context_conditions",
+    "evidence_spans.evidence_type": "evidence_types"
+  },
+  "normalization_rule": "Store ontology_layer, canonical_concept, source surface_form, and grounded evidence together."
+}

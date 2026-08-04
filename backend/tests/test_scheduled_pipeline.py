@@ -12,6 +12,22 @@ from app.services.scheduled_pipeline import (
 def test_pipeline_runs_and_persists_audit_row(seeded_session):
     result = run_daily_pipeline(seeded_session, do_discovery=False)
     assert result.status == "success"
+    screening = next(
+        step for step in result.steps if step["name"] == "staged_screening"
+    )
+    evolution = next(
+        step for step in result.steps if step["name"] == "model_evolution"
+    )
+    assert evolution["status"] == "disabled"
+    assert evolution["outcome"] == "disabled"
+    assert screening["scored"] > 0
+    assert screening["review_subset"] == result.enqueued_for_review
+    assert (
+        screening["positive_review"]
+        + screening["uncertain_review"]
+        + screening["fulltext_review"]
+        == screening["review_subset"]
+    )
     # Audit row exists.
     rows = list(seeded_session.execute(select(PipelineRun)).scalars())
     assert len(rows) == 1
@@ -25,6 +41,22 @@ def test_pipeline_is_idempotent(seeded_session):
     assert result2.status == "success"
     assert result2.classified_new == 0
     assert result2.reclassified_stale == 0
+
+
+def test_pipeline_recovers_model_evolution_when_enabled(
+    seeded_session,
+    monkeypatch,
+):
+    monkeypatch.setenv("PAS_ACTIVE_LEARNING", "1")
+
+    result = run_daily_pipeline(seeded_session, do_discovery=False)
+
+    evolution = next(
+        step for step in result.steps if step["name"] == "model_evolution"
+    )
+    assert evolution["status"] == "ok"
+    assert evolution["outcome"] == "idle"
+    assert evolution["pending_reviews"] == 0
 
 
 def test_pipeline_classifies_newly_added_paper(seeded_session):

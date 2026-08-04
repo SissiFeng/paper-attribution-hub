@@ -82,6 +82,7 @@ class ClassificationResult:
     judge_applied: bool = False
     learned_label: str | None = None
     learned_confidence: float | None = None
+    learned_model_version: str | None = None
     attribution_evidence: AttributionEvidenceSignals | None = None
     aet_applied: bool = False
 
@@ -928,9 +929,9 @@ def classify_all(
 
     # v0.7: learned classifier post-hoc soft override.
     if use_learned is None:
-        use_learned = os.environ.get("PAS_LEARNED_CLASSIFIER", "0") == "1"
+        use_learned = os.environ.get("PAS_LEARNED_CLASSIFIER", "1") == "1"
     if use_learned:
-        _apply_learned_override(papers, results)
+        _apply_learned_override(papers, results, session=session)
 
     # All papers already persisted per-batch above.
     # v0.4: refresh proposition table once all classifications are settled.
@@ -954,17 +955,27 @@ CURRENT_MODEL_VERSION = "rules-v0.7"
 
 def _configured_model_version(
     use_attribution_evidence: bool | None = None,
+    use_learned: bool | None = None,
+    session: Session | None = None,
 ) -> str:
-    enabled = (
+    attribution_enabled = (
         settings.attribution_evidence_classifier_enabled
         if use_attribution_evidence is None
         else use_attribution_evidence
     )
-    return (
-        f"{CURRENT_MODEL_VERSION}+{SCORING_VERSION}"
-        if enabled
-        else CURRENT_MODEL_VERSION
+    learned_enabled = (
+        os.environ.get("PAS_LEARNED_CLASSIFIER", "1") == "1"
+        if use_learned is None
+        else use_learned
     )
+    base = CURRENT_MODEL_VERSION
+    if learned_enabled:
+        from app.services.learned_classifier import load_default_model
+
+        learned = load_default_model(session)
+        if learned is not None:
+            base = learned.model_version or "learned-v0.7"
+    return f"{base}+{SCORING_VERSION}" if attribution_enabled else base
 
 
 def _operational_model_version(version: str | None) -> str:
@@ -986,7 +997,9 @@ def papers_needing_classification(
     Human-confirmed papers are excluded — their label is locked and should
     only be touched via /reviews/{id}.
     """
-    target_version = current_version or _configured_model_version()
+    target_version = current_version or _configured_model_version(
+        session=session
+    )
 
     candidates: list[Paper] = []
     for paper in session.execute(select(Paper)).scalars():
@@ -1049,7 +1062,11 @@ def classify_new(
         refreshed = len(papers) - new
         return papers, new, refreshed
 
-    target_version = _configured_model_version(use_attribution_evidence)
+    target_version = _configured_model_version(
+        use_attribution_evidence,
+        use_learned,
+        session,
+    )
     needing = papers_needing_classification(
         session, current_version=target_version
     )
@@ -1148,9 +1165,9 @@ def _classify_subset(
         _apply_judge_to_uncertain(papers, results, judge=judge, session=session)
 
     if use_learned is None:
-        use_learned = os.environ.get("PAS_LEARNED_CLASSIFIER", "0") == "1"
+        use_learned = os.environ.get("PAS_LEARNED_CLASSIFIER", "1") == "1"
     if use_learned:
-        _apply_learned_override(papers, results)
+        _apply_learned_override(papers, results, session=session)
 
     for paper in papers:
         result = results[paper.id]
@@ -1294,7 +1311,7 @@ def _ac_memory_label(
 
 def _model_version_for(result: ClassificationResult) -> str:
     if result.learned_label is not None:
-        base = "learned-v0.7"
+        base = result.learned_model_version or "learned-v0.7"
     else:
         base = CURRENT_MODEL_VERSION
     suffixes: list[str] = []
@@ -1368,12 +1385,15 @@ def _apply_judge_to_uncertain(
 
 
 def _apply_learned_override(
-    papers: list[Paper], results: dict[str, ClassificationResult]
+    papers: list[Paper],
+    results: dict[str, ClassificationResult],
+    *,
+    session: Session | None = None,
 ) -> None:
     """If a learned classifier is available, fuse its prediction in."""
     from app.services.learned_classifier import load_default_model
 
-    model = load_default_model()
+    model = load_default_model(session)
     if model is None:
         return
     for p in papers:
@@ -1386,6 +1406,7 @@ def _apply_learned_override(
             continue
         r.learned_label = pred_label
         r.learned_confidence = round(pred_conf, 3)
+        r.learned_model_version = model.model_version
         # Hard override only if the model is much more confident than rules.
         if (
             pred_label != r.label

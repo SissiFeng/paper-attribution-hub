@@ -84,7 +84,10 @@ def test_canned_json_creates_row_with_right_shapes(session):
     assert row.method_core["surrogate_model"] == "Gaussian process"
     assert row.method_core["key_components"] == ["surrogate", "acquisition function"]
     assert row.assumptions == ["evaluations are expensive", "space is enumerable"]
-    assert {l["polarity"] for l in row.lessons} == {"positive", "negative"}
+    assert {lesson["polarity"] for lesson in row.lessons} == {
+        "positive",
+        "negative",
+    }
     assert row.domain_bindings == ["lithium electrolyte", "solvation energy"]
 
 
@@ -207,7 +210,11 @@ def test_example_loader(session, tmp_path):
     assert all(r.extractor == "example" for r in rows)
     assert all(r.model is None for r in rows)
     # Polarity-diverse lessons present somewhere.
-    polarities = {l["polarity"] for r in rows for l in r.lessons}
+    polarities = {
+        lesson["polarity"]
+        for row in rows
+        for lesson in row.lessons
+    }
     assert {"positive", "negative", "neutral"} <= polarities
 
     # Idempotent: second load does not duplicate.

@@ -1,0 +1,203 @@
+{
+  "paper_id": "acfocus_c28f40cf484e",
+  "title": "A self-supervised robotic system for autonomous contact-based spatial mapping of semiconductor properties",
+  "metadata": {
+    "doi": "10.1126/sciadv.adw7071",
+    "url": "https://www.science.org/doi/10.1126/sciadv.adw7071",
+    "year": "2025",
+    "authors": "Siemenn, Alexander E.; Das, Basita; Ji, Kangyu; Sheng, Fang; Buonassisi, Tonio",
+    "venue": "Science Advances",
+    "category": "Journal article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Tonio Buonassisi"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member"
+    ],
+    "flags": {
+      "acknowledges_ac": "checked",
+      "highly_relevant": "checked",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "A self-supervised neural network–driven robotic system enables high-precision, reliable, and high-throughput automation of contact-based material characterization, allowing self-driving laboratories to efficiently measure previously inaccessible semiconductor properties.",
+  "abstract": "Integrating robotically driven contact-based material characterization techniques into self-driving laboratories can enhance measurement quality, reliability, and throughput. While deep learning models support robust autonomy, current methods lack reliable pixel-precision positioning and require extensive labeled data. To overcome these challenges, we propose an approach for building self-supervised autonomy into contact-based robotic systems that teach the robot to follow domain expert measurement principles at high throughputs. We demonstrate the performance of this approach by autonomously driving a 4-DOF robotic probe for 24 hours to characterize semiconductor photoconductivity at 3025 uniquely predicted poses across a gradient of drop-casted perovskite film compositions, achieving throughputs of more than 125 measurements per hour. Spatially mapping photoconductivity onto each drop-casted film reveals compositional trends and regions of inhomogeneity, valuable for identifying manufacturing defects. With this self-supervised neural network–driven robotic system, we enable high-precision and reliable automation of contact-based characterization techniques at high throughputs, thereby allowing measurement of previously inaccessible yet important semiconductor properties for self-driving laboratories.",
+  "hardware": [
+    {
+      "value": "A self-supervised neural network–driven robotic system enables high-precision, reliable, and high-throughput automation of contact-based material characterization, allowing self-driving laboratories to efficiently measure previously inaccessible semiconductor properties.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "To overcome these challenges, we propose an approach for building self-supervised autonomy into contact-based robotic systems that teach the robot to follow domain expert measurement principles at high throughputs.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "We demonstrate the performance of this approach by autonomously driving a 4-DOF robotic probe for 24 hours to characterize semiconductor photoconductivity at 3025 uniquely predicted poses across a gradient of drop-casted perovskite film compositions, achieving throughputs of more than 125 measurements per hour.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "With this self-supervised neural network–driven robotic system, we enable high-precision and reliable automation of contact-based characterization techniques at high throughputs, thereby allowing measurement of previously inaccessible yet important semiconductor properties for self-driving laboratories.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "methods": [
+    {
+      "value": "A self-supervised neural network–driven robotic system enables high-precision, reliable, and high-throughput automation of contact-based material characterization, allowing self-driving laboratories to efficiently measure previously inaccessible semiconductor properties.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Automation and Robotics",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Chemistry",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "A self-supervised robotic system for autonomous contact-based spatial mapping of semiconductor properties A self-supervised neural network–driven robotic system enables high-precision, reliable, and high-throughput automation of contact-based material characterization, allowing self-driving laboratories to efficiently measure previously inaccessible semiconductor properties.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Integrating robotically driven contact-based material characterization techniques into self-driving laboratories can enhance measurement quality, reliability, and throughput.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "We demonstrate the performance of this approach by autonomously driving a 4-DOF robotic probe for 24 hours to characterize semiconductor photoconductivity at 3025 uniquely predicted poses across a gradient of drop-casted perovskite film compositions, achieving throughputs of more than 125 measurements per hour.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [
+    {
+      "value": "A self-supervised robotic system for autonomous contact-based spatial mapping of semiconductor properties A self-supervised neural network–driven robotic system enables high-precision, reliable, and high-throughput automation of contact-based material characterization, allowing self-driving laboratories to efficiently measure previously inaccessible semiconductor properties.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "With this self-supervised neural network–driven robotic system, we enable high-precision and reliable automation of contact-based characterization techniques at high throughputs, thereby allowing measurement of previously inaccessible yet important semiconductor properties for self-driving laboratories.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [
+    {
+      "value": "A self-supervised robotic system for autonomous contact-based spatial mapping of semiconductor properties A self-supervised neural network–driven robotic system enables high-precision, reliable, and high-throughput automation of contact-based material characterization, allowing self-driving laboratories to efficiently measure previously inaccessible semiconductor properties.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Integrating robotically driven contact-based material characterization techniques into self-driving laboratories can enhance measurement quality, reliability, and throughput.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "To overcome these challenges, we propose an approach for building self-supervised autonomy into contact-based robotic systems that teach the robot to follow domain expert measurement principles at high throughputs.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "We demonstrate the performance of this approach by autonomously driving a 4-DOF robotic probe for 24 hours to characterize semiconductor photoconductivity at 3025 uniquely predicted poses across a gradient of drop-casted perovskite film compositions, achieving throughputs of more than 125 measurements per hour.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "With this self-supervised neural network–driven robotic system, we enable high-precision and reliable automation of contact-based characterization techniques at high throughputs, thereby allowing measurement of previously inaccessible yet important semiconductor properties for self-driving laboratories.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "conditions": [
+    {
+      "value": "While deep learning models support robust autonomy, current methods lack reliable pixel-precision positioning and require extensive labeled data.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "mechanisms": [],
+  "outcomes": [
+    {
+      "value": "Electronics",
+      "source": "csv_applied_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "Automation and Robotics",
+    "Chemistry",
+    "Electronics"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.77,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": true,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": true,
+      "properties": true,
+      "measurements": true,
+      "conditions": true,
+      "mechanisms": false,
+      "outcomes": true,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "evidence",
+      "mechanisms",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only."
+    ]
+  }
+}

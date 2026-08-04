@@ -21,10 +21,8 @@ import argparse
 import csv
 import sys
 from collections import defaultdict
-from pathlib import Path
 
 from sqlalchemy import select
-from sqlalchemy.orm import Session
 
 from app.config import settings
 from app.db import SessionLocal

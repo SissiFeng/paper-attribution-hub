@@ -19,18 +19,24 @@ from typing import Iterable
 from sqlalchemy import select
 from sqlalchemy.orm import Session, selectinload
 
+from app.country_normalization import (
+    canonical_country_entries,
+    canonical_country_values,
+)
 from app.models import (
     AcCorePaper,
     Author,
     Institution,
     Paper,
     PaperAuthor,
-    PaperClassification,
     PaperProposition,
     PaperReference,
     Topic,
 )
-from app.services.filter_spec import apply_filter
+from app.services.filter_spec import (
+    apply_filter,
+    split_semicolon_values,
+)
 from app.services.multi_graph.types import (
     GraphEdge,
     GraphNode,
@@ -83,10 +89,13 @@ class GroupProvider(ABC):
 
 
 def _norm_semi(value: str | None) -> str | None:
-    """Normalize semicolon-concatenated fields (e.g. 'China;China' → 'China')."""
-    if not value:
-        return value
-    return next((v.strip() for v in value.split(";") if v.strip()), value)
+    """Normalize semicolon-concatenated fields without dropping values."""
+    normalized = split_semicolon_values(value)
+    return "; ".join(normalized) or None
+
+
+def _norm_country(value: str | None) -> str | None:
+    return "; ".join(canonical_country_values(value)) or None
 
 
 def _filtered_papers(session: Session, filt: MultiGraphFilter) -> list[Paper]:
@@ -185,11 +194,16 @@ def _keyword_topics_for_paper(paper: Paper) -> list[dict]:
 
 def _topic_matches_for_paper(paper: Paper) -> list[dict]:
     if paper.classification is not None and paper.classification.matched_topics:
-        return [
-            tm
-            for tm in paper.classification.matched_topics
-            if tm.get("topic_id") and (tm.get("score") or 0) >= 0.3
-        ]
+        by_topic: dict[str, dict] = {}
+        for match in paper.classification.matched_topics:
+            topic_id = match.get("topic_id")
+            score = float(match.get("score") or 0)
+            if not topic_id or score < 0.3:
+                continue
+            incumbent = by_topic.get(topic_id)
+            if incumbent is None or score > float(incumbent.get("score") or 0):
+                by_topic[topic_id] = match
+        return list(by_topic.values())
     return _keyword_topics_for_paper(paper)
 
 
@@ -244,9 +258,50 @@ class InstitutionNodes(NodeProvider):
                 label=inst.canonical_name,
                 metadata={
                     "is_partner": bool(inst.is_partner),
-                    "country": _norm_semi(inst.country),
+                    "country": _norm_country(inst.country),
                     "city": _norm_semi(inst.city),
                     "paper_count": paper_count[inst.id],
+                },
+            )
+
+
+class CountryNodes(NodeProvider):
+    type = "country"
+
+    def nodes(self, session, filt):
+        papers = _filtered_papers(session, filt)
+        paper_count: dict[str, int] = defaultdict(int)
+        institution_ids: dict[str, set[str]] = defaultdict(set)
+        partner_countries: set[str] = set()
+        country_display: dict[str, str] = {}
+        for paper in papers:
+            seen: set[str] = set()
+            for paper_author in paper.authors:
+                institution = paper_author.author.institution
+                countries = canonical_country_entries(
+                    institution.country if institution is not None else None
+                )
+                if not countries:
+                    continue
+                if institution is not None:
+                    for country in countries:
+                        country_display[country.identity] = country.display
+                        institution_ids[country.identity].add(institution.id)
+                        if institution.is_partner:
+                            partner_countries.add(country.identity)
+                seen.update(country.identity for country in countries)
+            for country in seen:
+                paper_count[country] += 1
+        for identity in sorted(paper_count):
+            country = country_display[identity]
+            yield GraphNode(
+                id=f"country:{country}",
+                type=self.type,
+                label=country,
+                metadata={
+                    "paper_count": paper_count[identity],
+                    "institution_count": len(institution_ids[identity]),
+                    "has_partner_institution": identity in partner_countries,
                 },
             )
 
@@ -310,7 +365,7 @@ class MethodNodes(NodeProvider):
         if not paper_ids:
             return
         seen: dict[str, str] = {}
-        method_paper_count: dict[str, int] = defaultdict(int)
+        method_papers: dict[str, set[str]] = defaultdict(set)
         for prop in session.execute(
             select(PaperProposition).where(
                 PaperProposition.predicate == "uses_method",
@@ -321,13 +376,13 @@ class MethodNodes(NodeProvider):
             if not key:
                 continue
             seen[key] = prop.object_value
-            method_paper_count[key] += 1
+            method_papers[key].add(prop.paper_id)
         for key, label in seen.items():
             yield GraphNode(
                 id=f"method:{key}",
                 type=self.type,
                 label=label,
-                metadata={"paper_count": method_paper_count[key]},
+                metadata={"paper_count": len(method_papers[key])},
             )
 
 
@@ -341,7 +396,7 @@ class FunderNodes(NodeProvider):
         if not paper_ids:
             return
         seen: dict[str, str] = {}
-        funded_count: dict[str, int] = defaultdict(int)
+        funded_papers: dict[str, set[str]] = defaultdict(set)
         for prop in session.execute(
             select(PaperProposition).where(
                 PaperProposition.predicate == "funded_by",
@@ -352,13 +407,13 @@ class FunderNodes(NodeProvider):
             if not key:
                 continue
             seen[key] = prop.object_value
-            funded_count[key] += 1
+            funded_papers[key].add(prop.paper_id)
         for key, label in seen.items():
             yield GraphNode(
                 id=f"funder:{key}",
                 type=self.type,
                 label=label,
-                metadata={"paper_count": funded_count[key]},
+                metadata={"paper_count": len(funded_papers[key])},
             )
 
 
@@ -366,7 +421,22 @@ class AcCoreNodes(NodeProvider):
     type = "ac_core"
 
     def nodes(self, session, filt):
+        paper_ids = _paper_id_set(session, filt)
+        support: dict[str, set[str]] = defaultdict(set)
+        if paper_ids:
+            for citing_paper_id, cited_ac_core_id in session.execute(
+                select(
+                    PaperReference.citing_paper_id,
+                    PaperReference.cited_ac_core_id,
+                ).where(
+                    PaperReference.citing_paper_id.in_(paper_ids),
+                    PaperReference.cited_ac_core_id.is_not(None),
+                )
+            ):
+                support[cited_ac_core_id].add(citing_paper_id)
         for c in session.execute(select(AcCorePaper)).scalars():
+            if not support[c.id]:
+                continue
             yield GraphNode(
                 id=f"ac_core:{c.id}",
                 type=self.type,
@@ -375,6 +445,7 @@ class AcCoreNodes(NodeProvider):
                     "year": c.year,
                     "doi": c.doi,
                     "why_core": c.why_core,
+                    "paper_count": len(support[c.id]),
                 },
             )
 
@@ -384,6 +455,7 @@ NODE_PROVIDERS: dict[str, NodeProvider] = {
     for p in (
         AuthorNodes(),
         InstitutionNodes(),
+        CountryNodes(),
         PaperNodes(),
         TopicNodes(),
         MethodNodes(),
@@ -492,6 +564,72 @@ class InstitutionCollabEdges(EdgeProvider):
             yield GraphEdge(source=a, target=b, type=self.type, weight=float(w))
 
 
+class PublishedByEdges(EdgeProvider):
+    """Direct paper-to-institution authorship projection."""
+
+    type = "published_by"
+    requires_node_types = ("paper", "institution")
+
+    def edges(self, session, filt, active_node_ids):
+        for paper in _filtered_papers(session, filt):
+            paper_node = f"paper:{paper.id}"
+            if paper_node not in active_node_ids:
+                continue
+            seen: set[str] = set()
+            for paper_author in paper.authors:
+                institution = paper_author.author.institution
+                if institution is None:
+                    continue
+                institution_node = f"institution:{institution.id}"
+                if institution_node in active_node_ids and institution_node not in seen:
+                    seen.add(institution_node)
+                    yield GraphEdge(
+                        source=paper_node,
+                        target=institution_node,
+                        type=self.type,
+                        weight=1.0,
+                        metadata={"paper_id": paper.id},
+                    )
+
+
+class CountryCollaborationEdges(EdgeProvider):
+    """Country edge weight is the count of distinct jointly authored papers."""
+
+    type = "country_collaboration"
+    requires_node_types = ("country",)
+
+    def edges(self, session, filt, active_node_ids):
+        weights: dict[tuple[str, str], int] = defaultdict(int)
+        shared: dict[tuple[str, str], list[str]] = defaultdict(list)
+        for paper in _filtered_papers(session, filt):
+            countries = {
+                country.identity: country.display
+                for paper_author in paper.authors
+                if paper_author.author.institution is not None
+                for country in canonical_country_entries(
+                    paper_author.author.institution.country
+                )
+            }
+            country_nodes = [
+                f"country:{countries[identity]}"
+                for identity in sorted(countries)
+                if f"country:{countries[identity]}" in active_node_ids
+            ]
+            for index, source in enumerate(country_nodes):
+                for target in country_nodes[index + 1 :]:
+                    key = (source, target)
+                    weights[key] += 1
+                    shared[key].append(paper.id)
+        for (source, target), weight in weights.items():
+            yield GraphEdge(
+                source=source,
+                target=target,
+                type=self.type,
+                weight=float(weight),
+                metadata={"papers": shared[(source, target)]},
+            )
+
+
 class CitesEdges(EdgeProvider):
     type = "cites"
     requires_node_types = ("paper",)
@@ -511,12 +649,19 @@ class CitesAcCoreEdges(EdgeProvider):
     requires_node_types = ("paper", "ac_core")
 
     def edges(self, session, filt, active_node_ids):
+        seen: set[tuple[str, str]] = set()
         for ref in session.execute(
             select(PaperReference).where(PaperReference.cited_ac_core_id.is_not(None))
         ).scalars():
             src = f"paper:{ref.citing_paper_id}"
             dst = f"ac_core:{ref.cited_ac_core_id}"
-            if src in active_node_ids and dst in active_node_ids:
+            pair = (src, dst)
+            if (
+                src in active_node_ids
+                and dst in active_node_ids
+                and pair not in seen
+            ):
+                seen.add(pair)
                 yield GraphEdge(source=src, target=dst, type=self.type, weight=1.0)
 
 
@@ -548,15 +693,24 @@ class UsesMethodEdges(EdgeProvider):
     requires_node_types = ("paper", "method")
 
     def edges(self, session, filt, active_node_ids):
+        best: dict[tuple[str, str], float] = {}
         for prop in session.execute(
             select(PaperProposition).where(PaperProposition.predicate == "uses_method")
         ).scalars():
             src = f"paper:{prop.paper_id}"
             dst = f"method:{prop.object_key or prop.object_value}"
             if src in active_node_ids and dst in active_node_ids:
-                yield GraphEdge(
-                    source=src, target=dst, type=self.type, weight=float(prop.confidence)
+                best[(src, dst)] = max(
+                    best.get((src, dst), 0.0),
+                    float(prop.confidence),
                 )
+        for (source, target), weight in best.items():
+            yield GraphEdge(
+                source=source,
+                target=target,
+                type=self.type,
+                weight=weight,
+            )
 
 
 class FundedByEdges(EdgeProvider):
@@ -564,15 +718,24 @@ class FundedByEdges(EdgeProvider):
     requires_node_types = ("paper", "funder")
 
     def edges(self, session, filt, active_node_ids):
+        best: dict[tuple[str, str], float] = {}
         for prop in session.execute(
             select(PaperProposition).where(PaperProposition.predicate == "funded_by")
         ).scalars():
             src = f"paper:{prop.paper_id}"
             dst = f"funder:{prop.object_key or prop.object_value}"
             if src in active_node_ids and dst in active_node_ids:
-                yield GraphEdge(
-                    source=src, target=dst, type=self.type, weight=float(prop.confidence)
+                best[(src, dst)] = max(
+                    best.get((src, dst), 0.0),
+                    float(prop.confidence),
                 )
+        for (source, target), weight in best.items():
+            yield GraphEdge(
+                source=source,
+                target=target,
+                type=self.type,
+                weight=weight,
+            )
 
 
 class TopicCooccurrenceEdges(EdgeProvider):
@@ -684,6 +847,8 @@ EDGE_PROVIDERS: dict[str, EdgeProvider] = {
         AffiliatedWithEdges(),
         CoauthoredEdges(),
         InstitutionCollabEdges(),
+        PublishedByEdges(),
+        CountryCollaborationEdges(),
         CitesEdges(),
         CitesAcCoreEdges(),
         BelongsToTopicEdges(),
@@ -755,8 +920,13 @@ class ByCountryGroup(GroupProvider):
         out: dict[str, str] = {}
         country_for_inst: dict[str, str] = {}
         for n in nodes:
+            if n.type == "country":
+                out[n.id] = n.id
             if n.type == "institution":
-                c = n.metadata.get("country") or "Unknown"
+                countries = canonical_country_values(
+                    str(n.metadata.get("country") or "")
+                )
+                c = countries[0] if countries else "Unknown"
                 country_for_inst[n.id] = c
                 out[n.id] = f"country:{c}"
         for n in nodes:
@@ -765,7 +935,7 @@ class ByCountryGroup(GroupProvider):
                 if inst_id:
                     c = country_for_inst.get(f"institution:{inst_id}")
                     if c:
-                        out[n.id] = c
+                        out[n.id] = f"country:{c}"
         return out
 
 

@@ -1,0 +1,270 @@
+{
+  "paper_id": "acfocus_6db333904543",
+  "title": "Interpretable discovery of semiconductors with machine learning",
+  "metadata": {
+    "doi": "10.1038/s41524-023-01066-9",
+    "url": "https://www.nature.com/articles/s41524-023-01066-9",
+    "year": "2023",
+    "authors": "Choubisa, Hitarth; Todorović, Petar; Pina, Joao M.; Parmar, Darshan H.; Li, Ziliang; Voznyy, Oleksandr; Tamblyn, Isaac; Sargent, Edward H.",
+    "venue": "npj Computational Materials",
+    "category": "Journal article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Oleksandr Voznyy"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "checked",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "The authors present a framework that combines evolutionary algorithms, machine learning surrogate models, and statistical testing to efficiently search materials space and generate interpretable, statistically robust design rules for materials discovery, demonstrated in applications such as direct bandgap materials and UV/IR emitters.",
+  "abstract": "Abstract                            Machine learning models of material properties accelerate materials discovery, reproducing density functional theory calculated results at a fraction of the cost               1–6               . To bridge the gap between theory and experiments, machine learning predictions need to be distilled in the form of interpretable chemical rules that can be used by experimentalists. Here we develop a framework to address this gap by combining evolutionary algorithm-powered search with machine-learning surrogate models. We then couple the search results with supervised learning and statistical testing. This strategy enables the efficient search of a materials space while providing interpretable design rules. We demonstrate its effectiveness by developing rules for the design of direct bandgap materials, stable UV emitters, and IR perovskite emitters. Finally, we conclusively show how DARWIN-generated rules are statistically more robust and applicable to a wide range of applications including the design of UV halide perovskites.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "Development of the DARWIN framework, integrating property prediction models, search algorithms, and interpretability analysis to generate and identify statistically significant chemical rules.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "problems": [
+    {
+      "value": "Accelerating materials discovery by bridging the gap between theoretical predictions and experimental validations through interpretable machine learning models.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "hypotheses": [
+    {
+      "value": "A framework combining evolutionary algorithm-powered search with machine-learning surrogate models can efficiently search material space and provide interpretable design rules.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "evidence": [
+    {
+      "value": "The effectiveness of DARWIN demonstrated by developing rules for designing direct bandgap materials, stable UV emitters, and IR perovskite emitters, with statistically robust rules applicable to a wide range of applications.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "conclusions": [
+    {
+      "value": "DARWIN-generated rules are statistically robust and applicable to various applications, including the design of UV halide perovskites, thereby bridging the gap between theory and experiment.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "entities": [
+    {
+      "value": "Graph Neural Networks (GNNs)",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Evolutionary Algorithm (EA)",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Machine Learning (ML) models",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Chemical features and operations",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Statistical techniques",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "Interpretable discovery of semiconductors with machine learning The authors present a framework that combines evolutionary algorithms, machine learning surrogate models, and statistical testing to efficiently search materials space and generate interpretable, statistically robust design rules for materials discovery, demonstrated in applications such as direct bandgap materials and UV/IR emitters.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Abstract                            Machine learning models of material properties accelerate materials discovery, reproducing density functional theory calculated results at a fraction of the cost               1–6               .",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "This strategy enables the efficient search of a materials space while providing interpretable design rules.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [
+    {
+      "value": "Abstract                            Machine learning models of material properties accelerate materials discovery, reproducing density functional theory calculated results at a fraction of the cost               1–6               .",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Development of the DARWIN framework, integrating property prediction models, search algorithms, and interpretability analysis to generate and identify statistically significant chemical rules.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Graph Neural Networks (GNNs) Evolutionary Algorithm (EA) Machine Learning (ML) models Chemical features and operations Statistical techniques Prediction of materials with optimal properties Generation of multiple candidates meeting desired target properties Identification of relevant statistically significant chemical rules",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [],
+  "conditions": [],
+  "mechanisms": [
+    {
+      "value": "Property prediction using unrelaxed structures",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Search algorithm integration for materials space search",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Extraction of interpretable chemical design rules through supervised learning and statistical testing",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "outcomes": [
+    {
+      "value": "Prediction of materials with optimal properties",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Generation of multiple candidates meeting desired target properties",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Identification of relevant statistically significant chemical rules",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "Artificial Intelligence & Data Science",
+    "Materials Science",
+    "Electronics",
+    "Optical Materials",
+    "Clean energy"
+  ],
+  "reasoning_motifs": [
+    {
+      "value": "Model Prediction → Search Algorithm Optimization",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Feature Relevance → Material Property Correlation",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Statistical Significance → Rule Validation",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "general_principles": [
+    {
+      "value": "Prediction Informs Search",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Feature Relevance Dictates Outcome",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Statistical Validation Ensures Reliability",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "failure_paths": [
+    {
+      "value": "failure: Removing the search component of DARWIN and relying solely on Materials Project data for developing interpretable chemical rules. Evidence: Lack of promising candidates for statistical significance calculation and failure to recover known rules for material design.",
+      "source": "cross_sdl_phase4",
+      "confidence": 0.75,
+      "evidence": ""
+    }
+  ],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "acgold_e997d42c4b91",
+    "cross_sdl_reasoning_json": "/Users/sissifeng/Downloads/cross-sdl_knowledge_transfer_engine/data/reasoning/acgold_e997d42c4b91.json",
+    "cross_sdl_extraction_quality": 0.8,
+    "cross_sdl_notes": "The paper presents a structured approach to materials discovery using machine learning, with clear hypotheses, methods, and conclusions. The reasoning structure is well-defined, but some details of the interpretability analysis and feature selection are complex and may require further clarification."
+  },
+  "validation": {
+    "score": 0.8,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": true,
+      "entities": true,
+      "materials": true,
+      "properties": true,
+      "measurements": false,
+      "conditions": false,
+      "mechanisms": true,
+      "outcomes": true,
+      "cross_sdl_match": true
+    },
+    "missing": [
+      "hardware",
+      "measurements",
+      "conditions"
+    ],
+    "notes": [
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

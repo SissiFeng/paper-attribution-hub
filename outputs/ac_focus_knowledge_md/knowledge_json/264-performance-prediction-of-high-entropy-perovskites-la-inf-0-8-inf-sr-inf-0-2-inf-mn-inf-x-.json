@@ -1,0 +1,159 @@
+{
+  "paper_id": "acfocus_58eaee7c42e5",
+  "title": "Performance Prediction of High-Entropy Perovskites La<inf>0.8</inf>Sr<inf>0.2</inf>Mn<inf>x</inf>Co<inf>y</inf>Fe<inf>z</inf>O<inf>3</inf> with Automated High-Throughput Characterization of Combinatorial Libraries and Machine Learning",
+  "metadata": {
+    "doi": "10.1002/adma.202407372",
+    "url": "https://www.researchgate.net/publication/385555082_Performance_Prediction_of_High-Entropy_Perovskites_La08Sr02MnxCoyFezO3_with_Automated_High-Throughput_Characterization_of_Combinatorial_Libraries_and_Machine_Learning",
+    "year": "2024",
+    "authors": "Bozal-Ginesta C, Sirvent J, Cordaro G, Fearn S, Pablo-García S, Chiabrera F, Choi C, Laa L, Núñez M, Cavallaro A, Buzi F, Aguadero A, Dezanneau G, Kilner J, Morata A, Baiutti F, Aspuru-Guzik A, Tarancón A",
+    "venue": "Advanced Materials",
+    "category": "Journal article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Alán Aspuru-Guzik",
+      "Sergio Pablo-García Carrillo"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance",
+      "AC Staff"
+    ],
+    "flags": {
+      "acknowledges_ac": "checked",
+      "highly_relevant": "checked",
+      "high_impact": "checked"
+    }
+  },
+  "source_summary": "This study uses automated high-throughput experimentation and machine learning to map and analyze the composition–structure–performance relationships of high-entropy La0.8Sr0.2MnxCoyFezO3±δ perovskite oxides, identifying Fe-rich compositions and oxygen sublattice distortion as key factors for optimal oxygen electrode performance in Solid Oxide Cells.",
+  "abstract": "Perovskite oxides form a large family of materials with applications across various fields, owing to their structural and chemical flexibility. Efficient exploration of this extensive compositional space is now achievable through automated high-throughput experimentation combined with machine learning. In this study, we investigate the composition–structure–performance relationships of high-entropy La0.8Sr0.2MnxCoyFezO3±δ perovskite oxides (0 < x, y, z <1; x+y+z≈1) for application as oxygen electrodes in Solid Oxide Cells. Following the deposition of a continuous compositional map using thin-film combinatorial pulsed laser deposition, compositional, structural, and performance properties are characterized using six different techniques with mapping capabilities. Random forests effectively model electrochemical performance, consistently identifying Fe-rich oxides as optimal compounds with the lowest area-specific resistance values for oxygen electrodes at 700 ◦C. Additionally, the models identify a statistical correlation between oxygen sublattice distortion—derived from spectral analysis of Raman-active modes—and enhanced performance.",
+  "hardware": [
+    {
+      "value": "This study uses automated high-throughput experimentation and machine learning to map and analyze the composition–structure–performance relationships of high-entropy La0.8Sr0.2MnxCoyFezO3±δ perovskite oxides, identifying Fe-rich compositions and oxygen sublattice distortion as key factors for optimal oxygen electrode performance in Solid Oxide Cells.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Efficient exploration of this extensive compositional space is now achievable through automated high-throughput experimentation combined with machine learning.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "methods": [
+    {
+      "value": "This study uses automated high-throughput experimentation and machine learning to map and analyze the composition–structure–performance relationships of high-entropy La0.8Sr0.2MnxCoyFezO3±δ perovskite oxides, identifying Fe-rich compositions and oxygen sublattice distortion as key factors for optimal oxygen electrode performance in Solid Oxide Cells.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Materials Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Automation and Robotics",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "Performance Prediction of High-Entropy Perovskites La<inf>0.8</inf>Sr<inf>0.2</inf>Mn<inf>x</inf>Co<inf>y</inf>Fe<inf>z</inf>O<inf>3</inf> with Automated High-Throughput Characterization of Combinatorial Libraries and Machine Learning This study uses automated high-throughput experimentation and machine learning to map and analyze the composition–structure–performance relationships of high-entropy La0.8Sr0.2MnxCoyFezO3±δ perovskite oxides, identifying Fe-rich compositions and oxygen sublattice distortion as key factors for optimal oxygen electrode performance in Solid Oxide Cells.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Perovskite oxides form a large family of materials with applications across various fields, owing to their structural and chemical flexibility.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "In this study, we investigate the composition–structure–performance relationships of high-entropy La0.8Sr0.2MnxCoyFezO3±δ perovskite oxides (0 < x, y, z <1; x+y+z≈1) for application as oxygen electrodes in Solid Oxide Cells.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [
+    {
+      "value": "Following the deposition of a continuous compositional map using thin-film combinatorial pulsed laser deposition, compositional, structural, and performance properties are characterized using six different techniques with mapping capabilities.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [
+    {
+      "value": "Performance Prediction of High-Entropy Perovskites La<inf>0.8</inf>Sr<inf>0.2</inf>Mn<inf>x</inf>Co<inf>y</inf>Fe<inf>z</inf>O<inf>3</inf> with Automated High-Throughput Characterization of Combinatorial Libraries and Machine Learning This study uses automated high-throughput experimentation and machine learning to map and analyze the composition–structure–performance relationships of high-entropy La0.8Sr0.2MnxCoyFezO3±δ perovskite oxides, identifying Fe-rich compositions and oxygen sublattice distortion as key factors for optimal oxygen electrode performance in Solid Oxide Cells.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "conditions": [],
+  "mechanisms": [],
+  "outcomes": [
+    {
+      "value": "Advanced Materials",
+      "source": "csv_applied_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "SDL 0 - AI & Automation",
+    "Materials Science",
+    "Automation and Robotics",
+    "Advanced Materials"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.73,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": true,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": true,
+      "properties": true,
+      "measurements": true,
+      "conditions": false,
+      "mechanisms": false,
+      "outcomes": true,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "evidence",
+      "conditions",
+      "mechanisms",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only."
+    ]
+  }
+}

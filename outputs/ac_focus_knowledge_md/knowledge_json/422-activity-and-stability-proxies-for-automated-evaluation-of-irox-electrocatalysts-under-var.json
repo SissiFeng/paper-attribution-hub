@@ -1,0 +1,168 @@
+{
+  "paper_id": "acfocus_6463bd86f3ba",
+  "title": "Activity and stability proxies for automated evaluation of IrOx electrocatalysts under variable operating conditions",
+  "metadata": {
+    "doi": "10.1016/j.elecom.2025.108034",
+    "url": "https://www.sciencedirect.com/science/article/pii/S1388248125001742",
+    "year": "2025",
+    "authors": "G. Huang; C. Bozal-Ginesta; A. Aspuru-Guzik",
+    "venue": "Electrochemistry Communications",
+    "category": "Journal Article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Alán Aspuru-Guzik"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance"
+    ],
+    "flags": {
+      "acknowledges_ac": "checked",
+      "highly_relevant": "checked",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "A new electrochemical approach using random sampling and Bayesian optimization enables efficient, parallel evaluation of activity and stability in hydrous iridium oxide electrocatalysts for the oxygen evolution reaction under dynamic conditions, providing reliable proxies independent of sample loading.",
+  "abstract": "To accelerate the screening of electrocatalyst materials, it is necessary to enhance the efficiency of their performance evaluation and optimization under dynamic conditions. The activity and stability of electrocatalyst materials are two crucial metrics that are typically correlated, and thus need to be evaluated in parallel. However. assessing both activity and stability in a time-efficient, reliable and comparable manner remains a challenge. Given the rising interest in evaluating electrocatalysts under realistic fluctuating conditions, we propose an electrochemical approach that uses random sampling and Bayesian optimization to explore pulsed amperometry conditions in hydrous iridium oxides for the oxygen evolution reaction. This method provides activity and stability proxies independent of sample loading which are validated against literature data.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "A new electrochemical approach using random sampling and Bayesian optimization enables efficient, parallel evaluation of activity and stability in hydrous iridium oxide electrocatalysts for the oxygen evolution reaction under dynamic conditions, providing reliable proxies independent of sample loading.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Chemistry",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "To accelerate the screening of electrocatalyst materials, it is necessary to enhance the efficiency of their performance evaluation and optimization under dynamic conditions.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "The activity and stability of electrocatalyst materials are two crucial metrics that are typically correlated, and thus need to be evaluated in parallel.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [
+    {
+      "value": "Activity and stability proxies for automated evaluation of IrOx electrocatalysts under variable operating conditions A new electrochemical approach using random sampling and Bayesian optimization enables efficient, parallel evaluation of activity and stability in hydrous iridium oxide electrocatalysts for the oxygen evolution reaction under dynamic conditions, providing reliable proxies independent of sample loading.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "The activity and stability of electrocatalyst materials are two crucial metrics that are typically correlated, and thus need to be evaluated in parallel.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "assessing both activity and stability in a time-efficient, reliable and comparable manner remains a challenge.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "This method provides activity and stability proxies independent of sample loading which are validated against literature data.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [],
+  "conditions": [
+    {
+      "value": "Activity and stability proxies for automated evaluation of IrOx electrocatalysts under variable operating conditions A new electrochemical approach using random sampling and Bayesian optimization enables efficient, parallel evaluation of activity and stability in hydrous iridium oxide electrocatalysts for the oxygen evolution reaction under dynamic conditions, providing reliable proxies independent of sample loading.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "To accelerate the screening of electrocatalyst materials, it is necessary to enhance the efficiency of their performance evaluation and optimization under dynamic conditions.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "assessing both activity and stability in a time-efficient, reliable and comparable manner remains a challenge.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Given the rising interest in evaluating electrocatalysts under realistic fluctuating conditions, we propose an electrochemical approach that uses random sampling and Bayesian optimization to explore pulsed amperometry conditions in hydrous iridium oxides for the oxygen evolution reaction.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "mechanisms": [],
+  "outcomes": [
+    {
+      "value": "Catalysis",
+      "source": "csv_applied_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "Chemistry",
+    "Catalysis"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.61,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": true,
+      "properties": true,
+      "measurements": false,
+      "conditions": true,
+      "mechanisms": false,
+      "outcomes": true,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "measurements",
+      "mechanisms",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

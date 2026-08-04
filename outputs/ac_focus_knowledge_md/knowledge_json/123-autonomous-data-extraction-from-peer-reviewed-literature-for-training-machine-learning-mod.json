@@ -1,0 +1,266 @@
+{
+  "paper_id": "acfocus_7124ba74d64d",
+  "title": "Autonomous data extraction from peer reviewed literature for training machine learning models of oxidation potentials",
+  "metadata": {
+    "doi": "10.1088/2632-2153/ad2f52",
+    "url": "https://iopscience.iop.org/article/10.1088/2632-2153/ad2f52",
+    "year": "2024",
+    "authors": "Lee, Siwoo; Heinen, Stefan; Khan, Danish; Anatole von Lilienfeld O.",
+    "venue": "Machine Learning: Science and Technology",
+    "category": "Journal article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Anatole von Lilienfeld"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance"
+    ],
+    "flags": {
+      "acknowledges_ac": "checked",
+      "highly_relevant": "checked",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "An automated pipeline combining a convolutional neural network and a large language model was developed to extract and curate tabular data on oxidation potentials from literature, enabling machine learning models to predict values for thousands of organic molecules and revealing trends, while significantly reducing manual data collection effort.",
+  "abstract": "We present an automated data-collection pipeline involving a convolutional neural network and a large language model to extract user-specified tabular data from peer-reviewed literature. The pipeline is applied to 74 reports published between 1957 and 2014 with experimentally-measured oxidation potentials for 592 organic molecules (−0.75 to 3.58 V). After data curation (solvents, reference electrodes, and missed data points), we trained multiple supervised machine learning (ML) models reaching prediction errors similar to experimental uncertainty (∼0.2 V). For experimental measurements of identical molecules reported in multiple studies, we identified the most likely value based on out-of-sample ML predictions. Using the trained ML models, we then estimated oxidation potentials of ∼132k small organic molecules from the QM9 (quantum mechanics data for organic molecules with up to 9 atoms not counting hydrogens) data set, with predicted values spanning 0.21-3.46 V. Analysis of the QM9 predictions in terms of plausible descriptor-property trends suggests that aliphaticity increases the oxidation potential of an organic molecule on average from ∼1.5 V to ∼2 V, while an increase in number of heavy atoms lowers it systematically. The pipeline introduced offers significant reductions in human labor otherwise required for conventional manual data collection of experimental results, and exemplifies how to accelerate scientific research through automation. © 2024 The Author(s). Published by IOP Publishing Ltd",
+  "hardware": [
+    {
+      "value": "An automated pipeline combining a convolutional neural network and a large language model was developed to extract and curate tabular data on oxidation potentials from literature, enabling machine learning models to predict values for thousands of organic molecules and revealing trends, while significantly reducing manual data collection effort.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "We present an automated data-collection pipeline involving a convolutional neural network and a large language model to extract user-specified tabular data from peer-reviewed literature.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "methods": [
+    {
+      "value": "Utilizing a convolutional neural network (CNN) for table detection and a large language model (LLM) for text extraction, followed by training supervised machine learning models on the curated data.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "problems": [
+    {
+      "value": "Extraction of user-specified tabular data from peer-reviewed literature for training machine learning models of oxidation potentials.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "hypotheses": [
+    {
+      "value": "An automated data-collection pipeline can accurately extract and utilize data from scientific literature to train machine learning models for predicting oxidation potentials of organic molecules.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "evidence": [
+    {
+      "value": "The pipeline successfully extracted data from 74 scientific publications, leading to a dataset of 592 unique organic molecules with measured oxidation potentials. Trained ML models achieved prediction errors similar to experimental uncertainty (∼0.2 V).",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "conclusions": [
+    {
+      "value": "The automated pipeline offers significant reductions in human labor required for data collection and exemplifies how to accelerate scientific research through automation.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "entities": [
+    {
+      "value": "Convolutional neural network (CNN) model",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Large language model (LLM)",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Organic molecules",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Oxidation potentials",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Machine learning models",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "Organic molecules",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Autonomous data extraction from peer reviewed literature for training machine learning models of oxidation potentials An automated pipeline combining a convolutional neural network and a large language model was developed to extract and curate tabular data on oxidation potentials from literature, enabling machine learning models to predict values for thousands of organic molecules and revealing trends, while significantly reducing manual data collection effort.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "The pipeline is applied to 74 reports published between 1957 and 2014 with experimentally-measured oxidation potentials for 592 organic molecules (−0.75 to 3.58 V).",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "For experimental measurements of identical molecules reported in multiple studies, we identified the most likely value based on out-of-sample ML predictions.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [
+    {
+      "value": "Analysis of the QM9 predictions in terms of plausible descriptor-property trends suggests that aliphaticity increases the oxidation potential of an organic molecule on average from ∼1.5 V to ∼2 V, while an increase in number of heavy atoms lowers it systematically.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [
+    {
+      "value": "For experimental measurements of identical molecules reported in multiple studies, we identified the most likely value based on out-of-sample ML predictions.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "conditions": [],
+  "mechanisms": [
+    {
+      "value": "Table detection in document images via CNN",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Text extraction from images using LLM",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Data curation and preprocessing for ML training",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Supervised machine learning for property prediction",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "outcomes": [
+    {
+      "value": "Creation of a dataset of experimentally-measured oxidation potentials",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Training of ML models with prediction errors similar to experimental uncertainty",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Estimation of oxidation potentials for ∼132k small organic molecules",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "Artificial Intelligence & Data Science",
+    "Chemistry"
+  ],
+  "reasoning_motifs": [
+    {
+      "value": "Data Extraction → Model Training",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Model Training → Property Prediction",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "general_principles": [
+    {
+      "value": "Information Extraction Enables Knowledge Discovery",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "failure_paths": [
+    {
+      "value": "success: Initial trials with the automated pipeline to extract data from scientific literature. Evidence: The pipeline successfully extracted data from 74 scientific publications with an error rate of ∼10% at both the image and text extraction steps.",
+      "source": "cross_sdl_phase4",
+      "confidence": 0.75,
+      "evidence": ""
+    }
+  ],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "acgold_d4b828631ef9",
+    "cross_sdl_reasoning_json": "/Users/sissifeng/Downloads/cross-sdl_knowledge_transfer_engine/data/reasoning/acgold_d4b828631ef9.json",
+    "cross_sdl_extraction_quality": 0.9,
+    "cross_sdl_notes": "The paper presents a structured approach to automating data extraction from scientific literature and using it for machine learning model training. The reasoning is explicit and well-documented, allowing for a high-confidence extraction."
+  },
+  "validation": {
+    "score": 0.96,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": true,
+      "method": true,
+      "evidence": true,
+      "entities": true,
+      "materials": true,
+      "properties": true,
+      "measurements": true,
+      "conditions": false,
+      "mechanisms": true,
+      "outcomes": true,
+      "cross_sdl_match": true
+    },
+    "missing": [
+      "conditions"
+    ],
+    "notes": []
+  }
+}

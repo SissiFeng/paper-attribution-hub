@@ -1,0 +1,138 @@
+{
+  "paper_id": "acfocus_2cb4ba080534",
+  "title": "Degradable π-Conjugated Polymers",
+  "metadata": {
+    "doi": "10.1021/jacs.4c03194",
+    "url": "https://pubs.acs.org/doi/10.1021/jacs.4c03194",
+    "year": "2024",
+    "authors": "Uva, Azalea; Michailovich, Sofia; Hsu, Nathan Sung Yuan; Tran, Helen",
+    "venue": "Journal of the American Chemical Society",
+    "category": "Journal article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Helen Tran"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance"
+    ],
+    "flags": {
+      "acknowledges_ac": "checked",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "This perspective discusses the design considerations and challenges in developing degradable π-conjugated polymers for next-generation organic electronics, focusing on monomer selection, synthetic strategies, and degradation pathways to enable environmentally friendly, high-performance, and biocompatible electronic devices.",
+  "abstract": "The integration of next-generation electronics into society is rapidly reshaping our daily interactions and lifestyles, revolutionizing communication and engagement with the world. Future electronics promise stimuli-responsive features and enhanced biocompatibility, such as skin-like health monitors and sensors embedded in food packaging, transforming healthcare and reducing food waste. Imparting degradability may reduce the adverse environmental impact of next-generation electronics and lead to opportunities for environmental and health monitoring. While advancements have been made in producing degradable materials for encapsulants, substrates, and dielectrics, the availability of degradable conducting and semiconducting materials remains restricted. π-Conjugated polymers are promising candidates for the development of degradable conductors or semiconductors due to the ability to tune their stimuli-responsiveness, biocompatibility, and mechanical durability. This perspective highlights three design considerations: the selection of π-conjugated monomers, synthetic coupling strategies, and degradation of π-conjugated polymers, for generating π-conjugated materials for degradable electronics. We describe the current challenges with monomeric design and present options to circumvent these issues by highlighting biobased π-conjugated compounds with known degradation pathways and stable monomers that allow for chemically recyclable polymers. Next, we present coupling strategies that are compatible for the synthesis of degradable π-conjugated polymers, including direct arylation polymerization and enzymatic polymerization. Lastly, we discuss various modes of depolymerization and characterization techniques to enhance our comprehension of potential degradation byproducts formed during polymer cleavage. Our perspective considers these three design parameters in parallel rather than independently while having a targeted application in mind to accelerate the discovery of next-generation high-performance πconjugated polymers for degradable organic electronics. © 2024 American Chemical Society.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "This perspective discusses the design considerations and challenges in developing degradable π-conjugated polymers for next-generation organic electronics, focusing on monomer selection, synthetic strategies, and degradation pathways to enable environmentally friendly, high-performance, and biocompatible electronic devices.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Chemistry",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "Degradable π-Conjugated Polymers This perspective discusses the design considerations and challenges in developing degradable π-conjugated polymers for next-generation organic electronics, focusing on monomer selection, synthetic strategies, and degradation pathways to enable environmentally friendly, high-performance, and biocompatible electronic devices.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "While advancements have been made in producing degradable materials for encapsulants, substrates, and dielectrics, the availability of degradable conducting and semiconducting materials remains restricted.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "π-Conjugated polymers are promising candidates for the development of degradable conductors or semiconductors due to the ability to tune their stimuli-responsiveness, biocompatibility, and mechanical durability.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [],
+  "measurements": [
+    {
+      "value": "Lastly, we discuss various modes of depolymerization and characterization techniques to enhance our comprehension of potential degradation byproducts formed during polymer cleavage.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "conditions": [
+    {
+      "value": "We describe the current challenges with monomeric design and present options to circumvent these issues by highlighting biobased π-conjugated compounds with known degradation pathways and stable monomers that allow for chemically recyclable polymers.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "mechanisms": [],
+  "outcomes": [
+    {
+      "value": "Electronics",
+      "source": "csv_applied_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "Chemistry",
+    "Electronics"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.6,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": true,
+      "properties": false,
+      "measurements": true,
+      "conditions": true,
+      "mechanisms": false,
+      "outcomes": true,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "properties",
+      "mechanisms",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

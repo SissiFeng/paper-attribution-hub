@@ -1,0 +1,153 @@
+{
+  "paper_id": "acfocus_2443ec85eeb4",
+  "title": "High- Tc superconductor candidates proposed by machine learning",
+  "metadata": {
+    "doi": "10.1088/2632-2153/ae04c1",
+    "url": "https://iopscience.iop.org/article/10.1088/2632-2153/ae04c1",
+    "year": "2025",
+    "authors": "S. Lee; J. Hattrick-Simpers; Y. J. Kim; O. Anatole von Lilienfeld",
+    "venue": "Machine Learning: Science and Technology",
+    "category": "Journal Article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Jason Hattrick-Simpers",
+      "Anatole von Lilienfeld"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance",
+      "AC Full Member",
+      "AC Governance"
+    ],
+    "flags": {
+      "acknowledges_ac": "checked",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "Researchers developed statistical learning models to predict superconducting critical temperatures (Tₚ) of materials with ±5 K accuracy, enabling the identification and ranking of promising high-Tₚ candidates from a database of ~153,000 materials, considering both thermodynamic stability and band gap properties.",
+  "abstract": "We cast the relation between the chemical composition of a solid-state material and its superconducting critical temperature ( T c ) as a statistical learning problem with reduced complexity. Training of query-aware similarity-based ridge regression models on experimental SuperCon data achieves average T c prediction errors of ±5 K for unseen out-of-sample materials. Two models were trained with one excluding high pressure data in training (‘ambient’ model) and a second also including high pressure data (‘implicit’ model). Subsequent utilization of the approach to scan ∼153 k materials in the Materials Project enables the ranking of candidates by T c while accounting for thermodynamic stability and small band gap. The ambient model is used to predict stable top three high- T c candidate materials that include those with large band gaps of LiCuF<inf>4</inf> (316 K), Ag<inf>2</inf>H<inf>12</inf>S(NO)<inf>4</inf> (316 K), and Na<inf>2</inf>H<inf>6</inf>PtO<inf>6</inf> (315 K). Filtering these candidates for those with small band gaps correspondingly yields LiCuF<inf>4</inf> (316 K), Cu<inf>2</inf>P<inf>2</inf>O<inf>7</inf> (311 K), and Cu<inf>3</inf>P<inf>2</inf>H<inf>2</inf>O<inf>9</inf> (307 K). © 2025 The Author(s). Published by IOP Publishing Ltd.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "Researchers developed statistical learning models to predict superconducting critical temperatures (Tₚ) of materials with ±5 K accuracy, enabling the identification and ranking of promising high-Tₚ candidates from a database of ~153,000 materials, considering both thermodynamic stability and band gap properties.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Artificial Intelligence & Data Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Materials Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "High- Tc superconductor candidates proposed by machine learning Researchers developed statistical learning models to predict superconducting critical temperatures (Tₚ) of materials with ±5 K accuracy, enabling the identification and ranking of promising high-Tₚ candidates from a database of ~153,000 materials, considering both thermodynamic stability and band gap properties.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "We cast the relation between the chemical composition of a solid-state material and its superconducting critical temperature ( T c ) as a statistical learning problem with reduced complexity.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Training of query-aware similarity-based ridge regression models on experimental SuperCon data achieves average T c prediction errors of ±5 K for unseen out-of-sample materials.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [
+    {
+      "value": "High- Tc superconductor candidates proposed by machine learning Researchers developed statistical learning models to predict superconducting critical temperatures (Tₚ) of materials with ±5 K accuracy, enabling the identification and ranking of promising high-Tₚ candidates from a database of ~153,000 materials, considering both thermodynamic stability and band gap properties.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Subsequent utilization of the approach to scan ∼153 k materials in the Materials Project enables the ranking of candidates by T c while accounting for thermodynamic stability and small band gap.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [],
+  "conditions": [
+    {
+      "value": "We cast the relation between the chemical composition of a solid-state material and its superconducting critical temperature ( T c ) as a statistical learning problem with reduced complexity.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Two models were trained with one excluding high pressure data in training (‘ambient’ model) and a second also including high pressure data (‘implicit’ model).",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "mechanisms": [],
+  "outcomes": [],
+  "sdl_tags": [
+    "Artificial Intelligence & Data Science",
+    "Materials Science"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.55,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": true,
+      "properties": true,
+      "measurements": false,
+      "conditions": true,
+      "mechanisms": false,
+      "outcomes": false,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "measurements",
+      "mechanisms",
+      "outcomes",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

@@ -1,0 +1,239 @@
+{
+  "paper_id": "acfocus_7e3bbab8a2cd",
+  "title": "Kernel based quantum machine learning at record rate : Many-body distribution functionals as compact representations",
+  "metadata": {
+    "doi": "10.48550/arxiv.2303.16312",
+    "url": "https://arxiv.org/abs/2303.16312",
+    "year": "2023",
+    "authors": "Khan, Danish; Heinen, Stefan; von Lilienfeld, O. Anatole",
+    "venue": "arxiv",
+    "category": "Preprint",
+    "peer_reviewed": "Non Peer Reviewed",
+    "ac_members": [
+      "Anatole von Lilienfeld"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "checked",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "The study introduces compact, linear-scaling quantum machine learning representations based on atomic Gaussian many-body distribution functionals, achieving competitive predictive performance and data efficiency for chemical property prediction while significantly reducing computational costs compared to high-dimensional feature mappings.",
+  "abstract": "The feature vector mapping used to represent chemical systems is a key factor governing the superior data-efficiency of kernel based quantum machine learning (QML) models applicable throughout chemical compound space. Unfortunately, the most accurate representations require a high dimensional feature mapping, thereby imposing a considerable computational burden on model training and use. We introduce compact yet accurate, linear scaling QML representations based on atomic Gaussian many-body distribution functionals (MBDF), and their derivatives. Weighted density functions (DF) of MBDF values are used as global representations which are constant in size, i.e.~invariant with respect to the number of atoms. We report predictive performance and training data efficiency that is competitive with state of the art for two diverse datasets of organic molecules, QM9 and QMugs. Generalization capability has been investigated for atomization energies, HOMO-LUMO eigenvalues and gap, internal energies at 0 K, zero point vibrational energies, dipole moment norm, static isotropic polarizability, and heat capacity as encoded in QM9. MBDF based QM9 performance lowers the optimal Pareto front spanned between sampling and training cost to compute node minutes,~effectively sampling chemical compound space with chemical accuracy at a sampling rate of $\\sim 48$ molecules per core second.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "Introduced MBDF and density of functionals (DF) representations, tested on QM9 and QMugs datasets using kernel ridge regression (KRR).",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "problems": [
+    {
+      "value": "The high dimensional feature mapping required for accurate quantum machine learning (QML) models imposes a significant computational burden.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "hypotheses": [
+    {
+      "value": "Compact yet accurate linear scaling QML representations based on atomic Gaussian many-body distribution functionals (MBDF) can achieve competitive predictive performance and training data efficiency.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "evidence": [
+    {
+      "value": "MBDF/DF representations demonstrated predictive performance competitive with state-of-the-art, with significantly reduced computational cost and time complexity.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "conclusions": [
+    {
+      "value": "MBDF/DF representations can accurately describe any atom/molecule using a minimal number of discrete elements, thereby reducing QML training and prediction times by multiple orders of magnitude for small and large molecules.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "entities": [
+    {
+      "value": "Atomic Gaussian many-body distribution functionals (MBDF)",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Density of functionals (DF)",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "We report predictive performance and training data efficiency that is competitive with state of the art for two diverse datasets of organic molecules, QM9 and QMugs.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "MBDF based QM9 performance lowers the optimal Pareto front spanned between sampling and training cost to compute node minutes,~effectively sampling chemical compound space with chemical accuracy at a sampling rate of $\\sim 48$ molecules per core second.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [
+    {
+      "value": "Kernel based quantum machine learning at record rate : Many-body distribution functionals as compact representations The study introduces compact, linear-scaling quantum machine learning representations based on atomic Gaussian many-body distribution functionals, achieving competitive predictive performance and data efficiency for chemical property prediction while significantly reducing computational costs compared to high-dimensional feature mappings.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "MBDF based QM9 performance lowers the optimal Pareto front spanned between sampling and training cost to compute node minutes,~effectively sampling chemical compound space with chemical accuracy at a sampling rate of $\\sim 48$ molecules per core second.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [
+    {
+      "value": "Introduced MBDF and density of functionals (DF) representations, tested on QM9 and QMugs datasets using kernel ridge regression (KRR).",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "conditions": [
+    {
+      "value": "Kernel based quantum machine learning at record rate : Many-body distribution functionals as compact representations The study introduces compact, linear-scaling quantum machine learning representations based on atomic Gaussian many-body distribution functionals, achieving competitive predictive performance and data efficiency for chemical property prediction while significantly reducing computational costs compared to high-dimensional feature mappings.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "MBDF based QM9 performance lowers the optimal Pareto front spanned between sampling and training cost to compute node minutes,~effectively sampling chemical compound space with chemical accuracy at a sampling rate of $\\sim 48$ molecules per core second.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "MBDF/DF representations demonstrated predictive performance competitive with state-of-the-art, with significantly reduced computational cost and time complexity.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "mechanisms": [
+    {
+      "value": "Compact representation of chemical systems through functionals of analytical weighted many-body distributions in interatomic distances and angles",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Global molecular fingerprint generation through weighted density estimations of MBDF",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "outcomes": [
+    {
+      "value": "Reduced computational burden and increased data efficiency in QML models",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Achieved competitive predictive performance with significantly reduced representation size",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "Quantum",
+    "Artificial Intelligence & Data Science",
+    "Chemistry"
+  ],
+  "reasoning_motifs": [
+    {
+      "value": "Compactness → Efficiency",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Globality → Scalability",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "general_principles": [
+    {
+      "value": "Maximizing Information Content with Minimal Complexity",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Scalability Through Global Representations",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "failure_paths": [
+    {
+      "value": "success: Optimization of hyperparameters for MBDF and DF representations on QM7 subset Evidence: Optimized hyperparameters led to improved predictive performance on QM9 and QMugs datasets.",
+      "source": "cross_sdl_phase4",
+      "confidence": 0.75,
+      "evidence": ""
+    }
+  ],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "acgold_387df941d51a",
+    "cross_sdl_reasoning_json": "/Users/sissifeng/Downloads/cross-sdl_knowledge_transfer_engine/data/reasoning/acgold_387df941d51a.json",
+    "cross_sdl_extraction_quality": 0.9,
+    "cross_sdl_notes": "The paper presents a structured approach to developing and validating compact QML representations, with clear hypotheses, methods, and results. The reasoning is explicit and well-documented, allowing for high-confidence extraction."
+  },
+  "validation": {
+    "score": 0.9,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": true,
+      "entities": true,
+      "materials": true,
+      "properties": true,
+      "measurements": true,
+      "conditions": true,
+      "mechanisms": true,
+      "outcomes": true,
+      "cross_sdl_match": true
+    },
+    "missing": [
+      "hardware"
+    ],
+    "notes": [
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

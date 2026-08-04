@@ -1,0 +1,282 @@
+{
+  "paper_id": "acfocus_37cb4c6d2251",
+  "title": "Crash testing machine learning force fields for molecules, materials, and interfaces: molecular dynamics in the TEA challenge 2023",
+  "metadata": {
+    "doi": "10.1039/d4sc06530a",
+    "url": "https://pubs.rsc.org/en/content/articlepdf/2025/sc/d4sc06530a",
+    "year": "2025",
+    "authors": "Poltavsky I., Puleva M., Charkin-Gorbulin A., Fonseca G., Batatia I., Browning N.J., Chmiela S., Cui M., Frank J.T., Heinen S., Huang B., Käser S., Kabylda A., Khan D., Müller C., Price A.J.A., Riedmiller K., Töpfer K., Ko T.W., Meuwly M., Rupp M., Csányi G., Anatole von Lilienfeld O., Margraf J.T., Müller K.-R., Tkatchenko A.",
+    "venue": "Chemical Science",
+    "category": "Journal article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Anatole von Lilienfeld"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance"
+    ],
+    "flags": {
+      "acknowledges_ac": "checked",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "",
+  "abstract": "Crash testing machine learning force ﬁelds for\nmolecules, materials, and interfaces: model analysis\nin the TEA Challenge 2023†\nIgor Poltavsky,\n*a Anton Charkin-Gorbulin,‡ab Mirela Puleva,‡ac Gr´egory Fonseca,‡a\nIlyes Batatia,d Nicholas J. Browning,e Stefan Chmiela,fg Mengnan Cui,h\nJ. Thorben Frank,\nfg Stefan Heinen,i Bing Huang,j Silvan K¨aser,\nk Adil Kabylda,\na\nDanish Khan,il Carolin Müller,\nm Alastair J. A. Price,no Kai Riedmiller,\np\nKai Töpfer,\nk Tsz Wai Ko,q Markus Meuwly,\nk Matthias Rupp,\nr G´abor Cs´anyi,\nd\nO. Anatole von Lilienfeld,\nfginost Johannes T. Margraf,u Klaus-Robert Müller\nfgvwx\nand Alexandre Tkatchenko\n*ac\nAtomistic simulations are routinely employed in academia and industry to study the behavior of molecules,\nmaterials, and their interfaces. Central to these simulations are force ﬁelds (FFs), whose development is\nchallenged by intricate interatomic interactions at diﬀerent spatio-temporal scales and the vast expanse\nof chemical space. Machine learning (ML) FFs, trained on quantum-mechanical energies and forces, have\nshown the capacity to achieve sub-kcal (mol−1 Å−1) accuracy while maintaining computational eﬃciency.\nThe TEA Challenge 2023 rigorously evaluated commonly used MLFFs across diverse applications,\nhighlighting their strengths and weaknesses. Participants trained their models using provided datasets,\nand the results were systematically analyzed to assess the ability of MLFFs to reproduce potential energy\nsurfaces, handle incomplete reference data, manage multi-component systems, and model complex\nperiodic structures. This publication describes the datasets, outlines the proposed challenges, and\npresents a detailed analysis of the accuracy, stability, and eﬃciency of the MACE, SO3krates, sGDML,\nSOAP/GAP, and FCHL19* architectures in molecular dynamics simulations. The models represent the\nMLFF developers who participated in the TEA Challenge 2023. All results presented correspond to the\nstate of the ML architectures as of October 2023. A co",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "The TEA Challenge 2023 evaluated commonly used ML force fields across diverse applications to assess their ability to reproduce potential energy surfaces, handle incomplete reference data, manage multi-component systems, and model complex periodic structures.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "problems": [
+    {
+      "value": "Developing effective force fields (FFs) for accurate and reliable computer simulations of chemical systems across broad chemical spaces.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "hypotheses": [
+    {
+      "value": "Machine learning (ML) force fields, trained on quantum-mechanical energies and forces, can achieve quantum-chemical accuracy while maintaining computational efficiency.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "evidence": [
+    {
+      "value": "The challenge involved training models on provided datasets and systematically analyzing their performance in molecular dynamics simulations. Outcomes included Mean Absolute Errors (MAE), Root Mean Squared Errors (RMSE), and maximum errors in energy and force predictions.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "conclusions": [
+    {
+      "value": "ML force fields, particularly those with equivariant neural network architectures, showed significant advancements in accuracy and stability, establishing new standards for force predictions in molecular and materials simulations.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "entities": [
+    {
+      "value": "Machine learning force fields (MLFFs)",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Quantum-mechanical energies and forces",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Potential energy surfaces (PES)",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Molecular dynamics simulations",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "Crash testing machine learning force fields for molecules, materials, and interfaces: molecular dynamics in the TEA challenge 2023 The TEA Challenge 2023 evaluated commonly used ML force fields across diverse applications to assess their ability to reproduce potential energy surfaces, handle incomplete reference data, manage multi-component systems, and model complex periodic structures.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [
+    {
+      "value": "Crash testing machine learning force fields for molecules, materials, and interfaces: molecular dynamics in the TEA challenge 2023 The TEA Challenge 2023 evaluated commonly used ML force fields across diverse applications to assess their ability to reproduce potential energy surfaces, handle incomplete reference data, manage multi-component systems, and model complex periodic structures.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Outcomes included Mean Absolute Errors (MAE), Root Mean Squared Errors (RMSE), and maximum errors in energy and force predictions.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Machine learning force fields (MLFFs) Quantum-mechanical energies and forces Potential energy surfaces (PES) Molecular dynamics simulations Improved accuracy in predicting potential energy surfaces and forces Reduction in maximum errors and heterogeneity in force predictions Better handling of non-covalent interactions and complex chemical systems Increased stability and efficiency in molecular dynamics simulations",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [],
+  "conditions": [],
+  "mechanisms": [
+    {
+      "value": "Training MLFFs on quantum-mechanical data to achieve high accuracy",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Extrapolating in configurational space to predict unseen data",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Handling incomplete and multi-component systems in MLFFs",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Assessing stability and computational efficiency in MD simulations",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "outcomes": [
+    {
+      "value": "Improved accuracy in predicting potential energy surfaces and forces",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Reduction in maximum errors and heterogeneity in force predictions",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Better handling of non-covalent interactions and complex chemical systems",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Increased stability and efficiency in molecular dynamics simulations",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "Artificial Intelligence & Data Science",
+    "Chemistry",
+    "Materials Science"
+  ],
+  "reasoning_motifs": [
+    {
+      "value": "Data Quality → Model Accuracy",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Model Generalization → Prediction Reliability",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Performance Metrics → Simulation Trustworthiness",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Computational Efficiency → Practical Applicability",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "general_principles": [
+    {
+      "value": "Information Quality Dictates Outcome Precision",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Generalization Ability Enhances Model Utility",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Metrics Transparency Ensures Result Credibility",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Efficiency Enables Scalability",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "failure_paths": [
+    {
+      "value": "partial: Training MLFFs on incomplete or partial datasets to assess their ability to predict potential energy surfaces. Evidence: MLFFs showed significant prediction discrepancies and instability, highlighting the importance of comprehensive training datasets.",
+      "source": "cross_sdl_phase4",
+      "confidence": 0.75,
+      "evidence": ""
+    },
+    {
+      "value": "success: Comparing the stability of different MLFF architectures in MD simulations at varying temperatures. Evidence: Equivariant neural network architectures like MACE and SO3krates demonstrated better stability in MD simulations.",
+      "source": "cross_sdl_phase4",
+      "confidence": 0.75,
+      "evidence": ""
+    }
+  ],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "acgold_f0e4f82d73ab",
+    "cross_sdl_reasoning_json": "/Users/sissifeng/Downloads/cross-sdl_knowledge_transfer_engine/data/reasoning/acgold_f0e4f82d73ab.json",
+    "cross_sdl_extraction_quality": 0.8,
+    "cross_sdl_notes": "The paper provides a comprehensive evaluation of MLFFs across various challenges, allowing for a structured extraction of scientific reasoning. However, some details on the specific training processes and algorithmic nuances of the MLFFs were not explicitly discussed, requiring inference in some areas."
+  },
+  "validation": {
+    "score": 0.72,
+    "coverage": {
+      "source_summary": false,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": true,
+      "entities": true,
+      "materials": true,
+      "properties": true,
+      "measurements": false,
+      "conditions": false,
+      "mechanisms": true,
+      "outcomes": true,
+      "cross_sdl_match": true
+    },
+    "missing": [
+      "source_summary",
+      "hardware",
+      "measurements",
+      "conditions"
+    ],
+    "notes": [
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

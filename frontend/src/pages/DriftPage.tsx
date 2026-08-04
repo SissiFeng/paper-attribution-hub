@@ -1,29 +1,65 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 
+import { AnalysisScopePanel } from "@/components/AnalysisScopePanel";
 import { FilterBar } from "@/components/FilterBar";
 import { getDriftReport } from "@/lib/api";
+import {
+  isLatestRequest,
+  resultForScope,
+  type ScopedResult,
+} from "@/lib/scopedResult";
 import type { DriftReport } from "@/types";
 
 export default function DriftPage() {
-  const [searchParams] = useSearchParams();
-  const [threshold, setThreshold] = useState(0.7);
-  const [report, setReport] = useState<DriftReport | null>(null);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const thresholdValue = Number(searchParams.get("drift_threshold") ?? "0.7");
+  const threshold =
+    Number.isFinite(thresholdValue) &&
+    thresholdValue >= 0 &&
+    thresholdValue <= 1
+      ? thresholdValue
+      : 0.7;
+  const topNValue = Number(searchParams.get("top_n_per_year") ?? "5");
+  const topNPerYear =
+    Number.isInteger(topNValue) && topNValue >= 1 && topNValue <= 20
+      ? topNValue
+      : 5;
+  const searchKey = searchParams.toString();
+  const scopeKey = JSON.stringify([searchKey, threshold, topNPerYear]);
+  const [reportResult, setReportResult] = useState<
+    ScopedResult<DriftReport> | null
+  >(null);
+  const report = resultForScope(reportResult, scopeKey);
   const [error, setError] = useState<string | null>(null);
+  const requestGeneration = useRef(0);
 
   useEffect(() => {
-    const params = new URLSearchParams(searchParams);
-    params.set("drift_threshold", String(threshold));
     let cancelled = false;
-    getDriftReport(params)
-      .then((r) => !cancelled && setReport(r))
-      .catch(
-        (err) => !cancelled && setError(err instanceof Error ? err.message : String(err))
-      );
+    const generation = ++requestGeneration.current;
+    setError(null);
+    getDriftReport(new URLSearchParams(searchKey), threshold, topNPerYear)
+      .then((nextReport) => {
+        if (!cancelled && isLatestRequest(generation, requestGeneration.current)) {
+          setReportResult({ scopeKey, payload: nextReport });
+        }
+      })
+      .catch((err) => {
+        if (!cancelled && isLatestRequest(generation, requestGeneration.current)) {
+          setError(err instanceof Error ? err.message : String(err));
+          setReportResult(null);
+        }
+      });
     return () => {
       cancelled = true;
     };
-  }, [threshold, searchParams.toString()]);
+  }, [scopeKey, searchKey, threshold, topNPerYear]);
+
+  const setProjectionParam = (key: string, value: number) => {
+    const next = new URLSearchParams(searchKey);
+    next.set(key, String(value));
+    setSearchParams(next);
+  };
 
   return (
     <div>
@@ -37,12 +73,29 @@ export default function DriftPage() {
             max={1}
             step={0.05}
             value={threshold}
-            onChange={(e) => setThreshold(Number(e.target.value))}
+            onChange={(e) =>
+              setProjectionParam("drift_threshold", Number(e.target.value))
+            }
             style={{ width: 80 }}
           />
         </label>
+        <label>
+          Top topics per year:&nbsp;
+          <input
+            type="number"
+            min={1}
+            max={20}
+            step={1}
+            value={topNPerYear}
+            onChange={(e) =>
+              setProjectionParam("top_n_per_year", Number(e.target.value))
+            }
+            style={{ width: 64 }}
+          />
+        </label>
         <span style={{ color: "var(--muted)" }}>
-          Lower threshold = stricter notion of "stable", more events flagged.
+          Higher threshold = stricter stability requirement; more transitions
+          flagged.
         </span>
       </div>
 
@@ -52,13 +105,14 @@ export default function DriftPage() {
 
       {report && (
         <>
+          <AnalysisScopePanel audit={report.audit} title="Drift evidence scope" />
           <h3 style={{ marginTop: "1rem" }}>
             Drift events ({report.drift_events.length})
           </h3>
           {report.drift_events.length === 0 ? (
             <div className="empty">
-              No drift events above the configured threshold (
-              {report.drift_threshold}).
+              No adjacent-year cosine similarity fell below the configured
+              threshold ({report.drift_threshold}).
             </div>
           ) : (
             <ul className="drift-events">

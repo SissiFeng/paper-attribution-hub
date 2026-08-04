@@ -1,0 +1,144 @@
+{
+  "paper_id": "acfocus_e33dffc4f7aa",
+  "title": "The elephant in the lab: Synthesizability in generative small-molecule design",
+  "metadata": {
+    "doi": "10.26434/chemrxiv-2025-1lcpq",
+    "url": "https://chemrxiv.org/doi/10.26434/chemrxiv-2025-1lcpq",
+    "year": "2025",
+    "authors": "S. M. Papidocha; A. Burger; V. Bernales; A. Aspuru-Guzik",
+    "venue": "ChemRxiv",
+    "category": "Preprint",
+    "peer_reviewed": "Non Peer Reviewed",
+    "ac_members": [
+      "Alán Aspuru-Guzik"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "checked",
+      "high_impact": "checked"
+    }
+  },
+  "source_summary": "Recent advances in machine learning have accelerated small molecule design, but limited synthesizability of generated molecules remains a major challenge, prompting new strategies to incorporate synthesizability into generative workflows and ongoing research to address current limitations.",
+  "abstract": "The design of small molecules with tailored properties is a central goal in chemistry and materials science. Recent advances in machine learning provide powerful tools to accelerate the pace of discovery. One promising avenue for acceleration involves the use of generative models that propose novel candidates for diverse optimization tasks. Despite their promise, these methods are often evaluated solely using computational benchmarks, and many studies fail to advance proposed candidates to experimental validation in the wet lab. A key reason for this gap, the elephant in the room, is the limited synthesizability of the generated molecules. In response, the community has recently developed various strategies to address this challenge and incorporate synthesizability into generative design workflows. In this opinion, we provide a comprehensive overview of recent contributions that explicitly tackle molecular synthesizability, highlighting notable advances. We also discuss key limitations of current approaches and outline promising directions for future research.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "Recent advances in machine learning have accelerated small molecule design, but limited synthesizability of generated molecules remains a major challenge, prompting new strategies to incorporate synthesizability into generative workflows and ongoing research to address current limitations.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Artificial Intelligence & Data Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Chemistry",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "The elephant in the lab: Synthesizability in generative small-molecule design Recent advances in machine learning have accelerated small molecule design, but limited synthesizability of generated molecules remains a major challenge, prompting new strategies to incorporate synthesizability into generative workflows and ongoing research to address current limitations.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "The design of small molecules with tailored properties is a central goal in chemistry and materials science.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "A key reason for this gap, the elephant in the room, is the limited synthesizability of the generated molecules.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [
+    {
+      "value": "The design of small molecules with tailored properties is a central goal in chemistry and materials science.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [],
+  "conditions": [
+    {
+      "value": "The elephant in the lab: Synthesizability in generative small-molecule design Recent advances in machine learning have accelerated small molecule design, but limited synthesizability of generated molecules remains a major challenge, prompting new strategies to incorporate synthesizability into generative workflows and ongoing research to address current limitations.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "We also discuss key limitations of current approaches and outline promising directions for future research.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "mechanisms": [],
+  "outcomes": [],
+  "sdl_tags": [
+    "Artificial Intelligence & Data Science",
+    "Chemistry"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.55,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": true,
+      "properties": true,
+      "measurements": false,
+      "conditions": true,
+      "mechanisms": false,
+      "outcomes": false,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "measurements",
+      "mechanisms",
+      "outcomes",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

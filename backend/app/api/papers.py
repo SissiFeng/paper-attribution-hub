@@ -11,7 +11,7 @@ from sqlalchemy.orm import Session, selectinload
 from app.models import Author, PaperAuthor
 
 from app.db import get_session
-from app.models import Paper, PaperClassification, PaperEntity, PaperEvidence
+from app.models import Paper, PaperEntity, PaperEvidence
 from app.schemas import (
     ClassificationOut,
     FulltextEvidenceOut,
@@ -25,6 +25,7 @@ from app.schemas import (
 )
 from app.services.filter_spec import PaperFilter, apply_filter, paper_filter_query
 from app.services.rag_status_service import rag_status_by_paper
+from app.review_contract import infer_corpus_sources, normalize_corpus_sources
 from app.services.sdl_dimensions import dimensions_from_evidence_summary
 
 router = APIRouter(prefix="/papers", tags=["papers"])
@@ -64,6 +65,9 @@ def _paper_to_schema(
             disagreement_type=c.disagreement_type,
             classification_dimensions=dimensions_from_evidence_summary(c.evidence_summary) or {},
             future_rule_update=c.future_rule_update,
+            screening_stage=c.screening_stage,
+            screening_route=c.screening_route,
+            screening_reason=c.screening_reason,
             fulltext_evidence=[
                 FulltextEvidenceOut(
                     id=e.id,
@@ -82,6 +86,12 @@ def _paper_to_schema(
         review_out = HumanReviewOut(
             paper_id=paper.id,
             human_label=r.human_label,
+            sdl_judgement=r.sdl_judgement,
+            ac_relevance_judgement=r.ac_relevance_judgement,
+            ai_for_science_judgement=r.ai_for_science_judgement,
+            review_status=r.review_status,
+            evidence_level=r.evidence_level,
+            judgement_basis=r.judgement_basis,
             corrected_topics=r.corrected_topics,
             corrected_people=r.corrected_people,
             reviewer=r.reviewer,
@@ -103,6 +113,14 @@ def _paper_to_schema(
         full_text_available=bool(paper.full_text_available),
         rag_status=rag_status,
         provenance=getattr(paper, "provenance", "csv") or "csv",
+        source=paper.source or "csv",
+        corpus_sources=normalize_corpus_sources(paper.corpus_sources or [])
+        or infer_corpus_sources(
+            provenance=paper.provenance,
+            source=paper.source,
+            retrieval_tier=paper.retrieval_tier,
+            ac_known_publication=paper.ac_known_publication,
+        ),
         authors=[
             PaperAuthorOut(
                 name=pa.author.canonical_name,
@@ -164,7 +182,7 @@ def _evidence_by_paper(session: Session, paper_ids: list[str]) -> dict[str, list
 
 @router.get("/stats", response_model=PipelineStats)
 def stats(session: Session = Depends(get_session)) -> PipelineStats:
-    from app.models import Author, Institution, Topic
+    from app.models import Institution, Topic
 
     papers = list(session.execute(select(Paper)).scalars())
     label_counts: dict[str, int] = {}

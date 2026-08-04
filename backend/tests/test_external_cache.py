@@ -1,4 +1,3 @@
-from datetime import timedelta
 
 from app.services.external.cache import (
     cached_get,

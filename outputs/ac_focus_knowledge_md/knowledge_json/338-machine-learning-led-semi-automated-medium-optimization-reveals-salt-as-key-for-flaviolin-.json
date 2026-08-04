@@ -1,0 +1,127 @@
+{
+  "paper_id": "acfocus_6abf098d5d2f",
+  "title": "Machine learning-led semi-automated medium optimization reveals salt as key for flaviolin production in Pseudomonas putida",
+  "metadata": {
+    "doi": "10.1038/s42003-025-08039-2",
+    "url": "https://www.nature.com/articles/s42003-025-08039-2",
+    "year": "2025",
+    "authors": "A. Zournas; M. R. Incha; T. Radivojević; V. Blay; J. M. Martí; Z. Costello; M. Schimdt; T. Chung; M. G. Thompson; A. Pearson; P. C. Kinnunen; T. Eng; C. E. Lawson; S. Tan; T. Ogorzalek; N. Kaplan; M. Forrer; T. Backman; A. Mukhopadhyay; N. J. Hillson; J. D. Keasling; H. García-Martín",
+    "venue": "Communications Biology",
+    "category": "Journal Article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Christopher Lawson"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "This study demonstrates that a semi-automated, active learning-based media optimization process—using machine learning and automation—significantly boosts chemical production in synthetic biology, revealing that high salt concentrations are crucial for maximizing yields in Pseudomonas putida, and highlighting a cost-effective strategy for commercial viability.",
+  "abstract": "Although synthetic biology can produce valuable chemicals in a renewable manner, its progress is still hindered by a lack of predictive capabilities. Media optimization is a critical, and often overlooked, process which is essential to obtain the titers, rates and yields needed for commercial viability. Here, we present a molecule- and host-agnostic active learning process for media optimization that is enabled by a fast and highly repeatable semi-automated pipeline. Its application yielded 60% and 70% increases in titer, and 350% increase in process yield in three different campaigns for flaviolin production in Pseudomonas putida KT2440. Explainable Artificial Intelligence techniques pinpointed that, surprisingly, common salt (NaCl) is the most important component influencing production. The optimal salt concentration is very high, comparable to seawater and close to the limits that P. putida can tolerate. The availability of fast Design-Build-Test-Learn (DBTL) cycles allowed us to show that performance improvements for active learning are rarely monotonous. This work illustrates how machine learning and automation can change the paradigm of current synthetic biology research to make it more effective and informative, and suggests a cost-effective and underexploited strategy to facilitate the high titers, rates and yields essential for commercial viability. © The Author(s) 2025.",
+  "hardware": [
+    {
+      "value": "This study demonstrates that a semi-automated, active learning-based media optimization process—using machine learning and automation—significantly boosts chemical production in synthetic biology, revealing that high salt concentrations are crucial for maximizing yields in Pseudomonas putida, and highlighting a cost-effective strategy for commercial viability.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Here, we present a molecule- and host-agnostic active learning process for media optimization that is enabled by a fast and highly repeatable semi-automated pipeline.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "methods": [
+    {
+      "value": "This study demonstrates that a semi-automated, active learning-based media optimization process—using machine learning and automation—significantly boosts chemical production in synthetic biology, revealing that high salt concentrations are crucial for maximizing yields in Pseudomonas putida, and highlighting a cost-effective strategy for commercial viability.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [],
+  "materials": [
+    {
+      "value": "Here, we present a molecule- and host-agnostic active learning process for media optimization that is enabled by a fast and highly repeatable semi-automated pipeline.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [
+    {
+      "value": "Its application yielded 60% and 70% increases in titer, and 350% increase in process yield in three different campaigns for flaviolin production in Pseudomonas putida KT2440.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [],
+  "conditions": [
+    {
+      "value": "The optimal salt concentration is very high, comparable to seawater and close to the limits that P.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "This work illustrates how machine learning and automation can change the paradigm of current synthetic biology research to make it more effective and informative, and suggests a cost-effective and underexploited strategy to facilitate the high titers, rates and yields essential for commercial viability.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "mechanisms": [],
+  "outcomes": [],
+  "sdl_tags": [],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.58,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": true,
+      "method": true,
+      "evidence": false,
+      "entities": false,
+      "materials": true,
+      "properties": true,
+      "measurements": false,
+      "conditions": true,
+      "mechanisms": false,
+      "outcomes": false,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "evidence",
+      "entities",
+      "measurements",
+      "mechanisms",
+      "outcomes",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only."
+    ]
+  }
+}

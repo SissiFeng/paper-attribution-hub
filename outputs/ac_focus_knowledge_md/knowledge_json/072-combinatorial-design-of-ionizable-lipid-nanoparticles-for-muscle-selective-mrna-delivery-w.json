@@ -1,0 +1,150 @@
+{
+  "paper_id": "acfocus_b74fa8ff3ac7",
+  "title": "Combinatorial design of ionizable lipid nanoparticles for muscle-selective mRNA delivery with minimized off-target effects",
+  "metadata": {
+    "doi": "10.1073/pnas.2309472120",
+    "url": "https://www.pnas.org/doi/10.1073/pnas.2309472120",
+    "year": "2023",
+    "authors": "Chen, Jingan; Xu, Yue; Zhou, Muye; Xu, Shufen; Varley, Andrew James; Golubovic, Alex; Ze Lu, Rick Xing; Wang, Kevin Chang; Yeganeh, Mina; Vosoughi, Daniel; Li, Bowen",
+    "venue": "Proceedings of the National Academy of Sciences of the United States of America",
+    "category": "Journal article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Bowen Li"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member"
+    ],
+    "flags": {
+      "acknowledges_ac": "checked",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "This study presents a rapid method for creating diverse biodegradable ionizable lipids, identifies iso-A11B5C1 as a muscle-targeted mRNA delivery agent with reduced off-target effects, and demonstrates that effective mRNA vaccines may not require high immune cell transfection, challenging current vaccine design paradigms.",
+  "abstract": "Ionizable lipid nanoparticles (LNPs) pivotal to the success of COVID-19 mRNA (messenger RNA) vaccines hold substantial promise for expanding the landscape of mRNA-based therapies. Nevertheless, the risk of mRNA delivery to off-target tissues highlights the necessity for LNPs with enhanced tissue selectivity. The intricate nature of biological systems and inadequate knowledge of lipid structure–activity relationships emphasize the significance of high-throughput methods to produce chemically diverse lipid libraries for mRNA delivery screening. Here, we introduce a streamlined approach for the rapid design and synthesis of combinatorial libraries of biodegradable ionizable lipids. This led to the identification of iso-A11B5C1, an ionizable lipid uniquely apt for muscle-specific mRNA delivery. It manifested high transfection efficiencies in muscle tissues, while significantly diminishing off-targeting in organs like the liver and spleen. Moreover, iso-A11B5C1 also exhibited reduced mRNA transfection potency in lymph nodes and antigen-presenting cells, prompting investigation into the influence of direct immune cell transfection via LNPs on mRNA vaccine effectiveness. In comparison with SM-102, while iso-A11B5C1’s limited immune transfection attenuated its ability to elicit humoral immunity, it remained highly effective in triggering cellular immune responses after intramuscular administration, which is further corroborated by its strong therapeutic performance as cancer vaccine in a melanoma model. Collectively, our study not only enriches the high-throughput toolkit for generating tissue-specific ionizable lipids but also encourages a reassessment of prevailing paradigms in mRNA vaccine design. This study encourages rethinking of mRNA vaccine design principles, suggesting that achieving high immune cell transfection might not be the sole criterion for developing effective mRNA vaccines. © 2023 National Academy of Sciences. All rights reserved.",
+  "hardware": [
+    {
+      "value": "The intricate nature of biological systems and inadequate knowledge of lipid structure–activity relationships emphasize the significance of high-throughput methods to produce chemically diverse lipid libraries for mRNA delivery screening.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Collectively, our study not only enriches the high-throughput toolkit for generating tissue-specific ionizable lipids but also encourages a reassessment of prevailing paradigms in mRNA vaccine design.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "methods": [
+    {
+      "value": "This study presents a rapid method for creating diverse biodegradable ionizable lipids, identifies iso-A11B5C1 as a muscle-targeted mRNA delivery agent with reduced off-target effects, and demonstrates that effective mRNA vaccines may not require high immune cell transfection, challenging current vaccine design paradigms.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Biochemistry",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Automation and Robotics",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Biology",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [],
+  "properties": [
+    {
+      "value": "Nevertheless, the risk of mRNA delivery to off-target tissues highlights the necessity for LNPs with enhanced tissue selectivity.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "The intricate nature of biological systems and inadequate knowledge of lipid structure–activity relationships emphasize the significance of high-throughput methods to produce chemically diverse lipid libraries for mRNA delivery screening.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [],
+  "conditions": [
+    {
+      "value": "Combinatorial design of ionizable lipid nanoparticles for muscle-selective mRNA delivery with minimized off-target effects This study presents a rapid method for creating diverse biodegradable ionizable lipids, identifies iso-A11B5C1 as a muscle-targeted mRNA delivery agent with reduced off-target effects, and demonstrates that effective mRNA vaccines may not require high immune cell transfection, challenging current vaccine design paradigms.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "mechanisms": [],
+  "outcomes": [
+    {
+      "value": "Therapeutics",
+      "source": "csv_applied_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "Biochemistry",
+    "Automation and Robotics",
+    "Biology",
+    "Therapeutics"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.64,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": true,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": false,
+      "properties": true,
+      "measurements": false,
+      "conditions": true,
+      "mechanisms": false,
+      "outcomes": true,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "evidence",
+      "materials",
+      "measurements",
+      "mechanisms",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only."
+    ]
+  }
+}

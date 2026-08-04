@@ -60,6 +60,12 @@ class OpenAlexClient(ExternalClient):
             return None
         return self._cached(session, f"/works/doi:{doi_norm}")
 
+    def work_by_id(self, session: Session, openalex_work_id: str) -> dict | None:
+        work_id = (openalex_work_id or "").strip().rsplit("/", 1)[-1]
+        if not work_id:
+            return None
+        return self._cached(session, f"/works/{work_id}")
+
     def papers_citing(
         self, session: Session, openalex_work_id: str, per_page: int = 25
     ) -> Iterator[dict]:

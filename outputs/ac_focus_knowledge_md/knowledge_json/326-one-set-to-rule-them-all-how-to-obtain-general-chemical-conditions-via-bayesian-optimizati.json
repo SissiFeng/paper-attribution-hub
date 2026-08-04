@@ -1,0 +1,251 @@
+{
+  "paper_id": "acfocus_5d6bdb9c37d8",
+  "title": "One Set to Rule Them All: How to Obtain General Chemical Conditions via Bayesian Optimization over Curried Functions",
+  "metadata": {
+    "doi": "10.48550/arxiv.2502.18966",
+    "url": "https://arxiv.org/abs/2502.18966",
+    "year": "2025",
+    "authors": "S. P. Schmid; E. M. Rajaonson; C. T. Ser; M. Haddadnia; S. X. Leong; A. Aspuru-Guzik; A. Kristiadi; K. Jorner; F. Strieth-Kalthoff",
+    "venue": "arxiv",
+    "category": "Preprint",
+    "peer_reviewed": "Non Peer Reviewed",
+    "ac_members": [
+      "Alán Aspuru-Guzik"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "This work demonstrates that generality-oriented Bayesian optimization, formulated as an optimization over curried functions and evaluated on real-world chemical reaction data, can efficiently identify general reaction conditions transferable to new tasks, with simple myopic strategies performing as well as more complex ones due to the importance of exploring both parameter and task spaces.",
+  "abstract": "General parameters are highly desirable in the natural sciences - e.g., chemical reaction conditions that enable high yields across a range of related transformations. This has a significant practical impact since those general parameters can be transferred to related tasks without the need for laborious and time-intensive re-optimization. While Bayesian optimization (BO) is widely applied to find optimal parameter sets for specific tasks, it has remained underused in experiment planning towards such general optima. In this work, we consider the real-world problem of condition optimization for chemical reactions to study how performing generality-oriented BO can accelerate the identification of general optima, and whether these optima also translate to unseen examples. This is achieved through a careful formulation of the problem as an optimization over curried functions, as well as systematic evaluations of generality-oriented strategies for optimization tasks on real-world experimental data. We find that for generality-oriented optimization, simple myopic optimization strategies that decouple parameter and task selection perform comparably to more complex ones, and that effective optimization is merely determined by an effective exploration of both parameter and task space.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "Systematic evaluations of generality-oriented optimization strategies using real-world chemical reaction optimization problems, formulating the problem as an optimization over curried functions.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "problems": [
+    {
+      "value": "Identifying general parameters for chemical reaction conditions that enable high yields across a range of related transformations.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "hypotheses": [
+    {
+      "value": "Generality-oriented Bayesian optimization can accelerate the identification of general optima for chemical reactions, which also translate to unseen examples.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "evidence": [
+    {
+      "value": "Benchmarking results showing that simple myopic optimization strategies perform comparably to more complex ones, and that effective optimization is determined by an effective exploration of both parameter and task space.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "conclusions": [
+    {
+      "value": "Generality-oriented optimization can yield more transferable optima, especially in scenarios with a low density of high-outcome experiments across the search space.",
+      "source": "cross_sdl_phase1",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "entities": [
+    {
+      "value": "chemical reaction conditions (x)",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "substrates (w)",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "aggregation function (ϕ)",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "materials": [],
+  "properties": [],
+  "measurements": [
+    {
+      "value": "Benchmarking results showing that simple myopic optimization strategies perform comparably to more complex ones, and that effective optimization is determined by an effective exploration of both parameter and task space.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "conditions": [
+    {
+      "value": "One Set to Rule Them All: How to Obtain General Chemical Conditions via Bayesian Optimization over Curried Functions This work demonstrates that generality-oriented Bayesian optimization, formulated as an optimization over curried functions and evaluated on real-world chemical reaction data, can efficiently identify general reaction conditions transferable to new tasks, with simple myopic strategies performing as well as more complex ones due to the importance of exploring both parameter and task spaces.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "General parameters are highly desirable in the natural sciences - e.g., chemical reaction conditions that enable high yields across a range of related transformations.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "This has a significant practical impact since those general parameters can be transferred to related tasks without the need for laborious and time-intensive re-optimization.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "In this work, we consider the real-world problem of condition optimization for chemical reactions to study how performing generality-oriented BO can accelerate the identification of general optima, and whether these optima also translate to unseen examples.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "chemical reaction conditions (x) substrates (w) aggregation function (ϕ) identification of general optima accelerated identification of transferable optima improved generality of identified conditions across substrates",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "mechanisms": [
+    {
+      "value": "Bayesian optimization over curried functions",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "exploration of parameter and task space",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "partial monitoring of the generality objective",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "outcomes": [
+    {
+      "value": "identification of general optima",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "accelerated identification of transferable optima",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "improved generality of identified conditions across substrates",
+      "source": "cross_sdl_phase2",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "Artificial Intelligence & Data Science",
+    "Chemistry",
+    "Automation and Robotics"
+  ],
+  "reasoning_motifs": [
+    {
+      "value": "Optimization → Generality",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Exploration → Discovery",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "general_principles": [
+    {
+      "value": "Maximization of General Outcomes",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    },
+    {
+      "value": "Efficient Exploration of Parameter Space",
+      "source": "cross_sdl_phase3",
+      "confidence": 0.82,
+      "evidence": ""
+    }
+  ],
+  "failure_paths": [
+    {
+      "value": "success: Benchmarking of different generality-oriented optimization strategies, including SEQ 1LA-UCB-PV, SEQ 2LA-UCB-PV, and JOINT 2LA-EI. Evidence: The SEQ 1LA-UCB-PV strategy showed faster optimization performance compared to other algorithms used in the chemical domain.",
+      "source": "cross_sdl_phase4",
+      "confidence": 0.75,
+      "evidence": ""
+    },
+    {
+      "value": "partial: Comparison of sequential and joint two-step lookahead acquisition strategies. Evidence: Joint optimization did not lead to improved optimization performance over sequential strategies, suggesting the simpler sequential approach is well-suited for generality-oriented optimization.",
+      "source": "cross_sdl_phase4",
+      "confidence": 0.75,
+      "evidence": ""
+    }
+  ],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "acgold_f8f0839a0ffe",
+    "cross_sdl_reasoning_json": "/Users/sissifeng/Downloads/cross-sdl_knowledge_transfer_engine/data/reasoning/acgold_f8f0839a0ffe.json",
+    "cross_sdl_extraction_quality": 0.8,
+    "cross_sdl_notes": "The paper provides a structured approach to evaluating generality-oriented optimization strategies, but some specific details on the reasoning behind choosing certain benchmarks or aggregation functions were not explicitly stated and had to be inferred."
+  },
+  "validation": {
+    "score": 0.76,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": true,
+      "entities": true,
+      "materials": false,
+      "properties": false,
+      "measurements": true,
+      "conditions": true,
+      "mechanisms": true,
+      "outcomes": true,
+      "cross_sdl_match": true
+    },
+    "missing": [
+      "hardware",
+      "materials",
+      "properties"
+    ],
+    "notes": [
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

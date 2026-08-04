@@ -40,8 +40,8 @@ RAG_QUERY_BY_EVIDENCE_TYPE = {
 class Gate:
     name: str
     status: str
-    observed: float | int | None
-    threshold: float | int | None
+    observed: float | int | str | None
+    threshold: float | int | str | None
     details: str
 
 
@@ -56,8 +56,8 @@ class RagTask:
 def _gate(
     name: str,
     passed: bool,
-    observed: float | int | None,
-    threshold: float | int | None,
+    observed: float | int | str | None,
+    threshold: float | int | str | None,
     details: str,
 ) -> Gate:
     return Gate(
@@ -79,6 +79,10 @@ def _accepted(gates: list[Gate]) -> bool:
 
 def _eval_summary(report: EvalReport) -> dict:
     return {
+        "dataset_role": report.dataset_role,
+        "dataset_id": report.dataset_id,
+        "dataset_hash": report.dataset_hash,
+        "includes_silver": report.includes_silver,
         "n_evaluated": report.n_evaluated,
         "accuracy": report.accuracy,
         "macro_precision": report.macro_precision,
@@ -166,6 +170,14 @@ def run_classification_autoresearch(
 
     gates: list[Gate] = [
         _gate(
+            "frozen_holdout_dataset",
+            eval_report.dataset_role == "frozen_holdout",
+            eval_report.dataset_role,
+            "frozen_holdout",
+            "Release gates require the configured frozen holdout; custom label "
+            "paths are diagnostic-only.",
+        ),
+        _gate(
             "human_gold_labels_present",
             eval_report.n_evaluated > 0,
             eval_report.n_evaluated,
@@ -221,6 +233,11 @@ def run_classification_autoresearch(
         )
 
     recommendations: list[str] = []
+    if eval_report.dataset_role != "frozen_holdout":
+        recommendations.append(
+            "Re-run release gating against the configured frozen holdout. Keep "
+            "custom or silver datasets diagnostic-only."
+        )
     if eval_report.accuracy < 1.0:
         recommendations.append(
             "Inspect confusion rows in human_eval.confusion, then add/adjust rules or "

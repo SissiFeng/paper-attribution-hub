@@ -13,7 +13,6 @@ class _StubRerankerLowScore:
     name = "stub"
 
     def rerank(self, query, candidates):
-        from app.services.retrieval_service import RetrievedChunk
         from dataclasses import replace
 
         return [replace(c, score=-3.0) for c in candidates]

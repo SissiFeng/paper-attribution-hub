@@ -1,0 +1,156 @@
+{
+  "paper_id": "acfocus_76f3995000bb",
+  "title": "Biodegradable lipid nanoparticles for genome editing in the brain via intrathecal administration",
+  "metadata": {
+    "doi": "10.1016/j.mattod.2025.11.032",
+    "url": "https://www.sciencedirect.com/science/article/pii/S1369702125005085",
+    "year": "2026",
+    "authors": "S. Dong; L. Healy; F. Gong; Y. Xu; Y. Cai; N. C. Solek; J. Chen; M. Zhou; T. Thomson; M. Savguira; S. Luozhong; Y. Zhang; T. He; G. Li; B. Li",
+    "venue": "Materials Today",
+    "category": "Journal Article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Bowen Li"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "Researchers developed a biodegradable lipid nanoparticle (P3B-LNP) using combinatorial chemistry and high-throughput screening, enabling efficient, safe, and well-tolerated intrathecal mRNA delivery for genome editing in the brain, surpassing current clinical benchmarks and highlighting a promising platform for CNS-targeted therapeutics.",
+  "abstract": "Messenger RNA (mRNA)-based nonviral delivery of gene editors offers transformative potential for therapeutic genome editing in neurological diseases, but efficient and safe delivery to the brain remains a formidable challenge due to the restrictive blood–brain barrier. Intrathecal administration provides a clinically validated route to bypass this barrier, yet the design principles for biodegradable lipid nanoparticles (LNPs) optimized for central nervous system (CNS) delivery remain poorly defined. Here, we synthesized a 200-member combinatorial library of structurally diverse, biodegradable ionizable lipids using the Passerini three-component reaction. High-throughput in vivo screening identified P3B, a lead lipid incorporating degradable linkages and optimized ionizable head groups, which enables potent and well-tolerated intrathecal mRNA delivery. In Ai9 reporter mice, P3B-LNPs encapsulating Cas9 mRNA/sgRNA induced robust and widespread tdTomato expression in neurons and astrocytes across multiple brain regions, achieving substantially higher editing efficiency than the clinical benchmark DLin-MC3-DMA (MC3). In LumA reporter mice, P3B-LNPs mediated efficient adenine base editing, restoring luciferase expression throughout the brain with 14.8% on-target correction and minimal off-target activity. Compared with MC3, P3B-LNPs exhibited enhanced tolerability, with attenuated inflammatory responses and a safety profile supportive of repeated dosing. These findings establish P3B-LNPs as a potent, safe, and biodegradable platform for genome editing in the brain and underscore the power of combinatorial lipid chemistry and high-throughput in vivo screening to accelerate the development of next-generation LNPs for CNS-targeted mRNA therapeutics.",
+  "hardware": [
+    {
+      "value": "Researchers developed a biodegradable lipid nanoparticle (P3B-LNP) using combinatorial chemistry and high-throughput screening, enabling efficient, safe, and well-tolerated intrathecal mRNA delivery for genome editing in the brain, surpassing current clinical benchmarks and highlighting a promising platform for CNS-targeted therapeutics.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "High-throughput in vivo screening identified P3B, a lead lipid incorporating degradable linkages and optimized ionizable head groups, which enables potent and well-tolerated intrathecal mRNA delivery.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "These findings establish P3B-LNPs as a potent, safe, and biodegradable platform for genome editing in the brain and underscore the power of combinatorial lipid chemistry and high-throughput in vivo screening to accelerate the development of next-generation LNPs for CNS-targeted mRNA therapeutics.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "methods": [
+    {
+      "value": "Researchers developed a biodegradable lipid nanoparticle (P3B-LNP) using combinatorial chemistry and high-throughput screening, enabling efficient, safe, and well-tolerated intrathecal mRNA delivery for genome editing in the brain, surpassing current clinical benchmarks and highlighting a promising platform for CNS-targeted therapeutics.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Automation and Robotics",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Biology",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Biochemistry",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [],
+  "properties": [
+    {
+      "value": "In LumA reporter mice, P3B-LNPs mediated efficient adenine base editing, restoring luciferase expression throughout the brain with 14.8% on-target correction and minimal off-target activity.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [
+    {
+      "value": "In Ai9 reporter mice, P3B-LNPs encapsulating Cas9 mRNA/sgRNA induced robust and widespread tdTomato expression in neurons and astrocytes across multiple brain regions, achieving substantially higher editing efficiency than the clinical benchmark DLin-MC3-DMA (MC3).",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "conditions": [
+    {
+      "value": "Biodegradable lipid nanoparticles for genome editing in the brain via intrathecal administration Researchers developed a biodegradable lipid nanoparticle (P3B-LNP) using combinatorial chemistry and high-throughput screening, enabling efficient, safe, and well-tolerated intrathecal mRNA delivery for genome editing in the brain, surpassing current clinical benchmarks and highlighting a promising platform for CNS-targeted therapeutics.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "mechanisms": [],
+  "outcomes": [
+    {
+      "value": "Therapeutics",
+      "source": "csv_applied_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "Automation and Robotics",
+    "Biology",
+    "Biochemistry",
+    "Therapeutics"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.7,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": true,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": false,
+      "properties": true,
+      "measurements": true,
+      "conditions": true,
+      "mechanisms": false,
+      "outcomes": true,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "evidence",
+      "materials",
+      "mechanisms",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only."
+    ]
+  }
+}

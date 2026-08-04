@@ -1,0 +1,138 @@
+{
+  "paper_id": "acfocus_d3cc4790fc5b",
+  "title": "The Dawn of a New Pharmaceutical Epoch: Can AI and Robotics Reshape Drug Formulation?",
+  "metadata": {
+    "doi": "10.1002/adhm.202401312",
+    "url": "https://advanced.onlinelibrary.wiley.com/doi/10.1002/adhm.202401312",
+    "year": "2024",
+    "authors": "Bannigan P, Hickman RJ, Aspuru-Guzik A, Allen C",
+    "venue": "Advanced healthcare materials",
+    "category": "Journal article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Christine Allen",
+      "Alán Aspuru-Guzik"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance",
+      "AC Full Member",
+      "AC Governance"
+    ],
+    "flags": {
+      "acknowledges_ac": "checked",
+      "highly_relevant": "checked",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "Despite a 51-fold increase in pharmaceutical R&D spending over the past forty years, clinical success rates for new drugs have stagnated at around 10 percent, highlighting the urgent need for innovation in the often overlooked area of drug formulation.",
+  "abstract": "Over the last four decades, pharmaceutical companies’ expenditures on research and development have increased 51-fold. During this same time, clinical success rates for new drugs have remained unchanged at about 10 percent, predominantly due to lack of efficacy and/or safety concerns. This persistent problem underscores the need to innovate across the entire drug development process, particularly in drug formulation, which is often deprioritized and under-resourced.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "Despite a 51-fold increase in pharmaceutical R&D spending over the past forty years, clinical success rates for new drugs have stagnated at around 10 percent, highlighting the urgent need for innovation in the often overlooked area of drug formulation.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Artificial Intelligence & Data Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Chemistry",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Automation and Robotics",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [],
+  "properties": [],
+  "measurements": [],
+  "conditions": [
+    {
+      "value": "During this same time, clinical success rates for new drugs have remained unchanged at about 10 percent, predominantly due to lack of efficacy and/or safety concerns.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "mechanisms": [],
+  "outcomes": [
+    {
+      "value": "Formulations",
+      "source": "csv_applied_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Therapeutics",
+      "source": "csv_applied_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "Artificial Intelligence & Data Science",
+    "Chemistry",
+    "Automation and Robotics",
+    "Formulations",
+    "Therapeutics"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.47,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": false,
+      "properties": false,
+      "measurements": false,
+      "conditions": true,
+      "mechanisms": false,
+      "outcomes": true,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "materials",
+      "properties",
+      "measurements",
+      "mechanisms",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

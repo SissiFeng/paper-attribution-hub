@@ -1,0 +1,144 @@
+{
+  "paper_id": "acfocus_d8fd30e0184d",
+  "title": "Infusing Synthetic Data with Real-World Patterns for Zero-Shot Material State Segmentation",
+  "metadata": {
+    "doi": "10.52202/079017-1925",
+    "url": "https://dl.acm.org/doi/10.5555/3737916.3739841",
+    "year": "2024",
+    "authors": "Eppel S, Li JY, Drehwald MS, Aspuru-Guzik A",
+    "venue": "Advances in Neural Information Processing Systems",
+    "category": "Conference",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Alán Aspuru-Guzik"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "checked",
+      "high_impact": "checked"
+    }
+  },
+  "source_summary": "This work introduces an unsupervised method that enhances synthetic data for material state recognition by infusing real-world patterns, resulting in improved segmentation performance and presenting the first comprehensive benchmark for zero-shot material state segmentation across diverse domains, with all resources and data made publicly available.",
+  "abstract": "Visual recognition of materials and their states is essential for understanding the physical world, from identifying wet regions on surfaces or stains on fabrics to detecting infected areas on plants or minerals in rocks. Collecting data that captures this vast variability is complex due to the scattered and gradual nature of material states. Manually annotating real-world images is constrained by cost and precision, while synthetic data, although accurate and inexpensive, lacks real-world diversity. This work aims to bridge this gap by infusing patterns automatically extracted from real-world images into synthetic data. Hence, patterns collected from natural images are used to generate and map materials into synthetic scenes. This unsupervised approach captures the complexity of the real world while maintaining the precision and scalability of synthetic data. We also present the first comprehensive benchmark for zero-shot material state segmentation, utilizing real-world images across a diverse range of domains, including food, soils, construction, plants, liquids, and more, each appears in various states such as wet, dry, infected, cooked, burned, and many others. The annotation includes partial similarity between regions with similar but not identical materials and hard segmentation of only identical material states. This benchmark eluded top foundation models, exposing the limitations of existing data collection methods. Meanwhile, nets trained on the infused data performed significantly better on this and related tasks. The dataset, code, and trained model are available at these URLs: 1, 2, 3, 4. We also share 300,000 extracted textures and SVBRDF/PBR materials to facilitate future datasets generation at these URLs: 1,2, 3, 4.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "This work introduces an unsupervised method that enhances synthetic data for material state recognition by infusing real-world patterns, resulting in improved segmentation performance and presenting the first comprehensive benchmark for zero-shot material state segmentation across diverse domains, with all resources and data made publicly available.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Artificial Intelligence & Data Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Materials Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "Infusing Synthetic Data with Real-World Patterns for Zero-Shot Material State Segmentation This work introduces an unsupervised method that enhances synthetic data for material state recognition by infusing real-world patterns, resulting in improved segmentation performance and presenting the first comprehensive benchmark for zero-shot material state segmentation across diverse domains, with all resources and data made publicly available.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Visual recognition of materials and their states is essential for understanding the physical world, from identifying wet regions on surfaces or stains on fabrics to detecting infected areas on plants or minerals in rocks.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Collecting data that captures this vast variability is complex due to the scattered and gradual nature of material states.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [],
+  "measurements": [
+    {
+      "value": "Infusing Synthetic Data with Real-World Patterns for Zero-Shot Material State Segmentation This work introduces an unsupervised method that enhances synthetic data for material state recognition by infusing real-world patterns, resulting in improved segmentation performance and presenting the first comprehensive benchmark for zero-shot material state segmentation across diverse domains, with all resources and data made publicly available.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "We also present the first comprehensive benchmark for zero-shot material state segmentation, utilizing real-world images across a diverse range of domains, including food, soils, construction, plants, liquids, and more, each appears in various states such as wet, dry, infected, cooked, burned, and many others.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "This benchmark eluded top foundation models, exposing the limitations of existing data collection methods.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "conditions": [],
+  "mechanisms": [],
+  "outcomes": [],
+  "sdl_tags": [
+    "Artificial Intelligence & Data Science",
+    "Materials Science"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.5,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": true,
+      "properties": false,
+      "measurements": true,
+      "conditions": false,
+      "mechanisms": false,
+      "outcomes": false,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "properties",
+      "conditions",
+      "mechanisms",
+      "outcomes",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

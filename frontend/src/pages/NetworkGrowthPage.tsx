@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { EChart } from "@/components/EChart";
+import { institutionTopicHeatmapTooltip } from "@/lib/chartTooltips";
 import { TimeSlider } from "@/components/TimeSlider";
 import {
   getNetworkGrowth,
@@ -221,10 +222,11 @@ function buildHeatmapOption(data: InstTopicHeatmapPayload) {
       textStyle: { color: PALETTE.navy, fontFamily: "'JetBrains Mono',monospace", fontSize: 12 },
       formatter: (p: unknown) => {
         const { value } = p as { value: [number, number, number]; name: string };
-        return `<div style="font-family:'JetBrains Mono',monospace;font-size:12px;padding:2px">
-          <b>${institutions[value[1]]}</b><br/>
-          ${topics[value[0]]}: <b>${value[2]}</b> papers
-        </div>`;
+        return institutionTopicHeatmapTooltip(
+          institutions[value[1]],
+          topics[value[0]],
+          value[2],
+        );
       },
     },
     grid: { top: 20, right: 10, bottom: 80, left: 120, containLabel: false },

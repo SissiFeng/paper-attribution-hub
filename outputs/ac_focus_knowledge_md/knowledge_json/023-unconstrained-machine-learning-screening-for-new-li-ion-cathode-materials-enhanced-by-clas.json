@@ -1,0 +1,168 @@
+{
+  "paper_id": "acfocus_472d8b55e9c6",
+  "title": "Unconstrained Machine Learning Screening for New Li‐Ion Cathode Materials Enhanced by Class Balancing",
+  "metadata": {
+    "doi": "10.1002/adts.202300081",
+    "url": "https://onlinelibrary.wiley.com/doi/10.1002/adts.202300081",
+    "year": "2023",
+    "authors": "Dinic, Filip; Voznyy, Oleksandr",
+    "venue": "Advanced Theory and Simulations",
+    "category": "Journal article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Oleksandr Voznyy"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "checked",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "A new machine learning model predicts battery cathode voltages without needing lithiated structures, enabling the rapid screening and validation of over 500 promising high-voltage materials, including unconventional candidates, for energy storage applications.",
+  "abstract": "Abstract             Modeling and predicting battery cathode material voltage requires accurate structural information regarding the binding sites of lithium within a target structure. Obtaining these optimized structures requires some form of structural optimization. The ensuing complexity impedes the rapid screening of new materials for their suitability in energy storage. Previous machine learning (ML) models use structures of both lithiated and nonlithiated forms for training; essentially, reproducing what is already known, but failing to generalize to structures whose lithiated form is not available. To avoid this limitation, an ML model capable of predicting the voltage associated with the material's lithiation without explicitly requiring the lithiated structure is trained. The model's predictive power is improved by adding newly calculated data points, with the most impactful being materials with unfavorable Li binding, which are lacking in the original dataset. Using this model, new cathode candidates among an order of magnitude more materials than in previous studies are screened and the most promising ones are validated with density functional theory calculations. Considering additional stability and conductivity constraints, 572 materials with voltages greater than 3.5 V are predicted. Unexpectedly, some of them are not based on conventional transition metals, highlighting the power of an unbiased search.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "A new machine learning model predicts battery cathode voltages without needing lithiated structures, enabling the rapid screening and validation of over 500 promising high-voltage materials, including unconventional candidates, for energy storage applications.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Artificial Intelligence & Data Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Materials Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "Unconstrained Machine Learning Screening for New Li‐Ion Cathode Materials Enhanced by Class Balancing A new machine learning model predicts battery cathode voltages without needing lithiated structures, enabling the rapid screening and validation of over 500 promising high-voltage materials, including unconventional candidates, for energy storage applications.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Abstract             Modeling and predicting battery cathode material voltage requires accurate structural information regarding the binding sites of lithium within a target structure.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "The ensuing complexity impedes the rapid screening of new materials for their suitability in energy storage.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [
+    {
+      "value": "Unconstrained Machine Learning Screening for New Li‐Ion Cathode Materials Enhanced by Class Balancing A new machine learning model predicts battery cathode voltages without needing lithiated structures, enabling the rapid screening and validation of over 500 promising high-voltage materials, including unconventional candidates, for energy storage applications.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "The ensuing complexity impedes the rapid screening of new materials for their suitability in energy storage.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Considering additional stability and conductivity constraints, 572 materials with voltages greater than 3.5 V are predicted.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [],
+  "conditions": [
+    {
+      "value": "Unconstrained Machine Learning Screening for New Li‐Ion Cathode Materials Enhanced by Class Balancing A new machine learning model predicts battery cathode voltages without needing lithiated structures, enabling the rapid screening and validation of over 500 promising high-voltage materials, including unconventional candidates, for energy storage applications.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Abstract             Modeling and predicting battery cathode material voltage requires accurate structural information regarding the binding sites of lithium within a target structure.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "To avoid this limitation, an ML model capable of predicting the voltage associated with the material's lithiation without explicitly requiring the lithiated structure is trained.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "mechanisms": [],
+  "outcomes": [
+    {
+      "value": "Energy Storage",
+      "source": "csv_applied_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "Artificial Intelligence & Data Science",
+    "Materials Science",
+    "Energy Storage"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.61,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": true,
+      "properties": true,
+      "measurements": false,
+      "conditions": true,
+      "mechanisms": false,
+      "outcomes": true,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "measurements",
+      "mechanisms",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

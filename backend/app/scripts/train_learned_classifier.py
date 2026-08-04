@@ -4,8 +4,8 @@
     # or:
     PAS_LEARNED_BACKEND=lightgbm python -m app.scripts.train_learned_classifier
 
-Reads features from `eval_labels.csv` and `human_reviews` table; writes the
-trained model to `data/learned_classifier.joblib`.
+Reads features from `training_labels.csv` and the `human_reviews` table;
+writes the trained model to `data/learned_classifier.joblib`.
 """
 from __future__ import annotations
 
@@ -29,8 +29,8 @@ def main() -> None:
         examples = build_training_set(session)
         if not examples:
             raise SystemExit(
-                "No training examples found (need gold labels in "
-                "eval_labels.csv or human_reviews rows)."
+                "No training examples found (need curated labels in "
+                "training_labels.csv or human_reviews rows)."
             )
         clf = train_from_examples(examples, backend=args.backend)
         out = save_model(clf, args.output)

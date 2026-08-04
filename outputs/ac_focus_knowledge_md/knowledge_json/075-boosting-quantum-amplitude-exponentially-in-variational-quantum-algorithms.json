@@ -1,0 +1,123 @@
+{
+  "paper_id": "acfocus_11e5588c0e48",
+  "title": "Boosting quantum amplitude exponentially in variational quantum algorithms",
+  "metadata": {
+    "doi": "10.1088/2058-9565/acf4ba",
+    "url": "https://iopscience.iop.org/article/10.1088/2058-9565/acf4ba",
+    "year": "2024",
+    "authors": "Kyaw TH, Soley MB, Allen B, Bergold P, Sun C, Batista VS, Aspuru-Guzik A",
+    "venue": "Quantum Science and Technology",
+    "category": "Journal article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Alán Aspuru-Guzik"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "checked",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "The authors introduce quantum iterative power algorithms (QIPAs), a new family of variational quantum algorithms that demonstrate superior performance over quantum imaginary time evolution (QITE) in global optimization tasks—including molecular ground state searches and factorization—by leveraging exponential amplitude amplification and requiring only a polynomial number of queries, thus offering a versatile framework for adapting classical optimization methods to near-term quantum computers.",
+  "abstract": "We introduce a family of variational quantum algorithms, which we coin as quantum iterative power algorithms (QIPAs), and demonstrate their capabilities as applied to global-optimization numerical experiments. Specifically, we demonstrate the QIPA based on a double exponential oracle as applied to ground state optimization of the H 2 molecule, search for the transmon qubit ground-state, and biprime factorization. Our results indicate that QIPA outperforms quantum imaginary time evolution (QITE) and requires a polynomial number of queries to reach convergence even with exponentially small overlap between an initial quantum state and the final desired quantum state, under some circumstances. We analytically show that there exists an exponential amplitude amplification at every step of the variational quantum algorithm, provided the initial wavefunction has non-vanishing probability with the desired state and that the unique maximum of the oracle is given by λ 1 > 0 , while all other values are given by the same value 0 < λ 2 < λ 1 (here λ can be taken as eigenvalues of the problem Hamiltonian). The generality of the global-optimization method presented here invites further application to other problems that currently have not been explored with QITE-based near-term quantum computing algorithms. Such approaches could facilitate identification of reaction pathways and transition states in chemical physics, as well as optimization in a broad range of machine learning applications. The method also provides a general framework for adaptation of a class of classical optimization algorithms to quantum computers to further broaden the range of algorithms amenable to implementation on current noisy intermediate-scale quantum computers.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "The authors introduce quantum iterative power algorithms (QIPAs), a new family of variational quantum algorithms that demonstrate superior performance over quantum imaginary time evolution (QITE) in global optimization tasks—including molecular ground state searches and factorization—by leveraging exponential amplitude amplification and requiring only a polynomial number of queries, thus offering a versatile framework for adapting classical optimization methods to near-term quantum computers.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Quantum",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "Specifically, we demonstrate the QIPA based on a double exponential oracle as applied to ground state optimization of the H 2 molecule, search for the transmon qubit ground-state, and biprime factorization.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [],
+  "measurements": [],
+  "conditions": [
+    {
+      "value": "Boosting quantum amplitude exponentially in variational quantum algorithms The authors introduce quantum iterative power algorithms (QIPAs), a new family of variational quantum algorithms that demonstrate superior performance over quantum imaginary time evolution (QITE) in global optimization tasks—including molecular ground state searches and factorization—by leveraging exponential amplitude amplification and requiring only a polynomial number of queries, thus offering a versatile framework for adapting classical optimization methods to near-term quantum computers.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Our results indicate that QIPA outperforms quantum imaginary time evolution (QITE) and requires a polynomial number of queries to reach convergence even with exponentially small overlap between an initial quantum state and the final desired quantum state, under some circumstances.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "The method also provides a general framework for adaptation of a class of classical optimization algorithms to quantum computers to further broaden the range of algorithms amenable to implementation on current noisy intermediate-scale quantum computers.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "mechanisms": [],
+  "outcomes": [],
+  "sdl_tags": [
+    "Quantum"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "acgold_edf3e094adcb",
+    "cross_sdl_reasoning_json": "/Users/sissifeng/Downloads/cross-sdl_knowledge_transfer_engine/data/reasoning/acgold_edf3e094adcb.json",
+    "cross_sdl_extraction_quality": 0.0,
+    "cross_sdl_notes": "Extraction failed — parse error: Expecting ',' delimiter: line 56 column 4 (char 2595)"
+  },
+  "validation": {
+    "score": 0.53,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": true,
+      "properties": false,
+      "measurements": false,
+      "conditions": true,
+      "mechanisms": false,
+      "outcomes": false,
+      "cross_sdl_match": true
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "properties",
+      "measurements",
+      "mechanisms",
+      "outcomes"
+    ],
+    "notes": [
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}

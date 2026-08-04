@@ -1,0 +1,173 @@
+{
+  "paper_id": "acfocus_fd7254f130f7",
+  "title": "Accelerated discovery of CO2-to-C3-hydrocarbon electrocatalysts with human-in-the-loop",
+  "metadata": {
+    "doi": "10.1016/j.joule.2025.102213",
+    "url": "https://www.sciencedirect.com/science/article/abs/pii/S2542435125003940",
+    "year": "2025",
+    "authors": "J. Kim; S. Mahesh; H. S. Lee; R. Dorakhan; Y. Bai; M. Imran; K. Li; Y. Liu; D. Kim; S. Park; A. S. Shayesteh Zeraati; H. S. Moon; X. Li; F. Arabyarmohammadi; J. Abed; B. Wander; C. Wu; S. Liu; Y. C. Xiao; R. K. Miao; S. Hoogland; J. Hattrick-Simpers; E. H. Sargent; D. Sinton",
+    "venue": "Joule",
+    "category": "Journal Article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Jason Hattrick-Simpers",
+      "David Sinton"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance",
+      "AC Full Member",
+      "AC Governance"
+    ],
+    "flags": {
+      "acknowledges_ac": "checked",
+      "highly_relevant": "checked",
+      "high_impact": "checked"
+    }
+  },
+  "source_summary": "The study demonstrates that integrating human-guided machine learning with high-throughput experimentation accelerates the discovery of multi-element CO₂ electrocatalysts, leading to the identification of an efficient Cu₀.₉₈In₀.₀₂ catalyst for propylene production and revealing distinct pathways for C–C coupling in CO₂-to-C₃ hydrocarbon electrosynthesis.",
+  "abstract": "Automated high-throughput experimentation combined with artificial intelligence holds the potential to accelerate materials discovery; however, utilizing this approach in heterogeneous electrocatalytic materials has been challenging. Here, we pursue the discovery of multi-element CO<inf>2</inf> electrocatalysts by employing a machine learning algorithm that integrates human domain knowledge to enable on-the-fly editing of feature contributions. By combining this approach with an accelerated experimental platform, we navigate a 15-element space for CO<inf>2</inf>-to-C<inf>3</inf> hydrocarbon electrosynthesis and achieve a ∼165× acceleration compared with a conventional screening approach—of which ∼33× comes from the new experimentation platform and a further ∼5× from incorporating human domain knowledge. We identify Cu<inf>0.98</inf>In<inf>0.02</inf> as an effective catalyst for propylene electrosynthesis, achieving a production rate of 42 mmol g<inf>cat</inf>−1 h−1 in a 25 cm2 electrolyzer. Data mining on the 300-composition dataset reveals two distinct C–C coupling pathways toward C<inf>3</inf> hydrocarbons—∗CO dimerization and ∗CH<inf> x </inf>-mediated coupling—with composition-dependent factors governing each pathway. © 2025 Elsevier Inc.",
+  "hardware": [
+    {
+      "value": "The study demonstrates that integrating human-guided machine learning with high-throughput experimentation accelerates the discovery of multi-element CO₂ electrocatalysts, leading to the identification of an efficient Cu₀.₉₈In₀.₀₂ catalyst for propylene production and revealing distinct pathways for C–C coupling in CO₂-to-C₃ hydrocarbon electrosynthesis.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Automated high-throughput experimentation combined with artificial intelligence holds the potential to accelerate materials discovery; however, utilizing this approach in heterogeneous electrocatalytic materials has been challenging.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "By combining this approach with an accelerated experimental platform, we navigate a 15-element space for CO<inf>2</inf>-to-C<inf>3</inf> hydrocarbon electrosynthesis and achieve a ∼165× acceleration compared with a conventional screening approach—of which ∼33× comes from the new experimentation platform and a further ∼5× from incorporating human domain knowledge.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "methods": [
+    {
+      "value": "The study demonstrates that integrating human-guided machine learning with high-throughput experimentation accelerates the discovery of multi-element CO₂ electrocatalysts, leading to the identification of an efficient Cu₀.₉₈In₀.₀₂ catalyst for propylene production and revealing distinct pathways for C–C coupling in CO₂-to-C₃ hydrocarbon electrosynthesis.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Artificial Intelligence & Data Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Automation and Robotics",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Chemistry",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Materials Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "Accelerated discovery of CO2-to-C3-hydrocarbon electrocatalysts with human-in-the-loop The study demonstrates that integrating human-guided machine learning with high-throughput experimentation accelerates the discovery of multi-element CO₂ electrocatalysts, leading to the identification of an efficient Cu₀.₉₈In₀.₀₂ catalyst for propylene production and revealing distinct pathways for C–C coupling in CO₂-to-C₃ hydrocarbon electrosynthesis.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Automated high-throughput experimentation combined with artificial intelligence holds the potential to accelerate materials discovery; however, utilizing this approach in heterogeneous electrocatalytic materials has been challenging.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "We identify Cu<inf>0.98</inf>In<inf>0.02</inf> as an effective catalyst for propylene electrosynthesis, achieving a production rate of 42 mmol g<inf>cat</inf>−1 h−1 in a 25 cm2 electrolyzer.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [],
+  "measurements": [],
+  "conditions": [
+    {
+      "value": "We identify Cu<inf>0.98</inf>In<inf>0.02</inf> as an effective catalyst for propylene electrosynthesis, achieving a production rate of 42 mmol g<inf>cat</inf>−1 h−1 in a 25 cm2 electrolyzer.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "mechanisms": [],
+  "outcomes": [
+    {
+      "value": "Catalysis",
+      "source": "csv_applied_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "sdl_tags": [
+    "Artificial Intelligence & Data Science",
+    "Automation and Robotics",
+    "Chemistry",
+    "Materials Science",
+    "Catalysis"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.64,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": true,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": true,
+      "properties": false,
+      "measurements": false,
+      "conditions": true,
+      "mechanisms": false,
+      "outcomes": true,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "evidence",
+      "properties",
+      "measurements",
+      "mechanisms",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only."
+    ]
+  }
+}

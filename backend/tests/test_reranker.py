@@ -1,4 +1,3 @@
-from dataclasses import replace
 
 from app.services.reranker import NullReranker, get_reranker
 from app.services.retrieval_service import RetrievedChunk

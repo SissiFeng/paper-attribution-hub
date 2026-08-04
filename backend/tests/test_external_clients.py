@@ -1,7 +1,6 @@
 """Tests for the OpenAlex / S2 / Crossref clients. No live HTTP — we inject
 httpx.MockTransport so the clients run against canned responses."""
 import httpx
-import pytest
 
 from app.services.external.crossref_client import (
     CrossrefClient,

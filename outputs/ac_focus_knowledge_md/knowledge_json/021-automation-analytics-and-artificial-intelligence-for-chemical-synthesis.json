@@ -1,0 +1,138 @@
+{
+  "paper_id": "acfocus_36a766596abc",
+  "title": "Automation, analytics and artificial intelligence for chemical synthesis",
+  "metadata": {
+    "doi": "10.1038/s44160-023-00335-1",
+    "url": "https://www.nature.com/articles/s44160-023-00335-1",
+    "year": "2023",
+    "authors": "Liu, Junliang; Hein, Jason E.",
+    "venue": "Nature Synthesis",
+    "category": "Journal article",
+    "peer_reviewed": "Peer Reviewed",
+    "ac_members": [
+      "Jason Hein"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "checked",
+      "high_impact": "checked"
+    }
+  },
+  "source_summary": "Automation and real-time monitoring, combined with machine learning and AI, are transforming synthetic chemistry by enabling data-rich, interdisciplinary experimentation that accelerates discovery and optimizes reaction conditions.",
+  "abstract": "Automation and real-time reaction monitoring have enabled data-rich experimentation, which is critically important in navigating the complexities of chemical synthesis. Linking real-time analysis with machine learning and artificial intelligence tools provides the opportunity to accelerate the identification of optimal reaction conditions and facilitate error-free autonomous synthesis. This Comment provides a viewpoint underscoring the growing significance of data-rich experiments and interdisciplinary approaches in driving future progress in synthetic chemistry.",
+  "hardware": [
+    {
+      "value": "Linking real-time analysis with machine learning and artificial intelligence tools provides the opportunity to accelerate the identification of optimal reaction conditions and facilitate error-free autonomous synthesis.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "methods": [
+    {
+      "value": "Automation and real-time monitoring, combined with machine learning and AI, are transforming synthetic chemistry by enabling data-rich, interdisciplinary experimentation that accelerates discovery and optimizes reaction conditions.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Artificial Intelligence & Data Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Automation and Robotics",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Chemistry",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [],
+  "properties": [],
+  "measurements": [],
+  "conditions": [
+    {
+      "value": "Automation, analytics and artificial intelligence for chemical synthesis Automation and real-time monitoring, combined with machine learning and AI, are transforming synthetic chemistry by enabling data-rich, interdisciplinary experimentation that accelerates discovery and optimizes reaction conditions.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Automation and real-time reaction monitoring have enabled data-rich experimentation, which is critically important in navigating the complexities of chemical synthesis.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Linking real-time analysis with machine learning and artificial intelligence tools provides the opportunity to accelerate the identification of optimal reaction conditions and facilitate error-free autonomous synthesis.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "mechanisms": [],
+  "outcomes": [],
+  "sdl_tags": [
+    "Artificial Intelligence & Data Science",
+    "Automation and Robotics",
+    "Chemistry"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.51,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": true,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": false,
+      "properties": false,
+      "measurements": false,
+      "conditions": true,
+      "mechanisms": false,
+      "outcomes": false,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "evidence",
+      "materials",
+      "properties",
+      "measurements",
+      "mechanisms",
+      "outcomes",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only."
+    ]
+  }
+}

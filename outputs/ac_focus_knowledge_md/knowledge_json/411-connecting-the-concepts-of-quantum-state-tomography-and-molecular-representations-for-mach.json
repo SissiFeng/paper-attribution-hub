@@ -1,0 +1,168 @@
+{
+  "paper_id": "acfocus_1df24d3c0f48",
+  "title": "Connecting the concepts of quantum state tomography and molecular representations for machine learning",
+  "metadata": {
+    "doi": "10.26434/chemrxiv-2025-653md",
+    "url": "https://chemrxiv.org/doi/10.26434/chemrxiv-2025-653md",
+    "year": "2025",
+    "authors": "R. Ortega-Ochoa; L. Mantilla Calderón; J. B. Perez Sanchez; M. Bagherimehrab; A. Aldossary; T. Vegge; T. Buonassisi; A. Aspuru-Guzik",
+    "venue": "ChemRxiv",
+    "category": "Preprint",
+    "peer_reviewed": "Non Peer Reviewed",
+    "ac_members": [
+      "Alán Aspuru-Guzik"
+    ],
+    "ac_programs": [],
+    "membership_status": [
+      "AC Full Member",
+      "AC Governance"
+    ],
+    "flags": {
+      "acknowledges_ac": "blank",
+      "highly_relevant": "blank",
+      "high_impact": "blank"
+    }
+  },
+  "source_summary": "This work proposes that deep learning models for molecular property prediction can internally learn representations—termed \"deep tomography\"—that are informationally equivalent to a molecule's quantum density matrix, enabling the prediction of arbitrary properties for unseen molecules.",
+  "abstract": "Quantum state tomography has been widely used to reconstruct the quantum state of a system from a set of informationally-complete measurements. Obtaining enough information about, e.g., the wavefunction of a molecule allows its complete characterization. On the other hand, deep learning models for molecular property prediction have demonstrated the capability to predict properties of unseen molecules, thereby internally characterizing them in a latent space spanning potential virtual molecules. In this work, we argue that deep learning can achieve its characterization power by learning an internal representation that is informationally-equivalent to the molecule's density matrix. We call such a representation a deep tomography, akin to quantum state tomography. We discuss how it is possible for property prediction foundation models, trained on data of informationally-complete observables, to have representations that contain the same information as that of a molecule's reduced quantum density matrix. Thus, such learned representation should be sufficient to predict arbitrary properties of arbitrary unseen molecules.",
+  "hardware": [],
+  "methods": [
+    {
+      "value": "This work proposes that deep learning models for molecular property prediction can internally learn representations—termed \"deep tomography\"—that are informationally equivalent to a molecule's quantum density matrix, enabling the prediction of arbitrary properties for unseen molecules.",
+      "source": "csv_summary_or_abstract",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "problems": [],
+  "hypotheses": [],
+  "evidence": [],
+  "conclusions": [],
+  "entities": [
+    {
+      "value": "Artificial Intelligence & Data Science",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    },
+    {
+      "value": "Chemistry",
+      "source": "csv_research_tags",
+      "confidence": 0.45,
+      "evidence": ""
+    }
+  ],
+  "materials": [
+    {
+      "value": "Connecting the concepts of quantum state tomography and molecular representations for machine learning This work proposes that deep learning models for molecular property prediction can internally learn representations—termed \"deep tomography\"—that are informationally equivalent to a molecule's quantum density matrix, enabling the prediction of arbitrary properties for unseen molecules.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Obtaining enough information about, e.g., the wavefunction of a molecule allows its complete characterization.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "On the other hand, deep learning models for molecular property prediction have demonstrated the capability to predict properties of unseen molecules, thereby internally characterizing them in a latent space spanning potential virtual molecules.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "properties": [
+    {
+      "value": "Connecting the concepts of quantum state tomography and molecular representations for machine learning This work proposes that deep learning models for molecular property prediction can internally learn representations—termed \"deep tomography\"—that are informationally equivalent to a molecule's quantum density matrix, enabling the prediction of arbitrary properties for unseen molecules.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "On the other hand, deep learning models for molecular property prediction have demonstrated the capability to predict properties of unseen molecules, thereby internally characterizing them in a latent space spanning potential virtual molecules.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "We discuss how it is possible for property prediction foundation models, trained on data of informationally-complete observables, to have representations that contain the same information as that of a molecule's reduced quantum density matrix.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Thus, such learned representation should be sufficient to predict arbitrary properties of arbitrary unseen molecules.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "measurements": [
+    {
+      "value": "Quantum state tomography has been widely used to reconstruct the quantum state of a system from a set of informationally-complete measurements.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "Obtaining enough information about, e.g., the wavefunction of a molecule allows its complete characterization.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    },
+    {
+      "value": "In this work, we argue that deep learning can achieve its characterization power by learning an internal representation that is informationally-equivalent to the molecule's density matrix.",
+      "source": "heuristic_text_scan",
+      "confidence": 0.55,
+      "evidence": ""
+    }
+  ],
+  "conditions": [],
+  "mechanisms": [],
+  "outcomes": [],
+  "sdl_tags": [
+    "Artificial Intelligence & Data Science",
+    "Chemistry"
+  ],
+  "reasoning_motifs": [],
+  "general_principles": [],
+  "failure_paths": [],
+  "provenance": {
+    "csv_source": "data/ac_publications_focused_grid_view.csv.gz",
+    "cross_sdl_id": "",
+    "cross_sdl_reasoning_json": "",
+    "cross_sdl_extraction_quality": null,
+    "cross_sdl_notes": ""
+  },
+  "validation": {
+    "score": 0.57,
+    "coverage": {
+      "source_summary": true,
+      "abstract": true,
+      "hardware": false,
+      "method": true,
+      "evidence": false,
+      "entities": true,
+      "materials": true,
+      "properties": true,
+      "measurements": true,
+      "conditions": false,
+      "mechanisms": false,
+      "outcomes": false,
+      "cross_sdl_match": false
+    },
+    "missing": [
+      "hardware",
+      "evidence",
+      "conditions",
+      "mechanisms",
+      "outcomes",
+      "cross_sdl_match"
+    ],
+    "notes": [
+      "No cross-SDL extraction matched this paper; fields are derived from CSV only.",
+      "Full-text or LLM extraction is needed for reliable hardware/method coverage."
+    ]
+  }
+}
