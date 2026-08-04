@@ -860,6 +860,11 @@ export interface PropositionHit {
   score: number;
 }
 
+export interface RagModuleStep {
+  module: string;
+  [key: string]: unknown;
+}
+
 export interface AnswerOut {
   answer: string;
   sources: SourceOut[];
@@ -874,6 +879,9 @@ export interface AnswerOut {
   retrieval_query: string;
   conversation_turns_used: number;
   page_context: string | null;
+  // Present in the backend payload; surfaced by the agent UI.
+  module_trace?: RagModuleStep[];
+  execution_mode?: string;
 }
 
 export interface SqlChatOut {

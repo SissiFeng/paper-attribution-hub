@@ -4,7 +4,7 @@
 
 output "api_endpoint" {
   description = "API base URL (ALB DNS or custom domain)"
-  value       = var.api_domain != "" ? "https://${var.api_domain}" : "https://${aws_lb.main.dns_name}"
+  value       = var.api_domain != "" ? "https://${var.api_domain}" : "http://${aws_lb.main.dns_name}"
 }
 
 output "frontend_url" {

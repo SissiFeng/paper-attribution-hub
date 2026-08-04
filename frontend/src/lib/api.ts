@@ -774,6 +774,8 @@ export function retrieveAnswer(params: {
       retrieval_query: params.query,
       conversation_turns_used: params.conversation?.length ?? 0,
       page_context: params.page_context ?? null,
+      module_trace: [],
+      execution_mode: "adaptive",
     } as AnswerOut,
   );
 }

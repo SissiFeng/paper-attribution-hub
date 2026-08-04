@@ -41,7 +41,7 @@ resource "aws_lb_target_group" "backend" {
   tags = local.common_tags
 }
 
-# --- HTTP listener (redirect to HTTPS) ---
+# --- HTTP listener ---
 
 resource "aws_lb_listener" "http" {
   load_balancer_arn = aws_lb.main.arn
@@ -49,11 +49,16 @@ resource "aws_lb_listener" "http" {
   protocol          = "HTTP"
 
   default_action {
-    type = "redirect"
-    redirect {
-      port        = "443"
-      protocol    = "HTTPS"
-      status_code = "HTTP_301"
+    type             = var.api_domain != "" ? "redirect" : "forward"
+    target_group_arn = var.api_domain == "" ? aws_lb_target_group.backend.arn : null
+
+    dynamic "redirect" {
+      for_each = var.api_domain != "" ? [1] : []
+      content {
+        port        = "443"
+        protocol    = "HTTPS"
+        status_code = "HTTP_301"
+      }
     }
   }
 }
@@ -61,11 +66,13 @@ resource "aws_lb_listener" "http" {
 # --- HTTPS listener ---
 
 resource "aws_lb_listener" "https" {
+  count = var.api_domain != "" ? 1 : 0
+
   load_balancer_arn = aws_lb.main.arn
   port              = 443
   protocol          = "HTTPS"
   ssl_policy        = "ELBSecurityPolicy-TLS13-1-2-2021-06"
-  certificate_arn   = aws_acm_certificate.api.arn
+  certificate_arn   = aws_acm_certificate.api[0].arn
 
   default_action {
     type             = "forward"
