@@ -142,6 +142,14 @@ resource "aws_cloudfront_distribution" "frontend" {
     cached_methods         = ["GET", "HEAD"]
     compress               = true
 
+    forwarded_values {
+      query_string = false
+
+      cookies {
+        forward = "none"
+      }
+    }
+
     function_association {
       event_type   = "viewer-request"
       function_arn = aws_cloudfront_function.spa_routing.arn
