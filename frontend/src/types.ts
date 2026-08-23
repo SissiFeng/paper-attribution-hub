@@ -1137,6 +1137,183 @@ export interface NetworkGrowthPayload {
   cumulative: GrowthPoint[];
 }
 
+export interface InstitutionAuthorshipRun {
+  id: string;
+  agent_version: string;
+  status: string;
+  input_sha256: string;
+  summary: Record<string, unknown>;
+  started_at: string;
+  completed_at: string | null;
+}
+
+export interface InstitutionAuthorshipOptions {
+  corpus: { id: "tier1" | "tier1_tier2"; label: string };
+  corpora: Array<{ id: "tier1" | "tier1_tier2"; label: string }>;
+  focus: { name: string; ror: string; openalex_id: string };
+  years: number[];
+  credit_schemes: Array<{
+    value: string;
+    label: string;
+    description: string;
+  }>;
+  author_roles: Array<{ value: string; label: string; description: string }>;
+  affiliation_allocations: Array<{ value: string; label: string }>;
+  focus_scopes: Array<{ value: string; label: string }>;
+  latest_enrichment_run: InstitutionAuthorshipRun | null;
+}
+
+export interface InstitutionAuthorshipRow {
+  rank: number;
+  id: string | null;
+  name: string;
+  ror: string | null;
+  openalex_id: string | null;
+  country_code: string | null;
+  weighted_credit: number;
+  share_of_resolved_credit: number;
+  share_of_country_credit?: number;
+  paper_count: number;
+  authorship_count: number;
+  first_author_credit: number;
+  last_author_credit: number;
+  corresponding_author_credit: number;
+  sources: Record<string, number>;
+  contributes_to_focus: boolean;
+}
+
+export interface InstitutionCollaborationNode {
+  id: string;
+  institution_id: string | null;
+  name: string;
+  ror: string | null;
+  openalex_id: string | null;
+  country_code: string | null;
+  is_focus: boolean;
+  paper_count: number;
+  collaborator_count: number;
+  collaboration_paper_count: number;
+  connection_weight: number;
+  rank: number;
+}
+
+export interface InstitutionCollaborationNetwork {
+  available: boolean;
+  scope: {
+    complete_papers: number;
+    papers_with_connections: number;
+    institution_count: number;
+    connection_count: number;
+    displayed_node_count: number;
+    displayed_connection_count: number;
+    node_limit: number;
+  };
+  focus: (InstitutionCollaborationNode & {
+    institutions_with_fewer_collaborators: number;
+    fraction_of_institutions_with_fewer_collaborators: number;
+  }) | null;
+  nodes: InstitutionCollaborationNode[];
+  edges: Array<{ source: string; target: string; paper_count: number }>;
+  ranking: InstitutionCollaborationNode[];
+  method: {
+    paper_scope: string;
+    connection_rule: string;
+    collaborator_count_rule: string;
+    edge_weight_rule: string;
+    focus_identity_rule: string;
+  };
+}
+
+export interface InstitutionAuthorshipReport {
+  available: boolean;
+  scope: {
+    corpus_papers: number;
+    papers_with_authorship_metadata: number;
+    papers_with_complete_institution_membership: number;
+    papers_with_incomplete_institution_membership: number;
+    papers_without_authorship_metadata: number;
+    paper_institution_membership_coverage: number;
+    authorship_metadata_rows: number;
+    selected_authorships: number;
+    authorships_with_resolved_affiliations: number;
+    selected_author_credit: number;
+    resolved_author_credit: number;
+    affiliation_credit_coverage: number;
+    unresolved_affiliation_assertions: number;
+    below_threshold_affiliation_assertions: number;
+    institution_count: number;
+  };
+  focus: {
+    name: string;
+    ror: string;
+    openalex_id: string;
+    weighted_credit: number;
+    paper_count: number;
+    share_of_corpus_papers: number;
+    share_of_resolved_credit: number;
+    rank: number | null;
+  };
+  comparison: {
+    other_institutions_weighted_credit: number;
+    other_institutions_paper_count: number;
+    focus_to_other_credit_ratio: number | null;
+  };
+  institutions: InstitutionAuthorshipRow[];
+  yearly: Array<{
+    year: number;
+    corpus_papers: number;
+    focus_papers: number;
+    focus_paper_share_of_corpus: number;
+    other_institution_papers: number;
+    focus_weighted_credit: number;
+    other_weighted_credit: number;
+  }>;
+  network: InstitutionCollaborationNetwork;
+  configuration: {
+    corpus: "tier1" | "tier1_tier2";
+    credit_scheme: string;
+    author_role: string;
+    affiliation_allocation: string;
+    focus_scope: string;
+    focus_ror: string;
+    focus_openalex_id: string;
+    paper_count_rule: string;
+    min_affiliation_confidence: number;
+    credit_scheme_label: string;
+    credit_scheme_description: string;
+    author_role_label: string;
+    author_role_description: string;
+  };
+  audit: {
+    filter: Record<string, unknown>;
+    filter_fingerprint: string;
+    paper_set_sha256: string;
+    paper_set_encoding: string;
+    included_papers: number;
+    algorithm: string;
+    metric_definitions: Record<string, string>;
+    filter_semantics: Record<string, string>;
+    data_boundary: {
+      mode: "metadata_only_s3_snapshot";
+      included: string[];
+      excluded: string[];
+    };
+    snapshot: {
+      bucket: string | null;
+      manifest_key: string;
+      manifest_sha256: string;
+      snapshot_id: string | null;
+      raw_prefix: string | null;
+      fulltext_prefix: string | null;
+      separation_verified: boolean;
+    };
+    projection: Record<string, unknown>;
+    projection_fingerprint: string;
+    source_breakdown: Record<string, number>;
+    generated_at: string;
+  };
+}
+
 /** ECharts themeRiver format: [year_string, count, topic_name] */
 export type TopicStreamRow = [string, number, string];
 

@@ -1,0 +1,250 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: Isolated metadata-only institution comparison service for PAS dev.
+
+Parameters:
+  VpcId:
+    Type: AWS::EC2::VPC::Id
+  PrivateSubnetIds:
+    Type: List<AWS::EC2::Subnet::Id>
+  ClusterName:
+    Type: String
+  ListenerArn:
+    Type: String
+  AlbSecurityGroupId:
+    Type: AWS::EC2::SecurityGroup::Id
+  ExecutionRoleArn:
+    Type: String
+  ArtifactsBucket:
+    Type: String
+  MetadataManifestKey:
+    Type: String
+  Tier1Tier2MetadataManifestKey:
+    Type: String
+  ImageUri:
+    Type: String
+  DesiredCount:
+    Type: Number
+    Default: 0
+    MinValue: 0
+    MaxValue: 2
+  ListenerRulePriority:
+    Type: Number
+    Default: 10
+    MinValue: 1
+    MaxValue: 50000
+
+Resources:
+  Repository:
+    Type: AWS::ECR::Repository
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+    Properties:
+      RepositoryName: paper-attribution-dev-institution
+      ImageScanningConfiguration:
+        ScanOnPush: true
+      ImageTagMutability: IMMUTABLE
+      EncryptionConfiguration:
+        EncryptionType: AES256
+      Tags:
+        - Key: pas:data-boundary
+          Value: metadata-only
+
+  TaskRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: paper-attribution-dev-institution-task
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service:
+                - ecs-tasks.amazonaws.com
+            Action:
+              - sts:AssumeRole
+      Policies:
+        - PolicyName: read-only-tier1-metadata-snapshot
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              - Sid: ReadMetadataManifestsOnly
+                Effect: Allow
+                Action:
+                  - s3:GetObject
+                Resource:
+                  - !Sub arn:${AWS::Partition}:s3:::${ArtifactsBucket}/manifests/metadata/tier1/*
+                  - !Sub arn:${AWS::Partition}:s3:::${ArtifactsBucket}/manifests/metadata/tier1-tier2/*
+              - Sid: ReadMetadataArtifactsOnly
+                Effect: Allow
+                Action:
+                  - s3:GetObject
+                Resource:
+                  - !Sub arn:${AWS::Partition}:s3:::${ArtifactsBucket}/raw/metadata/tier1/*
+                  - !Sub arn:${AWS::Partition}:s3:::${ArtifactsBucket}/raw/metadata/tier1-tier2/*
+      Tags:
+        - Key: pas:data-boundary
+          Value: metadata-only
+
+  LogGroup:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: /ecs/paper-attribution-dev-institution
+      RetentionInDays: 30
+      Tags:
+        - Key: pas:data-boundary
+          Value: metadata-only
+
+  ServiceSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: ALB-only access to metadata institution API
+      GroupName: paper-attribution-dev-institution-sg
+      VpcId: !Ref VpcId
+      SecurityGroupIngress:
+        - Description: Institution API from the shared ALB only
+          IpProtocol: tcp
+          FromPort: 8000
+          ToPort: 8000
+          SourceSecurityGroupId: !Ref AlbSecurityGroupId
+      SecurityGroupEgress:
+        - Description: HTTPS to S3 through the existing private-network egress
+          IpProtocol: tcp
+          FromPort: 443
+          ToPort: 443
+          CidrIp: 0.0.0.0/0
+      Tags:
+        - Key: Name
+          Value: paper-attribution-dev-institution-sg
+        - Key: pas:data-boundary
+          Value: metadata-only
+
+  TargetGroup:
+    Type: AWS::ElasticLoadBalancingV2::TargetGroup
+    Properties:
+      Name: pas-dev-institution-tg
+      TargetType: ip
+      Protocol: HTTP
+      Port: 8000
+      VpcId: !Ref VpcId
+      HealthCheckEnabled: true
+      HealthCheckPath: /health
+      HealthCheckProtocol: HTTP
+      HealthCheckIntervalSeconds: 30
+      HealthCheckTimeoutSeconds: 5
+      HealthyThresholdCount: 2
+      UnhealthyThresholdCount: 3
+      Matcher:
+        HttpCode: "200"
+      TargetGroupAttributes:
+        - Key: deregistration_delay.timeout_seconds
+          Value: "30"
+      Tags:
+        - Key: pas:data-boundary
+          Value: metadata-only
+
+  ListenerRule:
+    Type: AWS::ElasticLoadBalancingV2::ListenerRule
+    Properties:
+      ListenerArn: !Ref ListenerArn
+      Priority: !Ref ListenerRulePriority
+      Conditions:
+        - Field: path-pattern
+          PathPatternConfig:
+            Values:
+              - /api/institution-authorship*
+              - /institution-authorship*
+      Actions:
+        - Type: forward
+          TargetGroupArn: !Ref TargetGroup
+
+  TaskDefinition:
+    Type: AWS::ECS::TaskDefinition
+    Properties:
+      Family: paper-attribution-dev-institution
+      RequiresCompatibilities:
+        - FARGATE
+      NetworkMode: awsvpc
+      Cpu: "512"
+      Memory: "1024"
+      ExecutionRoleArn: !Ref ExecutionRoleArn
+      TaskRoleArn: !GetAtt TaskRole.Arn
+      ContainerDefinitions:
+        - Name: institution-api
+          Image: !Ref ImageUri
+          Essential: true
+          User: "65532"
+          ReadonlyRootFilesystem: true
+          PortMappings:
+            - ContainerPort: 8000
+              HostPort: 8000
+              Protocol: tcp
+          Environment:
+            - Name: PAS_AWS_REGION
+              Value: !Ref AWS::Region
+            - Name: PAS_S3_ARTIFACTS_BUCKET
+              Value: !Ref ArtifactsBucket
+            - Name: PAS_INSTITUTION_METADATA_MANIFEST_KEY
+              Value: !Ref MetadataManifestKey
+            - Name: PAS_INSTITUTION_TIER1_TIER2_METADATA_MANIFEST_KEY
+              Value: !Ref Tier1Tier2MetadataManifestKey
+            - Name: PYTHONDONTWRITEBYTECODE
+              Value: "1"
+          LogConfiguration:
+            LogDriver: awslogs
+            Options:
+              awslogs-group: !Ref LogGroup
+              awslogs-region: !Ref AWS::Region
+              awslogs-stream-prefix: institution-api
+          LinuxParameters:
+            InitProcessEnabled: true
+      Tags:
+        - Key: pas:data-boundary
+          Value: metadata-only
+
+  Service:
+    Type: AWS::ECS::Service
+    DependsOn:
+      - ListenerRule
+    Properties:
+      ServiceName: paper-attribution-dev-institution-svc
+      Cluster: !Ref ClusterName
+      LaunchType: FARGATE
+      PlatformVersion: LATEST
+      DesiredCount: !Ref DesiredCount
+      EnableExecuteCommand: false
+      DeploymentConfiguration:
+        DeploymentCircuitBreaker:
+          Enable: true
+          Rollback: true
+        MinimumHealthyPercent: 100
+        MaximumPercent: 200
+      HealthCheckGracePeriodSeconds: 90
+      TaskDefinition: !Ref TaskDefinition
+      LoadBalancers:
+        - ContainerName: institution-api
+          ContainerPort: 8000
+          TargetGroupArn: !Ref TargetGroup
+      NetworkConfiguration:
+        AwsvpcConfiguration:
+          AssignPublicIp: DISABLED
+          SecurityGroups:
+            - !Ref ServiceSecurityGroup
+          Subnets: !Ref PrivateSubnetIds
+      PropagateTags: SERVICE
+      Tags:
+        - Key: pas:data-boundary
+          Value: metadata-only
+
+Outputs:
+  RepositoryUri:
+    Value: !GetAtt Repository.RepositoryUri
+  ServiceName:
+    Value: !GetAtt Service.Name
+  TaskRoleArn:
+    Value: !GetAtt TaskRole.Arn
+  TargetGroupArn:
+    Value: !Ref TargetGroup
+  ListenerRuleArn:
+    Value: !Ref ListenerRule
+  SecurityGroupId:
+    Value: !Ref ServiceSecurityGroup

@@ -1,0 +1,28 @@
+FROM python:3.11-slim-bookworm@sha256:d29f48a31a8b408ed19272ca1e7b10ebae13b240a27e862d3d4217c528e2e0c3 AS dependencies
+
+COPY backend/requirements-institution.txt /tmp/requirements.txt
+RUN pip install --no-cache-dir --target /opt/site-packages -r /tmp/requirements.txt
+
+FROM gcr.io/distroless/python3-debian12:nonroot@sha256:7d1042ce588ab97019fe95c24ffca7bc5a82ccdac572511d5e09bda4435c89c5
+
+WORKDIR /app
+
+COPY --from=dependencies /opt/site-packages /opt/site-packages
+
+# Deliberately copy only the metadata comparison application. The primary
+# database-backed backend, full-text services, and ETL code are not present.
+COPY backend/app/__init__.py ./app/__init__.py
+COPY backend/app/institution_main.py ./app/institution_main.py
+COPY backend/app/api/__init__.py ./app/api/__init__.py
+COPY backend/app/api/institution_authorship.py ./app/api/institution_authorship.py
+COPY backend/app/services/__init__.py ./app/services/__init__.py
+COPY backend/app/services/normalization_service.py ./app/services/normalization_service.py
+COPY backend/app/services/s3_authorship_institution_comparison.py ./app/services/s3_authorship_institution_comparison.py
+
+ENV PYTHONUNBUFFERED=1
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONPATH=/app:/opt/site-packages
+
+EXPOSE 8000
+
+CMD ["-m", "uvicorn", "app.institution_main:app", "--host", "0.0.0.0", "--port", "8000"]

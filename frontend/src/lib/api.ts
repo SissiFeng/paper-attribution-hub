@@ -17,6 +17,8 @@ import type {
   ImpactReport,
   InstTopicHeatmapPayload,
   InstitutionNetworkPayload,
+  InstitutionAuthorshipOptions,
+  InstitutionAuthorshipReport,
   LintReport,
   MissedPaperGroup,
   ModelEvolutionStatus,
@@ -55,6 +57,9 @@ import {
 const API_BASE = (import.meta.env.VITE_API_BASE ?? "http://localhost:8000").replace(/\/$/, "");
 const PAPER_API_BASE = (
   import.meta.env.VITE_PAPER_API_BASE ?? API_BASE
+).replace(/\/$/, "");
+const INSTITUTION_API_BASE = (
+  import.meta.env.VITE_INSTITUTION_API_BASE ?? API_BASE
 ).replace(/\/$/, "");
 const USE_MOCK = import.meta.env.VITE_USE_MOCK === "true";
 
@@ -554,6 +559,35 @@ export function getNetworkGrowth(params: { year_from?: number; year_to?: number 
     () => request<NetworkGrowthPayload>(`/analytics/network-growth${qs ? `?${qs}` : ""}`),
     mock.MOCK_NETWORK_GROWTH
   );
+}
+
+export function getInstitutionAuthorshipOptions(corpus = "tier1") {
+  const params = new URLSearchParams({ corpus });
+  return request<InstitutionAuthorshipOptions>(
+    `/institution-authorship/options?${params.toString()}`,
+    undefined,
+    INSTITUTION_API_BASE,
+  );
+}
+
+export function getInstitutionAuthorshipReport(search?: URLSearchParams) {
+  const qs = search?.toString() ?? "";
+  return request<InstitutionAuthorshipReport>(
+    `/institution-authorship/report${qs ? `?${qs}` : ""}`,
+    undefined,
+    INSTITUTION_API_BASE,
+  );
+}
+
+export function institutionAuthorshipExportUrl(search?: URLSearchParams) {
+  const params = new URLSearchParams(search);
+  params.set("limit", "200");
+  const qs = params.toString();
+  return `${INSTITUTION_API_BASE}/institution-authorship/export.csv${qs ? `?${qs}` : ""}`;
+}
+
+export function tier1AuthorInstitutionMetadataExportUrl() {
+  return `${INSTITUTION_API_BASE}/institution-authorship/author-institution-map.csv?corpus=tier1`;
 }
 
 export function getTopicStream(params: { year_from?: number; year_to?: number } = {}) {

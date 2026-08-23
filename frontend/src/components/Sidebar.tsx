@@ -13,6 +13,7 @@ const RESEARCH_NAV = [
 const ANALYTICS_NAV = [
   { to: "/insights",  label: "Insights"   },
   { to: "/growth",    label: "Net Growth" },
+  { to: "/institution-comparison", label: "Institution Compare" },
   { to: "/timeline",  label: "Timeline"   },
   { to: "/sankey",    label: "Sankey"     },
   { to: "/impact",    label: "Impact"     },
@@ -83,6 +84,14 @@ const ICONS: Record<string, JSX.Element> = {
     <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.6">
       <polyline points="1,13 4,9 7,10 10,5 15,2" />
       <polyline points="11,2 15,2 15,6" />
+    </svg>
+  ),
+  "Institution Compare": (
+    <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.6">
+      <rect x="1.5" y="3" width="5" height="10" rx="1" />
+      <rect x="9.5" y="6" width="5" height="7" rx="1" />
+      <line x1="4" y1="1" x2="4" y2="3" />
+      <line x1="12" y1="4" x2="12" y2="6" />
     </svg>
   ),
   Timeline: (
