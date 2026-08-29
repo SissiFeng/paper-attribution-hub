@@ -1,0 +1,28 @@
+Self-driving laboratory for thin-film photovoltaics
+
+Abstract
+A self-driving laboratory autonomously synthesizes and characterizes thin-film perovskite solar cells. The system uses closed-loop optimization to maximize stability.
+
+Introduction
+Discovering stable perovskite photovoltaics demands navigating a complex multi-objective design space. Manual exploration is prohibitively slow.
+
+Methods
+The autonomous laboratory integrates a six-position spin-coater, an inert-atmosphere glovebox, an automated UV-Vis spectrometer, and an EQE stage. We use Bayesian optimization over compositional and processing variables. Closed-loop experimentation proceeds for 21 days without operator intervention; daylight saving time transitions are handled by the workflow orchestration layer.
+
+Results
+The closed-loop campaign discovers a perovskite composition with T90 lifetime exceeding 1100 hours under 1-sun illumination.
+
+Figure 1. Schematic of the autonomous laboratory for perovskite photovoltaic discovery, showing the closed-loop integration of robotic synthesis and on-line characterization.
+
+Figure 3. Discovered champion compositions and their stability metrics.
+
+Discussion
+The system demonstrates how closed-loop experimentation accelerates stability optimization for thin-film photovoltaics.
+
+Acknowledgements
+This research was supported by the Acceleration Consortium and Natural Resources Canada. The authors thank the University of British Columbia and the University of Toronto for access to their MNAU and Acceleration Consortium facilities.
+
+References
+1. MacLeod, B.; Berlinguette, C. Self-driving laboratory for accelerated discovery of thin-film materials. Science Advances 2020. doi: 10.1126/sciadv.aaz4244
+2. Häse, F.; Roch, L.; Aspuru-Guzik, A. ChemOS. Science Robotics 2019. doi: 10.1126/scirobotics.aax9876
+3. Garcia, H.; Berlinguette, C.; Chen, Y. Closed-loop electrochemistry platform for the Acceleration Consortium. JACS 2022. doi: 10.1021/jacs.2022.10000

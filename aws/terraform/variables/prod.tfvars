@@ -4,7 +4,7 @@
 # ---------------------------------------------------------------------------
 
 environment = "prod"
-aws_region  = "us-east-1"
+aws_region  = "ca-central-1"
 
 # Domain — set your actual domain and Route53 zone ID here
 route53_zone_id = "" # <-- SET THIS (find in Route53 console)
@@ -12,8 +12,8 @@ frontend_domain = "" # <-- SET THIS (e.g., app.example.com)
 api_domain      = "" # <-- SET THIS (e.g., api.example.com)
 
 # GitHub (for OIDC CI/CD — set your GitHub org/username)
-# github_org  = ""     # <-- SET THIS
-# github_repo = "paper-attribution-system"
+github_org  = "SissiFeng"
+github_repo = "paper-attribution-hub"
 
 # Production database sizing
 db_instance_class        = "db.t3.medium"

@@ -19,7 +19,7 @@ resource "aws_db_parameter_group" "pgvector" {
 
   parameter {
     name         = "shared_preload_libraries"
-    value        = "pgvector,pg_stat_statements"
+    value        = "pg_stat_statements"
     apply_method = "pending-reboot"
   }
 
@@ -37,7 +37,7 @@ resource "aws_db_instance" "main" {
   identifier = "${local.name_prefix}-db"
 
   engine         = "postgres"
-  engine_version = "16.4"
+  engine_version = "16.14"
   instance_class = var.db_instance_class
 
   allocated_storage     = var.db_allocated_storage
@@ -65,7 +65,7 @@ resource "aws_db_instance" "main" {
 
   # Monitoring
   enabled_cloudwatch_logs_exports = ["postgresql", "upgrade"]
-  monitoring_interval             = 60
+  monitoring_interval             = 0
 
   # No public access — ECS communicates via private subnets
   publicly_accessible = false

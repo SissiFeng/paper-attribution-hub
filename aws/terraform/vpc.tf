@@ -103,12 +103,18 @@ resource "aws_route_table_association" "public" {
 resource "aws_route_table_association" "private" {
   count          = 2
   subnet_id      = aws_subnet.private[count.index].id
-  route_table_id = aws_route_table.private[count.index >= var.environment == "prod" ? count.index : 0].id
+  route_table_id = aws_route_table.private[var.environment == "prod" ? count.index : 0].id
 }
 
-# --- VPC endpoints (SSM + ECR — needed for Fargate without public IP) ---
+# --- VPC endpoints ---
+#
+# Development uses the NAT gateway for outbound AWS API traffic. Production
+# adds private interface endpoints for ECR, CloudWatch Logs, SSM, and Secrets
+# Manager. The S3 gateway endpoint is free and remains enabled everywhere.
 
 resource "aws_vpc_endpoint" "ecr_api" {
+  count = var.environment == "prod" ? 1 : 0
+
   vpc_id              = aws_vpc.main.id
   service_name        = "com.amazonaws.${var.aws_region}.ecr.api"
   vpc_endpoint_type   = "Interface"
@@ -119,6 +125,8 @@ resource "aws_vpc_endpoint" "ecr_api" {
 }
 
 resource "aws_vpc_endpoint" "ecr_dkr" {
+  count = var.environment == "prod" ? 1 : 0
+
   vpc_id              = aws_vpc.main.id
   service_name        = "com.amazonaws.${var.aws_region}.ecr.dkr"
   vpc_endpoint_type   = "Interface"
@@ -137,6 +145,8 @@ resource "aws_vpc_endpoint" "s3" {
 }
 
 resource "aws_vpc_endpoint" "logs" {
+  count = var.environment == "prod" ? 1 : 0
+
   vpc_id              = aws_vpc.main.id
   service_name        = "com.amazonaws.${var.aws_region}.logs"
   vpc_endpoint_type   = "Interface"
@@ -147,6 +157,8 @@ resource "aws_vpc_endpoint" "logs" {
 }
 
 resource "aws_vpc_endpoint" "ssm" {
+  count = var.environment == "prod" ? 1 : 0
+
   vpc_id              = aws_vpc.main.id
   service_name        = "com.amazonaws.${var.aws_region}.ssm"
   vpc_endpoint_type   = "Interface"
@@ -157,6 +169,8 @@ resource "aws_vpc_endpoint" "ssm" {
 }
 
 resource "aws_vpc_endpoint" "secretsmanager" {
+  count = var.environment == "prod" ? 1 : 0
+
   vpc_id              = aws_vpc.main.id
   service_name        = "com.amazonaws.${var.aws_region}.secretsmanager"
   vpc_endpoint_type   = "Interface"

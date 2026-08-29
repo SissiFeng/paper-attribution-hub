@@ -25,7 +25,7 @@ from pathlib import Path
 from alembic import command
 from alembic.config import Config
 from alembic.runtime.migration import MigrationContext
-from sqlalchemy import inspect
+from sqlalchemy import inspect, text
 
 from app.db import Base, engine
 from app.models import all_models  # noqa: F401 — registers all ORM tables
@@ -41,6 +41,15 @@ def _current_revision() -> str | None:
     with engine.connect() as connection:
         context = MigrationContext.configure(connection)
         return context.get_current_revision()
+
+
+def _prepare_fresh_database() -> None:
+    """Enable PostgreSQL extensions required by the current ORM metadata."""
+    if engine.dialect.name != "postgresql":
+        return
+
+    with engine.begin() as connection:
+        connection.execute(text("CREATE EXTENSION IF NOT EXISTS vector"))
 
 
 def bootstrap_database() -> str:
@@ -62,6 +71,7 @@ def bootstrap_database() -> str:
         return "stamped"
 
     # Truly empty database: build the current schema and mark it as head.
+    _prepare_fresh_database()
     Base.metadata.create_all(bind=engine)
     command.stamp(config, "head")
     return "created"

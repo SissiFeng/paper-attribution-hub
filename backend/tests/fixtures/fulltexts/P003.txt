@@ -1,0 +1,25 @@
+Graph neural networks for protein folding
+
+Abstract
+We propose a graph neural network architecture for predicting protein 3D structures, trained on AlphaFold-derived data.
+
+Introduction
+Protein structure prediction has become one of the central computational challenges in structural biology since the release of AlphaFold2. We propose a lightweight graph neural network architecture that achieves competitive accuracy with substantially lower compute requirements.
+
+Methods
+Our model uses an equivariant message-passing graph neural network with attention over residue pairs. Training data is drawn from the AlphaFold Protein Structure Database. We use the Adam optimizer with cosine learning rate decay. Although the underlying task is supervised learning rather than experimental campaign design, we found that an active learning loop over difficult sequences modestly improved validation accuracy.
+
+Results
+Our model matches AlphaFold2 accuracy on the CASP14 benchmark within 1.2 GDT-TS while using 8% of the GPU-hours.
+
+Discussion
+We expect this architecture to generalize to other structured prediction problems in computational biology.
+
+Acknowledgements
+This research was generously supported by a postdoctoral fellowship from the Acceleration Consortium and the Vector Institute. We thank the University of Toronto Schwartz Reisman Institute for additional compute support.
+
+References
+1. Jumper, J. et al. AlphaFold2. Nature 2021. doi: 10.1038/s41586-021-03819-2
+2. Baek, M. et al. RoseTTAFold. Science 2021. doi: 10.1126/science.abj8754
+3. Häse, F.; Roch, L.; Aspuru-Guzik, A. ChemOS: Orchestrating Autonomous Experimentation. Science Robotics 2019. doi: 10.1126/scirobotics.aax9876
+4. Chen, Y.; Aspuru-Guzik, A. Workflow orchestration for autonomous chemistry labs. npj Computational Materials 2023. doi: 10.1038/s41524-023-AC-flag

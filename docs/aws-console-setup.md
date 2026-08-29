@@ -1,10 +1,12 @@
 # AWS Console Setup Guide
 
-This guide covers the manual AWS console steps needed **before** running `terraform apply`. These steps cannot be automated (account creation, domain registration, etc.) or should be done manually for security (API keys).
+This guide covers the manual AWS console steps that remain around the automated
+deployment. The deploy script bootstraps Terraform state, builds both
+applications, and verifies health.
 
 ## Prerequisites
 
-- An AWS account with billing set up
+- An AWS account with billing set up and an AdministratorAccess SSO role
 - A domain name (optional — you can use the auto-generated AWS URLs instead)
 - Your API keys ready:
   - Anthropic API key (`sk-ant-...`)
@@ -13,54 +15,28 @@ This guide covers the manual AWS console steps needed **before** running `terraf
 
 ---
 
-## Step 1: Create IAM Admin User
+## Step 1: Authenticate with AWS IAM Identity Center
 
-1. Go to **IAM → Users → Create user**
-2. Username: `terraform-admin`
-3. Check **Provide user access to the AWS Management Console** (optional)
-4. Attach policy: **AdministratorAccess**
-5. Create the user
-6. Under **Security credentials**, create an **Access Key**
-   - Use case: **Command Line Interface (CLI)**
-   - Save the **Access Key ID** and **Secret Access Key** securely
-7. Configure locally:
-   ```bash
-   aws configure --profile paper-attribution
-   # Enter Access Key ID and Secret Access Key
-   # Default region: us-east-1
-   ```
+Use an AdministratorAccess role in the target account and region:
+
+```bash
+aws sso login --profile paper-attribution
+export AWS_PROFILE=paper-attribution
+export AWS_REGION=ca-central-1
+aws sts get-caller-identity
+```
+
+The deploy script creates an account-scoped, encrypted Terraform state bucket
+and an on-demand DynamoDB lock table. Long-lived IAM access keys are not
+required.
 
 ---
 
-## Step 2: Create S3 Bucket for Terraform State
-
-1. Go to **S3 → Create bucket**
-2. Bucket name: `paper-attribution-tfstate`
-   - If the name is taken, use `paper-attribution-tfstate-<random-suffix>`
-   - Update `aws/terraform/backend.tf` with the new bucket name
-3. Region: `us-east-1`
-4. **Enable bucket versioning**
-5. **Enable server-side encryption** (SSE-S3)
-6. **Block all public access** (checked by default)
-7. Create the bucket
-
----
-
-## Step 3: Create DynamoDB Table for Terraform Lock
-
-1. Go to **DynamoDB → Create table**
-2. Table name: `terraform-locks`
-3. Partition key: `LockID` (type: **String**)
-4. Default settings (on-demand capacity mode)
-5. Create the table
-
----
-
-## Step 4: Register a Domain (Optional)
+## Step 2: Register a Domain (Optional)
 
 If you don't have a domain, you can use the auto-generated AWS endpoints:
-- API: `https://<alb-dns-name>` (printed by `terraform output alb_dns_name`)
-- Frontend: `https://<cloudfront-dns-name>` (printed by `terraform output frontend_url`)
+- Application: `https://<cloudfront-dns-name>`
+- API: `https://<cloudfront-dns-name>/api`
 
 If you want a custom domain:
 
@@ -90,7 +66,7 @@ If you want a custom domain:
 
 ---
 
-## Step 5: Request ACM Certificates (SSL)
+## Step 3: Request ACM Certificates (SSL)
 
 ### Certificate for CloudFront (must be in us-east-1)
 1. Go to **ACM → Request certificate** (ensure region is **N. Virginia / us-east-1**)
@@ -101,7 +77,7 @@ If you want a custom domain:
 6. **If your domain is elsewhere**: copy the CNAME record and add it to your DNS provider
 
 ### Certificate for ALB (in your primary region)
-1. Switch region to your primary region (e.g., us-east-1)
+1. Switch region to your primary region (for SDL0, `ca-central-1`)
 2. Repeat the same steps as above
 3. Use `*.example.com` or `api.example.com`
 
@@ -109,7 +85,7 @@ The certificates are referenced in `acm.tf` and the validation records will be c
 
 ---
 
-## Step 6: Store API Keys in SSM Parameter Store
+## Step 4: Store API Keys in SSM Parameter Store
 
 After `terraform apply` completes, set your API keys:
 
@@ -145,14 +121,14 @@ aws ssm put-parameter \
 
 ---
 
-## Step 7: Configure GitHub Actions Secrets
+## Step 5: Configure GitHub Actions Secrets
 
 Go to your GitHub repository → **Settings → Secrets and variables → Actions** and add these secrets:
 
 | Secret Name | Value | Where to Find |
 |---|---|---|
 | `AWS_DEPLOY_ROLE_ARN` | Role ARN | `terraform output github_actions_role_arn` |
-| `AWS_REGION` | `us-east-1` | Your primary region |
+| `AWS_REGION` | `ca-central-1` | Your primary region |
 | `ECR_REPO_URL` | ECR repo URL | `terraform output ecr_repository_url` |
 | `ECS_CLUSTER_NAME` | Cluster name | `terraform output ecs_cluster_name` |
 | `ECS_SERVICE_NAME` | Service name | `terraform output ecs_service_name` |
@@ -162,28 +138,14 @@ Go to your GitHub repository → **Settings → Secrets and variables → Action
 
 ---
 
-## Step 8: Initial Docker Image Push
-
-Push the first Docker image to ECR so ECS has something to run:
+## Step 6: Deploy and Verify
 
 ```bash
-# Login to ECR
-aws ecr get-login-password --region us-east-1 | \
-  docker login --username AWS --password-stdin <ecr_repo_url>
-
-# Build and push
-docker build -t <ecr_repo_url>:latest -f backend/Dockerfile .
-docker push <ecr_repo_url>:latest
+./aws/scripts/deploy.sh dev
 ```
 
-Replace `<ecr_repo_url>` with the output from `terraform output ecr_repository_url`.
-
----
-
-## Step 9: Verify Deployment
-
 1. Check ECS service: `aws ecs describe-services --cluster <cluster> --services <service>`
-2. Check the ALB health: `curl https://<api_domain>/health`
+2. Check API health: `curl "$(terraform -chdir=aws/terraform output -raw api_endpoint)/health"`
 3. Open the frontend in your browser: `https://<frontend_domain>`
 
 ---

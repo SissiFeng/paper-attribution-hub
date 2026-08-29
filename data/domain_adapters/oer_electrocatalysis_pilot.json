@@ -1,0 +1,152 @@
+{
+  "schema_version": "domain-adapter-selection-config-v0.1",
+  "package_id": "oer-electrocatalysis",
+  "package_version": "0.1.0-pilot",
+  "domain": "oxygen evolution electrocatalysis",
+  "papers": [
+    {
+      "paper_id": "DOI:10.1021_acscentsci.3c01009",
+      "selection_tier": "primary_oer",
+      "task_split": "evaluation",
+      "selection_reasons": [
+        "Primary OER catalyst-discovery study with full-text electrochemical performance and protocol evidence."
+      ]
+    },
+    {
+      "paper_id": "DOI:10.1021_acs.chemmater.0c01894",
+      "selection_tier": "primary_oer",
+      "selection_reasons": [
+        "Primary OER study combining active learning, iridium oxide synthesis, and experimental validation."
+      ]
+    },
+    {
+      "paper_id": "DOI:10.1039_d0ta06441f",
+      "selection_tier": "primary_oer",
+      "selection_reasons": [
+        "Primary computational OER mechanism study with explicit model conditions and reported activity values."
+      ]
+    },
+    {
+      "paper_id": "DOI:10.1038_s41467-023-40177-1",
+      "selection_tier": "primary_oer",
+      "selection_reasons": [
+        "Primary dual-atom OER catalyst study with dense computational protocol and result evidence."
+      ]
+    },
+    {
+      "paper_id": "DOI:10.1038_s41467-024-50605-5",
+      "selection_tier": "primary_oer",
+      "task_split": "evaluation",
+      "selection_reasons": [
+        "Primary perovskite OER study with explicit synthesis, catalyst-ink, electrochemical, characterization, and software evidence."
+      ]
+    },
+    {
+      "paper_id": "DOI:10.1021_acs.chemmater.2c01455",
+      "selection_tier": "primary_oer",
+      "selection_reasons": [
+        "Primary high-entropy oxide OER study spanning thin-film libraries, particles, and electrochemical testing."
+      ]
+    },
+    {
+      "paper_id": "DOI:10.1016_j.matt.2022.11.031",
+      "selection_tier": "primary_oer",
+      "selection_reasons": [
+        "Primary accelerated materials-search study containing OER activity modeling and validation evidence."
+      ]
+    },
+    {
+      "paper_id": "DOI:10.32604_cmc.2025.067427",
+      "selection_tier": "oer_review",
+      "selection_reasons": [
+        "OER electrocatalyst review used to test evidence extraction and protocol abstention on secondary literature."
+      ]
+    },
+    {
+      "paper_id": "DOI:10.1021_acs.chemrev.4c00055",
+      "selection_tier": "oer_review",
+      "selection_reasons": [
+        "Self-driving laboratory review containing OER case studies; included as a secondary-literature negative control."
+      ]
+    },
+    {
+      "paper_id": "DOI:10.1039_d5cc01959a",
+      "selection_tier": "oer_review",
+      "selection_reasons": [
+        "Review of self-driving laboratories with an OER catalyst case; included to test attribution of quoted versus original protocols."
+      ]
+    },
+    {
+      "paper_id": "DOI:10.1016_j.xcrp.2022.101200",
+      "selection_tier": "oer_case_study",
+      "selection_reasons": [
+        "Materials acceleration platform paper with an OER-relevant campaign example and workflow evidence."
+      ]
+    },
+    {
+      "paper_id": "DOI:10.1039_d5ta00331h",
+      "selection_tier": "oer_review",
+      "selection_reasons": [
+        "High-throughput electrochemical materials discovery review with OER cases and protocol tables."
+      ]
+    },
+    {
+      "paper_id": "DOI:10.1039_d5mh01247c",
+      "selection_tier": "oer_review",
+      "selection_reasons": [
+        "Delafossite materials review containing OER synthesis, characterization, and performance evidence."
+      ]
+    },
+    {
+      "paper_id": "DOI:10.1093_ce_zkaf036",
+      "selection_tier": "oer_review",
+      "selection_reasons": [
+        "AI-for-chemical-engineering review with autonomous OER catalyst examples; included as an abstention control."
+      ]
+    },
+    {
+      "paper_id": "DOI:10.1039_d5cc04220h",
+      "selection_tier": "oer_review",
+      "task_split": "evaluation",
+      "selection_reasons": [
+        "AI-driven MOF review with sparse OER content; included to measure false-positive resistance."
+      ]
+    },
+    {
+      "paper_id": "DOI:10.1039_d4dd00115j",
+      "selection_tier": "oer_case_study",
+      "selection_reasons": [
+        "Atlas self-driving laboratory paper containing an OER-related workflow case and machine-readable experimental context."
+      ]
+    },
+    {
+      "paper_id": "DOI:10.1063_5.0259851",
+      "selection_tier": "oer_review",
+      "selection_reasons": [
+        "Scanning-probe and materials-discovery review with sparse OER content; included to test protocol abstention."
+      ]
+    },
+    {
+      "paper_id": "DOI:10.1039_d5dd00072f",
+      "selection_tier": "oer_review",
+      "selection_reasons": [
+        "Autonomous-laboratory perspective containing an OER catalyst case; included as secondary-literature stress data."
+      ]
+    },
+    {
+      "paper_id": "DOI:10.1039_d3dd00166k",
+      "selection_tier": "oer_case_study",
+      "selection_reasons": [
+        "Experiment-orchestration paper with an electrochemistry/OER example and workflow evidence."
+      ]
+    },
+    {
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "selection_tier": "oer_case_study",
+      "task_split": "evaluation",
+      "selection_reasons": [
+        "Multi-robot scheduling paper with a quinary high-entropy OER catalyst experiment."
+      ]
+    }
+  ]
+}

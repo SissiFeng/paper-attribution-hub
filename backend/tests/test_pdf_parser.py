@@ -12,6 +12,8 @@ from app.services.pdf_parser import (
     split_into_sections,
 )
 
+FULLTEXT_FIXTURES = Path(__file__).parent / "fixtures" / "fulltexts"
+
 
 def test_split_detects_canonical_sections():
     text = """Title of paper
@@ -45,7 +47,7 @@ References
 
 
 def test_parse_text_file_reads_sample_p001(tmp_path: Path):
-    sample = Path(__file__).resolve().parents[2] / "data" / "fulltexts" / "P001.txt"
+    sample = FULLTEXT_FIXTURES / "P001.txt"
     doc = parse_any(sample)
     types = {s.section_type for s in doc.sections}
     assert {"abstract", "methods", "acknowledgements"} <= types
@@ -55,7 +57,7 @@ def test_parse_text_file_reads_sample_p001(tmp_path: Path):
 
 
 def test_figure_captions_extracted(tmp_path: Path):
-    sample = Path(__file__).resolve().parents[2] / "data" / "fulltexts" / "P001.txt"
+    sample = FULLTEXT_FIXTURES / "P001.txt"
     secs = parse_text_file(sample)
     figs = [s for s in secs if s.section_type == "figure_caption"]
     assert len(figs) >= 2
