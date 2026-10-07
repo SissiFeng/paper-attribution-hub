@@ -1,0 +1,2545 @@
+[
+  {
+    "person_id": "A001",
+    "name": "Alán Aspuru-Guzik",
+    "institution": "Canadian Institute for Advanced Research; Nvidia (United Kingdom); University of Toronto; Vector Institute; Nvidia (United States)",
+    "source_institution": "University of Toronto",
+    "status": "active",
+    "openalex_ids": [
+      "A5071495561"
+    ],
+    "orcid": "0000-0002-8277-4434",
+    "source_orcid": "0000-0003-1024-3325",
+    "verified_on": "2026-10-05",
+    "evidence": [
+      "https://openalex.org/A5071495561"
+    ],
+    "representative_works": [
+      {
+        "title": "A variational eigenvalue solver on a photonic quantum processor",
+        "url": "https://doi.org/10.1038/ncomms5213"
+      },
+      {
+        "title": "Advances in molecular quantum chemistry contained in the Q-Chem 4 program package",
+        "url": "https://doi.org/10.1080/00268976.2014.952696"
+      },
+      {
+        "title": "The theory of variational hybrid quantum-classical algorithms",
+        "url": "https://doi.org/10.1088/1367-2630/18/2/023023"
+      }
+    ],
+    "note": "Name, affiliation history and publication record reviewed; OpenAlex identity may still require corrections."
+  },
+  {
+    "person_id": "A002",
+    "name": "Anatole von Lilienfeld",
+    "institution": "Canadian Institute for Advanced Research; University of Toronto; Vector Institute; Berlin Institute for the Foundations of Learning and Data; Technische Universität Berlin",
+    "source_institution": "University of Basel",
+    "status": "active",
+    "openalex_ids": [
+      "A5088793872"
+    ],
+    "orcid": "0000-0001-7419-0466",
+    "source_orcid": "0000-0001-5272-6530",
+    "verified_on": "2026-10-05",
+    "evidence": [
+      "https://openalex.org/A5088793872"
+    ],
+    "representative_works": [
+      {
+        "title": "Fast and Accurate Modeling of Molecular Atomization Energies with Machine Learning",
+        "url": "https://doi.org/10.1103/physrevlett.108.058301"
+      },
+      {
+        "title": "Quantum chemistry structures and properties of 134 kilo molecules",
+        "url": "https://doi.org/10.1038/sdata.2014.22"
+      },
+      {
+        "title": "Big Data Meets Quantum Chemistry Approximations: The Δ-Machine Learning Approach",
+        "url": "https://doi.org/10.1021/acs.jctc.5b00099"
+      }
+    ],
+    "note": "Name, affiliation history and publication record reviewed; OpenAlex identity may still require corrections."
+  },
+  {
+    "person_id": "A003",
+    "name": "Jason Hattrick-Simpers",
+    "institution": "Natural Resources Canada; University of Toronto; Vector Institute",
+    "source_institution": "University of Toronto",
+    "status": "active",
+    "openalex_ids": [
+      "A5073635313",
+      "A5135018245"
+    ],
+    "orcid": "0000-0003-2937-3188",
+    "source_orcid": "",
+    "verified_on": "2026-10-05",
+    "evidence": [
+      "https://openalex.org/A5073635313",
+      "https://openalex.org/A5135018245"
+    ],
+    "representative_works": [
+      {
+        "title": "Accelerated discovery of metallic glasses through iteration of machine learning and high-throughput experiments",
+        "url": "https://doi.org/10.1126/sciadv.aaq1566"
+      },
+      {
+        "title": "Autonomous experimentation systems for materials development: A community perspective",
+        "url": "https://doi.org/10.1016/j.matt.2021.06.036"
+      },
+      {
+        "title": "Fulfilling the promise of the materials genome initiative with high-throughput experimental methodologies",
+        "url": "https://doi.org/10.1063/1.4977487"
+      }
+    ],
+    "note": "Name, affiliation history and publication record reviewed; OpenAlex identity may still require corrections."
+  },
+  {
+    "person_id": "A004",
+    "name": "Bo Wang",
+    "institution": "North Sichuan Medical University; Scripps Research Institute; Beijing Institute of Technology; University Health Network; Army Medical University; Zunyi Medical University; Shanghai Jiao Tong University; University of Toronto; Chinese Academy of Sciences; Peking University; Wenzhou Medical University; Chinese PLA General Hospital; Lishui University; Northwest University; Daping Hospital; Shanghai Children's Medical Center; Lishui City People's Hospital; Vector Institute; Changchun University of Chinese Medicine; Renmin Hospital of Wuhan University; The Affiliated Hospital to Changchun University of Chinese Medicine; Center for Life Sciences; Affiliated Hospital of Zunyi Medical College; Dazhou Central Hospital; Southwest Jiaotong University; Changchun University; Nanjing University of Aeronautics and Astronautics",
+    "source_institution": "University of Toronto",
+    "status": "active",
+    "openalex_ids": [
+      "A5100408160"
+    ],
+    "orcid": "0000-0002-9620-3413",
+    "source_orcid": "",
+    "verified_on": "2026-10-05",
+    "evidence": [
+      "https://openalex.org/A5100408160"
+    ],
+    "representative_works": [
+      {
+        "title": "Segment anything in medical images",
+        "url": "https://doi.org/10.1038/s41467-024-44824-z"
+      },
+      {
+        "title": "Similarity network fusion for aggregating data types on a genomic scale",
+        "url": "https://doi.org/10.1038/nmeth.2810"
+      },
+      {
+        "title": "Spatiotemporal transcriptomic atlas of mouse organogenesis using DNA nanoball-patterned arrays",
+        "url": "https://doi.org/10.1016/j.cell.2022.04.003"
+      }
+    ],
+    "note": "Name, affiliation history and publication record reviewed; OpenAlex identity may still require corrections."
+  },
+  {
+    "person_id": "A005",
+    "name": "Mohamad Moosavi",
+    "institution": "University of Toronto; Vector Institute",
+    "source_institution": "University of Toronto",
+    "status": "active",
+    "openalex_ids": [
+      "A5051256159",
+      "A5121650016"
+    ],
+    "orcid": "0000-0002-0357-5729",
+    "source_orcid": "",
+    "verified_on": "2026-10-05",
+    "evidence": [
+      "https://openalex.org/A5051256159",
+      "https://openalex.org/A5121650016"
+    ],
+    "representative_works": [
+      {
+        "title": "Data-driven design of metal–organic frameworks for wet flue gas CO2 capture",
+        "url": "https://doi.org/10.1038/s41586-019-1798-7"
+      },
+      {
+        "title": "Understanding the diversity of the metal-organic framework ecosystem",
+        "url": "https://doi.org/10.1038/s41467-020-17755-8"
+      },
+      {
+        "title": "The Role of Machine Learning in the Understanding and Design of Materials",
+        "url": "https://doi.org/10.1021/jacs.0c09105"
+      }
+    ],
+    "note": "Name, affiliation history and publication record reviewed; OpenAlex identity may still require corrections."
+  },
+  {
+    "person_id": "A006",
+    "name": "Jason Hein",
+    "institution": "Scripps Research Institute; Seoul National University; University of British Columbia; University of Toronto; University of Bergen",
+    "source_institution": "University of British Columbia",
+    "status": "active",
+    "openalex_ids": [
+      "A5003345103"
+    ],
+    "orcid": "0000-0002-4345-3005",
+    "source_orcid": "0000-0003-1365-5108",
+    "verified_on": "2026-10-05",
+    "evidence": [
+      "https://openalex.org/A5003345103"
+    ],
+    "representative_works": [
+      {
+        "title": "Copper-catalyzed azide–alkyne cycloaddition (CuAAC) and beyond: new reactivity of copper(i) acetylides",
+        "url": "https://doi.org/10.1039/b904091a"
+      },
+      {
+        "title": "Self-driving laboratory for accelerated discovery of thin-film materials",
+        "url": "https://doi.org/10.1126/sciadv.aaz8867"
+      },
+      {
+        "title": "Copper(I)‐Catalyzed Cycloaddition of Organic Azides and 1‐Iodoalkynes",
+        "url": "https://doi.org/10.1002/anie.200903558"
+      }
+    ],
+    "note": "Name, affiliation history and publication record reviewed; OpenAlex identity may still require corrections."
+  },
+  {
+    "person_id": "A007",
+    "name": "Animesh Garg",
+    "institution": "Georgia Institute of Technology",
+    "source_institution": "University of Toronto",
+    "status": "active",
+    "openalex_ids": [
+      "A5061193324"
+    ],
+    "orcid": "0000-0003-0482-4296",
+    "source_orcid": "",
+    "verified_on": "2026-10-05",
+    "evidence": [
+      "https://openalex.org/A5061193324"
+    ],
+    "representative_works": [
+      {
+        "title": "ProgPrompt: Generating Situated Robot Task Plans using Large Language Models",
+        "url": "https://doi.org/10.1109/icra48891.2023.10161317"
+      },
+      {
+        "title": "Making Sense of Vision and Touch: Self-Supervised Learning of Multimodal Representations for Contact-Rich Tasks",
+        "url": "https://doi.org/10.1109/icra.2019.8793485"
+      },
+      {
+        "title": "Orbit: A Unified Simulation Framework for Interactive Robot Learning Environments",
+        "url": "https://doi.org/10.1109/lra.2023.3270034"
+      }
+    ],
+    "note": "Name, affiliation history and publication record reviewed; OpenAlex identity may still require corrections."
+  },
+  {
+    "person_id": "A008",
+    "name": "Christine Allen",
+    "institution": "University of Toronto; MaRS",
+    "source_institution": "University of Toronto",
+    "status": "active",
+    "openalex_ids": [
+      "A5086834252"
+    ],
+    "orcid": "0000-0002-4916-3965",
+    "source_orcid": "0000-0002-1699-1008",
+    "verified_on": "2026-10-05",
+    "evidence": [
+      "https://openalex.org/A5086834252"
+    ],
+    "representative_works": [
+      {
+        "title": "Nano-engineering block copolymer aggregates for drug delivery",
+        "url": "https://doi.org/10.1016/s0927-7765(99)00058-2"
+      },
+      {
+        "title": "Gold nanoparticles for applications in cancer radiotherapy: Mechanisms and recent advancements",
+        "url": "https://doi.org/10.1016/j.addr.2015.12.012"
+      },
+      {
+        "title": "Gold Nanoparticles as Radiation Sensitizers in Cancer Therapy",
+        "url": "https://doi.org/10.1667/rr1984.1"
+      }
+    ],
+    "note": "Name, affiliation history and publication record reviewed; OpenAlex identity may still require corrections."
+  },
+  {
+    "person_id": "A009",
+    "name": "Kourosh Darvish",
+    "institution": "University of Toronto; Vector Institute",
+    "source_institution": "University of Toronto",
+    "status": "active",
+    "openalex_ids": [
+      "A5072822077"
+    ],
+    "orcid": "0000-0003-4984-432X",
+    "source_orcid": "",
+    "verified_on": "2026-10-05",
+    "evidence": [
+      "https://openalex.org/A5072822077"
+    ],
+    "representative_works": [
+      {
+        "title": "Self-Driving Laboratories for Chemistry and Materials Science",
+        "url": "https://doi.org/10.1021/acs.chemrev.4c00055"
+      },
+      {
+        "title": "Teleoperation of Humanoid Robots: A Survey",
+        "url": "https://doi.org/10.1109/tro.2023.3236952"
+      },
+      {
+        "title": "ORGANA: A robotic assistant for automated chemistry experimentation and characterization",
+        "url": "https://doi.org/10.1016/j.matt.2024.10.015"
+      }
+    ],
+    "note": "Name, affiliation history and publication record reviewed; OpenAlex identity may still require corrections."
+  },
+  {
+    "person_id": "A010",
+    "name": "Matthieu Schapira",
+    "institution": "University Health Network; University of Toronto; Princess Margaret Cancer Centre; Structural Genomics Consortium",
+    "source_institution": "University of Toronto",
+    "status": "active",
+    "openalex_ids": [
+      "A5076484281"
+    ],
+    "orcid": "0000-0002-1047-3309",
+    "source_orcid": "",
+    "verified_on": "2026-10-05",
+    "evidence": [
+      "https://openalex.org/A5076484281"
+    ],
+    "representative_works": [
+      {
+        "title": "Regulated Translation Initiation Controls Stress-Induced Gene Expression in Mammalian Cells",
+        "url": "https://doi.org/10.1016/s1097-2765(00)00108-8"
+      },
+      {
+        "title": "Epigenetic protein families: a new frontier for drug discovery",
+        "url": "https://doi.org/10.1038/nrd3674"
+      },
+      {
+        "title": "Targeted protein degradation: expanding the toolbox",
+        "url": "https://doi.org/10.1038/s41573-019-0047-y"
+      }
+    ],
+    "note": "Name, affiliation history and publication record reviewed; OpenAlex identity may still require corrections."
+  },
+  {
+    "person_id": "A011",
+    "name": "Sergio Pablo-García Carrillo",
+    "institution": "University of Toronto; Institute of Micro and Nanotechnology; Vector Institute",
+    "source_institution": "University of Toronto",
+    "status": "active",
+    "openalex_ids": [
+      "A5024019148",
+      "A5110718782"
+    ],
+    "orcid": "0000-0002-3327-9285",
+    "source_orcid": "",
+    "verified_on": "2026-10-05",
+    "evidence": [
+      "https://openalex.org/A5024019148",
+      "https://openalex.org/A5110718782"
+    ],
+    "representative_works": [
+      {
+        "title": "Self-Driving Laboratories for Chemistry and Materials Science",
+        "url": "https://doi.org/10.1021/acs.chemrev.4c00055"
+      },
+      {
+        "title": "Fast evaluation of the adsorption energy of organic molecules on metals via graph neural networks",
+        "url": "https://doi.org/10.1038/s43588-023-00437-y"
+      },
+      {
+        "title": "Electrochemical Reduction of Carbon Dioxide to 1‐Butanol on Oxide‐Derived Copper",
+        "url": "https://doi.org/10.1002/anie.202008289"
+      }
+    ],
+    "note": "Name, affiliation history and publication record reviewed; OpenAlex identity may still require corrections."
+  },
+  {
+    "person_id": "A012",
+    "name": "Yu Zou",
+    "institution": "Huaqiao University; University of Toronto; Huazhong University of Science and Technology",
+    "source_institution": "University of Toronto",
+    "status": "active",
+    "openalex_ids": [
+      "A5067180501"
+    ],
+    "orcid": "0000-0002-0179-3642",
+    "source_orcid": "",
+    "verified_on": "2026-10-05",
+    "evidence": [
+      "https://openalex.org/A5067180501"
+    ],
+    "representative_works": [
+      {
+        "title": "Ultrastrong ductile and stable high-entropy alloys at small scales",
+        "url": "https://doi.org/10.1038/ncomms8748"
+      },
+      {
+        "title": "Size-dependent plasticity in an Nb25Mo25Ta25W25 refractory high-entropy alloy",
+        "url": "https://doi.org/10.1016/j.actamat.2013.11.049"
+      },
+      {
+        "title": "A Review on Additive Manufacturing of Titanium Alloys for Aerospace Applications: Directed Energy Deposition and Beyond Ti-6Al-4V",
+        "url": "https://doi.org/10.1007/s11837-021-04670-6"
+      }
+    ],
+    "note": "Name, affiliation history and publication record reviewed; OpenAlex identity may still require corrections."
+  },
+  {
+    "person_id": "A013",
+    "name": "Cheryl Arrowsmith",
+    "institution": "University of North Carolina at Chapel Hill; University Health Network; University of Toronto; Princess Margaret Cancer Centre; Structural Genomics Consortium",
+    "source_institution": "University of Toronto",
+    "status": "active",
+    "openalex_ids": [
+      "A5012117525"
+    ],
+    "orcid": "0000-0002-4971-3250",
+    "source_orcid": "",
+    "verified_on": "2026-10-05",
+    "evidence": [
+      "https://openalex.org/A5012117525"
+    ],
+    "representative_works": [
+      {
+        "title": "Histone Recognition and Large-Scale Structural Analysis of the Human Bromodomain Family",
+        "url": "https://doi.org/10.1016/j.cell.2012.02.013"
+      },
+      {
+        "title": "Epigenetic protein families: a new frontier for drug discovery",
+        "url": "https://doi.org/10.1038/nrd3674"
+      },
+      {
+        "title": "Consistent blind protein structure generation from NMR chemical shift data",
+        "url": "https://doi.org/10.1073/pnas.0800256105"
+      }
+    ],
+    "note": "Name, affiliation history and publication record reviewed; OpenAlex identity may still require corrections."
+  },
+  {
+    "person_id": "A014",
+    "name": "David Sinton",
+    "institution": "University of Toronto",
+    "source_institution": "University of Toronto",
+    "status": "active",
+    "openalex_ids": [
+      "A5077667729"
+    ],
+    "orcid": "0000-0003-2714-6408",
+    "source_orcid": "0000-0001-9490-0261",
+    "verified_on": "2026-10-05",
+    "evidence": [
+      "https://openalex.org/A5077667729"
+    ],
+    "representative_works": [
+      {
+        "title": "CO 2 electroreduction to ethylene via hydroxide-mediated copper catalysis at an abrupt interface",
+        "url": "https://doi.org/10.1126/science.aas9100"
+      },
+      {
+        "title": "Enhanced electrocatalytic CO2 reduction via field-induced reagent concentration",
+        "url": "https://doi.org/10.1038/nature19060"
+      },
+      {
+        "title": "CO 2 electrolysis to multicarbon products at activities greater than 1 A cm −2",
+        "url": "https://doi.org/10.1126/science.aay4217"
+      }
+    ],
+    "note": "Name, affiliation history and publication record reviewed; OpenAlex identity may still require corrections."
+  },
+  {
+    "person_id": "A015",
+    "name": "Yang Cao",
+    "institution": "Guangdong University of Technology",
+    "source_institution": "University of Toronto",
+    "status": "active",
+    "openalex_ids": [
+      "A5075998492"
+    ],
+    "orcid": "0000-0001-8636-7919",
+    "source_orcid": "",
+    "verified_on": "2026-10-05",
+    "evidence": [
+      "https://openalex.org/A5075998492"
+    ],
+    "representative_works": [
+      {
+        "title": "Flexible light-emitting diodes made from soluble conducting polymers",
+        "url": "https://doi.org/10.1038/357477a0"
+      },
+      {
+        "title": "Self-Driving Laboratories for Chemistry and Materials Science",
+        "url": "https://doi.org/10.1021/acs.chemrev.4c00055"
+      },
+      {
+        "title": "On-demand modulating afterglow color of water-soluble polymers through phosphorescence FRET for multicolor security printing",
+        "url": "https://doi.org/10.1126/sciadv.abk2925"
+      }
+    ],
+    "note": "Name, affiliation history and publication record reviewed; OpenAlex identity may still require corrections."
+  },
+  {
+    "person_id": "A016",
+    "name": "Yu Sun",
+    "institution": "Central South University; University of Toronto; Dalian University of Technology; Xiangya Hospital Central South University; Lanzhou University",
+    "source_institution": "University of Toronto",
+    "status": "active",
+    "openalex_ids": [
+      "A5077878309"
+    ],
+    "orcid": "0000-0001-7895-0741",
+    "source_orcid": "",
+    "verified_on": "2026-10-05",
+    "evidence": [
+      "https://openalex.org/A5077878309"
+    ],
+    "representative_works": [
+      {
+        "title": "Autofocusing in computer microscopy: Selecting the optimal focus algorithm",
+        "url": "https://doi.org/10.1002/jemt.20118"
+      },
+      {
+        "title": "A Feedforward Mechanism Mediated by Mechanosensitive Ion Channel PIEZO1 and Tissue Mechanics Promotes Glioma Aggression",
+        "url": "https://doi.org/10.1016/j.neuron.2018.09.046"
+      },
+      {
+        "title": "Microengineered Platforms for Cell Mechanobiology",
+        "url": "https://doi.org/10.1146/annurev-bioeng-061008-124915"
+      }
+    ],
+    "note": "Name, affiliation history and publication record reviewed; OpenAlex identity may still require corrections."
+  },
+  {
+    "person_id": "A017",
+    "name": "Zeqing Bao",
+    "institution": "University of Toronto",
+    "source_institution": "University of Toronto",
+    "status": "active",
+    "openalex_ids": [
+      "A5013859090"
+    ],
+    "orcid": "0000-0002-2328-5331",
+    "source_orcid": "",
+    "verified_on": "2026-10-05",
+    "evidence": [
+      "https://openalex.org/A5013859090"
+    ],
+    "representative_works": [
+      {
+        "title": "Machine learning directed drug formulation development",
+        "url": "https://doi.org/10.1016/j.addr.2021.05.016"
+      },
+      {
+        "title": "Machine learning models to accelerate the design of polymeric long-acting injectables",
+        "url": "https://doi.org/10.1038/s41467-022-35343-w"
+      },
+      {
+        "title": "Revolutionizing drug formulation development: The increasing impact of machine learning",
+        "url": "https://doi.org/10.1016/j.addr.2023.115108"
+      }
+    ],
+    "note": "Name, affiliation history and publication record reviewed; OpenAlex identity may still require corrections."
+  },
+  {
+    "person_id": "A018",
+    "name": "Bowen Li",
+    "institution": "Tongji University; University Health Network; University of Toronto; Nantong University; Princess Margaret Cancer Centre; Second Hospital of Tianjin Medical University; Tianjin Medical University",
+    "source_institution": "University of Toronto",
+    "status": "active",
+    "openalex_ids": [
+      "A5100387258"
+    ],
+    "orcid": "0000-0001-5006-9143",
+    "source_orcid": "",
+    "verified_on": "2026-10-05",
+    "evidence": [
+      "https://openalex.org/A5100387258"
+    ],
+    "representative_works": [
+      {
+        "title": "Trimethylamine N -oxide–derived zwitterionic polymers: A new class of ultralow fouling bioinspired materials",
+        "url": "https://doi.org/10.1126/sciadv.aaw9562"
+      },
+      {
+        "title": "Combinatorial design of nanoparticles for pulmonary mRNA delivery and genome editing",
+        "url": "https://doi.org/10.1038/s41587-023-01679-x"
+      },
+      {
+        "title": "Hierarchical zwitterionic modification of a SERS substrate enables real-time drug monitoring in blood plasma",
+        "url": "https://doi.org/10.1038/ncomms13437"
+      }
+    ],
+    "note": "Name, affiliation history and publication record reviewed; OpenAlex identity may still require corrections."
+  },
+  {
+    "person_id": "A019",
+    "name": "Oleksandr Voznyy",
+    "institution": "University of Toronto; University of Toronto Scarborough",
+    "source_institution": "Ontario Tech University",
+    "status": "active",
+    "openalex_ids": [
+      "A5051815230"
+    ],
+    "orcid": "0000-0002-8656-5074",
+    "source_orcid": "",
+    "verified_on": "2026-10-05",
+    "evidence": [
+      "https://openalex.org/A5051815230"
+    ],
+    "representative_works": [
+      {
+        "title": "Homogeneously dispersed multimetal oxygen-evolving catalysts",
+        "url": "https://doi.org/10.1126/science.aaf1525"
+      },
+      {
+        "title": "Efficient and stable solution-processed planar perovskite solar cells via contact passivation",
+        "url": "https://doi.org/10.1126/science.aai9081"
+      },
+      {
+        "title": "Perovskite energy funnels for efficient light-emitting diodes",
+        "url": "https://doi.org/10.1038/nnano.2016.110"
+      }
+    ],
+    "note": "Name, affiliation history and publication record reviewed; OpenAlex identity may still require corrections."
+  },
+  {
+    "person_id": "A020",
+    "name": "Avi Goldfarb",
+    "institution": "University of Toronto",
+    "source_institution": "University of Toronto",
+    "status": "active",
+    "openalex_ids": [
+      "A5053397554"
+    ],
+    "orcid": "0000-0002-8919-5814",
+    "source_orcid": "",
+    "verified_on": "2026-10-05",
+    "evidence": [
+      "https://openalex.org/A5053397554"
+    ],
+    "representative_works": [
+      {
+        "title": "Digital Economics",
+        "url": "https://doi.org/10.1257/jel.20171452"
+      },
+      {
+        "title": "Crowdfunding: Geography, Social Networks, and the Timing of Investment Decisions",
+        "url": "https://doi.org/10.1111/jems.12093"
+      },
+      {
+        "title": "Some Simple Economics of Crowdfunding",
+        "url": "https://doi.org/10.1086/674021"
+      }
+    ],
+    "note": "Name, affiliation history and publication record reviewed; OpenAlex identity may still require corrections."
+  },
+  {
+    "person_id": "A021",
+    "name": "Helen Tran",
+    "institution": "University of Toronto",
+    "source_institution": "University of Toronto",
+    "status": "active",
+    "openalex_ids": [
+      "A5001249541",
+      "A5065462757"
+    ],
+    "orcid": "0000-0002-4041-7340",
+    "source_orcid": "",
+    "verified_on": "2026-10-05",
+    "evidence": [
+      "https://openalex.org/A5001249541",
+      "https://openalex.org/A5065462757"
+    ],
+    "representative_works": [
+      {
+        "title": "Biodegradable and flexible arterial-pulse sensor for the wireless monitoring of blood flow",
+        "url": "https://doi.org/10.1038/s41551-018-0336-5"
+      },
+      {
+        "title": "Mechanically tunable conductive interpenetrating network hydrogels that mimic the elastic moduli of biological tissue",
+        "url": "https://doi.org/10.1038/s41467-018-05222-4"
+      },
+      {
+        "title": "Microengineering Pressure Sensor Active Layers for Improved Performance",
+        "url": "https://doi.org/10.1002/adfm.202003491"
+      }
+    ],
+    "note": "Name, affiliation history and publication record reviewed; OpenAlex identity may still require corrections."
+  },
+  {
+    "person_id": "A022",
+    "name": "Kieran Campbell",
+    "institution": "Ontario Institute for Cancer Research; University of Toronto; Lunenfeld-Tanenbaum Research Institute; Vector Institute; Sinai Health System",
+    "source_institution": "University of Toronto",
+    "status": "active",
+    "openalex_ids": [
+      "A5005821516",
+      "A5038995320"
+    ],
+    "orcid": "0000-0003-1981-5763",
+    "source_orcid": "",
+    "verified_on": "2026-10-05",
+    "evidence": [
+      "https://openalex.org/A5005821516",
+      "https://openalex.org/A5038995320"
+    ],
+    "representative_works": [
+      {
+        "title": "Scater: pre-processing, quality control, normalization and visualization of single-cell RNA-seq data in R",
+        "url": "https://doi.org/10.1093/bioinformatics/btw777"
+      },
+      {
+        "title": "Eleven grand challenges in single-cell data science",
+        "url": "https://doi.org/10.1186/s13059-020-1926-6"
+      },
+      {
+        "title": "Probabilistic cell-type assignment of single-cell RNA-seq for tumor microenvironment profiling",
+        "url": "https://doi.org/10.1038/s41592-019-0529-1"
+      }
+    ],
+    "note": "Name, affiliation history and publication record reviewed; OpenAlex identity may still require corrections."
+  },
+  {
+    "person_id": "A023",
+    "name": "Florian Shkurti",
+    "institution": "University of Toronto; Vector Institute; Allen Institute for Artificial Intelligence",
+    "source_institution": "University of Toronto",
+    "status": "active",
+    "openalex_ids": [
+      "A5010648258"
+    ],
+    "orcid": "0000-0002-5672-5831",
+    "source_orcid": "",
+    "verified_on": "2026-10-05",
+    "evidence": [
+      "https://openalex.org/A5010648258"
+    ],
+    "representative_works": [
+      {
+        "title": "ConceptGraphs: Open-Vocabulary 3D Scene Graphs for Perception and Planning",
+        "url": "https://doi.org/10.1109/icra57147.2024.10610243"
+      },
+      {
+        "title": "ConceptFusion: Open-set multimodal 3D mapping",
+        "url": "https://doi.org/10.15607/rss.2023.xix.066"
+      },
+      {
+        "title": "Multi-domain monitoring of marine environments using a heterogeneous robot team",
+        "url": "https://doi.org/10.1109/iros.2012.6385685"
+      }
+    ],
+    "note": "Name, affiliation history and publication record reviewed; OpenAlex identity may still require corrections."
+  },
+  {
+    "person_id": "A024",
+    "name": "Margo Seltzer",
+    "institution": "University of British Columbia",
+    "source_institution": "University of British Columbia",
+    "status": "active",
+    "openalex_ids": [
+      "A5054751297"
+    ],
+    "orcid": "0000-0002-2165-4658",
+    "source_orcid": "",
+    "verified_on": "2026-10-05",
+    "evidence": [
+      "https://openalex.org/A5054751297"
+    ],
+    "representative_works": [
+      {
+        "title": "Provenance-Aware Storage Systems",
+        "url": "https://openalex.org/W1559528097"
+      },
+      {
+        "title": "Network-Aware Operator Placement for Stream-Processing Systems",
+        "url": "https://doi.org/10.1109/icde.2006.105"
+      },
+      {
+        "title": "Dealing with disaster",
+        "url": "https://doi.org/10.1145/238721.238779"
+      }
+    ],
+    "note": "Name, affiliation history and publication record reviewed; OpenAlex identity may still require corrections."
+  },
+  {
+    "person_id": "A025",
+    "name": "Chandra Veer Singh",
+    "institution": "University of Toronto",
+    "source_institution": "University of Toronto",
+    "status": "active",
+    "openalex_ids": [
+      "A5077238261"
+    ],
+    "orcid": "0000-0002-6644-0178",
+    "source_orcid": "",
+    "verified_on": "2026-10-05",
+    "evidence": [
+      "https://openalex.org/A5077238261"
+    ],
+    "representative_works": [
+      {
+        "title": "Determining the limiting factor of the electrochemical stability window for PEO-based solid polymer electrolytes: main chain or terminal –OH group?",
+        "url": "https://doi.org/10.1039/d0ee00342e"
+      },
+      {
+        "title": "Unusual Sabatier principle on high entropy alloy catalysts for hydrogen evolution reactions",
+        "url": "https://doi.org/10.1038/s41467-023-44261-4"
+      },
+      {
+        "title": "Damage and Failure of Composite Materials",
+        "url": "https://doi.org/10.1017/cbo9781139016063"
+      }
+    ],
+    "note": "Name, affiliation history and publication record reviewed; OpenAlex identity may still require corrections."
+  },
+  {
+    "person_id": "A026",
+    "name": "Han Hao",
+    "institution": "University of Toronto; Tsinghua University",
+    "source_institution": "University of Toronto",
+    "status": "active",
+    "openalex_ids": [
+      "A5091838472"
+    ],
+    "orcid": "0000-0002-0176-3929",
+    "source_orcid": "",
+    "verified_on": "2026-10-05",
+    "evidence": [
+      "https://openalex.org/A5091838472"
+    ],
+    "representative_works": [
+      {
+        "title": "Self-Driving Laboratories for Chemistry and Materials Science",
+        "url": "https://doi.org/10.1021/acs.chemrev.4c00055"
+      },
+      {
+        "title": "Delocalized, asynchronous, closed-loop discovery of organic laser emitters",
+        "url": "https://doi.org/10.1126/science.adk9227"
+      },
+      {
+        "title": "ORGANA: A robotic assistant for automated chemistry experimentation and characterization",
+        "url": "https://doi.org/10.1016/j.matt.2024.10.015"
+      }
+    ],
+    "note": "Name, affiliation history and publication record reviewed; OpenAlex identity may still require corrections."
+  },
+  {
+    "person_id": "A027",
+    "name": "Frank Gu",
+    "institution": "University of Toronto",
+    "source_institution": "University of Toronto",
+    "status": "active",
+    "openalex_ids": [
+      "A5064151898"
+    ],
+    "orcid": "0000-0001-8749-9075",
+    "source_orcid": "",
+    "verified_on": "2026-10-05",
+    "evidence": [
+      "https://openalex.org/A5064151898"
+    ],
+    "representative_works": [
+      {
+        "title": "Nanoparticles in Medicine: Therapeutic Applications and Developments",
+        "url": "https://doi.org/10.1038/sj.clpt.6100400"
+      },
+      {
+        "title": "Formulation of functionalized PLGA–PEG nanoparticles for in vivo targeted drug delivery",
+        "url": "https://doi.org/10.1016/j.biomaterials.2006.09.047"
+      },
+      {
+        "title": "Self-Assembled Lipid−Polymer Hybrid Nanoparticles: A Robust Drug Delivery Platform",
+        "url": "https://doi.org/10.1021/nn800275r"
+      }
+    ],
+    "note": "Name, affiliation history and publication record reviewed; OpenAlex identity may still require corrections."
+  },
+  {
+    "person_id": "A028",
+    "name": "Geoffrey Ozin",
+    "institution": "University of Toronto",
+    "source_institution": "University of Toronto",
+    "status": "active",
+    "openalex_ids": [
+      "A5089078733"
+    ],
+    "orcid": "0000-0002-6315-0925",
+    "source_orcid": "",
+    "verified_on": "2026-10-05",
+    "evidence": [
+      "https://openalex.org/A5089078733"
+    ],
+    "representative_works": [
+      {
+        "title": "Large-scale synthesis of a silicon photonic crystal with a complete three-dimensional bandgap near 1.5 micrometres",
+        "url": "https://doi.org/10.1038/35013024"
+      },
+      {
+        "title": "Photonic-crystal full-colour displays",
+        "url": "https://doi.org/10.1038/nphoton.2007.140"
+      },
+      {
+        "title": "Colloidal Synthesis of 1T-WS 2 and 2H-WS 2 Nanosheets: Applications for Photocatalytic Hydrogen Evolution",
+        "url": "https://doi.org/10.1021/ja506261t"
+      }
+    ],
+    "note": "Name, affiliation history and publication record reviewed; OpenAlex identity may still require corrections."
+  },
+  {
+    "person_id": "A029",
+    "name": "Benjamin Sanchez",
+    "institution": "University of Toronto; Vector Institute",
+    "source_institution": "University of Toronto",
+    "status": "active",
+    "openalex_ids": [
+      "A5065990295"
+    ],
+    "orcid": "0000-0002-1116-1745",
+    "source_orcid": "",
+    "verified_on": "2026-10-05",
+    "evidence": [
+      "https://openalex.org/A5065990295"
+    ],
+    "representative_works": [
+      {
+        "title": "Inverse molecular design using machine learning: Generative models for matter engineering",
+        "url": "https://doi.org/10.1126/science.aat2663"
+      },
+      {
+        "title": "Automatic Chemical Design Using a Data-Driven Continuous Representation of Molecules.",
+        "url": "https://doi.org/10.17863/cam.34134"
+      },
+      {
+        "title": "Rational design of layered oxide materials for sodium-ion batteries",
+        "url": "https://doi.org/10.1126/science.aay9972"
+      }
+    ],
+    "note": "Name, affiliation history and publication record reviewed; OpenAlex identity may still require corrections."
+  },
+  {
+    "person_id": "A030",
+    "name": "Felix Strieth-Kalthoff",
+    "institution": "University of Wuppertal",
+    "source_institution": "University of Toronto",
+    "status": "active",
+    "openalex_ids": [
+      "A5047903834"
+    ],
+    "orcid": "0000-0003-1357-5500",
+    "source_orcid": "",
+    "verified_on": "2026-10-05",
+    "evidence": [
+      "https://openalex.org/A5047903834"
+    ],
+    "representative_works": [
+      {
+        "title": "Energy transfer catalysis mediated by visible light: principles, applications, directions",
+        "url": "https://doi.org/10.1039/c8cs00054a"
+      },
+      {
+        "title": "Triplet Energy Transfer Photocatalysis: Unlocking the Next Level",
+        "url": "https://doi.org/10.1016/j.chempr.2020.07.010"
+      },
+      {
+        "title": "Self-Driving Laboratories for Chemistry and Materials Science",
+        "url": "https://doi.org/10.1021/acs.chemrev.4c00055"
+      }
+    ],
+    "note": "Name, affiliation history and publication record reviewed; OpenAlex identity may still require corrections."
+  },
+  {
+    "person_id": "A031",
+    "name": "Ilya Yakavets",
+    "institution": "University of Toronto",
+    "source_institution": "University of Toronto",
+    "status": "active",
+    "openalex_ids": [
+      "A5006557908"
+    ],
+    "orcid": "0000-0003-0373-5160",
+    "source_orcid": "",
+    "verified_on": "2026-10-05",
+    "evidence": [
+      "https://openalex.org/A5006557908"
+    ],
+    "representative_works": [
+      {
+        "title": "Drug delivery to solid tumors: the predictive value of the multicellular tumor spheroid model for nanomedicine screening",
+        "url": "https://doi.org/10.2147/ijn.s146927"
+      },
+      {
+        "title": "Advanced co-culture 3D breast cancer model for investigation of fibrosis induced by external stimuli: optimization study",
+        "url": "https://doi.org/10.1038/s41598-020-78087-7"
+      },
+      {
+        "title": "Current state of the nanoscale delivery systems for temoporfin-based photodynamic therapy: Advanced delivery strategies",
+        "url": "https://doi.org/10.1016/j.jconrel.2019.05.035"
+      }
+    ],
+    "note": "Name, affiliation history and publication record reviewed; OpenAlex identity may still require corrections."
+  },
+  {
+    "person_id": "A032",
+    "name": "Jeff Watchorn",
+    "institution": "University of Toronto",
+    "source_institution": "University of Toronto",
+    "status": "active",
+    "openalex_ids": [
+      "A5003187027"
+    ],
+    "orcid": "0000-0002-5352-0419",
+    "source_orcid": "",
+    "verified_on": "2026-10-05",
+    "evidence": [
+      "https://openalex.org/A5003187027"
+    ],
+    "representative_works": [
+      {
+        "title": "From prevention to diagnosis and treatment: Biomedical applications of metal nanoparticle-hydrogel composites",
+        "url": "https://doi.org/10.1016/j.actbio.2020.12.030"
+      },
+      {
+        "title": "Untangling Mucosal Drug Delivery: Engineering, Designing, and Testing Nanoparticles to Overcome the Mucus Barrier",
+        "url": "https://doi.org/10.1021/acsbiomaterials.2c00047"
+      },
+      {
+        "title": "Sizing up feature descriptors for macromolecular machine learning with polymeric biomaterials",
+        "url": "https://doi.org/10.1038/s41524-023-01040-5"
+      }
+    ],
+    "note": "Name, affiliation history and publication record reviewed; OpenAlex identity may still require corrections."
+  },
+  {
+    "person_id": "A033",
+    "name": "Joshua Gans",
+    "institution": "National Bureau of Economic Research; University of Toronto",
+    "source_institution": "University of Toronto",
+    "status": "active",
+    "openalex_ids": [
+      "A5055795427",
+      "A5100032816",
+      "A5118215251"
+    ],
+    "orcid": "0000-0001-6567-5859",
+    "source_orcid": "",
+    "verified_on": "2026-10-05",
+    "evidence": [
+      "https://openalex.org/A5055795427",
+      "https://openalex.org/A5100032816",
+      "https://openalex.org/A5118215251"
+    ],
+    "representative_works": [
+      {
+        "title": "The product market and the market for “ideas”: commercialization strategies for technology entrepreneurs",
+        "url": "https://doi.org/10.1016/s0048-7333(02)00103-8"
+      },
+      {
+        "title": "Artificial Intelligence: The Ambiguous Labor Market Impact of Automating Prediction",
+        "url": "https://doi.org/10.1257/jep.33.2.31"
+      },
+      {
+        "title": "When Does Start-Up Innovation Spur the Gale of Creative Destruction?",
+        "url": "https://doi.org/10.2307/3087475"
+      }
+    ],
+    "note": "Name, affiliation history and publication record reviewed; OpenAlex identity may still require corrections."
+  },
+  {
+    "person_id": "A034",
+    "name": "Kai Huang",
+    "institution": "Shenzhen University; University of Toronto; Shenzhen Bay Laboratory",
+    "source_institution": "University of Toronto",
+    "status": "active",
+    "openalex_ids": [
+      "A5016829737"
+    ],
+    "orcid": "0000-0001-8693-2084",
+    "source_orcid": "",
+    "verified_on": "2026-10-05",
+    "evidence": [
+      "https://openalex.org/A5016829737"
+    ],
+    "representative_works": [
+      {
+        "title": "Two-dimensional transition metal carbides and nitrides (MXenes) for biomedical applications",
+        "url": "https://doi.org/10.1039/c7cs00838d"
+      },
+      {
+        "title": "Titania Coated Upconversion Nanoparticles for Near-Infrared Light Triggered Photodynamic Therapy",
+        "url": "https://doi.org/10.1021/nn503450t"
+      },
+      {
+        "title": "Designing Next Generation of Persistent Luminescence: Recent Advances in Uniform Persistent Luminescence Nanoparticles",
+        "url": "https://doi.org/10.1002/adma.202107962"
+      }
+    ],
+    "note": "Name, affiliation history and publication record reviewed; OpenAlex identity may still require corrections."
+  },
+  {
+    "person_id": "A035",
+    "name": "Milica Radisic",
+    "institution": "University Health Network; University of Toronto; Toronto General Hospital; Toronto General Hospital Research Institute",
+    "source_institution": "University of Toronto",
+    "status": "active",
+    "openalex_ids": [
+      "A5080613228"
+    ],
+    "orcid": "0000-0003-1249-4135",
+    "source_orcid": "",
+    "verified_on": "2026-10-05",
+    "evidence": [
+      "https://openalex.org/A5080613228"
+    ],
+    "representative_works": [
+      {
+        "title": "Advances in organ-on-a-chip engineering",
+        "url": "https://doi.org/10.1038/s41578-018-0034-7"
+      },
+      {
+        "title": "Biowire: a platform for maturation of human pluripotent stem cell–derived cardiomyocytes",
+        "url": "https://doi.org/10.1038/nmeth.2524"
+      },
+      {
+        "title": "Functional assembly of engineered myocardium by electrical stimulation of cardiac myocytes cultured on scaffolds",
+        "url": "https://doi.org/10.1073/pnas.0407817101"
+      }
+    ],
+    "note": "Name, affiliation history and publication record reviewed; OpenAlex identity may still require corrections."
+  },
+  {
+    "person_id": "A036",
+    "name": "Ajay Agrawal",
+    "institution": "National Bureau of Economic Research; University of Toronto",
+    "source_institution": "University of Toronto",
+    "status": "active",
+    "openalex_ids": [
+      "A5087299999"
+    ],
+    "orcid": "0000-0002-0911-2194",
+    "source_orcid": "",
+    "verified_on": "2026-10-05",
+    "evidence": [
+      "https://openalex.org/A5087299999"
+    ],
+    "representative_works": [
+      {
+        "title": "Artificial Intelligence: The Ambiguous Labor Market Impact of Automating Prediction",
+        "url": "https://doi.org/10.1257/jep.33.2.31"
+      },
+      {
+        "title": "Exploring the impact of artificial Intelligence: Prediction versus judgment",
+        "url": "https://doi.org/10.1016/j.infoecopol.2019.05.001"
+      },
+      {
+        "title": "Prediction Machines: The Simple Economics of Artificial Intelligence",
+        "url": "https://openalex.org/W2981278614"
+      }
+    ],
+    "note": "Name, affiliation history and publication record reviewed; OpenAlex identity may still require corrections."
+  },
+  {
+    "person_id": "A037",
+    "name": "Alison McGuigan",
+    "institution": "University of Toronto",
+    "source_institution": "University of Toronto",
+    "status": "active",
+    "openalex_ids": [
+      "A5091416310"
+    ],
+    "orcid": "0000-0003-2803-0917",
+    "source_orcid": "",
+    "verified_on": "2026-10-05",
+    "evidence": [
+      "https://openalex.org/A5091416310"
+    ],
+    "representative_works": [
+      {
+        "title": "Tryptophan-derived microbial metabolites activate the aryl hydrocarbon receptor in tumor-associated macrophages to suppress anti-tumor immunity",
+        "url": "https://doi.org/10.1016/j.immuni.2022.01.006"
+      },
+      {
+        "title": "Vascularized organoid engineered by modular assembly enables blood perfusion",
+        "url": "https://doi.org/10.1073/pnas.0602740103"
+      },
+      {
+        "title": "The influence of biomaterials on endothelial cell thrombogenicity",
+        "url": "https://doi.org/10.1016/j.biomaterials.2007.01.039"
+      }
+    ],
+    "note": "Name, affiliation history and publication record reviewed; OpenAlex identity may still require corrections."
+  },
+  {
+    "person_id": "A038",
+    "name": "Curtis Berlinguette",
+    "institution": "Canadian Institute for Advanced Research; University of British Columbia; MaRS",
+    "source_institution": "University of British Columbia",
+    "status": "active",
+    "openalex_ids": [
+      "A5014348723"
+    ],
+    "orcid": "0000-0001-6875-849X",
+    "source_orcid": "0000-0001-6875-849X",
+    "verified_on": "2026-10-05",
+    "evidence": [
+      "https://openalex.org/A5014348723"
+    ],
+    "representative_works": [
+      {
+        "title": "Photochemical Route for Accessing Amorphous Metal Oxide Materials for Water Oxidation Catalysis",
+        "url": "https://doi.org/10.1126/science.1233638"
+      },
+      {
+        "title": "Electrolytic CO2 Reduction in a Flow Cell",
+        "url": "https://doi.org/10.1021/acs.accounts.8b00010"
+      },
+      {
+        "title": "Molecular electrocatalysts can mediate fast, selective CO 2 reduction in a flow cell",
+        "url": "https://doi.org/10.1126/science.aax4608"
+      }
+    ],
+    "note": "Name, affiliation history and publication record reviewed; OpenAlex identity may still require corrections."
+  },
+  {
+    "person_id": "A039",
+    "name": "Dwight Seferos",
+    "institution": "University of Toronto",
+    "source_institution": "University of Toronto",
+    "status": "active",
+    "openalex_ids": [
+      "A5025685909"
+    ],
+    "orcid": "0000-0001-8742-8058",
+    "source_orcid": "",
+    "verified_on": "2026-10-05",
+    "evidence": [
+      "https://openalex.org/A5025685909"
+    ],
+    "representative_works": [
+      {
+        "title": "The rise of organic electrode materials for energy storage",
+        "url": "https://doi.org/10.1039/c6cs00173d"
+      },
+      {
+        "title": "Nano-Flares: Probes for Transfection and mRNA Detection in Living Cells",
+        "url": "https://doi.org/10.1021/ja0776529"
+      },
+      {
+        "title": "Gene Regulation with Polyvalent siRNA−Nanoparticle Conjugates",
+        "url": "https://doi.org/10.1021/ja808719p"
+      }
+    ],
+    "note": "Name, affiliation history and publication record reviewed; OpenAlex identity may still require corrections."
+  },
+  {
+    "person_id": "A040",
+    "name": "Frantz le Dévédec",
+    "institution": "University of Toronto",
+    "source_institution": "University of Toronto",
+    "status": "active",
+    "openalex_ids": [
+      "A5016810235"
+    ],
+    "orcid": "0000-0002-1456-3184",
+    "source_orcid": "",
+    "verified_on": "2026-10-05",
+    "evidence": [
+      "https://openalex.org/A5016810235"
+    ],
+    "representative_works": [
+      {
+        "title": "PEGylated Bile Acids for Use in Drug Delivery Systems: Enhanced Solubility and Bioavailability of Itraconazole",
+        "url": "https://doi.org/10.1021/mp400117m"
+      },
+      {
+        "title": "Separation of chitosan oligomers by immobilized metal affinity chromatography",
+        "url": "https://doi.org/10.1016/j.chroma.2008.03.094"
+      },
+      {
+        "title": "Aggregation Behavior of Pegylated Bile Acid Derivatives",
+        "url": "https://doi.org/10.1021/la303218q"
+      }
+    ],
+    "note": "Name, affiliation history and publication record reviewed; OpenAlex identity may still require corrections."
+  },
+  {
+    "person_id": "A041",
+    "name": "Tonio Buonassisi",
+    "institution": "Massachusetts Institute of Technology",
+    "source_institution": "Massachusetts Institute of Technology",
+    "status": "active",
+    "openalex_ids": [
+      "A5085344547"
+    ],
+    "orcid": "0000-0001-8345-4937",
+    "source_orcid": "0000-0001-9463-9026",
+    "verified_on": "2026-10-05",
+    "evidence": [
+      "https://openalex.org/A5085344547"
+    ],
+    "representative_works": [
+      {
+        "title": "Promises and challenges of perovskite solar cells",
+        "url": "https://doi.org/10.1126/science.aam6323"
+      },
+      {
+        "title": "23.6%-efficient monolithic perovskite/silicon tandem solar cells with improved stability",
+        "url": "https://doi.org/10.1038/nenergy.2017.9"
+      },
+      {
+        "title": "Semi-transparent perovskite solar cells for tandems with silicon and CIGS",
+        "url": "https://doi.org/10.1039/c4ee03322a"
+      }
+    ],
+    "note": "Name, affiliation history and publication record reviewed; OpenAlex identity may still require corrections."
+  },
+  {
+    "person_id": "A042",
+    "name": "Aaron Clasky",
+    "institution": "University of Toronto",
+    "source_institution": "University of Toronto",
+    "status": "active",
+    "openalex_ids": [
+      "A5016682368"
+    ],
+    "orcid": "0000-0001-5455-1340",
+    "source_orcid": "",
+    "verified_on": "2026-10-05",
+    "evidence": [
+      "https://openalex.org/A5016682368"
+    ],
+    "representative_works": [
+      {
+        "title": "From prevention to diagnosis and treatment: Biomedical applications of metal nanoparticle-hydrogel composites",
+        "url": "https://doi.org/10.1016/j.actbio.2020.12.030"
+      },
+      {
+        "title": "Untangling Mucosal Drug Delivery: Engineering, Designing, and Testing Nanoparticles to Overcome the Mucus Barrier",
+        "url": "https://doi.org/10.1021/acsbiomaterials.2c00047"
+      },
+      {
+        "title": "Bridging the gap between in vitro and in vivo models: a way forward to clinical translation of mitochondrial transplantation in acute disease states",
+        "url": "https://doi.org/10.1186/s13287-024-03771-8"
+      }
+    ],
+    "note": "Name, affiliation history and publication record reviewed; OpenAlex identity may still require corrections."
+  },
+  {
+    "person_id": "A043",
+    "name": "Chris Sutton",
+    "institution": "University of South Carolina; Rensselaer Polytechnic Institute; University of Toronto",
+    "source_institution": "University of South Carolina",
+    "status": "active",
+    "openalex_ids": [
+      "A5045691554"
+    ],
+    "orcid": "0000-0003-1206-8080",
+    "source_orcid": "",
+    "verified_on": "2026-10-05",
+    "evidence": [
+      "https://openalex.org/A5045691554"
+    ],
+    "representative_works": [
+      {
+        "title": "New tolerance factor to predict the stability of perovskite oxides and halides",
+        "url": "https://doi.org/10.1126/sciadv.aav0693"
+      },
+      {
+        "title": "Machine learning for heterogeneous catalyst design and discovery",
+        "url": "https://doi.org/10.1002/aic.16198"
+      },
+      {
+        "title": "A foundation model for atomistic materials chemistry",
+        "url": "https://doi.org/10.1063/5.0297006"
+      }
+    ],
+    "note": "Name, affiliation history and publication record reviewed; OpenAlex identity may still require corrections."
+  },
+  {
+    "person_id": "A044",
+    "name": "Eugenia Kumacheva",
+    "institution": "University of Toronto",
+    "source_institution": "University of Toronto",
+    "status": "active",
+    "openalex_ids": [
+      "A5060107939"
+    ],
+    "orcid": "0000-0001-5942-3890",
+    "source_orcid": "",
+    "verified_on": "2026-10-05",
+    "evidence": [
+      "https://openalex.org/A5060107939"
+    ],
+    "representative_works": [
+      {
+        "title": "Enhanced electrocatalytic CO2 reduction via field-induced reagent concentration",
+        "url": "https://doi.org/10.1038/nature19060"
+      },
+      {
+        "title": "Properties and emerging applications of self-assembled structures made from inorganic nanoparticles",
+        "url": "https://doi.org/10.1038/nnano.2009.453"
+      },
+      {
+        "title": "Patterning surfaces with functional polymers",
+        "url": "https://doi.org/10.1038/nmat2109"
+      }
+    ],
+    "note": "Name, affiliation history and publication record reviewed; OpenAlex identity may still require corrections."
+  },
+  {
+    "person_id": "A045",
+    "name": "Vijay Narasimhan",
+    "institution": "Merck KGaA, Darmstadt (Germany)",
+    "source_institution": "Google DeepMind",
+    "status": "active",
+    "openalex_ids": [
+      "A5074230758"
+    ],
+    "orcid": "0000-0002-7727-6860",
+    "source_orcid": "",
+    "verified_on": "2026-10-05",
+    "evidence": [
+      "https://openalex.org/A5074230758"
+    ],
+    "representative_works": [
+      {
+        "title": "Improved lithium–sulfur batteries with a conductive coating on the separator to prevent the accumulation of inactive S-related species at the cathode–separator interface",
+        "url": "https://doi.org/10.1039/c4ee01377h"
+      },
+      {
+        "title": "Improving lithium–sulphur batteries through spatial control of sulphur species deposition on a hybrid electrode surface",
+        "url": "https://doi.org/10.1038/ncomms4943"
+      },
+      {
+        "title": "Performance enhancement of metal nanowire transparent conducting electrodes by mesoscale metal wires",
+        "url": "https://doi.org/10.1038/ncomms3522"
+      }
+    ],
+    "note": "Name, affiliation history and publication record reviewed; OpenAlex identity may still require corrections."
+  },
+  {
+    "person_id": "A046",
+    "name": "Yang Bai",
+    "institution": "University of Toronto; Jinzhong University",
+    "source_institution": "University of Toronto",
+    "status": "active",
+    "openalex_ids": [
+      "A5025505349"
+    ],
+    "orcid": "0000-0002-1643-3770",
+    "source_orcid": "",
+    "verified_on": "2026-10-05",
+    "evidence": [
+      "https://openalex.org/A5025505349"
+    ],
+    "representative_works": [
+      {
+        "title": "A mobile robotic chemist",
+        "url": "https://doi.org/10.1038/s41586-020-2442-2"
+      },
+      {
+        "title": "Reconstructed covalent organic frameworks",
+        "url": "https://doi.org/10.1038/s41586-022-04443-4"
+      },
+      {
+        "title": "Accelerated Discovery of Organic Polymer Photocatalysts for Hydrogen Evolution from Water through the Integration of Experiment and Theory",
+        "url": "https://doi.org/10.1021/jacs.9b03591"
+      }
+    ],
+    "note": "Name, affiliation history and publication record reviewed; OpenAlex identity may still require corrections."
+  },
+  {
+    "person_id": "A047",
+    "name": "Yimu Zhao",
+    "institution": "University of Toronto",
+    "source_institution": "University of Toronto",
+    "status": "active",
+    "openalex_ids": [
+      "A5085587851"
+    ],
+    "orcid": "0000-0001-8265-8647",
+    "source_orcid": "",
+    "verified_on": "2026-10-05",
+    "evidence": [
+      "https://openalex.org/A5085587851"
+    ],
+    "representative_works": [
+      {
+        "title": "A Platform for Generation of Chamber-Specific Cardiac Tissues and Disease Modeling",
+        "url": "https://doi.org/10.1016/j.cell.2018.11.042"
+      },
+      {
+        "title": "A multi-organ chip with matured tissue niches linked by vascular flow",
+        "url": "https://doi.org/10.1038/s41551-022-00882-6"
+      },
+      {
+        "title": "Organ‐On‐A‐Chip Platforms: A Convergence of Advanced Materials, Cells, and Microscale Technologies",
+        "url": "https://doi.org/10.1002/adhm.201700506"
+      }
+    ],
+    "note": "Name, affiliation history and publication record reviewed; OpenAlex identity may still require corrections."
+  },
+  {
+    "person_id": "A048",
+    "name": "Aimy Bazylak",
+    "institution": "University of Toronto",
+    "source_institution": "University of Toronto",
+    "status": "active",
+    "openalex_ids": [
+      "A5030608747"
+    ],
+    "orcid": "0000-0002-9594-4930",
+    "source_orcid": "",
+    "verified_on": "2026-10-05",
+    "evidence": [
+      "https://openalex.org/A5030608747"
+    ],
+    "representative_works": [
+      {
+        "title": "OpenPNM: A Pore Network Modeling Package",
+        "url": "https://doi.org/10.1109/mcse.2016.49"
+      },
+      {
+        "title": "Liquid water visualization in PEM fuel cells: A review",
+        "url": "https://doi.org/10.1016/j.ijhydene.2009.02.084"
+      },
+      {
+        "title": "Effect of compression on liquid water transport and microstructure of PEMFC gas diffusion layers",
+        "url": "https://doi.org/10.1016/j.jpowsour.2006.09.045"
+      }
+    ],
+    "note": "Name, affiliation history and publication record reviewed; OpenAlex identity may still require corrections."
+  },
+  {
+    "person_id": "A049",
+    "name": "Ali Dolatabadi",
+    "institution": "University of Toronto",
+    "source_institution": "University of Toronto",
+    "status": "active",
+    "openalex_ids": [
+      "A5049007597"
+    ],
+    "orcid": "0000-0001-6416-351X",
+    "source_orcid": "",
+    "verified_on": "2026-10-05",
+    "evidence": [
+      "https://openalex.org/A5049007597"
+    ],
+    "representative_works": [
+      {
+        "title": "The 2016 Thermal Spray Roadmap",
+        "url": "https://doi.org/10.1007/s11666-016-0473-x"
+      },
+      {
+        "title": "Energy Budget of Liquid Drop Impact at Maximum Spreading: Numerical Simulations and Experiments",
+        "url": "https://doi.org/10.1021/acs.langmuir.5b03848"
+      },
+      {
+        "title": "Modeling thermal spray coating processes: a powerful tool in design and optimization",
+        "url": "https://doi.org/10.1016/s0257-8972(02)00686-2"
+      }
+    ],
+    "note": "Name, affiliation history and publication record reviewed; OpenAlex identity may still require corrections."
+  },
+  {
+    "person_id": "A050",
+    "name": "Bhushan Gopaluni",
+    "institution": "University of British Columbia; University of British Columbia, Okanagan Campus",
+    "source_institution": "University of British Columbia",
+    "status": "active",
+    "openalex_ids": [
+      "A5008908321"
+    ],
+    "orcid": "0000-0002-4321-0468",
+    "source_orcid": "",
+    "verified_on": "2026-10-05",
+    "evidence": [
+      "https://openalex.org/A5008908321"
+    ],
+    "representative_works": [
+      {
+        "title": "Data-driven capacity estimation of commercial lithium-ion batteries from voltage relaxation",
+        "url": "https://doi.org/10.1038/s41467-022-29837-w"
+      },
+      {
+        "title": "LIONSIMBA: A Matlab Framework Based on a Finite Volume Model Suitable for Li-Ion Battery Design, Simulation, and Control",
+        "url": "https://doi.org/10.1149/2.0291607jes"
+      },
+      {
+        "title": "Model Predictive Control in Industry: Challenges and Opportunities",
+        "url": "https://doi.org/10.1016/j.ifacol.2015.09.022"
+      }
+    ],
+    "note": "Name, affiliation history and publication record reviewed; OpenAlex identity may still require corrections."
+  },
+  {
+    "person_id": "A051",
+    "name": "Daman Panesar",
+    "institution": "University of Toronto",
+    "source_institution": "University of Toronto",
+    "status": "active",
+    "openalex_ids": [
+      "A5011907374"
+    ],
+    "orcid": "0000-0002-8805-8957",
+    "source_orcid": "",
+    "verified_on": "2026-10-05",
+    "evidence": [
+      "https://openalex.org/A5011907374"
+    ],
+    "representative_works": [
+      {
+        "title": "Hardened properties of concrete mixtures containing pre-coated crumb rubber and silica fume",
+        "url": "https://doi.org/10.1016/j.jclepro.2014.06.068"
+      },
+      {
+        "title": "Cellular concrete properties and the effect of synthetic and protein foaming agents",
+        "url": "https://doi.org/10.1016/j.conbuildmat.2013.03.024"
+      },
+      {
+        "title": "Effects of accelerated carbonation on the microstructure of Portland cement pastes containing reactive MgO",
+        "url": "https://doi.org/10.1016/j.cemconres.2012.02.017"
+      }
+    ],
+    "note": "Name, affiliation history and publication record reviewed; OpenAlex identity may still require corrections."
+  },
+  {
+    "person_id": "A052",
+    "name": "Igor Stagljar",
+    "institution": "University of Toronto",
+    "source_institution": "University of Toronto",
+    "status": "active",
+    "openalex_ids": [
+      "A5009243617"
+    ],
+    "orcid": "0000-0002-5260-3327",
+    "source_orcid": "",
+    "verified_on": "2026-10-05",
+    "evidence": [
+      "https://openalex.org/A5009243617"
+    ],
+    "representative_works": [
+      {
+        "title": "A global genetic interaction network maps a wiring diagram of cellular function",
+        "url": "https://doi.org/10.1126/science.aaf1420"
+      },
+      {
+        "title": "A genetic system based on split-ubiquitin for the analysis of interactions between membrane proteins in vivo",
+        "url": "https://doi.org/10.1073/pnas.95.9.5187"
+      },
+      {
+        "title": "Fundamentals of protein interaction network mapping",
+        "url": "https://doi.org/10.15252/msb.20156351"
+      }
+    ],
+    "note": "Name, affiliation history and publication record reviewed; OpenAlex identity may still require corrections."
+  },
+  {
+    "person_id": "A053",
+    "name": "Jay Werber",
+    "institution": "University of Toronto",
+    "source_institution": "University of Toronto",
+    "status": "active",
+    "openalex_ids": [
+      "A5044577735"
+    ],
+    "orcid": "0000-0002-6551-5983",
+    "source_orcid": "",
+    "verified_on": "2026-10-05",
+    "evidence": [
+      "https://openalex.org/A5044577735"
+    ],
+    "representative_works": [
+      {
+        "title": "Materials for next-generation desalination and water purification membranes",
+        "url": "https://doi.org/10.1038/natrevmats.2016.18"
+      },
+      {
+        "title": "Forward osmosis: Where are we now?",
+        "url": "https://doi.org/10.1016/j.desal.2014.10.031"
+      },
+      {
+        "title": "The Critical Need for Increased Selectivity, Not Increased Water Permeability, for Desalination Membranes",
+        "url": "https://doi.org/10.1021/acs.estlett.6b00050"
+      }
+    ],
+    "note": "Name, affiliation history and publication record reviewed; OpenAlex identity may still require corrections."
+  },
+  {
+    "person_id": "A054",
+    "name": "Leo Chou",
+    "institution": "University of Toronto",
+    "source_institution": "University of Toronto",
+    "status": "active",
+    "openalex_ids": [
+      "A5067887461"
+    ],
+    "orcid": "0000-0002-3019-5449",
+    "source_orcid": "",
+    "verified_on": "2026-10-05",
+    "evidence": [
+      "https://openalex.org/A5067887461"
+    ],
+    "representative_works": [
+      {
+        "title": "Strategies for the intracellular delivery of nanoparticles",
+        "url": "https://doi.org/10.1039/c0cs00003e"
+      },
+      {
+        "title": "Oligolysine-based coating protects DNA nanostructures from low-salt denaturation and nuclease degradation",
+        "url": "https://doi.org/10.1038/ncomms15654"
+      },
+      {
+        "title": "DNA assembly of nanoparticle superstructures for controlled biological delivery and elimination",
+        "url": "https://doi.org/10.1038/nnano.2013.309"
+      }
+    ],
+    "note": "Name, affiliation history and publication record reviewed; OpenAlex identity may still require corrections."
+  },
+  {
+    "person_id": "A055",
+    "name": "Michael Garton",
+    "institution": "University of Toronto",
+    "source_institution": "University of British Columbia",
+    "status": "active",
+    "openalex_ids": [
+      "A5015137044"
+    ],
+    "orcid": "0000-0002-5829-6532",
+    "source_orcid": "",
+    "verified_on": "2026-10-05",
+    "evidence": [
+      "https://openalex.org/A5015137044"
+    ],
+    "representative_works": [
+      {
+        "title": "C2H2 zinc finger proteins greatly expand the human regulatory lexicon",
+        "url": "https://doi.org/10.1038/nbt.3128"
+      },
+      {
+        "title": "Method to generate highly stable D-amino acid analogs of bioactive helical peptides using a mirror image of the entire PDB",
+        "url": "https://doi.org/10.1073/pnas.1711837115"
+      },
+      {
+        "title": "Shifting landscapes of human MTHFR missense-variant effects",
+        "url": "https://doi.org/10.1016/j.ajhg.2021.05.009"
+      }
+    ],
+    "note": "Name, affiliation history and publication record reviewed; OpenAlex identity may still require corrections."
+  },
+  {
+    "person_id": "A056",
+    "name": "Naruki Yoshikawa",
+    "institution": "University of Toronto; National Institute for Materials Science; Vector Institute; Institute of Science Tokyo",
+    "source_institution": "University of Toronto",
+    "status": "active",
+    "openalex_ids": [
+      "A5019451422"
+    ],
+    "orcid": "0000-0003-1546-8709",
+    "source_orcid": "",
+    "verified_on": "2026-10-05",
+    "evidence": [
+      "https://openalex.org/A5019451422"
+    ],
+    "representative_works": [
+      {
+        "title": "Self-Driving Laboratories for Chemistry and Materials Science",
+        "url": "https://doi.org/10.1021/acs.chemrev.4c00055"
+      },
+      {
+        "title": "ORGANA: A robotic assistant for automated chemistry experimentation and characterization",
+        "url": "https://doi.org/10.1016/j.matt.2024.10.015"
+      },
+      {
+        "title": "Fast, efficient fragment-based coordinate generation for Open Babel",
+        "url": "https://doi.org/10.1186/s13321-019-0372-5"
+      }
+    ],
+    "note": "Name, affiliation history and publication record reviewed; OpenAlex identity may still require corrections."
+  },
+  {
+    "person_id": "A057",
+    "name": "Robert Batey",
+    "institution": "University of Toronto",
+    "source_institution": "University of Toronto",
+    "status": "active",
+    "openalex_ids": [
+      "A5084315463",
+      "A5143730061"
+    ],
+    "orcid": "0000-0001-8808-7646",
+    "source_orcid": "",
+    "verified_on": "2026-10-05",
+    "evidence": [
+      "https://openalex.org/A5084315463",
+      "https://openalex.org/A5143730061"
+    ],
+    "representative_works": [
+      {
+        "title": "Parallel Synthesis of a Library of Benzoxazoles and Benzothiazoles Using Ligand-Accelerated Copper-Catalyzed Cyclizations of ortho -Halobenzanilides",
+        "url": "https://doi.org/10.1021/jo051927q"
+      },
+      {
+        "title": "Targeting XIAP for the treatment of malignancy",
+        "url": "https://doi.org/10.1038/sj.cdd.4401826"
+      },
+      {
+        "title": "Copper-Catalyzed Domino Annulation Approaches to the Synthesis of Benzoxazoles under Microwave-Accelerated and Conventional Thermal Conditions",
+        "url": "https://doi.org/10.1021/jo702145d"
+      }
+    ],
+    "note": "Name, affiliation history and publication record reviewed; OpenAlex identity may still require corrections."
+  },
+  {
+    "person_id": "A058",
+    "name": "Santha Santhakumar",
+    "institution": "University Health Network; University of Toronto; Structural Genomics Consortium",
+    "source_institution": "University of Toronto",
+    "status": "active",
+    "openalex_ids": [
+      "A5143343479"
+    ],
+    "orcid": "",
+    "source_orcid": "",
+    "verified_on": "2026-10-05",
+    "evidence": [
+      "https://openalex.org/A5143343479"
+    ],
+    "representative_works": [
+      {
+        "title": "Protein–ligand data at scale to support machine learning",
+        "url": "https://doi.org/10.1038/s41570-025-00737-z"
+      }
+    ],
+    "note": "Name, affiliation history and publication record reviewed; OpenAlex identity may still require corrections."
+  },
+  {
+    "person_id": "A059",
+    "name": "Sterling Baird",
+    "institution": "Brigham Young University; University of Toronto; University of Utah",
+    "source_institution": "University of Utah",
+    "status": "active",
+    "openalex_ids": [
+      "A5054163917",
+      "A5123344201"
+    ],
+    "orcid": "0000-0002-4491-6876",
+    "source_orcid": "0000-0002-4491-6876",
+    "verified_on": "2026-10-05",
+    "evidence": [
+      "https://openalex.org/A5054163917",
+      "https://openalex.org/A5123344201"
+    ],
+    "representative_works": [
+      {
+        "title": "Self-Driving Laboratories for Chemistry and Materials Science",
+        "url": "https://doi.org/10.1021/acs.chemrev.4c00055"
+      },
+      {
+        "title": "The sustainable materials roadmap",
+        "url": "https://doi.org/10.1088/2515-7639/ac4ee5"
+      },
+      {
+        "title": "Review of low-cost self-driving laboratories in chemistry and materials science: the “frugal twin” concept",
+        "url": "https://doi.org/10.1039/d3dd00223c"
+      }
+    ],
+    "note": "Name, affiliation history and publication record reviewed; OpenAlex identity may still require corrections."
+  },
+  {
+    "person_id": "A060",
+    "name": "Afshin Marani",
+    "institution": "University of Toronto; Arup Group (Canada)",
+    "source_institution": "University of Toronto",
+    "status": "active",
+    "openalex_ids": [
+      "A5039665873"
+    ],
+    "orcid": "0000-0001-5858-6153",
+    "source_orcid": "",
+    "verified_on": "2026-10-05",
+    "evidence": [
+      "https://openalex.org/A5039665873"
+    ],
+    "representative_works": [
+      {
+        "title": "Integrating phase change materials in construction materials: Critical review",
+        "url": "https://doi.org/10.1016/j.conbuildmat.2019.05.064"
+      },
+      {
+        "title": "Machine learning prediction of compressive strength for phase change materials integrated cementitious composites",
+        "url": "https://doi.org/10.1016/j.conbuildmat.2020.120286"
+      },
+      {
+        "title": "Predicting Ultra-High-Performance Concrete Compressive Strength Using Tabular Generative Adversarial Networks",
+        "url": "https://doi.org/10.3390/ma13214757"
+      }
+    ],
+    "note": "Name, affiliation history and publication record reviewed; OpenAlex identity may still require corrections."
+  },
+  {
+    "person_id": "A061",
+    "name": "Alan Veerman",
+    "institution": "University of Toronto",
+    "source_institution": "University of Toronto",
+    "status": "needs_review",
+    "openalex_ids": [],
+    "orcid": "",
+    "source_orcid": "",
+    "verified_on": "2026-10-05",
+    "evidence": [
+      "https://vectorinstitute.ai/team/alan-veerman/"
+    ],
+    "representative_works": [],
+    "note": "No verifiable OpenAlex author profile found. Retained in watchlist; provide ORCID or a representative publication to activate."
+  },
+  {
+    "person_id": "A062",
+    "name": "Ana Andreazza",
+    "institution": "University of Toronto",
+    "source_institution": "University of Toronto",
+    "status": "active",
+    "openalex_ids": [
+      "A5001223332",
+      "A5032255295"
+    ],
+    "orcid": "0000-0002-4323-7273",
+    "source_orcid": "",
+    "verified_on": "2026-10-05",
+    "evidence": [
+      "https://openalex.org/A5001223332",
+      "https://openalex.org/A5032255295"
+    ],
+    "representative_works": [
+      {
+        "title": "Pathways underlying neuroprogression in bipolar disorder: Focus on inflammation, oxidative stress and neurotrophic factors",
+        "url": "https://doi.org/10.1016/j.neubiorev.2010.10.001"
+      },
+      {
+        "title": "Decreased levels of glutathione, the major brain antioxidant, in post-mortem prefrontal cortex from patients with psychiatric disorders",
+        "url": "https://doi.org/10.1017/s1461145710000805"
+      },
+      {
+        "title": "Oxidative stress markers in bipolar disorder: A meta-analysis",
+        "url": "https://doi.org/10.1016/j.jad.2008.04.013"
+      }
+    ],
+    "note": "Name, affiliation history and publication record reviewed; OpenAlex identity may still require corrections."
+  },
+  {
+    "person_id": "A063",
+    "name": "Andrei Yudin",
+    "institution": "University of Toronto",
+    "source_institution": "University of Toronto",
+    "status": "active",
+    "openalex_ids": [
+      "A5081408580"
+    ],
+    "orcid": "0000-0003-3170-9103",
+    "source_orcid": "",
+    "verified_on": "2026-10-05",
+    "evidence": [
+      "https://openalex.org/A5081408580"
+    ],
+    "representative_works": [
+      {
+        "title": "Contemporary strategies for peptide macrocyclization",
+        "url": "https://doi.org/10.1038/nchem.1062"
+      },
+      {
+        "title": "Modified BINOL Ligands in Asymmetric Catalysis",
+        "url": "https://doi.org/10.1021/cr020025b"
+      },
+      {
+        "title": "Perfluoroalkylation with Organosilicon Reagents",
+        "url": "https://doi.org/10.1021/cr9408991"
+      }
+    ],
+    "note": "Name, affiliation history and publication record reviewed; OpenAlex identity may still require corrections."
+  },
+  {
+    "person_id": "A064",
+    "name": "Christopher Lawson",
+    "institution": "Lawrence Berkeley National Laboratory; University of Toronto; Joint BioEnergy Institute",
+    "source_institution": "University of Toronto",
+    "status": "active",
+    "openalex_ids": [
+      "A5069394957",
+      "A5138160388"
+    ],
+    "orcid": "0000-0002-3473-1640",
+    "source_orcid": "",
+    "verified_on": "2026-10-05",
+    "evidence": [
+      "https://openalex.org/A5069394957",
+      "https://openalex.org/A5138160388"
+    ],
+    "representative_works": [
+      {
+        "title": "Metabolic network analysis reveals microbial community interactions in anammox granules",
+        "url": "https://doi.org/10.1038/ncomms15416"
+      },
+      {
+        "title": "Common principles and best practices for engineering microbiomes",
+        "url": "https://doi.org/10.1038/s41579-019-0255-9"
+      },
+      {
+        "title": "Machine learning for metabolic engineering: A review",
+        "url": "https://doi.org/10.1016/j.ymben.2020.10.005"
+      }
+    ],
+    "note": "Name, affiliation history and publication record reviewed; OpenAlex identity may still require corrections."
+  },
+  {
+    "person_id": "A065",
+    "name": "Claudia dos Santos",
+    "institution": "St. Michael's Hospital; University of Toronto; Unity Health Toronto",
+    "source_institution": "University of Toronto",
+    "status": "active",
+    "openalex_ids": [
+      "A5091313128"
+    ],
+    "orcid": "0000-0002-6446-8791",
+    "source_orcid": "",
+    "verified_on": "2026-10-05",
+    "evidence": [
+      "https://openalex.org/A5091313128"
+    ],
+    "representative_works": [
+      {
+        "title": "Mesenchymal Stem Cells Reduce Inflammation while Enhancing Bacterial Clearance and Improving Survival in Sepsis",
+        "url": "https://doi.org/10.1164/rccm.201001-0010oc"
+      },
+      {
+        "title": "Invited Review: Mechanisms of ventilator-induced lung injury: a perspective",
+        "url": "https://doi.org/10.1152/jappl.2000.89.4.1645"
+      },
+      {
+        "title": "The RECOVER Program: Disability Risk Groups and 1-Year Outcome after 7 or More Days of Mechanical Ventilation",
+        "url": "https://doi.org/10.1164/rccm.201512-2343oc"
+      }
+    ],
+    "note": "Name, affiliation history and publication record reviewed; OpenAlex identity may still require corrections."
+  },
+  {
+    "person_id": "A066",
+    "name": "Daniel Persaud",
+    "institution": "Natural Resources Canada; University of Toronto",
+    "source_institution": "University of Toronto",
+    "status": "active",
+    "openalex_ids": [
+      "A5025711363"
+    ],
+    "orcid": "0009-0004-9980-2704",
+    "source_orcid": "",
+    "verified_on": "2026-10-05",
+    "evidence": [
+      "https://openalex.org/A5025711363"
+    ],
+    "representative_works": [
+      {
+        "title": "Exploiting redundancy in large materials datasets for efficient machine learning with less data",
+        "url": "https://doi.org/10.1038/s41467-023-42992-y"
+      },
+      {
+        "title": "Probing out-of-distribution generalization in machine learning for materials",
+        "url": "https://doi.org/10.1038/s43246-024-00731-w"
+      },
+      {
+        "title": "Reproducibility in materials informatics: lessons from ‘A general-purpose machine learning framework for predicting properties of inorganic materials’",
+        "url": "https://doi.org/10.1039/d3dd00199g"
+      }
+    ],
+    "note": "Name, affiliation history and publication record reviewed; OpenAlex identity may still require corrections."
+  },
+  {
+    "person_id": "A067",
+    "name": "Ekaterina Trushina",
+    "institution": "University of British Columbia; University of Toronto",
+    "source_institution": "Mayo Clinic",
+    "status": "active",
+    "openalex_ids": [
+      "A5101842584"
+    ],
+    "orcid": "0000-0003-4119-158X",
+    "source_orcid": "",
+    "verified_on": "2026-10-05",
+    "evidence": [
+      "https://openalex.org/A5101842584"
+    ],
+    "representative_works": [
+      {
+        "title": "Delocalized, asynchronous, closed-loop discovery of organic laser emitters",
+        "url": "https://doi.org/10.1126/science.adk9227"
+      },
+      {
+        "title": "Digitization and validation of a chemical synthesis literature database in the ChemPU",
+        "url": "https://doi.org/10.1126/science.abo0058"
+      },
+      {
+        "title": "Delocalized, Asynchronous, Closed-Loop Discovery of Organic Laser Emitters",
+        "url": "https://doi.org/10.26434/chemrxiv-2023-wqp0d"
+      }
+    ],
+    "note": "Name, affiliation history and publication record reviewed; OpenAlex identity may still require corrections."
+  },
+  {
+    "person_id": "A068",
+    "name": "Joseph Williams",
+    "institution": "University of Toronto",
+    "source_institution": "University of Toronto",
+    "status": "active",
+    "openalex_ids": [
+      "A5069476228"
+    ],
+    "orcid": "0000-0002-9122-5242",
+    "source_orcid": "",
+    "verified_on": "2026-10-05",
+    "evidence": [
+      "https://openalex.org/A5069476228"
+    ],
+    "representative_works": [
+      {
+        "title": "Advances in Neural Information Processing Systems 21",
+        "url": "https://openalex.org/W2596585349"
+      },
+      {
+        "title": "Mining Big Data in Education: Affordances and Challenges",
+        "url": "https://doi.org/10.3102/0091732x20903304"
+      },
+      {
+        "title": "HarvardX and MITx: Two Years of Open Online Courses Fall 2012-Summer 2014",
+        "url": "https://doi.org/10.2139/ssrn.2586847"
+      }
+    ],
+    "note": "Name, affiliation history and publication record reviewed; OpenAlex identity may still require corrections."
+  },
+  {
+    "person_id": "A069",
+    "name": "Kangming Li",
+    "institution": "King Abdullah University of Science and Technology",
+    "source_institution": "University of Toronto",
+    "status": "active",
+    "openalex_ids": [
+      "A5055766485",
+      "A5040939358",
+      "A5138011687",
+      "A5133006130"
+    ],
+    "orcid": "0000-0003-4471-8527",
+    "source_orcid": "",
+    "verified_on": "2026-10-05",
+    "evidence": [
+      "https://openalex.org/A5055766485",
+      "https://openalex.org/A5040939358",
+      "https://openalex.org/A5138011687",
+      "https://openalex.org/A5133006130"
+    ],
+    "representative_works": [
+      {
+        "title": "A critical examination of robustness and generalizability of machine learning prediction of materials properties",
+        "url": "https://doi.org/10.1038/s41524-023-01012-9"
+      },
+      {
+        "title": "Exploiting redundancy in large materials datasets for efficient machine learning with less data",
+        "url": "https://doi.org/10.1038/s41467-023-42992-y"
+      },
+      {
+        "title": "Probing out-of-distribution generalization in machine learning for materials",
+        "url": "https://doi.org/10.1038/s43246-024-00731-w"
+      }
+    ],
+    "note": "Name, affiliation history and publication record reviewed; OpenAlex identity may still require corrections."
+  },
+  {
+    "person_id": "A070",
+    "name": "Keith Pardee",
+    "institution": "University of Toronto",
+    "source_institution": "University of Toronto",
+    "status": "active",
+    "openalex_ids": [
+      "A5013374621"
+    ],
+    "orcid": "0000-0002-3812-8013",
+    "source_orcid": "",
+    "verified_on": "2026-10-05",
+    "evidence": [
+      "https://openalex.org/A5013374621"
+    ],
+    "representative_works": [
+      {
+        "title": "Rapid, Low-Cost Detection of Zika Virus Using Programmable Biomolecular Components",
+        "url": "https://doi.org/10.1016/j.cell.2016.04.059"
+      },
+      {
+        "title": "Paper-Based Synthetic Gene Networks",
+        "url": "https://doi.org/10.1016/j.cell.2014.10.004"
+      },
+      {
+        "title": "Deconstructing transcriptional heterogeneity in pluripotent stem cells",
+        "url": "https://doi.org/10.1038/nature13920"
+      }
+    ],
+    "note": "Name, affiliation history and publication record reviewed; OpenAlex identity may still require corrections."
+  },
+  {
+    "person_id": "A071",
+    "name": "M Murphy",
+    "institution": "University of Toronto",
+    "source_institution": "University of Toronto",
+    "status": "active",
+    "openalex_ids": [
+      "A5017525484"
+    ],
+    "orcid": "0000-0001-5173-1717",
+    "source_orcid": "",
+    "verified_on": "2026-10-05",
+    "evidence": [
+      "https://openalex.org/A5017525484"
+    ],
+    "representative_works": [
+      {
+        "title": "Anticipation: Technoscience, life, affect, temporality",
+        "url": "https://doi.org/10.1057/sub.2009.18"
+      },
+      {
+        "title": "Alterlife and Decolonial Chemical Relations",
+        "url": "https://doi.org/10.14506/ca32.4.02"
+      },
+      {
+        "title": "The Economization of Life",
+        "url": "https://doi.org/10.1215/9780822373216"
+      }
+    ],
+    "note": "Name, affiliation history and publication record reviewed; OpenAlex identity may still require corrections."
+  },
+  {
+    "person_id": "A072",
+    "name": "Mahyar Rajabi Kochi",
+    "institution": "University of Toronto; Vector Institute",
+    "source_institution": "University of Toronto",
+    "status": "active",
+    "openalex_ids": [
+      "A5114656074"
+    ],
+    "orcid": "0009-0000-6392-3994",
+    "source_orcid": "",
+    "verified_on": "2026-10-05",
+    "evidence": [
+      "https://openalex.org/A5114656074"
+    ],
+    "representative_works": [
+      {
+        "title": "Assessment of fine-tuned large language models for real-world chemistry and material science applications",
+        "url": "https://doi.org/10.1039/d4sc04401k"
+      },
+      {
+        "title": "Adaptive representation of molecules and materials in Bayesian optimization",
+        "url": "https://doi.org/10.1039/d5sc00200a"
+      },
+      {
+        "title": "Physics-informed machine learning for predicting temperature-dependent chemical properties",
+        "url": "https://doi.org/10.1039/d5dd00489f"
+      }
+    ],
+    "note": "Name, affiliation history and publication record reviewed; OpenAlex identity may still require corrections."
+  },
+  {
+    "person_id": "A073",
+    "name": "Mehrad Gholizadeh Ansari",
+    "institution": "University of Toronto",
+    "source_institution": "University of Toronto",
+    "status": "active",
+    "openalex_ids": [
+      "A5049942230"
+    ],
+    "orcid": "",
+    "source_orcid": "",
+    "verified_on": "2026-10-05",
+    "evidence": [
+      "https://openalex.org/A5049942230"
+    ],
+    "representative_works": [
+      {
+        "title": "Numerical modeling of capillary-driven flow in open microchannels: An implication of optimized wicking fabric design",
+        "url": "https://openalex.org/W2892179108"
+      }
+    ],
+    "note": "Name, affiliation history and publication record reviewed; OpenAlex identity may still require corrections."
+  },
+  {
+    "person_id": "A074",
+    "name": "Nis Fisker-Bødker",
+    "institution": "Technical University of Denmark",
+    "source_institution": "University of Toronto",
+    "status": "active",
+    "openalex_ids": [
+      "A5074207514"
+    ],
+    "orcid": "0009-0002-9811-821X",
+    "source_orcid": "",
+    "verified_on": "2026-10-05",
+    "evidence": [
+      "https://openalex.org/A5074207514"
+    ],
+    "representative_works": [
+      {
+        "title": "The Necessity of Dynamic Workflow Managers for Advancing Self‐Driving Labs and Optimizers",
+        "url": "https://doi.org/10.1002/aidi.202500067"
+      },
+      {
+        "title": "Fabrication of biopolymer cantilevers using nanoimprint lithography",
+        "url": "https://doi.org/10.1016/j.mee.2011.02.095"
+      },
+      {
+        "title": "AMPERE-2: an open-hardware, robotic platform for automated electrodeposition and electrochemical validation",
+        "url": "https://doi.org/10.1039/d5dd00180c"
+      }
+    ],
+    "note": "Name, affiliation history and publication record reviewed; OpenAlex identity may still require corrections."
+  },
+  {
+    "person_id": "A075",
+    "name": "Owen Melville",
+    "institution": "University of Toronto",
+    "source_institution": "University of Toronto",
+    "status": "active",
+    "openalex_ids": [
+      "A5053305011"
+    ],
+    "orcid": "0000-0002-5880-3450",
+    "source_orcid": "",
+    "verified_on": "2026-10-05",
+    "evidence": [
+      "https://openalex.org/A5053305011"
+    ],
+    "representative_works": [
+      {
+        "title": "Phthalocyanine-Based Organic Thin-Film Transistors: A Review of Recent Advances",
+        "url": "https://doi.org/10.1021/acsami.5b01718"
+      },
+      {
+        "title": "Metal phthalocyanine organic thin-film transistors: changes in electrical performance and stability in response to temperature and environment",
+        "url": "https://doi.org/10.1039/c9ra03648b"
+      },
+      {
+        "title": "Silicon phthalocyanines as N-type semiconductors in organic thin film transistors",
+        "url": "https://doi.org/10.1039/c8tc01116h"
+      }
+    ],
+    "note": "Name, affiliation history and publication record reviewed; OpenAlex identity may still require corrections."
+  },
+  {
+    "person_id": "A076",
+    "name": "Radhakrishnan (Krishna) Mahadevan",
+    "institution": "University of Toronto; Institute of Biomedical Engineering",
+    "source_institution": "University of Toronto",
+    "status": "active",
+    "openalex_ids": [
+      "A5015634711",
+      "A5062877045"
+    ],
+    "orcid": "0000-0002-1270-9063",
+    "source_orcid": "",
+    "verified_on": "2026-10-05",
+    "evidence": [
+      "https://openalex.org/A5015634711",
+      "https://openalex.org/A5062877045"
+    ],
+    "representative_works": [
+      {
+        "title": "The effects of alternate optimal solutions in constraint-based genome-scale metabolic models",
+        "url": "https://doi.org/10.1016/j.ymben.2003.09.002"
+      },
+      {
+        "title": "Dynamic Flux Balance Analysis of Diauxic Growth in Escherichia coli",
+        "url": "https://doi.org/10.1016/s0006-3495(02)73903-9"
+      },
+      {
+        "title": "MEMOTE for standardized genome-scale metabolic model testing",
+        "url": "https://doi.org/10.1038/s41587-020-0446-y"
+      }
+    ],
+    "note": "Name, affiliation history and publication record reviewed; OpenAlex identity may still require corrections."
+  },
+  {
+    "person_id": "A077",
+    "name": "Robert Black",
+    "institution": "National Research Council Canada",
+    "source_institution": "University of Toronto",
+    "status": "active",
+    "openalex_ids": [
+      "A5093065525"
+    ],
+    "orcid": "0009-0004-3383-0307",
+    "source_orcid": "",
+    "verified_on": "2026-10-05",
+    "evidence": [
+      "https://openalex.org/A5093065525"
+    ],
+    "representative_works": [
+      {
+        "title": "Bayesian assessment of commonly used equivalent circuit models for corrosion analysis in electrochemical impedance spectroscopy",
+        "url": "https://doi.org/10.1038/s41529-024-00537-8"
+      },
+      {
+        "title": "MOF-ChemUnity: Literature-Informed Large Language Models for Metal–Organic Framework Research",
+        "url": "https://doi.org/10.1021/jacs.5c11789"
+      },
+      {
+        "title": "Editors’ Choice—AutoEIS: Automated Bayesian Model Selection and Analysis for Electrochemical Impedance Spectroscopy",
+        "url": "https://doi.org/10.1149/1945-7111/aceab2"
+      }
+    ],
+    "note": "Name, affiliation history and publication record reviewed; OpenAlex identity may still require corrections."
+  },
+  {
+    "person_id": "A078",
+    "name": "Stuart Green",
+    "institution": "University of Toronto",
+    "source_institution": "University of Toronto",
+    "status": "active",
+    "openalex_ids": [
+      "A5069099185"
+    ],
+    "orcid": "0000-0002-2960-9683",
+    "source_orcid": "",
+    "verified_on": "2026-10-05",
+    "evidence": [
+      "https://openalex.org/A5069099185"
+    ],
+    "representative_works": [
+      {
+        "title": "Crystal structures of DCAF1-PROTAC-WDR5 ternary complexes provide insight into DCAF1 substrate specificity",
+        "url": "https://doi.org/10.1038/s41467-024-54500-x"
+      },
+      {
+        "title": "The roles of hippocampal microRNAs in response to acute postnatal exposure to di(2-ethylhexyl) phthalate in female and male rats",
+        "url": "https://doi.org/10.1016/j.neuro.2017.02.004"
+      },
+      {
+        "title": "Discovery of a Novel DCAF1 Ligand Using a Drug–Target Interaction Prediction Model: Generalizing Machine Learning to New Drug Targets",
+        "url": "https://doi.org/10.1021/acs.jcim.3c00082"
+      }
+    ],
+    "note": "Name, affiliation history and publication record reviewed; OpenAlex identity may still require corrections."
+  },
+  {
+    "person_id": "A079",
+    "name": "Taylor Sparks",
+    "institution": "University of Toronto; University of Utah",
+    "source_institution": "University of Utah",
+    "status": "active",
+    "openalex_ids": [
+      "A5003301534"
+    ],
+    "orcid": "0000-0001-8020-7711",
+    "source_orcid": "0000-0001-8020-7711",
+    "verified_on": "2026-10-05",
+    "evidence": [
+      "https://openalex.org/A5003301534"
+    ],
+    "representative_works": [
+      {
+        "title": "Machine Learning for Materials Scientists: An Introductory Guide toward Best Practices",
+        "url": "https://doi.org/10.1021/acs.chemmater.0c01907"
+      },
+      {
+        "title": "Data-Driven Review of Thermoelectric Materials: Performance and Resource Considerations",
+        "url": "https://doi.org/10.1021/cm400893e"
+      },
+      {
+        "title": "High-Throughput Machine-Learning-Driven Synthesis of Full-Heusler Compounds",
+        "url": "https://doi.org/10.1021/acs.chemmater.6b02724"
+      }
+    ],
+    "note": "Name, affiliation history and publication record reviewed; OpenAlex identity may still require corrections."
+  },
+  {
+    "person_id": "A080",
+    "name": "Tejs Vegge",
+    "institution": "Technical University of Denmark; Delft University of Technology",
+    "source_institution": "Technical University of Denmark",
+    "status": "active",
+    "openalex_ids": [
+      "A5083050334"
+    ],
+    "orcid": "0000-0002-1484-0284",
+    "source_orcid": "",
+    "verified_on": "2026-10-05",
+    "evidence": [
+      "https://openalex.org/A5083050334"
+    ],
+    "representative_works": [
+      {
+        "title": "The atomic simulation environment—a Python library for working with atoms",
+        "url": "https://doi.org/10.1088/1361-648x/aa680e"
+      },
+      {
+        "title": "A theoretical evaluation of possible transition metal electro-catalysts for N 2 reduction",
+        "url": "https://doi.org/10.1039/c1cp22271f"
+      },
+      {
+        "title": "Ammonia for hydrogen storage: challenges and opportunities",
+        "url": "https://doi.org/10.1039/b720020j"
+      }
+    ],
+    "note": "Name, affiliation history and publication record reviewed; OpenAlex identity may still require corrections."
+  },
+  {
+    "person_id": "A081",
+    "name": "Timothy Welsh",
+    "institution": "University of Toronto",
+    "source_institution": "University of Toronto",
+    "status": "active",
+    "openalex_ids": [
+      "A5056981928"
+    ],
+    "orcid": "0000-0002-5892-8595",
+    "source_orcid": "",
+    "verified_on": "2026-10-05",
+    "evidence": [
+      "https://openalex.org/A5056981928"
+    ],
+    "representative_works": [
+      {
+        "title": "No one knows what attention is",
+        "url": "https://doi.org/10.3758/s13414-019-01846-w"
+      },
+      {
+        "title": "Movement Trajectories in the Presence of a Distracting Stimulus: Evidence for a Response Activation Model of Selective Reaching",
+        "url": "https://doi.org/10.1080/02724980343000666"
+      },
+      {
+        "title": "The processes of facilitation and inhibition in a cue–target paradigm: Insight from movement trajectory deviations",
+        "url": "https://doi.org/10.1016/j.actpsy.2011.11.001"
+      }
+    ],
+    "note": "Name, affiliation history and publication record reviewed; OpenAlex identity may still require corrections."
+  },
+  {
+    "person_id": "A082",
+    "name": "Zhijing Jin",
+    "institution": "Max Planck Society; University of Toronto; Vector Institute; Max Planck Institute for Intelligent Systems",
+    "source_institution": "Max Planck Institute",
+    "status": "active",
+    "openalex_ids": [
+      "A5016724158",
+      "A5139266152"
+    ],
+    "orcid": "0000-0003-0238-9024",
+    "source_orcid": "",
+    "verified_on": "2026-10-05",
+    "evidence": [
+      "https://openalex.org/A5016724158",
+      "https://openalex.org/A5139266152"
+    ],
+    "representative_works": [
+      {
+        "title": "Is BERT Really Robust? A Strong Baseline for Natural Language Attack on Text Classification and Entailment",
+        "url": "https://doi.org/10.1609/aaai.v34i05.6311"
+      },
+      {
+        "title": "Deep Learning for Text Style Transfer: A Survey",
+        "url": "https://doi.org/10.1162/coli_a_00426"
+      },
+      {
+        "title": "Is BERT Really Robust? Natural Language Attack on Text Classification and Entailment",
+        "url": "https://openalex.org/W2965595599"
+      }
+    ],
+    "note": "Name, affiliation history and publication record reviewed; OpenAlex identity may still require corrections."
+  }
+]

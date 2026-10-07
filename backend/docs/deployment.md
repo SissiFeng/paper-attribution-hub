@@ -38,6 +38,12 @@ cd ../frontend && npm install && npm run build   # → dist/, exit 0
 | `PAS_OPENALEX_MAILTO` | optional | Polite pool for OpenAlex. |
 | `PAS_SEMANTIC_SCHOLAR_API_KEY` | optional | Higher S2 rate limits. |
 | `PAS_KIMI_API_KEY` / `PAS_ANTHROPIC_API_KEY` | optional | LLM answer generation. Without either, `/retrieve/answer` returns grounded retrieval-only answers (no crash). |
+| `PAS_ZOTERO_API_KEY` | **Yes** | Read-only key for the authoritative Zotero group library. |
+| `PAS_ZOTERO_GROUP_ID` | **Yes** | Zotero group-library ID. |
+| `PAS_ZOTERO_TIER1_COLLECTION` | **Yes** | Immutable Tier 1 collection key. |
+| `PAS_ZOTERO_TIER2_COLLECTION` | optional | Immutable Tier 2 key; leave empty for the Tier 1-only pilot. |
+| `PAS_ZOTERO_SYNC_ON_STARTUP` | recommended | Set `true` after the one-time cutover. |
+| `PAS_ZOTERO_SOURCE_ONLY` | **Yes** | Keep `true` to prevent discovery APIs from adding papers outside Zotero. |
 
 ### Vercel (frontend) — set as build-time env vars
 
@@ -59,21 +65,24 @@ cd ../frontend && npm install && npm run build   # → dist/, exit 0
 
 ```
 db_bootstrap                                   # schema: create+stamp | stamp | upgrade
-ingest_scopus_batch --seed-if-under 1000 ...   # best-effort seed
+sync_zotero --seed-if-empty --classify         # only when startup sync is enabled
 exec uvicorn app.main:app --host 0.0.0.0 --port ${PORT:-8000}
 ```
 
-Bootstrap and seed are **best-effort**: a non-zero exit is logged as a
+Bootstrap and Zotero sync are **best-effort**: a non-zero exit is logged as a
 `[serve] WARNING` but uvicorn still starts, so `/health` and `/debug/db` stay
 reachable for diagnosis. `uvicorn` is exec'd (replaces the process) so it
 receives container signals.
 
+The one-time backup and destructive replacement procedure is documented in
+[`zotero_cutover.md`](zotero_cutover.md).
+
 ## Known risks / caveats
 
-1. **Seeding is best-effort, not fail-fast.** If seeding fails, the API still
+1. **Startup sync is best-effort, not fail-fast.** If Zotero sync fails, the API still
    boots but may serve an empty/partial dataset — check the `[serve] WARNING`
    lines in the Render logs and `/debug/papers` if the demo data looks thin.
-   (Re-seed manually with `python -m app.scripts.ingest_scopus_batch`.)
+   Retry with `python -m app.scripts.sync_zotero --seed-if-empty --classify`.
 2. **`VITE_API_BASE` is build-time.** Changing it in Vercel requires a redeploy,
    not just an env update.
 3. **pgvector on a *fresh* Postgres:** `db_bootstrap` stamps head, so migration

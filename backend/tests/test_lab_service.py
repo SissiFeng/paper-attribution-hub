@@ -1,7 +1,7 @@
 """SDL lab registry, paper→lab mapping, and labs/entities API."""
 from __future__ import annotations
 
-from fastapi.testclient import TestClient
+from tests.admin_client import AdminTestClient as TestClient
 from sqlalchemy import select
 
 from app.models import Author, Paper, PaperAuthor, PaperLabLink, SdlLab

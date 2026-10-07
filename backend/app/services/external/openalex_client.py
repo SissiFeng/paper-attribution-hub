@@ -44,6 +44,8 @@ class OpenAlexClient(ExternalClient):
         # docs recommend.
         if self.polite_mailto:
             params = {**(params or {}), "mailto": self.polite_mailto}
+        if settings.openalex_api_key:
+            params = {**(params or {}), "api_key": settings.openalex_api_key}
         return cached_get(
             session,
             self.name,
@@ -59,6 +61,64 @@ class OpenAlexClient(ExternalClient):
         if not doi_norm:
             return None
         return self._cached(session, f"/works/doi:{doi_norm}")
+
+    def works_by_dois(
+        self,
+        session: Session,
+        dois: list[str],
+        *,
+        batch_size: int = 100,
+    ) -> dict[str, dict]:
+        """Fetch known DOIs in bounded OR-filter batches.
+
+        OpenAlex permits at most 100 OR values in one filter. Results are
+        returned by normalized DOI so callers can reconcile them without
+        relying on response order.
+        """
+        normalized = sorted(
+            {doi for value in dois if (doi := normalize_doi(value))}
+        )
+        if batch_size < 1 or batch_size > 100:
+            raise ValueError("batch_size must be between 1 and 100")
+        selected_fields = ",".join(
+            [
+                "id",
+                "doi",
+                "title",
+                "display_name",
+                "publication_year",
+                "publication_date",
+                "type",
+                "language",
+                "cited_by_count",
+                "is_retracted",
+                "authorships",
+                "ids",
+                "biblio",
+                "primary_location",
+                "open_access",
+                "topics",
+                "keywords",
+                "abstract_inverted_index",
+            ]
+        )
+        by_doi: dict[str, dict] = {}
+        for offset in range(0, len(normalized), batch_size):
+            batch = normalized[offset : offset + batch_size]
+            payload = self._cached(
+                session,
+                "/works",
+                {
+                    "filter": "doi:" + "|".join(batch),
+                    "per_page": len(batch),
+                    "select": selected_fields,
+                },
+            )
+            for work in payload.get("results") or []:
+                doi = normalize_doi(work.get("doi"))
+                if doi:
+                    by_doi[doi] = work
+        return by_doi
 
     def work_by_id(self, session: Session, openalex_work_id: str) -> dict | None:
         work_id = (openalex_work_id or "").strip().rsplit("/", 1)[-1]

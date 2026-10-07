@@ -1,0 +1,2502 @@
+{
+  "audit_summary": {
+    "accepted_field_count": 35,
+    "proposed_field_count": 132,
+    "rejected_field_count": 97,
+    "repair_attempted_count": 7,
+    "repair_succeeded_count": 0,
+    "unsupported_claim_count": 97
+  },
+  "candidate_domain_terms": [
+    "electrolyte",
+    "lithium-ion",
+    "ionic conductivity",
+    "solubility",
+    "redox"
+  ],
+  "field_audit_records": [
+    {
+      "cited_span": "spark ablation only requires the target metal, electricity, and an inert gas",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[0].role",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta00331h",
+      "proposed_value": "precursor",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "spark ablation only requires the target metal, electricity, and an inert gas",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[0].supplier",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta00331h",
+      "proposed_value": "VSParticle",
+      "protocol_index": 0,
+      "rejection_reason": "value_elsewhere",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "spark ablation only requires the target metal, electricity, and an inert gas",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[1].role",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta00331h",
+      "proposed_value": "carrier gas",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Becker et al. printed 64 (8 × 8) NiFe electrodes of various compositions",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[2].role",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta00331h",
+      "proposed_value": "electrode material",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Sapountzi et al. fabricated IrO₂-coated membranes using spark ablation",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[3].role",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta00331h",
+      "proposed_value": "catalyst coating",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "a Dutch company, VSParticle, designed a nano-printer for printing (semi)conductive particles. This innovative technology, depicted in Fig. 5, employs spark ablation followed by impaction to form and deposit nano- particles. 110,124",
+      "diagnostic": null,
+      "entity_type": "instruments",
+      "field_path": "instruments[0].settings.voltage",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta00331h",
+      "proposed_value": "adjustable",
+      "protocol_index": 0,
+      "rejection_reason": "value_elsewhere",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "a Dutch company, VSParticle, designed a nano-printer for printing (semi)conductive particles. This innovative technology, depicted in Fig. 5, employs spark ablation followed by impaction to form and deposit nano- particles. 110,124",
+      "diagnostic": null,
+      "entity_type": "instruments",
+      "field_path": "instruments[0].settings.current",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta00331h",
+      "proposed_value": "adjustable",
+      "protocol_index": 0,
+      "rejection_reason": "value_elsewhere",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "a Dutch company, VSParticle, designed a nano-printer for printing (semi)conductive particles. This innovative technology, depicted in Fig. 5, employs spark ablation followed by impaction to form and deposit nano- particles. 110,124",
+      "diagnostic": null,
+      "entity_type": "instruments",
+      "field_path": "instruments[0].settings.flow_rate",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta00331h",
+      "proposed_value": "adjustable",
+      "protocol_index": 0,
+      "rejection_reason": "value_elsewhere",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "a Dutch company, VSParticle, designed a nano-printer for printing (semi)conductive particles. This innovative technology, depicted in Fig. 5, employs spark ablation followed by impaction to form and deposit nano- particles. 110,124",
+      "diagnostic": null,
+      "entity_type": "instruments",
+      "field_path": "instruments[0].settings.nozzle_size",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta00331h",
+      "proposed_value": "adjustable",
+      "protocol_index": 0,
+      "rejection_reason": "value_elsewhere",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "spark ablation only requires the target metal, electricity, and an inert gas and thus is a \"chemical-free\" deposition",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[0].action",
+      "nearest_source_span": "110,124 While sputtering typically requires the target material and a high-energy ion source by way of ionizing Ar to Ar +, spark ablation only requires the target metal, electricity, and an inert gas and thus is a “chemical-free” deposition.",
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta00331h",
+      "proposed_value": "spark ablation",
+      "protocol_index": 0,
+      "rejection_reason": "span_not_in_source",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "This innovative technology, depicted in Fig. 5, employs spark ablation followed by impaction to form and deposit nano- particles. 110,124",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[1].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta00331h",
+      "proposed_value": "impaction deposition",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "This innovative technology, depicted in Fig. 5, employs spark ablation followed by impaction to form and deposit nano- particles. 110,124",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[1].conditions[0]",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta00331h",
+      "proposed_value": "adjustable voltage",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "This innovative technology, depicted in Fig. 5, employs spark ablation followed by impaction to form and deposit nano- particles. 110,124",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[1].conditions[1]",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta00331h",
+      "proposed_value": "adjustable current",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "This innovative technology, depicted in Fig. 5, employs spark ablation followed by impaction to form and deposit nano- particles. 110,124",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[1].conditions[2]",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta00331h",
+      "proposed_value": "adjustable flow rate",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "This innovative technology, depicted in Fig. 5, employs spark ablation followed by impaction to form and deposit nano- particles. 110,124",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[1].conditions[3]",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta00331h",
+      "proposed_value": "adjustable nozzle size",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "This innovative technology, depicted in Fig. 5, employs spark ablation followed by impaction to form and deposit nano- particles. 110,124",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[1].notes",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta00331h",
+      "proposed_value": "forms and deposits nanoparticles",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "each electrode only taking 1–320 seconds to print. 124",
+      "diagnostic": null,
+      "entity_type": "results",
+      "field_path": "results[0].metric",
+      "nearest_source_span": "printed 64 (8 × 8) NiFe electrodes of various compositions to test in their customized cell, with each elec- trode only taking 1–320 seconds to print.",
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta00331h",
+      "proposed_value": "printing time per electrode",
+      "protocol_index": 0,
+      "rejection_reason": "span_not_in_source",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "fabricated IrO₂-coated membranes using spark ablation for conducting the OER at a h of the loading (cost) compared to commercially available catalyst coated membranes 110 (CCMs)",
+      "diagnostic": null,
+      "entity_type": "results",
+      "field_path": "results[1].metric",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta00331h",
+      "proposed_value": "catalyst loading reduction",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "extracting raw Mo concentrates (MoS₂, MoO₂, MoO₃, and others) from an active open pit mine",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[0].role",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta00331h",
+      "proposed_value": "precursor",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "extracting raw Mo concentrates (MoS₂, MoO₂, MoO₃, and others) from an active open pit mine",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[0].pretreatment",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta00331h",
+      "proposed_value": "extracted from active open pit mine",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "exfoliating it with Mo₂C to form two- dimensional MoS₂ akes",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[1].role",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta00331h",
+      "proposed_value": "exfoliation agent",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "These MoS₂ akes were then dispersed in water to make an ink",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[2].role",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta00331h",
+      "proposed_value": "dispersion solvent",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "extracting raw Mo concentrates (MoS₂, MoO₂, MoO₃, and others) from an active open pit mine",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[0].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta00331h",
+      "proposed_value": "extract raw Mo concentrates from mine",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "extracting raw Mo concentrates (MoS₂, MoO₂, MoO₃, and others) from an active open pit mine",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[0].notes",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta00331h",
+      "proposed_value": "from active open pit mine",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "exfoliating it with Mo₂C to form two- dimensional MoS₂ akes",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[1].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta00331h",
+      "proposed_value": "exfoliate with Mo₂C",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "exfoliating it with Mo₂C to form two- dimensional MoS₂ akes",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[1].notes",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta00331h",
+      "proposed_value": "forms two-dimensional MoS₂ flakes",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "These MoS₂ akes were then dispersed in water to make an ink",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[2].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta00331h",
+      "proposed_value": "disperse in water to make ink",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "dip-coating a high-surface area Cu foam substrate in",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[3].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta00331h",
+      "proposed_value": "dip-coat Cu foam substrate",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "fabricating thermally treated MoS₂/Mo₂C (HC–MoS₂/Mo₂C) catalyst for the HER",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[4].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta00331h",
+      "proposed_value": "thermal treatment",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "fabricating thermally treated MoS₂/Mo₂C (HC–MoS₂/Mo₂C) catalyst for the HER",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[4].notes",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta00331h",
+      "proposed_value": "forms HC–MoS₂/Mo₂C catalyst",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "the authors chose 54 elements and obtained their common oxidation states to perform ionic substitution in the pre-existing materials",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[0].name",
+      "nearest_source_span": "Starting with known c crystal structures, the authors chose 54 elements and obtained ML algorithm LRGPRBO N/A N/A their common oxidation states to perform ionic substitution in the pre-existing materials.",
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta00331h",
+      "proposed_value": "54 elements",
+      "protocol_index": 2,
+      "rejection_reason": "span_not_in_source",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "the authors chose 54 elements and obtained their common oxidation states to perform ionic substitution in the pre-existing materials. All in all, over 32.5 million initial structural candidates were generated for screening",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[0].action",
+      "nearest_source_span": "Starting with known c crystal structures, the authors chose 54 elements and obtained ML algorithm LRGPRBO N/A N/A their common oxidation states to perform ionic substitution in the pre-existing materials.",
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta00331h",
+      "proposed_value": "generate initial structural candidates by ionic substitution",
+      "protocol_index": 2,
+      "rejection_reason": "span_not_in_source",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The rst step narrowed down materials using their phase stability Ehull< 50 meV per atom (Ehullis the relative energy above the convex hull and obtained by using ML- based potentials¹⁶⁶), bringing the number down to under 6 × 5 10",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[1].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta00331h",
+      "proposed_value": "screen by phase stability using ML-based potentials",
+      "protocol_index": 2,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The rst step narrowed down materials using their phase stability Ehull< 50 meV per atom (Ehullis the relative energy above the convex hull and obtained by using ML- based potentials¹⁶⁶), bringing the number down to under 6 × 5 10",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[1].conditions[0]",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta00331h",
+      "proposed_value": "Ehull < 50 meV per atom",
+      "protocol_index": 2,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The rst step narrowed down materials using their phase stability Ehull< 50 meV per atom (Ehullis the relative energy above the convex hull and obtained by using ML- based potentials¹⁶⁶), bringing the number down to under 6 × 5 10",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[1].notes",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta00331h",
+      "proposed_value": "reduced to under 6 × 10^5 candidates",
+      "protocol_index": 2,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The following levels encompassed criteria pertaining to solid electrolytes such as Li conductivity, redox potential, and cost. Distinctively though, each criterion step is performed with either ML or DFT based on the need for quicker (cheaper) screening or higher accuracy, respectively",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[2].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta00331h",
+      "proposed_value": "apply solid electrolyte criteria screening",
+      "protocol_index": 2,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The following levels encompassed criteria pertaining to solid electrolytes such as Li conductivity, redox potential, and cost. Distinctively though, each criterion step is performed with either ML or DFT based on the need for quicker (cheaper) screening or higher accuracy, respectively",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[2].notes",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta00331h",
+      "proposed_value": "10-step funneling method, ML for large dataset, DFT for tapered dataset",
+      "protocol_index": 2,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "the authors identied 18 electrolytes that had not been previously reported",
+      "diagnostic": null,
+      "entity_type": "results",
+      "field_path": "results[0].metric",
+      "nearest_source_span": "identied 18 electrolytes that had not been previously reported c and focused on four to further investigate through synthesis and characterization.",
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta00331h",
+      "proposed_value": "number of identified new electrolytes",
+      "protocol_index": 2,
+      "rejection_reason": "span_not_in_source",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "focused on four to further investigate through synthesis and characterization",
+      "diagnostic": null,
+      "entity_type": "results",
+      "field_path": "results[1].metric",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta00331h",
+      "proposed_value": "number selected for further investigation",
+      "protocol_index": 2,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The top candidate was NaxLi3−xYCl₆ based on its structures and conductivities, making it a suitable choice for a solid electrolyte",
+      "diagnostic": null,
+      "entity_type": "results",
+      "field_path": "results[2].metric",
+      "nearest_source_span": "The top candidate was NaxLi3−xYCl₆ Model(s)DFT 33 3 3 based on its structures and conductivities, making it a suitable choice for a solid electrolyte (Fig.",
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta00331h",
+      "proposed_value": "top candidate",
+      "protocol_index": 2,
+      "rejection_reason": "span_not_in_source",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "the authors listed 22 possible solvent candidates",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[0].role",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta00331h",
+      "proposed_value": "initial candidates",
+      "protocol_index": 3,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "created an additional 2079 candidates based on binary mixtures of various volume ratios of the original 22",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[1].name",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta00331h",
+      "proposed_value": "binary mixtures of original 22 solvents",
+      "protocol_index": 3,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "0.2 vol% as the solvent with the highest solubility",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[2].name",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta00331h",
+      "proposed_value": "0.2 vol% solvent",
+      "protocol_index": 3,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "their automated robotic platform synthesized 58 of these candidates (both singular and binary solvents) for model training at a rate of ∼39 min per sample",
+      "diagnostic": null,
+      "entity_type": "instruments",
+      "field_path": "instruments[0].settings.synthesis_rate",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta00331h",
+      "proposed_value": "~39 min per sample",
+      "protocol_index": 3,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "they built a closed-loop, ML-guided HT experimentation setup",
+      "diagnostic": null,
+      "entity_type": "software",
+      "field_path": "software[0].name",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta00331h",
+      "proposed_value": "machine learning",
+      "protocol_index": 3,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "This demonstration of BO underscores how active (machine) learning can drive experimentation",
+      "diagnostic": null,
+      "entity_type": "software",
+      "field_path": "software[1].name",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta00331h",
+      "proposed_value": "Bayesian optimization",
+      "protocol_index": 3,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "the authors listed 22 possible solvent candidates",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[0].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta00331h",
+      "proposed_value": "list initial solvent candidates",
+      "protocol_index": 3,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "the authors listed 22 possible solvent candidates",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[0].conditions[0]",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta00331h",
+      "proposed_value": "22 candidates",
+      "protocol_index": 3,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "created an additional 2079 candidates based on binary mixtures of various volume ratios of the original 22",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[1].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta00331h",
+      "proposed_value": "create binary mixture candidates",
+      "protocol_index": 3,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "created an additional 2079 candidates based on binary mixtures of various volume ratios of the original 22",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[1].notes",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta00331h",
+      "proposed_value": "2079 additional candidates",
+      "protocol_index": 3,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "their automated robotic platform synthesized 58 of these candidates (both singular and binary solvents) for model training at a rate of ∼39 min per sample",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[2].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta00331h",
+      "proposed_value": "synthesize candidates using robotic platform",
+      "protocol_index": 3,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "their automated robotic platform synthesized 58 of these candidates (both singular and binary solvents) for model training at a rate of ∼39 min per sample",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[2].conditions[0]",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta00331h",
+      "proposed_value": "58 candidates selected",
+      "protocol_index": 3,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "their automated robotic platform synthesized 58 of these candidates (both singular and binary solvents) for model training at a rate of ∼39 min per sample",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[2].conditions[1]",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta00331h",
+      "proposed_value": "~39 min per sample",
+      "protocol_index": 3,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "their automated robotic platform synthesized 58 of these candidates (both singular and binary solvents) for model training at a rate of ∼39 min per sample",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[2].notes",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta00331h",
+      "proposed_value": "both singular and binary solvents for model training",
+      "protocol_index": 3,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Each electrolyte sample was prepped for nuclear magnetic resonance (NMR) and then manually transported to",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[3].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta00331h",
+      "proposed_value": "prep samples for NMR",
+      "protocol_index": 3,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Each electrolyte sample was prepped for nuclear magnetic resonance (NMR) and then manually transported to",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[3].notes",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta00331h",
+      "proposed_value": "manual transport to NMR",
+      "protocol_index": 3,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "their model only needed 218 measurements from the >2000 sample dataset to output the optimal solvents and solvent ratio",
+      "diagnostic": null,
+      "entity_type": "results",
+      "field_path": "results[0].metric",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta00331h",
+      "proposed_value": "total measurements needed",
+      "protocol_index": 3,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "0.2 vol% as the solvent with the highest solubility",
+      "diagnostic": null,
+      "entity_type": "results",
+      "field_path": "results[1].metric",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta00331h",
+      "proposed_value": "optimal solvent concentration",
+      "protocol_index": 3,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "synthesize and analyze different combinations of four elements (Co, Mn, Fe, and Ni)",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[0].role",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta00331h",
+      "proposed_value": "catalyst element",
+      "protocol_index": 4,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "synthesize and analyze different combinations of four elements (Co, Mn, Fe, and Ni)",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[1].role",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta00331h",
+      "proposed_value": "catalyst element",
+      "protocol_index": 4,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "synthesize and analyze different combinations of four elements (Co, Mn, Fe, and Ni)",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[2].role",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta00331h",
+      "proposed_value": "catalyst element",
+      "protocol_index": 4,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "synthesize and analyze different combinations of four elements (Co, Mn, Fe, and Ni)",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[3].role",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta00331h",
+      "proposed_value": "catalyst element",
+      "protocol_index": 4,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "the authors investigated composition optimization using BO by having the ML model and robot run cycles",
+      "diagnostic": null,
+      "entity_type": "software",
+      "field_path": "software[0].name",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta00331h",
+      "proposed_value": "Bayesian optimization",
+      "protocol_index": 4,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The authors started by setting their system to synthesize and analyze different combinations of four elements (Co, Mn, Fe, and Ni), chosen based on their reported performance, to obtain 286 data entries",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[0].action",
+      "nearest_source_span": "The authors started by setting their system to synthesize and analyze different combinations of four elements (Co, Mn, Fe, and Ni), chosen based on their reported perfor- mance, to obtain 286 data entries.",
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta00331h",
+      "proposed_value": "set system to synthesize and analyze element combinations",
+      "protocol_index": 4,
+      "rejection_reason": "span_not_in_source",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "to obtain 286 data entries",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[1].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta00331h",
+      "proposed_value": "obtain initial data entries",
+      "protocol_index": 4,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "to obtain 286 data entries",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[1].notes",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta00331h",
+      "proposed_value": "286 data entries for training",
+      "protocol_index": 4,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "the model suggested 10 mate- rials which the robot system then synthesized and analyzed",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[2].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta00331h",
+      "proposed_value": "run ML model and robot cycles",
+      "protocol_index": 4,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "the model suggested 10 mate- rials which the robot system then synthesized and analyzed",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[2].conditions[0]",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta00331h",
+      "proposed_value": "BO-guided",
+      "protocol_index": 4,
+      "rejection_reason": "value_elsewhere",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "the model suggested 10 mate- rials which the robot system then synthesized and analyzed",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[2].conditions[1]",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta00331h",
+      "proposed_value": "10 materials suggested per cycle",
+      "protocol_index": 4,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "the model suggested 10 mate- rials which the robot system then synthesized and analyzed",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[2].notes",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta00331h",
+      "proposed_value": "model suggests materials, robot synthesizes and analyzes",
+      "protocol_index": 4,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The cycles were halted aer four loops when the model identi- ed the top 10 performing materials of the 286 original samples. Thus, only 40 samples were needed to validate and optimize the model",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[3].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta00331h",
+      "proposed_value": "halt cycles after validation",
+      "protocol_index": 4,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The cycles were halted aer four loops when the model identi- ed the top 10 performing materials of the 286 original samples. Thus, only 40 samples were needed to validate and optimize the model",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[3].notes",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta00331h",
+      "proposed_value": "40 samples needed to validate and optimize model",
+      "protocol_index": 4,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "to obtain 286 data entries",
+      "diagnostic": null,
+      "entity_type": "results",
+      "field_path": "results[0].metric",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta00331h",
+      "proposed_value": "initial data entries",
+      "protocol_index": 4,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Thus, only 40 samples were needed to validate and optimize the model",
+      "diagnostic": null,
+      "entity_type": "results",
+      "field_path": "results[1].metric",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta00331h",
+      "proposed_value": "samples needed for validation",
+      "protocol_index": 4,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Their fully automatic robot was able to conduct synthesis and electroanalysis of 88 catalyst samples per day",
+      "diagnostic": null,
+      "entity_type": "results",
+      "field_path": "results[2].metric",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta00331h",
+      "proposed_value": "robot throughput",
+      "protocol_index": 4,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "synthesis parameters (Fe atomic%, pyrolysis T, and Fe precursor) as inputs",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[0].role",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta00331h",
+      "proposed_value": "catalyst precursor",
+      "protocol_index": 5,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The electrochemical cell for running the ORR was a customized multi-channel ow cell capable of screening four catalyst samples at a time",
+      "diagnostic": null,
+      "entity_type": "instruments",
+      "field_path": "instruments[1].name",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta00331h",
+      "proposed_value": "customized multi-channel flow cell",
+      "protocol_index": 5,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "the researchers prepared 36 different catalyst samples using a HT automated synthesis platform",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[0].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta00331h",
+      "proposed_value": "prepare catalyst samples using HT automated synthesis",
+      "protocol_index": 5,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "the researchers prepared 36 different catalyst samples using a HT automated synthesis platform",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[0].conditions[0]",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta00331h",
+      "proposed_value": "36 different samples",
+      "protocol_index": 5,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "followed up by testing them all for ORR activity",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[1].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta00331h",
+      "proposed_value": "test all samples for ORR activity",
+      "protocol_index": 5,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The electrochemical cell for running the ORR was a customized multi-channel ow cell capable of screening four catalyst samples at a time",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[2].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta00331h",
+      "proposed_value": "screen samples using customized multi-channel flow cell",
+      "protocol_index": 5,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Out of the resulting dataset, 60–80% were used to train ve ML models with the synthesis parameters (Fe atomic%, pyrolysis T, and Fe precursor) as inputs. Each ML model utilized a different algorithm to help nd the minimal (optimal) RMSE and mean absolute percentage error",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[3].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta00331h",
+      "proposed_value": "train ML models with synthesis parameters",
+      "protocol_index": 5,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Out of the resulting dataset, 60–80% were used to train ve ML models with the synthesis parameters (Fe atomic%, pyrolysis T, and Fe precursor) as inputs. Each ML model utilized a different algorithm to help nd the minimal (optimal) RMSE and mean absolute percentage error",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[3].conditions[0]",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta00331h",
+      "proposed_value": "60-80% of dataset for training",
+      "protocol_index": 5,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Out of the resulting dataset, 60–80% were used to train ve ML models with the synthesis parameters (Fe atomic%, pyrolysis T, and Fe precursor) as inputs. Each ML model utilized a different algorithm to help nd the minimal (optimal) RMSE and mean absolute percentage error",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[3].conditions[1]",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta00331h",
+      "proposed_value": "five ML models",
+      "protocol_index": 5,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Out of the resulting dataset, 60–80% were used to train ve ML models with the synthesis parameters (Fe atomic%, pyrolysis T, and Fe precursor) as inputs. Each ML model utilized a different algorithm to help nd the minimal (optimal) RMSE and mean absolute percentage error",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[3].conditions[2]",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta00331h",
+      "proposed_value": "different algorithms",
+      "protocol_index": 5,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Out of the resulting dataset, 60–80% were used to train ve ML models with the synthesis parameters (Fe atomic%, pyrolysis T, and Fe precursor) as inputs. Each ML model utilized a different algorithm to help nd the minimal (optimal) RMSE and mean absolute percentage error",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[3].notes",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta00331h",
+      "proposed_value": "inputs: Fe atomic%, pyrolysis T, Fe precursor",
+      "protocol_index": 5,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The best- performing algorithms were gradient boosting and support vector regressions",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[4].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta00331h",
+      "proposed_value": "select optimal models",
+      "protocol_index": 5,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The best- performing algorithms were gradient boosting and support vector regressions",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[4].conditions[0]",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta00331h",
+      "proposed_value": "minimal RMSE",
+      "protocol_index": 5,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The best- performing algorithms were gradient boosting and support vector regressions",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[4].conditions[1]",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta00331h",
+      "proposed_value": "minimal mean absolute percentage error",
+      "protocol_index": 5,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The best- performing algorithms were gradient boosting and support vector regressions",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[4].notes",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta00331h",
+      "proposed_value": "gradient boosting and support vector regressions best performing",
+      "protocol_index": 5,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "From here, the authors used these two optimal models to predict ORR activity as a function of the synthesis parameters, which represents outputting new cata- lysts",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[5].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta00331h",
+      "proposed_value": "predict ORR activity as function of synthesis parameters",
+      "protocol_index": 5,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "From here, the authors used these two optimal models to predict ORR activity as a function of the synthesis parameters, which represents outputting new cata- lysts",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[5].notes",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta00331h",
+      "proposed_value": "represents outputting new catalysts",
+      "protocol_index": 5,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "the researchers synthesized new catalysts using these predicted parameters and tested them for",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[6].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta00331h",
+      "proposed_value": "synthesize new catalysts using predicted parameters",
+      "protocol_index": 5,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "the researchers prepared 36 different catalyst samples",
+      "diagnostic": null,
+      "entity_type": "results",
+      "field_path": "results[0].metric",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta00331h",
+      "proposed_value": "number of catalyst samples prepared",
+      "protocol_index": 5,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "60–80% were used to train",
+      "diagnostic": null,
+      "entity_type": "results",
+      "field_path": "results[1].metric",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta00331h",
+      "proposed_value": "training data proportion",
+      "protocol_index": 5,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "train ve ML models",
+      "diagnostic": null,
+      "entity_type": "results",
+      "field_path": "results[2].metric",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta00331h",
+      "proposed_value": "number of ML models trained",
+      "protocol_index": 5,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "capable of screening four catalyst samples at a time",
+      "diagnostic": null,
+      "entity_type": "results",
+      "field_path": "results[3].metric",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta00331h",
+      "proposed_value": "screening capacity",
+      "protocol_index": 5,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    }
+  ],
+  "inference_config": {
+    "max_tokens": 14000,
+    "temperature": 0.0
+  },
+  "mapping_version": "evidence-field-mapper-v0.2",
+  "minimum_chunk_score": 2,
+  "model_id": "moonshotai.kimi-k2.5",
+  "paper_id": "DOI:10.1039_d5ta00331h",
+  "prompt_version": "scientific-protocol-teacher-v0.3",
+  "protocols": [
+    {
+      "caveats": [],
+      "characterization": [],
+      "evidence": [
+        {
+          "char_end": 905,
+          "char_start": 674,
+          "chunk_id": "mdchk_45a074adf935c79f",
+          "document_char_end": 61367,
+          "document_char_start": 61136,
+          "evidence_id": "ev_197bc6afa7f1319b",
+          "paper_id": "DOI:10.1039_d5ta00331h",
+          "quote": "a Dutch company, VSParticle, designed a nano-printer for printing (semi)conductive particles. This innovative technology, depicted in Fig. 5, employs spark ablation followed by impaction to form and deposit nano- particles. 110,124",
+          "source_sha256": "86a4849f12fb14834a2e83045ed395611b310562f64305aad6d20c442898b953"
+        },
+        {
+          "char_end": 905,
+          "char_start": 768,
+          "chunk_id": "mdchk_45a074adf935c79f",
+          "document_char_end": 61367,
+          "document_char_start": 61230,
+          "evidence_id": "ev_71f75de5c4c8acd2",
+          "paper_id": "DOI:10.1039_d5ta00331h",
+          "quote": "This innovative technology, depicted in Fig. 5, employs spark ablation followed by impaction to form and deposit nano- particles. 110,124",
+          "source_sha256": "86a4849f12fb14834a2e83045ed395611b310562f64305aad6d20c442898b953"
+        },
+        {
+          "char_end": 1098,
+          "char_start": 1022,
+          "chunk_id": "mdchk_45a074adf935c79f",
+          "document_char_end": 61560,
+          "document_char_start": 61484,
+          "evidence_id": "ev_c6fc4b4ecd2826ea",
+          "paper_id": "DOI:10.1039_d5ta00331h",
+          "quote": "spark ablation only requires the target metal, electricity, and an inert gas",
+          "source_sha256": "86a4849f12fb14834a2e83045ed395611b310562f64305aad6d20c442898b953"
+        },
+        {
+          "char_end": 1471,
+          "char_start": 1399,
+          "chunk_id": "mdchk_45a074adf935c79f",
+          "document_char_end": 61933,
+          "document_char_start": 61861,
+          "evidence_id": "ev_1fd88c10134ba9cb",
+          "paper_id": "DOI:10.1039_d5ta00331h",
+          "quote": "Becker et al. printed 64 (8 × 8) NiFe electrodes of various compositions",
+          "source_sha256": "86a4849f12fb14834a2e83045ed395611b310562f64305aad6d20c442898b953"
+        },
+        {
+          "char_end": 1660,
+          "char_start": 1590,
+          "chunk_id": "mdchk_45a074adf935c79f",
+          "document_char_end": 62122,
+          "document_char_start": 62052,
+          "evidence_id": "ev_5e2cbf4a406149a2",
+          "paper_id": "DOI:10.1039_d5ta00331h",
+          "quote": "Sapountzi et al. fabricated IrO₂-coated membranes using spark ablation",
+          "source_sha256": "86a4849f12fb14834a2e83045ed395611b310562f64305aad6d20c442898b953"
+        }
+      ],
+      "evidence_scope": "secondary_report",
+      "instruments": [
+        {
+          "entity_id": "inst_086c3a5736486793",
+          "evidence_ids": [
+            "ev_197bc6afa7f1319b"
+          ],
+          "manufacturer": "VSParticle",
+          "model": null,
+          "name": "nano-printer",
+          "settings": {}
+        }
+      ],
+      "materials": [
+        {
+          "amount": null,
+          "entity_id": "mat_6c84c24494cbc02a",
+          "evidence_ids": [
+            "ev_c6fc4b4ecd2826ea"
+          ],
+          "name": "target metal",
+          "pretreatment": null,
+          "purity": null,
+          "role": null,
+          "supplier": null
+        },
+        {
+          "amount": null,
+          "entity_id": "mat_d5281381a51d8c61",
+          "evidence_ids": [
+            "ev_c6fc4b4ecd2826ea"
+          ],
+          "name": "inert gas",
+          "pretreatment": null,
+          "purity": null,
+          "role": null,
+          "supplier": null
+        },
+        {
+          "amount": null,
+          "entity_id": "mat_d23da4c94033e090",
+          "evidence_ids": [
+            "ev_1fd88c10134ba9cb"
+          ],
+          "name": "NiFe",
+          "pretreatment": null,
+          "purity": null,
+          "role": null,
+          "supplier": null
+        },
+        {
+          "amount": null,
+          "entity_id": "mat_93b1175a36135b20",
+          "evidence_ids": [
+            "ev_5e2cbf4a406149a2"
+          ],
+          "name": "IrO₂",
+          "pretreatment": null,
+          "purity": null,
+          "role": null,
+          "supplier": null
+        }
+      ],
+      "paper_id": "DOI:10.1039_d5ta00331h",
+      "protocol_id": "protocol_20aaada86af8d010",
+      "protocol_name": "Spark ablation nanoparticle printing for electrocatalyst fabrication",
+      "protocol_type": "experimental",
+      "relations": [],
+      "results": [],
+      "scientific_chunk_ids": [],
+      "software": [],
+      "source_chunk_ids": [
+        "mdchk_45a074adf935c79f"
+      ],
+      "source_paper_tier": "battery_electrolyte_review",
+      "steps": [
+        {
+          "action": "This innovative technology, depicted in Fig. 5, employs spark ablation followed by impaction to form and deposit nano- particles. 110,124",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_71f75de5c4c8acd2"
+          ],
+          "notes": null,
+          "order": 1,
+          "step_id": "step_d776655336eb6cfc"
+        }
+      ]
+    },
+    {
+      "caveats": [],
+      "characterization": [],
+      "evidence": [
+        {
+          "char_end": 2339,
+          "char_start": 2264,
+          "chunk_id": "mdchk_45a074adf935c79f",
+          "document_char_end": 62801,
+          "document_char_start": 62726,
+          "evidence_id": "ev_7acac786a2d00165",
+          "paper_id": "DOI:10.1039_d5ta00331h",
+          "quote": "fabricating thermally treated MoS₂/Mo₂C (HC–MoS₂/Mo₂C) catalyst for the HER",
+          "source_sha256": "86a4849f12fb14834a2e83045ed395611b310562f64305aad6d20c442898b953"
+        },
+        {
+          "char_end": 2464,
+          "char_start": 2374,
+          "chunk_id": "mdchk_45a074adf935c79f",
+          "document_char_end": 62926,
+          "document_char_start": 62836,
+          "evidence_id": "ev_a8e0c9dd0ef813d6",
+          "paper_id": "DOI:10.1039_d5ta00331h",
+          "quote": "extracting raw Mo concentrates (MoS₂, MoO₂, MoO₃, and others) from an active open pit mine",
+          "source_sha256": "86a4849f12fb14834a2e83045ed395611b310562f64305aad6d20c442898b953"
+        },
+        {
+          "char_end": 2529,
+          "char_start": 2469,
+          "chunk_id": "mdchk_45a074adf935c79f",
+          "document_char_end": 62991,
+          "document_char_start": 62931,
+          "evidence_id": "ev_49ee20e3f4ff7a46",
+          "paper_id": "DOI:10.1039_d5ta00331h",
+          "quote": "exfoliating it with Mo₂C to form two- dimensional MoS₂ akes",
+          "source_sha256": "86a4849f12fb14834a2e83045ed395611b310562f64305aad6d20c442898b953"
+        },
+        {
+          "char_end": 2591,
+          "char_start": 2531,
+          "chunk_id": "mdchk_45a074adf935c79f",
+          "document_char_end": 63053,
+          "document_char_start": 62993,
+          "evidence_id": "ev_8da3e6ac861e88b3",
+          "paper_id": "DOI:10.1039_d5ta00331h",
+          "quote": "These MoS₂ akes were then dispersed in water to make an ink",
+          "source_sha256": "86a4849f12fb14834a2e83045ed395611b310562f64305aad6d20c442898b953"
+        },
+        {
+          "char_end": 2648,
+          "char_start": 2596,
+          "chunk_id": "mdchk_45a074adf935c79f",
+          "document_char_end": 63110,
+          "document_char_start": 63058,
+          "evidence_id": "ev_e92adb5b12e64175",
+          "paper_id": "DOI:10.1039_d5ta00331h",
+          "quote": "dip-coating a high-surface area Cu foam substrate in",
+          "source_sha256": "86a4849f12fb14834a2e83045ed395611b310562f64305aad6d20c442898b953"
+        }
+      ],
+      "evidence_scope": "secondary_report",
+      "instruments": [],
+      "materials": [
+        {
+          "amount": null,
+          "entity_id": "mat_2f6231746afb40fb",
+          "evidence_ids": [
+            "ev_a8e0c9dd0ef813d6"
+          ],
+          "name": "raw Mo concentrates",
+          "pretreatment": null,
+          "purity": null,
+          "role": null,
+          "supplier": null
+        },
+        {
+          "amount": null,
+          "entity_id": "mat_f76e832ece9c55af",
+          "evidence_ids": [
+            "ev_49ee20e3f4ff7a46"
+          ],
+          "name": "Mo₂C",
+          "pretreatment": null,
+          "purity": null,
+          "role": null,
+          "supplier": null
+        },
+        {
+          "amount": null,
+          "entity_id": "mat_ac8bb02331bc43f8",
+          "evidence_ids": [
+            "ev_8da3e6ac861e88b3"
+          ],
+          "name": "water",
+          "pretreatment": null,
+          "purity": null,
+          "role": null,
+          "supplier": null
+        },
+        {
+          "amount": null,
+          "entity_id": "mat_20899d76cc45a43c",
+          "evidence_ids": [
+            "ev_e92adb5b12e64175"
+          ],
+          "name": "Cu foam substrate",
+          "pretreatment": "high-surface area",
+          "purity": null,
+          "role": "substrate",
+          "supplier": null
+        }
+      ],
+      "paper_id": "DOI:10.1039_d5ta00331h",
+      "protocol_id": "protocol_d776655336eb6cfc",
+      "protocol_name": "High-throughput production of MoS₂/Mo₂C catalyst for HER",
+      "protocol_type": "experimental",
+      "relations": [],
+      "results": [],
+      "scientific_chunk_ids": [],
+      "software": [],
+      "source_chunk_ids": [
+        "mdchk_45a074adf935c79f"
+      ],
+      "source_paper_tier": "battery_electrolyte_review",
+      "steps": [
+        {
+          "action": "extracting raw Mo concentrates (MoS₂, MoO₂, MoO₃, and others) from an active open pit mine",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_a8e0c9dd0ef813d6"
+          ],
+          "notes": null,
+          "order": 1,
+          "step_id": "step_20aaada86af8d010"
+        },
+        {
+          "action": "exfoliating it with Mo₂C to form two- dimensional MoS₂ akes",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_49ee20e3f4ff7a46"
+          ],
+          "notes": null,
+          "order": 2,
+          "step_id": "step_d776655336eb6cfc"
+        },
+        {
+          "action": "These MoS₂ akes were then dispersed in water to make an ink",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_8da3e6ac861e88b3"
+          ],
+          "notes": null,
+          "order": 3,
+          "step_id": "step_f0ff90c57ef1eadd"
+        },
+        {
+          "action": "dip-coating a high-surface area Cu foam substrate in",
+          "conditions": [
+            "high-surface area"
+          ],
+          "evidence_ids": [
+            "ev_e92adb5b12e64175"
+          ],
+          "notes": null,
+          "order": 4,
+          "step_id": "step_d34665304982d103"
+        },
+        {
+          "action": "fabricating thermally treated MoS₂/Mo₂C (HC–MoS₂/Mo₂C) catalyst for the HER",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_7acac786a2d00165"
+          ],
+          "notes": null,
+          "order": 5,
+          "step_id": "step_b31b58e98444f26c"
+        }
+      ]
+    },
+    {
+      "caveats": [],
+      "characterization": [],
+      "evidence": [
+        {
+          "char_end": 397,
+          "char_start": 369,
+          "chunk_id": "mdchk_8edb58ce2d0b2e0d",
+          "document_char_end": 69521,
+          "document_char_start": 69493,
+          "evidence_id": "ev_9c4a3f5dfe1b5f4b",
+          "paper_id": "DOI:10.1039_d5ta00331h",
+          "quote": "ML algorithm LRGPRBO N/A N/A",
+          "source_sha256": "b42f869d497955f5f0bc7a2e77a891493381e47bcba0d5d8d283e37dd9dc3c75"
+        },
+        {
+          "char_end": 903,
+          "char_start": 673,
+          "chunk_id": "mdchk_8edb58ce2d0b2e0d",
+          "document_char_end": 70027,
+          "document_char_start": 69797,
+          "evidence_id": "ev_5997154ac3006064",
+          "paper_id": "DOI:10.1039_d5ta00331h",
+          "quote": "The rst step narrowed down materials using their phase stability Ehull< 50 meV per atom (Ehullis the relative energy above the convex hull and obtained by using ML- based potentials¹⁶⁶), bringing the number down to under 6 × 5 10",
+          "source_sha256": "b42f869d497955f5f0bc7a2e77a891493381e47bcba0d5d8d283e37dd9dc3c75"
+        },
+        {
+          "char_end": 1207,
+          "char_start": 921,
+          "chunk_id": "mdchk_8edb58ce2d0b2e0d",
+          "document_char_end": 70331,
+          "document_char_start": 70045,
+          "evidence_id": "ev_d42501054c88ec3e",
+          "paper_id": "DOI:10.1039_d5ta00331h",
+          "quote": "The following levels encompassed criteria pertaining to solid electrolytes such as Li conductivity, redox potential, and cost. Distinctively though, each criterion step is performed with either ML or DFT based on the need for quicker (cheaper) screening or higher accuracy, respectively",
+          "source_sha256": "b42f869d497955f5f0bc7a2e77a891493381e47bcba0d5d8d283e37dd9dc3c75"
+        },
+        {
+          "char_end": 1207,
+          "char_start": 1070,
+          "chunk_id": "mdchk_8edb58ce2d0b2e0d",
+          "document_char_end": 70331,
+          "document_char_start": 70194,
+          "evidence_id": "ev_75a5c0605e76e8dc",
+          "paper_id": "DOI:10.1039_d5ta00331h",
+          "quote": "each criterion step is performed with either ML or DFT based on the need for quicker (cheaper) screening or higher accuracy, respectively",
+          "source_sha256": "b42f869d497955f5f0bc7a2e77a891493381e47bcba0d5d8d283e37dd9dc3c75"
+        }
+      ],
+      "evidence_scope": "secondary_report",
+      "instruments": [],
+      "materials": [],
+      "paper_id": "DOI:10.1039_d5ta00331h",
+      "protocol_id": "protocol_01e4f6a81c0571c5",
+      "protocol_name": "Computational screening of solid-state battery electrolytes using ML and DFT",
+      "protocol_type": "computational",
+      "relations": [],
+      "results": [],
+      "scientific_chunk_ids": [],
+      "software": [
+        {
+          "entity_id": "soft_e1150175f6fca036",
+          "evidence_ids": [
+            "ev_9c4a3f5dfe1b5f4b"
+          ],
+          "name": "ML algorithm LRGPRBO",
+          "settings": {},
+          "version": null
+        },
+        {
+          "entity_id": "soft_6d71d3e5f6ddebc1",
+          "evidence_ids": [
+            "ev_75a5c0605e76e8dc"
+          ],
+          "name": "DFT",
+          "settings": {},
+          "version": null
+        }
+      ],
+      "source_chunk_ids": [
+        "mdchk_8edb58ce2d0b2e0d"
+      ],
+      "source_paper_tier": "battery_electrolyte_review",
+      "steps": [
+        {
+          "action": "The rst step narrowed down materials using their phase stability Ehull< 50 meV per atom (Ehullis the relative energy above the convex hull and obtained by using ML- based potentials¹⁶⁶), bringing the number down to under 6 × 5 10",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_5997154ac3006064"
+          ],
+          "notes": null,
+          "order": 1,
+          "step_id": "step_b7df8151e8a565cb"
+        },
+        {
+          "action": "The following levels encompassed criteria pertaining to solid electrolytes such as Li conductivity, redox potential, and cost. Distinctively though, each criterion step is performed with either ML or DFT based on the need for quicker (cheaper) screening or higher accuracy, respectively",
+          "conditions": [
+            "Li conductivity",
+            "redox potential",
+            "cost"
+          ],
+          "evidence_ids": [
+            "ev_d42501054c88ec3e"
+          ],
+          "notes": null,
+          "order": 2,
+          "step_id": "step_01e4f6a81c0571c5"
+        }
+      ]
+    },
+    {
+      "caveats": [],
+      "characterization": [
+        {
+          "entity_id": "char_b6de2fa560ff580c",
+          "evidence_ids": [
+            "ev_960d99ac29c4eba8"
+          ],
+          "output": null,
+          "settings": {},
+          "technique": "nuclear magnetic resonance"
+        }
+      ],
+      "evidence": [
+        {
+          "char_end": 888,
+          "char_start": 839,
+          "chunk_id": "mdchk_13523d429e2d3321",
+          "document_char_end": 75624,
+          "document_char_start": 75575,
+          "evidence_id": "ev_b33b2ae76232946b",
+          "paper_id": "DOI:10.1039_d5ta00331h",
+          "quote": "the authors listed 22 possible solvent candidates",
+          "source_sha256": "90503024cf6c0589a08ef4d0fab1bb9d64d6763bc405ff252e35fa5e571bed95"
+        },
+        {
+          "char_end": 1004,
+          "char_start": 898,
+          "chunk_id": "mdchk_13523d429e2d3321",
+          "document_char_end": 75740,
+          "document_char_start": 75634,
+          "evidence_id": "ev_4ca42c6240e83418",
+          "paper_id": "DOI:10.1039_d5ta00331h",
+          "quote": "created an additional 2079 candidates based on binary mixtures of various volume ratios of the original 22",
+          "source_sha256": "90503024cf6c0589a08ef4d0fab1bb9d64d6763bc405ff252e35fa5e571bed95"
+        },
+        {
+          "char_end": 1166,
+          "char_start": 1012,
+          "chunk_id": "mdchk_13523d429e2d3321",
+          "document_char_end": 75902,
+          "document_char_start": 75748,
+          "evidence_id": "ev_c80e54a4879d2454",
+          "paper_id": "DOI:10.1039_d5ta00331h",
+          "quote": "their automated robotic platform synthesized 58 of these candidates (both singular and binary solvents) for model training at a rate of ∼39 min per sample",
+          "source_sha256": "90503024cf6c0589a08ef4d0fab1bb9d64d6763bc405ff252e35fa5e571bed95"
+        },
+        {
+          "char_end": 1240,
+          "char_start": 1168,
+          "chunk_id": "mdchk_13523d429e2d3321",
+          "document_char_end": 75976,
+          "document_char_start": 75904,
+          "evidence_id": "ev_960d99ac29c4eba8",
+          "paper_id": "DOI:10.1039_d5ta00331h",
+          "quote": "Each electrolyte sample was prepped for nuclear magnetic resonance (NMR)",
+          "source_sha256": "90503024cf6c0589a08ef4d0fab1bb9d64d6763bc405ff252e35fa5e571bed95"
+        },
+        {
+          "char_end": 1273,
+          "char_start": 1168,
+          "chunk_id": "mdchk_13523d429e2d3321",
+          "document_char_end": 76009,
+          "document_char_start": 75904,
+          "evidence_id": "ev_332fd58c4f9967a9",
+          "paper_id": "DOI:10.1039_d5ta00331h",
+          "quote": "Each electrolyte sample was prepped for nuclear magnetic resonance (NMR) and then manually transported to",
+          "source_sha256": "90503024cf6c0589a08ef4d0fab1bb9d64d6763bc405ff252e35fa5e571bed95"
+        }
+      ],
+      "evidence_scope": "secondary_report",
+      "instruments": [
+        {
+          "entity_id": "inst_a3c5ea910a09035e",
+          "evidence_ids": [
+            "ev_c80e54a4879d2454"
+          ],
+          "manufacturer": null,
+          "model": null,
+          "name": "automated robotic platform",
+          "settings": {}
+        },
+        {
+          "entity_id": "inst_9f7f1a929467a6e5",
+          "evidence_ids": [
+            "ev_960d99ac29c4eba8"
+          ],
+          "manufacturer": null,
+          "model": null,
+          "name": "nuclear magnetic resonance",
+          "settings": {}
+        }
+      ],
+      "materials": [
+        {
+          "amount": null,
+          "entity_id": "mat_5cb1dce8c595af94",
+          "evidence_ids": [
+            "ev_b33b2ae76232946b"
+          ],
+          "name": "22 possible solvent candidates",
+          "pretreatment": null,
+          "purity": null,
+          "role": null,
+          "supplier": null
+        }
+      ],
+      "paper_id": "DOI:10.1039_d5ta00331h",
+      "protocol_id": "protocol_bcefbe51c267370e",
+      "protocol_name": "Automated robotic workflow for solvent screening in redox flow batteries",
+      "protocol_type": "experimental",
+      "relations": [],
+      "results": [],
+      "scientific_chunk_ids": [],
+      "software": [],
+      "source_chunk_ids": [
+        "mdchk_13523d429e2d3321"
+      ],
+      "source_paper_tier": "battery_electrolyte_review",
+      "steps": [
+        {
+          "action": "the authors listed 22 possible solvent candidates",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_b33b2ae76232946b"
+          ],
+          "notes": null,
+          "order": 1,
+          "step_id": "step_65faf4766e78843f"
+        },
+        {
+          "action": "created an additional 2079 candidates based on binary mixtures of various volume ratios of the original 22",
+          "conditions": [
+            "various volume ratios"
+          ],
+          "evidence_ids": [
+            "ev_4ca42c6240e83418"
+          ],
+          "notes": null,
+          "order": 2,
+          "step_id": "step_6b71ab0cf6aca5ec"
+        },
+        {
+          "action": "their automated robotic platform synthesized 58 of these candidates (both singular and binary solvents) for model training at a rate of ∼39 min per sample",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_c80e54a4879d2454"
+          ],
+          "notes": null,
+          "order": 3,
+          "step_id": "step_9294342a2ce03b42"
+        },
+        {
+          "action": "Each electrolyte sample was prepped for nuclear magnetic resonance (NMR) and then manually transported to",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_332fd58c4f9967a9"
+          ],
+          "notes": null,
+          "order": 4,
+          "step_id": "step_bcefbe51c267370e"
+        }
+      ]
+    },
+    {
+      "caveats": [],
+      "characterization": [],
+      "evidence": [
+        {
+          "char_end": 944,
+          "char_start": 836,
+          "chunk_id": "mdchk_65c044083973ebb4",
+          "document_char_end": 78013,
+          "document_char_start": 77905,
+          "evidence_id": "ev_3542b5c3bba936f1",
+          "paper_id": "DOI:10.1039_d5ta00331h",
+          "quote": "Their fully automatic robot was able to conduct synthesis and electroanalysis of 88 catalyst samples per day",
+          "source_sha256": "ace2f7a0d0149597d92588f1e39c140bf59d1a95c72b32b1e5ae2242456f769d"
+        },
+        {
+          "char_end": 1076,
+          "char_start": 993,
+          "chunk_id": "mdchk_65c044083973ebb4",
+          "document_char_end": 78145,
+          "document_char_start": 78062,
+          "evidence_id": "ev_575011e78380e422",
+          "paper_id": "DOI:10.1039_d5ta00331h",
+          "quote": "synthesize and analyze different combinations of four elements (Co, Mn, Fe, and Ni)",
+          "source_sha256": "ace2f7a0d0149597d92588f1e39c140bf59d1a95c72b32b1e5ae2242456f769d"
+        },
+        {
+          "char_end": 1150,
+          "char_start": 1124,
+          "chunk_id": "mdchk_65c044083973ebb4",
+          "document_char_end": 78219,
+          "document_char_start": 78193,
+          "evidence_id": "ev_dd0ee0d943775512",
+          "paper_id": "DOI:10.1039_d5ta00331h",
+          "quote": "to obtain 286 data entries",
+          "source_sha256": "ace2f7a0d0149597d92588f1e39c140bf59d1a95c72b32b1e5ae2242456f769d"
+        },
+        {
+          "char_end": 1360,
+          "char_start": 1273,
+          "chunk_id": "mdchk_65c044083973ebb4",
+          "document_char_end": 78429,
+          "document_char_start": 78342,
+          "evidence_id": "ev_3a523eb205179dd4",
+          "paper_id": "DOI:10.1039_d5ta00331h",
+          "quote": "the model suggested 10 mate- rials which the robot system then synthesized and analyzed",
+          "source_sha256": "ace2f7a0d0149597d92588f1e39c140bf59d1a95c72b32b1e5ae2242456f769d"
+        },
+        {
+          "char_end": 1557,
+          "char_start": 1362,
+          "chunk_id": "mdchk_65c044083973ebb4",
+          "document_char_end": 78626,
+          "document_char_start": 78431,
+          "evidence_id": "ev_6ae400c3e47e5b78",
+          "paper_id": "DOI:10.1039_d5ta00331h",
+          "quote": "The cycles were halted aer four loops when the model identi- ed the top 10 performing materials of the 286 original samples. Thus, only 40 samples were needed to validate and optimize the model",
+          "source_sha256": "ace2f7a0d0149597d92588f1e39c140bf59d1a95c72b32b1e5ae2242456f769d"
+        }
+      ],
+      "evidence_scope": "secondary_report",
+      "instruments": [
+        {
+          "entity_id": "inst_81d079cbd91714ae",
+          "evidence_ids": [
+            "ev_3542b5c3bba936f1"
+          ],
+          "manufacturer": null,
+          "model": null,
+          "name": "fully automatic robot",
+          "settings": {
+            "throughput": "88 catalyst samples per day"
+          }
+        }
+      ],
+      "materials": [
+        {
+          "amount": null,
+          "entity_id": "mat_8d34690091c6f087",
+          "evidence_ids": [
+            "ev_575011e78380e422"
+          ],
+          "name": "Co",
+          "pretreatment": null,
+          "purity": null,
+          "role": null,
+          "supplier": null
+        },
+        {
+          "amount": null,
+          "entity_id": "mat_cedcfc5a7ff1e94f",
+          "evidence_ids": [
+            "ev_575011e78380e422"
+          ],
+          "name": "Mn",
+          "pretreatment": null,
+          "purity": null,
+          "role": null,
+          "supplier": null
+        },
+        {
+          "amount": null,
+          "entity_id": "mat_e1b1449a1d7e9bf5",
+          "evidence_ids": [
+            "ev_575011e78380e422"
+          ],
+          "name": "Fe",
+          "pretreatment": null,
+          "purity": null,
+          "role": null,
+          "supplier": null
+        },
+        {
+          "amount": null,
+          "entity_id": "mat_2282ddc6f1981621",
+          "evidence_ids": [
+            "ev_575011e78380e422"
+          ],
+          "name": "Ni",
+          "pretreatment": null,
+          "purity": null,
+          "role": null,
+          "supplier": null
+        }
+      ],
+      "paper_id": "DOI:10.1039_d5ta00331h",
+      "protocol_id": "protocol_60e603efacc6b3ea",
+      "protocol_name": "ML-guided robotic synthesis and electroanalysis for OER and HClO production catalysts",
+      "protocol_type": "experimental",
+      "relations": [],
+      "results": [],
+      "scientific_chunk_ids": [],
+      "software": [],
+      "source_chunk_ids": [
+        "mdchk_65c044083973ebb4"
+      ],
+      "source_paper_tier": "battery_electrolyte_review",
+      "steps": [
+        {
+          "action": "to obtain 286 data entries",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_dd0ee0d943775512"
+          ],
+          "notes": null,
+          "order": 1,
+          "step_id": "step_ebb87080e55c86f8"
+        },
+        {
+          "action": "the model suggested 10 mate- rials which the robot system then synthesized and analyzed",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_3a523eb205179dd4"
+          ],
+          "notes": null,
+          "order": 2,
+          "step_id": "step_c464f7f4cd1a061f"
+        },
+        {
+          "action": "The cycles were halted aer four loops when the model identi- ed the top 10 performing materials of the 286 original samples. Thus, only 40 samples were needed to validate and optimize the model",
+          "conditions": [
+            "four loops"
+          ],
+          "evidence_ids": [
+            "ev_6ae400c3e47e5b78"
+          ],
+          "notes": null,
+          "order": 3,
+          "step_id": "step_718b90097101b216"
+        }
+      ]
+    },
+    {
+      "caveats": [],
+      "characterization": [],
+      "evidence": [
+        {
+          "char_end": 955,
+          "char_start": 861,
+          "chunk_id": "mdchk_c7b6f6166433c112",
+          "document_char_end": 73574,
+          "document_char_start": 73480,
+          "evidence_id": "ev_b61c5fc75f176c64",
+          "paper_id": "DOI:10.1039_d5ta00331h",
+          "quote": "the researchers prepared 36 different catalyst samples using a HT automated synthesis platform",
+          "source_sha256": "2ff7cb903cc741f69df21c80e0c056b5c57adcbdcf66fbe2665a7ad19d0d1204"
+        },
+        {
+          "char_end": 1008,
+          "char_start": 960,
+          "chunk_id": "mdchk_c7b6f6166433c112",
+          "document_char_end": 73627,
+          "document_char_start": 73579,
+          "evidence_id": "ev_35be2d8d9b3e61ed",
+          "paper_id": "DOI:10.1039_d5ta00331h",
+          "quote": "followed up by testing them all for ORR activity",
+          "source_sha256": "2ff7cb903cc741f69df21c80e0c056b5c57adcbdcf66fbe2665a7ad19d0d1204"
+        },
+        {
+          "char_end": 1147,
+          "char_start": 1010,
+          "chunk_id": "mdchk_c7b6f6166433c112",
+          "document_char_end": 73766,
+          "document_char_start": 73629,
+          "evidence_id": "ev_3905321b2667de5a",
+          "paper_id": "DOI:10.1039_d5ta00331h",
+          "quote": "The electrochemical cell for running the ORR was a customized multi-channel ow cell capable of screening four catalyst samples at a time",
+          "source_sha256": "2ff7cb903cc741f69df21c80e0c056b5c57adcbdcf66fbe2665a7ad19d0d1204"
+        },
+        {
+          "char_end": 1422,
+          "char_start": 1149,
+          "chunk_id": "mdchk_c7b6f6166433c112",
+          "document_char_end": 74041,
+          "document_char_start": 73768,
+          "evidence_id": "ev_71756784ca1dcaf2",
+          "paper_id": "DOI:10.1039_d5ta00331h",
+          "quote": "Out of the resulting dataset, 60–80% were used to train ve ML models with the synthesis parameters (Fe atomic%, pyrolysis T, and Fe precursor) as inputs. Each ML model utilized a different algorithm to help nd the minimal (optimal) RMSE and mean absolute percentage error",
+          "source_sha256": "2ff7cb903cc741f69df21c80e0c056b5c57adcbdcf66fbe2665a7ad19d0d1204"
+        },
+        {
+          "char_end": 1302,
+          "char_start": 1228,
+          "chunk_id": "mdchk_c7b6f6166433c112",
+          "document_char_end": 73921,
+          "document_char_start": 73847,
+          "evidence_id": "ev_4d2057351e19a066",
+          "paper_id": "DOI:10.1039_d5ta00331h",
+          "quote": "synthesis parameters (Fe atomic%, pyrolysis T, and Fe precursor) as inputs",
+          "source_sha256": "2ff7cb903cc741f69df21c80e0c056b5c57adcbdcf66fbe2665a7ad19d0d1204"
+        },
+        {
+          "char_end": 1509,
+          "char_start": 1424,
+          "chunk_id": "mdchk_c7b6f6166433c112",
+          "document_char_end": 74128,
+          "document_char_start": 74043,
+          "evidence_id": "ev_0ae307515fb22293",
+          "paper_id": "DOI:10.1039_d5ta00331h",
+          "quote": "The best- performing algorithms were gradient boosting and support vector regressions",
+          "source_sha256": "2ff7cb903cc741f69df21c80e0c056b5c57adcbdcf66fbe2665a7ad19d0d1204"
+        },
+        {
+          "char_end": 1674,
+          "char_start": 1511,
+          "chunk_id": "mdchk_c7b6f6166433c112",
+          "document_char_end": 74293,
+          "document_char_start": 74130,
+          "evidence_id": "ev_e9e4b42cebb4f4db",
+          "paper_id": "DOI:10.1039_d5ta00331h",
+          "quote": "From here, the authors used these two optimal models to predict ORR activity as a function of the synthesis parameters, which represents outputting new cata- lysts",
+          "source_sha256": "2ff7cb903cc741f69df21c80e0c056b5c57adcbdcf66fbe2665a7ad19d0d1204"
+        },
+        {
+          "char_end": 1796,
+          "char_start": 1702,
+          "chunk_id": "mdchk_c7b6f6166433c112",
+          "document_char_end": 74415,
+          "document_char_start": 74321,
+          "evidence_id": "ev_ddb872fd93894a10",
+          "paper_id": "DOI:10.1039_d5ta00331h",
+          "quote": "the researchers synthesized new catalysts using these predicted parameters and tested them for",
+          "source_sha256": "2ff7cb903cc741f69df21c80e0c056b5c57adcbdcf66fbe2665a7ad19d0d1204"
+        }
+      ],
+      "evidence_scope": "secondary_report",
+      "instruments": [
+        {
+          "entity_id": "inst_3be5bedea7ed0a99",
+          "evidence_ids": [
+            "ev_b61c5fc75f176c64"
+          ],
+          "manufacturer": null,
+          "model": null,
+          "name": "HT automated synthesis platform",
+          "settings": {}
+        }
+      ],
+      "materials": [
+        {
+          "amount": null,
+          "entity_id": "mat_5f23f6264be1561a",
+          "evidence_ids": [
+            "ev_4d2057351e19a066"
+          ],
+          "name": "Fe precursor",
+          "pretreatment": null,
+          "purity": null,
+          "role": null,
+          "supplier": null
+        }
+      ],
+      "paper_id": "DOI:10.1039_d5ta00331h",
+      "protocol_id": "protocol_559cc30d06ce54b9",
+      "protocol_name": "HT automated synthesis and ML prediction for ORR catalysts",
+      "protocol_type": "experimental",
+      "relations": [],
+      "results": [],
+      "scientific_chunk_ids": [],
+      "software": [
+        {
+          "entity_id": "soft_e1026ade376a0b0f",
+          "evidence_ids": [
+            "ev_0ae307515fb22293"
+          ],
+          "name": "gradient boosting",
+          "settings": {},
+          "version": null
+        },
+        {
+          "entity_id": "soft_4736fe8caa569452",
+          "evidence_ids": [
+            "ev_0ae307515fb22293"
+          ],
+          "name": "support vector regression",
+          "settings": {},
+          "version": null
+        }
+      ],
+      "source_chunk_ids": [
+        "mdchk_c7b6f6166433c112"
+      ],
+      "source_paper_tier": "battery_electrolyte_review",
+      "steps": [
+        {
+          "action": "the researchers prepared 36 different catalyst samples using a HT automated synthesis platform",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_b61c5fc75f176c64"
+          ],
+          "notes": null,
+          "order": 1,
+          "step_id": "step_e1ed12733c933640"
+        },
+        {
+          "action": "followed up by testing them all for ORR activity",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_35be2d8d9b3e61ed"
+          ],
+          "notes": null,
+          "order": 2,
+          "step_id": "step_ee51d2b6d8704108"
+        },
+        {
+          "action": "The electrochemical cell for running the ORR was a customized multi-channel ow cell capable of screening four catalyst samples at a time",
+          "conditions": [
+            "four catalyst samples at a time"
+          ],
+          "evidence_ids": [
+            "ev_3905321b2667de5a"
+          ],
+          "notes": null,
+          "order": 3,
+          "step_id": "step_169e98ca001463ca"
+        },
+        {
+          "action": "Out of the resulting dataset, 60–80% were used to train ve ML models with the synthesis parameters (Fe atomic%, pyrolysis T, and Fe precursor) as inputs. Each ML model utilized a different algorithm to help nd the minimal (optimal) RMSE and mean absolute percentage error",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_71756784ca1dcaf2"
+          ],
+          "notes": null,
+          "order": 4,
+          "step_id": "step_a4b0998b13428da0"
+        },
+        {
+          "action": "The best- performing algorithms were gradient boosting and support vector regressions",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_0ae307515fb22293"
+          ],
+          "notes": null,
+          "order": 5,
+          "step_id": "step_15b05a66028ffd3c"
+        },
+        {
+          "action": "From here, the authors used these two optimal models to predict ORR activity as a function of the synthesis parameters, which represents outputting new cata- lysts",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_e9e4b42cebb4f4db"
+          ],
+          "notes": null,
+          "order": 6,
+          "step_id": "step_559cc30d06ce54b9"
+        },
+        {
+          "action": "the researchers synthesized new catalysts using these predicted parameters and tested them for",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_ddb872fd93894a10"
+          ],
+          "notes": null,
+          "order": 7,
+          "step_id": "step_a2cec867253135f1"
+        }
+      ]
+    }
+  ],
+  "region": "us-east-1",
+  "schema_version": "bedrock-teacher-paper-cache-v0.2",
+  "teacher_response": {
+    "diagnostic": null,
+    "invocation_count": 1,
+    "metrics": {
+      "latencyMs": 138820
+    },
+    "raw_text": " ```json\n{\n  \"protocols\": [\n    {\n      \"source_chunk_ids\": [\"mdchk_45a074adf935c79f\"],\n      \"protocol_name\": \"Spark ablation nanoparticle printing for electrocatalyst fabrication\",\n      \"protocol_type\": \"experimental\",\n      \"materials\": [\n        {\n          \"source_chunk_id\": \"mdchk_45a074adf935c79f\",\n          \"name\": \"target metal\",\n          \"role\": \"precursor\",\n          \"amount\": null,\n          \"purity\": null,\n          \"supplier\": \"VSParticle\",\n          \"pretreatment\": null,\n          \"evidence_quote\": \"spark ablation only requires the target metal, electricity, and an inert gas\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_45a074adf935c79f\",\n          \"name\": \"inert gas\",\n          \"role\": \"carrier gas\",\n          \"amount\": null,\n          \"purity\": null,\n          \"supplier\": null,\n          \"pretreatment\": null,\n          \"evidence_quote\": \"spark ablation only requires the target metal, electricity, and an inert gas\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_45a074adf935c79f\",\n          \"name\": \"NiFe\",\n          \"role\": \"electrode material\",\n          \"amount\": null,\n          \"purity\": null,\n          \"supplier\": null,\n          \"pretreatment\": null,\n          \"evidence_quote\": \"Becker et al. printed 64 (8 × 8) NiFe electrodes of various compositions\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_45a074adf935c79f\",\n          \"name\": \"IrO₂\",\n          \"role\": \"catalyst coating\",\n          \"amount\": null,\n          \"purity\": null,\n          \"supplier\": null,\n          \"pretreatment\": null,\n          \"evidence_quote\": \"Sapountzi et al. fabricated IrO₂-coated membranes using spark ablation\"\n        }\n      ],\n      \"instruments\": [\n        {\n          \"source_chunk_id\": \"mdchk_45a074adf935c79f\",\n          \"name\": \"nano-printer\",\n          \"model\": null,\n          \"manufacturer\": \"VSParticle\",\n          \"settings\": {\n            \"voltage\": \"adjustable\",\n            \"current\": \"adjustable\",\n            \"flow_rate\": \"adjustable\",\n            \"nozzle_size\": \"adjustable\"\n          },\n          \"evidence_quote\": \"a Dutch company, VSParticle, designed a nano-printer for printing (semi)conductive particles. This innovative technology, depicted in Fig. 5, employs spark ablation followed by impaction to form and deposit nano- particles. 110,124\"\n        }\n      ],\n      \"software\": [],\n      \"steps\": [\n        {\n          \"source_chunk_id\": \"mdchk_45a074adf935c79f\",\n          \"order\": 1,\n          \"action\": \"spark ablation\",\n          \"conditions\": [\"target metal\", \"electricity\", \"inert gas\"],\n          \"notes\": \"chemical-free deposition method\",\n          \"evidence_quote\": \"spark ablation only requires the target metal, electricity, and an inert gas and thus is a \\\"chemical-free\\\" deposition\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_45a074adf935c79f\",\n          \"order\": 2,\n          \"action\": \"impaction deposition\",\n          \"conditions\": [\"adjustable voltage\", \"adjustable current\", \"adjustable flow rate\", \"adjustable nozzle size\"],\n          \"notes\": \"forms and deposits nanoparticles\",\n          \"evidence_quote\": \"This innovative technology, depicted in Fig. 5, employs spark ablation followed by impaction to form and deposit nano- particles. 110,124\"\n        }\n      ],\n      \"characterization\": [],\n      \"results\": [\n        {\n          \"source_chunk_id\": \"mdchk_45a074adf935c79f\",\n          \"metric\": \"printing time per electrode\",\n          \"raw_value\": \"1–320 seconds\",\n          \"context\": \"64 (8 × 8) NiFe electrodes of various compositions\",\n          \"evidence_quote\": \"each electrode only taking 1–320 seconds to print. 124\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_45a074adf935c79f\",\n          \"metric\": \"catalyst loading reduction\",\n          \"raw_value\": \"one-fifth\",\n          \"context\": \"IrO₂-coated membranes for OER compared to commercially available CCMs\",\n          \"evidence_quote\": \"fabricated IrO₂-coated membranes using spark ablation for conducting the OER at a h of the loading (cost) compared to commercially available catalyst coated membranes 110 (CCMs)\"\n        }\n      ],\n      \"caveats\": []\n    },\n    {\n      \"source_chunk_ids\": [\"mdchk_45a074adf935c79f\"],\n      \"protocol_name\": \"High-throughput production of MoS₂/Mo₂C catalyst for HER\",\n      \"protocol_type\": \"experimental\",\n      \"materials\": [\n        {\n          \"source_chunk_id\": \"mdchk_45a074adf935c79f\",\n          \"name\": \"raw Mo concentrates\",\n          \"role\": \"precursor\",\n          \"amount\": null,\n          \"purity\": null,\n          \"supplier\": null,\n          \"pretreatment\": \"extracted from active open pit mine\",\n          \"evidence_quote\": \"extracting raw Mo concentrates (MoS₂, MoO₂, MoO₃, and others) from an active open pit mine\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_45a074adf935c79f\",\n          \"name\": \"Mo₂C\",\n          \"role\": \"exfoliation agent\",\n          \"amount\": null,\n          \"purity\": null,\n          \"supplier\": null,\n          \"pretreatment\": null,\n          \"evidence_quote\": \"exfoliating it with Mo₂C to form two- dimensional MoS₂ akes\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_45a074adf935c79f\",\n          \"name\": \"water\",\n          \"role\": \"dispersion solvent\",\n          \"amount\": null,\n          \"purity\": null,\n          \"supplier\": null,\n          \"pretreatment\": null,\n          \"evidence_quote\": \"These MoS₂ akes were then dispersed in water to make an ink\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_45a074adf935c79f\",\n          \"name\": \"Cu foam substrate\",\n          \"role\": \"substrate\",\n          \"amount\": null,\n          \"purity\": null,\n          \"supplier\": null,\n          \"pretreatment\": \"high-surface area\",\n          \"evidence_quote\": \"dip-coating a high-surface area Cu foam substrate in\"\n        }\n      ],\n      \"instruments\": [],\n      \"software\": [],\n      \"steps\": [\n        {\n          \"source_chunk_id\": \"mdchk_45a074adf935c79f\",\n          \"order\": 1,\n          \"action\": \"extract raw Mo concentrates from mine\",\n          \"conditions\": [],\n          \"notes\": \"from active open pit mine\",\n          \"evidence_quote\": \"extracting raw Mo concentrates (MoS₂, MoO₂, MoO₃, and others) from an active open pit mine\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_45a074adf935c79f\",\n          \"order\": 2,\n          \"action\": \"exfoliate with Mo₂C\",\n          \"conditions\": [],\n          \"notes\": \"forms two-dimensional MoS₂ flakes\",\n          \"evidence_quote\": \"exfoliating it with Mo₂C to form two- dimensional MoS₂ akes\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_45a074adf935c79f\",\n          \"order\": 3,\n          \"action\": \"disperse in water to make ink\",\n          \"conditions\": [],\n          \"notes\": null,\n          \"evidence_quote\": \"These MoS₂ akes were then dispersed in water to make an ink\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_45a074adf935c79f\",\n          \"order\": 4,\n          \"action\": \"dip-coat Cu foam substrate\",\n          \"conditions\": [\"high-surface area\"],\n          \"notes\": null,\n          \"evidence_quote\": \"dip-coating a high-surface area Cu foam substrate in\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_45a074adf935c79f\",\n          \"order\": 5,\n          \"action\": \"thermal treatment\",\n          \"conditions\": [],\n          \"notes\": \"forms HC–MoS₂/Mo₂C catalyst\",\n          \"evidence_quote\": \"fabricating thermally treated MoS₂/Mo₂C (HC–MoS₂/Mo₂C) catalyst for the HER\"\n        }\n      ],\n      \"characterization\": [],\n      \"results\": [],\n      \"caveats\": []\n    },\n    {\n      \"source_chunk_ids\": [\"mdchk_8edb58ce2d0b2e0d\"],\n      \"protocol_name\": \"Computational screening of solid-state battery electrolytes using ML and DFT\",\n      \"protocol_type\": \"computational\",\n      \"materials\": [\n        {\n          \"source_chunk_id\": \"mdchk_8edb58ce2d0b2e0d\",\n          \"name\": \"54 elements\",\n          \"role\": \"structural candidates\",\n          \"amount\": null,\n          \"purity\": null,\n          \"supplier\": null,\n          \"pretreatment\": \"known crystal structures, common oxidation states\",\n          \"evidence_quote\": \"the authors chose 54 elements and obtained their common oxidation states to perform ionic substitution in the pre-existing materials\"\n        }\n      ],\n      \"instruments\": [],\n      \"software\": [\n        {\n          \"source_chunk_id\": \"mdchk_8edb58ce2d0b2e0d\",\n          \"name\": \"ML algorithm LRGPRBO\",\n          \"version\": null,\n          \"settings\": {},\n          \"evidence_quote\": \"ML algorithm LRGPRBO N/A N/A\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_8edb58ce2d0b2e0d\",\n          \"name\": \"DFT\",\n          \"version\": null,\n          \"settings\": {},\n          \"evidence_quote\": \"each criterion step is performed with either ML or DFT based on the need for quicker (cheaper) screening or higher accuracy, respectively\"\n        }\n      ],\n      \"steps\": [\n        {\n          \"source_chunk_id\": \"mdchk_8edb58ce2d0b2e0d\",\n          \"order\": 1,\n          \"action\": \"generate initial structural candidates by ionic substitution\",\n          \"conditions\": [\"54 elements\", \"common oxidation states\"],\n          \"notes\": \"over 32.5 million initial candidates generated\",\n          \"evidence_quote\": \"the authors chose 54 elements and obtained their common oxidation states to perform ionic substitution in the pre-existing materials. All in all, over 32.5 million initial structural candidates were generated for screening\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_8edb58ce2d0b2e0d\",\n          \"order\": 2,\n          \"action\": \"screen by phase stability using ML-based potentials\",\n          \"conditions\": [\"Ehull < 50 meV per atom\"],\n          \"notes\": \"reduced to under 6 × 10^5 candidates\",\n          \"evidence_quote\": \"The rst step narrowed down materials using their phase stability Ehull< 50 meV per atom (Ehullis the relative energy above the convex hull and obtained by using ML- based potentials¹⁶⁶), bringing the number down to under 6 × 5 10\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_8edb58ce2d0b2e0d\",\n          \"order\": 3,\n          \"action\": \"apply solid electrolyte criteria screening\",\n          \"conditions\": [\"Li conductivity\", \"redox potential\", \"cost\"],\n          \"notes\": \"10-step funneling method, ML for large dataset, DFT for tapered dataset\",\n          \"evidence_quote\": \"The following levels encompassed criteria pertaining to solid electrolytes such as Li conductivity, redox potential, and cost. Distinctively though, each criterion step is performed with either ML or DFT based on the need for quicker (cheaper) screening or higher accuracy, respectively\"\n        }\n      ],\n      \"characterization\": [],\n      \"results\": [\n        {\n          \"source_chunk_id\": \"mdchk_8edb58ce2d0b2e0d\",\n          \"metric\": \"number of identified new electrolytes\",\n          \"raw_value\": \"18\",\n          \"context\": \"not previously reported\",\n          \"evidence_quote\": \"the authors identied 18 electrolytes that had not been previously reported\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_8edb58ce2d0b2e0d\",\n          \"metric\": \"number selected for further investigation\",\n          \"raw_value\": \"4\",\n          \"context\": \"synthesis and characterization\",\n          \"evidence_quote\": \"focused on four to further investigate through synthesis and characterization\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_8edb58ce2d0b2e0d\",\n          \"metric\": \"top candidate\",\n          \"raw_value\": \"NaxLi3−xYCl₆\",\n          \"context\": \"based on structures and conductivities, suitable for solid electrolyte\",\n          \"evidence_quote\": \"The top candidate was NaxLi3−xYCl₆ based on its structures and conductivities, making it a suitable choice for a solid electrolyte\"\n        }\n      ],\n      \"caveats\": []\n    },\n    {\n      \"source_chunk_ids\": [\"mdchk_13523d429e2d3321\", \"mdchk_65c044083973ebb4\"],\n      \"protocol_name\": \"Automated robotic workflow for solvent screening in redox flow batteries\",\n      \"protocol_type\": \"experimental\",\n      \"materials\": [\n        {\n          \"source_chunk_id\": \"mdchk_13523d429e2d3321\",\n          \"name\": \"22 possible solvent candidates\",\n          \"role\": \"initial candidates\",\n          \"amount\": null,\n          \"purity\": null,\n          \"supplier\": null,\n          \"pretreatment\": null,\n          \"evidence_quote\": \"the authors listed 22 possible solvent candidates\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_13523d429e2d3321\",\n          \"name\": \"binary mixtures of original 22 solvents\",\n          \"role\": \"expanded candidates\",\n          \"amount\": \"2079 candidates\",\n          \"purity\": null,\n          \"supplier\": null,\n          \"pretreatment\": \"various volume ratios\",\n          \"evidence_quote\": \"created an additional 2079 candidates based on binary mixtures of various volume ratios of the original 22\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_65c044083973ebb4\",\n          \"name\": \"0.2 vol% solvent\",\n          \"role\": \"optimal solvent with highest solubility\",\n          \"amount\": null,\n          \"purity\": null,\n          \"supplier\": null,\n          \"pretreatment\": null,\n          \"evidence_quote\": \"0.2 vol% as the solvent with the highest solubility\"\n        }\n      ],\n      \"instruments\": [\n        {\n          \"source_chunk_id\": \"mdchk_13523d429e2d3321\",\n          \"name\": \"automated robotic platform\",\n          \"model\": null,\n          \"manufacturer\": null,\n          \"settings\": {\n            \"synthesis_rate\": \"~39 min per sample\"\n          },\n          \"evidence_quote\": \"their automated robotic platform synthesized 58 of these candidates (both singular and binary solvents) for model training at a rate of ∼39 min per sample\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_13523d429e2d3321\",\n          \"name\": \"nuclear magnetic resonance\",\n          \"model\": null,\n          \"manufacturer\": null,\n          \"settings\": {},\n          \"evidence_quote\": \"Each electrolyte sample was prepped for nuclear magnetic resonance (NMR)\"\n        }\n      ],\n      \"software\": [\n        {\n          \"source_chunk_id\": \"mdchk_13523d429e2d3321\",\n          \"name\": \"machine learning\",\n          \"version\": null,\n          \"settings\": {\n            \"type\": \"closed-loop, ML-guided\"\n          },\n          \"evidence_quote\": \"they built a closed-loop, ML-guided HT experimentation setup\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_65c044083973ebb4\",\n          \"name\": \"Bayesian optimization\",\n          \"version\": null,\n          \"settings\": {},\n          \"evidence_quote\": \"This demonstration of BO underscores how active (machine) learning can drive experimentation\"\n        }\n      ],\n      \"steps\": [\n        {\n          \"source_chunk_id\": \"mdchk_13523d429e2d3321\",\n          \"order\": 1,\n          \"action\": \"list initial solvent candidates\",\n          \"conditions\": [\"22 candidates\"],\n          \"notes\": null,\n          \"evidence_quote\": \"the authors listed 22 possible solvent candidates\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_13523d429e2d3321\",\n          \"order\": 2,\n          \"action\": \"create binary mixture candidates\",\n          \"conditions\": [\"various volume ratios\"],\n          \"notes\": \"2079 additional candidates\",\n          \"evidence_quote\": \"created an additional 2079 candidates based on binary mixtures of various volume ratios of the original 22\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_13523d429e2d3321\",\n          \"order\": 3,\n          \"action\": \"synthesize candidates using robotic platform\",\n          \"conditions\": [\"58 candidates selected\", \"~39 min per sample\"],\n          \"notes\": \"both singular and binary solvents for model training\",\n          \"evidence_quote\": \"their automated robotic platform synthesized 58 of these candidates (both singular and binary solvents) for model training at a rate of ∼39 min per sample\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_13523d429e2d3321\",\n          \"order\": 4,\n          \"action\": \"prep samples for NMR\",\n          \"conditions\": [],\n          \"notes\": \"manual transport to NMR\",\n          \"evidence_quote\": \"Each electrolyte sample was prepped for nuclear magnetic resonance (NMR) and then manually transported to\"\n        }\n      ],\n      \"characterization\": [\n        {\n          \"source_chunk_id\": \"mdchk_13523d429e2d3321\",\n          \"technique\": \"nuclear magnetic resonance\",\n          \"settings\": {},\n          \"output\": null,\n          \"evidence_quote\": \"Each electrolyte sample was prepped for nuclear magnetic resonance (NMR)\"\n        }\n      ],\n      \"results\": [\n        {\n          \"source_chunk_id\": \"mdchk_65c044083973ebb4\",\n          \"metric\": \"total measurements needed\",\n          \"raw_value\": \"218\",\n          \"context\": \"from >2000 sample dataset to output optimal solvents and solvent ratio\",\n          \"evidence_quote\": \"their model only needed 218 measurements from the >2000 sample dataset to output the optimal solvents and solvent ratio\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_65c044083973ebb4\",\n          \"metric\": \"optimal solvent concentration\",\n          \"raw_value\": \"0.2 vol%\",\n          \"context\": \"highest solubility\",\n          \"evidence_quote\": \"0.2 vol% as the solvent with the highest solubility\"\n        }\n      ],\n      \"caveats\": []\n    },\n    {\n      \"source_chunk_ids\": [\"mdchk_65c044083973ebb4\"],\n      \"protocol_name\": \"ML-guided robotic synthesis and electroanalysis for OER and HClO production catalysts\",\n      \"protocol_type\": \"experimental\",\n      \"materials\": [\n        {\n          \"source_chunk_id\": \"mdchk_65c044083973ebb4\",\n          \"name\": \"Co\",\n          \"role\": \"catalyst element\",\n          \"amount\": null,\n          \"purity\": null,\n          \"supplier\": null,\n          \"pretreatment\": null,\n          \"evidence_quote\": \"synthesize and analyze different combinations of four elements (Co, Mn, Fe, and Ni)\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_65c044083973ebb4\",\n          \"name\": \"Mn\",\n          \"role\": \"catalyst element\",\n          \"amount\": null,\n          \"purity\": null,\n          \"supplier\": null,\n          \"pretreatment\": null,\n          \"evidence_quote\": \"synthesize and analyze different combinations of four elements (Co, Mn, Fe, and Ni)\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_65c044083973ebb4\",\n          \"name\": \"Fe\",\n          \"role\": \"catalyst element\",\n          \"amount\": null,\n          \"purity\": null,\n          \"supplier\": null,\n          \"pretreatment\": null,\n          \"evidence_quote\": \"synthesize and analyze different combinations of four elements (Co, Mn, Fe, and Ni)\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_65c044083973ebb4\",\n          \"name\": \"Ni\",\n          \"role\": \"catalyst element\",\n          \"amount\": null,\n          \"purity\": null,\n          \"supplier\": null,\n          \"pretreatment\": null,\n          \"evidence_quote\": \"synthesize and analyze different combinations of four elements (Co, Mn, Fe, and Ni)\"\n        }\n      ],\n      \"instruments\": [\n        {\n          \"source_chunk_id\": \"mdchk_65c044083973ebb4\",\n          \"name\": \"fully automatic robot\",\n          \"model\": null,\n          \"manufacturer\": null,\n          \"settings\": {\n            \"throughput\": \"88 catalyst samples per day\"\n          },\n          \"evidence_quote\": \"Their fully automatic robot was able to conduct synthesis and electroanalysis of 88 catalyst samples per day\"\n        }\n      ],\n      \"software\": [\n        {\n          \"source_chunk_id\": \"mdchk_65c044083973ebb4\",\n          \"name\": \"Bayesian optimization\",\n          \"version\": null,\n          \"settings\": {},\n          \"evidence_quote\": \"the authors investigated composition optimization using BO by having the ML model and robot run cycles\"\n        }\n      ],\n      \"steps\": [\n        {\n          \"source_chunk_id\": \"mdchk_65c044083973ebb4\",\n          \"order\": 1,\n          \"action\": \"set system to synthesize and analyze element combinations\",\n          \"conditions\": [\"Co, Mn, Fe, Ni\"],\n          \"notes\": \"chosen based on reported performance\",\n          \"evidence_quote\": \"The authors started by setting their system to synthesize and analyze different combinations of four elements (Co, Mn, Fe, and Ni), chosen based on their reported performance, to obtain 286 data entries\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_65c044083973ebb4\",\n          \"order\": 2,\n          \"action\": \"obtain initial data entries\",\n          \"conditions\": [],\n          \"notes\": \"286 data entries for training\",\n          \"evidence_quote\": \"to obtain 286 data entries\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_65c044083973ebb4\",\n          \"order\": 3,\n          \"action\": \"run ML model and robot cycles\",\n          \"conditions\": [\"BO-guided\", \"10 materials suggested per cycle\"],\n          \"notes\": \"model suggests materials, robot synthesizes and analyzes\",\n          \"evidence_quote\": \"the model suggested 10 mate- rials which the robot system then synthesized and analyzed\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_65c044083973ebb4\",\n          \"order\": 4,\n          \"action\": \"halt cycles after validation\",\n          \"conditions\": [\"four loops\"],\n          \"notes\": \"40 samples needed to validate and optimize model\",\n          \"evidence_quote\": \"The cycles were halted aer four loops when the model identi- ed the top 10 performing materials of the 286 original samples. Thus, only 40 samples were needed to validate and optimize the model\"\n        }\n      ],\n      \"characterization\": [],\n      \"results\": [\n        {\n          \"source_chunk_id\": \"mdchk_65c044083973ebb4\",\n          \"metric\": \"initial data entries\",\n          \"raw_value\": \"286\",\n          \"context\": \"from combinations of four elements\",\n          \"evidence_quote\": \"to obtain 286 data entries\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_65c044083973ebb4\",\n          \"metric\": \"samples needed for validation\",\n          \"raw_value\": \"40\",\n          \"context\": \"from 286 original samples, 10 materials per cycle for 4 cycles\",\n          \"evidence_quote\": \"Thus, only 40 samples were needed to validate and optimize the model\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_65c044083973ebb4\",\n          \"metric\": \"robot throughput\",\n          \"raw_value\": \"88 catalyst samples per day\",\n          \"context\": \"synthesis and electroanalysis\",\n          \"evidence_quote\": \"Their fully automatic robot was able to conduct synthesis and electroanalysis of 88 catalyst samples per day\"\n        }\n      ],\n      \"caveats\": []\n    },\n    {\n      \"source_chunk_ids\": [\"mdchk_c7b6f6166433c112\"],\n      \"protocol_name\": \"HT automated synthesis and ML prediction for ORR catalysts\",\n      \"protocol_type\": \"experimental\",\n      \"materials\": [\n        {\n          \"source_chunk_id\": \"mdchk_c7b6f6166433c112\",\n          \"name\": \"Fe precursor\",\n          \"role\": \"catalyst precursor\",\n          \"amount\": null,\n          \"purity\": null,\n          \"supplier\": null,\n          \"pretreatment\": null,\n          \"evidence_quote\": \"synthesis parameters (Fe atomic%, pyrolysis T, and Fe precursor) as inputs\"\n        }\n      ],\n      \"instruments\": [\n        {\n          \"source_chunk_id\": \"mdchk_c7b6f6166433c112\",\n          \"name\": \"HT automated synthesis platform\",\n          \"model\": null,\n          \"manufacturer\": null,\n          \"settings\": {},\n          \"evidence_quote\": \"the researchers prepared 36 different catalyst samples using a HT automated synthesis platform\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_c7b6f6166433c112\",\n          \"name\": \"customized multi-channel flow cell\",\n          \"model\": null,\n          \"manufacturer\": null,\n          \"settings\": {\n            \"capacity\": \"four catalyst samples at a time\"\n          },\n          \"evidence_quote\": \"The electrochemical cell for running the ORR was a customized multi-channel ow cell capable of screening four catalyst samples at a time\"\n        }\n      ],\n      \"software\": [\n        {\n          \"source_chunk_id\": \"mdchk_c7b6f6166433c112\",\n          \"name\": \"gradient boosting\",\n          \"version\": null,\n          \"settings\": {},\n          \"evidence_quote\": \"The best- performing algorithms were gradient boosting and support vector regressions\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_c7b6f6166433c112\",\n          \"name\": \"support vector regression\",\n          \"version\": null,\n          \"settings\": {},\n          \"evidence_quote\": \"The best- performing algorithms were gradient boosting and support vector regressions\"\n        }\n      ],\n      \"steps\": [\n        {\n          \"source_chunk_id\": \"mdchk_c7b6f6166433c112\",\n          \"order\": 1,\n          \"action\": \"prepare catalyst samples using HT automated synthesis\",\n          \"conditions\": [\"36 different samples\"],\n          \"notes\": null,\n          \"evidence_quote\": \"the researchers prepared 36 different catalyst samples using a HT automated synthesis platform\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_c7b6f6166433c112\",\n          \"order\": 2,\n          \"action\": \"test all samples for ORR activity\",\n          \"conditions\": [],\n          \"notes\": null,\n          \"evidence_quote\": \"followed up by testing them all for ORR activity\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_c7b6f6166433c112\",\n          \"order\": 3,\n          \"action\": \"screen samples using customized multi-channel flow cell\",\n          \"conditions\": [\"four catalyst samples at a time\"],\n          \"notes\": null,\n          \"evidence_quote\": \"The electrochemical cell for running the ORR was a customized multi-channel ow cell capable of screening four catalyst samples at a time\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_c7b6f6166433c112\",\n          \"order\": 4,\n          \"action\": \"train ML models with synthesis parameters\",\n          \"conditions\": [\"60-80% of dataset for training\", \"five ML models\", \"different algorithms\"],\n          \"notes\": \"inputs: Fe atomic%, pyrolysis T, Fe precursor\",\n          \"evidence_quote\": \"Out of the resulting dataset, 60–80% were used to train ve ML models with the synthesis parameters (Fe atomic%, pyrolysis T, and Fe precursor) as inputs. Each ML model utilized a different algorithm to help nd the minimal (optimal) RMSE and mean absolute percentage error\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_c7b6f6166433c112\",\n          \"order\": 5,\n          \"action\": \"select optimal models\",\n          \"conditions\": [\"minimal RMSE\", \"minimal mean absolute percentage error\"],\n          \"notes\": \"gradient boosting and support vector regressions best performing\",\n          \"evidence_quote\": \"The best- performing algorithms were gradient boosting and support vector regressions\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_c7b6f6166433c112\",\n          \"order\": 6,\n          \"action\": \"predict ORR activity as function of synthesis parameters\",\n          \"conditions\": [],\n          \"notes\": \"represents outputting new catalysts\",\n          \"evidence_quote\": \"From here, the authors used these two optimal models to predict ORR activity as a function of the synthesis parameters, which represents outputting new cata- lysts\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_c7b6f6166433c112\",\n          \"order\": 7,\n          \"action\": \"synthesize new catalysts using predicted parameters\",\n          \"conditions\": [],\n          \"notes\": null,\n          \"evidence_quote\": \"the researchers synthesized new catalysts using these predicted parameters and tested them for\"\n        }\n      ],\n      \"characterization\": [],\n      \"results\": [\n        {\n          \"source_chunk_id\": \"mdchk_c7b6f6166433c112\",\n          \"metric\": \"number of catalyst samples prepared\",\n          \"raw_value\": \"36\",\n          \"context\": \"different catalyst samples\",\n          \"evidence_quote\": \"the researchers prepared 36 different catalyst samples\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_c7b6f6166433c112\",\n          \"metric\": \"training data proportion\",\n          \"raw_value\": \"60-80%\",\n          \"context\": \"of resulting dataset\",\n          \"evidence_quote\": \"60–80% were used to train\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_c7b6f6166433c112\",\n          \"metric\": \"number of ML models trained\",\n          \"raw_value\": \"five\",\n          \"context\": \"different algorithms\",\n          \"evidence_quote\": \"train ve ML models\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_c7b6f6166433c112\",\n          \"metric\": \"screening capacity\",\n          \"raw_value\": \"four catalyst samples at a time\",\n          \"context\": \"customized multi-channel flow cell\",\n          \"evidence_quote\": \"capable of screening four catalyst samples at a time\"\n        }\n      ],\n      \"caveats\": []\n    }\n  ]\n}\n```",
+    "salvaged_protocol_count": 0,
+    "schema_invalid": false,
+    "stop_reason": "end_turn",
+    "usage": {
+      "inputTokens": 4787,
+      "outputTokens": 7032,
+      "totalTokens": 11819
+    }
+  }
+}

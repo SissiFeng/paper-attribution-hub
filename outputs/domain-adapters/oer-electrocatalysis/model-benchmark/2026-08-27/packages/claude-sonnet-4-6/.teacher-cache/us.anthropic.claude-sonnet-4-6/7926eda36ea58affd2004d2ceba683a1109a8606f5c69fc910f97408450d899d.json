@@ -1,0 +1,1465 @@
+{
+  "audit_summary": {
+    "accepted_field_count": 10,
+    "proposed_field_count": 74,
+    "rejected_field_count": 64,
+    "repair_attempted_count": 22,
+    "repair_succeeded_count": 2,
+    "unsupported_claim_count": 64
+  },
+  "field_audit_records": [
+    {
+      "cited_span": "resulting in three tasks for synthesizing g-C₃N₄ samples. This experiment also included characterizing the g-C₃N₄ samples and assessing their photocatalytic hydrogen production performance",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[0].name",
+      "nearest_source_span": "This experiment also included charac- terizing the g-C₃N₄ samples and assessing their photocatalytic hydrogen production performance, as shown in ESI, Fig.",
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "proposed_value": "g-C3N4",
+      "protocol_index": 0,
+      "rejection_reason": "span_not_in_source",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "These experiments were scheduled in our autonomous chemistry laboratory, equipped with two mobile robots, one benchtop robot, and 18 automated experimental stations.",
+      "diagnostic": null,
+      "entity_type": "instruments",
+      "field_path": "instruments[0].settings.mobile_robots",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "proposed_value": "2",
+      "protocol_index": 0,
+      "rejection_reason": "schema_invalid",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "These experiments were scheduled in our autonomous chemistry laboratory, equipped with two mobile robots, one benchtop robot, and 18 automated experimental stations.",
+      "diagnostic": null,
+      "entity_type": "instruments",
+      "field_path": "instruments[0].settings.benchtop_robots",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "proposed_value": "1",
+      "protocol_index": 0,
+      "rejection_reason": "schema_invalid",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "These experiments were scheduled in our autonomous chemistry laboratory, equipped with two mobile robots, one benchtop robot, and 18 automated experimental stations.",
+      "diagnostic": null,
+      "entity_type": "instruments",
+      "field_path": "instruments[0].settings.automated_experimental_stations",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "proposed_value": "18",
+      "protocol_index": 0,
+      "rejection_reason": "schema_invalid",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The workows for these experiments were input and visualized in the interactive task management GUI, as depicted in Fig. 7.",
+      "diagnostic": null,
+      "entity_type": "software",
+      "field_path": "software[0].name",
+      "nearest_source_span": "The workows for these experiments were input and visualized in the interactive task management GUI, as depicted in Fig.",
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "proposed_value": "interactive task management GUI",
+      "protocol_index": 0,
+      "rejection_reason": "span_not_in_source",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "approximately 10 hours, resulting in three tasks for synthesizing g-C₃N₄ samples.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[0].action",
+      "nearest_source_span": "approximately 10 hours, resulting in three tasks for synthe- sizing g-C₃N₄ samples.",
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "proposed_value": "Synthesize g-C3N4 samples",
+      "protocol_index": 0,
+      "rejection_reason": "span_not_in_source",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "This experiment also included characterizing the g-C₃N₄ samples and assessing their photocatalytic hydrogen production performance, as shown in ESI, Fig. S3.†",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[1].action",
+      "nearest_source_span": "This experiment also included charac- terizing the g-C₃N₄ samples and assessing their photocatalytic hydrogen production performance, as shown in ESI, Fig.",
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "proposed_value": "Characterize g-C3N4 samples and assess photocatalytic hydrogen production performance",
+      "protocol_index": 0,
+      "rejection_reason": "span_not_in_source",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "assessing their photocatalytic hydrogen production performance, as shown in ESI, Fig. S3.†",
+      "diagnostic": null,
+      "entity_type": "characterization",
+      "field_path": "characterization[0].technique",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "proposed_value": "photocatalytic hydrogen production performance assessment",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Fourteen MO-HECs were synthesized by adjusting the ratios of metal ions—Co, Cu, Fe, Mn, and Ni—while maintaining a constant total metal feedstock of",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[0].name",
+      "nearest_source_span": "Fourteen MO-HECs were synthe- sized by adjusting the ratios of metal ions—Co, Cu, Fe, Mn, and Ni—while maintaining a constant total metal feedstock of",
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "proposed_value": "quinary metal–organic high-entropy catalysts (MO-HECs)",
+      "protocol_index": 1,
+      "rejection_reason": "span_not_in_source",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "0.434 mol. The overpotential for each synthesized MO-HEC was measured",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[1].name",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "proposed_value": "total metal feedstock",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "adjusting the ratios of metal ions—Co, Cu, Fe, Mn, and Ni",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[2].name",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "proposed_value": "Co, Cu, Fe, Mn, Ni metal ions",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "the 14 samples for experiment 2 were batch-processed in the two magnetic stirring stations, each processing 6 and 8 samples, respectively (Fig. 8c)",
+      "diagnostic": null,
+      "entity_type": "instruments",
+      "field_path": "instruments[0].settings.capacity_per_station",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "proposed_value": "10",
+      "protocol_index": 1,
+      "rejection_reason": "schema_invalid",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "the 14 samples for experiment 2 were batch-processed in the two magnetic stirring stations, each processing 6 and 8 samples, respectively (Fig. 8c)",
+      "diagnostic": null,
+      "entity_type": "instruments",
+      "field_path": "instruments[0].settings.samples_processed",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "proposed_value": "[6, 8]",
+      "protocol_index": 1,
+      "rejection_reason": "schema_invalid",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "These experiments were scheduled in our autonomous chemistry laboratory, equipped with two mobile robots, one benchtop robot, and 18 automated experimental stations.",
+      "diagnostic": null,
+      "entity_type": "instruments",
+      "field_path": "instruments[1].settings.mobile_robots",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "proposed_value": "2",
+      "protocol_index": 1,
+      "rejection_reason": "schema_invalid",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "These experiments were scheduled in our autonomous chemistry laboratory, equipped with two mobile robots, one benchtop robot, and 18 automated experimental stations.",
+      "diagnostic": null,
+      "entity_type": "instruments",
+      "field_path": "instruments[1].settings.benchtop_robots",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "proposed_value": "1",
+      "protocol_index": 1,
+      "rejection_reason": "schema_invalid",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "These experiments were scheduled in our autonomous chemistry laboratory, equipped with two mobile robots, one benchtop robot, and 18 automated experimental stations.",
+      "diagnostic": null,
+      "entity_type": "instruments",
+      "field_path": "instruments[1].settings.automated_experimental_stations",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "proposed_value": "18",
+      "protocol_index": 1,
+      "rejection_reason": "schema_invalid",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Fourteen MO-HECs were synthesized by adjusting the ratios of metal ions—Co, Cu, Fe, Mn, and Ni—while maintaining a constant total metal feedstock of",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[0].action",
+      "nearest_source_span": "Fourteen MO-HECs were synthe- sized by adjusting the ratios of metal ions—Co, Cu, Fe, Mn, and Ni—while maintaining a constant total metal feedstock of",
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "proposed_value": "Synthesize 14 MO-HECs by adjusting ratios of Co, Cu, Fe, Mn, and Ni metal ions with constant total metal feedstock of 0.434 mol",
+      "protocol_index": 1,
+      "rejection_reason": "span_not_in_source",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "the 14 samples for experiment 2 were batch-processed in the two magnetic stirring stations, each processing 6 and 8 samples, respectively (Fig. 8c)",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[1].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "proposed_value": "Batch-process 14 samples in two magnetic stirring stations",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "the 14 samples for experiment 2 were batch-processed in the two magnetic stirring stations, each processing 6 and 8 samples, respectively (Fig. 8c)",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[1].conditions[0]",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "proposed_value": "6 samples in one station",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "the 14 samples for experiment 2 were batch-processed in the two magnetic stirring stations, each processing 6 and 8 samples, respectively (Fig. 8c)",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[1].conditions[1]",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "proposed_value": "8 samples in the other station",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "the 14 samples for experiment 2 were batch-processed in the two magnetic stirring stations, each processing 6 and 8 samples, respectively (Fig. 8c)",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[1].notes",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "proposed_value": "Stations accommodate up to 10 samples each",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The overpotential for each synthesized MO-HEC was measured, with results given in ESI, Fig. S4.†",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[2].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "proposed_value": "Measure overpotential for each synthesized MO-HEC",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The overpotential for each synthesized MO-HEC was measured, with results given in ESI, Fig. S4.†",
+      "diagnostic": null,
+      "entity_type": "characterization",
+      "field_path": "characterization[0].technique",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "proposed_value": "overpotential measurement (electrocatalytic oxygen evolution)",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "we investigated the performance of four binary layered double hydroxides (LDHs) with varying Ni2+ / Fe2+ ratios, exploring their potential for urea oxidation",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[0].name",
+      "nearest_source_span": null,
+      "outcome": "repaired",
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "proposed_value": "binary layered double hydroxides (LDHs)",
+      "protocol_index": 2,
+      "rejection_reason": "normalization",
+      "repair_attempted": true,
+      "repair_succeeded": true,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "we investigated the performance of four binary layered double hydroxides (LDHs) with varying Ni\n2+ / Fe 2+ ratios, exploring their potential for urea oxidation",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[0].role",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "proposed_value": "product",
+      "protocol_index": 2,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "we investigated the performance of four binary layered double hydroxides (LDHs) with varying Ni\n2+ / Fe 2+ ratios, exploring their potential for urea oxidation",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[0].amount",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "proposed_value": "four samples",
+      "protocol_index": 2,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "four binary layered double hydroxides (LDHs) with varying Ni2+ / Fe2+ ratios",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[1].name",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "proposed_value": "Ni2+ / Fe2+",
+      "protocol_index": 2,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "the drying station used for experiment 3 did not conflict with the station needs of other experiments",
+      "diagnostic": null,
+      "entity_type": "instruments",
+      "field_path": "instruments[0].name",
+      "nearest_source_span": "Since the calcination station used for experiment 1 and the drying station used for experiment 3 did not conict with the station needs of other experiments, parallel execution was unaffected.",
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "proposed_value": "drying station",
+      "protocol_index": 2,
+      "rejection_reason": "span_not_in_source",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "These experiments were scheduled in our autonomous chemistry laboratory, equipped with two mobile robots, one benchtop robot, and 18 automated experimental stations.",
+      "diagnostic": null,
+      "entity_type": "instruments",
+      "field_path": "instruments[1].settings.mobile_robots",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "proposed_value": "2",
+      "protocol_index": 2,
+      "rejection_reason": "schema_invalid",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "These experiments were scheduled in our autonomous chemistry laboratory, equipped with two mobile robots, one benchtop robot, and 18 automated experimental stations.",
+      "diagnostic": null,
+      "entity_type": "instruments",
+      "field_path": "instruments[1].settings.benchtop_robots",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "proposed_value": "1",
+      "protocol_index": 2,
+      "rejection_reason": "schema_invalid",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "These experiments were scheduled in our autonomous chemistry laboratory, equipped with two mobile robots, one benchtop robot, and 18 automated experimental stations.",
+      "diagnostic": null,
+      "entity_type": "instruments",
+      "field_path": "instruments[1].settings.automated_experimental_stations",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "proposed_value": "18",
+      "protocol_index": 2,
+      "rejection_reason": "schema_invalid",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "we investigated the performance of four binary layered double hydroxides (LDHs) with varying Ni2+ / Fe2+ ratios, exploring their potential for urea oxidation",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[0].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "proposed_value": "Synthesize four binary LDHs with varying Ni2+/Fe2+ ratios",
+      "protocol_index": 2,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The X-ray diffraction patterns and electrocatalytic urea oxidation properties of the LDHs were measured, as shown in ESI, Fig. S5–S9.†",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[1].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "proposed_value": "Measure X-ray diffraction patterns of LDHs",
+      "protocol_index": 2,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The X- ray diffraction patterns and electrocatalytic urea oxidation properties of the LDHs were measured, as shown in ESI, Fig. S5– S9.†",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[1].notes",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "proposed_value": "Results shown in ESI, Fig. S5–S9",
+      "protocol_index": 2,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The X-ray diffraction patterns and electrocatalytic urea oxidation properties of the LDHs were measured, as shown in ESI, Fig. S5–S9.†",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[2].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "proposed_value": "Measure electrocatalytic urea oxidation properties of LDHs",
+      "protocol_index": 2,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The X- ray diffraction patterns and electrocatalytic urea oxidation properties of the LDHs were measured, as shown in ESI, Fig. S5– S9.†",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[2].notes",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "proposed_value": "Results shown in ESI, Fig. S5–S9",
+      "protocol_index": 2,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The X-ray diffraction patterns and electrocatalytic urea oxidation properties of the LDHs were measured, as shown in ESI, Fig. S5–S9.†",
+      "diagnostic": null,
+      "entity_type": "characterization",
+      "field_path": "characterization[0].technique",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "proposed_value": "X-ray diffraction (XRD)",
+      "protocol_index": 2,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The X-ray diffraction patterns and electrocatalytic urea oxidation properties of the LDHs were measured, as shown in ESI, Fig. S5–S9.†",
+      "diagnostic": null,
+      "entity_type": "characterization",
+      "field_path": "characterization[1].technique",
+      "nearest_source_span": null,
+      "outcome": "repaired",
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "proposed_value": "electrocatalytic urea oxidation",
+      "protocol_index": 2,
+      "rejection_reason": "normalization",
+      "repair_attempted": true,
+      "repair_succeeded": true,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The X- ray diffraction patterns and electrocatalytic urea oxidation properties of the LDHs were measured, as shown in ESI, Fig. S5– S9.†",
+      "diagnostic": null,
+      "entity_type": "characterization",
+      "field_path": "characterization[1].output",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "proposed_value": "ESI, Fig. S5–S9",
+      "protocol_index": 2,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "explored the aggregation-induced emission (AIE) properties of berberine chloride (BBR), assessing AIE luminescence of BBR solutions at concentrations of 5, 10, 15, 20, and 25 mM",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[0].name",
+      "nearest_source_span": "† The nal experiment explored the aggregation-induced emission (AIE) properties of berberine chloride (BBR), assess- ing AIE luminescence of BBR solutions at concentrations of 5, 10, 15, 20, and 25 mM within solvents containing tetrahydro- furan volume fractions of 30%, 60%, and 90%.",
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "proposed_value": "berberine chloride (BBR)",
+      "protocol_index": 3,
+      "rejection_reason": "span_not_in_source",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "within solvents containing tetrahydrofuran volume fractions of 30%, 60%, and 90%",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[1].name",
+      "nearest_source_span": "† The nal experiment explored the aggregation-induced emission (AIE) properties of berberine chloride (BBR), assess- ing AIE luminescence of BBR solutions at concentrations of 5, 10, 15, 20, and 25 mM within solvents containing tetrahydro- furan volume fractions of 30%, 60%, and 90%.",
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "proposed_value": "tetrahydrofuran",
+      "protocol_index": 3,
+      "rejection_reason": "span_not_in_source",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "These experiments were scheduled in our autonomous chemistry laboratory, equipped with two mobile robots, one benchtop robot, and 18 automated experimental stations.",
+      "diagnostic": null,
+      "entity_type": "instruments",
+      "field_path": "instruments[0].settings.mobile_robots",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "proposed_value": "2",
+      "protocol_index": 3,
+      "rejection_reason": "schema_invalid",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "These experiments were scheduled in our autonomous chemistry laboratory, equipped with two mobile robots, one benchtop robot, and 18 automated experimental stations.",
+      "diagnostic": null,
+      "entity_type": "instruments",
+      "field_path": "instruments[0].settings.benchtop_robots",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "proposed_value": "1",
+      "protocol_index": 3,
+      "rejection_reason": "schema_invalid",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "These experiments were scheduled in our autonomous chemistry laboratory, equipped with two mobile robots, one benchtop robot, and 18 automated experimental stations.",
+      "diagnostic": null,
+      "entity_type": "instruments",
+      "field_path": "instruments[0].settings.automated_experimental_stations",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "proposed_value": "18",
+      "protocol_index": 3,
+      "rejection_reason": "schema_invalid",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "assessing AIE luminescence of BBR solutions at concentrations of 5, 10, 15, 20, and 25 mM within solvents containing tetrahydrofuran volume fractions of 30%, 60%, and 90%. This resulted in 15 tasks",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[0].action",
+      "nearest_source_span": "† The nal experiment explored the aggregation-induced emission (AIE) properties of berberine chloride (BBR), assess- ing AIE luminescence of BBR solutions at concentrations of 5, 10, 15, 20, and 25 mM within solvents containing tetrahydro- furan volume fractions of 30%, 60%, and 90%.",
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "proposed_value": "Prepare BBR solutions at concentrations of 5, 10, 15, 20, and 25 mM in solvents with tetrahydrofuran volume fractions of 30%, 60%, and 90%",
+      "protocol_index": 3,
+      "rejection_reason": "span_not_in_source",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "with photoluminescence spectra measured for each BBR solution, as illustrated in ESI, Fig. S10.†",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[1].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "proposed_value": "Measure photoluminescence spectra for each BBR solution",
+      "protocol_index": 3,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "with photoluminescence spectra measured for each BBR solution, as illustrated in ESI, Fig. S10.†",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[1].notes",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "proposed_value": "Results shown in ESI, Fig. S10",
+      "protocol_index": 3,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "with photoluminescence spectra measured for each BBR solution, as illustrated in ESI, Fig. S10.†",
+      "diagnostic": null,
+      "entity_type": "characterization",
+      "field_path": "characterization[0].technique",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "proposed_value": "photoluminescence spectroscopy",
+      "protocol_index": 3,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "This resulted in 15 tasks, with photoluminescence spectra measured for each BBR solution",
+      "diagnostic": null,
+      "entity_type": "results",
+      "field_path": "results[0].metric",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "proposed_value": "number of tasks",
+      "protocol_index": 3,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "On the laboratory computing platform (i9-12900H), scheduling the mixed execution of four experiments takes 20 seconds, while rescheduling after the insertion of experiment 5 takes only 2 seconds.",
+      "diagnostic": null,
+      "entity_type": "instruments",
+      "field_path": "instruments[0].name",
+      "nearest_source_span": "On the laboratory computing platform (i9-12900H), scheduling the mixed execution of four experiments takes 20 seconds, while rescheduling aer the insertion of experiment 5 takes only 2 seconds.",
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "proposed_value": "laboratory computing platform",
+      "protocol_index": 4,
+      "rejection_reason": "span_not_in_source",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "FESP-B's global optimization through its objective function, reducing the experimental time by 45% compared to the local optimization of the greedy algorithm",
+      "diagnostic": null,
+      "entity_type": "software",
+      "field_path": "software[0].settings.objective",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "proposed_value": "minimize total experimental time",
+      "protocol_index": 4,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The initial sequence derived by analysing the task sequence and laboratory resources: tasks 1 and 2 have five steps each, while task 3 has four steps. Identical parameters for the first steps allow tasks to be performed on either WS₁ or WS₂, highlighting the role of redundant resources.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[0].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "proposed_value": "Analyse task sequence and laboratory resources to derive initial sequence",
+      "protocol_index": 4,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The initial sequence derived by analysing the task sequence and laboratory resources: tasks 1 and 2 have five steps each, while task 3 has four steps. Identical parameters for the first steps allow tasks to be performed on either WS₁ or WS₂, highlighting the role of redundant resources.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[0].notes",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "proposed_value": "Tasks 1 and 2 have five steps each; task 3 has four steps. Identical parameters for first steps allow tasks on either WS1 or WS2 (redundant resources). Second steps only on WS3 with capacity 2. Fifth step of tasks 1 and 2 must be done on WS6 requiring specific number of samples (2 or 4).",
+      "protocol_index": 4,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Solving the FESP-B problem with a constraint",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[1].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "proposed_value": "Solve the FESP-B problem with a constraint programming approach",
+      "protocol_index": 4,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Solving the FESP-B problem with a constraint",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[1].notes",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "proposed_value": "Accounts for station capacity, processing time, experimental conditions, and runtime constraints",
+      "protocol_index": 4,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "conducting all tasks concurrently is optimized to 38 minutes. In comparison, performing the same three tasks sequentially requires a total of 84 minutes.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[2].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "proposed_value": "Execute all tasks concurrently according to optimized schedule",
+      "protocol_index": 4,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "conducting all tasks concurrently is optimized to 38 minutes. In comparison, performing the same three tasks sequentially requires a total of 84 minutes.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[2].conditions[0]",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "proposed_value": "optimized total time: 38 minutes for three concurrent tasks",
+      "protocol_index": 4,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "conducting all tasks concurrently is optimized to 38 minutes. In comparison, performing the same three tasks sequentially requires a total of 84 minutes.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[2].notes",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "proposed_value": "Sequential execution of same tasks requires 84 minutes",
+      "protocol_index": 4,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "During rescheduling, completed tasks are excluded from optimization, which significantly reduces the number of variables and the search space. On the laboratory computing platform (i9-12900H), scheduling the mixed execution of four experiments takes 20 seconds, while rescheduling after the insertion of experiment 5 takes only 2 seconds.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[3].action",
+      "nearest_source_span": "On the laboratory computing platform (i9-12900H), scheduling the mixed execution of four experiments takes 20 seconds, while rescheduling aer the insertion of experiment 5 takes only 2 seconds.",
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "proposed_value": "Reschedule tasks dynamically after insertion of new experiment",
+      "protocol_index": 4,
+      "rejection_reason": "span_not_in_source",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "conducting all tasks concurrently is optimized to 38 minutes.",
+      "diagnostic": null,
+      "entity_type": "results",
+      "field_path": "results[0].metric",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "proposed_value": "optimized concurrent execution time (3 tasks)",
+      "protocol_index": 4,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "performing the same three tasks sequentially requires a total of 84 minutes.",
+      "diagnostic": null,
+      "entity_type": "results",
+      "field_path": "results[1].metric",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "proposed_value": "sequential execution time (3 tasks)",
+      "protocol_index": 4,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "reducing the experimental time by 45% compared to the local optimization of the greedy algorithm",
+      "diagnostic": null,
+      "entity_type": "results",
+      "field_path": "results[2].metric",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "proposed_value": "reduction in experimental time vs greedy algorithm",
+      "protocol_index": 4,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "scheduling the mixed execution of four experiments takes 20 seconds",
+      "diagnostic": null,
+      "entity_type": "results",
+      "field_path": "results[3].metric",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "proposed_value": "scheduling time for mixed execution of four experiments",
+      "protocol_index": 4,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "rescheduling after the insertion of experiment 5 takes only 2 seconds.",
+      "diagnostic": null,
+      "entity_type": "results",
+      "field_path": "results[4].metric",
+      "nearest_source_span": "On the laboratory computing platform (i9-12900H), scheduling the mixed execution of four experiments takes 20 seconds, while rescheduling aer the insertion of experiment 5 takes only 2 seconds.",
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "proposed_value": "rescheduling time after insertion of experiment 5",
+      "protocol_index": 4,
+      "rejection_reason": "span_not_in_source",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Since most existing multi-task scheduling algorithms are based on greedy strategies and lack the ability to handle run-time constraints of stations, it is difficult to make a comprehensive comparison between the performance of FESP-B and these algorithms.",
+      "diagnostic": null,
+      "entity_type": "caveats",
+      "field_path": "caveats[0].text",
+      "nearest_source_span": "Since most existing multi-task scheduling algorithms are based on greedy strategies and lack the ability to handle run- time constraints of stations, it is difficult to make a compre- hensive comparison between the performance of FESP-B and these algorithms.",
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "proposed_value": "Most existing multi-task scheduling algorithms are based on greedy strategies and lack the ability to handle runtime constraints of stations, making comprehensive comparison with FESP-B difficult.",
+      "protocol_index": 4,
+      "rejection_reason": "span_not_in_source",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Table 1 reveals a significant imbalance in the workload between the two mobile robots in both the sequential-experiment (Fig. 8a) and concurrent-experiment (Fig. 8b) scenarios... This indicates that, for these specific experiments, the demand for sample transfers at any given time was relatively low, potentially underutilizing the multi-robot system's capabilities.",
+      "diagnostic": null,
+      "entity_type": "caveats",
+      "field_path": "caveats[1].text",
+      "nearest_source_span": "This indicates that, for these specic experiments, the demand for sample transfers at any given time was relatively low, potentially underutilizing the multi-robot system's capabilities.",
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "proposed_value": "Significant imbalance in workload between the two mobile robots was observed in both sequential-experiment and concurrent-experiment scenarios, suggesting underutilization of the multi-robot system for experiments with relatively low sample transfer demand.",
+      "protocol_index": 4,
+      "rejection_reason": "span_not_in_source",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    }
+  ],
+  "inference_config": {
+    "max_tokens": 14000,
+    "temperature": 0.0
+  },
+  "mapping_version": "evidence-field-mapper-v0.2",
+  "model_id": "us.anthropic.claude-sonnet-4-6",
+  "paper_id": "DOI:10.1039_d4dd00313f",
+  "prompt_version": "oer-protocol-teacher-v0.2",
+  "protocols": [
+    {
+      "caveats": [],
+      "characterization": [],
+      "evidence": [
+        {
+          "char_end": 1004,
+          "char_start": 839,
+          "chunk_id": "mdchk_3f47eab4f58e5788",
+          "document_char_end": 36306,
+          "document_char_start": 36141,
+          "evidence_id": "ev_b42b0a28144b7043",
+          "paper_id": "DOI:10.1039_d4dd00313f",
+          "quote": "These experiments were scheduled in our autonomous chemistry laboratory, equipped with two mobile robots, one benchtop robot, and 18 automated experimental stations.",
+          "source_sha256": "e97aba5ccbd1eecf0a48a72fa1baaaa97f359a702d25564c3666c0280dc5df3d"
+        }
+      ],
+      "evidence_scope": "secondary_report",
+      "instruments": [
+        {
+          "entity_id": "inst_643cf473be3a2d3b",
+          "evidence_ids": [
+            "ev_b42b0a28144b7043"
+          ],
+          "manufacturer": null,
+          "model": null,
+          "name": "autonomous chemistry laboratory",
+          "settings": {}
+        }
+      ],
+      "materials": [],
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "protocol_id": "protocol_f41f744f31cc4bfd",
+      "protocol_name": "Autonomous Multi-Experiment Scheduling: g-C3N4 Synthesis and Photocatalytic Characterization",
+      "protocol_type": "synthesis and characterization",
+      "relations": [],
+      "results": [],
+      "software": [],
+      "source_chunk_ids": [
+        "mdchk_3f47eab4f58e5788"
+      ],
+      "source_paper_tier": "oer_case_study",
+      "steps": []
+    },
+    {
+      "caveats": [],
+      "characterization": [],
+      "evidence": [
+        {
+          "char_end": 234,
+          "char_start": 87,
+          "chunk_id": "mdchk_2a0a355620132545",
+          "document_char_end": 41940,
+          "document_char_start": 41793,
+          "evidence_id": "ev_3e22065928bf3d0e",
+          "paper_id": "DOI:10.1039_d4dd00313f",
+          "quote": "the 14 samples for experiment 2 were batch-processed in the two magnetic stirring stations, each processing 6 and 8 samples, respectively (Fig. 8c)",
+          "source_sha256": "f1229437015a113056aa11099b93cfbd8ab28231439986897b507d99b506314c"
+        },
+        {
+          "char_end": 107,
+          "char_start": 11,
+          "chunk_id": "mdchk_3f47eab4f58e5788",
+          "document_char_end": 35409,
+          "document_char_start": 35313,
+          "evidence_id": "ev_8c6ed24a11253ce8",
+          "paper_id": "DOI:10.1039_d4dd00313f",
+          "quote": "The overpotential for each synthesized MO-HEC was measured, with results given in ESI, Fig. S4.†",
+          "source_sha256": "e97aba5ccbd1eecf0a48a72fa1baaaa97f359a702d25564c3666c0280dc5df3d"
+        },
+        {
+          "char_end": 1004,
+          "char_start": 839,
+          "chunk_id": "mdchk_3f47eab4f58e5788",
+          "document_char_end": 36306,
+          "document_char_start": 36141,
+          "evidence_id": "ev_b42b0a28144b7043",
+          "paper_id": "DOI:10.1039_d4dd00313f",
+          "quote": "These experiments were scheduled in our autonomous chemistry laboratory, equipped with two mobile robots, one benchtop robot, and 18 automated experimental stations.",
+          "source_sha256": "e97aba5ccbd1eecf0a48a72fa1baaaa97f359a702d25564c3666c0280dc5df3d"
+        }
+      ],
+      "evidence_scope": "secondary_report",
+      "instruments": [
+        {
+          "entity_id": "inst_fcf0a2b415d006f0",
+          "evidence_ids": [
+            "ev_3e22065928bf3d0e"
+          ],
+          "manufacturer": null,
+          "model": null,
+          "name": "magnetic stirring stations",
+          "settings": {}
+        },
+        {
+          "entity_id": "inst_b4715f0f793c5ec1",
+          "evidence_ids": [
+            "ev_b42b0a28144b7043"
+          ],
+          "manufacturer": null,
+          "model": null,
+          "name": "autonomous chemistry laboratory",
+          "settings": {}
+        }
+      ],
+      "materials": [],
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "protocol_id": "protocol_16ffd3f6967aef02",
+      "protocol_name": "Autonomous Multi-Experiment Scheduling: MO-HEC Synthesis for Electrocatalytic Oxygen Evolution",
+      "protocol_type": "synthesis and electrochemical characterization",
+      "relations": [],
+      "results": [],
+      "software": [],
+      "source_chunk_ids": [
+        "mdchk_2a0a355620132545",
+        "mdchk_3f47eab4f58e5788"
+      ],
+      "source_paper_tier": "oer_case_study",
+      "steps": [
+        {
+          "action": "the 14 samples for experiment 2 were batch-processed in the two magnetic stirring stations, each processing 6 and 8 samples, respectively (Fig. 8c)",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_3e22065928bf3d0e"
+          ],
+          "notes": null,
+          "order": 1,
+          "step_id": "step_334e58c21c56ff80"
+        },
+        {
+          "action": "The overpotential for each synthesized MO-HEC was measured, with results given in ESI, Fig. S4.†",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_8c6ed24a11253ce8"
+          ],
+          "notes": "Results given in ESI, Fig. S4",
+          "order": 2,
+          "step_id": "step_3a5e0900308ae2f1"
+        }
+      ]
+    },
+    {
+      "caveats": [],
+      "characterization": [
+        {
+          "entity_id": "char_49e11557033a5f1c",
+          "evidence_ids": [
+            "ev_2c39138f4b96d135"
+          ],
+          "output": null,
+          "settings": {},
+          "technique": "electrocatalytic urea oxidation"
+        }
+      ],
+      "evidence": [
+        {
+          "char_end": 292,
+          "char_start": 133,
+          "chunk_id": "mdchk_3f47eab4f58e5788",
+          "document_char_end": 35594,
+          "document_char_start": 35435,
+          "evidence_id": "ev_3ad35757f81b2500",
+          "paper_id": "DOI:10.1039_d4dd00313f",
+          "quote": "we investigated the performance of four binary layered double hydroxides (LDHs) with varying Ni\n2+ / Fe 2+ ratios, exploring their potential for urea oxidation",
+          "source_sha256": "e97aba5ccbd1eecf0a48a72fa1baaaa97f359a702d25564c3666c0280dc5df3d"
+        },
+        {
+          "char_end": 430,
+          "char_start": 294,
+          "chunk_id": "mdchk_3f47eab4f58e5788",
+          "document_char_end": 35732,
+          "document_char_start": 35596,
+          "evidence_id": "ev_2c39138f4b96d135",
+          "paper_id": "DOI:10.1039_d4dd00313f",
+          "quote": "The X- ray diffraction patterns and electrocatalytic urea oxidation properties of the LDHs were measured, as shown in ESI, Fig. S5– S9.†",
+          "source_sha256": "e97aba5ccbd1eecf0a48a72fa1baaaa97f359a702d25564c3666c0280dc5df3d"
+        },
+        {
+          "char_end": 1004,
+          "char_start": 839,
+          "chunk_id": "mdchk_3f47eab4f58e5788",
+          "document_char_end": 36306,
+          "document_char_start": 36141,
+          "evidence_id": "ev_b42b0a28144b7043",
+          "paper_id": "DOI:10.1039_d4dd00313f",
+          "quote": "These experiments were scheduled in our autonomous chemistry laboratory, equipped with two mobile robots, one benchtop robot, and 18 automated experimental stations.",
+          "source_sha256": "e97aba5ccbd1eecf0a48a72fa1baaaa97f359a702d25564c3666c0280dc5df3d"
+        }
+      ],
+      "evidence_scope": "secondary_report",
+      "instruments": [
+        {
+          "entity_id": "inst_b4715f0f793c5ec1",
+          "evidence_ids": [
+            "ev_b42b0a28144b7043"
+          ],
+          "manufacturer": null,
+          "model": null,
+          "name": "autonomous chemistry laboratory",
+          "settings": {}
+        }
+      ],
+      "materials": [
+        {
+          "amount": null,
+          "entity_id": "mat_6df75bca9465e5cf",
+          "evidence_ids": [
+            "ev_3ad35757f81b2500"
+          ],
+          "name": "binary layered double hydroxides (LDHs)",
+          "pretreatment": null,
+          "purity": null,
+          "role": null,
+          "supplier": null
+        }
+      ],
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "protocol_id": "protocol_3a5e0900308ae2f1",
+      "protocol_name": "Autonomous Multi-Experiment Scheduling: LDH Synthesis for Urea Oxidation",
+      "protocol_type": "synthesis and electrochemical characterization",
+      "relations": [],
+      "results": [],
+      "software": [],
+      "source_chunk_ids": [
+        "mdchk_3f47eab4f58e5788"
+      ],
+      "source_paper_tier": "oer_case_study",
+      "steps": [
+        {
+          "action": "we investigated the performance of four binary layered double hydroxides (LDHs) with varying Ni\n2+ / Fe 2+ ratios, exploring their potential for urea oxidation",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_3ad35757f81b2500"
+          ],
+          "notes": null,
+          "order": 1,
+          "step_id": "step_f41f744f31cc4bfd"
+        },
+        {
+          "action": "The X- ray diffraction patterns and electrocatalytic urea oxidation properties of the LDHs were measured, as shown in ESI, Fig. S5– S9.†",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_2c39138f4b96d135"
+          ],
+          "notes": null,
+          "order": 2,
+          "step_id": "step_e61b6431557d9dcd"
+        },
+        {
+          "action": "The X- ray diffraction patterns and electrocatalytic urea oxidation properties of the LDHs were measured, as shown in ESI, Fig. S5– S9.†",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_2c39138f4b96d135"
+          ],
+          "notes": null,
+          "order": 3,
+          "step_id": "step_3a5e0900308ae2f1"
+        }
+      ]
+    },
+    {
+      "caveats": [],
+      "characterization": [],
+      "evidence": [
+        {
+          "char_end": 838,
+          "char_start": 742,
+          "chunk_id": "mdchk_3f47eab4f58e5788",
+          "document_char_end": 36140,
+          "document_char_start": 36044,
+          "evidence_id": "ev_176fad793cd88e25",
+          "paper_id": "DOI:10.1039_d4dd00313f",
+          "quote": "with photoluminescence spectra measured for each BBR solution, as illustrated in ESI, Fig. S10.†",
+          "source_sha256": "e97aba5ccbd1eecf0a48a72fa1baaaa97f359a702d25564c3666c0280dc5df3d"
+        },
+        {
+          "char_end": 1004,
+          "char_start": 839,
+          "chunk_id": "mdchk_3f47eab4f58e5788",
+          "document_char_end": 36306,
+          "document_char_start": 36141,
+          "evidence_id": "ev_b42b0a28144b7043",
+          "paper_id": "DOI:10.1039_d4dd00313f",
+          "quote": "These experiments were scheduled in our autonomous chemistry laboratory, equipped with two mobile robots, one benchtop robot, and 18 automated experimental stations.",
+          "source_sha256": "e97aba5ccbd1eecf0a48a72fa1baaaa97f359a702d25564c3666c0280dc5df3d"
+        }
+      ],
+      "evidence_scope": "secondary_report",
+      "instruments": [
+        {
+          "entity_id": "inst_643cf473be3a2d3b",
+          "evidence_ids": [
+            "ev_b42b0a28144b7043"
+          ],
+          "manufacturer": null,
+          "model": null,
+          "name": "autonomous chemistry laboratory",
+          "settings": {}
+        }
+      ],
+      "materials": [],
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "protocol_id": "protocol_139cfa3d36410117",
+      "protocol_name": "Autonomous Multi-Experiment Scheduling: AIE Properties of Berberine Chloride",
+      "protocol_type": "photoluminescence characterization",
+      "relations": [],
+      "results": [],
+      "software": [],
+      "source_chunk_ids": [
+        "mdchk_3f47eab4f58e5788"
+      ],
+      "source_paper_tier": "oer_case_study",
+      "steps": [
+        {
+          "action": "with photoluminescence spectra measured for each BBR solution, as illustrated in ESI, Fig. S10.†",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_176fad793cd88e25"
+          ],
+          "notes": null,
+          "order": 1,
+          "step_id": "step_e61b6431557d9dcd"
+        }
+      ]
+    },
+    {
+      "caveats": [],
+      "characterization": [],
+      "evidence": [
+        {
+          "char_end": 153,
+          "char_start": 0,
+          "chunk_id": "mdchk_50873154d051391d",
+          "document_char_end": 21302,
+          "document_char_start": 21149,
+          "evidence_id": "ev_ef7eee783674ed92",
+          "paper_id": "DOI:10.1039_d4dd00313f",
+          "quote": "conducting all tasks concurrently is optimized to 38 minutes. In comparison, performing the same three tasks sequentially requires a total of 84 minutes.",
+          "source_sha256": "54226240a71ec40023f3222c11be3fcbebf9f64b93a64c6ff9c84abd57ddb082"
+        },
+        {
+          "char_end": 864,
+          "char_start": 707,
+          "chunk_id": "mdchk_50873154d051391d",
+          "document_char_end": 22013,
+          "document_char_start": 21856,
+          "evidence_id": "ev_f21bd017cc8f9e51",
+          "paper_id": "DOI:10.1039_d4dd00313f",
+          "quote": "FESP-B's global optimization through its objective function, reducing the experimental time by 45% compared to the local optimization of the greedy algorithm",
+          "source_sha256": "54226240a71ec40023f3222c11be3fcbebf9f64b93a64c6ff9c84abd57ddb082"
+        },
+        {
+          "char_end": 287,
+          "char_start": 0,
+          "chunk_id": "mdchk_c102108fbf8efb91",
+          "document_char_end": 13906,
+          "document_char_start": 13619,
+          "evidence_id": "ev_d3a12086be72d1c5",
+          "paper_id": "DOI:10.1039_d4dd00313f",
+          "quote": "The initial sequence derived by analysing the task sequence and laboratory resources: tasks 1 and 2 have five steps each, while task 3 has four steps. Identical parameters for the first steps allow tasks to be performed on either WS₁ or WS₂, highlighting the role of redundant resources.",
+          "source_sha256": "31aac46878053800eeb14a19cf3574f96cf6aae0e7ea9d0974340be1742deed7"
+        },
+        {
+          "char_end": 871,
+          "char_start": 827,
+          "chunk_id": "mdchk_c102108fbf8efb91",
+          "document_char_end": 14490,
+          "document_char_start": 14446,
+          "evidence_id": "ev_0532c04ba37b7740",
+          "paper_id": "DOI:10.1039_d4dd00313f",
+          "quote": "Solving the FESP-B problem with a constraint",
+          "source_sha256": "31aac46878053800eeb14a19cf3574f96cf6aae0e7ea9d0974340be1742deed7"
+        }
+      ],
+      "evidence_scope": "secondary_report",
+      "instruments": [],
+      "materials": [],
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "protocol_id": "protocol_f961b77e08b3489e",
+      "protocol_name": "FESP-B Multi-Task Scheduling Algorithm for Autonomous Chemistry Laboratory",
+      "protocol_type": "computational scheduling",
+      "relations": [],
+      "results": [],
+      "software": [
+        {
+          "entity_id": "soft_1dbbb00a7af8841e",
+          "evidence_ids": [
+            "ev_f21bd017cc8f9e51"
+          ],
+          "name": "FESP-B",
+          "settings": {
+            "optimization": "global"
+          },
+          "version": null
+        }
+      ],
+      "source_chunk_ids": [
+        "mdchk_50873154d051391d",
+        "mdchk_c102108fbf8efb91"
+      ],
+      "source_paper_tier": "oer_case_study",
+      "steps": [
+        {
+          "action": "The initial sequence derived by analysing the task sequence and laboratory resources: tasks 1 and 2 have five steps each, while task 3 has four steps. Identical parameters for the first steps allow tasks to be performed on either WS₁ or WS₂, highlighting the role of redundant resources.",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_d3a12086be72d1c5"
+          ],
+          "notes": null,
+          "order": 1,
+          "step_id": "step_db501323c04ae48f"
+        },
+        {
+          "action": "Solving the FESP-B problem with a constraint",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_0532c04ba37b7740"
+          ],
+          "notes": null,
+          "order": 2,
+          "step_id": "step_c3372df05e31f4ba"
+        },
+        {
+          "action": "conducting all tasks concurrently is optimized to 38 minutes. In comparison, performing the same three tasks sequentially requires a total of 84 minutes.",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_ef7eee783674ed92"
+          ],
+          "notes": null,
+          "order": 3,
+          "step_id": "step_105c47cc46d91d3e"
+        }
+      ]
+    }
+  ],
+  "region": "us-east-1",
+  "schema_version": "bedrock-teacher-paper-cache-v0.2",
+  "teacher_response": {
+    "diagnostic": null,
+    "invocation_count": 1,
+    "metrics": {
+      "latencyMs": 58173
+    },
+    "raw_text": "```json\n{\n  \"protocols\": [\n    {\n      \"source_chunk_ids\": [\"mdchk_3f47eab4f58e5788\", \"mdchk_1ebc77b7cd83e336\"],\n      \"protocol_name\": \"Autonomous Multi-Experiment Scheduling: g-C3N4 Synthesis and Photocatalytic Characterization\",\n      \"protocol_type\": \"synthesis and characterization\",\n      \"materials\": [\n        {\n          \"source_chunk_id\": \"mdchk_1ebc77b7cd83e336\",\n          \"name\": \"g-C3N4\",\n          \"role\": \"product\",\n          \"amount\": null,\n          \"purity\": null,\n          \"supplier\": null,\n          \"pretreatment\": null,\n          \"evidence_quote\": \"resulting in three tasks for synthesizing g-C₃N₄ samples. This experiment also included characterizing the g-C₃N₄ samples and assessing their photocatalytic hydrogen production performance\"\n        }\n      ],\n      \"instruments\": [\n        {\n          \"source_chunk_id\": \"mdchk_3f47eab4f58e5788\",\n          \"name\": \"autonomous chemistry laboratory\",\n          \"model\": null,\n          \"manufacturer\": null,\n          \"settings\": {\"mobile_robots\": 2, \"benchtop_robots\": 1, \"automated_experimental_stations\": 18},\n          \"evidence_quote\": \"These experiments were scheduled in our autonomous chemistry laboratory, equipped with two mobile robots, one benchtop robot, and 18 automated experimental stations.\"\n        }\n      ],\n      \"software\": [\n        {\n          \"source_chunk_id\": \"mdchk_3f47eab4f58e5788\",\n          \"name\": \"interactive task management GUI\",\n          \"version\": null,\n          \"settings\": {},\n          \"evidence_quote\": \"The workows for these experiments were input and visualized in the interactive task management GUI, as depicted in Fig. 7.\"\n        }\n      ],\n      \"steps\": [\n        {\n          \"source_chunk_id\": \"mdchk_1ebc77b7cd83e336\",\n          \"order\": 1,\n          \"action\": \"Synthesize g-C3N4 samples\",\n          \"conditions\": [\"approximately 10 hours\"],\n          \"notes\": \"Results in three tasks\",\n          \"evidence_quote\": \"approximately 10 hours, resulting in three tasks for synthesizing g-C₃N₄ samples.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_1ebc77b7cd83e336\",\n          \"order\": 2,\n          \"action\": \"Characterize g-C3N4 samples and assess photocatalytic hydrogen production performance\",\n          \"conditions\": [],\n          \"notes\": \"Results shown in ESI, Fig. S3\",\n          \"evidence_quote\": \"This experiment also included characterizing the g-C₃N₄ samples and assessing their photocatalytic hydrogen production performance, as shown in ESI, Fig. S3.†\"\n        }\n      ],\n      \"characterization\": [\n        {\n          \"source_chunk_id\": \"mdchk_1ebc77b7cd83e336\",\n          \"technique\": \"photocatalytic hydrogen production performance assessment\",\n          \"settings\": {},\n          \"output\": \"ESI, Fig. S3\",\n          \"evidence_quote\": \"assessing their photocatalytic hydrogen production performance, as shown in ESI, Fig. S3.†\"\n        }\n      ],\n      \"results\": [],\n      \"caveats\": []\n    },\n    {\n      \"source_chunk_ids\": [\"mdchk_3f47eab4f58e5788\", \"mdchk_1ebc77b7cd83e336\", \"mdchk_2a0a355620132545\"],\n      \"protocol_name\": \"Autonomous Multi-Experiment Scheduling: MO-HEC Synthesis for Electrocatalytic Oxygen Evolution\",\n      \"protocol_type\": \"synthesis and electrochemical characterization\",\n      \"materials\": [\n        {\n          \"source_chunk_id\": \"mdchk_1ebc77b7cd83e336\",\n          \"name\": \"quinary metal–organic high-entropy catalysts (MO-HECs)\",\n          \"role\": \"product\",\n          \"amount\": \"14 samples\",\n          \"purity\": null,\n          \"supplier\": null,\n          \"pretreatment\": null,\n          \"evidence_quote\": \"Fourteen MO-HECs were synthesized by adjusting the ratios of metal ions—Co, Cu, Fe, Mn, and Ni—while maintaining a constant total metal feedstock of\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_3f47eab4f58e5788\",\n          \"name\": \"total metal feedstock\",\n          \"role\": \"reagent\",\n          \"amount\": \"0.434 mol\",\n          \"purity\": null,\n          \"supplier\": null,\n          \"pretreatment\": null,\n          \"evidence_quote\": \"0.434 mol. The overpotential for each synthesized MO-HEC was measured\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_1ebc77b7cd83e336\",\n          \"name\": \"Co, Cu, Fe, Mn, Ni metal ions\",\n          \"role\": \"reagent\",\n          \"amount\": null,\n          \"purity\": null,\n          \"supplier\": null,\n          \"pretreatment\": null,\n          \"evidence_quote\": \"adjusting the ratios of metal ions—Co, Cu, Fe, Mn, and Ni\"\n        }\n      ],\n      \"instruments\": [\n        {\n          \"source_chunk_id\": \"mdchk_2a0a355620132545\",\n          \"name\": \"magnetic stirring stations\",\n          \"model\": null,\n          \"manufacturer\": null,\n          \"settings\": {\"capacity_per_station\": 10, \"samples_processed\": [6, 8]},\n          \"evidence_quote\": \"the 14 samples for experiment 2 were batch-processed in the two magnetic stirring stations, each processing 6 and 8 samples, respectively (Fig. 8c)\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_3f47eab4f58e5788\",\n          \"name\": \"autonomous chemistry laboratory\",\n          \"model\": null,\n          \"manufacturer\": null,\n          \"settings\": {\"mobile_robots\": 2, \"benchtop_robots\": 1, \"automated_experimental_stations\": 18},\n          \"evidence_quote\": \"These experiments were scheduled in our autonomous chemistry laboratory, equipped with two mobile robots, one benchtop robot, and 18 automated experimental stations.\"\n        }\n      ],\n      \"software\": [],\n      \"steps\": [\n        {\n          \"source_chunk_id\": \"mdchk_1ebc77b7cd83e336\",\n          \"order\": 1,\n          \"action\": \"Synthesize 14 MO-HECs by adjusting ratios of Co, Cu, Fe, Mn, and Ni metal ions with constant total metal feedstock of 0.434 mol\",\n          \"conditions\": [],\n          \"notes\": null,\n          \"evidence_quote\": \"Fourteen MO-HECs were synthesized by adjusting the ratios of metal ions—Co, Cu, Fe, Mn, and Ni—while maintaining a constant total metal feedstock of\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_2a0a355620132545\",\n          \"order\": 2,\n          \"action\": \"Batch-process 14 samples in two magnetic stirring stations\",\n          \"conditions\": [\"6 samples in one station\", \"8 samples in the other station\"],\n          \"notes\": \"Stations accommodate up to 10 samples each\",\n          \"evidence_quote\": \"the 14 samples for experiment 2 were batch-processed in the two magnetic stirring stations, each processing 6 and 8 samples, respectively (Fig. 8c)\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_3f47eab4f58e5788\",\n          \"order\": 3,\n          \"action\": \"Measure overpotential for each synthesized MO-HEC\",\n          \"conditions\": [],\n          \"notes\": \"Results given in ESI, Fig. S4\",\n          \"evidence_quote\": \"The overpotential for each synthesized MO-HEC was measured, with results given in ESI, Fig. S4.†\"\n        }\n      ],\n      \"characterization\": [\n        {\n          \"source_chunk_id\": \"mdchk_3f47eab4f58e5788\",\n          \"technique\": \"overpotential measurement (electrocatalytic oxygen evolution)\",\n          \"settings\": {},\n          \"output\": \"ESI, Fig. S4\",\n          \"evidence_quote\": \"The overpotential for each synthesized MO-HEC was measured, with results given in ESI, Fig. S4.†\"\n        }\n      ],\n      \"results\": [],\n      \"caveats\": []\n    },\n    {\n      \"source_chunk_ids\": [\"mdchk_3f47eab4f58e5788\"],\n      \"protocol_name\": \"Autonomous Multi-Experiment Scheduling: LDH Synthesis for Urea Oxidation\",\n      \"protocol_type\": \"synthesis and electrochemical characterization\",\n      \"materials\": [\n        {\n          \"source_chunk_id\": \"mdchk_3f47eab4f58e5788\",\n          \"name\": \"binary layered double hydroxides (LDHs)\",\n          \"role\": \"product\",\n          \"amount\": \"four samples\",\n          \"purity\": null,\n          \"supplier\": null,\n          \"pretreatment\": null,\n          \"evidence_quote\": \"we investigated the performance of four binary layered double hydroxides (LDHs) with varying Ni2+ / Fe2+ ratios, exploring their potential for urea oxidation\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_3f47eab4f58e5788\",\n          \"name\": \"Ni2+ / Fe2+\",\n          \"role\": \"reagent\",\n          \"amount\": null,\n          \"purity\": null,\n          \"supplier\": null,\n          \"pretreatment\": null,\n          \"evidence_quote\": \"four binary layered double hydroxides (LDHs) with varying Ni2+ / Fe2+ ratios\"\n        }\n      ],\n      \"instruments\": [\n        {\n          \"source_chunk_id\": \"mdchk_2a0a355620132545\",\n          \"name\": \"drying station\",\n          \"model\": null,\n          \"manufacturer\": null,\n          \"settings\": {},\n          \"evidence_quote\": \"the drying station used for experiment 3 did not conflict with the station needs of other experiments\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_3f47eab4f58e5788\",\n          \"name\": \"autonomous chemistry laboratory\",\n          \"model\": null,\n          \"manufacturer\": null,\n          \"settings\": {\"mobile_robots\": 2, \"benchtop_robots\": 1, \"automated_experimental_stations\": 18},\n          \"evidence_quote\": \"These experiments were scheduled in our autonomous chemistry laboratory, equipped with two mobile robots, one benchtop robot, and 18 automated experimental stations.\"\n        }\n      ],\n      \"software\": [],\n      \"steps\": [\n        {\n          \"source_chunk_id\": \"mdchk_3f47eab4f58e5788\",\n          \"order\": 1,\n          \"action\": \"Synthesize four binary LDHs with varying Ni2+/Fe2+ ratios\",\n          \"conditions\": [],\n          \"notes\": null,\n          \"evidence_quote\": \"we investigated the performance of four binary layered double hydroxides (LDHs) with varying Ni2+ / Fe2+ ratios, exploring their potential for urea oxidation\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_3f47eab4f58e5788\",\n          \"order\": 2,\n          \"action\": \"Measure X-ray diffraction patterns of LDHs\",\n          \"conditions\": [],\n          \"notes\": \"Results shown in ESI, Fig. S5–S9\",\n          \"evidence_quote\": \"The X-ray diffraction patterns and electrocatalytic urea oxidation properties of the LDHs were measured, as shown in ESI, Fig. S5–S9.†\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_3f47eab4f58e5788\",\n          \"order\": 3,\n          \"action\": \"Measure electrocatalytic urea oxidation properties of LDHs\",\n          \"conditions\": [],\n          \"notes\": \"Results shown in ESI, Fig. S5–S9\",\n          \"evidence_quote\": \"The X-ray diffraction patterns and electrocatalytic urea oxidation properties of the LDHs were measured, as shown in ESI, Fig. S5–S9.†\"\n        }\n      ],\n      \"characterization\": [\n        {\n          \"source_chunk_id\": \"mdchk_3f47eab4f58e5788\",\n          \"technique\": \"X-ray diffraction (XRD)\",\n          \"settings\": {},\n          \"output\": \"ESI, Fig. S5–S9\",\n          \"evidence_quote\": \"The X-ray diffraction patterns and electrocatalytic urea oxidation properties of the LDHs were measured, as shown in ESI, Fig. S5–S9.†\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_3f47eab4f58e5788\",\n          \"technique\": \"electrocatalytic urea oxidation\",\n          \"settings\": {},\n          \"output\": \"ESI, Fig. S5–S9\",\n          \"evidence_quote\": \"The X-ray diffraction patterns and electrocatalytic urea oxidation properties of the LDHs were measured, as shown in ESI, Fig. S5–S9.†\"\n        }\n      ],\n      \"results\": [],\n      \"caveats\": []\n    },\n    {\n      \"source_chunk_ids\": [\"mdchk_3f47eab4f58e5788\"],\n      \"protocol_name\": \"Autonomous Multi-Experiment Scheduling: AIE Properties of Berberine Chloride\",\n      \"protocol_type\": \"photoluminescence characterization\",\n      \"materials\": [\n        {\n          \"source_chunk_id\": \"mdchk_3f47eab4f58e5788\",\n          \"name\": \"berberine chloride (BBR)\",\n          \"role\": \"analyte\",\n          \"amount\": null,\n          \"purity\": null,\n          \"supplier\": null,\n          \"pretreatment\": null,\n          \"evidence_quote\": \"explored the aggregation-induced emission (AIE) properties of berberine chloride (BBR), assessing AIE luminescence of BBR solutions at concentrations of 5, 10, 15, 20, and 25 mM\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_3f47eab4f58e5788\",\n          \"name\": \"tetrahydrofuran\",\n          \"role\": \"solvent\",\n          \"amount\": null,\n          \"purity\": null,\n          \"supplier\": null,\n          \"pretreatment\": null,\n          \"evidence_quote\": \"within solvents containing tetrahydrofuran volume fractions of 30%, 60%, and 90%\"\n        }\n      ],\n      \"instruments\": [\n        {\n          \"source_chunk_id\": \"mdchk_3f47eab4f58e5788\",\n          \"name\": \"autonomous chemistry laboratory\",\n          \"model\": null,\n          \"manufacturer\": null,\n          \"settings\": {\"mobile_robots\": 2, \"benchtop_robots\": 1, \"automated_experimental_stations\": 18},\n          \"evidence_quote\": \"These experiments were scheduled in our autonomous chemistry laboratory, equipped with two mobile robots, one benchtop robot, and 18 automated experimental stations.\"\n        }\n      ],\n      \"software\": [],\n      \"steps\": [\n        {\n          \"source_chunk_id\": \"mdchk_3f47eab4f58e5788\",\n          \"order\": 1,\n          \"action\": \"Prepare BBR solutions at concentrations of 5, 10, 15, 20, and 25 mM in solvents with tetrahydrofuran volume fractions of 30%, 60%, and 90%\",\n          \"conditions\": [\"concentrations: 5, 10, 15, 20, 25 mM\", \"THF volume fractions: 30%, 60%, 90%\"],\n          \"notes\": \"Results in 15 tasks (5 concentrations × 3 THF fractions)\",\n          \"evidence_quote\": \"assessing AIE luminescence of BBR solutions at concentrations of 5, 10, 15, 20, and 25 mM within solvents containing tetrahydrofuran volume fractions of 30%, 60%, and 90%. This resulted in 15 tasks\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_3f47eab4f58e5788\",\n          \"order\": 2,\n          \"action\": \"Measure photoluminescence spectra for each BBR solution\",\n          \"conditions\": [],\n          \"notes\": \"Results shown in ESI, Fig. S10\",\n          \"evidence_quote\": \"with photoluminescence spectra measured for each BBR solution, as illustrated in ESI, Fig. S10.†\"\n        }\n      ],\n      \"characterization\": [\n        {\n          \"source_chunk_id\": \"mdchk_3f47eab4f58e5788\",\n          \"technique\": \"photoluminescence spectroscopy\",\n          \"settings\": {\"concentrations_mM\": [5, 10, 15, 20, 25], \"THF_volume_fractions_percent\": [30, 60, 90]},\n          \"output\": \"ESI, Fig. S10\",\n          \"evidence_quote\": \"with photoluminescence spectra measured for each BBR solution, as illustrated in ESI, Fig. S10.†\"\n        }\n      ],\n      \"results\": [\n        {\n          \"source_chunk_id\": \"mdchk_3f47eab4f58e5788\",\n          \"metric\": \"number of tasks\",\n          \"raw_value\": \"15\",\n          \"context\": \"BBR AIE experiment with 5 concentrations × 3 THF fractions\",\n          \"evidence_quote\": \"This resulted in 15 tasks, with photoluminescence spectra measured for each BBR solution\"\n        }\n      ],\n      \"caveats\": []\n    },\n    {\n      \"source_chunk_ids\": [\"mdchk_50873154d051391d\", \"mdchk_c102108fbf8efb91\", \"mdchk_c077d5906b4ff93c\", \"mdchk_2a0a355620132545\"],\n      \"protocol_name\": \"FESP-B Multi-Task Scheduling Algorithm for Autonomous Chemistry Laboratory\",\n      \"protocol_type\": \"computational scheduling\",\n      \"materials\": [],\n      \"instruments\": [\n        {\n          \"source_chunk_id\": \"mdchk_c077d5906b4ff93c\",\n          \"name\": \"laboratory computing platform\",\n          \"model\": \"i9-12900H\",\n          \"manufacturer\": null,\n          \"settings\": {},\n          \"evidence_quote\": \"On the laboratory computing platform (i9-12900H), scheduling the mixed execution of four experiments takes 20 seconds, while rescheduling after the insertion of experiment 5 takes only 2 seconds.\"\n        }\n      ],\n      \"software\": [\n        {\n          \"source_chunk_id\": \"mdchk_50873154d051391d\",\n          \"name\": \"FESP-B\",\n          \"version\": null,\n          \"settings\": {\"optimization\": \"global\", \"objective\": \"minimize total experimental time\"},\n          \"evidence_quote\": \"FESP-B's global optimization through its objective function, reducing the experimental time by 45% compared to the local optimization of the greedy algorithm\"\n        }\n      ],\n      \"steps\": [\n        {\n          \"source_chunk_id\": \"mdchk_c102108fbf8efb91\",\n          \"order\": 1,\n          \"action\": \"Analyse task sequence and laboratory resources to derive initial sequence\",\n          \"conditions\": [],\n          \"notes\": \"Tasks 1 and 2 have five steps each; task 3 has four steps. Identical parameters for first steps allow tasks on either WS1 or WS2 (redundant resources). Second steps only on WS3 with capacity 2. Fifth step of tasks 1 and 2 must be done on WS6 requiring specific number of samples (2 or 4).\",\n          \"evidence_quote\": \"The initial sequence derived by analysing the task sequence and laboratory resources: tasks 1 and 2 have five steps each, while task 3 has four steps. Identical parameters for the first steps allow tasks to be performed on either WS₁ or WS₂, highlighting the role of redundant resources.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_c102108fbf8efb91\",\n          \"order\": 2,\n          \"action\": \"Solve the FESP-B problem with a constraint programming approach\",\n          \"conditions\": [],\n          \"notes\": \"Accounts for station capacity, processing time, experimental conditions, and runtime constraints\",\n          \"evidence_quote\": \"Solving the FESP-B problem with a constraint\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_50873154d051391d\",\n          \"order\": 3,\n          \"action\": \"Execute all tasks concurrently according to optimized schedule\",\n          \"conditions\": [\"optimized total time: 38 minutes for three concurrent tasks\"],\n          \"notes\": \"Sequential execution of same tasks requires 84 minutes\",\n          \"evidence_quote\": \"conducting all tasks concurrently is optimized to 38 minutes. In comparison, performing the same three tasks sequentially requires a total of 84 minutes.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_c077d5906b4ff93c\",\n          \"order\": 4,\n          \"action\": \"Reschedule tasks dynamically after insertion of new experiment\",\n          \"conditions\": [\"completed tasks excluded from optimization\"],\n          \"notes\": \"Rescheduling after insertion of experiment 5 takes only 2 seconds\",\n          \"evidence_quote\": \"During rescheduling, completed tasks are excluded from optimization, which significantly reduces the number of variables and the search space. On the laboratory computing platform (i9-12900H), scheduling the mixed execution of four experiments takes 20 seconds, while rescheduling after the insertion of experiment 5 takes only 2 seconds.\"\n        }\n      ],\n      \"characterization\": [],\n      \"results\": [\n        {\n          \"source_chunk_id\": \"mdchk_50873154d051391d\",\n          \"metric\": \"optimized concurrent execution time (3 tasks)\",\n          \"raw_value\": \"38 minutes\",\n          \"context\": \"FESP-B optimized schedule for three concurrent tasks\",\n          \"evidence_quote\": \"conducting all tasks concurrently is optimized to 38 minutes.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_50873154d051391d\",\n          \"metric\": \"sequential execution time (3 tasks)\",\n          \"raw_value\": \"84 minutes\",\n          \"context\": \"Same three tasks performed sequentially\",\n          \"evidence_quote\": \"performing the same three tasks sequentially requires a total of 84 minutes.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_50873154d051391d\",\n          \"metric\": \"reduction in experimental time vs greedy algorithm\",\n          \"raw_value\": \"45%\",\n          \"context\": \"Simple example with no complex synchronization requirements\",\n          \"evidence_quote\": \"reducing the experimental time by 45% compared to the local optimization of the greedy algorithm\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_c077d5906b4ff93c\",\n          \"metric\": \"scheduling time for mixed execution of four experiments\",\n          \"raw_value\": \"20 seconds\",\n          \"context\": \"On i9-12900H computing platform\",\n          \"evidence_quote\": \"scheduling the mixed execution of four experiments takes 20 seconds\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_c077d5906b4ff93c\",\n          \"metric\": \"rescheduling time after insertion of experiment 5\",\n          \"raw_value\": \"2 seconds\",\n          \"context\": \"On i9-12900H computing platform, completed tasks excluded from optimization\",\n          \"evidence_quote\": \"rescheduling after the insertion of experiment 5 takes only 2 seconds.\"\n        }\n      ],\n      \"caveats\": [\n        {\n          \"source_chunk_id\": \"mdchk_50873154d051391d\",\n          \"text\": \"Most existing multi-task scheduling algorithms are based on greedy strategies and lack the ability to handle runtime constraints of stations, making comprehensive comparison with FESP-B difficult.\",\n          \"evidence_quote\": \"Since most existing multi-task scheduling algorithms are based on greedy strategies and lack the ability to handle run-time constraints of stations, it is difficult to make a comprehensive comparison between the performance of FESP-B and these algorithms.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_2a0a355620132545\",\n          \"text\": \"Significant imbalance in workload between the two mobile robots was observed in both sequential-experiment and concurrent-experiment scenarios, suggesting underutilization of the multi-robot system for experiments with relatively low sample transfer demand.\",\n          \"evidence_quote\": \"Table 1 reveals a significant imbalance in the workload between the two mobile robots in both the sequential-experiment (Fig. 8a) and concurrent-experiment (Fig. 8b) scenarios... This indicates that, for these specific experiments, the demand for sample transfers at any given time was relatively low, potentially underutilizing the multi-robot system's capabilities.\"\n        }\n      ]\n    }\n  ]\n}\n```",
+    "salvaged_protocol_count": 0,
+    "schema_invalid": false,
+    "stop_reason": "end_turn",
+    "usage": {
+      "cacheReadInputTokens": 0,
+      "cacheWriteInputTokens": 0,
+      "inputTokens": 2200,
+      "outputTokens": 6469,
+      "totalTokens": 8669
+    }
+  }
+}

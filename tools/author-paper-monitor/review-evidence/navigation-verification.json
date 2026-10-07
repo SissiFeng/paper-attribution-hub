@@ -1,0 +1,140 @@
+{
+  "scope": "PAS frontend navigation: sliding active highlight and command palette",
+  "choices": [
+    "Sliding label-width highlight",
+    "English/Chinese navigation command palette"
+  ],
+  "local": {
+    "production_builds": [
+      "main: TypeScript and Vite passed",
+      "reading: TypeScript and Vite passed"
+    ],
+    "checks": [
+      "check:navigation passed (29 original components, route preservation, search/active-link/keyboard contracts)",
+      "check:paper-view passed",
+      "git diff --check on modified navigation integration files passed"
+    ],
+    "browser": [
+      "Synthetic member: Chinese institution search opens access-required page",
+      "Synthetic admin: Manage access search navigates to member management with one active sidebar item",
+      "Search match highlights and arrow-key selection",
+      "No-result search does not navigate on Enter",
+      "Esc restores launcher or iframe focus",
+      "Tab keeps focus within the dialog",
+      "Meta+K from reading iframe opens the parent palette",
+      "Ctrl+K from main UI opens palette",
+      "390x844 mobile search and navigation passed",
+      "Reduced-motion emulation: dialog computed animation-name is none"
+    ]
+  },
+  "production": {
+    "checked_at": "2026-10-07T15:14:53.900373+00:00",
+    "release": {
+      "url": "https://d1ai8ldqsh81fz.cloudfront.net/",
+      "artifacts": {
+        "assets/index-BisoRDKF.js": "cd668f5c274a6f369c30dae673040017f378f2c46af67910d6155b0e8ead25fb",
+        "assets/EditorialInsightsPage-CY6d3YBu.js": "a55c7dcb34c7e71dea89739cbcf0775ca67c1a01988630830afc4881d206f7ef",
+        "assets/index-ceVw02JP.css": "396a03abfd1969ba7f20674946aa996bf93a4562f1aaaa63643ac55da093277e",
+        "index.html": "2b783fd15d251940c7453ef98e5fc22e121b311483ce808789fcf0ea373c3eaa",
+        "reading/assets/reading-CGjmjrxX.js": "555c027285480fe07ba1b3107468862feed0ac632f794f2225bd98a05792e8a6",
+        "reading/assets/reading-CgaUX4ne.css": "fc3aded803c5495347ffe6c82ba8fe29e292c60f6b2c60d4370e17f55f5d9707",
+        "reading/index.html": "fa8b3c52fd2ab3c80be8c57bc944b06246863a6c0e69c95b2c423b6ba1059dcf"
+      },
+      "invalidation": "I5U4K59TRVK7E7YGNAG648M4TY"
+    },
+    "invalidation_status": "Completed",
+    "checks": [
+      {
+        "path": "/assets/index-BisoRDKF.js",
+        "status": 200,
+        "sha256": "cd668f5c274a6f369c30dae673040017f378f2c46af67910d6155b0e8ead25fb"
+      },
+      {
+        "path": "/assets/EditorialInsightsPage-CY6d3YBu.js",
+        "status": 200,
+        "sha256": "a55c7dcb34c7e71dea89739cbcf0775ca67c1a01988630830afc4881d206f7ef"
+      },
+      {
+        "path": "/assets/index-ceVw02JP.css",
+        "status": 200,
+        "sha256": "396a03abfd1969ba7f20674946aa996bf93a4562f1aaaa63643ac55da093277e"
+      },
+      {
+        "path": "/index.html",
+        "status": 200,
+        "sha256": "2b783fd15d251940c7453ef98e5fc22e121b311483ce808789fcf0ea373c3eaa"
+      },
+      {
+        "path": "/reading/assets/reading-CGjmjrxX.js",
+        "status": 200,
+        "sha256": "555c027285480fe07ba1b3107468862feed0ac632f794f2225bd98a05792e8a6"
+      },
+      {
+        "path": "/reading/assets/reading-CgaUX4ne.css",
+        "status": 200,
+        "sha256": "fc3aded803c5495347ffe6c82ba8fe29e292c60f6b2c60d4370e17f55f5d9707"
+      },
+      {
+        "path": "/reading/index.html",
+        "status": 200,
+        "sha256": "fa8b3c52fd2ab3c80be8c57bc944b06246863a6c0e69c95b2c423b6ba1059dcf"
+      },
+      {
+        "path": "/api/catalog/paper-view",
+        "status": 200
+      },
+      {
+        "path": "/api/catalog/papers/monitor_7ea453c6350b1830c51993f7e58f4469/wiki",
+        "status": 200
+      },
+      {
+        "path": "/api/research/projects",
+        "status": 401
+      },
+      {
+        "path": "/api/access/members",
+        "status": 401
+      },
+      {
+        "path": "/api/wiki/paper/monitor_7ea453c6350b1830c51993f7e58f4469",
+        "status": 401
+      },
+      {
+        "path": "/scopus-toronto-176-institution-comparison.html",
+        "status": 401,
+        "final_path": "/api/access/files/scopus-toronto-176-institution-comparison.html"
+      }
+    ],
+    "services": [
+      {
+        "name": "paper-attribution-dev-backend-svc",
+        "task": "arn:aws:ecs:ca-central-1:247893369214:task-definition/paper-attribution-pas-dev-backend:16",
+        "state": "COMPLETED",
+        "running": 1,
+        "desired": 1
+      },
+      {
+        "name": "paper-attribution-dev-institution-svc",
+        "task": "arn:aws:ecs:ca-central-1:247893369214:task-definition/paper-attribution-dev-institution:10",
+        "state": "COMPLETED",
+        "running": 1,
+        "desired": 1
+      }
+    ]
+  },
+  "live_browser": {
+    "english_search": "passed",
+    "chinese_alias_search": "passed",
+    "restricted_page": "Administrator sign-in required",
+    "papers_url": "https://d1ai8ldqsh81fz.cloudfront.net/papers",
+    "table_rows_including_header": 51,
+    "unique_active_link": "Papers"
+  },
+  "screenshot": "navigation-command-palette-live.png",
+  "limitations": [
+    "Authenticated role scenarios verified on local synthetic fixtures, not production accounts.",
+    "Navigation preservation is not a new full regression of every analytics page.",
+    "Existing large frontend bundle warning remains.",
+    "No backend, Slack delivery or API behavior changed by this release."
+  ]
+}

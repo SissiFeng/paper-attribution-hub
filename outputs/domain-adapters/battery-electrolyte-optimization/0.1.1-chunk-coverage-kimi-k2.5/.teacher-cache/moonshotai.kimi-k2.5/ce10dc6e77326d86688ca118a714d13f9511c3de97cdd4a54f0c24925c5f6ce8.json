@@ -1,0 +1,282 @@
+{
+  "audit_summary": {
+    "accepted_field_count": 0,
+    "proposed_field_count": 8,
+    "rejected_field_count": 8,
+    "repair_attempted_count": 2,
+    "repair_succeeded_count": 0,
+    "unsupported_claim_count": 8
+  },
+  "candidate_domain_terms": [
+    "electrolyte",
+    "lithium-ion",
+    "ionic conductivity",
+    "solubility",
+    "redox"
+  ],
+  "field_audit_records": [
+    {
+      "cited_span": "The code for this tenant was developed in PyTorch[33] and is available online: https://github.com/BIG-MAP/eol_degradation_tenant.",
+      "diagnostic": null,
+      "entity_type": "software",
+      "field_path": "software[0].name",
+      "nearest_source_span": "The code for this tenant was developed in PyTorch[33] and is available online: https://github.",
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1002_aenm.202403263",
+      "proposed_value": "PyTorch",
+      "protocol_index": 0,
+      "rejection_reason": "span_not_in_source",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The tenant receives the capacity trajectory of at least the first 40 cycles along with the overpotential difference between the 10th and 40th cycle, the Coulombic efficiency, and the variance between charge and discharge capacities.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[0].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1002_aenm.202403263",
+      "proposed_value": "Input capacity trajectory of at least the first 40 cycles",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The tenant receives the capacity trajectory of at least the first 40 cycles along with the overpotential difference between the 10th and 40th cycle, the Coulombic efficiency, and the variance between charge and discharge capacities.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[1].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1002_aenm.202403263",
+      "proposed_value": "Input overpotential difference between the 10th and 40th cycle",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The tenant receives the capacity trajectory of at least the first 40 cycles along with the overpotential difference between the 10th and 40th cycle, the Coulombic efficiency, and the variance between charge and discharge capacities.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[2].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1002_aenm.202403263",
+      "proposed_value": "Input Coulombic efficiency",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The tenant receives the capacity trajectory of at least the first 40 cycles along with the overpotential difference between the 10th and 40th cycle, the Coulombic efficiency, and the variance between charge and discharge capacities.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[3].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1002_aenm.202403263",
+      "proposed_value": "Input variance between charge and discharge capacities",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Based on this input the model predicts the complete cell trajectory. To capture uncertainty, we use an ensemble of five models and extend the LSTM architecture to predict the variance of the output along with the mean.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[4].action",
+      "nearest_source_span": "To capture uncertainty, we use an ensemble of five models and extend the LSTM architecture to predict the variance of the output along with the mean.",
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1002_aenm.202403263",
+      "proposed_value": "Predict complete cell trajectory using LSTM neural network ensemble",
+      "protocol_index": 0,
+      "rejection_reason": "span_not_in_source",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The EOL is calculated as the point at which the cell capacity goes below 80 % ofthe initial capacity.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[5].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1002_aenm.202403263",
+      "proposed_value": "Calculate EOL as point where cell capacity goes below 80% of initial capacity",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "If the cell chemistry and format from which training data are obtained differ from the production data, the model predictions can become unreliable.",
+      "diagnostic": null,
+      "entity_type": "caveats",
+      "field_path": "caveats[0].text",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1002_aenm.202403263",
+      "proposed_value": "If cell chemistry and format from training data differ from production data, model predictions can become unreliable",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    }
+  ],
+  "inference_config": {
+    "max_tokens": 14000,
+    "temperature": 0.0
+  },
+  "mapping_version": "evidence-field-mapper-v0.2",
+  "minimum_chunk_score": 2,
+  "model_id": "moonshotai.kimi-k2.5",
+  "paper_id": "DOI:10.1002_aenm.202403263",
+  "prompt_version": "scientific-protocol-teacher-v0.3",
+  "protocols": [
+    {
+      "caveats": [
+        {
+          "caveat_id": "caveat_e3723ef27d2fc0aa",
+          "evidence_ids": [
+            "ev_50640fcc8fd79c79"
+          ],
+          "text": "If the cell chemistry and format from which training data are obtained differ from the production data, the model predictions can become unreliable."
+        }
+      ],
+      "characterization": [],
+      "evidence": [
+        {
+          "char_end": 775,
+          "char_start": 543,
+          "chunk_id": "mdchk_861f683f04cf5ea9",
+          "document_char_end": 53710,
+          "document_char_start": 53478,
+          "evidence_id": "ev_50f88254eb394709",
+          "paper_id": "DOI:10.1002_aenm.202403263",
+          "quote": "The tenant receives the capacity trajectory of at least the first 40 cycles along with the overpotential difference between the 10th and 40th cycle, the Coulombic efficiency, and the variance between charge and discharge capacities.",
+          "source_sha256": "a95831be5f6138ef35564fa2c15402c2cbd09e932f2fc69feaa2db1e400d0221"
+        },
+        {
+          "char_end": 950,
+          "char_start": 849,
+          "chunk_id": "mdchk_861f683f04cf5ea9",
+          "document_char_end": 53885,
+          "document_char_start": 53784,
+          "evidence_id": "ev_77ccf69133ec2bbc",
+          "paper_id": "DOI:10.1002_aenm.202403263",
+          "quote": "The EOL is calculated as the point at which the cell capacity goes below 80 % ofthe initial capacity.",
+          "source_sha256": "a95831be5f6138ef35564fa2c15402c2cbd09e932f2fc69feaa2db1e400d0221"
+        },
+        {
+          "char_end": 1249,
+          "char_start": 1101,
+          "chunk_id": "mdchk_861f683f04cf5ea9",
+          "document_char_end": 54184,
+          "document_char_start": 54036,
+          "evidence_id": "ev_50640fcc8fd79c79",
+          "paper_id": "DOI:10.1002_aenm.202403263",
+          "quote": "If the cell chemistry and format from which training data are obtained differ from the production data, the model predictions can become unreliable.",
+          "source_sha256": "a95831be5f6138ef35564fa2c15402c2cbd09e932f2fc69feaa2db1e400d0221"
+        }
+      ],
+      "evidence_scope": "primary_report",
+      "instruments": [],
+      "materials": [],
+      "paper_id": "DOI:10.1002_aenm.202403263",
+      "protocol_id": "protocol_e3723ef27d2fc0aa",
+      "protocol_name": "Degradation Model for End-of-Life Prediction",
+      "protocol_type": "computational",
+      "relations": [],
+      "results": [],
+      "scientific_chunk_ids": [],
+      "software": [],
+      "source_chunk_ids": [
+        "mdchk_861f683f04cf5ea9"
+      ],
+      "source_paper_tier": "primary_battery_electrolyte",
+      "steps": [
+        {
+          "action": "The tenant receives the capacity trajectory of at least the first 40 cycles along with the overpotential difference between the 10th and 40th cycle, the Coulombic efficiency, and the variance between charge and discharge capacities.",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_50f88254eb394709"
+          ],
+          "notes": null,
+          "order": 1,
+          "step_id": "step_e3723ef27d2fc0aa"
+        },
+        {
+          "action": "The tenant receives the capacity trajectory of at least the first 40 cycles along with the overpotential difference between the 10th and 40th cycle, the Coulombic efficiency, and the variance between charge and discharge capacities.",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_50f88254eb394709"
+          ],
+          "notes": null,
+          "order": 2,
+          "step_id": "step_bfb03a9929b5f258"
+        },
+        {
+          "action": "The tenant receives the capacity trajectory of at least the first 40 cycles along with the overpotential difference between the 10th and 40th cycle, the Coulombic efficiency, and the variance between charge and discharge capacities.",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_50f88254eb394709"
+          ],
+          "notes": null,
+          "order": 3,
+          "step_id": "step_85926b803395a7eb"
+        },
+        {
+          "action": "The tenant receives the capacity trajectory of at least the first 40 cycles along with the overpotential difference between the 10th and 40th cycle, the Coulombic efficiency, and the variance between charge and discharge capacities.",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_50f88254eb394709"
+          ],
+          "notes": null,
+          "order": 4,
+          "step_id": "step_a510567b2bbb15af"
+        },
+        {
+          "action": "The EOL is calculated as the point at which the cell capacity goes below 80 % ofthe initial capacity.",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_77ccf69133ec2bbc"
+          ],
+          "notes": null,
+          "order": 5,
+          "step_id": "step_012d44e7f45d725f"
+        }
+      ]
+    }
+  ],
+  "region": "us-east-1",
+  "schema_version": "bedrock-teacher-paper-cache-v0.2",
+  "teacher_response": {
+    "diagnostic": null,
+    "invocation_count": 1,
+    "metrics": {
+      "latencyMs": 17609
+    },
+    "raw_text": " ```json\n{\n  \"protocols\": [\n    {\n      \"source_chunk_ids\": [\"mdchk_861f683f04cf5ea9\"],\n      \"protocol_name\": \"Degradation Model for End-of-Life Prediction\",\n      \"protocol_type\": \"computational\",\n      \"materials\": [],\n      \"instruments\": [],\n      \"software\": [\n        {\n          \"source_chunk_id\": \"mdchk_861f683f04cf5ea9\",\n          \"name\": \"PyTorch\",\n          \"version\": null,\n          \"settings\": {},\n          \"evidence_quote\": \"The code for this tenant was developed in PyTorch[33] and is available online: https://github.com/BIG-MAP/eol_degradation_tenant.\"\n        }\n      ],\n      \"steps\": [\n        {\n          \"source_chunk_id\": \"mdchk_861f683f04cf5ea9\",\n          \"order\": 1,\n          \"action\": \"Input capacity trajectory of at least the first 40 cycles\",\n          \"conditions\": [],\n          \"notes\": null,\n          \"evidence_quote\": \"The tenant receives the capacity trajectory of at least the first 40 cycles along with the overpotential difference between the 10th and 40th cycle, the Coulombic efficiency, and the variance between charge and discharge capacities.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_861f683f04cf5ea9\",\n          \"order\": 2,\n          \"action\": \"Input overpotential difference between the 10th and 40th cycle\",\n          \"conditions\": [],\n          \"notes\": null,\n          \"evidence_quote\": \"The tenant receives the capacity trajectory of at least the first 40 cycles along with the overpotential difference between the 10th and 40th cycle, the Coulombic efficiency, and the variance between charge and discharge capacities.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_861f683f04cf5ea9\",\n          \"order\": 3,\n          \"action\": \"Input Coulombic efficiency\",\n          \"conditions\": [],\n          \"notes\": null,\n          \"evidence_quote\": \"The tenant receives the capacity trajectory of at least the first 40 cycles along with the overpotential difference between the 10th and 40th cycle, the Coulombic efficiency, and the variance between charge and discharge capacities.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_861f683f04cf5ea9\",\n          \"order\": 4,\n          \"action\": \"Input variance between charge and discharge capacities\",\n          \"conditions\": [],\n          \"notes\": null,\n          \"evidence_quote\": \"The tenant receives the capacity trajectory of at least the first 40 cycles along with the overpotential difference between the 10th and 40th cycle, the Coulombic efficiency, and the variance between charge and discharge capacities.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_861f683f04cf5ea9\",\n          \"order\": 5,\n          \"action\": \"Predict complete cell trajectory using LSTM neural network ensemble\",\n          \"conditions\": [],\n          \"notes\": \"Uses ensemble of five models; LSTM architecture extended to predict variance along with mean\",\n          \"evidence_quote\": \"Based on this input the model predicts the complete cell trajectory. To capture uncertainty, we use an ensemble of five models and extend the LSTM architecture to predict the variance of the output along with the mean.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_861f683f04cf5ea9\",\n          \"order\": 6,\n          \"action\": \"Calculate EOL as point where cell capacity goes below 80% of initial capacity\",\n          \"conditions\": [],\n          \"notes\": null,\n          \"evidence_quote\": \"The EOL is calculated as the point at which the cell capacity goes below 80 % ofthe initial capacity.\"\n        }\n      ],\n      \"characterization\": [],\n      \"results\": [],\n      \"caveats\": [\n        {\n          \"source_chunk_id\": \"mdchk_861f683f04cf5ea9\",\n          \"text\": \"If cell chemistry and format from training data differ from production data, model predictions can become unreliable\",\n          \"evidence_quote\": \"If the cell chemistry and format from which training data are obtained differ from the production data, the model predictions can become unreliable.\"\n        }\n      ]\n    }\n  ]\n}\n```",
+    "salvaged_protocol_count": 0,
+    "schema_invalid": false,
+    "stop_reason": "end_turn",
+    "usage": {
+      "inputTokens": 1066,
+      "outputTokens": 931,
+      "totalTokens": 1997
+    }
+  }
+}

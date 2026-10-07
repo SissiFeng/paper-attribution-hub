@@ -494,8 +494,15 @@ def evans_chen_c_norm(g: nx.Graph) -> dict[str, float]:
             continue
         try:
             denom = beta - math.log(k) / ln_zbar
-            c_fit = 1.0 / denom if denom > 1e-9 else c_actual
-            c_norm[node] = c_actual / c_fit
+            # Guard: negative denom means ln(k)/ln(z̄) > β, producing a negative
+            # c_fit, which in turn yields a meaningless negative c_norm ratio.
+            # This happens for high-degree nodes in sparse co-authorship graphs.
+            # We clamp c_fit to a small positive epsilon so c_norm stays ≥ 0.
+            if denom <= 1e-9:
+                c_norm[node] = max(0.0, c_actual / 1e-9)
+            else:
+                c_fit = 1.0 / denom
+                c_norm[node] = max(0.0, c_actual / c_fit)
         except (ValueError, ZeroDivisionError):
             c_norm[node] = 1.0
 

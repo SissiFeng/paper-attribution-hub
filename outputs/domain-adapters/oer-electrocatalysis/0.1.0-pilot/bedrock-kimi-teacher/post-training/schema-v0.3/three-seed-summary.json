@@ -1,0 +1,45 @@
+{
+  "schema_version": "domain-distillation-three-seed-summary-v0.1",
+  "teacher_model": "moonshotai.kimi-k2.5",
+  "student_model": "HuggingFaceTB/SmolLM2-360M-Instruct",
+  "task_schema_version": "domain-adapter-task-v0.3",
+  "seeds": [23, 41, 59],
+  "evaluation_tasks_per_seed": 9,
+  "variants": {
+    "base": {
+      "field_f1_mean": 0.05026455026455027,
+      "field_f1_min": 0.05026455026455027,
+      "field_f1_max": 0.05026455026455027,
+      "json_valid_rate_mean": 0.6666666666666666,
+      "grounded_leaf_rate_mean": 0.5925925925925926,
+      "exact_match_rate_mean": 0.0
+    },
+    "static_sft": {
+      "field_f1_mean": 0.20502645502645503,
+      "field_f1_min": 0.2023809523809524,
+      "field_f1_max": 0.20634920634920637,
+      "json_valid_rate_mean": 0.9629629629629629,
+      "grounded_leaf_rate_mean": 0.7530864197530863,
+      "exact_match_rate_mean": 0.1111111111111111
+    },
+    "matched_static_sft": {
+      "field_f1_mean": 0.20000000000000004,
+      "field_f1_min": 0.19682539682539685,
+      "field_f1_max": 0.20634920634920637,
+      "json_valid_rate_mean": 1.0,
+      "grounded_leaf_rate_mean": 0.7901234567901234,
+      "exact_match_rate_mean": 0.1111111111111111
+    },
+    "on_policy_hard_sft": {
+      "field_f1_mean": 0.19118165784832453,
+      "field_f1_min": 0.1703703703703704,
+      "field_f1_max": 0.20634920634920637,
+      "json_valid_rate_mean": 1.0,
+      "grounded_leaf_rate_mean": 0.7716049382716049,
+      "exact_match_rate_mean": 0.1111111111111111
+    }
+  },
+  "promoted_seed_count": 0,
+  "promotion_decision": "do_not_promote_on_policy",
+  "claims_boundary": "Metrics measure student agreement with teacher-derived package targets, not independent human scientific correctness."
+}

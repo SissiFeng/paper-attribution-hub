@@ -1,0 +1,8 @@
+{
+  "model_id": "moonshotai.kimi-k2.5",
+  "paper_id": "DOI:10.1038_s41467-023-40177-1",
+  "prompt_version": "oer-protocol-teacher-v0.1",
+  "protocols": [],
+  "schema_version": "bedrock-teacher-paper-cache-v0.1",
+  "unsupported_claim_count": 2
+}

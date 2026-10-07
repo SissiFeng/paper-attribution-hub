@@ -5,7 +5,7 @@ client classes); the lower-level service is exercised in test_discovery_service.
 Here we focus on queue listing + approve + reject.
 """
 import httpx
-from fastapi.testclient import TestClient
+from tests.admin_client import AdminTestClient as TestClient
 
 from app.services.discovery_service import run_discovery
 from app.services.external.crossref_client import CrossrefClient

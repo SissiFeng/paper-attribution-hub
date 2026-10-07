@@ -16,5 +16,17 @@ services:
         sync: false
       - key: PAS_SEMANTIC_SCHOLAR_API_KEY
         sync: false
+      - key: PAS_ZOTERO_API_KEY
+        sync: false
+      - key: PAS_ZOTERO_GROUP_ID
+        sync: false
+      - key: PAS_ZOTERO_TIER1_COLLECTION
+        sync: false          # Prefer the immutable Zotero collection key
+      - key: PAS_ZOTERO_TIER2_COLLECTION
+        sync: false          # Optional until the Tier 2 pilot is approved
+      - key: PAS_ZOTERO_SYNC_ON_STARTUP
+        value: "true"
+      - key: PAS_ZOTERO_SOURCE_ONLY
+        value: "true"
 
     healthCheckPath: /health

@@ -1,0 +1,287 @@
+{
+  "classification_tables_used": false,
+  "papers": [
+    {
+      "doi": "10.1016/j.matt.2022.11.031",
+      "paper_id": "DOI:10.1016_j.matt.2022.11.031",
+      "selection_reasons": [
+        "Primary accelerated materials-search study containing OER activity modeling and validation evidence."
+      ],
+      "selection_tier": "primary_oer",
+      "source_manifest_key": "manifests/zotero/group=6631056/item=28UJF8F7/attachment=GDRIVE_1_boT9c4NCbe9gkEV1HR_157avBaWj8E4/version=1786188733/document-manifest.json",
+      "source_markdown_key": "raw/zotero/group=6631056/item=28UJF8F7/attachment=GDRIVE_1_boT9c4NCbe9gkEV1HR_157avBaWj8E4/version=1786188733/document.md",
+      "source_markdown_sha256": "9e5b83b13b921ac8b533d19b34f11b9a662819fb3e3b6079ab73a83072f95f49",
+      "task_split": "train",
+      "title": "Accelerated chemical space search using a quantum-inspired cluster expansion approach",
+      "year": 2023
+    },
+    {
+      "doi": "10.1016/j.xcrp.2022.101200",
+      "paper_id": "DOI:10.1016_j.xcrp.2022.101200",
+      "selection_reasons": [
+        "Materials acceleration platform paper with an OER-relevant campaign example and workflow evidence."
+      ],
+      "selection_tier": "oer_case_study",
+      "source_manifest_key": "manifests/zotero/group=6631056/item=HBD6CUKU/attachment=GDRIVE_1WTmVhgMrNyasTlWMhDM3PWPFfTMF8ep7/version=1786188749/document-manifest.json",
+      "source_markdown_key": "raw/zotero/group=6631056/item=HBD6CUKU/attachment=GDRIVE_1WTmVhgMrNyasTlWMhDM3PWPFfTMF8ep7/version=1786188749/document.md",
+      "source_markdown_sha256": "f81326a818a59e8136b6295d32f1dabc16372aa919e0133e5273f4d2039b5313",
+      "task_split": "train",
+      "title": "Designing durable, sustainable, high-performance materials for clean energy infrastructure",
+      "year": 2023
+    },
+    {
+      "doi": "10.1021/acs.chemmater.0c01894",
+      "paper_id": "DOI:10.1021_acs.chemmater.0c01894",
+      "selection_reasons": [
+        "Primary OER study combining active learning, iridium oxide synthesis, and experimental validation."
+      ],
+      "selection_tier": "primary_oer",
+      "source_manifest_key": "manifests/zotero/group=6631056/item=3CURJ4HA/attachment=GDRIVE_1kBpTACshhqh_xG-YJ4a9WDKl6qYsjCC1/version=1786188740/document-manifest.json",
+      "source_markdown_key": "raw/zotero/group=6631056/item=3CURJ4HA/attachment=GDRIVE_1kBpTACshhqh_xG-YJ4a9WDKl6qYsjCC1/version=1786188740/document.md",
+      "source_markdown_sha256": "dfe11aabd354556770194fce802b6026443297d8cf2461288baafc98e01c49a2",
+      "task_split": "train",
+      "title": "Active Learning Accelerated Discovery of Stable Iridium Oxide Polymorphs for the Oxygen Evolution Reaction",
+      "year": 2020
+    },
+    {
+      "doi": "10.1021/acs.chemmater.2c01455",
+      "paper_id": "DOI:10.1021_acs.chemmater.2c01455",
+      "selection_reasons": [
+        "Primary high-entropy oxide OER study spanning thin-film libraries, particles, and electrochemical testing."
+      ],
+      "selection_tier": "primary_oer",
+      "source_manifest_key": "manifests/zotero/group=6631056/item=KNEISYA6/attachment=ACQ_DA686D7709612FD7/version=1786560518/document-manifest.json",
+      "source_markdown_key": "raw/zotero/group=6631056/item=KNEISYA6/attachment=ACQ_DA686D7709612FD7/version=1786560518/document.md",
+      "source_markdown_sha256": "d5a0e49a7e1bcafdc5e5c1a9ec10137085371ebc09abf27d38633b3937107183",
+      "task_split": "train",
+      "title": "Discovery of High-Entropy Oxide Electrocatalysts: From Thin-Film Material Libraries to Particles",
+      "year": 2022
+    },
+    {
+      "doi": "10.1021/acs.chemrev.4c00055",
+      "paper_id": "DOI:10.1021_acs.chemrev.4c00055",
+      "selection_reasons": [
+        "Self-driving laboratory review containing OER case studies; included as a secondary-literature negative control."
+      ],
+      "selection_tier": "oer_review",
+      "source_manifest_key": "manifests/zotero/group=6631056/item=IGJ78FHX/attachment=ACQ_DDE0E0818A97D2D9/version=1786560560/document-manifest.json",
+      "source_markdown_key": "raw/zotero/group=6631056/item=IGJ78FHX/attachment=ACQ_DDE0E0818A97D2D9/version=1786560560/document.md",
+      "source_markdown_sha256": "2ebe41c04051d29869faf1a38a86ec01fdbf50636c14cb1f408c0cfcaa652e71",
+      "task_split": "train",
+      "title": "Self-Driving Laboratories for Chemistry and Materials Science",
+      "year": 2024
+    },
+    {
+      "doi": "10.1021/acscentsci.3c01009",
+      "paper_id": "DOI:10.1021_acscentsci.3c01009",
+      "selection_reasons": [
+        "Primary OER catalyst-discovery study with full-text electrochemical performance and protocol evidence."
+      ],
+      "selection_tier": "primary_oer",
+      "source_manifest_key": "manifests/zotero/group=6631056/item=QWVIBP4T/attachment=ACQ_40D35185ABC685E6/version=1786560755/document-manifest.json",
+      "source_markdown_key": "raw/zotero/group=6631056/item=QWVIBP4T/attachment=ACQ_40D35185ABC685E6/version=1786560755/document.md",
+      "source_markdown_sha256": "1b682bf25e96a25bb17fa5d024a19be12f4b23c2a77c1b54efa14ef8d7006452",
+      "task_split": "evaluation",
+      "title": "Human–Machine Collaboration for Accelerated Discovery of Promising Oxygen Evolution Electrocatalysts with On-Demand Elements",
+      "year": 2023
+    },
+    {
+      "doi": "10.1038/s41467-023-40177-1",
+      "paper_id": "DOI:10.1038_s41467-023-40177-1",
+      "selection_reasons": [
+        "Primary dual-atom OER catalyst study with dense computational protocol and result evidence."
+      ],
+      "selection_tier": "primary_oer",
+      "source_manifest_key": "manifests/zotero/group=6631056/item=D5MN3YYN/attachment=GDRIVE_1shXr8scqvGKnRpwCXqIGWJStMJHZLNMp/version=1786188780/document-manifest.json",
+      "source_markdown_key": "raw/zotero/group=6631056/item=D5MN3YYN/attachment=GDRIVE_1shXr8scqvGKnRpwCXqIGWJStMJHZLNMp/version=1786188780/document.md",
+      "source_markdown_sha256": "6092145d93550411bca5bf13eb494a1109aa023f4e9f10e3ff4415ecdf2e80c8",
+      "task_split": "train",
+      "title": "Synergy of dual-atom catalysts deviated from the scaling relationship for oxygen evolution reaction",
+      "year": 2023
+    },
+    {
+      "doi": "10.1038/s41467-024-50605-5",
+      "paper_id": "DOI:10.1038_s41467-024-50605-5",
+      "selection_reasons": [
+        "Primary perovskite OER study with explicit synthesis, catalyst-ink, electrochemical, characterization, and software evidence."
+      ],
+      "selection_tier": "primary_oer",
+      "source_manifest_key": "manifests/zotero/group=6631056/item=2STXUX2R/attachment=GDRIVE_1sC47n1Dy8YkLWIiqEIMtiTTBnN7oa5KA/version=1786188786/document-manifest.json",
+      "source_markdown_key": "raw/zotero/group=6631056/item=2STXUX2R/attachment=GDRIVE_1sC47n1Dy8YkLWIiqEIMtiTTBnN7oa5KA/version=1786188786/document.md",
+      "source_markdown_sha256": "7bc303de54dccc39645e8a5f920ea9fedea7175d52e215cec50b0d33aaab57ab",
+      "task_split": "evaluation",
+      "title": "Transfer learning guided discovery of efficient perovskite oxide for alkaline water oxidation",
+      "year": 2024
+    },
+    {
+      "doi": "10.1039/d0ta06441f",
+      "paper_id": "DOI:10.1039_d0ta06441f",
+      "selection_reasons": [
+        "Primary computational OER mechanism study with explicit model conditions and reported activity values."
+      ],
+      "selection_tier": "primary_oer",
+      "source_manifest_key": "manifests/zotero/group=6631056/item=IIX3LTEZ/attachment=verified-a14679a31007c01d/version=0/document-manifest.json",
+      "source_markdown_key": "raw/zotero/group=6631056/item=IIX3LTEZ/attachment=verified-a14679a31007c01d/version=0/document.md",
+      "source_markdown_sha256": "9f7d0d528144e68b07d948805e6903194127a28414b6a3a73291f77cdcc0ae02",
+      "task_split": "train",
+      "title": "Emerging linear activity trend in the oxygen evolution reaction with dual-active-sites mechanism",
+      "year": 2020
+    },
+    {
+      "doi": "10.1039/d3dd00166k",
+      "paper_id": "DOI:10.1039_d3dd00166k",
+      "selection_reasons": [
+        "Experiment-orchestration paper with an electrochemistry/OER example and workflow evidence."
+      ],
+      "selection_tier": "oer_case_study",
+      "source_manifest_key": "manifests/zotero/group=6631056/item=K5KW4TQY/attachment=verified-04980022f7ad695e/version=0/document-manifest.json",
+      "source_markdown_key": "raw/zotero/group=6631056/item=K5KW4TQY/attachment=verified-04980022f7ad695e/version=0/document.md",
+      "source_markdown_sha256": "93fe09a96d74dc1fbf33c34972e122b99d3ce30b4f962ee468bc79220efe53ee",
+      "task_split": "train",
+      "title": "Orchestrating nimble experiments across interconnected labs",
+      "year": 2023
+    },
+    {
+      "doi": "10.1039/d4dd00115j",
+      "paper_id": "DOI:10.1039_d4dd00115j",
+      "selection_reasons": [
+        "Atlas self-driving laboratory paper containing an OER-related workflow case and machine-readable experimental context."
+      ],
+      "selection_tier": "oer_case_study",
+      "source_manifest_key": "manifests/zotero/group=6631056/item=JI9HFA8G/attachment=verified-dd3cfadb97c1ca20/version=0/document-manifest.json",
+      "source_markdown_key": "raw/zotero/group=6631056/item=JI9HFA8G/attachment=verified-dd3cfadb97c1ca20/version=0/document.md",
+      "source_markdown_sha256": "2438f14b70bf6dd2ed38dfe37b6ba198e33cac3203a24e2e3f18cf1c96aa31bc",
+      "task_split": "train",
+      "title": "Atlas: a brain for self-driving laboratories",
+      "year": 2025
+    },
+    {
+      "doi": "10.1039/d4dd00313f",
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "selection_reasons": [
+        "Multi-robot scheduling paper with a quinary high-entropy OER catalyst experiment."
+      ],
+      "selection_tier": "oer_case_study",
+      "source_manifest_key": "manifests/zotero/group=6631056/item=J98WYLAV/attachment=verified-046c1069985c2a57/version=0/document-manifest.json",
+      "source_markdown_key": "raw/zotero/group=6631056/item=J98WYLAV/attachment=verified-046c1069985c2a57/version=0/document.md",
+      "source_markdown_sha256": "3565b7f5154505ced15376a3901a6a6743aaf61dbb36a439c9412b967555c89b",
+      "task_split": "evaluation",
+      "title": "A multi-robot–multi-task scheduling system for autonomous chemistry laboratories",
+      "year": 2025
+    },
+    {
+      "doi": "10.1039/d5cc01959a",
+      "paper_id": "DOI:10.1039_d5cc01959a",
+      "selection_reasons": [
+        "Review of self-driving laboratories with an OER catalyst case; included to test attribution of quoted versus original protocols."
+      ],
+      "selection_tier": "oer_review",
+      "source_manifest_key": "manifests/zotero/group=6631056/item=EJDA72YW/attachment=verified-d8ba2842939f8fae/version=0/document-manifest.json",
+      "source_markdown_key": "raw/zotero/group=6631056/item=EJDA72YW/attachment=verified-d8ba2842939f8fae/version=0/document.md",
+      "source_markdown_sha256": "4604f7af06d0d61bc6487daf8d3b5059cd9edf30f53003365c00d9de8c36869b",
+      "task_split": "train",
+      "title": "A revolutionary paradigm in chemistry and materials science research: self-driving laboratories",
+      "year": 2025
+    },
+    {
+      "doi": "10.1039/d5cc04220h",
+      "paper_id": "DOI:10.1039_d5cc04220h",
+      "selection_reasons": [
+        "AI-driven MOF review with sparse OER content; included to measure false-positive resistance."
+      ],
+      "selection_tier": "oer_review",
+      "source_manifest_key": "manifests/zotero/group=6631056/item=YZ2KRGK5/attachment=verified-3664ca9b90e54d22/version=0/document-manifest.json",
+      "source_markdown_key": "raw/zotero/group=6631056/item=YZ2KRGK5/attachment=verified-3664ca9b90e54d22/version=0/document.md",
+      "source_markdown_sha256": "9a34509d45fb63509e1d75b38b9807f656da03e105b383f485df2da7d52987d7",
+      "task_split": "evaluation",
+      "title": "AI-driven advances in metal–organic frameworks: from data to design and applications",
+      "year": 2025
+    },
+    {
+      "doi": "10.1039/d5dd00072f",
+      "paper_id": "DOI:10.1039_d5dd00072f",
+      "selection_reasons": [
+        "Autonomous-laboratory perspective containing an OER catalyst case; included as secondary-literature stress data."
+      ],
+      "selection_tier": "oer_review",
+      "source_manifest_key": "manifests/zotero/group=6631056/item=BJTUIEF7/attachment=verified-7cb252113cdec9be/version=0/document-manifest.json",
+      "source_markdown_key": "raw/zotero/group=6631056/item=BJTUIEF7/attachment=verified-7cb252113cdec9be/version=0/document.md",
+      "source_markdown_sha256": "db4b80653b12ace13a7a82164de5093b5b2e2d1c8be20ed1ab7acc9e89457226",
+      "task_split": "train",
+      "title": "Autonomous laboratories in China: an embodied intelligence-driven platform to accelerate chemical discovery",
+      "year": 2025
+    },
+    {
+      "doi": "10.1039/d5mh01247c",
+      "paper_id": "DOI:10.1039_d5mh01247c",
+      "selection_reasons": [
+        "Delafossite materials review containing OER synthesis, characterization, and performance evidence."
+      ],
+      "selection_tier": "oer_review",
+      "source_manifest_key": "manifests/zotero/group=6631056/item=AMI8BGP3/attachment=verified-f02640cbf895faed/version=0/document-manifest.json",
+      "source_markdown_key": "raw/zotero/group=6631056/item=AMI8BGP3/attachment=verified-f02640cbf895faed/version=0/document.md",
+      "source_markdown_sha256": "61e7740328bb50368ea6eaf15ac74e4d6fa7423e5fa761122c7a67b04bddc5eb",
+      "task_split": "train",
+      "title": "Emerging multi-functional delafossite materials: frontier advances and prospective breakthroughs in photoelectronic applications",
+      "year": 2025
+    },
+    {
+      "doi": "10.1039/d5ta00331h",
+      "paper_id": "DOI:10.1039_d5ta00331h",
+      "selection_reasons": [
+        "High-throughput electrochemical materials discovery review with OER cases and protocol tables."
+      ],
+      "selection_tier": "oer_review",
+      "source_manifest_key": "manifests/zotero/group=6631056/item=IMB3N45G/attachment=verified-4dd952248b2d4797/version=0/document-manifest.json",
+      "source_markdown_key": "raw/zotero/group=6631056/item=IMB3N45G/attachment=verified-4dd952248b2d4797/version=0/document.md",
+      "source_markdown_sha256": "cebf6cb2ee2f3ddb0a6d96832b75a9c99f0170dd868acb043aa9243d7e75ce35",
+      "task_split": "train",
+      "title": "High throughput computational and experimental methods for accelerated electrochemical materials discovery",
+      "year": 2025
+    },
+    {
+      "doi": "10.1063/5.0259851",
+      "paper_id": "DOI:10.1063_5.0259851",
+      "selection_reasons": [
+        "Scanning-probe and materials-discovery review with sparse OER content; included to test protocol abstention."
+      ],
+      "selection_tier": "oer_review",
+      "source_manifest_key": "manifests/zotero/group=6631056/item=MNQZU9CB/attachment=GDRIVE_1SLNq73vPSwKHf4bAYQK0CeONGv6pLBww/version=1786226252/document-manifest.json",
+      "source_markdown_key": "raw/zotero/group=6631056/item=MNQZU9CB/attachment=GDRIVE_1SLNq73vPSwKHf4bAYQK0CeONGv6pLBww/version=1786226252/document.md",
+      "source_markdown_sha256": "b0eb884587e2289a5e63131bef93aefe057d6135a17ebd43ddde950065b11168",
+      "task_split": "train",
+      "title": "Materials discovery in combinatorial and high-throughput synthesis and processing: A new Frontier for SPM",
+      "year": 2025
+    },
+    {
+      "doi": "10.1093/ce/zkaf036",
+      "paper_id": "DOI:10.1093_ce_zkaf036",
+      "selection_reasons": [
+        "AI-for-chemical-engineering review with autonomous OER catalyst examples; included as an abstention control."
+      ],
+      "selection_tier": "oer_review",
+      "source_manifest_key": "manifests/zotero/group=6631056/item=7WZUL3RG/attachment=verified-c7c52b44c3dad636/version=0/document-manifest.json",
+      "source_markdown_key": "raw/zotero/group=6631056/item=7WZUL3RG/attachment=verified-c7c52b44c3dad636/version=0/document.md",
+      "source_markdown_sha256": "5da29266b2ffb047221d43af4df2fd94fa3f9836784527979ff0eb4538c50649",
+      "task_split": "train",
+      "title": "Advancing chemical engineering technology with artificial intelligence",
+      "year": 2025
+    },
+    {
+      "doi": "10.32604/cmc.2025.067427",
+      "paper_id": "DOI:10.32604_cmc.2025.067427",
+      "selection_reasons": [
+        "OER electrocatalyst review used to test evidence extraction and protocol abstention on secondary literature."
+      ],
+      "selection_tier": "oer_review",
+      "source_manifest_key": "manifests/zotero/group=6631056/item=HSLZC48H/attachment=GDRIVE_1bSY5Q5-OgyCAD6iTzGUONHU59eVzbKLb/version=1786188763/document-manifest.json",
+      "source_markdown_key": "raw/zotero/group=6631056/item=HSLZC48H/attachment=GDRIVE_1bSY5Q5-OgyCAD6iTzGUONHU59eVzbKLb/version=1786188763/document.md",
+      "source_markdown_sha256": "f7e255e1dc969695afce64c0e2effd036cb13fbb5115e0a46591534854bcefe8",
+      "task_split": "train",
+      "title": "Large Language Model-Driven Knowledge Discovery for Designing Advanced Micro/Nano Electrocatalyst Materials",
+      "year": 2025
+    }
+  ],
+  "schema_version": "domain-adapter-selection-v0.1",
+  "selection_method": "curated_full_text_oer_evidence"
+}

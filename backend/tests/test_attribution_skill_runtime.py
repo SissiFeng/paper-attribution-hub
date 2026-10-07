@@ -4,7 +4,7 @@ import json
 from pathlib import Path
 
 import pytest
-from fastapi.testclient import TestClient
+from tests.admin_client import AdminTestClient as TestClient
 from sqlalchemy import func, select
 
 

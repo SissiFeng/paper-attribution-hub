@@ -1,0 +1,181 @@
+{
+  "$defs": {
+    "ConsensusAlternative": {
+      "additionalProperties": false,
+      "properties": {
+        "evidence_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Evidence Ids",
+          "type": "array"
+        },
+        "normalized_value": {
+          "title": "Normalized Value",
+          "type": "string"
+        },
+        "source_values": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Source Values",
+          "type": "array"
+        },
+        "supporting_model_aliases": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Supporting Model Aliases",
+          "type": "array"
+        },
+        "supporting_model_families": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Supporting Model Families",
+          "type": "array"
+        }
+      },
+      "required": [
+        "normalized_value",
+        "source_values",
+        "supporting_model_aliases",
+        "supporting_model_families",
+        "evidence_ids"
+      ],
+      "title": "ConsensusAlternative",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "alternatives": {
+      "items": {
+        "$ref": "#/$defs/ConsensusAlternative"
+      },
+      "title": "Alternatives",
+      "type": "array"
+    },
+    "decision": {
+      "enum": [
+        "accepted_silver",
+        "disputed",
+        "abstained"
+      ],
+      "title": "Decision",
+      "type": "string"
+    },
+    "decision_id": {
+      "title": "Decision Id",
+      "type": "string"
+    },
+    "entity_key": {
+      "title": "Entity Key",
+      "type": "string"
+    },
+    "entity_type": {
+      "title": "Entity Type",
+      "type": "string"
+    },
+    "evidence_ids": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Evidence Ids",
+      "type": "array"
+    },
+    "evidence_scope": {
+      "enum": [
+        "primary_report",
+        "secondary_report",
+        "unknown"
+      ],
+      "title": "Evidence Scope",
+      "type": "string"
+    },
+    "field_name": {
+      "title": "Field Name",
+      "type": "string"
+    },
+    "normalized_value": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Normalized Value"
+    },
+    "paper_id": {
+      "title": "Paper Id",
+      "type": "string"
+    },
+    "reasons": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Reasons",
+      "type": "array"
+    },
+    "schema_version": {
+      "default": "domain-teacher-consensus-decision-v0.1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "slot_id": {
+      "title": "Slot Id",
+      "type": "string"
+    },
+    "source_values": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Source Values",
+      "type": "array"
+    },
+    "supporting_model_aliases": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Supporting Model Aliases",
+      "type": "array"
+    },
+    "supporting_model_families": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Supporting Model Families",
+      "type": "array"
+    },
+    "tier": {
+      "enum": [
+        "A",
+        "B",
+        "C"
+      ],
+      "title": "Tier",
+      "type": "string"
+    },
+    "training_eligible": {
+      "default": false,
+      "title": "Training Eligible",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "decision_id",
+    "slot_id",
+    "paper_id",
+    "evidence_scope",
+    "entity_type",
+    "entity_key",
+    "field_name",
+    "decision",
+    "tier"
+  ],
+  "title": "ConsensusDecision",
+  "type": "object"
+}

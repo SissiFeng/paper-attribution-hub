@@ -1,0 +1,105 @@
+{
+  "schema_version": "evidence-following-mpu-study-v0.1",
+  "study_id": "evidence-following-mpu-v0.1-current-cohort",
+  "domains": [
+    "oer-electrocatalysis",
+    "organic-synthesis"
+  ],
+  "policy": {
+    "schema_version": "evidence-following-mpu-policy-v0.1",
+    "min_primary_papers_per_domain": 100,
+    "min_tasks_per_domain": 100,
+    "min_model_count": 3,
+    "bootstrap_replicates": 2000,
+    "bootstrap_seed": 20260901,
+    "trait_rank_correlation_threshold": 0.6,
+    "max_mean_cross_domain_gap": 0.1,
+    "correlation_equivalence_bound": 0.3
+  },
+  "models": [
+    {
+      "alias": "claude-opus-4-6",
+      "family": "anthropic",
+      "model_id": "us.anthropic.claude-opus-4-6-v1"
+    },
+    {
+      "alias": "claude-opus-5",
+      "family": "anthropic",
+      "model_id": "us.anthropic.claude-opus-5"
+    },
+    {
+      "alias": "deepseek-v3-2",
+      "family": "deepseek",
+      "model_id": "deepseek.v3.2"
+    },
+    {
+      "alias": "gpt-5-6-sol",
+      "family": "openai",
+      "model_id": "us.openai.gpt-5.6-sol"
+    },
+    {
+      "alias": "kimi-k2-5",
+      "family": "moonshot",
+      "model_id": "moonshotai.kimi-k2.5"
+    }
+  ],
+  "papers": [
+    {
+      "paper_id": "DOI:10.1016_j.matt.2022.11.031",
+      "domain": "oer-electrocatalysis",
+      "title": "Accelerated chemical space search using a quantum-inspired cluster expansion approach",
+      "doi": "10.1016/j.matt.2022.11.031",
+      "report_type": "primary_experiment",
+      "source_markdown_sha256": "9e5b83b13b921ac8b533d19b34f11b9a662819fb3e3b6079ab73a83072f95f49"
+    },
+    {
+      "paper_id": "DOI:10.1021_acs.chemmater.0c01894",
+      "domain": "oer-electrocatalysis",
+      "title": "Active Learning Accelerated Discovery of Stable Iridium Oxide Polymorphs for the Oxygen Evolution Reaction",
+      "doi": "10.1021/acs.chemmater.0c01894",
+      "report_type": "primary_experiment",
+      "source_markdown_sha256": "dfe11aabd354556770194fce802b6026443297d8cf2461288baafc98e01c49a2"
+    },
+    {
+      "paper_id": "DOI:10.1021_acs.chemmater.2c01455",
+      "domain": "oer-electrocatalysis",
+      "title": "Discovery of High-Entropy Oxide Electrocatalysts: From Thin-Film Material Libraries to Particles",
+      "doi": "10.1021/acs.chemmater.2c01455",
+      "report_type": "primary_experiment",
+      "source_markdown_sha256": "d5a0e49a7e1bcafdc5e5c1a9ec10137085371ebc09abf27d38633b3937107183"
+    },
+    {
+      "paper_id": "DOI:10.1021_acscentsci.3c01009",
+      "domain": "oer-electrocatalysis",
+      "title": "Human-Machine Collaboration for Accelerated Discovery of Promising Oxygen Evolution Electrocatalysts with On-Demand Elements",
+      "doi": "10.1021/acscentsci.3c01009",
+      "report_type": "primary_experiment",
+      "source_markdown_sha256": "1b682bf25e96a25bb17fa5d024a19be12f4b23c2a77c1b54efa14ef8d7006452"
+    },
+    {
+      "paper_id": "DOI:10.1038_s41467-023-40177-1",
+      "domain": "oer-electrocatalysis",
+      "title": "Synergy of dual-atom catalysts deviated from the scaling relationship for oxygen evolution reaction",
+      "doi": "10.1038/s41467-023-40177-1",
+      "report_type": "primary_experiment",
+      "source_markdown_sha256": "6092145d93550411bca5bf13eb494a1109aa023f4e9f10e3ff4415ecdf2e80c8"
+    },
+    {
+      "paper_id": "DOI:10.1038_s41467-024-50605-5",
+      "domain": "oer-electrocatalysis",
+      "title": "Transfer learning guided discovery of efficient perovskite oxide for alkaline water oxidation",
+      "doi": "10.1038/s41467-024-50605-5",
+      "report_type": "primary_experiment",
+      "source_markdown_sha256": "7bc303de54dccc39645e8a5f920ea9fedea7175d52e215cec50b0d33aaab57ab"
+    },
+    {
+      "paper_id": "DOI:10.1039_d0ta06441f",
+      "domain": "oer-electrocatalysis",
+      "title": "Emerging linear activity trend in the oxygen evolution reaction with dual-active-sites mechanism",
+      "doi": "10.1039/d0ta06441f",
+      "report_type": "primary_experiment",
+      "source_markdown_sha256": "9f7d0d528144e68b07d948805e6903194127a28414b6a3a73291f77cdcc0ae02"
+    }
+  ],
+  "tasks": []
+}

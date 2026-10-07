@@ -1,0 +1,41 @@
+{
+  "claims_boundary": "Unknown entries must remain excluded until a provider source documents the exact model-version cutoff. A family-level or guessed cutoff is not accepted.",
+  "model_cutoffs": [
+    {
+      "evidence_status": "unknown",
+      "model_alias": "claude-opus-4-6",
+      "model_family": "anthropic",
+      "model_id": "us.anthropic.claude-opus-4-6-v1",
+      "schema_version": "memory-evidence-model-cutoff-v0.1"
+    },
+    {
+      "evidence_status": "unknown",
+      "model_alias": "claude-opus-5",
+      "model_family": "anthropic",
+      "model_id": "us.anthropic.claude-opus-5",
+      "schema_version": "memory-evidence-model-cutoff-v0.1"
+    },
+    {
+      "evidence_status": "unknown",
+      "model_alias": "deepseek-v3-2",
+      "model_family": "deepseek",
+      "model_id": "deepseek.v3.2",
+      "schema_version": "memory-evidence-model-cutoff-v0.1"
+    },
+    {
+      "evidence_status": "unknown",
+      "model_alias": "gpt-5-6-sol",
+      "model_family": "openai",
+      "model_id": "us.openai.gpt-5.6-sol",
+      "schema_version": "memory-evidence-model-cutoff-v0.1"
+    },
+    {
+      "evidence_status": "unknown",
+      "model_alias": "kimi-k2-5",
+      "model_family": "moonshot",
+      "model_id": "moonshotai.kimi-k2.5",
+      "schema_version": "memory-evidence-model-cutoff-v0.1"
+    }
+  ],
+  "schema_version": "memory-evidence-cutoff-registry-v0.1"
+}

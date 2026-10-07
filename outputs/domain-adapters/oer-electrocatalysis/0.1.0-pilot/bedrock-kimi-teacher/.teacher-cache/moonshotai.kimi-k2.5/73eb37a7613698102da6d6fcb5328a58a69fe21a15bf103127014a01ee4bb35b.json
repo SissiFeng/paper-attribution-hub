@@ -1,0 +1,383 @@
+{
+  "model_id": "moonshotai.kimi-k2.5",
+  "paper_id": "DOI:10.1093_ce_zkaf036",
+  "prompt_version": "oer-protocol-teacher-v0.1",
+  "protocols": [
+    {
+      "caveats": [],
+      "characterization": [],
+      "evidence": [
+        {
+          "char_end": 203,
+          "char_start": 0,
+          "chunk_id": "mdchk_632bfd5bd2fcfbdf",
+          "document_char_end": 83354,
+          "document_char_start": 83151,
+          "evidence_id": "ev_a0354b15cca8e366",
+          "paper_id": "DOI:10.1093_ce_zkaf036",
+          "quote": "Levenberg–Marquardt three-layer back propagation algorithm, the ANN model predicted water quality index (WQI) in ground- water samples with superior accuracy compared to multiple linear regression [127].",
+          "source_sha256": "d94c52694e256e3786305a2f1f7af6f139b9fa735ce17dd41f5a4990774b1b53"
+        }
+      ],
+      "evidence_scope": "secondary_report",
+      "instruments": [],
+      "materials": [],
+      "paper_id": "DOI:10.1093_ce_zkaf036",
+      "protocol_id": "protocol_8ac440850b68621d",
+      "protocol_name": "ANN model for water quality index prediction in groundwater",
+      "protocol_type": "computational",
+      "relations": [],
+      "results": [],
+      "software": [],
+      "source_chunk_ids": [
+        "mdchk_632bfd5bd2fcfbdf"
+      ],
+      "source_paper_tier": "oer_review",
+      "steps": [
+        {
+          "action": "Levenberg–Marquardt three-layer back propagation algorithm, the ANN model predicted water quality index (WQI) in ground- water samples with superior accuracy compared to multiple linear regression [127].",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_a0354b15cca8e366"
+          ],
+          "notes": null,
+          "order": 1,
+          "step_id": "step_8ac440850b68621d"
+        }
+      ]
+    },
+    {
+      "caveats": [],
+      "characterization": [],
+      "evidence": [
+        {
+          "char_end": 650,
+          "char_start": 329,
+          "chunk_id": "mdchk_632bfd5bd2fcfbdf",
+          "document_char_end": 83801,
+          "document_char_start": 83480,
+          "evidence_id": "ev_a122d0822597460b",
+          "paper_id": "DOI:10.1093_ce_zkaf036",
+          "quote": "In another study, ensemble techniques, including simple average ensemble, weighted average ensemble, and neural network ensemble (NNE), were evaluated for predicting dissolved oxygen (DO) levels in the Yamuna River in India, which improved predictions over single models, with NNE achieving the highest performance [135].",
+          "source_sha256": "d94c52694e256e3786305a2f1f7af6f139b9fa735ce17dd41f5a4990774b1b53"
+        }
+      ],
+      "evidence_scope": "secondary_report",
+      "instruments": [],
+      "materials": [],
+      "paper_id": "DOI:10.1093_ce_zkaf036",
+      "protocol_id": "protocol_3302fa2224d7c4ea",
+      "protocol_name": "Ensemble techniques for dissolved oxygen prediction in river water",
+      "protocol_type": "computational",
+      "relations": [],
+      "results": [],
+      "software": [
+        {
+          "entity_id": "soft_bcff35fe9bd5b1d7",
+          "evidence_ids": [
+            "ev_a122d0822597460b"
+          ],
+          "name": "simple average ensemble",
+          "settings": {},
+          "version": null
+        },
+        {
+          "entity_id": "soft_99948eeb795a8939",
+          "evidence_ids": [
+            "ev_a122d0822597460b"
+          ],
+          "name": "weighted average ensemble",
+          "settings": {},
+          "version": null
+        },
+        {
+          "entity_id": "soft_589c753938a9b686",
+          "evidence_ids": [
+            "ev_a122d0822597460b"
+          ],
+          "name": "neural network ensemble (NNE)",
+          "settings": {},
+          "version": null
+        }
+      ],
+      "source_chunk_ids": [
+        "mdchk_632bfd5bd2fcfbdf"
+      ],
+      "source_paper_tier": "oer_review",
+      "steps": [
+        {
+          "action": "In another study, ensemble techniques, including simple average ensemble, weighted average ensemble, and neural network ensemble (NNE), were evaluated for predicting dissolved oxygen (DO) levels in the Yamuna River in India, which improved predictions over single models, with NNE achieving the highest performance [135].",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_a122d0822597460b"
+          ],
+          "notes": null,
+          "order": 1,
+          "step_id": "step_8ac440850b68621d"
+        }
+      ]
+    },
+    {
+      "caveats": [],
+      "characterization": [],
+      "evidence": [
+        {
+          "char_end": 2040,
+          "char_start": 1711,
+          "chunk_id": "mdchk_632bfd5bd2fcfbdf",
+          "document_char_end": 85191,
+          "document_char_start": 84862,
+          "evidence_id": "ev_8158941100ff924a",
+          "paper_id": "DOI:10.1093_ce_zkaf036",
+          "quote": "For coagulation and floccu- lation, a GA-ANN model optimized coagulant dosage in indus- trial wastewater treatment for copper removal, which identified optimal chemical dosages (Na₂S, FeSO₄, NaOH) to minimize costs while meeting effluent standards, demonstrating practical applic- ability in real-world treatment scenarios [133].",
+          "source_sha256": "d94c52694e256e3786305a2f1f7af6f139b9fa735ce17dd41f5a4990774b1b53"
+        }
+      ],
+      "evidence_scope": "secondary_report",
+      "instruments": [],
+      "materials": [
+        {
+          "amount": null,
+          "entity_id": "mat_7a416460916741a4",
+          "evidence_ids": [
+            "ev_8158941100ff924a"
+          ],
+          "name": "Na₂S",
+          "pretreatment": null,
+          "purity": null,
+          "role": "coagulant",
+          "supplier": null
+        },
+        {
+          "amount": null,
+          "entity_id": "mat_3ef9d07d4e680db7",
+          "evidence_ids": [
+            "ev_8158941100ff924a"
+          ],
+          "name": "FeSO₄",
+          "pretreatment": null,
+          "purity": null,
+          "role": "coagulant",
+          "supplier": null
+        },
+        {
+          "amount": null,
+          "entity_id": "mat_a2ceb7fc6e19724c",
+          "evidence_ids": [
+            "ev_8158941100ff924a"
+          ],
+          "name": "NaOH",
+          "pretreatment": null,
+          "purity": null,
+          "role": "coagulant",
+          "supplier": null
+        }
+      ],
+      "paper_id": "DOI:10.1093_ce_zkaf036",
+      "protocol_id": "protocol_9d0723209344b3e1",
+      "protocol_name": "GA-ANN model for coagulant dosage optimization in industrial wastewater treatment",
+      "protocol_type": "computational",
+      "relations": [],
+      "results": [],
+      "software": [
+        {
+          "entity_id": "soft_b557bb19778b6a36",
+          "evidence_ids": [
+            "ev_8158941100ff924a"
+          ],
+          "name": "GA-ANN model",
+          "settings": {},
+          "version": null
+        }
+      ],
+      "source_chunk_ids": [
+        "mdchk_632bfd5bd2fcfbdf"
+      ],
+      "source_paper_tier": "oer_review",
+      "steps": [
+        {
+          "action": "For coagulation and floccu- lation, a GA-ANN model optimized coagulant dosage in indus- trial wastewater treatment for copper removal, which identified optimal chemical dosages (Na₂S, FeSO₄, NaOH) to minimize costs while meeting effluent standards, demonstrating practical applic- ability in real-world treatment scenarios [133].",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_8158941100ff924a"
+          ],
+          "notes": null,
+          "order": 1,
+          "step_id": "step_8ac440850b68621d"
+        }
+      ]
+    },
+    {
+      "caveats": [],
+      "characterization": [],
+      "evidence": [
+        {
+          "char_end": 3253,
+          "char_start": 2790,
+          "chunk_id": "mdchk_632bfd5bd2fcfbdf",
+          "document_char_end": 86404,
+          "document_char_start": 85941,
+          "evidence_id": "ev_18c9c90b32d227b3",
+          "paper_id": "DOI:10.1093_ce_zkaf036",
+          "quote": "For membrane fouling, a knowledge-based fuzzy broad learning (K-FBL) algorithm was de- veloped for early fouling warnings in wastewater treatment [134]. By integrating fuzzy rules derived from expert knowledge to com- pensate for data limitations, the K-FBL model outperformed con- ventional data-driven approaches, achieving high classification accuracy and robustness against incomplete data, offering a reli- able solution for fouling detection and prevention.",
+          "source_sha256": "d94c52694e256e3786305a2f1f7af6f139b9fa735ce17dd41f5a4990774b1b53"
+        }
+      ],
+      "evidence_scope": "secondary_report",
+      "instruments": [],
+      "materials": [],
+      "paper_id": "DOI:10.1093_ce_zkaf036",
+      "protocol_id": "protocol_8b1163cc0f397129",
+      "protocol_name": "K-FBL algorithm for early membrane fouling warning in wastewater treatment",
+      "protocol_type": "computational",
+      "relations": [],
+      "results": [
+        {
+          "context": "For membrane fouling, a knowledge-based fuzzy broad learning (K-FBL) algorithm was de- veloped for early fouling warnings in wastewater treatment [134]. By integrating fuzzy rules derived from expert knowledge to com- pensate for data limitations, the K-FBL model outperformed con- ventional data-driven approaches, achieving high classification accuracy and robustness against incomplete data, offering a reli- able solution for fouling detection and prevention.",
+          "evidence_ids": [
+            "ev_18c9c90b32d227b3"
+          ],
+          "metric": "classification accuracy",
+          "raw_value": "high classification accuracy and robustness against incomplete data",
+          "result_id": "result_8ac440850b68621d"
+        }
+      ],
+      "software": [],
+      "source_chunk_ids": [
+        "mdchk_632bfd5bd2fcfbdf"
+      ],
+      "source_paper_tier": "oer_review",
+      "steps": [
+        {
+          "action": "For membrane fouling, a knowledge-based fuzzy broad learning (K-FBL) algorithm was de- veloped for early fouling warnings in wastewater treatment [134]. By integrating fuzzy rules derived from expert knowledge to com- pensate for data limitations, the K-FBL model outperformed con- ventional data-driven approaches, achieving high classification accuracy and robustness against incomplete data, offering a reli- able solution for fouling detection and prevention.",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_18c9c90b32d227b3"
+          ],
+          "notes": null,
+          "order": 1,
+          "step_id": "step_8ac440850b68621d"
+        }
+      ]
+    },
+    {
+      "caveats": [],
+      "characterization": [],
+      "evidence": [
+        {
+          "char_end": 3569,
+          "char_start": 3254,
+          "chunk_id": "mdchk_632bfd5bd2fcfbdf",
+          "document_char_end": 86720,
+          "document_char_start": 86405,
+          "evidence_id": "ev_f8a0a119b21e2cbd",
+          "paper_id": "DOI:10.1093_ce_zkaf036",
+          "quote": "Alternatively, a long–short-term memory (LSTM) model was proposed to predict membrane fouling and permeate flux in nanofiltration systems [154]. Using real-time optical coherence tomography images and water quality data, the LSTM model achieved high accuracy in forecasting fouling layer thickness and flux decline.",
+          "source_sha256": "d94c52694e256e3786305a2f1f7af6f139b9fa735ce17dd41f5a4990774b1b53"
+        }
+      ],
+      "evidence_scope": "secondary_report",
+      "instruments": [
+        {
+          "entity_id": "inst_23122838cbc48fd6",
+          "evidence_ids": [
+            "ev_f8a0a119b21e2cbd"
+          ],
+          "manufacturer": null,
+          "model": null,
+          "name": "optical coherence tomography",
+          "settings": {}
+        }
+      ],
+      "materials": [],
+      "paper_id": "DOI:10.1093_ce_zkaf036",
+      "protocol_id": "protocol_073ba1fd500bbe13",
+      "protocol_name": "LSTM model for membrane fouling and permeate flux prediction in nanofiltration",
+      "protocol_type": "computational",
+      "relations": [],
+      "results": [],
+      "software": [],
+      "source_chunk_ids": [
+        "mdchk_632bfd5bd2fcfbdf"
+      ],
+      "source_paper_tier": "oer_review",
+      "steps": [
+        {
+          "action": "Alternatively, a long–short-term memory (LSTM) model was proposed to predict membrane fouling and permeate flux in nanofiltration systems [154]. Using real-time optical coherence tomography images and water quality data, the LSTM model achieved high accuracy in forecasting fouling layer thickness and flux decline.",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_f8a0a119b21e2cbd"
+          ],
+          "notes": null,
+          "order": 1,
+          "step_id": "step_8ac440850b68621d"
+        },
+        {
+          "action": "Alternatively, a long–short-term memory (LSTM) model was proposed to predict membrane fouling and permeate flux in nanofiltration systems [154]. Using real-time optical coherence tomography images and water quality data, the LSTM model achieved high accuracy in forecasting fouling layer thickness and flux decline.",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_f8a0a119b21e2cbd"
+          ],
+          "notes": null,
+          "order": 2,
+          "step_id": "step_3302fa2224d7c4ea"
+        }
+      ]
+    },
+    {
+      "caveats": [],
+      "characterization": [],
+      "evidence": [
+        {
+          "char_end": 3935,
+          "char_start": 3707,
+          "chunk_id": "mdchk_632bfd5bd2fcfbdf",
+          "document_char_end": 87086,
+          "document_char_start": 86858,
+          "evidence_id": "ev_c98308e7e2d593a0",
+          "paper_id": "DOI:10.1093_ce_zkaf036",
+          "quote": "In a study using an anaerobic membrane bioreactor (AnMBR) to treat pharmaceutical wastewater containing β-lactam antibiotics, back propagation neural networks were de- veloped and carefully calibrated to simulate COD removal and",
+          "source_sha256": "d94c52694e256e3786305a2f1f7af6f139b9fa735ce17dd41f5a4990774b1b53"
+        }
+      ],
+      "evidence_scope": "secondary_report",
+      "instruments": [],
+      "materials": [],
+      "paper_id": "DOI:10.1093_ce_zkaf036",
+      "protocol_id": "protocol_a87d2b560babf6ab",
+      "protocol_name": "Back propagation neural networks for COD removal simulation in anaerobic membrane bioreactor",
+      "protocol_type": "computational",
+      "relations": [],
+      "results": [],
+      "software": [
+        {
+          "entity_id": "soft_02ebf3fce305de4e",
+          "evidence_ids": [
+            "ev_c98308e7e2d593a0"
+          ],
+          "name": "back propagation neural networks",
+          "settings": {},
+          "version": null
+        }
+      ],
+      "source_chunk_ids": [
+        "mdchk_632bfd5bd2fcfbdf"
+      ],
+      "source_paper_tier": "oer_review",
+      "steps": [
+        {
+          "action": "In a study using an anaerobic membrane bioreactor (AnMBR) to treat pharmaceutical wastewater containing β-lactam antibiotics, back propagation neural networks were de- veloped and carefully calibrated to simulate COD removal and",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_c98308e7e2d593a0"
+          ],
+          "notes": null,
+          "order": 1,
+          "step_id": "step_8ac440850b68621d"
+        }
+      ]
+    }
+  ],
+  "schema_version": "bedrock-teacher-paper-cache-v0.1",
+  "unsupported_claim_count": 23
+}

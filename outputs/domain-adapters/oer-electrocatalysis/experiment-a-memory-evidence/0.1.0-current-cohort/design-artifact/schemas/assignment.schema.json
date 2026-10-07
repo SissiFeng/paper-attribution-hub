@@ -1,0 +1,115 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "citation_count": {
+      "minimum": 0,
+      "title": "Citation Count",
+      "type": "integer"
+    },
+    "citation_stratum": {
+      "anyOf": [
+        {
+          "enum": [
+            "low",
+            "middle",
+            "high"
+          ],
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Citation Stratum"
+    },
+    "doi": {
+      "title": "Doi",
+      "type": "string"
+    },
+    "domain": {
+      "title": "Domain",
+      "type": "string"
+    },
+    "eligible": {
+      "title": "Eligible",
+      "type": "boolean"
+    },
+    "exclusion_reasons": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Exclusion Reasons",
+      "type": "array"
+    },
+    "experiment_id": {
+      "title": "Experiment Id",
+      "type": "string"
+    },
+    "knowledge_cutoff_date": {
+      "anyOf": [
+        {
+          "format": "date",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Knowledge Cutoff Date"
+    },
+    "model_alias": {
+      "title": "Model Alias",
+      "type": "string"
+    },
+    "model_family": {
+      "title": "Model Family",
+      "type": "string"
+    },
+    "model_id": {
+      "title": "Model Id",
+      "type": "string"
+    },
+    "paper_id": {
+      "title": "Paper Id",
+      "type": "string"
+    },
+    "publication_date": {
+      "format": "date",
+      "title": "Publication Date",
+      "type": "string"
+    },
+    "schema_version": {
+      "default": "memory-evidence-stratum-assignment-v0.1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "temporal_stratum": {
+      "enum": [
+        "pre_cutoff",
+        "post_cutoff",
+        "cutoff_boundary",
+        "unknown_cutoff",
+        "not_applicable"
+      ],
+      "title": "Temporal Stratum",
+      "type": "string"
+    }
+  },
+  "required": [
+    "experiment_id",
+    "domain",
+    "model_alias",
+    "model_family",
+    "model_id",
+    "paper_id",
+    "doi",
+    "publication_date",
+    "knowledge_cutoff_date",
+    "temporal_stratum",
+    "citation_count",
+    "eligible"
+  ],
+  "title": "ExperimentAStratumAssignment",
+  "type": "object"
+}

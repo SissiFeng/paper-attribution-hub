@@ -9,7 +9,7 @@ import re
 from urllib.parse import parse_qs, urlsplit
 
 import pytest
-from fastapi.testclient import TestClient
+from tests.admin_client import AdminTestClient as TestClient
 
 from app.main import app
 from app.services.filter_spec import (

@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 
 import { AnalysisScopePanel } from "@/components/AnalysisScopePanel";
-import { EChart } from "@/components/EChart";
+import { TimeSeriesChart } from "@/components/editorial/EditorialCharts";
 import { FilterBar } from "@/components/FilterBar";
 import { getImpactReport } from "@/lib/api";
 import {
@@ -18,80 +18,6 @@ function isPartialYear(points: GrowthSeries["points"]): boolean {
   const last = points[points.length - 1].value;
   const prev = points[points.length - 2].value;
   return prev > 0 && last < prev * 0.6;
-}
-
-function lineOption(series: GrowthSeries, color: string) {
-  const partial = isPartialYear(series.points);
-  const lastYear = series.points.length > 0
-    ? String(series.points[series.points.length - 1].year)
-    : null;
-
-  // Split into solid (complete) and dashed (partial) segments
-  const solidData = partial
-    ? series.points.slice(0, -1).map((p) => [String(p.year), p.value])
-    : series.points.map((p) => [String(p.year), p.value]);
-  const partialData = partial
-    ? series.points.slice(-2).map((p) => [String(p.year), p.value])
-    : [];
-
-  return {
-    tooltip: {
-      trigger: "axis",
-      formatter: (params: any[]) => {
-        const p = params[0];
-        const yr = p.axisValue;
-        const suffix = partial && yr === lastYear ? " ⚠ partial year" : "";
-        return `${yr}: <b>${p.value}</b>${suffix}`;
-      },
-    },
-    grid: { left: 36, right: 12, bottom: 28, top: partial ? 28 : 18 },
-    xAxis: {
-      type: "category",
-      data: series.points.map((p) => String(p.year)),
-      axisLabel: { color: "#9aa3b2" },
-      axisLine: { lineStyle: { color: "#2a2f3a" } },
-    },
-    yAxis: {
-      type: "value",
-      axisLabel: { color: "#9aa3b2" },
-      axisLine: { lineStyle: { color: "#2a2f3a" } },
-      splitLine: { lineStyle: { color: "#1f232c" } },
-    },
-    ...(partial ? {
-      graphic: [{
-        type: "text",
-        right: 12, top: 4,
-        style: {
-          text: `⚠ ${lastYear} data is partial (import cutoff)`,
-          fill: "#f59e0b", fontSize: 11, fontFamily: "'JetBrains Mono', monospace",
-        },
-      }],
-    } : {}),
-    series: [
-      {
-        type: "line",
-        smooth: true,
-        symbol: "circle",
-        symbolSize: 7,
-        data: solidData,
-        itemStyle: { color },
-        lineStyle: { color, width: 2 },
-        areaStyle: { color, opacity: 0.15 },
-        z: 2,
-      },
-      ...(partial ? [{
-        type: "line",
-        smooth: false,
-        symbol: "emptyCircle",
-        symbolSize: 7,
-        data: partialData,
-        itemStyle: { color: "#f59e0b" },
-        lineStyle: { color: "#f59e0b", width: 2, type: "dashed" },
-        areaStyle: { color: "#f59e0b", opacity: 0.07 },
-        z: 1,
-      }] : []),
-    ],
-  };
 }
 
 export default function ImpactPage() {
@@ -158,8 +84,8 @@ export default function ImpactPage() {
           <div className="label">AC-attributed papers (CORE + RELATED)</div>
           <div className="value">{total}</div>
           {partialYearActive && (
-            <div style={{ fontSize: "0.72rem", color: "#f59e0b", marginTop: 2 }}>
-              excl. partial {lastYear}
+            <div style={{ fontSize: "0.72rem", color: "var(--text)", marginTop: 2 }}>
+              {lastYear} coverage check · all years included
             </div>
           )}
         </div>
@@ -190,21 +116,24 @@ export default function ImpactPage() {
 
       <AnalysisScopePanel audit={report.audit} title="Impact evidence scope" />
 
+      <div className="lf-grid-layout">
+        <TimeSeriesChart
+          title="AC-attributed papers by publication year"
+          points={report.yoy_attributed.points.map((p) => ({ label: String(p.year), value: p.value }))}
+          source="filtered analytics / impact · CORE + RELATED"
+          flaggedYear={partialYearActive && lastYear != null ? String(lastYear) : undefined}
+        />
+        <TimeSeriesChart
+          title="Citation edges across publication years"
+          points={report.citation_impact.points.map((p) => ({ label: String(p.year), value: p.value }))}
+          valueLabel="Citation edges"
+          variant="hairline-area"
+          source="filtered analytics / impact · corpus citation edges"
+          flaggedYear={isPartialYear(report.citation_impact.points) ? String(report.citation_impact.points.at(-1)!.year) : undefined}
+        />
+      </div>
+      <p className="metric-note">Chart design adapted from <a href="https://github.com/larashero3-dotcom/lieflat-charts">Lieflat Charts</a> · <a href="/licenses/lieflat-charts.txt">PolyForm Noncommercial 1.0.0</a></p>
       <div className="impact-grid">
-        <div className="impact-card">
-          <h3>AC-attributed papers (YoY)</h3>
-          <EChart
-            option={lineOption(report.yoy_attributed, "#34d399")}
-            style={{ height: 220 }}
-          />
-        </div>
-        <div className="impact-card">
-          <h3>Citation edges (YoY)</h3>
-          <EChart
-            option={lineOption(report.citation_impact, "#7aa2f7")}
-            style={{ height: 220 }}
-          />
-        </div>
         <div className="impact-card">
           <h3>Normalized external citation impact</h3>
           <p className="metric-note">

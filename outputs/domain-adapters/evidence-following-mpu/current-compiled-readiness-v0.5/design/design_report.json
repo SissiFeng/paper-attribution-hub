@@ -1,0 +1,21 @@
+{
+  "claims_boundary": "This design measures observable evidence-following under controlled prompts. It does not measure chain-of-thought, prove training-set membership, or train adapters.",
+  "failed_gates": [
+    "primary_papers:oer-electrocatalysis",
+    "primary_papers:organic-synthesis",
+    "counterfactual_tasks:oer-electrocatalysis",
+    "counterfactual_tasks:organic-synthesis"
+  ],
+  "model_count": 5,
+  "primary_paper_counts": {
+    "oer-electrocatalysis": 7,
+    "organic-synthesis": 0
+  },
+  "ready": false,
+  "schema_version": "evidence-following-mpu-design-v0.1",
+  "study_id": "evidence-following-mpu-v0.1-current-cohort",
+  "task_counts": {
+    "oer-electrocatalysis": 14,
+    "organic-synthesis": 0
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "assignment_count": 100,
+  "claims_boundary": "Design readiness checks cohort composition and auditable cutoff metadata. It does not report a memory effect or establish training-data membership.",
+  "counts_by_model_and_citation_stratum": {},
+  "counts_by_model_and_temporal_stratum": {
+    "claude-opus-4-6": {
+      "not_applicable": 13,
+      "unknown_cutoff": 7
+    },
+    "claude-opus-5": {
+      "not_applicable": 13,
+      "unknown_cutoff": 7
+    },
+    "deepseek-v3-2": {
+      "not_applicable": 13,
+      "unknown_cutoff": 7
+    },
+    "gpt-5-6-sol": {
+      "not_applicable": 13,
+      "unknown_cutoff": 7
+    },
+    "kimi-k2-5": {
+      "not_applicable": 13,
+      "unknown_cutoff": 7
+    }
+  },
+  "domain": "oer-electrocatalysis",
+  "eligible_assignment_count": 0,
+  "experiment_id": "oer-memory-evidence-v0.1-current-cohort",
+  "failed_gates": [
+    "primary_paper_count",
+    "documented_model_cutoffs"
+  ],
+  "model_count": 5,
+  "primary_paper_count": 7,
+  "ready": false,
+  "schema_version": "memory-evidence-design-report-v0.1",
+  "supplied_paper_count": 20
+}

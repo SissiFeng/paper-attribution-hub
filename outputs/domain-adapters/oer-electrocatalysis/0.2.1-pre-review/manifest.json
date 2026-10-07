@@ -1,0 +1,55 @@
+{
+  "artifact_sha256": {
+    "corpus/continued_pretraining.jsonl": "96863cfd49d92753a59cba1c524b92b9be982ebbce374885f921d120c11ba989",
+    "knowledge/paper_records.jsonl": "561eed2177db33346bdad1b357612c2e37be47a891040dd7a85e4095fb7c9b06",
+    "knowledge/protocols.jsonl": "819ec3d10391e9f83c61506ab97e67bf5df5f48b213f61528107641e9186f8c3",
+    "reports/quality_report.json": "7ef805545bb1fff3d2e078f1517d93e7bb14c8f7d7086a1120d1f05a3b329771",
+    "reports/teacher_field_audit.jsonl": "f722c00e27e0933215c388eae33dbfbc1952348cc315f2d1552850127702d8b3",
+    "source/selection_manifest.json": "f67aa24722a96bee211d2dbf2e84bc03971073da283c3a620bbdf2ff8971ac35",
+    "tasks/evaluation/eval.jsonl": "32f8833a6d3eb988c3019f9ee1d5230c638b92ff348eecd76478d0368c3e9528",
+    "tasks/sft/train.jsonl": "95a83563a79a0622969b129c3b25a8262755903641014b8c17d13d32e03cdaa6"
+  },
+  "classification_neutral": true,
+  "counts": {
+    "corpus_record_count": 284,
+    "paper_count": 20,
+    "protocol_count": 45,
+    "task_count": 51
+  },
+  "domain": "oxygen evolution electrocatalysis",
+  "extraction": {
+    "extractor": "amazon_bedrock_structured_teacher",
+    "mode": "teacher",
+    "model": "moonshotai.kimi-k2.5",
+    "prompt_version": "oer-protocol-teacher-v0.2",
+    "region": "us-east-1",
+    "usage": {
+      "input_token_count": 95690,
+      "invocation_count": 20,
+      "output_token_count": 76010,
+      "response_failure_diagnostics": [
+        {
+          "diagnostic": "Expecting property name enclosed in double quotes: line 1171 column 27 (char 59870)",
+          "paper_id": "DOI:10.1021_acs.chemrev.4c00055"
+        }
+      ],
+      "response_schema_failure_count": 1,
+      "salvaged_response_count": 1
+    }
+  },
+  "institution_entities_included": false,
+  "layers": [
+    "cleaned_corpus",
+    "structured_knowledge",
+    "task_suite"
+  ],
+  "package_id": "oer-electrocatalysis",
+  "package_version": "0.2.1-pre-review",
+  "schema_version": "domain-adapter-package-v0.1",
+  "source_access": "s3_markdown",
+  "validation": {
+    "rejected_protocol_count": 0,
+    "rejected_teacher_field_count": 677,
+    "unsupported_evidence_count": 677
+  }
+}

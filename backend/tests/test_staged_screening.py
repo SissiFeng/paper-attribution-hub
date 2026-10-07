@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from fastapi.testclient import TestClient
+from tests.admin_client import AdminTestClient as TestClient
 from sqlalchemy import select
 
 from app.main import app

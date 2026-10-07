@@ -527,6 +527,18 @@ table.papers tbody tr:last-child td { border-bottom: none; }
 .multi-graph-entity-list span {
   min-width: 0;
 }
+.multi-graph-entity-name {
+  display: grid;
+  grid-template-columns: 9px minmax(0, 1fr);
+  column-gap: 7px;
+  align-items: center;
+}
+.multi-graph-entity-name i {
+  grid-row: 1 / span 2;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+}
 .multi-graph-entity-list strong {
   overflow: hidden;
   text-overflow: ellipsis;
@@ -551,9 +563,91 @@ table.papers tbody tr:last-child td { border-bottom: none; }
   color: var(--color-navy);
   font-weight: 600;
 }
+.graph-evidence-boundary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 14px;
+  align-items: center;
+  margin: 10px 0 12px;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--panel);
+  color: var(--muted);
+  font-size: 11px;
+}
+.graph-evidence-boundary strong { color: var(--text); }
+.graph-evidence-boundary span::before {
+  content: "";
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  margin-right: 6px;
+  border-radius: 50%;
+  background: var(--color-steel);
+  vertical-align: 1px;
+}
+.graph-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px 14px;
+  align-items: center;
+  padding: 12px 16px;
+  color: var(--muted);
+  font-size: 11px;
+}
+.graph-legend strong { color: var(--text); }
+.graph-legend span {
+  display: inline-flex;
+  gap: 5px;
+  align-items: center;
+}
+.graph-legend span.inactive { opacity: 0.4; }
+.graph-legend i {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+.graph-legend i.edge {
+  width: 18px;
+  height: 3px;
+  border-radius: 2px;
+}
+.graph-inventory-table summary {
+  cursor: pointer;
+  color: var(--color-navy);
+  font-weight: 600;
+}
+.graph-inventory-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 12px;
+}
+.graph-inventory-grid table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 11px;
+}
+.graph-inventory-grid caption {
+  padding-bottom: 6px;
+  color: var(--muted);
+  text-align: left;
+}
+.graph-inventory-grid th,
+.graph-inventory-grid td {
+  padding: 5px 7px;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+}
+.graph-inventory-grid th:last-child,
+.graph-inventory-grid td:last-child { text-align: right; }
 @media (max-width: 900px) {
   .multi-graph-workspace { grid-template-columns: 1fr; }
   .multi-graph-entity-panel { min-height: 0; max-height: 320px; }
+}
+@media (max-width: 640px) {
+  .graph-inventory-grid { grid-template-columns: 1fr; }
 }
 
 .filter-error {
@@ -3166,12 +3260,13 @@ table.papers tbody tr:last-child td { border-bottom: none; }
 .global-chat-launcher:focus-visible,
 .global-chat-panel button:focus-visible,
 .global-chat-panel a:focus-visible,
-.global-chat-panel summary:focus-visible {
+.global-chat-panel summary:focus-visible,
+.global-chat-panel textarea:focus-visible {
   outline: 3px solid rgba(101,148,177,0.45);
   outline-offset: 2px;
 }
 .global-chat-panel {
-  width: min(440px, calc(100vw - 32px));
+  width: min(480px, calc(100vw - 32px));
   height: min(720px, calc(100dvh - 48px));
   display: flex;
   flex-direction: column;
@@ -3300,6 +3395,24 @@ table.papers tbody tr:last-child td { border-bottom: none; }
   font-size: 13px;
   line-height: 1.6;
 }
+.global-chat-route-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 7px;
+  margin-top: 9px;
+  padding: 8px 9px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--accent-bg);
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.45;
+}
+.global-chat-route-note svg {
+  flex: 0 0 auto;
+  margin-top: 1px;
+  color: var(--accent);
+}
 .global-chat-answer-meta {
   display: flex;
   flex-wrap: wrap;
@@ -3313,6 +3426,37 @@ table.papers tbody tr:last-child td { border-bottom: none; }
   color: var(--muted);
   font-size: 9px;
 }
+.global-chat-trust {
+  display: grid;
+  gap: 2px;
+  margin-top: 10px;
+  padding: 8px 9px;
+  border: 1px solid var(--border-strong);
+  border-left-width: 3px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-3);
+  font-size: 10px;
+  line-height: 1.45;
+}
+.global-chat-trust strong {
+  color: var(--text);
+  font-size: 10px;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+.global-chat-trust span { color: var(--muted); }
+.global-chat-trust.verified_structured,
+.global-chat-trust.evidence_grounded {
+  border-left-color: var(--confirmed);
+}
+.global-chat-trust.partial_evidence {
+  border-left-color: #d97706;
+  background: var(--adjacent-dim);
+}
+.global-chat-trust.insufficient_evidence {
+  border-left-color: var(--uncertain);
+  background: var(--uncertain-dim);
+}
 .global-chat-warning,
 .global-chat-error {
   margin-top: 9px;
@@ -3324,19 +3468,39 @@ table.papers tbody tr:last-child td { border-bottom: none; }
   font-size: 11px;
   line-height: 1.45;
 }
+.global-chat-warning {
+  display: grid;
+  gap: 3px;
+}
+.global-chat-warning strong {
+  color: var(--text);
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
 .global-chat-sources {
   margin-top: 9px;
   border-top: 1px solid var(--border);
   padding-top: 8px;
 }
 .global-chat-sources summary {
-  min-height: 32px;
+  min-height: 44px;
   display: flex;
   align-items: center;
   color: var(--accent);
   cursor: pointer;
   font-size: 11px;
   font-weight: 700;
+}
+.global-chat-no-evidence {
+  margin-top: 9px;
+  padding: 10px;
+  border: 1px dashed var(--border-strong);
+  border-radius: var(--radius-sm);
+  background: var(--bg-3);
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.5;
 }
 .global-chat-retrieval-query {
   margin: 4px 0 8px;
@@ -3419,8 +3583,11 @@ table.papers tbody tr:last-child td { border-bottom: none; }
   color: var(--muted);
   font-size: 10px;
 }
+.global-chat-feedback > span:first-child {
+  flex: 1 0 100%;
+}
 .global-chat-feedback button {
-  min-height: 36px;
+  min-height: 44px;
   padding: 4px 9px;
   font-size: 10px;
 }
@@ -3517,7 +3684,7 @@ table.papers tbody tr:last-child td { border-bottom: none; }
     bottom: max(8px, env(safe-area-inset-bottom));
   }
   .global-chat-panel {
-    width: calc(100vw - 70px);
+    width: calc(100vw - 16px);
     height: min(760px, calc(100dvh - 16px));
     border-radius: 14px;
   }

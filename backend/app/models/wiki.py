@@ -9,7 +9,7 @@ from app.db import Base
 
 
 class WikiPage(Base):
-    """LLM-compiled knowledge digest for a corpus entity (paper / author / institution / topic)."""
+    """Compiled, provenance-bearing evidence view for a corpus entity."""
 
     __tablename__ = "wiki_pages"
 
@@ -23,6 +23,16 @@ class WikiPage(Base):
     content_md: Mapped[str | None] = mapped_column(Text)
     model_version: Mapped[str] = mapped_column(String, default="template-v0.1")
     prompt_version: Mapped[str] = mapped_column(String, default="v0.1")
+    # Hashes are computed from the deterministic source projection and rendered
+    # Markdown respectively.  They make compilation idempotent without relying
+    # on every upstream writer remembering to call mark_stale().
+    source_snapshot_hash: Mapped[str | None] = mapped_column(String(64), index=True)
+    content_hash: Mapped[str | None] = mapped_column(String(64))
+    # Compact provenance needed by bundle validation and the frontend.  Raw
+    # evidence remains in the immutable Attribution Skill invocation record.
+    source_metadata: Mapped[dict] = mapped_column(JSON, default=dict)
+    compile_status: Mapped[str] = mapped_column(String, default="complete", index=True)
+    compile_error: Mapped[str | None] = mapped_column(Text)
     generated_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True), default=lambda: datetime.now(UTC)
     )

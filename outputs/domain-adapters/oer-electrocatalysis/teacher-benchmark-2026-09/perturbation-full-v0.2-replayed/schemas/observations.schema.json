@@ -1,0 +1,70 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "case_id": {
+      "title": "Case Id",
+      "type": "string"
+    },
+    "decision_id": {
+      "title": "Decision Id",
+      "type": "string"
+    },
+    "diagnostic": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Diagnostic"
+    },
+    "model_alias": {
+      "title": "Model Alias",
+      "type": "string"
+    },
+    "model_id": {
+      "title": "Model Id",
+      "type": "string"
+    },
+    "observed_values": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Observed Values",
+      "type": "array"
+    },
+    "outcome": {
+      "enum": [
+        "passed",
+        "failed",
+        "missing_result",
+        "invalid_result",
+        "invocation_error"
+      ],
+      "title": "Outcome",
+      "type": "string"
+    },
+    "perturbation_type": {
+      "title": "Perturbation Type",
+      "type": "string"
+    },
+    "schema_version": {
+      "default": "domain-teacher-perturbation-observation-v0.1",
+      "title": "Schema Version",
+      "type": "string"
+    }
+  },
+  "required": [
+    "case_id",
+    "decision_id",
+    "model_alias",
+    "model_id",
+    "perturbation_type",
+    "outcome"
+  ],
+  "title": "PerturbationObservation",
+  "type": "object"
+}

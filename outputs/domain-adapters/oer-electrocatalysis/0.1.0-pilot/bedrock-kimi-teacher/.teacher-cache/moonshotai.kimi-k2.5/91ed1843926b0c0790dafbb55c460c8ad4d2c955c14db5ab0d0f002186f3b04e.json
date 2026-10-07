@@ -1,0 +1,651 @@
+{
+  "model_id": "moonshotai.kimi-k2.5",
+  "paper_id": "DOI:10.1039_d5ta00331h",
+  "prompt_version": "oer-protocol-teacher-v0.1",
+  "protocols": [
+    {
+      "caveats": [
+        {
+          "caveat_id": "caveat_3defc8f47f53f8eb",
+          "evidence_ids": [
+            "ev_2efdd3bac5428ffd"
+          ],
+          "text": "Even with such an expansive search and a detailed screening, the authors concluded that relaxing the criteria for the lters could help detect additional candidates, which echoes Kavalsky et al.'s call 57 to consider small compromises when screening materials."
+        }
+      ],
+      "characterization": [],
+      "evidence": [
+        {
+          "char_end": 397,
+          "char_start": 369,
+          "chunk_id": "mdchk_8edb58ce2d0b2e0d",
+          "document_char_end": 69521,
+          "document_char_start": 69493,
+          "evidence_id": "ev_9c4a3f5dfe1b5f4b",
+          "paper_id": "DOI:10.1039_d5ta00331h",
+          "quote": "ML algorithm LRGPRBO N/A N/A",
+          "source_sha256": "b42f869d497955f5f0bc7a2e77a891493381e47bcba0d5d8d283e37dd9dc3c75"
+        },
+        {
+          "char_end": 578,
+          "char_start": 489,
+          "chunk_id": "mdchk_8edb58ce2d0b2e0d",
+          "document_char_end": 69702,
+          "document_char_start": 69613,
+          "evidence_id": "ev_fcbbc6b244c7c18a",
+          "paper_id": "DOI:10.1039_d5ta00331h",
+          "quote": "All in all, over 32.5 million initial structural candidates were generated for screening.",
+          "source_sha256": "b42f869d497955f5f0bc7a2e77a891493381e47bcba0d5d8d283e37dd9dc3c75"
+        },
+        {
+          "char_end": 920,
+          "char_start": 579,
+          "chunk_id": "mdchk_8edb58ce2d0b2e0d",
+          "document_char_end": 70044,
+          "document_char_start": 69703,
+          "evidence_id": "ev_776217e267ef763f",
+          "paper_id": "DOI:10.1039_d5ta00331h",
+          "quote": "From here, the study moves to a 10-step funneling method to evaluate the selected candidates. The rst step narrowed down materials using their phase stability Ehull< 50 meV per atom (Ehullis the relative energy above the convex hull and obtained by using ML- based potentials¹⁶⁶), bringing the number down to under 6 × 5 10 (Fig. 6a and b).",
+          "source_sha256": "b42f869d497955f5f0bc7a2e77a891493381e47bcba0d5d8d283e37dd9dc3c75"
+        },
+        {
+          "char_end": 1208,
+          "char_start": 921,
+          "chunk_id": "mdchk_8edb58ce2d0b2e0d",
+          "document_char_end": 70332,
+          "document_char_start": 70045,
+          "evidence_id": "ev_48f9dc751f05331a",
+          "paper_id": "DOI:10.1039_d5ta00331h",
+          "quote": "The following levels encompassed criteria pertaining to solid electrolytes such as Li conductivity, redox potential, and cost. Distinctively though, each criterion step is performed with either ML or DFT based on the need for quicker (cheaper) screening or higher accuracy, respectively.",
+          "source_sha256": "b42f869d497955f5f0bc7a2e77a891493381e47bcba0d5d8d283e37dd9dc3c75"
+        },
+        {
+          "char_end": 1560,
+          "char_start": 1209,
+          "chunk_id": "mdchk_8edb58ce2d0b2e0d",
+          "document_char_end": 70684,
+          "document_char_start": 70333,
+          "evidence_id": "ev_9603ac125b4e98d9",
+          "paper_id": "DOI:10.1039_d5ta00331h",
+          "quote": "Essentially, this strategy demonstrates using ML for a large dataset because it requires less computing time and then switching to DFT once DFT descriptor(s)N/A N/A Energy above the convex hull Reaction energy Band gap Ionic conductivity Li-phonon band center the dataset has been tapered down for more reliable but not excessively expensive analysis.",
+          "source_sha256": "b42f869d497955f5f0bc7a2e77a891493381e47bcba0d5d8d283e37dd9dc3c75"
+        },
+        {
+          "char_end": 1930,
+          "char_start": 1764,
+          "chunk_id": "mdchk_8edb58ce2d0b2e0d",
+          "document_char_end": 71054,
+          "document_char_start": 70888,
+          "evidence_id": "ev_269c080e99ac7b28",
+          "paper_id": "DOI:10.1039_d5ta00331h",
+          "quote": "The top candidate was NaxLi3−xYCl₆ Model(s)DFT 33 3 3 based on its structures and conductivities, making it a suitable choice for a solid electrolyte (Fig. 6c and d).",
+          "source_sha256": "b42f869d497955f5f0bc7a2e77a891493381e47bcba0d5d8d283e37dd9dc3c75"
+        },
+        {
+          "char_end": 2191,
+          "char_start": 1931,
+          "chunk_id": "mdchk_8edb58ce2d0b2e0d",
+          "document_char_end": 71315,
+          "document_char_start": 71055,
+          "evidence_id": "ev_2efdd3bac5428ffd",
+          "paper_id": "DOI:10.1039_d5ta00331h",
+          "quote": "Even with such an expansive search and a detailed screening, the authors concluded that relaxing the criteria for the lters could help detect additional candidates, which echoes Kavalsky et al.'s call 57 to consider small compromises when screening materials.",
+          "source_sha256": "b42f869d497955f5f0bc7a2e77a891493381e47bcba0d5d8d283e37dd9dc3c75"
+        }
+      ],
+      "evidence_scope": "secondary_report",
+      "instruments": [],
+      "materials": [],
+      "paper_id": "DOI:10.1039_d5ta00331h",
+      "protocol_id": "protocol_3defc8f47f53f8eb",
+      "protocol_name": "High-throughput computational screening of solid-state battery electrolytes",
+      "protocol_type": "computational",
+      "relations": [],
+      "results": [
+        {
+          "context": "The top candidate was NaxLi3−xYCl₆ Model(s)DFT 33 3 3 based on its structures and conductivities, making it a suitable choice for a solid electrolyte (Fig. 6c and d).",
+          "evidence_ids": [
+            "ev_269c080e99ac7b28"
+          ],
+          "metric": "Top candidate",
+          "raw_value": "NaxLi3−xYCl₆",
+          "result_id": "result_b7df8151e8a565cb"
+        }
+      ],
+      "software": [
+        {
+          "entity_id": "soft_e1150175f6fca036",
+          "evidence_ids": [
+            "ev_9c4a3f5dfe1b5f4b"
+          ],
+          "name": "ML algorithm LRGPRBO",
+          "settings": {},
+          "version": null
+        }
+      ],
+      "source_chunk_ids": [
+        "mdchk_8edb58ce2d0b2e0d"
+      ],
+      "source_paper_tier": "oer_review",
+      "steps": [
+        {
+          "action": "All in all, over 32.5 million initial structural candidates were generated for screening.",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_fcbbc6b244c7c18a"
+          ],
+          "notes": null,
+          "order": 1,
+          "step_id": "step_b7df8151e8a565cb"
+        },
+        {
+          "action": "From here, the study moves to a 10-step funneling method to evaluate the selected candidates. The rst step narrowed down materials using their phase stability Ehull< 50 meV per atom (Ehullis the relative energy above the convex hull and obtained by using ML- based potentials¹⁶⁶), bringing the number down to under 6 × 5 10 (Fig. 6a and b).",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_776217e267ef763f"
+          ],
+          "notes": null,
+          "order": 2,
+          "step_id": "step_01e4f6a81c0571c5"
+        },
+        {
+          "action": "The following levels encompassed criteria pertaining to solid electrolytes such as Li conductivity, redox potential, and cost. Distinctively though, each criterion step is performed with either ML or DFT based on the need for quicker (cheaper) screening or higher accuracy, respectively.",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_48f9dc751f05331a"
+          ],
+          "notes": null,
+          "order": 3,
+          "step_id": "step_e6e78254fd9c7aa6"
+        },
+        {
+          "action": "Essentially, this strategy demonstrates using ML for a large dataset because it requires less computing time and then switching to DFT once DFT descriptor(s)N/A N/A Energy above the convex hull Reaction energy Band gap Ionic conductivity Li-phonon band center the dataset has been tapered down for more reliable but not excessively expensive analysis.",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_9603ac125b4e98d9"
+          ],
+          "notes": null,
+          "order": 4,
+          "step_id": "step_c795ac641b845746"
+        }
+      ]
+    },
+    {
+      "caveats": [
+        {
+          "caveat_id": "caveat_20a57e115ec83ac9",
+          "evidence_ids": [
+            "ev_4cd5043e5db7d98e"
+          ],
+          "text": "The authors stress that, as stated in the previous paragraph, BO-guided experiments reduce the time needed to evaluate datasets and optimize materials."
+        }
+      ],
+      "characterization": [],
+      "evidence": [
+        {
+          "char_end": 945,
+          "char_start": 836,
+          "chunk_id": "mdchk_65c044083973ebb4",
+          "document_char_end": 78014,
+          "document_char_start": 77905,
+          "evidence_id": "ev_1f92453a8170f980",
+          "paper_id": "DOI:10.1039_d5ta00331h",
+          "quote": "Their fully automatic robot was able to conduct synthesis and electroanalysis of 88 catalyst samples per day.",
+          "source_sha256": "ace2f7a0d0149597d92588f1e39c140bf59d1a95c72b32b1e5ae2242456f769d"
+        },
+        {
+          "char_end": 1151,
+          "char_start": 946,
+          "chunk_id": "mdchk_65c044083973ebb4",
+          "document_char_end": 78220,
+          "document_char_start": 78015,
+          "evidence_id": "ev_7c96a3f5d7e5c090",
+          "paper_id": "DOI:10.1039_d5ta00331h",
+          "quote": "The authors started by setting their system to synthesize and analyze different combinations of four elements (Co, Mn, Fe, and Ni), chosen based on their reported perfor- mance, to obtain 286 data entries.",
+          "source_sha256": "ace2f7a0d0149597d92588f1e39c140bf59d1a95c72b32b1e5ae2242456f769d"
+        },
+        {
+          "char_end": 1361,
+          "char_start": 1152,
+          "chunk_id": "mdchk_65c044083973ebb4",
+          "document_char_end": 78430,
+          "document_char_start": 78221,
+          "evidence_id": "ev_92b623e72e2a9322",
+          "paper_id": "DOI:10.1039_d5ta00331h",
+          "quote": "With these data, the authors investigated composition optimization using BO by having the ML model and robot run cycles; the model suggested 10 mate- rials which the robot system then synthesized and analyzed.",
+          "source_sha256": "ace2f7a0d0149597d92588f1e39c140bf59d1a95c72b32b1e5ae2242456f769d"
+        },
+        {
+          "char_end": 1558,
+          "char_start": 1362,
+          "chunk_id": "mdchk_65c044083973ebb4",
+          "document_char_end": 78627,
+          "document_char_start": 78431,
+          "evidence_id": "ev_38cdaaf52e5dbaee",
+          "paper_id": "DOI:10.1039_d5ta00331h",
+          "quote": "The cycles were halted aer four loops when the model identi- ed the top 10 performing materials of the 286 original samples. Thus, only 40 samples were needed to validate and optimize the model.",
+          "source_sha256": "ace2f7a0d0149597d92588f1e39c140bf59d1a95c72b32b1e5ae2242456f769d"
+        },
+        {
+          "char_end": 1710,
+          "char_start": 1559,
+          "chunk_id": "mdchk_65c044083973ebb4",
+          "document_char_end": 78779,
+          "document_char_start": 78628,
+          "evidence_id": "ev_4cd5043e5db7d98e",
+          "paper_id": "DOI:10.1039_d5ta00331h",
+          "quote": "The authors stress that, as stated in the previous paragraph, BO-guided experiments reduce the time needed to evaluate datasets and optimize materials.",
+          "source_sha256": "ace2f7a0d0149597d92588f1e39c140bf59d1a95c72b32b1e5ae2242456f769d"
+        }
+      ],
+      "evidence_scope": "secondary_report",
+      "instruments": [
+        {
+          "entity_id": "inst_81d079cbd91714ae",
+          "evidence_ids": [
+            "ev_1f92453a8170f980"
+          ],
+          "manufacturer": null,
+          "model": null,
+          "name": "fully automatic robot",
+          "settings": {}
+        }
+      ],
+      "materials": [],
+      "paper_id": "DOI:10.1039_d5ta00331h",
+      "protocol_id": "protocol_ebb87080e55c86f8",
+      "protocol_name": "Bayesian optimization-guided robotic synthesis and electroanalysis for catalyst discovery",
+      "protocol_type": "experimental",
+      "relations": [],
+      "results": [],
+      "software": [],
+      "source_chunk_ids": [
+        "mdchk_65c044083973ebb4"
+      ],
+      "source_paper_tier": "oer_review",
+      "steps": [
+        {
+          "action": "The authors started by setting their system to synthesize and analyze different combinations of four elements (Co, Mn, Fe, and Ni), chosen based on their reported perfor- mance, to obtain 286 data entries.",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_7c96a3f5d7e5c090"
+          ],
+          "notes": null,
+          "order": 1,
+          "step_id": "step_20a57e115ec83ac9"
+        },
+        {
+          "action": "With these data, the authors investigated composition optimization using BO by having the ML model and robot run cycles; the model suggested 10 mate- rials which the robot system then synthesized and analyzed.",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_92b623e72e2a9322"
+          ],
+          "notes": null,
+          "order": 2,
+          "step_id": "step_ebb87080e55c86f8"
+        },
+        {
+          "action": "The cycles were halted aer four loops when the model identi- ed the top 10 performing materials of the 286 original samples. Thus, only 40 samples were needed to validate and optimize the model.",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_38cdaaf52e5dbaee"
+          ],
+          "notes": null,
+          "order": 3,
+          "step_id": "step_c464f7f4cd1a061f"
+        }
+      ]
+    },
+    {
+      "caveats": [],
+      "characterization": [
+        {
+          "entity_id": "char_b6de2fa560ff580c",
+          "evidence_ids": [
+            "ev_960d99ac29c4eba8"
+          ],
+          "output": null,
+          "settings": {},
+          "technique": "nuclear magnetic resonance"
+        }
+      ],
+      "evidence": [
+        {
+          "char_end": 816,
+          "char_start": 725,
+          "chunk_id": "mdchk_13523d429e2d3321",
+          "document_char_end": 75552,
+          "document_char_start": 75461,
+          "evidence_id": "ev_32624542392d1ba4",
+          "paper_id": "DOI:10.1039_d5ta00331h",
+          "quote": "they built a closed-loop, ML-guided HT experimentation setup to further speed up screening.",
+          "source_sha256": "90503024cf6c0589a08ef4d0fab1bb9d64d6763bc405ff252e35fa5e571bed95"
+        },
+        {
+          "char_end": 1005,
+          "char_start": 817,
+          "chunk_id": "mdchk_13523d429e2d3321",
+          "document_char_end": 75741,
+          "document_char_start": 75553,
+          "evidence_id": "ev_336fe60ab252a5b3",
+          "paper_id": "DOI:10.1039_d5ta00331h",
+          "quote": "To start their study, the authors listed 22 possible solvent candidates and then created an additional 2079 candidates based on binary mixtures of various volume ratios of the original 22.",
+          "source_sha256": "90503024cf6c0589a08ef4d0fab1bb9d64d6763bc405ff252e35fa5e571bed95"
+        },
+        {
+          "char_end": 1167,
+          "char_start": 1006,
+          "chunk_id": "mdchk_13523d429e2d3321",
+          "document_char_end": 75903,
+          "document_char_start": 75742,
+          "evidence_id": "ev_ff1d77ae64c22be8",
+          "paper_id": "DOI:10.1039_d5ta00331h",
+          "quote": "Next, their automated robotic platform synthesized 58 of these candidates (both singular and binary solvents) for model training at a rate of ∼39 min per sample.",
+          "source_sha256": "90503024cf6c0589a08ef4d0fab1bb9d64d6763bc405ff252e35fa5e571bed95"
+        },
+        {
+          "char_end": 1273,
+          "char_start": 1168,
+          "chunk_id": "mdchk_13523d429e2d3321",
+          "document_char_end": 76009,
+          "document_char_start": 75904,
+          "evidence_id": "ev_332fd58c4f9967a9",
+          "paper_id": "DOI:10.1039_d5ta00331h",
+          "quote": "Each electrolyte sample was prepped for nuclear magnetic resonance (NMR) and then manually transported to",
+          "source_sha256": "90503024cf6c0589a08ef4d0fab1bb9d64d6763bc405ff252e35fa5e571bed95"
+        },
+        {
+          "char_end": 1240,
+          "char_start": 1168,
+          "chunk_id": "mdchk_13523d429e2d3321",
+          "document_char_end": 75976,
+          "document_char_start": 75904,
+          "evidence_id": "ev_960d99ac29c4eba8",
+          "paper_id": "DOI:10.1039_d5ta00331h",
+          "quote": "Each electrolyte sample was prepped for nuclear magnetic resonance (NMR)",
+          "source_sha256": "90503024cf6c0589a08ef4d0fab1bb9d64d6763bc405ff252e35fa5e571bed95"
+        }
+      ],
+      "evidence_scope": "secondary_report",
+      "instruments": [
+        {
+          "entity_id": "inst_a3c5ea910a09035e",
+          "evidence_ids": [
+            "ev_ff1d77ae64c22be8"
+          ],
+          "manufacturer": null,
+          "model": null,
+          "name": "automated robotic platform",
+          "settings": {}
+        },
+        {
+          "entity_id": "inst_9f7f1a929467a6e5",
+          "evidence_ids": [
+            "ev_332fd58c4f9967a9"
+          ],
+          "manufacturer": null,
+          "model": "NMR",
+          "name": "nuclear magnetic resonance",
+          "settings": {}
+        }
+      ],
+      "materials": [
+        {
+          "amount": null,
+          "entity_id": "mat_5cb1dce8c595af94",
+          "evidence_ids": [
+            "ev_336fe60ab252a5b3"
+          ],
+          "name": "22 possible solvent candidates",
+          "pretreatment": null,
+          "purity": null,
+          "role": "solvent",
+          "supplier": null
+        }
+      ],
+      "paper_id": "DOI:10.1039_d5ta00331h",
+      "protocol_id": "protocol_9294342a2ce03b42",
+      "protocol_name": "Automated robotic workflow for solvent optimization in redox flow batteries",
+      "protocol_type": "experimental",
+      "relations": [],
+      "results": [],
+      "software": [
+        {
+          "entity_id": "soft_a0ae74861a5c8c37",
+          "evidence_ids": [
+            "ev_32624542392d1ba4"
+          ],
+          "name": "ML",
+          "settings": {},
+          "version": null
+        }
+      ],
+      "source_chunk_ids": [
+        "mdchk_13523d429e2d3321"
+      ],
+      "source_paper_tier": "oer_review",
+      "steps": [
+        {
+          "action": "To start their study, the authors listed 22 possible solvent candidates and then created an additional 2079 candidates based on binary mixtures of various volume ratios of the original 22.",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_336fe60ab252a5b3"
+          ],
+          "notes": null,
+          "order": 1,
+          "step_id": "step_65faf4766e78843f"
+        },
+        {
+          "action": "To start their study, the authors listed 22 possible solvent candidates and then created an additional 2079 candidates based on binary mixtures of various volume ratios of the original 22.",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_336fe60ab252a5b3"
+          ],
+          "notes": null,
+          "order": 2,
+          "step_id": "step_6b71ab0cf6aca5ec"
+        },
+        {
+          "action": "Next, their automated robotic platform synthesized 58 of these candidates (both singular and binary solvents) for model training at a rate of ∼39 min per sample.",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_ff1d77ae64c22be8"
+          ],
+          "notes": "both singular and binary solvents",
+          "order": 3,
+          "step_id": "step_9294342a2ce03b42"
+        },
+        {
+          "action": "Each electrolyte sample was prepped for nuclear magnetic resonance (NMR) and then manually transported to",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_332fd58c4f9967a9"
+          ],
+          "notes": null,
+          "order": 4,
+          "step_id": "step_bcefbe51c267370e"
+        }
+      ]
+    },
+    {
+      "caveats": [],
+      "characterization": [],
+      "evidence": [
+        {
+          "char_end": 1009,
+          "char_start": 852,
+          "chunk_id": "mdchk_c7b6f6166433c112",
+          "document_char_end": 73628,
+          "document_char_start": 73471,
+          "evidence_id": "ev_eea317ccfdd817f8",
+          "paper_id": "DOI:10.1039_d5ta00331h",
+          "quote": "At rst, the researchers prepared 36 different catalyst samples using a HT automated synthesis platform and followed up by testing them all for ORR activity.",
+          "source_sha256": "2ff7cb903cc741f69df21c80e0c056b5c57adcbdcf66fbe2665a7ad19d0d1204"
+        },
+        {
+          "char_end": 1303,
+          "char_start": 1149,
+          "chunk_id": "mdchk_c7b6f6166433c112",
+          "document_char_end": 73922,
+          "document_char_start": 73768,
+          "evidence_id": "ev_ac57657625a55485",
+          "paper_id": "DOI:10.1039_d5ta00331h",
+          "quote": "Out of the resulting dataset, 60–80% were used to train ve ML models with the synthesis parameters (Fe atomic%, pyrolysis T, and Fe precursor) as inputs.",
+          "source_sha256": "2ff7cb903cc741f69df21c80e0c056b5c57adcbdcf66fbe2665a7ad19d0d1204"
+        },
+        {
+          "char_end": 1423,
+          "char_start": 1304,
+          "chunk_id": "mdchk_c7b6f6166433c112",
+          "document_char_end": 74042,
+          "document_char_start": 73923,
+          "evidence_id": "ev_680dbca766048022",
+          "paper_id": "DOI:10.1039_d5ta00331h",
+          "quote": "Each ML model utilized a different algorithm to help nd the minimal (optimal) RMSE and mean absolute percentage error.",
+          "source_sha256": "2ff7cb903cc741f69df21c80e0c056b5c57adcbdcf66fbe2665a7ad19d0d1204"
+        },
+        {
+          "char_end": 1510,
+          "char_start": 1424,
+          "chunk_id": "mdchk_c7b6f6166433c112",
+          "document_char_end": 74129,
+          "document_char_start": 74043,
+          "evidence_id": "ev_5e4ab5df2c8dd12a",
+          "paper_id": "DOI:10.1039_d5ta00331h",
+          "quote": "The best- performing algorithms were gradient boosting and support vector regressions.",
+          "source_sha256": "2ff7cb903cc741f69df21c80e0c056b5c57adcbdcf66fbe2665a7ad19d0d1204"
+        },
+        {
+          "char_end": 1675,
+          "char_start": 1511,
+          "chunk_id": "mdchk_c7b6f6166433c112",
+          "document_char_end": 74294,
+          "document_char_start": 74130,
+          "evidence_id": "ev_bbe08629a47f4f64",
+          "paper_id": "DOI:10.1039_d5ta00331h",
+          "quote": "From here, the authors used these two optimal models to predict ORR activity as a function of the synthesis parameters, which represents outputting new cata- lysts.",
+          "source_sha256": "2ff7cb903cc741f69df21c80e0c056b5c57adcbdcf66fbe2665a7ad19d0d1204"
+        },
+        {
+          "char_end": 1796,
+          "char_start": 1676,
+          "chunk_id": "mdchk_c7b6f6166433c112",
+          "document_char_end": 74415,
+          "document_char_start": 74295,
+          "evidence_id": "ev_adce092f16836088",
+          "paper_id": "DOI:10.1039_d5ta00331h",
+          "quote": "Taking it a step further, the researchers synthesized new catalysts using these predicted parameters and tested them for",
+          "source_sha256": "2ff7cb903cc741f69df21c80e0c056b5c57adcbdcf66fbe2665a7ad19d0d1204"
+        }
+      ],
+      "evidence_scope": "secondary_report",
+      "instruments": [
+        {
+          "entity_id": "inst_3be5bedea7ed0a99",
+          "evidence_ids": [
+            "ev_eea317ccfdd817f8"
+          ],
+          "manufacturer": null,
+          "model": null,
+          "name": "HT automated synthesis platform",
+          "settings": {}
+        }
+      ],
+      "materials": [],
+      "paper_id": "DOI:10.1039_d5ta00331h",
+      "protocol_id": "protocol_a4b0998b13428da0",
+      "protocol_name": "Machine learning-guided catalyst synthesis and ORR activity prediction",
+      "protocol_type": "experimental",
+      "relations": [],
+      "results": [],
+      "software": [
+        {
+          "entity_id": "soft_e1026ade376a0b0f",
+          "evidence_ids": [
+            "ev_5e4ab5df2c8dd12a"
+          ],
+          "name": "gradient boosting",
+          "settings": {},
+          "version": null
+        },
+        {
+          "entity_id": "soft_41bc2467d6aba60b",
+          "evidence_ids": [
+            "ev_5e4ab5df2c8dd12a"
+          ],
+          "name": "support vector regressions",
+          "settings": {},
+          "version": null
+        }
+      ],
+      "source_chunk_ids": [
+        "mdchk_c7b6f6166433c112"
+      ],
+      "source_paper_tier": "oer_review",
+      "steps": [
+        {
+          "action": "At rst, the researchers prepared 36 different catalyst samples using a HT automated synthesis platform and followed up by testing them all for ORR activity.",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_eea317ccfdd817f8"
+          ],
+          "notes": null,
+          "order": 1,
+          "step_id": "step_e1ed12733c933640"
+        },
+        {
+          "action": "At rst, the researchers prepared 36 different catalyst samples using a HT automated synthesis platform and followed up by testing them all for ORR activity.",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_eea317ccfdd817f8"
+          ],
+          "notes": null,
+          "order": 2,
+          "step_id": "step_ee51d2b6d8704108"
+        },
+        {
+          "action": "Out of the resulting dataset, 60–80% were used to train ve ML models with the synthesis parameters (Fe atomic%, pyrolysis T, and Fe precursor) as inputs.",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_ac57657625a55485"
+          ],
+          "notes": "synthesis parameters (Fe atomic%, pyrolysis T, and Fe precursor) as inputs",
+          "order": 3,
+          "step_id": "step_169e98ca001463ca"
+        },
+        {
+          "action": "Each ML model utilized a different algorithm to help nd the minimal (optimal) RMSE and mean absolute percentage error.",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_680dbca766048022"
+          ],
+          "notes": null,
+          "order": 4,
+          "step_id": "step_a4b0998b13428da0"
+        },
+        {
+          "action": "From here, the authors used these two optimal models to predict ORR activity as a function of the synthesis parameters, which represents outputting new cata- lysts.",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_bbe08629a47f4f64"
+          ],
+          "notes": null,
+          "order": 5,
+          "step_id": "step_15b05a66028ffd3c"
+        },
+        {
+          "action": "Taking it a step further, the researchers synthesized new catalysts using these predicted parameters and tested them for",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_adce092f16836088"
+          ],
+          "notes": null,
+          "order": 6,
+          "step_id": "step_559cc30d06ce54b9"
+        }
+      ]
+    }
+  ],
+  "schema_version": "bedrock-teacher-paper-cache-v0.1",
+  "unsupported_claim_count": 27
+}

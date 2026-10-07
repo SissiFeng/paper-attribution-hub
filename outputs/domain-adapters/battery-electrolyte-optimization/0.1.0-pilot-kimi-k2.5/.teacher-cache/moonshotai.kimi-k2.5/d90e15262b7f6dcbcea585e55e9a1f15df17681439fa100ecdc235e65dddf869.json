@@ -1,0 +1,724 @@
+{
+  "audit_summary": {
+    "accepted_field_count": 5,
+    "proposed_field_count": 36,
+    "rejected_field_count": 31,
+    "repair_attempted_count": 18,
+    "repair_succeeded_count": 1,
+    "unsupported_claim_count": 31
+  },
+  "candidate_domain_terms": [
+    "electrolyte",
+    "lithium-ion",
+    "ionic conductivity",
+    "solubility",
+    "redox"
+  ],
+  "field_audit_records": [
+    {
+      "cited_span": "a random forest (RF) model with features automatically generated descriptors by Automatminer's Express preset (Auto-RF)",
+      "diagnostic": null,
+      "entity_type": "software",
+      "field_path": "software[0].name",
+      "nearest_source_span": "Regression tasks were then conducted to predict both the le and right endpoints of the ECW using ve models: a mean predictor (baseline) for control comparison, a random forest (RF) model with features auto- matically generated descriptors by Automatminer's Express preset (Auto-RF), an RF model with Magpie descriptors and manually curated features (Manual-RF), and two deep learning models, CrabNet and Roost.",
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta04197j",
+      "proposed_value": "Automatminer",
+      "protocol_index": 0,
+      "rejection_reason": "span_not_in_source",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "hyperparameters including learning rate, batch size, and weight decay were optimized using Optuna⁵² with K-fold cross-validation on 80% of the data (training set)",
+      "diagnostic": null,
+      "entity_type": "software",
+      "field_path": "software[1].name",
+      "nearest_source_span": null,
+      "outcome": "repaired",
+      "paper_id": "DOI:10.1039_d5ta04197j",
+      "proposed_value": "Optuna",
+      "protocol_index": 0,
+      "rejection_reason": "normalization",
+      "repair_attempted": true,
+      "repair_succeeded": true,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "the area under the receiver operating characteristic (ROC) curve (AUC) was selected as the optimization metric during hyperparameter tuning via the Optuna framework",
+      "diagnostic": null,
+      "entity_type": "software",
+      "field_path": "software[2].name",
+      "nearest_source_span": "Given the signicant class imbalance between Class 0 and Class 1, the area under the receiver operating characteristic (ROC) curve (AUC) was selected as the optimiza- tion metric during hyperparameter tuning via the Optuna framework, as AUC effectively reects model performance under imbalanced conditions.",
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta04197j",
+      "proposed_value": "Optuna",
+      "protocol_index": 0,
+      "rejection_reason": "span_not_in_source",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "ECW values were computed by constructing Li grand potential phase diagrams (GPPDs) in equilibrium with a Li reservoir, 27–34 using density functional theory (DFT) data from the MP database",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[0].action",
+      "nearest_source_span": "ECW values were computed by con- structing Li grand potential phase diagrams (GPPDs) in equi- librium with a Li reservoir, 27–34 using density functional theory (DFT) data from the MP database.",
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta04197j",
+      "proposed_value": "construct Li grand potential phase diagrams (GPPDs) in equilibrium with a Li reservoir",
+      "protocol_index": 0,
+      "rejection_reason": "span_not_in_source",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Prior to model training, the dataset was de-duplicated to retain only unique chemical formulas.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[1].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta04197j",
+      "proposed_value": "de-duplicate dataset to retain only unique chemical formulas",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Regression tasks were then conducted to predict both the left and right endpoints of the ECW using five models: a mean predictor (baseline) for control comparison, a random forest (RF) model with features automatically generated descriptors by Automatminer's Express preset (Auto-RF), an RF model with Magpie descriptors and manually curated features (Manual-RF), and two deep learning models, CrabNet and Roost.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[2].action",
+      "nearest_source_span": "Regression tasks were then conducted to predict both the le and right endpoints of the ECW using ve models: a mean predictor (baseline) for control comparison, a random forest (RF) model with features auto- matically generated descriptors by Automatminer's Express preset (Auto-RF), an RF model with Magpie descriptors and manually curated features (Manual-RF), and two deep learning models, CrabNet and Roost.",
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta04197j",
+      "proposed_value": "conduct regression tasks to predict left and right endpoints of ECW",
+      "protocol_index": 0,
+      "rejection_reason": "span_not_in_source",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "For Auto-RF, Manual-RF and Roost, hyperparameters including learning rate, batch size, and weight decay were optimized using Optuna⁵² with K-fold cross-validation on 80% of the data (training set), keeping the remaining 20% as an independent test set.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[3].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta04197j",
+      "proposed_value": "optimize hyperparameters using Optuna with K-fold cross-validation",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "For Auto-RF, Manual-RF and Roost, hyperparameters including learning rate, batch size, and weight decay were optimized using Optuna⁵² with K-fold cross- validation on 80% of the data (training set), keeping the remaining 20% as an independent test set.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[3].conditions[0]",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta04197j",
+      "proposed_value": "80% of data used for training",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "For Auto-RF, Manual-RF and Roost, hyperparameters including learning rate, batch size, and weight decay were optimized using Optuna⁵² with K-fold cross- validation on 80% of the data (training set), keeping the remaining 20% as an independent test set.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[3].conditions[1]",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta04197j",
+      "proposed_value": "20% as independent test set",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "For Auto-RF, Manual-RF and Roost, hyperparameters including learning rate, batch size, and weight decay were optimized using Optuna⁵² with K-fold cross- validation on 80% of the data (training set), keeping the remaining 20% as an independent test set.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[3].notes",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta04197j",
+      "proposed_value": "for Auto-RF, Manual-RF and Roost models",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "compounds were categorized based on their ECW widths using a 3 V threshold...materials with ECW $ 3V were labeled as Class 1, while those below this threshold were assigned to Class 0",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[4].action",
+      "nearest_source_span": "55–57 Accordingly, materials with ECW $ 3V were labeled as “Class 1”, while those below this threshold were assigned to “Class 0”.",
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta04197j",
+      "proposed_value": "perform classification task to categorize compounds based on ECW widths",
+      "protocol_index": 0,
+      "rejection_reason": "span_not_in_source",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "the Roost model was employed for classification...the Roost model was trained on an imbalanced dataset (Roost-IMB, 130 Class 1, 15 871 Class 0, with 80% used for training)",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[5].action",
+      "nearest_source_span": "† As summarized in Table S5,† even though the Roost model was trained on an imbal- anced dataset (Roost-IMB, 130 Class 1, 15 871 Class 0, with 80% used for training), it achieved a high prediction accuracy on the test set (all metrics z 0.",
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta04197j",
+      "proposed_value": "train Roost model for classification",
+      "protocol_index": 0,
+      "rejection_reason": "span_not_in_source",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "it achieved a high prediction accuracy on the test set (all metrics z 0.99), indicating excellent classification capability",
+      "diagnostic": null,
+      "entity_type": "results",
+      "field_path": "results[0].metric",
+      "nearest_source_span": "99), indicating excellent classication capability.",
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta04197j",
+      "proposed_value": "prediction accuracy on test set",
+      "protocol_index": 0,
+      "rejection_reason": "span_not_in_source",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "ROC analysis further confirmed the model's discriminative power, with the curve approaching the upper-left corner and an AUC of 0.95 (Fig. S10†)",
+      "diagnostic": null,
+      "entity_type": "results",
+      "field_path": "results[1].metric",
+      "nearest_source_span": "ROC analysis further conrmed the model's discriminative power, with the curve approaching the upper-le corner and an AUC of 0.",
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta04197j",
+      "proposed_value": "area under the ROC curve (AUC)",
+      "protocol_index": 0,
+      "rejection_reason": "span_not_in_source",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "the Roost-IMB model, trained on the imbalanced dataset, demonstrates significantly stronger overall discriminative ability (AUC = 0.80)",
+      "diagnostic": null,
+      "entity_type": "results",
+      "field_path": "results[2].metric",
+      "nearest_source_span": "In contrast, the Roost-IMB model, trained on the imbalanced dataset, demonstrates signicantly stronger overall discriminative ability (AUC = 0.",
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta04197j",
+      "proposed_value": "AUC",
+      "protocol_index": 0,
+      "rejection_reason": "span_not_in_source",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Li₁₀Mg₇Cl₂₄, in contrast, has not been previously documented. To assess its viability, extended AIMD simulations were performed across multiple temperatures (Fig. S17†)",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[0].name",
+      "nearest_source_span": "To assess its viability, extended AIMD simulations were performed across multiple temperatures (Fig.",
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta04197j",
+      "proposed_value": "Li₁₀Mg₇Cl₂₄",
+      "protocol_index": 1,
+      "rejection_reason": "span_not_in_source",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "ab initio molecular dynamics (AIMD) simulations were carried out to estimate Li + conductivity at two different temperatures, following a methodology similar to that described in ref. 59. Detailed computational settings are provided in the ESI.†",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[0].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta04197j",
+      "proposed_value": "carry out ab initio molecular dynamics (AIMD) simulations",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "ab initio molecular dynamics (AIMD) simulations were carried out to estimate Li + conductivity at two different temperatures, following a methodology similar to that described in ref. 59. Detailed computational settings are provided in the ESI.†",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[0].notes",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta04197j",
+      "proposed_value": "following methodology similar to ref. 59; detailed computational settings in ESI",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "To assess its viability, extended AIMD simulations were performed across multiple temperatures (Fig. S17†)",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[1].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta04197j",
+      "proposed_value": "perform extended AIMD simulations across multiple temperatures",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "To assess its viability, extended AIMD simulations were performed across multiple temperatures (Fig. S17†)",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[1].notes",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta04197j",
+      "proposed_value": "for Li₁₀Mg₇Cl₂₄ specifically",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Furthermore, the Li-ion diffusion mechanism was analyzed based on the Li probability density distribution and the van Hove correlation function, both presented in Fig. S17.†",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[2].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta04197j",
+      "proposed_value": "analyze Li-ion diffusion mechanism",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Furthermore, the Li-ion diffusion mechanism was analyzed based on the Li probability density distribution and the van Hove correlation function, both presented in Fig. S17.†",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[2].notes",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta04197j",
+      "proposed_value": "based on Li probability density distribution and van Hove correlation function",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "ab initio molecular dynamics (AIMD) simulations were carried out to estimate Li + conductivity at two different temperatures",
+      "diagnostic": null,
+      "entity_type": "characterization",
+      "field_path": "characterization[0].settings.temperatures",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta04197j",
+      "proposed_value": "two different temperatures, multiple temperatures for Li₁₀Mg₇Cl₂₄",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "ab initio molecular dynamics (AIMD) simulations were carried out to estimate Li + conductivity at two different temperatures",
+      "diagnostic": null,
+      "entity_type": "characterization",
+      "field_path": "characterization[0].output",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta04197j",
+      "proposed_value": "Li+ conductivity, activation energy (Ea), Li probability density distribution, van Hove correlation function",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "yielding an Eaof 0.37 eV and a s₃₀₀Kof 0.51 mS cm −1",
+      "diagnostic": null,
+      "entity_type": "results",
+      "field_path": "results[0].metric",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta04197j",
+      "proposed_value": "activation energy (Ea)",
+      "protocol_index": 1,
+      "rejection_reason": "value_elsewhere",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "yielding an Eaof 0.37 eV and a s₃₀₀Kof 0.51 mS cm −1",
+      "diagnostic": null,
+      "entity_type": "results",
+      "field_path": "results[1].metric",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta04197j",
+      "proposed_value": "Li+ conductivity at 300 K (s300 K)",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Based on chemical composition, thermodynamic stability, electronic insulation, practical feasibility, and ECW width, 74 candidate materials were selected",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[0].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta04197j",
+      "proposed_value": "screen compounds based on chemical composition, thermodynamic stability, electronic insulation, practical feasibility, and ECW width",
+      "protocol_index": 2,
+      "rejection_reason": "span_not_in_source",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Finally, only compounds with an ECW width of $3V were retained. This rigorous screening procedure led to the identification of 53 and 21 potential wide-ECW SSE candidates from the MP and OQMD databases, respectively.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[1].action",
+      "nearest_source_span": "This rigorous screening procedure led to the identication of 53 and 21 potential wide-ECW SSE candidates from the MP and OQMD databases, respectively.",
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta04197j",
+      "proposed_value": "retain only compounds with ECW width ≥ 3V",
+      "protocol_index": 2,
+      "rejection_reason": "span_not_in_source",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "the ECWs of the 318 compounds obtained from the OQMD database were calculated by DFT calculations. Their ECW values were computed using the same thermodynamic algorithm (Table S6†)",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[2].action",
+      "nearest_source_span": "Their ECW values were computed using the same thermody- namic algorithm (Table S6†) and compared with the predictions",
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta04197j",
+      "proposed_value": "calculate ECW values by DFT calculations for OQMD compounds",
+      "protocol_index": 2,
+      "rejection_reason": "span_not_in_source",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Based on chemical composition, thermodynamic stability, electronic insulation, practical feasibility, and ECW width, 74 candidate materials were selected",
+      "diagnostic": null,
+      "entity_type": "results",
+      "field_path": "results[0].metric",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta04197j",
+      "proposed_value": "number of candidate materials",
+      "protocol_index": 2,
+      "rejection_reason": "span_not_in_source",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "This rigorous screening procedure led to the identification of 53 and 21 potential wide-ECW SSE candidates from the MP and OQMD databases, respectively.",
+      "diagnostic": null,
+      "entity_type": "results",
+      "field_path": "results[1].metric",
+      "nearest_source_span": "This rigorous screening procedure led to the identication of 53 and 21 potential wide-ECW SSE candidates from the MP and OQMD databases, respectively.",
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta04197j",
+      "proposed_value": "number of candidates from MP database",
+      "protocol_index": 2,
+      "rejection_reason": "span_not_in_source",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "This rigorous screening procedure led to the identification of 53 and 21 potential wide-ECW SSE candidates from the MP and OQMD databases, respectively.",
+      "diagnostic": null,
+      "entity_type": "results",
+      "field_path": "results[2].metric",
+      "nearest_source_span": "This rigorous screening procedure led to the identication of 53 and 21 potential wide-ECW SSE candidates from the MP and OQMD databases, respectively.",
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5ta04197j",
+      "proposed_value": "number of candidates from OQMD database",
+      "protocol_index": 2,
+      "rejection_reason": "span_not_in_source",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    }
+  ],
+  "inference_config": {
+    "max_tokens": 14000,
+    "temperature": 0.0
+  },
+  "mapping_version": "evidence-field-mapper-v0.2",
+  "model_id": "moonshotai.kimi-k2.5",
+  "paper_id": "DOI:10.1039_d5ta04197j",
+  "prompt_version": "scientific-protocol-teacher-v0.3",
+  "protocols": [
+    {
+      "caveats": [],
+      "characterization": [],
+      "evidence": [
+        {
+          "char_end": 512,
+          "char_start": 417,
+          "chunk_id": "mdchk_988b4f2220ec0b10",
+          "document_char_end": 11214,
+          "document_char_start": 11119,
+          "evidence_id": "ev_9b71c6b2f70fde05",
+          "paper_id": "DOI:10.1039_d5ta04197j",
+          "quote": "Prior to model training, the dataset was de-duplicated to retain only unique chemical formulas.",
+          "source_sha256": "1741e7610ef7531412871be45d58844a8546a5b52173d447c6f74ced1d5b7754"
+        },
+        {
+          "char_end": 1178,
+          "char_start": 926,
+          "chunk_id": "mdchk_988b4f2220ec0b10",
+          "document_char_end": 11880,
+          "document_char_start": 11628,
+          "evidence_id": "ev_d5c75f5f35d7c902",
+          "paper_id": "DOI:10.1039_d5ta04197j",
+          "quote": "For Auto-RF, Manual-RF and Roost, hyperparameters including learning rate, batch size, and weight decay were optimized using Optuna⁵² with K-fold cross- validation on 80% of the data (training set), keeping the remaining 20% as an independent test set.",
+          "source_sha256": "1741e7610ef7531412871be45d58844a8546a5b52173d447c6f74ced1d5b7754"
+        },
+        {
+          "char_end": 1123,
+          "char_start": 960,
+          "chunk_id": "mdchk_988b4f2220ec0b10",
+          "document_char_end": 11825,
+          "document_char_start": 11662,
+          "evidence_id": "ev_2e8f2972b1ac039b",
+          "paper_id": "DOI:10.1039_d5ta04197j",
+          "quote": "hyperparameters including learning rate, batch size, and weight decay were optimized using Optuna⁵² with K-fold cross- validation on 80% of the data (training set)",
+          "source_sha256": "1741e7610ef7531412871be45d58844a8546a5b52173d447c6f74ced1d5b7754"
+        }
+      ],
+      "evidence_scope": "primary_report",
+      "instruments": [],
+      "materials": [],
+      "paper_id": "DOI:10.1039_d5ta04197j",
+      "protocol_id": "protocol_16b2e437697cbfbd",
+      "protocol_name": "Machine learning model training for ECW prediction",
+      "protocol_type": "computational",
+      "relations": [],
+      "results": [],
+      "scientific_chunk_ids": [],
+      "software": [
+        {
+          "entity_id": "soft_f6068468755bd4df",
+          "evidence_ids": [
+            "ev_2e8f2972b1ac039b"
+          ],
+          "name": "Optuna",
+          "settings": {
+            "optimization_target": "hyperparameters including learning rate, batch size, and weight decay"
+          },
+          "version": "52"
+        }
+      ],
+      "source_chunk_ids": [
+        "mdchk_988b4f2220ec0b10"
+      ],
+      "source_paper_tier": "primary_battery_electrolyte",
+      "steps": [
+        {
+          "action": "Prior to model training, the dataset was de-duplicated to retain only unique chemical formulas.",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_9b71c6b2f70fde05"
+          ],
+          "notes": null,
+          "order": 1,
+          "step_id": "step_01081e53c5d50bd0"
+        },
+        {
+          "action": "For Auto-RF, Manual-RF and Roost, hyperparameters including learning rate, batch size, and weight decay were optimized using Optuna⁵² with K-fold cross- validation on 80% of the data (training set), keeping the remaining 20% as an independent test set.",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_d5c75f5f35d7c902"
+          ],
+          "notes": null,
+          "order": 2,
+          "step_id": "step_2101da4fc2ead2ec"
+        }
+      ]
+    },
+    {
+      "caveats": [],
+      "characterization": [
+        {
+          "entity_id": "char_c85f0029ca0574ad",
+          "evidence_ids": [
+            "ev_fec62e8de2e9c24b"
+          ],
+          "output": null,
+          "settings": {},
+          "technique": "ab initio molecular dynamics (AIMD)"
+        }
+      ],
+      "evidence": [
+        {
+          "char_end": 304,
+          "char_start": 59,
+          "chunk_id": "mdchk_3a455bf45770a4c3",
+          "document_char_end": 25987,
+          "document_char_start": 25742,
+          "evidence_id": "ev_7f9dcfa519c72f91",
+          "paper_id": "DOI:10.1039_d5ta04197j",
+          "quote": "ab initio molecular dynamics (AIMD) simulations were carried out to estimate Li + conductivity at two different temperatures, following a methodology similar to that described in ref. 59. Detailed computational settings are provided in the ESI.†",
+          "source_sha256": "605d17be5d1590781ebd7267a515eb1bba35e96c22b46542e0de91fa557a1a24"
+        },
+        {
+          "char_end": 183,
+          "char_start": 59,
+          "chunk_id": "mdchk_3a455bf45770a4c3",
+          "document_char_end": 25866,
+          "document_char_start": 25742,
+          "evidence_id": "ev_fec62e8de2e9c24b",
+          "paper_id": "DOI:10.1039_d5ta04197j",
+          "quote": "ab initio molecular dynamics (AIMD) simulations were carried out to estimate Li + conductivity at two different temperatures",
+          "source_sha256": "605d17be5d1590781ebd7267a515eb1bba35e96c22b46542e0de91fa557a1a24"
+        },
+        {
+          "char_end": 983,
+          "char_start": 877,
+          "chunk_id": "mdchk_3a455bf45770a4c3",
+          "document_char_end": 26666,
+          "document_char_start": 26560,
+          "evidence_id": "ev_65da859c5cfe239e",
+          "paper_id": "DOI:10.1039_d5ta04197j",
+          "quote": "To assess its viability, extended AIMD simulations were performed across multiple temperatures (Fig. S17†)",
+          "source_sha256": "605d17be5d1590781ebd7267a515eb1bba35e96c22b46542e0de91fa557a1a24"
+        },
+        {
+          "char_end": 1212,
+          "char_start": 1039,
+          "chunk_id": "mdchk_3a455bf45770a4c3",
+          "document_char_end": 26895,
+          "document_char_start": 26722,
+          "evidence_id": "ev_efc5423ebedc3980",
+          "paper_id": "DOI:10.1039_d5ta04197j",
+          "quote": "Furthermore, the Li-ion diffusion mechanism was analyzed based on the Li probability density distribution and the van Hove correlation function, both presented in Fig. S17.†",
+          "source_sha256": "605d17be5d1590781ebd7267a515eb1bba35e96c22b46542e0de91fa557a1a24"
+        }
+      ],
+      "evidence_scope": "primary_report",
+      "instruments": [],
+      "materials": [],
+      "paper_id": "DOI:10.1039_d5ta04197j",
+      "protocol_id": "protocol_5303d3b9f8b2d4b0",
+      "protocol_name": "Ab initio molecular dynamics (AIMD) simulations for Li+ conductivity",
+      "protocol_type": "computational",
+      "relations": [],
+      "results": [],
+      "scientific_chunk_ids": [],
+      "software": [],
+      "source_chunk_ids": [
+        "mdchk_3a455bf45770a4c3"
+      ],
+      "source_paper_tier": "primary_battery_electrolyte",
+      "steps": [
+        {
+          "action": "ab initio molecular dynamics (AIMD) simulations were carried out to estimate Li + conductivity at two different temperatures, following a methodology similar to that described in ref. 59. Detailed computational settings are provided in the ESI.†",
+          "conditions": [
+            "two different temperatures"
+          ],
+          "evidence_ids": [
+            "ev_7f9dcfa519c72f91"
+          ],
+          "notes": null,
+          "order": 1,
+          "step_id": "step_2293207c4ecc71ce"
+        },
+        {
+          "action": "To assess its viability, extended AIMD simulations were performed across multiple temperatures (Fig. S17†)",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_65da859c5cfe239e"
+          ],
+          "notes": null,
+          "order": 2,
+          "step_id": "step_5303d3b9f8b2d4b0"
+        },
+        {
+          "action": "Furthermore, the Li-ion diffusion mechanism was analyzed based on the Li probability density distribution and the van Hove correlation function, both presented in Fig. S17.†",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_efc5423ebedc3980"
+          ],
+          "notes": null,
+          "order": 3,
+          "step_id": "step_f826ca6712f08fa3"
+        }
+      ]
+    }
+  ],
+  "region": "us-east-1",
+  "schema_version": "bedrock-teacher-paper-cache-v0.2",
+  "teacher_response": {
+    "diagnostic": null,
+    "invocation_count": 1,
+    "metrics": {
+      "latencyMs": 62317
+    },
+    "raw_text": " ```json\n{\n  \"protocols\": [\n    {\n      \"source_chunk_ids\": [\"mdchk_ea22cb9d87960680\", \"mdchk_988b4f2220ec0b10\", \"mdchk_2594eb95c550e414\"],\n      \"protocol_name\": \"Machine learning model training for ECW prediction\",\n      \"protocol_type\": \"computational\",\n      \"materials\": [],\n      \"instruments\": [],\n      \"software\": [\n        {\n          \"source_chunk_id\": \"mdchk_988b4f2220ec0b10\",\n          \"name\": \"Automatminer\",\n          \"version\": null,\n          \"settings\": {\"preset\": \"Express\"},\n          \"evidence_quote\": \"a random forest (RF) model with features automatically generated descriptors by Automatminer's Express preset (Auto-RF)\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_988b4f2220ec0b10\",\n          \"name\": \"Optuna\",\n          \"version\": \"52\",\n          \"settings\": {\"optimization_target\": \"hyperparameters including learning rate, batch size, and weight decay\"},\n          \"evidence_quote\": \"hyperparameters including learning rate, batch size, and weight decay were optimized using Optuna⁵² with K-fold cross-validation on 80% of the data (training set)\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_2594eb95c550e414\",\n          \"name\": \"Optuna\",\n          \"version\": null,\n          \"settings\": {\"optimization_metric\": \"area under the receiver operating characteristic (ROC) curve (AUC)\"},\n          \"evidence_quote\": \"the area under the receiver operating characteristic (ROC) curve (AUC) was selected as the optimization metric during hyperparameter tuning via the Optuna framework\"\n        }\n      ],\n      \"steps\": [\n        {\n          \"source_chunk_id\": \"mdchk_ea22cb9d87960680\",\n          \"order\": 1,\n          \"action\": \"construct Li grand potential phase diagrams (GPPDs) in equilibrium with a Li reservoir\",\n          \"conditions\": [],\n          \"notes\": \"using density functional theory (DFT) data from the MP database\",\n          \"evidence_quote\": \"ECW values were computed by constructing Li grand potential phase diagrams (GPPDs) in equilibrium with a Li reservoir, 27–34 using density functional theory (DFT) data from the MP database\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_988b4f2220ec0b10\",\n          \"order\": 2,\n          \"action\": \"de-duplicate dataset to retain only unique chemical formulas\",\n          \"conditions\": [],\n          \"notes\": null,\n          \"evidence_quote\": \"Prior to model training, the dataset was de-duplicated to retain only unique chemical formulas.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_988b4f2220ec0b10\",\n          \"order\": 3,\n          \"action\": \"conduct regression tasks to predict left and right endpoints of ECW\",\n          \"conditions\": [],\n          \"notes\": \"using five models: mean predictor (baseline), Auto-RF, Manual-RF, CrabNet, and Roost\",\n          \"evidence_quote\": \"Regression tasks were then conducted to predict both the left and right endpoints of the ECW using five models: a mean predictor (baseline) for control comparison, a random forest (RF) model with features automatically generated descriptors by Automatminer's Express preset (Auto-RF), an RF model with Magpie descriptors and manually curated features (Manual-RF), and two deep learning models, CrabNet and Roost.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_988b4f2220ec0b10\",\n          \"order\": 4,\n          \"action\": \"optimize hyperparameters using Optuna with K-fold cross-validation\",\n          \"conditions\": [\"80% of data used for training\", \"20% as independent test set\"],\n          \"notes\": \"for Auto-RF, Manual-RF and Roost models\",\n          \"evidence_quote\": \"For Auto-RF, Manual-RF and Roost, hyperparameters including learning rate, batch size, and weight decay were optimized using Optuna⁵² with K-fold cross-validation on 80% of the data (training set), keeping the remaining 20% as an independent test set.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_2594eb95c550e414\",\n          \"order\": 5,\n          \"action\": \"perform classification task to categorize compounds based on ECW widths\",\n          \"conditions\": [\"3 V threshold\"],\n          \"notes\": \"materials with ECW ≥ 3V labeled as Class 1, below threshold as Class 0\",\n          \"evidence_quote\": \"compounds were categorized based on their ECW widths using a 3 V threshold...materials with ECW $ 3V were labeled as Class 1, while those below this threshold were assigned to Class 0\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_2594eb95c550e414\",\n          \"order\": 6,\n          \"action\": \"train Roost model for classification\",\n          \"conditions\": [\"imbalanced dataset: 130 Class 1, 15 871 Class 0\", \"80% used for training\"],\n          \"notes\": \"Roost-IMB model\",\n          \"evidence_quote\": \"the Roost model was employed for classification...the Roost model was trained on an imbalanced dataset (Roost-IMB, 130 Class 1, 15 871 Class 0, with 80% used for training)\"\n        }\n      ],\n      \"characterization\": [],\n      \"results\": [\n        {\n          \"source_chunk_id\": \"mdchk_2594eb95c550e414\",\n          \"metric\": \"prediction accuracy on test set\",\n          \"raw_value\": \"all metrics ≥ 0.99\",\n          \"context\": \"Roost-IMB classification model\",\n          \"evidence_quote\": \"it achieved a high prediction accuracy on the test set (all metrics z 0.99), indicating excellent classification capability\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_2594eb95c550e414\",\n          \"metric\": \"area under the ROC curve (AUC)\",\n          \"raw_value\": \"0.95\",\n          \"context\": \"Roost-IMB classification model\",\n          \"evidence_quote\": \"ROC analysis further confirmed the model's discriminative power, with the curve approaching the upper-left corner and an AUC of 0.95 (Fig. S10†)\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_7ee632f98e005b7a\",\n          \"metric\": \"AUC\",\n          \"raw_value\": \"0.80\",\n          \"context\": \"Roost-IMB model on 318 unseen OQMD compounds\",\n          \"evidence_quote\": \"the Roost-IMB model, trained on the imbalanced dataset, demonstrates significantly stronger overall discriminative ability (AUC = 0.80)\"\n        }\n      ],\n      \"caveats\": []\n    },\n    {\n      \"source_chunk_ids\": [\"mdchk_3a455bf45770a4c3\"],\n      \"protocol_name\": \"Ab initio molecular dynamics (AIMD) simulations for Li+ conductivity\",\n      \"protocol_type\": \"computational\",\n      \"materials\": [\n        {\n          \"source_chunk_id\": \"mdchk_3a455bf45770a4c3\",\n          \"name\": \"Li₁₀Mg₇Cl₂₄\",\n          \"role\": \"candidate compound for validation\",\n          \"amount\": null,\n          \"purity\": null,\n          \"supplier\": null,\n          \"pretreatment\": null,\n          \"evidence_quote\": \"Li₁₀Mg₇Cl₂₄, in contrast, has not been previously documented. To assess its viability, extended AIMD simulations were performed across multiple temperatures (Fig. S17†)\"\n        }\n      ],\n      \"instruments\": [],\n      \"software\": [],\n      \"steps\": [\n        {\n          \"source_chunk_id\": \"mdchk_3a455bf45770a4c3\",\n          \"order\": 1,\n          \"action\": \"carry out ab initio molecular dynamics (AIMD) simulations\",\n          \"conditions\": [\"two different temperatures\"],\n          \"notes\": \"following methodology similar to ref. 59; detailed computational settings in ESI\",\n          \"evidence_quote\": \"ab initio molecular dynamics (AIMD) simulations were carried out to estimate Li + conductivity at two different temperatures, following a methodology similar to that described in ref. 59. Detailed computational settings are provided in the ESI.†\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_3a455bf45770a4c3\",\n          \"order\": 2,\n          \"action\": \"perform extended AIMD simulations across multiple temperatures\",\n          \"conditions\": [],\n          \"notes\": \"for Li₁₀Mg₇Cl₂₄ specifically\",\n          \"evidence_quote\": \"To assess its viability, extended AIMD simulations were performed across multiple temperatures (Fig. S17†)\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_3a455bf45770a4c3\",\n          \"order\": 3,\n          \"action\": \"analyze Li-ion diffusion mechanism\",\n          \"conditions\": [],\n          \"notes\": \"based on Li probability density distribution and van Hove correlation function\",\n          \"evidence_quote\": \"Furthermore, the Li-ion diffusion mechanism was analyzed based on the Li probability density distribution and the van Hove correlation function, both presented in Fig. S17.†\"\n        }\n      ],\n      \"characterization\": [\n        {\n          \"source_chunk_id\": \"mdchk_3a455bf45770a4c3\",\n          \"technique\": \"ab initio molecular dynamics (AIMD)\",\n          \"settings\": {\"temperatures\": \"two different temperatures, multiple temperatures for Li₁₀Mg₇Cl₂₄\"},\n          \"output\": \"Li+ conductivity, activation energy (Ea), Li probability density distribution, van Hove correlation function\",\n          \"evidence_quote\": \"ab initio molecular dynamics (AIMD) simulations were carried out to estimate Li + conductivity at two different temperatures\"\n        }\n      ],\n      \"results\": [\n        {\n          \"source_chunk_id\": \"mdchk_3a455bf45770a4c3\",\n          \"metric\": \"activation energy (Ea)\",\n          \"raw_value\": \"0.37 eV\",\n          \"context\": \"for Li₁₀Mg₇Cl₂₄\",\n          \"evidence_quote\": \"yielding an Eaof 0.37 eV and a s₃₀₀Kof 0.51 mS cm −1\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_3a455bf45770a4c3\",\n          \"metric\": \"Li+ conductivity at 300 K (s300 K)\",\n          \"raw_value\": \"0.51 mS cm−1\",\n          \"context\": \"for Li₁₀Mg₇Cl₂₄\",\n          \"evidence_quote\": \"yielding an Eaof 0.37 eV and a s₃₀₀Kof 0.51 mS cm −1\"\n        }\n      ],\n      \"caveats\": []\n    },\n    {\n      \"source_chunk_ids\": [\"mdchk_d82d6cb59a246e10\"],\n      \"protocol_name\": \"High-throughput screening of Li-containing SSEs\",\n      \"protocol_type\": \"computational\",\n      \"materials\": [],\n      \"instruments\": [],\n      \"software\": [],\n      \"steps\": [\n        {\n          \"source_chunk_id\": \"mdchk_d82d6cb59a246e10\",\n          \"order\": 1,\n          \"action\": \"screen compounds based on chemical composition, thermodynamic stability, electronic insulation, practical feasibility, and ECW width\",\n          \"conditions\": [\"ECW width ≥ 3V\"],\n          \"notes\": \"sulfides systematically excluded\",\n          \"evidence_quote\": \"Based on chemical composition, thermodynamic stability, electronic insulation, practical feasibility, and ECW width, 74 candidate materials were selected\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_d82d6cb59a246e10\",\n          \"order\": 2,\n          \"action\": \"retain only compounds with ECW width ≥ 3V\",\n          \"conditions\": [],\n          \"notes\": \"53 candidates from MP database, 21 from OQMD database\",\n          \"evidence_quote\": \"Finally, only compounds with an ECW width of $3V were retained. This rigorous screening procedure led to the identification of 53 and 21 potential wide-ECW SSE candidates from the MP and OQMD databases, respectively.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_d82d6cb59a246e10\",\n          \"order\": 3,\n          \"action\": \"calculate ECW values by DFT calculations for OQMD compounds\",\n          \"conditions\": [\"318 compounds from OQMD database\"],\n          \"notes\": \"using same thermodynamic algorithm as training data\",\n          \"evidence_quote\": \"the ECWs of the 318 compounds obtained from the OQMD database were calculated by DFT calculations. Their ECW values were computed using the same thermodynamic algorithm (Table S6†)\"\n        }\n      ],\n      \"characterization\": [],\n      \"results\": [\n        {\n          \"source_chunk_id\": \"mdchk_d82d6cb59a246e10\",\n          \"metric\": \"number of candidate materials\",\n          \"raw_value\": \"74\",\n          \"context\": \"total from MP and OQMD databases after screening\",\n          \"evidence_quote\": \"Based on chemical composition, thermodynamic stability, electronic insulation, practical feasibility, and ECW width, 74 candidate materials were selected\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_d82d6cb59a246e10\",\n          \"metric\": \"number of candidates from MP database\",\n          \"raw_value\": \"53\",\n          \"context\": \"potential wide-ECW SSE candidates\",\n          \"evidence_quote\": \"This rigorous screening procedure led to the identification of 53 and 21 potential wide-ECW SSE candidates from the MP and OQMD databases, respectively.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_d82d6cb59a246e10\",\n          \"metric\": \"number of candidates from OQMD database\",\n          \"raw_value\": \"21\",\n          \"context\": \"potential wide-ECW SSE candidates\",\n          \"evidence_quote\": \"This rigorous screening procedure led to the identification of 53 and 21 potential wide-ECW SSE candidates from the MP and OQMD databases, respectively.\"\n        }\n      ],\n      \"caveats\": []\n    }\n  ]\n}\n```",
+    "salvaged_protocol_count": 0,
+    "schema_invalid": false,
+    "stop_reason": "end_turn",
+    "usage": {
+      "inputTokens": 3796,
+      "outputTokens": 3176,
+      "totalTokens": 6972
+    }
+  }
+}

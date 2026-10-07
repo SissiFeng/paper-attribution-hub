@@ -2,13 +2,57 @@ import pytest
 
 from app.services.modular_rag_service import (
     ModularRagRequest,
+    _diverse_top_chunks,
     build_langgraph_app,
     run_modular_rag,
 )
+from app.services.retrieval_service import RetrievedChunk
 
 
 def _no_llm_answer(query: str, context: str):
     return None, "retrieval-only"
+
+
+def _chunk(chunk_id: str, paper_id: str) -> RetrievedChunk:
+    return RetrievedChunk(
+        chunk_id=chunk_id,
+        paper_id=paper_id,
+        section_type="body",
+        section_title=None,
+        text=chunk_id,
+        bm25_score=1.0,
+        cosine_score=1.0,
+        score=1.0,
+    )
+
+
+def test_comparison_selection_prefers_multiple_papers():
+    ranked = [
+        _chunk("a1", "P1"),
+        _chunk("a2", "P1"),
+        _chunk("a3", "P1"),
+        _chunk("b1", "P2"),
+        _chunk("c1", "P3"),
+    ]
+
+    selected = _diverse_top_chunks(ranked, top_k=4)
+
+    assert len(selected) == 4
+    assert {chunk.paper_id for chunk in selected} == {"P1", "P2", "P3"}
+
+
+def test_placeholder_llm_keys_use_retrieval_only(monkeypatch):
+    from app.api import retrieval
+    from app.config import settings
+
+    monkeypatch.setattr(settings, "llm_provider", "auto")
+    monkeypatch.setattr(settings, "kimi_api_key", "PLACEHOLDER")
+    monkeypatch.setattr(settings, "anthropic_api_key", "PLACEHOLDER")
+
+    answer, model = retrieval._llm_answer("question", "evidence")
+
+    assert answer is None
+    assert model == "retrieval-only"
 
 
 def test_modular_rag_runs_core_modules(fulltext_seeded_session):
@@ -35,6 +79,10 @@ def test_modular_rag_runs_core_modules(fulltext_seeded_session):
     assert result.assessment.answer_grounding["layer"] == "answer_grounding"
     assert result.assessment.module_metrics["layer"] == "module_metrics"
     assert result.model == "retrieval-only"
+    assert "I found" in result.answer
+    assert "relevant full-text passages" in result.answer
+    assert "PAS_KIMI_API_KEY" not in result.answer
+    assert "PAS_ANTHROPIC_API_KEY" not in result.answer
 
 
 def test_agentic_search_expands_exploratory_queries(fulltext_seeded_session):

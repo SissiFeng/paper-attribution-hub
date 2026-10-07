@@ -7,8 +7,13 @@ from typing import Literal
 from pydantic import BaseModel, ConfigDict, Field
 
 
-PackageKind = Literal["scientific_core", "domain", "capability"]
-DependencyKind = Literal["scientific_core", "parent_domain", "capability"]
+PackageKind = Literal["scientific_core", "domain", "capability", "evidence"]
+DependencyKind = Literal[
+    "scientific_core",
+    "parent_domain",
+    "capability",
+    "evidence",
+]
 
 
 class PackageGraphError(ValueError):
@@ -31,6 +36,10 @@ class PackageReference(PackageGraphModel):
 class PackageDependency(PackageReference):
     dependency_kind: DependencyKind
     required_layers: list[str] = Field(default_factory=list)
+    required_content_sha256: str | None = Field(
+        default=None,
+        pattern=r"^[0-9a-f]{64}$",
+    )
 
 
 class PackageDescriptor(PackageReference):
@@ -39,6 +48,11 @@ class PackageDescriptor(PackageReference):
     domain: str = Field(min_length=1)
     facets: list[str] = Field(default_factory=list)
     dependencies: list[PackageDependency] = Field(default_factory=list)
+
+
+class EvidencePackageDescriptor(PackageDescriptor):
+    package_kind: Literal["evidence"] = "evidence"
+    content_sha256: str = Field(pattern=r"^[0-9a-f]{64}$")
 
 
 class PackageGraphReport(PackageGraphModel):
@@ -59,6 +73,7 @@ def _validate_dependency_kind(
         "scientific_core": "scientific_core",
         "parent_domain": "domain",
         "capability": "capability",
+        "evidence": "evidence",
     }
     if target.package_kind != expected_kind[dependency.dependency_kind]:
         raise PackageGraphError(
@@ -66,6 +81,18 @@ def _validate_dependency_kind(
             f"{dependency.coordinate} is {target.package_kind}, expected "
             f"{expected_kind[dependency.dependency_kind]}"
         )
+    if dependency.dependency_kind == "evidence":
+        if dependency.required_content_sha256 is None:
+            raise PackageGraphError(
+                "Evidence dependencies require a content SHA-256 digest"
+            )
+        if (
+            not isinstance(target, EvidencePackageDescriptor)
+            or target.content_sha256 != dependency.required_content_sha256
+        ):
+            raise PackageGraphError(
+                f"Evidence content digest mismatch for {target.coordinate}"
+            )
 
 
 def resolve_package_graph(

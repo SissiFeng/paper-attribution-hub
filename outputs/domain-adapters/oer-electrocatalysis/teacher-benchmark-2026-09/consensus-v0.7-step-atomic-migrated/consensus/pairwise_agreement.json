@@ -1,0 +1,30 @@
+{
+  "claims_boundary": "Exact-claim agreement measures source-grounded overlap, not scientific accuracy.",
+  "pairs": [
+    {
+      "exact_claim_jaccard": 0.420561,
+      "left_model_alias": "claude-opus-4-6",
+      "left_valid_claim_count": 68,
+      "right_model_alias": "deepseek-v3-2",
+      "right_valid_claim_count": 84,
+      "shared_exact_claim_count": 45
+    },
+    {
+      "exact_claim_jaccard": 0.389313,
+      "left_model_alias": "claude-opus-4-6",
+      "left_valid_claim_count": 68,
+      "right_model_alias": "kimi-k2-5",
+      "right_valid_claim_count": 114,
+      "shared_exact_claim_count": 51
+    },
+    {
+      "exact_claim_jaccard": 0.466667,
+      "left_model_alias": "deepseek-v3-2",
+      "left_valid_claim_count": 84,
+      "right_model_alias": "kimi-k2-5",
+      "right_valid_claim_count": 114,
+      "shared_exact_claim_count": 63
+    }
+  ],
+  "schema_version": "domain-teacher-pairwise-agreement-v0.1"
+}

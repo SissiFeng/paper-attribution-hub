@@ -47,6 +47,7 @@ resource "aws_iam_role_policy" "ecs_execution_secrets" {
           aws_ssm_parameter.kimi_api_key.arn,
           aws_ssm_parameter.semantic_scholar_api_key.arn,
           aws_ssm_parameter.openalex_mailto.arn,
+          aws_ssm_parameter.zotero_api_key.arn,
         ]
       },
       {
@@ -100,6 +101,15 @@ resource "aws_iam_role_policy" "ecs_task_s3" {
         ]
       }
     ]
+  })
+}
+
+resource "aws_iam_role_policy" "admin_frontend_assets" {
+  name = "${local.name_prefix}-admin-frontend-assets"
+  role = aws_iam_role.ecs_task.id
+  policy = jsonencode({
+    Version   = "2012-10-17"
+    Statement = [{ Effect = "Allow", Action = ["s3:GetObject"], Resource = ["${aws_s3_bucket.frontend.arn}/protected-legacy/*"] }]
   })
 }
 
@@ -227,5 +237,14 @@ resource "aws_iam_role_policy" "github_actions" {
         Resource = "*"
       },
     ]
+  })
+}
+
+resource "aws_iam_role_policy" "reader_pairing" {
+  name = "${local.name_prefix}-reader-pairing"
+  role = aws_iam_role.ecs_task.id
+  policy = jsonencode({
+    Version   = "2012-10-17"
+    Statement = [{ Effect = "Allow", Action = ["dynamodb:GetItem", "dynamodb:PutItem", "dynamodb:UpdateItem"], Resource = "arn:aws:dynamodb:${var.aws_region}:${data.aws_caller_identity.current.account_id}:table/${var.pas_slack_table}" }]
   })
 }

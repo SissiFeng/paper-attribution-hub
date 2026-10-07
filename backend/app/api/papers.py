@@ -25,6 +25,7 @@ from app.schemas import (
 )
 from app.services.filter_spec import PaperFilter, apply_filter, paper_filter_query
 from app.services.rag_status_service import rag_status_by_paper
+from app.services.stage1_readiness import derived_views_available
 from app.review_contract import infer_corpus_sources, normalize_corpus_sources
 from app.services.sdl_dimensions import dimensions_from_evidence_summary
 
@@ -35,9 +36,11 @@ def _paper_to_schema(
     paper: Paper,
     evidence_rows: list[PaperEvidence] | None = None,
     rag_status: RagStatusOut | None = None,
+    *,
+    include_derived: bool = True,
 ) -> PaperOut:
     cls_out: ClassificationOut | None = None
-    if paper.classification:
+    if include_derived and paper.classification:
         c = paper.classification
         cls_out = ClassificationOut(
             label=c.label,
@@ -81,7 +84,7 @@ def _paper_to_schema(
             ],
         )
     review_out: HumanReviewOut | None = None
-    if paper.review:
+    if include_derived and paper.review:
         r = paper.review
         review_out = HumanReviewOut(
             paper_id=paper.id,
@@ -157,10 +160,20 @@ def list_papers(
         filt,
     ).order_by(Paper.year.desc()).offset(offset).limit(limit)
     papers = list(session.execute(stmt).scalars())
-    evidence_index = _evidence_by_paper(session, [p.id for p in papers])
+    include_derived = derived_views_available(session)
+    evidence_index = (
+        _evidence_by_paper(session, [p.id for p in papers])
+        if include_derived
+        else {}
+    )
     rag_status = rag_status_by_paper(session, [p.id for p in papers])
     return [
-        _paper_to_schema(p, evidence_index.get(p.id, []), rag_status.get(p.id))
+        _paper_to_schema(
+            p,
+            evidence_index.get(p.id, []),
+            rag_status.get(p.id),
+            include_derived=include_derived,
+        )
         for p in papers
     ]
 
@@ -182,24 +195,39 @@ def _evidence_by_paper(session: Session, paper_ids: list[str]) -> dict[str, list
 
 @router.get("/stats", response_model=PipelineStats)
 def stats(session: Session = Depends(get_session)) -> PipelineStats:
+    from sqlalchemy import func
+
+    from app.config import settings
     from app.models import Institution, Topic
 
     papers = list(session.execute(select(Paper)).scalars())
+    include_derived = derived_views_available(session)
     label_counts: dict[str, int] = {}
     last_run = None
     for p in papers:
-        if p.classification:
+        if include_derived and p.classification:
             label_counts[p.classification.label] = label_counts.get(p.classification.label, 0) + 1
             if last_run is None or p.classification.created_at > last_run:
                 last_run = p.classification.created_at
+    institution_count = (
+        session.scalar(
+            select(func.count(PaperEntity.normalized_name.distinct())).where(
+                PaperEntity.entity_type == "institution"
+            )
+        )
+        or 0
+        if settings.sdl_stage1_only
+        else session.scalar(select(func.count(Institution.id))) or 0
+    )
     return PipelineStats(
         papers=len(papers),
-        authors=session.scalar(select(__import__("sqlalchemy").func.count(Author.id))) or 0,
-        institutions=session.scalar(
-            select(__import__("sqlalchemy").func.count(Institution.id))
-        )
-        or 0,
-        topics=session.scalar(select(__import__("sqlalchemy").func.count(Topic.id))) or 0,
+        authors=session.scalar(select(func.count(Author.id))) or 0,
+        institutions=institution_count,
+        topics=(
+            session.scalar(select(func.count(Topic.id))) or 0
+            if include_derived
+            else 0
+        ),
         classifications=label_counts,
         last_run_at=last_run,
     )
@@ -215,6 +243,7 @@ def export_csv(
         filt.labels = [label]
     stmt = apply_filter(select(Paper), filt)
     papers = list(session.execute(stmt).scalars())
+    include_derived = derived_views_available(session)
 
     buf = io.StringIO()
     writer = csv.writer(buf)
@@ -239,8 +268,8 @@ def export_csv(
         ]
     )
     for p in papers:
-        c = p.classification
-        r = p.review
+        c = p.classification if include_derived else None
+        r = p.review if include_derived else None
         writer.writerow(
             [
                 p.id,
@@ -285,9 +314,19 @@ def get_paper(paper_id: str, session: Session = Depends(get_session)) -> PaperOu
     paper = session.get(Paper, paper_id)
     if paper is None:
         raise HTTPException(status_code=404, detail=f"Paper {paper_id} not found")
-    evidence_rows = _evidence_by_paper(session, [paper.id]).get(paper.id, [])
+    include_derived = derived_views_available(session)
+    evidence_rows = (
+        _evidence_by_paper(session, [paper.id]).get(paper.id, [])
+        if include_derived
+        else []
+    )
     rag_status = rag_status_by_paper(session, [paper.id]).get(paper.id)
-    return _paper_to_schema(paper, evidence_rows, rag_status)
+    return _paper_to_schema(
+        paper,
+        evidence_rows,
+        rag_status,
+        include_derived=include_derived,
+    )
 
 
 @router.get("/{paper_id}/entities", response_model=list[PaperEntityOut])

@@ -1,0 +1,9 @@
+{
+  "exact_span_checks_passed": 12,
+  "unique_units": 12,
+  "papers": 3,
+  "edges": 12,
+  "human_gold": false,
+  "scientific_accuracy_evaluated": false,
+  "writing_benefit_evaluated": false
+}

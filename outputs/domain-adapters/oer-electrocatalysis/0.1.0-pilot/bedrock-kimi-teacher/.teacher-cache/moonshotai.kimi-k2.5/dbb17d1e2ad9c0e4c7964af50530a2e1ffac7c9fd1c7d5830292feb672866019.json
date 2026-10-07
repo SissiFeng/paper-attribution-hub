@@ -1,0 +1,1158 @@
+{
+  "model_id": "moonshotai.kimi-k2.5",
+  "paper_id": "DOI:10.1038_s41467-024-50605-5",
+  "prompt_version": "oer-protocol-teacher-v0.1",
+  "protocols": [
+    {
+      "caveats": [],
+      "characterization": [],
+      "evidence": [
+        {
+          "char_end": 159,
+          "char_start": 34,
+          "chunk_id": "mdchk_ebc9d9fe4d67bc88",
+          "document_char_end": 62585,
+          "document_char_start": 62460,
+          "evidence_id": "ev_f416168ef596716b",
+          "paper_id": "DOI:10.1038_s41467-024-50605-5",
+          "quote": "A 5 mm diameter rotating disk electrode (E5 RDE, PINE) was used to evaluate the electrocatalytic properties of the catalysts.",
+          "source_sha256": "33b392f70dfba85ad8230de078914f0f800ea81bab868ab68c7f02d4539ed326"
+        },
+        {
+          "char_end": 313,
+          "char_start": 160,
+          "chunk_id": "mdchk_ebc9d9fe4d67bc88",
+          "document_char_end": 62739,
+          "document_char_start": 62586,
+          "evidence_id": "ev_53c10156d8c61ba3",
+          "paper_id": "DOI:10.1038_s41467-024-50605-5",
+          "quote": "Cyclic vol- tammetry, LSV, EIS, chronopotentiometry and other electrochemical tests were performed using an electrochemical workstation (Corrtest 2350H).",
+          "source_sha256": "33b392f70dfba85ad8230de078914f0f800ea81bab868ab68c7f02d4539ed326"
+        },
+        {
+          "char_end": 422,
+          "char_start": 314,
+          "chunk_id": "mdchk_ebc9d9fe4d67bc88",
+          "document_char_end": 62848,
+          "document_char_start": 62740,
+          "evidence_id": "ev_d5dd2960587b06dc",
+          "paper_id": "DOI:10.1038_s41467-024-50605-5",
+          "quote": "To prepare the catalyst ink, 10 mg of catalyst powder and 2 mg of acetylene black were mixed in a container.",
+          "source_sha256": "33b392f70dfba85ad8230de078914f0f800ea81bab868ab68c7f02d4539ed326"
+        },
+        {
+          "char_end": 581,
+          "char_start": 423,
+          "chunk_id": "mdchk_ebc9d9fe4d67bc88",
+          "document_char_end": 63007,
+          "document_char_start": 62849,
+          "evidence_id": "ev_a6d46ccdd325f791",
+          "paper_id": "DOI:10.1038_s41467-024-50605-5",
+          "quote": "Then, 470 μLofanhy- drous ethanol, 500 μL of deionized water and 30 μLofNafion solution (DUPont D520, 5 wt%) were pipetted into the container for dissolution.",
+          "source_sha256": "33b392f70dfba85ad8230de078914f0f800ea81bab868ab68c7f02d4539ed326"
+        },
+        {
+          "char_end": 714,
+          "char_start": 582,
+          "chunk_id": "mdchk_ebc9d9fe4d67bc88",
+          "document_char_end": 63140,
+          "document_char_start": 63008,
+          "evidence_id": "ev_dda57d59d344f7a2",
+          "paper_id": "DOI:10.1038_s41467-024-50605-5",
+          "quote": "The mixture was sonicated in an ice bath for more than 2 h to ensure even mixing and dispersion of the catalyst and acetylene black.",
+          "source_sha256": "33b392f70dfba85ad8230de078914f0f800ea81bab868ab68c7f02d4539ed326"
+        },
+        {
+          "char_end": 796,
+          "char_start": 715,
+          "chunk_id": "mdchk_ebc9d9fe4d67bc88",
+          "document_char_end": 63222,
+          "document_char_start": 63141,
+          "evidence_id": "ev_695207c48fc5612e",
+          "paper_id": "DOI:10.1038_s41467-024-50605-5",
+          "quote": "The rotating disc electrode was ground with a suede soaked in alumina suspension.",
+          "source_sha256": "33b392f70dfba85ad8230de078914f0f800ea81bab868ab68c7f02d4539ed326"
+        },
+        {
+          "char_end": 953,
+          "char_start": 797,
+          "chunk_id": "mdchk_ebc9d9fe4d67bc88",
+          "document_char_end": 63379,
+          "document_char_start": 63223,
+          "evidence_id": "ev_09d566bf05e9e789",
+          "paper_id": "DOI:10.1038_s41467-024-50605-5",
+          "quote": "Subsequently, a 10 μL aliquot of the ink was pipetted onto the RDE and dried at room temperature. This resulted in a catalyst mass loading of 0.51 mg cm −2.",
+          "source_sha256": "33b392f70dfba85ad8230de078914f0f800ea81bab868ab68c7f02d4539ed326"
+        },
+        {
+          "char_end": 1119,
+          "char_start": 954,
+          "chunk_id": "mdchk_ebc9d9fe4d67bc88",
+          "document_char_end": 63545,
+          "document_char_start": 63380,
+          "evidence_id": "ev_96683d068c1aa570",
+          "paper_id": "DOI:10.1038_s41467-024-50605-5",
+          "quote": "A traditional three-electrode system was used for electrochemical testing in a 150 mL water-bath electrolytic cell containing 1 M KOH saturated with oxygen (99.99%).",
+          "source_sha256": "33b392f70dfba85ad8230de078914f0f800ea81bab868ab68c7f02d4539ed326"
+        },
+        {
+          "char_end": 1518,
+          "char_start": 1421,
+          "chunk_id": "mdchk_ebc9d9fe4d67bc88",
+          "document_char_end": 63944,
+          "document_char_start": 63847,
+          "evidence_id": "ev_243df8a9aa8aad91",
+          "paper_id": "DOI:10.1038_s41467-024-50605-5",
+          "quote": "The catalyst activity for the OER was evaluated by LSV (from 1.2 to 1.8 V vs RHE at 10 mV s −1 ).",
+          "source_sha256": "33b392f70dfba85ad8230de078914f0f800ea81bab868ab68c7f02d4539ed326"
+        },
+        {
+          "char_end": 1642,
+          "char_start": 1519,
+          "chunk_id": "mdchk_ebc9d9fe4d67bc88",
+          "document_char_end": 64068,
+          "document_char_start": 63945,
+          "evidence_id": "ev_5a64d979f811dc35",
+          "paper_id": "DOI:10.1038_s41467-024-50605-5",
+          "quote": "Before testing, the working electrode was scanned for 10 cycles (1.2–1.8 V vs RHE) to achieve a stable cyclic voltammogram.",
+          "source_sha256": "33b392f70dfba85ad8230de078914f0f800ea81bab868ab68c7f02d4539ed326"
+        },
+        {
+          "char_end": 1708,
+          "char_start": 1643,
+          "chunk_id": "mdchk_ebc9d9fe4d67bc88",
+          "document_char_end": 64134,
+          "document_char_start": 64069,
+          "evidence_id": "ev_1b2371ef9b6f1831",
+          "paper_id": "DOI:10.1038_s41467-024-50605-5",
+          "quote": "The Tafel curves were obtained at a slow scan rate of 1 mV s −1 .",
+          "source_sha256": "33b392f70dfba85ad8230de078914f0f800ea81bab868ab68c7f02d4539ed326"
+        }
+      ],
+      "evidence_scope": "primary_report",
+      "instruments": [
+        {
+          "entity_id": "inst_c519594d1311d729",
+          "evidence_ids": [
+            "ev_f416168ef596716b"
+          ],
+          "manufacturer": "PINE",
+          "model": "E5 RDE",
+          "name": "rotating disk electrode",
+          "settings": {}
+        },
+        {
+          "entity_id": "inst_31a4aa3d753ceb8b",
+          "evidence_ids": [
+            "ev_53c10156d8c61ba3"
+          ],
+          "manufacturer": null,
+          "model": "Corrtest 2350H",
+          "name": "electrochemical workstation",
+          "settings": {}
+        }
+      ],
+      "materials": [
+        {
+          "amount": "10 mg",
+          "entity_id": "mat_32c73e1f450ef022",
+          "evidence_ids": [
+            "ev_d5dd2960587b06dc"
+          ],
+          "name": "catalyst powder",
+          "pretreatment": null,
+          "purity": null,
+          "role": null,
+          "supplier": null
+        },
+        {
+          "amount": "2 mg",
+          "entity_id": "mat_b3d024c6df59a452",
+          "evidence_ids": [
+            "ev_d5dd2960587b06dc"
+          ],
+          "name": "acetylene black",
+          "pretreatment": null,
+          "purity": null,
+          "role": null,
+          "supplier": null
+        },
+        {
+          "amount": "500 μL",
+          "entity_id": "mat_d9e6f7859f1b1640",
+          "evidence_ids": [
+            "ev_a6d46ccdd325f791"
+          ],
+          "name": "deionized water",
+          "pretreatment": null,
+          "purity": null,
+          "role": null,
+          "supplier": null
+        },
+        {
+          "amount": "30 μL",
+          "entity_id": "mat_f177b140e8883bdb",
+          "evidence_ids": [
+            "ev_a6d46ccdd325f791"
+          ],
+          "name": "Nafion solution",
+          "pretreatment": null,
+          "purity": "5 wt%",
+          "role": null,
+          "supplier": "DUPont"
+        },
+        {
+          "amount": "1 M",
+          "entity_id": "mat_2bb518bbfb44f09e",
+          "evidence_ids": [
+            "ev_96683d068c1aa570"
+          ],
+          "name": "KOH",
+          "pretreatment": "saturated with oxygen (99.99%)",
+          "purity": null,
+          "role": null,
+          "supplier": null
+        }
+      ],
+      "paper_id": "DOI:10.1038_s41467-024-50605-5",
+      "protocol_id": "protocol_0aab198e7b966f0c",
+      "protocol_name": "OER electrocatalytic activity evaluation using rotating disk electrode",
+      "protocol_type": "electrochemical characterization",
+      "relations": [],
+      "results": [],
+      "software": [],
+      "source_chunk_ids": [
+        "mdchk_ebc9d9fe4d67bc88"
+      ],
+      "source_paper_tier": "primary_oer",
+      "steps": [
+        {
+          "action": "To prepare the catalyst ink, 10 mg of catalyst powder and 2 mg of acetylene black were mixed in a container.",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_d5dd2960587b06dc"
+          ],
+          "notes": null,
+          "order": 1,
+          "step_id": "step_0aab198e7b966f0c"
+        },
+        {
+          "action": "Then, 470 μLofanhy- drous ethanol, 500 μL of deionized water and 30 μLofNafion solution (DUPont D520, 5 wt%) were pipetted into the container for dissolution.",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_a6d46ccdd325f791"
+          ],
+          "notes": null,
+          "order": 2,
+          "step_id": "step_5129f4741867817e"
+        },
+        {
+          "action": "The mixture was sonicated in an ice bath for more than 2 h to ensure even mixing and dispersion of the catalyst and acetylene black.",
+          "conditions": [
+            "ice bath",
+            "more than 2 h"
+          ],
+          "evidence_ids": [
+            "ev_dda57d59d344f7a2"
+          ],
+          "notes": "to ensure even mixing and dispersion",
+          "order": 3,
+          "step_id": "step_4cab6eed8db7d562"
+        },
+        {
+          "action": "The rotating disc electrode was ground with a suede soaked in alumina suspension.",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_695207c48fc5612e"
+          ],
+          "notes": null,
+          "order": 4,
+          "step_id": "step_a20ea6124db3a7ec"
+        },
+        {
+          "action": "Subsequently, a 10 μL aliquot of the ink was pipetted onto the RDE and dried at room temperature. This resulted in a catalyst mass loading of 0.51 mg cm −2.",
+          "conditions": [
+            "room temperature",
+            "10 μL aliquot"
+          ],
+          "evidence_ids": [
+            "ev_09d566bf05e9e789"
+          ],
+          "notes": null,
+          "order": 5,
+          "step_id": "step_c8849b7ac21e3d21"
+        },
+        {
+          "action": "Before testing, the working electrode was scanned for 10 cycles (1.2–1.8 V vs RHE) to achieve a stable cyclic voltammogram.",
+          "conditions": [
+            "1.2–1.8 V vs RHE"
+          ],
+          "evidence_ids": [
+            "ev_5a64d979f811dc35"
+          ],
+          "notes": null,
+          "order": 6,
+          "step_id": "step_fcf5b0321bbe3833"
+        },
+        {
+          "action": "The catalyst activity for the OER was evaluated by LSV (from 1.2 to 1.8 V vs RHE at 10 mV s −1 ).",
+          "conditions": [
+            "1.2 to 1.8 V vs RHE",
+            "10 mV s −1"
+          ],
+          "evidence_ids": [
+            "ev_243df8a9aa8aad91"
+          ],
+          "notes": null,
+          "order": 7,
+          "step_id": "step_b6c4d99f3db72161"
+        },
+        {
+          "action": "The Tafel curves were obtained at a slow scan rate of 1 mV s −1 .",
+          "conditions": [
+            "1 mV s −1"
+          ],
+          "evidence_ids": [
+            "ev_1b2371ef9b6f1831"
+          ],
+          "notes": "slow scan rate",
+          "order": 8,
+          "step_id": "step_2417c4550b78f275"
+        }
+      ]
+    },
+    {
+      "caveats": [],
+      "characterization": [
+        {
+          "entity_id": "char_011d25f86ba9e745",
+          "evidence_ids": [
+            "ev_08e0ec043b073272"
+          ],
+          "output": null,
+          "settings": {},
+          "technique": "chronopotentiometry"
+        }
+      ],
+      "evidence": [
+        {
+          "char_end": 385,
+          "char_start": 217,
+          "chunk_id": "mdchk_b90ef0af6adf686c",
+          "document_char_end": 66389,
+          "document_char_start": 66221,
+          "evidence_id": "ev_08e0ec043b073272",
+          "paper_id": "DOI:10.1038_s41467-024-50605-5",
+          "quote": "To evaluate the stability of the catalysts, two methods were employed: a two-electrode system with chronopotentiometry (CP) and a three-electrode configuration with CP.",
+          "source_sha256": "737246abfae47db049b2df1fb89d8f7f5a03b160d6c2f1fe70ed41145d8b7d18"
+        },
+        {
+          "char_end": 484,
+          "char_start": 386,
+          "chunk_id": "mdchk_b90ef0af6adf686c",
+          "document_char_end": 66488,
+          "document_char_start": 66390,
+          "evidence_id": "ev_f613d0c7c354b2fa",
+          "paper_id": "DOI:10.1038_s41467-024-50605-5",
+          "quote": "In both methods, the catalyst ink was loaded onto carbon cloth with a mass loading of 1 mg cm −2 .",
+          "source_sha256": "737246abfae47db049b2df1fb89d8f7f5a03b160d6c2f1fe70ed41145d8b7d18"
+        },
+        {
+          "char_end": 674,
+          "char_start": 484,
+          "chunk_id": "mdchk_b90ef0af6adf686c",
+          "document_char_end": 66678,
+          "document_char_start": 66488,
+          "evidence_id": "ev_d5cd2b3927737754",
+          "paper_id": "DOI:10.1038_s41467-024-50605-5",
+          "quote": "For the two-electrode setup, a commercially available 20 wt% Pt/C elec- trode served as the hydrogen evolution electrode to ensure efficient hydrogen evolution and maintain cell performance.",
+          "source_sha256": "737246abfae47db049b2df1fb89d8f7f5a03b160d6c2f1fe70ed41145d8b7d18"
+        },
+        {
+          "char_end": 990,
+          "char_start": 896,
+          "chunk_id": "mdchk_b90ef0af6adf686c",
+          "document_char_end": 66994,
+          "document_char_start": 66900,
+          "evidence_id": "ev_df7b10f34772f1ea",
+          "paper_id": "DOI:10.1038_s41467-024-50605-5",
+          "quote": "The stability test was conducted in 1 M KOH solution within a sealed 200 mL electrolytic cell.",
+          "source_sha256": "737246abfae47db049b2df1fb89d8f7f5a03b160d6c2f1fe70ed41145d8b7d18"
+        },
+        {
+          "char_end": 1137,
+          "char_start": 991,
+          "chunk_id": "mdchk_b90ef0af6adf686c",
+          "document_char_end": 67141,
+          "document_char_start": 66995,
+          "evidence_id": "ev_d448c77edcd936fd",
+          "paper_id": "DOI:10.1038_s41467-024-50605-5",
+          "quote": "A zero-gap alkaline water electrolyzer was assembled using PSCFM/NF and Pt/C/NF as the anode and cathode, respectively (NF refers to nickel foam).",
+          "source_sha256": "737246abfae47db049b2df1fb89d8f7f5a03b160d6c2f1fe70ed41145d8b7d18"
+        },
+        {
+          "char_end": 1267,
+          "char_start": 1138,
+          "chunk_id": "mdchk_b90ef0af6adf686c",
+          "document_char_end": 67271,
+          "document_char_start": 67142,
+          "evidence_id": "ev_3ac95a02dc13627c",
+          "paper_id": "DOI:10.1038_s41467-024-50605-5",
+          "quote": "Electrochemical measurements were performed at room temperature using a CHI 760E electrochemical workstation (Chenhua, Shanghai).",
+          "source_sha256": "737246abfae47db049b2df1fb89d8f7f5a03b160d6c2f1fe70ed41145d8b7d18"
+        },
+        {
+          "char_end": 1453,
+          "char_start": 1268,
+          "chunk_id": "mdchk_b90ef0af6adf686c",
+          "document_char_end": 67457,
+          "document_char_start": 67272,
+          "evidence_id": "ev_8313f0e7b5d9919f",
+          "paper_id": "DOI:10.1038_s41467-024-50605-5",
+          "quote": "The catalyst ink was prepared by dispersing 10 mg of catalyst powder in 1 mL of anhydrous ethanol and 50 μLof anion exchange ionomer (Fumion FAA-3-SOLUT-10, FuMA-Tech) using sonication.",
+          "source_sha256": "737246abfae47db049b2df1fb89d8f7f5a03b160d6c2f1fe70ed41145d8b7d18"
+        },
+        {
+          "char_end": 1590,
+          "char_start": 1454,
+          "chunk_id": "mdchk_b90ef0af6adf686c",
+          "document_char_end": 67594,
+          "document_char_start": 67458,
+          "evidence_id": "ev_9954d3a414af14b6",
+          "paper_id": "DOI:10.1038_s41467-024-50605-5",
+          "quote": "The catalyst ink was then drop-coated onto the surface of the NF electrodes to achieve desired mass loadings of 1 mg cm −2 and 3mgcm −2.",
+          "source_sha256": "737246abfae47db049b2df1fb89d8f7f5a03b160d6c2f1fe70ed41145d8b7d18"
+        },
+        {
+          "char_end": 1788,
+          "char_start": 1591,
+          "chunk_id": "mdchk_b90ef0af6adf686c",
+          "document_char_end": 67792,
+          "document_char_start": 67595,
+          "evidence_id": "ev_53a7e534067df771",
+          "paper_id": "DOI:10.1038_s41467-024-50605-5",
+          "quote": "The two electrodes were separated by a pre-treated alkaline exchange membrane (Fumasep FAA-3-30, thickness ∼30 μm, FuMA- Tech), Prior to use, the membrane was immersed in 6 M KOH solution for 12 h.",
+          "source_sha256": "737246abfae47db049b2df1fb89d8f7f5a03b160d6c2f1fe70ed41145d8b7d18"
+        },
+        {
+          "char_end": 1788,
+          "char_start": 1719,
+          "chunk_id": "mdchk_b90ef0af6adf686c",
+          "document_char_end": 67792,
+          "document_char_start": 67723,
+          "evidence_id": "ev_41c5f027d3bce3da",
+          "paper_id": "DOI:10.1038_s41467-024-50605-5",
+          "quote": "Prior to use, the membrane was immersed in 6 M KOH solution for 12 h.",
+          "source_sha256": "737246abfae47db049b2df1fb89d8f7f5a03b160d6c2f1fe70ed41145d8b7d18"
+        },
+        {
+          "char_end": 1893,
+          "char_start": 1789,
+          "chunk_id": "mdchk_b90ef0af6adf686c",
+          "document_char_end": 67897,
+          "document_char_start": 67793,
+          "evidence_id": "ev_f3296e6224829562",
+          "paper_id": "DOI:10.1038_s41467-024-50605-5",
+          "quote": "LSV measurement was performed at a scan rate of 10 mV s −1 from 0 to 2.4 V to evaluate cell performance.",
+          "source_sha256": "737246abfae47db049b2df1fb89d8f7f5a03b160d6c2f1fe70ed41145d8b7d18"
+        },
+        {
+          "char_end": 2027,
+          "char_start": 1894,
+          "chunk_id": "mdchk_b90ef0af6adf686c",
+          "document_char_end": 68031,
+          "document_char_start": 67898,
+          "evidence_id": "ev_3465c51da750a4f7",
+          "paper_id": "DOI:10.1038_s41467-024-50605-5",
+          "quote": "To assess the long-term stability, CP tests were carried out at constant current densities of 30 mA cm −2 and50mAcm −2 ,respectively.",
+          "source_sha256": "737246abfae47db049b2df1fb89d8f7f5a03b160d6c2f1fe70ed41145d8b7d18"
+        }
+      ],
+      "evidence_scope": "primary_report",
+      "instruments": [
+        {
+          "entity_id": "inst_1b32830157e2cd77",
+          "evidence_ids": [
+            "ev_3ac95a02dc13627c"
+          ],
+          "manufacturer": "Chenhua, Shanghai",
+          "model": "CHI 760E",
+          "name": "electrochemical workstation",
+          "settings": {}
+        }
+      ],
+      "materials": [
+        {
+          "amount": "10 mg",
+          "entity_id": "mat_32621df7aeb389e6",
+          "evidence_ids": [
+            "ev_8313f0e7b5d9919f"
+          ],
+          "name": "catalyst powder",
+          "pretreatment": null,
+          "purity": null,
+          "role": null,
+          "supplier": null
+        },
+        {
+          "amount": "1 mL",
+          "entity_id": "mat_9d4f89eec0af1129",
+          "evidence_ids": [
+            "ev_8313f0e7b5d9919f"
+          ],
+          "name": "anhydrous ethanol",
+          "pretreatment": null,
+          "purity": null,
+          "role": null,
+          "supplier": null
+        },
+        {
+          "amount": "50 μL",
+          "entity_id": "mat_822412d1cd4ba7d4",
+          "evidence_ids": [
+            "ev_8313f0e7b5d9919f"
+          ],
+          "name": "Fumion FAA-3-SOLUT-10",
+          "pretreatment": null,
+          "purity": null,
+          "role": "ionomer",
+          "supplier": "FuMA-Tech"
+        },
+        {
+          "amount": null,
+          "entity_id": "mat_d427790f3666db5e",
+          "evidence_ids": [
+            "ev_f613d0c7c354b2fa"
+          ],
+          "name": "carbon cloth",
+          "pretreatment": null,
+          "purity": null,
+          "role": null,
+          "supplier": null
+        },
+        {
+          "amount": null,
+          "entity_id": "mat_f1662566f8c37067",
+          "evidence_ids": [
+            "ev_d5cd2b3927737754"
+          ],
+          "name": "20 wt% Pt/C",
+          "pretreatment": null,
+          "purity": null,
+          "role": "hydrogen evolution electrode",
+          "supplier": null
+        },
+        {
+          "amount": "1 M",
+          "entity_id": "mat_9d7dbe60c8fc4243",
+          "evidence_ids": [
+            "ev_df7b10f34772f1ea"
+          ],
+          "name": "KOH",
+          "pretreatment": null,
+          "purity": null,
+          "role": null,
+          "supplier": null
+        },
+        {
+          "amount": "thickness ∼30 μm",
+          "entity_id": "mat_d8c05693936d76fb",
+          "evidence_ids": [
+            "ev_53a7e534067df771"
+          ],
+          "name": "Fumasep FAA-3-30",
+          "pretreatment": "immersed in 6 M KOH solution for 12 h",
+          "purity": null,
+          "role": "alkaline exchange membrane",
+          "supplier": null
+        }
+      ],
+      "paper_id": "DOI:10.1038_s41467-024-50605-5",
+      "protocol_id": "protocol_e98c32b262691cbd",
+      "protocol_name": "Stability evaluation and zero-gap alkaline water electrolyzer assembly",
+      "protocol_type": "electrochemical characterization",
+      "relations": [],
+      "results": [],
+      "software": [],
+      "source_chunk_ids": [
+        "mdchk_b90ef0af6adf686c"
+      ],
+      "source_paper_tier": "primary_oer",
+      "steps": [
+        {
+          "action": "The catalyst ink was prepared by dispersing 10 mg of catalyst powder in 1 mL of anhydrous ethanol and 50 μLof anion exchange ionomer (Fumion FAA-3-SOLUT-10, FuMA-Tech) using sonication.",
+          "conditions": [
+            "sonication"
+          ],
+          "evidence_ids": [
+            "ev_8313f0e7b5d9919f"
+          ],
+          "notes": null,
+          "order": 1,
+          "step_id": "step_5e0d3cdeda7078e4"
+        },
+        {
+          "action": "The catalyst ink was then drop-coated onto the surface of the NF electrodes to achieve desired mass loadings of 1 mg cm −2 and 3mgcm −2.",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_9954d3a414af14b6"
+          ],
+          "notes": "mass loadings of 1 mg cm −2 and 3mgcm −2",
+          "order": 2,
+          "step_id": "step_e98c32b262691cbd"
+        },
+        {
+          "action": "Prior to use, the membrane was immersed in 6 M KOH solution for 12 h.",
+          "conditions": [
+            "6 M KOH",
+            "12 h"
+          ],
+          "evidence_ids": [
+            "ev_41c5f027d3bce3da"
+          ],
+          "notes": null,
+          "order": 3,
+          "step_id": "step_d49ffbd3cc2b33e5"
+        },
+        {
+          "action": "A zero-gap alkaline water electrolyzer was assembled using PSCFM/NF and Pt/C/NF as the anode and cathode, respectively (NF refers to nickel foam).",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_d448c77edcd936fd"
+          ],
+          "notes": null,
+          "order": 4,
+          "step_id": "step_0aad2bc2331206a1"
+        },
+        {
+          "action": "LSV measurement was performed at a scan rate of 10 mV s −1 from 0 to 2.4 V to evaluate cell performance.",
+          "conditions": [
+            "0 to 2.4 V"
+          ],
+          "evidence_ids": [
+            "ev_f3296e6224829562"
+          ],
+          "notes": "to evaluate cell performance",
+          "order": 5,
+          "step_id": "step_9c4321085be638be"
+        },
+        {
+          "action": "To assess the long-term stability, CP tests were carried out at constant current densities of 30 mA cm −2 and50mAcm −2 ,respectively.",
+          "conditions": [
+            "constant current densities of 30 mA cm −2 and50mAcm −2"
+          ],
+          "evidence_ids": [
+            "ev_3465c51da750a4f7"
+          ],
+          "notes": null,
+          "order": 6,
+          "step_id": "step_c1aba96cbadf0795"
+        }
+      ]
+    },
+    {
+      "caveats": [],
+      "characterization": [],
+      "evidence": [
+        {
+          "char_end": 436,
+          "char_start": 253,
+          "chunk_id": "mdchk_4ac8744bc29f03a7",
+          "document_char_end": 69673,
+          "document_char_start": 69490,
+          "evidence_id": "ev_3aaedd397bd7f773",
+          "paper_id": "DOI:10.1038_s41467-024-50605-5",
+          "quote": "The DEMS measurements were conducted using a QAS 100 mass spectrometer with a detector (Linglu Instruments, Shanghai) to iden- tify the source of oxygen in the evolved gas during MOR.",
+          "source_sha256": "e8b42c47561c3fae960a6fabcefcd794e17c931fd4cb99e62cf05d8dc5b55f72"
+        },
+        {
+          "char_end": 600,
+          "char_start": 437,
+          "chunk_id": "mdchk_4ac8744bc29f03a7",
+          "document_char_end": 69837,
+          "document_char_start": 69674,
+          "evidence_id": "ev_fe33583ca0f97f77",
+          "paper_id": "DOI:10.1038_s41467-024-50605-5",
+          "quote": "The catalyst ink was prepared by sonicating a mixture of 3 mg catalyst, 500 μL deionized water, 460 μLabsoluteethanol,and40μLof5wt%Nafion for 1.5 h in an ice bath.",
+          "source_sha256": "e8b42c47561c3fae960a6fabcefcd794e17c931fd4cb99e62cf05d8dc5b55f72"
+        },
+        {
+          "char_end": 880,
+          "char_start": 601,
+          "chunk_id": "mdchk_4ac8744bc29f03a7",
+          "document_char_end": 70117,
+          "document_char_start": 69838,
+          "evidence_id": "ev_1d94e63c616f61c9",
+          "paper_id": "DOI:10.1038_s41467-024-50605-5",
+          "quote": "Before measurement, 30 μL of the well- dispersed ink was drop-coated onto a gold film electrodeposited on a polytetrafluoroethylene (PTFE) membrane (porosity ≥50%, aperture ≤20 nm, thickness ∼40 μm, Linglu, Shanghai) pre-labeled with 18 Oina 1 M KOH electrolyte containing H₂₁₈O.",
+          "source_sha256": "e8b42c47561c3fae960a6fabcefcd794e17c931fd4cb99e62cf05d8dc5b55f72"
+        }
+      ],
+      "evidence_scope": "primary_report",
+      "instruments": [
+        {
+          "entity_id": "inst_d4d216f73186bf41",
+          "evidence_ids": [
+            "ev_3aaedd397bd7f773"
+          ],
+          "manufacturer": "Linglu Instruments, Shanghai",
+          "model": null,
+          "name": "QAS 100 mass spectrometer",
+          "settings": {}
+        }
+      ],
+      "materials": [
+        {
+          "amount": "3 mg",
+          "entity_id": "mat_0d6ae36aa6c16bc6",
+          "evidence_ids": [
+            "ev_fe33583ca0f97f77"
+          ],
+          "name": "catalyst",
+          "pretreatment": null,
+          "purity": null,
+          "role": null,
+          "supplier": null
+        },
+        {
+          "amount": "500 μL",
+          "entity_id": "mat_85afd2bedd0c83ee",
+          "evidence_ids": [
+            "ev_fe33583ca0f97f77"
+          ],
+          "name": "deionized water",
+          "pretreatment": null,
+          "purity": null,
+          "role": null,
+          "supplier": null
+        },
+        {
+          "amount": null,
+          "entity_id": "mat_8fabbb0fba06ae85",
+          "evidence_ids": [
+            "ev_fe33583ca0f97f77"
+          ],
+          "name": "Nafion",
+          "pretreatment": null,
+          "purity": null,
+          "role": null,
+          "supplier": null
+        },
+        {
+          "amount": "1 M",
+          "entity_id": "mat_a604e60f710851c7",
+          "evidence_ids": [
+            "ev_1d94e63c616f61c9"
+          ],
+          "name": "KOH",
+          "pretreatment": "containing H₂₁₈O",
+          "purity": null,
+          "role": "electrolyte",
+          "supplier": null
+        }
+      ],
+      "paper_id": "DOI:10.1038_s41467-024-50605-5",
+      "protocol_id": "protocol_00eb6ae19745740c",
+      "protocol_name": "DEMS measurements for oxygen source identification during MOR",
+      "protocol_type": "electrochemical characterization",
+      "relations": [],
+      "results": [],
+      "software": [],
+      "source_chunk_ids": [
+        "mdchk_4ac8744bc29f03a7"
+      ],
+      "source_paper_tier": "primary_oer",
+      "steps": [
+        {
+          "action": "The catalyst ink was prepared by sonicating a mixture of 3 mg catalyst, 500 μL deionized water, 460 μLabsoluteethanol,and40μLof5wt%Nafion for 1.5 h in an ice bath.",
+          "conditions": [
+            "ice bath",
+            "1.5 h"
+          ],
+          "evidence_ids": [
+            "ev_fe33583ca0f97f77"
+          ],
+          "notes": null,
+          "order": 1,
+          "step_id": "step_173cf3646b34d236"
+        },
+        {
+          "action": "Before measurement, 30 μL of the well- dispersed ink was drop-coated onto a gold film electrodeposited on a polytetrafluoroethylene (PTFE) membrane (porosity ≥50%, aperture ≤20 nm, thickness ∼40 μm, Linglu, Shanghai) pre-labeled with 18 Oina 1 M KOH electrolyte containing H₂₁₈O.",
+          "conditions": [
+            "30 μL"
+          ],
+          "evidence_ids": [
+            "ev_1d94e63c616f61c9"
+          ],
+          "notes": null,
+          "order": 2,
+          "step_id": "step_90b171099906a6d8"
+        }
+      ]
+    },
+    {
+      "caveats": [],
+      "characterization": [
+        {
+          "entity_id": "char_84dcd92e2b8f641a",
+          "evidence_ids": [
+            "ev_fe352af899ee42ea"
+          ],
+          "output": null,
+          "settings": {},
+          "technique": "in situ electrochemical attenuation total reflection Fourier transform infrared spectroscopy"
+        }
+      ],
+      "evidence": [
+        {
+          "char_end": 119,
+          "char_start": 0,
+          "chunk_id": "mdchk_5e62460868a3fdf4",
+          "document_char_end": 72847,
+          "document_char_start": 72728,
+          "evidence_id": "ev_fe352af899ee42ea",
+          "paper_id": "DOI:10.1038_s41467-024-50605-5",
+          "quote": "In situ electrochemical attenuation total reflection Fourier transform infrared spectroscopy (EC-ATR-FTIRS) measurement",
+          "source_sha256": "f6eec09560a730363bead2d31e4e5873172765bd845e7e47d5b29423d7d11920"
+        },
+        {
+          "char_end": 333,
+          "char_start": 120,
+          "chunk_id": "mdchk_5e62460868a3fdf4",
+          "document_char_end": 73061,
+          "document_char_start": 72848,
+          "evidence_id": "ev_1af408efcfdbf387",
+          "paper_id": "DOI:10.1038_s41467-024-50605-5",
+          "quote": "To prepare the catalyst electrode, a catalyst ink was first prepared by sonicating a mixture of 10 mg catalyst, 10 mg acetylene black, 1 mL of absolute ethanol, and 100 μL of 5 wt% Nafion for 1.5 h in an ice bath.",
+          "source_sha256": "f6eec09560a730363bead2d31e4e5873172765bd845e7e47d5b29423d7d11920"
+        },
+        {
+          "char_end": 426,
+          "char_start": 334,
+          "chunk_id": "mdchk_5e62460868a3fdf4",
+          "document_char_end": 73154,
+          "document_char_start": 73062,
+          "evidence_id": "ev_aaee99ce4ee274fd",
+          "paper_id": "DOI:10.1038_s41467-024-50605-5",
+          "quote": "This ink was then dropped onto a hemicylindrical silicon prism pre-coated with a gold layer.",
+          "source_sha256": "f6eec09560a730363bead2d31e4e5873172765bd845e7e47d5b29423d7d11920"
+        },
+        {
+          "char_end": 637,
+          "char_start": 427,
+          "chunk_id": "mdchk_5e62460868a3fdf4",
+          "document_char_end": 73365,
+          "document_char_start": 73155,
+          "evidence_id": "ev_fd298b0ca47078e0",
+          "paper_id": "DOI:10.1038_s41467-024-50605-5",
+          "quote": "The catalyst electrode, along with a Pt foil counter electrode and a Hg/HgO reference electrode (as shown in Supplementary Fig. 45), were used in a three-electrode configuration filled with 1 M KOH electrolyte.",
+          "source_sha256": "f6eec09560a730363bead2d31e4e5873172765bd845e7e47d5b29423d7d11920"
+        },
+        {
+          "char_end": 719,
+          "char_start": 638,
+          "chunk_id": "mdchk_5e62460868a3fdf4",
+          "document_char_end": 73447,
+          "document_char_start": 73366,
+          "evidence_id": "ev_452df4880125272e",
+          "paper_id": "DOI:10.1038_s41467-024-50605-5",
+          "quote": "The electrode potential was systematically varied from 1.45 V to 1.85 V in steps.",
+          "source_sha256": "f6eec09560a730363bead2d31e4e5873172765bd845e7e47d5b29423d7d11920"
+        },
+        {
+          "char_end": 819,
+          "char_start": 720,
+          "chunk_id": "mdchk_5e62460868a3fdf4",
+          "document_char_end": 73547,
+          "document_char_start": 73448,
+          "evidence_id": "ev_58bf2a0322c1769e",
+          "paper_id": "DOI:10.1038_s41467-024-50605-5",
+          "quote": "At each potential step, an infrared spectrum was collected with a time resolution of 10 s per scan.",
+          "source_sha256": "f6eec09560a730363bead2d31e4e5873172765bd845e7e47d5b29423d7d11920"
+        }
+      ],
+      "evidence_scope": "primary_report",
+      "instruments": [],
+      "materials": [
+        {
+          "amount": "10 mg",
+          "entity_id": "mat_cb602d82cd4dc783",
+          "evidence_ids": [
+            "ev_1af408efcfdbf387"
+          ],
+          "name": "catalyst",
+          "pretreatment": null,
+          "purity": null,
+          "role": null,
+          "supplier": null
+        },
+        {
+          "amount": "10 mg",
+          "entity_id": "mat_c9bf32b32ddb5f3a",
+          "evidence_ids": [
+            "ev_1af408efcfdbf387"
+          ],
+          "name": "acetylene black",
+          "pretreatment": null,
+          "purity": null,
+          "role": null,
+          "supplier": null
+        },
+        {
+          "amount": "1 mL",
+          "entity_id": "mat_ff5c3764ebf2fda8",
+          "evidence_ids": [
+            "ev_1af408efcfdbf387"
+          ],
+          "name": "absolute ethanol",
+          "pretreatment": null,
+          "purity": null,
+          "role": null,
+          "supplier": null
+        },
+        {
+          "amount": "100 μL",
+          "entity_id": "mat_d806b9b129bbff7a",
+          "evidence_ids": [
+            "ev_1af408efcfdbf387"
+          ],
+          "name": "Nafion",
+          "pretreatment": null,
+          "purity": "5 wt%",
+          "role": null,
+          "supplier": null
+        },
+        {
+          "amount": "1 M",
+          "entity_id": "mat_559c94a23b48cb01",
+          "evidence_ids": [
+            "ev_fd298b0ca47078e0"
+          ],
+          "name": "KOH",
+          "pretreatment": null,
+          "purity": null,
+          "role": "electrolyte",
+          "supplier": null
+        }
+      ],
+      "paper_id": "DOI:10.1038_s41467-024-50605-5",
+      "protocol_id": "protocol_e517af967e8d69aa",
+      "protocol_name": "In situ EC-ATR-FTIRS measurement",
+      "protocol_type": "spectroscopic characterization",
+      "relations": [],
+      "results": [],
+      "software": [],
+      "source_chunk_ids": [
+        "mdchk_5e62460868a3fdf4"
+      ],
+      "source_paper_tier": "primary_oer",
+      "steps": [
+        {
+          "action": "To prepare the catalyst electrode, a catalyst ink was first prepared by sonicating a mixture of 10 mg catalyst, 10 mg acetylene black, 1 mL of absolute ethanol, and 100 μL of 5 wt% Nafion for 1.5 h in an ice bath.",
+          "conditions": [
+            "ice bath",
+            "1.5 h"
+          ],
+          "evidence_ids": [
+            "ev_1af408efcfdbf387"
+          ],
+          "notes": null,
+          "order": 1,
+          "step_id": "step_93ac4506627a928c"
+        },
+        {
+          "action": "This ink was then dropped onto a hemicylindrical silicon prism pre-coated with a gold layer.",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_aaee99ce4ee274fd"
+          ],
+          "notes": null,
+          "order": 2,
+          "step_id": "step_ad297170c77d64ab"
+        },
+        {
+          "action": "The electrode potential was systematically varied from 1.45 V to 1.85 V in steps.",
+          "conditions": [
+            "1.45 V to 1.85 V in steps"
+          ],
+          "evidence_ids": [
+            "ev_452df4880125272e"
+          ],
+          "notes": null,
+          "order": 3,
+          "step_id": "step_adafbdf4f8a7bdd5"
+        },
+        {
+          "action": "At each potential step, an infrared spectrum was collected with a time resolution of 10 s per scan.",
+          "conditions": [
+            "time resolution of 10 s per scan"
+          ],
+          "evidence_ids": [
+            "ev_58bf2a0322c1769e"
+          ],
+          "notes": null,
+          "order": 4,
+          "step_id": "step_e517af967e8d69aa"
+        }
+      ]
+    },
+    {
+      "caveats": [],
+      "characterization": [
+        {
+          "entity_id": "char_1b1d20a60ea8b849",
+          "evidence_ids": [
+            "ev_0ec2cc8a0aa4838b"
+          ],
+          "output": null,
+          "settings": {},
+          "technique": "X-ray diffraction"
+        },
+        {
+          "entity_id": "char_ba427e5f5a6691c4",
+          "evidence_ids": [
+            "ev_8d3ffbfe60bc8ed1"
+          ],
+          "output": "oxidative valence states of each cation",
+          "settings": {},
+          "technique": "X-ray photoelectron spectroscopy"
+        },
+        {
+          "entity_id": "char_dc0acd2b6a6411dd",
+          "evidence_ids": [
+            "ev_42d5e63c0969686d"
+          ],
+          "output": null,
+          "settings": {},
+          "technique": "linear sweep voltammetry"
+        }
+      ],
+      "evidence": [
+        {
+          "char_end": 346,
+          "char_start": 171,
+          "chunk_id": "mdchk_92e080136a0b5a01",
+          "document_char_end": 22164,
+          "document_char_start": 21989,
+          "evidence_id": "ev_aaf0a197f0564e6e",
+          "paper_id": "DOI:10.1038_s41467-024-50605-5",
+          "quote": "Importantly, the material with the com- position PSCF was predicted to be a high-performance material (Fig. 2g) with the lowest overpotential of 340.81 mV (364.80 ± 18.55 mV).",
+          "source_sha256": "4d846ce23ac7924c7172a076a018d580e66dbaf0198b60804fe406fb5d767a6c"
+        },
+        {
+          "char_end": 440,
+          "char_start": 347,
+          "chunk_id": "mdchk_92e080136a0b5a01",
+          "document_char_end": 22258,
+          "document_char_start": 22165,
+          "evidence_id": "ev_4a45d41d7dfc2e53",
+          "paper_id": "DOI:10.1038_s41467-024-50605-5",
+          "quote": "All samples were synthesized using the sol-gel method followed by annealing at 850 °C in air.",
+          "source_sha256": "4d846ce23ac7924c7172a076a018d580e66dbaf0198b60804fe406fb5d767a6c"
+        },
+        {
+          "char_end": 695,
+          "char_start": 441,
+          "chunk_id": "mdchk_92e080136a0b5a01",
+          "document_char_end": 22513,
+          "document_char_start": 22259,
+          "evidence_id": "ev_0ec2cc8a0aa4838b",
+          "paper_id": "DOI:10.1038_s41467-024-50605-5",
+          "quote": "Our X-ray diffraction (XRD) results confirmed the formation of 10 phase-pure perovskites (Supplementary Fig. 6a), while the remaining samples exhibited perovskite structures with sig- nificant impurities or intermediate phases (Supplementary Fig. 6b, c).",
+          "source_sha256": "4d846ce23ac7924c7172a076a018d580e66dbaf0198b60804fe406fb5d767a6c"
+        },
+        {
+          "char_end": 802,
+          "char_start": 696,
+          "chunk_id": "mdchk_92e080136a0b5a01",
+          "document_char_end": 22620,
+          "document_char_start": 22514,
+          "evidence_id": "ev_42d5e63c0969686d",
+          "paper_id": "DOI:10.1038_s41467-024-50605-5",
+          "quote": "Preliminarily the linear sweep voltammetry (LSV) evaluation confirmed an overpotential of 327 mV for PSCF.",
+          "source_sha256": "4d846ce23ac7924c7172a076a018d580e66dbaf0198b60804fe406fb5d767a6c"
+        },
+        {
+          "char_end": 983,
+          "char_start": 803,
+          "chunk_id": "mdchk_92e080136a0b5a01",
+          "document_char_end": 22801,
+          "document_char_start": 22621,
+          "evidence_id": "ev_8d3ffbfe60bc8ed1",
+          "paper_id": "DOI:10.1038_s41467-024-50605-5",
+          "quote": "Subsequent X-ray photoelectron spectroscopy (XPS) characterization revealed the oxidative valence states of each cation in PSCF (detailed results are presented later in the paper).",
+          "source_sha256": "4d846ce23ac7924c7172a076a018d580e66dbaf0198b60804fe406fb5d767a6c"
+        },
+        {
+          "char_end": 1988,
+          "char_start": 1798,
+          "chunk_id": "mdchk_92e080136a0b5a01",
+          "document_char_end": 23806,
+          "document_char_start": 23616,
+          "evidence_id": "ev_920c8f95da4ab186",
+          "paper_id": "DOI:10.1038_s41467-024-50605-5",
+          "quote": "The PSCFM with Mn partially substituting Fe in PSCF was optimized from the second-cycle prediction, achieving a minimum predicted overpotential of 302.92 mV (322.75 mV ± 14.09 mV) (Fig. 2i).",
+          "source_sha256": "4d846ce23ac7924c7172a076a018d580e66dbaf0198b60804fe406fb5d767a6c"
+        }
+      ],
+      "evidence_scope": "primary_report",
+      "instruments": [],
+      "materials": [],
+      "paper_id": "DOI:10.1038_s41467-024-50605-5",
+      "protocol_id": "protocol_5cf2ad6d6ec0922b",
+      "protocol_name": "Sol-gel synthesis of perovskite oxides",
+      "protocol_type": "material synthesis",
+      "relations": [],
+      "results": [
+        {
+          "context": "Importantly, the material with the com- position PSCF was predicted to be a high-performance material (Fig. 2g) with the lowest overpotential of 340.81 mV (364.80 ± 18.55 mV).",
+          "evidence_ids": [
+            "ev_aaf0a197f0564e6e"
+          ],
+          "metric": "overpotential",
+          "raw_value": "340.81 mV",
+          "result_id": "result_e96fd48ebe4c7c69"
+        },
+        {
+          "context": "Preliminarily the linear sweep voltammetry (LSV) evaluation confirmed an overpotential of 327 mV for PSCF.",
+          "evidence_ids": [
+            "ev_42d5e63c0969686d"
+          ],
+          "metric": "overpotential",
+          "raw_value": "327 mV",
+          "result_id": "result_3b1a4719c43e5c64"
+        },
+        {
+          "context": "The PSCFM with Mn partially substituting Fe in PSCF was optimized from the second-cycle prediction, achieving a minimum predicted overpotential of 302.92 mV (322.75 mV ± 14.09 mV) (Fig. 2i).",
+          "evidence_ids": [
+            "ev_920c8f95da4ab186"
+          ],
+          "metric": "predicted overpotential",
+          "raw_value": "302.92 mV",
+          "result_id": "result_e75dd86a5533fc03"
+        }
+      ],
+      "software": [],
+      "source_chunk_ids": [
+        "mdchk_92e080136a0b5a01"
+      ],
+      "source_paper_tier": "primary_oer",
+      "steps": [
+        {
+          "action": "All samples were synthesized using the sol-gel method followed by annealing at 850 °C in air.",
+          "conditions": [
+            "annealing at 850 °C in air"
+          ],
+          "evidence_ids": [
+            "ev_4a45d41d7dfc2e53"
+          ],
+          "notes": null,
+          "order": 1,
+          "step_id": "step_e96fd48ebe4c7c69"
+        }
+      ]
+    }
+  ],
+  "schema_version": "bedrock-teacher-paper-cache-v0.1",
+  "unsupported_claim_count": 43
+}

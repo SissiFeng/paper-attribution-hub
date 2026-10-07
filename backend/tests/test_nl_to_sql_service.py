@@ -3,7 +3,7 @@ from __future__ import annotations
 import inspect
 
 import pytest
-from fastapi.testclient import TestClient
+from tests.admin_client import AdminTestClient as TestClient
 from sqlalchemy import func, select
 
 
@@ -67,7 +67,7 @@ def test_nl_to_sql_endpoint_returns_plan(seeded_session):
     assert "GROUP BY" in body["sql"].upper()
     assert body["rows"]
     assert body["audit"]["parameter_binding"] == "sqlalchemy-bound-parameters"
-    openapi_parameters = TestClient(app).get("/openapi.json").json()["paths"][
+    openapi_parameters = app.openapi()["paths"][
         "/retrieval/nl-sql"
     ]["get"]["parameters"]
     assert "use_llm" not in {parameter["name"] for parameter in openapi_parameters}
@@ -99,6 +99,22 @@ def test_text_filter_is_parameter_bound_and_wildcards_are_literal(seeded_session
     assert hostile not in result.sql
     assert any("battery\\%\\_x" in str(value) for value in result.parameters.values())
     assert result.audit["parameter_binding"] == "sqlalchemy-bound-parameters"
+
+
+def test_nl_to_sql_empty_result_explains_scope_and_fulltext_option(seeded_session):
+    from app.services.nl_to_sql_service import run_nl_sql
+
+    result = run_nl_sql(
+        seeded_session,
+        'List papers about "term-that-does-not-exist-9f3a"',
+    )
+
+    assert result.rows == []
+    assert result.audit["base_scope_paper_count"] > 0
+    assert result.audit["scope_paper_count"] == 0
+    assert "No structured matches were found among" in result.summary
+    assert "search the indexed full text" in result.summary
+    assert "strict database query returned no matching rows" not in result.summary
 
 
 def test_sql_chat_uses_exact_page_filter_and_paper_scope(seeded_session):

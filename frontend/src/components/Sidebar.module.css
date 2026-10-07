@@ -21,6 +21,8 @@
 
 /* Hide default scrollbar, keep scroll */
 .sidebar::-webkit-scrollbar { width: 0; }
+.menuToggle { display: none; }
+.accessLock { margin-left: auto; flex-shrink: 0; color: #657b8d; }
 
 /* ── Logo ─────────────────────────────────────────────────────────────── */
 
@@ -84,12 +86,25 @@
 /* ── Nav ─────────────────────────────────────────────────────────────── */
 
 .nav {
+  position: relative;
+  isolation: isolate;
   flex: 1;
   padding: 8px 8px 4px;
   display: flex;
   flex-direction: column;
   gap: 1px;
 }
+
+.navGroup { display: flex; flex-direction: column; gap: 1px; }
+.highlight { position:absolute;top:0;left:0;pointer-events:none;z-index:-1;border-radius:6px;background:rgba(221,174,211,.17);transform-origin:top left;opacity:0; }
+.highlight::before { content:'';position:absolute;left:0;top:5px;bottom:5px;width:3px;border-radius:0 2px 2px 0;background:#DDAED3; }
+.nav[data-highlight-ready=true] .navItem.active { background:transparent; }
+.nav[data-highlight-ready=true] .navItem.active::before { display:none; }
+.navItem:focus-visible,.commandTrigger:focus-visible,.menuToggle:focus-visible { outline:2px solid #6594B1;outline-offset:-2px; }
+.commandTrigger { display:flex;align-items:center;gap:8px;margin:12px 10px 4px;padding:9px;border:1px solid #dbe3e9;border-radius:7px;background:#f7f9fb;color:#4a6478;cursor:pointer;font:11px 'JetBrains Mono',monospace;text-align:left;flex-shrink:0;transition:background 140ms; }
+.commandTrigger:hover { background:#edf2f6; }
+.commandTrigger svg { flex-shrink:0; }
+.commandTrigger kbd { margin-left:auto;font:9px 'JetBrains Mono',monospace;color:#657b8d;border:1px solid #d7e0e6;border-radius:3px;padding:2px 4px;background:white;white-space:nowrap; }
 
 .sectionLabel {
   font-size: 9.5px;
@@ -192,6 +207,11 @@
 }
 
 @media (max-width: 720px) {
+  .commandTrigger { justify-content:center;margin:10px 5px 2px;padding:10px 4px;min-height:38px; }
+  .commandTrigger span,.commandTrigger kbd { display:none; }
+  .expanded .commandTrigger { justify-content:flex-start;margin:12px 10px 4px;padding:9px; }
+  .expanded .commandTrigger span,.expanded .commandTrigger kbd { display:inline; }
+  .menuToggle { display: block; padding: 12px 4px; border: 0; border-bottom: 1px solid #e2e8ed; background: white; color: #213C51; font-size: 11px; cursor: pointer; }
   .sidebar {
     min-width: 54px;
     width: 54px;
@@ -227,4 +247,12 @@
   .footer {
     padding: 6px 5px 10px;
   }
+  .accessLock { display: none; }
+  .sidebar.expanded { width: 228px; min-width: 228px; position: fixed; left: 0; z-index: 60; }
+  .expanded .logo > div:last-child, .expanded .sectionLabel { display: block; }
+  .expanded .logo { justify-content: flex-start; padding: 16px; }
+  .expanded .navItem, .expanded .footerLink { font-size: 12px; gap: 8px; justify-content: flex-start; }
+  .expanded .accessLock { display: inline-flex; }
 }
+
+@media (prefers-reduced-motion:reduce) { .navItem,.navIcon,.commandTrigger { transition:none; } }

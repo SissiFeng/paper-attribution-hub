@@ -1,0 +1,3248 @@
+{
+  "audit_summary": {
+    "accepted_field_count": 39,
+    "proposed_field_count": 144,
+    "rejected_field_count": 105,
+    "repair_attempted_count": 1,
+    "repair_succeeded_count": 0,
+    "unsupported_claim_count": 105
+  },
+  "candidate_domain_terms": [
+    "electrolyte",
+    "lithium-ion",
+    "ionic conductivity",
+    "solubility",
+    "redox"
+  ],
+  "field_audit_records": [
+    {
+      "cited_span": "performedbyanHTEunitfeaturingbothanautomatedprepara- tion module and an automated conductivity testing module",
+      "diagnostic": null,
+      "entity_type": "instruments",
+      "field_path": "instruments[0].name",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "proposed_value": "HTE unit",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The LECA software package streamlines data handling by incorporat- ing widely used ML libraries into a simplified workflow that supports parallel training, cross-validation, and uncertainty esti- mation using linear regression, RF, neural networks, and GPR",
+      "diagnostic": null,
+      "entity_type": "software",
+      "field_path": "software[0].settings.features",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "proposed_value": "parallel training, cross-validation, and uncertainty estimation",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "performedbyanHTEunitfeaturingbothanautomatedprepara- tion module and an automated conductivity testing module",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[0].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "proposed_value": "automated preparation of electrolyte samples",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "performedbyanHTEunitfeaturingbothanautomatedprepara- tion module and an automated conductivity testing module",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[0].notes",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "proposed_value": "using HTE unit preparation module",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "performedbyanHTEunitfeaturingbothanautomatedprepara- tion module and an automated conductivity testing module",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[1].notes",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "proposed_value": "using HTE unit testing module",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "By comparing prediction accuracy scores, LECA identifies the best- performing models",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[2].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "proposed_value": "compare prediction accuracy scores to identify best-performing models",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "employs them to determine electrolyte compositions that maximize ionic conductivity under varying temperatures",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[3].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "proposed_value": "employ best models to determine electrolyte compositions that maximize ionic conductivity under varying temperatures",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "an automated conductivity testing module",
+      "diagnostic": null,
+      "entity_type": "characterization",
+      "field_path": "characterization[0].technique",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "proposed_value": "ionic conductivity measurement",
+      "protocol_index": 0,
+      "rejection_reason": "value_elsewhere",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Taking 2,1,3-benzothiadiazole as the model redox- active organic molecule",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[0].role",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "proposed_value": "model redox-active organic molecule",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Human intervention was limited to transferring sam- ples between the robotic system and the nuclear magnetic reso- nance instrument",
+      "diagnostic": null,
+      "entity_type": "instruments",
+      "field_path": "instruments[1].name",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "proposed_value": "nuclear magnetic resonance instrument",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The HTE module employs a high-throughput robotic platform for sample preparation and solubility measurements",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[0].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "proposed_value": "sample preparation using high-throughput robotic platform",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The HTE module employs a high-throughput robotic platform for sample preparation and solubility measurements",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[1].notes",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "proposed_value": "using high-throughput robotic platform",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "while the BO module uses a surrogate model and acquisition function to predict solubility",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[2].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "proposed_value": "predict solubility using surrogate model",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "and acquisition function to predict solubility and recom- mend new solvents for evaluation",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[3].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "proposed_value": "recommend new solvents for evaluation using acquisition function",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "and acquisition function to predict solubility and recom- mend new solvents for evaluation",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[3].notes",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "proposed_value": "BO module",
+      "protocol_index": 1,
+      "rejection_reason": "value_elsewhere",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Human intervention was limited to transferring sam- ples between the robotic system and the nuclear magnetic reso- nance instrument",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[4].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "proposed_value": "transfer samples between robotic system and nuclear magnetic resonance instrument",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Human intervention was limited to transferring sam- ples between the robotic system and the nuclear magnetic reso- nance instrument",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[4].notes",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "proposed_value": "human intervention required",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Human intervention was limited to transferring sam- ples between the robotic system and the nuclear magnetic reso- nance instrument",
+      "diagnostic": null,
+      "entity_type": "characterization",
+      "field_path": "characterization[1].technique",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "proposed_value": "nuclear magnetic resonance",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "which enabled the solubility of 42 samples to be measured within approximately 27 hours",
+      "diagnostic": null,
+      "entity_type": "results",
+      "field_path": "results[0].metric",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "proposed_value": "number of samples measured",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "over 13 times faster than the conventional approach",
+      "diagnostic": null,
+      "entity_type": "results",
+      "field_path": "results[1].metric",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "proposed_value": "speed improvement",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "In the final screening of 2003 binary solvent systems",
+      "diagnostic": null,
+      "entity_type": "results",
+      "field_path": "results[2].metric",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "proposed_value": "number of binary solvent systems screened",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "three rounds of BO identified 18 new mixtures in which 2,1,3-benzothiadiazole solubility exceeded 6.20 M",
+      "diagnostic": null,
+      "entity_type": "results",
+      "field_path": "results[3].metric",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "proposed_value": "number of new mixtures identified with solubility exceeding 6.20 M",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "achieving a remarkable solubility of 6.50 M",
+      "diagnostic": null,
+      "entity_type": "results",
+      "field_path": "results[4].metric",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "proposed_value": "maximum solubility achieved",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Human intervention was limited to transferring sam- ples between the robotic system and the nuclear magnetic reso- nance instrument",
+      "diagnostic": null,
+      "entity_type": "caveats",
+      "field_path": "caveats[0].text",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "proposed_value": "Human intervention was limited to transferring samples between the robotic system and the nuclear magnetic resonance instrument",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Subsequently, the raw materials (either commercially purchased or synthesized in the laboratory) and operating instructions were loaded into a high- throughput platform",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[0].role",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "proposed_value": "precursors for polymer electrolytes",
+      "protocol_index": 2,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The system was composed of modular workstations capable of chemical dispensing, mixing, drying, and physicochemical characterization, all executed by two three- axis robotic arms equipped with multifunctional tool heads",
+      "diagnostic": null,
+      "entity_type": "instruments",
+      "field_path": "instruments[0].name",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "proposed_value": "high-throughput platform",
+      "protocol_index": 2,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "all executed by two three- axis robotic arms equipped with multifunctional tool heads",
+      "diagnostic": null,
+      "entity_type": "instruments",
+      "field_path": "instruments[1].name",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "proposed_value": "three-axis robotic arms",
+      "protocol_index": 2,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The high-throughput workflow involves defining experimental objectives, formulating recipes, establishing process parameters, and then employing ML for plan optimization",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[0].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "proposed_value": "define experimental objectives",
+      "protocol_index": 2,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The high-throughput workflow involves defining experimental objectives, formulating recipes, establishing process parameters, and then employing ML for plan optimization",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[1].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "proposed_value": "formulate recipes",
+      "protocol_index": 2,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The high-throughput workflow involves defining experimental objectives, formulating recipes, establishing process parameters, and then employing ML for plan optimization",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[2].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "proposed_value": "establish process parameters",
+      "protocol_index": 2,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The high-throughput workflow involves defining experimental objectives, formulating recipes, establishing process parameters, and then employing ML for plan optimization",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[3].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "proposed_value": "employ ML for plan optimization",
+      "protocol_index": 2,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Subsequently, the raw materials (either commercially purchased or synthesized in the laboratory) and operating instructions were loaded into a high- throughput platform, by which all subsequent operations are automatically executed",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[4].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "proposed_value": "load raw materials and operating instructions into high-throughput platform",
+      "protocol_index": 2,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The system was composed of modular workstations capable of chemical dispensing, mixing, drying, and physicochemical characterization, all executed by two three- axis robotic arms equipped with multifunctional tool heads",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[5].notes",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "proposed_value": "executed by two three-axis robotic arms with multifunctional tool heads",
+      "protocol_index": 2,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The system was composed of modular workstations capable of chemical dispensing, mixing, drying, and physicochemical characterization, all executed by two three- axis robotic arms equipped with multifunctional tool heads",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[6].notes",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "proposed_value": "executed by two three-axis robotic arms with multifunctional tool heads",
+      "protocol_index": 2,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The system was composed of modular workstations capable of chemical dispensing, mixing, drying, and physicochemical characterization, all executed by two three- axis robotic arms equipped with multifunctional tool heads",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[7].notes",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "proposed_value": "executed by two three-axis robotic arms with multifunctional tool heads",
+      "protocol_index": 2,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The system was composed of modular workstations capable of chemical dispensing, mixing, drying, and physicochemical characterization, all executed by two three- axis robotic arms equipped with multifunctional tool heads",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[8].notes",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "proposed_value": "executed by two three-axis robotic arms with multifunctional tool heads",
+      "protocol_index": 2,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "the platform completes 90 sample tests within five days",
+      "diagnostic": null,
+      "entity_type": "results",
+      "field_path": "results[0].metric",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "proposed_value": "number of sample tests completed",
+      "protocol_index": 2,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "which is around 100 times faster than traditional approaches",
+      "diagnostic": null,
+      "entity_type": "results",
+      "field_path": "results[1].metric",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "proposed_value": "speed improvement",
+      "protocol_index": 2,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "encom- passing over 70 unique formulations",
+      "diagnostic": null,
+      "entity_type": "results",
+      "field_path": "results[2].metric",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "proposed_value": "number of unique formulations",
+      "protocol_index": 2,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "330 samples",
+      "diagnostic": null,
+      "entity_type": "results",
+      "field_path": "results[3].metric",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "proposed_value": "number of samples",
+      "protocol_index": 2,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "and nearly 2000 ionic conductivity measurements",
+      "diagnostic": null,
+      "entity_type": "results",
+      "field_path": "results[4].metric",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "proposed_value": "number of ionic conductivity measurements",
+      "protocol_index": 2,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "A molecular dataset comprising 1 321 129 compounds was constructed",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[0].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "proposed_value": "construct molecular dataset",
+      "protocol_index": 3,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "A molecular dataset comprising 1 321 129 compounds was constructed",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[0].notes",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "proposed_value": "1,321,129 compounds",
+      "protocol_index": 3,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "from which 54 202 candidates were systematically screened using DFT calculations and MD simulations",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[1].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "proposed_value": "systematically screen candidates using DFT calculations and MD simulations",
+      "protocol_index": 3,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "from which 54 202 candidates were systematically screened using DFT calculations and MD simulations",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[1].notes",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "proposed_value": "54,202 candidates selected from dataset",
+      "protocol_index": 3,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Key molecular descrip- tors, encompassing thermal and structural stability, tempera- ture range, solvation, viscosity, and chemical stability, were employed in conjunction with ML models for efficient property prediction",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[2].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "proposed_value": "employ key molecular descriptors with ML models for efficient property prediction",
+      "protocol_index": 3,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Key molecular descrip- tors, encompassing thermal and structural stability, tempera- ture range, solvation, viscosity, and chemical stability, were employed in conjunction with ML models for efficient property prediction",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[2].notes",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "proposed_value": "descriptors: thermal and structural stability, temperature range, solvation, viscosity, and chemical stability",
+      "protocol_index": 3,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "integrating high-throughput calculations, ML techniques, and experimental validation",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[3].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "proposed_value": "experimental validation of identified candidates",
+      "protocol_index": 3,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "three novel carbox- ylate solvents, methyl trimethylacetate, ethyl trimethylacetate (ETMA), and ethyl 2,2-dimethylbutanoate, were identified",
+      "diagnostic": null,
+      "entity_type": "results",
+      "field_path": "results[0].metric",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "proposed_value": "novel carboxylate solvents identified",
+      "protocol_index": 3,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "achieving the highest voltage (4.3 V)",
+      "diagnostic": null,
+      "entity_type": "results",
+      "field_path": "results[1].metric",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "proposed_value": "highest voltage achieved by ETMA-based electrolytes",
+      "protocol_index": 3,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "the highest charging rate (4.0 C)",
+      "diagnostic": null,
+      "entity_type": "results",
+      "field_path": "results[2].metric",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "proposed_value": "highest charging rate achieved by ETMA-based electrolytes",
+      "protocol_index": 3,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "and the longest cycle life (over 4100 cycles) compared with literature reports",
+      "diagnostic": null,
+      "entity_type": "results",
+      "field_path": "results[3].metric",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "proposed_value": "longest cycle life achieved by ETMA-based electrolytes",
+      "protocol_index": 3,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "A database of 5576 candidates was generated from 1510 solvents and four salts",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[0].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "proposed_value": "generate database of candidates from solvents and salts",
+      "protocol_index": 4,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "A database of 5576 candidates was generated from 1510 solvents and four salts",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[0].notes",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "proposed_value": "5576 candidates from 1510 solvents and four salts",
+      "protocol_index": 4,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "A voting ensemble model using five key descriptors enabled rapid property prediction",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[1].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "proposed_value": "rapid property prediction using voting ensemble model with five key descriptors",
+      "protocol_index": 4,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "A GCN further accelerated descriptor estimation",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[2].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "proposed_value": "accelerate descriptor estimation using GCN",
+      "protocol_index": 4,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The optimal molecule achieved stable cycling between 2.8 and 4.4 V vs. Li/Li + at C/2",
+      "diagnostic": null,
+      "entity_type": "results",
+      "field_path": "results[0].metric",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "proposed_value": "voltage range for stable cycling",
+      "protocol_index": 4,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "with 99.5% CE maintained over 100 cycles",
+      "diagnostic": null,
+      "entity_type": "results",
+      "field_path": "results[1].metric",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "proposed_value": "coulombic efficiency",
+      "protocol_index": 4,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Initially, one million organic molecules were collected from PubChem",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[0].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "proposed_value": "collect organic molecules from PubChem",
+      "protocol_index": 5,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Initially, one million organic molecules were collected from PubChem",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[0].notes",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "proposed_value": "one million molecules",
+      "protocol_index": 5,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Subsequently, considering atomic types, active-site counts, and hierarchical clustering based on previously reported organic electrode molecule characteristics, 1524 molecules were selected as potential candidates",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[1].action",
+      "nearest_source_span": "Subsequently, considering atomic types, active-site counts, and hierarchical clustering based on previously reported organic electrode mole- cule characteristics, 1524 molecules were selected as potential candidates.",
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "proposed_value": "select potential candidates based on atomic types, active-site counts, and hierarchical clustering",
+      "protocol_index": 5,
+      "rejection_reason": "span_not_in_source",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "High-throughput calculations determined reduction potentials for a randomly chosen subset of 1200 molecules, forming the training set for an SVR model",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[2].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "proposed_value": "determine reduction potentials using high-throughput calculations for training set",
+      "protocol_index": 5,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "High-throughput calculations determined reduction potentials for a randomly chosen subset of 1200 molecules, forming the training set for an SVR model",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[2].notes",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "proposed_value": "1200 molecules randomly chosen",
+      "protocol_index": 5,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "forming the training set for an SVR model",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[3].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "proposed_value": "train SVR model on calculated reduction potentials",
+      "protocol_index": 5,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Experimental valida- tion confirmed its superior performance",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[4].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "proposed_value": "experimental validation of identified molecule",
+      "protocol_index": 5,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "naphthalene-1,4,5,8-tetraone emerged as a molecule with high reduction potential and energy density",
+      "diagnostic": null,
+      "entity_type": "results",
+      "field_path": "results[0].metric",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "proposed_value": "molecule identified with high reduction potential and energy density",
+      "protocol_index": 5,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "achieving prolonged cycling stability of 2500 cycles at 1 A g 1",
+      "diagnostic": null,
+      "entity_type": "results",
+      "field_path": "results[1].context",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "proposed_value": "at 1 A g-1",
+      "protocol_index": 5,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "GNN models were developed to correlate molecular properties and descriptors",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[0].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "proposed_value": "develop GNN models to correlate molecular properties and descriptors",
+      "protocol_index": 6,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "an MAE of 5.6 and 7.2 kcal mol 1 was achieved for predicting reduction and oxidation potentials, respectively",
+      "diagnostic": null,
+      "entity_type": "results",
+      "field_path": "results[0].metric",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "proposed_value": "MAE for predicting reduction potentials",
+      "protocol_index": 6,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "an MAE of 5.6 and 7.2 kcal mol 1 was achieved for predicting reduction and oxidation potentials, respectively",
+      "diagnostic": null,
+      "entity_type": "results",
+      "field_path": "results[1].metric",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "proposed_value": "MAE for predicting oxidation potentials",
+      "protocol_index": 6,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Physically inspired features were employed, including solute molecular properties and solvent-related features",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[0].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "proposed_value": "employ physically inspired features including solute molecular properties and solvent-related features",
+      "protocol_index": 7,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "After applying the ML correction, the MAE for implicit and explicit solvent model data was reduced from 0.76 to 0.44 V and from 0.64 to below 0.24 V, respectively",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[1].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "proposed_value": "apply ML correction to implicit and explicit solvent model data",
+      "protocol_index": 7,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "the MAE for implicit and explicit solvent model data was reduced from 0.76 to 0.44 V",
+      "diagnostic": null,
+      "entity_type": "results",
+      "field_path": "results[0].metric",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "proposed_value": "MAE for implicit solvent model",
+      "protocol_index": 7,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "and from 0.64 to below 0.24 V, respectively",
+      "diagnostic": null,
+      "entity_type": "results",
+      "field_path": "results[1].metric",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "proposed_value": "MAE for explicit solvent model",
+      "protocol_index": 7,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Concurrent learning workflows were combined with free energy calculation techni- ques to construct ML potentials for efficient and precise free energy estimation",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[0].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "proposed_value": "combine concurrent learning workflows with free energy calculation techniques",
+      "protocol_index": 8,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Nanosecond-scale simulations with first- principles accuracy were performed using MLMD",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[1].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "proposed_value": "perform nanosecond-scale simulations with first-principles accuracy using MLMD",
+      "protocol_index": 8,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "an auto- mated workflow incorporating the hybrid HSE06 functional was employed for potential development",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[2].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "proposed_value": "employ automated workflow incorporating hybrid HSE06 functional for potential development",
+      "protocol_index": 8,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "An MAE of 0.33 V was achieved in redox potential predictions",
+      "diagnostic": null,
+      "entity_type": "results",
+      "field_path": "results[0].metric",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "proposed_value": "MAE in redox potential predictions",
+      "protocol_index": 8,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Allam et al. 630 employed feature engineering techniques including LASSO fea- ture selection, relative contribution analysis, and recursive fea- ture elimination to train three learning models",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[0].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "proposed_value": "employ feature engineering techniques including LASSO feature selection, relative contribution analysis, and recursive feature elimination",
+      "protocol_index": 9,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "with electron affinity and number of Li atoms identified as the most critical determinants of redox potential",
+      "diagnostic": null,
+      "entity_type": "results",
+      "field_path": "results[0].metric",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "proposed_value": "most critical determinants of redox potential identified",
+      "protocol_index": 9,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "polymer p-BCz-PH was synthe- sized through the autonomous platform",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[0].role",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "proposed_value": "synthesized cathode material",
+      "protocol_index": 10,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "An experimental dataset of 600 entries was compiled",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[0].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "proposed_value": "compile experimental dataset",
+      "protocol_index": 10,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "SMILES representations of molecular structures were converted into MACCS molecular fingerprints to serve as model inputs",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[1].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "proposed_value": "convert SMILES representations of molecular structures into MACCS molecular fingerprints",
+      "protocol_index": 10,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "A ternary classification framework was implemented using voltage thresh- olds of 2.5 and 3.5 V, where materials exceeding 3.5 V were deemed optimal",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[2].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "proposed_value": "implement ternary classification framework using voltage thresholds",
+      "protocol_index": 10,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "A ternary classification framework was implemented using voltage thresh- olds of 2.5 and 3.5 V, where materials exceeding 3.5 V were deemed optimal",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[2].notes",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "proposed_value": "thresholds of 2.5 and 3.5 V, materials exceeding 3.5 V deemed optimal",
+      "protocol_index": 10,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "SHAP analysis revealed structural preferences for specific functional groups, particularly nitrogen atoms, ben- zene rings, and carbazole moieties",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[3].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "proposed_value": "perform SHAP analysis to reveal structural preferences",
+      "protocol_index": 10,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "SHAP analysis revealed structural preferences for specific functional groups, particularly nitrogen atoms, ben- zene rings, and carbazole moieties",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[3].notes",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "proposed_value": "nitrogen atoms, benzene rings, and carbazole moieties identified",
+      "protocol_index": 10,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "polymer p-BCz-PH was synthe- sized through the autonomous platform",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[4].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "proposed_value": "synthesize polymer through autonomous platform guided by computational insights and chemical principles",
+      "protocol_index": 10,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The model achieved an accuracy of 91.6% on the test datasets",
+      "diagnostic": null,
+      "entity_type": "results",
+      "field_path": "results[0].metric",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "proposed_value": "model accuracy on test datasets",
+      "protocol_index": 10,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The cathode material demonstrated enhanced discharge voltages of 4.5 and 4.8 V vs. Li/ Li +",
+      "diagnostic": null,
+      "entity_type": "results",
+      "field_path": "results[1].raw_value",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "proposed_value": "4.5 and 4.8 V vs. Li/Li+",
+      "protocol_index": 10,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "In unconditional generation tasks, minGPT and diffusion-LM models exhibited excellent performance in producing novel, valid, and synthesiz- able polymers",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[0].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "proposed_value": "perform unconditional generation tasks",
+      "protocol_index": 11,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "In conditional generation experiments targeting ionic conductivity, minGPT-generated polymers exhib- ited conductivity distributions distinctly skewed toward high values",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[1].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "proposed_value": "perform conditional generation experiments targeting ionic conductivity",
+      "protocol_index": 11,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "MD simulations of 50 selected polymers (from 100 000 high-conductivity-labeled candidates) resulted in successful con- ductivity validation for 46 candidates",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[2].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "proposed_value": "perform MD simulations of selected polymers",
+      "protocol_index": 11,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "MD simulations of 50 selected polymers (from 100 000 high-conductivity-labeled candidates) resulted in successful con- ductivity validation for 46 candidates",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[2].notes",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "proposed_value": "50 selected polymers from 100,000 high-conductivity-labeled candidates",
+      "protocol_index": 11,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "resulted in successful con- ductivity validation for 46 candidates",
+      "diagnostic": null,
+      "entity_type": "results",
+      "field_path": "results[0].metric",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "proposed_value": "number of candidates with successful conductivity validation",
+      "protocol_index": 11,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "with 17 exhibiting con- ductivity values exceeding all polymers in the original training set, some even doubling the benchmark values",
+      "diagnostic": null,
+      "entity_type": "results",
+      "field_path": "results[1].metric",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "proposed_value": "number of candidates exceeding all polymers in original training set",
+      "protocol_index": 11,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Li et al. 121 selected 37 descriptors from an initial pool of 199, and overall classification accuracy across six models was raised from 46.8%–79.1% to 71.0%–83.7%",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[0].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "proposed_value": "select descriptors from initial pool",
+      "protocol_index": 12,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Li et al. 121 selected 37 descriptors from an initial pool of 199, and overall classification accuracy across six models was raised from 46.8%–79.1% to 71.0%–83.7%",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[0].notes",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "proposed_value": "37 descriptors selected from 199, raised classification accuracy from 46.8%-79.1% to 71.0%-83.7%",
+      "protocol_index": 12,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Okamoto et al. 122 predicted the redox potential of Li-ion battery (LIB) additives using fewer features selected through importance analysis, achieving comparable performance to using all features while enhancing model interpretability",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[0].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "proposed_value": "predict redox potential using fewer features selected through importance analysis",
+      "protocol_index": 13,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Okamoto et al. 122 predicted the redox potential of Li-ion battery (LIB) additives using fewer features selected through importance analysis, achieving comparable performance to using all features while enhancing model interpretability",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[0].notes",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "proposed_value": "achieved comparable performance to using all features while enhancing model interpretability",
+      "protocol_index": 13,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Fang et al. trained the molecular represen- tation learning model GeoGNN on 20 million data points, achiev- ing state-of-the-art on 14 of 15 molecular property prediction benchmarks",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[0].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "proposed_value": "train molecular representation learning model on large dataset",
+      "protocol_index": 14,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Fang et al. trained the molecular represen- tation learning model GeoGNN on 20 million data points, achiev- ing state-of-the-art on 14 of 15 molecular property prediction benchmarks",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[0].notes",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "proposed_value": "20 million data points, achieved state-of-the-art on 14 of 15 molecular property prediction benchmarks",
+      "protocol_index": 14,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "coupling these systems with spectroscopic and electrochemical analysis enables parallel testing of electrolyte formulations under controlled con- ditions and significantly accelerates the acquisition of high- quality experimental data",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[0].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "proposed_value": "couple high-throughput systems with spectroscopic and electrochemical analysis",
+      "protocol_index": 15,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "coupling these systems with spectroscopic and electrochemical analysis enables parallel testing of electrolyte formulations under controlled con- ditions and significantly accelerates the acquisition of high- quality experimental data",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[0].notes",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "proposed_value": "enables parallel testing of electrolyte formulations under controlled conditions",
+      "protocol_index": 15,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "coupling these systems with spectroscopic and electrochemical analysis",
+      "diagnostic": null,
+      "entity_type": "characterization",
+      "field_path": "characterization[0].technique",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "proposed_value": "spectroscopic analysis",
+      "protocol_index": 15,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    }
+  ],
+  "inference_config": {
+    "max_tokens": 14000,
+    "temperature": 0.0
+  },
+  "mapping_version": "evidence-field-mapper-v0.2",
+  "model_id": "moonshotai.kimi-k2.5",
+  "paper_id": "DOI:10.1039_d5cs00053j",
+  "prompt_version": "scientific-protocol-teacher-v0.3",
+  "protocols": [
+    {
+      "caveats": [],
+      "characterization": [],
+      "evidence": [
+        {
+          "char_end": 109,
+          "char_start": 0,
+          "chunk_id": "mdchk_5740d53d2333ce5c",
+          "document_char_end": 177892,
+          "document_char_start": 177783,
+          "evidence_id": "ev_204807c99118fd4f",
+          "paper_id": "DOI:10.1039_d5cs00053j",
+          "quote": "performedbyanHTEunitfeaturingbothanautomatedprepara- tion module and an automated conductivity testing module",
+          "source_sha256": "5a4a9ff1f0b6b34c3b9e6baf68463fa02bb28156dcb0132f67a397679b7e5492"
+        },
+        {
+          "char_end": 367,
+          "char_start": 111,
+          "chunk_id": "mdchk_5740d53d2333ce5c",
+          "document_char_end": 178150,
+          "document_char_start": 177894,
+          "evidence_id": "ev_5447c0cadbe990df",
+          "paper_id": "DOI:10.1039_d5cs00053j",
+          "quote": "The LECA software package streamlines data handling by incorporat- ing widely used ML libraries into a simplified workflow that supports parallel training, cross-validation, and uncertainty esti- mation using linear regression, RF, neural networks, and GPR",
+          "source_sha256": "5a4a9ff1f0b6b34c3b9e6baf68463fa02bb28156dcb0132f67a397679b7e5492"
+        },
+        {
+          "char_end": 453,
+          "char_start": 369,
+          "chunk_id": "mdchk_5740d53d2333ce5c",
+          "document_char_end": 178236,
+          "document_char_start": 178152,
+          "evidence_id": "ev_27d217a55d623bbf",
+          "paper_id": "DOI:10.1039_d5cs00053j",
+          "quote": "By comparing prediction accuracy scores, LECA identifies the best- performing models",
+          "source_sha256": "5a4a9ff1f0b6b34c3b9e6baf68463fa02bb28156dcb0132f67a397679b7e5492"
+        },
+        {
+          "char_end": 568,
+          "char_start": 458,
+          "chunk_id": "mdchk_5740d53d2333ce5c",
+          "document_char_end": 178351,
+          "document_char_start": 178241,
+          "evidence_id": "ev_a152429c2396aa3c",
+          "paper_id": "DOI:10.1039_d5cs00053j",
+          "quote": "employs them to determine electrolyte compositions that maximize ionic conductivity under varying temperatures",
+          "source_sha256": "5a4a9ff1f0b6b34c3b9e6baf68463fa02bb28156dcb0132f67a397679b7e5492"
+        }
+      ],
+      "evidence_scope": "secondary_report",
+      "instruments": [],
+      "materials": [],
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "protocol_id": "protocol_1eec870eb7bc3ee8",
+      "protocol_name": "High-throughput electrolyte screening with LECA software",
+      "protocol_type": "experimental",
+      "relations": [],
+      "results": [],
+      "scientific_chunk_ids": [],
+      "software": [
+        {
+          "entity_id": "soft_252c9b400c4f4451",
+          "evidence_ids": [
+            "ev_5447c0cadbe990df"
+          ],
+          "name": "LECA",
+          "settings": {
+            "ML_libraries": "linear regression, RF, neural networks, and GPR"
+          },
+          "version": null
+        }
+      ],
+      "source_chunk_ids": [
+        "mdchk_5740d53d2333ce5c"
+      ],
+      "source_paper_tier": "battery_electrolyte_review",
+      "steps": [
+        {
+          "action": "performedbyanHTEunitfeaturingbothanautomatedprepara- tion module and an automated conductivity testing module",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_204807c99118fd4f"
+          ],
+          "notes": null,
+          "order": 1,
+          "step_id": "step_1eec870eb7bc3ee8"
+        },
+        {
+          "action": "performedbyanHTEunitfeaturingbothanautomatedprepara- tion module and an automated conductivity testing module",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_204807c99118fd4f"
+          ],
+          "notes": null,
+          "order": 2,
+          "step_id": "step_451cbfac214fbdbd"
+        },
+        {
+          "action": "By comparing prediction accuracy scores, LECA identifies the best- performing models",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_27d217a55d623bbf"
+          ],
+          "notes": null,
+          "order": 3,
+          "step_id": "step_db492a364bd3b045"
+        },
+        {
+          "action": "employs them to determine electrolyte compositions that maximize ionic conductivity under varying temperatures",
+          "conditions": [
+            "varying temperatures"
+          ],
+          "evidence_ids": [
+            "ev_a152429c2396aa3c"
+          ],
+          "notes": null,
+          "order": 4,
+          "step_id": "step_1052cd939c63cae5"
+        }
+      ]
+    },
+    {
+      "caveats": [
+        {
+          "caveat_id": "caveat_1eec870eb7bc3ee8",
+          "evidence_ids": [
+            "ev_1b1e32240dbbb243"
+          ],
+          "text": "Human intervention was limited to transferring sam- ples between the robotic system and the nuclear magnetic reso- nance instrument"
+        }
+      ],
+      "characterization": [
+        {
+          "entity_id": "char_f9fb9b50f21c27c6",
+          "evidence_ids": [
+            "ev_3cbcc34f658277f6"
+          ],
+          "output": null,
+          "settings": {},
+          "technique": "solubility measurement"
+        }
+      ],
+      "evidence": [
+        {
+          "char_end": 902,
+          "char_start": 829,
+          "chunk_id": "mdchk_5740d53d2333ce5c",
+          "document_char_end": 178685,
+          "document_char_start": 178612,
+          "evidence_id": "ev_a5ac9b91102e78c3",
+          "paper_id": "DOI:10.1039_d5cs00053j",
+          "quote": "Taking 2,1,3-benzothiadiazole as the model redox- active organic molecule",
+          "source_sha256": "5a4a9ff1f0b6b34c3b9e6baf68463fa02bb28156dcb0132f67a397679b7e5492"
+        },
+        {
+          "char_end": 1152,
+          "char_start": 1044,
+          "chunk_id": "mdchk_5740d53d2333ce5c",
+          "document_char_end": 178935,
+          "document_char_start": 178827,
+          "evidence_id": "ev_3cbcc34f658277f6",
+          "paper_id": "DOI:10.1039_d5cs00053j",
+          "quote": "The HTE module employs a high-throughput robotic platform for sample preparation and solubility measurements",
+          "source_sha256": "5a4a9ff1f0b6b34c3b9e6baf68463fa02bb28156dcb0132f67a397679b7e5492"
+        },
+        {
+          "char_end": 1287,
+          "char_start": 1154,
+          "chunk_id": "mdchk_5740d53d2333ce5c",
+          "document_char_end": 179070,
+          "document_char_start": 178937,
+          "evidence_id": "ev_31f68961fda387e8",
+          "paper_id": "DOI:10.1039_d5cs00053j",
+          "quote": "while the BO module uses a surrogate model and acquisition function to predict solubility and recom- mend new solvents for evaluation",
+          "source_sha256": "5a4a9ff1f0b6b34c3b9e6baf68463fa02bb28156dcb0132f67a397679b7e5492"
+        },
+        {
+          "char_end": 1243,
+          "char_start": 1154,
+          "chunk_id": "mdchk_5740d53d2333ce5c",
+          "document_char_end": 179026,
+          "document_char_start": 178937,
+          "evidence_id": "ev_367a7b580afcff99",
+          "paper_id": "DOI:10.1039_d5cs00053j",
+          "quote": "while the BO module uses a surrogate model and acquisition function to predict solubility",
+          "source_sha256": "5a4a9ff1f0b6b34c3b9e6baf68463fa02bb28156dcb0132f67a397679b7e5492"
+        },
+        {
+          "char_end": 1287,
+          "char_start": 1197,
+          "chunk_id": "mdchk_5740d53d2333ce5c",
+          "document_char_end": 179070,
+          "document_char_start": 178980,
+          "evidence_id": "ev_c25ed2fb608335d5",
+          "paper_id": "DOI:10.1039_d5cs00053j",
+          "quote": "and acquisition function to predict solubility and recom- mend new solvents for evaluation",
+          "source_sha256": "5a4a9ff1f0b6b34c3b9e6baf68463fa02bb28156dcb0132f67a397679b7e5492"
+        },
+        {
+          "char_end": 1650,
+          "char_start": 1519,
+          "chunk_id": "mdchk_5740d53d2333ce5c",
+          "document_char_end": 179433,
+          "document_char_start": 179302,
+          "evidence_id": "ev_1b1e32240dbbb243",
+          "paper_id": "DOI:10.1039_d5cs00053j",
+          "quote": "Human intervention was limited to transferring sam- ples between the robotic system and the nuclear magnetic reso- nance instrument",
+          "source_sha256": "5a4a9ff1f0b6b34c3b9e6baf68463fa02bb28156dcb0132f67a397679b7e5492"
+        }
+      ],
+      "evidence_scope": "secondary_report",
+      "instruments": [
+        {
+          "entity_id": "inst_64d7d10c00da6b4d",
+          "evidence_ids": [
+            "ev_3cbcc34f658277f6"
+          ],
+          "manufacturer": null,
+          "model": null,
+          "name": "high-throughput robotic platform",
+          "settings": {}
+        }
+      ],
+      "materials": [
+        {
+          "amount": null,
+          "entity_id": "mat_caa2aeb98d5f8174",
+          "evidence_ids": [
+            "ev_a5ac9b91102e78c3"
+          ],
+          "name": "2,1,3-benzothiadiazole",
+          "pretreatment": null,
+          "purity": null,
+          "role": null,
+          "supplier": null
+        }
+      ],
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "protocol_id": "protocol_451cbfac214fbdbd",
+      "protocol_name": "Fully autonomous workflow for solvent screening of 2,1,3-benzothiadiazole solubility",
+      "protocol_type": "experimental",
+      "relations": [],
+      "results": [],
+      "scientific_chunk_ids": [],
+      "software": [
+        {
+          "entity_id": "soft_a307553cb98aaf01",
+          "evidence_ids": [
+            "ev_31f68961fda387e8"
+          ],
+          "name": "BO module",
+          "settings": {
+            "components": "surrogate model and acquisition function"
+          },
+          "version": null
+        }
+      ],
+      "source_chunk_ids": [
+        "mdchk_5740d53d2333ce5c"
+      ],
+      "source_paper_tier": "battery_electrolyte_review",
+      "steps": [
+        {
+          "action": "The HTE module employs a high-throughput robotic platform for sample preparation and solubility measurements",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_3cbcc34f658277f6"
+          ],
+          "notes": "HTE module",
+          "order": 1,
+          "step_id": "step_1eec870eb7bc3ee8"
+        },
+        {
+          "action": "The HTE module employs a high-throughput robotic platform for sample preparation and solubility measurements",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_3cbcc34f658277f6"
+          ],
+          "notes": null,
+          "order": 2,
+          "step_id": "step_451cbfac214fbdbd"
+        },
+        {
+          "action": "while the BO module uses a surrogate model and acquisition function to predict solubility",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_367a7b580afcff99"
+          ],
+          "notes": "BO module",
+          "order": 3,
+          "step_id": "step_db492a364bd3b045"
+        },
+        {
+          "action": "and acquisition function to predict solubility and recom- mend new solvents for evaluation",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_c25ed2fb608335d5"
+          ],
+          "notes": null,
+          "order": 4,
+          "step_id": "step_1052cd939c63cae5"
+        },
+        {
+          "action": "Human intervention was limited to transferring sam- ples between the robotic system and the nuclear magnetic reso- nance instrument",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_1b1e32240dbbb243"
+          ],
+          "notes": null,
+          "order": 5,
+          "step_id": "step_ec6f86fc8048ed54"
+        }
+      ]
+    },
+    {
+      "caveats": [],
+      "characterization": [
+        {
+          "entity_id": "char_9d0e98f365a3b3f9",
+          "evidence_ids": [
+            "ev_583e6f97f44e0887"
+          ],
+          "output": null,
+          "settings": {},
+          "technique": "physicochemical characterization"
+        }
+      ],
+      "evidence": [
+        {
+          "char_end": 2473,
+          "char_start": 2304,
+          "chunk_id": "mdchk_5740d53d2333ce5c",
+          "document_char_end": 180256,
+          "document_char_start": 180087,
+          "evidence_id": "ev_6b50c119c3a4c15e",
+          "paper_id": "DOI:10.1039_d5cs00053j",
+          "quote": "The high-throughput workflow involves defining experimental objectives, formulating recipes, establishing process parameters, and then employing ML for plan optimization",
+          "source_sha256": "5a4a9ff1f0b6b34c3b9e6baf68463fa02bb28156dcb0132f67a397679b7e5492"
+        },
+        {
+          "char_end": 2473,
+          "char_start": 2434,
+          "chunk_id": "mdchk_5740d53d2333ce5c",
+          "document_char_end": 180256,
+          "document_char_start": 180217,
+          "evidence_id": "ev_97ceedb3191a666e",
+          "paper_id": "DOI:10.1039_d5cs00053j",
+          "quote": "then employing ML for plan optimization",
+          "source_sha256": "5a4a9ff1f0b6b34c3b9e6baf68463fa02bb28156dcb0132f67a397679b7e5492"
+        },
+        {
+          "char_end": 2654,
+          "char_start": 2486,
+          "chunk_id": "mdchk_5740d53d2333ce5c",
+          "document_char_end": 180437,
+          "document_char_start": 180269,
+          "evidence_id": "ev_1ac8c709d1bcf2b9",
+          "paper_id": "DOI:10.1039_d5cs00053j",
+          "quote": "Subsequently, the raw materials (either commercially purchased or synthesized in the laboratory) and operating instructions were loaded into a high- throughput platform",
+          "source_sha256": "5a4a9ff1f0b6b34c3b9e6baf68463fa02bb28156dcb0132f67a397679b7e5492"
+        },
+        {
+          "char_end": 2717,
+          "char_start": 2486,
+          "chunk_id": "mdchk_5740d53d2333ce5c",
+          "document_char_end": 180500,
+          "document_char_start": 180269,
+          "evidence_id": "ev_deaf0afcc873b797",
+          "paper_id": "DOI:10.1039_d5cs00053j",
+          "quote": "Subsequently, the raw materials (either commercially purchased or synthesized in the laboratory) and operating instructions were loaded into a high- throughput platform, by which all subsequent operations are automatically executed",
+          "source_sha256": "5a4a9ff1f0b6b34c3b9e6baf68463fa02bb28156dcb0132f67a397679b7e5492"
+        },
+        {
+          "char_end": 2938,
+          "char_start": 2719,
+          "chunk_id": "mdchk_5740d53d2333ce5c",
+          "document_char_end": 180721,
+          "document_char_start": 180502,
+          "evidence_id": "ev_7980bd69def343aa",
+          "paper_id": "DOI:10.1039_d5cs00053j",
+          "quote": "The system was composed of modular workstations capable of chemical dispensing, mixing, drying, and physicochemical characterization, all executed by two three- axis robotic arms equipped with multifunctional tool heads",
+          "source_sha256": "5a4a9ff1f0b6b34c3b9e6baf68463fa02bb28156dcb0132f67a397679b7e5492"
+        },
+        {
+          "char_end": 2851,
+          "char_start": 2719,
+          "chunk_id": "mdchk_5740d53d2333ce5c",
+          "document_char_end": 180634,
+          "document_char_start": 180502,
+          "evidence_id": "ev_583e6f97f44e0887",
+          "paper_id": "DOI:10.1039_d5cs00053j",
+          "quote": "The system was composed of modular workstations capable of chemical dispensing, mixing, drying, and physicochemical characterization",
+          "source_sha256": "5a4a9ff1f0b6b34c3b9e6baf68463fa02bb28156dcb0132f67a397679b7e5492"
+        }
+      ],
+      "evidence_scope": "secondary_report",
+      "instruments": [],
+      "materials": [
+        {
+          "amount": null,
+          "entity_id": "mat_2d20b9ed9704ff18",
+          "evidence_ids": [
+            "ev_1ac8c709d1bcf2b9"
+          ],
+          "name": "raw materials",
+          "pretreatment": "either commercially purchased or synthesized in the laboratory",
+          "purity": null,
+          "role": null,
+          "supplier": null
+        }
+      ],
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "protocol_id": "protocol_db492a364bd3b045",
+      "protocol_name": "Fully automated characterization workflow for polymer-based electrolytes",
+      "protocol_type": "experimental",
+      "relations": [],
+      "results": [],
+      "scientific_chunk_ids": [],
+      "software": [
+        {
+          "entity_id": "soft_8d54ede1a1afd923",
+          "evidence_ids": [
+            "ev_97ceedb3191a666e"
+          ],
+          "name": "ML for plan optimization",
+          "settings": {},
+          "version": null
+        }
+      ],
+      "source_chunk_ids": [
+        "mdchk_5740d53d2333ce5c"
+      ],
+      "source_paper_tier": "battery_electrolyte_review",
+      "steps": [
+        {
+          "action": "The high-throughput workflow involves defining experimental objectives, formulating recipes, establishing process parameters, and then employing ML for plan optimization",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_6b50c119c3a4c15e"
+          ],
+          "notes": null,
+          "order": 1,
+          "step_id": "step_1eec870eb7bc3ee8"
+        },
+        {
+          "action": "The high-throughput workflow involves defining experimental objectives, formulating recipes, establishing process parameters, and then employing ML for plan optimization",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_6b50c119c3a4c15e"
+          ],
+          "notes": null,
+          "order": 2,
+          "step_id": "step_451cbfac214fbdbd"
+        },
+        {
+          "action": "The high-throughput workflow involves defining experimental objectives, formulating recipes, establishing process parameters, and then employing ML for plan optimization",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_6b50c119c3a4c15e"
+          ],
+          "notes": null,
+          "order": 3,
+          "step_id": "step_db492a364bd3b045"
+        },
+        {
+          "action": "The high-throughput workflow involves defining experimental objectives, formulating recipes, establishing process parameters, and then employing ML for plan optimization",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_6b50c119c3a4c15e"
+          ],
+          "notes": null,
+          "order": 4,
+          "step_id": "step_1052cd939c63cae5"
+        },
+        {
+          "action": "Subsequently, the raw materials (either commercially purchased or synthesized in the laboratory) and operating instructions were loaded into a high- throughput platform, by which all subsequent operations are automatically executed",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_deaf0afcc873b797"
+          ],
+          "notes": null,
+          "order": 5,
+          "step_id": "step_ec6f86fc8048ed54"
+        },
+        {
+          "action": "The system was composed of modular workstations capable of chemical dispensing, mixing, drying, and physicochemical characterization, all executed by two three- axis robotic arms equipped with multifunctional tool heads",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_7980bd69def343aa"
+          ],
+          "notes": null,
+          "order": 6,
+          "step_id": "step_e23856657dc1fbdb"
+        },
+        {
+          "action": "The system was composed of modular workstations capable of chemical dispensing, mixing, drying, and physicochemical characterization, all executed by two three- axis robotic arms equipped with multifunctional tool heads",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_7980bd69def343aa"
+          ],
+          "notes": null,
+          "order": 7,
+          "step_id": "step_d704541286f728ca"
+        },
+        {
+          "action": "The system was composed of modular workstations capable of chemical dispensing, mixing, drying, and physicochemical characterization, all executed by two three- axis robotic arms equipped with multifunctional tool heads",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_7980bd69def343aa"
+          ],
+          "notes": null,
+          "order": 8,
+          "step_id": "step_85cfb1824770ee20"
+        },
+        {
+          "action": "The system was composed of modular workstations capable of chemical dispensing, mixing, drying, and physicochemical characterization, all executed by two three- axis robotic arms equipped with multifunctional tool heads",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_7980bd69def343aa"
+          ],
+          "notes": null,
+          "order": 9,
+          "step_id": "step_0106a7e707ead251"
+        }
+      ]
+    },
+    {
+      "caveats": [],
+      "characterization": [],
+      "evidence": [
+        {
+          "char_end": 309,
+          "char_start": 225,
+          "chunk_id": "mdchk_359273b3eb03bc1c",
+          "document_char_end": 165051,
+          "document_char_start": 164967,
+          "evidence_id": "ev_e18b169b97fd3323",
+          "paper_id": "DOI:10.1039_d5cs00053j",
+          "quote": "integrating high-throughput calculations, ML techniques, and experimental validation",
+          "source_sha256": "0db8e8882fd5954fee590d641af81b55d43614ee30aea537c055933ee03549ed"
+        },
+        {
+          "char_end": 388,
+          "char_start": 322,
+          "chunk_id": "mdchk_359273b3eb03bc1c",
+          "document_char_end": 165130,
+          "document_char_start": 165064,
+          "evidence_id": "ev_30ed838e49784f5c",
+          "paper_id": "DOI:10.1039_d5cs00053j",
+          "quote": "A molecular dataset comprising 1 321 129 compounds was constructed",
+          "source_sha256": "0db8e8882fd5954fee590d641af81b55d43614ee30aea537c055933ee03549ed"
+        },
+        {
+          "char_end": 489,
+          "char_start": 390,
+          "chunk_id": "mdchk_359273b3eb03bc1c",
+          "document_char_end": 165231,
+          "document_char_start": 165132,
+          "evidence_id": "ev_d4c54e503f616def",
+          "paper_id": "DOI:10.1039_d5cs00053j",
+          "quote": "from which 54 202 candidates were systematically screened using DFT calculations and MD simulations",
+          "source_sha256": "0db8e8882fd5954fee590d641af81b55d43614ee30aea537c055933ee03549ed"
+        },
+        {
+          "char_end": 711,
+          "char_start": 491,
+          "chunk_id": "mdchk_359273b3eb03bc1c",
+          "document_char_end": 165453,
+          "document_char_start": 165233,
+          "evidence_id": "ev_8243a46f769dedea",
+          "paper_id": "DOI:10.1039_d5cs00053j",
+          "quote": "Key molecular descrip- tors, encompassing thermal and structural stability, tempera- ture range, solvation, viscosity, and chemical stability, were employed in conjunction with ML models for efficient property prediction",
+          "source_sha256": "0db8e8882fd5954fee590d641af81b55d43614ee30aea537c055933ee03549ed"
+        }
+      ],
+      "evidence_scope": "secondary_report",
+      "instruments": [],
+      "materials": [],
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "protocol_id": "protocol_30c2191629fa486a",
+      "protocol_name": "Data-knowledge-dual-driven approach for molecular design of fast-charging LIB electrolytes",
+      "protocol_type": "computational",
+      "relations": [],
+      "results": [],
+      "scientific_chunk_ids": [],
+      "software": [],
+      "source_chunk_ids": [
+        "mdchk_359273b3eb03bc1c"
+      ],
+      "source_paper_tier": "battery_electrolyte_review",
+      "steps": [
+        {
+          "action": "A molecular dataset comprising 1 321 129 compounds was constructed",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_30ed838e49784f5c"
+          ],
+          "notes": null,
+          "order": 1,
+          "step_id": "step_0d4c9e5cdc606795"
+        },
+        {
+          "action": "from which 54 202 candidates were systematically screened using DFT calculations and MD simulations",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_d4c54e503f616def"
+          ],
+          "notes": null,
+          "order": 2,
+          "step_id": "step_e6aae31f910f0549"
+        },
+        {
+          "action": "Key molecular descrip- tors, encompassing thermal and structural stability, tempera- ture range, solvation, viscosity, and chemical stability, were employed in conjunction with ML models for efficient property prediction",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_8243a46f769dedea"
+          ],
+          "notes": null,
+          "order": 3,
+          "step_id": "step_196ad8685658ece7"
+        },
+        {
+          "action": "integrating high-throughput calculations, ML techniques, and experimental validation",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_e18b169b97fd3323"
+          ],
+          "notes": null,
+          "order": 4,
+          "step_id": "step_30c2191629fa486a"
+        }
+      ]
+    },
+    {
+      "caveats": [],
+      "characterization": [],
+      "evidence": [
+        {
+          "char_end": 1292,
+          "char_start": 1215,
+          "chunk_id": "mdchk_359273b3eb03bc1c",
+          "document_char_end": 166034,
+          "document_char_start": 165957,
+          "evidence_id": "ev_6c7cdce4304bb409",
+          "paper_id": "DOI:10.1039_d5cs00053j",
+          "quote": "A database of 5576 candidates was generated from 1510 solvents and four salts",
+          "source_sha256": "0db8e8882fd5954fee590d641af81b55d43614ee30aea537c055933ee03549ed"
+        },
+        {
+          "char_end": 1378,
+          "char_start": 1294,
+          "chunk_id": "mdchk_359273b3eb03bc1c",
+          "document_char_end": 166120,
+          "document_char_start": 166036,
+          "evidence_id": "ev_a0cd31de5701705e",
+          "paper_id": "DOI:10.1039_d5cs00053j",
+          "quote": "A voting ensemble model using five key descriptors enabled rapid property prediction",
+          "source_sha256": "0db8e8882fd5954fee590d641af81b55d43614ee30aea537c055933ee03549ed"
+        },
+        {
+          "char_end": 1427,
+          "char_start": 1380,
+          "chunk_id": "mdchk_359273b3eb03bc1c",
+          "document_char_end": 166169,
+          "document_char_start": 166122,
+          "evidence_id": "ev_906136085fc5b475",
+          "paper_id": "DOI:10.1039_d5cs00053j",
+          "quote": "A GCN further accelerated descriptor estimation",
+          "source_sha256": "0db8e8882fd5954fee590d641af81b55d43614ee30aea537c055933ee03549ed"
+        }
+      ],
+      "evidence_scope": "secondary_report",
+      "instruments": [],
+      "materials": [],
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "protocol_id": "protocol_2b596761e9d7db38",
+      "protocol_name": "HTVS strategy for fluorinated ether electrolytes for LMBs",
+      "protocol_type": "computational",
+      "relations": [],
+      "results": [],
+      "scientific_chunk_ids": [],
+      "software": [],
+      "source_chunk_ids": [
+        "mdchk_359273b3eb03bc1c"
+      ],
+      "source_paper_tier": "battery_electrolyte_review",
+      "steps": [
+        {
+          "action": "A database of 5576 candidates was generated from 1510 solvents and four salts",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_6c7cdce4304bb409"
+          ],
+          "notes": null,
+          "order": 1,
+          "step_id": "step_0d4c9e5cdc606795"
+        },
+        {
+          "action": "A voting ensemble model using five key descriptors enabled rapid property prediction",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_a0cd31de5701705e"
+          ],
+          "notes": null,
+          "order": 2,
+          "step_id": "step_e6aae31f910f0549"
+        },
+        {
+          "action": "A GCN further accelerated descriptor estimation",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_906136085fc5b475"
+          ],
+          "notes": null,
+          "order": 3,
+          "step_id": "step_196ad8685658ece7"
+        }
+      ]
+    },
+    {
+      "caveats": [],
+      "characterization": [],
+      "evidence": [
+        {
+          "char_end": 1798,
+          "char_start": 1730,
+          "chunk_id": "mdchk_359273b3eb03bc1c",
+          "document_char_end": 166540,
+          "document_char_start": 166472,
+          "evidence_id": "ev_3fc85723252eb713",
+          "paper_id": "DOI:10.1039_d5cs00053j",
+          "quote": "Initially, one million organic molecules were collected from PubChem",
+          "source_sha256": "0db8e8882fd5954fee590d641af81b55d43614ee30aea537c055933ee03549ed"
+        },
+        {
+          "char_end": 2167,
+          "char_start": 2017,
+          "chunk_id": "mdchk_359273b3eb03bc1c",
+          "document_char_end": 166909,
+          "document_char_start": 166759,
+          "evidence_id": "ev_e6c0af8d18cfb1c0",
+          "paper_id": "DOI:10.1039_d5cs00053j",
+          "quote": "High-throughput calculations determined reduction potentials for a randomly chosen subset of 1200 molecules, forming the training set for an SVR model",
+          "source_sha256": "0db8e8882fd5954fee590d641af81b55d43614ee30aea537c055933ee03549ed"
+        },
+        {
+          "char_end": 2167,
+          "char_start": 2126,
+          "chunk_id": "mdchk_359273b3eb03bc1c",
+          "document_char_end": 166909,
+          "document_char_start": 166868,
+          "evidence_id": "ev_f763e27f1609ffa0",
+          "paper_id": "DOI:10.1039_d5cs00053j",
+          "quote": "forming the training set for an SVR model",
+          "source_sha256": "0db8e8882fd5954fee590d641af81b55d43614ee30aea537c055933ee03549ed"
+        },
+        {
+          "char_end": 2357,
+          "char_start": 2297,
+          "chunk_id": "mdchk_359273b3eb03bc1c",
+          "document_char_end": 167099,
+          "document_char_start": 167039,
+          "evidence_id": "ev_f5090bc175c86d05",
+          "paper_id": "DOI:10.1039_d5cs00053j",
+          "quote": "Experimental valida- tion confirmed its superior performance",
+          "source_sha256": "0db8e8882fd5954fee590d641af81b55d43614ee30aea537c055933ee03549ed"
+        },
+        {
+          "char_end": 2422,
+          "char_start": 2359,
+          "chunk_id": "mdchk_359273b3eb03bc1c",
+          "document_char_end": 167164,
+          "document_char_start": 167101,
+          "evidence_id": "ev_b7f028639c76e842",
+          "paper_id": "DOI:10.1039_d5cs00053j",
+          "quote": "achieving prolonged cycling stability of 2500 cycles at 1 A g 1",
+          "source_sha256": "0db8e8882fd5954fee590d641af81b55d43614ee30aea537c055933ee03549ed"
+        },
+        {
+          "char_end": 2457,
+          "char_start": 2423,
+          "chunk_id": "mdchk_359273b3eb03bc1c",
+          "document_char_end": 167199,
+          "document_char_start": 167165,
+          "evidence_id": "ev_7cf757d158cc436b",
+          "paper_id": "DOI:10.1039_d5cs00053j",
+          "quote": "and a high discharge voltageof2.5V",
+          "source_sha256": "0db8e8882fd5954fee590d641af81b55d43614ee30aea537c055933ee03549ed"
+        }
+      ],
+      "evidence_scope": "secondary_report",
+      "instruments": [],
+      "materials": [],
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "protocol_id": "protocol_df29a8b665e8b1d9",
+      "protocol_name": "HTVS strategy for carbonyl-based organic electrode molecules",
+      "protocol_type": "computational",
+      "relations": [],
+      "results": [
+        {
+          "context": "achieving prolonged cycling stability of 2500 cycles at 1 A g 1",
+          "evidence_ids": [
+            "ev_b7f028639c76e842"
+          ],
+          "metric": "prolonged cycling stability",
+          "raw_value": "2500 cycles",
+          "result_id": "result_e6aae31f910f0549"
+        },
+        {
+          "context": "and a high discharge voltageof2.5V",
+          "evidence_ids": [
+            "ev_7cf757d158cc436b"
+          ],
+          "metric": "high discharge voltage",
+          "raw_value": "2.5 V",
+          "result_id": "result_196ad8685658ece7"
+        }
+      ],
+      "scientific_chunk_ids": [],
+      "software": [],
+      "source_chunk_ids": [
+        "mdchk_359273b3eb03bc1c"
+      ],
+      "source_paper_tier": "battery_electrolyte_review",
+      "steps": [
+        {
+          "action": "Initially, one million organic molecules were collected from PubChem",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_3fc85723252eb713"
+          ],
+          "notes": null,
+          "order": 1,
+          "step_id": "step_0d4c9e5cdc606795"
+        },
+        {
+          "action": "High-throughput calculations determined reduction potentials for a randomly chosen subset of 1200 molecules, forming the training set for an SVR model",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_e6c0af8d18cfb1c0"
+          ],
+          "notes": null,
+          "order": 2,
+          "step_id": "step_196ad8685658ece7"
+        },
+        {
+          "action": "forming the training set for an SVR model",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_f763e27f1609ffa0"
+          ],
+          "notes": null,
+          "order": 3,
+          "step_id": "step_30c2191629fa486a"
+        },
+        {
+          "action": "Experimental valida- tion confirmed its superior performance",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_f5090bc175c86d05"
+          ],
+          "notes": null,
+          "order": 4,
+          "step_id": "step_2b596761e9d7db38"
+        }
+      ]
+    },
+    {
+      "caveats": [],
+      "characterization": [],
+      "evidence": [
+        {
+          "char_end": 740,
+          "char_start": 665,
+          "chunk_id": "mdchk_75cd999ddcd6bff7",
+          "document_char_end": 122205,
+          "document_char_start": 122130,
+          "evidence_id": "ev_f4eb61468beb920d",
+          "paper_id": "DOI:10.1039_d5cs00053j",
+          "quote": "GNN models were developed to correlate molecular properties and descriptors",
+          "source_sha256": "4eb93aca1950382c906a92d1e8f4daff0fdb46ea940c60b79e0eda7d5b7ea744"
+        }
+      ],
+      "evidence_scope": "secondary_report",
+      "instruments": [],
+      "materials": [],
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "protocol_id": "protocol_853f8877f00e14d6",
+      "protocol_name": "Graph-based ML approach for predicting redox potentials",
+      "protocol_type": "computational",
+      "relations": [],
+      "results": [],
+      "scientific_chunk_ids": [],
+      "software": [],
+      "source_chunk_ids": [
+        "mdchk_75cd999ddcd6bff7"
+      ],
+      "source_paper_tier": "battery_electrolyte_review",
+      "steps": [
+        {
+          "action": "GNN models were developed to correlate molecular properties and descriptors",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_f4eb61468beb920d"
+          ],
+          "notes": null,
+          "order": 1,
+          "step_id": "step_236338748926d993"
+        }
+      ]
+    },
+    {
+      "caveats": [],
+      "characterization": [],
+      "evidence": [
+        {
+          "char_end": 1176,
+          "char_start": 1066,
+          "chunk_id": "mdchk_75cd999ddcd6bff7",
+          "document_char_end": 122641,
+          "document_char_start": 122531,
+          "evidence_id": "ev_2981c12d748921fb",
+          "paper_id": "DOI:10.1039_d5cs00053j",
+          "quote": "Physically inspired features were employed, including solute molecular properties and solvent-related features",
+          "source_sha256": "4eb93aca1950382c906a92d1e8f4daff0fdb46ea940c60b79e0eda7d5b7ea744"
+        },
+        {
+          "char_end": 1340,
+          "char_start": 1178,
+          "chunk_id": "mdchk_75cd999ddcd6bff7",
+          "document_char_end": 122805,
+          "document_char_start": 122643,
+          "evidence_id": "ev_db63c7cc455ee32a",
+          "paper_id": "DOI:10.1039_d5cs00053j",
+          "quote": "After applying the ML correction, the MAE for implicit and explicit solvent model data was reduced from 0.76 to 0.44 V and from 0.64 to below 0.24 V, respectively",
+          "source_sha256": "4eb93aca1950382c906a92d1e8f4daff0fdb46ea940c60b79e0eda7d5b7ea744"
+        }
+      ],
+      "evidence_scope": "secondary_report",
+      "instruments": [],
+      "materials": [],
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "protocol_id": "protocol_022e5fba17035403",
+      "protocol_name": "ML models to correct computational errors in redox potential calculations",
+      "protocol_type": "computational",
+      "relations": [],
+      "results": [],
+      "scientific_chunk_ids": [],
+      "software": [],
+      "source_chunk_ids": [
+        "mdchk_75cd999ddcd6bff7"
+      ],
+      "source_paper_tier": "battery_electrolyte_review",
+      "steps": [
+        {
+          "action": "Physically inspired features were employed, including solute molecular properties and solvent-related features",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_2981c12d748921fb"
+          ],
+          "notes": null,
+          "order": 1,
+          "step_id": "step_236338748926d993"
+        },
+        {
+          "action": "After applying the ML correction, the MAE for implicit and explicit solvent model data was reduced from 0.76 to 0.44 V and from 0.64 to below 0.24 V, respectively",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_db63c7cc455ee32a"
+          ],
+          "notes": null,
+          "order": 2,
+          "step_id": "step_d7a1b4d12c88d8ee"
+        }
+      ]
+    },
+    {
+      "caveats": [],
+      "characterization": [],
+      "evidence": [
+        {
+          "char_end": 1673,
+          "char_start": 1512,
+          "chunk_id": "mdchk_75cd999ddcd6bff7",
+          "document_char_end": 123138,
+          "document_char_start": 122977,
+          "evidence_id": "ev_3f18252ebe0531e0",
+          "paper_id": "DOI:10.1039_d5cs00053j",
+          "quote": "Concurrent learning workflows were combined with free energy calculation techni- ques to construct ML potentials for efficient and precise free energy estimation",
+          "source_sha256": "4eb93aca1950382c906a92d1e8f4daff0fdb46ea940c60b79e0eda7d5b7ea744"
+        },
+        {
+          "char_end": 1761,
+          "char_start": 1675,
+          "chunk_id": "mdchk_75cd999ddcd6bff7",
+          "document_char_end": 123226,
+          "document_char_start": 123140,
+          "evidence_id": "ev_f69b7b05a17ab9d8",
+          "paper_id": "DOI:10.1039_d5cs00053j",
+          "quote": "Nanosecond-scale simulations with first- principles accuracy were performed using MLMD",
+          "source_sha256": "4eb93aca1950382c906a92d1e8f4daff0fdb46ea940c60b79e0eda7d5b7ea744"
+        },
+        {
+          "char_end": 1871,
+          "char_start": 1767,
+          "chunk_id": "mdchk_75cd999ddcd6bff7",
+          "document_char_end": 123336,
+          "document_char_start": 123232,
+          "evidence_id": "ev_633fd9d35e360b80",
+          "paper_id": "DOI:10.1039_d5cs00053j",
+          "quote": "an auto- mated workflow incorporating the hybrid HSE06 functional was employed for potential development",
+          "source_sha256": "4eb93aca1950382c906a92d1e8f4daff0fdb46ea940c60b79e0eda7d5b7ea744"
+        }
+      ],
+      "evidence_scope": "secondary_report",
+      "instruments": [],
+      "materials": [],
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "protocol_id": "protocol_ae6c2179ac2d54ee",
+      "protocol_name": "MLMD-based method for automated prediction of redox potentials",
+      "protocol_type": "computational",
+      "relations": [],
+      "results": [],
+      "scientific_chunk_ids": [],
+      "software": [],
+      "source_chunk_ids": [
+        "mdchk_75cd999ddcd6bff7"
+      ],
+      "source_paper_tier": "battery_electrolyte_review",
+      "steps": [
+        {
+          "action": "Concurrent learning workflows were combined with free energy calculation techni- ques to construct ML potentials for efficient and precise free energy estimation",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_3f18252ebe0531e0"
+          ],
+          "notes": "to construct ML potentials for efficient and precise free energy estimation",
+          "order": 1,
+          "step_id": "step_236338748926d993"
+        },
+        {
+          "action": "Nanosecond-scale simulations with first- principles accuracy were performed using MLMD",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_f69b7b05a17ab9d8"
+          ],
+          "notes": null,
+          "order": 2,
+          "step_id": "step_d7a1b4d12c88d8ee"
+        },
+        {
+          "action": "an auto- mated workflow incorporating the hybrid HSE06 functional was employed for potential development",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_633fd9d35e360b80"
+          ],
+          "notes": null,
+          "order": 3,
+          "step_id": "step_fe2127e4d8a6540f"
+        }
+      ]
+    },
+    {
+      "caveats": [],
+      "characterization": [],
+      "evidence": [
+        {
+          "char_end": 557,
+          "char_start": 365,
+          "chunk_id": "mdchk_84debc58da5172ec",
+          "document_char_end": 127689,
+          "document_char_start": 127497,
+          "evidence_id": "ev_1648f41100203b06",
+          "paper_id": "DOI:10.1039_d5cs00053j",
+          "quote": "Allam et al. 630 employed feature engineering techniques including LASSO fea- ture selection, relative contribution analysis, and recursive fea- ture elimination to train three learning models",
+          "source_sha256": "84058c035f5d24ba60f18a101878f00063a279b85bd636935fe4a8ae4b3722de"
+        },
+        {
+          "char_end": 596,
+          "char_start": 527,
+          "chunk_id": "mdchk_84debc58da5172ec",
+          "document_char_end": 127728,
+          "document_char_start": 127659,
+          "evidence_id": "ev_eaf8a1855a311569",
+          "paper_id": "DOI:10.1039_d5cs00053j",
+          "quote": "to train three learning models: ANN, GBR, and kernel ridge regression",
+          "source_sha256": "84058c035f5d24ba60f18a101878f00063a279b85bd636935fe4a8ae4b3722de"
+        }
+      ],
+      "evidence_scope": "secondary_report",
+      "instruments": [],
+      "materials": [],
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "protocol_id": "protocol_2a87a98905cba5ee",
+      "protocol_name": "Feature engineering approach for predicting redox potentials of organic electrode molecules",
+      "protocol_type": "computational",
+      "relations": [],
+      "results": [],
+      "scientific_chunk_ids": [],
+      "software": [],
+      "source_chunk_ids": [
+        "mdchk_84debc58da5172ec"
+      ],
+      "source_paper_tier": "battery_electrolyte_review",
+      "steps": [
+        {
+          "action": "Allam et al. 630 employed feature engineering techniques including LASSO fea- ture selection, relative contribution analysis, and recursive fea- ture elimination to train three learning models",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_1648f41100203b06"
+          ],
+          "notes": null,
+          "order": 1,
+          "step_id": "step_86a56f1b0c407525"
+        },
+        {
+          "action": "to train three learning models: ANN, GBR, and kernel ridge regression",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_eaf8a1855a311569"
+          ],
+          "notes": null,
+          "order": 2,
+          "step_id": "step_57ab58e725813e45"
+        }
+      ]
+    },
+    {
+      "caveats": [],
+      "characterization": [],
+      "evidence": [
+        {
+          "char_end": 1188,
+          "char_start": 1137,
+          "chunk_id": "mdchk_84debc58da5172ec",
+          "document_char_end": 128320,
+          "document_char_start": 128269,
+          "evidence_id": "ev_76a2cdbc6b8503fb",
+          "paper_id": "DOI:10.1039_d5cs00053j",
+          "quote": "An experimental dataset of 600 entries was compiled",
+          "source_sha256": "84058c035f5d24ba60f18a101878f00063a279b85bd636935fe4a8ae4b3722de"
+        },
+        {
+          "char_end": 1314,
+          "char_start": 1194,
+          "chunk_id": "mdchk_84debc58da5172ec",
+          "document_char_end": 128446,
+          "document_char_start": 128326,
+          "evidence_id": "ev_08c93864737e793f",
+          "paper_id": "DOI:10.1039_d5cs00053j",
+          "quote": "SMILES representations of molecular structures were converted into MACCS molecular fingerprints to serve as model inputs",
+          "source_sha256": "84058c035f5d24ba60f18a101878f00063a279b85bd636935fe4a8ae4b3722de"
+        },
+        {
+          "char_end": 1463,
+          "char_start": 1316,
+          "chunk_id": "mdchk_84debc58da5172ec",
+          "document_char_end": 128595,
+          "document_char_start": 128448,
+          "evidence_id": "ev_0367e08215201011",
+          "paper_id": "DOI:10.1039_d5cs00053j",
+          "quote": "A ternary classification framework was implemented using voltage thresh- olds of 2.5 and 3.5 V, where materials exceeding 3.5 V were deemed optimal",
+          "source_sha256": "84058c035f5d24ba60f18a101878f00063a279b85bd636935fe4a8ae4b3722de"
+        },
+        {
+          "char_end": 1673,
+          "char_start": 1527,
+          "chunk_id": "mdchk_84debc58da5172ec",
+          "document_char_end": 128805,
+          "document_char_start": 128659,
+          "evidence_id": "ev_a9989bbeb43bde9f",
+          "paper_id": "DOI:10.1039_d5cs00053j",
+          "quote": "SHAP analysis revealed structural preferences for specific functional groups, particularly nitrogen atoms, ben- zene rings, and carbazole moieties",
+          "source_sha256": "84058c035f5d24ba60f18a101878f00063a279b85bd636935fe4a8ae4b3722de"
+        },
+        {
+          "char_end": 1799,
+          "char_start": 1733,
+          "chunk_id": "mdchk_84debc58da5172ec",
+          "document_char_end": 128931,
+          "document_char_start": 128865,
+          "evidence_id": "ev_d1d79cdd2942a171",
+          "paper_id": "DOI:10.1039_d5cs00053j",
+          "quote": "polymer p-BCz-PH was synthe- sized through the autonomous platform",
+          "source_sha256": "84058c035f5d24ba60f18a101878f00063a279b85bd636935fe4a8ae4b3722de"
+        }
+      ],
+      "evidence_scope": "secondary_report",
+      "instruments": [],
+      "materials": [
+        {
+          "amount": null,
+          "entity_id": "mat_4815effc1a1a833a",
+          "evidence_ids": [
+            "ev_d1d79cdd2942a171"
+          ],
+          "name": "polymer p-BCz-PH",
+          "pretreatment": null,
+          "purity": null,
+          "role": null,
+          "supplier": null
+        }
+      ],
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "protocol_id": "protocol_043d492650612ec3",
+      "protocol_name": "ML predictions with autonomous experimental platform for organic cathode material synthesis",
+      "protocol_type": "experimental",
+      "relations": [],
+      "results": [],
+      "scientific_chunk_ids": [],
+      "software": [],
+      "source_chunk_ids": [
+        "mdchk_84debc58da5172ec"
+      ],
+      "source_paper_tier": "battery_electrolyte_review",
+      "steps": [
+        {
+          "action": "An experimental dataset of 600 entries was compiled",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_76a2cdbc6b8503fb"
+          ],
+          "notes": "600 entries",
+          "order": 1,
+          "step_id": "step_86a56f1b0c407525"
+        },
+        {
+          "action": "SMILES representations of molecular structures were converted into MACCS molecular fingerprints to serve as model inputs",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_08c93864737e793f"
+          ],
+          "notes": "to serve as model inputs",
+          "order": 2,
+          "step_id": "step_57ab58e725813e45"
+        },
+        {
+          "action": "A ternary classification framework was implemented using voltage thresh- olds of 2.5 and 3.5 V, where materials exceeding 3.5 V were deemed optimal",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_0367e08215201011"
+          ],
+          "notes": null,
+          "order": 3,
+          "step_id": "step_dac9998ba1070161"
+        },
+        {
+          "action": "SHAP analysis revealed structural preferences for specific functional groups, particularly nitrogen atoms, ben- zene rings, and carbazole moieties",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_a9989bbeb43bde9f"
+          ],
+          "notes": null,
+          "order": 4,
+          "step_id": "step_fdaa01789a0cd7c3"
+        },
+        {
+          "action": "polymer p-BCz-PH was synthe- sized through the autonomous platform",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_d1d79cdd2942a171"
+          ],
+          "notes": null,
+          "order": 5,
+          "step_id": "step_91d5b61e064e7ddd"
+        }
+      ]
+    },
+    {
+      "caveats": [],
+      "characterization": [],
+      "evidence": [
+        {
+          "char_end": 537,
+          "char_start": 384,
+          "chunk_id": "mdchk_760e352bcf391994",
+          "document_char_end": 170771,
+          "document_char_start": 170618,
+          "evidence_id": "ev_046314812fe7bae3",
+          "paper_id": "DOI:10.1039_d5cs00053j",
+          "quote": "In unconditional generation tasks, minGPT and diffusion-LM models exhibited excellent performance in producing novel, valid, and synthesiz- able polymers",
+          "source_sha256": "a4c4f79a881af00cf4d521c585a87ef8ec19127f6120041d4b4fc70f22e7ce2c"
+        },
+        {
+          "char_end": 607,
+          "char_start": 539,
+          "chunk_id": "mdchk_760e352bcf391994",
+          "document_char_end": 170841,
+          "document_char_start": 170773,
+          "evidence_id": "ev_554fb37a462f83e8",
+          "paper_id": "DOI:10.1039_d5cs00053j",
+          "quote": "while the 1D diffusion model showed compara- tively limited efficacy",
+          "source_sha256": "a4c4f79a881af00cf4d521c585a87ef8ec19127f6120041d4b4fc70f22e7ce2c"
+        },
+        {
+          "char_end": 902,
+          "char_start": 733,
+          "chunk_id": "mdchk_760e352bcf391994",
+          "document_char_end": 171136,
+          "document_char_start": 170967,
+          "evidence_id": "ev_09d975ac53606fe9",
+          "paper_id": "DOI:10.1039_d5cs00053j",
+          "quote": "In conditional generation experiments targeting ionic conductivity, minGPT-generated polymers exhib- ited conductivity distributions distinctly skewed toward high values",
+          "source_sha256": "a4c4f79a881af00cf4d521c585a87ef8ec19127f6120041d4b4fc70f22e7ce2c"
+        },
+        {
+          "char_end": 1061,
+          "char_start": 904,
+          "chunk_id": "mdchk_760e352bcf391994",
+          "document_char_end": 171295,
+          "document_char_start": 171138,
+          "evidence_id": "ev_2e9c6b059f1d5e48",
+          "paper_id": "DOI:10.1039_d5cs00053j",
+          "quote": "MD simulations of 50 selected polymers (from 100 000 high-conductivity-labeled candidates) resulted in successful con- ductivity validation for 46 candidates",
+          "source_sha256": "a4c4f79a881af00cf4d521c585a87ef8ec19127f6120041d4b4fc70f22e7ce2c"
+        }
+      ],
+      "evidence_scope": "secondary_report",
+      "instruments": [],
+      "materials": [],
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "protocol_id": "protocol_eb950673ae8d9e0d",
+      "protocol_name": "Generative AI for de novo polymer discovery for SPEs",
+      "protocol_type": "computational",
+      "relations": [],
+      "results": [],
+      "scientific_chunk_ids": [],
+      "software": [
+        {
+          "entity_id": "soft_76b8fd31e34aea74",
+          "evidence_ids": [
+            "ev_046314812fe7bae3"
+          ],
+          "name": "minGPT",
+          "settings": {},
+          "version": null
+        },
+        {
+          "entity_id": "soft_9208154a0f9f4d35",
+          "evidence_ids": [
+            "ev_046314812fe7bae3"
+          ],
+          "name": "diffusion-LM",
+          "settings": {},
+          "version": null
+        },
+        {
+          "entity_id": "soft_6fce877169662da9",
+          "evidence_ids": [
+            "ev_554fb37a462f83e8"
+          ],
+          "name": "1D diffusion model",
+          "settings": {},
+          "version": null
+        }
+      ],
+      "source_chunk_ids": [
+        "mdchk_760e352bcf391994"
+      ],
+      "source_paper_tier": "battery_electrolyte_review",
+      "steps": [
+        {
+          "action": "In unconditional generation tasks, minGPT and diffusion-LM models exhibited excellent performance in producing novel, valid, and synthesiz- able polymers",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_046314812fe7bae3"
+          ],
+          "notes": "minGPT and diffusion-LM models",
+          "order": 1,
+          "step_id": "step_faf0654cf8b3beef"
+        },
+        {
+          "action": "In conditional generation experiments targeting ionic conductivity, minGPT-generated polymers exhib- ited conductivity distributions distinctly skewed toward high values",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_09d975ac53606fe9"
+          ],
+          "notes": null,
+          "order": 2,
+          "step_id": "step_3c09382a8f829730"
+        },
+        {
+          "action": "MD simulations of 50 selected polymers (from 100 000 high-conductivity-labeled candidates) resulted in successful con- ductivity validation for 46 candidates",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_2e9c6b059f1d5e48"
+          ],
+          "notes": null,
+          "order": 3,
+          "step_id": "step_43bfa048e883e8a3"
+        }
+      ]
+    },
+    {
+      "caveats": [],
+      "characterization": [],
+      "evidence": [
+        {
+          "char_end": 756,
+          "char_start": 593,
+          "chunk_id": "mdchk_1c4f49550cef0c30",
+          "document_char_end": 23962,
+          "document_char_start": 23799,
+          "evidence_id": "ev_6a06f125f9097a6b",
+          "paper_id": "DOI:10.1039_d5cs00053j",
+          "quote": "Li et al. 121 selected 37 descriptors from an initial pool of 199, and overall classification accuracy across six models was raised from 46.8%–79.1% to 71.0%–83.7%",
+          "source_sha256": "e2d7c71b0f0e063d9da3ba6eee0d47fa20296704a34666e501196f35af3fb626"
+        }
+      ],
+      "evidence_scope": "secondary_report",
+      "instruments": [],
+      "materials": [],
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "protocol_id": "protocol_ce217addf0c1c546",
+      "protocol_name": "Descriptor selection for small sample sizes in molecular representation",
+      "protocol_type": "computational",
+      "relations": [],
+      "results": [],
+      "scientific_chunk_ids": [],
+      "software": [],
+      "source_chunk_ids": [
+        "mdchk_1c4f49550cef0c30"
+      ],
+      "source_paper_tier": "battery_electrolyte_review",
+      "steps": [
+        {
+          "action": "Li et al. 121 selected 37 descriptors from an initial pool of 199, and overall classification accuracy across six models was raised from 46.8%–79.1% to 71.0%–83.7%",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_6a06f125f9097a6b"
+          ],
+          "notes": null,
+          "order": 1,
+          "step_id": "step_3282c4c0fee0956a"
+        }
+      ]
+    },
+    {
+      "caveats": [],
+      "characterization": [],
+      "evidence": [
+        {
+          "char_end": 1006,
+          "char_start": 771,
+          "chunk_id": "mdchk_1c4f49550cef0c30",
+          "document_char_end": 24212,
+          "document_char_start": 23977,
+          "evidence_id": "ev_0b898add7f6378c9",
+          "paper_id": "DOI:10.1039_d5cs00053j",
+          "quote": "Okamoto et al. 122 predicted the redox potential of Li-ion battery (LIB) additives using fewer features selected through importance analysis, achieving comparable performance to using all features while enhancing model interpretability",
+          "source_sha256": "e2d7c71b0f0e063d9da3ba6eee0d47fa20296704a34666e501196f35af3fb626"
+        }
+      ],
+      "evidence_scope": "secondary_report",
+      "instruments": [],
+      "materials": [],
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "protocol_id": "protocol_4e2163164b2488f0",
+      "protocol_name": "Redox potential prediction of LIB additives using feature selection",
+      "protocol_type": "computational",
+      "relations": [],
+      "results": [],
+      "scientific_chunk_ids": [],
+      "software": [],
+      "source_chunk_ids": [
+        "mdchk_1c4f49550cef0c30"
+      ],
+      "source_paper_tier": "battery_electrolyte_review",
+      "steps": [
+        {
+          "action": "Okamoto et al. 122 predicted the redox potential of Li-ion battery (LIB) additives using fewer features selected through importance analysis, achieving comparable performance to using all features while enhancing model interpretability",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_0b898add7f6378c9"
+          ],
+          "notes": null,
+          "order": 1,
+          "step_id": "step_3282c4c0fee0956a"
+        }
+      ]
+    },
+    {
+      "caveats": [],
+      "characterization": [],
+      "evidence": [
+        {
+          "char_end": 1297,
+          "char_start": 1116,
+          "chunk_id": "mdchk_1c4f49550cef0c30",
+          "document_char_end": 24503,
+          "document_char_start": 24322,
+          "evidence_id": "ev_851f6fba698c3ac1",
+          "paper_id": "DOI:10.1039_d5cs00053j",
+          "quote": "Fang et al. trained the molecular represen- tation learning model GeoGNN on 20 million data points, achiev- ing state-of-the-art on 14 of 15 molecular property prediction benchmarks",
+          "source_sha256": "e2d7c71b0f0e063d9da3ba6eee0d47fa20296704a34666e501196f35af3fb626"
+        }
+      ],
+      "evidence_scope": "secondary_report",
+      "instruments": [],
+      "materials": [],
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "protocol_id": "protocol_aff5bd9a80ac1bc1",
+      "protocol_name": "Molecular representation learning on large dataset",
+      "protocol_type": "computational",
+      "relations": [],
+      "results": [],
+      "scientific_chunk_ids": [],
+      "software": [
+        {
+          "entity_id": "soft_49ce96585a6a0945",
+          "evidence_ids": [
+            "ev_851f6fba698c3ac1"
+          ],
+          "name": "GeoGNN",
+          "settings": {
+            "training_data": "20 million data points"
+          },
+          "version": null
+        }
+      ],
+      "source_chunk_ids": [
+        "mdchk_1c4f49550cef0c30"
+      ],
+      "source_paper_tier": "battery_electrolyte_review",
+      "steps": [
+        {
+          "action": "Fang et al. trained the molecular represen- tation learning model GeoGNN on 20 million data points, achiev- ing state-of-the-art on 14 of 15 molecular property prediction benchmarks",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_851f6fba698c3ac1"
+          ],
+          "notes": null,
+          "order": 1,
+          "step_id": "step_3282c4c0fee0956a"
+        }
+      ]
+    },
+    {
+      "caveats": [],
+      "characterization": [
+        {
+          "entity_id": "char_a11d0d96e4d6fcb7",
+          "evidence_ids": [
+            "ev_098b7827d849cc10"
+          ],
+          "output": null,
+          "settings": {},
+          "technique": "electrochemical analysis"
+        }
+      ],
+      "evidence": [
+        {
+          "char_end": 354,
+          "char_start": 206,
+          "chunk_id": "mdchk_1bd5f89ca70a5fcb",
+          "document_char_end": 64562,
+          "document_char_start": 64414,
+          "evidence_id": "ev_013ea5903f7c98a2",
+          "paper_id": "DOI:10.1039_d5cs00053j",
+          "quote": "Wet-lab experimentation remains a cornerstone, particularly through high-throughput platforms that automate synthesis and characterization workflows",
+          "source_sha256": "bfc61b23a04e472878cfbb9483d4a123eb3c86e1d1f58273f78ced516761a444"
+        },
+        {
+          "char_end": 612,
+          "char_start": 378,
+          "chunk_id": "mdchk_1bd5f89ca70a5fcb",
+          "document_char_end": 64820,
+          "document_char_start": 64586,
+          "evidence_id": "ev_91d92c3be5fb5aaa",
+          "paper_id": "DOI:10.1039_d5cs00053j",
+          "quote": "coupling these systems with spectroscopic and electrochemical analysis enables parallel testing of electrolyte formulations under controlled con- ditions and significantly accelerates the acquisition of high- quality experimental data",
+          "source_sha256": "bfc61b23a04e472878cfbb9483d4a123eb3c86e1d1f58273f78ced516761a444"
+        },
+        {
+          "char_end": 448,
+          "char_start": 378,
+          "chunk_id": "mdchk_1bd5f89ca70a5fcb",
+          "document_char_end": 64656,
+          "document_char_start": 64586,
+          "evidence_id": "ev_098b7827d849cc10",
+          "paper_id": "DOI:10.1039_d5cs00053j",
+          "quote": "coupling these systems with spectroscopic and electrochemical analysis",
+          "source_sha256": "bfc61b23a04e472878cfbb9483d4a123eb3c86e1d1f58273f78ced516761a444"
+        }
+      ],
+      "evidence_scope": "secondary_report",
+      "instruments": [
+        {
+          "entity_id": "inst_eb3491de501c54f6",
+          "evidence_ids": [
+            "ev_013ea5903f7c98a2"
+          ],
+          "manufacturer": null,
+          "model": null,
+          "name": "high-throughput platforms",
+          "settings": {
+            "capabilities": "automate synthesis and characterization workflows"
+          }
+        }
+      ],
+      "materials": [],
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "protocol_id": "protocol_481e6ae324cc79e2",
+      "protocol_name": "High-throughput experimental platform for electrolyte formulation testing",
+      "protocol_type": "experimental",
+      "relations": [],
+      "results": [],
+      "scientific_chunk_ids": [],
+      "software": [],
+      "source_chunk_ids": [
+        "mdchk_1bd5f89ca70a5fcb"
+      ],
+      "source_paper_tier": "battery_electrolyte_review",
+      "steps": [
+        {
+          "action": "coupling these systems with spectroscopic and electrochemical analysis enables parallel testing of electrolyte formulations under controlled con- ditions and significantly accelerates the acquisition of high- quality experimental data",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_91d92c3be5fb5aaa"
+          ],
+          "notes": null,
+          "order": 1,
+          "step_id": "step_1c0b03072c5e1b9c"
+        }
+      ]
+    }
+  ],
+  "region": "us-east-1",
+  "schema_version": "bedrock-teacher-paper-cache-v0.2",
+  "teacher_response": {
+    "diagnostic": null,
+    "invocation_count": 1,
+    "metrics": {
+      "latencyMs": 160638
+    },
+    "raw_text": " ```json\n{\n  \"protocols\": [\n    {\n      \"source_chunk_ids\": [\"mdchk_5740d53d2333ce5c\"],\n      \"protocol_name\": \"High-throughput electrolyte screening with LECA software\",\n      \"protocol_type\": \"experimental\",\n      \"materials\": [],\n      \"instruments\": [\n        {\n          \"source_chunk_id\": \"mdchk_5740d53d2333ce5c\",\n          \"name\": \"HTE unit\",\n          \"model\": null,\n          \"manufacturer\": null,\n          \"settings\": {},\n          \"evidence_quote\": \"performedbyanHTEunitfeaturingbothanautomatedprepara- tion module and an automated conductivity testing module\"\n        }\n      ],\n      \"software\": [\n        {\n          \"source_chunk_id\": \"mdchk_5740d53d2333ce5c\",\n          \"name\": \"LECA\",\n          \"version\": null,\n          \"settings\": {\n            \"ML_libraries\": \"linear regression, RF, neural networks, and GPR\",\n            \"features\": \"parallel training, cross-validation, and uncertainty estimation\"\n          },\n          \"evidence_quote\": \"The LECA software package streamlines data handling by incorporat- ing widely used ML libraries into a simplified workflow that supports parallel training, cross-validation, and uncertainty esti- mation using linear regression, RF, neural networks, and GPR\"\n        }\n      ],\n      \"steps\": [\n        {\n          \"source_chunk_id\": \"mdchk_5740d53d2333ce5c\",\n          \"order\": 1,\n          \"action\": \"automated preparation of electrolyte samples\",\n          \"conditions\": [],\n          \"notes\": \"using HTE unit preparation module\",\n          \"evidence_quote\": \"performedbyanHTEunitfeaturingbothanautomatedprepara- tion module and an automated conductivity testing module\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_5740d53d2333ce5c\",\n          \"order\": 2,\n          \"action\": \"automated conductivity testing\",\n          \"conditions\": [],\n          \"notes\": \"using HTE unit testing module\",\n          \"evidence_quote\": \"performedbyanHTEunitfeaturingbothanautomatedprepara- tion module and an automated conductivity testing module\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_5740d53d2333ce5c\",\n          \"order\": 3,\n          \"action\": \"compare prediction accuracy scores to identify best-performing models\",\n          \"conditions\": [],\n          \"notes\": null,\n          \"evidence_quote\": \"By comparing prediction accuracy scores, LECA identifies the best- performing models\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_5740d53d2333ce5c\",\n          \"order\": 4,\n          \"action\": \"employ best models to determine electrolyte compositions that maximize ionic conductivity under varying temperatures\",\n          \"conditions\": [\"varying temperatures\"],\n          \"notes\": null,\n          \"evidence_quote\": \"employs them to determine electrolyte compositions that maximize ionic conductivity under varying temperatures\"\n        }\n      ],\n      \"characterization\": [\n        {\n          \"source_chunk_id\": \"mdchk_5740d53d2333ce5c\",\n          \"technique\": \"ionic conductivity measurement\",\n          \"settings\": {},\n          \"output\": null,\n          \"evidence_quote\": \"an automated conductivity testing module\"\n        }\n      ],\n      \"results\": [],\n      \"caveats\": []\n    },\n    {\n      \"source_chunk_ids\": [\"mdchk_5740d53d2333ce5c\"],\n      \"protocol_name\": \"Fully autonomous workflow for solvent screening of 2,1,3-benzothiadiazole solubility\",\n      \"protocol_type\": \"experimental\",\n      \"materials\": [\n        {\n          \"source_chunk_id\": \"mdchk_5740d53d2333ce5c\",\n          \"name\": \"2,1,3-benzothiadiazole\",\n          \"role\": \"model redox-active organic molecule\",\n          \"amount\": null,\n          \"purity\": null,\n          \"supplier\": null,\n          \"pretreatment\": null,\n          \"evidence_quote\": \"Taking 2,1,3-benzothiadiazole as the model redox- active organic molecule\"\n        }\n      ],\n      \"instruments\": [\n        {\n          \"source_chunk_id\": \"mdchk_5740d53d2333ce5c\",\n          \"name\": \"high-throughput robotic platform\",\n          \"model\": null,\n          \"manufacturer\": null,\n          \"settings\": {},\n          \"evidence_quote\": \"The HTE module employs a high-throughput robotic platform for sample preparation and solubility measurements\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_5740d53d2333ce5c\",\n          \"name\": \"nuclear magnetic resonance instrument\",\n          \"model\": null,\n          \"manufacturer\": null,\n          \"settings\": {},\n          \"evidence_quote\": \"Human intervention was limited to transferring sam- ples between the robotic system and the nuclear magnetic reso- nance instrument\"\n        }\n      ],\n      \"software\": [\n        {\n          \"source_chunk_id\": \"mdchk_5740d53d2333ce5c\",\n          \"name\": \"BO module\",\n          \"version\": null,\n          \"settings\": {\n            \"components\": \"surrogate model and acquisition function\"\n          },\n          \"evidence_quote\": \"while the BO module uses a surrogate model and acquisition function to predict solubility and recom- mend new solvents for evaluation\"\n        }\n      ],\n      \"steps\": [\n        {\n          \"source_chunk_id\": \"mdchk_5740d53d2333ce5c\",\n          \"order\": 1,\n          \"action\": \"sample preparation using high-throughput robotic platform\",\n          \"conditions\": [],\n          \"notes\": \"HTE module\",\n          \"evidence_quote\": \"The HTE module employs a high-throughput robotic platform for sample preparation and solubility measurements\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_5740d53d2333ce5c\",\n          \"order\": 2,\n          \"action\": \"solubility measurements\",\n          \"conditions\": [],\n          \"notes\": \"using high-throughput robotic platform\",\n          \"evidence_quote\": \"The HTE module employs a high-throughput robotic platform for sample preparation and solubility measurements\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_5740d53d2333ce5c\",\n          \"order\": 3,\n          \"action\": \"predict solubility using surrogate model\",\n          \"conditions\": [],\n          \"notes\": \"BO module\",\n          \"evidence_quote\": \"while the BO module uses a surrogate model and acquisition function to predict solubility\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_5740d53d2333ce5c\",\n          \"order\": 4,\n          \"action\": \"recommend new solvents for evaluation using acquisition function\",\n          \"conditions\": [],\n          \"notes\": \"BO module\",\n          \"evidence_quote\": \"and acquisition function to predict solubility and recom- mend new solvents for evaluation\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_5740d53d2333ce5c\",\n          \"order\": 5,\n          \"action\": \"transfer samples between robotic system and nuclear magnetic resonance instrument\",\n          \"conditions\": [],\n          \"notes\": \"human intervention required\",\n          \"evidence_quote\": \"Human intervention was limited to transferring sam- ples between the robotic system and the nuclear magnetic reso- nance instrument\"\n        }\n      ],\n      \"characterization\": [\n        {\n          \"source_chunk_id\": \"mdchk_5740d53d2333ce5c\",\n          \"technique\": \"solubility measurement\",\n          \"settings\": {},\n          \"output\": null,\n          \"evidence_quote\": \"The HTE module employs a high-throughput robotic platform for sample preparation and solubility measurements\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_5740d53d2333ce5c\",\n          \"technique\": \"nuclear magnetic resonance\",\n          \"settings\": {},\n          \"output\": null,\n          \"evidence_quote\": \"Human intervention was limited to transferring sam- ples between the robotic system and the nuclear magnetic reso- nance instrument\"\n        }\n      ],\n      \"results\": [\n        {\n          \"source_chunk_id\": \"mdchk_5740d53d2333ce5c\",\n          \"metric\": \"number of samples measured\",\n          \"raw_value\": \"42\",\n          \"context\": \"within approximately 27 hours\",\n          \"evidence_quote\": \"which enabled the solubility of 42 samples to be measured within approximately 27 hours\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_5740d53d2333ce5c\",\n          \"metric\": \"speed improvement\",\n          \"raw_value\": \"over 13 times faster\",\n          \"context\": \"compared to conventional approach\",\n          \"evidence_quote\": \"over 13 times faster than the conventional approach\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_5740d53d2333ce5c\",\n          \"metric\": \"number of binary solvent systems screened\",\n          \"raw_value\": \"2003\",\n          \"context\": \"final screening\",\n          \"evidence_quote\": \"In the final screening of 2003 binary solvent systems\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_5740d53d2333ce5c\",\n          \"metric\": \"number of new mixtures identified with solubility exceeding 6.20 M\",\n          \"raw_value\": \"18\",\n          \"context\": \"three rounds of BO\",\n          \"evidence_quote\": \"three rounds of BO identified 18 new mixtures in which 2,1,3-benzothiadiazole solubility exceeded 6.20 M\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_5740d53d2333ce5c\",\n          \"metric\": \"maximum solubility achieved\",\n          \"raw_value\": \"6.50 M\",\n          \"context\": null,\n          \"evidence_quote\": \"achieving a remarkable solubility of 6.50 M\"\n        }\n      ],\n      \"caveats\": [\n        {\n          \"source_chunk_id\": \"mdchk_5740d53d2333ce5c\",\n          \"text\": \"Human intervention was limited to transferring samples between the robotic system and the nuclear magnetic resonance instrument\",\n          \"evidence_quote\": \"Human intervention was limited to transferring sam- ples between the robotic system and the nuclear magnetic reso- nance instrument\"\n        }\n      ]\n    },\n    {\n      \"source_chunk_ids\": [\"mdchk_5740d53d2333ce5c\"],\n      \"protocol_name\": \"Fully automated characterization workflow for polymer-based electrolytes\",\n      \"protocol_type\": \"experimental\",\n      \"materials\": [\n        {\n          \"source_chunk_id\": \"mdchk_5740d53d2333ce5c\",\n          \"name\": \"raw materials\",\n          \"role\": \"precursors for polymer electrolytes\",\n          \"amount\": null,\n          \"purity\": null,\n          \"supplier\": null,\n          \"pretreatment\": \"either commercially purchased or synthesized in the laboratory\",\n          \"evidence_quote\": \"Subsequently, the raw materials (either commercially purchased or synthesized in the laboratory) and operating instructions were loaded into a high- throughput platform\"\n        }\n      ],\n      \"instruments\": [\n        {\n          \"source_chunk_id\": \"mdchk_5740d53d2333ce5c\",\n          \"name\": \"high-throughput platform\",\n          \"model\": null,\n          \"manufacturer\": null,\n          \"settings\": {\n            \"components\": \"modular workstations capable of chemical dispensing, mixing, drying, and physicochemical characterization\"\n          },\n          \"evidence_quote\": \"The system was composed of modular workstations capable of chemical dispensing, mixing, drying, and physicochemical characterization, all executed by two three- axis robotic arms equipped with multifunctional tool heads\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_5740d53d2333ce5c\",\n          \"name\": \"three-axis robotic arms\",\n          \"model\": null,\n          \"manufacturer\": null,\n          \"settings\": {\n            \"number\": \"two\",\n            \"equipment\": \"multifunctional tool heads\"\n          },\n          \"evidence_quote\": \"all executed by two three- axis robotic arms equipped with multifunctional tool heads\"\n        }\n      ],\n      \"software\": [\n        {\n          \"source_chunk_id\": \"mdchk_5740d53d2333ce5c\",\n          \"name\": \"ML for plan optimization\",\n          \"version\": null,\n          \"settings\": {},\n          \"evidence_quote\": \"then employing ML for plan optimization\"\n        }\n      ],\n      \"steps\": [\n        {\n          \"source_chunk_id\": \"mdchk_5740d53d2333ce5c\",\n          \"order\": 1,\n          \"action\": \"define experimental objectives\",\n          \"conditions\": [],\n          \"notes\": null,\n          \"evidence_quote\": \"The high-throughput workflow involves defining experimental objectives, formulating recipes, establishing process parameters, and then employing ML for plan optimization\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_5740d53d2333ce5c\",\n          \"order\": 2,\n          \"action\": \"formulate recipes\",\n          \"conditions\": [],\n          \"notes\": null,\n          \"evidence_quote\": \"The high-throughput workflow involves defining experimental objectives, formulating recipes, establishing process parameters, and then employing ML for plan optimization\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_5740d53d2333ce5c\",\n          \"order\": 3,\n          \"action\": \"establish process parameters\",\n          \"conditions\": [],\n          \"notes\": null,\n          \"evidence_quote\": \"The high-throughput workflow involves defining experimental objectives, formulating recipes, establishing process parameters, and then employing ML for plan optimization\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_5740d53d2333ce5c\",\n          \"order\": 4,\n          \"action\": \"employ ML for plan optimization\",\n          \"conditions\": [],\n          \"notes\": null,\n          \"evidence_quote\": \"The high-throughput workflow involves defining experimental objectives, formulating recipes, establishing process parameters, and then employing ML for plan optimization\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_5740d53d2333ce5c\",\n          \"order\": 5,\n          \"action\": \"load raw materials and operating instructions into high-throughput platform\",\n          \"conditions\": [],\n          \"notes\": null,\n          \"evidence_quote\": \"Subsequently, the raw materials (either commercially purchased or synthesized in the laboratory) and operating instructions were loaded into a high- throughput platform, by which all subsequent operations are automatically executed\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_5740d53d2333ce5c\",\n          \"order\": 6,\n          \"action\": \"chemical dispensing\",\n          \"conditions\": [],\n          \"notes\": \"executed by two three-axis robotic arms with multifunctional tool heads\",\n          \"evidence_quote\": \"The system was composed of modular workstations capable of chemical dispensing, mixing, drying, and physicochemical characterization, all executed by two three- axis robotic arms equipped with multifunctional tool heads\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_5740d53d2333ce5c\",\n          \"order\": 7,\n          \"action\": \"mixing\",\n          \"conditions\": [],\n          \"notes\": \"executed by two three-axis robotic arms with multifunctional tool heads\",\n          \"evidence_quote\": \"The system was composed of modular workstations capable of chemical dispensing, mixing, drying, and physicochemical characterization, all executed by two three- axis robotic arms equipped with multifunctional tool heads\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_5740d53d2333ce5c\",\n          \"order\": 8,\n          \"action\": \"drying\",\n          \"conditions\": [],\n          \"notes\": \"executed by two three-axis robotic arms with multifunctional tool heads\",\n          \"evidence_quote\": \"The system was composed of modular workstations capable of chemical dispensing, mixing, drying, and physicochemical characterization, all executed by two three- axis robotic arms equipped with multifunctional tool heads\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_5740d53d2333ce5c\",\n          \"order\": 9,\n          \"action\": \"physicochemical characterization\",\n          \"conditions\": [],\n          \"notes\": \"executed by two three-axis robotic arms with multifunctional tool heads\",\n          \"evidence_quote\": \"The system was composed of modular workstations capable of chemical dispensing, mixing, drying, and physicochemical characterization, all executed by two three- axis robotic arms equipped with multifunctional tool heads\"\n        }\n      ],\n      \"characterization\": [\n        {\n          \"source_chunk_id\": \"mdchk_5740d53d2333ce5c\",\n          \"technique\": \"physicochemical characterization\",\n          \"settings\": {},\n          \"output\": null,\n          \"evidence_quote\": \"The system was composed of modular workstations capable of chemical dispensing, mixing, drying, and physicochemical characterization\"\n        }\n      ],\n      \"results\": [\n        {\n          \"source_chunk_id\": \"mdchk_5740d53d2333ce5c\",\n          \"metric\": \"number of sample tests completed\",\n          \"raw_value\": \"90\",\n          \"context\": \"within five days\",\n          \"evidence_quote\": \"the platform completes 90 sample tests within five days\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_5740d53d2333ce5c\",\n          \"metric\": \"speed improvement\",\n          \"raw_value\": \"around 100 times faster\",\n          \"context\": \"compared to traditional approaches\",\n          \"evidence_quote\": \"which is around 100 times faster than traditional approaches\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_5740d53d2333ce5c\",\n          \"metric\": \"number of unique formulations\",\n          \"raw_value\": \"over 70\",\n          \"context\": null,\n          \"evidence_quote\": \"encom- passing over 70 unique formulations\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_5740d53d2333ce5c\",\n          \"metric\": \"number of samples\",\n          \"raw_value\": \"330\",\n          \"context\": null,\n          \"evidence_quote\": \"330 samples\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_5740d53d2333ce5c\",\n          \"metric\": \"number of ionic conductivity measurements\",\n          \"raw_value\": \"nearly 2000\",\n          \"context\": null,\n          \"evidence_quote\": \"and nearly 2000 ionic conductivity measurements\"\n        }\n      ],\n      \"caveats\": []\n    },\n    {\n      \"source_chunk_ids\": [\"mdchk_359273b3eb03bc1c\"],\n      \"protocol_name\": \"Data-knowledge-dual-driven approach for molecular design of fast-charging LIB electrolytes\",\n      \"protocol_type\": \"computational\",\n      \"materials\": [],\n      \"instruments\": [],\n      \"software\": [],\n      \"steps\": [\n        {\n          \"source_chunk_id\": \"mdchk_359273b3eb03bc1c\",\n          \"order\": 1,\n          \"action\": \"construct molecular dataset\",\n          \"conditions\": [],\n          \"notes\": \"1,321,129 compounds\",\n          \"evidence_quote\": \"A molecular dataset comprising 1 321 129 compounds was constructed\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_359273b3eb03bc1c\",\n          \"order\": 2,\n          \"action\": \"systematically screen candidates using DFT calculations and MD simulations\",\n          \"conditions\": [],\n          \"notes\": \"54,202 candidates selected from dataset\",\n          \"evidence_quote\": \"from which 54 202 candidates were systematically screened using DFT calculations and MD simulations\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_359273b3eb03bc1c\",\n          \"order\": 3,\n          \"action\": \"employ key molecular descriptors with ML models for efficient property prediction\",\n          \"conditions\": [],\n          \"notes\": \"descriptors: thermal and structural stability, temperature range, solvation, viscosity, and chemical stability\",\n          \"evidence_quote\": \"Key molecular descrip- tors, encompassing thermal and structural stability, tempera- ture range, solvation, viscosity, and chemical stability, were employed in conjunction with ML models for efficient property prediction\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_359273b3eb03bc1c\",\n          \"order\": 4,\n          \"action\": \"experimental validation of identified candidates\",\n          \"conditions\": [],\n          \"notes\": null,\n          \"evidence_quote\": \"integrating high-throughput calculations, ML techniques, and experimental validation\"\n        }\n      ],\n      \"characterization\": [],\n      \"results\": [\n        {\n          \"source_chunk_id\": \"mdchk_359273b3eb03bc1c\",\n          \"metric\": \"novel carboxylate solvents identified\",\n          \"raw_value\": \"three\",\n          \"context\": \"methyl trimethylacetate, ethyl trimethylacetate (ETMA), and ethyl 2,2-dimethylbutanoate\",\n          \"evidence_quote\": \"three novel carbox- ylate solvents, methyl trimethylacetate, ethyl trimethylacetate (ETMA), and ethyl 2,2-dimethylbutanoate, were identified\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_359273b3eb03bc1c\",\n          \"metric\": \"highest voltage achieved by ETMA-based electrolytes\",\n          \"raw_value\": \"4.3 V\",\n          \"context\": \"compared with literature reports\",\n          \"evidence_quote\": \"achieving the highest voltage (4.3 V)\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_359273b3eb03bc1c\",\n          \"metric\": \"highest charging rate achieved by ETMA-based electrolytes\",\n          \"raw_value\": \"4.0 C\",\n          \"context\": \"compared with literature reports\",\n          \"evidence_quote\": \"the highest charging rate (4.0 C)\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_359273b3eb03bc1c\",\n          \"metric\": \"longest cycle life achieved by ETMA-based electrolytes\",\n          \"raw_value\": \"over 4100 cycles\",\n          \"context\": \"compared with literature reports\",\n          \"evidence_quote\": \"and the longest cycle life (over 4100 cycles) compared with literature reports\"\n        }\n      ],\n      \"caveats\": []\n    },\n    {\n      \"source_chunk_ids\": [\"mdchk_359273b3eb03bc1c\"],\n      \"protocol_name\": \"HTVS strategy for fluorinated ether electrolytes for LMBs\",\n      \"protocol_type\": \"computational\",\n      \"materials\": [],\n      \"instruments\": [],\n      \"software\": [],\n      \"steps\": [\n        {\n          \"source_chunk_id\": \"mdchk_359273b3eb03bc1c\",\n          \"order\": 1,\n          \"action\": \"generate database of candidates from solvents and salts\",\n          \"conditions\": [],\n          \"notes\": \"5576 candidates from 1510 solvents and four salts\",\n          \"evidence_quote\": \"A database of 5576 candidates was generated from 1510 solvents and four salts\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_359273b3eb03bc1c\",\n          \"order\": 2,\n          \"action\": \"rapid property prediction using voting ensemble model with five key descriptors\",\n          \"conditions\": [],\n          \"notes\": null,\n          \"evidence_quote\": \"A voting ensemble model using five key descriptors enabled rapid property prediction\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_359273b3eb03bc1c\",\n          \"order\": 3,\n          \"action\": \"accelerate descriptor estimation using GCN\",\n          \"conditions\": [],\n          \"notes\": null,\n          \"evidence_quote\": \"A GCN further accelerated descriptor estimation\"\n        }\n      ],\n      \"characterization\": [],\n      \"results\": [\n        {\n          \"source_chunk_id\": \"mdchk_359273b3eb03bc1c\",\n          \"metric\": \"voltage range for stable cycling\",\n          \"raw_value\": \"2.8 to 4.4 V vs. Li/Li+\",\n          \"context\": \"at C/2\",\n          \"evidence_quote\": \"The optimal molecule achieved stable cycling between 2.8 and 4.4 V vs. Li/Li + at C/2\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_359273b3eb03bc1c\",\n          \"metric\": \"coulombic efficiency\",\n          \"raw_value\": \"99.5%\",\n          \"context\": \"maintained over 100 cycles\",\n          \"evidence_quote\": \"with 99.5% CE maintained over 100 cycles\"\n        }\n      ],\n      \"caveats\": []\n    },\n    {\n      \"source_chunk_ids\": [\"mdchk_359273b3eb03bc1c\"],\n      \"protocol_name\": \"HTVS strategy for carbonyl-based organic electrode molecules\",\n      \"protocol_type\": \"computational\",\n      \"materials\": [],\n      \"instruments\": [],\n      \"software\": [],\n      \"steps\": [\n        {\n          \"source_chunk_id\": \"mdchk_359273b3eb03bc1c\",\n          \"order\": 1,\n          \"action\": \"collect organic molecules from PubChem\",\n          \"conditions\": [],\n          \"notes\": \"one million molecules\",\n          \"evidence_quote\": \"Initially, one million organic molecules were collected from PubChem\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_359273b3eb03bc1c\",\n          \"order\": 2,\n          \"action\": \"select potential candidates based on atomic types, active-site counts, and hierarchical clustering\",\n          \"conditions\": [],\n          \"notes\": \"based on previously reported organic electrode molecule characteristics\",\n          \"evidence_quote\": \"Subsequently, considering atomic types, active-site counts, and hierarchical clustering based on previously reported organic electrode molecule characteristics, 1524 molecules were selected as potential candidates\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_359273b3eb03bc1c\",\n          \"order\": 3,\n          \"action\": \"determine reduction potentials using high-throughput calculations for training set\",\n          \"conditions\": [],\n          \"notes\": \"1200 molecules randomly chosen\",\n          \"evidence_quote\": \"High-throughput calculations determined reduction potentials for a randomly chosen subset of 1200 molecules, forming the training set for an SVR model\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_359273b3eb03bc1c\",\n          \"order\": 4,\n          \"action\": \"train SVR model on calculated reduction potentials\",\n          \"conditions\": [],\n          \"notes\": null,\n          \"evidence_quote\": \"forming the training set for an SVR model\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_359273b3eb03bc1c\",\n          \"order\": 5,\n          \"action\": \"experimental validation of identified molecule\",\n          \"conditions\": [],\n          \"notes\": null,\n          \"evidence_quote\": \"Experimental valida- tion confirmed its superior performance\"\n        }\n      ],\n      \"characterization\": [],\n      \"results\": [\n        {\n          \"source_chunk_id\": \"mdchk_359273b3eb03bc1c\",\n          \"metric\": \"molecule identified with high reduction potential and energy density\",\n          \"raw_value\": \"naphthalene-1,4,5,8-tetraone\",\n          \"context\": null,\n          \"evidence_quote\": \"naphthalene-1,4,5,8-tetraone emerged as a molecule with high reduction potential and energy density\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_359273b3eb03bc1c\",\n          \"metric\": \"prolonged cycling stability\",\n          \"raw_value\": \"2500 cycles\",\n          \"context\": \"at 1 A g-1\",\n          \"evidence_quote\": \"achieving prolonged cycling stability of 2500 cycles at 1 A g 1\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_359273b3eb03bc1c\",\n          \"metric\": \"high discharge voltage\",\n          \"raw_value\": \"2.5 V\",\n          \"context\": null,\n          \"evidence_quote\": \"and a high discharge voltageof2.5V\"\n        }\n      ],\n      \"caveats\": []\n    },\n    {\n      \"source_chunk_ids\": [\"mdchk_75cd999ddcd6bff7\"],\n      \"protocol_name\": \"Graph-based ML approach for predicting redox potentials\",\n      \"protocol_type\": \"computational\",\n      \"materials\": [],\n      \"instruments\": [],\n      \"software\": [],\n      \"steps\": [\n        {\n          \"source_chunk_id\": \"mdchk_75cd999ddcd6bff7\",\n          \"order\": 1,\n          \"action\": \"develop GNN models to correlate molecular properties and descriptors\",\n          \"conditions\": [],\n          \"notes\": null,\n          \"evidence_quote\": \"GNN models were developed to correlate molecular properties and descriptors\"\n        }\n      ],\n      \"characterization\": [],\n      \"results\": [\n        {\n          \"source_chunk_id\": \"mdchk_75cd999ddcd6bff7\",\n          \"metric\": \"MAE for predicting reduction potentials\",\n          \"raw_value\": \"5.6 kcal mol-1\",\n          \"context\": null,\n          \"evidence_quote\": \"an MAE of 5.6 and 7.2 kcal mol 1 was achieved for predicting reduction and oxidation potentials, respectively\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_75cd999ddcd6bff7\",\n          \"metric\": \"MAE for predicting oxidation potentials\",\n          \"raw_value\": \"7.2 kcal mol-1\",\n          \"context\": null,\n          \"evidence_quote\": \"an MAE of 5.6 and 7.2 kcal mol 1 was achieved for predicting reduction and oxidation potentials, respectively\"\n        }\n      ],\n      \"caveats\": []\n    },\n    {\n      \"source_chunk_ids\": [\"mdchk_75cd999ddcd6bff7\"],\n      \"protocol_name\": \"ML models to correct computational errors in redox potential calculations\",\n      \"protocol_type\": \"computational\",\n      \"materials\": [],\n      \"instruments\": [],\n      \"software\": [],\n      \"steps\": [\n        {\n          \"source_chunk_id\": \"mdchk_75cd999ddcd6bff7\",\n          \"order\": 1,\n          \"action\": \"employ physically inspired features including solute molecular properties and solvent-related features\",\n          \"conditions\": [],\n          \"notes\": null,\n          \"evidence_quote\": \"Physically inspired features were employed, including solute molecular properties and solvent-related features\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_75cd999ddcd6bff7\",\n          \"order\": 2,\n          \"action\": \"apply ML correction to implicit and explicit solvent model data\",\n          \"conditions\": [],\n          \"notes\": null,\n          \"evidence_quote\": \"After applying the ML correction, the MAE for implicit and explicit solvent model data was reduced from 0.76 to 0.44 V and from 0.64 to below 0.24 V, respectively\"\n        }\n      ],\n      \"characterization\": [],\n      \"results\": [\n        {\n          \"source_chunk_id\": \"mdchk_75cd999ddcd6bff7\",\n          \"metric\": \"MAE for implicit solvent model\",\n          \"raw_value\": \"reduced from 0.76 to 0.44 V\",\n          \"context\": null,\n          \"evidence_quote\": \"the MAE for implicit and explicit solvent model data was reduced from 0.76 to 0.44 V\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_75cd999ddcd6bff7\",\n          \"metric\": \"MAE for explicit solvent model\",\n          \"raw_value\": \"reduced from 0.64 to below 0.24 V\",\n          \"context\": null,\n          \"evidence_quote\": \"and from 0.64 to below 0.24 V, respectively\"\n        }\n      ],\n      \"caveats\": []\n    },\n    {\n      \"source_chunk_ids\": [\"mdchk_75cd999ddcd6bff7\"],\n      \"protocol_name\": \"MLMD-based method for automated prediction of redox potentials\",\n      \"protocol_type\": \"computational\",\n      \"materials\": [],\n      \"instruments\": [],\n      \"software\": [],\n      \"steps\": [\n        {\n          \"source_chunk_id\": \"mdchk_75cd999ddcd6bff7\",\n          \"order\": 1,\n          \"action\": \"combine concurrent learning workflows with free energy calculation techniques\",\n          \"conditions\": [],\n          \"notes\": \"to construct ML potentials for efficient and precise free energy estimation\",\n          \"evidence_quote\": \"Concurrent learning workflows were combined with free energy calculation techni- ques to construct ML potentials for efficient and precise free energy estimation\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_75cd999ddcd6bff7\",\n          \"order\": 2,\n          \"action\": \"perform nanosecond-scale simulations with first-principles accuracy using MLMD\",\n          \"conditions\": [],\n          \"notes\": null,\n          \"evidence_quote\": \"Nanosecond-scale simulations with first- principles accuracy were performed using MLMD\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_75cd999ddcd6bff7\",\n          \"order\": 3,\n          \"action\": \"employ automated workflow incorporating hybrid HSE06 functional for potential development\",\n          \"conditions\": [],\n          \"notes\": null,\n          \"evidence_quote\": \"an auto- mated workflow incorporating the hybrid HSE06 functional was employed for potential development\"\n        }\n      ],\n      \"characterization\": [],\n      \"results\": [\n        {\n          \"source_chunk_id\": \"mdchk_75cd999ddcd6bff7\",\n          \"metric\": \"MAE in redox potential predictions\",\n          \"raw_value\": \"0.33 V\",\n          \"context\": null,\n          \"evidence_quote\": \"An MAE of 0.33 V was achieved in redox potential predictions\"\n        }\n      ],\n      \"caveats\": []\n    },\n    {\n      \"source_chunk_ids\": [\"mdchk_84debc58da5172ec\"],\n      \"protocol_name\": \"Feature engineering approach for predicting redox potentials of organic electrode molecules\",\n      \"protocol_type\": \"computational\",\n      \"materials\": [],\n      \"instruments\": [],\n      \"software\": [],\n      \"steps\": [\n        {\n          \"source_chunk_id\": \"mdchk_84debc58da5172ec\",\n          \"order\": 1,\n          \"action\": \"employ feature engineering techniques including LASSO feature selection, relative contribution analysis, and recursive feature elimination\",\n          \"conditions\": [],\n          \"notes\": null,\n          \"evidence_quote\": \"Allam et al. 630 employed feature engineering techniques including LASSO fea- ture selection, relative contribution analysis, and recursive fea- ture elimination to train three learning models\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_84debc58da5172ec\",\n          \"order\": 2,\n          \"action\": \"train three learning models: ANN, GBR, and kernel ridge regression\",\n          \"conditions\": [],\n          \"notes\": null,\n          \"evidence_quote\": \"to train three learning models: ANN, GBR, and kernel ridge regression\"\n        }\n      ],\n      \"characterization\": [],\n      \"results\": [\n        {\n          \"source_chunk_id\": \"mdchk_84debc58da5172ec\",\n          \"metric\": \"most critical determinants of redox potential identified\",\n          \"raw_value\": \"electron affinity and number of Li atoms\",\n          \"context\": null,\n          \"evidence_quote\": \"with electron affinity and number of Li atoms identified as the most critical determinants of redox potential\"\n        }\n      ],\n      \"caveats\": []\n    },\n    {\n      \"source_chunk_ids\": [\"mdchk_84debc58da5172ec\"],\n      \"protocol_name\": \"ML predictions with autonomous experimental platform for organic cathode material synthesis\",\n      \"protocol_type\": \"experimental\",\n      \"materials\": [\n        {\n          \"source_chunk_id\": \"mdchk_84debc58da5172ec\",\n          \"name\": \"polymer p-BCz-PH\",\n          \"role\": \"synthesized cathode material\",\n          \"amount\": null,\n          \"purity\": null,\n          \"supplier\": null,\n          \"pretreatment\": null,\n          \"evidence_quote\": \"polymer p-BCz-PH was synthe- sized through the autonomous platform\"\n        }\n      ],\n      \"instruments\": [],\n      \"software\": [],\n      \"steps\": [\n        {\n          \"source_chunk_id\": \"mdchk_84debc58da5172ec\",\n          \"order\": 1,\n          \"action\": \"compile experimental dataset\",\n          \"conditions\": [],\n          \"notes\": \"600 entries\",\n          \"evidence_quote\": \"An experimental dataset of 600 entries was compiled\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_84debc58da5172ec\",\n          \"order\": 2,\n          \"action\": \"convert SMILES representations of molecular structures into MACCS molecular fingerprints\",\n          \"conditions\": [],\n          \"notes\": \"to serve as model inputs\",\n          \"evidence_quote\": \"SMILES representations of molecular structures were converted into MACCS molecular fingerprints to serve as model inputs\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_84debc58da5172ec\",\n          \"order\": 3,\n          \"action\": \"implement ternary classification framework using voltage thresholds\",\n          \"conditions\": [],\n          \"notes\": \"thresholds of 2.5 and 3.5 V, materials exceeding 3.5 V deemed optimal\",\n          \"evidence_quote\": \"A ternary classification framework was implemented using voltage thresh- olds of 2.5 and 3.5 V, where materials exceeding 3.5 V were deemed optimal\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_84debc58da5172ec\",\n          \"order\": 4,\n          \"action\": \"perform SHAP analysis to reveal structural preferences\",\n          \"conditions\": [],\n          \"notes\": \"nitrogen atoms, benzene rings, and carbazole moieties identified\",\n          \"evidence_quote\": \"SHAP analysis revealed structural preferences for specific functional groups, particularly nitrogen atoms, ben- zene rings, and carbazole moieties\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_84debc58da5172ec\",\n          \"order\": 5,\n          \"action\": \"synthesize polymer through autonomous platform guided by computational insights and chemical principles\",\n          \"conditions\": [],\n          \"notes\": null,\n          \"evidence_quote\": \"polymer p-BCz-PH was synthe- sized through the autonomous platform\"\n        }\n      ],\n      \"characterization\": [],\n      \"results\": [\n        {\n          \"source_chunk_id\": \"mdchk_84debc58da5172ec\",\n          \"metric\": \"model accuracy on test datasets\",\n          \"raw_value\": \"91.6%\",\n          \"context\": null,\n          \"evidence_quote\": \"The model achieved an accuracy of 91.6% on the test datasets\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_84debc58da5172ec\",\n          \"metric\": \"enhanced discharge voltages\",\n          \"raw_value\": \"4.5 and 4.8 V vs. Li/Li+\",\n          \"context\": null,\n          \"evidence_quote\": \"The cathode material demonstrated enhanced discharge voltages of 4.5 and 4.8 V vs. Li/ Li +\"\n        }\n      ],\n      \"caveats\": []\n    },\n    {\n      \"source_chunk_ids\": [\"mdchk_760e352bcf391994\"],\n      \"protocol_name\": \"Generative AI for de novo polymer discovery for SPEs\",\n      \"protocol_type\": \"computational\",\n      \"materials\": [],\n      \"instruments\": [],\n      \"software\": [\n        {\n          \"source_chunk_id\": \"mdchk_760e352bcf391994\",\n          \"name\": \"minGPT\",\n          \"version\": null,\n          \"settings\": {},\n          \"evidence_quote\": \"In unconditional generation tasks, minGPT and diffusion-LM models exhibited excellent performance in producing novel, valid, and synthesiz- able polymers\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_760e352bcf391994\",\n          \"name\": \"diffusion-LM\",\n          \"version\": null,\n          \"settings\": {},\n          \"evidence_quote\": \"In unconditional generation tasks, minGPT and diffusion-LM models exhibited excellent performance in producing novel, valid, and synthesiz- able polymers\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_760e352bcf391994\",\n          \"name\": \"1D diffusion model\",\n          \"version\": null,\n          \"settings\": {},\n          \"evidence_quote\": \"while the 1D diffusion model showed compara- tively limited efficacy\"\n        }\n      ],\n      \"steps\": [\n        {\n          \"source_chunk_id\": \"mdchk_760e352bcf391994\",\n          \"order\": 1,\n          \"action\": \"perform unconditional generation tasks\",\n          \"conditions\": [],\n          \"notes\": \"minGPT and diffusion-LM models\",\n          \"evidence_quote\": \"In unconditional generation tasks, minGPT and diffusion-LM models exhibited excellent performance in producing novel, valid, and synthesiz- able polymers\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_760e352bcf391994\",\n          \"order\": 2,\n          \"action\": \"perform conditional generation experiments targeting ionic conductivity\",\n          \"conditions\": [],\n          \"notes\": null,\n          \"evidence_quote\": \"In conditional generation experiments targeting ionic conductivity, minGPT-generated polymers exhib- ited conductivity distributions distinctly skewed toward high values\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_760e352bcf391994\",\n          \"order\": 3,\n          \"action\": \"perform MD simulations of selected polymers\",\n          \"conditions\": [],\n          \"notes\": \"50 selected polymers from 100,000 high-conductivity-labeled candidates\",\n          \"evidence_quote\": \"MD simulations of 50 selected polymers (from 100 000 high-conductivity-labeled candidates) resulted in successful con- ductivity validation for 46 candidates\"\n        }\n      ],\n      \"characterization\": [],\n      \"results\": [\n        {\n          \"source_chunk_id\": \"mdchk_760e352bcf391994\",\n          \"metric\": \"number of candidates with successful conductivity validation\",\n          \"raw_value\": \"46\",\n          \"context\": \"out of 50 selected polymers\",\n          \"evidence_quote\": \"resulted in successful con- ductivity validation for 46 candidates\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_760e352bcf391994\",\n          \"metric\": \"number of candidates exceeding all polymers in original training set\",\n          \"raw_value\": \"17\",\n          \"context\": \"some even doubling the benchmark values\",\n          \"evidence_quote\": \"with 17 exhibiting con- ductivity values exceeding all polymers in the original training set, some even doubling the benchmark values\"\n        }\n      ],\n      \"caveats\": []\n    },\n    {\n      \"source_chunk_ids\": [\"mdchk_1c4f49550cef0c30\"],\n      \"protocol_name\": \"Descriptor selection for small sample sizes in molecular representation\",\n      \"protocol_type\": \"computational\",\n      \"materials\": [],\n      \"instruments\": [],\n      \"software\": [],\n      \"steps\": [\n        {\n          \"source_chunk_id\": \"mdchk_1c4f49550cef0c30\",\n          \"order\": 1,\n          \"action\": \"select descriptors from initial pool\",\n          \"conditions\": [],\n          \"notes\": \"37 descriptors selected from 199, raised classification accuracy from 46.8%-79.1% to 71.0%-83.7%\",\n          \"evidence_quote\": \"Li et al. 121 selected 37 descriptors from an initial pool of 199, and overall classification accuracy across six models was raised from 46.8%–79.1% to 71.0%–83.7%\"\n        }\n      ],\n      \"characterization\": [],\n      \"results\": [],\n      \"caveats\": []\n    },\n    {\n      \"source_chunk_ids\": [\"mdchk_1c4f49550cef0c30\"],\n      \"protocol_name\": \"Redox potential prediction of LIB additives using feature selection\",\n      \"protocol_type\": \"computational\",\n      \"materials\": [],\n      \"instruments\": [],\n      \"software\": [],\n      \"steps\": [\n        {\n          \"source_chunk_id\": \"mdchk_1c4f49550cef0c30\",\n          \"order\": 1,\n          \"action\": \"predict redox potential using fewer features selected through importance analysis\",\n          \"conditions\": [],\n          \"notes\": \"achieved comparable performance to using all features while enhancing model interpretability\",\n          \"evidence_quote\": \"Okamoto et al. 122 predicted the redox potential of Li-ion battery (LIB) additives using fewer features selected through importance analysis, achieving comparable performance to using all features while enhancing model interpretability\"\n        }\n      ],\n      \"characterization\": [],\n      \"results\": [],\n      \"caveats\": []\n    },\n    {\n      \"source_chunk_ids\": [\"mdchk_1c4f49550cef0c30\"],\n      \"protocol_name\": \"Molecular representation learning on large dataset\",\n      \"protocol_type\": \"computational\",\n      \"materials\": [],\n      \"instruments\": [],\n      \"software\": [\n        {\n          \"source_chunk_id\": \"mdchk_1c4f49550cef0c30\",\n          \"name\": \"GeoGNN\",\n          \"version\": null,\n          \"settings\": {\n            \"training_data\": \"20 million data points\"\n          },\n          \"evidence_quote\": \"Fang et al. trained the molecular represen- tation learning model GeoGNN on 20 million data points, achiev- ing state-of-the-art on 14 of 15 molecular property prediction benchmarks\"\n        }\n      ],\n      \"steps\": [\n        {\n          \"source_chunk_id\": \"mdchk_1c4f49550cef0c30\",\n          \"order\": 1,\n          \"action\": \"train molecular representation learning model on large dataset\",\n          \"conditions\": [],\n          \"notes\": \"20 million data points, achieved state-of-the-art on 14 of 15 molecular property prediction benchmarks\",\n          \"evidence_quote\": \"Fang et al. trained the molecular represen- tation learning model GeoGNN on 20 million data points, achiev- ing state-of-the-art on 14 of 15 molecular property prediction benchmarks\"\n        }\n      ],\n      \"characterization\": [],\n      \"results\": [],\n      \"caveats\": []\n    },\n    {\n      \"source_chunk_ids\": [\"mdchk_1bd5f89ca70a5fcb\"],\n      \"protocol_name\": \"High-throughput experimental platform for electrolyte formulation testing\",\n      \"protocol_type\": \"experimental\",\n      \"materials\": [],\n      \"instruments\": [\n        {\n          \"source_chunk_id\": \"mdchk_1bd5f89ca70a5fcb\",\n          \"name\": \"high-throughput platforms\",\n          \"model\": null,\n          \"manufacturer\": null,\n          \"settings\": {\n            \"capabilities\": \"automate synthesis and characterization workflows\"\n          },\n          \"evidence_quote\": \"Wet-lab experimentation remains a cornerstone, particularly through high-throughput platforms that automate synthesis and characterization workflows\"\n        }\n      ],\n      \"software\": [],\n      \"steps\": [\n        {\n          \"source_chunk_id\": \"mdchk_1bd5f89ca70a5fcb\",\n          \"order\": 1,\n          \"action\": \"couple high-throughput systems with spectroscopic and electrochemical analysis\",\n          \"conditions\": [],\n          \"notes\": \"enables parallel testing of electrolyte formulations under controlled conditions\",\n          \"evidence_quote\": \"coupling these systems with spectroscopic and electrochemical analysis enables parallel testing of electrolyte formulations under controlled con- ditions and significantly accelerates the acquisition of high- quality experimental data\"\n        }\n      ],\n      \"characterization\": [\n        {\n          \"source_chunk_id\": \"mdchk_1bd5f89ca70a5fcb\",\n          \"technique\": \"spectroscopic analysis\",\n          \"settings\": {},\n          \"output\": null,\n          \"evidence_quote\": \"coupling these systems with spectroscopic and electrochemical analysis\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_1bd5f89ca70a5fcb\",\n          \"technique\": \"electrochemical analysis\",\n          \"settings\": {},\n          \"output\": null,\n          \"evidence_quote\": \"coupling these systems with spectroscopic and electrochemical analysis\"\n        }\n      ],\n      \"results\": [],\n      \"caveats\": []\n    }\n  ]\n}\n```",
+    "salvaged_protocol_count": 0,
+    "schema_invalid": false,
+    "stop_reason": "end_turn",
+    "usage": {
+      "inputTokens": 4494,
+      "outputTokens": 10669,
+      "totalTokens": 15163
+    }
+  }
+}

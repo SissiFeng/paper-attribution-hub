@@ -1,0 +1,100 @@
+{
+  "date": "2026-10-06",
+  "tests_passed": 498,
+  "routing_contract": "passed",
+  "frontend_typecheck_build": "passed",
+  "backend_task": "arn:aws:ecs:ca-central-1:247893369214:task-definition/paper-attribution-pas-dev-backend:13",
+  "backend_deployments": [
+    {
+      "task": "arn:aws:ecs:ca-central-1:247893369214:task-definition/paper-attribution-pas-dev-backend:13",
+      "state": "COMPLETED",
+      "running": 1
+    }
+  ],
+  "invalidation": "Completed",
+  "http_checks": [
+    {
+      "path": "/assets/EditorialInsightsPage-PpAfCH_P.js",
+      "status": 200,
+      "sha256": "fcb140b193f841ba54556029016e2b2794214a274b6842525885a592a6f9e0a5"
+    },
+    {
+      "path": "/assets/index-3fzQx-ZJ.js",
+      "status": 200,
+      "sha256": "8e16734a8516fc33d7896b8f7f0283f7b670c653924081b87310f6291e698588"
+    },
+    {
+      "path": "/assets/index-AtfSLQPV.css",
+      "status": 200,
+      "sha256": "fa82409c64a953ce9cf27d7cb0a91cd71a32a3a77c47577160ae1ffc8883dfa5"
+    },
+    {
+      "path": "/index.html",
+      "status": 200,
+      "sha256": "fb615991f9589d0d2b9221ab70924daba91de5ce16789b9567dba3196024ec90"
+    },
+    {
+      "path": "/reading/assets/reading-DWgsjetc.js",
+      "status": 200,
+      "sha256": "1b78563c4eb318cbf40dd78af69c301aece811278121eae6fa2a242f76eb9df9"
+    },
+    {
+      "path": "/reading/assets/reading-Dspq3YMv.css",
+      "status": 200,
+      "sha256": "93fc6401645f4402c944c13ae976a2118bb836feb79e36fd19951b086a4496e5"
+    },
+    {
+      "path": "/reading/index.html",
+      "status": 200,
+      "sha256": "b1aad4b8db127ce6194fe6e65b59a63a8e0c3d4514a2415a837307e4d56260c0"
+    },
+    {
+      "path": "/api/reading/papers/monitor_eab8469712faee87e76831ce5d12b2d9/markdown",
+      "status": 401
+    },
+    {
+      "path": "/api/chat/sessions",
+      "status": 401
+    },
+    {
+      "path": "/api/research/projects",
+      "status": 401
+    },
+    {
+      "path": "/api/access/check-admin",
+      "status": 401
+    },
+    {
+      "path": "/api/institution-authorship/options",
+      "status": 401
+    },
+    {
+      "path": "/data/private.json",
+      "status": 401
+    },
+    {
+      "path": "/protected-legacy/index.html",
+      "status": 404
+    }
+  ],
+  "browser_checks": {
+    "live": [
+      "Anonymous PAS home lists real publications",
+      "Search locates Less Decoder paper",
+      "Old reading link redirects to canonical /papers/id and displays the actual abstract without Slack sign-in"
+    ],
+    "isolated_synthetic_accounts": [
+      "Anonymous save prompts sign-in without leaving paper",
+      "Member has paper/research navigation",
+      "Member reads Markdown from real test backend",
+      "Research workspace preserves selected paper",
+      "Member is denied admin page",
+      "Admin sees full original analysis navigation"
+    ]
+  },
+  "paper_url": "https://d1ai8ldqsh81fz.cloudfront.net/papers/monitor_eab8469712faee87e76831ce5d12b2d9",
+  "boundary": "Owner admin session not impersonated; generated answers still need a configured model. This paper does not yet have stored full text.",
+  "invalidation_id": "I813BRL8IZGT9DOVCP72ODGTIY",
+  "slack_and_monitor": "UPDATE_COMPLETE; module-only change; schedule remains every four hours",
+  "monitor_task": "paper-attribution-dev-author-monitor:17"
+}

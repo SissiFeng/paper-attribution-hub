@@ -1,0 +1,472 @@
+{
+  "$defs": {
+    "MpuCrossDomainResult": {
+      "additionalProperties": false,
+      "properties": {
+        "mean_absolute_rate_gap": {
+          "anyOf": [
+            {
+              "maximum": 1,
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Mean Absolute Rate Gap"
+        },
+        "mean_absolute_rate_gap_interval": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "number"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Mean Absolute Rate Gap Interval"
+        },
+        "model_count": {
+          "minimum": 0,
+          "title": "Model Count",
+          "type": "integer"
+        },
+        "rank_correlation": {
+          "anyOf": [
+            {
+              "maximum": 1,
+              "minimum": -1,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Rank Correlation"
+        },
+        "rank_correlation_interval": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "number"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Rank Correlation Interval"
+        },
+        "schema_version": {
+          "const": "evidence-following-mpu-cross-domain-v0.1",
+          "default": "evidence-following-mpu-cross-domain-v0.1",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "trait_supported": {
+          "title": "Trait Supported",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "model_count",
+        "trait_supported"
+      ],
+      "title": "MpuCrossDomainResult",
+      "type": "object"
+    },
+    "MpuDissociationResult": {
+      "additionalProperties": false,
+      "properties": {
+        "equivalence_bound": {
+          "exclusiveMaximum": 1,
+          "exclusiveMinimum": 0,
+          "title": "Equivalence Bound",
+          "type": "number"
+        },
+        "exposure_correlation": {
+          "anyOf": [
+            {
+              "maximum": 1,
+              "minimum": -1,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Exposure Correlation"
+        },
+        "exposure_correlation_interval": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "number"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Exposure Correlation Interval"
+        },
+        "knowledge_correlation": {
+          "anyOf": [
+            {
+              "maximum": 1,
+              "minimum": -1,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Knowledge Correlation"
+        },
+        "knowledge_correlation_interval": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "number"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Knowledge Correlation Interval"
+        },
+        "schema_version": {
+          "const": "evidence-following-mpu-dissociation-v0.1",
+          "default": "evidence-following-mpu-dissociation-v0.1",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "summary_cell_count": {
+          "minimum": 0,
+          "title": "Summary Cell Count",
+          "type": "integer"
+        },
+        "supported": {
+          "title": "Supported",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "summary_cell_count",
+        "equivalence_bound",
+        "supported"
+      ],
+      "title": "MpuDissociationResult",
+      "type": "object"
+    },
+    "MpuFactInjectionResult": {
+      "additionalProperties": false,
+      "properties": {
+        "claims_boundary": {
+          "default": "This MPU injects an original fact as controlled prior context. It can identify an inference-time knowledge-versus-updatability trade-off, not a trade-off caused by parameter updates or adapter training.",
+          "title": "Claims Boundary",
+          "type": "string"
+        },
+        "evidence_following_delta": {
+          "anyOf": [
+            {
+              "maximum": 1,
+              "minimum": -1,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Evidence Following Delta"
+        },
+        "evidence_following_delta_interval": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "number"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Evidence Following Delta Interval"
+        },
+        "intervention": {
+          "default": "contextual_prior_fact",
+          "title": "Intervention",
+          "type": "string"
+        },
+        "knowledge_delta": {
+          "anyOf": [
+            {
+              "maximum": 1,
+              "minimum": -1,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Knowledge Delta"
+        },
+        "knowledge_delta_interval": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "number"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Knowledge Delta Interval"
+        },
+        "paired_item_count": {
+          "minimum": 0,
+          "title": "Paired Item Count",
+          "type": "integer"
+        },
+        "pareto_tradeoff_supported": {
+          "title": "Pareto Tradeoff Supported",
+          "type": "boolean"
+        },
+        "schema_version": {
+          "const": "evidence-following-mpu-fact-injection-v0.1",
+          "default": "evidence-following-mpu-fact-injection-v0.1",
+          "title": "Schema Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "paired_item_count",
+        "pareto_tradeoff_supported"
+      ],
+      "title": "MpuFactInjectionResult",
+      "type": "object"
+    },
+    "MpuModelDomainSummary": {
+      "additionalProperties": false,
+      "properties": {
+        "blind_domain_prior_rate": {
+          "anyOf": [
+            {
+              "maximum": 1,
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Blind Domain Prior Rate"
+        },
+        "closed_book_knowledge_rate": {
+          "anyOf": [
+            {
+              "maximum": 1,
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Closed Book Knowledge Rate"
+        },
+        "domain": {
+          "title": "Domain",
+          "type": "string"
+        },
+        "evidence_following_rate": {
+          "anyOf": [
+            {
+              "maximum": 1,
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Evidence Following Rate"
+        },
+        "fact_injected_evidence_following_rate": {
+          "anyOf": [
+            {
+              "maximum": 1,
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Fact Injected Evidence Following Rate"
+        },
+        "fact_injected_knowledge_rate": {
+          "anyOf": [
+            {
+              "maximum": 1,
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Fact Injected Knowledge Rate"
+        },
+        "item_count": {
+          "minimum": 0,
+          "title": "Item Count",
+          "type": "integer"
+        },
+        "mean_exposure_score": {
+          "anyOf": [
+            {
+              "maximum": 1,
+              "minimum": -1,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Mean Exposure Score"
+        },
+        "model_alias": {
+          "title": "Model Alias",
+          "type": "string"
+        },
+        "schema_version": {
+          "const": "evidence-following-mpu-model-domain-summary-v0.1",
+          "default": "evidence-following-mpu-model-domain-summary-v0.1",
+          "title": "Schema Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "model_alias",
+        "domain",
+        "item_count"
+      ],
+      "title": "MpuModelDomainSummary",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "analysis_ready": {
+      "title": "Analysis Ready",
+      "type": "boolean"
+    },
+    "claims_boundary": {
+      "default": "Reported associations measure behavior on this benchmark. They do not establish training-data membership, causal mechanisms inside model weights, or reasoning generality beyond the two declared domains. Null association does not establish dissociation unless its bootstrap interval passes the preregistered equivalence bound.",
+      "title": "Claims Boundary",
+      "type": "string"
+    },
+    "cross_domain": {
+      "$ref": "#/$defs/MpuCrossDomainResult"
+    },
+    "design_ready": {
+      "title": "Design Ready",
+      "type": "boolean"
+    },
+    "expected_observation_count": {
+      "minimum": 0,
+      "title": "Expected Observation Count",
+      "type": "integer"
+    },
+    "fact_injection": {
+      "$ref": "#/$defs/MpuFactInjectionResult"
+    },
+    "failed_gates": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Failed Gates",
+      "type": "array"
+    },
+    "future_scope_exclusion": {
+      "default": "Adapter training and P2-proc procedural injection are excluded from this MPU and reserved for a subsequent study.",
+      "title": "Future Scope Exclusion",
+      "type": "string"
+    },
+    "knowledge_dissociation": {
+      "$ref": "#/$defs/MpuDissociationResult"
+    },
+    "missing_observation_count": {
+      "minimum": 0,
+      "title": "Missing Observation Count",
+      "type": "integer"
+    },
+    "model_domain_summaries": {
+      "items": {
+        "$ref": "#/$defs/MpuModelDomainSummary"
+      },
+      "title": "Model Domain Summaries",
+      "type": "array"
+    },
+    "schema_version": {
+      "const": "evidence-following-mpu-analysis-v0.1",
+      "default": "evidence-following-mpu-analysis-v0.1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "study_id": {
+      "title": "Study Id",
+      "type": "string"
+    },
+    "supplied_observation_count": {
+      "minimum": 0,
+      "title": "Supplied Observation Count",
+      "type": "integer"
+    }
+  },
+  "required": [
+    "study_id",
+    "design_ready",
+    "analysis_ready",
+    "failed_gates",
+    "expected_observation_count",
+    "supplied_observation_count",
+    "missing_observation_count",
+    "model_domain_summaries",
+    "cross_domain",
+    "knowledge_dissociation",
+    "fact_injection"
+  ],
+  "title": "MpuAnalysisReport",
+  "type": "object"
+}

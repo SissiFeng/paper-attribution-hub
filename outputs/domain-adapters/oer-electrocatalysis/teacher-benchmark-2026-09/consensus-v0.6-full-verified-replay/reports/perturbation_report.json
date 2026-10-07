@@ -1,0 +1,15 @@
+{
+  "case_count": 143,
+  "case_counts_by_type": {
+    "evidence_deletion": 95,
+    "numeric_replacement": 48
+  },
+  "claims_boundary": "Not-tested perturbations cannot enter training-eligible Tier A.",
+  "schema_version": "domain-teacher-perturbation-report-v0.1",
+  "status_counts": {
+    "failed": 59,
+    "not_tested": 184,
+    "passed": 187
+  },
+  "training_eligible_claim_count": 63
+}

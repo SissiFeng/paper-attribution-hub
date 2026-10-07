@@ -1,0 +1,781 @@
+{
+  "audit_summary": {
+    "accepted_field_count": 13,
+    "proposed_field_count": 43,
+    "rejected_field_count": 30,
+    "repair_attempted_count": 0,
+    "repair_succeeded_count": 0,
+    "unsupported_claim_count": 30
+  },
+  "field_audit_records": [
+    {
+      "cited_span": "In particular, we compare the stability and activity of R-IrO2 to our newly discovered αIrO3 and R-IrO3 polymorphs.",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[0].role",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1021_acs.chemmater.0c01894",
+      "proposed_value": "reference material for comparison",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "In particular, we compare the stability and activity of R-IrO2 to our newly discovered αIrO3 and R-IrO3 polymorphs.",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[1].name",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1021_acs.chemmater.0c01894",
+      "proposed_value": "α-IrO3",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "In particular, we compare the stability and activity of R-IrO2 to our newly discovered αIrO3 and R-IrO3 polymorphs.",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[2].role",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1021_acs.chemmater.0c01894",
+      "proposed_value": "newly discovered polymorph for analysis",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "In addition, we have also computed the stability and activity of a delithiated form of a recently reported β-LixIrO3 structure, referred here to as βIrO3.3 33,49",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[3].name",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1021_acs.chemmater.0c01894",
+      "proposed_value": "β-IrO3",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "We next performed ab initio thermodynamic analyses to test the OER electrochemical operational stability and activity of the most stable IrOx structures in aqueous solution.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[0].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1021_acs.chemmater.0c01894",
+      "proposed_value": "perform ab initio thermodynamic analyses",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "We next performed ab initio thermodynamic analyses to test the OER electrochemical operational stability and activity of the most stable IrOx structures in aqueous solution.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[0].notes",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1021_acs.chemmater.0c01894",
+      "proposed_value": "test OER electrochemical operational stability and activity of the most stable IrOx structures",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The OER activity was computed assuming the most common single-site associative OER mechanism utilizing the thermodynamic limiting potential analysis with the computational hydrogen electrode as described extensively in numerous previous works50-53 (see also Supporting Information for details).",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[1].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1021_acs.chemmater.0c01894",
+      "proposed_value": "compute OER activity",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "In general, the R-IrO2 surfaces bind the OER intermediates relatively strongly, with theoretical limiting potentials of ~1.8 VRHE (overpotential of 0.57 VRHE) having the *O to *OOH potential limiting step, in agreement with previous theoretical studies.57,62,63",
+      "diagnostic": null,
+      "entity_type": "characterization",
+      "field_path": "characterization[0].technique",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1021_acs.chemmater.0c01894",
+      "proposed_value": "DFT calculation of OER intermediates binding energies",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "On average, the adsorption of OH* and O* is weakened by 0.7 and 1.2 eV relative to IrO2 (Table S4), respectively.",
+      "diagnostic": null,
+      "entity_type": "characterization",
+      "field_path": "characterization[1].technique",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1021_acs.chemmater.0c01894",
+      "proposed_value": "free energy analysis of adsorption",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "In general, the R-IrO2 surfaces bind the OER intermediates relatively strongly, with theoretical limiting potentials of ~1.8 VRHE (overpotential of 0.57 VRHE) having the *O to *OOH potential limiting step, in agreement with previous theoretical studies.57,62,63",
+      "diagnostic": null,
+      "entity_type": "results",
+      "field_path": "results[0].metric",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1021_acs.chemmater.0c01894",
+      "proposed_value": "theoretical limiting potential for R-IrO2",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "These surfaces have overpotentials of ~0.4 VRHE, which represents an ~0.2 VRHE improvement over R- IrO2, mirroring the observed shift in experimental onset potentials (horizontal lines).25,58",
+      "diagnostic": null,
+      "entity_type": "results",
+      "field_path": "results[1].metric",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1021_acs.chemmater.0c01894",
+      "proposed_value": "overpotential for α-IrO3 (100), (110), and (211) surfaces",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The highest performing systems include the αIrO₃ (100), (110), and (211), followed by β-IrO3 (101), and then R-IrO3 (110). These surfaces have overpotentials of ~0.4 VRHE",
+      "diagnostic": null,
+      "entity_type": "results",
+      "field_path": "results[2].metric",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1021_acs.chemmater.0c01894",
+      "proposed_value": "overpotential for β-IrO3 (101)",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "On average, the adsorption of OH* and O* is weakened by 0.7 and 1.2 eV relative to IrO2 (Table S4), respectively.",
+      "diagnostic": null,
+      "entity_type": "results",
+      "field_path": "results[3].metric",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1021_acs.chemmater.0c01894",
+      "proposed_value": "weakening of OH* adsorption relative to IrO2",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "On average, the adsorption of OH* and O* is weakened by 0.7 and 1.2 eV relative to IrO2 (Table S4), respectively.",
+      "diagnostic": null,
+      "entity_type": "results",
+      "field_path": "results[4].metric",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1021_acs.chemmater.0c01894",
+      "proposed_value": "weakening of O* adsorption relative to IrO2",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The diagram was constructed by considering the thermodynamic equilibrium between the following species: Ir, R-IrO2, α-IrO3, R-IrO3, β-IrO3, and an aqueous dissolved IrO₄⁻ species.",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[0].role",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1021_acs.chemmater.0c01894",
+      "proposed_value": "species in thermodynamic equilibrium",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The diagram was constructed by considering the thermodynamic equilibrium between the following species: Ir, R-IrO2, α-IrO3, R-IrO3, β-IrO3, and an aqueous dissolved IrO₄⁻ species.",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[1].role",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1021_acs.chemmater.0c01894",
+      "proposed_value": "species in thermodynamic equilibrium",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The diagram was constructed by considering the thermodynamic equilibrium between the following species: Ir, R-IrO2, α-IrO3, R-IrO3, β-IrO3, and an aqueous dissolved IrO₄⁻ species.",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[2].role",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1021_acs.chemmater.0c01894",
+      "proposed_value": "species in thermodynamic equilibrium",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The diagram was constructed by considering the thermodynamic equilibrium between the following species: Ir, R-IrO2, α-IrO3, R-IrO3, β-IrO3, and an aqueous dissolved IrO₄⁻ species.",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[3].role",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1021_acs.chemmater.0c01894",
+      "proposed_value": "species in thermodynamic equilibrium",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The diagram was constructed by considering the thermodynamic equilibrium between the following species: Ir, R-IrO2, α-IrO3, R-IrO3, β-IrO3, and an aqueous dissolved IrO₄⁻ species.",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[4].role",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1021_acs.chemmater.0c01894",
+      "proposed_value": "species in thermodynamic equilibrium",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The diagram was constructed by considering the thermodynamic equilibrium between the following species: Ir, R-IrO2, α-IrO3, R-IrO3, β-IrO3, and an aqueous dissolved IrO₄⁻ species.",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[5].role",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1021_acs.chemmater.0c01894",
+      "proposed_value": "aqueous dissolved species in thermodynamic equilibrium",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "To obtain free energies, we utilized a free energy correction to our calculated values to reproduce the known experimental ∆Hf and ∆Gf of R-IrO2.54",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[0].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1021_acs.chemmater.0c01894",
+      "proposed_value": "apply free energy correction to calculated values",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "To obtain free energies, we utilized a free energy correction to our calculated values to reproduce the known experimental ∆Hf and ∆Gf of R-IrO2.54",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[0].notes",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1021_acs.chemmater.0c01894",
+      "proposed_value": "to reproduce known experimental ∆Hf and ∆Gf of R-IrO2",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The diagram was constructed by considering the thermodynamic equilibrium between the following species: Ir, R-IrO2, α-IrO3, R-IrO3, β-IrO3, and an aqueous dissolved IrO₄⁻ species. Here, we neglect hydroxide phases, as they were not considered in the polymorph search",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[1].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1021_acs.chemmater.0c01894",
+      "proposed_value": "construct bulk Pourbaix diagram",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The diagram was constructed by considering the thermodynamic equilibrium between the following species: Ir, R-IrO2, α-IrO3, R-IrO3, β-IrO3, and an aqueous dissolved IrO₄⁻ species. Here, we neglect hydroxide phases, as they were not considered in the polymorph search",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[1].conditions[0]",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1021_acs.chemmater.0c01894",
+      "proposed_value": "0 ≤ pH ≤ 14",
+      "protocol_index": 1,
+      "rejection_reason": "value_elsewhere",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The diagram was constructed by considering the thermodynamic equilibrium between the following species: Ir, R-IrO2, α-IrO3, R-IrO3, β-IrO3, and an aqueous dissolved IrO₄⁻ species. Here, we neglect hydroxide phases, as they were not considered in the polymorph search",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[1].conditions[1]",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1021_acs.chemmater.0c01894",
+      "proposed_value": "potentials >1.23 VRHE for OER conditions",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The diagram was constructed by considering the thermodynamic equilibrium between the following species: Ir, R-IrO2, α-IrO3, R-IrO3, β-IrO3, and an aqueous dissolved IrO₄⁻ species. Here, we neglect hydroxide phases, as they were not considered in the polymorph search",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[1].notes",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1021_acs.chemmater.0c01894",
+      "proposed_value": "considering thermodynamic equilibrium between Ir, R-IrO2, α-IrO3, R-IrO3, β-IrO3, and IrO₄⁻; hydroxide phases neglected",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Figure 5. Revised bulk Pourbaix diagram of the Ir-H2O system as a function of applied potential (UsHE) and pH.",
+      "diagnostic": null,
+      "entity_type": "characterization",
+      "field_path": "characterization[0].technique",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1021_acs.chemmater.0c01894",
+      "proposed_value": "bulk Pourbaix diagram construction",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "In total, we have discovered 21 unique IrO3 polymorphs with a nonzero bulk Pourbaix stability region (0 ≤ pH ≤ 14).",
+      "diagnostic": null,
+      "entity_type": "results",
+      "field_path": "results[0].metric",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1021_acs.chemmater.0c01894",
+      "proposed_value": "number of unique IrO3 polymorphs with nonzero bulk Pourbaix stability region",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Here, we neglect hydroxide phases, as they were not considered in the polymorph search; for a brief discussion on the relative stability of hydroxide phases see Figure SS.",
+      "diagnostic": null,
+      "entity_type": "caveats",
+      "field_path": "caveats[0].text",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1021_acs.chemmater.0c01894",
+      "proposed_value": "Hydroxide phases were not considered in the polymorph search",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Because of the highly oxidizing conditions, the synthesis of the above IrO3 crystal phases at ambient conditions is unlikely.",
+      "diagnostic": null,
+      "entity_type": "caveats",
+      "field_path": "caveats[1].text",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1021_acs.chemmater.0c01894",
+      "proposed_value": "Synthesis of IrO3 crystal phases at ambient conditions is unlikely due to highly oxidizing conditions",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    }
+  ],
+  "inference_config": {
+    "max_tokens": 14000,
+    "temperature": 0.0
+  },
+  "mapping_version": "evidence-field-mapper-v0.2",
+  "model_id": "moonshotai.kimi-k2.5",
+  "paper_id": "DOI:10.1021_acs.chemmater.0c01894",
+  "prompt_version": "oer-protocol-teacher-v0.2",
+  "protocols": [
+    {
+      "caveats": [],
+      "characterization": [],
+      "evidence": [
+        {
+          "char_end": 206,
+          "char_start": 33,
+          "chunk_id": "mdchk_daa8c53b8eac8ae0",
+          "document_char_end": 23871,
+          "document_char_start": 23698,
+          "evidence_id": "ev_d9003ec5a50373b4",
+          "paper_id": "DOI:10.1021_acs.chemmater.0c01894",
+          "quote": "We next performed ab initio thermodynamic analyses to test the OER electrochemical operational stability and activity of the most stable IrOx structures in aqueous solution.",
+          "source_sha256": "8c36b4964b3e8fb876bd894ccf2e2ea1ba4d453990615ed2b8f5cf0fa6aee1b8"
+        },
+        {
+          "char_end": 322,
+          "char_start": 207,
+          "chunk_id": "mdchk_daa8c53b8eac8ae0",
+          "document_char_end": 23987,
+          "document_char_start": 23872,
+          "evidence_id": "ev_8116fbda3d20de8e",
+          "paper_id": "DOI:10.1021_acs.chemmater.0c01894",
+          "quote": "In particular, we compare the stability and activity of R-IrO2 to our newly discovered αIrO3 and R-IrO3 polymorphs.",
+          "source_sha256": "8c36b4964b3e8fb876bd894ccf2e2ea1ba4d453990615ed2b8f5cf0fa6aee1b8"
+        },
+        {
+          "char_end": 779,
+          "char_start": 485,
+          "chunk_id": "mdchk_daa8c53b8eac8ae0",
+          "document_char_end": 24444,
+          "document_char_start": 24150,
+          "evidence_id": "ev_fc00899d3f314a0e",
+          "paper_id": "DOI:10.1021_acs.chemmater.0c01894",
+          "quote": "The OER activity was computed assuming the most common single-site associative OER mechanism utilizing the thermodynamic limiting potential analysis with the computational hydrogen electrode as described extensively in numerous previous works50-53 (see also Supporting Information for details).",
+          "source_sha256": "8c36b4964b3e8fb876bd894ccf2e2ea1ba4d453990615ed2b8f5cf0fa6aee1b8"
+        }
+      ],
+      "evidence_scope": "primary_report",
+      "instruments": [],
+      "materials": [
+        {
+          "amount": null,
+          "entity_id": "mat_0ea105de6fa35d79",
+          "evidence_ids": [
+            "ev_8116fbda3d20de8e"
+          ],
+          "name": "R-IrO2",
+          "pretreatment": null,
+          "purity": null,
+          "role": null,
+          "supplier": null
+        },
+        {
+          "amount": null,
+          "entity_id": "mat_fde2d5f79db74837",
+          "evidence_ids": [
+            "ev_8116fbda3d20de8e"
+          ],
+          "name": "R-IrO3",
+          "pretreatment": null,
+          "purity": null,
+          "role": null,
+          "supplier": null
+        }
+      ],
+      "paper_id": "DOI:10.1021_acs.chemmater.0c01894",
+      "protocol_id": "protocol_1ba022621a3d3467",
+      "protocol_name": "Ab initio thermodynamic analysis of OER electrochemical stability and activity",
+      "protocol_type": "computational",
+      "relations": [],
+      "results": [],
+      "software": [],
+      "source_chunk_ids": [
+        "mdchk_daa8c53b8eac8ae0"
+      ],
+      "source_paper_tier": "primary_oer",
+      "steps": [
+        {
+          "action": "We next performed ab initio thermodynamic analyses to test the OER electrochemical operational stability and activity of the most stable IrOx structures in aqueous solution.",
+          "conditions": [
+            "aqueous solution"
+          ],
+          "evidence_ids": [
+            "ev_d9003ec5a50373b4"
+          ],
+          "notes": null,
+          "order": 1,
+          "step_id": "step_1ba022621a3d3467"
+        },
+        {
+          "action": "The OER activity was computed assuming the most common single-site associative OER mechanism utilizing the thermodynamic limiting potential analysis with the computational hydrogen electrode as described extensively in numerous previous works50-53 (see also Supporting Information for details).",
+          "conditions": [
+            "single-site associative OER mechanism",
+            "thermodynamic limiting potential analysis",
+            "computational hydrogen electrode"
+          ],
+          "evidence_ids": [
+            "ev_fc00899d3f314a0e"
+          ],
+          "notes": "assuming the most common single-site associative OER mechanism",
+          "order": 2,
+          "step_id": "step_c27a78abbc7f912d"
+        }
+      ]
+    },
+    {
+      "caveats": [
+        {
+          "caveat_id": "caveat_52c8351808832cd2",
+          "evidence_ids": [
+            "ev_9e8e91bad8cee206"
+          ],
+          "text": "Here, we neglect hydroxide phases, as they were not considered in the polymorph search; for a brief discussion on the relative stability of hydroxide phases see Figure SS."
+        },
+        {
+          "caveat_id": "caveat_95048b5680e4931e",
+          "evidence_ids": [
+            "ev_b0725dc5bd404e75"
+          ],
+          "text": "Because of the highly oxidizing conditions, the synthesis of the above IrO3 crystal phases at ambient conditions is unlikely."
+        }
+      ],
+      "characterization": [],
+      "evidence": [
+        {
+          "char_end": 259,
+          "char_start": 80,
+          "chunk_id": "mdchk_5511a6e08cf38bc2",
+          "document_char_end": 25628,
+          "document_char_start": 25449,
+          "evidence_id": "ev_239234478006ae79",
+          "paper_id": "DOI:10.1021_acs.chemmater.0c01894",
+          "quote": "The diagram was constructed by considering the thermodynamic equilibrium between the following species: Ir, R-IrO2, α-IrO3, R-IrO3, β-IrO3, and an aqueous dissolved IrO₄⁻ species.",
+          "source_sha256": "f79366ad9aa671f5617eb2c2d2baa99eafec41ab8fe8c2651442b910cea65a71"
+        },
+        {
+          "char_end": 346,
+          "char_start": 80,
+          "chunk_id": "mdchk_5511a6e08cf38bc2",
+          "document_char_end": 25715,
+          "document_char_start": 25449,
+          "evidence_id": "ev_4853b065c353a19b",
+          "paper_id": "DOI:10.1021_acs.chemmater.0c01894",
+          "quote": "The diagram was constructed by considering the thermodynamic equilibrium between the following species: Ir, R-IrO2, α-IrO3, R-IrO3, β-IrO3, and an aqueous dissolved IrO₄⁻ species. Here, we neglect hydroxide phases, as they were not considered in the polymorph search",
+          "source_sha256": "f79366ad9aa671f5617eb2c2d2baa99eafec41ab8fe8c2651442b910cea65a71"
+        },
+        {
+          "char_end": 431,
+          "char_start": 260,
+          "chunk_id": "mdchk_5511a6e08cf38bc2",
+          "document_char_end": 25800,
+          "document_char_start": 25629,
+          "evidence_id": "ev_9e8e91bad8cee206",
+          "paper_id": "DOI:10.1021_acs.chemmater.0c01894",
+          "quote": "Here, we neglect hydroxide phases, as they were not considered in the polymorph search; for a brief discussion on the relative stability of hydroxide phases see Figure SS.",
+          "source_sha256": "f79366ad9aa671f5617eb2c2d2baa99eafec41ab8fe8c2651442b910cea65a71"
+        },
+        {
+          "char_end": 579,
+          "char_start": 432,
+          "chunk_id": "mdchk_5511a6e08cf38bc2",
+          "document_char_end": 25948,
+          "document_char_start": 25801,
+          "evidence_id": "ev_274c7ef0b6ce15fb",
+          "paper_id": "DOI:10.1021_acs.chemmater.0c01894",
+          "quote": "To obtain free energies, we utilized a free energy correction to our calculated values to reproduce the known experimental ∆Hf and ∆Gf of R-IrO2.54",
+          "source_sha256": "f79366ad9aa671f5617eb2c2d2baa99eafec41ab8fe8c2651442b910cea65a71"
+        },
+        {
+          "char_end": 1776,
+          "char_start": 1651,
+          "chunk_id": "mdchk_5511a6e08cf38bc2",
+          "document_char_end": 27145,
+          "document_char_start": 27020,
+          "evidence_id": "ev_b0725dc5bd404e75",
+          "paper_id": "DOI:10.1021_acs.chemmater.0c01894",
+          "quote": "Because of the highly oxidizing conditions, the synthesis of the above IrO3 crystal phases at ambient conditions is unlikely.",
+          "source_sha256": "f79366ad9aa671f5617eb2c2d2baa99eafec41ab8fe8c2651442b910cea65a71"
+        }
+      ],
+      "evidence_scope": "primary_report",
+      "instruments": [],
+      "materials": [
+        {
+          "amount": null,
+          "entity_id": "mat_9d91a7f029ac748a",
+          "evidence_ids": [
+            "ev_239234478006ae79"
+          ],
+          "name": "Ir",
+          "pretreatment": null,
+          "purity": null,
+          "role": null,
+          "supplier": null
+        },
+        {
+          "amount": null,
+          "entity_id": "mat_02c7b731bcb63b13",
+          "evidence_ids": [
+            "ev_239234478006ae79"
+          ],
+          "name": "R-IrO2",
+          "pretreatment": null,
+          "purity": null,
+          "role": null,
+          "supplier": null
+        },
+        {
+          "amount": null,
+          "entity_id": "mat_c7859f2706fa45eb",
+          "evidence_ids": [
+            "ev_239234478006ae79"
+          ],
+          "name": "α-IrO3",
+          "pretreatment": null,
+          "purity": null,
+          "role": null,
+          "supplier": null
+        },
+        {
+          "amount": null,
+          "entity_id": "mat_bfb8a5cc5070f64a",
+          "evidence_ids": [
+            "ev_239234478006ae79"
+          ],
+          "name": "R-IrO3",
+          "pretreatment": null,
+          "purity": null,
+          "role": null,
+          "supplier": null
+        },
+        {
+          "amount": null,
+          "entity_id": "mat_b695745311fb37db",
+          "evidence_ids": [
+            "ev_239234478006ae79"
+          ],
+          "name": "β-IrO3",
+          "pretreatment": null,
+          "purity": null,
+          "role": null,
+          "supplier": null
+        },
+        {
+          "amount": null,
+          "entity_id": "mat_d4e1b945a226060c",
+          "evidence_ids": [
+            "ev_239234478006ae79"
+          ],
+          "name": "IrO₄⁻",
+          "pretreatment": null,
+          "purity": null,
+          "role": null,
+          "supplier": null
+        }
+      ],
+      "paper_id": "DOI:10.1021_acs.chemmater.0c01894",
+      "protocol_id": "protocol_95048b5680e4931e",
+      "protocol_name": "Construction of bulk Pourbaix diagram for Ir-H2O system",
+      "protocol_type": "computational",
+      "relations": [],
+      "results": [],
+      "software": [],
+      "source_chunk_ids": [
+        "mdchk_5511a6e08cf38bc2"
+      ],
+      "source_paper_tier": "primary_oer",
+      "steps": [
+        {
+          "action": "To obtain free energies, we utilized a free energy correction to our calculated values to reproduce the known experimental ∆Hf and ∆Gf of R-IrO2.54",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_274c7ef0b6ce15fb"
+          ],
+          "notes": null,
+          "order": 1,
+          "step_id": "step_52c8351808832cd2"
+        },
+        {
+          "action": "The diagram was constructed by considering the thermodynamic equilibrium between the following species: Ir, R-IrO2, α-IrO3, R-IrO3, β-IrO3, and an aqueous dissolved IrO₄⁻ species. Here, we neglect hydroxide phases, as they were not considered in the polymorph search",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_4853b065c353a19b"
+          ],
+          "notes": null,
+          "order": 2,
+          "step_id": "step_95048b5680e4931e"
+        }
+      ]
+    }
+  ],
+  "region": "us-east-1",
+  "schema_version": "bedrock-teacher-paper-cache-v0.2",
+  "teacher_response": {
+    "diagnostic": null,
+    "invocation_count": 1,
+    "metrics": {
+      "latencyMs": 26972
+    },
+    "raw_text": " ```json\n{\n  \"protocols\": [\n    {\n      \"source_chunk_ids\": [\"mdchk_daa8c53b8eac8ae0\", \"mdchk_d7d060917028920b\"],\n      \"protocol_name\": \"Ab initio thermodynamic analysis of OER electrochemical stability and activity\",\n      \"protocol_type\": \"computational\",\n      \"materials\": [\n        {\n          \"source_chunk_id\": \"mdchk_daa8c53b8eac8ae0\",\n          \"name\": \"R-IrO2\",\n          \"role\": \"reference material for comparison\",\n          \"amount\": null,\n          \"purity\": null,\n          \"supplier\": null,\n          \"pretreatment\": null,\n          \"evidence_quote\": \"In particular, we compare the stability and activity of R-IrO2 to our newly discovered αIrO3 and R-IrO3 polymorphs.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_daa8c53b8eac8ae0\",\n          \"name\": \"α-IrO3\",\n          \"role\": \"newly discovered polymorph for analysis\",\n          \"amount\": null,\n          \"purity\": null,\n          \"supplier\": null,\n          \"pretreatment\": null,\n          \"evidence_quote\": \"In particular, we compare the stability and activity of R-IrO2 to our newly discovered αIrO3 and R-IrO3 polymorphs.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_daa8c53b8eac8ae0\",\n          \"name\": \"R-IrO3\",\n          \"role\": \"newly discovered polymorph for analysis\",\n          \"amount\": null,\n          \"purity\": null,\n          \"supplier\": null,\n          \"pretreatment\": null,\n          \"evidence_quote\": \"In particular, we compare the stability and activity of R-IrO2 to our newly discovered αIrO3 and R-IrO3 polymorphs.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_daa8c53b8eac8ae0\",\n          \"name\": \"β-IrO3\",\n          \"role\": \"delithiated form of β-LixIrO3 for analysis\",\n          \"amount\": null,\n          \"purity\": null,\n          \"supplier\": null,\n          \"pretreatment\": \"delithiated from β-LixIrO3\",\n          \"evidence_quote\": \"In addition, we have also computed the stability and activity of a delithiated form of a recently reported β-LixIrO3 structure, referred here to as βIrO3.3 33,49\"\n        }\n      ],\n      \"instruments\": [],\n      \"software\": [],\n      \"steps\": [\n        {\n          \"source_chunk_id\": \"mdchk_daa8c53b8eac8ae0\",\n          \"order\": 1,\n          \"action\": \"perform ab initio thermodynamic analyses\",\n          \"conditions\": [\"aqueous solution\"],\n          \"notes\": \"test OER electrochemical operational stability and activity of the most stable IrOx structures\",\n          \"evidence_quote\": \"We next performed ab initio thermodynamic analyses to test the OER electrochemical operational stability and activity of the most stable IrOx structures in aqueous solution.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_daa8c53b8eac8ae0\",\n          \"order\": 2,\n          \"action\": \"compute OER activity\",\n          \"conditions\": [\"single-site associative OER mechanism\", \"thermodynamic limiting potential analysis\", \"computational hydrogen electrode\"],\n          \"notes\": \"assuming the most common single-site associative OER mechanism\",\n          \"evidence_quote\": \"The OER activity was computed assuming the most common single-site associative OER mechanism utilizing the thermodynamic limiting potential analysis with the computational hydrogen electrode as described extensively in numerous previous works50-53 (see also Supporting Information for details).\"\n        }\n      ],\n      \"characterization\": [\n        {\n          \"source_chunk_id\": \"mdchk_d7d060917028920b\",\n          \"technique\": \"DFT calculation of OER intermediates binding energies\",\n          \"settings\": {\n            \"analysis_type\": \"thermodynamic limiting potential\",\n            \"intermediates\": [\"OH*\", \"O*\", \"OOH*\"],\n            \"reference_potential\": \"1.23 VRHE\"\n          },\n          \"output\": \"theoretical limiting potentials and overpotentials\",\n          \"evidence_quote\": \"In general, the R-IrO2 surfaces bind the OER intermediates relatively strongly, with theoretical limiting potentials of ~1.8 VRHE (overpotential of 0.57 VRHE) having the *O to *OOH potential limiting step, in agreement with previous theoretical studies.57,62,63\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_d7d060917028920b\",\n          \"technique\": \"free energy analysis of adsorption\",\n          \"settings\": {\n            \"metrics\": [\"∆Go - ∆GoH\", \"adsorption energies of OH* and O*\"]\n          },\n          \"output\": \"shift in binding energetics relative to IrO2\",\n          \"evidence_quote\": \"On average, the adsorption of OH* and O* is weakened by 0.7 and 1.2 eV relative to IrO2 (Table S4), respectively.\"\n        }\n      ],\n      \"results\": [\n        {\n          \"source_chunk_id\": \"mdchk_d7d060917028920b\",\n          \"metric\": \"theoretical limiting potential for R-IrO2\",\n          \"raw_value\": \"~1.8 VRHE\",\n          \"context\": \"overpotential of 0.57 VRHE, *O to *OOH potential limiting step\",\n          \"evidence_quote\": \"In general, the R-IrO2 surfaces bind the OER intermediates relatively strongly, with theoretical limiting potentials of ~1.8 VRHE (overpotential of 0.57 VRHE) having the *O to *OOH potential limiting step, in agreement with previous theoretical studies.57,62,63\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_d7d060917028920b\",\n          \"metric\": \"overpotential for α-IrO3 (100), (110), and (211) surfaces\",\n          \"raw_value\": \"~0.4 VRHE\",\n          \"context\": \"~0.2 VRHE improvement over R-IrO2\",\n          \"evidence_quote\": \"These surfaces have overpotentials of ~0.4 VRHE, which represents an ~0.2 VRHE improvement over R- IrO2, mirroring the observed shift in experimental onset potentials (horizontal lines).25,58\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_d7d060917028920b\",\n          \"metric\": \"overpotential for β-IrO3 (101)\",\n          \"raw_value\": \"~0.4 VRHE\",\n          \"context\": \"highest performing systems\",\n          \"evidence_quote\": \"The highest performing systems include the αIrO₃ (100), (110), and (211), followed by β-IrO3 (101), and then R-IrO3 (110). These surfaces have overpotentials of ~0.4 VRHE\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_d7d060917028920b\",\n          \"metric\": \"weakening of OH* adsorption relative to IrO2\",\n          \"raw_value\": \"0.7 eV\",\n          \"context\": \"average weakening for IrO3 polymorphs\",\n          \"evidence_quote\": \"On average, the adsorption of OH* and O* is weakened by 0.7 and 1.2 eV relative to IrO2 (Table S4), respectively.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_d7d060917028920b\",\n          \"metric\": \"weakening of O* adsorption relative to IrO2\",\n          \"raw_value\": \"1.2 eV\",\n          \"context\": \"average weakening for IrO3 polymorphs\",\n          \"evidence_quote\": \"On average, the adsorption of OH* and O* is weakened by 0.7 and 1.2 eV relative to IrO2 (Table S4), respectively.\"\n        }\n      ],\n      \"caveats\": []\n    },\n    {\n      \"source_chunk_ids\": [\"mdchk_5511a6e08cf38bc2\", \"mdchk_dd57be2f93396948\"],\n      \"protocol_name\": \"Construction of bulk Pourbaix diagram for Ir-H2O system\",\n      \"protocol_type\": \"computational\",\n      \"materials\": [\n        {\n          \"source_chunk_id\": \"mdchk_5511a6e08cf38bc2\",\n          \"name\": \"Ir\",\n          \"role\": \"species in thermodynamic equilibrium\",\n          \"amount\": null,\n          \"purity\": null,\n          \"supplier\": null,\n          \"pretreatment\": null,\n          \"evidence_quote\": \"The diagram was constructed by considering the thermodynamic equilibrium between the following species: Ir, R-IrO2, α-IrO3, R-IrO3, β-IrO3, and an aqueous dissolved IrO₄⁻ species.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_5511a6e08cf38bc2\",\n          \"name\": \"R-IrO2\",\n          \"role\": \"species in thermodynamic equilibrium\",\n          \"amount\": null,\n          \"purity\": null,\n          \"supplier\": null,\n          \"pretreatment\": null,\n          \"evidence_quote\": \"The diagram was constructed by considering the thermodynamic equilibrium between the following species: Ir, R-IrO2, α-IrO3, R-IrO3, β-IrO3, and an aqueous dissolved IrO₄⁻ species.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_5511a6e08cf38bc2\",\n          \"name\": \"α-IrO3\",\n          \"role\": \"species in thermodynamic equilibrium\",\n          \"amount\": null,\n          \"purity\": null,\n          \"supplier\": null,\n          \"pretreatment\": null,\n          \"evidence_quote\": \"The diagram was constructed by considering the thermodynamic equilibrium between the following species: Ir, R-IrO2, α-IrO3, R-IrO3, β-IrO3, and an aqueous dissolved IrO₄⁻ species.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_5511a6e08cf38bc2\",\n          \"name\": \"R-IrO3\",\n          \"role\": \"species in thermodynamic equilibrium\",\n          \"amount\": null,\n          \"purity\": null,\n          \"supplier\": null,\n          \"pretreatment\": null,\n          \"evidence_quote\": \"The diagram was constructed by considering the thermodynamic equilibrium between the following species: Ir, R-IrO2, α-IrO3, R-IrO3, β-IrO3, and an aqueous dissolved IrO₄⁻ species.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_5511a6e08cf38bc2\",\n          \"name\": \"β-IrO3\",\n          \"role\": \"species in thermodynamic equilibrium\",\n          \"amount\": null,\n          \"purity\": null,\n          \"supplier\": null,\n          \"pretreatment\": null,\n          \"evidence_quote\": \"The diagram was constructed by considering the thermodynamic equilibrium between the following species: Ir, R-IrO2, α-IrO3, R-IrO3, β-IrO3, and an aqueous dissolved IrO₄⁻ species.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_5511a6e08cf38bc2\",\n          \"name\": \"IrO₄⁻\",\n          \"role\": \"aqueous dissolved species in thermodynamic equilibrium\",\n          \"amount\": null,\n          \"purity\": null,\n          \"supplier\": null,\n          \"pretreatment\": null,\n          \"evidence_quote\": \"The diagram was constructed by considering the thermodynamic equilibrium between the following species: Ir, R-IrO2, α-IrO3, R-IrO3, β-IrO3, and an aqueous dissolved IrO₄⁻ species.\"\n        }\n      ],\n      \"instruments\": [],\n      \"software\": [],\n      \"steps\": [\n        {\n          \"source_chunk_id\": \"mdchk_5511a6e08cf38bc2\",\n          \"order\": 1,\n          \"action\": \"apply free energy correction to calculated values\",\n          \"conditions\": [],\n          \"notes\": \"to reproduce known experimental ∆Hf and ∆Gf of R-IrO2\",\n          \"evidence_quote\": \"To obtain free energies, we utilized a free energy correction to our calculated values to reproduce the known experimental ∆Hf and ∆Gf of R-IrO2.54\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_5511a6e08cf38bc2\",\n          \"order\": 2,\n          \"action\": \"construct bulk Pourbaix diagram\",\n          \"conditions\": [\"0 ≤ pH ≤ 14\", \"potentials >1.23 VRHE for OER conditions\"],\n          \"notes\": \"considering thermodynamic equilibrium between Ir, R-IrO2, α-IrO3, R-IrO3, β-IrO3, and IrO₄⁻; hydroxide phases neglected\",\n          \"evidence_quote\": \"The diagram was constructed by considering the thermodynamic equilibrium between the following species: Ir, R-IrO2, α-IrO3, R-IrO3, β-IrO3, and an aqueous dissolved IrO₄⁻ species. Here, we neglect hydroxide phases, as they were not considered in the polymorph search\"\n        }\n      ],\n      \"characterization\": [\n        {\n          \"source_chunk_id\": \"mdchk_dd57be2f93396948\",\n          \"technique\": \"bulk Pourbaix diagram construction\",\n          \"settings\": {\n            \"pH_range\": \"0 to 14\",\n            \"potential_range\": \"applied potential (UsHE)\",\n            \"species_considered\": [\"Ir(s)\", \"R-IrO₂\", \"various IrO₃ polymorphs\", \"IrO₄⁻\"]\n          },\n          \"output\": \"stability regions as function of applied potential and pH\",\n          \"evidence_quote\": \"Figure 5. Revised bulk Pourbaix diagram of the Ir-H2O system as a function of applied potential (UsHE) and pH.\"\n        }\n      ],\n      \"results\": [\n        {\n          \"source_chunk_id\": \"mdchk_5511a6e08cf38bc2\",\n          \"metric\": \"number of unique IrO3 polymorphs with nonzero bulk Pourbaix stability region\",\n          \"raw_value\": \"21\",\n          \"context\": \"0 ≤ pH ≤ 14\",\n          \"evidence_quote\": \"In total, we have discovered 21 unique IrO3 polymorphs with a nonzero bulk Pourbaix stability region (0 ≤ pH ≤ 14).\"\n        }\n      ],\n      \"caveats\": [\n        {\n          \"source_chunk_id\": \"mdchk_5511a6e08cf38bc2\",\n          \"text\": \"Hydroxide phases were not considered in the polymorph search\",\n          \"evidence_quote\": \"Here, we neglect hydroxide phases, as they were not considered in the polymorph search; for a brief discussion on the relative stability of hydroxide phases see Figure SS.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_5511a6e08cf38bc2\",\n          \"text\": \"Synthesis of IrO3 crystal phases at ambient conditions is unlikely due to highly oxidizing conditions\",\n          \"evidence_quote\": \"Because of the highly oxidizing conditions, the synthesis of the above IrO3 crystal phases at ambient conditions is unlikely.\"\n        }\n      ]\n    }\n  ]\n}\n```",
+    "salvaged_protocol_count": 0,
+    "schema_invalid": false,
+    "stop_reason": "end_turn",
+    "usage": {
+      "inputTokens": 2246,
+      "outputTokens": 3452,
+      "totalTokens": 5698
+    }
+  }
+}

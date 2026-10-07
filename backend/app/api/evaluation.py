@@ -15,13 +15,34 @@ router = APIRouter(prefix="/eval", tags=["eval"])
 @router.get("/metrics", response_model=EvalReport)
 def eval_metrics(
     k: int = Query(default=5, ge=1, le=50),
+    stage1_role: str = Query(default="validation"),
+    release_frozen_test: bool = Query(default=False),
     session: Session = Depends(get_session),
 ) -> EvalReport:
+    if settings.sdl_stage1_only:
+        from app.services.eval_service import run_stage1_evaluation
+
+        try:
+            report = run_stage1_evaluation(
+                session,
+                role=stage1_role,
+                release_frozen_test=release_frozen_test,
+                k=k,
+            )
+        except PermissionError as exc:
+            raise HTTPException(status_code=403, detail=str(exc)) from exc
+        except ValueError as exc:
+            raise HTTPException(status_code=409, detail=str(exc)) from exc
+        return _response(report)
     if not settings.eval_labels_csv.exists():
         raise HTTPException(
             status_code=404, detail=f"Eval labels not found at {settings.eval_labels_csv}"
         )
     report = run_evaluation(session, settings.eval_labels_csv, k=k)
+    return _response(report)
+
+
+def _response(report) -> EvalReport:
     return EvalReport(
         per_label=[
             EvalMetric(

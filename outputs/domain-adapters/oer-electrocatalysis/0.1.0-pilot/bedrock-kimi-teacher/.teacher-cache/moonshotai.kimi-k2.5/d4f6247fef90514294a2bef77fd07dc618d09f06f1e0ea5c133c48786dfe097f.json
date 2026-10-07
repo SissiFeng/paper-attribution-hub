@@ -1,0 +1,176 @@
+{
+  "model_id": "moonshotai.kimi-k2.5",
+  "paper_id": "DOI:10.1021_acscentsci.3c01009",
+  "prompt_version": "oer-protocol-teacher-v0.1",
+  "protocols": [
+    {
+      "caveats": [
+        {
+          "caveat_id": "caveat_32c0ddcf9892f03a",
+          "evidence_ids": [
+            "ev_1ae21962e1b47c92"
+          ],
+          "text": "However, at lower pH < 8 in the phosphate electrolytes, the potential rapidly increased within 1 h. This result suggests that the material was degraded during the OER"
+        }
+      ],
+      "characterization": [],
+      "evidence": [
+        {
+          "char_end": 1241,
+          "char_start": 1058,
+          "chunk_id": "mdchk_a1f88771d0bb56e6",
+          "document_char_end": 7328,
+          "document_char_start": 7145,
+          "evidence_id": "ev_7b9c87a57ab89e68",
+          "paper_id": "DOI:10.1021_acscentsci.3c01009",
+          "quote": "The electrocatalysts coated as thin-films on metallic titanium substrates were employed as a working electrode in a standard three-electrode setup with a 0.1 M KOH electrolyte (pH13).",
+          "source_sha256": "246af0c60717cc533677593f6c5b50eb686eab8a581ee4579fd3e4f6d8a45bb6"
+        },
+        {
+          "char_end": 451,
+          "char_start": 308,
+          "chunk_id": "mdchk_d3a141e3c4d92da0",
+          "document_char_end": 8316,
+          "document_char_start": 8173,
+          "evidence_id": "ev_ecafda0bb57cc988",
+          "paper_id": "DOI:10.1021_acscentsci.3c01009",
+          "quote": "The ECSA values for each material are used to calculate specific current densities based on surface area, i.e., specific surface activity (SA).",
+          "source_sha256": "40720794dbffe95e22b3e727b3a6555a8574761b7b9103b888198dca544a4c01"
+        },
+        {
+          "char_end": 854,
+          "char_start": 737,
+          "chunk_id": "mdchk_d3a141e3c4d92da0",
+          "document_char_end": 8719,
+          "document_char_start": 8602,
+          "evidence_id": "ev_e908966574d707a4",
+          "paper_id": "DOI:10.1021_acscentsci.3c01009",
+          "quote": "The MA and SA of the QEE materials were compared at a potential of 1.65 V vs RHE for OER, as presented in Figure 4d).",
+          "source_sha256": "40720794dbffe95e22b3e727b3a6555a8574761b7b9103b888198dca544a4c01"
+        },
+        {
+          "char_end": 1402,
+          "char_start": 1236,
+          "chunk_id": "mdchk_d3a141e3c4d92da0",
+          "document_char_end": 9267,
+          "document_char_start": 9101,
+          "evidence_id": "ev_1ae21962e1b47c92",
+          "paper_id": "DOI:10.1021_acscentsci.3c01009",
+          "quote": "However, at lower pH < 8 in the phosphate electrolytes, the potential rapidly increased within 1 h. This result suggests that the material was degraded during the OER",
+          "source_sha256": "40720794dbffe95e22b3e727b3a6555a8574761b7b9103b888198dca544a4c01"
+        },
+        {
+          "char_end": 1572,
+          "char_start": 1411,
+          "chunk_id": "mdchk_d3a141e3c4d92da0",
+          "document_char_end": 9437,
+          "document_char_start": 9276,
+          "evidence_id": "ev_98d87e328552696d",
+          "paper_id": "DOI:10.1021_acscentsci.3c01009",
+          "quote": "Based on the above results, we further investigated the OER performance of the AI22 material at a high temperature of 80 °C in 0.1 M Na-Ci and 1 M Na-Ci (pH 9.2)",
+          "source_sha256": "40720794dbffe95e22b3e727b3a6555a8574761b7b9103b888198dca544a4c01"
+        }
+      ],
+      "evidence_scope": "primary_report",
+      "instruments": [
+        {
+          "entity_id": "inst_54473047c8aee8ce",
+          "evidence_ids": [
+            "ev_7b9c87a57ab89e68"
+          ],
+          "manufacturer": null,
+          "model": null,
+          "name": "three-electrode setup",
+          "settings": {}
+        }
+      ],
+      "materials": [
+        {
+          "amount": null,
+          "entity_id": "mat_d36780a18f57134f",
+          "evidence_ids": [
+            "ev_7b9c87a57ab89e68"
+          ],
+          "name": "0.1 M KOH electrolyte",
+          "pretreatment": null,
+          "purity": null,
+          "role": "electrolyte",
+          "supplier": null
+        },
+        {
+          "amount": null,
+          "entity_id": "mat_9294770b40b2a8ba",
+          "evidence_ids": [
+            "ev_98d87e328552696d"
+          ],
+          "name": "1 M Na-Ci",
+          "pretreatment": null,
+          "purity": null,
+          "role": null,
+          "supplier": null
+        }
+      ],
+      "paper_id": "DOI:10.1021_acscentsci.3c01009",
+      "protocol_id": "protocol_4be6802fadd4a6c5",
+      "protocol_name": "Electrochemical characterization of AI22 QEE electrocatalyst for OER",
+      "protocol_type": "electrochemical",
+      "relations": [],
+      "results": [],
+      "software": [],
+      "source_chunk_ids": [
+        "mdchk_a1f88771d0bb56e6",
+        "mdchk_d3a141e3c4d92da0"
+      ],
+      "source_paper_tier": "primary_oer",
+      "steps": [
+        {
+          "action": "The electrocatalysts coated as thin-films on metallic titanium substrates were employed as a working electrode in a standard three-electrode setup with a 0.1 M KOH electrolyte (pH13).",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_7b9c87a57ab89e68"
+          ],
+          "notes": null,
+          "order": 1,
+          "step_id": "step_6f01db10eb568dba"
+        },
+        {
+          "action": "The ECSA values for each material are used to calculate specific current densities based on surface area, i.e., specific surface activity (SA).",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_ecafda0bb57cc988"
+          ],
+          "notes": "used to calculate specific current densities",
+          "order": 2,
+          "step_id": "step_73867e2feb4734b4"
+        },
+        {
+          "action": "The MA and SA of the QEE materials were compared at a potential of 1.65 V vs RHE for OER, as presented in Figure 4d).",
+          "conditions": [
+            "1.65 V vs RHE"
+          ],
+          "evidence_ids": [
+            "ev_e908966574d707a4"
+          ],
+          "notes": null,
+          "order": 3,
+          "step_id": "step_218e27b4876db331"
+        },
+        {
+          "action": "Based on the above results, we further investigated the OER performance of the AI22 material at a high temperature of 80 °C in 0.1 M Na-Ci and 1 M Na-Ci (pH 9.2)",
+          "conditions": [
+            "80 °C",
+            "0.1 M Na-Ci and 1 M Na-Ci (pH 9.2)"
+          ],
+          "evidence_ids": [
+            "ev_98d87e328552696d"
+          ],
+          "notes": null,
+          "order": 4,
+          "step_id": "step_77289961353d1666"
+        }
+      ]
+    }
+  ],
+  "schema_version": "bedrock-teacher-paper-cache-v0.1",
+  "unsupported_claim_count": 20
+}

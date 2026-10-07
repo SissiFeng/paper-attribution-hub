@@ -215,21 +215,32 @@ def build_candidate_claims(protocols: list[ProtocolUnit]) -> list[CandidateClaim
                     evidence_ids=software.evidence_ids,
                 )
         for step in protocol.steps:
+            if step.verb is None or not step.targets:
+                continue
             add(
                 protocol,
                 source_entity_id=step.step_id,
                 entity_type="step",
-                field_name="action",
-                value=step.action,
+                field_name="verb",
+                value=step.verb,
                 evidence_ids=step.evidence_ids,
             )
-            for index, condition in enumerate(step.conditions):
+            for index, target in enumerate(step.targets):
                 add(
                     protocol,
                     source_entity_id=step.step_id,
                     entity_type="step",
-                    field_name=f"conditions[{index}]",
-                    value=condition,
+                    field_name=f"targets[{index}]",
+                    value=target,
+                    evidence_ids=step.evidence_ids,
+                )
+            for key, value in sorted(step.params.items()):
+                add(
+                    protocol,
+                    source_entity_id=step.step_id,
+                    entity_type="step",
+                    field_name=f"params.{key}",
+                    value=value,
                     evidence_ids=step.evidence_ids,
                 )
             add(

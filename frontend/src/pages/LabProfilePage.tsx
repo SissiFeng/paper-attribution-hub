@@ -80,10 +80,9 @@ export default function LabProfilePage() {
 
       {profile.paper_count === 0 && (
         <div className="empty" style={{ marginTop: "0.8rem" }}>
-          No papers linked to this lab yet. Run{" "}
-          <code>python -m app.scripts.seed_sdl_labs</code> and{" "}
-          <code>python -m app.scripts.run_entity_extraction</code> in the backend
-          first, then reload.
+          No verified papers are linked to this lab yet. Paper-derived entity
+          extraction does not assign lab ownership; add authorized paper↔lab links
+          before using this profile.
         </div>
       )}
 

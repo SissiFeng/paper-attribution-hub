@@ -14,7 +14,7 @@ resource "aws_cloudfront_origin_access_control" "frontend" {
 data "aws_iam_policy_document" "frontend_oac" {
   statement {
     actions   = ["s3:GetObject"]
-    resources = ["${aws_s3_bucket.frontend.arn}/*"]
+    resources = ["${aws_s3_bucket.frontend.arn}/index.html", "${aws_s3_bucket.frontend.arn}/reading/*", "${aws_s3_bucket.frontend.arn}/assets/*.js", "${aws_s3_bucket.frontend.arn}/assets/*.css"]
 
     principals {
       type        = "Service"
@@ -40,21 +40,7 @@ resource "aws_s3_bucket_policy" "frontend_oac" {
 resource "aws_cloudfront_function" "spa_routing" {
   name    = "${local.name_prefix}-spa-routing"
   runtime = "cloudfront-js-2.0"
-  code    = <<-EOF
-    function handler(event) {
-      var request = event.request;
-      var uri = request.uri;
-
-      // If the URI contains a file extension, serve it as-is
-      if (uri.includes('.')) {
-        return request;
-      }
-
-      // Otherwise, serve index.html for SPA client-side routing
-      request.uri = '/index.html';
-      return request;
-    }
-  EOF
+  code    = file("${path.module}/../../tools/author-paper-monitor/deploy/access/routing.js")
 }
 
 # CloudFront Function for same-origin API routing. Requests sent by the SPA to
@@ -123,7 +109,7 @@ resource "aws_cloudfront_distribution" "frontend" {
 
     forwarded_values {
       query_string = true
-      headers      = ["Authorization", "Content-Type", "Origin", "X-API-Key"]
+      headers      = ["Authorization", "Content-Type", "Origin", "X-API-Key", "X-PAS-Request", "X-Jev-Key"]
 
       cookies {
         forward = "all"
@@ -162,11 +148,8 @@ resource "aws_cloudfront_distribution" "frontend" {
   }
 
   # 404 → serve index.html with 200 (fallback for any missed SPA routes)
-  custom_error_response {
-    error_code         = 404
-    response_code      = 200
-    response_page_path = "/index.html"
-  }
+  # SPA rewrites happen in the function. Preserve real API 404 responses.
+
 
   # SSL — use us-east-1 ACM certificate if domain is set; CloudFront default cert otherwise
   viewer_certificate {

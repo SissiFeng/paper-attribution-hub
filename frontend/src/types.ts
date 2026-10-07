@@ -505,9 +505,9 @@ export interface PaperFilterState {
   search?: string;
 }
 
-// Default shows AC-relevant papers only. Users can remove labels to see all.
+// The SDL Tier 1 pilot defaults to the complete classified corpus.
 export const DEFAULT_FILTER: PaperFilterState = {
-  labels: ["CORE_RELEVANT", "RELATED_RELEVANT"],
+  labels: [],
   institutionIds: [],
   topicIds: [],
   fields: [],
@@ -663,6 +663,10 @@ export interface QueueItem {
   review_assignee?: string | null;
   review_assigned_at?: string | null;
   review_assigned_by?: string | null;
+  stage1_manifest_id?: string | null;
+  stage1_role?: "train" | "validation" | "frozen_test" | "pool" | null;
+  stage1_round?: number | null;
+  stage1_ordinal?: number | null;
   rag_status?: RagStatus | null;
 }
 
@@ -906,6 +910,7 @@ export interface SqlChatOut {
     query_constraints: Record<string, unknown>;
     page_filter: Record<string, unknown>;
     page_filter_fingerprint: string;
+    base_scope_paper_count?: number;
     scope_paper_count: number;
     scope_paper_set_sha256: string;
     scope_paper_set_encoding: string;
@@ -922,6 +927,74 @@ export interface ConversationTurn {
   role: "user" | "assistant";
   content: string;
 }
+
+export type ChatAnswerKind =
+  | "verified_structured"
+  | "evidence_grounded"
+  | "partial_evidence"
+  | "insufficient_evidence";
+
+export interface ChatSource {
+  chunk_id: string;
+  paper_id: string;
+  paper_title?: string | null;
+  section_type: string;
+  section_title?: string | null;
+  text: string;
+  score?: number;
+  bm25_score?: number;
+  cosine_score?: number;
+  graph_score?: number;
+}
+
+export interface ChatScope {
+  filters: Record<string, unknown>;
+  paper_ids?: string[] | null;
+  page_context?: string | null;
+}
+
+export interface ChatMessage {
+  id: string;
+  ordinal: number;
+  role: "user" | "assistant";
+  content: string;
+  status: string;
+  answer_kind: ChatAnswerKind | null;
+  model: string | null;
+  tool_name: string | null;
+  sources: ChatSource[];
+  audit: Record<string, unknown>;
+  scope: Record<string, unknown>;
+  created_at: string;
+}
+
+export interface ChatSession {
+  id: string;
+  title: string | null;
+  scope: ChatScope;
+  created_at: string;
+  updated_at: string;
+  messages: ChatMessage[];
+}
+
+export interface WikiSynthesis {
+  id: string;
+  title: string;
+  review_status: "draft" | "reviewed" | "superseded";
+  authority: "draft_synthesis" | "reviewed_synthesis" | "superseded_synthesis";
+  generated_at: string;
+  source_metadata: Record<string, unknown>;
+  content_md: string | null;
+  content_hash: string | null;
+  is_stale: boolean;
+}
+
+export type ChatStreamEvent =
+  | { type: "status"; status: string }
+  | { type: "tool"; tool_name: string | null; status: string }
+  | { type: "message"; message: ChatMessage }
+  | { type: "done"; session_id: string }
+  | { type: "error"; detail: string };
 
 export interface RagFeedbackIn {
   query: string;
@@ -957,7 +1030,7 @@ export interface DuplicateReport {
 
 export interface MultiGraphNode {
   id: string;
-  type: "author" | "institution" | "country" | "paper" | "topic" | "method" | "funder" | "ac_core";
+  type: "author" | "institution" | "country" | "paper" | "topic" | "method" | "material" | "instrument" | "software" | "funder" | "ac_core";
   label: string;
   group: string | null;
   metadata: Record<string, unknown>;
@@ -1121,6 +1194,25 @@ export interface PeopleGrid {
   total_people: number;
 }
 
+export interface Stage1Readiness {
+  stage1_only: boolean;
+  phase:
+    | "acquiring_fulltexts"
+    | "analysis_preview"
+    | "awaiting_promotion"
+    | "classification_pilot"
+    | "validated";
+  derived_views_enabled: boolean;
+  descriptive_analytics_enabled: boolean;
+  metadata_papers: number;
+  fulltexts_imported: number;
+  split_manifest_id?: string | null;
+  split_role_counts?: Record<string, number>;
+  train_round_counts?: Record<string, number>;
+  completed_label_counts?: Record<string, number>;
+  reason: string | null;
+}
+
 // ── Research Network Growth ──────────────────────────────────────────────────
 
 export interface GrowthPoint {
@@ -1135,6 +1227,325 @@ export interface GrowthPoint {
 export interface NetworkGrowthPayload {
   yearly: GrowthPoint[];
   cumulative: GrowthPoint[];
+}
+
+export interface InstitutionComparisonPayload {
+  available: boolean;
+  scope: {
+    corpus_papers: number;
+    fulltext_papers: number;
+    papers_with_affiliations: number;
+    institution_count: number;
+    institution_paper_mentions: number;
+    extraction_coverage: number;
+  };
+  focus: {
+    name: string;
+    paper_count: number;
+    share_of_corpus: number;
+    coaffiliated_papers: number;
+  };
+  institutions: Array<{
+    name: string;
+    paper_count: number;
+    share_of_corpus: number;
+    shared_papers_with_focus: number;
+    mean_extraction_confidence: number;
+  }>;
+  yearly: Array<{
+    year: number;
+    corpus_papers: number;
+    focus_papers: number;
+    other_institution_papers: number;
+  }>;
+  audit: {
+    source: string;
+    extractor: string;
+    unit: string;
+    paper_count: string;
+    institution_paper_count: string;
+    shared_papers_with_focus: string;
+    classification_used: boolean;
+    ac_member_seed_used: boolean;
+  };
+}
+
+export interface InstitutionAuthorshipRun {
+  id: string;
+  agent_version: string;
+  status: string;
+  input_sha256: string;
+  summary: Record<string, unknown>;
+  started_at: string;
+  completed_at: string | null;
+}
+
+export interface InstitutionAuthorshipOptions {
+  corpus: { id: "tier1" | "tier1_tier2"; label: string };
+  corpora: Array<{ id: "tier1" | "tier1_tier2"; label: string }>;
+  focus: { name: string; ror: string; openalex_id: string };
+  years: number[];
+  credit_schemes: Array<{
+    value: string;
+    label: string;
+    description: string;
+  }>;
+  author_roles: Array<{ value: string; label: string; description: string }>;
+  affiliation_allocations: Array<{ value: string; label: string }>;
+  focus_scopes: Array<{ value: string; label: string }>;
+  latest_enrichment_run: InstitutionAuthorshipRun | null;
+}
+
+export interface InstitutionAuthorshipRow {
+  rank: number;
+  id: string | null;
+  name: string;
+  ror: string | null;
+  openalex_id: string | null;
+  country_code: string | null;
+  weighted_credit: number;
+  share_of_resolved_credit: number;
+  share_of_country_credit?: number;
+  paper_count: number;
+  authorship_count: number;
+  first_author_credit: number;
+  last_author_credit: number;
+  corresponding_author_credit: number;
+  sources: Record<string, number>;
+  contributes_to_focus: boolean;
+}
+
+export interface InstitutionCollaborationNode {
+  id: string;
+  institution_id: string | null;
+  name: string;
+  ror: string | null;
+  openalex_id: string | null;
+  country_code: string | null;
+  is_focus: boolean;
+  paper_count: number;
+  collaborator_count: number;
+  collaboration_paper_count: number;
+  connection_weight: number;
+  rank: number;
+}
+
+export interface InstitutionCollaborationNetwork {
+  available: boolean;
+  scope: {
+    complete_papers: number;
+    papers_with_connections: number;
+    institution_count: number;
+    connection_count: number;
+    displayed_node_count: number;
+    displayed_connection_count: number;
+    node_limit: number;
+  };
+  focus: (InstitutionCollaborationNode & {
+    institutions_with_fewer_collaborators: number;
+    fraction_of_institutions_with_fewer_collaborators: number;
+  }) | null;
+  nodes: InstitutionCollaborationNode[];
+  edges: Array<{ source: string; target: string; paper_count: number }>;
+  ranking: InstitutionCollaborationNode[];
+  method: {
+    paper_scope: string;
+    connection_rule: string;
+    collaborator_count_rule: string;
+    edge_weight_rule: string;
+    focus_identity_rule: string;
+  };
+}
+
+export interface InstitutionAuthorshipReport {
+  available: boolean;
+  scope: {
+    corpus_papers: number;
+    papers_with_authorship_metadata: number;
+    papers_with_complete_institution_membership: number;
+    papers_with_incomplete_institution_membership: number;
+    papers_without_authorship_metadata: number;
+    paper_institution_membership_coverage: number;
+    authorship_metadata_rows: number;
+    selected_authorships: number;
+    authorships_with_resolved_affiliations: number;
+    selected_author_credit: number;
+    resolved_author_credit: number;
+    affiliation_credit_coverage: number;
+    unresolved_affiliation_assertions: number;
+    below_threshold_affiliation_assertions: number;
+    institution_count: number;
+  };
+  focus: {
+    name: string;
+    ror: string;
+    openalex_id: string;
+    weighted_credit: number;
+    paper_count: number;
+    share_of_corpus_papers: number;
+    share_of_resolved_credit: number;
+    rank: number | null;
+  };
+  comparison: {
+    other_institutions_weighted_credit: number;
+    other_institutions_paper_count: number;
+    focus_to_other_credit_ratio: number | null;
+  };
+  institutions: InstitutionAuthorshipRow[];
+  yearly: Array<{
+    year: number;
+    corpus_papers: number;
+    focus_papers: number;
+    focus_paper_share_of_corpus: number;
+    other_institution_papers: number;
+    focus_weighted_credit: number;
+    other_weighted_credit: number;
+  }>;
+  network: InstitutionCollaborationNetwork;
+  configuration: {
+    corpus: "tier1" | "tier1_tier2";
+    credit_scheme: string;
+    author_role: string;
+    affiliation_allocation: string;
+    focus_scope: string;
+    focus_ror: string;
+    focus_openalex_id: string;
+    paper_count_rule: string;
+    min_affiliation_confidence: number;
+    credit_scheme_label: string;
+    credit_scheme_description: string;
+    author_role_label: string;
+    author_role_description: string;
+  };
+  audit: {
+    filter: Record<string, unknown>;
+    filter_fingerprint: string;
+    paper_set_sha256: string;
+    paper_set_encoding: string;
+    included_papers: number;
+    algorithm: string;
+    metric_definitions: Record<string, string>;
+    filter_semantics: Record<string, string>;
+    data_boundary: {
+      mode: "metadata_only_s3_snapshot";
+      included: string[];
+      excluded: string[];
+    };
+    snapshot: {
+      bucket: string | null;
+      manifest_key: string;
+      manifest_sha256: string;
+      snapshot_id: string | null;
+      raw_prefix: string | null;
+      fulltext_prefix: string | null;
+      separation_verified: boolean;
+    };
+    projection: Record<string, unknown>;
+    projection_fingerprint: string;
+    source_breakdown: Record<string, number>;
+    generated_at: string;
+  };
+}
+
+export interface MetadataGeographicYear {
+  year: number;
+  paper_count: number;
+  cross_country_paper_count: number;
+}
+
+export interface MetadataGeographicCountry {
+  country_code: string;
+  paper_count: number;
+  institution_count: number;
+  authorship_count: number;
+  cross_country_paper_count: number;
+  yearly: MetadataGeographicYear[];
+}
+
+export interface MetadataGeographicCollaboration {
+  source: string;
+  target: string;
+  paper_count: number;
+}
+
+export interface MetadataGeographicScope {
+  corpus_papers: number;
+  mapped_papers: number;
+  unmapped_papers: number;
+  paper_country_coverage: number;
+  papers_without_authorship_metadata: number;
+  authorship_metadata_rows: number;
+  eligible_country_affiliation_assertions: number;
+  missing_country_affiliation_assertions: number;
+  unresolved_affiliation_assertions: number;
+  below_threshold_affiliation_assertions: number;
+  country_count: number;
+  institution_count: number;
+  cross_country_papers: number;
+}
+
+export interface MetadataGeographicAudit {
+  filter: Record<string, unknown>;
+  filter_fingerprint: string;
+  paper_set_sha256: string;
+  paper_set_encoding: string;
+  included_papers: number;
+  algorithm: string;
+  metric_definitions: Record<string, string>;
+  filter_semantics: Record<string, string>;
+  data_boundary: {
+    mode: "metadata_only_s3_snapshot";
+    included: string[];
+    excluded: string[];
+  };
+  snapshot: {
+    bucket: string | null;
+    manifest_key: string;
+    manifest_sha256: string;
+    snapshot_id: string | null;
+    raw_prefix: string | null;
+    fulltext_prefix: string | null;
+    separation_verified: boolean;
+  };
+  projection: Record<string, unknown>;
+  projection_fingerprint: string;
+  country_paper_set_sha256?: string;
+  generated_at: string;
+}
+
+export interface MetadataGeographicOverview {
+  available: boolean;
+  scope: MetadataGeographicScope;
+  countries: MetadataGeographicCountry[];
+  collaborations: MetadataGeographicCollaboration[];
+  configuration: Record<string, unknown>;
+  audit: MetadataGeographicAudit;
+}
+
+export interface MetadataGeographicCountryDetail {
+  available: boolean;
+  country: MetadataGeographicCountry;
+  institutions: InstitutionAuthorshipRow[];
+  collaborations: MetadataGeographicCollaboration[];
+  scope: MetadataGeographicScope & {
+    country_papers: number;
+    country_institutions: number;
+    country_authorships: number;
+    country_weighted_credit: number;
+  };
+  configuration: {
+    country_code: string;
+    credit_scheme: string;
+    author_role: string;
+    affiliation_allocation: string;
+    paper_count_rule: string;
+    min_affiliation_confidence: number;
+    credit_scheme_label: string;
+    credit_scheme_description: string;
+    author_role_label: string;
+    author_role_description: string;
+  };
+  audit: MetadataGeographicAudit;
 }
 
 /** ECharts themeRiver format: [year_string, count, topic_name] */
@@ -1357,6 +1768,37 @@ export interface WikiSection {
   chips?: WikiChip[];
 }
 
+export interface WikiEvidenceRequirement {
+  evidence_id: string;
+  polarity: "supporting" | "contradicting";
+  provider: string;
+  source_record_id: string;
+  source_uri: string | null;
+  content_hash: string | null;
+  temporal_status: string;
+  source_chunk_id: string | null;
+  page_start: number | null;
+  page_end: number | null;
+}
+
+export interface WikiSourceMetadata {
+  schema_version?: string;
+  compiler_version?: string;
+  projection_mode?: "attribution_skill" | "legacy_projection" | "compile_interruption";
+  attribution_status?: string;
+  decision?: "ATTRIBUTED" | "NOT_ATTRIBUTED" | "REVIEW_REQUIRED" | null;
+  authority?: "machine_provisional" | "human_confirmed" | "policy_override";
+  relevance_label?: string | null;
+  invocation_id?: string;
+  packet_id?: string;
+  policy_version?: string;
+  input_snapshot_fresh?: boolean | null;
+  current_input_content_hash?: string | null;
+  review_action?: string | null;
+  evidence_requirements?: WikiEvidenceRequirement[];
+  [key: string]: unknown;
+}
+
 export interface WikiPage {
   id: string;
   entity_type: WikiEntityType;
@@ -1366,5 +1808,10 @@ export interface WikiPage {
   generated_at: string;
   model_version: string;
   prompt_version: string;
+  content_md: string | null;
+  source_snapshot_hash: string | null;
+  content_hash: string | null;
+  source_metadata: WikiSourceMetadata;
+  compile_status: "complete" | "interrupted";
   is_stale: boolean;
 }

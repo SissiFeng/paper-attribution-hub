@@ -17,6 +17,11 @@ import type {
   ImpactReport,
   InstTopicHeatmapPayload,
   InstitutionNetworkPayload,
+  InstitutionComparisonPayload,
+  InstitutionAuthorshipOptions,
+  InstitutionAuthorshipReport,
+  MetadataGeographicCountryDetail,
+  MetadataGeographicOverview,
   LintReport,
   MissedPaperGroup,
   ModelEvolutionStatus,
@@ -32,6 +37,7 @@ import type {
   RagFeedbackIn,
   ReportResult,
   SankeyPayload,
+  Stage1Readiness,
   TimelinePayload,
   TopicStreamPayload,
   AdoptionLag,
@@ -45,18 +51,23 @@ import type {
   TransferTku,
   TransferDesign,
   WikiPage,
+  ChatMessage,
+  ChatScope,
+  ChatSession,
+  ChatStreamEvent,
+  WikiSynthesis,
 } from "@/types";
 import * as mock from "@/lib/mock";
 import {
   canonicalFilterSearchParams,
   paperFilterPayloadFromSearchParams,
 } from "@/lib/filter";
-
-const API_BASE = (import.meta.env.VITE_API_BASE ?? "http://localhost:8000").replace(/\/$/, "");
-const PAPER_API_BASE = (
-  import.meta.env.VITE_PAPER_API_BASE ?? API_BASE
-).replace(/\/$/, "");
-const USE_MOCK = import.meta.env.VITE_USE_MOCK === "true";
+import {
+  API_BASE,
+  INSTITUTION_API_BASE,
+  PAPER_API_BASE,
+  USE_MOCK,
+} from "@/lib/runtime";
 
 async function request<T>(
   path: string,
@@ -65,8 +76,10 @@ async function request<T>(
 ): Promise<T> {
   if (USE_MOCK) throw new Error("mock");
   const res = await fetch(`${base}${path}`, {
-    headers: { "Content-Type": "application/json" },
+    credentials: "same-origin",
+    cache: "no-store",
     ...init,
+    headers: { "Content-Type": "application/json", "X-PAS-Request": "1", ...init?.headers },
   });
   if (!res.ok) {
     const text = await res.text();
@@ -96,6 +109,18 @@ export function listPapers(search?: URLSearchParams) {
 export function getPaper(paperId: string) {
   const encodedPaperId = encodeURIComponent(paperId);
   return request<Paper>(`/papers/${encodedPaperId}`, undefined, PAPER_API_BASE);
+}
+
+export function listPublicPapers(search: URLSearchParams) {
+  return request<Paper[]>(`/catalog/paper-view?${search}`, undefined, PAPER_API_BASE);
+}
+
+export function getPublicPaper(paperId: string) {
+  return request<Paper>(`/catalog/papers/${encodeURIComponent(paperId)}/view`, undefined, PAPER_API_BASE);
+}
+
+export function getPublicWiki(paperId: string) {
+  return request<WikiPage>(`/catalog/papers/${encodeURIComponent(paperId)}/wiki`, undefined, PAPER_API_BASE);
 }
 
 export function getSankey(search?: URLSearchParams) {
@@ -380,6 +405,25 @@ export function getReviewQueueSize(params: {
   );
 }
 
+export function getStage1Readiness() {
+  return withMock(
+    () => request<Stage1Readiness>("/stage1/readiness"),
+    {
+      stage1_only: false,
+      phase: "validated",
+      derived_views_enabled: true,
+      descriptive_analytics_enabled: true,
+      metadata_papers: mock.MOCK_PAPERS.length,
+      fulltexts_imported: mock.MOCK_PAPERS.length,
+      split_manifest_id: null,
+      split_role_counts: {},
+      train_round_counts: {},
+      completed_label_counts: {},
+      reason: null,
+    }
+  );
+}
+
 export function updateReviewAssignment(
   paperId: string,
   payload: { assignee?: string | null; assigned_by?: string },
@@ -556,6 +600,101 @@ export function getNetworkGrowth(params: { year_from?: number; year_to?: number 
   );
 }
 
+export function getInstitutionComparison(
+  focus: string = "University of Toronto",
+  params: { year_from?: number; year_to?: number; limit?: number } = {},
+) {
+  const sp = new URLSearchParams({ focus });
+  if (params.year_from != null) sp.set("year_from", String(params.year_from));
+  if (params.year_to != null) sp.set("year_to", String(params.year_to));
+  if (params.limit != null) sp.set("limit", String(params.limit));
+  return request<InstitutionComparisonPayload>(
+    `/analytics/institution-comparison?${sp.toString()}`,
+  );
+}
+
+export function getInstitutionAuthorshipOptions(corpus = "tier1") {
+  const params = new URLSearchParams({ corpus });
+  return request<InstitutionAuthorshipOptions>(
+    `/institution-authorship/options?${params.toString()}`,
+    undefined,
+    INSTITUTION_API_BASE,
+  );
+}
+
+export function getInstitutionAuthorshipReport(search?: URLSearchParams) {
+  const qs = search?.toString() ?? "";
+  return request<InstitutionAuthorshipReport>(
+    `/institution-authorship/report${qs ? `?${qs}` : ""}`,
+    undefined,
+    INSTITUTION_API_BASE,
+  );
+}
+
+export function institutionAuthorshipExportUrl(search?: URLSearchParams) {
+  const params = new URLSearchParams(search);
+  params.set("limit", "200");
+  const qs = params.toString();
+  return `${INSTITUTION_API_BASE}/institution-authorship/export.csv${qs ? `?${qs}` : ""}`;
+}
+
+export function tier1AuthorInstitutionMetadataExportUrl() {
+  return `${INSTITUTION_API_BASE}/institution-authorship/author-institution-map.csv?corpus=tier1`;
+}
+
+const METADATA_GEOGRAPHIC_FILTERS = [
+  "year_from",
+  "year_to",
+  "search",
+  "min_affiliation_confidence",
+] as const;
+
+function metadataGeographicSearchParams(
+  search?: URLSearchParams,
+  includeComparison = false,
+) {
+  const params = new URLSearchParams();
+  for (const key of METADATA_GEOGRAPHIC_FILTERS) {
+    const value = search?.get(key);
+    if (value) params.set(key, value);
+  }
+  if (includeComparison) {
+    for (const key of [
+      "credit_scheme",
+      "author_role",
+      "affiliation_allocation",
+      "limit",
+    ]) {
+      const value = search?.get(key);
+      if (value) params.set(key, value);
+    }
+  }
+  return params;
+}
+
+export function getMetadataGeographic(search?: URLSearchParams) {
+  const qs = metadataGeographicSearchParams(search).toString();
+  return request<MetadataGeographicOverview>(
+    `/institution-authorship/geographic${qs ? `?${qs}` : ""}`,
+    undefined,
+    INSTITUTION_API_BASE,
+  );
+}
+
+export function getMetadataGeographicCountry(
+  countryCode: string,
+  search?: URLSearchParams,
+) {
+  const qs = metadataGeographicSearchParams(search, true).toString();
+  return request<MetadataGeographicCountryDetail>(
+    `/institution-authorship/geographic/countries/${encodeURIComponent(countryCode)}${
+      qs ? `?${qs}` : ""
+    }`,
+    undefined,
+    INSTITUTION_API_BASE,
+  );
+}
+
 export function getTopicStream(params: { year_from?: number; year_to?: number } = {}) {
   const sp = new URLSearchParams();
   if (params.year_from != null) sp.set("year_from", String(params.year_from));
@@ -721,8 +860,21 @@ const MOCK_WIKI_PAGE = (paperId: string): WikiPage => ({
     },
   ],
   generated_at: new Date().toISOString(),
-  model_version: "—",
-  prompt_version: "v0.1",
+  model_version: "template-evidence-v0.2",
+  prompt_version: "deterministic-v0.2",
+  content_md: null,
+  source_snapshot_hash: null,
+  content_hash: null,
+  source_metadata: {
+    schema_version: "pas-wiki-source-v0.2",
+    projection_mode: "legacy_projection",
+    attribution_status: "NOT_INVOKED",
+    decision: null,
+    authority: "machine_provisional",
+    input_snapshot_fresh: null,
+    evidence_requirements: [],
+  },
+  compile_status: "complete",
   is_stale: true,
 });
 
@@ -744,6 +896,7 @@ export function compileWikiPage(paperId: string) {
 
 export function retrieveAnswer(params: {
   query: string;
+  search_query?: string | null;
   top_k?: number;
   alpha?: number;
   year_from?: number | null;
@@ -844,6 +997,139 @@ export function submitRagFeedback(payload: RagFeedbackIn) {
     method: "POST",
     body: JSON.stringify(payload),
   });
+}
+
+export function createChatSession(scope: ChatScope, title?: string) {
+  if (USE_MOCK) {
+    const now = new Date().toISOString();
+    return Promise.resolve({
+      id: globalThis.crypto?.randomUUID?.() ?? `mock-${Date.now()}`,
+      title: title ?? null,
+      scope,
+      created_at: now,
+      updated_at: now,
+      messages: [],
+    } satisfies ChatSession);
+  }
+  return request<ChatSession>("/chat/sessions", {
+    method: "POST",
+    body: JSON.stringify({ title, scope }),
+  });
+}
+
+export function getChatSession(sessionId: string) {
+  return request<ChatSession>(`/chat/sessions/${encodeURIComponent(sessionId)}`);
+}
+
+export function archiveWikiSynthesis(chatMessageId: string, title?: string) {
+  if (USE_MOCK) {
+    const now = new Date().toISOString();
+    return Promise.resolve({
+      id: `mock-synthesis-${chatMessageId}`,
+      title: title ?? "Archived synthesis",
+      review_status: "draft",
+      authority: "draft_synthesis",
+      generated_at: now,
+      source_metadata: { chat_message_id: chatMessageId },
+      content_md: null,
+      content_hash: null,
+      is_stale: false,
+    } satisfies WikiSynthesis);
+  }
+  return request<WikiSynthesis>("/wiki/syntheses", {
+    method: "POST",
+    body: JSON.stringify({ chat_message_id: chatMessageId, title }),
+  });
+}
+
+export async function streamChatMessage(
+  sessionId: string,
+  payload: { query: string; scope: ChatScope },
+  onEvent: (event: ChatStreamEvent) => void,
+  signal?: AbortSignal,
+): Promise<ChatMessage> {
+  if (USE_MOCK) {
+    const message: ChatMessage = {
+      id: `mock-${Date.now()}`,
+      ordinal: 2,
+      role: "assistant",
+      content: "(Mock) Connect the backend to query the Tier 1 corpus.",
+      status: "complete",
+      answer_kind: "insufficient_evidence",
+      model: "mock",
+      tool_name: "search_fulltext_evidence",
+      sources: [],
+      audit: { read_only: true, llm_used: false },
+      scope: {},
+      created_at: new Date().toISOString(),
+    };
+    onEvent({ type: "status", status: "reasoning" });
+    onEvent({ type: "message", message });
+    onEvent({ type: "done", session_id: sessionId });
+    return message;
+  }
+
+  const response = await fetch(
+    `${API_BASE}/chat/sessions/${encodeURIComponent(sessionId)}/messages/stream`,
+    {
+      method: "POST",
+      credentials: "same-origin",
+      cache: "no-store",
+      headers: { "Content-Type": "application/json", "X-PAS-Request": "1", Accept: "text/event-stream" },
+      body: JSON.stringify(payload),
+      signal,
+    },
+  );
+  if (!response.ok) {
+    const detail = await response.text();
+    throw new Error(`${response.status} ${response.statusText}: ${detail}`);
+  }
+  if (!response.body) throw new Error("The chat stream did not return a body.");
+
+  const reader = response.body.getReader();
+  const decoder = new TextDecoder();
+  let buffer = "";
+  let finalMessage: ChatMessage | null = null;
+
+  const processBlock = (block: string) => {
+    const data = block
+      .split("\n")
+      .filter((line) => line.startsWith("data: "))
+      .map((line) => line.slice(6))
+      .join("\n");
+    if (!data) return;
+    const event = JSON.parse(data) as ChatStreamEvent;
+    onEvent(event);
+    if (event.type === "message") finalMessage = event.message;
+    if (event.type === "error") throw new Error(event.detail);
+  };
+
+  while (true) {
+    const { done, value } = await reader.read();
+    buffer += decoder.decode(value, { stream: !done });
+    let boundary = buffer.indexOf("\n\n");
+    while (boundary >= 0) {
+      processBlock(buffer.slice(0, boundary));
+      buffer = buffer.slice(boundary + 2);
+      boundary = buffer.indexOf("\n\n");
+    }
+    if (done) break;
+  }
+  if (buffer.trim()) processBlock(buffer);
+  if (!finalMessage) throw new Error("The chat stream ended without an answer.");
+  return finalMessage;
+}
+
+export function chatScopeFromPage(
+  search?: URLSearchParams,
+  paperId?: string | null,
+  pageContext?: string | null,
+): ChatScope {
+  return {
+    filters: paperFilterPayloadFromSearchParams(search),
+    paper_ids: paperId ? [paperId] : null,
+    page_context: pageContext ?? null,
+  };
 }
 
 export { API_BASE };

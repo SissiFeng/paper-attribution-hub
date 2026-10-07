@@ -1,0 +1,109 @@
+{
+  "claims_boundary": "This compares student agreement with package targets. It is not an independent human assessment of scientific completeness.",
+  "config": {
+    "correction_epochs": 1,
+    "learning_rate": 5e-05,
+    "max_new_tokens": 64,
+    "max_sequence_length": 512,
+    "sft_epochs": 1
+  },
+  "device": "mps",
+  "method_label": "student-error-conditioned sequence distillation; not reverse-KL GKD",
+  "metrics": {
+    "base": {
+      "exact_match_rate": 0.0,
+      "field_f1": 0.0,
+      "field_precision": 0.0,
+      "field_recall": 0.0,
+      "grounded_leaf_rate": 0.0,
+      "json_valid_rate": 0.0,
+      "task_count": 2
+    },
+    "matched_static_sft": {
+      "exact_match_rate": 0.0,
+      "field_f1": 0.0,
+      "field_precision": 0.0,
+      "field_recall": 0.0,
+      "grounded_leaf_rate": 0.0,
+      "json_valid_rate": 0.0,
+      "task_count": 2
+    },
+    "on_policy_hard_sft": {
+      "exact_match_rate": 0.0,
+      "field_f1": 0.0,
+      "field_precision": 0.0,
+      "field_recall": 0.0,
+      "grounded_leaf_rate": 0.0,
+      "json_valid_rate": 0.0,
+      "task_count": 2
+    },
+    "static_sft": {
+      "exact_match_rate": 0.0,
+      "field_f1": 0.0,
+      "field_precision": 0.0,
+      "field_recall": 0.0,
+      "grounded_leaf_rate": 0.0,
+      "json_valid_rate": 0.0,
+      "task_count": 2
+    }
+  },
+  "model_id": "HuggingFaceTB/SmolLM2-360M-Instruct",
+  "package": "../outputs/domain-adapters/oer-electrocatalysis/0.1.0-pilot/heuristic-baseline",
+  "package_extraction": {
+    "extractor": "oer_high_precision_rules_v0.1",
+    "mode": "heuristic_baseline",
+    "model": null,
+    "prompt_version": null
+  },
+  "promotion": {
+    "comparison": "on_policy_hard_sft_vs_matched_static_sft",
+    "promoted": false,
+    "rule": "field_f1 must improve without reducing JSON validity or grounded leaf rate"
+  },
+  "schema_version": "domain-distillation-experiment-v0.1",
+  "seed": 23,
+  "selection": {
+    "eligible_evaluation_task_count": 27,
+    "eligible_train_task_count": 15,
+    "evaluation_task_ids": [
+      "2409f51f84bfb36f4fdc0c38640dc9eb32ac7a3dca5a76001898c8b4eb2aeef1",
+      "09dfae9917e1009921d108520c5bd928e23929136a896179dd5f2c57fca5452b"
+    ],
+    "hard_task_ids": [
+      "266fed3416fac58710657347999736c5f0135e753241e94ff3532ee268b3b102"
+    ],
+    "matched_control_task_ids": [
+      "2f8b290933eb3f9a883852161aed2823ef779c0eee49a15f32ba3a2e627d6cb4"
+    ],
+    "raw_evaluation_task_count": 49,
+    "raw_train_task_count": 29,
+    "train_task_ids": [
+      "2f8b290933eb3f9a883852161aed2823ef779c0eee49a15f32ba3a2e627d6cb4",
+      "266fed3416fac58710657347999736c5f0135e753241e94ff3532ee268b3b102"
+    ]
+  },
+  "training": {
+    "matched_static_sft": {
+      "losses": [
+        1.2470035552978516
+      ],
+      "mean_loss": 1.2470035552978516,
+      "steps": 1
+    },
+    "on_policy_hard_sft": {
+      "losses": [
+        0.11593940109014511
+      ],
+      "mean_loss": 0.11593940109014511,
+      "steps": 1
+    },
+    "static_sft": {
+      "losses": [
+        0.27551040053367615,
+        1.3645130395889282
+      ],
+      "mean_loss": 0.8200117200613022,
+      "steps": 2
+    }
+  }
+}

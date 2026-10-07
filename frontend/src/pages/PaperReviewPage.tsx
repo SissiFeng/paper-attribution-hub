@@ -4,14 +4,14 @@ import { Link, useSearchParams } from "react-router-dom";
 import { EvidencePanel } from "@/components/EvidencePanel";
 import { FilterBar } from "@/components/FilterBar";
 import { PaperTable } from "@/components/PaperTable";
-import { listPapers } from "@/lib/api";
+import { getStage1Readiness, listPapers, listPublicPapers } from "@/lib/api";
 import { filterFromSearchParams, filterToSearchParams } from "@/lib/filter";
 import {
   isLatestRequest,
   resultForScope,
   type ScopedResult,
 } from "@/lib/scopedResult";
-import type { Paper } from "@/types";
+import type { Paper, Stage1Readiness } from "@/types";
 
 const LABEL_COLORS: Record<string, string> = {
   CORE_RELEVANT: "#34d399",
@@ -22,11 +22,12 @@ const LABEL_COLORS: Record<string, string> = {
   EXCLUDE: "#9aa3b2",
 };
 
-export default function PaperReviewPage() {
+export default function PaperReviewPage({ readOnly = false }: { readOnly?: boolean }) {
   const [searchParams] = useSearchParams();
   const [error, setError] = useState<string | null>(null);
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
+  const [readiness, setReadiness] = useState<Stage1Readiness | null>(null);
   const [offset, setOffset] = useState(0);
   const PAGE_SIZE = 50;
   const searchKey = searchParams.toString();
@@ -44,13 +45,32 @@ export default function PaperReviewPage() {
     setLoading(true);
     setError(null);
     try {
+      const stage1 = readOnly ? null : await getStage1Readiness();
+      setReadiness(stage1);
       // Apply filterFromSearchParams so DEFAULT_FILTER.labels are included
       // even when the URL has no ?labels= params (fresh page load).
       const requestFilter = filterFromSearchParams(new URLSearchParams(searchKey));
+      if (stage1?.stage1_only && !stage1.derived_views_enabled) {
+        requestFilter.labels = [];
+        requestFilter.institutionIds = [];
+        requestFilter.topicIds = [];
+        requestFilter.fields = [];
+        requestFilter.countries = [];
+        requestFilter.corpusSources = ["STRICT_SDL_KEYWORD"];
+        requestFilter.sdlJudgements = [];
+        requestFilter.acRelevanceJudgements = [];
+        requestFilter.aiForScienceJudgements = [];
+        requestFilter.reviewStatuses = [];
+        requestFilter.partnerOnly = false;
+        requestFilter.acAuthorOnly = false;
+        requestFilter.hasReview = undefined;
+        requestFilter.minConfidence = undefined;
+        requestFilter.maxConfidence = undefined;
+      }
       const params = filterToSearchParams(requestFilter);
       params.set("limit", String(PAGE_SIZE));
       params.set("offset", String(offset));
-      const fetched = await listPapers(params);
+      const fetched = await (readOnly ? listPublicPapers : listPapers)(params);
       if (isLatestRequest(generation, requestGeneration.current)) {
         setPapersResult({ scopeKey, payload: fetched });
         // Do NOT auto-select — drawer only opens when user explicitly clicks a row
@@ -64,7 +84,7 @@ export default function PaperReviewPage() {
     } finally {
       if (isLatestRequest(generation, requestGeneration.current)) setLoading(false);
     }
-  }, [offset, scopeKey, searchKey]);
+  }, [offset, scopeKey, searchKey, readOnly]);
 
   useEffect(() => {
     setOffset(0); // reset page when filter changes
@@ -91,6 +111,9 @@ export default function PaperReviewPage() {
 
   const activeLabels = filter.labels;
   const isDefaultView = activeLabels.includes("CORE_RELEVANT") && activeLabels.includes("RELATED_RELEVANT") && activeLabels.length === 2;
+  const acquiringTier1 = Boolean(
+    readiness?.stage1_only && !readiness.derived_views_enabled,
+  );
 
   return (
     <div>
@@ -99,17 +122,19 @@ export default function PaperReviewPage() {
         <div>
           <h1>Papers</h1>
           <p style={{ color: "var(--muted)", fontSize: "0.85rem" }}>
-            {isDefaultView
+            {readOnly ? 'Browse publications, classification evidence and Wiki. Open a paper for reading and personal research.' : acquiringTier1
+              ? `Authoritative Zotero SDL Tier 1 papers with PDF attachments only. ${readiness?.fulltexts_imported ?? 0} of ${readiness?.metadata_papers ?? 0} papers currently have verified Markdown imported from S3.`
+              : isDefaultView
               ? "Showing AC-attributed papers (CORE + RELATED). Use label filters below to explore other categories."
               : `Filtered by: ${activeLabels.length === 0 ? "all labels" : activeLabels.map(l => l.replace(/_/g, " ")).join(", ")}`}
           </p>
         </div>
       </div>
 
-      <FilterBar />
+      {!acquiringTier1 && <FilterBar readOnly={readOnly} />}
 
       {/* Stats row */}
-      {papers.length > 0 && (
+      {papers.length > 0 && !acquiringTier1 && (
         <div style={{ display: "flex", gap: 12, flexWrap: "wrap", margin: "0.5rem 0 1rem", fontSize: "0.8rem" }}>
           {Object.entries(labelCounts).map(([label, count]) => (
             <span key={label} style={{
@@ -128,6 +153,15 @@ export default function PaperReviewPage() {
         </div>
       )}
 
+      {papers.length > 0 && acquiringTier1 && (
+        <div style={{ display: "flex", gap: 12, flexWrap: "wrap", margin: "0.5rem 0 1rem", fontSize: "0.8rem" }}>
+          <span className="status-chip success">Zotero Tier 1 only</span>
+          <span className="status-chip">{readiness?.metadata_papers ?? 0} PDF-backed papers</span>
+          <span className="status-chip">{readiness?.fulltexts_imported ?? 0} S3 Markdown imports</span>
+          {loading && <span style={{ color: "var(--muted)" }}>Loading…</span>}
+        </div>
+      )}
+
       {error && (
         <div style={{ color: "var(--uncertain)", marginBottom: "1rem" }}>
           Backend error: {error}.
@@ -140,6 +174,8 @@ export default function PaperReviewPage() {
         papers={papers}
         selectedId={selectedId}
         onSelect={(p) => setSelectedId(p.id)}
+        metadataOnly={acquiringTier1}
+        readOnly={readOnly}
       />
 
       {/* Pagination */}
@@ -186,7 +222,7 @@ export default function PaperReviewPage() {
               top: 0,
               right: 0,
               bottom: 0,
-              width: "min(52vw, 780px)",
+              width: "min(100vw, max(52vw, 560px), 780px)",
               zIndex: 201,
               background: "var(--surface, #fff)",
               borderLeft: "1px solid var(--border, #d1dce8)",
@@ -234,24 +270,27 @@ export default function PaperReviewPage() {
                 </div>
               </div>
               <div style={{ display: "flex", alignItems: "center", gap: 8, flexShrink: 0 }}>
-                <Link
-                  to={`/papers/${encodeURIComponent(selected.id)}/evidence-map`}
-                  style={{
-                    display: "inline-flex",
-                    alignItems: "center",
-                    minHeight: 28,
-                    padding: "4px 9px",
-                    border: "1px solid var(--border, #d1dce8)",
-                    borderRadius: 6,
-                    background: "var(--accent-bg)",
-                    color: "var(--text)",
-                    fontSize: 10,
-                    fontWeight: 600,
-                    whiteSpace: "nowrap",
-                  }}
-                >
-                  Evidence map ↗
-                </Link>
+                <Link to={`/papers/${encodeURIComponent(selected.id)}`}>Open paper</Link>
+                {!readOnly && !acquiringTier1 && (
+                  <Link
+                    to={`/papers/${encodeURIComponent(selected.id)}/evidence-map`}
+                    style={{
+                      display: "inline-flex",
+                      alignItems: "center",
+                      minHeight: 28,
+                      padding: "4px 9px",
+                      border: "1px solid var(--border, #d1dce8)",
+                      borderRadius: 6,
+                      background: "var(--accent-bg)",
+                      color: "var(--text)",
+                      fontSize: 10,
+                      fontWeight: 600,
+                      whiteSpace: "nowrap",
+                    }}
+                  >
+                    Evidence map ↗
+                  </Link>
+                )}
                 <button
                   onClick={() => setSelectedId(null)}
                   title="Close"
@@ -275,7 +314,33 @@ export default function PaperReviewPage() {
 
             {/* Scrollable body */}
             <div style={{ flex: 1, overflowY: "auto", padding: "0 20px 24px" }}>
-              <EvidencePanel paper={selected} onReviewed={() => void load()} />
+              {acquiringTier1 ? (
+                <div className="v7-card" style={{ marginTop: 20 }}>
+                  <div className="review-kicker">Verified source</div>
+                  <h3>Zotero SDL Tier 1</h3>
+                  <p style={{ color: "var(--muted)" }}>
+                    {selected.full_text_available
+                      ? "The paper's Markdown has been imported from the verified Zotero S3 path."
+                      : "PDF-backed Zotero papers are loaded; Markdown import is still pending."}
+                  </p>
+                  <dl>
+                    <dt>Authors</dt>
+                    <dd>{selected.authors.map((author) => author.name).join(", ") || "—"}</dd>
+                    <dt>DOI</dt>
+                    <dd>{selected.doi || "—"}</dd>
+                    <dt>Corpus source</dt>
+                    <dd>{selected.corpus_sources?.join(", ") || "—"}</dd>
+                  </dl>
+                  {selected.abstract && (
+                    <>
+                      <div className="review-kicker" style={{ marginTop: 20 }}>Abstract</div>
+                      <p>{selected.abstract}</p>
+                    </>
+                  )}
+                </div>
+              ) : (
+                <EvidencePanel key={selected.id} paper={selected} readOnly={readOnly} onReviewed={() => void load()} />
+              )}
             </div>
           </div>
         </>

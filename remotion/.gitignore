@@ -1,0 +1,4 @@
+node_modules/
+.remotion/
+out/
+data/visual-story.snapshot.json

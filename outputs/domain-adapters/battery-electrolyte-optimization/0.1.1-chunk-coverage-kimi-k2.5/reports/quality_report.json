@@ -1,0 +1,252 @@
+{
+  "chunking": {
+    "exact_source_segment_provenance": true,
+    "max_chars_safety_limit": 6000,
+    "min_merge_chars": 800,
+    "schema_version": "domain-adapter-scientific-chunk-v0.1",
+    "source_blocks_immutable": true,
+    "strategy": "structure_first_semantic"
+  },
+  "claims_boundary": "Heuristic output is a baseline unless extraction.mode is teacher. Tasks are extractive and do not advise future experiments.",
+  "eligible_corpus_chunk_count": 58,
+  "entity_counts": {
+    "caveats": 13,
+    "characterization": 6,
+    "instruments": 16,
+    "materials": 43,
+    "relations": 249,
+    "results": 7,
+    "software": 14,
+    "steps": 150
+  },
+  "evaluation_paper_count": 3,
+  "evaluation_task_count": 16,
+  "evaluation_task_paper_count": 2,
+  "evidence_span_count": 205,
+  "exact_duplicate_count": 0,
+  "excluded_or_low_information_chunk_count": 1500,
+  "max_scientific_chunk_chars": 5977,
+  "multi_segment_scientific_chunk_count": 36,
+  "paper_count": 10,
+  "paper_coverage_by_selection_tier": {
+    "battery_electrolyte_review": {
+      "coverage_rate": 1.0,
+      "paper_count": 4,
+      "papers_with_protocols": 4
+    },
+    "primary_battery_electrolyte": {
+      "coverage_rate": 1.0,
+      "paper_count": 6,
+      "papers_with_protocols": 6
+    }
+  },
+  "papers_with_protocols": 10,
+  "papers_without_protocols": [],
+  "protocol_count": 37,
+  "protocols_by_evidence_scope": {
+    "primary_report": 12,
+    "secondary_report": 25
+  },
+  "protocols_by_selection_tier": {
+    "battery_electrolyte_review": 25,
+    "primary_battery_electrolyte": 12
+  },
+  "protocols_per_paper": {
+    "DOI:10.1002_aenm.202403263": 1,
+    "DOI:10.1007_s12598-025-03617-z": 2,
+    "DOI:10.1016_j.cej.2022.140955": 3,
+    "DOI:10.1016_j.xcrp.2025.102548": 2,
+    "DOI:10.1039_d5cs00053j": 12,
+    "DOI:10.1039_d5dd00111k": 3,
+    "DOI:10.1039_d5ta00331h": 6,
+    "DOI:10.1039_d5ta04197j": 2,
+    "DOI:10.15826_chimtech.9172": 1,
+    "DOI:10.3390_cryst15020114": 5
+  },
+  "rejected_protocols": [],
+  "schema_version": "domain-adapter-quality-report-v0.3",
+  "scientific_chunk_count": 58,
+  "scientific_chunks_by_semantic_role": {
+    "caveat": 18,
+    "characterization": 10,
+    "computation": 23,
+    "protocol": 22,
+    "result": 42,
+    "scientific_context": 13
+  },
+  "source_chunk_count": 1658,
+  "task_count": 34,
+  "task_type_counts": {
+    "characterization_grounding": 2,
+    "failure_mode_grounding": 6,
+    "instrument_software_grounding": 6,
+    "materials_extraction": 7,
+    "protocol_reconstruction": 12,
+    "reported_result_grounding": 1
+  },
+  "teacher_field_audit": {
+    "accepted_field_count": 197,
+    "field_acceptance_rate": 0.262667,
+    "proposed_field_count": 750,
+    "rejected_entity_type_counts": {
+      "caveats": 16,
+      "characterization": 22,
+      "instruments": 19,
+      "materials": 82,
+      "results": 86,
+      "software": 20,
+      "steps": 308
+    },
+    "rejected_field_count": 553,
+    "rejection_reason_counts": {
+      "over_generalized": 423,
+      "span_not_in_source": 109,
+      "value_elsewhere": 21
+    },
+    "repair_attempted_count": 130,
+    "repair_reason_counts": {
+      "normalization": 4,
+      "whitespace_mismatch": 2
+    },
+    "repair_succeeded_count": 6
+  },
+  "teacher_paper_diagnostics": [
+    {
+      "candidate_chunk_count": 2,
+      "candidate_input_char_count": 2144,
+      "outcome": "retained_protocols",
+      "paper_id": "DOI:10.1002_aenm.202403263",
+      "raw_protocol_count": 1,
+      "response_schema_invalid": false,
+      "retained_protocol_count": 1,
+      "salvaged_protocol_count": 0,
+      "selection_tier": "primary_battery_electrolyte",
+      "stop_reason": "end_turn"
+    },
+    {
+      "candidate_chunk_count": 3,
+      "candidate_input_char_count": 5272,
+      "outcome": "retained_protocols",
+      "paper_id": "DOI:10.1007_s12598-025-03617-z",
+      "raw_protocol_count": 7,
+      "response_schema_invalid": false,
+      "retained_protocol_count": 2,
+      "salvaged_protocol_count": 0,
+      "selection_tier": "battery_electrolyte_review",
+      "stop_reason": "end_turn"
+    },
+    {
+      "candidate_chunk_count": 7,
+      "candidate_input_char_count": 11278,
+      "outcome": "retained_protocols",
+      "paper_id": "DOI:10.1016_j.cej.2022.140955",
+      "raw_protocol_count": 3,
+      "response_schema_invalid": false,
+      "retained_protocol_count": 3,
+      "salvaged_protocol_count": 0,
+      "selection_tier": "primary_battery_electrolyte",
+      "stop_reason": "end_turn"
+    },
+    {
+      "candidate_chunk_count": 8,
+      "candidate_input_char_count": 11969,
+      "outcome": "retained_protocols",
+      "paper_id": "DOI:10.1016_j.xcrp.2025.102548",
+      "raw_protocol_count": 2,
+      "response_schema_invalid": false,
+      "retained_protocol_count": 2,
+      "salvaged_protocol_count": 0,
+      "selection_tier": "primary_battery_electrolyte",
+      "stop_reason": "end_turn"
+    },
+    {
+      "candidate_chunk_count": 8,
+      "candidate_input_char_count": 18509,
+      "outcome": "retained_protocols",
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "raw_protocol_count": 12,
+      "response_schema_invalid": false,
+      "retained_protocol_count": 12,
+      "salvaged_protocol_count": 0,
+      "selection_tier": "battery_electrolyte_review",
+      "stop_reason": "end_turn"
+    },
+    {
+      "candidate_chunk_count": 8,
+      "candidate_input_char_count": 9373,
+      "outcome": "retained_protocols",
+      "paper_id": "DOI:10.1039_d5dd00111k",
+      "raw_protocol_count": 3,
+      "response_schema_invalid": false,
+      "retained_protocol_count": 3,
+      "salvaged_protocol_count": 0,
+      "selection_tier": "primary_battery_electrolyte",
+      "stop_reason": "end_turn"
+    },
+    {
+      "candidate_chunk_count": 8,
+      "candidate_input_char_count": 16606,
+      "outcome": "retained_protocols",
+      "paper_id": "DOI:10.1039_d5ta00331h",
+      "raw_protocol_count": 6,
+      "response_schema_invalid": false,
+      "retained_protocol_count": 6,
+      "salvaged_protocol_count": 0,
+      "selection_tier": "battery_electrolyte_review",
+      "stop_reason": "end_turn"
+    },
+    {
+      "candidate_chunk_count": 8,
+      "candidate_input_char_count": 13271,
+      "outcome": "retained_protocols",
+      "paper_id": "DOI:10.1039_d5ta04197j",
+      "raw_protocol_count": 3,
+      "response_schema_invalid": false,
+      "retained_protocol_count": 2,
+      "salvaged_protocol_count": 0,
+      "selection_tier": "primary_battery_electrolyte",
+      "stop_reason": "end_turn"
+    },
+    {
+      "candidate_chunk_count": 8,
+      "candidate_input_char_count": 29398,
+      "outcome": "retained_protocols",
+      "paper_id": "DOI:10.15826_chimtech.9172",
+      "raw_protocol_count": 1,
+      "response_schema_invalid": false,
+      "retained_protocol_count": 1,
+      "salvaged_protocol_count": 0,
+      "selection_tier": "primary_battery_electrolyte",
+      "stop_reason": "end_turn"
+    },
+    {
+      "candidate_chunk_count": 6,
+      "candidate_input_char_count": 17146,
+      "outcome": "retained_protocols",
+      "paper_id": "DOI:10.3390_cryst15020114",
+      "raw_protocol_count": 7,
+      "response_schema_invalid": false,
+      "retained_protocol_count": 5,
+      "salvaged_protocol_count": 0,
+      "selection_tier": "battery_electrolyte_review",
+      "stop_reason": "end_turn"
+    }
+  ],
+  "teacher_paper_outcome_counts": {
+    "retained_protocols": 10
+  },
+  "teacher_runtime": {
+    "input_token_count": 40557,
+    "invocation_count": 10,
+    "latency_ms_total": 848207,
+    "output_token_count": 51462,
+    "response_failure_diagnostics": [],
+    "response_schema_failure_count": 0,
+    "salvaged_response_count": 0
+  },
+  "train_paper_count": 7,
+  "train_task_count": 18,
+  "train_task_paper_count": 4,
+  "unsupported_evidence_count": 553,
+  "unsupported_teacher_claim_count": 553
+}

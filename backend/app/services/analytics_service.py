@@ -13,10 +13,13 @@ from __future__ import annotations
 
 from collections import Counter, defaultdict
 from dataclasses import dataclass
+import hashlib
+import re
 
 from sqlalchemy import func, select
 from sqlalchemy.orm import Session
 
+from app.config import settings
 from app.country_normalization import canonical_country_entries
 from app.models import (
     Author,
@@ -24,6 +27,7 @@ from app.models import (
     Paper,
     PaperAuthor,
     PaperClassification,
+    PaperEntity,
     PaperReference,
 )
 from app.services.filter_spec import (
@@ -90,6 +94,37 @@ class InstitutionGraphEdge:
     involves_partner: bool = False
 
 
+def _stage1_institution_id(name: str) -> str:
+    identity = re.sub(r"\s+", " ", name.strip()).casefold()
+    digest = hashlib.sha1(identity.encode("utf-8")).hexdigest()[:16]
+    return f"stage1:{digest}"
+
+
+def _stage1_paper_institutions(
+    session: Session,
+    paper_ids: set[str] | list[str],
+) -> tuple[dict[str, set[tuple[str, str]]], dict[str, str]]:
+    ids = set(paper_ids)
+    if not ids:
+        return {}, {}
+    rows = session.execute(
+        select(PaperEntity.paper_id, PaperEntity.normalized_name).where(
+            PaperEntity.paper_id.in_(ids),
+            PaperEntity.entity_type == "institution",
+        )
+    ).all()
+    by_paper: dict[str, set[tuple[str, str]]] = defaultdict(set)
+    names: dict[str, str] = {}
+    for paper_id, normalized_name in rows:
+        name = str(normalized_name or "").strip()
+        if not name:
+            continue
+        institution_id = _stage1_institution_id(name)
+        by_paper[paper_id].add((institution_id, name))
+        names[institution_id] = name
+    return dict(by_paper), names
+
+
 def _paper_rows(session: Session, filt: PaperFilter):
     """Return (id, year, label, matched_topics) tuples — no full ORM objects.
 
@@ -126,16 +161,28 @@ def institution_topic_label_sankey(
     if not paper_ids:
         return SankeyData(nodes=[], links=[])
 
-    # Institution per paper via lean JOIN — no Paper objects.
-    inst_rows = session.execute(
-        select(PaperAuthor.paper_id, Institution.id, Institution.canonical_name)
-        .join(Author, Author.id == PaperAuthor.author_id)
-        .join(Institution, Institution.id == Author.institution_id)
-        .where(PaperAuthor.paper_id.in_(paper_ids))
-    ).all()
-    paper_institutions: dict[str, set[tuple[str, str]]] = defaultdict(set)
-    for paper_id, inst_id, inst_name in inst_rows:
-        paper_institutions[paper_id].add((inst_id, inst_name))
+    # In Stage 1, institutions are paper-level Markdown affiliation mentions.
+    if settings.sdl_stage1_only:
+        paper_institutions, inst_names = _stage1_paper_institutions(
+            session,
+            paper_ids,
+        )
+    else:
+        inst_rows = session.execute(
+            select(
+                PaperAuthor.paper_id,
+                Institution.id,
+                Institution.canonical_name,
+            )
+            .join(Author, Author.id == PaperAuthor.author_id)
+            .join(Institution, Institution.id == Author.institution_id)
+            .where(PaperAuthor.paper_id.in_(paper_ids))
+        ).all()
+        paper_institutions = defaultdict(set)
+        inst_names = {}
+        for paper_id, inst_id, inst_name in inst_rows:
+            paper_institutions[paper_id].add((inst_id, inst_name))
+            inst_names[inst_id] = inst_name
 
     # Classification + sdl_tags per paper.
     # Middle layer: prefer matched_topics → fall back to sdl_tags → fall back to reasons prefix.
@@ -151,7 +198,6 @@ def institution_topic_label_sankey(
     ).all()
 
     path_papers: dict[tuple[str, str, str], set[str]] = defaultdict(set)
-    inst_names: dict[str, str] = {}
     topic_names: dict[str, str] = {}
 
     for paper_id, label, matched_topics, sdl_tags in cls_rows:
@@ -280,16 +326,27 @@ def topic_over_time(
         for year, label, cnt in rows:
             buckets[label or "UNCLASSIFIED"][year] = cnt
     elif by == "institution":
-        rows = session.execute(
-            select(
-                id_subq.c.year,
-                id_subq.c.id,
-                Institution.canonical_name,
-            )
-            .join(PaperAuthor, PaperAuthor.paper_id == id_subq.c.id)
-            .join(Author, Author.id == PaperAuthor.author_id)
-            .join(Institution, Institution.id == Author.institution_id)
-        ).all()
+        if settings.sdl_stage1_only:
+            rows = session.execute(
+                select(
+                    id_subq.c.year,
+                    id_subq.c.id,
+                    PaperEntity.normalized_name,
+                )
+                .join(PaperEntity, PaperEntity.paper_id == id_subq.c.id)
+                .where(PaperEntity.entity_type == "institution")
+            ).all()
+        else:
+            rows = session.execute(
+                select(
+                    id_subq.c.year,
+                    id_subq.c.id,
+                    Institution.canonical_name,
+                )
+                .join(PaperAuthor, PaperAuthor.paper_id == id_subq.c.id)
+                .join(Author, Author.id == PaperAuthor.author_id)
+                .join(Institution, Institution.id == Author.institution_id)
+            ).all()
         seen: set[tuple[int, str, str]] = set()
         for year, paper_id, institution_name in rows:
             key = (year, paper_id, institution_name)
@@ -387,6 +444,70 @@ def institution_network(
     stays renderable. Default 50; use top_n=200 for a full export.
     """
     paper_ids = {row[0] for row in session.execute(apply_filter(select(Paper.id), filt)).all()}
+    if settings.sdl_stage1_only:
+        if filt.partner_only:
+            return [], []
+        paper_institutions, institution_names = _stage1_paper_institutions(
+            session,
+            paper_ids,
+        )
+        institution_papers: dict[str, set[str]] = defaultdict(set)
+        shared_papers: dict[tuple[str, str], set[str]] = defaultdict(set)
+        for paper_id, institutions in paper_institutions.items():
+            institution_ids = sorted(inst_id for inst_id, _name in institutions)
+            for institution_id in institution_ids:
+                institution_papers[institution_id].add(paper_id)
+            for index, source in enumerate(institution_ids):
+                for target in institution_ids[index + 1 :]:
+                    shared_papers[(source, target)].add(paper_id)
+
+        ranked_ids = [
+            institution_id
+            for institution_id in sorted(
+                institution_papers,
+                key=lambda inst_id: (
+                    -len(institution_papers[inst_id]),
+                    institution_names[inst_id].casefold(),
+                    institution_names[inst_id],
+                    inst_id,
+                ),
+            )
+            if len(institution_papers[institution_id]) >= min_papers
+        ][:top_n]
+        keep_ids = set(ranked_ids)
+        nodes = [
+            InstitutionGraphNode(
+                id=institution_id,
+                label=institution_names[institution_id],
+                is_partner=False,
+                country=None,
+                paper_count=len(institution_papers[institution_id]),
+            )
+            for institution_id in ranked_ids
+        ]
+        edges = []
+        for (source, target), shared in sorted(shared_papers.items()):
+            if source not in keep_ids or target not in keep_ids:
+                continue
+            smaller_count = min(
+                len(institution_papers[source]),
+                len(institution_papers[target]),
+            )
+            edges.append(
+                InstitutionGraphEdge(
+                    source=source,
+                    target=target,
+                    weight=len(shared),
+                    papers=sorted(shared),
+                    normalized_weight=round(
+                        len(shared) / max(smaller_count, 1),
+                        4,
+                    ),
+                    involves_partner=False,
+                )
+            )
+        return nodes, edges
+
     g = build_institution_graph(session)
 
     paper_contrib: Counter[str] = Counter()

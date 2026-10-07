@@ -1,0 +1,25 @@
+{
+  "baseline_prediction_count": 50,
+  "baseline_system_id": "structured-bm25-protocol-baseline-v0.1",
+  "candidate_question_count": 50,
+  "claims_boundary": "Candidate answers and baseline predictions are review aids. Scientific metrics remain null until source-first human gold is reviewed and annotation-complete.",
+  "evidence_scope_counts": {
+    "primary_report": 24,
+    "secondary_report": 26
+  },
+  "human_reviewed_question_count": 0,
+  "paper_count": 14,
+  "pending_gold_question_count": 50,
+  "protocol_count": 31,
+  "question_type_counts": {
+    "caveat_lookup": 7,
+    "characterization_lookup": 7,
+    "instrument_lookup": 8,
+    "material_lookup": 8,
+    "protocol_step_lookup": 8,
+    "reported_result_lookup": 4,
+    "software_lookup": 8
+  },
+  "schema_version": "domain-adapter-rag-readiness-v0.1",
+  "scientific_accuracy_metrics": null
+}

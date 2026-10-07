@@ -15,6 +15,7 @@ from app.domain_adaptation.models import (
     PilotSelectionManifest,
     SourceChunk,
     SourcePaper,
+    resolve_evidence_scope,
 )
 
 
@@ -204,6 +205,9 @@ class ImportedApiSource:
                     year=metadata.get("year"),
                     doi=metadata.get("doi"),
                     selection_tier=item.selection_tier,
+                    evidence_scope=resolve_evidence_scope(
+                        item.selection_tier, item.evidence_scope
+                    ),
                     selection_reasons=item.selection_reasons,
                     task_split=item.task_split,
                     source_bucket=self.source_bucket,
@@ -354,6 +358,9 @@ class S3MarkdownSource:
                     year=paper_metadata.get("year"),
                     doi=paper_metadata.get("doi"),
                     selection_tier=item.selection_tier,
+                    evidence_scope=resolve_evidence_scope(
+                        item.selection_tier, item.evidence_scope
+                    ),
                     selection_reasons=item.selection_reasons,
                     task_split=item.task_split,
                     source_bucket=self.bucket,

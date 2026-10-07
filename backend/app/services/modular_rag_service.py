@@ -17,6 +17,7 @@ tests and deployments working without forcing that dependency at import time.
 """
 from __future__ import annotations
 
+import re
 from dataclasses import dataclass, field
 from types import SimpleNamespace
 from typing import Any, Callable, Literal, TypedDict
@@ -55,7 +56,7 @@ class ModularRagRequest:
     year_to: int | None = None
     paper_ids: list[str] | None = None
     mode: RagMode = "adaptive"
-    max_chunks: int = 2000
+    max_chunks: int | None = 2000
     max_iterations: int = 2
     agentic_search: bool = True
 
@@ -110,6 +111,32 @@ def _dedupe_chunks(chunks: list[RetrievedChunk]) -> list[RetrievedChunk]:
     return out
 
 
+def _diverse_top_chunks(
+    ranked: list[RetrievedChunk],
+    *,
+    top_k: int,
+    max_per_paper: int = 2,
+) -> list[RetrievedChunk]:
+    """Prefer paper diversity, then fill any remaining result slots."""
+    selected: list[RetrievedChunk] = []
+    counts: dict[str, int] = {}
+    for chunk in ranked:
+        if counts.get(chunk.paper_id, 0) >= max_per_paper:
+            continue
+        selected.append(chunk)
+        counts[chunk.paper_id] = counts.get(chunk.paper_id, 0) + 1
+        if len(selected) >= top_k:
+            return selected
+    selected_ids = {chunk.chunk_id for chunk in selected}
+    for chunk in ranked:
+        if chunk.chunk_id in selected_ids:
+            continue
+        selected.append(chunk)
+        if len(selected) >= top_k:
+            break
+    return selected
+
+
 def _graph_context(session: Session, chunks: list[RetrievedChunk]) -> dict[str, str]:
     from app.models import PaperClassification
 
@@ -151,6 +178,8 @@ def routing_module(state: RagGraphState) -> RagGraphState:
     state["generated_queries"] = [req.query]
     state["attempts"] = 0
     _trace(state, "routing", query_type=query_type, mode=mode)
+    from app.services.jev_advisory_service import route_advice
+    route_advice(state)
     return state
 
 
@@ -395,7 +424,11 @@ def agentic_search_module(session: Session, state: RagGraphState) -> RagGraphSta
 def fusion_module(session: Session, state: RagGraphState) -> RagGraphState:
     req = state["request"]
     candidates = state.get("candidates", [])
-    reranked = get_reranker().rerank(req.query, candidates)[: req.top_k]
+    ranked = get_reranker().rerank(req.query, candidates)
+    if state.get("query_type") in {"comparison", "gap"}:
+        reranked = _diverse_top_chunks(ranked, top_k=req.top_k)
+    else:
+        reranked = ranked[: req.top_k]
     graph_ctx = _graph_context(session, reranked)
     sources = [
         {
@@ -439,6 +472,7 @@ def fusion_module(session: Session, state: RagGraphState) -> RagGraphState:
         propositions=len(prop_hints),
         sql_hints=len(sql_hints),
         agentic_links=sum(len(src.get("agentic_links", [])) for src in sources),
+        source_papers=len({src["paper_id"] for src in sources}),
     )
     return state
 
@@ -487,16 +521,39 @@ def demonstrate_module(state: RagGraphState, answer_fn: AnswerFn) -> RagGraphSta
         context_blocks = f"{sql_context}\n\n{context_blocks}" if context_blocks else sql_context
     answer, model = answer_fn(state["request"].query, context_blocks)
     if answer is None:
-        answer = (
-            "**Retrieved passages** (set PAS_KIMI_API_KEY or PAS_ANTHROPIC_API_KEY in "
-            "Render environment to enable LLM answer generation):\n\n"
-            + "\n\n".join(f"**[{i+1}]** {s['text'][:500]}" for i, s in enumerate(sources))
-        )
+        chinese = bool(re.search(r"[\u3400-\u9fff]", state["request"].query))
+        if sources:
+            heading = (
+                f"我找到了 {len(sources)} 条相关全文证据。当前没有启用生成式回答，"
+                "所以先原样展示最相关的证据，避免生成未经支持的结论："
+                if chinese
+                else (
+                    f"I found {len(sources)} relevant full-text passages. "
+                    "A generated synthesis is not enabled, so the strongest evidence "
+                    "is shown directly to avoid unsupported claims:"
+                )
+            )
+            answer = heading + "\n\n" + "\n\n".join(
+                f"**[{i+1}]** {s['text'][:500]}" for i, s in enumerate(sources)
+            )
+        else:
+            answer = (
+                "当前已索引的 Tier 1 全文中没有找到足够相关的证据。请尝试更宽泛的"
+                "关键词，或确认相应论文的 PDF 已经转换并建立索引。"
+                if chinese
+                else (
+                    "I could not find sufficiently relevant evidence in the currently "
+                    "indexed Tier 1 full text. Try broader keywords, or confirm that the "
+                    "relevant PDFs have been converted and indexed."
+                )
+            )
         model = "retrieval-only"
     state["context_blocks"] = context_blocks
     state["answer"] = answer
     state["model"] = model
     _trace(state, "demonstrate", model=model, context_chars=len(context_blocks))
+    from app.services.jev_advisory_service import check_answer
+    check_answer(state)
     state["assessment"] = evaluate_retrieval(
         state["request"].query,
         [SimpleNamespace(**src) for src in sources],

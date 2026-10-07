@@ -26,12 +26,17 @@ const TYPE_COLOR: Record<string, string> = {
   paper:       "#DDAED3",
   topic:       "#22c55e",
   method:      "#f59e0b",
+  material:    "#f0712c",
+  instrument:  "#5e4e96",
+  software:    "#0f766e",
   funder:      "#a78bfa",
   ac_core:     "#ec4899",
 };
 
 const AC_AUTHOR_COLOR      = "#213C51";
 const PARTNER_INST_COLOR   = "#6594B1";
+const PREFERS_REDUCED_MOTION = typeof window !== "undefined"
+  && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 const TYPE_SYMBOL: Record<string, string> = {
   author:      "circle",
@@ -40,6 +45,9 @@ const TYPE_SYMBOL: Record<string, string> = {
   paper:       "diamond",
   topic:       "triangle",
   method:      "pin",
+  material:    "roundRect",
+  instrument:  "rect",
+  software:    "circle",
   funder:      "rect",
   ac_core:     "diamond",
 };
@@ -51,6 +59,9 @@ const TYPE_LABEL: Record<string, string> = {
   paper:       "Papers",
   topic:       "Topics",
   method:      "Methods",
+  material:    "Materials",
+  instrument:  "Instruments",
+  software:    "Software",
   funder:      "Funders",
   ac_core:     "AC core",
 };
@@ -63,21 +74,61 @@ const EDGE_COLOR: Record<string, string> = {
   cites:             "rgba(221,174,211,0.55)",
   cites_ac_core:     "rgba(236,72,153,0.65)",
   uses_method:       "rgba(245,158,11,0.45)",
+  mentions_material: "rgba(240,113,44,0.45)",
+  mentions_instrument: "rgba(94,78,150,0.45)",
+  mentions_software: "rgba(15,118,110,0.45)",
   institution_collaboration: "rgba(167,139,250,0.45)",
   country_collaboration: "rgba(139,92,246,0.5)",
   published_by: "rgba(33,60,81,0.45)",
   covers_topic:      "rgba(34,197,94,0.45)",
 };
 
-const DEFAULT_NODE_TYPES = ["author", "paper"];
-const DEFAULT_EDGE_TYPES = ["authored"];
+const EDGE_LABEL: Record<string, string> = {
+  authored: "authored",
+  coauthored: "co-authored",
+  affiliated_with: "affiliated with",
+  published_by: "affiliation mentioned by paper",
+  belongs_to_topic: "belongs to topic",
+  uses_method: "uses method",
+  mentions_material: "mentions material",
+  mentions_instrument: "mentions instrument",
+  mentions_software: "mentions software",
+  institution_collaboration: "institution co-occurrence",
+  country_collaboration: "country collaboration",
+  cites: "cites",
+  cites_ac_core: "cites AC core",
+  funded_by: "funded by",
+  topic_cooccurrence: "topic co-occurrence",
+  similarity: "paper similarity",
+};
+
+const DEFAULT_NODE_TYPES = [
+  "author", "paper", "institution", "topic", "method", "material", "instrument", "software",
+];
+const DEFAULT_EDGE_TYPES = [
+  "authored", "published_by", "belongs_to_topic", "uses_method",
+  "mentions_material", "mentions_instrument", "mentions_software",
+];
 const VIEW_PRESETS = [
-  { id: "authors", label: "Authors", nodes: ["author"], edges: ["coauthored"] },
-  { id: "institutions", label: "Institutions", nodes: ["institution"], edges: ["institution_collaboration"] },
-  { id: "countries", label: "Countries", nodes: ["country"], edges: ["country_collaboration"] },
-  { id: "author-papers", label: "Authors + papers", nodes: ["author", "paper"], edges: ["authored"] },
-  { id: "institution-papers", label: "Institutions + papers", nodes: ["institution", "paper"], edges: ["published_by"] },
-  { id: "topic-papers", label: "Topics + papers", nodes: ["topic", "paper"], edges: ["belongs_to_topic"] },
+  {
+    id: "tier1-full",
+    label: "Full Tier 1",
+    nodes: DEFAULT_NODE_TYPES,
+    edges: DEFAULT_EDGE_TYPES,
+    groupBy: "by_entity_type",
+  },
+  { id: "author-papers", label: "People + papers", nodes: ["author", "paper"], edges: ["authored"], groupBy: "by_community" },
+  { id: "institution-papers", label: "Institutions + papers", nodes: ["institution", "paper"], edges: ["published_by"], groupBy: "by_institution" },
+  { id: "topic-papers", label: "Topics + papers", nodes: ["topic", "paper"], edges: ["belongs_to_topic"], groupBy: "by_topic" },
+  {
+    id: "research-entities",
+    label: "Research entities",
+    nodes: ["paper", "method", "material", "instrument", "software"],
+    edges: ["uses_method", "mentions_material", "mentions_instrument", "mentions_software"],
+    groupBy: "by_entity_type",
+  },
+  { id: "authors", label: "Co-authorship", nodes: ["author"], edges: ["coauthored"], groupBy: "by_community" },
+  { id: "institutions", label: "Institution network", nodes: ["institution"], edges: ["institution_collaboration"], groupBy: "by_community" },
 ] as const;
 
 function colorForNode(node: MultiGraphPayload["nodes"][number]): string {
@@ -91,6 +142,9 @@ function sizeForNode(node: MultiGraphPayload["nodes"][number]): number {
   if (node.type === "institution") return 22 + Math.log1p(p) * 8;
   if (node.type === "country")     return 24 + Math.log1p(p) * 8;
   if (node.type === "topic")       return 18 + Math.log1p(p) * 6;
+  if (["method", "material", "instrument", "software"].includes(node.type)) {
+    return 16 + Math.log1p(p) * 6;
+  }
   if (node.type === "author")      return 14 + Math.log1p(p) * 7;
   if (node.type === "paper")       return 12 + Math.log1p(p) * 4;
   return 12;
@@ -105,8 +159,8 @@ export default function MultiGraphPage() {
   const [error, setError] = useState<string | null>(null);
   const [entitySearch, setEntitySearch] = useState("");
   const requestGeneration = useRef(0);
-  const yearFrom = Number(searchParams.get("year_from")) || 2021;
-  const yearTo = Number(searchParams.get("year_to")) || 2025;
+  const yearFrom = Number(searchParams.get("year_from")) || 2013;
+  const yearTo = Number(searchParams.get("year_to")) || 2026;
   const searchKey = searchParams.toString();
   const payload = resultForScope(payloadResult, searchKey);
   const filter = useMemo(
@@ -210,12 +264,21 @@ export default function MultiGraphPage() {
       const meta  = n.metadata as Record<string, unknown>;
       const isAC  = Boolean(meta?.is_ac || meta?.is_ac_member);
       const isPrt = Boolean(meta?.is_partner || meta?.has_partner_institution);
+      const paperCount = Number(meta?.paper_count ?? 0);
+      const showLabel = n.type === "country"
+        || n.type === "topic"
+        || (n.type === "institution" && paperCount >= 2)
+        || (n.type === "method" && paperCount >= 20)
+        || isAC;
       const tooltip = [
         `<b style="color:#213C51">${escapeHtml(n.label)}</b>`,
         `<span style="color:#6594B1">${escapeHtml(n.type)}</span>`,
         isAC  ? "AC member"        : null,
         isPrt ? "Partner institution" : null,
         meta?.paper_count ? `${meta.paper_count} papers` : null,
+        meta?.mean_extraction_confidence
+          ? `${Math.round(Number(meta.mean_extraction_confidence) * 100)}% mean extraction confidence`
+          : null,
         meta?.country ? escapeHtml(meta.country) : null,
         meta?.label   ? escapeHtml(meta.label)   : null,
       ].filter(Boolean).join("<br>");
@@ -234,7 +297,7 @@ export default function MultiGraphPage() {
           shadowColor: isAC ? "rgba(33,60,81,0.5)" : isPrt ? "rgba(101,148,177,0.5)" : "rgba(0,0,0,0.15)",
         },
         label: {
-          show: ["institution", "country", "topic"].includes(n.type) || isAC,
+          show: showLabel,
           fontSize: n.type === "institution" ? 12 : 10,
           fontWeight: isAC ? 600 : 400,
           color: "#213C51",
@@ -254,7 +317,7 @@ export default function MultiGraphPage() {
         color: EDGE_COLOR[e.type] ?? "rgba(101,148,177,0.3)",
         width: 0.8 + Math.log1p(e.weight) * 1.0,
         curveness: 0.18,
-        opacity: 0.75,
+        opacity: 0.55,
       },
       value: e.type,
     }));
@@ -262,7 +325,8 @@ export default function MultiGraphPage() {
     return {
       backgroundColor: "#F8FAFC",
       tooltip: { trigger: "item" },
-      animationDurationUpdate: 700,
+      animation: !PREFERS_REDUCED_MOTION,
+      animationDurationUpdate: PREFERS_REDUCED_MOTION ? 0 : 700,
       animationEasingUpdate: "cubicInOut",
       series: [
         {
@@ -277,7 +341,7 @@ export default function MultiGraphPage() {
             edgeLength: [80, 240],
             gravity: 0.03,
             friction: 0.15,
-            layoutAnimation: true,
+            layoutAnimation: !PREFERS_REDUCED_MOTION,
           },
           emphasis: {
             focus: "adjacency",
@@ -318,10 +382,35 @@ export default function MultiGraphPage() {
 
   const visibleNodeCount = payload?.nodes.length ?? 0;
   const visibleEdgeCount = payload?.edges.length ?? 0;
-  const removableNodes = useMemo(() => {
+  const nodeCounts = useMemo(() => {
+    const counts: Record<string, number> = {};
+    for (const node of payload?.nodes ?? []) {
+      counts[node.type] = (counts[node.type] ?? 0) + 1;
+    }
+    return counts;
+  }, [payload]);
+  const eligibleNodeCounts = useMemo(() => {
+    const rawCounts = payload?.audit.projection?.raw_node_counts_by_type;
+    if (!rawCounts || typeof rawCounts !== "object" || Array.isArray(rawCounts)) {
+      return {} as Record<string, number>;
+    }
+    return Object.fromEntries(
+      Object.entries(rawCounts)
+        .map(([type, count]) => [type, Number(count)])
+        .filter((entry): entry is [string, number] => Number.isFinite(entry[1])),
+    );
+  }, [payload]);
+  const edgeCounts = useMemo(() => {
+    const counts: Record<string, number> = {};
+    for (const edge of payload?.edges ?? []) {
+      counts[edge.type] = (counts[edge.type] ?? 0) + 1;
+    }
+    return counts;
+  }, [payload]);
+  const matchingEntities = useMemo(() => {
     const needle = entitySearch.trim().toLocaleLowerCase();
     return (payload?.nodes ?? [])
-      .filter((node) => node.type === "author" || node.type === "institution")
+      .filter((node) => node.type !== "paper")
       .filter((node) => !needle || node.label.toLocaleLowerCase().includes(needle))
       .sort((left, right) => (
         Number(right.metadata?.paper_count ?? 0) - Number(left.metadata?.paper_count ?? 0)
@@ -329,6 +418,12 @@ export default function MultiGraphPage() {
         || left.id.localeCompare(right.id)
       ));
   }, [entitySearch, payload]);
+  const removableNodes = matchingEntities.slice(0, 80);
+  const scientificEntityCount = ["method", "material", "instrument", "software"]
+    .reduce((total, type) => total + (nodeCounts[type] ?? 0), 0);
+  const institutionsRorResolved = (payload?.nodes ?? [])
+    .filter((node) => node.type === "institution")
+    .every((node) => node.metadata?.resolution_status === "ror_resolved");
 
   const hideNode = (nodeId: string) => updateProjection({
     excludedNodeIds: [...new Set([...excludedNodeIds, nodeId])],
@@ -342,27 +437,27 @@ export default function MultiGraphPage() {
         <div>
           <h1>Multi-Entity Network</h1>
           <p>
-            Filtered paper evidence linked to the selected entity and relationship
-            types, with a replayable scope and projection audit.
+            The complete Tier 1 evidence graph: people, papers, institutions,
+            topics, methods, materials, instruments, and software.
           </p>
         </div>
         <div className="v7-hero-actions">
           {centerId && (
             <button className="v7-btn" onClick={() => updateProjection({ centerId: null })}>
-              ✕ Clear focus
+              Clear focus
             </button>
           )}
           <button className="v7-btn" onClick={() => void load()} disabled={loading}>
-            ↻ Refresh
+            Refresh
           </button>
           <button className="v7-btn" onClick={openEmbed} title="Open graph in new tab (no sidebar)">
-            ⧉ New tab
+            Open graph
           </button>
         </div>
       </div>
 
       <TimeSlider
-        minYear={2021} maxYear={2026}
+        minYear={2013} maxYear={2026}
         yearFrom={yearFrom} yearTo={yearTo}
         onChange={setYearRange}
       />
@@ -370,7 +465,9 @@ export default function MultiGraphPage() {
       <div className="v7-graph-toolbar" aria-label="Graph view presets">
         <span className="toolbar-label">View</span>
         {VIEW_PRESETS.map((preset) => {
-          const selected = preset.nodes.join() === activeNodeTypes.join() && preset.edges.join() === activeEdgeTypes.join();
+          const selected = preset.nodes.join() === activeNodeTypes.join()
+            && preset.edges.join() === activeEdgeTypes.join()
+            && preset.groupBy === currentProjection.groupBy;
           return (
             <button
               type="button"
@@ -381,6 +478,7 @@ export default function MultiGraphPage() {
                 updateProjection({
                   nodeTypes: [...preset.nodes],
                   edgeTypes: [...preset.edges],
+                  groupBy: preset.groupBy,
                   centerId: null,
                 });
               }}
@@ -476,32 +574,64 @@ export default function MultiGraphPage() {
 
       <div className="v7-stat-grid">
         <div className="v7-stat">
-          <div className="label">Visible nodes</div>
-          <div className="value">{visibleNodeCount}</div>
+          <div className="label">Tier 1 papers</div>
+          <div className="value">{payload?.audit.included_papers ?? 0}</div>
           <div className="delta">
-            {filter.labels.length === 0
-              ? "All classifications"
-              : filter.labels.map((label) => label.replace(/_/g, " ")).join(" + ")}
+            {nodeCounts.paper ?? 0} visible paper nodes
           </div>
         </div>
         <div className="v7-stat">
-          <div className="label">Visible edges</div>
-          <div className="value">{visibleEdgeCount}</div>
-          <div className="delta">{activeEdgeTypes.length} edge type{activeEdgeTypes.length !== 1 ? "s" : ""} active</div>
+          <div className="label">Authors displayed</div>
+          <div className="value">{nodeCounts.author ?? 0}</div>
+          <div className="delta">
+            {eligibleNodeCounts.author ?? 0} eligible · first four + confirmed corresponding, otherwise last listed
+          </div>
         </div>
         <div className="v7-stat">
-          <div className="label">Communities</div>
-          <div className="value">{payload?.groups.length ?? 0}</div>
-          <div className="delta">{payload?.groups[0]?.label ?? "—"}</div>
+          <div className="label">Institutions displayed</div>
+          <div className="value">{nodeCounts.institution ?? 0}</div>
+          <div className="delta">
+            {eligibleNodeCounts.institution ?? 0} PDF affiliation names ·{" "}
+            {institutionsRorResolved ? "ROR resolved" : "ROR validation pending"}
+          </div>
+        </div>
+        <div className="v7-stat">
+          <div className="label">Research entities</div>
+          <div className="value">{scientificEntityCount}</div>
+          <div className="delta">
+            {nodeCounts.method ?? 0} methods · {nodeCounts.material ?? 0} materials · {nodeCounts.instrument ?? 0} instruments · {nodeCounts.software ?? 0} software
+          </div>
+        </div>
+        <div className="v7-stat">
+          <div className="label">Topics</div>
+          <div className="value">{nodeCounts.topic ?? 0}</div>
+          <div className="delta">Classification and keyword topics</div>
+        </div>
+        <div className="v7-stat">
+          <div className="label">Evidence links</div>
+          <div className="value">{visibleEdgeCount}</div>
+          <div className="delta">{visibleNodeCount} total visible nodes</div>
         </div>
       </div>
 
+      <div className="graph-evidence-boundary" role="note">
+        <strong>Evidence boundary</strong>
+        <span>Authors come from Zotero creator order: first four plus a PDF-confirmed corresponding author, otherwise the last listed author.</span>
+        <span>The last listed author is never labelled corresponding without explicit PDF evidence.</span>
+        <span>
+          Institutions come from PDF affiliation lines; the page explicitly
+          distinguishes candidates from ROR-resolved names.
+        </span>
+        <span>Methods, materials, instruments, and software come from full-paper extraction.</span>
+        <span>Country and AC-member links stay absent unless independently evidenced.</span>
+      </div>
+
       <div className="multi-graph-workspace">
-        <aside className="multi-graph-entity-panel" aria-label="Visible author and institution nodes">
+        <aside className="multi-graph-entity-panel" aria-label="Visible graph entities">
           <div className="multi-graph-entity-head">
             <div>
-              <span className="review-kicker">Graph cleanup</span>
-              <strong>Authors & institutions</strong>
+              <span className="review-kicker">Entity inventory</span>
+              <strong>All visible entities</strong>
             </div>
             {excludedNodeIds.length > 0 && (
               <button
@@ -518,16 +648,20 @@ export default function MultiGraphPage() {
             value={entitySearch}
             onChange={(event) => setEntitySearch(event.target.value)}
             placeholder="Search visible names…"
-            aria-label="Search visible authors and institutions"
+            aria-label="Search all visible graph entities"
           />
           <p>
-            Hide outliers from this projection without changing stored evidence.
-            Hidden node IDs are retained in the URL and audit.
+            Search or hide any non-paper entity without changing stored evidence.
+            Showing {Math.min(80, matchingEntities.length)} of {matchingEntities.length} matches.
           </p>
           <div className="multi-graph-entity-list">
             {removableNodes.map((node) => (
               <div key={node.id}>
-                <span>
+                <span className="multi-graph-entity-name">
+                  <i
+                    aria-hidden="true"
+                    style={{ background: TYPE_COLOR[node.type] ?? "var(--faint)" }}
+                  />
                   <strong>{node.label}</strong>
                   <small>{TYPE_LABEL[node.type] ?? node.type} · {Number(node.metadata?.paper_count ?? 0)} papers</small>
                 </span>
@@ -542,11 +676,16 @@ export default function MultiGraphPage() {
               </div>
             ))}
             {removableNodes.length === 0 && (
-              <div className="metric-note">No matching author or institution nodes.</div>
+              <div className="metric-note">No matching entities in this projection.</div>
             )}
           </div>
         </aside>
-        <div className="v7-chart-frame tall" style={{ background: "#F8FAFC", borderRadius: 14, border: "1px solid var(--border)", overflow: "hidden" }}>
+        <div
+          className="v7-chart-frame tall"
+          role="region"
+          aria-label={`Interactive Tier 1 graph with ${visibleNodeCount} nodes and ${visibleEdgeCount} evidence links`}
+          style={{ background: "#F8FAFC", borderRadius: 14, border: "1px solid var(--border)", overflow: "hidden" }}
+        >
           {loading && !payload ? (
             <div style={{ padding: 16 }}>
               <div className="v7-skel card" style={{ height: 560 }} />
@@ -569,33 +708,61 @@ export default function MultiGraphPage() {
 
       {payload && <AnalysisScopePanel audit={payload.audit} title="Graph evidence scope" />}
 
-      {/* Legend */}
-      <div className="v7-card" style={{ display: "flex", flexWrap: "wrap", gap: "1rem", padding: "12px 16px", fontSize: "0.78rem", color: "var(--muted)" }}>
-        <span style={{ fontWeight: 600, color: "var(--text)", marginRight: 4 }}>Legend:</span>
+      <div className="v7-card graph-legend" aria-label="Graph legend">
+        <strong>Nodes</strong>
         {Object.entries(TYPE_LABEL).map(([type, label]) => (
-          <span key={type} style={{ display: "inline-flex", alignItems: "center", gap: 5 }}>
-            <span style={{ width: 10, height: 10, borderRadius: type === "institution" ? 2 : "50%", background: TYPE_COLOR[type] }} />
-            {label} · {TYPE_SYMBOL[type] ?? "circle"}
+          <span key={type} className={!activeNodeTypes.includes(type) ? "inactive" : ""}>
+            <i style={{ background: TYPE_COLOR[type] }} />
+            {label} ({nodeCounts[type] ?? 0})
           </span>
         ))}
-        <span style={{ display: "inline-flex", alignItems: "center", gap: 5 }}>
-          <span style={{ width: 10, height: 10, borderRadius: "50%", background: AC_AUTHOR_COLOR, boxShadow: "0 0 0 2px rgba(255,255,255,0.8)" }} />
-          AC member (border)
-        </span>
+        <strong>Relations</strong>
+        {activeEdgeTypes.map((type) => (
+          <span key={type}>
+            <i className="edge" style={{ background: EDGE_COLOR[type] }} />
+            {EDGE_LABEL[type] ?? type.replace(/_/g, " ")} ({edgeCounts[type] ?? 0})
+          </span>
+        ))}
       </div>
 
       <details className="v7-card graph-explanation">
         <summary>How to read the graph</summary>
         <p>
-          Author-only uses co-authorship; institution-only and country-only use
-          shared-paper collaboration. Institution + papers uses published-by,
-          author + papers uses authored-by, and topic + papers uses topic membership.
+          Papers connect Zotero authors and topics to entities extracted from the
+          verified Markdown full text. Method links represent usage evidence;
+          material, instrument, and software links represent evidence-backed mentions.
+          Institution links are paper-level affiliation mentions and do not claim
+          which individual author belongs to an institution.
         </p>
         <p>
           Node size is distinct-paper support. Min papers removes low-support
           entities, min degree removes weakly connected entities, and Top N keeps
           the strongest entities per type. Clicking a node creates a replayable ego graph.
         </p>
+      </details>
+
+      <details className="v7-card graph-inventory-table">
+        <summary>Accessible graph inventory</summary>
+        <div className="graph-inventory-grid">
+          <table>
+            <caption>Visible nodes by entity type</caption>
+            <thead><tr><th scope="col">Entity type</th><th scope="col">Count</th></tr></thead>
+            <tbody>
+              {activeNodeTypes.map((type) => (
+                <tr key={type}><td>{TYPE_LABEL[type] ?? type}</td><td>{nodeCounts[type] ?? 0}</td></tr>
+              ))}
+            </tbody>
+          </table>
+          <table>
+            <caption>Visible evidence links by relation</caption>
+            <thead><tr><th scope="col">Relation</th><th scope="col">Count</th></tr></thead>
+            <tbody>
+              {activeEdgeTypes.map((type) => (
+                <tr key={type}><td>{EDGE_LABEL[type] ?? type.replace(/_/g, " ")}</td><td>{edgeCounts[type] ?? 0}</td></tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </details>
 
     </div>

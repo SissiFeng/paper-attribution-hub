@@ -1,0 +1,110 @@
+{
+  "analysis_ready": false,
+  "claims_boundary": "Reported associations measure behavior on this benchmark. They do not establish training-data membership, causal mechanisms inside model weights, or reasoning generality beyond the two declared domains. Null association does not establish dissociation unless its bootstrap interval passes the preregistered equivalence bound.",
+  "cross_domain": {
+    "mean_absolute_rate_gap": null,
+    "mean_absolute_rate_gap_interval": null,
+    "model_count": 0,
+    "rank_correlation": null,
+    "rank_correlation_interval": null,
+    "schema_version": "evidence-following-mpu-cross-domain-v0.1",
+    "trait_supported": false
+  },
+  "design_ready": false,
+  "expected_observation_count": 350,
+  "fact_injection": {
+    "claims_boundary": "This MPU injects an original fact as controlled prior context. It can identify an inference-time knowledge-versus-updatability trade-off, not a trade-off caused by parameter updates or adapter training.",
+    "evidence_following_delta": null,
+    "evidence_following_delta_interval": null,
+    "intervention": "contextual_prior_fact",
+    "knowledge_delta": null,
+    "knowledge_delta_interval": null,
+    "paired_item_count": 0,
+    "pareto_tradeoff_supported": false,
+    "schema_version": "evidence-following-mpu-fact-injection-v0.1"
+  },
+  "failed_gates": [
+    "primary_papers:oer-electrocatalysis",
+    "primary_papers:organic-synthesis",
+    "counterfactual_tasks:oer-electrocatalysis",
+    "counterfactual_tasks:organic-synthesis",
+    "complete_observation_matrix"
+  ],
+  "future_scope_exclusion": "Adapter training and P2-proc procedural injection are excluded from this MPU and reserved for a subsequent study.",
+  "knowledge_dissociation": {
+    "equivalence_bound": 0.3,
+    "exposure_correlation": null,
+    "exposure_correlation_interval": null,
+    "knowledge_correlation": null,
+    "knowledge_correlation_interval": null,
+    "schema_version": "evidence-following-mpu-dissociation-v0.1",
+    "summary_cell_count": 0,
+    "supported": false
+  },
+  "missing_observation_count": 350,
+  "model_domain_summaries": [
+    {
+      "blind_domain_prior_rate": null,
+      "closed_book_knowledge_rate": null,
+      "domain": "oer-electrocatalysis",
+      "evidence_following_rate": null,
+      "fact_injected_evidence_following_rate": null,
+      "fact_injected_knowledge_rate": null,
+      "item_count": 14,
+      "mean_exposure_score": null,
+      "model_alias": "claude-opus-4-6",
+      "schema_version": "evidence-following-mpu-model-domain-summary-v0.1"
+    },
+    {
+      "blind_domain_prior_rate": null,
+      "closed_book_knowledge_rate": null,
+      "domain": "oer-electrocatalysis",
+      "evidence_following_rate": null,
+      "fact_injected_evidence_following_rate": null,
+      "fact_injected_knowledge_rate": null,
+      "item_count": 14,
+      "mean_exposure_score": null,
+      "model_alias": "claude-opus-5",
+      "schema_version": "evidence-following-mpu-model-domain-summary-v0.1"
+    },
+    {
+      "blind_domain_prior_rate": null,
+      "closed_book_knowledge_rate": null,
+      "domain": "oer-electrocatalysis",
+      "evidence_following_rate": null,
+      "fact_injected_evidence_following_rate": null,
+      "fact_injected_knowledge_rate": null,
+      "item_count": 14,
+      "mean_exposure_score": null,
+      "model_alias": "deepseek-v3-2",
+      "schema_version": "evidence-following-mpu-model-domain-summary-v0.1"
+    },
+    {
+      "blind_domain_prior_rate": null,
+      "closed_book_knowledge_rate": null,
+      "domain": "oer-electrocatalysis",
+      "evidence_following_rate": null,
+      "fact_injected_evidence_following_rate": null,
+      "fact_injected_knowledge_rate": null,
+      "item_count": 14,
+      "mean_exposure_score": null,
+      "model_alias": "gpt-5-6-sol",
+      "schema_version": "evidence-following-mpu-model-domain-summary-v0.1"
+    },
+    {
+      "blind_domain_prior_rate": null,
+      "closed_book_knowledge_rate": null,
+      "domain": "oer-electrocatalysis",
+      "evidence_following_rate": null,
+      "fact_injected_evidence_following_rate": null,
+      "fact_injected_knowledge_rate": null,
+      "item_count": 14,
+      "mean_exposure_score": null,
+      "model_alias": "kimi-k2-5",
+      "schema_version": "evidence-following-mpu-model-domain-summary-v0.1"
+    }
+  ],
+  "schema_version": "evidence-following-mpu-analysis-v0.1",
+  "study_id": "evidence-following-mpu-v0.1-current-cohort",
+  "supplied_observation_count": 0
+}

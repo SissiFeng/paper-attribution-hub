@@ -41,6 +41,10 @@ from app.services.review_queue import (
     queue_size,
     skip_for_now,
 )
+from app.services.stage1_readiness import (
+    STAGE1_NOT_READY_DETAIL,
+    derived_views_available,
+)
 from app.services.scheduled_pipeline import (
     latest_run,
     recent_runs,
@@ -86,7 +90,12 @@ class QueueItemOut(BaseModel):
     review_assignee: str | None = None
     review_assigned_at: datetime | None = None
     review_assigned_by: str | None = None
+    stage1_manifest_id: str | None = None
+    stage1_role: str | None = None
+    stage1_round: int | None = None
+    stage1_ordinal: int | None = None
     rag_status: RagStatusOut | None = None
+    jev_advice: dict | None = None
 
     @classmethod
     def from_item(
@@ -94,6 +103,9 @@ class QueueItemOut(BaseModel):
         item: QueueItem,
         rag_status: RagStatusOut | None = None,
     ) -> "QueueItemOut":
+        from app.config import settings
+
+        blinded = settings.sdl_stage1_only
         return cls(
             paper_id=item.paper_id,
             title=item.title,
@@ -103,11 +115,11 @@ class QueueItemOut(BaseModel):
             doi=item.doi,
             authors=item.authors,
             institutions=item.institutions,
-            label=item.label,
-            confidence=item.confidence,
-            priority=item.priority,
-            reasons=item.reasons,
-            last_classified_at=item.last_classified_at,
+            label="UNCERTAIN" if blinded else item.label,
+            confidence=0.0 if blinded else item.confidence,
+            priority=0.0 if blinded else item.priority,
+            reasons=[] if blinded else item.reasons,
+            last_classified_at=None if blinded else item.last_classified_at,
             source=item.source,
             provenance=item.provenance,
             corpus_sources=item.corpus_sources,
@@ -125,7 +137,12 @@ class QueueItemOut(BaseModel):
             review_assignee=item.review_assignee,
             review_assigned_at=item.review_assigned_at,
             review_assigned_by=item.review_assigned_by,
+            stage1_manifest_id=item.stage1_manifest_id,
+            stage1_role=item.stage1_role,
+            stage1_round=item.stage1_round,
+            stage1_ordinal=item.stage1_ordinal,
             rag_status=rag_status,
+            jev_advice=None if blinded else item.jev_advice,
         )
 
 
@@ -200,6 +217,8 @@ def get_queue(
     unassigned_only: Annotated[bool, Query()] = False,
     session: Session = Depends(get_session),
 ) -> list[QueueItemOut]:
+    if not derived_views_available(session):
+        return []
     items = list_queue(
         session,
         limit=limit,
@@ -218,6 +237,8 @@ def get_queue_next(
     unassigned_only: Annotated[bool, Query()] = False,
     session: Session = Depends(get_session),
 ) -> QueueItemOut | None:
+    if not derived_views_available(session):
+        return None
     item = get_next(
         session,
         assignee=assignee,
@@ -235,6 +256,8 @@ def get_queue_size(
     unassigned_only: Annotated[bool, Query()] = False,
     session: Session = Depends(get_session),
 ) -> dict:
+    if not derived_views_available(session):
+        return {"count": 0}
     return {
         "count": queue_size(
             session,
@@ -254,6 +277,8 @@ def update_assignment(
     payload: AssignmentIn,
     session: Session = Depends(get_session),
 ) -> QueueItemOut:
+    if not derived_views_available(session):
+        raise HTTPException(status_code=409, detail=STAGE1_NOT_READY_DETAIL)
     try:
         assign_review(
             session,
@@ -283,6 +308,8 @@ def confirm(
     payload: ConfirmIn = Body(default_factory=ConfirmIn),
     session: Session = Depends(get_session),
 ) -> QueueItemOut:
+    if not derived_views_available(session):
+        raise HTTPException(status_code=409, detail=STAGE1_NOT_READY_DETAIL)
     try:
         cls = confirm_classification(
             session,
@@ -325,6 +352,8 @@ def skip(
     payload: SkipIn = Body(default_factory=SkipIn),
     session: Session = Depends(get_session),
 ) -> QueueItemOut:
+    if not derived_views_available(session):
+        raise HTTPException(status_code=409, detail=STAGE1_NOT_READY_DETAIL)
     try:
         cls = skip_for_now(
             session, paper_id, cooldown_days=payload.cooldown_days

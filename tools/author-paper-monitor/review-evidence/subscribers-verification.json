@@ -1,0 +1,218 @@
+{
+  "verified_at": "2026-10-06T10:36:01.312951+00:00",
+  "scope": "Members opening AC Papers in the existing installed workspace; independent private subscriptions",
+  "tests": {
+    "passed": 173,
+    "ruff": "passed",
+    "coverage": [
+      "nonowner commands and Home test button",
+      "workspace and signature checks",
+      "recipient isolation",
+      "pause and resume",
+      "late subscriber history boundary",
+      "independent recap receipts",
+      "checkpoint failure after Slack acceptance",
+      "recipient-specific reconciliation",
+      "global budget fairness"
+    ]
+  },
+  "stacks": {
+    "paper-attribution-dev-author-monitor": "UPDATE_COMPLETE",
+    "paper-attribution-dev-slack": "UPDATE_COMPLETE",
+    "paper-attribution-dev-monitor-health": "UPDATE_COMPLETE"
+  },
+  "collector_task_definition": "arn:aws:ecs:ca-central-1:247893369214:task-definition/paper-attribution-dev-author-monitor:11",
+  "task_receipts": [
+    {
+      "arn": "arn:aws:ecs:ca-central-1:247893369214:task/paper-attribution-dev-cluster/65238b52e69f401e873a05f0854b188c",
+      "exit": 0
+    },
+    {
+      "arn": "arn:aws:ecs:ca-central-1:247893369214:task/paper-attribution-dev-cluster/bfa0da794452424e875f5f304b751a3d",
+      "exit": 0
+    }
+  ],
+  "backend_task_unchanged": "arn:aws:ecs:ca-central-1:247893369214:task-definition/paper-attribution-pas-dev-backend:6",
+  "slack_release": "author-monitor/slack-releases/f885bbf05fdcd75a2ce39c5631ebe5284f62440007f0996942ecb060f85af5ef.zip",
+  "slack_functions": {
+    "ingress": {
+      "FunctionName": "paper-attribution-dev-slack-ingress",
+      "CodeSha256": "+IW78F/c11os45xWMevlKE9iRAAH8JlpQuywYPha9e8=",
+      "LastUpdateStatus": "Successful",
+      "LastModified": "2026-10-06T10:34:21.000+0000"
+    },
+    "worker": {
+      "FunctionName": "paper-attribution-dev-slack-worker",
+      "CodeSha256": "+IW78F/c11os45xWMevlKE9iRAAH8JlpQuywYPha9e8=",
+      "LastUpdateStatus": "Successful",
+      "LastModified": "2026-10-06T10:34:21.000+0000"
+    }
+  },
+  "slack_events": {
+    "configured_in_slack_ui": true,
+    "request_url_verified": true,
+    "bot_events": [
+      "app_home_opened"
+    ],
+    "new_scopes": [],
+    "screenshot": "slack-subscribers-events.png"
+  },
+  "real_owner_interactions": {
+    "home_callback_complete": true,
+    "pause_only_changed_personal_subscription": true,
+    "resumed": true,
+    "test_preview_complete": true,
+    "evidence": [
+      {
+        "key": "preview:dfdf0a91261e75f8a8ff5aabb77a4c1992c783e275240c2834dcda19b7de108f",
+        "data": {
+          "channel": "D0C6GC4H04F",
+          "ts": "1791282703.160769",
+          "status": "posted"
+        }
+      },
+      {
+        "key": "job:event:Ev0C6X40J8DB:home",
+        "data": {
+          "status": "complete",
+          "completed_at": 1791282704,
+          "kind": "home"
+        }
+      },
+      {
+        "key": "job:event:Ev0C6W600ZU3:home",
+        "data": {
+          "status": "complete",
+          "completed_at": 1791282626,
+          "kind": "home"
+        }
+      }
+    ],
+    "screenshot": "slack-personal-subscription.png"
+  },
+  "production_state": {
+    "counts": {
+      "seeded": 750
+    },
+    "pas_receipts": 750,
+    "deliveries": 0,
+    "fanout_initialized": "2026-10-06T10:24:32+00:00"
+  },
+  "collector_summary": {
+    "collected_at": "2026-10-06T10:24:30.977126+00:00",
+    "collection_ok": true,
+    "deep_scan": false,
+    "since": "2026-07-08",
+    "new_records": 0,
+    "historical_seeded": 0,
+    "counts": {
+      "seeded": 750
+    },
+    "unsynced": 0,
+    "oldest_pending": null,
+    "subscribers": 1,
+    "active_subscribers": 1,
+    "delivery_counts": {},
+    "mailbox": "needs_configuration",
+    "errors": []
+  },
+  "subscribers": [
+    {
+      "user_id": "U07K96PT5CL",
+      "enabled": true,
+      "since": "2026-10-06T10:24:32+00:00",
+      "channel_id": "D0C6GC4H04F",
+      "welcome_status": "posted",
+      "tested_channel": "D0C6GC4H04F",
+      "last_test": 1791282706
+    }
+  ],
+  "cloud_fanout_probe": {
+    "status": "passed",
+    "mode": "subscribers",
+    "simulated_members": 2,
+    "real_human_recipients": 1,
+    "receipts": [
+      {
+        "user_id": "UTEST1",
+        "channel": "D0C6GC4H04F",
+        "ts": "1791282708.332969",
+        "status": "posted"
+      },
+      {
+        "user_id": "UTEST2",
+        "channel": "D0C6GC4H04F",
+        "ts": "1791282709.839559",
+        "status": "posted"
+      }
+    ],
+    "pas_id": "monitor_652b4b1ce31989d61e9e11d4a1efe60f",
+    "labelled_test_messages": 2,
+    "restart_posts": 0,
+    "production_state_unchanged": true,
+    "production_version": "DUCp3JvTiUmzNQnyJxARfRCoMUqhknTW",
+    "new_pas_records_in_this_probe": 0,
+    "bundle_sha256": "8cd4e5cd1a16a8d3baeaadfea839a66996117bab4ed42870f0500a002078f031"
+  },
+  "schedule": {
+    "Name": "paper-attribution-dev-author-monitor",
+    "State": "ENABLED",
+    "ScheduleExpression": "cron(17 0/4 * * ? *)"
+  },
+  "alarms": [
+    {
+      "name": "paper-attribution-dev-author-monitor-FailureAlarm-SjlKDfBbQv4N",
+      "state": "OK"
+    },
+    {
+      "name": "paper-attribution-dev-cpu-high",
+      "state": "OK"
+    },
+    {
+      "name": "paper-attribution-dev-memory-high",
+      "state": "OK"
+    },
+    {
+      "name": "paper-attribution-dev-monitor-health-WatchdogAlarm-ukvRvpGit98L",
+      "state": "OK"
+    },
+    {
+      "name": "paper-attribution-dev-rds-cpu-high",
+      "state": "OK"
+    },
+    {
+      "name": "paper-attribution-dev-rds-storage-low",
+      "state": "OK"
+    },
+    {
+      "name": "paper-attribution-dev-slack-DeadLettersAlarm-kRO7v5Im8oVJ",
+      "state": "OK"
+    },
+    {
+      "name": "paper-attribution-dev-slack-IngressAlarm-DxWFKsZBHj5d",
+      "state": "OK"
+    },
+    {
+      "name": "paper-attribution-dev-slack-WorkerAlarm-dumiuTyG8P4b",
+      "state": "OK"
+    },
+    {
+      "name": "paper-attribution-dev-worker-failures",
+      "state": "OK"
+    }
+  ],
+  "slack_failure_queue": {
+    "ApproximateNumberOfMessages": "0",
+    "ApproximateNumberOfMessagesNotVisible": "0"
+  },
+  "public_health": {
+    "status": "ok",
+    "service": "ac-papers-slack"
+  },
+  "limits": [
+    "No second real human has joined yet; two-member cloud test used isolated synthetic identities and only the operator DM",
+    "Scholar real mailbox remains unconfigured",
+    "Jev API key remains unconfigured",
+    "One installed workspace, not public multi-workspace OAuth distribution"
+  ]
+}

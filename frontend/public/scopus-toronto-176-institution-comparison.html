@@ -1,0 +1,1062 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Standalone Scopus Toronto OpenAlex metadata-only institution contribution comparison."
+    />
+    <title>Institution contribution comparison · Scopus Toronto 176</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        color-scheme: light;
+        --color-navy: #213c51;
+        --color-navy-light: #2d4d66;
+        --color-steel: #6594b1;
+        --color-steel-dim: rgba(101, 148, 177, 0.12);
+        --color-pink: #ddaed3;
+        --color-pink-dim: rgba(221, 174, 211, 0.18);
+        --bg: #f8fafc;
+        --bg-2: #ffffff;
+        --bg-3: #f1f4f8;
+        --panel: #ffffff;
+        --text: #213c51;
+        --muted: #6594b1;
+        --faint: #9ab1c4;
+        --border: rgba(33, 60, 81, 0.1);
+        --border-strong: rgba(33, 60, 81, 0.18);
+        --accent: #6594b1;
+        --accent-dim: rgba(101, 148, 177, 0.12);
+        --accent-bg: rgba(101, 148, 177, 0.08);
+        --core: #16a34a;
+        --adjacent: #d97706;
+        --shadow-sm: 0 1px 2px rgba(33, 60, 81, 0.05);
+        --radius-sm: 6px;
+        --radius-lg: 12px;
+        --fast: 140ms cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      *, *::before, *::after { box-sizing: border-box; }
+      html, body { height: 100%; margin: 0; }
+      body {
+        min-width: 320px;
+        background: var(--bg);
+        color: var(--text);
+        font-family: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+        font-size: 14px;
+        line-height: 1.5;
+        -webkit-font-smoothing: antialiased;
+      }
+      button, input, select { font: inherit; }
+      button, select { cursor: pointer; }
+      a { color: var(--accent); text-decoration: none; }
+      a:hover { color: var(--color-navy); }
+      button:focus-visible, input:focus-visible, select:focus-visible, a:focus-visible {
+        outline: 2px solid var(--accent);
+        outline-offset: 2px;
+      }
+      .skip-link {
+        position: fixed;
+        z-index: 1000;
+        top: 8px;
+        left: 8px;
+        transform: translateY(-160%);
+        border-radius: var(--radius-sm);
+        background: var(--color-navy);
+        color: white;
+        padding: 7px 10px;
+      }
+      .skip-link:focus { transform: translateY(0); }
+
+      .app-shell { display: flex; height: 100vh; overflow: hidden; }
+      .sidebar {
+        position: sticky;
+        top: 0;
+        display: flex;
+        width: 228px;
+        min-width: 228px;
+        height: 100vh;
+        flex-direction: column;
+        flex-shrink: 0;
+        overflow-x: hidden;
+        overflow-y: auto;
+        border-right: 1px solid rgba(33, 60, 81, 0.09);
+        background: #fff;
+        box-shadow: 1px 0 0 rgba(33, 60, 81, 0.04), 4px 0 12px rgba(33, 60, 81, 0.03);
+      }
+      .sidebar::-webkit-scrollbar { width: 0; }
+      .logo {
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: 11px;
+        flex-shrink: 0;
+        overflow: hidden;
+        border-bottom: 1px solid rgba(33, 60, 81, 0.07);
+        background: var(--color-navy);
+        padding: 16px 16px 14px;
+      }
+      .logo::after {
+        position: absolute;
+        inset: 0;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+        content: "";
+        pointer-events: none;
+      }
+      .logo-icon {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        width: 30px;
+        height: 30px;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        border: 1px solid rgba(221, 174, 211, 0.35);
+        border-radius: 8px;
+        background: rgba(221, 174, 211, 0.2);
+      }
+      .logo-text {
+        position: relative;
+        z-index: 1;
+        color: white;
+        font-size: 12.5px;
+        font-weight: 600;
+        line-height: 1.2;
+      }
+      .logo-sub {
+        position: relative;
+        z-index: 1;
+        margin-top: 1px;
+        color: rgba(221, 174, 211, 0.85);
+        font-size: 10px;
+        letter-spacing: 0.02em;
+      }
+      .nav {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        gap: 1px;
+        padding: 8px 8px 4px;
+      }
+      .section-label {
+        margin-top: 2px;
+        padding: 10px 8px 3px;
+        color: #b3c5d4;
+        font-size: 9.5px;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        user-select: none;
+      }
+      .section-label:first-child { margin-top: 0; padding-top: 6px; }
+      .nav-item {
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        overflow: hidden;
+        padding: 6px 8px 6px 10px;
+        border-radius: 6px;
+        color: #4a6478;
+        font-size: 12.5px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        transition: background 100ms ease, color 100ms ease;
+      }
+      .nav-item:hover { background: rgba(33, 60, 81, 0.05); color: var(--color-navy); }
+      .nav-item.active { background: rgba(221, 174, 211, 0.13); color: var(--color-navy); font-weight: 500; }
+      .nav-item.active::before {
+        position: absolute;
+        top: 5px;
+        bottom: 5px;
+        left: 0;
+        width: 3px;
+        border-radius: 0 2px 2px 0;
+        background: var(--color-pink);
+        content: "";
+      }
+      .nav-icon {
+        position: relative;
+        display: inline-block;
+        width: 13px;
+        height: 13px;
+        flex-shrink: 0;
+        border: 1.5px solid currentColor;
+        border-radius: 3px;
+        opacity: 0.55;
+      }
+      .nav-icon::after {
+        position: absolute;
+        top: 4px;
+        left: 3px;
+        width: 5px;
+        border-top: 1.5px solid currentColor;
+        content: "";
+      }
+      .nav-item.active .nav-icon { color: var(--color-pink); opacity: 1; }
+      .sidebar-footer {
+        display: flex;
+        flex-direction: column;
+        gap: 1px;
+        flex-shrink: 0;
+        border-top: 1px solid rgba(33, 60, 81, 0.07);
+        padding: 8px 8px 14px;
+      }
+      .footer-link {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 5px 8px 5px 10px;
+        border-radius: 6px;
+        color: #9ab1c4;
+        font-size: 11.5px;
+      }
+      .footer-link:hover { background: rgba(33, 60, 81, 0.04); color: var(--color-steel); }
+
+      .app-main {
+        min-width: 0;
+        flex: 1;
+        overflow-y: auto;
+        background-color: var(--bg);
+        background-image: radial-gradient(circle, rgba(33, 60, 81, 0.065) 1px, transparent 1px);
+        background-size: 22px 22px;
+        background-attachment: local;
+        padding: 28px 32px;
+      }
+      .page { width: min(1500px, 100%); margin: 0 auto; padding-bottom: 40px; }
+      .hero {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 24px;
+        margin-bottom: 20px;
+      }
+      .eyebrow, .panel-header > div > span, .method-card > span {
+        color: var(--muted);
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+      .hero h1 {
+        margin: 5px 0 6px;
+        color: var(--color-navy);
+        font-size: clamp(24px, 3vw, 36px);
+        line-height: 1.14;
+        letter-spacing: -0.04em;
+      }
+      .hero p { max-width: 760px; margin: 0; color: var(--muted); font-size: 13px; }
+      .hero-actions { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+      .status {
+        display: inline-flex;
+        min-height: 34px;
+        align-items: center;
+        gap: 7px;
+        border: 1px solid var(--border);
+        border-radius: 999px;
+        background: var(--panel);
+        padding: 0 11px;
+        color: var(--muted);
+        font-size: 10px;
+        text-transform: capitalize;
+      }
+      .status-dot { width: 7px; height: 7px; flex-shrink: 0; border-radius: 50%; background: var(--core); }
+      .export-button {
+        display: inline-flex;
+        min-height: 34px;
+        align-items: center;
+        justify-content: center;
+        border: 0;
+        border-radius: var(--radius-sm);
+        background: var(--color-navy);
+        padding: 0 13px;
+        color: white;
+        font-size: 11px;
+        font-weight: 600;
+      }
+      .export-button:hover { background: var(--color-navy-light); color: white; }
+      .filter-panel, .panel, .table-panel, .method-card {
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        background: var(--panel);
+        box-shadow: var(--shadow-sm);
+      }
+      .filter-panel { margin-bottom: 18px; padding: 16px; }
+      .filter-grid { display: grid; grid-template-columns: repeat(4, minmax(140px, 1fr)); gap: 12px; }
+      .filter-grid label, .search-form label {
+        display: flex;
+        min-width: 0;
+        flex-direction: column;
+        gap: 5px;
+      }
+      .filter-grid label > span, .search-form label > span {
+        color: var(--muted);
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: 0.03em;
+      }
+      select, input[type="number"], input[type="text"] {
+        width: 100%;
+        min-width: 0;
+        min-height: 34px;
+        border: 1px solid var(--border);
+        border-radius: var(--radius-sm);
+        outline: none;
+        background: var(--panel);
+        padding: 5px 10px;
+        color: var(--text);
+        font-size: 13px;
+        transition: border-color var(--fast);
+      }
+      select:focus, input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-dim); }
+      button {
+        border: 1px solid var(--border);
+        border-radius: var(--radius-sm);
+        background: var(--panel);
+        padding: 5px 12px;
+        color: var(--text);
+        font-size: 13px;
+        transition: border-color var(--fast), background var(--fast);
+      }
+      button:hover { border-color: var(--border-strong); background: var(--bg-3); }
+      .search-form { min-width: 0; }
+      .search-control { display: flex; gap: 5px; }
+      .search-control input { flex: 1; }
+      .search-control button { flex-shrink: 0; }
+      .filter-footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+        margin-top: 13px;
+        border-top: 1px solid var(--border);
+        padding-top: 13px;
+      }
+      .filter-footer p { margin: 0; color: var(--muted); font-size: 10px; line-height: 1.55; }
+      .filter-footer button { flex-shrink: 0; font-size: 10px; }
+      .kpi-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 12px;
+        margin-bottom: 18px;
+      }
+      .kpi {
+        position: relative;
+        min-height: 124px;
+        overflow: hidden;
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        background: var(--panel);
+        padding: 17px;
+      }
+      .kpi::after {
+        position: absolute;
+        right: -16px;
+        bottom: -22px;
+        width: 78px;
+        height: 78px;
+        border-radius: 50%;
+        background: var(--color-steel-dim);
+        content: "";
+      }
+      .focus-kpi { border-color: rgba(199, 131, 183, 0.35); background: linear-gradient(135deg, #fff 38%, rgba(221, 174, 211, 0.14)); }
+      .focus-kpi::after { background: var(--color-pink-dim); }
+      .kpi > span {
+        display: block;
+        color: var(--muted);
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+      .kpi strong {
+        display: block;
+        margin: 9px 0 3px;
+        color: var(--color-navy);
+        font-size: 27px;
+        line-height: 1;
+        letter-spacing: -0.04em;
+      }
+      .kpi small { color: var(--muted); font-size: 10px; }
+      .chart-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+        gap: 14px;
+        margin-bottom: 14px;
+      }
+      .panel { min-width: 0; padding: 16px 16px 5px; }
+      .panel-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 15px; }
+      .panel-header h2, .method-card h2 {
+        margin: 3px 0 0;
+        color: var(--color-navy);
+        font-size: 15px;
+        letter-spacing: -0.02em;
+      }
+      .panel-header > span { color: var(--muted); font-size: 10px; }
+      .legend { display: inline-flex; align-items: center; gap: 6px; }
+      .legend i { width: 9px; height: 9px; border-radius: 2px; background: var(--color-pink); }
+      .bar-chart { display: grid; min-height: 390px; align-content: center; gap: 8px; padding: 13px 24px 18px 4px; }
+      .bar-row { display: grid; grid-template-columns: minmax(120px, 180px) minmax(80px, 1fr) 43px; align-items: center; gap: 8px; }
+      .bar-label { overflow: hidden; color: var(--color-navy); font-size: 10px; text-align: right; text-overflow: ellipsis; white-space: nowrap; }
+      .bar-track {
+        height: 17px;
+        background-image: repeating-linear-gradient(to right, transparent 0, transparent calc(25% - 1px), rgba(33,60,81,0.07) 25%);
+      }
+      .bar-fill { height: 100%; min-width: 1px; border-radius: 0 4px 4px 0; background: var(--color-steel); }
+      .bar-row.focus .bar-fill { background: var(--color-pink); }
+      .bar-value { color: var(--color-navy); font-size: 10px; font-variant-numeric: tabular-nums; }
+      .year-chart { display: grid; min-height: 390px; align-items: center; padding: 6px 0 0; }
+      .year-chart svg { display: block; width: 100%; height: 365px; overflow: visible; }
+      .chart-empty { display: grid; min-height: 360px; place-items: center; color: var(--muted); font-size: 11px; }
+      .table-panel { margin-bottom: 14px; overflow: hidden; padding: 16px 0 0; }
+      .table-panel > .panel-header { padding: 0 16px 14px; }
+      .table-wrap { overflow-x: auto; }
+      table { width: 100%; min-width: 850px; border-collapse: collapse; font-size: 11px; }
+      th {
+        border-top: 1px solid var(--border);
+        border-bottom: 1px solid var(--border);
+        background: var(--bg-3);
+        padding: 9px 13px;
+        color: var(--muted);
+        font-size: 9px;
+        letter-spacing: 0.05em;
+        text-align: left;
+        text-transform: uppercase;
+        white-space: nowrap;
+      }
+      th button { border: 0; background: transparent; padding: 0; color: inherit; font-size: inherit; font-weight: 700; text-transform: inherit; }
+      td { border-bottom: 1px solid var(--border); padding: 10px 13px; color: var(--muted); }
+      tbody tr:last-child td { border-bottom: 0; }
+      tbody tr:hover td { background: var(--accent-bg); }
+      tbody tr.focus-row td { background: rgba(221, 174, 211, 0.09); }
+      .institution-name { display: flex; align-items: center; gap: 8px; color: var(--color-navy); font-weight: 600; }
+      .focus-chip { border-radius: 999px; background: var(--color-pink-dim); padding: 2px 6px; color: #8c4f80; font-size: 8px; font-weight: 700; text-transform: uppercase; white-space: nowrap; }
+      .numeric { font-variant-numeric: tabular-nums; }
+      .numeric-strong { color: var(--color-navy); font-weight: 700; font-variant-numeric: tabular-nums; }
+      .audit-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+      .method-card { padding: 17px; }
+      .method-card p { margin: 9px 0 14px; color: var(--muted); font-size: 11px; }
+      .method-card dl { margin: 0; }
+      .method-card dl > div {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        border-top: 1px solid var(--border);
+        padding: 7px 0;
+        font-size: 10px;
+      }
+      .method-card dt { color: var(--muted); }
+      .method-card dd { margin: 0; color: var(--color-navy); text-align: right; }
+      .chat-button {
+        position: fixed;
+        z-index: 20;
+        right: 24px;
+        bottom: 24px;
+        display: inline-flex;
+        min-height: 48px;
+        align-items: center;
+        gap: 10px;
+        border: 1px solid rgba(255,255,255,0.18);
+        border-radius: 999px;
+        background: var(--color-navy);
+        box-shadow: 0 8px 24px rgba(33,60,81,0.18);
+        padding: 0 20px;
+        color: white;
+        font-size: 12px;
+        font-weight: 600;
+      }
+      .chat-button:hover { background: var(--color-navy-light); color: white; }
+      .chat-button svg { width: 15px; height: 15px; }
+      .fatal-error { border: 1px solid rgba(220,38,38,.25); border-radius: var(--radius-lg); background: #fff; padding: 22px; color: #dc2626; }
+
+      @media (max-width: 1100px) {
+        .filter-grid { grid-template-columns: repeat(2, minmax(150px, 1fr)); }
+        .chart-grid { grid-template-columns: 1fr; }
+      }
+      @media (max-width: 820px) {
+        .hero { flex-direction: column; }
+        .hero-actions { width: 100%; flex-wrap: wrap; }
+        .kpi-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        .audit-grid { grid-template-columns: 1fr; }
+      }
+      @media (max-width: 720px) {
+        .sidebar { width: 54px; min-width: 54px; }
+        .logo { justify-content: center; padding: 14px 8px; }
+        .logo > div:last-child, .section-label { display: none; }
+        .nav { gap: 2px; padding: 8px 5px; }
+        .nav-item, .footer-link { min-height: 38px; justify-content: center; gap: 0; padding: 8px; font-size: 0; }
+        .nav-icon { width: 16px; height: 16px; }
+        .sidebar-footer { padding: 6px 5px 10px; }
+        .app-main { padding: 18px 14px; }
+      }
+      @media (max-width: 560px) {
+        .filter-grid, .kpi-grid { grid-template-columns: 1fr; }
+        .filter-footer { align-items: flex-start; flex-direction: column; }
+        .hero-actions > * { flex: 1; }
+        .bar-row { grid-template-columns: minmax(82px, 112px) minmax(50px, 1fr) 38px; gap: 5px; }
+        .bar-chart { padding-right: 3px; }
+        .chat-button { right: 12px; bottom: 12px; min-height: 42px; padding: 0 14px; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; }
+      }
+      @media print {
+        .sidebar, .chat-button, .filter-panel { display: none !important; }
+        .app-shell, .app-main { display: block; height: auto; overflow: visible; }
+        .app-main { padding: 0; background: white; }
+      }
+    </style>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Application navigation">
+        <div class="logo">
+          <span class="logo-icon" aria-hidden="true">
+            <svg width="15" height="15" viewBox="0 0 16 16" fill="none">
+              <rect x="2" y="6" width="12" height="7" rx="1.5" fill="white" opacity=".9" />
+              <rect x="5" y="3" width="6" height="4" rx="1" fill="white" opacity=".55" />
+              <rect x="6.5" y="9" width="3" height="2" rx=".5" fill="#213C51" />
+            </svg>
+          </span>
+          <div><div class="logo-text">Paper Attribution</div><div class="logo-sub">Scopus Toronto local</div></div>
+        </div>
+        <nav class="nav">
+          <div class="section-label">Research</div>
+          <a class="nav-item" href="#"><span class="nav-icon"></span>Papers</a>
+          <a class="nav-item" href="#"><span class="nav-icon"></span>Review Queue</a>
+          <a class="nav-item" href="#"><span class="nav-icon"></span>Discovery</a>
+          <a class="nav-item" href="#"><span class="nav-icon"></span>Graph RAG</a>
+          <div class="section-label">Analytics</div>
+          <a class="nav-item" href="#"><span class="nav-icon"></span>Insights</a>
+          <a class="nav-item" href="#"><span class="nav-icon"></span>Net Growth</a>
+          <a class="nav-item active" href="#main-content" aria-current="page"><span class="nav-icon"></span>Institution Compare</a>
+          <a class="nav-item" href="#"><span class="nav-icon"></span>Timeline</a>
+          <a class="nav-item" href="#"><span class="nav-icon"></span>Sankey</a>
+          <a class="nav-item" href="#"><span class="nav-icon"></span>Impact</a>
+          <a class="nav-item" href="#"><span class="nav-icon"></span>Drift</a>
+          <a class="nav-item" href="#"><span class="nav-icon"></span>Knowledge Transfer</a>
+          <a class="nav-item" href="#"><span class="nav-icon"></span>Transfer Studio</a>
+          <a class="nav-item" href="#"><span class="nav-icon"></span>Knowledge Base</a>
+          <div class="section-label">Network</div>
+          <a class="nav-item" href="#"><span class="nav-icon"></span>Multi-Graph</a>
+          <a class="nav-item" href="#"><span class="nav-icon"></span>Co-Author</a>
+          <a class="nav-item" href="#"><span class="nav-icon"></span>Geographic</a>
+          <div class="section-label">Team</div>
+          <a class="nav-item" href="#"><span class="nav-icon"></span>People Grid</a>
+          <div class="section-label">Operations</div>
+          <a class="nav-item" href="#"><span class="nav-icon"></span>Lint Report</a>
+          <a class="nav-item" href="#"><span class="nav-icon"></span>Duplicates</a>
+          <a class="nav-item" href="#"><span class="nav-icon"></span>Evidence Gaps</a>
+          <a class="nav-item" href="#"><span class="nav-icon"></span>Pipeline</a>
+          <a class="nav-item" href="#"><span class="nav-icon"></span>Report</a>
+          <a class="nav-item" href="#"><span class="nav-icon"></span>Eval</a>
+        </nav>
+        <div class="sidebar-footer">
+          <a class="footer-link" id="sidebar-export" href="#"><span aria-hidden="true">⇩</span>Export CSV</a>
+          <a class="footer-link" href="#"><span aria-hidden="true">□</span>API Docs</a>
+        </div>
+      </aside>
+
+      <main class="app-main" id="main-content">
+        <div class="page">
+          <header class="hero">
+            <div>
+              <div class="eyebrow">Scopus Toronto · 176 papers · OpenAlex metadata only</div>
+              <h1>Institution contribution comparison</h1>
+              <p>
+                Confirmed paper footprint counts a paper for every resolved institution represented by any
+                author. Author position and multi-affiliation rules affect only weighted contribution scores.
+                Zotero Tier 1/Tier 2, full text, classifications, and reviews are not inputs to this local page.
+              </p>
+            </div>
+            <div class="hero-actions">
+              <span class="status"><span class="status-dot" aria-hidden="true"></span><span id="metadata-status">Metadata succeeded</span></span>
+              <button class="export-button" id="download-ranking" type="button">Export comparison CSV</button>
+            </div>
+          </header>
+
+          <section class="filter-panel" aria-label="Comparison filters">
+            <div class="filter-grid">
+              <label><span>Credit model</span>
+                <select id="credit-scheme">
+                  <option value="lead_balanced">First/last balanced</option>
+                  <option value="lead_heavy">First/last heavy</option>
+                  <option value="equal_fractional">Equal fractional</option>
+                  <option value="full_counting">Full counting</option>
+                </select>
+              </label>
+              <label><span>Author credit filter</span>
+                <select id="author-role">
+                  <option value="all">All authors</option>
+                  <option value="first">First author only</option>
+                  <option value="corresponding">Corresponding author only</option>
+                  <option value="last">Last author only</option>
+                  <option value="middle">Middle authors only</option>
+                </select>
+              </label>
+              <label><span>Multiple affiliations</span>
+                <select id="affiliation-allocation">
+                  <option value="fractional">Divide author credit</option>
+                  <option value="full">Full credit for each</option>
+                </select>
+              </label>
+              <label><span>U of T scope</span>
+                <select id="focus-scope">
+                  <option value="strict">Exact institution only</option>
+                  <option value="lineage">Include descendants</option>
+                </select>
+              </label>
+              <label><span>Corpus</span>
+                <select id="corpus-filter">
+                  <option value="all">Scopus Toronto · 176 papers</option>
+                </select>
+              </label>
+              <label><span>Year from</span><input id="year-from" type="number" min="2010" max="2025" placeholder="2010" /></label>
+              <label><span>Year to</span><input id="year-to" type="number" min="2010" max="2028" placeholder="2028" /></label>
+              <form class="search-form" id="paper-search-form">
+                <label><span>Paper title or DOI</span><span class="search-control"><input id="paper-search" type="text" placeholder="Filter paper set" /><button type="submit">Apply</button></span></label>
+              </form>
+            </div>
+            <div class="filter-footer">
+              <p id="policy-copy">First and last author credit is emphasized by default. <strong>Role filter:</strong> Includes every author in the ordered author list.</p>
+              <button id="reset-filters" type="button">Reset filters</button>
+            </div>
+          </section>
+
+          <section class="kpi-grid" aria-label="Comparison summary">
+            <article class="kpi focus-kpi"><span>U of T weighted credit</span><strong id="metric-focus-credit">—</strong><small id="metric-focus-share">— of resolved credit</small></article>
+            <article class="kpi"><span>Other institutions</span><strong id="metric-other-credit">—</strong><small id="metric-other-papers">— confirmed papers · any author</small></article>
+            <article class="kpi"><span>U of T position</span><strong id="metric-focus-rank">—</strong><small id="metric-focus-papers">— confirmed papers · any author</small></article>
+            <article class="kpi"><span>Affiliation coverage</span><strong id="metric-credit-coverage">—</strong><small id="metric-credit-copy">— selected authorships resolved</small></article>
+          </section>
+
+          <section class="chart-grid">
+            <article class="panel">
+              <div class="panel-header"><div><span>Institution ranking</span><h2>Weighted contribution leaders</h2></div><span class="legend"><i></i> U of T scope</span></div>
+              <div class="bar-chart" id="bar-chart" role="img" aria-label="Top institution weighted credits"></div>
+            </article>
+            <article class="panel">
+              <div class="panel-header"><div><span>Time series</span><h2>U of T versus other credit</h2></div></div>
+              <div class="year-chart" id="year-chart"></div>
+            </article>
+          </section>
+
+          <section class="table-panel">
+            <div class="panel-header"><div><span>Detailed comparison</span><h2>Institution credit table</h2></div><span id="institution-count">— institutions in scope</span></div>
+            <div class="table-wrap">
+              <table>
+                <thead><tr>
+                  <th><button type="button" data-sort="rank">Rank</button></th>
+                  <th><button type="button" data-sort="name">Institution</button></th>
+                  <th><button type="button" data-sort="country">Country</button></th>
+                  <th><button type="button" data-sort="credit">Weighted credit</button></th>
+                  <th>Share</th>
+                  <th><button type="button" data-sort="papers">Confirmed papers (any author)</button></th>
+                  <th>First-author credit</th><th>Last-author credit</th><th>Corresponding-author credit</th><th>Authorships</th>
+                </tr></thead>
+                <tbody id="ranking-body"></tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="audit-grid">
+            <article class="method-card">
+              <span>Current rule</span><h2 id="rule-title">First/last balanced</h2>
+              <p id="rule-description">First and last authors receive 0.35 each; middle authors share 0.30.</p>
+              <dl>
+                <div><dt>Role</dt><dd id="rule-role">All authors</dd></div>
+                <div><dt>Multi-affiliation</dt><dd id="rule-allocation">fractional</dd></div>
+                <div><dt>Paper count</dt><dd>any affiliated author</dd></div>
+                <div><dt>U of T identity</dt><dd id="rule-focus">strict</dd></div>
+              </dl>
+            </article>
+            <article class="method-card">
+              <span>Evidence coverage</span><h2 id="coverage-title">— papers complete</h2>
+              <p id="coverage-copy">Loading OpenAlex metadata coverage…</p>
+              <dl>
+                <div><dt>Corpus</dt><dd id="audit-corpus">Scopus Toronto · 176 papers</dd></div>
+                <div><dt>Input set</dt><dd id="audit-hash">—</dd></div>
+                <div><dt>Algorithm</dt><dd>openalex_metadata.v1</dd></div>
+              </dl>
+            </article>
+          </section>
+        </div>
+      </main>
+    </div>
+
+    <button class="chat-button" type="button" aria-label="Ask Scopus Toronto corpus">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 2.5h12v8H7l-3.5 3v-3H2z"/><path d="M5 5.5h6M5 8h4"/></svg>
+      Ask Scopus Toronto
+    </button>
+
+    <script src="./data/scopus-toronto-176-openalex-institution-data.js"></script>
+    <script>
+      (() => {
+        "use strict";
+        const DATA = window.TIER1_TIER2_OPENALEX_INSTITUTION_DATA;
+        const main = document.querySelector("#main-content");
+        if (!DATA) {
+          main.innerHTML = '<div class="fatal-error" role="alert"><strong>The local metadata file could not be loaded.</strong><p>Keep this page next to data/scopus-toronto-176-openalex-institution-data.js.</p></div>';
+          return;
+        }
+
+        const $ = (selector) => document.querySelector(selector);
+        const $$ = (selector) => [...document.querySelectorAll(selector)];
+        const state = {
+          corpus: "all", role: "all", scheme: "lead_balanced", allocation: "fractional",
+          focus: "strict", yearFrom: null, yearTo: null, search: "", limit: 50,
+          sort: "rank", direction: "asc"
+        };
+        let currentReport = null;
+        let renderQueued = false;
+
+        const schemes = {
+          lead_balanced: { label: "First/last balanced", description: "First and last authors receive 0.35 each; middle authors share 0.30." },
+          lead_heavy: { label: "First/last heavy", description: "First and last authors receive 0.40 each; middle authors share 0.20." },
+          equal_fractional: { label: "Equal fractional", description: "Every selected author receives 1/n paper credit." },
+          full_counting: { label: "Full counting", description: "Every selected author receives 1.00 full paper credit." }
+        };
+        const roles = {
+          all: { label: "All authors", description: "Includes every author in the ordered author list." },
+          first: { label: "First author only", description: "Includes only the first-listed author." },
+          corresponding: { label: "Corresponding author only", description: "Includes only explicitly marked corresponding authors." },
+          last: { label: "Last author only", description: "Includes only the last-listed author." },
+          middle: { label: "Middle authors only", description: "Includes authors who are neither first-listed nor last-listed." }
+        };
+        const corpusLabels = { all: "Scopus Toronto · 176 papers" };
+
+        function escapeHtml(value) {
+          return String(value ?? "").replaceAll("&", "&amp;").replaceAll("<", "&lt;")
+            .replaceAll(">", "&gt;").replaceAll('"', "&quot;").replaceAll("'", "&#039;");
+        }
+        function number(value) { return Number(value || 0).toLocaleString(); }
+        function credit(value) {
+          const numeric = Number(value || 0);
+          return numeric.toLocaleString(undefined, { minimumFractionDigits: numeric < 10 ? 2 : 1, maximumFractionDigits: 2 });
+        }
+        function percent(value) { return `${(Number(value || 0) * 100).toFixed(1)}%`; }
+        function ratio(numerator, denominator) { return denominator ? numerator / denominator : 0; }
+        function isFocus(institution) { return state.focus === "lineage" ? institution.f > 0 : institution.f === 2; }
+        function corpusMatches(paper) {
+          if (state.corpus === "tier1") return paper.m === "1" || paper.m === "1+2";
+          if (state.corpus === "overlap") return paper.m === "1+2";
+          if (state.corpus === "tier2") return paper.m === "2";
+          return true;
+        }
+        function paperMatches(paper) {
+          if (!corpusMatches(paper)) return false;
+          if (state.yearFrom && (!paper.y || paper.y < state.yearFrom)) return false;
+          if (state.yearTo && (!paper.y || paper.y > state.yearTo)) return false;
+          if (!state.search) return true;
+          return `${paper.t}\n${paper.d || ""}\n${paper.e.join(" ")}`.toLowerCase().includes(state.search.toLowerCase());
+        }
+        function roleMatches(position, corresponding) {
+          if (state.role === "all") return true;
+          if (state.role === "first") return position === 1;
+          if (state.role === "last") return position === 2;
+          if (state.role === "middle") return position === 0;
+          return corresponding === 1;
+        }
+        function authorCredit(order, position, authorCount) {
+          if (authorCount <= 1) return 1;
+          if (state.scheme === "full_counting") return 1;
+          if (state.scheme === "equal_fractional" || authorCount === 2) return 1 / authorCount;
+          const lead = state.scheme === "lead_balanced" ? 0.35 : 0.4;
+          if (position === 1 || position === 2 || order === 0 || order === authorCount - 1) return lead;
+          return (1 - 2 * lead) / (authorCount - 2);
+        }
+        function emptyInstitution(index) {
+          return { index, weighted: 0, first: 0, last: 0, corresponding: 0, papers: new Set(), authorships: new Set(), focus: false };
+        }
+        function emptyYear() { return { papers: new Set(), focusCredit: 0, otherCredit: 0 }; }
+
+        function aggregate() {
+          const papers = DATA.papers.filter(paperMatches);
+          const institutions = new Map();
+          const focusPapers = new Set();
+          const otherPapers = new Set();
+          const years = new Map();
+          const status = {};
+          let authorshipPapers = 0;
+          let completePapers = 0;
+          let selectedAuthorships = 0;
+          let resolvedAuthorships = 0;
+          let selectedCredit = 0;
+          let resolvedCredit = 0;
+          let focusCredit = 0;
+          let otherCredit = 0;
+
+          for (const paper of papers) {
+            status[paper.s] = (status[paper.s] || 0) + 1;
+            if (paper.u.length) authorshipPapers += 1;
+            if (paper.u.length && !paper.x && paper.u.every((row) => row[2].length)) completePapers += 1;
+            const year = paper.y ? (years.get(paper.y) || emptyYear()) : null;
+            if (year) { year.papers.add(paper.i); years.set(paper.y, year); }
+
+            const paperInstitutions = new Set(paper.u.flatMap((row) => row[2]));
+            for (const index of paperInstitutions) {
+              const aggregateRow = institutions.get(index) || emptyInstitution(index);
+              aggregateRow.papers.add(paper.i);
+              aggregateRow.focus ||= isFocus(DATA.institutions[index]);
+              institutions.set(index, aggregateRow);
+              if (isFocus(DATA.institutions[index])) focusPapers.add(paper.i);
+              else otherPapers.add(paper.i);
+            }
+
+            const authorCount = Math.max(Number(paper.a || 0), paper.u.length);
+            paper.u.forEach(([position, corresponding, affiliations], order) => {
+              for (const index of affiliations) {
+                const aggregateRow = institutions.get(index) || emptyInstitution(index);
+                aggregateRow.authorships.add(`${paper.i}|${order}`);
+                institutions.set(index, aggregateRow);
+              }
+              if (!roleMatches(position, corresponding)) return;
+              const authorWeight = authorCredit(order, position, authorCount);
+              selectedAuthorships += 1;
+              selectedCredit += authorWeight;
+              if (!affiliations.length) return;
+              resolvedAuthorships += 1;
+              resolvedCredit += authorWeight;
+              const allocated = state.allocation === "full" ? authorWeight : authorWeight / affiliations.length;
+              for (const index of affiliations) {
+                const aggregateRow = institutions.get(index) || emptyInstitution(index);
+                aggregateRow.weighted += allocated;
+                aggregateRow.first += position === 1 ? allocated : 0;
+                aggregateRow.last += position === 2 ? allocated : 0;
+                aggregateRow.corresponding += corresponding === 1 ? allocated : 0;
+                aggregateRow.focus ||= isFocus(DATA.institutions[index]);
+                institutions.set(index, aggregateRow);
+                if (isFocus(DATA.institutions[index])) {
+                  focusCredit += allocated;
+                  if (year) year.focusCredit += allocated;
+                } else {
+                  otherCredit += allocated;
+                  if (year) year.otherCredit += allocated;
+                }
+              }
+            });
+          }
+
+          const resolvedTotal = focusCredit + otherCredit;
+          const rows = [...institutions.values()].map((row) => {
+            const institution = DATA.institutions[row.index];
+            return {
+              ...row,
+              institution,
+              name: institution.n,
+              country: institution.c || "—",
+              paperCount: row.papers.size,
+              authorshipCount: row.authorships.size,
+              share: ratio(row.weighted, resolvedTotal)
+            };
+          }).sort((a, b) => b.weighted - a.weighted || b.paperCount - a.paperCount || a.name.localeCompare(b.name));
+          rows.forEach((row, index) => { row.rank = index + 1; });
+          const focusRank = focusCredit ? 1 + rows.filter((row) => row.weighted > focusCredit + 1e-9).length : null;
+          const yearly = [...years.entries()].sort((a, b) => a[0] - b[0]).map(([year, row]) => ({
+            year, focusCredit: row.focusCredit, otherCredit: row.otherCredit
+          }));
+          return {
+            papers, rows, yearly, status, authorshipPapers, completePapers,
+            incompletePapers: authorshipPapers - completePapers,
+            noAuthorshipPapers: papers.length - authorshipPapers,
+            selectedAuthorships, resolvedAuthorships, selectedCredit, resolvedCredit,
+            focusCredit, otherCredit, focusPapers: focusPapers.size, otherPapers: otherPapers.size,
+            focusRank, resolvedTotal
+          };
+        }
+
+        function renderMetrics(report) {
+          $("#metric-focus-credit").textContent = credit(report.focusCredit);
+          $("#metric-focus-share").textContent = `${percent(ratio(report.focusCredit, report.resolvedTotal))} of resolved credit`;
+          $("#metric-other-credit").textContent = credit(report.otherCredit);
+          $("#metric-other-papers").textContent = `${number(report.otherPapers)} confirmed papers · any author`;
+          $("#metric-focus-rank").textContent = report.focusRank ? `#${report.focusRank}` : "—";
+          $("#metric-focus-papers").textContent = `${number(report.focusPapers)} confirmed papers · any author`;
+          $("#metric-credit-coverage").textContent = percent(ratio(report.resolvedCredit, report.selectedCredit));
+          $("#metric-credit-copy").textContent = `${number(report.resolvedAuthorships)} selected authorships resolved`;
+        }
+
+        function renderBars(rows) {
+          const top = rows.slice(0, 12);
+          const maximum = Math.max(...top.map((row) => row.weighted), 1);
+          const host = $("#bar-chart");
+          if (!top.length) { host.innerHTML = '<div class="chart-empty">No ranked institutions match the current filters.</div>'; return; }
+          host.innerHTML = top.map((row) => `
+            <div class="bar-row ${row.focus ? "focus" : ""}" title="${escapeHtml(row.name)} · ${credit(row.weighted)} weighted credit · ${number(row.paperCount)} papers">
+              <div class="bar-label">${escapeHtml(row.name)}</div>
+              <div class="bar-track"><div class="bar-fill" style="width:${Math.max(0.8, row.weighted / maximum * 100).toFixed(2)}%"></div></div>
+              <div class="bar-value">${credit(row.weighted)}</div>
+            </div>`).join("");
+        }
+
+        function renderYearChart(yearly) {
+          const host = $("#year-chart");
+          if (!yearly.length) { host.innerHTML = '<div class="chart-empty">No yearly credit matches the current filters.</div>'; return; }
+          const width = 520, height = 350, left = 46, right = 14, top = 48, bottom = 36;
+          const maximum = Math.max(...yearly.flatMap((row) => [row.focusCredit, row.otherCredit]), 1) * 1.08;
+          const x = (index) => left + (yearly.length === 1 ? (width-left-right)/2 : index * (width-left-right)/(yearly.length-1));
+          const y = (value) => top + (maximum-value)/maximum*(height-top-bottom);
+          const focusPoints = yearly.map((row, index) => `${x(index).toFixed(1)},${y(row.focusCredit).toFixed(1)}`).join(" ");
+          const otherPoints = yearly.map((row, index) => `${x(index).toFixed(1)},${y(row.otherCredit).toFixed(1)}`).join(" ");
+          const ticks = [0, .2, .4, .6, .8, 1].map((fraction) => {
+            const value = maximum * fraction, py = y(value);
+            return `<line x1="${left}" y1="${py}" x2="${width-right}" y2="${py}" stroke="rgba(33,60,81,.09)" stroke-dasharray="4 4"/><text x="${left-8}" y="${py+3}" text-anchor="end" fill="#6594B1" font-size="9">${Math.round(value)}</text>`;
+          }).join("");
+          const labelEvery = yearly.length > 12 ? 2 : 1;
+          const labels = yearly.map((row, index) => index % labelEvery ? "" : `<text x="${x(index)}" y="${height-12}" text-anchor="middle" fill="#6594B1" font-size="9">${row.year}</text>`).join("");
+          const focusDots = yearly.map((row, index) => `<circle cx="${x(index)}" cy="${y(row.focusCredit)}" r="3" fill="white" stroke="#C783B7" stroke-width="2"><title>${row.year}: U of T ${credit(row.focusCredit)}</title></circle>`).join("");
+          const otherDots = yearly.map((row, index) => `<circle cx="${x(index)}" cy="${y(row.otherCredit)}" r="3" fill="white" stroke="#6594B1" stroke-width="2"><title>${row.year}: Other ${credit(row.otherCredit)}</title></circle>`).join("");
+          host.innerHTML = `<svg viewBox="0 0 ${width} ${height}" role="img" aria-labelledby="year-title year-desc">
+            <title id="year-title">U of T versus other weighted credit by year</title>
+            <desc id="year-desc">${escapeHtml(yearly.map((row) => `${row.year}: U of T ${credit(row.focusCredit)}, other ${credit(row.otherCredit)}`).join("; "))}</desc>
+            <g transform="translate(${width-190},16)"><line x1="0" y1="8" x2="22" y2="8" stroke="#C783B7" stroke-width="2"/><circle cx="11" cy="8" r="5" fill="white" stroke="#C783B7" stroke-width="2"/><text x="29" y="11" fill="#6594B1" font-size="9">U of T credit</text><line x1="94" y1="8" x2="116" y2="8" stroke="#6594B1" stroke-width="2"/><circle cx="105" cy="8" r="5" fill="white" stroke="#6594B1" stroke-width="2"/><text x="123" y="11" fill="#6594B1" font-size="9">Other credit</text></g>
+            ${ticks}<polyline points="${otherPoints}" fill="none" stroke="#6594B1" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>${otherDots}
+            <polyline points="${focusPoints}" fill="none" stroke="#C783B7" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>${focusDots}${labels}</svg>`;
+        }
+
+        function sortedRows() {
+          if (!currentReport) return [];
+          const direction = state.direction === "asc" ? 1 : -1;
+          const value = (row) => state.sort === "name" ? row.name : state.sort === "country" ? row.country : state.sort === "credit" ? row.weighted : state.sort === "papers" ? row.paperCount : row.rank;
+          return [...currentReport.rows].sort((a, b) => {
+            const left = value(a), right = value(b);
+            return (typeof left === "string" ? left.localeCompare(right) : left - right) * direction;
+          });
+        }
+
+        function renderTable(report) {
+          const rows = sortedRows().slice(0, state.limit);
+          $("#ranking-body").innerHTML = rows.map((row) => `<tr class="${row.focus ? "focus-row" : ""}">
+            <td class="numeric">#${row.rank}</td>
+            <td><div class="institution-name">${escapeHtml(row.name)}${row.focus ? '<span class="focus-chip">U of T scope</span>' : ""}</div></td>
+            <td>${escapeHtml(row.country)}</td><td class="numeric-strong">${credit(row.weighted)}</td>
+            <td class="numeric">${percent(row.share)}</td><td class="numeric">${number(row.paperCount)}</td>
+            <td class="numeric">${credit(row.first)}</td><td class="numeric">${credit(row.last)}</td>
+            <td class="numeric">${credit(row.corresponding)}</td><td class="numeric">${number(row.authorshipCount)}</td>
+          </tr>`).join("");
+          $("#institution-count").textContent = `${number(report.rows.length)} institutions in scope`;
+          $$('th').forEach((th) => th.removeAttribute("aria-sort"));
+          const active = $(`[data-sort="${state.sort}"]`);
+          if (active) active.closest("th").setAttribute("aria-sort", state.direction === "asc" ? "ascending" : "descending");
+        }
+
+        function renderAudit(report) {
+          const scheme = schemes[state.scheme];
+          $("#rule-title").textContent = scheme.label;
+          $("#rule-description").textContent = scheme.description;
+          $("#rule-role").textContent = roles[state.role].label;
+          $("#rule-allocation").textContent = state.allocation;
+          $("#rule-focus").textContent = state.focus;
+          $("#coverage-title").textContent = `${number(report.completePapers)}/${number(report.papers.length)} papers complete`;
+          $("#coverage-copy").textContent = `${number(report.incompletePapers)} papers have at least one incomplete author affiliation; ${number(report.noAuthorshipPapers)} have no authorship metadata. DOI ambiguous, unmatched, and missing-DOI records remain in the corpus denominator and are never assigned to other institutions.`;
+          $("#audit-corpus").textContent = corpusLabels[state.corpus];
+        }
+
+        function updateUrl() {
+          try {
+            const url = new URL(location.href);
+            const defaults = { corpus: "all", role: "all", scheme: "lead_balanced", allocation: "fractional", focus: "strict" };
+            for (const key of Object.keys(defaults)) state[key] === defaults[key] ? url.searchParams.delete(key) : url.searchParams.set(key, state[key]);
+            state.yearFrom ? url.searchParams.set("year_from", state.yearFrom) : url.searchParams.delete("year_from");
+            state.yearTo ? url.searchParams.set("year_to", state.yearTo) : url.searchParams.delete("year_to");
+            state.search ? url.searchParams.set("search", state.search) : url.searchParams.delete("search");
+            history.replaceState(null, "", url);
+          } catch (_) { /* file URLs can restrict history updates. */ }
+        }
+
+        function render() {
+          renderQueued = false;
+          currentReport = aggregate();
+          renderMetrics(currentReport);
+          renderBars(currentReport.rows);
+          renderYearChart(currentReport.yearly);
+          renderTable(currentReport);
+          renderAudit(currentReport);
+          $("#policy-copy").innerHTML = `${escapeHtml(schemes[state.scheme].description)} <strong>Role filter:</strong> ${escapeHtml(roles[state.role].description)}`;
+          updateUrl();
+        }
+        function scheduleRender() {
+          if (renderQueued) return;
+          renderQueued = true;
+          $("#metadata-status").textContent = "Metadata recalculating";
+          requestAnimationFrame(() => { render(); $("#metadata-status").textContent = "Metadata succeeded"; });
+        }
+        function syncControls() {
+          $("#corpus-filter").value = state.corpus;
+          $("#author-role").value = state.role;
+          $("#credit-scheme").value = state.scheme;
+          $("#affiliation-allocation").value = state.allocation;
+          $("#focus-scope").value = state.focus;
+          $("#year-from").value = state.yearFrom || "";
+          $("#year-to").value = state.yearTo || "";
+          $("#paper-search").value = state.search;
+        }
+        function loadState() {
+          const params = new URLSearchParams(location.search);
+          if (params.get("corpus") === "all") state.corpus = "all";
+          if (["all", "first", "last", "middle", "corresponding"].includes(params.get("role"))) state.role = params.get("role");
+          if (["lead_balanced", "lead_heavy", "equal_fractional", "full_counting"].includes(params.get("scheme"))) state.scheme = params.get("scheme");
+          if (["fractional", "full"].includes(params.get("allocation"))) state.allocation = params.get("allocation");
+          if (["strict", "lineage"].includes(params.get("focus"))) state.focus = params.get("focus");
+          const yearFrom = Number(params.get("year_from")), yearTo = Number(params.get("year_to"));
+          if (Number.isInteger(yearFrom) && yearFrom >= 2010) state.yearFrom = yearFrom;
+          if (Number.isInteger(yearTo) && yearTo <= 2028) state.yearTo = yearTo;
+          state.search = (params.get("search") || "").trim();
+        }
+        function downloadRanking(event) {
+          event?.preventDefault();
+          if (!currentReport) return;
+          const header = ["rank", "institution", "country", "ror", "openalex_id", "weighted_credit", "share_of_resolved_credit", "paper_count", "first_author_credit", "last_author_credit", "corresponding_author_credit", "authorship_count", "contributes_to_uoft_scope"];
+          const rows = currentReport.rows.map((row) => [row.rank, row.name, row.country, row.institution.r || "", row.institution.id || "", row.weighted, row.share, row.paperCount, row.first, row.last, row.corresponding, row.authorshipCount, row.focus]);
+          const csvEscape = (value) => `"${String(value).replaceAll('"', '""')}"`;
+          const csv = [header, ...rows].map((row) => row.map(csvEscape).join(",")).join("\n");
+          const url = URL.createObjectURL(new Blob(["\ufeff", csv], { type: "text/csv;charset=utf-8" }));
+          const link = document.createElement("a");
+          link.href = url;
+          link.download = `scopus_toronto_176_institution_${state.role}_${state.scheme}.csv`;
+          document.body.appendChild(link);
+          link.click();
+          link.remove();
+          URL.revokeObjectURL(url);
+        }
+
+        const manifest = DATA.manifest;
+        $("#audit-hash").textContent = `${manifest.input.sha256.slice(0, 10)}…${manifest.input.sha256.slice(-6)}`;
+        $("#audit-hash").title = manifest.input.sha256;
+        $("#metadata-status").title = `${manifest.openalex.match_status.doi_exact.toLocaleString()} exact DOI matches · generated ${manifest.generated_at}`;
+        [["#corpus-filter", "corpus"], ["#author-role", "role"], ["#credit-scheme", "scheme"], ["#affiliation-allocation", "allocation"], ["#focus-scope", "focus"]].forEach(([selector, key]) => {
+          $(selector).addEventListener("change", (event) => { state[key] = event.target.value; scheduleRender(); });
+        });
+        $("#year-from").addEventListener("change", (event) => { state.yearFrom = Number(event.target.value) || null; scheduleRender(); });
+        $("#year-to").addEventListener("change", (event) => { state.yearTo = Number(event.target.value) || null; scheduleRender(); });
+        $("#paper-search-form").addEventListener("submit", (event) => { event.preventDefault(); state.search = $("#paper-search").value.trim(); scheduleRender(); });
+        $$('[data-sort]').forEach((button) => button.addEventListener("click", () => {
+          const key = button.dataset.sort;
+          if (state.sort === key) state.direction = state.direction === "asc" ? "desc" : "asc";
+          else { state.sort = key; state.direction = ["credit", "papers"].includes(key) ? "desc" : "asc"; }
+          renderTable(currentReport);
+        }));
+        $("#reset-filters").addEventListener("click", () => {
+          Object.assign(state, { corpus: "all", role: "all", scheme: "lead_balanced", allocation: "fractional", focus: "strict", yearFrom: null, yearTo: null, search: "", sort: "rank", direction: "asc" });
+          syncControls(); scheduleRender();
+        });
+        $("#download-ranking").addEventListener("click", downloadRanking);
+        $("#sidebar-export").addEventListener("click", downloadRanking);
+        $$(".nav-item:not(.active), .footer-link:not(#sidebar-export), .chat-button").forEach((item) => item.addEventListener("click", (event) => event.preventDefault()));
+
+        loadState();
+        syncControls();
+        scheduleRender();
+      })();
+    </script>
+  </body>
+</html>

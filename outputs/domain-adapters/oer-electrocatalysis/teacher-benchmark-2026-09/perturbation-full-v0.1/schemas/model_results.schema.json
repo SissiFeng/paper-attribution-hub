@@ -1,0 +1,41 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "decision_id": {
+      "title": "Decision Id",
+      "type": "string"
+    },
+    "evidence_deletion_passed": {
+      "title": "Evidence Deletion Passed",
+      "type": "boolean"
+    },
+    "model_alias": {
+      "title": "Model Alias",
+      "type": "string"
+    },
+    "numeric_replacement_passed": {
+      "anyOf": [
+        {
+          "type": "boolean"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Numeric Replacement Passed"
+    },
+    "schema_version": {
+      "default": "domain-teacher-claim-perturbation-result-v0.1",
+      "title": "Schema Version",
+      "type": "string"
+    }
+  },
+  "required": [
+    "model_alias",
+    "decision_id",
+    "evidence_deletion_passed"
+  ],
+  "title": "ModelClaimPerturbationResult",
+  "type": "object"
+}

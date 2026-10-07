@@ -126,7 +126,7 @@ export default function NetworkPage() {
     <div>
       <FilterBar />
       <div className="page-heading-compact">
-        <div><h1>Institutional Collaboration</h1><p>Edges count distinct filtered papers jointly affiliated with both institutions.</p></div>
+        <div><h1>Institution Affiliation Co-occurrence</h1><p>Edges count distinct filtered papers whose affiliation text names both institutions; this does not assert a resolved author-level collaboration.</p></div>
       </div>
       <div className="filters" style={{ marginTop: "0.5rem" }}>
         <label>
@@ -155,7 +155,7 @@ export default function NetworkPage() {
           <EChart option={buildOption(payload)} />
           <div className="network-legend">
             <span>
-              <span className="dot ac" /> AC partner institution
+              <span className="dot ac" /> Partner flag (when independently available)
             </span>
             <span>
               <span className="dot other" /> External institution

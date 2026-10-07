@@ -23,6 +23,12 @@ db_max_allocated_storage = 100
 # Production: at least 2 tasks for high availability
 backend_desired_count = 2
 
+worker_schedules_enabled = true
+active_retrain_every     = 20
+model_auto_promote       = false
+pipeline_discovery       = false
+pipeline_fulltext        = false
+
 # Log retention
 log_retention_days = 30
 
@@ -32,3 +38,11 @@ cors_origins = [
   "http://localhost:3000",
   # "https://app.example.com",
 ]
+
+# Authoritative Zotero collection keys (set before deployment).
+zotero_group_id                          = "6631056"
+zotero_tier1_collection                  = "ZYENR62J"
+zotero_tier2_collection                  = ""
+sdl_stage1_only                          = true
+sdl_stage1_derived_views_enabled         = false
+sdl_stage1_descriptive_analytics_enabled = false

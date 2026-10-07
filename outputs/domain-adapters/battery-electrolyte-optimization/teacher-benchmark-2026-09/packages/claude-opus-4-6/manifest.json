@@ -1,0 +1,84 @@
+{
+  "artifact_sha256": {
+    "corpus/continued_pretraining.jsonl": "dc77433c6e07ab6e6aee128b09e458ae94d67fe1d6816bfa62bb22c2d4415164",
+    "knowledge/paper_records.jsonl": "cf170a485972872ca33dda664648856d0f1624a8a27f8b84a076a209df695259",
+    "knowledge/protocols.jsonl": "7400bcd8aca5df7701f6bbc0ace9a3989680577909c732fd687e28e9e2b5851f",
+    "knowledge/scientific_chunks.jsonl": "0f402bd716119b04dce347fb23717b84e891eabf78dd52319d14d0b15a46071b",
+    "reports/quality_report.json": "56bbc50877a7daa211cfee44f981d276fc0702a6b89610e1bdccb07360ed12fb",
+    "reports/teacher_field_audit.jsonl": "0df76b8d9d82ae8d18a78ca2c8ee09b9c65324acd181fbc14c3930d39def0d19",
+    "source/selection_manifest.json": "08c345323e4c99ec0a251de8f940e24b6165efbd8228ec5818f545bbb7f7aaa9",
+    "tasks/evaluation/eval.jsonl": "363e3595a47027c5d06f530309bb6146dcf55e101c951a77715cc82d78e64429",
+    "tasks/sft/train.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "chunking": {
+    "exact_source_segment_provenance": true,
+    "max_chars_safety_limit": 6000,
+    "min_merge_chars": 800,
+    "schema_version": "domain-adapter-scientific-chunk-v0.1",
+    "source_blocks_immutable": true,
+    "strategy": "structure_first_semantic"
+  },
+  "classification_neutral": true,
+  "counts": {
+    "corpus_record_count": 13,
+    "paper_count": 3,
+    "protocol_count": 3,
+    "scientific_chunk_count": 13,
+    "task_count": 12
+  },
+  "domain": "battery electrolyte discovery and optimization",
+  "extraction": {
+    "candidate_domain_terms": [
+      "electrolyte",
+      "lithium-ion",
+      "ionic conductivity",
+      "solubility",
+      "redox"
+    ],
+    "extractor": "amazon_bedrock_structured_teacher",
+    "inference_config": {
+      "max_output_tokens": 14000,
+      "temperature": 0.0
+    },
+    "minimum_chunk_score": 2,
+    "mode": "teacher",
+    "model": "us.anthropic.claude-opus-4-6-v1",
+    "prompt_version": "scientific-protocol-teacher-v0.4-scope-aware",
+    "region": "us-east-1",
+    "scope_aware": true,
+    "usage": {
+      "input_token_count": 12600,
+      "invocation_count": 3,
+      "latency_ms_total": 105994,
+      "output_token_count": 11440,
+      "response_failure_diagnostics": [],
+      "response_schema_failure_count": 0,
+      "salvaged_response_count": 0
+    }
+  },
+  "institution_entities_included": false,
+  "layers": [
+    "cleaned_corpus",
+    "scientific_chunks",
+    "structured_knowledge",
+    "task_suite"
+  ],
+  "package_descriptor": {
+    "dependencies": [],
+    "domain": "battery electrolyte discovery and optimization",
+    "facets": [],
+    "package_id": "battery-electrolyte-optimization",
+    "package_kind": "domain",
+    "package_version": "0.2.0-eval-claude-opus-4-6",
+    "schema_version": "domain-package-descriptor-v0.1"
+  },
+  "package_id": "battery-electrolyte-optimization",
+  "package_version": "0.2.0-eval-claude-opus-4-6",
+  "schema_version": "domain-adapter-package-v0.2",
+  "source_access": "s3_markdown",
+  "validation": {
+    "rejected_protocol_count": 0,
+    "rejected_teacher_field_count": 96,
+    "unsupported_evidence_count": 96
+  }
+}

@@ -23,6 +23,7 @@ from app.models import (
     Institution,
     Paper,
     PaperAuthor,
+    PaperChunk,
     PaperClassification,
     PaperProposition,
 )
@@ -45,6 +46,7 @@ ALLOWED_TABLES = (
     "authors",
     "institutions",
     "paper_propositions",
+    "paper_chunks",
     "human_reviews",
 )
 
@@ -266,7 +268,9 @@ def _deterministic_plan(query: str) -> NlSqlPlan:
         filters["proposition_object"] = relation_object
 
     is_count = _contains_any(normalized, _COUNT_MARKERS)
-    is_list = _contains_any(normalized, _LIST_MARKERS)
+    is_list = _contains_any(normalized, _LIST_MARKERS) or bool(
+        re.search(r"\bwhich\b.{0,40}\bpapers?\b", normalized, re.I)
+    )
     is_top = _contains_any(normalized, _TOP_MARKERS)
     has_author = _contains_any(normalized, _AUTHOR_MARKERS)
     has_institution = _contains_any(normalized, _INSTITUTION_MARKERS)
@@ -443,13 +447,13 @@ def _scope_statement(
             )
         )
     if predicate := plan.filters.get("proposition_predicate"):
-        conditions = [
+        proposition_conditions = [
             PaperProposition.paper_id == Paper.id,
             PaperProposition.predicate == predicate,
         ]
         if object_value := plan.filters.get("proposition_object"):
             pattern = f"%{_escape_like(str(object_value).casefold())}%"
-            conditions.append(
+            proposition_conditions.append(
                 or_(
                     func.lower(PaperProposition.object_value).like(
                         pattern,
@@ -461,7 +465,15 @@ def _scope_statement(
                     ),
                 )
             )
-        stmt = stmt.where(exists().where(*conditions))
+            fulltext_match = exists().where(
+                PaperChunk.paper_id == Paper.id,
+                func.lower(PaperChunk.chunk_text).like(pattern, escape="\\"),
+            )
+            stmt = stmt.where(
+                or_(exists().where(*proposition_conditions), fulltext_match)
+            )
+        else:
+            stmt = stmt.where(exists().where(*proposition_conditions))
     return stmt.distinct()
 
 
@@ -639,13 +651,42 @@ def _rows(result) -> list[dict[str, Any]]:
     ]
 
 
-def _summary(plan: NlSqlPlan, rows: list[dict[str, Any]], *, chinese: bool) -> str:
+def _summary(
+    plan: NlSqlPlan,
+    rows: list[dict[str, Any]],
+    *,
+    chinese: bool,
+    base_scope_paper_count: int,
+) -> str:
     if not rows:
-        return "严格的数据库查询没有返回匹配记录。" if chinese else "The strict database query returned no matching rows."
+        if chinese:
+            return (
+                f"在当前 {base_scope_paper_count} 篇论文的范围内，没有找到结构化匹配。"
+                "这不代表全文中没有相关内容；可以改用更宽泛的表述并检索全文证据。"
+            )
+        return (
+            f"No structured matches were found among the {base_scope_paper_count} "
+            "papers in the current scope. This does not mean the full text contains "
+            "no relevant evidence; try broader wording or search the indexed full text."
+        )
     if plan.intent == "count_papers":
         if len(rows) == 1 and "paper_count" in rows[0]:
             count = rows[0]["paper_count"]
-            return f"数据库查询返回 {count} 篇匹配论文。" if chinese else f"The database query returned {count} matching papers."
+            if count == 0:
+                if chinese:
+                    return (
+                        f"在当前 {base_scope_paper_count} 篇论文的范围内，没有找到"
+                        "符合这些结构化条件的论文。"
+                    )
+                return (
+                    f"No papers matched those structured conditions within the current "
+                    f"scope of {base_scope_paper_count} papers."
+                )
+            return (
+                f"数据库查询返回 {count} 篇匹配论文。"
+                if chinese
+                else f"The database query returned {count} matching papers."
+            )
         dimension = plan.group_by or "group"
         values = "; ".join(
             f"{row.get(dimension) if row.get(dimension) is not None else 'Unknown'}: {row['paper_count']}"
@@ -696,6 +737,10 @@ def run_nl_sql(
     normalized_paper_ids = None
     if paper_ids is not None:
         normalized_paper_ids = list(dict.fromkeys(paper_ids))
+    base_scope_stmt = apply_filter(select(Paper.id), active_filter)
+    if normalized_paper_ids is not None:
+        base_scope_stmt = base_scope_stmt.where(Paper.id.in_(normalized_paper_ids))
+    base_scope_ids = list(session.execute(base_scope_stmt.distinct()).scalars())
     scope_stmt = _scope_statement(active_filter, plan, normalized_paper_ids)
     scope_ids = list(session.execute(scope_stmt).scalars())
     stmt = _statement_for_plan(plan, scope_stmt)
@@ -721,6 +766,7 @@ def run_nl_sql(
         "query_constraints": _json_value(plan.filters),
         "page_filter": canonical_filter_payload(active_filter),
         "page_filter_fingerprint": filter_fingerprint(active_filter),
+        "base_scope_paper_count": len(set(base_scope_ids)),
         "scope_paper_count": len(set(scope_ids)),
         "scope_paper_set_sha256": paper_set_sha256(scope_ids),
         "scope_paper_set_encoding": PAPER_SET_ENCODING,
@@ -739,6 +785,7 @@ def run_nl_sql(
             plan,
             rows,
             chinese=bool(re.search(r"[\u3400-\u9fff]", query)),
+            base_scope_paper_count=len(set(base_scope_ids)),
         ),
         audit=audit,
     )

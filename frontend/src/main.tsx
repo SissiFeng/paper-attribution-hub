@@ -1,9 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Outlet, Route, Routes, useParams } from "react-router-dom";
 
 import { Sidebar } from "@/components/Sidebar";
 import { GlobalChat } from "@/components/GlobalChat";
+import { Stage1DerivedGate } from "@/components/Stage1DerivedGate";
 import PaperReviewPage from "@/pages/PaperReviewPage";
 import ReviewQueuePage from "@/pages/ReviewQueuePage";
 import PipelineStatusPage from "@/pages/PipelineStatusPage";
@@ -15,6 +16,7 @@ import PeopleGridPage from "@/pages/PeopleGridPage";
 import MultiGraphPage from "@/pages/MultiGraphPage";
 import MultiGraphEmbed from "@/pages/MultiGraphEmbed";
 import GeographicPage from "@/pages/GeographicPage";
+import GeographicCountryPage from "@/pages/GeographicCountryPage";
 import NetworkPage from "@/pages/NetworkPage";
 import CoauthorNetworkPage from "@/pages/CoauthorNetworkPage";
 import SankeyPage from "@/pages/SankeyPage";
@@ -31,14 +33,26 @@ import ReportPage from "@/pages/ReportPage";
 import NetworkGrowthPage from "@/pages/NetworkGrowthPage";
 import RetrievalPage from "@/pages/RetrievalPage";
 import EvidenceMapPage from "@/pages/EvidenceMapPage";
+import InstitutionAuthorshipPage from "@/pages/InstitutionAuthorshipPage";
 import "@/styles.css";
+import { PasAccount, RequireAccount, usePasAccount } from '@/components/PasAccount';
+import PaperPage, { PaperCatalogue, ResearchWorkspace } from '@/pages/PaperPage';
+
+function PapersHome() {
+  const {user,checking}=usePasAccount();
+  if(checking)return <p role="status">Loading PAS…</p>;
+  return user?.role==='admin' ? <PaperReviewPage/> : <PaperCatalogue/>;
+}
+
+function AdminChat() { const {user}=usePasAccount();return user?.role==='admin' ? <GlobalChat/> : null; }
+function PaperRoute() { const {paperId}=useParams(),{user}=usePasAccount();return <PaperPage key={(user?.id||'anonymous')+':'+paperId}/>; }
 
 // Layout for pages that need the sidebar — uses React Router's Outlet
 function Layout() {
   return (
     <div className="app-shell">
       <Sidebar />
-      <main className="app-main"><Outlet /></main>
+      <main id="pas-main" className="app-main" tabIndex={-1}><Outlet /></main>
     </div>
   );
 }
@@ -46,41 +60,57 @@ function Layout() {
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <BrowserRouter>
+      <PasAccount>
       <Routes>
         {/* Embed / standalone pages — no sidebar */}
-        <Route path="/multi-graph/embed" element={<MultiGraphEmbed />} />
+        <Route element={<RequireAccount admin><Outlet/></RequireAccount>}>
+        <Route element={<Stage1DerivedGate />}>
+          <Route path="/multi-graph/embed" element={<MultiGraphEmbed />} />
+        </Route>
+        </Route>
 
         {/* Main app shell — all other routes get the sidebar via Outlet */}
         <Route element={<Layout />}>
-          <Route path="/" element={<PaperReviewPage />} />
-          <Route path="/papers/:paperId/evidence-map" element={<EvidenceMapPage />} />
-          <Route path="/queue" element={<ReviewQueuePage />} />
-          <Route path="/insights" element={<InsightsPage />} />
-          <Route path="/pipeline" element={<PipelineStatusPage />} />
-          <Route path="/evidence-gaps" element={<EvidenceGapsPage />} />
-          <Route path="/lint" element={<LintReportPage />} />
-          <Route path="/duplicates" element={<DuplicateCandidatesPage />} />
-          <Route path="/discovery" element={<DiscoveryPage />} />
-          <Route path="/report" element={<ReportPage />} />
-          <Route path="/eval" element={<EvalPage />} />
-          <Route path="/sankey" element={<SankeyPage />} />
-          <Route path="/timeline" element={<TimelinePage />} />
-          <Route path="/network" element={<CoauthorNetworkPage />} />
-          <Route path="/network-v1" element={<NetworkPage />} />
-          <Route path="/impact" element={<ImpactPage />} />
-          <Route path="/drift" element={<DriftPage />} />
-          <Route path="/transfer" element={<KnowledgeTransferPage />} />
-          <Route path="/transfer-studio" element={<TransferStudioPage />} />
-          <Route path="/kb" element={<KnowledgeBasePage />} />
-          <Route path="/labs/:labId" element={<LabProfilePage />} />
-          <Route path="/people" element={<PeopleGridPage />} />
-          <Route path="/multi-graph" element={<MultiGraphPage />} />
-          <Route path="/geographic" element={<GeographicPage />} />
+          <Route path="/" element={<PapersHome />} />
+          <Route path="/papers" element={<PaperCatalogue />} />
+          <Route path="/papers/:paperId" element={<PaperRoute />} />
+          <Route path="/research" element={<ResearchWorkspace />} />
+          <Route element={<RequireAccount admin><Outlet/></RequireAccount>}>
+          <Route path="/attribution" element={<PaperReviewPage />} />
           <Route path="/growth" element={<NetworkGrowthPage />} />
-          <Route path="/retrieval" element={<RetrievalPage />} />
+          <Route path="/institution-comparison" element={<InstitutionAuthorshipPage />} />
+          <Route path="/geographic" element={<GeographicPage />} />
+          <Route path="/geographic/country/:countryCode" element={<GeographicCountryPage />} />
+          <Route element={<Stage1DerivedGate />}>
+            <Route path="/papers/:paperId/evidence-map" element={<EvidenceMapPage />} />
+            <Route path="/queue" element={<ReviewQueuePage />} />
+            <Route path="/insights" element={<InsightsPage />} />
+            <Route path="/pipeline" element={<PipelineStatusPage />} />
+            <Route path="/evidence-gaps" element={<EvidenceGapsPage />} />
+            <Route path="/lint" element={<LintReportPage />} />
+            <Route path="/duplicates" element={<DuplicateCandidatesPage />} />
+            <Route path="/discovery" element={<DiscoveryPage />} />
+            <Route path="/report" element={<ReportPage />} />
+            <Route path="/eval" element={<EvalPage />} />
+            <Route path="/sankey" element={<SankeyPage />} />
+            <Route path="/timeline" element={<TimelinePage />} />
+            <Route path="/network" element={<CoauthorNetworkPage />} />
+            <Route path="/network-v1" element={<NetworkPage />} />
+            <Route path="/impact" element={<ImpactPage />} />
+            <Route path="/drift" element={<DriftPage />} />
+            <Route path="/transfer" element={<KnowledgeTransferPage />} />
+            <Route path="/transfer-studio" element={<TransferStudioPage />} />
+            <Route path="/kb" element={<KnowledgeBasePage />} />
+            <Route path="/labs/:labId" element={<LabProfilePage />} />
+            <Route path="/people" element={<PeopleGridPage />} />
+            <Route path="/multi-graph" element={<MultiGraphPage />} />
+            <Route path="/retrieval" element={<RetrievalPage />} />
+          </Route>
+          </Route>
         </Route>
       </Routes>
-      <GlobalChat />
+      <AdminChat />
+      </PasAccount>
     </BrowserRouter>
   </React.StrictMode>
 );

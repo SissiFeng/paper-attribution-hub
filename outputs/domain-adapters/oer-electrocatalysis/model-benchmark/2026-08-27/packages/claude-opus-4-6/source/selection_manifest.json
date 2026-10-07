@@ -1,0 +1,63 @@
+{
+  "classification_tables_used": false,
+  "papers": [
+    {
+      "doi": "10.1021/acscentsci.3c01009",
+      "paper_id": "DOI:10.1021_acscentsci.3c01009",
+      "selection_reasons": [
+        "Primary OER catalyst-discovery study with full-text electrochemical performance and protocol evidence."
+      ],
+      "selection_tier": "primary_oer",
+      "source_manifest_key": "manifests/zotero/group=6631056/item=QWVIBP4T/attachment=ACQ_40D35185ABC685E6/version=1786560755/document-manifest.json",
+      "source_markdown_key": "raw/zotero/group=6631056/item=QWVIBP4T/attachment=ACQ_40D35185ABC685E6/version=1786560755/document.md",
+      "source_markdown_sha256": "1b682bf25e96a25bb17fa5d024a19be12f4b23c2a77c1b54efa14ef8d7006452",
+      "task_split": "evaluation",
+      "title": "Human–Machine Collaboration for Accelerated Discovery of Promising Oxygen Evolution Electrocatalysts with On-Demand Elements",
+      "year": 2023
+    },
+    {
+      "doi": "10.1038/s41467-024-50605-5",
+      "paper_id": "DOI:10.1038_s41467-024-50605-5",
+      "selection_reasons": [
+        "Primary perovskite OER study with explicit synthesis, catalyst-ink, electrochemical, characterization, and software evidence."
+      ],
+      "selection_tier": "primary_oer",
+      "source_manifest_key": "manifests/zotero/group=6631056/item=2STXUX2R/attachment=GDRIVE_1sC47n1Dy8YkLWIiqEIMtiTTBnN7oa5KA/version=1786188786/document-manifest.json",
+      "source_markdown_key": "raw/zotero/group=6631056/item=2STXUX2R/attachment=GDRIVE_1sC47n1Dy8YkLWIiqEIMtiTTBnN7oa5KA/version=1786188786/document.md",
+      "source_markdown_sha256": "7bc303de54dccc39645e8a5f920ea9fedea7175d52e215cec50b0d33aaab57ab",
+      "task_split": "evaluation",
+      "title": "Transfer learning guided discovery of efficient perovskite oxide for alkaline water oxidation",
+      "year": 2024
+    },
+    {
+      "doi": "10.1039/d4dd00313f",
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "selection_reasons": [
+        "Multi-robot scheduling paper with a quinary high-entropy OER catalyst experiment."
+      ],
+      "selection_tier": "oer_case_study",
+      "source_manifest_key": "manifests/zotero/group=6631056/item=J98WYLAV/attachment=verified-046c1069985c2a57/version=0/document-manifest.json",
+      "source_markdown_key": "raw/zotero/group=6631056/item=J98WYLAV/attachment=verified-046c1069985c2a57/version=0/document.md",
+      "source_markdown_sha256": "3565b7f5154505ced15376a3901a6a6743aaf61dbb36a439c9412b967555c89b",
+      "task_split": "evaluation",
+      "title": "A multi-robot–multi-task scheduling system for autonomous chemistry laboratories",
+      "year": 2025
+    },
+    {
+      "doi": "10.1039/d5cc04220h",
+      "paper_id": "DOI:10.1039_d5cc04220h",
+      "selection_reasons": [
+        "AI-driven MOF review with sparse OER content; included to measure false-positive resistance."
+      ],
+      "selection_tier": "oer_review",
+      "source_manifest_key": "manifests/zotero/group=6631056/item=YZ2KRGK5/attachment=verified-3664ca9b90e54d22/version=0/document-manifest.json",
+      "source_markdown_key": "raw/zotero/group=6631056/item=YZ2KRGK5/attachment=verified-3664ca9b90e54d22/version=0/document.md",
+      "source_markdown_sha256": "9a34509d45fb63509e1d75b38b9807f656da03e105b383f485df2da7d52987d7",
+      "task_split": "evaluation",
+      "title": "AI-driven advances in metal–organic frameworks: from data to design and applications",
+      "year": 2025
+    }
+  ],
+  "schema_version": "domain-adapter-selection-v0.1",
+  "selection_method": "curated_full_text_oer_evidence"
+}

@@ -360,7 +360,7 @@ Fusion 不是简单排序，它会把不同证据通道合成 answer context。
 - `top_propositions`
 - `review_queue`
 
-`/retrieve/sql-chat` 专门回答结构化取数问题，并返回 SQL、绑定参数、rows、filter/paper-set/statement hashes；不支持的问题 fail closed。`/retrieve/answer` 是独立 Graph-RAG 工作区，不是全局 chat 的后端。
+`/retrieve/sql-chat` 专门回答结构化取数问题，并返回 SQL、绑定参数、rows、filter/paper-set/statement hashes；不支持的问题 fail closed。全局 Tier 1 chat 先调用该端点；如果问题不属于受限 SQL grammar，或结构化查询没有返回行，则改用 `/retrieve/answer` 的有界 iterative 模式检索已索引全文。更慢的 adaptive/agentic 分析保留在独立 evidence workspace。`paper_count = 0` 仍被视为有效的结构化答案，不会触发全文降级。原始 SQL 和写操作不会进入全文降级路径。
 
 ## 14. Answer generation
 

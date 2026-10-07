@@ -135,6 +135,88 @@ def test_timeline_country_and_institution_use_distinct_filtered_papers(
     )
 
 
+def test_stage1_analytics_use_markdown_affiliation_entities(
+    session,
+    monkeypatch,
+):
+    from app.config import settings
+    from app.models import Paper, PaperClassification, PaperEntity
+
+    monkeypatch.setattr(settings, "sdl_stage1_only", True)
+    papers = [
+        Paper(id="stage1_analytics_1", title="Stage 1 one", year=2024),
+        Paper(id="stage1_analytics_2", title="Stage 1 two", year=2025),
+    ]
+    for index, paper in enumerate(papers, start=1):
+        paper.classification = PaperClassification(
+            id=f"stage1_analytics_cls_{index}",
+            label="SDL_FIELD_RELEVANT",
+            confidence=0.9,
+            matched_topics=[
+                {
+                    "topic_id": "self-driving-labs",
+                    "name": "Self Driving Labs",
+                    "score": 0.9,
+                }
+            ],
+            matched_people=[],
+            matched_institutions=[],
+            reasons=[],
+        )
+    session.add_all(papers)
+    session.flush()
+    session.add_all(
+        [
+            PaperEntity(
+                id="stage1_analytics_uoft_1",
+                paper_id=papers[0].id,
+                entity_type="institution",
+                name="University of Toronto",
+                normalized_name="University of Toronto",
+                confidence=0.95,
+            ),
+            PaperEntity(
+                id="stage1_analytics_ubc_1",
+                paper_id=papers[0].id,
+                entity_type="institution",
+                name="University of British Columbia",
+                normalized_name="University of British Columbia",
+                confidence=0.95,
+            ),
+            PaperEntity(
+                id="stage1_analytics_uoft_2",
+                paper_id=papers[1].id,
+                entity_type="institution",
+                name="University of Toronto",
+                normalized_name="University of Toronto",
+                confidence=0.95,
+            ),
+        ]
+    )
+    session.commit()
+
+    timeline = topic_over_time(session, PaperFilter(), by="institution")
+    sankey = institution_topic_label_sankey(session, PaperFilter())
+    nodes, edges = institution_network(session, PaperFilter())
+
+    timeline_counts = {
+        series.name: sum(count for _year, count in series.data)
+        for series in timeline
+    }
+    assert timeline_counts["University of Toronto"] == 2
+    assert {node.label for node in nodes} == {
+        "University of British Columbia",
+        "University of Toronto",
+    }
+    assert len(edges) == 1
+    assert edges[0].weight == 1
+    assert {node.layer for node in sankey.nodes} == {
+        "institution",
+        "topic",
+        "label",
+    }
+
+
 def test_timeline_field_is_distinct_and_top_n_is_deterministic(session):
     from app.models import Paper, PaperClassification
 
@@ -174,7 +256,7 @@ def test_timeline_field_is_distinct_and_top_n_is_deterministic(session):
 
 
 def test_timeline_endpoint_audits_field_top_n(session):
-    from fastapi.testclient import TestClient
+    from tests.admin_client import AdminTestClient as TestClient
 
     from app.main import app
     from app.models import Paper, PaperClassification
@@ -212,7 +294,7 @@ def test_timeline_endpoint_audits_field_top_n(session):
 def test_analysis_endpoints_expose_same_filter_audit(
     fulltext_seeded_session,
 ):
-    from fastapi.testclient import TestClient
+    from tests.admin_client import AdminTestClient as TestClient
 
     from app.main import app
 
@@ -275,7 +357,7 @@ def test_analysis_endpoints_expose_same_filter_audit(
 
 
 def test_filter_options_are_persisted_and_typed(fulltext_seeded_session):
-    from fastapi.testclient import TestClient
+    from tests.admin_client import AdminTestClient as TestClient
 
     from app.main import app
 
@@ -520,7 +602,7 @@ def test_geographic_center_is_projection_not_paper_filter(session):
 
 
 def test_geographic_endpoint_rejects_unknown_or_incomplete_center(session):
-    from fastapi.testclient import TestClient
+    from tests.admin_client import AdminTestClient as TestClient
     from app.main import app
 
     _seed_center_growth(session)
@@ -581,7 +663,7 @@ def test_people_grid_uses_full_ac_members_csv(seeded_session):
 
 
 def test_network_growth_cumulative_counts_unique_entities(fulltext_seeded_session):
-    from fastapi.testclient import TestClient
+    from tests.admin_client import AdminTestClient as TestClient
     from app.main import app
 
     _setup(fulltext_seeded_session)

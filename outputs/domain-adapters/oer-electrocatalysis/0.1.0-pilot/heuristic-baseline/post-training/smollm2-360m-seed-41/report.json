@@ -1,0 +1,206 @@
+{
+  "claims_boundary": "This compares student agreement with package targets. It is not an independent human assessment of scientific completeness.",
+  "config": {
+    "correction_epochs": 2,
+    "learning_rate": 0.0001,
+    "max_new_tokens": 128,
+    "max_sequence_length": 768,
+    "sft_epochs": 5
+  },
+  "device": "mps",
+  "method_label": "student-error-conditioned sequence distillation; not reverse-KL GKD",
+  "metrics": {
+    "base": {
+      "exact_match_rate": 0.0,
+      "field_f1": 0.0,
+      "field_precision": 0.0,
+      "field_recall": 0.0,
+      "grounded_leaf_rate": 0.0,
+      "json_valid_rate": 0.0,
+      "task_count": 9
+    },
+    "matched_static_sft": {
+      "exact_match_rate": 0.1111111111111111,
+      "field_f1": 0.2613756613756614,
+      "field_precision": 0.3333333333333333,
+      "field_recall": 0.22592592592592592,
+      "grounded_leaf_rate": 0.6666666666666666,
+      "json_valid_rate": 1.0,
+      "task_count": 9
+    },
+    "on_policy_hard_sft": {
+      "exact_match_rate": 0.0,
+      "field_f1": 0.13051146384479717,
+      "field_precision": 0.19444444444444445,
+      "field_recall": 0.1,
+      "grounded_leaf_rate": 0.5,
+      "json_valid_rate": 0.7777777777777778,
+      "task_count": 9
+    },
+    "static_sft": {
+      "exact_match_rate": 0.1111111111111111,
+      "field_f1": 0.31457431457431456,
+      "field_precision": 0.3814814814814815,
+      "field_recall": 0.28148148148148144,
+      "grounded_leaf_rate": 0.6592592592592593,
+      "json_valid_rate": 1.0,
+      "task_count": 9
+    }
+  },
+  "model_id": "HuggingFaceTB/SmolLM2-360M-Instruct",
+  "package": "../outputs/domain-adapters/oer-electrocatalysis/0.1.0-pilot/heuristic-baseline",
+  "package_extraction": {
+    "extractor": "oer_high_precision_rules_v0.1",
+    "mode": "heuristic_baseline",
+    "model": null,
+    "prompt_version": null
+  },
+  "promotion": {
+    "comparison": "on_policy_hard_sft_vs_matched_static_sft",
+    "promoted": false,
+    "rule": "field_f1 must improve without reducing JSON validity or grounded leaf rate"
+  },
+  "schema_version": "domain-distillation-experiment-v0.1",
+  "seed": 41,
+  "selection": {
+    "eligible_evaluation_task_count": 37,
+    "eligible_train_task_count": 18,
+    "evaluation_task_ids": [
+      "1235a9c90b69fe89a7754448b08b9da9086059360812e95b5c7a5fb7ac8e56f0",
+      "09dfae9917e1009921d108520c5bd928e23929136a896179dd5f2c57fca5452b",
+      "0540cba9355808866718cd28cd27eb0a739a048bd6b00ddc87f77c3ef8b9731d",
+      "1e82bdf6e9a5a43205f8f3af43c452adcbe52f91b61d757f88aa5bc5c4791725",
+      "123ff39b2c7524bb739d6613d87edb1127e0a56d2169b271a683c7428b524696",
+      "65d3654b1250af995914c184fdf84c0d5a91308f98524a79069f58114a14c454",
+      "2409f51f84bfb36f4fdc0c38640dc9eb32ac7a3dca5a76001898c8b4eb2aeef1",
+      "4b20f116582004162a714f7e03f4bdff8d50b056ab01825563d9f671f597123a",
+      "4be1268fb61360ccc384697eeffd19ada62414bf8b7689e3e1d5744699b13b67"
+    ],
+    "hard_task_ids": [
+      "6fc24b112b029ab91b791528cb0cb9d65ed4f3f8b92133c6a43740e04268c0e6",
+      "a499863839c20ea52d5c3d715af27426d7ad1777a9e5709746ae40202fc354c2",
+      "b10e6cb5934f684efa6eaa576710b271de01ca1ab4d2270b44b592d7504c33d2"
+    ],
+    "matched_control_task_ids": [
+      "f0771a61299cead49eeaafe755dfbdb0f9d5c9407346268e3f4d53d4b7f7566a",
+      "bb1dff33302531fe633b868ecef6ff99d72018b05a19d9b47a1b1944cde0f8b5",
+      "6fc24b112b029ab91b791528cb0cb9d65ed4f3f8b92133c6a43740e04268c0e6"
+    ],
+    "raw_evaluation_task_count": 49,
+    "raw_train_task_count": 29,
+    "rollout_task_ids": [
+      "f0771a61299cead49eeaafe755dfbdb0f9d5c9407346268e3f4d53d4b7f7566a",
+      "bb1dff33302531fe633b868ecef6ff99d72018b05a19d9b47a1b1944cde0f8b5",
+      "6fc24b112b029ab91b791528cb0cb9d65ed4f3f8b92133c6a43740e04268c0e6",
+      "a499863839c20ea52d5c3d715af27426d7ad1777a9e5709746ae40202fc354c2",
+      "aafff95bde5a21b63b53b3403268824b77e9044388dc341c3dbeb70b4222bff8",
+      "b10e6cb5934f684efa6eaa576710b271de01ca1ab4d2270b44b592d7504c33d2"
+    ],
+    "train_task_ids": [
+      "2f8b290933eb3f9a883852161aed2823ef779c0eee49a15f32ba3a2e627d6cb4",
+      "266fed3416fac58710657347999736c5f0135e753241e94ff3532ee268b3b102",
+      "1e35313be9fcbfe66e91a0e762b741a4c7064b338be6abe8a68fbd2425ea1112",
+      "220cb9c2b665d48b036d9605c8040a102c4e016be12ae5458a1b0faafc8ae5c8",
+      "33877b613fdcc97ea228dbeb680fb5e71f8d0d93b4533d2bf6aaeec3c7e686c0",
+      "3a040ba401c40aab152c1ed448715d0005d11dc50d8ebff0b6f910682eb0f615",
+      "34fa417c04b9273c74359605733382264f523fcd2dbed81a8a5adf7645425b1c",
+      "2b0788a9b601f1a949f0cc95f5eadb1a2248b3a51eeba77d9a4f11f0388e5473",
+      "58245bfa580765fe5b2778f226d22b1bf358cc43383aec8d6a8eb562554ff7f1",
+      "7bc19afba2770932298ea1059b8755b04be88dc1a6468ba7d8fef9c78cc48758",
+      "87711cbc50504fa225d7ad98489cbecd04db10759342bacc726f71d5a5db4a6c",
+      "55ae636857be701128a02312d4d8141aea7a26a892619e352ac30bb1d3b60a86"
+    ]
+  },
+  "training": {
+    "matched_static_sft": {
+      "losses": [
+        0.2927248775959015,
+        0.5131655931472778,
+        0.0030340550001710653,
+        0.017323967069387436,
+        0.13273985683918,
+        0.1445501744747162
+      ],
+      "mean_loss": 0.183923087354439,
+      "steps": 6
+    },
+    "on_policy_hard_sft": {
+      "losses": [
+        0.5005549788475037,
+        1.514222502708435,
+        2.3642265796661377,
+        1.483189344406128,
+        0.310985803604126,
+        0.20931966602802277
+      ],
+      "mean_loss": 1.0637498125433922,
+      "steps": 6
+    },
+    "static_sft": {
+      "losses": [
+        0.8147917985916138,
+        1.5907483100891113,
+        1.4574799537658691,
+        0.5391387343406677,
+        1.0885030031204224,
+        1.6220588684082031,
+        1.6127444505691528,
+        0.11126258969306946,
+        0.48697629570961,
+        1.2497045993804932,
+        0.1523563265800476,
+        0.7543215155601501,
+        0.08462987840175629,
+        0.3736899197101593,
+        0.2582402527332306,
+        0.19470174610614777,
+        0.021338876336812973,
+        0.5944771766662598,
+        0.515884280204773,
+        0.25564903020858765,
+        0.6535592675209045,
+        0.5372647047042847,
+        0.7263326644897461,
+        0.3713415265083313,
+        0.2460567206144333,
+        0.1045990139245987,
+        0.03449754789471626,
+        0.09713771194219589,
+        0.011743796057999134,
+        0.0664198100566864,
+        0.3242247700691223,
+        0.42077234387397766,
+        0.18580393493175507,
+        0.2283625304698944,
+        0.13635104894638062,
+        0.1222958043217659,
+        0.07746867090463638,
+        0.020914310589432716,
+        0.21711109578609467,
+        0.04118005186319351,
+        0.0368904210627079,
+        0.11079995334148407,
+        0.17680464684963226,
+        0.004311996512115002,
+        0.01828448660671711,
+        0.10878591239452362,
+        0.020629268139600754,
+        0.001995114143937826,
+        0.004221626557409763,
+        0.00417141430079937,
+        0.000768442580010742,
+        0.006687308195978403,
+        0.0034848700743168592,
+        0.004817247856408358,
+        0.0162337739020586,
+        0.021750707179307938,
+        0.035425569862127304,
+        0.05575645714998245,
+        0.0007136944332160056,
+        0.03794017434120178
+      ],
+      "mean_loss": 0.3178768002854971,
+      "steps": 60
+    }
+  }
+}

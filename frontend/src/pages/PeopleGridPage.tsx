@@ -1,7 +1,9 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 
-import { getPeopleGrid } from "@/lib/api";
-import type { PeopleElement, PeopleGrid } from "@/types";
+import { getPeopleGrid, getStage1Readiness } from "@/lib/api";
+import { API_BASE } from "@/lib/runtime";
+import { Stage1Unavailable } from "@/components/Stage1Unavailable";
+import type { PeopleElement, PeopleGrid, Stage1Readiness } from "@/types";
 
 // SDL-specific colors — each SDL track gets a distinct color
 const SDL_COLORS: Record<string, string> = {
@@ -36,7 +38,7 @@ interface DedupPair {
 }
 
 // Persist dismissed pairs in localStorage so they don't reappear
-const DISMISSED_KEY = "people_grid_dedup_dismissed";
+const DISMISSED_KEY = "people_grid_dedup_dismissed.zotero-tier1.v1";
 function loadDismissed(): Set<string> {
   try {
     const raw = localStorage.getItem(DISMISSED_KEY);
@@ -50,11 +52,10 @@ function pairKey(a: string, b: string) {
   return [a, b].sort().join("__");
 }
 
-const API_BASE = (import.meta.env.VITE_API_BASE ?? "http://localhost:8000").replace(/\/$/, "");
-
 export default function PeopleGridPage() {
   const [data, setData] = useState<PeopleGrid | null>(null);
   const [loading, setLoading] = useState(false);
+  const [readiness, setReadiness] = useState<Stage1Readiness | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [selected, setSelected] = useState<PeopleElement | null>(null);
   const [dedupPairs, setDedupPairs] = useState<DedupPair[]>([]);
@@ -64,6 +65,13 @@ export default function PeopleGridPage() {
     setLoading(true);
     setError(null);
     try {
+      const stage1 = await getStage1Readiness();
+      setReadiness(stage1);
+      if (stage1.stage1_only || !stage1.derived_views_enabled) {
+        setData(null);
+        setDedupPairs([]);
+        return;
+      }
       const out = await getPeopleGrid();
       setData(out);
       // Also fetch dedup candidates
@@ -84,6 +92,23 @@ export default function PeopleGridPage() {
     () => (data ? data.categories.map((c) => c.id) : []),
     [data]
   );
+
+  if (
+    readiness
+    && (readiness.stage1_only || !readiness.derived_views_enabled)
+  ) {
+    return (
+      <Stage1Unavailable
+        title="People Insights"
+        description="This page is based on the AC member roster and is intentionally unavailable in the SDL Tier 1 pilot. AC member data is not being used."
+        statusTitle="AC roster view intentionally disabled."
+        statusDescription={`${readiness.fulltexts_imported} verified Zotero Tier 1 full texts are available in the paper, graph, and descriptive analysis views. This separate page remains empty because the Stage 1 showcase excludes AC-member seed data.`}
+        readiness={readiness}
+        loading={loading}
+        onRefresh={() => void load()}
+      />
+    );
+  }
 
   return (
     <div className="v7-page">

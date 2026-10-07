@@ -31,6 +31,14 @@ from app.services.scheduled_pipeline import run_daily_pipeline
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument(
+        "--skip-zotero-sync",
+        action="store_true",
+        help=(
+            "Keep the persisted corpus locked and skip the configured Zotero "
+            "sync for this run."
+        ),
+    )
+    parser.add_argument(
         "--discovery",
         action="store_true",
         help="Also run the discovery step. Defaults to PAS_PIPELINE_DISCOVERY.",
@@ -39,6 +47,11 @@ def main() -> int:
         "--fulltext",
         action="store_true",
         help="Refresh full-text evidence. Defaults to PAS_PIPELINE_FULLTEXT.",
+    )
+    parser.add_argument(
+        "--force-reclassify",
+        action="store_true",
+        help="Re-run classification for every non-human-confirmed paper.",
     )
     parser.add_argument(
         "--learned",
@@ -67,8 +80,10 @@ def main() -> int:
     with SessionLocal() as session:
         result = run_daily_pipeline(
             session,
+            do_zotero_sync=not args.skip_zotero_sync,
             do_discovery=True if args.discovery else None,
             do_fulltext=True if args.fulltext else None,
+            force_reclassify=args.force_reclassify,
             use_learned=True if args.learned else None,
             use_judge=True if args.judge else None,
             triggered_by=args.triggered_by,

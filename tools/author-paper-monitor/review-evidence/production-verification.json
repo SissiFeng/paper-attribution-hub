@@ -1,0 +1,82 @@
+{
+  "verified_at": "2026-10-05T22:19:32.698676+00:00",
+  "authors": {
+    "listed": 82,
+    "active": 81,
+    "needs_review": [
+      "Alan Veerman"
+    ]
+  },
+  "production": {
+    "state_counts": {
+      "seeded": 163
+    },
+    "ingestion_rows": 163,
+    "pas_receipts": 163,
+    "sample_live_api": {
+      "id": "monitor_652b4b1ce31989d61e9e11d4a1efe60f",
+      "title": "Dynamic Parameter Screening for Accelerated Mechanistic Analysis",
+      "doi": "10.26434/chemrxiv.15008823/v3"
+    },
+    "tasks": [
+      {
+        "arn": "arn:aws:ecs:ca-central-1:247893369214:task/paper-attribution-dev-cluster/97fb1ec38a794f7bbe5842b0a8aff51b",
+        "definition": "arn:aws:ecs:ca-central-1:247893369214:task-definition/paper-attribution-dev-author-monitor:7",
+        "status": "STOPPED",
+        "exit_codes": [
+          0
+        ]
+      },
+      {
+        "arn": "arn:aws:ecs:ca-central-1:247893369214:task/paper-attribution-dev-cluster/aa570e9157904c12bb663b889d864666",
+        "definition": "arn:aws:ecs:ca-central-1:247893369214:task-definition/paper-attribution-dev-author-monitor:6",
+        "status": "STOPPED",
+        "exit_codes": [
+          0
+        ]
+      }
+    ],
+    "rules": [
+      {
+        "Name": "paper-attribution-dev-author-monitor-FailedTask-EmOP6MoTP96k",
+        "State": "ENABLED"
+      },
+      {
+        "Name": "paper-attribution-dev-author-monitor",
+        "State": "ENABLED",
+        "ScheduleExpression": "cron(17 12 * * ? *)"
+      }
+    ]
+  },
+  "slack": {
+    "app_id": "A0C6VPXEQ5C",
+    "team_id": "T012M3T3U01",
+    "settings": {
+      "last_run_exit": 0,
+      "last_collection": "2026-10-05T22:15:28.993871+00:00",
+      "owner_id": "U07K96PT5CL",
+      "channel_id": "D0C6GC4H04F",
+      "delivery_mode": "personal",
+      "enabled": true,
+      "tested_channel": "D0C6GC4H04F",
+      "last_test": 1791238440
+    },
+    "preview_root_ts": "1791238436.903819",
+    "preview_thread_replies": 3,
+    "real_feedback_saved": true,
+    "test_feedback_excluded_from_research": true,
+    "real_orcid_modal_lookup_and_existing_author_confirmation": true,
+    "cold_start_execution_ms": 767.63,
+    "cold_start_init_ms": 158.09,
+    "enable_method": "Authorized administrator using the same owner and successful-preview guards as /papers start"
+  },
+  "validation": {
+    "pytest_passed": 59,
+    "ruff": "passed E,F,W,B ignore E501",
+    "compileall": "passed",
+    "future_weekly_event_observed": false,
+    "llm_enabled": false,
+    "scholar_email_enabled": false,
+    "openalex_key_configured": false
+  }
+}

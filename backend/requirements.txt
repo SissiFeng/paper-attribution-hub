@@ -21,7 +21,9 @@ psycopg2-binary==2.9.12
 alembic==1.18.5
 pgvector==0.5.0
 
-# Optional — full-text ingestion. MarkItDown normalizes documents to Markdown.
+# Optional — full-text ingestion. pdf-inspector is the primary PDF-to-Markdown
+# engine; MarkItDown and PyMuPDF remain fallbacks for parser failures.
+pdf-inspector==0.2.6
 markitdown[all]==0.1.7
 pymupdf==1.27.2.3
 

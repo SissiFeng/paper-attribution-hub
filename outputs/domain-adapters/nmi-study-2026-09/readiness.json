@@ -1,0 +1,60 @@
+{
+  "claims_boundary": "This report checks engineering evidence completeness against a declared policy. It does not establish scientific validity or publication acceptance.",
+  "domain_decisions": [
+    {
+      "failed_gates": [
+        "primary_paper_count",
+        "teacher_paper_coverage",
+        "perturbation_coverage",
+        "tier_a_silver",
+        "negative_controls",
+        "external_scientific_utility",
+        "deterministic_rebuild"
+      ],
+      "meets_evidence_policy": false,
+      "package": {
+        "package_id": "battery-electrolyte-optimization",
+        "package_version": "0.1.1-chunk-coverage-kimi-k2.5"
+      }
+    },
+    {
+      "failed_gates": [
+        "primary_paper_count",
+        "teacher_paper_coverage",
+        "perturbation_coverage",
+        "prompt_robustness",
+        "negative_controls",
+        "external_scientific_utility",
+        "deterministic_rebuild"
+      ],
+      "meets_evidence_policy": false,
+      "package": {
+        "package_id": "oer-electrocatalysis",
+        "package_version": "0.3.3-pre-review"
+      }
+    }
+  ],
+  "failed_global_gates": [
+    "cross_domain_transfer_coverage"
+  ],
+  "meets_evidence_policy": false,
+  "policy": {
+    "max_allowed_negative_transfer_delta": -0.02,
+    "min_cross_domain_transfer_tasks": 30,
+    "min_domains": 2,
+    "min_external_accuracy": 0.8,
+    "min_external_evidence_validity": 0.95,
+    "min_external_tasks": 30,
+    "min_independent_model_families": 3,
+    "min_negative_controls": 30,
+    "min_occurrence_slots": 100,
+    "min_perturbation_tests": 100,
+    "min_primary_papers_per_domain": 20,
+    "min_prompt_configurations": 2,
+    "min_teacher_paper_coverage": 0.8,
+    "min_tier_a_silver": 50,
+    "schema_version": "domain-nmi-study-policy-v0.1"
+  },
+  "schema_version": "domain-nmi-readiness-report-v0.1",
+  "transfer_comparisons": []
+}

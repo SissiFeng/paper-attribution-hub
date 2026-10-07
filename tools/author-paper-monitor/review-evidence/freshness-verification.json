@@ -1,0 +1,365 @@
+{
+  "verified_at": "2026-10-06T00:10:22.260359+00:00",
+  "scope": "Four-hour discovery and immediate private cards, weekly recap, weekly 365-day backfill, optional verified Scholar mailbox, independent watchdog",
+  "tests": {
+    "command": "backend/.venv/bin/python -m pytest tools/author-paper-monitor/tests backend/tests/test_jev_advisory.py -q",
+    "passed": 159,
+    "ruff": "passed"
+  },
+  "bundle_sha256": "2ba615a5a47c065e77ae01e749ce4594fff2d2ab5d4cb12393713e08598c5c36",
+  "stacks": {
+    "paper-attribution-dev-author-monitor": "UPDATE_COMPLETE",
+    "paper-attribution-dev-slack": "UPDATE_COMPLETE",
+    "paper-attribution-dev-monitor-health": "CREATE_COMPLETE"
+  },
+  "functions": {
+    "paper-attribution-dev-slack-ingress": {
+      "code_sha256": "2ba615a5a47c065e77ae01e749ce4594fff2d2ab5d4cb12393713e08598c5c36",
+      "state": "Active",
+      "update_status": "Successful"
+    },
+    "paper-attribution-dev-slack-worker": {
+      "code_sha256": "2ba615a5a47c065e77ae01e749ce4594fff2d2ab5d4cb12393713e08598c5c36",
+      "state": "Active",
+      "update_status": "Successful"
+    },
+    "paper-attribution-dev-monitor-health-watchdog": {
+      "code_sha256": "2ba615a5a47c065e77ae01e749ce4594fff2d2ab5d4cb12393713e08598c5c36",
+      "state": "Active",
+      "update_status": "Successful"
+    }
+  },
+  "tasks": {
+    "arn:aws:ecs:ca-central-1:247893369214:task/paper-attribution-dev-cluster/7f93c0c129c44e048ecd443d5deebf7d": {
+      "definition": "arn:aws:ecs:ca-central-1:247893369214:task-definition/paper-attribution-dev-author-monitor:10",
+      "exit_codes": [
+        0
+      ]
+    },
+    "arn:aws:ecs:ca-central-1:247893369214:task/paper-attribution-dev-cluster/7ee771ab01bd46c18a7a9ba7737afff8": {
+      "definition": "arn:aws:ecs:ca-central-1:247893369214:task-definition/paper-attribution-dev-author-monitor:10",
+      "exit_codes": [
+        0
+      ]
+    },
+    "arn:aws:ecs:ca-central-1:247893369214:task/paper-attribution-dev-cluster/f74dc6432ff243b4ba64024f033d4103": {
+      "definition": "arn:aws:ecs:ca-central-1:247893369214:task-definition/paper-attribution-dev-author-monitor:10",
+      "exit_codes": [
+        0
+      ]
+    },
+    "arn:aws:ecs:ca-central-1:247893369214:task/paper-attribution-dev-cluster/56bc554cfd5844a4b63e6ac637a382d9": {
+      "definition": "arn:aws:ecs:ca-central-1:247893369214:task-definition/paper-attribution-dev-author-monitor:10",
+      "exit_codes": [
+        0
+      ]
+    }
+  },
+  "backend": {
+    "task_definition": "arn:aws:ecs:ca-central-1:247893369214:task-definition/paper-attribution-pas-dev-backend:6",
+    "running": 1,
+    "changed_this_round": false
+  },
+  "rules": [
+    {
+      "stack": "paper-attribution-dev-author-monitor",
+      "logical_id": "FailedTask",
+      "name": "paper-attribution-dev-author-monitor-FailedTask-EmOP6MoTP96k",
+      "state": "ENABLED",
+      "schedule": null,
+      "targets": 1
+    },
+    {
+      "stack": "paper-attribution-dev-author-monitor",
+      "logical_id": "Schedule",
+      "name": "paper-attribution-dev-author-monitor",
+      "state": "ENABLED",
+      "schedule": "cron(17 0/4 * * ? *)",
+      "targets": 1
+    },
+    {
+      "stack": "paper-attribution-dev-monitor-health",
+      "logical_id": "AlarmEvents",
+      "name": "paper-attribution-dev-monitor-health-AlarmEvents-x3xEaRfCgXKS",
+      "state": "ENABLED",
+      "schedule": null,
+      "targets": 1
+    },
+    {
+      "stack": "paper-attribution-dev-monitor-health",
+      "logical_id": "Schedule",
+      "name": "paper-attribution-dev-monitor-health-watchdog",
+      "state": "ENABLED",
+      "schedule": "rate(15 minutes)",
+      "targets": 1
+    },
+    {
+      "stack": "paper-attribution-dev-monitor-health",
+      "logical_id": "TaskFailures",
+      "name": "paper-attribution-dev-monitor-health-TaskFailures-oGY7PRbdeT5W",
+      "state": "ENABLED",
+      "schedule": null,
+      "targets": 1
+    }
+  ],
+  "state": {
+    "sha256": "aa09c8bfb0e094c598d0d09ac35d91b6d5f9b3f9bca1427d82daaae8de53e65c",
+    "s3_version": "fVvtp0Frn.SIRNtiocUkiF6JOAkBuRlH",
+    "counts": {
+      "seeded": 750
+    },
+    "pas_receipts": 750,
+    "production_notification_receipts": 0,
+    "deep_initialized": "1",
+    "last_deep_collection": "2026-10-06T00:00:21.664822+00:00",
+    "initial_backfill_raw_records": 827,
+    "initial_backfill_new_historical": 587
+  },
+  "repeat_collection": {
+    "status": "passed",
+    "pas_total_before": 1285,
+    "pas_total_after": 1285,
+    "monitor_receipts": 750,
+    "distinct_pas_records_verified": 750,
+    "summary": {
+      "collected_at": "2026-10-06T00:05:12.106527+00:00",
+      "collection_ok": true,
+      "deep_scan": false,
+      "since": "2026-07-08",
+      "new_records": 0,
+      "historical_seeded": 0,
+      "counts": {
+        "seeded": 750
+      },
+      "unsynced": 0,
+      "oldest_pending": null,
+      "mailbox": "needs_configuration",
+      "errors": []
+    }
+  },
+  "delivery_probes": [
+    {
+      "test_id": "016594e6-a42d-4abc-8952-8877e31b0308",
+      "status": "dispatched",
+      "task_definition": "arn:aws:ecs:ca-central-1:247893369214:task-definition/paper-attribution-dev-author-monitor:10",
+      "task_arn": "arn:aws:ecs:ca-central-1:247893369214:task/paper-attribution-dev-cluster/f74dc6432ff243b4ba64024f033d4103",
+      "result": {
+        "status": "passed",
+        "pas_id": "monitor_652b4b1ce31989d61e9e11d4a1efe60f",
+        "real_existing_paper": true,
+        "new_pas_records_in_this_probe": 0,
+        "labelled_test_messages": 2,
+        "mode": "weekly",
+        "thread_ts": "1791245271.603089",
+        "channel": "D0C6GC4H04F",
+        "ts": "1791245270.311509",
+        "restart_posts": 0,
+        "production_state_unchanged": true,
+        "production_version": "fVvtp0Frn.SIRNtiocUkiF6JOAkBuRlH",
+        "bundle_sha256": "2ba615a5a47c065e77ae01e749ce4594fff2d2ab5d4cb12393713e08598c5c36"
+      }
+    },
+    {
+      "test_id": "37c37b1e-4de3-4502-8d32-e9418ecdcd6b",
+      "status": "dispatched",
+      "task_definition": "arn:aws:ecs:ca-central-1:247893369214:task-definition/paper-attribution-dev-author-monitor:10",
+      "task_arn": "arn:aws:ecs:ca-central-1:247893369214:task/paper-attribution-dev-cluster/56bc554cfd5844a4b63e6ac637a382d9",
+      "result": {
+        "status": "passed",
+        "pas_id": "monitor_652b4b1ce31989d61e9e11d4a1efe60f",
+        "real_existing_paper": true,
+        "new_pas_records_in_this_probe": 0,
+        "labelled_test_messages": 1,
+        "channel": "D0C6GC4H04F",
+        "ts": "1791244956.085259",
+        "restart_posts": 0,
+        "production_state_unchanged": true,
+        "production_version": "izTippC4eOD3OKSPXSstlzMrnr4A1oG3",
+        "bundle_sha256": "2ba615a5a47c065e77ae01e749ce4594fff2d2ab5d4cb12393713e08598c5c36"
+      }
+    }
+  ],
+  "slack_requests": [
+    {
+      "command": "status",
+      "key": "0f00e122ff8d67af811e74582c020fe27d2d7622d026d30af36d42598e2206ad",
+      "job_key": "job:0f00e122ff8d67af811e74582c020fe27d2d7622d026d30af36d42598e2206ad:status",
+      "status": "acknowledged",
+      "response": {
+        "response_type": "ephemeral",
+        "text": "82 authors listed; 81 active. Notifications: enabled. Last successful collection: 2026-10-06T00:01:48.282739+00:00. Checks every 4 hours; new-paper messages plus a Monday 12:17 UTC recap.\nSources: OpenAlex; Google Scholar email: waiting for mailbox setup.\nRecent papers: checked every 4 hours. Wider scan: past year, weekly.\nOperational alerts: private messages on failures, overdue runs or delivery backlog.\nJev suggestions: waiting for an API key."
+      },
+      "ack_ms": 1109
+    },
+    {
+      "command": "home",
+      "key": "6aa6557e3f9b0827c57aef7a4235e6fdebe163dea40d4d97154581a3882d2191",
+      "job_key": "job:6aa6557e3f9b0827c57aef7a4235e6fdebe163dea40d4d97154581a3882d2191:home",
+      "status": "acknowledged",
+      "response": {
+        "response_type": "ephemeral",
+        "text": "Your author watchlist is available in the AC Papers Home tab."
+      },
+      "ack_ms": 170,
+      "worker_result": {
+        "status": "complete",
+        "completed_at": 1791245063,
+        "kind": "home"
+      }
+    }
+  ],
+  "watchdog_test": [
+    {
+      "action": "failure",
+      "status": "complete",
+      "test_id": "75f1a5f2-451a-47c8-920e-a8245ff4d5cb",
+      "result": {
+        "status": "notified",
+        "sent": true,
+        "channel": "D0C6GC4H04F",
+        "ts": "1791245116.827099"
+      },
+      "function_error": null
+    },
+    {
+      "action": "duplicate",
+      "status": "complete",
+      "test_id": "75f1a5f2-451a-47c8-920e-a8245ff4d5cb",
+      "result": {
+        "status": "unchanged",
+        "sent": false
+      },
+      "function_error": null
+    },
+    {
+      "action": "recovery",
+      "status": "complete",
+      "test_id": "75f1a5f2-451a-47c8-920e-a8245ff4d5cb",
+      "result": {
+        "status": "recovered",
+        "sent": true,
+        "channel": "D0C6GC4H04F",
+        "ts": "1791245117.193869"
+      },
+      "function_error": null
+    },
+    {
+      "action": "healthy",
+      "status": "complete",
+      "test_id": "75f1a5f2-451a-47c8-920e-a8245ff4d5cb",
+      "result": {
+        "status": "notified",
+        "sent": true,
+        "channel": "D0C6GC4H04F",
+        "ts": "1791245117.742749"
+      },
+      "function_error": null
+    }
+  ],
+  "watchdog_recovery": [
+    {
+      "step": "recovery",
+      "result": {
+        "status": "recovered",
+        "sent": true,
+        "channel": "D0C6GC4H04F",
+        "ts": "1791245363.369389"
+      }
+    },
+    {
+      "step": "no_duplicate",
+      "result": {
+        "status": "unchanged",
+        "sent": false
+      }
+    }
+  ],
+  "watchdog_state": {
+    "checked_at": 1791245363,
+    "issues": [],
+    "status": "unchanged",
+    "sent": false
+  },
+  "event_pattern_live_api": [
+    {
+      "stop_code": "EssentialContainerExited",
+      "exit_code": 0,
+      "matches": false
+    },
+    {
+      "stop_code": "EssentialContainerExited",
+      "exit_code": 1,
+      "matches": true
+    },
+    {
+      "stop_code": "TaskFailedToStart",
+      "exit_code": null,
+      "matches": true
+    }
+  ],
+  "alarms": {
+    "paper-attribution-dev-author-monitor-FailureAlarm-SjlKDfBbQv4N": "OK",
+    "paper-attribution-dev-monitor-health-WatchdogAlarm-ukvRvpGit98L": "OK",
+    "paper-attribution-dev-slack-DeadLettersAlarm-kRO7v5Im8oVJ": "OK",
+    "paper-attribution-dev-slack-IngressAlarm-DxWFKsZBHj5d": "OK",
+    "paper-attribution-dev-slack-WorkerAlarm-dumiuTyG8P4b": "OK"
+  },
+  "old_dlq_reconciled": [
+    {
+      "message_id": "2cbc4bc0-26c4-42a6-86de-8158819ddfed",
+      "job": {
+        "kind": "connect_dm",
+        "data": {
+          "user": "U07K96PT5CL"
+        },
+        "key": "05f8b4ba13dca12d575d2951eebefddbe4ae8511bdd11b3411a3d696ccb991dc"
+      },
+      "verified_record": {
+        "status": "complete",
+        "kind": "connect_dm",
+        "error_type": "SlackRejected",
+        "failed_at": 1791237982,
+        "reconciled_at": 1791238645,
+        "resolution": "Welcome verified in DM; corrected Home accepted by views.publish. No welcome replay."
+      },
+      "action": "acknowledged already reconciled job; no replay",
+      "at": "2026-10-06T00:06:37.573096+00:00"
+    }
+  ],
+  "settings": {
+    "enabled": true,
+    "channel_id": "D0C6GC4H04F",
+    "owner_id": "U07K96PT5CL",
+    "last_collection": "2026-10-06T00:05:24.410797+00:00",
+    "summary": {
+      "collected_at": "2026-10-06T00:05:12.106527+00:00",
+      "collection_ok": true,
+      "deep_scan": false,
+      "since": "2026-07-08",
+      "new_records": 0,
+      "historical_seeded": 0,
+      "counts": {
+        "seeded": 750
+      },
+      "unsynced": 0,
+      "oldest_pending": null,
+      "mailbox": "needs_configuration",
+      "errors": []
+    }
+  },
+  "optional_credentials": {
+    "scholar-mailbox": "absent",
+    "jev": "absent",
+    "openalex-api-key": "absent"
+  },
+  "live_scholar_email_tested": false,
+  "paid_jev_calls_this_round": 0,
+  "remaining_external_step": "Obtain dedicated alert mailbox and a real author alert, verify via hidden-input helper, then validate a new arrival through PAS and Slack.",
+  "boundaries": [
+    "No Google Scholar website scraping.",
+    "Source indexing latency and papers outside the 365-day window can still cause delay or misses.",
+    "Only 81 of 82 listed authors are active; Alan Veerman still needs identity confirmation.",
+    "No mailbox has been activated; mail fixtures do not substitute for real-email acceptance.",
+    "Slack tests used isolated state and clearly labelled messages in the operator DM."
+  ]
+}

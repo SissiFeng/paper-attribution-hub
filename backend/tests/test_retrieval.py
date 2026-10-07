@@ -2,6 +2,21 @@ from app.services.embedding_service import get_embedder
 from app.services.retrieval_service import HybridIndex
 
 
+def test_retrieval_can_load_the_complete_scoped_index(fulltext_seeded_session):
+    from sqlalchemy import func, select
+
+    from app.models import PaperChunk
+
+    expected = fulltext_seeded_session.scalar(select(func.count(PaperChunk.id)))
+    index = HybridIndex.from_session(
+        fulltext_seeded_session,
+        get_embedder(),
+        max_chunks=None,
+    )
+
+    assert len(index.chunks) == expected
+
+
 def test_retrieval_finds_acknowledgement_for_ac_query(fulltext_seeded_session):
     embedder = get_embedder()
     from sqlalchemy import select

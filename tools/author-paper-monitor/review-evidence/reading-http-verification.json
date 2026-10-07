@@ -1,0 +1,27 @@
+{
+  "origin": "https://d1ai8ldqsh81fz.cloudfront.net",
+  "login": "signed API fixture, not a real Slack user command",
+  "synthetic_principals": 2,
+  "browser_pairing": true,
+  "uninvited_404": true,
+  "private_bookmark_isolation": true,
+  "selected_copy": true,
+  "revoked_404": true,
+  "compare": true,
+  "cleanup": "passed",
+  "real_owner_login": "browser-bound pairing consumed after signed Slack confirmation",
+  "backend_task": "arn:aws:ecs:ca-central-1:247893369214:task-definition/paper-attribution-pas-dev-backend:7",
+  "backend_rollout": "COMPLETED",
+  "cleanup_task": "arn:aws:ecs:ca-central-1:247893369214:task/paper-attribution-dev-cluster/b4aa43d8d0b34cac833bae4b8067601c",
+  "browser_checks": [
+    "search",
+    "save private bookmark and note",
+    "original Markdown read",
+    "private scoped question",
+    "copy selected messages to chosen member",
+    "group comment",
+    "revoke member",
+    "compare two papers",
+    "logout"
+  ]
+}

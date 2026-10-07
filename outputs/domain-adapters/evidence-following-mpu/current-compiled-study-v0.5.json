@@ -1,0 +1,342 @@
+{
+  "domains": [
+    "oer-electrocatalysis",
+    "organic-synthesis"
+  ],
+  "input_sources": [
+    {
+      "path_hint": "evidence_following_mpu_current.json",
+      "role": "base_study",
+      "schema_version": "evidence-following-mpu-input-source-v0.1",
+      "sha256": "cf2b13f038d54600d88b1d116dfb5c785cbc222f304988ffb545c8252babd022"
+    },
+    {
+      "path_hint": "perturbation_cases.jsonl",
+      "role": "counterfactual_cases",
+      "schema_version": "evidence-following-mpu-input-source-v0.1",
+      "sha256": "66c6182e9d0f7b38c76d647fc2a20d6fd6a7bdd0ec4df28f90dd5d1366360cbd"
+    }
+  ],
+  "models": [
+    {
+      "alias": "claude-opus-4-6",
+      "family": "anthropic",
+      "model_id": "us.anthropic.claude-opus-4-6-v1",
+      "schema_version": "evidence-following-mpu-model-v0.1"
+    },
+    {
+      "alias": "claude-opus-5",
+      "family": "anthropic",
+      "model_id": "us.anthropic.claude-opus-5",
+      "schema_version": "evidence-following-mpu-model-v0.1"
+    },
+    {
+      "alias": "deepseek-v3-2",
+      "family": "deepseek",
+      "model_id": "deepseek.v3.2",
+      "schema_version": "evidence-following-mpu-model-v0.1"
+    },
+    {
+      "alias": "gpt-5-6-sol",
+      "family": "openai",
+      "model_id": "us.openai.gpt-5.6-sol",
+      "schema_version": "evidence-following-mpu-model-v0.1"
+    },
+    {
+      "alias": "kimi-k2-5",
+      "family": "moonshot",
+      "model_id": "moonshotai.kimi-k2.5",
+      "schema_version": "evidence-following-mpu-model-v0.1"
+    }
+  ],
+  "papers": [
+    {
+      "doi": "10.1016/j.matt.2022.11.031",
+      "domain": "oer-electrocatalysis",
+      "paper_id": "DOI:10.1016_j.matt.2022.11.031",
+      "report_type": "primary_experiment",
+      "schema_version": "evidence-following-mpu-paper-v0.1",
+      "source_markdown_sha256": "9e5b83b13b921ac8b533d19b34f11b9a662819fb3e3b6079ab73a83072f95f49",
+      "title": "Accelerated chemical space search using a quantum-inspired cluster expansion approach"
+    },
+    {
+      "doi": "10.1021/acs.chemmater.0c01894",
+      "domain": "oer-electrocatalysis",
+      "paper_id": "DOI:10.1021_acs.chemmater.0c01894",
+      "report_type": "primary_experiment",
+      "schema_version": "evidence-following-mpu-paper-v0.1",
+      "source_markdown_sha256": "dfe11aabd354556770194fce802b6026443297d8cf2461288baafc98e01c49a2",
+      "title": "Active Learning Accelerated Discovery of Stable Iridium Oxide Polymorphs for the Oxygen Evolution Reaction"
+    },
+    {
+      "doi": "10.1021/acs.chemmater.2c01455",
+      "domain": "oer-electrocatalysis",
+      "paper_id": "DOI:10.1021_acs.chemmater.2c01455",
+      "report_type": "primary_experiment",
+      "schema_version": "evidence-following-mpu-paper-v0.1",
+      "source_markdown_sha256": "d5a0e49a7e1bcafdc5e5c1a9ec10137085371ebc09abf27d38633b3937107183",
+      "title": "Discovery of High-Entropy Oxide Electrocatalysts: From Thin-Film Material Libraries to Particles"
+    },
+    {
+      "doi": "10.1021/acscentsci.3c01009",
+      "domain": "oer-electrocatalysis",
+      "paper_id": "DOI:10.1021_acscentsci.3c01009",
+      "report_type": "primary_experiment",
+      "schema_version": "evidence-following-mpu-paper-v0.1",
+      "source_markdown_sha256": "1b682bf25e96a25bb17fa5d024a19be12f4b23c2a77c1b54efa14ef8d7006452",
+      "title": "Human-Machine Collaboration for Accelerated Discovery of Promising Oxygen Evolution Electrocatalysts with On-Demand Elements"
+    },
+    {
+      "doi": "10.1038/s41467-023-40177-1",
+      "domain": "oer-electrocatalysis",
+      "paper_id": "DOI:10.1038_s41467-023-40177-1",
+      "report_type": "primary_experiment",
+      "schema_version": "evidence-following-mpu-paper-v0.1",
+      "source_markdown_sha256": "6092145d93550411bca5bf13eb494a1109aa023f4e9f10e3ff4415ecdf2e80c8",
+      "title": "Synergy of dual-atom catalysts deviated from the scaling relationship for oxygen evolution reaction"
+    },
+    {
+      "doi": "10.1038/s41467-024-50605-5",
+      "domain": "oer-electrocatalysis",
+      "paper_id": "DOI:10.1038_s41467-024-50605-5",
+      "report_type": "primary_experiment",
+      "schema_version": "evidence-following-mpu-paper-v0.1",
+      "source_markdown_sha256": "7bc303de54dccc39645e8a5f920ea9fedea7175d52e215cec50b0d33aaab57ab",
+      "title": "Transfer learning guided discovery of efficient perovskite oxide for alkaline water oxidation"
+    },
+    {
+      "doi": "10.1039/d0ta06441f",
+      "domain": "oer-electrocatalysis",
+      "paper_id": "DOI:10.1039_d0ta06441f",
+      "report_type": "primary_experiment",
+      "schema_version": "evidence-following-mpu-paper-v0.1",
+      "source_markdown_sha256": "9f7d0d528144e68b07d948805e6903194127a28414b6a3a73291f77cdcc0ae02",
+      "title": "Emerging linear activity trend in the oxygen evolution reaction with dual-active-sites mechanism"
+    }
+  ],
+  "policy": {
+    "bootstrap_replicates": 2000,
+    "bootstrap_seed": 20260901,
+    "correlation_equivalence_bound": 0.3,
+    "max_mean_cross_domain_gap": 0.1,
+    "min_model_count": 3,
+    "min_primary_papers_per_domain": 100,
+    "min_tasks_per_domain": 100,
+    "schema_version": "evidence-following-mpu-policy-v0.1",
+    "trait_rank_correlation_threshold": 0.6
+  },
+  "schema_version": "evidence-following-mpu-study-v0.1",
+  "study_id": "evidence-following-mpu-v0.1-current-cohort",
+  "tasks": [
+    {
+      "blind_context": "A primary oer-electrocatalysis experimental protocol containing materials 'catalyst powder'.",
+      "counterfactual_evidence": "11 mg of catalyst powder",
+      "domain": "oer-electrocatalysis",
+      "fact_injection": "Prior domain memory for Transfer learning guided discovery of efficient perovskite oxide for alkaline water oxidation: the amount for catalyst powder is 10 mg.",
+      "field_type": "amount",
+      "original_value": "10 mg",
+      "paper_id": "DOI:10.1038_s41467-024-50605-5",
+      "paper_identity": "Transfer learning guided discovery of efficient perovskite oxide for alkaline water oxidation; DOI 10.1038/s41467-024-50605-5",
+      "question": "What is the amount for materials 'catalyst powder'?",
+      "replacement_value": "11 mg",
+      "schema_version": "evidence-following-mpu-task-v0.1",
+      "source_evidence_sha256": "58787058ffa766128f08cf7e7186fd36f70dfdd1ab6960bd0b057c2456c263ab",
+      "task_id": "mpu:perturb_24ac0b2b9d67f143"
+    },
+    {
+      "blind_context": "A primary oer-electrocatalysis experimental protocol containing materials 'anhydrous ethanol'.",
+      "counterfactual_evidence": "The catalyst ink was prepared by dispersing 10 mg of catalyst powder in 2 mL of anhydrous ethanol and 50 μLof anion exchange ionomer (Fumion FAA-3-SOLUT-10, FuMA-Tech) using sonication.",
+      "domain": "oer-electrocatalysis",
+      "fact_injection": "Prior domain memory for Transfer learning guided discovery of efficient perovskite oxide for alkaline water oxidation: the amount for anhydrous ethanol is 1 mL.",
+      "field_type": "amount",
+      "original_value": "1 mL",
+      "paper_id": "DOI:10.1038_s41467-024-50605-5",
+      "paper_identity": "Transfer learning guided discovery of efficient perovskite oxide for alkaline water oxidation; DOI 10.1038/s41467-024-50605-5",
+      "question": "What is the amount for materials 'anhydrous ethanol'?",
+      "replacement_value": "2 mL",
+      "schema_version": "evidence-following-mpu-task-v0.1",
+      "source_evidence_sha256": "a664fe0727e1bd034309d62ead299aaa4b99fb3b77f89273aaf3f70d9ca6b23c",
+      "task_id": "mpu:perturb_3f019d6b269fa000"
+    },
+    {
+      "blind_context": "A primary oer-electrocatalysis experimental protocol containing materials '0.1 M KOH electrolyte'.",
+      "counterfactual_evidence": "The electrocatalysts coated as thin-films on metallic titanium substrates were employed as a working electrode in a standard three-electrode setup with a 0.2 M KOH electrolyte (pH13).",
+      "domain": "oer-electrocatalysis",
+      "fact_injection": "Prior domain memory for Human-Machine Collaboration for Accelerated Discovery of Promising Oxygen Evolution Electrocatalysts with On-Demand Elements: the name for 0.1 M KOH electrolyte is 0.1 M KOH electrolyte.",
+      "field_type": "name",
+      "original_value": "0.1 M KOH electrolyte",
+      "paper_id": "DOI:10.1021_acscentsci.3c01009",
+      "paper_identity": "Human-Machine Collaboration for Accelerated Discovery of Promising Oxygen Evolution Electrocatalysts with On-Demand Elements; DOI 10.1021/acscentsci.3c01009",
+      "question": "What is the name for materials '0.1 M KOH electrolyte'?",
+      "replacement_value": "0.2 M KOH electrolyte",
+      "schema_version": "evidence-following-mpu-task-v0.1",
+      "source_evidence_sha256": "3643ee87cd2a6f187fbf5837c56a3d147c943d9d8af52dfa87995f33e468dfec",
+      "task_id": "mpu:perturb_41dcc8a07bc225cd"
+    },
+    {
+      "blind_context": "A primary oer-electrocatalysis experimental protocol containing materials 'Deionized water'.",
+      "counterfactual_evidence": "Then, 470 μLofanhy- drous ethanol, 501 μL of deionized water and 30 μLofNafion solution (DUPont D520, 5 wt%) were pipetted into the container for dissolution.",
+      "domain": "oer-electrocatalysis",
+      "fact_injection": "Prior domain memory for Transfer learning guided discovery of efficient perovskite oxide for alkaline water oxidation: the amount for Deionized water is 500 μL.",
+      "field_type": "amount",
+      "original_value": "500 μL",
+      "paper_id": "DOI:10.1038_s41467-024-50605-5",
+      "paper_identity": "Transfer learning guided discovery of efficient perovskite oxide for alkaline water oxidation; DOI 10.1038/s41467-024-50605-5",
+      "question": "What is the amount for materials 'Deionized water'?",
+      "replacement_value": "501 μL",
+      "schema_version": "evidence-following-mpu-task-v0.1",
+      "source_evidence_sha256": "bc99fc5a0a54ed18c82f3b684fb40da44b3d6ce168b95cecca54c00b305a230f",
+      "task_id": "mpu:perturb_44161513d4accea4"
+    },
+    {
+      "blind_context": "A primary oer-electrocatalysis experimental protocol containing instruments 'Mass spectrometer'.",
+      "counterfactual_evidence": "The DEMS measurements were conducted using a QAS 101 mass spectrometer with a detector (Linglu Instruments, Shanghai)",
+      "domain": "oer-electrocatalysis",
+      "fact_injection": "Prior domain memory for Transfer learning guided discovery of efficient perovskite oxide for alkaline water oxidation: the model for Mass spectrometer is QAS 100.",
+      "field_type": "model",
+      "original_value": "QAS 100",
+      "paper_id": "DOI:10.1038_s41467-024-50605-5",
+      "paper_identity": "Transfer learning guided discovery of efficient perovskite oxide for alkaline water oxidation; DOI 10.1038/s41467-024-50605-5",
+      "question": "What is the model for instruments 'Mass spectrometer'?",
+      "replacement_value": "QAS 101",
+      "schema_version": "evidence-following-mpu-task-v0.1",
+      "source_evidence_sha256": "027b393f36b25f35de270862a3e8560c2a0d1a33e51ab9e668addeab64b907c0",
+      "task_id": "mpu:perturb_4450965b277a2931"
+    },
+    {
+      "blind_context": "A primary oer-electrocatalysis experimental protocol containing materials 'Nafion solution'.",
+      "counterfactual_evidence": "31 μLofNafion solution (DUPont D520, 5 wt%)",
+      "domain": "oer-electrocatalysis",
+      "fact_injection": "Prior domain memory for Transfer learning guided discovery of efficient perovskite oxide for alkaline water oxidation: the amount for Nafion solution is 30 μL.",
+      "field_type": "amount",
+      "original_value": "30 μL",
+      "paper_id": "DOI:10.1038_s41467-024-50605-5",
+      "paper_identity": "Transfer learning guided discovery of efficient perovskite oxide for alkaline water oxidation; DOI 10.1038/s41467-024-50605-5",
+      "question": "What is the amount for materials 'Nafion solution'?",
+      "replacement_value": "31 μL",
+      "schema_version": "evidence-following-mpu-task-v0.1",
+      "source_evidence_sha256": "073d19c6d659921e007624fe11e4c699085aaefccecf1ba7bfad02bbfdd60cb6",
+      "task_id": "mpu:perturb_4990f1f046e0922e"
+    },
+    {
+      "blind_context": "A primary oer-electrocatalysis experimental protocol containing materials 'Nafion solution'.",
+      "counterfactual_evidence": "30 μLofNafion solution (DUPont D520, 6 wt%)",
+      "domain": "oer-electrocatalysis",
+      "fact_injection": "Prior domain memory for Transfer learning guided discovery of efficient perovskite oxide for alkaline water oxidation: the purity for Nafion solution is 5 wt%.",
+      "field_type": "purity",
+      "original_value": "5 wt%",
+      "paper_id": "DOI:10.1038_s41467-024-50605-5",
+      "paper_identity": "Transfer learning guided discovery of efficient perovskite oxide for alkaline water oxidation; DOI 10.1038/s41467-024-50605-5",
+      "question": "What is the purity for materials 'Nafion solution'?",
+      "replacement_value": "6 wt%",
+      "schema_version": "evidence-following-mpu-task-v0.1",
+      "source_evidence_sha256": "073d19c6d659921e007624fe11e4c699085aaefccecf1ba7bfad02bbfdd60cb6",
+      "task_id": "mpu:perturb_633d654f0d4dea05"
+    },
+    {
+      "blind_context": "A primary oer-electrocatalysis experimental protocol containing materials 'absolute ethanol'.",
+      "counterfactual_evidence": "To prepare the catalyst electrode, a catalyst ink was first prepared by sonicating a mixture of 10 mg catalyst, 10 mg acetylene black, 2 mL of absolute ethanol, and 100 μL of 5 wt% Nafion for 1.5 h in an ice bath.",
+      "domain": "oer-electrocatalysis",
+      "fact_injection": "Prior domain memory for Transfer learning guided discovery of efficient perovskite oxide for alkaline water oxidation: the amount for absolute ethanol is 1 mL.",
+      "field_type": "amount",
+      "original_value": "1 mL",
+      "paper_id": "DOI:10.1038_s41467-024-50605-5",
+      "paper_identity": "Transfer learning guided discovery of efficient perovskite oxide for alkaline water oxidation; DOI 10.1038/s41467-024-50605-5",
+      "question": "What is the amount for materials 'absolute ethanol'?",
+      "replacement_value": "2 mL",
+      "schema_version": "evidence-following-mpu-task-v0.1",
+      "source_evidence_sha256": "55e0da7c5000675d389003e593020798d4af241975ce67d41cf546356572f017",
+      "task_id": "mpu:perturb_76bb12edc0c6ae8d"
+    },
+    {
+      "blind_context": "A primary oer-electrocatalysis experimental protocol containing materials 'Nafion'.",
+      "counterfactual_evidence": "101 μL of 5 wt% Nafion",
+      "domain": "oer-electrocatalysis",
+      "fact_injection": "Prior domain memory for Transfer learning guided discovery of efficient perovskite oxide for alkaline water oxidation: the amount for Nafion is 100 μL.",
+      "field_type": "amount",
+      "original_value": "100 μL",
+      "paper_id": "DOI:10.1038_s41467-024-50605-5",
+      "paper_identity": "Transfer learning guided discovery of efficient perovskite oxide for alkaline water oxidation; DOI 10.1038/s41467-024-50605-5",
+      "question": "What is the amount for materials 'Nafion'?",
+      "replacement_value": "101 μL",
+      "schema_version": "evidence-following-mpu-task-v0.1",
+      "source_evidence_sha256": "a40eb68e5539e703ce4a471b1c6fe484b3197b14e52be0fdbd57bd494cf465f7",
+      "task_id": "mpu:perturb_7adb8296d42a7084"
+    },
+    {
+      "blind_context": "A primary oer-electrocatalysis experimental protocol containing materials 'anion exchange ionomer'.",
+      "counterfactual_evidence": "The catalyst ink was prepared by dispersing 10 mg of catalyst powder in 1 mL of anhydrous ethanol and 51 μLof anion exchange ionomer (Fumion FAA-3-SOLUT-10, FuMA-Tech) using sonication.",
+      "domain": "oer-electrocatalysis",
+      "fact_injection": "Prior domain memory for Transfer learning guided discovery of efficient perovskite oxide for alkaline water oxidation: the amount for anion exchange ionomer is 50 μL.",
+      "field_type": "amount",
+      "original_value": "50 μL",
+      "paper_id": "DOI:10.1038_s41467-024-50605-5",
+      "paper_identity": "Transfer learning guided discovery of efficient perovskite oxide for alkaline water oxidation; DOI 10.1038/s41467-024-50605-5",
+      "question": "What is the amount for materials 'anion exchange ionomer'?",
+      "replacement_value": "51 μL",
+      "schema_version": "evidence-following-mpu-task-v0.1",
+      "source_evidence_sha256": "a664fe0727e1bd034309d62ead299aaa4b99fb3b77f89273aaf3f70d9ca6b23c",
+      "task_id": "mpu:perturb_7c889373b6c18631"
+    },
+    {
+      "blind_context": "A primary oer-electrocatalysis experimental protocol containing materials 'Nafion'.",
+      "counterfactual_evidence": "100 μL of 6 wt% Nafion",
+      "domain": "oer-electrocatalysis",
+      "fact_injection": "Prior domain memory for Transfer learning guided discovery of efficient perovskite oxide for alkaline water oxidation: the purity for Nafion is 5 wt%.",
+      "field_type": "purity",
+      "original_value": "5 wt%",
+      "paper_id": "DOI:10.1038_s41467-024-50605-5",
+      "paper_identity": "Transfer learning guided discovery of efficient perovskite oxide for alkaline water oxidation; DOI 10.1038/s41467-024-50605-5",
+      "question": "What is the purity for materials 'Nafion'?",
+      "replacement_value": "6 wt%",
+      "schema_version": "evidence-following-mpu-task-v0.1",
+      "source_evidence_sha256": "a40eb68e5539e703ce4a471b1c6fe484b3197b14e52be0fdbd57bd494cf465f7",
+      "task_id": "mpu:perturb_929fde7d7c9ec6c4"
+    },
+    {
+      "blind_context": "A primary oer-electrocatalysis experimental protocol containing materials 'KOH'.",
+      "counterfactual_evidence": "A traditional three-electrode system was used for electrochemical testing in a 150 mL water-bath electrolytic cell containing 1 M KOH saturated with oxygen (100.00%).",
+      "domain": "oer-electrocatalysis",
+      "fact_injection": "Prior domain memory for Transfer learning guided discovery of efficient perovskite oxide for alkaline water oxidation: the pretreatment for KOH is saturated with oxygen (99.99%).",
+      "field_type": "pretreatment",
+      "original_value": "saturated with oxygen (99.99%)",
+      "paper_id": "DOI:10.1038_s41467-024-50605-5",
+      "paper_identity": "Transfer learning guided discovery of efficient perovskite oxide for alkaline water oxidation; DOI 10.1038/s41467-024-50605-5",
+      "question": "What is the pretreatment for materials 'KOH'?",
+      "replacement_value": "saturated with oxygen (100.00%)",
+      "schema_version": "evidence-following-mpu-task-v0.1",
+      "source_evidence_sha256": "c644b456d6fd0cde049ac6a0a5cf8d3dd2706dd61064713d255b987628233185",
+      "task_id": "mpu:perturb_a9c60bdce149a144"
+    },
+    {
+      "blind_context": "A primary oer-electrocatalysis experimental protocol containing instruments 'rotating disk electrode'.",
+      "counterfactual_evidence": "A 6 mm diameter rotating disk electrode (E5 RDE, PINE)",
+      "domain": "oer-electrocatalysis",
+      "fact_injection": "Prior domain memory for Transfer learning guided discovery of efficient perovskite oxide for alkaline water oxidation: the setting:diameter for rotating disk electrode is 5 mm.",
+      "field_type": "setting:diameter",
+      "original_value": "5 mm",
+      "paper_id": "DOI:10.1038_s41467-024-50605-5",
+      "paper_identity": "Transfer learning guided discovery of efficient perovskite oxide for alkaline water oxidation; DOI 10.1038/s41467-024-50605-5",
+      "question": "What is the setting:diameter for instruments 'rotating disk electrode'?",
+      "replacement_value": "6 mm",
+      "schema_version": "evidence-following-mpu-task-v0.1",
+      "source_evidence_sha256": "e671b4b5a2da07cc592ad0bae3dfef33794c75124e3aeef38d91bc9ac605085a",
+      "task_id": "mpu:perturb_af54048b46fbe82e"
+    },
+    {
+      "blind_context": "A primary oer-electrocatalysis experimental protocol containing materials 'alkaline exchange membrane'.",
+      "counterfactual_evidence": "The two electrodes were separated by a pre-treated alkaline exchange membrane (Fumasep FAA-3-30, thickness ∼30 μm, FuMA- Tech), Prior to use, the membrane was immersed in 7 M KOH solution for 12 h.",
+      "domain": "oer-electrocatalysis",
+      "fact_injection": "Prior domain memory for Transfer learning guided discovery of efficient perovskite oxide for alkaline water oxidation: the pretreatment for alkaline exchange membrane is immersed in 6 M KOH solution for 12 h.",
+      "field_type": "pretreatment",
+      "original_value": "immersed in 6 M KOH solution for 12 h",
+      "paper_id": "DOI:10.1038_s41467-024-50605-5",
+      "paper_identity": "Transfer learning guided discovery of efficient perovskite oxide for alkaline water oxidation; DOI 10.1038/s41467-024-50605-5",
+      "question": "What is the pretreatment for materials 'alkaline exchange membrane'?",
+      "replacement_value": "immersed in 7 M KOH solution for 12 h",
+      "schema_version": "evidence-following-mpu-task-v0.1",
+      "source_evidence_sha256": "bc5fde01af08c1979eaef766591d24dd5b855b977304d5c232bad468e44c841a",
+      "task_id": "mpu:perturb_ee118e5c82d6ff90"
+    }
+  ]
+}

@@ -20,6 +20,7 @@ TargetLayer = Literal[
     "scientific_core_tasks",
     "scientific_base_weights",
 ]
+PromotionBasis = Literal["reviewed_corpus", "experimental_feedback"]
 
 
 class PromotionMetrics(DomainModel):
@@ -34,17 +35,25 @@ class PromotionMetrics(DomainModel):
     general_capability_retention: float | None = Field(
         default=None, ge=0, le=1
     )
+    experimental_feedback_bundle_count: int = Field(default=0, ge=0)
+    belief_update_task_count: int = Field(default=0, ge=0)
+    belief_update_accuracy: float | None = Field(default=None, ge=0, le=1)
+    belief_update_evidence_validity: float | None = Field(
+        default=None, ge=0, le=1
+    )
 
 
 class PromotionCandidate(DomainModel):
-    schema_version: str = "domain-promotion-candidate-v0.1"
+    schema_version: str = "domain-promotion-candidate-v0.2"
     promotion_id: str = Field(min_length=1)
     promotion_kind: PromotionKind
+    promotion_basis: PromotionBasis = "reviewed_corpus"
     target_layer: TargetLayer
     source_package: PackageReference
     target_package: PackageReference
     source_record_ids: list[str] = Field(default_factory=list)
     evidence_ids: list[str] = Field(default_factory=list)
+    source_feedback_bundle_ids: list[str] = Field(default_factory=list)
     reviewed_gold_ids: list[str] = Field(default_factory=list)
     supporting_packages: list[PackageReference] = Field(default_factory=list)
     human_reviewed: bool = False
@@ -54,7 +63,7 @@ class PromotionCandidate(DomainModel):
 
 
 class PromotionPolicy(DomainModel):
-    schema_version: str = "domain-promotion-policy-v0.1"
+    schema_version: str = "domain-promotion-policy-v0.2"
     min_gold_precision: float = Field(default=0.85, ge=0, le=1)
     min_evidence_validity: float = Field(default=1.0, ge=0, le=1)
     min_rag_answer_f1: float = Field(default=0.7, ge=0, le=1)
@@ -66,10 +75,16 @@ class PromotionPolicy(DomainModel):
     min_general_capability_retention: float = Field(
         default=0.98, ge=0, le=1
     )
+    min_experimental_feedback_bundles: int = Field(default=1, ge=1)
+    min_belief_update_tasks: int = Field(default=20, ge=1)
+    min_belief_update_accuracy: float = Field(default=0.8, ge=0, le=1)
+    min_belief_update_evidence_validity: float = Field(
+        default=1.0, ge=0, le=1
+    )
 
 
 class PromotionDecision(DomainModel):
-    schema_version: str = "domain-promotion-decision-v0.1"
+    schema_version: str = "domain-promotion-decision-v0.2"
     promotion_id: str
     eligible_for_human_approval: bool
     failed_gates: list[str]
@@ -118,6 +133,30 @@ def evaluate_promotion(
         failed.append("retrieval_coverage")
     if candidate.metrics.evaluated_question_count < policy.min_evaluated_questions:
         failed.append("evaluation_size")
+
+    if candidate.promotion_basis == "experimental_feedback":
+        if not candidate.source_feedback_bundle_ids:
+            failed.append("experimental_feedback_provenance")
+        if (
+            candidate.metrics.experimental_feedback_bundle_count
+            < policy.min_experimental_feedback_bundles
+        ):
+            failed.append("experimental_feedback_coverage")
+        if (
+            candidate.metrics.belief_update_task_count
+            < policy.min_belief_update_tasks
+        ):
+            failed.append("belief_update_evaluation_size")
+        if _below(
+            candidate.metrics.belief_update_accuracy,
+            policy.min_belief_update_accuracy,
+        ):
+            failed.append("belief_update_accuracy")
+        if _below(
+            candidate.metrics.belief_update_evidence_validity,
+            policy.min_belief_update_evidence_validity,
+        ):
+            failed.append("belief_update_evidence_validity")
 
     supporting_coordinates = {
         item.coordinate for item in candidate.supporting_packages

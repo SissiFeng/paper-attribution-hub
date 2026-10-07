@@ -2,7 +2,7 @@
 from __future__ import annotations
 
 import pytest
-from fastapi.testclient import TestClient
+from tests.admin_client import AdminTestClient as TestClient
 
 
 @pytest.fixture()
@@ -18,6 +18,24 @@ def test_health(client):
     r = client.get("/health")
     assert r.status_code == 200
     assert r.json()["status"] == "ok"
+
+
+@pytest.mark.parametrize(
+    "path",
+    ("/debug/db", "/debug/papers", "/debug/multigraph", "/debug/cors"),
+)
+def test_debug_endpoints_are_disabled_by_default(client, path):
+    assert client.get(path).status_code == 404
+
+
+def test_debug_db_does_not_return_connection_details(client, monkeypatch):
+    from app.config import settings
+
+    monkeypatch.setattr(settings, "debug_endpoints_enabled", True)
+    response = client.get("/debug/db")
+
+    assert response.status_code == 200
+    assert response.json() == {"db": "ok"}
 
 
 def test_list_papers(client):
@@ -138,6 +156,52 @@ def test_retrieve_answer_uses_bounded_chat_and_page_context(fulltext_seeded_sess
     )
     assert "Which papers use Bayesian optimization?" in body["retrieval_query"]
     assert body["page_context"] == "Dashboard route: /timeline?year_from=2022"
+
+
+def test_retrieve_answer_does_not_pollute_standalone_search_with_chat_history(
+    fulltext_seeded_session,
+):
+    from app.main import app
+
+    query = "Which papers use Bayesian optimization?"
+    response = TestClient(app).post(
+        "/retrieve/answer",
+        json={
+            "query": query,
+            "search_query": "Bayesian optimization",
+            "top_k": 3,
+            "mode": "iterative",
+            "agentic_search": False,
+            "conversation": [
+                {
+                    "role": "user",
+                    "content": "How many papers are in the current scope?",
+                },
+                {
+                    "role": "assistant",
+                    "content": "The database query returned 177 matching papers.",
+                },
+            ],
+        },
+    )
+
+    assert response.status_code == 200, response.text
+    assert response.json()["retrieval_query"] == "Bayesian optimization"
+
+
+def test_standalone_retrieval_query_ignores_unrelated_chat_history():
+    from app.api.retrieval import ConversationTurn, _contextualized_retrieval_query
+
+    query = "Compare automation approaches across the Tier 1 papers."
+    resolved = _contextualized_retrieval_query(
+        query,
+        [
+            ConversationTurn(role="user", content="How many papers are there?"),
+            ConversationTurn(role="assistant", content="177 papers."),
+        ],
+    )
+
+    assert resolved == query
 
 
 @pytest.mark.parametrize(

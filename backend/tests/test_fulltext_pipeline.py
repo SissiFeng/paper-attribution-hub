@@ -1,7 +1,15 @@
 """End-to-end: ingest fulltexts, build embeddings, classify, verify v0.2 wins."""
 from sqlalchemy import select
 
-from app.models import PaperChunk, PaperEvidence, PaperSection
+from app.models import (
+    Paper,
+    PaperChunk,
+    PaperEntity,
+    PaperEvidence,
+    PaperProposition,
+    PaperSection,
+)
+from app.services.fulltext_service import _wipe_fulltext
 
 
 def test_p001_has_sections_and_chunks(fulltext_seeded_session):
@@ -72,3 +80,55 @@ def test_funding_evidence_reasons_cite_chunk(fulltext_seeded_session):
     paper = fulltext_seeded_session.get(Paper, "P001")
     reasons = paper.classification.reasons or []
     assert any("Funding acknowledgement" in r and "chunk" in r for r in reasons)
+
+
+def test_wipe_fulltext_removes_rows_that_reference_old_chunks(session):
+    paper = Paper(id="P_WIPE", title="Replaceable full text")
+    section = PaperSection(
+        id="SEC_WIPE",
+        paper_id=paper.id,
+        section_type="methods",
+        content="Old content",
+        order_index=0,
+    )
+    chunk = PaperChunk(
+        id="CHK_WIPE",
+        paper_id=paper.id,
+        section_id=section.id,
+        section_type="methods",
+        chunk_text="Old content",
+    )
+    entity = PaperEntity(
+        id="ENT_WIPE",
+        paper_id=paper.id,
+        entity_type="method",
+        name="old method",
+        normalized_name="old method",
+        evidence_chunk_id=chunk.id,
+    )
+    evidence = PaperEvidence(
+        id="EV_WIPE",
+        paper_id=paper.id,
+        chunk_id=chunk.id,
+        evidence_type="sdl_methodology",
+        evidence_source="fulltext",
+        evidence_text="Old content",
+    )
+    proposition = PaperProposition(
+        id="PROP_WIPE",
+        paper_id=paper.id,
+        predicate="uses_method",
+        object_value="old method",
+        source_evidence_id=evidence.id,
+        source_chunk_id=chunk.id,
+        claim_text="Old content",
+    )
+    session.add_all([paper, section, chunk, entity, evidence, proposition])
+    session.commit()
+
+    _wipe_fulltext(session, paper.id)
+
+    assert session.get(PaperChunk, chunk.id) is None
+    assert session.get(PaperEntity, entity.id) is None
+    assert session.get(PaperEvidence, evidence.id) is None
+    assert session.get(PaperProposition, proposition.id) is None

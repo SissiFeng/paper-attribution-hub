@@ -1,0 +1,44 @@
+.lf-grid-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin: 20px 0; align-items: start; }
+/* User-requested project palette: all roles derive from the global theme. */
+.lf-card {
+  --lf-bg: var(--panel);
+  --lf-ink: var(--text);
+  --lf-muted: color-mix(in srgb, var(--text) 70%, var(--color-steel));
+  --lf-data: color-mix(in srgb, var(--text) 55%, var(--color-steel));
+  --lf-hero: var(--color-pink);
+  --lf-grid: var(--border-strong);
+  background: var(--lf-bg); color: var(--lf-ink); border-radius: 24px; padding: 28px 28px 20px; font-family: Inter, sans-serif; min-width: 0; }
+.lf-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+.lf-card h2 { font-size: 16.5px; font-weight: 700; letter-spacing: -.02em; margin: 0; }
+.lf-card .lf-sub { color: var(--lf-muted); font-size: 11.5px; line-height: 1.65; margin: 8px 0 14px; }
+.lf-card .lf-source { color: var(--lf-muted); font-size: 9.5px; letter-spacing: .08em; text-transform: uppercase; line-height: 1.7; margin: 12px 0; }
+.lf-card svg { display: block; width: 100%; height: auto; overflow: visible; }
+.lf-card svg text { fill: var(--lf-muted); font-size: 11px; font-family: Inter, sans-serif; font-weight: 600; }
+.lf-card svg .lf-value { fill: var(--lf-ink); font-weight: 800; font-size: 13px; }
+.lf-card .lf-grid { stroke: var(--lf-grid); stroke-width: .8; }
+.lf-guide-dot { fill: var(--lf-data); }
+.lf-card button { background: transparent; border: 1px solid var(--lf-data); border-radius: 99px; color: var(--lf-muted); font: inherit; font-size: 11px; padding: 4px 9px; cursor: pointer; }
+.lf-card button:focus-visible, .lf-card summary:focus-visible { outline: 2px solid var(--lf-ink); outline-offset: 4px; }
+.lf-card details { font-size: 12px; color: var(--lf-muted); }
+.lf-card summary { cursor: pointer; }
+.lf-card table { width: 100%; border-collapse: collapse; margin-top: 12px; font-size: 12px; color: var(--lf-ink); }
+.lf-card th, .lf-card td { padding: 8px 4px; text-align: left; border-bottom: 1px solid var(--lf-grid); overflow-wrap: anywhere; }
+.lf-card td { text-align: right; }
+.lf-card caption { text-align: left; padding: 8px 0; }
+.lf-empty { min-height: 200px; display: grid; place-items: center; font-size: 13px; }
+.lf-waiting svg { visibility: hidden; }
+.lf-revealed .lf-draw { stroke-dasharray: 1; stroke-dashoffset: 1; animation: lf-draw 1.2s cubic-bezier(.4,0,.2,1) forwards; }
+.lf-revealed .lf-dot, .lf-revealed .lf-row { animation: lf-fade .9s ease both; }
+@keyframes lf-draw { to { stroke-dashoffset: 0; } }
+@keyframes lf-fade { from { opacity: 0; } }
+@media (max-width: 1000px) { .lf-grid-layout { grid-template-columns: 1fr; } }
+@media (max-width: 480px) {
+  .lf-card { padding: 22px 16px 18px; }
+  .lf-card svg text { font-size: 14px; }
+  .lf-card svg .lf-value { font-size: 16px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .lf-revealed .lf-draw, .lf-revealed .lf-dot, .lf-revealed .lf-row { animation: none; stroke-dasharray: none; stroke-dashoffset: 0; }
+}
+
+.lf-card button:hover { background: var(--lf-hero); color: var(--lf-ink); border-color: var(--lf-ink); }

@@ -87,14 +87,15 @@ function FulltextEvidenceTabs({ evidence }: { evidence: FulltextEvidence[] }) {
 
 interface Props {
   paper: Paper;
-  onReviewed: () => void;
+  onReviewed?: () => void;
+  readOnly?: boolean;
 }
 
 const HUMAN_LABELS = ["INCLUDE", "EXCLUDE", "UNCERTAIN"];
 
 type PanelTab = "evidence" | "wiki";
 
-export function EvidencePanel({ paper, onReviewed }: Props) {
+export function EvidencePanel({ paper, onReviewed, readOnly = false }: Props) {
   const c = paper.classification;
   const [tab, setTab] = useState<PanelTab>("evidence");
   const [reviewer, setReviewer] = useState(paper.review?.reviewer ?? "");
@@ -105,6 +106,7 @@ export function EvidencePanel({ paper, onReviewed }: Props) {
   useEffect(() => {
     let cancelled = false;
     setGraph(null);
+    if (readOnly) return;
     getGraphExplanation(paper.id)
       .then((g) => !cancelled && setGraph(g))
       .catch(() => {
@@ -113,7 +115,7 @@ export function EvidencePanel({ paper, onReviewed }: Props) {
     return () => {
       cancelled = true;
     };
-  }, [paper.id]);
+  }, [paper.id, readOnly]);
 
   const handle = async (label: string) => {
     setStatus("Saving…");
@@ -124,7 +126,7 @@ export function EvidencePanel({ paper, onReviewed }: Props) {
         notes: notes || undefined,
       });
       setStatus(`Saved (${label}).`);
-      onReviewed();
+      onReviewed?.();
     } catch (err) {
       setStatus(err instanceof Error ? err.message : String(err));
     }
@@ -151,7 +153,7 @@ export function EvidencePanel({ paper, onReviewed }: Props) {
       </div>
 
       {/* Wiki tab */}
-      {tab === "wiki" && <WikiPanel paperId={paper.id} />}
+      {tab === "wiki" && <WikiPanel paperId={paper.id} readOnly={readOnly} />}
 
       {/* Evidence tab */}
       {tab === "evidence" && (<>
@@ -163,7 +165,7 @@ export function EvidencePanel({ paper, onReviewed }: Props) {
             <ConfidenceBar value={c.confidence} />
           </div>
 
-          <RagStatusPanel status={paper.rag_status} />
+          {!readOnly && <RagStatusPanel status={paper.rag_status} />}
 
           <div className="score-grid">
             {[
@@ -310,7 +312,7 @@ export function EvidencePanel({ paper, onReviewed }: Props) {
         </>
       )}
 
-      <h3>Human decision</h3>
+      {!readOnly && <><h3>Human decision</h3>
       <div className="review-form">
         {HUMAN_LABELS.map((l) => (
           <button key={l} onClick={() => handle(l)}>
@@ -338,7 +340,7 @@ export function EvidencePanel({ paper, onReviewed }: Props) {
           {paper.review.reviewer ?? "anonymous"}
           {paper.review.notes ? ` — ${paper.review.notes}` : ""}
         </div>
-      )}
+      )}</>}
       </>)}
     </section>
   );

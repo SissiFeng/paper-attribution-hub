@@ -1,0 +1,12 @@
+__pycache__/
+outbox/
+.pytest_cache/
+*.db
+*.db-*
+*.lock
+.env
+authors.csv
+.terraform/
+*.tfstate*
+*.tfplan
+build/

@@ -69,3 +69,18 @@ pgdata/
 skills-lock.json
 .vercel/
 .vercel
+.gstack/
+
+# Isolated PAS private-reading build
+/frontend/dist-reading/
+!/docs/p0-access-control.zh.md
+
+!/docs/p1-research-workspace.zh.md
+!/docs/p2-research-exploration.zh.md
+
+# Reproducible cloud development; local preview data never belongs in Git.
+/.local/
+!/AGENTS.md
+!/docs/cloud-development.zh.md
+*.db-wal
+*.db-shm

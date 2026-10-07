@@ -1,0 +1,20 @@
+{
+  "passed": true,
+  "checks": [
+    "private project creation",
+    "explicit project membership",
+    "paper folder without personal data copy",
+    "exact private passage annotation",
+    "explicit annotation copy",
+    "saved evidence matrix and cited interpretation",
+    "manual missing-cell evidence from an exact saved annotation",
+    "private evidence answer",
+    "answer citation opens highlighted original passage",
+    "selected message copy to project",
+    "second member sees only project copies",
+    "revocation blocks project and historical discussion",
+    "mobile layout has no page overflow"
+  ],
+  "console_errors": [],
+  "environment": "Isolated local HTTPS app, real backend and browser, two synthetic users and two clearly labelled paper fixtures"
+}

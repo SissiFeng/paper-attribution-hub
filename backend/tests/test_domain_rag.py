@@ -97,6 +97,58 @@ def test_rag_candidate_answers_remain_separate_from_human_gold():
     assert all(item.accepted_scientific_chunk_ids == [] for item in gold)
 
 
+def test_rag_queue_covers_secondary_reports_and_records_evidence_scope():
+    from app.domain_adaptation.rag import build_rag_review_queue
+
+    _paper, chunks, protocols = _rag_fixture()
+    secondary = protocols[0].model_copy(
+        update={
+            "protocol_id": "protocol-rag-secondary",
+            "evidence_scope": "secondary_report",
+        }
+    )
+
+    candidates, _gold = build_rag_review_queue(
+        [*protocols, secondary], chunks, limit=10
+    )
+
+    assert {
+        item.question.evidence_scope_filters[0] for item in candidates
+    } == {"primary_report", "secondary_report"}
+    assert any(
+        "classified as a secondary report" in item.question.text
+        for item in candidates
+    )
+
+
+def test_rag_queue_prioritizes_cross_paper_coverage():
+    from app.domain_adaptation.rag import build_rag_review_queue
+
+    _paper, chunks, protocols = _rag_fixture()
+    second_chunk = chunks[0].model_copy(
+        update={
+            "scientific_chunk_id": "scichk-rag-second-paper",
+            "paper_id": "DOI:10.1000_rag_second",
+        }
+    )
+    second_protocol = protocols[0].model_copy(
+        update={
+            "protocol_id": "protocol-rag-second-paper",
+            "paper_id": "DOI:10.1000_rag_second",
+            "scientific_chunk_ids": [second_chunk.scientific_chunk_id],
+        }
+    )
+
+    candidates, _gold = build_rag_review_queue(
+        [*protocols, second_protocol], [*chunks, second_chunk], limit=2
+    )
+
+    assert {item.question.paper_ids[0] for item in candidates} == {
+        "DOI:10.1000_rag",
+        "DOI:10.1000_rag_second",
+    }
+
+
 def test_scientific_chunk_index_filters_scope_and_ranks_relevant_text():
     from app.domain_adaptation.models import ScientificChunk
     from app.domain_adaptation.rag import ScientificChunkIndex
@@ -148,6 +200,65 @@ def test_structured_rag_baseline_answers_and_cites_source_evidence():
     assert prediction.abstained is False
     assert prediction.answer_items == ["NiFe catalyst (10 mg)"]
     assert prediction.cited_evidence_ids == ["ev-rag-1"]
+    assert prediction.retrieved_scientific_chunk_ids == [
+        chunks[0].scientific_chunk_id
+    ]
+
+
+def test_structured_rag_baseline_respects_evidence_scope_filter():
+    from app.domain_adaptation.rag import (
+        StructuredRagBaseline,
+        build_rag_review_queue,
+    )
+
+    _paper, chunks, protocols = _rag_fixture()
+    secondary = protocols[0].model_copy(
+        update={
+            "protocol_id": "protocol-rag-secondary",
+            "evidence_scope": "secondary_report",
+            "materials": [
+                protocols[0].materials[0].model_copy(
+                    update={"name": "secondary-only catalyst"}
+                )
+            ],
+        }
+    )
+    candidates, _gold = build_rag_review_queue(
+        [*protocols, secondary], chunks, limit=10
+    )
+    secondary_material_question = next(
+        item.question
+        for item in candidates
+        if item.question.question_type == "material_lookup"
+        and item.question.evidence_scope_filters == ["secondary_report"]
+    )
+
+    prediction = StructuredRagBaseline(chunks, [*protocols, secondary]).answer(
+        secondary_material_question, top_k=5
+    )
+
+    assert prediction.answer_items == ["secondary-only catalyst (10 mg)"]
+
+
+def test_structured_rag_baseline_falls_back_when_role_filter_is_too_strict():
+    from app.domain_adaptation.rag import RagQuestion, StructuredRagBaseline
+
+    _paper, chunks, protocols = _rag_fixture()
+    question = RagQuestion(
+        question_id="ragq-role-fallback",
+        text="Which material is used in the catalyst ink preparation protocol?",
+        question_type="material_lookup",
+        paper_ids=[protocols[0].paper_id],
+        semantic_role_filters=["caveat"],
+        evidence_scope_filters=["primary_report"],
+    )
+
+    prediction = StructuredRagBaseline(chunks, protocols).answer(
+        question, top_k=5
+    )
+
+    assert prediction.abstained is False
+    assert prediction.answer_items == ["NiFe catalyst (10 mg)"]
     assert prediction.retrieved_scientific_chunk_ids == [
         chunks[0].scientific_chunk_id
     ]

@@ -1,0 +1,36 @@
+# Daily run on GitHub Actions. state.db is committed back so dedup state
+# survives between runs. Only takes effect when this folder is the repo root.
+name: paper-monitor
+on:
+  schedule:
+    - cron: "17 12 * * *"   # daily 12:17 UTC (08:17 Toronto, EDT)
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency: paper-monitor   # never two runs on the same state.db
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Poll sources and post
+        env:
+          CONTACT_EMAIL: ${{ vars.CONTACT_EMAIL }}
+          OPENALEX_API_KEY: ${{ secrets.OPENALEX_API_KEY }}
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          IMAP_HOST: ${{ secrets.IMAP_HOST }}
+          IMAP_USER: ${{ secrets.IMAP_USER }}
+          IMAP_PASSWORD: ${{ secrets.IMAP_PASSWORD }}
+        run: python -m paper_monitor run --authors authors.csv --db state.db
+      - name: Save dedup state
+        if: always()
+        run: |
+          git config user.name "paper-monitor-bot"
+          git config user.email "paper-monitor-bot@users.noreply.github.com"
+          git add state.db
+          git diff --cached --quiet || git commit -m "monitor: update state [skip ci]"
+          git push

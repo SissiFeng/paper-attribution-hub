@@ -1,0 +1,60 @@
+{
+  "artifact_sha256": {
+    "corpus/continued_pretraining.jsonl": "ef9ef69ef5d78b1b1cd456c1791355e9bad6d880b688ca7581122a860ab804d6",
+    "knowledge/paper_records.jsonl": "fa367dcda94ec257776b5a06ddeed1cbb0f8e9b82200850b9711727b5bd61271",
+    "knowledge/protocols.jsonl": "15af77bcea659b5d184e62030d26bf2ca68bfed60b531a56cb0aa1fbc820877f",
+    "reports/quality_report.json": "adcf10d033af8dd24cd26a17701f8d89e61f9b44bad94a996c9a30f8f3bde151",
+    "reports/teacher_field_audit.jsonl": "a99edd23e1596ab8f38fd5c3113d4b6676566566d2a73efb35d25bf3d3d3ef5f",
+    "source/selection_manifest.json": "9a1d6483fed9dcfc9c067d4af01beb2e753409dd82ed11addae22eb5a568c488",
+    "tasks/evaluation/eval.jsonl": "340fed19bf64e772e6bdd55648658024fec0caf6afea9022162cb5bde0867ad8",
+    "tasks/sft/train.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "classification_neutral": true,
+  "counts": {
+    "corpus_record_count": 51,
+    "paper_count": 4,
+    "protocol_count": 12,
+    "task_count": 18
+  },
+  "domain": "oxygen evolution electrocatalysis",
+  "extraction": {
+    "extractor": "amazon_bedrock_structured_teacher",
+    "inference_config": {
+      "max_output_tokens": 14000,
+      "temperature": 0.0
+    },
+    "mode": "teacher",
+    "model": "us.anthropic.claude-sonnet-4-6",
+    "prompt_version": "oer-protocol-teacher-v0.2",
+    "region": "us-east-1",
+    "usage": {
+      "input_token_count": 21229,
+      "invocation_count": 4,
+      "latency_ms_total": 265855,
+      "output_token_count": 26095,
+      "response_failure_diagnostics": [
+        {
+          "diagnostic": "Unterminated string starting at: line 905 column 29 (char 43820)",
+          "paper_id": "DOI:10.1038_s41467-024-50605-5"
+        }
+      ],
+      "response_schema_failure_count": 1,
+      "salvaged_response_count": 1
+    }
+  },
+  "institution_entities_included": false,
+  "layers": [
+    "cleaned_corpus",
+    "structured_knowledge",
+    "task_suite"
+  ],
+  "package_id": "oer-electrocatalysis",
+  "package_version": "benchmark-eval4-claude-sonnet-4-6",
+  "schema_version": "domain-adapter-package-v0.1",
+  "source_access": "s3_markdown",
+  "validation": {
+    "rejected_protocol_count": 0,
+    "rejected_teacher_field_count": 192,
+    "unsupported_evidence_count": 192
+  }
+}

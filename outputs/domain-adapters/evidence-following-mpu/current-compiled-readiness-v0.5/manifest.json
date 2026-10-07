@@ -1,0 +1,25 @@
+{
+  "claims_boundary": "Reported associations measure behavior on this benchmark. They do not establish training-data membership, causal mechanisms inside model weights, or reasoning generality beyond the two declared domains. Null association does not establish dissociation unless its bootstrap interval passes the preregistered equivalence bound.",
+  "domains": [
+    "oer-electrocatalysis",
+    "organic-synthesis"
+  ],
+  "files": {
+    "analysis/item_scores.jsonl": "2ed285768bbe5b7fb32c478c7a20591895def26976e57388c4053978a31ee5eb",
+    "design/design_report.json": "9499418a245e3b450311937cb13bb865fbf0fcb5bb1fbb162145eb0e96280410",
+    "design/prompts.jsonl": "3d7994699c6cc3fc5cff67ad2e84363c70ef7e86d4d76d3a1f3bb6910f17799d",
+    "inputs/study.json": "0e9f2123bf6eb2f02e47abbe271ce7014c152f6a4dd1d49b57234160ada63077",
+    "reports/mpu_report.json": "758c8e8e9d88e0f80a35ddde7594738f84dc5d49ead1b1a77bf077f4e682df59",
+    "schemas/design.schema.json": "bd8c691515565d921394d78e23ad9df6ba9284c8279491c409b4b3d227299569",
+    "schemas/item_score.schema.json": "2eb6fc80240c3783b649e92e2652cea4b5fb7c71f42ca11a558d38b27743855d",
+    "schemas/observation.schema.json": "fa91c1a891f47be2da08de77a20e4c48053c319b0a1bc6a942f7ebde4a097bf3",
+    "schemas/prompt.schema.json": "b15571b8cf562f38709a3c0fdc95ee8443a55b7d515f5a50675ee1612e89fbca",
+    "schemas/report.schema.json": "252e183a91317a1e3d84669dcf60421c2d492bc4b659e9669c0706f7d304c1a3",
+    "schemas/study.schema.json": "c75ad53baa581f0dcf59f312b69fe73a58f5b5c825e9ad716dc2201087347602"
+  },
+  "future_scope_exclusion": "Adapter training and P2-proc procedural injection are excluded from this MPU and reserved for a subsequent study.",
+  "observations_sha256": null,
+  "schema_version": "evidence-following-mpu-manifest-v0.1",
+  "study_id": "evidence-following-mpu-v0.1-current-cohort",
+  "study_sha256": "0e9f2123bf6eb2f02e47abbe271ce7014c152f6a4dd1d49b57234160ada63077"
+}

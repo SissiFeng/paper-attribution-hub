@@ -8,11 +8,16 @@ from sqlalchemy.orm import Session
 
 from app.api.auth import require_api_key
 from app.classification_labels import REVIEW_LABELS
+from app.config import settings
 from app.db import get_session
 from app.models import HumanReview, Paper
 from app.schemas import HumanReviewIn, HumanReviewOut
 from app.services.active_learning import on_review_submitted
 from app.services.staged_screening import apply_paper_screening
+from app.services.stage1_readiness import (
+    STAGE1_NOT_READY_DETAIL,
+    derived_views_available,
+)
 
 router = APIRouter(prefix="/reviews", tags=["reviews"])
 
@@ -28,6 +33,8 @@ def submit_review(
     background_tasks: BackgroundTasks,
     session: Session = Depends(get_session),
 ) -> HumanReviewOut:
+    if not derived_views_available(session):
+        raise HTTPException(status_code=409, detail=STAGE1_NOT_READY_DETAIL)
     paper = session.get(Paper, paper_id)
     if paper is None:
         raise HTTPException(status_code=404, detail=f"Paper {paper_id} not found")
@@ -66,19 +73,27 @@ def submit_review(
         review.sdl_judgement = payload.sdl_judgement
         review.ac_relevance_judgement = payload.ac_relevance_judgement
         review.ai_for_science_judgement = payload.ai_for_science_judgement
-        review.review_status = payload.review_status or (
-            "NEEDS_FULLTEXT"
-            if "INSUFFICIENT_EVIDENCE"
-            in {
-                payload.sdl_judgement,
-                payload.ac_relevance_judgement,
-            }
-            else (
-                "COMPLETED"
-                if payload.sdl_judgement and payload.ac_relevance_judgement
-                else "PARTIAL"
+        if settings.sdl_stage1_only:
+            review.review_status = payload.review_status or (
+                "NEEDS_FULLTEXT"
+                if payload.sdl_judgement == "INSUFFICIENT_EVIDENCE"
+                else "COMPLETED"
             )
-        )
+        else:
+            review.review_status = payload.review_status or (
+                "NEEDS_FULLTEXT"
+                if "INSUFFICIENT_EVIDENCE"
+                in {
+                    payload.sdl_judgement,
+                    payload.ac_relevance_judgement,
+                }
+                else (
+                    "COMPLETED"
+                    if payload.sdl_judgement
+                    and payload.ac_relevance_judgement
+                    else "PARTIAL"
+                )
+            )
         review.evidence_level = payload.evidence_level
         review.judgement_basis = payload.judgement_basis
     review.corrected_topics = payload.corrected_topics
@@ -108,11 +123,12 @@ def submit_review(
     session.commit()
     session.refresh(review)
 
-    # v0.7: active learning is on by default; tests/ops can opt out with
-    # PAS_ACTIVE_LEARNING=0.
+    # Stage 1 labels flow through the frozen batch manifest, never through the
+    # legacy AC-oriented active-learning path.
     learning_actions = None
     if (
-        normalized_human_label is not None
+        not settings.sdl_stage1_only
+        and normalized_human_label is not None
         and os.environ.get("PAS_ACTIVE_LEARNING", "1") == "1"
     ):
         try:

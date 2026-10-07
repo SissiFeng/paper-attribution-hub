@@ -1,0 +1,39 @@
+{
+  "artifact_sha256": {
+    "corpus/continued_pretraining.jsonl": "96863cfd49d92753a59cba1c524b92b9be982ebbce374885f921d120c11ba989",
+    "knowledge/paper_records.jsonl": "561eed2177db33346bdad1b357612c2e37be47a891040dd7a85e4095fb7c9b06",
+    "knowledge/protocols.jsonl": "28784d102290cf6ba2d4d367cfcd5748e41c026931311c66a78116a04966e0bf",
+    "reports/quality_report.json": "41c7e836ebf38994dda4f3c3dfd4b5f92eed741ef927a00f9f1fb9b8f201fefb",
+    "source/selection_manifest.json": "f67aa24722a96bee211d2dbf2e84bc03971073da283c3a620bbdf2ff8971ac35",
+    "tasks/evaluation/eval.jsonl": "a12791a10ed57e79cb9d317b32df8b89438d5dc90c21bb7656d334b87d304f35",
+    "tasks/sft/train.jsonl": "ab9a5e14d1e12072c9e6b068ba53be4a1e5b301c197b85a739e881e86a05c6c8"
+  },
+  "classification_neutral": true,
+  "counts": {
+    "corpus_record_count": 284,
+    "paper_count": 20,
+    "protocol_count": 64,
+    "task_count": 51
+  },
+  "domain": "oxygen evolution electrocatalysis",
+  "extraction": {
+    "extractor": "amazon_bedrock_structured_teacher",
+    "mode": "teacher",
+    "model": "moonshotai.kimi-k2.5",
+    "prompt_version": "oer-protocol-teacher-v0.1"
+  },
+  "institution_entities_included": false,
+  "layers": [
+    "cleaned_corpus",
+    "structured_knowledge",
+    "task_suite"
+  ],
+  "package_id": "oer-electrocatalysis",
+  "package_version": "0.1.0-pilot",
+  "schema_version": "domain-adapter-package-v0.1",
+  "source_access": "s3_markdown",
+  "validation": {
+    "rejected_protocol_count": 0,
+    "unsupported_evidence_count": 501
+  }
+}

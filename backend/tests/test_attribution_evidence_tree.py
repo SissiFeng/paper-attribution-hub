@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from fastapi.testclient import TestClient
+from tests.admin_client import AdminTestClient as TestClient
 
 
 def _seed_aet_paper(session) -> None:

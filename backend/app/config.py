@@ -81,9 +81,15 @@ class Settings(BaseSettings):
     sdl_labs_yaml: Path = DATA_DIR / "sdl_labs.yaml"
     method_stages_yaml: Path = DATA_DIR / "method_stages.yaml"
     example_tkus_yaml: Path = DATA_DIR / "example_tkus.yaml"
+    # Generated, non-authoritative wiki cache. Production deployments should
+    # point this at a durable mounted path or rebuild it from the database.
+    llm_wiki_root: Path = REPO_ROOT / "llm-wiki"
 
     # v0.5 external data sources (overridable via PAS_* env vars)
     openalex_url: str = "https://api.openalex.org"
+    # Optional. Anonymous API access is sufficient for small Tier 1 batches;
+    # a free key raises the daily budget. Never persist the key in artifacts.
+    openalex_api_key: str = ""
     openalex_mailto: str = ""
     semantic_scholar_url: str = "https://api.semanticscholar.org/graph/v1"
     semantic_scholar_api_key: str = ""
@@ -97,10 +103,42 @@ class Settings(BaseSettings):
     discovery_auto_cite_threshold: int = 2
     discovery_max_candidates_per_strategy: int = 50
 
+    # Authoritative Zotero group-library corpus.
+    zotero_api_url: str = "https://api.zotero.org"
+    zotero_api_key: str = ""
+    zotero_group_id: str = ""
+    # Prefer immutable collection keys. Exact collection names are accepted
+    # for initial setup and resolved to keys before ingestion.
+    zotero_tier1_collection: str = ""
+    zotero_tier2_collection: str = ""
+    zotero_sync_on_startup: bool = False
+    zotero_download_fulltexts: bool = False
+    # When configured, Zotero is the only route allowed to add corpus papers.
+    zotero_source_only: bool = True
+    # Phase-1 corpus policy: only the authoritative Zotero Tier 1 collection
+    # may exist in the application corpus, and AC-specific seed/matching
+    # signals must not influence SDL screening or model training.
+    sdl_stage1_only: bool = False
+    # Zero keeps all Stage 1 labels out of training. A manual round task must
+    # explicitly set 1, 2, or 3 so future-batch labels cannot leak backward.
+    sdl_stage1_training_through_round: int = 0
+    # Derived review and analytics views remain quarantined until the Tier 1
+    # full-text corpus is complete and an explicit pilot or validated release
+    # is promoted. This is intentionally separate from training-round selection.
+    sdl_stage1_derived_views_enabled: bool = False
+    # Full-text-backed descriptive analytics may be exposed before classifier
+    # promotion. These views must not use labels, reviews, AC-member seeds, or
+    # inferred author-to-institution assignments.
+    sdl_stage1_descriptive_analytics_enabled: bool = False
+    # Required by the destructive --replace-corpus CLI path.
+    corpus_backup_reference: str = ""
+
     # LLM / API keys
     # API key required (header X-API-Key) on mutating endpoints.
     # Empty = auth disabled (local dev).
     api_key: str = ""
+    # Diagnostic routes may expose internal state and are disabled by default.
+    debug_endpoints_enabled: bool = False
     anthropic_api_key: str = ""
     # Kimi (MoonShot AI) — OpenAI-compatible, set PAS_KIMI_API_KEY in Render
     kimi_api_key: str = ""
@@ -124,6 +162,13 @@ class Settings(BaseSettings):
     # AWS S3 artifact storage. Empty string disables S3 (fallback to local filesystem).
     s3_artifacts_bucket: str = ""
     aws_region: str = "us-east-1"
+
+    @property
+    def zotero_configured(self) -> bool:
+        return bool(
+            self.zotero_group_id
+            and (self.zotero_tier1_collection or self.zotero_tier2_collection)
+        )
 
     @field_validator("cors_origins", mode="before")
     @classmethod

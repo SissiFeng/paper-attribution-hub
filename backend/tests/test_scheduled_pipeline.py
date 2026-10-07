@@ -7,6 +7,7 @@ from app.services.scheduled_pipeline import (
     recent_runs,
     run_daily_pipeline,
 )
+from app.services.zotero_ingestion_service import ZoteroSyncStats
 
 
 def test_pipeline_runs_and_persists_audit_row(seeded_session):
@@ -41,6 +42,20 @@ def test_pipeline_is_idempotent(seeded_session):
     assert result2.status == "success"
     assert result2.classified_new == 0
     assert result2.reclassified_stale == 0
+
+
+def test_pipeline_can_force_reclassification(seeded_session):
+    first = run_daily_pipeline(seeded_session, do_discovery=False)
+
+    result = run_daily_pipeline(
+        seeded_session,
+        do_discovery=False,
+        force_reclassify=True,
+    )
+
+    assert result.status == "success"
+    assert result.classified_new == 0
+    assert result.reclassified_stale == first.classified_new
 
 
 def test_pipeline_recovers_model_evolution_when_enabled(
@@ -141,3 +156,104 @@ def test_pipeline_fulltext_step_fetches_and_rebuilds_embeddings(seeded_session, 
     assert embeddings["rebuilt"] is True
     fulltext_step = next(step for step in result.steps if step["name"] == "fulltext_evidence")
     assert fulltext_step["fetched"] == len(calls)
+
+
+def test_authoritative_zotero_sync_disables_discovery_and_external_fulltext(
+    seeded_session,
+    monkeypatch,
+):
+    from app.config import settings
+
+    class FakeClient:
+        def __init__(self, **_kwargs):
+            pass
+
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *_args):
+            return None
+
+    monkeypatch.setattr(settings, "zotero_group_id", "42")
+    monkeypatch.setattr(settings, "zotero_tier1_collection", "TIER1")
+    monkeypatch.setattr(settings, "zotero_source_only", True)
+    monkeypatch.setattr("app.services.zotero_client.ZoteroClient", FakeClient)
+    monkeypatch.setattr(
+        "app.services.zotero_ingestion_service.sync_zotero_corpus",
+        lambda *_args, **_kwargs: ZoteroSyncStats(
+            seen_items=10,
+            unique_papers=10,
+            inserted=2,
+            updated=8,
+            fulltexts_ingested=3,
+        ),
+    )
+    monkeypatch.setattr(
+        "app.services.scheduled_pipeline._fetch_and_ingest_fulltexts",
+        lambda *_args, **_kwargs: (_ for _ in ()).throw(
+            AssertionError("external full-text route must remain disabled")
+        ),
+    )
+
+    result = run_daily_pipeline(
+        seeded_session,
+        do_discovery=True,
+        do_fulltext=True,
+    )
+
+    assert result.status == "success"
+    zotero_step = next(
+        step for step in result.steps if step["name"] == "zotero_sync"
+    )
+    discovery_step = next(
+        step for step in result.steps if step["name"] == "discovery"
+    )
+    fulltext_step = next(
+        step for step in result.steps if step["name"] == "fulltext_evidence"
+    )
+    assert zotero_step["status"] == "ok"
+    assert result.auto_ingested == 2
+    assert discovery_step["reason"] == "zotero_source_only"
+    assert fulltext_step["reason"] == "handled_by_zotero_sync"
+
+
+def test_authoritative_zotero_sync_can_be_skipped_for_locked_corpus(
+    seeded_session,
+    monkeypatch,
+):
+    from app.config import settings
+
+    monkeypatch.setattr(settings, "zotero_group_id", "42")
+    monkeypatch.setattr(settings, "zotero_tier1_collection", "TIER1")
+    monkeypatch.setattr(settings, "zotero_source_only", True)
+    monkeypatch.setattr(
+        "app.services.zotero_client.ZoteroClient",
+        lambda **_kwargs: (_ for _ in ()).throw(
+            AssertionError("locked corpus must not contact Zotero")
+        ),
+    )
+
+    result = run_daily_pipeline(
+        seeded_session,
+        do_zotero_sync=False,
+        do_discovery=True,
+        do_fulltext=True,
+    )
+
+    assert result.status == "success"
+    zotero_step = next(
+        step for step in result.steps if step["name"] == "zotero_sync"
+    )
+    discovery_step = next(
+        step for step in result.steps if step["name"] == "discovery"
+    )
+    fulltext_step = next(
+        step for step in result.steps if step["name"] == "fulltext_evidence"
+    )
+    assert zotero_step == {
+        "name": "zotero_sync",
+        "status": "disabled",
+        "reason": "explicit_corpus_lock",
+    }
+    assert discovery_step["reason"] == "zotero_source_only"
+    assert fulltext_step["reason"] == "handled_by_zotero_sync"

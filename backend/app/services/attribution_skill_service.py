@@ -1238,6 +1238,28 @@ def get_recorded_attribution_invocation(
     return _validate_stored_invocation(record.invocation_json)
 
 
+def get_current_attribution_input_fingerprint(
+    session: Session, paper_id: str
+) -> tuple[str, str]:
+    """Fingerprint current read-only inputs using the Skill snapshot contract."""
+    paper = session.get(Paper, paper_id)
+    if paper is None:
+        raise PaperNotFoundError(paper_id)
+    request = AttributionSkillInvokeRequest(
+        invocation_id="wiki-freshness-check",
+        skill_name="collect_auditable_attribution_evidence",
+        paper_id=paper_id,
+        invocation_reason="Compare current evidence inputs with a recorded snapshot.",
+    )
+    context = _build_context(
+        session,
+        request,
+        paper,
+        generated_at=datetime.now(UTC),
+    )
+    return context.snapshot_id, context.content_hash
+
+
 def replay_matching_attribution_invocation(
     session: Session,
     request: AttributionSkillInvokeRequest,

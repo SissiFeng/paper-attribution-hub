@@ -1,0 +1,33 @@
+{
+  "abstained_count": 0,
+  "accepted_count": 55,
+  "benchmark_id": "oer-teacher-models-2026-08",
+  "claims_boundary": "Source-grounded consensus produces auditable silver knowledge. It does not establish scientific precision or recall without an independent external truth source.",
+  "comparability": {
+    "final_matrix_complete": false,
+    "missing_required_models": [
+      "claude-opus-5",
+      "gpt-5-6-sol"
+    ],
+    "prompt_version": "oer-protocol-teacher-v0.2",
+    "same_inference_config": true,
+    "same_prompt_version": true,
+    "same_source_selection": true,
+    "source_selection_sha256": "9a1d6483fed9dcfc9c067d4af01beb2e753409dd82ed11addae22eb5a568c488"
+  },
+  "disputed_count": 105,
+  "ignored_stale_perturbation_result_count": 70,
+  "model_aliases": [
+    "claude-opus-4-6",
+    "deepseek-v3-2",
+    "kimi-k2-5"
+  ],
+  "proposal_count": 273,
+  "schema_version": "domain-teacher-consensus-artifact-report-v0.1",
+  "scientific_ranking": {
+    "eligible": false,
+    "reason": "shared_gold_required"
+  },
+  "slot_count": 160,
+  "training_eligible_count": 55
+}

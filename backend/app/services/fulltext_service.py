@@ -22,7 +22,9 @@ from app.models import (
     AcCorePaper,
     Paper,
     PaperChunk,
+    PaperEntity,
     PaperEvidence,
+    PaperProposition,
     PaperReference,
     PaperSection,
 )
@@ -56,6 +58,28 @@ class FulltextIngestResult:
 
 
 def _wipe_fulltext(session: Session, paper_id: str) -> None:
+    for proposition in (
+        session.execute(
+            select(PaperProposition).where(
+                PaperProposition.paper_id == paper_id
+            )
+        )
+        .scalars()
+        .all()
+    ):
+        session.delete(proposition)
+    # PaperProposition has foreign keys to both evidence and chunks, but the
+    # models intentionally do not declare ORM relationships. Flush this first
+    # so PostgreSQL cannot schedule the referenced rows ahead of propositions.
+    session.flush()
+    for entity in (
+        session.execute(
+            select(PaperEntity).where(PaperEntity.paper_id == paper_id)
+        )
+        .scalars()
+        .all()
+    ):
+        session.delete(entity)
     for ev in (
         session.execute(
             select(PaperEvidence).where(PaperEvidence.paper_id == paper_id)
@@ -308,7 +332,7 @@ def build_chunk_embeddings(session: Session) -> int:
     Uses the contextually-prefixed `indexed_text` when available so retrieval
     benefits from the v0.4 contextual chunking (parse.md §3).
     """
-    from app.services.embedding_service import get_embedder
+    from app.services.embedding_service import embedding_for_storage, get_embedder
 
     chunks = list(session.execute(select(PaperChunk)).scalars())
     if not chunks:
@@ -318,7 +342,7 @@ def build_chunk_embeddings(session: Session) -> int:
     embedder.fit(corpus)
     matrix = embedder.encode(corpus)
     for chunk, vec in zip(chunks, matrix):
-        chunk.embedding = vec.tolist()
+        chunk.embedding = embedding_for_storage(vec)
         chunk.embedding_backend = embedder.backend
     session.commit()
     return len(chunks)

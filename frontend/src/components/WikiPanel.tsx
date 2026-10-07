@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { compileWikiPage, getWikiPage } from "@/lib/api";
+import { compileWikiPage, getWikiPage, getPublicWiki } from "@/lib/api";
 import type { WikiPage, WikiSection } from "@/types";
 import css from "./WikiPanel.module.css";
 
@@ -8,6 +8,11 @@ const SECTION_ICONS: Record<string, string> = {
   identity:      "#",
   abstract_summary: "≡",
   retrieval_provenance: "↵",
+  attribution_skill_status: "◌",
+  attribution_decision: "◆",
+  supporting_evidence: "+",
+  contradicting_evidence: "−",
+  attribution_review: "!",
   sdl_evidence:  "◎",
   ac_evidence:   "⬡",
   classification:"✓",
@@ -59,9 +64,10 @@ function Skeleton() {
 
 interface Props {
   paperId: string;
+  readOnly?: boolean;
 }
 
-export function WikiPanel({ paperId }: Props) {
+export function WikiPanel({ paperId, readOnly = false }: Props) {
   const [wiki, setWiki]       = useState<WikiPage | null>(null);
   const [loading, setLoading] = useState(true);
   const [compiling, setCompiling] = useState(false);
@@ -72,11 +78,11 @@ export function WikiPanel({ paperId }: Props) {
     setLoading(true);
     setError(null);
     setWiki(null);
-    getWikiPage(paperId)
+    (readOnly ? getPublicWiki : getWikiPage)(paperId)
       .then(w => { if (!cancelled) { setWiki(w); setLoading(false); } })
       .catch(e => { if (!cancelled) { setError(String(e)); setLoading(false); } });
     return () => { cancelled = true; };
-  }, [paperId]);
+  }, [paperId, readOnly]);
 
   const handleCompile = async () => {
     setCompiling(true);
@@ -94,30 +100,51 @@ export function WikiPanel({ paperId }: Props) {
   const ts = wiki?.generated_at
     ? new Date(wiki.generated_at).toLocaleString(undefined, { dateStyle: "medium", timeStyle: "short" })
     : null;
+  const source = wiki?.source_metadata;
+  const sourceHash = wiki?.source_snapshot_hash?.slice(0, 12);
 
   return (
     <div className={css.root}>
       {/* Meta bar */}
       <div className={css.meta}>
-        <span className={css.metaLabel}>Knowledge Digest</span>
+        <span className={css.metaLabel}>Evidence Wiki</span>
         {wiki && (
           <>
-            <span className={css.metaValue}>model: {wiki.model_version}</span>
+            <span className={css.metaValue}>compiler: {wiki.model_version}</span>
             <span className={css.metaValue}>·</span>
             <span className={css.metaValue}>{ts}</span>
+            <span className={wiki.compile_status === "complete" ? css.complete : css.interrupted}>
+              {wiki.compile_status}
+            </span>
             {wiki.is_stale && (
               <span className={css.stale}>⚠ stale</span>
             )}
           </>
         )}
-        <button
+        {!readOnly && <button
           className={css.compileBtn}
           onClick={handleCompile}
           disabled={compiling || loading}
         >
-          {compiling ? "Compiling…" : wiki?.is_stale ? "↻ Recompile" : "↻ Compile"}
-        </button>
+          {compiling ? "Compiling…" : wiki?.is_stale ? "↻ Refresh" : "↻ Verify freshness"}
+        </button>}
       </div>
+
+      {readOnly && <p className={css.provenance}>Shared paper Wiki · built from publication data. Private notes and internal reviews are not included.</p>}
+      {!readOnly && wiki && source && (
+        <div className={css.provenance} aria-label="Evidence provenance summary">
+          <span>Skill status <strong>{source.attribution_status ?? "unknown"}</strong></span>
+          <span>Decision <strong>{source.decision ?? "NO_DECISION"}</strong></span>
+          <span>Authority <strong>{source.authority ?? "not recorded"}</strong></span>
+          {typeof source.input_snapshot_fresh === "boolean" && (
+            <span>
+              Input snapshot <strong>{source.input_snapshot_fresh ? "current" : "stale — rerun Skill"}</strong>
+            </span>
+          )}
+          {source.policy_version && <span>Policy <strong>{source.policy_version}</strong></span>}
+          {sourceHash && <span>Source hash <code>{sourceHash}</code></span>}
+        </div>
+      )}
 
       {/* Body */}
       {loading && <Skeleton />}
@@ -129,7 +156,7 @@ export function WikiPanel({ paperId }: Props) {
       {!loading && !error && wiki && (
         wiki.sections.length === 0 ? (
           <div className={css.empty}>
-            No content yet — click Compile to generate the knowledge digest.
+            {readOnly ? 'No shared Wiki content is available yet.' : 'No content yet — click Compile to generate the knowledge digest.'}
           </div>
         ) : (
           wiki.sections.map(s => <SectionBlock key={s.key} section={s} />)

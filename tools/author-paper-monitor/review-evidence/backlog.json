@@ -1,0 +1,656 @@
+{
+  "mode": "backlog",
+  "counts": {
+    "pending": 19
+  },
+  "papers": [
+    {
+      "title": "A strategic roadmap for an atomistic machine-learning ecosystem",
+      "url": "https://doi.org/10.48550/arxiv.2609.39090",
+      "doi": "10.48550/arxiv.2609.39090",
+      "arxiv_id": "2609.39090",
+      "venue": "arXiv (Cornell University)",
+      "date": "2026-09-30",
+      "authors": [
+        "Jörg Behler",
+        "Michele Ceriotti",
+        "Cecilia Clementi",
+        "Gábor Csányi",
+        "Alin-Marin Elena",
+        "Aditi S. Krishnapriyan",
+        "Joseph William Abbott",
+        "Fabio Affinito",
+        "Albert P. Bartók",
+        "Ilyes Batatia",
+        "Filippo Bigi",
+        "Florian N. Brünig",
+        "Yannick Calvino Alonso",
+        "Giuseppe Carleo",
+        "Aurélie Champagne",
+        "Stefan Chmiela",
+        "Marc Descoteaux",
+        "Ralf Drautz",
+        "Alexandra Farcaș",
+        "Meng Gao",
+        "Rohit Goswami",
+        "Michael F. Herbst",
+        "Christian Holm",
+        "James R. Kermode",
+        "A. Knoll",
+        "Tobias Kreiman",
+        "Hoang-Thien Luu",
+        "Yury Lysogorskiy",
+        "Mihai-Cosmin Marinica",
+        "Rocco Meli",
+        "Klaus-Robert Müller",
+        "Frank Noé",
+        "Mohamadhosein Nosratjoo",
+        "Simon Olsson",
+        "Christoph Ortner",
+        "Aldo S. Pasos-Trejo",
+        "Anyang Peng",
+        "Eric Zhonghang Qu",
+        "Andrea Rizzi",
+        "Mariana Rossi",
+        "Bassem Sboui",
+        "Gregor N. C. Simm",
+        "Alexandre Tkatchenko",
+        "Jacopo Venturin",
+        "O. Anatole von Lilienfeld",
+        "William C. Witt",
+        "Brandon M. Wood",
+        "Tigany Zarrouk",
+        "Fabian Zills"
+      ],
+      "tracked_authors": [
+        "Anatole von Lilienfeld"
+      ],
+      "abstract": "Data-driven machine learning (ML) techniques have become an essential tool in many domains of science. Their application to atomistic simulations of matter is particularly widespread and impactful. This success is due largely to the existence of a well-developed and established physics-based modeling framework, ranging from first-principles electronic-structure calculations to molecular dynamics and statistical sampling, into which ML was integrated naturally to reshape long-standing trade-offs between accuracy, efficiency, and scale. Nevertheless, this integration raises both conceptual and practical challenges, from choosing between data-centric and physics-based modeling approaches to adapting established software stacks to modern hardware accelerators and ML libraries. As the field evolves rapidly, fueled in part by widespread enthusiasm but also by tangible impact, it seems appropriate to take a moment to consider the current state of the art and open challenges, and reflect on what can be done to better coordinate efforts across the community. With this goal in mind, several members of this community met in Lausanne in January 2026 at CECAM to discuss algorithms, models, software and hardware infrastructure, and the most promising scientific applications that have become possible thanks to the use of artificial intelligence in atomic-scale simulations. This strategic roadmap paper summarizes the outcomes of these discussions, suggesting some long-term goals, and some concrete actions, to establish a healthy, sustainable and impactful atomistic ML ecosystem.",
+      "sources": [
+        "openalex"
+      ],
+      "summary": null,
+      "openalex_id": "W7215056544",
+      "doi_aliases": [
+        "10.48550/arxiv.2609.39090"
+      ]
+    },
+    {
+      "title": "De novo molecular generation with optical property preconditioning at the token level",
+      "url": "https://doi.org/10.5281/zenodo.23045083",
+      "doi": "10.5281/zenodo.23045083",
+      "arxiv_id": null,
+      "venue": "Zenodo (CERN European Organization for Nuclear Research)",
+      "date": "2026-09-29",
+      "authors": [
+        "Hazohe Huan",
+        "Manuel González Lastre",
+        "Hyun Suk Park",
+        "Jorge A. Campos-Gonzalez-Angulo",
+        "Xinjian Liu",
+        "Alán Aspuru‐Guzik"
+      ],
+      "tracked_authors": [
+        "Alán Aspuru-Guzik"
+      ],
+      "abstract": null,
+      "sources": [
+        "openalex"
+      ],
+      "summary": null,
+      "openalex_id": "W7214776377",
+      "doi_aliases": [
+        "10.5281/zenodo.23045083"
+      ]
+    },
+    {
+      "title": "De novo molecular generation with optical property preconditioning at the token level",
+      "url": "https://doi.org/10.5281/zenodo.23045084",
+      "doi": "10.5281/zenodo.23045084",
+      "arxiv_id": null,
+      "venue": "Zenodo (CERN European Organization for Nuclear Research)",
+      "date": "2026-09-29",
+      "authors": [
+        "Hazohe Huan",
+        "Manuel González Lastre",
+        "Hyun Suk Park",
+        "Jorge A. Campos-Gonzalez-Angulo",
+        "Xinjian Liu",
+        "Alán Aspuru‐Guzik"
+      ],
+      "tracked_authors": [
+        "Alán Aspuru-Guzik"
+      ],
+      "abstract": null,
+      "sources": [
+        "openalex"
+      ],
+      "summary": null,
+      "openalex_id": "W7214788462",
+      "doi_aliases": [
+        "10.5281/zenodo.23045084"
+      ]
+    },
+    {
+      "title": "El Agente Potente: High-Throughput Agentic Atomistic Simulations",
+      "url": "https://doi.org/10.48550/arxiv.2609.14840",
+      "doi": "10.48550/arxiv.2609.14840",
+      "arxiv_id": "2609.14840",
+      "venue": "arXiv (Cornell University)",
+      "date": "2026-09-13",
+      "authors": [
+        "Tsz Wai Ko",
+        "Jiaru Bai",
+        "Thomas Swanick",
+        "Yeonghun Kang",
+        "Changhyeok Choi",
+        "Angelina Qihong Jiang",
+        "Aiwei Yin",
+        "Varinia Bernales",
+        "Alán Aspuru‐Guzik"
+      ],
+      "tracked_authors": [
+        "Alán Aspuru-Guzik"
+      ],
+      "abstract": "Foundational machine-learning interatomic potentials (MLIPs) are transforming atomistic simulations by achieving near-ab initio accuracy across large chemical spaces at a fraction of the computational cost. A central challenge in using these tools for high-throughput property calculations is translating high-level scientific intent into adaptive simulation campaigns without compromising workflow rigour. We introduce El Agente Potente, an agentic system that combines typed execution graphs with a complementary coding mode for MLIPs-driven atomistic simulations. Typed execution graphs provide structured and provenance-aware execution for standardized workflows, with large language models (LLMs) restricted to planning and routing while deterministic Python components perform scientific computation and validation. Complementing this structured execution, a coding agent constructs customized workflows for tasks requiring greater procedural flexibility while invoking existing Potente functions for supported calculations. We demonstrate El Agente Potente across computational materials discovery, molecular energy-landscape exploration, adsorption, and catalytic reaction workflows, together with systematic benchmarks of reproducibility and LLM token cost. These results establish typed execution graphs and code-based workflow construction as complementary mechanisms for agentic scientific computing, combining controlled, auditable execution with the flexibility required for customized atomistic simulations",
+      "sources": [
+        "openalex"
+      ],
+      "summary": null,
+      "openalex_id": "W7213325938",
+      "doi_aliases": [
+        "10.48550/arxiv.2609.14840"
+      ]
+    },
+    {
+      "title": "Data and Code for ''Bayesian Optimized Electrosynthesis of Azobenzenes in a Self-Optimizing Flow Set-up: from DoE-guidance to Gram-Scale Preparation''",
+      "url": "https://doi.org/10.17617/3.m1vpun",
+      "doi": "10.17617/3.m1vpun",
+      "arxiv_id": null,
+      "venue": "Max Planck Digital Library",
+      "date": "2026-09-10",
+      "authors": [
+        "Alexander H. J. Lohmann",
+        "Taline Kerackian",
+        "Andreas Burger",
+        "Jens Pickenbrock",
+        "Darryl F. Nater",
+        "Shi Xuan Leong",
+        "Alán Aspuru‐Guzik",
+        "Siegfried R. Waldvogel"
+      ],
+      "tracked_authors": [
+        "Alán Aspuru-Guzik"
+      ],
+      "abstract": "The development of a self-optimizing platform for electrosynthesis in a closed-loop set-up is established, which operates on a specifically developed open-source software. With this system, the electro-reduction of nitrobenzenes to azobenzenes was optimized. In particular, a Design of Experiments (DoE) campaign was performed which was subsequently used as the initial data set for autonomous Bayesian optimization (BO) strategy. The attached files contain the software that got used for processing NMR data, controls the devises (LABS backend), the user interface and Bayesian optimizer (LABS frontend). Also all raw and processed NMR spectra are provided from the initial Experiments, the validation, the DoE, the BO and the pure compounds from scope and scale-up.",
+      "sources": [
+        "openalex"
+      ],
+      "summary": null,
+      "openalex_id": "W7212312611",
+      "doi_aliases": [
+        "10.17617/3.m1vpun"
+      ]
+    },
+    {
+      "title": "DIA: Denoising Intermediate Advantage for Diffusion Policy Optimization",
+      "url": "https://doi.org/10.48550/arxiv.2609.12245",
+      "doi": "10.48550/arxiv.2609.12245",
+      "arxiv_id": "2609.12245",
+      "venue": "arXiv (Cornell University)",
+      "date": "2026-09-10",
+      "authors": [
+        "Arjun Sohal",
+        "Yuchi Zhao",
+        "Miroslav Bogdanović",
+        "Alán Aspuru‐Guzik"
+      ],
+      "tracked_authors": [
+        "Alán Aspuru-Guzik"
+      ],
+      "abstract": "Diffusion-based robot policies have become widely used in robotic manipulation, where they are typically trained with behavior cloning. However, policies trained purely from demonstrations are limited by the quality and coverage of the available data. Reinforcement learning can further improve the performance of these pretrained policies through interaction. A common approach is to use policy-gradient methods that formulate diffusion-policy fine-tuning as an outer environment MDP together with an inner denoising MDP. However, existing methods typically assign the same environment-level credit to all denoising steps used to construct an action chunk, without distinguishing which intermediate decisions contributed most to the final return. We introduce Denoising Intermediate Advantage (DIA), a policy-gradient method that learns a value function over partially denoised actions and uses it to construct a denoising level advantage for each step of the generative process. DIA combines this inner credit signal with the standard environment-level PPO advantage, providing state-dependent credit throughout the denoising chain. Across Robomimic, FurnitureBench, Franka Kitchen, and D3IL, DIA consistently improves final performance over existing diffusion-policy fine-tuning methods. Beyond final reward, DIA reaches successful states more efficiently and can shift farther from the pretrained behavior distribution, enabling it to discover more effective and efficient task-level strategies and subtask sequences that baseline methods fail to reach.",
+      "sources": [
+        "openalex"
+      ],
+      "summary": null,
+      "openalex_id": "W7213136359",
+      "doi_aliases": [
+        "10.48550/arxiv.2609.12245"
+      ]
+    },
+    {
+      "title": "La Agente Óptima: Towards Agentic Self-Driving Laboratories",
+      "url": "https://doi.org/10.48550/arxiv.2609.04564",
+      "doi": "10.48550/arxiv.2609.04564",
+      "arxiv_id": "2609.04564",
+      "venue": "arXiv (Cornell University)",
+      "date": "2026-09-03",
+      "authors": [
+        "Marcel Müller",
+        "Jiaru Bai",
+        "Willi Gottstein",
+        "Abhijoy Mandal",
+        "Mohammad Nazeri",
+        "Elia Savino",
+        "Yanlin Fang",
+        "Sujoy Das",
+        "Sergio Pablo‐García",
+        "Yeonghun Kang",
+        "Juan B. Pérez-Sánchez",
+        "Simone Pilon",
+        "Martin Fitzner",
+        "Timothy Noël",
+        "Frank Gu",
+        "Varinia Bernales",
+        "Alán Aspuru‐Guzik"
+      ],
+      "tracked_authors": [
+        "Alán Aspuru-Guzik"
+      ],
+      "abstract": "Self-driving laboratories (SDLs) combine automated experimentation with adaptive decision-making to accelerate scientific discovery. Their operation nevertheless often depends on human specialists who translate scientific objectives into executable closed-loop campaigns. Specialists adjust them as data and operating conditions change. Here, we present La Agente Óptima, an agentic framework that constructs and supervises Bayesian optimization campaigns across computational and experimental systems while maintaining a persistent optimization state. By separating large language model (LLM) reasoning from executed campaigns, Óptima runs repetitive optimization loops consistently, returns control to the agent only when progress requires interpretation or campaign revision, and keeps every decision auditable. We evaluate Óptima across ablation studies, five digital discovery tasks, and two physical platforms. Throughout, Óptima maintained executable campaigns as both the scientific problem and execution environment evolved. In a closed-loop contact angle optimization campaign, Óptima identified and corrected a mid-run measurement failure, bringing the contact angle from 71.4 to 67.8 degrees, just above the 64-66 degree range. From this result, Óptima correctly inferred that the target was likely unattainable with the available reagents and recommended changing the formulation. In a five-day multi-objective flow-chemistry campaign, Óptima increased the yield from 30% to 59% over 23 experiments. Despite substantial inference costs, it cost less and used substantially less starting material than a human-directed campaign, while selecting a more mass-efficient operating point. These results show that LLM-based agents can make rigorous, long-running optimization campaigns accessible to domain scientists without specialist setup, expanding the scope of SDLs.",
+      "sources": [
+        "openalex"
+      ],
+      "summary": null,
+      "openalex_id": "W7211914410",
+      "doi_aliases": [
+        "10.48550/arxiv.2609.04564"
+      ]
+    },
+    {
+      "title": "El Agente Quntur: A research collaborator agent for quantum chemistry",
+      "url": "https://doi.org/10.1016/j.chempr.2026.103259",
+      "doi": "10.1016/j.chempr.2026.103259",
+      "arxiv_id": null,
+      "venue": "Chem",
+      "date": "2026-09-01",
+      "authors": [
+        "Juan B. Pérez-Sánchez",
+        "Yunheng Zou",
+        "Jorge A. Campos-Gonzalez-Angulo",
+        "Marcel Müller",
+        "Ignacio Gustín",
+        "Andrew Wang",
+        "Han Hao",
+        "Tsz Wai Ko",
+        "Changhyeok Choi",
+        "Eric S. Isbrandt",
+        "Mohammad Ghazi Vakili",
+        "Hanyong Xu",
+        "Chris Crebolder",
+        "Varinia Bernales",
+        "Alán Aspuru‐Guzik"
+      ],
+      "tracked_authors": [
+        "Alán Aspuru-Guzik"
+      ],
+      "abstract": "Quantum chemistry is a foundational enabling tool for the fields of chemistry, materials science, computational biology and others. Despite of its power, the practical application of quantum chemistry simulations remains in the hands of qualified experts due to methodological complexity, software heterogeneity, and the need for informed interpretation of results. To bridge the accessibility gap for these tools and expand their reach to chemists with broader backgrounds, we introduce El Agente Quntur, a hierarchical, multi-agent AI system designed to operate not merely as an automation tool but as a research collaborator for computational quantum chemistry. Quntur was designed following three main strategies: i) elimination of hard-coded procedural policies in favour of reasoning-driven decisions, ii) construction of general and composable actions that facilitate generalization and efficiency, and iii) implementation of guided deep research to integrate abstract quantum-chemical reasoning across subdisciplines and a detailed understanding of the software's internal logic and syntax. Although instantiated in ORCA, these design principles are applicable to research agents more generally and easily expandable to additional quantum chemistry packages and beyond. Quntur supports the full range of calculations available in ORCA 6.0 and reasons over software documentation and scientific literature to plan, execute, adapt, and analyze in silico chemistry experiments following best practices. We discuss the advances and current bottlenecks in agentic systems operating at the research level in computational chemistry, and outline a roadmap toward a fully autonomous end-to-end computational chemistry research agent.",
+      "sources": [
+        "openalex",
+        "crossref"
+      ],
+      "summary": null,
+      "openalex_id": "W7127984589",
+      "doi_aliases": [
+        "10.1016/j.chempr.2026.103259"
+      ]
+    },
+    {
+      "title": "AI-enhanced adaptive virtual screening of large libraries for ligand discovery",
+      "url": "https://doi.org/10.1038/s41587-026-03217-x",
+      "doi": "10.1038/s41587-026-03217-x",
+      "arxiv_id": null,
+      "venue": "Nature Biotechnology",
+      "date": "2026-09-01",
+      "authors": [
+        "Domiziana Cecchini",
+        "AkshatKumar Nigam",
+        "Ming Tang",
+        "Joana Reis",
+        "Matt Koop",
+        "Andrea Gottinger",
+        "Callum R. Nicoll",
+        "Yao Wang",
+        "Abhilash Jayaraj",
+        "Süleyman Selim Çınaroğlu",
+        "Ricarda Törner",
+        "Yehor S. Malets",
+        "Minko Gehev",
+        "Krishna M. Padmanabha Das",
+        "Kelly A. Churion",
+        "Jongwan Kim",
+        "Nidhin Thomas",
+        "Yong Li",
+        "Hyuk‐Soo Seo",
+        "Sirano Dhe‐Paganon",
+        "Christopher Secker",
+        "Mohammad Haddadnia",
+        "Alexander Hasson",
+        "Minkai Li",
+        "Abhishek Kumar",
+        "Roni Levin‐Konigsberg",
+        "Eun‐Bee Choi",
+        "Geoffrey Ira Shapiro",
+        "Huel Cox",
+        "Luke Sebastian",
+        "Chelsea Braithwaite",
+        "Puspalata Bashyal",
+        "Dmytro S. Radchenko",
+        "Aditya Kumar",
+        "Lei Yang",
+        "Pierre-Yves Aquilanti",
+        "Henry A. Gabb",
+        "Amr Alhossary",
+        "Eric O’Neill",
+        "Gerhard H. Wagner",
+        "Alán Aspuru‐Guzik",
+        "Yurii S. Moroz",
+        "Charalampos G. Kalodimos",
+        "Konstantin Fackeldey",
+        "John D. Schuetz",
+        "Andrea Mattevi",
+        "Haribabu Arthanari",
+        "Christoph Gorgulla"
+      ],
+      "tracked_authors": [
+        "Alán Aspuru-Guzik"
+      ],
+      "abstract": "Ultralarge virtual screenings (ULVSs) evaluate billions of molecules for drug discovery but face cost, flexibility and scalability limits. We introduce AdaptiveFlow, an open-source platform that makes ULVSs more accessible, scalable and efficient and supports artificial intelligence (AI) and machine learning (ML) method development. AdaptiveFlow provides a screening-ready version of the Enamine REAL Space, to our knowledge the largest library of ready-to-dock, drug-like molecules, comprising 69 billion compounds, also available in SELFIES format. An 18-dimensional grid of molecular properties prioritizes promising chemical subspaces, with optional active learning, reducing computational costs by orders of magnitude. AdaptiveFlow integrates >1,500 docking protocols, including GPU-accelerated and ML-based methods, and achieves near-linear scaling on up to 5.6 million CPUs in the Amazon Web Services cloud. We identified nanomolar inhibitors of two disease-relevant targets, ferroptosis suppressor protein 1 (FSP1) and poly(ADP-ribose) polymerase 1. Co-crystal structures provided mechanistic insights into FSP1 inhibition. AdaptiveFlow enables drug discovery at unprecedented scale and supports the development of AI-driven methods.",
+      "sources": [
+        "openalex",
+        "crossref"
+      ],
+      "summary": null,
+      "openalex_id": "W7204893480",
+      "doi_aliases": [
+        "10.1038/s41587-026-03217-x"
+      ]
+    },
+    {
+      "title": "Adsorption Hysteresis Under Control: Tuning Host-Guest Interactions via a Genetic Algorithm [Dataset]",
+      "url": "https://doi.org/10.20350/digitalcsic/29134",
+      "doi": "10.20350/digitalcsic/29134",
+      "arxiv_id": null,
+      "venue": "DIGITAL.CSIC (Spanish National Research Council (CSIC))",
+      "date": "2026-09-01",
+      "authors": [
+        "Jesse L. Prelesnik",
+        "Filip Formalik",
+        "Samantha Corapi",
+        "Sergio Pablo‐García",
+        "Alán Aspuru‐Guzik",
+        "Randall Q. Snurr",
+        "Joern Ilja Siepmann"
+      ],
+      "tracked_authors": [
+        "Alán Aspuru-Guzik"
+      ],
+      "abstract": "Mesoporous adsorbent materials offer a large volumetric capacity; however, cyclic adsorption/desorption processes in these systems often suffer from hysteresis and may require a significant pressure swing to access this capacity. To mitigate hysteresis, a proposed strategy is to include nucleation sites on the walls of the mesoporous material to facilitate droplet and bubble formation, lowering the free energy barriers to the respective phase transitions. It is unclear, however, what combination of adsorbate–adsorbent interactions and spatial patterning would be beneficial for a given application, considering that improvements to some sorption properties may come at the expense of other attributes. To understand these interconnected observables, we examine two model systems, planar-slit and cylindrical pores with tunable interaction sites, using GPU-accelerated transition matrix Monte Carlo simulations. The simulations provide a free energy map of the pressure–adsorption space in a matter of minutes, which we use to track adsorption isotherm characteristics as a function of adsorbent properties. We then leverage the rapid acquisition of simulation data to construct a genetic algorithm to iteratively modify interaction sites of the slit-pore wall to minimize the hysteresis of this system without sacrificing uptake. We find that the adsorption branch of the isotherm is easily modulated via the average host–guest interaction strength, but desorption is only adjustable if there is a suitable bubble nucleation site. Within the context of a slit-pore system, we identify relative interaction strengths and patch sizes required to gain control over both branches of the hysteresis loop.",
+      "sources": [
+        "openalex"
+      ],
+      "summary": null,
+      "openalex_id": "W7213490764",
+      "doi_aliases": [
+        "10.20350/digitalcsic/29134"
+      ]
+    },
+    {
+      "title": "MoSeS Enables Autonomous Chromatography Operation through Programmable Analytical Expertise",
+      "url": "https://doi.org/10.26434/chemrxiv.15008042/v1",
+      "doi": "10.26434/chemrxiv.15008042/v1",
+      "arxiv_id": null,
+      "venue": "ChemRxiv",
+      "date": "2026-08-30",
+      "authors": [
+        "Mohammad Haddadnia",
+        "Malcolm Sim",
+        "Han Hao",
+        "Kazuhiro Hotta",
+        "Martin T. Seifrid",
+        "Dennis Fedotov",
+        "Tony Wu",
+        "Shi Xuan Leong",
+        "Felix Strieth‐Kalthoff",
+        "Alán Aspuru‐Guzik"
+      ],
+      "tracked_authors": [
+        "Alán Aspuru-Guzik"
+      ],
+      "abstract": "Chromatography–mass spectrometry is a central tool for chemical and biological analysis across a wide range of applications. However, its use in automated workflows has remained limited because instrument operation, chromatogram interpretation and method development have often relied on experienced users. Here, we translate key elements of this analytical expertise into programmable operations, and apply them across workflows of increasing analytical complexity. Most importantly, we show that autonomous, machine-learning-based chromatographic method development can be accelerated substantially by moving beyond black-box optimization and incorporating analytical expertise. We further demonstrate practical use cases from synthetic chemistry and materials discovery, including the automated annotation of complex reaction mixtures, and the autonomous development of a purification method for a target compound from a crude reaction mixture. These capabilities are provided through MoSeS, an open-source Python framework that integrates sample-by-sample instrument control, analyte-resolved data processing, cross-run analyte tracking, and physicochemical retention modelling within a common software layer. Together, these results show how analytical operations that are commonly performed by experts can be formalized into reusable computational workflows. This work provides both a usable software toolbox and practical demonstrations of integrating chromatography–mass spectrometry systems into automated laboratory routines – ranging from custom data analysis pipelines to AI-guided decision making in self-driving laboratories.",
+      "sources": [
+        "openalex",
+        "crossref"
+      ],
+      "summary": null,
+      "openalex_id": "W7204274981",
+      "doi_aliases": [
+        "10.26434/chemrxiv.15008042/v1"
+      ]
+    },
+    {
+      "title": "Accelerating synthesis at scale requires a coordinated ecosystem",
+      "url": "https://doi.org/10.1038/s44160-026-01133-1",
+      "doi": "10.1038/s44160-026-01133-1",
+      "arxiv_id": null,
+      "venue": "Nature Synthesis",
+      "date": "2026-08-26",
+      "authors": [
+        "Brandon R. Sutherland",
+        "Yeonghun Kang",
+        "Alán Aspuru‐Guzik"
+      ],
+      "tracked_authors": [
+        "Alán Aspuru-Guzik"
+      ],
+      "abstract": null,
+      "sources": [
+        "openalex",
+        "crossref"
+      ],
+      "summary": null,
+      "openalex_id": "W7204251489",
+      "doi_aliases": [
+        "10.1038/s44160-026-01133-1"
+      ]
+    },
+    {
+      "title": "MoSeS Enables Autonomous Chromatography Operation through Programmable Analytical Expertise",
+      "url": "https://doi.org/10.5281/zenodo.22109728",
+      "doi": "10.5281/zenodo.22109728",
+      "arxiv_id": null,
+      "venue": "Zenodo (CERN European Organization for Nuclear Research)",
+      "date": "2026-08-26",
+      "authors": [
+        "Mohammad Haddadnia",
+        "Malcolm Sim",
+        "Han Hao",
+        "Hotta, Kazuhiro",
+        "Martin T. Seifrid",
+        "Dennis Fedotov",
+        "Tony Wu",
+        "Shi Xuan Leong",
+        "Felix Strieth‐Kalthoff",
+        "Alán Aspuru‐Guzik"
+      ],
+      "tracked_authors": [
+        "Alán Aspuru-Guzik"
+      ],
+      "abstract": "Raw data for the paper \"MoSeS Enables Autonomous Chromatography Operation through Programmable Analytical Expertise\".",
+      "sources": [
+        "openalex"
+      ],
+      "summary": null,
+      "openalex_id": "W7204279748",
+      "doi_aliases": [
+        "10.5281/zenodo.22109728"
+      ]
+    },
+    {
+      "title": "GPU Offload in Rust: Portable, Safe, and Fast",
+      "url": "https://doi.org/10.48550/arxiv.2608.13759",
+      "doi": "10.48550/arxiv.2608.13759",
+      "arxiv_id": "2608.13759",
+      "venue": "arXiv (Cornell University)",
+      "date": "2026-08-13",
+      "authors": [
+        "Manuel S. Drehwald",
+        "Marcelo Domínguez",
+        "Kevin Sala",
+        "Alán Aspuru‐Guzik",
+        "Johannes Doerfert"
+      ],
+      "tracked_authors": [
+        "Alán Aspuru-Guzik"
+      ],
+      "abstract": "High-performance GPU programming has traditionally forced a compromise between execution efficiency and memory safety. While Rust guarantees compile-time memory safety for host CPUs via its strict ownership model, applying these constraints to massively parallel GPU execution environments has previously mandated either vendor-locked Domain-Specific Languages (DSLs) or escaping to explicit unsafe raw pointers. This paper presents a zero-overhead, multi-vendor GPU compilation framework built natively into the Rust compiler (rustc) and LLVM backends. We leverage Rust's rich type system, ownership system, and strict aliasing guarantees (noalias) to efficiently manage and optimize data transfers through LLVM's Offload infrastructure. We expose the technical challenges of cross-vendor ABI lowering mismatches between Host and Device targets and introduce a two-pass compilation pipeline capable of safely handling both manual and compiler-generated memory movements. Evaluating our framework on RAJAPerf demonstrates that our rustc-based solution can generate competitive LLVM IR for GPU kernels, achieving a solid kernel performance against native, hand-optimized CUDA and HIP C++ baselines.",
+      "sources": [
+        "openalex"
+      ],
+      "summary": null,
+      "openalex_id": "W7203612100",
+      "doi_aliases": [
+        "10.48550/arxiv.2608.13759"
+      ]
+    },
+    {
+      "title": "How Molecular Generative Models Organize Molecular Identity",
+      "url": "https://doi.org/10.48550/arxiv.2608.06956",
+      "doi": "10.48550/arxiv.2608.06956",
+      "arxiv_id": "2608.06956",
+      "venue": "arXiv (Cornell University)",
+      "date": "2026-08-07",
+      "authors": [
+        "Raul Ortega Ochoa",
+        "Tejs Vegge",
+        "Jens S. Bakander",
+        "Luis Mantilla Calderón",
+        "Alán Aspuru‐Guzik",
+        "Tonio Buonassisi"
+      ],
+      "tracked_authors": [
+        "Alán Aspuru-Guzik"
+      ],
+      "abstract": "Generative models for matter are often evaluated as samplers over output representations, and their latent spaces are commonly used as proxies for navigating chemical space. Much less is known about how these models internally arrange discrete chemical identities within those representations. We study this arrangement by making molecular identity explicit and pulling it back through the generative process. Through these pullbacks we probe the regions that generate the same object, exposing the trained model's internal repertoire: a fixed partition that determines which objects (novel or not) the model can produce. Across three molecular generative architectures, we find that this repertoire is arranged into piecewise-constant regions separated by recurring coarse-to-fine boundaries. Its organization depends on the representation probed, the identity convention, decoder stochasticity, and the metric used to compare coordinates. During training, local chemical organization stabilizes while the number of distinct molecular identities represented within each neighborhood continues to change. Internal organization must therefore be characterized, rather than assumed, before a generative space can be treated as chemically navigable.",
+      "sources": [
+        "openalex"
+      ],
+      "summary": null,
+      "openalex_id": "W7202141569",
+      "doi_aliases": [
+        "10.48550/arxiv.2608.06956"
+      ]
+    },
+    {
+      "title": "Reaction: Building trust infrastructure for agentic experimental science beyond fragile eloquence",
+      "url": "https://doi.org/10.1016/j.chempr.2026.103163",
+      "doi": "10.1016/j.chempr.2026.103163",
+      "arxiv_id": null,
+      "venue": "Chem",
+      "date": "2026-07-30",
+      "authors": [
+        "Alán Aspuru‐Guzik",
+        "Varinia Bernales"
+      ],
+      "tracked_authors": [
+        "Alán Aspuru-Guzik"
+      ],
+      "abstract": null,
+      "sources": [
+        "openalex",
+        "crossref"
+      ],
+      "summary": null,
+      "openalex_id": "W7171788080",
+      "doi_aliases": [
+        "10.1016/j.chempr.2026.103163"
+      ]
+    },
+    {
+      "title": "Editorial: Publishing Physical Sciences in the Era of AI",
+      "url": "https://doi.org/10.1103/prxintell.1.010001",
+      "doi": "10.1103/prxintell.1.010001",
+      "arxiv_id": null,
+      "venue": "PRX Intelligence",
+      "date": "2026-07-28",
+      "authors": [
+        "Michele Ceriotti",
+        "Mario Krenn",
+        "Ann B. Lee",
+        "Nicola Marzari",
+        "Benjamin Nachman",
+        "Mariel Pettee",
+        "O. Anatole von Lilienfeld"
+      ],
+      "tracked_authors": [
+        "Anatole von Lilienfeld"
+      ],
+      "abstract": "We present the vision, scope, and editorial philosophy of , a selective, fully open access journal at the intersection of artificial intelligence, machine learning, and the physical sciences. We reflect on the transformational role of artificial intelligence as an emerging paradigm of science, examine its implications for scientific understanding and practice, and outline editorial standards that will guide this venue as a home for rigorous and impactful research.",
+      "sources": [
+        "openalex",
+        "crossref"
+      ],
+      "summary": null,
+      "openalex_id": "W7171508341",
+      "doi_aliases": [
+        "10.1103/prxintell.1.010001"
+      ]
+    },
+    {
+      "title": "From Global to Factor-Wise Expert Composition in Discrete Diffusion Models",
+      "url": "https://doi.org/10.48550/arxiv.2607.11758",
+      "doi": "10.48550/arxiv.2607.11758",
+      "arxiv_id": "2607.11758",
+      "venue": "arXiv (Cornell University)",
+      "date": "2026-07-13",
+      "authors": [
+        "Haozhe Huang",
+        "Yudong Xu",
+        "Abhijoy Mandal",
+        "Alán Aspuru‐Guzik"
+      ],
+      "tracked_authors": [
+        "Alán Aspuru-Guzik"
+      ],
+      "abstract": "Discrete diffusion models offer a powerful framework for solving complex reasoning tasks, particularly through compositional generation, which combines multiple pre-trained experts to generalize beyond their individual training data. Recent theoretical corrections introduce time-dependent mixing weights to better align composed diffusion dynamics with the intended target. However, these methods are fundamentally limited by working on a per-sample basis, treating each generated state monolithically and ignoring the potential spatial or functional specializations of different experts. In this work, we address this limitation by proposing FactorDiff - a factor-wise composition framework for diffusion models. We posit that samples can be further decomposed into smaller factors, and propose a sampling process that dynamically routes each factor to the most relevant expert. We instantiate this framework with spatial/pixel-level compositions and validate it on the ARC-AGI benchmark, demonstrating that simple factor-specific routing consistently outperforms complex global scalar weighting schemes on tasks that require logical consistency and spatial disentanglement.",
+      "sources": [
+        "openalex"
+      ],
+      "summary": null,
+      "openalex_id": "W7168277992",
+      "doi_aliases": [
+        "10.48550/arxiv.2607.11758"
+      ]
+    },
+    {
+      "title": "Rapid Evaluation of Glassy Carbon Electrode Surface with Machine Vision",
+      "url": "https://doi.org/10.26434/chemrxiv.15004057/v2",
+      "doi": "10.26434/chemrxiv.15004057/v2",
+      "arxiv_id": null,
+      "venue": "ChemRxiv",
+      "date": "2026-07-07",
+      "authors": [
+        "Gun Deniz Akkoc",
+        "Naruki Yoshikawa",
+        "Carlota Bozal‐Ginesta",
+        "Sergio Pablo‐García",
+        "Han Hao",
+        "Alán Aspuru‐Guzik",
+        "Dominik Dworschak"
+      ],
+      "tracked_authors": [
+        "Alán Aspuru-Guzik"
+      ],
+      "abstract": "Automation of electrochemical methods is crucial to achieve high-throughput experimentation (HTE) and self-driving laboratories (SDLs) for accelerating chemistry and materials engineering on pressing research challenges. Obtaining reproducible and reliable electrochemical results requires frequent monitoring of the experimental apparatus, particularly the surface condition of the electrodes. Here, a rapid surface evaluation method that combines optical macro imaging with machine learning (ML) is investigated. We demonstrated that the degradation of a glassy-carbon (GC) electrode can be quantified using only an optical image. This approach enables easily automatable, non-intrusive, and rapid monitoring of electrode health without significantly increasing the complexity of the experimental setup, while also providing spatially resolved insights into degradation.",
+      "sources": [
+        "openalex",
+        "crossref"
+      ],
+      "summary": null,
+      "openalex_id": "W7167576437",
+      "doi_aliases": [
+        "10.26434/chemrxiv.15004057/v2"
+      ]
+    }
+  ]
+}

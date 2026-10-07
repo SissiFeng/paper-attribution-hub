@@ -164,10 +164,9 @@ export default function KnowledgeBasePage() {
       <div>
         <h2>Knowledge Base</h2>
         <div className="empty">
-          No SDL labs or paper↔lab links yet. Run{" "}
-          <code>python -m app.scripts.seed_sdl_labs</code> and{" "}
-          <code>python -m app.scripts.run_entity_extraction</code> in the backend
-          first, then reload.
+          Paper-derived entities are available in the corpus graph. This page
+          additionally requires a separately authorized SDL lab roster and verified
+          paper↔lab links, which are not loaded yet.
         </div>
       </div>
     );

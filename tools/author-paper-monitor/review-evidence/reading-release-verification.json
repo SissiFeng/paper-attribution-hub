@@ -1,0 +1,17 @@
+{
+  "url": "https://d1ai8ldqsh81fz.cloudfront.net/reading/",
+  "backend_task": "arn:aws:ecs:ca-central-1:247893369214:task-definition/paper-attribution-pas-dev-backend:7",
+  "backend_rollout": "COMPLETED",
+  "cloudfront": "Deployed",
+  "stacks": {
+    "paper-attribution-dev-slack": "UPDATE_COMPLETE",
+    "paper-attribution-dev-author-monitor": "UPDATE_COMPLETE"
+  },
+  "scoped_tests_passed": 184,
+  "typescript": "passed",
+  "reader_build": "passed; matches deployed artifacts",
+  "cleanup": "2 synthetic readers and 4 synthetic chats removed; real account untouched",
+  "human_login": "owner browser-bound login consumed successfully",
+  "generation": "retrieval-only; no provider key configured",
+  "monitor_schedule": "ENABLED"
+}

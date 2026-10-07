@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:arxiv="http://arxiv.org/schemas/atom">
+  <title>ArXiv Query</title>
+  <entry>
+    <id>http://arxiv.org/abs/2609.01234v2</id>
+    <published>2026-09-14T17:59:00Z</published>
+    <title>Bayesian Optimization Under
+      Budget Constraints</title>
+    <summary>  We study BO with budgets.  </summary>
+    <author><name>Anatole von Lilienfeld</name></author>
+    <author><name>Bob Roe</name></author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2610.00007v1</id>
+    <published>2026-10-02T10:00:00Z</published>
+    <title>Brand new preprint on molecular graphs</title>
+    <summary>New.</summary>
+    <author><name>Anatole von Lilienfeld</name></author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2001.00001v1</id>
+    <published>2020-01-01T00:00:00Z</published>
+    <title>Old paper outside window</title>
+    <summary>Old.</summary>
+    <author><name>Anatole von Lilienfeld</name></author>
+  </entry>
+</feed>

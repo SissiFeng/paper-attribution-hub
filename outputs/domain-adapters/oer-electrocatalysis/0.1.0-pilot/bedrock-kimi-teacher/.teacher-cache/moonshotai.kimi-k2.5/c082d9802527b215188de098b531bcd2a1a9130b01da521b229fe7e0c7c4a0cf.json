@@ -1,0 +1,954 @@
+{
+  "model_id": "moonshotai.kimi-k2.5",
+  "paper_id": "DOI:10.1039_d5dd00072f",
+  "prompt_version": "oer-protocol-teacher-v0.1",
+  "protocols": [
+    {
+      "caveats": [],
+      "characterization": [],
+      "evidence": [
+        {
+          "char_end": 110,
+          "char_start": 0,
+          "chunk_id": "mdchk_613d8888254b4121",
+          "document_char_end": 35210,
+          "document_char_start": 35100,
+          "evidence_id": "ev_9dc84f98a51f2fd2",
+          "paper_id": "DOI:10.1039_d5dd00072f",
+          "quote": "materials, and iterative catalytic formula tuning were all carried out without the need for human interaction.",
+          "source_sha256": "50921d65b4f9b22178f79a79bde0aae8fde4880960e932c6a5802cd9f1044620"
+        },
+        {
+          "char_end": 547,
+          "char_start": 376,
+          "chunk_id": "mdchk_613d8888254b4121",
+          "document_char_end": 35647,
+          "document_char_start": 35476,
+          "evidence_id": "ev_8356a5309ce79246",
+          "paper_id": "DOI:10.1039_d5dd00072f",
+          "quote": "With a low overpotential of 445.1 mV and stability for more than 550 000 s at a current density of 10 mA cm −2, the improved catalyst demonstrated exceptional performance.",
+          "source_sha256": "50921d65b4f9b22178f79a79bde0aae8fde4880960e932c6a5802cd9f1044620"
+        }
+      ],
+      "evidence_scope": "secondary_report",
+      "instruments": [],
+      "materials": [],
+      "paper_id": "DOI:10.1039_d5dd00072f",
+      "protocol_id": "protocol_71d7d92c76beadb2",
+      "protocol_name": "AI-driven catalyst discovery for oxygen evolution reaction",
+      "protocol_type": "computational and experimental",
+      "relations": [],
+      "results": [
+        {
+          "context": "With a low overpotential of 445.1 mV and stability for more than 550 000 s at a current density of 10 mA cm −2, the improved catalyst demonstrated exceptional performance.",
+          "evidence_ids": [
+            "ev_8356a5309ce79246"
+          ],
+          "metric": "overpotential",
+          "raw_value": "445.1 mV",
+          "result_id": "result_71d7d92c76beadb2"
+        }
+      ],
+      "software": [],
+      "source_chunk_ids": [
+        "mdchk_613d8888254b4121"
+      ],
+      "source_paper_tier": "oer_review",
+      "steps": [
+        {
+          "action": "materials, and iterative catalytic formula tuning were all carried out without the need for human interaction.",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_9dc84f98a51f2fd2"
+          ],
+          "notes": null,
+          "order": 1,
+          "step_id": "step_31ab2c935610c262"
+        }
+      ]
+    },
+    {
+      "caveats": [],
+      "characterization": [],
+      "evidence": [
+        {
+          "char_end": 159,
+          "char_start": 0,
+          "chunk_id": "mdchk_631ab093638c4c2b",
+          "document_char_end": 28243,
+          "document_char_start": 28084,
+          "evidence_id": "ev_b4d223dcb24551f8",
+          "paper_id": "DOI:10.1039_d5dd00072f",
+          "quote": "obtained 538 DFT datasets, they used crystal graph convolu- tional neural networks to construct a ML model capable of predicting 3surfand Efwith high accuracy.",
+          "source_sha256": "85914af6c5097a94efc58b370f8c69b67489dc08edf408223c7345eeaf6e6356"
+        },
+        {
+          "char_end": 475,
+          "char_start": 160,
+          "chunk_id": "mdchk_631ab093638c4c2b",
+          "document_char_end": 28559,
+          "document_char_start": 28244,
+          "evidence_id": "ev_9dbcafa44b68e6f9",
+          "paper_id": "DOI:10.1039_d5dd00072f",
+          "quote": "By further calculating several chemical properties of HEICs, it was found that the difference in the atomic radius and mixing enthalpy were considered key chemical characteristics that respectively inu- ence 3surfand Efand are expected to become new descriptors for developing HEICs with excellent ORR performance.",
+          "source_sha256": "85914af6c5097a94efc58b370f8c69b67489dc08edf408223c7345eeaf6e6356"
+        }
+      ],
+      "evidence_scope": "secondary_report",
+      "instruments": [],
+      "materials": [],
+      "paper_id": "DOI:10.1039_d5dd00072f",
+      "protocol_id": "protocol_b807c707630e667b",
+      "protocol_name": "High-throughput DFT screening for high-entropy intermetallic compounds",
+      "protocol_type": "computational",
+      "relations": [],
+      "results": [],
+      "software": [],
+      "source_chunk_ids": [
+        "mdchk_631ab093638c4c2b"
+      ],
+      "source_paper_tier": "oer_review",
+      "steps": [
+        {
+          "action": "obtained 538 DFT datasets, they used crystal graph convolu- tional neural networks to construct a ML model capable of predicting 3surfand Efwith high accuracy.",
+          "conditions": [
+            "538 DFT datasets"
+          ],
+          "evidence_ids": [
+            "ev_b4d223dcb24551f8"
+          ],
+          "notes": null,
+          "order": 1,
+          "step_id": "step_b807c707630e667b"
+        },
+        {
+          "action": "By further calculating several chemical properties of HEICs, it was found that the difference in the atomic radius and mixing enthalpy were considered key chemical characteristics that respectively inu- ence 3surfand Efand are expected to become new descriptors for developing HEICs with excellent ORR performance.",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_9dbcafa44b68e6f9"
+          ],
+          "notes": null,
+          "order": 2,
+          "step_id": "step_dee6cfa5960bda39"
+        }
+      ]
+    },
+    {
+      "caveats": [],
+      "characterization": [],
+      "evidence": [
+        {
+          "char_end": 578,
+          "char_start": 476,
+          "chunk_id": "mdchk_631ab093638c4c2b",
+          "document_char_end": 28662,
+          "document_char_start": 28560,
+          "evidence_id": "ev_c4f1f5f4c057fd83",
+          "paper_id": "DOI:10.1039_d5dd00072f",
+          "quote": "Wang et al., 79 based on the adhesion energies of 178 metal-oxide interfaces obtained from experiments",
+          "source_sha256": "85914af6c5097a94efc58b370f8c69b67489dc08edf408223c7345eeaf6e6356"
+        },
+        {
+          "char_end": 696,
+          "char_start": 579,
+          "chunk_id": "mdchk_631ab093638c4c2b",
+          "document_char_end": 28780,
+          "document_char_start": 28663,
+          "evidence_id": "ev_e48049b77703d693",
+          "paper_id": "DOI:10.1039_d5dd00072f",
+          "quote": "and 14 highly indepen- dent and important physical features obtained through symbolic regression and cross-validation",
+          "source_sha256": "85914af6c5097a94efc58b370f8c69b67489dc08edf408223c7345eeaf6e6356"
+        },
+        {
+          "char_end": 813,
+          "char_start": 698,
+          "chunk_id": "mdchk_631ab093638c4c2b",
+          "document_char_end": 28897,
+          "document_char_start": 28782,
+          "evidence_id": "ev_71b12621afd6fa1e",
+          "paper_id": "DOI:10.1039_d5dd00072f",
+          "quote": "employed an inter- pretable ML model to conduct a comprehensive search of over 30 billion mathematical expressions.",
+          "source_sha256": "85914af6c5097a94efc58b370f8c69b67489dc08edf408223c7345eeaf6e6356"
+        }
+      ],
+      "evidence_scope": "secondary_report",
+      "instruments": [],
+      "materials": [],
+      "paper_id": "DOI:10.1039_d5dd00072f",
+      "protocol_id": "protocol_dee6cfa5960bda39",
+      "protocol_name": "Machine learning prediction of metal-support interaction using symbolic regression",
+      "protocol_type": "computational and experimental",
+      "relations": [],
+      "results": [],
+      "software": [],
+      "source_chunk_ids": [
+        "mdchk_631ab093638c4c2b"
+      ],
+      "source_paper_tier": "oer_review",
+      "steps": [
+        {
+          "action": "Wang et al., 79 based on the adhesion energies of 178 metal-oxide interfaces obtained from experiments",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_c4f1f5f4c057fd83"
+          ],
+          "notes": null,
+          "order": 1,
+          "step_id": "step_5025c11e16856783"
+        },
+        {
+          "action": "and 14 highly indepen- dent and important physical features obtained through symbolic regression and cross-validation",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_e48049b77703d693"
+          ],
+          "notes": null,
+          "order": 2,
+          "step_id": "step_b807c707630e667b"
+        },
+        {
+          "action": "employed an inter- pretable ML model to conduct a comprehensive search of over 30 billion mathematical expressions.",
+          "conditions": [
+            "over 30 billion mathematical expressions"
+          ],
+          "evidence_ids": [
+            "ev_71b12621afd6fa1e"
+          ],
+          "notes": null,
+          "order": 3,
+          "step_id": "step_dee6cfa5960bda39"
+        }
+      ]
+    },
+    {
+      "caveats": [],
+      "characterization": [],
+      "evidence": [
+        {
+          "char_end": 1487,
+          "char_start": 1306,
+          "chunk_id": "mdchk_631ab093638c4c2b",
+          "document_char_end": 29571,
+          "document_char_start": 29390,
+          "evidence_id": "ev_507d523918e82afc",
+          "paper_id": "DOI:10.1039_d5dd00072f",
+          "quote": "Li et al., 80 based on the linear scaling relationship of energy during the sintering process of metal nanoparticles (NPs), obtained a representative set of 323 metal-support pairs.",
+          "source_sha256": "85914af6c5097a94efc58b370f8c69b67489dc08edf408223c7345eeaf6e6356"
+        },
+        {
+          "char_end": 1648,
+          "char_start": 1488,
+          "chunk_id": "mdchk_631ab093638c4c2b",
+          "document_char_end": 29732,
+          "document_char_start": 29572,
+          "evidence_id": "ev_64b7963df0d72c58",
+          "paper_id": "DOI:10.1039_d5dd00072f",
+          "quote": "By simulating the sintering kinetics of these metal support pairs, they discovered that the sintering kinetics exhibit a Sabatier principle with respect to MSI.",
+          "source_sha256": "85914af6c5097a94efc58b370f8c69b67489dc08edf408223c7345eeaf6e6356"
+        },
+        {
+          "char_end": 1967,
+          "char_start": 1726,
+          "chunk_id": "mdchk_631ab093638c4c2b",
+          "document_char_end": 30051,
+          "document_char_start": 29810,
+          "evidence_id": "ev_8fd8ce037c0d0882",
+          "paper_id": "DOI:10.1039_d5dd00072f",
+          "quote": "They also found that the sintering initiation temperature of metal NPs with appropriate MSI is about half of the bulk metal melting temperature of typical NPs (∼3 nm), which is consistent with the long-reported empirical Tammann temperature.",
+          "source_sha256": "85914af6c5097a94efc58b370f8c69b67489dc08edf408223c7345eeaf6e6356"
+        },
+        {
+          "char_end": 2200,
+          "char_start": 1968,
+          "chunk_id": "mdchk_631ab093638c4c2b",
+          "document_char_end": 30284,
+          "document_char_start": 30052,
+          "evidence_id": "ev_db9ae370fa510462",
+          "paper_id": "DOI:10.1039_d5dd00072f",
+          "quote": "In addition, based on the revealed Sabatier principle and scaling relationships, high-throughput screening of carrier combinations with different energies was conducted, resulting in carriers that increase the sintering temperature.",
+          "source_sha256": "85914af6c5097a94efc58b370f8c69b67489dc08edf408223c7345eeaf6e6356"
+        }
+      ],
+      "evidence_scope": "secondary_report",
+      "instruments": [],
+      "materials": [],
+      "paper_id": "DOI:10.1039_d5dd00072f",
+      "protocol_id": "protocol_840b7cab8a6d0086",
+      "protocol_name": "Machine learning prediction of metal nanoparticle sintering kinetics",
+      "protocol_type": "computational",
+      "relations": [],
+      "results": [
+        {
+          "context": "They also found that the sintering initiation temperature of metal NPs with appropriate MSI is about half of the bulk metal melting temperature of typical NPs (∼3 nm), which is consistent with the long-reported empirical Tammann temperature.",
+          "evidence_ids": [
+            "ev_8fd8ce037c0d0882"
+          ],
+          "metric": "sintering initiation temperature",
+          "raw_value": "about half of the bulk metal melting temperature",
+          "result_id": "result_5025c11e16856783"
+        }
+      ],
+      "software": [],
+      "source_chunk_ids": [
+        "mdchk_631ab093638c4c2b"
+      ],
+      "source_paper_tier": "oer_review",
+      "steps": [
+        {
+          "action": "Li et al., 80 based on the linear scaling relationship of energy during the sintering process of metal nanoparticles (NPs), obtained a representative set of 323 metal-support pairs.",
+          "conditions": [
+            "323 metal-support pairs"
+          ],
+          "evidence_ids": [
+            "ev_507d523918e82afc"
+          ],
+          "notes": null,
+          "order": 1,
+          "step_id": "step_5025c11e16856783"
+        },
+        {
+          "action": "By simulating the sintering kinetics of these metal support pairs, they discovered that the sintering kinetics exhibit a Sabatier principle with respect to MSI.",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_64b7963df0d72c58"
+          ],
+          "notes": null,
+          "order": 2,
+          "step_id": "step_b807c707630e667b"
+        },
+        {
+          "action": "In addition, based on the revealed Sabatier principle and scaling relationships, high-throughput screening of carrier combinations with different energies was conducted, resulting in carriers that increase the sintering temperature.",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_db9ae370fa510462"
+          ],
+          "notes": null,
+          "order": 3,
+          "step_id": "step_dee6cfa5960bda39"
+        }
+      ]
+    },
+    {
+      "caveats": [],
+      "characterization": [],
+      "evidence": [
+        {
+          "char_end": 2773,
+          "char_start": 2651,
+          "chunk_id": "mdchk_631ab093638c4c2b",
+          "document_char_end": 30857,
+          "document_char_start": 30735,
+          "evidence_id": "ev_75f5fffea7c107e2",
+          "paper_id": "DOI:10.1039_d5dd00072f",
+          "quote": "By using the infrared and Raman signals of carbon monoxide and nitrogen monoxide adsorbed on metal surfaces as descriptors",
+          "source_sha256": "85914af6c5097a94efc58b370f8c69b67489dc08edf408223c7345eeaf6e6356"
+        },
+        {
+          "char_end": 2927,
+          "char_start": 2775,
+          "chunk_id": "mdchk_631ab093638c4c2b",
+          "document_char_end": 31011,
+          "document_char_start": 30859,
+          "evidence_id": "ev_bede9a5ca67bb2f6",
+          "paper_id": "DOI:10.1039_d5dd00072f",
+          "quote": "important characteristics including adsorption energy and charge transfer degree were quantitatively determined, with good accuracy and transferability.",
+          "source_sha256": "85914af6c5097a94efc58b370f8c69b67489dc08edf408223c7345eeaf6e6356"
+        }
+      ],
+      "evidence_scope": "secondary_report",
+      "instruments": [],
+      "materials": [
+        {
+          "amount": null,
+          "entity_id": "mat_e4094be5c6009d3d",
+          "evidence_ids": [
+            "ev_75f5fffea7c107e2"
+          ],
+          "name": "carbon monoxide",
+          "pretreatment": null,
+          "purity": null,
+          "role": null,
+          "supplier": null
+        },
+        {
+          "amount": null,
+          "entity_id": "mat_2452fbf5d768bdc7",
+          "evidence_ids": [
+            "ev_75f5fffea7c107e2"
+          ],
+          "name": "nitrogen monoxide",
+          "pretreatment": null,
+          "purity": null,
+          "role": null,
+          "supplier": null
+        }
+      ],
+      "paper_id": "DOI:10.1039_d5dd00072f",
+      "protocol_id": "protocol_e074b37b1f46e139",
+      "protocol_name": "ML-based connection between spectral signals and surface-adsorbate interactions",
+      "protocol_type": "computational",
+      "relations": [],
+      "results": [],
+      "software": [],
+      "source_chunk_ids": [
+        "mdchk_631ab093638c4c2b"
+      ],
+      "source_paper_tier": "oer_review",
+      "steps": [
+        {
+          "action": "By using the infrared and Raman signals of carbon monoxide and nitrogen monoxide adsorbed on metal surfaces as descriptors",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_75f5fffea7c107e2"
+          ],
+          "notes": null,
+          "order": 1,
+          "step_id": "step_5025c11e16856783"
+        },
+        {
+          "action": "important characteristics including adsorption energy and charge transfer degree were quantitatively determined, with good accuracy and transferability.",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_bede9a5ca67bb2f6"
+          ],
+          "notes": null,
+          "order": 2,
+          "step_id": "step_b807c707630e667b"
+        }
+      ]
+    },
+    {
+      "caveats": [],
+      "characterization": [
+        {
+          "entity_id": "char_06ccd804048b896d",
+          "evidence_ids": [
+            "ev_1f6a2c2ceb42636a"
+          ],
+          "output": null,
+          "settings": {},
+          "technique": "infrared spectroscopy"
+        }
+      ],
+      "evidence": [
+        {
+          "char_end": 3190,
+          "char_start": 3057,
+          "chunk_id": "mdchk_631ab093638c4c2b",
+          "document_char_end": 31274,
+          "document_char_start": 31141,
+          "evidence_id": "ev_1f6a2c2ceb42636a",
+          "paper_id": "DOI:10.1039_d5dd00072f",
+          "quote": "Li et al. 82 proposed an ML model that uses infrared spectroscopy to monitor the evolution of adsorbate–surface interaction behavior.",
+          "source_sha256": "85914af6c5097a94efc58b370f8c69b67489dc08edf408223c7345eeaf6e6356"
+        },
+        {
+          "char_end": 3346,
+          "char_start": 3191,
+          "chunk_id": "mdchk_631ab093638c4c2b",
+          "document_char_end": 31430,
+          "document_char_start": 31275,
+          "evidence_id": "ev_44888ac68add15ba",
+          "paper_id": "DOI:10.1039_d5dd00072f",
+          "quote": "Taking the C–C coupling process in catalytic reactions as an example, the con- volutional neural network was used to identify and extract spectral features",
+          "source_sha256": "85914af6c5097a94efc58b370f8c69b67489dc08edf408223c7345eeaf6e6356"
+        },
+        {
+          "char_end": 3456,
+          "char_start": 3348,
+          "chunk_id": "mdchk_631ab093638c4c2b",
+          "document_char_end": 31540,
+          "document_char_start": 31432,
+          "evidence_id": "ev_43bc363b3d0a2f41",
+          "paper_id": "DOI:10.1039_d5dd00072f",
+          "quote": "depicting the atomic structure and chemical interactions in the catalytic system. This resulted in obtaining",
+          "source_sha256": "85914af6c5097a94efc58b370f8c69b67489dc08edf408223c7345eeaf6e6356"
+        }
+      ],
+      "evidence_scope": "secondary_report",
+      "instruments": [],
+      "materials": [],
+      "paper_id": "DOI:10.1039_d5dd00072f",
+      "protocol_id": "protocol_1c4e7118b43d5771",
+      "protocol_name": "ML model using infrared spectroscopy to monitor adsorbate-surface interaction",
+      "protocol_type": "computational",
+      "relations": [],
+      "results": [],
+      "software": [],
+      "source_chunk_ids": [
+        "mdchk_631ab093638c4c2b"
+      ],
+      "source_paper_tier": "oer_review",
+      "steps": [
+        {
+          "action": "Taking the C–C coupling process in catalytic reactions as an example, the con- volutional neural network was used to identify and extract spectral features",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_44888ac68add15ba"
+          ],
+          "notes": null,
+          "order": 1,
+          "step_id": "step_5025c11e16856783"
+        },
+        {
+          "action": "depicting the atomic structure and chemical interactions in the catalytic system. This resulted in obtaining",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_43bc363b3d0a2f41"
+          ],
+          "notes": null,
+          "order": 2,
+          "step_id": "step_b807c707630e667b"
+        }
+      ]
+    },
+    {
+      "caveats": [],
+      "characterization": [],
+      "evidence": [
+        {
+          "char_end": 289,
+          "char_start": 232,
+          "chunk_id": "mdchk_18599968af534d12",
+          "document_char_end": 15542,
+          "document_char_start": 15485,
+          "evidence_id": "ev_93ddf3390c62e663",
+          "paper_id": "DOI:10.1039_d5dd00072f",
+          "quote": "sensing systems such as IR projectors (for depth sensing)",
+          "source_sha256": "8023591f6518e1ef10dd1900354b28b97abe507b908c92466999ea7c0a35d906"
+        },
+        {
+          "char_end": 337,
+          "char_start": 294,
+          "chunk_id": "mdchk_18599968af534d12",
+          "document_char_end": 15590,
+          "document_char_start": 15547,
+          "evidence_id": "ev_9f11a7f2e94be521",
+          "paper_id": "DOI:10.1039_d5dd00072f",
+          "quote": "laser scanners (for point cloud generation)",
+          "source_sha256": "8023591f6518e1ef10dd1900354b28b97abe507b908c92466999ea7c0a35d906"
+        },
+        {
+          "char_end": 683,
+          "char_start": 423,
+          "chunk_id": "mdchk_18599968af534d12",
+          "document_char_end": 15936,
+          "document_char_start": 15676,
+          "evidence_id": "ev_ce5a954b24e4caa1",
+          "paper_id": "DOI:10.1039_d5dd00072f",
+          "quote": "To navigate and operate efficiently in dynamic environments, these robots employ high- precision localization and mapping methods, including SLAM, 27,51 six-point localization (for pose determination), 27 ArUco labels (for visual marker tracking) 52 and so on.",
+          "source_sha256": "8023591f6518e1ef10dd1900354b28b97abe507b908c92466999ea7c0a35d906"
+        },
+        {
+          "char_end": 879,
+          "char_start": 684,
+          "chunk_id": "mdchk_18599968af534d12",
+          "document_char_end": 16132,
+          "document_char_start": 15937,
+          "evidence_id": "ev_15a78543a6035d1b",
+          "paper_id": "DOI:10.1039_d5dd00072f",
+          "quote": "Robotic systems are seamlessly integrated with automation soware and real-time feedback mechanisms, enabling the optimization of experimental workows and signicantly enhancing reproducibility.",
+          "source_sha256": "8023591f6518e1ef10dd1900354b28b97abe507b908c92466999ea7c0a35d906"
+        }
+      ],
+      "evidence_scope": "secondary_report",
+      "instruments": [
+        {
+          "entity_id": "inst_c17fbb31e95b98ec",
+          "evidence_ids": [
+            "ev_93ddf3390c62e663"
+          ],
+          "manufacturer": null,
+          "model": null,
+          "name": "IR projector",
+          "settings": {
+            "purpose": "depth sensing"
+          }
+        },
+        {
+          "entity_id": "inst_b875672786190877",
+          "evidence_ids": [
+            "ev_9f11a7f2e94be521"
+          ],
+          "manufacturer": null,
+          "model": null,
+          "name": "laser scanner",
+          "settings": {
+            "purpose": "point cloud generation"
+          }
+        }
+      ],
+      "materials": [],
+      "paper_id": "DOI:10.1039_d5dd00072f",
+      "protocol_id": "protocol_1c7edfaa7d39c6dc",
+      "protocol_name": "Robotic system with dual-arm manipulator for autonomous biomimetic solid dispensing",
+      "protocol_type": "experimental",
+      "relations": [],
+      "results": [],
+      "software": [],
+      "source_chunk_ids": [
+        "mdchk_18599968af534d12"
+      ],
+      "source_paper_tier": "oer_review",
+      "steps": [
+        {
+          "action": "To navigate and operate efficiently in dynamic environments, these robots employ high- precision localization and mapping methods, including SLAM, 27,51 six-point localization (for pose determination), 27 ArUco labels (for visual marker tracking) 52 and so on.",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_ce5a954b24e4caa1"
+          ],
+          "notes": null,
+          "order": 1,
+          "step_id": "step_140afb9935c52ac8"
+        },
+        {
+          "action": "Robotic systems are seamlessly integrated with automation soware and real-time feedback mechanisms, enabling the optimization of experimental workows and signicantly enhancing reproducibility.",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_15a78543a6035d1b"
+          ],
+          "notes": null,
+          "order": 2,
+          "step_id": "step_bb9abcd1191620d7"
+        }
+      ]
+    },
+    {
+      "caveats": [],
+      "characterization": [],
+      "evidence": [
+        {
+          "char_end": 1187,
+          "char_start": 1110,
+          "chunk_id": "mdchk_18599968af534d12",
+          "document_char_end": 16440,
+          "document_char_start": 16363,
+          "evidence_id": "ev_e4852ca409ff5251",
+          "paper_id": "DOI:10.1039_d5dd00072f",
+          "quote": "Lunt et al. 28 designed a solid-state workow incorporating a PXRD instrument",
+          "source_sha256": "8023591f6518e1ef10dd1900354b28b97abe507b908c92466999ea7c0a35d906"
+        },
+        {
+          "char_end": 1295,
+          "char_start": 1110,
+          "chunk_id": "mdchk_18599968af534d12",
+          "document_char_end": 16548,
+          "document_char_start": 16363,
+          "evidence_id": "ev_835d893a55d0a1ad",
+          "paper_id": "DOI:10.1039_d5dd00072f",
+          "quote": "Lunt et al. 28 designed a solid-state workow incorporating a PXRD instrument, two grinding stations, and a Chemspeed liquid dispensing platform to conduct PXRD experiments efficiently.",
+          "source_sha256": "8023591f6518e1ef10dd1900354b28b97abe507b908c92466999ea7c0a35d906"
+        },
+        {
+          "char_end": 1210,
+          "char_start": 1189,
+          "chunk_id": "mdchk_18599968af534d12",
+          "document_char_end": 16463,
+          "document_char_start": 16442,
+          "evidence_id": "ev_4fb7c12a889fdffd",
+          "paper_id": "DOI:10.1039_d5dd00072f",
+          "quote": "two grinding stations",
+          "source_sha256": "8023591f6518e1ef10dd1900354b28b97abe507b908c92466999ea7c0a35d906"
+        },
+        {
+          "char_end": 1295,
+          "char_start": 1212,
+          "chunk_id": "mdchk_18599968af534d12",
+          "document_char_end": 16548,
+          "document_char_start": 16465,
+          "evidence_id": "ev_2254a1bc89aa8ac3",
+          "paper_id": "DOI:10.1039_d5dd00072f",
+          "quote": "and a Chemspeed liquid dispensing platform to conduct PXRD experiments efficiently.",
+          "source_sha256": "8023591f6518e1ef10dd1900354b28b97abe507b908c92466999ea7c0a35d906"
+        }
+      ],
+      "evidence_scope": "secondary_report",
+      "instruments": [
+        {
+          "entity_id": "inst_abecabbfdb492b7f",
+          "evidence_ids": [
+            "ev_e4852ca409ff5251"
+          ],
+          "manufacturer": null,
+          "model": null,
+          "name": "PXRD instrument",
+          "settings": {}
+        },
+        {
+          "entity_id": "inst_f8e45b0e3cebd6ee",
+          "evidence_ids": [
+            "ev_4fb7c12a889fdffd"
+          ],
+          "manufacturer": null,
+          "model": null,
+          "name": "grinding station",
+          "settings": {
+            "quantity": "two"
+          }
+        },
+        {
+          "entity_id": "inst_86a7f8b7ffb44461",
+          "evidence_ids": [
+            "ev_2254a1bc89aa8ac3"
+          ],
+          "manufacturer": "Chemspeed",
+          "model": null,
+          "name": "Chemspeed liquid dispensing platform",
+          "settings": {}
+        }
+      ],
+      "materials": [],
+      "paper_id": "DOI:10.1039_d5dd00072f",
+      "protocol_id": "protocol_f2e2e0f962a49be6",
+      "protocol_name": "Solid-state workflow with PXRD for autonomous materials characterization",
+      "protocol_type": "experimental",
+      "relations": [],
+      "results": [],
+      "software": [],
+      "source_chunk_ids": [
+        "mdchk_18599968af534d12"
+      ],
+      "source_paper_tier": "oer_review",
+      "steps": [
+        {
+          "action": "Lunt et al. 28 designed a solid-state workow incorporating a PXRD instrument, two grinding stations, and a Chemspeed liquid dispensing platform to conduct PXRD experiments efficiently.",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_835d893a55d0a1ad"
+          ],
+          "notes": null,
+          "order": 1,
+          "step_id": "step_140afb9935c52ac8"
+        }
+      ]
+    },
+    {
+      "caveats": [],
+      "characterization": [],
+      "evidence": [
+        {
+          "char_end": 1433,
+          "char_start": 1307,
+          "chunk_id": "mdchk_18599968af534d12",
+          "document_char_end": 16686,
+          "document_char_start": 16560,
+          "evidence_id": "ev_86baad1e5c505aae",
+          "paper_id": "DOI:10.1039_d5dd00072f",
+          "quote": "Cooper et al. 27 developed a robotic system with eight workstations to identify photocatalyst mixtures for hydrogen production",
+          "source_sha256": "8023591f6518e1ef10dd1900354b28b97abe507b908c92466999ea7c0a35d906"
+        },
+        {
+          "char_end": 1513,
+          "char_start": 1435,
+          "chunk_id": "mdchk_18599968af534d12",
+          "document_char_end": 16766,
+          "document_char_start": 16688,
+          "evidence_id": "ev_0b2e0ab18a4212d1",
+          "paper_id": "DOI:10.1039_d5dd00072f",
+          "quote": "ultimately achieving formulations six times more active than the initial ones.",
+          "source_sha256": "8023591f6518e1ef10dd1900354b28b97abe507b908c92466999ea7c0a35d906"
+        }
+      ],
+      "evidence_scope": "secondary_report",
+      "instruments": [
+        {
+          "entity_id": "inst_f91a94c144c09052",
+          "evidence_ids": [
+            "ev_86baad1e5c505aae"
+          ],
+          "manufacturer": null,
+          "model": null,
+          "name": "robotic system",
+          "settings": {
+            "workstations": "eight"
+          }
+        }
+      ],
+      "materials": [],
+      "paper_id": "DOI:10.1039_d5dd00072f",
+      "protocol_id": "protocol_e77f353aed4d05d0",
+      "protocol_name": "Robotic photocatalyst screening system with Bayesian optimization",
+      "protocol_type": "experimental",
+      "relations": [],
+      "results": [],
+      "software": [],
+      "source_chunk_ids": [
+        "mdchk_18599968af534d12"
+      ],
+      "source_paper_tier": "oer_review",
+      "steps": [
+        {
+          "action": "Cooper et al. 27 developed a robotic system with eight workstations to identify photocatalyst mixtures for hydrogen production",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_86baad1e5c505aae"
+          ],
+          "notes": null,
+          "order": 1,
+          "step_id": "step_140afb9935c52ac8"
+        },
+        {
+          "action": "ultimately achieving formulations six times more active than the initial ones.",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_0b2e0ab18a4212d1"
+          ],
+          "notes": null,
+          "order": 2,
+          "step_id": "step_bb9abcd1191620d7"
+        }
+      ]
+    },
+    {
+      "caveats": [],
+      "characterization": [],
+      "evidence": [
+        {
+          "char_end": 1706,
+          "char_start": 1542,
+          "chunk_id": "mdchk_18599968af534d12",
+          "document_char_end": 16959,
+          "document_char_start": 16795,
+          "evidence_id": "ev_64c76c1bac2a8ea9",
+          "paper_id": "DOI:10.1039_d5dd00072f",
+          "quote": "Zhu et al. 52 implemented a system with fourteen workstations, featuring dedicated regions for auto-synthesis, auto-characterization, and auto- performance testing.",
+          "source_sha256": "8023591f6518e1ef10dd1900354b28b97abe507b908c92466999ea7c0a35d906"
+        },
+        {
+          "char_end": 1830,
+          "char_start": 1707,
+          "chunk_id": "mdchk_18599968af534d12",
+          "document_char_end": 17083,
+          "document_char_start": 16960,
+          "evidence_id": "ev_d7e0953c8623f396",
+          "paper_id": "DOI:10.1039_d5dd00072f",
+          "quote": "This comprehensive system enables fully automated experimental processes, accelerating catalyst discovery and optimization.",
+          "source_sha256": "8023591f6518e1ef10dd1900354b28b97abe507b908c92466999ea7c0a35d906"
+        }
+      ],
+      "evidence_scope": "secondary_report",
+      "instruments": [],
+      "materials": [],
+      "paper_id": "DOI:10.1039_d5dd00072f",
+      "protocol_id": "protocol_e5399b4c96197170",
+      "protocol_name": "Fourteen-workstation system for fully automated catalyst discovery",
+      "protocol_type": "experimental",
+      "relations": [],
+      "results": [],
+      "software": [],
+      "source_chunk_ids": [
+        "mdchk_18599968af534d12"
+      ],
+      "source_paper_tier": "oer_review",
+      "steps": [
+        {
+          "action": "Zhu et al. 52 implemented a system with fourteen workstations, featuring dedicated regions for auto-synthesis, auto-characterization, and auto- performance testing.",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_64c76c1bac2a8ea9"
+          ],
+          "notes": null,
+          "order": 1,
+          "step_id": "step_140afb9935c52ac8"
+        },
+        {
+          "action": "This comprehensive system enables fully automated experimental processes, accelerating catalyst discovery and optimization.",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_d7e0953c8623f396"
+          ],
+          "notes": null,
+          "order": 2,
+          "step_id": "step_bb9abcd1191620d7"
+        }
+      ]
+    },
+    {
+      "caveats": [],
+      "characterization": [],
+      "evidence": [
+        {
+          "char_end": 1678,
+          "char_start": 1571,
+          "chunk_id": "mdchk_537e366d173d177e",
+          "document_char_end": 27305,
+          "document_char_start": 27198,
+          "evidence_id": "ev_4f9566a14329f12a",
+          "paper_id": "DOI:10.1039_d5dd00072f",
+          "quote": "By calculating the solubility and chemical ordering of a third metal element in a PtCo ordered alloy system",
+          "source_sha256": "27ef69369051bcf3088bd017db0b2210d4b3afaf8b9d91fd785f991c76bf3d4f"
+        },
+        {
+          "char_end": 1730,
+          "char_start": 1680,
+          "chunk_id": "mdchk_537e366d173d177e",
+          "document_char_end": 27357,
+          "document_char_start": 27307,
+          "evidence_id": "ev_f825e28dc8e8fb58",
+          "paper_id": "DOI:10.1039_d5dd00072f",
+          "quote": "as well as the adsorption of related intermediates",
+          "source_sha256": "27ef69369051bcf3088bd017db0b2210d4b3afaf8b9d91fd785f991c76bf3d4f"
+        },
+        {
+          "char_end": 2102,
+          "char_start": 1985,
+          "chunk_id": "mdchk_537e366d173d177e",
+          "document_char_end": 27729,
+          "document_char_start": 27612,
+          "evidence_id": "ev_39617709a2a77325",
+          "paper_id": "DOI:10.1039_d5dd00072f",
+          "quote": "Moreover, the synthesized PtCoNi and PtCoCu alloys exhibited excellent oxygen reduction reaction (ORR) perfor- mance.",
+          "source_sha256": "27ef69369051bcf3088bd017db0b2210d4b3afaf8b9d91fd785f991c76bf3d4f"
+        }
+      ],
+      "evidence_scope": "secondary_report",
+      "instruments": [],
+      "materials": [],
+      "paper_id": "DOI:10.1039_d5dd00072f",
+      "protocol_id": "protocol_b6beee3a33a87e0f",
+      "protocol_name": "ML-accelerated theoretical calculations for ordered alloy catalyst screening",
+      "protocol_type": "computational and experimental",
+      "relations": [],
+      "results": [],
+      "software": [],
+      "source_chunk_ids": [
+        "mdchk_537e366d173d177e"
+      ],
+      "source_paper_tier": "oer_review",
+      "steps": [
+        {
+          "action": "By calculating the solubility and chemical ordering of a third metal element in a PtCo ordered alloy system",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_4f9566a14329f12a"
+          ],
+          "notes": null,
+          "order": 1,
+          "step_id": "step_add1d7d4c36df214"
+        },
+        {
+          "action": "as well as the adsorption of related intermediates",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_f825e28dc8e8fb58"
+          ],
+          "notes": null,
+          "order": 2,
+          "step_id": "step_3462213196bb7e32"
+        },
+        {
+          "action": "Moreover, the synthesized PtCoNi and PtCoCu alloys exhibited excellent oxygen reduction reaction (ORR) perfor- mance.",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_39617709a2a77325"
+          ],
+          "notes": null,
+          "order": 3,
+          "step_id": "step_37444b9162ce3a2f"
+        }
+      ]
+    }
+  ],
+  "schema_version": "bedrock-teacher-paper-cache-v0.1",
+  "unsupported_claim_count": 43
+}

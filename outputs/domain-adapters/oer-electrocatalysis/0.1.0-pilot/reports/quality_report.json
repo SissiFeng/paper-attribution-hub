@@ -1,0 +1,17 @@
+{
+  "claims_boundary": "Heuristic output is a baseline unless extraction.mode is teacher. Tasks are extractive and do not advise future experiments.",
+  "eligible_corpus_chunk_count": 211,
+  "evaluation_task_count": 70,
+  "evidence_span_count": 518,
+  "exact_duplicate_count": 0,
+  "excluded_or_low_information_chunk_count": 601,
+  "paper_count": 20,
+  "protocol_count": 61,
+  "rejected_protocols": [],
+  "schema_version": "domain-adapter-quality-report-v0.1",
+  "source_chunk_count": 812,
+  "task_count": 120,
+  "train_task_count": 50,
+  "unsupported_evidence_count": 0,
+  "unsupported_teacher_claim_count": 0
+}

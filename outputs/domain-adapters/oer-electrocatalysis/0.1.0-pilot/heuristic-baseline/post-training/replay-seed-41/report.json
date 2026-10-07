@@ -1,0 +1,235 @@
+{
+  "claims_boundary": "This compares student agreement with package targets. It is not an independent human assessment of scientific completeness.",
+  "config": {
+    "correction_epochs": 2,
+    "correction_learning_rate": 2e-05,
+    "learning_rate": 0.0001,
+    "max_new_tokens": 128,
+    "max_sequence_length": 768,
+    "sft_epochs": 5
+  },
+  "device": "mps",
+  "method_label": "student-error-conditioned sequence distillation with seed replay; not reverse-KL GKD",
+  "metrics": {
+    "base": {
+      "exact_match_rate": 0.0,
+      "field_f1": 0.0,
+      "field_precision": 0.0,
+      "field_recall": 0.0,
+      "grounded_leaf_rate": 0.0,
+      "json_valid_rate": 0.0,
+      "task_count": 9
+    },
+    "matched_static_sft": {
+      "exact_match_rate": 0.1111111111111111,
+      "field_f1": 0.31457431457431456,
+      "field_precision": 0.3814814814814815,
+      "field_recall": 0.28148148148148144,
+      "grounded_leaf_rate": 0.6592592592592593,
+      "json_valid_rate": 1.0,
+      "task_count": 9
+    },
+    "on_policy_hard_sft": {
+      "exact_match_rate": 0.1111111111111111,
+      "field_f1": 0.31457431457431456,
+      "field_precision": 0.3814814814814815,
+      "field_recall": 0.28148148148148144,
+      "grounded_leaf_rate": 0.6592592592592593,
+      "json_valid_rate": 1.0,
+      "task_count": 9
+    },
+    "static_sft": {
+      "exact_match_rate": 0.1111111111111111,
+      "field_f1": 0.31457431457431456,
+      "field_precision": 0.3814814814814815,
+      "field_recall": 0.28148148148148144,
+      "grounded_leaf_rate": 0.6537037037037038,
+      "json_valid_rate": 1.0,
+      "task_count": 9
+    }
+  },
+  "model_id": "HuggingFaceTB/SmolLM2-360M-Instruct",
+  "package": "../outputs/domain-adapters/oer-electrocatalysis/0.1.0-pilot/heuristic-baseline",
+  "package_extraction": {
+    "extractor": "oer_high_precision_rules_v0.1",
+    "mode": "heuristic_baseline",
+    "model": null,
+    "prompt_version": null
+  },
+  "promotion": {
+    "comparison": "on_policy_hard_sft_vs_matched_static_sft",
+    "promoted": false,
+    "rule": "field_f1 must improve without reducing JSON validity or grounded leaf rate"
+  },
+  "schema_version": "domain-distillation-experiment-v0.1",
+  "seed": 41,
+  "selection": {
+    "eligible_evaluation_task_count": 37,
+    "eligible_train_task_count": 18,
+    "evaluation_task_ids": [
+      "1235a9c90b69fe89a7754448b08b9da9086059360812e95b5c7a5fb7ac8e56f0",
+      "09dfae9917e1009921d108520c5bd928e23929136a896179dd5f2c57fca5452b",
+      "0540cba9355808866718cd28cd27eb0a739a048bd6b00ddc87f77c3ef8b9731d",
+      "1e82bdf6e9a5a43205f8f3af43c452adcbe52f91b61d757f88aa5bc5c4791725",
+      "123ff39b2c7524bb739d6613d87edb1127e0a56d2169b271a683c7428b524696",
+      "65d3654b1250af995914c184fdf84c0d5a91308f98524a79069f58114a14c454",
+      "2409f51f84bfb36f4fdc0c38640dc9eb32ac7a3dca5a76001898c8b4eb2aeef1",
+      "4b20f116582004162a714f7e03f4bdff8d50b056ab01825563d9f671f597123a",
+      "4be1268fb61360ccc384697eeffd19ada62414bf8b7689e3e1d5744699b13b67"
+    ],
+    "hard_task_ids": [
+      "6fc24b112b029ab91b791528cb0cb9d65ed4f3f8b92133c6a43740e04268c0e6",
+      "a499863839c20ea52d5c3d715af27426d7ad1777a9e5709746ae40202fc354c2",
+      "b10e6cb5934f684efa6eaa576710b271de01ca1ab4d2270b44b592d7504c33d2"
+    ],
+    "matched_control_task_ids": [
+      "f0771a61299cead49eeaafe755dfbdb0f9d5c9407346268e3f4d53d4b7f7566a",
+      "bb1dff33302531fe633b868ecef6ff99d72018b05a19d9b47a1b1944cde0f8b5",
+      "6fc24b112b029ab91b791528cb0cb9d65ed4f3f8b92133c6a43740e04268c0e6",
+      "2f8b290933eb3f9a883852161aed2823ef779c0eee49a15f32ba3a2e627d6cb4",
+      "266fed3416fac58710657347999736c5f0135e753241e94ff3532ee268b3b102",
+      "1e35313be9fcbfe66e91a0e762b741a4c7064b338be6abe8a68fbd2425ea1112"
+    ],
+    "on_policy_adaptation_task_ids": [
+      "6fc24b112b029ab91b791528cb0cb9d65ed4f3f8b92133c6a43740e04268c0e6",
+      "a499863839c20ea52d5c3d715af27426d7ad1777a9e5709746ae40202fc354c2",
+      "b10e6cb5934f684efa6eaa576710b271de01ca1ab4d2270b44b592d7504c33d2",
+      "2f8b290933eb3f9a883852161aed2823ef779c0eee49a15f32ba3a2e627d6cb4",
+      "266fed3416fac58710657347999736c5f0135e753241e94ff3532ee268b3b102",
+      "1e35313be9fcbfe66e91a0e762b741a4c7064b338be6abe8a68fbd2425ea1112"
+    ],
+    "raw_evaluation_task_count": 49,
+    "raw_train_task_count": 29,
+    "replay_task_ids": [
+      "2f8b290933eb3f9a883852161aed2823ef779c0eee49a15f32ba3a2e627d6cb4",
+      "266fed3416fac58710657347999736c5f0135e753241e94ff3532ee268b3b102",
+      "1e35313be9fcbfe66e91a0e762b741a4c7064b338be6abe8a68fbd2425ea1112"
+    ],
+    "rollout_task_ids": [
+      "f0771a61299cead49eeaafe755dfbdb0f9d5c9407346268e3f4d53d4b7f7566a",
+      "bb1dff33302531fe633b868ecef6ff99d72018b05a19d9b47a1b1944cde0f8b5",
+      "6fc24b112b029ab91b791528cb0cb9d65ed4f3f8b92133c6a43740e04268c0e6",
+      "a499863839c20ea52d5c3d715af27426d7ad1777a9e5709746ae40202fc354c2",
+      "aafff95bde5a21b63b53b3403268824b77e9044388dc341c3dbeb70b4222bff8",
+      "b10e6cb5934f684efa6eaa576710b271de01ca1ab4d2270b44b592d7504c33d2"
+    ],
+    "train_task_ids": [
+      "2f8b290933eb3f9a883852161aed2823ef779c0eee49a15f32ba3a2e627d6cb4",
+      "266fed3416fac58710657347999736c5f0135e753241e94ff3532ee268b3b102",
+      "1e35313be9fcbfe66e91a0e762b741a4c7064b338be6abe8a68fbd2425ea1112",
+      "220cb9c2b665d48b036d9605c8040a102c4e016be12ae5458a1b0faafc8ae5c8",
+      "33877b613fdcc97ea228dbeb680fb5e71f8d0d93b4533d2bf6aaeec3c7e686c0",
+      "3a040ba401c40aab152c1ed448715d0005d11dc50d8ebff0b6f910682eb0f615",
+      "34fa417c04b9273c74359605733382264f523fcd2dbed81a8a5adf7645425b1c",
+      "2b0788a9b601f1a949f0cc95f5eadb1a2248b3a51eeba77d9a4f11f0388e5473",
+      "58245bfa580765fe5b2778f226d22b1bf358cc43383aec8d6a8eb562554ff7f1",
+      "7bc19afba2770932298ea1059b8755b04be88dc1a6468ba7d8fef9c78cc48758",
+      "87711cbc50504fa225d7ad98489cbecd04db10759342bacc726f71d5a5db4a6c",
+      "55ae636857be701128a02312d4d8141aea7a26a892619e352ac30bb1d3b60a86"
+    ]
+  },
+  "training": {
+    "matched_static_sft": {
+      "losses": [
+        0.2991691827774048,
+        0.04209651052951813,
+        0.5037268996238708,
+        0.00037283048732206225,
+        0.0016514603048563004,
+        0.001296279369853437,
+        0.0013265040470287204,
+        0.0015821829438209534,
+        0.4650176763534546,
+        0.00033569481456652284,
+        0.22601991891860962,
+        0.027365446090698242
+      ],
+      "mean_loss": 0.13083004885508367,
+      "steps": 12
+    },
+    "on_policy_hard_sft": {
+      "losses": [
+        0.5073734521865845,
+        0.03447341173887253,
+        1.2495442628860474,
+        0.0003762301057577133,
+        2.2814109325408936,
+        0.0012856159592047334,
+        0.0012923928443342447,
+        2.1648976802825928,
+        1.1167261600494385,
+        0.0003677352797240019,
+        0.4372807741165161,
+        0.024502206593751907
+      ],
+      "mean_loss": 0.6516275712153098,
+      "steps": 12
+    },
+    "static_sft": {
+      "losses": [
+        0.8147917985916138,
+        1.5907483100891113,
+        1.4574799537658691,
+        0.5391387343406677,
+        1.0885030031204224,
+        1.6220588684082031,
+        1.6127444505691528,
+        0.11126258969306946,
+        0.48697629570961,
+        1.2497045993804932,
+        0.1523563265800476,
+        0.7543215155601501,
+        0.08462987840175629,
+        0.3736899197101593,
+        0.2582402527332306,
+        0.19470174610614777,
+        0.021338876336812973,
+        0.5944771766662598,
+        0.515884280204773,
+        0.25564903020858765,
+        0.6535592675209045,
+        0.5372647047042847,
+        0.7263326644897461,
+        0.3713415265083313,
+        0.2460567206144333,
+        0.1045990139245987,
+        0.03449754789471626,
+        0.09713771194219589,
+        0.011743796057999134,
+        0.0664198100566864,
+        0.3242247700691223,
+        0.42077234387397766,
+        0.18580393493175507,
+        0.2283625304698944,
+        0.13902023434638977,
+        0.12010198086500168,
+        0.0785253718495369,
+        0.02146577276289463,
+        0.21917277574539185,
+        0.04124032333493233,
+        0.036527395248413086,
+        0.11366412043571472,
+        0.17823299765586853,
+        0.004873300436884165,
+        0.017180975526571274,
+        0.1100807636976242,
+        0.02562985010445118,
+        0.001686489675194025,
+        0.00417421106249094,
+        0.003869755892083049,
+        0.0006706435233354568,
+        0.006234014872461557,
+        0.0038235594984143972,
+        0.005018570926040411,
+        0.019775118678808212,
+        0.025264186784625053,
+        0.024392714723944664,
+        0.05325411260128021,
+        0.0007061109063215554,
+        0.03576064854860306
+      ],
+      "mean_loss": 0.31795266581563436,
+      "steps": 60
+    }
+  }
+}

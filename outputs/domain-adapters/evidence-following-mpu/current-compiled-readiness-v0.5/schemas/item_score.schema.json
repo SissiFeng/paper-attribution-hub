@@ -1,0 +1,109 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "blind_domain_prior": {
+      "anyOf": [
+        {
+          "type": "boolean"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Blind Domain Prior"
+    },
+    "closed_book_knowledge": {
+      "anyOf": [
+        {
+          "type": "boolean"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Closed Book Knowledge"
+    },
+    "domain": {
+      "title": "Domain",
+      "type": "string"
+    },
+    "evidence_followed": {
+      "anyOf": [
+        {
+          "type": "boolean"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Evidence Followed"
+    },
+    "exposure_score": {
+      "anyOf": [
+        {
+          "maximum": 1,
+          "minimum": -1,
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Exposure Score"
+    },
+    "fact_injected_evidence_followed": {
+      "anyOf": [
+        {
+          "type": "boolean"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Fact Injected Evidence Followed"
+    },
+    "fact_injected_knowledge": {
+      "anyOf": [
+        {
+          "type": "boolean"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Fact Injected Knowledge"
+    },
+    "model_alias": {
+      "title": "Model Alias",
+      "type": "string"
+    },
+    "paper_id": {
+      "title": "Paper Id",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "evidence-following-mpu-item-score-v0.1",
+      "default": "evidence-following-mpu-item-score-v0.1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "task_id": {
+      "title": "Task Id",
+      "type": "string"
+    }
+  },
+  "required": [
+    "task_id",
+    "paper_id",
+    "domain",
+    "model_alias",
+    "closed_book_knowledge",
+    "blind_domain_prior",
+    "evidence_followed",
+    "fact_injected_knowledge",
+    "fact_injected_evidence_followed"
+  ],
+  "title": "MpuItemScore",
+  "type": "object"
+}

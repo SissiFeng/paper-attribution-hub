@@ -68,6 +68,72 @@ class ModelEvolutionStatusOut(BaseModel):
 def get_model_evolution_status(
     session: Session = Depends(get_session),
 ) -> ModelEvolutionStatusOut:
+    from app.config import settings
+
+    if settings.sdl_stage1_only:
+        from app.services.model_evolution import (
+            minimum_validation_examples,
+            minimum_validation_labels,
+            retrain_batch_size,
+        )
+        from app.services.sdl_stage1_service import stage1_label_map
+
+        validation_labels = stage1_label_map(session, role="validation")
+        observed_labels = sorted(set(validation_labels.values()))
+        required_examples = minimum_validation_examples()
+        required_labels = minimum_validation_labels()
+        observed_examples = len(validation_labels)
+        validation_ready = (
+            observed_examples >= required_examples
+            and len(observed_labels) >= required_labels
+        )
+        if observed_examples < required_examples:
+            validation_reason = (
+                "SDL Stage 1 fixed validation requires at least "
+                f"{required_examples} completed strict-SDL labels; "
+                f"found {observed_examples}"
+            )
+        elif len(observed_labels) < required_labels:
+            validation_reason = (
+                "SDL Stage 1 fixed validation requires at least "
+                f"{required_labels} distinct labels; found "
+                f"{len(observed_labels)}"
+            )
+        else:
+            validation_reason = "SDL Stage 1 fixed validation gate is ready"
+        return ModelEvolutionStatusOut.model_validate(
+            {
+                "batch_size": retrain_batch_size(),
+                "pending_reviews": 0,
+                "reviews_until_retrain": retrain_batch_size(),
+                "progress": 0.0,
+                "current_model_version": None,
+                "production_authority": {
+                    "production_run_id": None,
+                    "status": "RULES_ONLY",
+                    "model_version": None,
+                    "artifact_sha256": None,
+                    "cache_sync_status": None,
+                    "cache_present": False,
+                    "cache_sha256": None,
+                    "cache_matches_authority": None,
+                    "error": (
+                        "Supervised model evolution is disabled in SDL Stage 1 "
+                        "until fixed validation is ready and explicitly promoted."
+                    ),
+                },
+                "validation_gate": {
+                    "ready": validation_ready,
+                    "required_examples": required_examples,
+                    "observed_examples": observed_examples,
+                    "required_labels": required_labels,
+                    "observed_labels": observed_labels,
+                    "reason": validation_reason,
+                },
+                "active_run": None,
+                "latest_run": None,
+            }
+        )
     return ModelEvolutionStatusOut.model_validate(model_evolution_status(session))
 
 

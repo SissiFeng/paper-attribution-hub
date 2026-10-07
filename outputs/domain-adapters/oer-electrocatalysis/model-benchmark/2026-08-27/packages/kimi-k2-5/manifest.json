@@ -1,0 +1,55 @@
+{
+  "artifact_sha256": {
+    "corpus/continued_pretraining.jsonl": "ef9ef69ef5d78b1b1cd456c1791355e9bad6d880b688ca7581122a860ab804d6",
+    "knowledge/paper_records.jsonl": "fa367dcda94ec257776b5a06ddeed1cbb0f8e9b82200850b9711727b5bd61271",
+    "knowledge/protocols.jsonl": "61dc2879284b8eae0d1e644ae5a42862097686bb4d9f7f3a22b3ffb3a0895cfe",
+    "reports/quality_report.json": "22101d9d78ba2f41f3a42e71405c020ef8d002eb637d751f6ceaa87d570a46f8",
+    "reports/teacher_field_audit.jsonl": "fa8bd0d52d39241eee5e5130932e891e81b8832db70fe26cec7672b7b9facc65",
+    "source/selection_manifest.json": "9a1d6483fed9dcfc9c067d4af01beb2e753409dd82ed11addae22eb5a568c488",
+    "tasks/evaluation/eval.jsonl": "32f8833a6d3eb988c3019f9ee1d5230c638b92ff348eecd76478d0368c3e9528",
+    "tasks/sft/train.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "classification_neutral": true,
+  "counts": {
+    "corpus_record_count": 51,
+    "paper_count": 4,
+    "protocol_count": 15,
+    "task_count": 28
+  },
+  "domain": "oxygen evolution electrocatalysis",
+  "extraction": {
+    "extractor": "amazon_bedrock_structured_teacher",
+    "inference_config": {
+      "max_output_tokens": 14000,
+      "temperature": 0.0
+    },
+    "mode": "teacher",
+    "model": "moonshotai.kimi-k2.5",
+    "prompt_version": "oer-protocol-teacher-v0.2",
+    "region": "us-east-1",
+    "usage": {
+      "input_token_count": 18589,
+      "invocation_count": 4,
+      "latency_ms_total": 325576,
+      "output_token_count": 21890,
+      "response_failure_diagnostics": [],
+      "response_schema_failure_count": 0,
+      "salvaged_response_count": 0
+    }
+  },
+  "institution_entities_included": false,
+  "layers": [
+    "cleaned_corpus",
+    "structured_knowledge",
+    "task_suite"
+  ],
+  "package_id": "oer-electrocatalysis",
+  "package_version": "benchmark-eval4-kimi-k2-5",
+  "schema_version": "domain-adapter-package-v0.1",
+  "source_access": "s3_markdown",
+  "validation": {
+    "rejected_protocol_count": 0,
+    "rejected_teacher_field_count": 193,
+    "unsupported_evidence_count": 193
+  }
+}

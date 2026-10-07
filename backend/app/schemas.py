@@ -11,6 +11,7 @@ from app.attribution_evidence_contract import (
     AttributionMetadataStatus,
     AttributionPolarity,
 )
+from app.config import settings
 
 
 class MatchedPerson(BaseModel):
@@ -159,6 +160,35 @@ class HumanReviewIn(BaseModel):
 
     @model_validator(mode="after")
     def validate_review_contract(self) -> "HumanReviewIn":
+        if settings.sdl_stage1_only:
+            if self.human_label is not None:
+                raise ValueError(
+                    "SDL Stage 1 forbids legacy human_label training feedback"
+                )
+            if self.ac_relevance_judgement is not None:
+                raise ValueError(
+                    "SDL Stage 1 ignores AC relevance and forbids AC judgements"
+                )
+            if self.ai_for_science_judgement is not None:
+                raise ValueError(
+                    "SDL Stage 1 accepts only the strict SDL judgement"
+                )
+            if self.sdl_judgement is None:
+                raise ValueError("SDL Stage 1 requires an SDL judgement")
+            if self.judgement_basis != "STRICT_SDL":
+                raise ValueError(
+                    "SDL Stage 1 requires judgement_basis=STRICT_SDL"
+                )
+            if (
+                self.review_status == "COMPLETED"
+                and self.sdl_judgement == "INSUFFICIENT_EVIDENCE"
+            ):
+                raise ValueError(
+                    "INSUFFICIENT_EVIDENCE must use NEEDS_FULLTEXT rather than "
+                    "COMPLETED"
+                )
+            return self
+
         dimensional = any(
             (
                 self.sdl_judgement,
@@ -580,6 +610,44 @@ class KbSummaryOut(BaseModel):
     linked_papers: int
     entities_by_type: dict[str, int] = Field(default_factory=dict)
     cross_lab_entities: int
+
+
+class ScientificKnowledgeEvidenceOut(BaseModel):
+    paper_id: str
+    section_type: str
+    chunk_id: str | None = None
+    text: str
+
+
+class ScientificKnowledgeEntityOut(BaseModel):
+    name: str
+    surface_form: str
+    confidence: float
+    section_type: str
+    chunk_id: str | None = None
+    evidence_text: str
+
+
+class ScientificKnowledgeAssertionOut(BaseModel):
+    subject_type: Literal["paper"]
+    subject_id: str
+    predicate: Literal["reports_scientific_entity"]
+    object_type: Literal["method", "material", "instrument", "software"]
+    object_value: str
+    confidence: float
+    evidence: ScientificKnowledgeEvidenceOut
+
+
+class ScientificKnowledgeOut(BaseModel):
+    paper_id: str
+    schema_version: str
+    compiler_version: str
+    source_snapshot_hash: str
+    content_hash: str
+    entities: dict[str, list[ScientificKnowledgeEntityOut]]
+    assertions: list[ScientificKnowledgeAssertionOut]
+    source_metadata: dict[str, Any]
+    generated_at: datetime
 
 
 class TopicShareOut(BaseModel):

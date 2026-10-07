@@ -1,4 +1,4 @@
-from fastapi.testclient import TestClient
+from tests.admin_client import AdminTestClient as TestClient
 
 
 def test_explanation_for_direct_ac_author(fulltext_seeded_session):

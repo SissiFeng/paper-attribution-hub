@@ -174,6 +174,172 @@ def test_teacher_records_repaired_and_rejected_fields(tmp_path):
     assert result.manifest["extraction"]["region"] == "us-east-1"
 
 
+def test_teacher_preserves_primary_scope_for_non_oer_domain():
+    from app.domain_adaptation.models import SourceChunk, SourcePaper
+    from app.domain_adaptation.teacher import BedrockTeacherExtractor
+
+    source_quote = (
+        "The electrolyte was prepared by mixing 10 mL water with 1 g salt "
+        "and stirring for 2 h before battery testing."
+    )
+    response_payload = {
+        "protocols": [
+            {
+                "protocol_name": "Electrolyte preparation",
+                "protocol_type": "electrolyte_preparation",
+                "materials": [
+                    {
+                        "source_chunk_id": "methods-1",
+                        "name": "water",
+                        "amount": "10 mL",
+                        "evidence_quote": source_quote,
+                    }
+                ],
+                "instruments": [],
+                "software": [],
+                "steps": [],
+                "characterization": [],
+                "results": [],
+                "caveats": [],
+            }
+        ]
+    }
+
+    class FakeBedrockClient:
+        def converse(self, **_kwargs):
+            return {
+                "output": {
+                    "message": {
+                        "content": [{"text": json.dumps(response_payload)}]
+                    }
+                }
+            }
+
+    extractor = BedrockTeacherExtractor(
+        client=FakeBedrockClient(),
+        model_id="teacher.model",
+        region="us-east-1",
+    )
+    paper = SourcePaper(
+        paper_id="paper-battery-primary",
+        title="Automated battery electrolyte optimization",
+        selection_tier="primary_battery_electrolyte",
+        evidence_scope="primary_report",
+        selection_reasons=["primary experiment"],
+        source_bucket="bucket",
+        source_prefix="raw/",
+        chunks=[
+            SourceChunk(
+                chunk_id="methods-1",
+                section_type="methods",
+                text=source_quote,
+            )
+        ],
+    )
+
+    protocols = extractor.extract(paper)
+
+    assert len(protocols) == 1
+    assert protocols[0].evidence_scope == "primary_report"
+    assert protocols[0].source_paper_tier == "primary_battery_electrolyte"
+
+
+def test_teacher_chunk_selection_accepts_explicit_non_oer_domain_terms():
+    from app.domain_adaptation.models import SourceChunk, SourcePaper
+    from app.domain_adaptation.teacher import BedrockTeacherExtractor
+
+    class EmptyBedrockClient:
+        def converse(self, **_kwargs):
+            return {
+                "output": {"message": {"content": [{"text": '{"protocols": []}'}]}}
+            }
+
+    extractor = BedrockTeacherExtractor(
+        client=EmptyBedrockClient(),
+        model_id="teacher.model",
+        region="us-east-1",
+        prompt_version="scientific-protocol-teacher-v0.3",
+        domain_terms=("electrolyte",),
+        minimum_chunk_score=2,
+    )
+    paper = SourcePaper(
+        paper_id="paper-battery-domain-term",
+        title="Battery electrolyte study",
+        selection_tier="primary_battery_electrolyte",
+        evidence_scope="primary_report",
+        selection_reasons=["primary experiment"],
+        source_bucket="bucket",
+        source_prefix="raw/",
+        chunks=[
+            SourceChunk(
+                chunk_id="methods-1",
+                section_type="methods",
+                text=(
+                    "The electrolyte optimization architecture coordinates "
+                    "multiple remote capabilities through a shared task queue. "
+                    "Its workflow description provides operational scientific "
+                    "context for every connected tenant in the platform."
+                ),
+            )
+        ],
+    )
+
+    assert extractor.extract(paper) == []
+    assert extractor.prompt_version == "scientific-protocol-teacher-v0.3"
+    assert extractor.paper_diagnostics[0].candidate_chunk_count == 1
+
+
+def test_scope_aware_teacher_marks_secondary_evidence_and_abstention_rule():
+    from app.domain_adaptation.models import SourceChunk, SourcePaper
+    from app.domain_adaptation.teacher import BedrockTeacherExtractor
+
+    class CapturingBedrockClient:
+        def __init__(self):
+            self.calls = []
+
+        def converse(self, **kwargs):
+            self.calls.append(kwargs)
+            return {
+                "output": {"message": {"content": [{"text": '{"protocols": []}'}]}}
+            }
+
+    client = CapturingBedrockClient()
+    extractor = BedrockTeacherExtractor(
+        client=client,
+        model_id="teacher.model",
+        region="us-east-1",
+        prompt_version="scientific-protocol-teacher-v0.4-scope-aware",
+        domain_terms=("electrolyte",),
+        minimum_chunk_score=2,
+        scope_aware=True,
+    )
+    paper = SourcePaper(
+        paper_id="paper-secondary-review",
+        title="Battery electrolyte review",
+        selection_tier="battery_electrolyte_review",
+        evidence_scope="secondary_report",
+        selection_reasons=["secondary evidence control"],
+        source_bucket="bucket",
+        source_prefix="raw/",
+        chunks=[
+            SourceChunk(
+                chunk_id="review-1",
+                section_type="results",
+                text=(
+                    "The review describes an electrolyte workflow and its "
+                    "reported performance in enough detail to enter candidate "
+                    "selection, but it does not report a current experiment."
+                ),
+            )
+        ],
+    )
+
+    assert extractor.extract(paper) == []
+    prompt = client.calls[0]["messages"][0]["content"][0]["text"]
+    assert "Evidence scope: secondary_report" in prompt
+    assert "two ordered actions" in prompt
+
+
 def test_teacher_accepts_deterministically_normalized_field_values():
     from app.domain_adaptation.models import SourceChunk, SourcePaper
     from app.domain_adaptation.teacher import BedrockTeacherExtractor
@@ -336,14 +502,13 @@ def test_teacher_records_per_paper_abstention_diagnostic():
     ]
 
 
-def test_teacher_rejects_summarized_step_but_keeps_exact_evidence_action():
-    from app.domain_adaptation.audit import RejectionReason
+def test_teacher_maps_steps_to_atomic_verb_targets_and_params():
     from app.domain_adaptation.models import SourceChunk, SourcePaper
     from app.domain_adaptation.teacher import BedrockTeacherExtractor
 
     evidence_quote = (
-        "The catalyst ink was sonicated for 30 min and then deposited onto "
-        "the electrode."
+        "The catalyst ink was prepared by sonicating a mixture of 3 mg "
+        "catalyst, 500 μL DI water, and 20 μL Nafion."
     )
     response_payload = {
         "protocols": [
@@ -356,8 +521,13 @@ def test_teacher_rejects_summarized_step_but_keeps_exact_evidence_action():
                 "steps": [
                     {
                         "source_chunk_id": "methods-1",
-                        "action": "Sonicate the ink and coat the electrode.",
-                        "conditions": ["30 min"],
+                        "verb": "sonicating",
+                        "targets": ["mixture"],
+                        "params": {
+                            "catalyst_amount": "3 mg",
+                            "water_volume": "500 μL",
+                            "nafion_volume": "20 μL",
+                        },
                         "evidence_quote": evidence_quote,
                     }
                 ],
@@ -384,8 +554,8 @@ def test_teacher_rejects_summarized_step_but_keeps_exact_evidence_action():
         region="us-east-1",
     )
     paper = SourcePaper(
-        paper_id="paper-step-fallback",
-        title="Evidence-canonical steps",
+        paper_id="paper-atomic-step",
+        title="Atomic evidence-bound steps",
         selection_tier="primary_oer",
         selection_reasons=["methods"],
         source_bucket="bucket",
@@ -396,8 +566,7 @@ def test_teacher_rejects_summarized_step_but_keeps_exact_evidence_action():
                 section_type="methods",
                 text=(
                     evidence_quote
-                    + " The electrochemical activity was then measured at "
-                    "10 mV s−1 using the experimental protocol."
+                    + " The ink was then deposited onto the electrode."
                 ),
             )
         ],
@@ -405,11 +574,21 @@ def test_teacher_rejects_summarized_step_but_keeps_exact_evidence_action():
 
     protocols = extractor.extract(paper)
 
-    assert protocols[0].steps[0].action == evidence_quote
-    assert protocols[0].steps[0].conditions == ["30 min"]
-    action_audit = next(
+    step = protocols[0].steps[0]
+    assert step.action == "sonicating"
+    assert step.verb == "sonicating"
+    assert step.targets == ["mixture"]
+    assert step.params == {
+        "catalyst_amount": "3 mg",
+        "nafion_volume": "20 μL",
+        "water_volume": "500 μL",
+    }
+    assert step.conditions == []
+    assert len(step.evidence_ids) == 1
+    assert protocols[0].evidence[0].quote == evidence_quote
+    assert extractor.accepted_field_count >= 5
+    assert not [
         record
         for record in extractor.field_audit_records
-        if record.field_path == "steps[0].action"
-    )
-    assert action_audit.rejection_reason == RejectionReason.OVER_GENERALIZED
+        if record.entity_type == "steps"
+    ]

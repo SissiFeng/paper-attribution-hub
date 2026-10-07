@@ -6,6 +6,7 @@ from __future__ import annotations
 
 import json
 import re
+from datetime import date
 from pathlib import Path
 from types import SimpleNamespace
 
@@ -284,3 +285,139 @@ def test_categories_usage_and_stages_render(session, tmp_path, monkeypatch):
     graph = json.loads((out / "graph.json").read_text(encoding="utf-8"))
     assert any(n["type"] == "concept" for n in graph["nodes"])
     assert any(e["type"] == "member" for e in graph["edges"])
+
+
+def test_incremental_export_preserves_unchanged_files_and_prunes_only_managed_pages(
+    session, tmp_path
+):
+    from app.models import PaperEntity
+    from app.scripts.export_llm_wiki import export_llm_wiki
+
+    _seed(session)
+    out = tmp_path / "llm-wiki"
+    first = export_llm_wiki(out)
+    method_path = out / "wiki" / "methods" / "bayesian-optimization.md"
+    removed_path = out / "wiki" / "software" / "python.md"
+    unmanaged_path = out / "wiki" / "notes" / "reviewed-observation.md"
+    unmanaged_path.parent.mkdir(parents=True)
+    unmanaged_path.write_text(
+        "---\ntype: synthesis\nname: Reviewed observation\n"
+        "generated: '2026-08-26'\n---\n\n# Reviewed observation\n",
+        encoding="utf-8",
+    )
+    first_mtime = method_path.stat().st_mtime_ns
+
+    session.query(PaperEntity).filter_by(
+        entity_type="software", normalized_name="python"
+    ).delete()
+    session.commit()
+    second = export_llm_wiki(out)
+
+    assert first["manifest_hash"]
+    assert second["manifest_hash"] != first["manifest_hash"]
+    assert method_path.stat().st_mtime_ns == first_mtime
+    assert not removed_path.exists()
+    assert unmanaged_path.exists()
+    assert "wiki/notes/reviewed-observation" in (out / "index.md").read_text(
+        encoding="utf-8"
+    )
+    assert "wiki/software/python" in second["removed_pages"]
+    assert "wiki/methods/bayesian-optimization" in second["unchanged_pages"]
+
+
+def test_live_wiki_lint_reports_structural_freshness_and_integrity_failures(
+    session, tmp_path
+):
+    from app.scripts.export_llm_wiki import export_llm_wiki
+    from app.services.llm_wiki_lifecycle import lint_llm_wiki_vault
+
+    _seed(session)
+    out = tmp_path / "llm-wiki"
+    export_llm_wiki(out)
+
+    orphan = out / "wiki" / "notes" / "orphan.md"
+    orphan.parent.mkdir(parents=True)
+    orphan.write_text(
+        "---\ntype: synthesis\nname: Orphan\ngenerated: '2020-01-01'\n---\n\n"
+        "# Orphan\n\nCONTRADICTION: reviewer resolution required.\n\n"
+        "[[wiki/missing-page|Missing page]]\n",
+        encoding="utf-8",
+    )
+    tracked = out / "wiki" / "methods" / "bayesian-optimization.md"
+    tracked.write_text(
+        tracked.read_text(encoding="utf-8") + "\nTampered after export.\n",
+        encoding="utf-8",
+    )
+    graph_path = out / "graph.json"
+    graph_path.write_text(
+        graph_path.read_text(encoding="utf-8") + "\n",
+        encoding="utf-8",
+    )
+    manifest_path = out / "manifest.json"
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    manifest["manifest_hash"] = "tampered"
+    manifest_path.write_text(json.dumps(manifest), encoding="utf-8")
+
+    report = lint_llm_wiki_vault(
+        out,
+        today=date(2026, 8, 26),
+        stale_after_days=90,
+    )
+
+    assert report.status == "failed"
+    codes = {issue.code for issue in report.issues}
+    assert {
+        "orphan_page",
+        "broken_wikilink",
+        "stale_page",
+        "content_hash_mismatch",
+        "knowledge_conflict_review",
+        "artifact_hash_mismatch",
+        "manifest_hash_mismatch",
+    } <= codes
+    assert any(issue.path == "wiki/notes/orphan.md" for issue in report.issues)
+
+
+def test_wiki_search_includes_generated_and_reviewed_pages_but_excludes_drafts(
+    tmp_path,
+):
+    from app.services.llm_wiki_lifecycle import search_llm_wiki
+
+    root = tmp_path / "llm-wiki"
+    concept = root / "wiki" / "concepts" / "closed-loop.md"
+    reviewed = root / "wiki" / "syntheses" / "bridge-experiments.md"
+    draft = root / "wiki" / "syntheses" / "private-draft.md"
+    concept.parent.mkdir(parents=True)
+    reviewed.parent.mkdir(parents=True)
+    concept.write_text(
+        "---\ntype: concept\nname: Closed-loop workflow\n"
+        "generated: '2026-08-26'\n---\n\n# Closed-loop workflow\n\n"
+        "Bayesian optimization selects automated experiments.\n",
+        encoding="utf-8",
+    )
+    reviewed.write_text(
+        "---\ntype: synthesis\nname: Bridge experiments\n"
+        "review_status: reviewed\ngenerated: '2026-08-26'\n---\n\n"
+        "# Bridge experiments\n\nCross-route evidence requires an explicit bridge.\n",
+        encoding="utf-8",
+    )
+    draft.write_text(
+        "---\ntype: synthesis\nname: Private draft\n"
+        "review_status: draft\ngenerated: '2026-08-26'\n---\n\n"
+        "# Private draft\n\nSecret draft-only bridge claim.\n",
+        encoding="utf-8",
+    )
+    (root / "index.md").write_text(
+        "[[wiki/concepts/closed-loop|Closed-loop workflow]]\n"
+        "[[wiki/syntheses/bridge-experiments|Bridge experiments]]\n"
+        "[[wiki/syntheses/private-draft|Private draft]]\n",
+        encoding="utf-8",
+    )
+
+    generated_hits = search_llm_wiki("automated experiments", root=root)
+    reviewed_hits = search_llm_wiki("cross-route bridge", root=root)
+    draft_hits = search_llm_wiki("secret draft-only", root=root)
+
+    assert generated_hits[0].path == "wiki/concepts/closed-loop"
+    assert reviewed_hits[0].path == "wiki/syntheses/bridge-experiments"
+    assert draft_hits == []

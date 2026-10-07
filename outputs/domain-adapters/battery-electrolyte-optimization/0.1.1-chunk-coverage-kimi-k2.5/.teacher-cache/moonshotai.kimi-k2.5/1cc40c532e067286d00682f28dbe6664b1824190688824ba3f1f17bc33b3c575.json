@@ -1,0 +1,1290 @@
+{
+  "audit_summary": {
+    "accepted_field_count": 31,
+    "proposed_field_count": 85,
+    "rejected_field_count": 54,
+    "repair_attempted_count": 1,
+    "repair_succeeded_count": 0,
+    "unsupported_claim_count": 54
+  },
+  "candidate_domain_terms": [
+    "electrolyte",
+    "lithium-ion",
+    "ionic conductivity",
+    "solubility",
+    "redox"
+  ],
+  "field_audit_records": [
+    {
+      "cited_span": "Lithium perchlorate (99.99%, Sigma-Aldrich), LiTFSI (99.9%, Sol- vionics), DMSO (99.9%, Sigma-Aldrich), TMP (98.0%, Sigma- Aldrich), and ACN (99.8%, Sigma-Aldrich) were stored in an argon-filled glovebox (<2 ppm H₂O, <1 ppm O₂).",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[0].role",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.xcrp.2025.102548",
+      "proposed_value": "salt",
+      "protocol_index": 0,
+      "rejection_reason": "value_elsewhere",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Lithium perchlorate (99.99%, Sigma-Aldrich), LiTFSI (99.9%, Sol- vionics), DMSO (99.9%, Sigma-Aldrich), TMP (98.0%, Sigma- Aldrich), and ACN (99.8%, Sigma-Aldrich) were stored in an argon-filled glovebox (<2 ppm H₂O, <1 ppm O₂).",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[0].amount",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.xcrp.2025.102548",
+      "proposed_value": "1.0 mol kg⁻¹",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Lithium perchlorate (99.99%, Sigma-Aldrich), LiTFSI (99.9%, Sol- vionics), DMSO (99.9%, Sigma-Aldrich), TMP (98.0%, Sigma- Aldrich), and ACN (99.8%, Sigma-Aldrich) were stored in an argon-filled glovebox (<2 ppm H₂O, <1 ppm O₂).",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[0].pretreatment",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.xcrp.2025.102548",
+      "proposed_value": "stored in argon-filled glovebox",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Lithium perchlorate (99.99%, Sigma-Aldrich), LiTFSI (99.9%, Sol- vionics), DMSO (99.9%, Sigma-Aldrich), TMP (98.0%, Sigma- Aldrich), and ACN (99.8%, Sigma-Aldrich) were stored in an argon-filled glovebox (<2 ppm H₂O, <1 ppm O₂).",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[1].role",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.xcrp.2025.102548",
+      "proposed_value": "salt",
+      "protocol_index": 0,
+      "rejection_reason": "value_elsewhere",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Lithium perchlorate (99.99%, Sigma-Aldrich), LiTFSI (99.9%, Sol- vionics), DMSO (99.9%, Sigma-Aldrich), TMP (98.0%, Sigma- Aldrich), and ACN (99.8%, Sigma-Aldrich) were stored in an argon-filled glovebox (<2 ppm H₂O, <1 ppm O₂).",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[1].amount",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.xcrp.2025.102548",
+      "proposed_value": "1.0 mol kg⁻¹",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Lithium perchlorate (99.99%, Sigma-Aldrich), LiTFSI (99.9%, Sol- vionics), DMSO (99.9%, Sigma-Aldrich), TMP (98.0%, Sigma- Aldrich), and ACN (99.8%, Sigma-Aldrich) were stored in an argon-filled glovebox (<2 ppm H₂O, <1 ppm O₂).",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[1].supplier",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.xcrp.2025.102548",
+      "proposed_value": "Solvionics",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Lithium perchlorate (99.99%, Sigma-Aldrich), LiTFSI (99.9%, Sol- vionics), DMSO (99.9%, Sigma-Aldrich), TMP (98.0%, Sigma- Aldrich), and ACN (99.8%, Sigma-Aldrich) were stored in an argon-filled glovebox (<2 ppm H₂O, <1 ppm O₂).",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[1].pretreatment",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.xcrp.2025.102548",
+      "proposed_value": "stored in argon-filled glovebox",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "DMSO (99.9%, Sigma-Aldrich), TMP (98.0%, Sigma- Aldrich), and ACN (99.8%, Sigma-Aldrich) were stored in an argon-filled glovebox (<2 ppm H₂O, <1 ppm O₂). The solvents were dried with molecular sieves (3 A˚) for at least 24 h before use.",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[2].pretreatment",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.xcrp.2025.102548",
+      "proposed_value": "dried with molecular sieves (3 Å) for at least 24 h before use",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "DMSO (99.9%, Sigma-Aldrich), TMP (98.0%, Sigma- Aldrich), and ACN (99.8%, Sigma-Aldrich) were stored in an argon-filled glovebox (<2 ppm H₂O, <1 ppm O₂). The solvents were dried with molecular sieves (3 A˚) for at least 24 h before use.",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[3].pretreatment",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.xcrp.2025.102548",
+      "proposed_value": "dried with molecular sieves (3 Å) for at least 24 h before use",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "DMSO (99.9%, Sigma-Aldrich), TMP (98.0%, Sigma- Aldrich), and ACN (99.8%, Sigma-Aldrich) were stored in an argon-filled glovebox (<2 ppm H₂O, <1 ppm O₂). The solvents were dried with molecular sieves (3 A˚) for at least 24 h before use.",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[4].pretreatment",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.xcrp.2025.102548",
+      "proposed_value": "dried with molecular sieves (3 Å) for at least 24 h before use",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "LFP (1.0 mAh cm 2 ) and LTO (1.0 mAh cm 2 )electrode sheets were obtained from CustomCells GmbH and cut to 16 and 13 mm diameter discs, respectively.",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[6].name",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.xcrp.2025.102548",
+      "proposed_value": "LFP electrode",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "LFP (1.0 mAh cm 2 ) and LTO (1.0 mAh cm 2 )electrode sheets were obtained from CustomCells GmbH and cut to 16 and 13 mm diameter discs, respectively.",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[7].name",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.xcrp.2025.102548",
+      "proposed_value": "LTO electrode",
+      "protocol_index": 0,
+      "rejection_reason": "value_elsewhere",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Separators (18 mm diameter discs, GF/A glass fiber), CR2025 coin-cell parts (316L-type stainless steel), and electrodes were used as received.",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[8].name",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.xcrp.2025.102548",
+      "proposed_value": "GF/A glass fiber separator",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Separators (18 mm diameter discs, GF/A glass fiber), CR2025 coin-cell parts (316L-type stainless steel), and electrodes were used as received.",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[9].role",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.xcrp.2025.102548",
+      "proposed_value": "cell hardware",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Separators (18 mm diameter discs, GF/A glass fiber), CR2025 coin-cell parts (316L-type stainless steel), and electrodes were used as received.",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[9].pretreatment",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.xcrp.2025.102548",
+      "proposed_value": "316L-type stainless steel, used as received",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Eight stock solutions were prepared, each with 1.0 mol kg 1 (molal, m) salt in sol- vent—salts: LiClO₄ and LiTFSI and solvents: DMSO, TMP, ACN, and H₂O.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[0].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.xcrp.2025.102548",
+      "proposed_value": "Prepare stock solutions",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Eight stock solutions were prepared, each with 1.0 mol kg 1 (molal, m) salt in sol- vent—salts: LiClO₄ and LiTFSI and solvents: DMSO, TMP, ACN, and H₂O.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[0].conditions[0]",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.xcrp.2025.102548",
+      "proposed_value": "1.0 mol kg⁻¹ (molal) salt concentration",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Eight stock solutions were prepared, each with 1.0 mol kg 1 (molal, m) salt in sol- vent—salts: LiClO₄ and LiTFSI and solvents: DMSO, TMP, ACN, and H₂O.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[0].notes",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.xcrp.2025.102548",
+      "proposed_value": "Eight stock solutions prepared: LiClO₄ and LiTFSI salts in DMSO, TMP, ACN, and H₂O solvents",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Electrolyte formulations from the BO were pre- pared by automated pipette mixing of the eight stock solutions.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[1].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.xcrp.2025.102548",
+      "proposed_value": "Prepare electrolyte formulations by automated pipette mixing",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Electrolyte formulations from the BO were pre- pared by automated pipette mixing of the eight stock solutions.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[1].notes",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.xcrp.2025.102548",
+      "proposed_value": "Mixing of the eight stock solutions to create BO electrolyte formulations",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The assembly of coin cells for the BO was done under a nitro- gen atmosphere (<5 ppm O₂) using an automated robotic setup, ODACell 2, which incorporated cycling.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[2].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.xcrp.2025.102548",
+      "proposed_value": "Assemble coin cells",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The assembly of coin cells for the BO was done under a nitro- gen atmosphere (<5 ppm O₂) using an automated robotic setup, ODACell 2, which incorporated cycling.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[2].conditions[0]",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.xcrp.2025.102548",
+      "proposed_value": "nitrogen atmosphere (<5 ppm O₂)",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The assembly of coin cells for the BO was done under a nitro- gen atmosphere (<5 ppm O₂) using an automated robotic setup, ODACell 2, which incorporated cycling.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[2].notes",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.xcrp.2025.102548",
+      "proposed_value": "Using ODACell 2 automated setup",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The cells were cycled be- tween 1.5 and 2.3 V cell voltage, and they were tested with the following protocol: 2 h rest",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[3].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.xcrp.2025.102548",
+      "proposed_value": "Rest cell",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The cells were cycled be- tween 1.5 and 2.3 V cell voltage, and they were tested with the following protocol: 2 h rest",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[3].notes",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.xcrp.2025.102548",
+      "proposed_value": "Initial rest period before cycling",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "a C/2 charge and discharge rate (1C is defined as the current required to charge a battery in 1",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[4].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.xcrp.2025.102548",
+      "proposed_value": "Galvanostatic charge/discharge cycling",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "a C/2 charge and discharge rate (1C is defined as the current required to charge a battery in 1",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[4].conditions[0]",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.xcrp.2025.102548",
+      "proposed_value": "C/2 rate",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "a C/2 charge and discharge rate (1C is defined as the current required to charge a battery in 1",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[4].conditions[1]",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.xcrp.2025.102548",
+      "proposed_value": "5 cycles",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "a C/2 charge and discharge rate (1C is defined as the current required to charge a battery in 1",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[4].conditions[2]",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.xcrp.2025.102548",
+      "proposed_value": "CC mode",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "a C/2 charge and discharge rate (1C is defined as the current required to charge a battery in 1",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[4].conditions[3]",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.xcrp.2025.102548",
+      "proposed_value": "voltage range 1.5-2.3 V",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "a C/2 charge and discharge rate (1C is defined as the current required to charge a battery in 1",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[4].notes",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.xcrp.2025.102548",
+      "proposed_value": "1C defined as current required to charge battery in 1 h",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "h) for five cycles (CC), where, upon the discharge of the last cy- cle, a voltage hold at the voltage cutoff was applied (CCCV) until 1/50 of the discharge current was reached",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[5].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.xcrp.2025.102548",
+      "proposed_value": "Apply voltage hold at cutoff voltage",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "h) for five cycles (CC), where, upon the discharge of the last cy- cle, a voltage hold at the voltage cutoff was applied (CCCV) until 1/50 of the discharge current was reached",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[5].conditions[0]",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.xcrp.2025.102548",
+      "proposed_value": "CCCV mode",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "h) for five cycles (CC), where, upon the discharge of the last cy- cle, a voltage hold at the voltage cutoff was applied (CCCV) until 1/50 of the discharge current was reached",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[5].conditions[1]",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.xcrp.2025.102548",
+      "proposed_value": "until 1/50 of discharge current reached",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "h) for five cycles (CC), where, upon the discharge of the last cy- cle, a voltage hold at the voltage cutoff was applied (CCCV) until 1/50 of the discharge current was reached",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[5].notes",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.xcrp.2025.102548",
+      "proposed_value": "Applied upon discharge of last cycle of initial 5 cycles",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "and then one charge and discharge cycle with a C/5 rate. The Coulombic efficiency and discharge capacity of this final cycle were used to charac- terize the performance of the cell for the BO.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[6].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.xcrp.2025.102548",
+      "proposed_value": "Final characterization cycle",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "and then one charge and discharge cycle with a C/5 rate. The Coulombic efficiency and discharge capacity of this final cycle were used to charac- terize the performance of the cell for the BO.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[6].notes",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.xcrp.2025.102548",
+      "proposed_value": "Coulombic efficiency and discharge capacity of this cycle used for BO characterization",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The Coulombic efficiency and discharge capacity of this final cycle were used to charac- terize the performance of the cell for the BO.",
+      "diagnostic": null,
+      "entity_type": "characterization",
+      "field_path": "characterization[0].technique",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.xcrp.2025.102548",
+      "proposed_value": "galvanostatic cycling",
+      "protocol_index": 0,
+      "rejection_reason": "value_elsewhere",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The DMSO-based (blue) and TMP-based (pink) electrolytes\n(B) Relative molar compositions of each chemical component in the two groups of electrolytes. Error bars are ± standard deviation (DMSO-based thirteen trials, achieved similar performance (altogether 94:8% ± 0:5% standard deviation).",
+      "diagnostic": null,
+      "entity_type": "results",
+      "field_path": "results[0].metric",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.xcrp.2025.102548",
+      "proposed_value": "Coulombic efficiency",
+      "protocol_index": 0,
+      "rejection_reason": "value_elsewhere",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The standard devia- tions were 3.1 mAh g\n1 and 0.5% for discharge capacity and Coulombic efficiency, respectively (relative standard deviations of 1.9% and 0.5%, respectively).",
+      "diagnostic": null,
+      "entity_type": "results",
+      "field_path": "results[1].metric",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.xcrp.2025.102548",
+      "proposed_value": "discharge capacity standard deviation",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "For gas analysis, a custom coin-type-cell configuration was used with 15 mm LFP and 13 mm LTO.",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[0].name",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.xcrp.2025.102548",
+      "proposed_value": "LFP electrode",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "For gas analysis, a custom coin-type-cell configuration was used with 15 mm LFP and 13 mm LTO.",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[1].name",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.xcrp.2025.102548",
+      "proposed_value": "LTO electrode",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "A stainless-steel mesh was placed between the LTO working electrode and the spring of the cell.",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[2].role",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.xcrp.2025.102548",
+      "proposed_value": "current collector/spacer",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "For gas analysis, a custom coin-type-cell configuration was used with 15 mm LFP and 13 mm LTO. A stainless-steel mesh was placed between the LTO working electrode and the spring of the cell.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[0].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.xcrp.2025.102548",
+      "proposed_value": "Assemble custom coin-type cell",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "For gas analysis, a custom coin-type-cell configuration was used with 15 mm LFP and 13 mm LTO. A stainless-steel mesh was placed between the LTO working electrode and the spring of the cell.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[0].conditions[0]",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.xcrp.2025.102548",
+      "proposed_value": "argon atmosphere",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "For gas analysis, a custom coin-type-cell configuration was used with 15 mm LFP and 13 mm LTO. A stainless-steel mesh was placed between the LTO working electrode and the spring of the cell.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[0].notes",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.xcrp.2025.102548",
+      "proposed_value": "15 mm LFP, 13 mm LTO, stainless-steel mesh between LTO and spring",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "For these experiments, the galvanostatic cycling proto- col was different from the cells cycled for the BO: 5 h rest followed by three CC charge and discharge cycles with a C/5 rate.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[1].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.xcrp.2025.102548",
+      "proposed_value": "Rest cell",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "For these experiments, the galvanostatic cycling proto- col was different from the cells cycled for the BO: 5 h rest followed by three CC charge and discharge cycles with a C/5 rate.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[1].notes",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.xcrp.2025.102548",
+      "proposed_value": "Initial rest period before OEMS cycling",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "For these experiments, the galvanostatic cycling proto- col was different from the cells cycled for the BO: 5 h rest followed by three CC charge and discharge cycles with a C/5 rate.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[2].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.xcrp.2025.102548",
+      "proposed_value": "Galvanostatic charge/discharge cycling with OEMS",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "For these experiments, the galvanostatic cycling proto- col was different from the cells cycled for the BO: 5 h rest followed by three CC charge and discharge cycles with a C/5 rate.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[2].conditions[1]",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.xcrp.2025.102548",
+      "proposed_value": "3 cycles",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "For these experiments, the galvanostatic cycling proto- col was different from the cells cycled for the BO: 5 h rest followed by three CC charge and discharge cycles with a C/5 rate.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[2].conditions[2]",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.xcrp.2025.102548",
+      "proposed_value": "CC mode",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "For these experiments, the galvanostatic cycling proto- col was different from the cells cycled for the BO: 5 h rest followed by three CC charge and discharge cycles with a C/5 rate.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[2].notes",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.xcrp.2025.102548",
+      "proposed_value": "Different protocol from BO cycling; for investigating HER kinetics",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Online electrochemical mass spectrometry For gas analysis, a custom coin-type-cell configuration was used with 15 mm LFP and 13 mm LTO.",
+      "diagnostic": null,
+      "entity_type": "characterization",
+      "field_path": "characterization[0].technique",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.xcrp.2025.102548",
+      "proposed_value": "online electrochemical mass spectrometry (OEMS)",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The Coulombic efficiency of the cells from the OEMS measurement was lower compared to the same elec- trolyte formulations in the closed coin-cell configuration of the BO. This is likely due to the semi-close nature of the OEMS cell. 35 During sampling, gas is extracted from the cell and re- placed with argon, disrupting the equilibrium of gases inside the cell that would otherwise not be altered. The stack pressure is also different between the two cell configurations.",
+      "diagnostic": null,
+      "entity_type": "caveats",
+      "field_path": "caveats[0].text",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.xcrp.2025.102548",
+      "proposed_value": "Coulombic efficiency lower in OEMS vs closed coin-cell due to semi-close nature and different stack pressure",
+      "protocol_index": 1,
+      "rejection_reason": "span_not_in_source",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    }
+  ],
+  "inference_config": {
+    "max_tokens": 14000,
+    "temperature": 0.0
+  },
+  "mapping_version": "evidence-field-mapper-v0.2",
+  "minimum_chunk_score": 2,
+  "model_id": "moonshotai.kimi-k2.5",
+  "paper_id": "DOI:10.1016_j.xcrp.2025.102548",
+  "prompt_version": "scientific-protocol-teacher-v0.3",
+  "protocols": [
+    {
+      "caveats": [],
+      "characterization": [],
+      "evidence": [
+        {
+          "char_end": 254,
+          "char_start": 26,
+          "chunk_id": "mdchk_6dddd26eea2a59a1",
+          "document_char_end": 27816,
+          "document_char_start": 27588,
+          "evidence_id": "ev_3b74649b9203d464",
+          "paper_id": "DOI:10.1016_j.xcrp.2025.102548",
+          "quote": "Lithium perchlorate (99.99%, Sigma-Aldrich), LiTFSI (99.9%, Sol- vionics), DMSO (99.9%, Sigma-Aldrich), TMP (98.0%, Sigma- Aldrich), and ACN (99.8%, Sigma-Aldrich) were stored in an argon-filled glovebox (<2 ppm H₂O, <1 ppm O₂).",
+          "source_sha256": "203963977eb9f3bc14773e41cc47f5bbfe57e09c3676b99e62f81e19c24856be"
+        },
+        {
+          "char_end": 337,
+          "char_start": 101,
+          "chunk_id": "mdchk_6dddd26eea2a59a1",
+          "document_char_end": 27899,
+          "document_char_start": 27663,
+          "evidence_id": "ev_77a7596fd827168a",
+          "paper_id": "DOI:10.1016_j.xcrp.2025.102548",
+          "quote": "DMSO (99.9%, Sigma-Aldrich), TMP (98.0%, Sigma- Aldrich), and ACN (99.8%, Sigma-Aldrich) were stored in an argon-filled glovebox (<2 ppm H₂O, <1 ppm O₂). The solvents were dried with molecular sieves (3 A˚) for at least 24 h before use.",
+          "source_sha256": "203963977eb9f3bc14773e41cc47f5bbfe57e09c3676b99e62f81e19c24856be"
+        },
+        {
+          "char_end": 771,
+          "char_start": 629,
+          "chunk_id": "mdchk_6dddd26eea2a59a1",
+          "document_char_end": 28333,
+          "document_char_start": 28191,
+          "evidence_id": "ev_341eca8058de8bab",
+          "paper_id": "DOI:10.1016_j.xcrp.2025.102548",
+          "quote": "Separators (18 mm diameter discs, GF/A glass fiber), CR2025 coin-cell parts (316L-type stainless steel), and electrodes were used as received.",
+          "source_sha256": "203963977eb9f3bc14773e41cc47f5bbfe57e09c3676b99e62f81e19c24856be"
+        },
+        {
+          "char_end": 933,
+          "char_start": 772,
+          "chunk_id": "mdchk_6dddd26eea2a59a1",
+          "document_char_end": 28495,
+          "document_char_start": 28334,
+          "evidence_id": "ev_53f858cca5b0a786",
+          "paper_id": "DOI:10.1016_j.xcrp.2025.102548",
+          "quote": "The assembly of coin cells for the BO was done under a nitro- gen atmosphere (<5 ppm O₂) using an automated robotic setup, ODACell 2, which incorporated cycling.",
+          "source_sha256": "203963977eb9f3bc14773e41cc47f5bbfe57e09c3676b99e62f81e19c24856be"
+        },
+        {
+          "char_end": 1088,
+          "char_start": 936,
+          "chunk_id": "mdchk_6dddd26eea2a59a1",
+          "document_char_end": 28650,
+          "document_char_start": 28498,
+          "evidence_id": "ev_bedfc0ca28c558f4",
+          "paper_id": "DOI:10.1016_j.xcrp.2025.102548",
+          "quote": "Eight stock solutions were prepared, each with 1.0 mol kg 1 (molal, m) salt in sol- vent—salts: LiClO₄ and LiTFSI and solvents: DMSO, TMP, ACN, and H₂O.",
+          "source_sha256": "203963977eb9f3bc14773e41cc47f5bbfe57e09c3676b99e62f81e19c24856be"
+        },
+        {
+          "char_end": 1199,
+          "char_start": 1089,
+          "chunk_id": "mdchk_6dddd26eea2a59a1",
+          "document_char_end": 28761,
+          "document_char_start": 28651,
+          "evidence_id": "ev_b9fabde49b67567d",
+          "paper_id": "DOI:10.1016_j.xcrp.2025.102548",
+          "quote": "Electrolyte formulations from the BO were pre- pared by automated pipette mixing of the eight stock solutions.",
+          "source_sha256": "203963977eb9f3bc14773e41cc47f5bbfe57e09c3676b99e62f81e19c24856be"
+        },
+        {
+          "char_end": 113,
+          "char_start": 17,
+          "chunk_id": "mdchk_8b16d228af0397cb",
+          "document_char_end": 32133,
+          "document_char_start": 32037,
+          "evidence_id": "ev_be2a0d9a1d7e727a",
+          "paper_id": "DOI:10.1016_j.xcrp.2025.102548",
+          "quote": "Neware BTS 4008Tn-5V10mA battery testers were used to cycle the coin cells assembled for the BO.",
+          "source_sha256": "15605ee3db332e7cc4c9b6e9a05785c484bde0ca5d17a6ca875a9937e691751d"
+        },
+        {
+          "char_end": 232,
+          "char_start": 114,
+          "chunk_id": "mdchk_8b16d228af0397cb",
+          "document_char_end": 32252,
+          "document_char_start": 32134,
+          "evidence_id": "ev_b74c0caa9c834f6f",
+          "paper_id": "DOI:10.1016_j.xcrp.2025.102548",
+          "quote": "The cells were cycled be- tween 1.5 and 2.3 V cell voltage, and they were tested with the following protocol: 2 h rest",
+          "source_sha256": "15605ee3db332e7cc4c9b6e9a05785c484bde0ca5d17a6ca875a9937e691751d"
+        },
+        {
+          "char_end": 329,
+          "char_start": 234,
+          "chunk_id": "mdchk_8b16d228af0397cb",
+          "document_char_end": 32349,
+          "document_char_start": 32254,
+          "evidence_id": "ev_f11d65b17bd91b2b",
+          "paper_id": "DOI:10.1016_j.xcrp.2025.102548",
+          "quote": "a C/2 charge and discharge rate (1C is defined as the current required to charge a battery in 1",
+          "source_sha256": "15605ee3db332e7cc4c9b6e9a05785c484bde0ca5d17a6ca875a9937e691751d"
+        },
+        {
+          "char_end": 175,
+          "char_start": 0,
+          "chunk_id": "mdchk_f048b9584b788f3b",
+          "document_char_end": 32526,
+          "document_char_start": 32351,
+          "evidence_id": "ev_88161134cbd914cf",
+          "paper_id": "DOI:10.1016_j.xcrp.2025.102548",
+          "quote": "h) for five cycles (CC), where, upon the discharge of the last cy- cle, a voltage hold at the voltage cutoff was applied (CCCV) until 1/50 of the discharge current was reached",
+          "source_sha256": "e8106f6a3cf4c549114dd1b934948ed6a2b03758d3555b3cea85c52272c1d429"
+        },
+        {
+          "char_end": 369,
+          "char_start": 177,
+          "chunk_id": "mdchk_f048b9584b788f3b",
+          "document_char_end": 32720,
+          "document_char_start": 32528,
+          "evidence_id": "ev_ea0aa625a7961041",
+          "paper_id": "DOI:10.1016_j.xcrp.2025.102548",
+          "quote": "and then one charge and discharge cycle with a C/5 rate. The Coulombic efficiency and discharge capacity of this final cycle were used to charac- terize the performance of the cell for the BO.",
+          "source_sha256": "e8106f6a3cf4c549114dd1b934948ed6a2b03758d3555b3cea85c52272c1d429"
+        }
+      ],
+      "evidence_scope": "primary_report",
+      "instruments": [
+        {
+          "entity_id": "inst_59fc577b1399768d",
+          "evidence_ids": [
+            "ev_53f858cca5b0a786"
+          ],
+          "manufacturer": null,
+          "model": null,
+          "name": "ODACell 2",
+          "settings": {}
+        },
+        {
+          "entity_id": "inst_a77a2ae3f7e8c5dc",
+          "evidence_ids": [
+            "ev_be2a0d9a1d7e727a"
+          ],
+          "manufacturer": "Neware",
+          "model": "BTS 4008Tn-5V10mA",
+          "name": "Neware BTS 4008Tn-5V10mA battery tester",
+          "settings": {}
+        }
+      ],
+      "materials": [
+        {
+          "amount": null,
+          "entity_id": "mat_7c8ec75e28bda360",
+          "evidence_ids": [
+            "ev_3b74649b9203d464"
+          ],
+          "name": "Lithium perchlorate",
+          "pretreatment": null,
+          "purity": "99.99%",
+          "role": null,
+          "supplier": "Sigma-Aldrich"
+        },
+        {
+          "amount": null,
+          "entity_id": "mat_5c6cf4ee42b1df73",
+          "evidence_ids": [
+            "ev_3b74649b9203d464"
+          ],
+          "name": "LiTFSI",
+          "pretreatment": null,
+          "purity": "99.9%",
+          "role": null,
+          "supplier": null
+        },
+        {
+          "amount": null,
+          "entity_id": "mat_23f462ec812c0180",
+          "evidence_ids": [
+            "ev_77a7596fd827168a"
+          ],
+          "name": "DMSO",
+          "pretreatment": null,
+          "purity": "99.9%",
+          "role": "solvent",
+          "supplier": "Sigma-Aldrich"
+        },
+        {
+          "amount": null,
+          "entity_id": "mat_13ad622005c4244a",
+          "evidence_ids": [
+            "ev_77a7596fd827168a"
+          ],
+          "name": "TMP",
+          "pretreatment": null,
+          "purity": "98.0%",
+          "role": "solvent",
+          "supplier": "Sigma-Aldrich"
+        },
+        {
+          "amount": null,
+          "entity_id": "mat_a6b2e1db2a9c93f5",
+          "evidence_ids": [
+            "ev_77a7596fd827168a"
+          ],
+          "name": "ACN",
+          "pretreatment": null,
+          "purity": "99.8%",
+          "role": "solvent",
+          "supplier": "Sigma-Aldrich"
+        },
+        {
+          "amount": null,
+          "entity_id": "mat_d3fbeae22a9b1de0",
+          "evidence_ids": [
+            "ev_bedfc0ca28c558f4"
+          ],
+          "name": "H₂O",
+          "pretreatment": null,
+          "purity": null,
+          "role": "solvent",
+          "supplier": null
+        },
+        {
+          "amount": null,
+          "entity_id": "mat_ae51c8a129b54482",
+          "evidence_ids": [
+            "ev_341eca8058de8bab"
+          ],
+          "name": "CR2025 coin-cell parts",
+          "pretreatment": null,
+          "purity": null,
+          "role": null,
+          "supplier": null
+        }
+      ],
+      "paper_id": "DOI:10.1016_j.xcrp.2025.102548",
+      "protocol_id": "protocol_c5e895c1b66b5fa4",
+      "protocol_name": "Automated coin-cell assembly and galvanostatic cycling for Bayesian optimization",
+      "protocol_type": "electrochemical",
+      "relations": [],
+      "results": [],
+      "scientific_chunk_ids": [],
+      "software": [],
+      "source_chunk_ids": [
+        "mdchk_6dddd26eea2a59a1",
+        "mdchk_8b16d228af0397cb",
+        "mdchk_f048b9584b788f3b"
+      ],
+      "source_paper_tier": "primary_battery_electrolyte",
+      "steps": [
+        {
+          "action": "Eight stock solutions were prepared, each with 1.0 mol kg 1 (molal, m) salt in sol- vent—salts: LiClO₄ and LiTFSI and solvents: DMSO, TMP, ACN, and H₂O.",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_bedfc0ca28c558f4"
+          ],
+          "notes": null,
+          "order": 1,
+          "step_id": "step_e1c587913428ccdb"
+        },
+        {
+          "action": "Electrolyte formulations from the BO were pre- pared by automated pipette mixing of the eight stock solutions.",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_b9fabde49b67567d"
+          ],
+          "notes": null,
+          "order": 2,
+          "step_id": "step_312a09163c01b935"
+        },
+        {
+          "action": "The assembly of coin cells for the BO was done under a nitro- gen atmosphere (<5 ppm O₂) using an automated robotic setup, ODACell 2, which incorporated cycling.",
+          "conditions": [
+            "automated robotic setup"
+          ],
+          "evidence_ids": [
+            "ev_53f858cca5b0a786"
+          ],
+          "notes": null,
+          "order": 3,
+          "step_id": "step_36e4c6f99ed23124"
+        },
+        {
+          "action": "The cells were cycled be- tween 1.5 and 2.3 V cell voltage, and they were tested with the following protocol: 2 h rest",
+          "conditions": [
+            "2 h"
+          ],
+          "evidence_ids": [
+            "ev_b74c0caa9c834f6f"
+          ],
+          "notes": null,
+          "order": 4,
+          "step_id": "step_4629ac31faf9a162"
+        },
+        {
+          "action": "a C/2 charge and discharge rate (1C is defined as the current required to charge a battery in 1",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_f11d65b17bd91b2b"
+          ],
+          "notes": null,
+          "order": 5,
+          "step_id": "step_18ebe0e7a70a08e5"
+        },
+        {
+          "action": "h) for five cycles (CC), where, upon the discharge of the last cy- cle, a voltage hold at the voltage cutoff was applied (CCCV) until 1/50 of the discharge current was reached",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_88161134cbd914cf"
+          ],
+          "notes": null,
+          "order": 6,
+          "step_id": "step_4836e98a83aa5c68"
+        },
+        {
+          "action": "and then one charge and discharge cycle with a C/5 rate. The Coulombic efficiency and discharge capacity of this final cycle were used to charac- terize the performance of the cell for the BO.",
+          "conditions": [
+            "C/5 rate",
+            "one charge and discharge cycle"
+          ],
+          "evidence_ids": [
+            "ev_ea0aa625a7961041"
+          ],
+          "notes": null,
+          "order": 7,
+          "step_id": "step_f8d76c00a376f904"
+        }
+      ]
+    },
+    {
+      "caveats": [],
+      "characterization": [],
+      "evidence": [
+        {
+          "char_end": 926,
+          "char_start": 736,
+          "chunk_id": "mdchk_f048b9584b788f3b",
+          "document_char_end": 33277,
+          "document_char_start": 33087,
+          "evidence_id": "ev_87e60d045065aee4",
+          "paper_id": "DOI:10.1016_j.xcrp.2025.102548",
+          "quote": "For gas analysis, a custom coin-type-cell configuration was used with 15 mm LFP and 13 mm LTO. A stainless-steel mesh was placed between the LTO working electrode and the spring of the cell.",
+          "source_sha256": "e8106f6a3cf4c549114dd1b934948ed6a2b03758d3555b3cea85c52272c1d429"
+        },
+        {
+          "char_end": 926,
+          "char_start": 831,
+          "chunk_id": "mdchk_f048b9584b788f3b",
+          "document_char_end": 33277,
+          "document_char_start": 33182,
+          "evidence_id": "ev_792d3846b5f860c5",
+          "paper_id": "DOI:10.1016_j.xcrp.2025.102548",
+          "quote": "A stainless-steel mesh was placed between the LTO working electrode and the spring of the cell.",
+          "source_sha256": "e8106f6a3cf4c549114dd1b934948ed6a2b03758d3555b3cea85c52272c1d429"
+        },
+        {
+          "char_end": 1307,
+          "char_start": 1125,
+          "chunk_id": "mdchk_f048b9584b788f3b",
+          "document_char_end": 33658,
+          "document_char_start": 33476,
+          "evidence_id": "ev_a529b607a82ec81d",
+          "paper_id": "DOI:10.1016_j.xcrp.2025.102548",
+          "quote": "For these experiments, the galvanostatic cycling proto- col was different from the cells cycled for the BO: 5 h rest followed by three CC charge and discharge cycles with a C/5 rate.",
+          "source_sha256": "e8106f6a3cf4c549114dd1b934948ed6a2b03758d3555b3cea85c52272c1d429"
+        }
+      ],
+      "evidence_scope": "primary_report",
+      "instruments": [],
+      "materials": [
+        {
+          "amount": null,
+          "entity_id": "mat_d208b6fa67688ad3",
+          "evidence_ids": [
+            "ev_792d3846b5f860c5"
+          ],
+          "name": "stainless-steel mesh",
+          "pretreatment": null,
+          "purity": null,
+          "role": null,
+          "supplier": null
+        }
+      ],
+      "paper_id": "DOI:10.1016_j.xcrp.2025.102548",
+      "protocol_id": "protocol_d71fc59f48d30d00",
+      "protocol_name": "Online electrochemical mass spectrometry (OEMS) for gas analysis",
+      "protocol_type": "analytical",
+      "relations": [],
+      "results": [],
+      "scientific_chunk_ids": [],
+      "software": [],
+      "source_chunk_ids": [
+        "mdchk_f048b9584b788f3b"
+      ],
+      "source_paper_tier": "primary_battery_electrolyte",
+      "steps": [
+        {
+          "action": "For gas analysis, a custom coin-type-cell configuration was used with 15 mm LFP and 13 mm LTO. A stainless-steel mesh was placed between the LTO working electrode and the spring of the cell.",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_87e60d045065aee4"
+          ],
+          "notes": null,
+          "order": 1,
+          "step_id": "step_b551fe981242a44e"
+        },
+        {
+          "action": "For these experiments, the galvanostatic cycling proto- col was different from the cells cycled for the BO: 5 h rest followed by three CC charge and discharge cycles with a C/5 rate.",
+          "conditions": [
+            "5 h"
+          ],
+          "evidence_ids": [
+            "ev_a529b607a82ec81d"
+          ],
+          "notes": null,
+          "order": 2,
+          "step_id": "step_d71fc59f48d30d00"
+        },
+        {
+          "action": "For these experiments, the galvanostatic cycling proto- col was different from the cells cycled for the BO: 5 h rest followed by three CC charge and discharge cycles with a C/5 rate.",
+          "conditions": [
+            "C/5 rate"
+          ],
+          "evidence_ids": [
+            "ev_a529b607a82ec81d"
+          ],
+          "notes": null,
+          "order": 3,
+          "step_id": "step_ce6f32494fcb5663"
+        }
+      ]
+    }
+  ],
+  "region": "us-east-1",
+  "schema_version": "bedrock-teacher-paper-cache-v0.2",
+  "teacher_response": {
+    "diagnostic": null,
+    "invocation_count": 1,
+    "metrics": {
+      "latencyMs": 39464
+    },
+    "raw_text": " ```json\n{\n  \"protocols\": [\n    {\n      \"source_chunk_ids\": [\"mdchk_6dddd26eea2a59a1\", \"mdchk_8b16d228af0397cb\", \"mdchk_f048b9584b788f3b\"],\n      \"protocol_name\": \"Automated coin-cell assembly and galvanostatic cycling for Bayesian optimization\",\n      \"protocol_type\": \"electrochemical\",\n      \"materials\": [\n        {\n          \"source_chunk_id\": \"mdchk_6dddd26eea2a59a1\",\n          \"name\": \"Lithium perchlorate\",\n          \"role\": \"salt\",\n          \"amount\": \"1.0 mol kg⁻¹\",\n          \"purity\": \"99.99%\",\n          \"supplier\": \"Sigma-Aldrich\",\n          \"pretreatment\": \"stored in argon-filled glovebox\",\n          \"evidence_quote\": \"Lithium perchlorate (99.99%, Sigma-Aldrich), LiTFSI (99.9%, Sol- vionics), DMSO (99.9%, Sigma-Aldrich), TMP (98.0%, Sigma- Aldrich), and ACN (99.8%, Sigma-Aldrich) were stored in an argon-filled glovebox (<2 ppm H₂O, <1 ppm O₂).\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_6dddd26eea2a59a1\",\n          \"name\": \"LiTFSI\",\n          \"role\": \"salt\",\n          \"amount\": \"1.0 mol kg⁻¹\",\n          \"purity\": \"99.9%\",\n          \"supplier\": \"Solvionics\",\n          \"pretreatment\": \"stored in argon-filled glovebox\",\n          \"evidence_quote\": \"Lithium perchlorate (99.99%, Sigma-Aldrich), LiTFSI (99.9%, Sol- vionics), DMSO (99.9%, Sigma-Aldrich), TMP (98.0%, Sigma- Aldrich), and ACN (99.8%, Sigma-Aldrich) were stored in an argon-filled glovebox (<2 ppm H₂O, <1 ppm O₂).\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_6dddd26eea2a59a1\",\n          \"name\": \"DMSO\",\n          \"role\": \"solvent\",\n          \"amount\": null,\n          \"purity\": \"99.9%\",\n          \"supplier\": \"Sigma-Aldrich\",\n          \"pretreatment\": \"dried with molecular sieves (3 Å) for at least 24 h before use\",\n          \"evidence_quote\": \"DMSO (99.9%, Sigma-Aldrich), TMP (98.0%, Sigma- Aldrich), and ACN (99.8%, Sigma-Aldrich) were stored in an argon-filled glovebox (<2 ppm H₂O, <1 ppm O₂). The solvents were dried with molecular sieves (3 A˚) for at least 24 h before use.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_6dddd26eea2a59a1\",\n          \"name\": \"TMP\",\n          \"role\": \"solvent\",\n          \"amount\": null,\n          \"purity\": \"98.0%\",\n          \"supplier\": \"Sigma-Aldrich\",\n          \"pretreatment\": \"dried with molecular sieves (3 Å) for at least 24 h before use\",\n          \"evidence_quote\": \"DMSO (99.9%, Sigma-Aldrich), TMP (98.0%, Sigma- Aldrich), and ACN (99.8%, Sigma-Aldrich) were stored in an argon-filled glovebox (<2 ppm H₂O, <1 ppm O₂). The solvents were dried with molecular sieves (3 A˚) for at least 24 h before use.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_6dddd26eea2a59a1\",\n          \"name\": \"ACN\",\n          \"role\": \"solvent\",\n          \"amount\": null,\n          \"purity\": \"99.8%\",\n          \"supplier\": \"Sigma-Aldrich\",\n          \"pretreatment\": \"dried with molecular sieves (3 Å) for at least 24 h before use\",\n          \"evidence_quote\": \"DMSO (99.9%, Sigma-Aldrich), TMP (98.0%, Sigma- Aldrich), and ACN (99.8%, Sigma-Aldrich) were stored in an argon-filled glovebox (<2 ppm H₂O, <1 ppm O₂). The solvents were dried with molecular sieves (3 A˚) for at least 24 h before use.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_6dddd26eea2a59a1\",\n          \"name\": \"H₂O\",\n          \"role\": \"solvent\",\n          \"amount\": null,\n          \"purity\": null,\n          \"supplier\": null,\n          \"pretreatment\": null,\n          \"evidence_quote\": \"Eight stock solutions were prepared, each with 1.0 mol kg 1 (molal, m) salt in sol- vent—salts: LiClO₄ and LiTFSI and solvents: DMSO, TMP, ACN, and H₂O.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_6dddd26eea2a59a1\",\n          \"name\": \"LFP electrode\",\n          \"role\": \"cathode\",\n          \"amount\": \"1.0 mAh cm⁻²\",\n          \"purity\": null,\n          \"supplier\": \"CustomCells GmbH\",\n          \"pretreatment\": \"cut to 16 mm diameter discs, used as received\",\n          \"evidence_quote\": \"LFP (1.0 mAh cm 2 ) and LTO (1.0 mAh cm 2 )electrode sheets were obtained from CustomCells GmbH and cut to 16 and 13 mm diameter discs, respectively.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_6dddd26eea2a59a1\",\n          \"name\": \"LTO electrode\",\n          \"role\": \"anode\",\n          \"amount\": \"1.0 mAh cm⁻²\",\n          \"purity\": null,\n          \"supplier\": \"CustomCells GmbH\",\n          \"pretreatment\": \"cut to 13 mm diameter discs, used as received\",\n          \"evidence_quote\": \"LFP (1.0 mAh cm 2 ) and LTO (1.0 mAh cm 2 )electrode sheets were obtained from CustomCells GmbH and cut to 16 and 13 mm diameter discs, respectively.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_6dddd26eea2a59a1\",\n          \"name\": \"GF/A glass fiber separator\",\n          \"role\": \"separator\",\n          \"amount\": \"18 mm diameter discs\",\n          \"purity\": null,\n          \"supplier\": null,\n          \"pretreatment\": \"used as received\",\n          \"evidence_quote\": \"Separators (18 mm diameter discs, GF/A glass fiber), CR2025 coin-cell parts (316L-type stainless steel), and electrodes were used as received.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_6dddd26eea2a59a1\",\n          \"name\": \"CR2025 coin-cell parts\",\n          \"role\": \"cell hardware\",\n          \"amount\": null,\n          \"purity\": null,\n          \"supplier\": null,\n          \"pretreatment\": \"316L-type stainless steel, used as received\",\n          \"evidence_quote\": \"Separators (18 mm diameter discs, GF/A glass fiber), CR2025 coin-cell parts (316L-type stainless steel), and electrodes were used as received.\"\n        }\n      ],\n      \"instruments\": [\n        {\n          \"source_chunk_id\": \"mdchk_6dddd26eea2a59a1\",\n          \"name\": \"ODACell 2\",\n          \"model\": null,\n          \"manufacturer\": null,\n          \"settings\": {},\n          \"evidence_quote\": \"The assembly of coin cells for the BO was done under a nitro- gen atmosphere (<5 ppm O₂) using an automated robotic setup, ODACell 2, which incorporated cycling.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_8b16d228af0397cb\",\n          \"name\": \"Neware BTS 4008Tn-5V10mA battery tester\",\n          \"model\": \"BTS 4008Tn-5V10mA\",\n          \"manufacturer\": \"Neware\",\n          \"settings\": {},\n          \"evidence_quote\": \"Neware BTS 4008Tn-5V10mA battery testers were used to cycle the coin cells assembled for the BO.\"\n        }\n      ],\n      \"software\": [],\n      \"steps\": [\n        {\n          \"source_chunk_id\": \"mdchk_6dddd26eea2a59a1\",\n          \"order\": 1,\n          \"action\": \"Prepare stock solutions\",\n          \"conditions\": [\"1.0 mol kg⁻¹ (molal) salt concentration\"],\n          \"notes\": \"Eight stock solutions prepared: LiClO₄ and LiTFSI salts in DMSO, TMP, ACN, and H₂O solvents\",\n          \"evidence_quote\": \"Eight stock solutions were prepared, each with 1.0 mol kg 1 (molal, m) salt in sol- vent—salts: LiClO₄ and LiTFSI and solvents: DMSO, TMP, ACN, and H₂O.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_6dddd26eea2a59a1\",\n          \"order\": 2,\n          \"action\": \"Prepare electrolyte formulations by automated pipette mixing\",\n          \"conditions\": [],\n          \"notes\": \"Mixing of the eight stock solutions to create BO electrolyte formulations\",\n          \"evidence_quote\": \"Electrolyte formulations from the BO were pre- pared by automated pipette mixing of the eight stock solutions.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_6dddd26eea2a59a1\",\n          \"order\": 3,\n          \"action\": \"Assemble coin cells\",\n          \"conditions\": [\"nitrogen atmosphere (<5 ppm O₂)\", \"automated robotic setup\"],\n          \"notes\": \"Using ODACell 2 automated setup\",\n          \"evidence_quote\": \"The assembly of coin cells for the BO was done under a nitro- gen atmosphere (<5 ppm O₂) using an automated robotic setup, ODACell 2, which incorporated cycling.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_8b16d228af0397cb\",\n          \"order\": 4,\n          \"action\": \"Rest cell\",\n          \"conditions\": [\"2 h\"],\n          \"notes\": \"Initial rest period before cycling\",\n          \"evidence_quote\": \"The cells were cycled be- tween 1.5 and 2.3 V cell voltage, and they were tested with the following protocol: 2 h rest\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_8b16d228af0397cb\",\n          \"order\": 5,\n          \"action\": \"Galvanostatic charge/discharge cycling\",\n          \"conditions\": [\"C/2 rate\", \"5 cycles\", \"CC mode\", \"voltage range 1.5-2.3 V\"],\n          \"notes\": \"1C defined as current required to charge battery in 1 h\",\n          \"evidence_quote\": \"a C/2 charge and discharge rate (1C is defined as the current required to charge a battery in 1\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_f048b9584b788f3b\",\n          \"order\": 6,\n          \"action\": \"Apply voltage hold at cutoff voltage\",\n          \"conditions\": [\"CCCV mode\", \"until 1/50 of discharge current reached\"],\n          \"notes\": \"Applied upon discharge of last cycle of initial 5 cycles\",\n          \"evidence_quote\": \"h) for five cycles (CC), where, upon the discharge of the last cy- cle, a voltage hold at the voltage cutoff was applied (CCCV) until 1/50 of the discharge current was reached\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_f048b9584b788f3b\",\n          \"order\": 7,\n          \"action\": \"Final characterization cycle\",\n          \"conditions\": [\"C/5 rate\", \"one charge and discharge cycle\"],\n          \"notes\": \"Coulombic efficiency and discharge capacity of this cycle used for BO characterization\",\n          \"evidence_quote\": \"and then one charge and discharge cycle with a C/5 rate. The Coulombic efficiency and discharge capacity of this final cycle were used to charac- terize the performance of the cell for the BO.\"\n        }\n      ],\n      \"characterization\": [\n        {\n          \"source_chunk_id\": \"mdchk_f048b9584b788f3b\",\n          \"technique\": \"galvanostatic cycling\",\n          \"settings\": {\"rate\": \"C/5\", \"cycle\": \"cycle 6\", \"metrics\": [\"Coulombic efficiency\", \"discharge capacity\"]},\n          \"output\": null,\n          \"evidence_quote\": \"The Coulombic efficiency and discharge capacity of this final cycle were used to charac- terize the performance of the cell for the BO.\"\n        }\n      ],\n      \"results\": [\n        {\n          \"source_chunk_id\": \"mdchk_a1000b2bdaef2b8b\",\n          \"metric\": \"Coulombic efficiency\",\n          \"raw_value\": \"94.8% ± 0.5%\",\n          \"context\": \"DMSO-based and TMP-based optimized electrolytes\",\n          \"evidence_quote\": \"The DMSO-based (blue) and TMP-based (pink) electrolytes\\n(B) Relative molar compositions of each chemical component in the two groups of electrolytes. Error bars are ± standard deviation (DMSO-based thirteen trials, achieved similar performance (altogether 94:8% ± 0:5% standard deviation).\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_a1000b2bdaef2b8b\",\n          \"metric\": \"discharge capacity standard deviation\",\n          \"raw_value\": \"3.1 mAh g⁻¹\",\n          \"context\": \"relative standard deviation 1.9%\",\n          \"evidence_quote\": \"The standard devia- tions were 3.1 mAh g\\n1 and 0.5% for discharge capacity and Coulombic efficiency, respectively (relative standard deviations of 1.9% and 0.5%, respectively).\"\n        }\n      ],\n      \"caveats\": []\n    },\n    {\n      \"source_chunk_ids\": [\"mdchk_f048b9584b788f3b\"],\n      \"protocol_name\": \"Online electrochemical mass spectrometry (OEMS) for gas analysis\",\n      \"protocol_type\": \"analytical\",\n      \"materials\": [\n        {\n          \"source_chunk_id\": \"mdchk_f048b9584b788f3b\",\n          \"name\": \"LFP electrode\",\n          \"role\": \"cathode\",\n          \"amount\": \"15 mm\",\n          \"purity\": null,\n          \"supplier\": null,\n          \"pretreatment\": \"unmodified, used as is\",\n          \"evidence_quote\": \"For gas analysis, a custom coin-type-cell configuration was used with 15 mm LFP and 13 mm LTO.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_f048b9584b788f3b\",\n          \"name\": \"LTO electrode\",\n          \"role\": \"working electrode\",\n          \"amount\": \"13 mm\",\n          \"purity\": null,\n          \"supplier\": null,\n          \"pretreatment\": \"unmodified, used as is\",\n          \"evidence_quote\": \"For gas analysis, a custom coin-type-cell configuration was used with 15 mm LFP and 13 mm LTO.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_f048b9584b788f3b\",\n          \"name\": \"stainless-steel mesh\",\n          \"role\": \"current collector/spacer\",\n          \"amount\": null,\n          \"purity\": null,\n          \"supplier\": null,\n          \"pretreatment\": null,\n          \"evidence_quote\": \"A stainless-steel mesh was placed between the LTO working electrode and the spring of the cell.\"\n        }\n      ],\n      \"instruments\": [],\n      \"software\": [],\n      \"steps\": [\n        {\n          \"source_chunk_id\": \"mdchk_f048b9584b788f3b\",\n          \"order\": 1,\n          \"action\": \"Assemble custom coin-type cell\",\n          \"conditions\": [\"argon atmosphere\"],\n          \"notes\": \"15 mm LFP, 13 mm LTO, stainless-steel mesh between LTO and spring\",\n          \"evidence_quote\": \"For gas analysis, a custom coin-type-cell configuration was used with 15 mm LFP and 13 mm LTO. A stainless-steel mesh was placed between the LTO working electrode and the spring of the cell.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_f048b9584b788f3b\",\n          \"order\": 2,\n          \"action\": \"Rest cell\",\n          \"conditions\": [\"5 h\"],\n          \"notes\": \"Initial rest period before OEMS cycling\",\n          \"evidence_quote\": \"For these experiments, the galvanostatic cycling proto- col was different from the cells cycled for the BO: 5 h rest followed by three CC charge and discharge cycles with a C/5 rate.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_f048b9584b788f3b\",\n          \"order\": 3,\n          \"action\": \"Galvanostatic charge/discharge cycling with OEMS\",\n          \"conditions\": [\"C/5 rate\", \"3 cycles\", \"CC mode\"],\n          \"notes\": \"Different protocol from BO cycling; for investigating HER kinetics\",\n          \"evidence_quote\": \"For these experiments, the galvanostatic cycling proto- col was different from the cells cycled for the BO: 5 h rest followed by three CC charge and discharge cycles with a C/5 rate.\"\n        }\n      ],\n      \"characterization\": [\n        {\n          \"source_chunk_id\": \"mdchk_f048b9584b788f3b\",\n          \"technique\": \"online electrochemical mass spectrometry (OEMS)\",\n          \"settings\": {\"cell_configuration\": \"custom coin-type\", \"gas_sampling\": \"semi-close nature, gas extracted and replaced with argon\"},\n          \"output\": \"hydrogen evolution rate, gas analysis\",\n          \"evidence_quote\": \"Online electrochemical mass spectrometry For gas analysis, a custom coin-type-cell configuration was used with 15 mm LFP and 13 mm LTO.\"\n        }\n      ],\n      \"results\": [],\n      \"caveats\": [\n        {\n          \"source_chunk_id\": \"mdchk_f048b9584b788f3b\",\n          \"text\": \"Coulombic efficiency lower in OEMS vs closed coin-cell due to semi-close nature and different stack pressure\",\n          \"evidence_quote\": \"The Coulombic efficiency of the cells from the OEMS measurement was lower compared to the same elec- trolyte formulations in the closed coin-cell configuration of the BO. This is likely due to the semi-close nature of the OEMS cell. 35 During sampling, gas is extracted from the cell and re- placed with argon, disrupting the equilibrium of gases inside the cell that would otherwise not be altered. The stack pressure is also different between the two cell configurations.\"\n        }\n      ]\n    }\n  ]\n}\n```",
+    "salvaged_protocol_count": 0,
+    "schema_invalid": false,
+    "stop_reason": "end_turn",
+    "usage": {
+      "inputTokens": 3506,
+      "outputTokens": 4238,
+      "totalTokens": 7744
+    }
+  }
+}

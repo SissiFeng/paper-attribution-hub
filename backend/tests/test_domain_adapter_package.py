@@ -301,8 +301,12 @@ def test_bedrock_teacher_maps_only_exactly_grounded_fields():
                 "steps": [
                     {
                         "order": 1,
-                        "action": supported_quote,
-                        "conditions": ["10 mg", "2 mg"],
+                        "verb": "mixed",
+                        "targets": ["catalyst powder", "acetylene black"],
+                        "params": {
+                            "catalyst_amount": "10 mg",
+                            "carbon_amount": "2 mg",
+                        },
                         "notes": "fictional note",
                         "source_chunk_id": "methods-1",
                         "evidence_quote": supported_quote,
@@ -359,6 +363,15 @@ def test_bedrock_teacher_maps_only_exactly_grounded_fields():
 
     assert len(protocols) == 1
     assert [item.name for item in protocols[0].materials] == ["catalyst powder"]
+    assert protocols[0].steps[0].verb == "mixed"
+    assert protocols[0].steps[0].targets == [
+        "catalyst powder",
+        "acetylene black",
+    ]
+    assert protocols[0].steps[0].params == {
+        "catalyst_amount": "10 mg",
+        "carbon_amount": "2 mg",
+    }
     assert protocols[0].steps[0].notes is None
     assert protocols[0].source_chunk_ids == ["methods-1", "methods-2"]
     assert [item.technique for item in protocols[0].characterization] == ["XPS"]
@@ -459,7 +472,7 @@ def test_bedrock_teacher_resumes_from_paper_cache(tmp_path):
     assert second.latency_ms_total == first.latency_ms_total == 1234
     cache = json.loads(cache_path.read_text())
     assert cache["schema_version"] == "bedrock-teacher-paper-cache-v0.2"
-    assert cache["mapping_version"] == "evidence-field-mapper-v0.2"
+    assert cache["mapping_version"] == "evidence-field-mapper-v0.3"
     assert cache["teacher_response"]["stop_reason"] == "end_turn"
     assert cache["teacher_response"]["metrics"] == {"latencyMs": 1234}
     assert cache["teacher_response"]["raw_text"] == json.dumps(response_payload)
@@ -517,6 +530,13 @@ def test_package_builder_writes_four_layers_deterministically(tmp_path):
     }
 
     manifest = json.loads(snapshot["manifest.json"])
+    selection_manifest = json.loads(snapshot["source/selection_manifest.json"])
+    assert selection_manifest["schema_version"] == "domain-adapter-selection-v0.2"
+    assert (
+        selection_manifest["selection_method"]
+        == "curated_full_text_scientific_evidence"
+    )
+    assert selection_manifest["papers"][0]["evidence_scope"] == "primary_report"
     assert manifest["classification_neutral"] is True
     assert manifest["institution_entities_included"] is False
     assert manifest["extraction"]["mode"] == "heuristic_baseline"
@@ -660,6 +680,36 @@ def test_oer_pilot_selection_is_fixed_to_twenty_auditable_papers():
     tiers = {item.selection_tier for item in selection.papers}
     assert tiers == {"primary_oer", "oer_case_study", "oer_review"}
     assert sum(item.task_split == "evaluation" for item in selection.papers) == 4
+
+
+def test_cross_domain_selection_uses_explicit_evidence_scope(tmp_path):
+    from app.domain_adaptation.source import load_pilot_selection
+
+    selection_path = tmp_path / "battery-electrolyte-selection.json"
+    selection_path.write_text(
+        json.dumps(
+            {
+                "package_id": "battery-electrolyte-optimization",
+                "package_version": "0.1.0-pilot",
+                "domain": "battery electrolyte optimization",
+                "papers": [
+                    {
+                        "paper_id": "DOI:10.1000_battery-primary",
+                        "selection_tier": "primary_battery_electrolyte",
+                        "evidence_scope": "primary_report",
+                        "selection_reasons": [
+                            "Primary automated electrolyte experiment"
+                        ],
+                    }
+                ],
+            }
+        )
+    )
+
+    selection = load_pilot_selection(selection_path)
+
+    assert selection.papers[0].selection_tier == "primary_battery_electrolyte"
+    assert selection.papers[0].evidence_scope == "primary_report"
 
 
 def test_s3_markdown_source_verifies_manifest_hash_and_restores_sections():

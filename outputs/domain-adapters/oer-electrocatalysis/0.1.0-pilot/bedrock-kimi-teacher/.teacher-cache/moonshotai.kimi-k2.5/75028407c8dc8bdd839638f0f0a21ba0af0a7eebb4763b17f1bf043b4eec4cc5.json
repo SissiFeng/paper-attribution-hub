@@ -1,0 +1,318 @@
+{
+  "model_id": "moonshotai.kimi-k2.5",
+  "paper_id": "DOI:10.1039_d5mh01247c",
+  "prompt_version": "oer-protocol-teacher-v0.1",
+  "protocols": [
+    {
+      "caveats": [],
+      "characterization": [],
+      "evidence": [
+        {
+          "char_end": 214,
+          "char_start": 135,
+          "chunk_id": "mdchk_b8a50b33519c5874",
+          "document_char_end": 73163,
+          "document_char_start": 73084,
+          "evidence_id": "ev_b5f7f86adcf616c3",
+          "paper_id": "DOI:10.1039_d5mh01247c",
+          "quote": "Mg-doped CuCrO₂ and CuRhO₂—fabricated via RF sputtering or hydrothermal methods",
+          "source_sha256": "b81923c42b9461411be7354277f350072985a15429157ce1e4e771f7b17ab8fa"
+        }
+      ],
+      "evidence_scope": "secondary_report",
+      "instruments": [],
+      "materials": [
+        {
+          "amount": null,
+          "entity_id": "mat_b73dc82b9339edf0",
+          "evidence_ids": [
+            "ev_b5f7f86adcf616c3"
+          ],
+          "name": "Mg-doped CuCrO₂",
+          "pretreatment": null,
+          "purity": null,
+          "role": null,
+          "supplier": null
+        },
+        {
+          "amount": null,
+          "entity_id": "mat_e3c052f167f270d3",
+          "evidence_ids": [
+            "ev_b5f7f86adcf616c3"
+          ],
+          "name": "CuRhO₂",
+          "pretreatment": null,
+          "purity": null,
+          "role": null,
+          "supplier": null
+        }
+      ],
+      "paper_id": "DOI:10.1039_d5mh01247c",
+      "protocol_id": "protocol_6f4816b9da768066",
+      "protocol_name": "RF sputtering fabrication of Mg-doped CuCrO₂ and CuRhO₂ transparent conductive films",
+      "protocol_type": "materials synthesis",
+      "relations": [],
+      "results": [],
+      "software": [],
+      "source_chunk_ids": [
+        "mdchk_b8a50b33519c5874"
+      ],
+      "source_paper_tier": "oer_review",
+      "steps": [
+        {
+          "action": "Mg-doped CuCrO₂ and CuRhO₂—fabricated via RF sputtering or hydrothermal methods",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_b5f7f86adcf616c3"
+          ],
+          "notes": null,
+          "order": 1,
+          "step_id": "step_d462d93669d940e1"
+        }
+      ]
+    },
+    {
+      "caveats": [],
+      "characterization": [],
+      "evidence": [
+        {
+          "char_end": 214,
+          "char_start": 135,
+          "chunk_id": "mdchk_b8a50b33519c5874",
+          "document_char_end": 73163,
+          "document_char_start": 73084,
+          "evidence_id": "ev_b5f7f86adcf616c3",
+          "paper_id": "DOI:10.1039_d5mh01247c",
+          "quote": "Mg-doped CuCrO₂ and CuRhO₂—fabricated via RF sputtering or hydrothermal methods",
+          "source_sha256": "b81923c42b9461411be7354277f350072985a15429157ce1e4e771f7b17ab8fa"
+        }
+      ],
+      "evidence_scope": "secondary_report",
+      "instruments": [],
+      "materials": [
+        {
+          "amount": null,
+          "entity_id": "mat_b73dc82b9339edf0",
+          "evidence_ids": [
+            "ev_b5f7f86adcf616c3"
+          ],
+          "name": "Mg-doped CuCrO₂",
+          "pretreatment": null,
+          "purity": null,
+          "role": null,
+          "supplier": null
+        },
+        {
+          "amount": null,
+          "entity_id": "mat_e3c052f167f270d3",
+          "evidence_ids": [
+            "ev_b5f7f86adcf616c3"
+          ],
+          "name": "CuRhO₂",
+          "pretreatment": null,
+          "purity": null,
+          "role": null,
+          "supplier": null
+        }
+      ],
+      "paper_id": "DOI:10.1039_d5mh01247c",
+      "protocol_id": "protocol_4834523148e305e2",
+      "protocol_name": "Hydrothermal fabrication of Mg-doped CuCrO₂ and CuRhO₂ transparent conductive films",
+      "protocol_type": "materials synthesis",
+      "relations": [],
+      "results": [],
+      "software": [],
+      "source_chunk_ids": [
+        "mdchk_b8a50b33519c5874"
+      ],
+      "source_paper_tier": "oer_review",
+      "steps": [
+        {
+          "action": "Mg-doped CuCrO₂ and CuRhO₂—fabricated via RF sputtering or hydrothermal methods",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_b5f7f86adcf616c3"
+          ],
+          "notes": null,
+          "order": 1,
+          "step_id": "step_d462d93669d940e1"
+        }
+      ]
+    },
+    {
+      "caveats": [],
+      "characterization": [],
+      "evidence": [
+        {
+          "char_end": 1223,
+          "char_start": 1138,
+          "chunk_id": "mdchk_6e4e24a6a63ca471",
+          "document_char_end": 137395,
+          "document_char_start": 137310,
+          "evidence_id": "ev_c86835874c75d9dc",
+          "paper_id": "DOI:10.1039_d5mh01247c",
+          "quote": "the combined use of chemical vapor deposition (CVD) and atomic layer deposition (ALD)",
+          "source_sha256": "78a3d0886be851b91917c45d69434b40a92228060363332a51c5befcc82b07b7"
+        },
+        {
+          "char_end": 1298,
+          "char_start": 1138,
+          "chunk_id": "mdchk_6e4e24a6a63ca471",
+          "document_char_end": 137470,
+          "document_char_start": 137310,
+          "evidence_id": "ev_24bbae88d758ce80",
+          "paper_id": "DOI:10.1039_d5mh01247c",
+          "quote": "the combined use of chemical vapor deposition (CVD) and atomic layer deposition (ALD) enables precise regulation of crystal orientation and defect concentration",
+          "source_sha256": "78a3d0886be851b91917c45d69434b40a92228060363332a51c5befcc82b07b7"
+        }
+      ],
+      "evidence_scope": "secondary_report",
+      "instruments": [
+        {
+          "entity_id": "inst_20973eec090cbe68",
+          "evidence_ids": [
+            "ev_c86835874c75d9dc"
+          ],
+          "manufacturer": null,
+          "model": null,
+          "name": "chemical vapor deposition",
+          "settings": {}
+        },
+        {
+          "entity_id": "inst_ff1b7b9b5e46e8d1",
+          "evidence_ids": [
+            "ev_c86835874c75d9dc"
+          ],
+          "manufacturer": null,
+          "model": null,
+          "name": "atomic layer deposition",
+          "settings": {}
+        }
+      ],
+      "materials": [],
+      "paper_id": "DOI:10.1039_d5mh01247c",
+      "protocol_id": "protocol_668bc019d678d57e",
+      "protocol_name": "CVD and ALD synthesis for crystal orientation and defect control",
+      "protocol_type": "materials synthesis",
+      "relations": [],
+      "results": [],
+      "software": [],
+      "source_chunk_ids": [
+        "mdchk_6e4e24a6a63ca471"
+      ],
+      "source_paper_tier": "oer_review",
+      "steps": [
+        {
+          "action": "the combined use of chemical vapor deposition (CVD) and atomic layer deposition (ALD) enables precise regulation of crystal orientation and defect concentration",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_24bbae88d758ce80"
+          ],
+          "notes": null,
+          "order": 1,
+          "step_id": "step_7b36a99670bf6178"
+        }
+      ]
+    },
+    {
+      "caveats": [],
+      "characterization": [],
+      "evidence": [
+        {
+          "char_end": 1407,
+          "char_start": 1306,
+          "chunk_id": "mdchk_6e4e24a6a63ca471",
+          "document_char_end": 137579,
+          "document_char_start": 137478,
+          "evidence_id": "ev_29fe8e21795ac7ef",
+          "paper_id": "DOI:10.1039_d5mh01247c",
+          "quote": "proton-induced ligand exchange techniques have boosted quantum dot yields close to theoretical limits",
+          "source_sha256": "78a3d0886be851b91917c45d69434b40a92228060363332a51c5befcc82b07b7"
+        }
+      ],
+      "evidence_scope": "secondary_report",
+      "instruments": [],
+      "materials": [],
+      "paper_id": "DOI:10.1039_d5mh01247c",
+      "protocol_id": "protocol_b7d5ccbd1b176a39",
+      "protocol_name": "Proton-induced ligand exchange for quantum dot synthesis",
+      "protocol_type": "materials synthesis",
+      "relations": [],
+      "results": [
+        {
+          "context": "proton-induced ligand exchange techniques have boosted quantum dot yields close to theoretical limits",
+          "evidence_ids": [
+            "ev_29fe8e21795ac7ef"
+          ],
+          "metric": "quantum dot yield",
+          "raw_value": "close to theoretical limits",
+          "result_id": "result_7b36a99670bf6178"
+        }
+      ],
+      "software": [],
+      "source_chunk_ids": [
+        "mdchk_6e4e24a6a63ca471"
+      ],
+      "source_paper_tier": "oer_review",
+      "steps": [
+        {
+          "action": "proton-induced ligand exchange techniques have boosted quantum dot yields close to theoretical limits",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_29fe8e21795ac7ef"
+          ],
+          "notes": "yields close to theoretical limits",
+          "order": 1,
+          "step_id": "step_7b36a99670bf6178"
+        }
+      ]
+    },
+    {
+      "caveats": [],
+      "characterization": [],
+      "evidence": [
+        {
+          "char_end": 666,
+          "char_start": 621,
+          "chunk_id": "mdchk_6c563cb8564a643d",
+          "document_char_end": 118625,
+          "document_char_start": 118580,
+          "evidence_id": "ev_193304be191137ff",
+          "paper_id": "DOI:10.1039_d5mh01247c",
+          "quote": "Epitaxial CuCrO₂ films eliminate twin defects",
+          "source_sha256": "be030af4ca4e53be954943c1e240550932b8c07c2b0f500240158789405aac10"
+        }
+      ],
+      "evidence_scope": "secondary_report",
+      "instruments": [],
+      "materials": [
+        {
+          "amount": null,
+          "entity_id": "mat_b086d3ca1146b870",
+          "evidence_ids": [
+            "ev_193304be191137ff"
+          ],
+          "name": "CuCrO₂",
+          "pretreatment": null,
+          "purity": null,
+          "role": null,
+          "supplier": null
+        }
+      ],
+      "paper_id": "DOI:10.1039_d5mh01247c",
+      "protocol_id": "protocol_cdfd3e9c330c4959",
+      "protocol_name": "Epitaxial CuCrO₂ film growth with substrate termination layer control",
+      "protocol_type": "materials synthesis",
+      "relations": [],
+      "results": [],
+      "software": [],
+      "source_chunk_ids": [
+        "mdchk_6c563cb8564a643d"
+      ],
+      "source_paper_tier": "oer_review",
+      "steps": []
+    }
+  ],
+  "schema_version": "bedrock-teacher-paper-cache-v0.1",
+  "unsupported_claim_count": 33
+}

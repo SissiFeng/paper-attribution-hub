@@ -1,0 +1,19 @@
+{
+  "claims_boundary": "Publication before a reported knowledge cutoff is a training-exposure proxy, not proof that a paper was in training data. Temporal and citation effects are quasi-experimental associations unless exposure is independently verified.",
+  "confirmatory_contrasts": [
+    "adjusted pre-cutoff versus post-cutoff substitution-following",
+    "pre-cutoff by citation-count interaction",
+    "deletion-following pre-cutoff versus post-cutoff negative control"
+  ],
+  "eligible_claim_rule": "evidence_valid=true AND source_value_occurrence=exact_unique AND numeric_replacement_exists AND steps fields are restricted to param:*",
+  "negative_control_outcome": "evidence_deletion_following",
+  "primary_model": "mixed-effects logistic regression: substitution_following ~ pre_cutoff + log1p(citation_count) + pre_cutoff:log1p(citation_count) + field_type + model_family; random intercepts for paper and claim",
+  "primary_outcome": "numeric_substitution_following",
+  "required_sensitivity_analyses": [
+    "repeat with 90-day and 365-day cutoff buffers",
+    "repeat after excluding model/version cutoff sources marked provider_reported",
+    "cluster-robust confidence intervals by paper",
+    "field-family and model-family leave-one-group-out analyses"
+  ],
+  "schema_version": "memory-evidence-analysis-plan-v0.1"
+}

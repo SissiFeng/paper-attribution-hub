@@ -115,7 +115,7 @@ class HybridIndex:
         cls,
         session: Session,
         embedder: Embedder,
-        max_chunks: int = 2000,
+        max_chunks: int | None = 2000,
         load_graph_scores: bool = False,
     ) -> "HybridIndex":
         # Graph scores are expensive (loads ALL PaperClassification rows).
@@ -138,12 +138,14 @@ class HybridIndex:
                 mx = max(raw.values()) or 1.0
                 graph_scores = {pid: v / mx for pid, v in raw.items()}
 
-        rows = session.execute(
+        chunk_statement = (
             select(PaperChunk, Paper.year)
             .join(Paper, Paper.id == PaperChunk.paper_id)
             .order_by(PaperChunk.created_at.desc())
-            .limit(max_chunks)
-        ).all()
+        )
+        if max_chunks is not None:
+            chunk_statement = chunk_statement.limit(max_chunks)
+        rows = session.execute(chunk_statement).all()
         # Refit the embedder on the exact corpus we'll query against
         # (`indexed_text` for v0.4 chunks, `chunk_text` otherwise). Stored
         # vectors are recomputed in this fit-space so query vectors line up

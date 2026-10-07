@@ -1,15 +1,21 @@
 import { useEffect, useState } from "react";
-import { getOverview } from "@/lib/api";
-import type { AnalyticsOverview } from "@/types";
+import { getOverview, getStage1Readiness } from "@/lib/api";
+import type { AnalyticsOverview, Stage1Readiness } from "@/types";
 import { AnimatedNumber } from "@/components/AnimatedNumber";
 import { TiltCard } from "@/components/TiltCard";
 import css from "./StatsBar.module.css";
 
 export function StatsBar() {
   const [data, setData] = useState<AnalyticsOverview | null>(null);
+  const [readiness, setReadiness] = useState<Stage1Readiness | null>(null);
 
   useEffect(() => {
-    getOverview().then(setData).catch(() => {});
+    Promise.all([getOverview(), getStage1Readiness()])
+      .then(([overview, stage1]) => {
+        setData(overview);
+        setReadiness(stage1);
+      })
+      .catch(() => {});
   }, []);
 
   if (!data) return null;
@@ -22,7 +28,41 @@ export function StatsBar() {
     ? `${Math.min(...data.years)}–${Math.max(...data.years)}`
     : "—";
 
-  const stats = [
+  const stats = readiness?.stage1_only ? [
+    {
+      label: "Tier 1 Papers",
+      value: total,
+      accent: "navy",
+      badge: { text: "ZOTERO", cls: "core" },
+      delay: 0,
+    },
+    {
+      label: "SDL Field Relevant",
+      value: data.label_breakdown["SDL_FIELD_RELEVANT"] ?? 0,
+      accent: "steel",
+      badge: { text: "PILOT", cls: "core" },
+      delay: 120,
+    },
+    {
+      label: "Adjacent",
+      value: data.label_breakdown["ADJACENT"] ?? 0,
+      accent: "pink",
+      badge: { text: "REVIEW", cls: "related" },
+      delay: 240,
+    },
+    {
+      label: "Full-text Coverage",
+      value: readiness.metadata_papers > 0
+        ? Math.round(
+            (readiness.fulltexts_imported / readiness.metadata_papers) * 100,
+          )
+        : 0,
+      suffix: "%",
+      accent: "green",
+      badge: { text: yearSpan, cls: "years" },
+      delay: 360,
+    },
+  ] : [
     {
       label: "Total Papers",
       value: total,
@@ -52,7 +92,7 @@ export function StatsBar() {
       badge: { text: yearSpan, cls: "years" },
       delay: 360,
     },
-  ] as const;
+  ];
 
   return (
     <div className={css.bar}>

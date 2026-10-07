@@ -9,6 +9,8 @@ metrics support; AC reporting labels are not presented as strict SDL truth.
 """
 from __future__ import annotations
 
+import hashlib
+import json
 from dataclasses import dataclass, field
 from pathlib import Path
 
@@ -129,11 +131,13 @@ def evidence_recall_at_k(
     """For papers labeled CORE_RELEVANT or RELATED_RELEVANT in the reference set,
     check whether top-k retrieval surfaces a chunk that the evidence extractor
     flagged as `funding_acknowledgement` or `sdl_methodology`."""
-    from app.services.embedding_service import get_embedder
+    from app.services.embedding_service import embedding_for_storage, get_embedder
     from app.services.retrieval_service import HybridIndex
 
     target_papers = [
-        pid for pid, label in gold.items() if label in {"CORE_RELEVANT", "RELATED_RELEVANT"}
+        pid
+        for pid, label in gold.items()
+        if label in {"CORE_RELEVANT", "RELATED_RELEVANT", "SDL_FIELD_RELEVANT"}
     ]
     if not target_papers:
         return None
@@ -150,14 +154,22 @@ def evidence_recall_at_k(
     embedder.fit([c.chunk_text for c in chunks])
     matrix = embedder.encode([c.chunk_text for c in chunks])
     for chunk, vec in zip(chunks, matrix):
-        chunk.embedding = vec.tolist()
+        chunk.embedding = embedding_for_storage(vec)
         chunk.embedding_backend = embedder.backend
     session.flush()
     index = HybridIndex.from_session(session, embedder)
 
     default_query = (
-        "Acceleration Consortium funding acknowledgement self-driving lab "
+        "self-driving laboratory autonomous experimentation closed-loop "
+        "Bayesian optimization"
+        if settings.sdl_stage1_only
+        else "Acceleration Consortium funding acknowledgement self-driving lab "
         "closed-loop Bayesian optimization"
+    )
+    evidence_types = (
+        {"sdl_methodology", "figure_caption_sdl"}
+        if settings.sdl_stage1_only
+        else {"funding_acknowledgement", "sdl_methodology"}
     )
     hits = 0
     evaluated = 0
@@ -167,7 +179,7 @@ def evidence_recall_at_k(
             for ev in session.execute(
                 select(PaperEvidence).where(PaperEvidence.paper_id == paper_id)
             ).scalars()
-            if ev.evidence_type in {"funding_acknowledgement", "sdl_methodology"}
+            if ev.evidence_type in evidence_types
             and ev.chunk_id
         }
         if not evidence_chunks:
@@ -222,6 +234,70 @@ def run_evaluation(
         raise RuntimeError("evaluation dataset changed while metrics were running")
     report.dataset_id = dataset_id_after
     report.dataset_hash = dataset_hash_after
+    return report
+
+
+def run_stage1_evaluation(
+    session: Session,
+    *,
+    role: str = "validation",
+    release_frozen_test: bool = False,
+    k: int = 5,
+) -> EvalReport:
+    """Evaluate one frozen Tier 1 split without reading legacy AC labels."""
+    if role not in {"validation", "frozen_test"}:
+        raise ValueError("SDL Stage 1 evaluation role must be validation or frozen_test")
+    if role == "frozen_test" and not release_frozen_test:
+        raise PermissionError(
+            "frozen test labels are sealed until the final release comparison"
+        )
+    from app.services.sdl_stage1_service import (
+        stage1_assignment_ids,
+        stage1_label_map,
+    )
+
+    expected_ids = stage1_assignment_ids(session, roles={role})
+    gold = stage1_label_map(session, role=role)
+    if not expected_ids:
+        raise ValueError("SDL Stage 1 split manifest has not been prepared")
+    missing_labels = expected_ids - set(gold)
+    if missing_labels:
+        raise ValueError(
+            f"SDL Stage 1 {role} set is not fully labelled: "
+            f"{len(gold)}/{len(expected_ids)} complete"
+        )
+    papers = list(session.execute(select(Paper)).scalars())
+    pred = {paper.id: paper.classification.label for paper in papers if paper.classification}
+    missing_predictions = expected_ids - set(pred)
+    if missing_predictions:
+        raise ValueError(
+            f"SDL Stage 1 {role} set is missing "
+            f"{len(missing_predictions)} classifier predictions"
+        )
+
+    report = compute_metrics(pred, gold)
+    report.k = k
+    report.dataset_role = "frozen_holdout" if role == "frozen_test" else "diagnostic"
+    report.dataset_id = f"sdl_stage1_{role}"
+    report.dataset_hash = hashlib.sha256(
+        json.dumps(gold, sort_keys=True, separators=(",", ":")).encode()
+    ).hexdigest()
+    report.label_scope = "STRICT_SDL"
+    report.annotation_sources = ["human_strict_sdl"]
+    report.evidence_levels = sorted(
+        {
+            paper.review.evidence_level or "UNKNOWN"
+            for paper in papers
+            if paper.id in expected_ids and paper.review is not None
+        }
+    )
+    report.allowed_claim = (
+        "Measures strict SDL relevance on the frozen final test set."
+        if role == "frozen_test"
+        else "Measures strict SDL relevance on the fixed validation set; "
+        "use it for round-by-round model selection, not final test claims."
+    )
+    report.evidence_recall_at_k = evidence_recall_at_k(session, gold, k=k)
     return report
 
 

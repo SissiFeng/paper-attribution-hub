@@ -14,6 +14,7 @@ Pipeline:
 """
 from __future__ import annotations
 
+from collections import Counter
 import hashlib
 
 from sqlalchemy.orm import Session
@@ -153,7 +154,7 @@ def _apply_network_thresholds(
                 if edge.source in keep and edge.target in keep
             ]
 
-    if filt.min_papers > 1 or filt.min_degree > 0 or filt.top_n is not None:
+    if filt.min_papers > 1 or filt.min_degree > 0:
         connected = {edge.source for edge in edges} | {
             edge.target for edge in edges
         }
@@ -245,6 +246,8 @@ def _friendly_label(group_id: str, sample_node_id: str, nodes: list[GraphNode]) 
         return group_id.split(":", 1)[1].replace("_", " ")
     if group_id.startswith("community:"):
         return f"Community {group_id.split(':', 1)[1]}"
+    if group_id.startswith("entity-type:"):
+        return group_id.split(":", 1)[1].replace("_", " ").title()
     return group_id
 
 
@@ -258,6 +261,9 @@ def build_multi_graph(
     materialized_node_ids = set(nodes_map)
     raw_node_count = len(nodes_map)
     raw_edge_count = len(edges)
+    raw_node_counts_by_type = dict(
+        sorted(Counter(node.type for node in nodes_map.values()).items())
+    )
     nodes_map, edges = _apply_network_thresholds(nodes_map, edges, filt)
 
     if filt.center_id:
@@ -266,6 +272,9 @@ def build_multi_graph(
         )
 
     nodes_list = list(nodes_map.values())
+    visible_node_counts_by_type = dict(
+        sorted(Counter(node.type for node in nodes_list).items())
+    )
     assignment, groups = _materialize_groups(nodes_list, edges, filt.group_by)
     for n in nodes_list:
         n.group = assignment.get(n.id)
@@ -279,6 +288,8 @@ def build_multi_graph(
             "coauthored_weight": "Distinct filtered papers shared by two authors.",
             "institution_collaboration_weight": "Distinct filtered papers shared by two institutions.",
             "country_collaboration_weight": "Distinct filtered papers shared by two countries.",
+            "paper_entity_edge_weight": "Extraction confidence for a Tier 1 Markdown paper-to-entity evidence link.",
+            "paper_entity_traceability": "Entity links retain paper, chunk, section, extractor, and usage evidence when available.",
             "edge_threshold": "Edges with weight below min_edge_weight are excluded.",
         },
         projection={
@@ -298,8 +309,10 @@ def build_multi_graph(
                 set(filt.excluded_node_ids) & materialized_node_ids
             ),
             "raw_node_count": raw_node_count,
+            "raw_node_counts_by_type": raw_node_counts_by_type,
             "raw_edge_count": raw_edge_count,
             "visible_node_count": len(nodes_list),
+            "visible_node_counts_by_type": visible_node_counts_by_type,
             "visible_edge_count": len(edges),
         },
     )

@@ -1,0 +1,107 @@
+{
+  "artifacts": {
+    "data_js": {
+      "bytes": 170421,
+      "path": "/Users/sissifeng/Downloads/paper-attribution-system/frontend/public/data/scopus-toronto-176-openalex-institution-data.js",
+      "sha256": "efc387f3f8f5df7bb246bf22f5302a8c529fee3809036807f64ea26fdca9a7b2"
+    },
+    "institution_summary_default": {
+      "bytes": 22306,
+      "path": "/Users/sissifeng/Downloads/paper-attribution-system/reports/scopus-toronto-176-institution/institution_summary_default.csv",
+      "sha256": "f573dcbda8edfec4fbf2563b6b4d78e4b4f0741678b0e3db1026afdd7d7eada2"
+    },
+    "openalex_works": {
+      "bytes": 384971,
+      "path": "/Users/sissifeng/Downloads/paper-attribution-system/reports/scopus-toronto-176-institution/openalex_works.jsonl.gz",
+      "sha256": "80d44f77c0cbd044270b7c0c497790e5deb7dd990f861365862b862e913d5633"
+    },
+    "paper_match_audit": {
+      "bytes": 39055,
+      "path": "/Users/sissifeng/Downloads/paper-attribution-system/reports/scopus-toronto-176-institution/paper_match_audit.csv",
+      "sha256": "4ea3a972e7a460800e73e0e6bc5ce63038dc82da57d0acfd8ce7e7d0fa5ec97f"
+    }
+  },
+  "codebook": {
+    "author_position": {
+      "0": "middle",
+      "1": "first",
+      "2": "last"
+    },
+    "paper_membership": {
+      "all": "Scopus Toronto · 176 papers"
+    }
+  },
+  "corpus": {
+    "id": "scopus_toronto_self_driving_lab_176",
+    "label": "Scopus Toronto · 176 papers",
+    "membership_source": "Scopus UI CSV export",
+    "query": "ALL(\"self-driving lab*\") AND AFFIL(Toronto)"
+  },
+  "counts": {
+    "affiliated_authorships": 1652,
+    "authorships": 1760,
+    "institutions": 495,
+    "papers": 176
+  },
+  "data_boundary": {
+    "excluded": [
+      "Zotero Tier 1 or Tier 2 membership",
+      "PDF or full text",
+      "classification outputs and reviews",
+      "PAS primary database",
+      "Scopus affiliations as OpenAlex fallback"
+    ],
+    "included": [
+      "176-paper Scopus query membership and bibliographic identity",
+      "OpenAlex ordered authorships",
+      "OpenAlex institution, lineage, and ROR assertions"
+    ],
+    "mode": "scopus_membership_openalex_metadata_only_local_snapshot"
+  },
+  "default_report": {
+    "affiliation_credit_coverage": 0.93179487490117,
+    "corpus_papers": 176,
+    "focus_paper_count": 145,
+    "focus_weighted_credit": 69.817134,
+    "other_paper_count": 149,
+    "other_weighted_credit": 91.293306,
+    "paper_institution_membership_coverage": 0.7954545454545454,
+    "papers_with_authorship_metadata": 174,
+    "papers_with_complete_institution_membership": 140
+  },
+  "generated_at": "2026-08-25T13:57:33.903114+00:00",
+  "input": {
+    "corpus_rows": {
+      "all": 176
+    },
+    "distinct_papers": 176,
+    "duplicate_doi_groups": 0,
+    "duplicate_rows_beyond_first": 0,
+    "missing_doi_rows": 5,
+    "name": "Scopus UI CSV export",
+    "raw_rows": 176,
+    "rows_with_doi": 171,
+    "sha256": "f8812dd040745482d9b548a25aebe9b68aa42662ec2488e674470fc4e16c760f",
+    "unique_dois": 171
+  },
+  "openalex": {
+    "api_calls": 0,
+    "cache_hits": 0,
+    "endpoint": "https://api.openalex.org/works",
+    "institution_coverage": {
+      "complete": 140,
+      "incomplete": 34,
+      "no_authorship_metadata": 2
+    },
+    "match_status": {
+      "doi_exact": 169,
+      "missing_doi": 2,
+      "title_near_year": 2,
+      "title_year": 3
+    },
+    "select": "id,doi,title,publication_year,authorships,is_authors_truncated,is_retracted,updated_date",
+    "source": "audited_scopus_openalex_export",
+    "source_manifest": "../scopus-toronto-176-openalex/manifest.json"
+  },
+  "schema_version": "scopus_toronto_openalex_institution.v1"
+}

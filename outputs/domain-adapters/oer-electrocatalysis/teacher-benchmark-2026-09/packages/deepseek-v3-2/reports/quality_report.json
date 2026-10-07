@@ -1,0 +1,172 @@
+{
+  "chunking": {
+    "exact_source_segment_provenance": true,
+    "max_chars_safety_limit": 6000,
+    "min_merge_chars": 800,
+    "schema_version": "domain-adapter-scientific-chunk-v0.1",
+    "source_blocks_immutable": true,
+    "strategy": "structure_first_semantic"
+  },
+  "claims_boundary": "Heuristic output is a baseline unless extraction.mode is teacher. Tasks are extractive and do not advise future experiments.",
+  "eligible_corpus_chunk_count": 24,
+  "entity_counts": {
+    "caveats": 0,
+    "characterization": 5,
+    "instruments": 9,
+    "materials": 24,
+    "relations": 65,
+    "results": 0,
+    "software": 0,
+    "steps": 27
+  },
+  "evaluation_paper_count": 4,
+  "evaluation_task_count": 19,
+  "evaluation_task_paper_count": 1,
+  "evidence_span_count": 65,
+  "exact_duplicate_count": 0,
+  "excluded_or_low_information_chunk_count": 525,
+  "max_scientific_chunk_chars": 5954,
+  "multi_segment_scientific_chunk_count": 15,
+  "paper_count": 4,
+  "paper_coverage_by_selection_tier": {
+    "oer_case_study": {
+      "coverage_rate": 0.0,
+      "paper_count": 1,
+      "papers_with_protocols": 0
+    },
+    "oer_review": {
+      "coverage_rate": 0.0,
+      "paper_count": 1,
+      "papers_with_protocols": 0
+    },
+    "primary_oer": {
+      "coverage_rate": 0.5,
+      "paper_count": 2,
+      "papers_with_protocols": 1
+    }
+  },
+  "papers_with_protocols": 1,
+  "papers_without_protocols": [
+    "DOI:10.1021_acscentsci.3c01009",
+    "DOI:10.1039_d4dd00313f",
+    "DOI:10.1039_d5cc04220h"
+  ],
+  "protocol_count": 6,
+  "protocols_by_evidence_scope": {
+    "primary_report": 6
+  },
+  "protocols_by_selection_tier": {
+    "primary_oer": 6
+  },
+  "protocols_per_paper": {
+    "DOI:10.1038_s41467-024-50605-5": 6
+  },
+  "rejected_protocols": [],
+  "schema_version": "domain-adapter-quality-report-v0.3",
+  "scientific_chunk_count": 24,
+  "scientific_chunks_by_semantic_role": {
+    "caveat": 11,
+    "characterization": 11,
+    "computation": 10,
+    "protocol": 15,
+    "result": 20,
+    "scientific_context": 3
+  },
+  "source_chunk_count": 576,
+  "task_count": 19,
+  "task_type_counts": {
+    "characterization_grounding": 4,
+    "instrument_software_grounding": 4,
+    "materials_extraction": 5,
+    "protocol_reconstruction": 6
+  },
+  "teacher_field_audit": {
+    "accepted_field_count": 94,
+    "field_acceptance_rate": 0.686131,
+    "proposed_field_count": 137,
+    "rejected_entity_type_counts": {
+      "characterization": 3,
+      "instruments": 1,
+      "materials": 6,
+      "steps": 33
+    },
+    "rejected_field_count": 43,
+    "rejection_reason_counts": {
+      "over_generalized": 38,
+      "schema_invalid": 2,
+      "span_not_in_source": 1,
+      "value_elsewhere": 2
+    },
+    "repair_attempted_count": 2,
+    "repair_reason_counts": {},
+    "repair_succeeded_count": 0
+  },
+  "teacher_paper_diagnostics": [
+    {
+      "candidate_chunk_count": 3,
+      "candidate_input_char_count": 16675,
+      "outcome": "model_abstained",
+      "paper_id": "DOI:10.1021_acscentsci.3c01009",
+      "raw_protocol_count": 0,
+      "response_schema_invalid": false,
+      "retained_protocol_count": 0,
+      "salvaged_protocol_count": 0,
+      "selection_tier": "primary_oer",
+      "stop_reason": "end_turn"
+    },
+    {
+      "candidate_chunk_count": 8,
+      "candidate_input_char_count": 16311,
+      "outcome": "retained_protocols",
+      "paper_id": "DOI:10.1038_s41467-024-50605-5",
+      "raw_protocol_count": 6,
+      "response_schema_invalid": false,
+      "retained_protocol_count": 6,
+      "salvaged_protocol_count": 0,
+      "selection_tier": "primary_oer",
+      "stop_reason": "end_turn"
+    },
+    {
+      "candidate_chunk_count": 6,
+      "candidate_input_char_count": 5797,
+      "outcome": "model_abstained",
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "raw_protocol_count": 0,
+      "response_schema_invalid": false,
+      "retained_protocol_count": 0,
+      "salvaged_protocol_count": 0,
+      "selection_tier": "oer_case_study",
+      "stop_reason": "end_turn"
+    },
+    {
+      "candidate_chunk_count": 8,
+      "candidate_input_char_count": 18928,
+      "outcome": "model_abstained",
+      "paper_id": "DOI:10.1039_d5cc04220h",
+      "raw_protocol_count": 0,
+      "response_schema_invalid": false,
+      "retained_protocol_count": 0,
+      "salvaged_protocol_count": 0,
+      "selection_tier": "oer_review",
+      "stop_reason": "end_turn"
+    }
+  ],
+  "teacher_paper_outcome_counts": {
+    "model_abstained": 3,
+    "retained_protocols": 1
+  },
+  "teacher_runtime": {
+    "input_token_count": 18387,
+    "invocation_count": 4,
+    "latency_ms_total": 193098,
+    "output_token_count": 7657,
+    "response_failure_diagnostics": [],
+    "response_schema_failure_count": 0,
+    "salvaged_response_count": 0
+  },
+  "train_paper_count": 0,
+  "train_task_count": 0,
+  "train_task_paper_count": 0,
+  "unsupported_evidence_count": 43,
+  "unsupported_teacher_claim_count": 43
+}

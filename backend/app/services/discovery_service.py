@@ -52,6 +52,17 @@ from app.services.external.semantic_scholar_client import (
 from app.services.external.source_reliability import merge_paper_records
 
 
+class CorpusSourcePolicyError(RuntimeError):
+    """Raised when a non-authoritative source tries to mutate the corpus."""
+
+
+def _enforce_corpus_source_policy() -> None:
+    if settings.zotero_configured and settings.zotero_source_only:
+        raise CorpusSourcePolicyError(
+            "External discovery cannot add papers while Zotero is authoritative"
+        )
+
+
 # ---------------------------------------------------------------------------
 # Data shapes
 # ---------------------------------------------------------------------------
@@ -459,6 +470,7 @@ def run_discovery(
 ) -> DiscoveryResult:
     """Main entry point. `strategies` defaults to all; clients can be injected
     by tests (with a mocked transport) or auto-constructed."""
+    _enforce_corpus_source_policy()
     strategies = strategies or ["cite_of_core", "ac_coauthor", "s2_recommend"]
     max_candidates = max_candidates or settings.discovery_max_candidates_per_strategy
 
@@ -543,6 +555,7 @@ def run_discovery(
 def approve_candidate(
     session: Session, candidate_id: str, reviewer: str | None = None, notes: str | None = None
 ) -> Paper:
+    _enforce_corpus_source_policy()
     from datetime import UTC, datetime
 
     row = session.get(DiscoveryCandidate, candidate_id)

@@ -1,4 +1,4 @@
-"""Build the fixed 20-paper OER Domain Adaptation Package.
+"""Build one versioned, classification-neutral scientific domain package.
 
 Examples:
 
@@ -36,7 +36,10 @@ from app.domain_adaptation.source import (
     S3MarkdownSource,
     load_pilot_selection,
 )
-from app.domain_adaptation.teacher import BedrockTeacherExtractor
+from app.domain_adaptation.teacher import (
+    BEDROCK_TEACHER_PROMPT_VERSION,
+    BedrockTeacherExtractor,
+)
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[3]
@@ -52,7 +55,7 @@ DEFAULT_OUTPUT = (
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description=(
-            "Build a classification-neutral OER domain package from imported "
+            "Build a classification-neutral domain package from imported "
             "S3 Markdown chunks."
         )
     )
@@ -119,6 +122,40 @@ def parse_args() -> argparse.Namespace:
         default="us.anthropic.claude-sonnet-4-6",
     )
     parser.add_argument(
+        "--teacher-prompt-version",
+        default=None,
+        help=(
+            "Recorded prompt/selection profile version. Non-OER packages "
+            "default to scientific-protocol-teacher-v0.3."
+        ),
+    )
+    parser.add_argument(
+        "--domain-term",
+        action="append",
+        default=None,
+        help=(
+            "Domain term used only to rank bounded teacher context. Repeat for "
+            "multiple terms; values are recorded in the package manifest."
+        ),
+    )
+    parser.add_argument(
+        "--teacher-min-chunk-score",
+        type=int,
+        default=None,
+        help=(
+            "Minimum deterministic context-ranking score. Defaults to 4 for "
+            "the legacy OER profile and 2 for cross-domain scientific profiles."
+        ),
+    )
+    parser.add_argument(
+        "--teacher-scope-aware",
+        action="store_true",
+        help=(
+            "Include paper-level primary/secondary scope and a conservative "
+            "secondary-protocol abstention rule in the teacher prompt."
+        ),
+    )
+    parser.add_argument(
         "--bedrock-read-timeout",
         type=int,
         default=300,
@@ -171,8 +208,16 @@ def select_selection_items(
     ]
 
 
-def _extractor(args: argparse.Namespace):
+def _extractor(
+    args: argparse.Namespace,
+    selection: PilotSelectionManifest,
+):
     if args.extractor == "heuristic":
+        if selection.package_id != "oer-electrocatalysis":
+            raise ValueError(
+                "The deterministic heuristic baseline is OER-specific; use "
+                "the evidence-bound teacher for other domains."
+            )
         return HeuristicOerExtractor()
 
     import boto3  # type: ignore[import-untyped]
@@ -191,12 +236,29 @@ def _extractor(args: argparse.Namespace):
             },
         ),
     )
+    domain_terms = tuple(args.domain_term or ())
+    if selection.package_id == "oer-electrocatalysis" and not domain_terms:
+        domain_terms = ("OER", "oxygen evolution", "water oxidation")
+    if selection.package_id != "oer-electrocatalysis" and not domain_terms:
+        raise ValueError(
+            "Non-OER teacher builds require at least one explicit --domain-term."
+        )
+    prompt_version = args.teacher_prompt_version or BEDROCK_TEACHER_PROMPT_VERSION
+    minimum_chunk_score = args.teacher_min_chunk_score
+    if minimum_chunk_score is None:
+        minimum_chunk_score = (
+            4 if selection.package_id == "oer-electrocatalysis" else 2
+        )
     return BedrockTeacherExtractor(
         client=client,
         model_id=args.model_id,
         region=args.teacher_region,
         max_output_tokens=args.bedrock_max_output_tokens,
         cache_dir=args.teacher_cache_dir or args.output / ".teacher-cache",
+        prompt_version=prompt_version,
+        domain_terms=domain_terms,
+        minimum_chunk_score=minimum_chunk_score,
+        scope_aware=args.teacher_scope_aware,
     )
 
 
@@ -242,7 +304,7 @@ def main() -> int:
     result = build_domain_adapter_package(
         papers=papers,
         output_dir=args.output,
-        extractor=_extractor(args),
+        extractor=_extractor(args, selection),
         config=DomainPackageConfig(
             package_id=selection.package_id,
             package_version=args.package_version or selection.package_version,

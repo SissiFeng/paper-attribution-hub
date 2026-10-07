@@ -1,0 +1,154 @@
+{
+  "$defs": {
+    "ProposedRagAnswerItem": {
+      "additionalProperties": false,
+      "properties": {
+        "evidence_ids": {
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Evidence Ids",
+          "type": "array"
+        },
+        "normalized_value": {
+          "title": "Normalized Value",
+          "type": "string"
+        },
+        "source_value": {
+          "title": "Source Value",
+          "type": "string"
+        }
+      },
+      "required": [
+        "source_value",
+        "normalized_value",
+        "evidence_ids"
+      ],
+      "title": "ProposedRagAnswerItem",
+      "type": "object"
+    },
+    "RagQuestion": {
+      "additionalProperties": false,
+      "properties": {
+        "paper_ids": {
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Paper Ids",
+          "type": "array"
+        },
+        "question_id": {
+          "title": "Question Id",
+          "type": "string"
+        },
+        "question_type": {
+          "enum": [
+            "material_lookup",
+            "instrument_lookup",
+            "software_lookup",
+            "protocol_step_lookup",
+            "characterization_lookup",
+            "reported_result_lookup",
+            "caveat_lookup",
+            "cross_protocol_comparison",
+            "abstention"
+          ],
+          "title": "Question Type",
+          "type": "string"
+        },
+        "schema_version": {
+          "default": "domain-adapter-rag-question-v0.1",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "semantic_role_filters": {
+          "items": {
+            "enum": [
+              "protocol",
+              "characterization",
+              "computation",
+              "result",
+              "caveat",
+              "scientific_context"
+            ],
+            "type": "string"
+          },
+          "title": "Semantic Role Filters",
+          "type": "array"
+        },
+        "text": {
+          "minLength": 1,
+          "title": "Text",
+          "type": "string"
+        }
+      },
+      "required": [
+        "question_id",
+        "text",
+        "question_type",
+        "paper_ids"
+      ],
+      "title": "RagQuestion",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "proposal_policy": {
+      "default": "deterministic_protocol_question_v0.1",
+      "title": "Proposal Policy",
+      "type": "string"
+    },
+    "proposed_answer_items": {
+      "items": {
+        "$ref": "#/$defs/ProposedRagAnswerItem"
+      },
+      "minItems": 1,
+      "title": "Proposed Answer Items",
+      "type": "array"
+    },
+    "proposed_evidence_ids": {
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "title": "Proposed Evidence Ids",
+      "type": "array"
+    },
+    "proposed_scientific_chunk_ids": {
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "title": "Proposed Scientific Chunk Ids",
+      "type": "array"
+    },
+    "question": {
+      "$ref": "#/$defs/RagQuestion"
+    },
+    "schema_version": {
+      "default": "domain-adapter-rag-question-candidate-v0.1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "source_protocol_ids": {
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "title": "Source Protocol Ids",
+      "type": "array"
+    }
+  },
+  "required": [
+    "question",
+    "source_protocol_ids",
+    "proposed_answer_items",
+    "proposed_evidence_ids",
+    "proposed_scientific_chunk_ids"
+  ],
+  "title": "RagQuestionCandidate",
+  "type": "object"
+}

@@ -23,6 +23,7 @@ from datetime import UTC, datetime, timedelta
 from sqlalchemy import desc, select
 from sqlalchemy.orm import Session, selectinload
 
+from app.config import settings
 from app.models import (
     Author,
     HumanReview,
@@ -82,6 +83,11 @@ class QueueItem:
     review_assignee: str | None
     review_assigned_at: datetime | None
     review_assigned_by: str | None
+    stage1_manifest_id: str | None
+    stage1_role: str | None
+    stage1_round: int | None
+    stage1_ordinal: int | None
+    jev_advice: dict | None = None
 
 
 # ---------------------------------------------------------------------------
@@ -283,8 +289,11 @@ def list_queue(
         stmt = stmt.where(
             PaperClassification.review_assignee == normalized_assignee
         )
-    stmt = stmt.order_by(desc(PaperClassification.review_priority))
-    stmt = stmt.offset(offset).limit(limit)
+    if settings.sdl_stage1_only:
+        stmt = stmt.order_by(Paper.id)
+    else:
+        stmt = stmt.order_by(desc(PaperClassification.review_priority))
+        stmt = stmt.offset(offset).limit(limit)
 
     review_paper_ids = {
         pid for (pid,) in session.execute(select(HumanReview.paper_id)).all()
@@ -293,7 +302,10 @@ def list_queue(
 
     out: list[QueueItem] = []
     now = datetime.now(UTC)
+    from app.services.sdl_stage1_service import stage1_assignment
+
     for paper, cls in session.execute(stmt).all():
+        assignment = stage1_assignment(paper)
         _, reasons = compute_priority(
             paper,
             cls,
@@ -363,8 +375,42 @@ def list_queue(
                 review_assignee=cls.review_assignee,
                 review_assigned_at=cls.review_assigned_at,
                 review_assigned_by=cls.review_assigned_by,
+                stage1_manifest_id=(
+                    str(assignment.get("manifest_id"))
+                    if assignment and assignment.get("manifest_id")
+                    else None
+                ),
+                stage1_role=(
+                    str(assignment.get("role"))
+                    if assignment and assignment.get("role")
+                    else None
+                ),
+                stage1_round=(
+                    int(assignment["round"])
+                    if assignment and assignment.get("round") is not None
+                    else None
+                ),
+                stage1_ordinal=(
+                    int(assignment["ordinal"])
+                    if assignment and assignment.get("ordinal") is not None
+                    else None
+                ),
             )
         )
+    if settings.sdl_stage1_only:
+        role_order = {"train": 0, "validation": 1, "frozen_test": 2, "pool": 3}
+        out.sort(
+            key=lambda item: (
+                role_order.get(item.stage1_role or "", 4),
+                item.stage1_round or 0,
+                item.stage1_ordinal or 0,
+                item.paper_id,
+            )
+        )
+        return out[offset : offset + limit]
+    from app.services.jev_advisory_service import review_advice
+    if not include_confirmed:
+        review_advice(out, session)
     return out
 
 

@@ -561,7 +561,7 @@ export default function CoauthorNetworkPage() {
   const view: View = searchParams.get("coauthor_view") === "institutions"
     ? "institutions"
     : "authors";
-  const onlyRelevant = searchParams.get("coauthor_relevant") !== "false";
+  const onlyRelevant = searchParams.get("coauthor_relevant") === "true";
   const parsedInstitutionMin = Number(searchParams.get("coauthor_inst_min_papers"));
   const minPapers = Number.isFinite(parsedInstitutionMin) && parsedInstitutionMin >= 1
     ? Math.min(20, parsedInstitutionMin)

@@ -12,6 +12,7 @@ import { DEFAULT_FILTER } from "@/types";
 
 interface Props {
   hideLabels?: boolean;
+  readOnly?: boolean;
 }
 
 interface FacetOption {
@@ -81,12 +82,13 @@ function parseTriState(value: string): boolean | undefined {
   return undefined;
 }
 
-export function FilterBar({ hideLabels = false }: Props) {
+export function FilterBar({ hideLabels = false, readOnly = false }: Props) {
   const [searchParams, setSearchParams] = useSearchParams();
   const [options, setOptions] = useState<FilterOptions | null>(null);
   const filter = filterFromSearchParams(searchParams);
 
   useEffect(() => {
+    if (readOnly) return;
     let cancelled = false;
     getFilterOptions().then((result) => {
       if (!cancelled) setOptions(result);
@@ -94,7 +96,7 @@ export function FilterBar({ hideLabels = false }: Props) {
       if (!cancelled) setOptions(null);
     });
     return () => { cancelled = true; };
-  }, []);
+  }, [readOnly]);
 
   const update = (next: PaperFilterState) =>
     setSearchParams(mergeFilterSearchParams(searchParams, next));
@@ -218,7 +220,7 @@ export function FilterBar({ hideLabels = false }: Props) {
         </div>
       )}
 
-      <div className="filter-scope-presets" aria-label="SDL and AC analysis scope">
+      {!readOnly && <><div className="filter-scope-presets" aria-label="SDL and AC analysis scope">
         <span>Analysis scope</span>
         <button
           type="button"
@@ -296,7 +298,7 @@ export function FilterBar({ hideLabels = false }: Props) {
           <FacetPicker label="AI for science" values={filter.aiForScienceJudgements} options={enumOptions(AI_OPTIONS)} onChange={(aiForScienceJudgements) => update({ ...filter, aiForScienceJudgements })} />
           <FacetPicker label="Review status" values={filter.reviewStatuses} options={enumOptions(REVIEW_OPTIONS)} onChange={(reviewStatuses) => update({ ...filter, reviewStatuses })} />
         </div>
-      </details>
+      </details></>}
     </section>
   );
 }

@@ -1,0 +1,2 @@
+Self-driving laboratories, automated experimentation, AI for materials and
+chemistry discovery, Bayesian optimization, robotics in the lab.

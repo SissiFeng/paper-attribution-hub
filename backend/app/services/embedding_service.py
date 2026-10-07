@@ -22,6 +22,7 @@ from abc import ABC, abstractmethod
 import numpy as np
 
 _TOKEN_RE = re.compile(r"[A-Za-z][A-Za-z0-9\-]+")
+STORAGE_EMBEDDING_DIMENSION = 1536
 
 
 def tokenize(text: str) -> list[str]:
@@ -149,6 +150,23 @@ class SbertEmbedder(Embedder):
         assert self._model is not None
         vecs = self._model.encode(texts, normalize_embeddings=True)
         return np.asarray(vecs, dtype=np.float32)
+
+
+def embedding_for_storage(
+    vector: np.ndarray | list[float],
+    *,
+    dimension: int = STORAGE_EMBEDDING_DIMENSION,
+) -> list[float]:
+    """Return one deterministic vector matching the PostgreSQL column width."""
+    source = np.asarray(vector, dtype=np.float32).reshape(-1)
+    stored = np.zeros(dimension, dtype=np.float32)
+    copied = min(source.size, dimension)
+    stored[:copied] = source[:copied]
+    if source.size > dimension:
+        norm = float(np.linalg.norm(stored))
+        if norm > 0:
+            stored /= norm
+    return stored.tolist()
 
 
 def get_embedder() -> Embedder:

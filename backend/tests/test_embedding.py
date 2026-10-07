@@ -1,6 +1,12 @@
 import numpy as np
+import pytest
 
-from app.services.embedding_service import TfidfEmbedder, tokenize
+from app.services.embedding_service import (
+    STORAGE_EMBEDDING_DIMENSION,
+    TfidfEmbedder,
+    embedding_for_storage,
+    tokenize,
+)
 
 
 def test_tokenize_basic():
@@ -36,3 +42,16 @@ def test_similarity_separates_topics():
     sims = emb.similarity(query, matrix)
     # Doc 1 (catalysis + Bayesian + closed-loop) should rank above doc 2 (climate review).
     assert sims[1] > sims[2]
+
+
+def test_embedding_for_storage_pads_and_truncates_to_pgvector_width():
+    short = embedding_for_storage(np.array([0.6, 0.8], dtype=np.float32))
+    assert len(short) == STORAGE_EMBEDDING_DIMENSION
+    assert short[:2] == pytest.approx([0.6, 0.8])
+    assert not any(short[2:])
+
+    long = embedding_for_storage(
+        np.ones(STORAGE_EMBEDDING_DIMENSION + 1, dtype=np.float32)
+    )
+    assert len(long) == STORAGE_EMBEDDING_DIMENSION
+    assert np.linalg.norm(long) == pytest.approx(1.0)

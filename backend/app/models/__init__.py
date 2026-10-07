@@ -26,8 +26,24 @@ from app.models.model_evolution import (
     ModelTrainingState,
     TrainingFeedbackEvent,
 )
+from app.models.authorship_metadata import (
+    MetadataEnrichmentRun,
+    PaperAuthorshipMetadata,
+)
+from app.models.chat import ChatMessage, ChatSession
+from app.models.reading import Reader, ReaderSession, Bookmark, ChatParticipant
+from app.models.scientific_knowledge import ScientificKnowledgeRecord
+
+from app.models.access import AdminGrant, AccessAudit
+
+from app.models.research import ResearchProject, ProjectMember, ProjectPaper, ProjectDiscussion, Annotation, EvidenceComparison
+from app.models.exploration import ResearchConnection, ResearchWatch, ResearchScreening, ResearchAlert, ResearchAlertReceipt
 
 all_models = (
+    ResearchConnection, ResearchWatch, ResearchScreening, ResearchAlert, ResearchAlertReceipt,
+    ResearchProject, ProjectMember, ProjectPaper, ProjectDiscussion, Annotation, EvidenceComparison,
+    AdminGrant, AccessAudit,
+    Reader, ReaderSession, Bookmark, ChatParticipant,
     Paper,
     PaperAuthor,
     Author,
@@ -55,6 +71,11 @@ all_models = (
     ModelTrainingRun,
     ModelTrainingState,
     TrainingFeedbackEvent,
+    PaperAuthorshipMetadata,
+    MetadataEnrichmentRun,
+    ChatSession,
+    ChatMessage,
+    ScientificKnowledgeRecord,
 )
 
 __all__ = [
@@ -85,5 +106,10 @@ __all__ = [
     "ModelTrainingRun",
     "ModelTrainingState",
     "TrainingFeedbackEvent",
+    "PaperAuthorshipMetadata",
+    "MetadataEnrichmentRun",
+    "ChatSession",
+    "ChatMessage",
+    "ScientificKnowledgeRecord",
     "all_models",
 ]

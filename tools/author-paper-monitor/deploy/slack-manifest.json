@@ -1,0 +1,50 @@
+{
+  "display_information": {
+    "name": "AC Papers",
+    "description": "New publications from the AC author watchlist",
+    "background_color": "#263C36"
+  },
+  "features": {
+    "bot_user": {
+      "display_name": "AC Papers",
+      "always_online": false
+    },
+    "app_home": {
+      "home_tab_enabled": true,
+      "messages_tab_enabled": true,
+      "messages_tab_read_only_enabled": false
+    },
+    "slash_commands": [
+      {
+        "command": "/papers",
+        "url": "https://8wl9tcx4p1.execute-api.ca-central-1.amazonaws.com/slack",
+        "description": "Connect, preview publications, and manage the author watchlist",
+        "usage_hint": "connect \u00b7 test \u00b7 review \u00b7 decisions \u00b7 start \u00b7 status \u00b7 authors \u00b7 add \u00b7 pause",
+        "should_escape": false
+      }
+    ]
+  },
+  "oauth_config": {
+    "scopes": {
+      "bot": [
+        "chat:write",
+        "commands",
+        "im:write"
+      ]
+    }
+  },
+  "settings": {
+    "event_subscriptions": {
+      "request_url": "https://8wl9tcx4p1.execute-api.ca-central-1.amazonaws.com/slack",
+      "bot_events": [
+        "app_home_opened"
+      ]
+    },
+    "interactivity": {
+      "is_enabled": true,
+      "request_url": "https://8wl9tcx4p1.execute-api.ca-central-1.amazonaws.com/slack"
+    },
+    "socket_mode_enabled": false,
+    "token_rotation_enabled": false
+  }
+}

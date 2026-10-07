@@ -135,7 +135,12 @@ class TopicClassifier:
                 negated = [h for h in hits if h.negated]
                 if positive:
                     kept_hits.append(term)
-                    kept_weight += weight
+                    # Weight proportional to the fraction of hits that are
+                    # non-negated. This prevents a single negated hit from
+                    # wiping out the contribution of 10 positive hits, and
+                    # gives partial credit when a keyword is mostly affirmed.
+                    pos_fraction = len(positive) / len(hits)
+                    kept_weight += weight * pos_fraction
                 if negated:
                     negation_hits.append(term)
                     total_negated += len(negated)
@@ -295,6 +300,11 @@ class TopicClassifier:
 
         Tightened from v0.1: extras get smaller damping, and adjacent-only
         results stay capped strictly below 0.5.
+
+        v0.8: adjacent topics now stack cumulatively (up to the 0.49 cap)
+        rather than using only the single best adjacent match. This prevents
+        papers that hit many adjacent topics (e.g. high-throughput + robotics
+        + data-science) from being scored identically to a paper hitting one.
         """
         if not matches:
             return 0.0
@@ -309,5 +319,12 @@ class TopicClassifier:
             extras = sum(core_scores[1:]) * 0.2  # was 0.3, dampened
             score = min(top + extras, 1.0)
         if adj_scores and score < 0.4:
-            score = max(score, min(adj_scores[0] * 0.5, 0.49))
+            # Cumulative adjacent stacking: each additional adjacent topic
+            # past the first adds 40 % of its score, capped at 0.49.
+            # This rewards genuine multi-topic coverage without letting
+            # adjacent-only papers reach RELATED territory.
+            cumulative = adj_scores[0] * 0.5
+            for s in adj_scores[1:]:
+                cumulative += s * 0.4 * 0.5
+            score = max(score, min(cumulative, 0.49))
         return round(score, 3)

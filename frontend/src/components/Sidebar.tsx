@@ -1,45 +1,10 @@
-import { NavLink } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { API_BASE } from "@/lib/runtime";
 import styles from "./Sidebar.module.css";
-
-// ── Route groups ────────────────────────────────────────────────────────────
-
-const RESEARCH_NAV = [
-  { to: "/",           label: "Papers",       end: true },
-  { to: "/queue",      label: "Review Queue"            },
-  { to: "/discovery",  label: "Discovery"               },
-  { to: "/retrieval",  label: "Graph RAG"               },
-];
-
-const ANALYTICS_NAV = [
-  { to: "/insights",  label: "Insights"   },
-  { to: "/growth",    label: "Net Growth" },
-  { to: "/timeline",  label: "Timeline"   },
-  { to: "/sankey",    label: "Sankey"     },
-  { to: "/impact",    label: "Impact"     },
-  { to: "/drift",     label: "Drift"      },
-  { to: "/transfer",  label: "Knowledge Transfer" },
-  { to: "/transfer-studio", label: "Transfer Studio" },
-  { to: "/kb",        label: "Knowledge Base" },
-];
-
-const NETWORK_NAV = [
-  { to: "/multi-graph",  label: "Multi-Graph" },
-  { to: "/network",      label: "Co-Author"   },
-  { to: "/geographic",   label: "Geographic"  },
-];
-
-const TEAM_NAV = [
-  { to: "/people", label: "People Grid" },
-];
-
-const OPS_NAV = [
-  { to: "/lint",          label: "Lint Report"   },
-  { to: "/duplicates",    label: "Duplicates"    },
-  { to: "/evidence-gaps", label: "Evidence Gaps" },
-  { to: "/pipeline",      label: "Pipeline"      },
-  { to: "/report",        label: "Report"        },
-  { to: "/eval",          label: "Eval"          },
-];
+import { usePasAccount } from './PasAccount';
+import { CommandPalette } from './CommandPalette';
+import { navigationItems, navigationActive, navigationShortcut } from './navigation';
 
 // ── Icons ───────────────────────────────────────────────────────────────────
 
@@ -83,6 +48,14 @@ const ICONS: Record<string, JSX.Element> = {
     <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.6">
       <polyline points="1,13 4,9 7,10 10,5 15,2" />
       <polyline points="11,2 15,2 15,6" />
+    </svg>
+  ),
+  "Institution Compare": (
+    <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.6">
+      <rect x="1.5" y="3" width="5" height="10" rx="1" />
+      <rect x="9.5" y="6" width="5" height="7" rx="1" />
+      <line x1="4" y1="1" x2="4" y2="3" />
+      <line x1="12" y1="4" x2="12" y2="6" />
     </svg>
   ),
   Timeline: (
@@ -223,28 +196,80 @@ const ICONS: Record<string, JSX.Element> = {
   ),
 };
 
-function NavItemLink({ to, label, end }: { to: string; label: string; end?: boolean }) {
+function NavItemLink({ to, label, active, restricted=false, onClick }: { to: string; label: string; active: boolean; restricted?: boolean; onClick?: () => void }) {
+  const researchIcons: Record<string, JSX.Element> = {'Paper attribution':ICONS.Papers, 'My research':ICONS['Knowledge Base'], 'Manage access':ICONS['People Grid']};
   return (
-    <NavLink
+    <Link
       to={to}
-      end={end}
-      className={({ isActive }) =>
-        `${styles.navItem}${isActive ? ` ${styles.active}` : ""}`
-      }
+      aria-current={active ? "page" : undefined}
+      data-nav-current={active || undefined}
+      title={label + (restricted ? ' — Administrator access' : '')}
+      aria-label={label + (restricted ? ' — Administrator access' : '')}
+      onClick={onClick}
+      className={`${styles.navItem}${active ? ` ${styles.active}` : ""}`}
     >
-      <span className={styles.navIcon}>{ICONS[label]}</span>
-      {label}
-    </NavLink>
+      <span className={styles.navIcon}>{ICONS[label] || researchIcons[label]}</span>
+      <span data-nav-label>{label}</span>
+      {restricted && <span className={styles.accessLock} aria-hidden="true"><svg width="10" height="12" viewBox="0 0 12 14" fill="none" stroke="currentColor"><rect x="1.5" y="6" width="9" height="6.5" rx="1"/><path d="M3.5 6V4a2.5 2.5 0 0 1 5 0v2"/></svg></span>}
+    </Link>
   );
 }
 
 // ── Component ────────────────────────────────────────────────────────────────
 
 export function Sidebar() {
-  const API_BASE = import.meta.env.VITE_API_BASE ?? "http://localhost:8000";
+  const {user}=usePasAccount();
+  const admin=user?.role==='admin';
+  const [expanded,setExpanded]=useState(false);
+  const close=()=>setExpanded(false);
+  const [commandOpen,setCommandOpen]=useState(false),[shortcut,setShortcut]=useState('Ctrl K');
+  const location=useLocation(),items=useMemo(()=>navigationItems(admin),[admin]);
+  const nav=useRef<HTMLElement>(null),highlight=useRef<HTMLSpanElement>(null),positioned=useRef(false);
+  useEffect(()=>{
+    setShortcut(/Mac|iPhone|iPad/.test(navigator.platform)?'⌘ K':'Ctrl K');
+    const key=(event:KeyboardEvent)=>{
+      if(!navigationShortcut(event))return;
+      if(!commandOpen&&document.querySelector('dialog[open], [aria-modal="true"]'))return;
+      event.preventDefault();setCommandOpen(open=>!open);setExpanded(false);
+    };
+    const message=(event:MessageEvent)=>{
+      const frame=document.querySelector<HTMLIFrameElement>('iframe[title="PAS private research workspace"]');
+      if(event.origin===window.location.origin&&frame&&event.source===frame.contentWindow&&event.data?.type==='pas:navigation:open'&&!document.querySelector('dialog[open], [aria-modal="true"]')){
+        setCommandOpen(true);setExpanded(false);
+      }
+    };
+    window.addEventListener('keydown',key);window.addEventListener('message',message);
+    return()=>{window.removeEventListener('keydown',key);window.removeEventListener('message',message);};
+  },[commandOpen]);
+  useEffect(()=>{
+    const container=nav.current!,block=highlight.current!;
+    const active=container.querySelector<HTMLElement>('[data-nav-current="true"]');
+    if(!active){block.style.opacity='0';container.removeAttribute('data-highlight-ready');positioned.current=false;return;}
+    let alive=true,lastTarget='';
+    const place=(animate=false)=>{
+      if(!alive)return;
+      const root=container.getBoundingClientRect(),target=active.getBoundingClientRect(),label=active.querySelector('[data-nav-label]')!.getBoundingClientRect();
+      const width=root.width<100?target.width:Math.min(target.width,label.right-target.left+12),height=target.height;
+      const x=target.left-root.left,y=target.top-root.top;
+      const signature=[x,y,width,height].join(':');
+      if(signature===lastTarget)return;
+      lastTarget=signature;
+      const before=block.getBoundingClientRect();block.getAnimations().forEach(a=>a.cancel());
+      Object.assign(block.style,{width:width+'px',height:height+'px',transform:`translate(${x}px, ${y}px)`,opacity:'1'});
+      if(animate&&positioned.current&&!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+        block.animate([{transform:`translate(${before.left-root.left}px, ${before.top-root.top}px) scale(${before.width/width}, ${before.height/height})`},{transform:`translate(${x}px, ${y}px) scale(1)`}],{duration:280,easing:'cubic-bezier(.2,.9,.25,1.08)'});
+      }
+      container.dataset.highlightReady='true';positioned.current=true;
+    };
+    place(true);
+    const observer=new ResizeObserver(()=>place());observer.observe(container);observer.observe(active);
+    document.fonts.ready.then(()=>place());
+    return()=>{alive=false;observer.disconnect();};
+  },[location.pathname,location.search,admin,expanded]);
 
   return (
-    <aside className={styles.sidebar}>
+    <aside className={`${styles.sidebar}${expanded ? ` ${styles.expanded}` : ''}`}>
+      <button className={styles.menuToggle} aria-expanded={expanded} aria-controls="pas-navigation" onClick={()=>setExpanded(!expanded)}>{expanded?'Close menu':'Menu'}</button>
       {/* Logo / brand */}
       <div className={styles.logo}>
         <span className={styles.logoIcon}>
@@ -256,40 +281,26 @@ export function Sidebar() {
         </span>
         <div>
           <div className={styles.logoText}>Paper Attribution</div>
-          <div className={styles.logoSub}>AC Research</div>
+          <div className={styles.logoSub}>Research & Evidence</div>
         </div>
       </div>
 
-      {/* Navigation */}
-      <nav className={styles.nav}>
-        <div className={styles.sectionLabel}>Research</div>
-        {RESEARCH_NAV.map((item) => (
-          <NavItemLink key={item.to} {...item} />
-        ))}
-
-        <div className={styles.sectionLabel}>Analytics</div>
-        {ANALYTICS_NAV.map((item) => (
-          <NavItemLink key={item.to} {...item} />
-        ))}
-
-        <div className={styles.sectionLabel}>Network</div>
-        {NETWORK_NAV.map((item) => (
-          <NavItemLink key={item.to} {...item} />
-        ))}
-
-        <div className={styles.sectionLabel}>Team</div>
-        {TEAM_NAV.map((item) => (
-          <NavItemLink key={item.to} {...item} />
-        ))}
-
-        <div className={styles.sectionLabel}>Operations</div>
-        {OPS_NAV.map((item) => (
-          <NavItemLink key={item.to} {...item} />
-        ))}
+      <button className={styles.commandTrigger} onClick={()=>{close();setCommandOpen(true);}} aria-label="Find a PAS page" aria-keyshortcuts="Meta+K Control+K" title="Find a PAS page (⌘ / Ctrl K)">
+        <svg aria-hidden="true" width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5"><circle cx="6.5" cy="6.5" r="4.5"/><path d="m10 10 4 4"/></svg>
+        <span>Find a page</span><kbd>{shortcut}</kbd>
+      </button>
+      <nav ref={nav} className={styles.nav} id="pas-navigation" aria-label="PAS navigation">
+        <span ref={highlight} className={styles.highlight} aria-hidden="true"/>
+        {['Research','Analytics','Network','Team','Operations'].map(group=><div key={group} className={styles.navGroup}>
+          <div className={styles.sectionLabel}>{group}</div>
+          {items.filter(item=>item.group===group).map(item=><NavItemLink key={item.to} to={item.to} label={item.label}
+            active={navigationActive(item,location.pathname,location.search,admin)} restricted={item.access==='admin'&&!admin} onClick={close}/>)}
+        </div>)}
       </nav>
+      {commandOpen&&<CommandPalette items={items} admin={admin} onClose={()=>setCommandOpen(false)}/>}
 
       {/* Footer utilities */}
-      <div className={styles.footer}>
+      {admin && <div className={styles.footer}>
         <a
           className={styles.footerLink}
           href={`${API_BASE}/papers/export.csv`}
@@ -313,7 +324,7 @@ export function Sidebar() {
           </svg>
           API Docs
         </a>
-      </div>
+      </div>}
     </aside>
   );
 }

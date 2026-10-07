@@ -1,0 +1,1126 @@
+{
+  "audit_summary": {
+    "accepted_field_count": 22,
+    "proposed_field_count": 70,
+    "rejected_field_count": 48,
+    "repair_attempted_count": 24,
+    "repair_succeeded_count": 2,
+    "unsupported_claim_count": 48
+  },
+  "candidate_domain_terms": [
+    "electrolyte",
+    "lithium-ion",
+    "ionic conductivity",
+    "solubility",
+    "redox"
+  ],
+  "field_audit_records": [
+    {
+      "cited_span": "N-Methylmorpholine (10 mL, 91 mmol; purchased from Chemcraft, 99%) was dissolved in acetonitrile.",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[0].role",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.15826_chimtech.9172",
+      "proposed_value": "starting material",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "ethyl bromide (9 mL, 121 mmol; purchased from Vecton, 99%) was added dropwise under a continuous argon flow.",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[1].name",
+      "nearest_source_span": "To this so- lution, ethyl bromide (9 mL, 121 mmol; purchased from Vec- ton, 99%) was added dropwise under a continuous argon flow.",
+      "outcome": "rejected",
+      "paper_id": "DOI:10.15826_chimtech.9172",
+      "proposed_value": "ethyl bromide",
+      "protocol_index": 0,
+      "rejection_reason": "span_not_in_source",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "N-Methylmorpholine (10 mL, 91 mmol; purchased from Chemcraft, 99%) was dissolved in acetonitrile.",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[2].role",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.15826_chimtech.9172",
+      "proposed_value": "solvent",
+      "protocol_index": 0,
+      "rejection_reason": "value_elsewhere",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The solid was collected by filtration, washed thoroughly with diethyl ether, and recrystallized from acetonitrile to afford the product as white crystals (10.78 g, 56% yield).",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[3].name",
+      "nearest_source_span": "The solid was collected by filtration, washed thoroughly with diethyl ether, and recrystallized from acetonitrile to afford the 2.",
+      "outcome": "rejected",
+      "paper_id": "DOI:10.15826_chimtech.9172",
+      "proposed_value": "diethyl ether",
+      "protocol_index": 0,
+      "rejection_reason": "span_not_in_source",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "An aqueous solution of lead (II) tetrafluoroborate, Pb(BF₄)₂ (21.00 mmol), was added dropwise to an aqueous solution",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[4].role",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.15826_chimtech.9172",
+      "proposed_value": "starting material",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "An aqueous solution of lead (II) tetrafluoroborate, Pb(BF₄)₂ (21.00 mmol), was added dropwise to an aqueous solution 42.00 mmol).",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[5].name",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.15826_chimtech.9172",
+      "proposed_value": "N-methyl-N-ethylmorpholinium bromide",
+      "protocol_index": 0,
+      "rejection_reason": "value_elsewhere",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The resulting solid was dissolved in an ethanol, and any residual PbBr₂ was removed by filtration.",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[6].role",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.15826_chimtech.9172",
+      "proposed_value": "solvent",
+      "protocol_index": 0,
+      "rejection_reason": "value_elsewhere",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The solution was subsequently evaporated, the precipitate was recrystallized from a mixture of ethylacetate and ethanol, filtered, and the product was dried under vacuum at 100 °C to remove traces of water, yielding white crystals (4.74 g, 52%).",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[7].name",
+      "nearest_source_span": "The solution was subsequently evaporated, the precipitate was recrys- tallized from a mixture of ethylacetate and ethanol, filtered, and the product was dried under vacuum at 100 °C to re- move traces of water, yielding white crystals (4.",
+      "outcome": "rejected",
+      "paper_id": "DOI:10.15826_chimtech.9172",
+      "proposed_value": "ethylacetate",
+      "protocol_index": 0,
+      "rejection_reason": "span_not_in_source",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Chemical shifts of residual solvent Acetone-d₆ (δH=2.05 ppm, δC=29.9 ppm) were used as internal refer-",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[8].name",
+      "nearest_source_span": "Chemical shifts of residual solvent Acetone-d₆ 19 F : 4.",
+      "outcome": "rejected",
+      "paper_id": "DOI:10.15826_chimtech.9172",
+      "proposed_value": "Acetone-d₆",
+      "protocol_index": 0,
+      "rejection_reason": "span_not_in_source",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "of (δF = −163.0 ppm) was added as an internal reference. In- ternal Bruker programs for pulse sequences were used for",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[9].name",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.15826_chimtech.9172",
+      "proposed_value": "C₆F₆",
+      "protocol_index": 0,
+      "rejection_reason": "value_elsewhere",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "a Bruker Avance AV-600 spectrometer (600.18 MHz for 1H and 150.93 MHz for 13C),",
+      "diagnostic": null,
+      "entity_type": "instruments",
+      "field_path": "instruments[0].name",
+      "nearest_source_span": "93 MHz for||13 C),|a Bruker Avance AV-600 spectrometer (600.",
+      "outcome": "rejected",
+      "paper_id": "DOI:10.15826_chimtech.9172",
+      "proposed_value": "Bruker Avance AV-600 spectrometer",
+      "protocol_index": 0,
+      "rejection_reason": "span_not_in_source",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "19F NMR spectra were measured using a Bruker Avance AV-400 spectrometer (376.44 MHz",
+      "diagnostic": null,
+      "entity_type": "instruments",
+      "field_path": "instruments[1].name",
+      "nearest_source_span": "DOI:|case|using a Bruker Avance AV-400 spectrometer (376.",
+      "outcome": "rejected",
+      "paper_id": "DOI:10.15826_chimtech.9172",
+      "proposed_value": "Bruker Avance AV-400 spectrometer",
+      "protocol_index": 0,
+      "rejection_reason": "span_not_in_source",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Thermal properties were characterized using a DSC-500 calorimeter (SamSTU). A sample of approximately 15 mg was sealed in an aluminum crucible and heated at a rate of 10 °C/min under a continuous argon flow. The experimental uncertainty in temperature measurement was ±1 °C, and the uncertainty in enthalpy determination was 5%.",
+      "diagnostic": null,
+      "entity_type": "instruments",
+      "field_path": "instruments[2].name",
+      "nearest_source_span": "||uncertainty|in|was sealed in an aluminum crucible and heated at a rate of 10 °C/min under a continuous argon flow.",
+      "outcome": "rejected",
+      "paper_id": "DOI:10.15826_chimtech.9172",
+      "proposed_value": "DSC-500 calorimeter",
+      "protocol_index": 0,
+      "rejection_reason": "span_not_in_source",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Ionic conductivity was characterized by impedance spectroscopy using an HP 4284A precision LCR meter (Hewlett-Packard, Japan). For the measurements, the OIPC sample was pressed by uniaxial compression at a pressure of 30 MPa, and silver powder electrodes were pressed onto the ends of the pellet also at 30 MPa. The measurements were performed using a two-electrode configuration in step-isotherm mode under the following conditions: low vacuum (residual pressure: 50 mTorr), a signal amplitude of 30 mV, and a frequency range of 3∙10¹ to 1∙10⁶ Hz.",
+      "diagnostic": null,
+      "entity_type": "instruments",
+      "field_path": "instruments[3].settings.residual_pressure",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.15826_chimtech.9172",
+      "proposed_value": "50 mTorr (low vacuum)",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "These calculations were performed using molecular dynamics simulations within the ChemOffice software package, following preliminary geometry optimi- zation of the ions using the MM2 force field.",
+      "diagnostic": null,
+      "entity_type": "software",
+      "field_path": "software[0].name",
+      "nearest_source_span": "These calculations were performed using molecular dynamics simulations within the ChemOffice software package, following preliminary geometry optimi- To validate the utility of the structure-property correlations identified in Section 3, a previously unreported organic ionic plastic crystal, N-methyl-N-ethylmorpholinium tetra- fluoroborate ([C₂mmor][BF₄]), was synthesized.",
+      "outcome": "rejected",
+      "paper_id": "DOI:10.15826_chimtech.9172",
+      "proposed_value": "ChemOffice",
+      "protocol_index": 0,
+      "rejection_reason": "span_not_in_source",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The method of equivalent electrical circuits using the Zview program was used to analyze the hodographs.",
+      "diagnostic": null,
+      "entity_type": "software",
+      "field_path": "software[1].name",
+      "nearest_source_span": "Results and Discussion ionic conductivity of OIPCs|method of equivalent electrical circuits using the Zview program was used to analyze the hodographs.",
+      "outcome": "rejected",
+      "paper_id": "DOI:10.15826_chimtech.9172",
+      "proposed_value": "Zview",
+      "protocol_index": 0,
+      "rejection_reason": "span_not_in_source",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "N-Methylmorpholine (10 mL, 91 mmol; purchased from Chemcraft, 99%) was dissolved in acetonitrile.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[0].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.15826_chimtech.9172",
+      "proposed_value": "dissolve N-Methylmorpholine in acetonitrile",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "To this solution, ethyl bromide (9 mL, 121 mmol; purchased from Vecton, 99%) was added dropwise under a continuous argon flow.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[1].action",
+      "nearest_source_span": "To this so- lution, ethyl bromide (9 mL, 121 mmol; purchased from Vec- ton, 99%) was added dropwise under a continuous argon flow.",
+      "outcome": "rejected",
+      "paper_id": "DOI:10.15826_chimtech.9172",
+      "proposed_value": "add ethyl bromide dropwise under continuous argon flow",
+      "protocol_index": 0,
+      "rejection_reason": "span_not_in_source",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The reaction mixture was stirred at 40 °C for 8 h, re- sulting in the formation of a white precipitate.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[2].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.15826_chimtech.9172",
+      "proposed_value": "stir reaction mixture at 40 °C for 8 h",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The reaction mixture was stirred at 40 °C for 8 h, re- sulting in the formation of a white precipitate.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[2].notes",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.15826_chimtech.9172",
+      "proposed_value": "formation of white precipitate",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The solid was collected by filtration, washed thoroughly with diethyl ether, and recrystallized from acetonitrile to afford the product as white crystals (10.78 g, 56% yield).",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[3].action",
+      "nearest_source_span": "The solid was collected by filtration, washed thoroughly with diethyl ether, and recrystallized from acetonitrile to afford the 2.",
+      "outcome": "rejected",
+      "paper_id": "DOI:10.15826_chimtech.9172",
+      "proposed_value": "collect solid by filtration, wash with diethyl ether, and recrystallize from acetonitrile",
+      "protocol_index": 0,
+      "rejection_reason": "span_not_in_source",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "An aqueous solution of lead (II) tetrafluoroborate, Pb(BF₄)₂ (21.00 mmol), was added dropwise to an aqueous solution 42.00 mmol).",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[4].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.15826_chimtech.9172",
+      "proposed_value": "add aqueous Pb(BF₄)₂ dropwise to aqueous N-methyl-N-ethylmorpholinium bromide",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The reaction mixture was stirred for one hour at room temperature.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[5].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.15826_chimtech.9172",
+      "proposed_value": "stir reaction mixture for one hour at room temperature",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The reaction mixture was stirred for one hour at room temperature.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[5].conditions[1]",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.15826_chimtech.9172",
+      "proposed_value": "1 hour",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The resulting precipitate of lead (II) bromide (PbBr₂) was removed by filtration and washed thoroughly with water.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[6].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.15826_chimtech.9172",
+      "proposed_value": "remove PbBr₂ precipitate by filtration and wash with water",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The filtrate was evaporated to dry- ness.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[7].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.15826_chimtech.9172",
+      "proposed_value": "evaporate filtrate to dryness",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The resulting solid was dissolved in an ethanol, and any residual PbBr₂ was removed by filtration.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[8].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.15826_chimtech.9172",
+      "proposed_value": "dissolve solid in ethanol and remove residual PbBr₂ by filtration",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The solution was subsequently evaporated, the precipitate was recrys- tallized from a mixture of ethylacetate and ethanol, filtered, and the product was dried under vacuum at 100 °C to re- move traces of water, yielding white crystals (4.74 g, 52%).",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[9].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.15826_chimtech.9172",
+      "proposed_value": "evaporate solution, recrystallize from ethylacetate/ethanol mixture, filter, and dry under vacuum at 100 °C",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The solution was subsequently evaporated, the precipitate was recrys- tallized from a mixture of ethylacetate and ethanol, filtered, and the product was dried under vacuum at 100 °C to re- move traces of water, yielding white crystals (4.74 g, 52%).",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[9].notes",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.15826_chimtech.9172",
+      "proposed_value": "yield: 4.74 g, 52%",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "For the measurements, the OIPC sample was pressed by uniaxial compression at a pressure of 30 MPa, and silver powder electrodes were pressed onto the ends of the pellet also at 30 MPa.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[10].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.15826_chimtech.9172",
+      "proposed_value": "press OIPC sample by uniaxial compression at 30 MPa with silver powder electrodes",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "For the measurements, the OIPC sample was pressed by uniaxial compression at a pressure of 30 MPa, and silver powder electrodes were pressed onto the ends of the pellet also at 30 MPa.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[10].notes",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.15826_chimtech.9172",
+      "proposed_value": "silver powder electrodes pressed onto ends of pellet also at 30 MPa",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "¹H, ¹³C, and ¹⁹F NMR spectroscopy were used to confirm the molecular structure and purity of the synthesized com- pound, [C₂mmor][BF₄]. NMR spectra were measured using a Bruker Avance AV-600 spectrometer (600.18 MHz for 1H",
+      "diagnostic": null,
+      "entity_type": "characterization",
+      "field_path": "characterization[0].technique",
+      "nearest_source_span": "the molecular structure and purity of the synthesized com- pound, [C₂mmor][BF₄].",
+      "outcome": "rejected",
+      "paper_id": "DOI:10.15826_chimtech.9172",
+      "proposed_value": "¹H NMR spectroscopy",
+      "protocol_index": 0,
+      "rejection_reason": "span_not_in_source",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "a Bruker Avance AV-600 spectrometer (600.18 MHz for 1H and 150.93 MHz for 13C), 13C NMR spectra were registered with C–H spin decoupling.",
+      "diagnostic": null,
+      "entity_type": "characterization",
+      "field_path": "characterization[1].technique",
+      "nearest_source_span": "93 MHz for||13 C),|a Bruker Avance AV-600 spectrometer (600.",
+      "outcome": "rejected",
+      "paper_id": "DOI:10.15826_chimtech.9172",
+      "proposed_value": "¹³C NMR spectroscopy",
+      "protocol_index": 0,
+      "rejection_reason": "span_not_in_source",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "19F NMR spectra were measured using a Bruker Avance AV-400 spectrometer (376.44 MHz",
+      "diagnostic": null,
+      "entity_type": "characterization",
+      "field_path": "characterization[2].technique",
+      "nearest_source_span": "DOI:|case|using a Bruker Avance AV-400 spectrometer (376.",
+      "outcome": "rejected",
+      "paper_id": "DOI:10.15826_chimtech.9172",
+      "proposed_value": "¹⁹F NMR spectroscopy",
+      "protocol_index": 0,
+      "rejection_reason": "span_not_in_source",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Thermal properties were characterized using a DSC-500 calorimeter (SamSTU). A sample of approximately 15 mg was sealed in an aluminum crucible and heated at a rate of 10 °C/min under a continuous argon flow.",
+      "diagnostic": null,
+      "entity_type": "characterization",
+      "field_path": "characterization[3].technique",
+      "nearest_source_span": "||uncertainty|in|was sealed in an aluminum crucible and heated at a rate of 10 °C/min under a continuous argon flow.",
+      "outcome": "rejected",
+      "paper_id": "DOI:10.15826_chimtech.9172",
+      "proposed_value": "differential scanning calorimetry (DSC)",
+      "protocol_index": 0,
+      "rejection_reason": "span_not_in_source",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Ionic conductivity was characterized by impedance spectroscopy using an HP 4284A precision LCR meter (Hewlett-Packard, Japan). For the measurements, the OIPC sample was pressed by uniaxial compression at a pressure of 30 MPa, and silver powder electrodes were pressed onto the ends of the pellet also at 30 MPa. The measurements were performed using a two-electrode configuration in step-isotherm mode under the following conditions: low vacuum (residual pressure: 50 mTorr), a signal amplitude of 30 mV, and a frequency range of 3∙10¹ to 1∙10⁶ Hz.",
+      "diagnostic": null,
+      "entity_type": "characterization",
+      "field_path": "characterization[4].technique",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.15826_chimtech.9172",
+      "proposed_value": "electrochemical impedance spectroscopy",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "For the synthesized salt [C₂mmor][BF₄], the anion-to-cation volume ratio is ρ = Vanion/Vcation = 0.29.",
+      "diagnostic": null,
+      "entity_type": "results",
+      "field_path": "results[0].metric",
+      "nearest_source_span": "For the synthesized salt [C₂mmor][BF₄], the anion-to-cation volume ratio is *ρ* = *V*anion/*V*cation = 0.",
+      "outcome": "rejected",
+      "paper_id": "DOI:10.15826_chimtech.9172",
+      "proposed_value": "anion-to-cation volume ratio",
+      "protocol_index": 0,
+      "rejection_reason": "span_not_in_source",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Based on the established correlation between conductivity and ρ (Equation 10), the predicted value for the logarithm of ionic conductivity in the plastic phase at 100 °C is: log(σ, S∙cm –1 ) = −3.0 ± 0.7.",
+      "diagnostic": null,
+      "entity_type": "results",
+      "field_path": "results[1].metric",
+      "nearest_source_span": "Based on the established correlation between conductivity and *ρ* (Equation 10), the predicted value for the logarithm of ionic conductivity in the plastic phase at 100 °C is: log(*σ*, S∙cm –1 ) = −3.",
+      "outcome": "rejected",
+      "paper_id": "DOI:10.15826_chimtech.9172",
+      "proposed_value": "predicted log(ionic conductivity) at 100 °C from volume ratio",
+      "protocol_index": 0,
+      "rejection_reason": "span_not_in_source",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The transition to the high-temperature plastic crystalline phase (Phase I) occurs at 85 °C,",
+      "diagnostic": null,
+      "entity_type": "results",
+      "field_path": "results[2].metric",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.15826_chimtech.9172",
+      "proposed_value": "solid-solid phase transition temperature to Phase I",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "and melting is observed at 164 °C",
+      "diagnostic": null,
+      "entity_type": "results",
+      "field_path": "results[3].metric",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.15826_chimtech.9172",
+      "proposed_value": "melting point",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "with an enthalpy of melting of ∆Hmelt 0 = 3.65 kJ∙mol –1",
+      "diagnostic": null,
+      "entity_type": "results",
+      "field_path": "results[4].metric",
+      "nearest_source_span": null,
+      "outcome": "repaired",
+      "paper_id": "DOI:10.15826_chimtech.9172",
+      "proposed_value": "enthalpy of melting",
+      "protocol_index": 0,
+      "rejection_reason": "normalization",
+      "repair_attempted": true,
+      "repair_succeeded": true,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "with an enthalpy of melting of ∆𝐻melt 0 = 3.65 kJ∙mol –1",
+      "diagnostic": null,
+      "entity_type": "results",
+      "field_path": "results[4].raw_value",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.15826_chimtech.9172",
+      "proposed_value": "3.65 kJ∙mol⁻¹",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "and an entropy of melting of ∆Smelt 0 = 8.3 J∙K –1 ∙mol –1. The low entropy of melting value unambiguously confirms the classifi- cation of [C₂mmor][BF₄] as an organic ionic plastic crystal (OIPC).",
+      "diagnostic": null,
+      "entity_type": "results",
+      "field_path": "results[5].metric",
+      "nearest_source_span": null,
+      "outcome": "repaired",
+      "paper_id": "DOI:10.15826_chimtech.9172",
+      "proposed_value": "entropy of melting",
+      "protocol_index": 0,
+      "rejection_reason": "normalization",
+      "repair_attempted": true,
+      "repair_succeeded": true,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "and an entropy of melting of ∆𝑆melt 0 = 8.3 J∙K –1 ∙mol –1. The low entropy of melting value unambiguously confirms the classifi- cation of [C₂mmor][BF₄] as an organic ionic plastic crystal (OIPC).",
+      "diagnostic": null,
+      "entity_type": "results",
+      "field_path": "results[5].raw_value",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.15826_chimtech.9172",
+      "proposed_value": "8.3 J∙K⁻¹∙mol⁻¹",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Based on the established correlation between ionic conductivity and enthalpy of melting (Equation 2), the pre- dicted value for the logarithm of ionic conductivity at 100 °C is: log(σ, S∙cm -1 ) = −4.0 ± 0.5.",
+      "diagnostic": null,
+      "entity_type": "results",
+      "field_path": "results[6].metric",
+      "nearest_source_span": "Based on the established correlation between ionic conductivity and enthalpy of melting (Equation 2), the pre- dicted value for the logarithm of ionic conductivity at 100 °C is: log(*σ*, S∙cm -1 ) = −4.",
+      "outcome": "rejected",
+      "paper_id": "DOI:10.15826_chimtech.9172",
+      "proposed_value": "predicted log(ionic conductivity) at 100 °C from melting enthalpy",
+      "protocol_index": 0,
+      "rejection_reason": "span_not_in_source",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "In the plastic phase (Phase I), the temperature depend- ence of ionic conductivity follows the Arrhenius equation with an activation energy of Ea = 0.45 ± 0.01 eV",
+      "diagnostic": null,
+      "entity_type": "results",
+      "field_path": "results[7].metric",
+      "nearest_source_span": "In the plastic phase (Phase I), the temperature depend- ence of ionic conductivity follows the Arrhenius equation with an activation energy of *Ea* = 0.",
+      "outcome": "rejected",
+      "paper_id": "DOI:10.15826_chimtech.9172",
+      "proposed_value": "activation energy for ion transport in Phase I",
+      "protocol_index": 0,
+      "rejection_reason": "span_not_in_source",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "and a pre- exponential factor of logA = 4.5 ± 0.1 S∙K∙cm -1",
+      "diagnostic": null,
+      "entity_type": "results",
+      "field_path": "results[8].metric",
+      "nearest_source_span": "01 eV and a pre- exponential factor of log*A* = 4.",
+      "outcome": "rejected",
+      "paper_id": "DOI:10.15826_chimtech.9172",
+      "proposed_value": "pre-exponential factor",
+      "protocol_index": 0,
+      "rejection_reason": "span_not_in_source",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Consequently, the interpolated ionic conductivity at 100 °C is log(σ, S∙cm –1 ) = −4.15 ± 0.23.",
+      "diagnostic": null,
+      "entity_type": "results",
+      "field_path": "results[9].metric",
+      "nearest_source_span": "Consequently, the interpolated ionic conductivity at 100 °C is log(*σ*, S∙cm –1 ) = −4.",
+      "outcome": "rejected",
+      "paper_id": "DOI:10.15826_chimtech.9172",
+      "proposed_value": "experimental log(ionic conductivity) at 100 °C",
+      "protocol_index": 0,
+      "rejection_reason": "span_not_in_source",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The model based solely on the ionic volume ratio (ρ), which does not explicitly account for the nature of the Cou- lomb interaction, shows slightly overestimated values com- pared to with the experimental conductivity data.",
+      "diagnostic": null,
+      "entity_type": "caveats",
+      "field_path": "caveats[0].text",
+      "nearest_source_span": "The model based solely on the ionic volume ratio (*ρ*), which does not explicitly account for the nature of the Cou- lomb interaction, shows slightly overestimated values com- pared to with the experimental conductivity data.",
+      "outcome": "rejected",
+      "paper_id": "DOI:10.15826_chimtech.9172",
+      "proposed_value": "The model based solely on the ionic volume ratio (ρ), which does not explicitly account for the nature of the Coulomb interaction, shows slightly overestimated values compared to with the experimental conductivity data.",
+      "protocol_index": 0,
+      "rejection_reason": "span_not_in_source",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The better predictive ability of the melting en- thalpy compared to the volume ratio is probably related to the contribution of Coulomb interactions to the melting en- thalpy, which have a significant effect on ion transport.",
+      "diagnostic": null,
+      "entity_type": "caveats",
+      "field_path": "caveats[1].text",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.15826_chimtech.9172",
+      "proposed_value": "The better predictive ability of the melting enthalpy compared to the volume ratio is probably related to the contribution of Coulomb interactions to the melting enthalpy, which have a significant effect on ion transport.",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    }
+  ],
+  "inference_config": {
+    "max_tokens": 14000,
+    "temperature": 0.0
+  },
+  "mapping_version": "evidence-field-mapper-v0.2",
+  "minimum_chunk_score": 2,
+  "model_id": "moonshotai.kimi-k2.5",
+  "paper_id": "DOI:10.15826_chimtech.9172",
+  "prompt_version": "scientific-protocol-teacher-v0.3",
+  "protocols": [
+    {
+      "caveats": [
+        {
+          "caveat_id": "caveat_00f457bfc734f0f8",
+          "evidence_ids": [
+            "ev_93f0fdc8e391e634"
+          ],
+          "text": "The better predictive ability of the melting en- thalpy compared to the volume ratio is probably related to the contribution of Coulomb interactions to the melting en- thalpy, which have a significant effect on ion transport."
+        }
+      ],
+      "characterization": [],
+      "evidence": [
+        {
+          "char_end": 3259,
+          "char_start": 3162,
+          "chunk_id": "mdchk_9b580e6bdf09132a",
+          "document_char_end": 14968,
+          "document_char_start": 14871,
+          "evidence_id": "ev_0b4be2f50f8d89e4",
+          "paper_id": "DOI:10.15826_chimtech.9172",
+          "quote": "N-Methylmorpholine (10 mL, 91 mmol; purchased from Chemcraft, 99%) was dissolved in acetonitrile.",
+          "source_sha256": "fea40dc6f95299f62bb1c9a86aa7db7c53e0478fd77a96cdaba5bdd5e53ac95f"
+        },
+        {
+          "char_end": 3494,
+          "char_start": 3391,
+          "chunk_id": "mdchk_9b580e6bdf09132a",
+          "document_char_end": 15203,
+          "document_char_start": 15100,
+          "evidence_id": "ev_ed6a855182dc83f2",
+          "paper_id": "DOI:10.15826_chimtech.9172",
+          "quote": "The reaction mixture was stirred at 40 °C for 8 h, re- sulting in the formation of a white precipitate.",
+          "source_sha256": "fea40dc6f95299f62bb1c9a86aa7db7c53e0478fd77a96cdaba5bdd5e53ac95f"
+        },
+        {
+          "char_end": 3791,
+          "char_start": 3675,
+          "chunk_id": "mdchk_9b580e6bdf09132a",
+          "document_char_end": 15500,
+          "document_char_start": 15384,
+          "evidence_id": "ev_e96e7226bcc32d50",
+          "paper_id": "DOI:10.15826_chimtech.9172",
+          "quote": "An aqueous solution of lead (II) tetrafluoroborate, Pb(BF₄)₂ (21.00 mmol), was added dropwise to an aqueous solution",
+          "source_sha256": "fea40dc6f95299f62bb1c9a86aa7db7c53e0478fd77a96cdaba5bdd5e53ac95f"
+        },
+        {
+          "char_end": 3804,
+          "char_start": 3675,
+          "chunk_id": "mdchk_9b580e6bdf09132a",
+          "document_char_end": 15513,
+          "document_char_start": 15384,
+          "evidence_id": "ev_7ccdfb59131b3fcd",
+          "paper_id": "DOI:10.15826_chimtech.9172",
+          "quote": "An aqueous solution of lead (II) tetrafluoroborate, Pb(BF₄)₂ (21.00 mmol), was added dropwise to an aqueous solution 42.00 mmol).",
+          "source_sha256": "fea40dc6f95299f62bb1c9a86aa7db7c53e0478fd77a96cdaba5bdd5e53ac95f"
+        },
+        {
+          "char_end": 3871,
+          "char_start": 3805,
+          "chunk_id": "mdchk_9b580e6bdf09132a",
+          "document_char_end": 15580,
+          "document_char_start": 15514,
+          "evidence_id": "ev_ae32d6a2c306746d",
+          "paper_id": "DOI:10.15826_chimtech.9172",
+          "quote": "The reaction mixture was stirred for one hour at room temperature.",
+          "source_sha256": "fea40dc6f95299f62bb1c9a86aa7db7c53e0478fd77a96cdaba5bdd5e53ac95f"
+        },
+        {
+          "char_end": 3986,
+          "char_start": 3872,
+          "chunk_id": "mdchk_9b580e6bdf09132a",
+          "document_char_end": 15695,
+          "document_char_start": 15581,
+          "evidence_id": "ev_098df5010b96c9f4",
+          "paper_id": "DOI:10.15826_chimtech.9172",
+          "quote": "The resulting precipitate of lead (II) bromide (PbBr₂) was removed by filtration and washed thoroughly with water.",
+          "source_sha256": "fea40dc6f95299f62bb1c9a86aa7db7c53e0478fd77a96cdaba5bdd5e53ac95f"
+        },
+        {
+          "char_end": 4028,
+          "char_start": 3987,
+          "chunk_id": "mdchk_9b580e6bdf09132a",
+          "document_char_end": 15737,
+          "document_char_start": 15696,
+          "evidence_id": "ev_40af8f8e038075a4",
+          "paper_id": "DOI:10.15826_chimtech.9172",
+          "quote": "The filtrate was evaporated to dry- ness.",
+          "source_sha256": "fea40dc6f95299f62bb1c9a86aa7db7c53e0478fd77a96cdaba5bdd5e53ac95f"
+        },
+        {
+          "char_end": 4127,
+          "char_start": 4029,
+          "chunk_id": "mdchk_9b580e6bdf09132a",
+          "document_char_end": 15836,
+          "document_char_start": 15738,
+          "evidence_id": "ev_75a89a235a694f6a",
+          "paper_id": "DOI:10.15826_chimtech.9172",
+          "quote": "The resulting solid was dissolved in an ethanol, and any residual PbBr₂ was removed by filtration.",
+          "source_sha256": "fea40dc6f95299f62bb1c9a86aa7db7c53e0478fd77a96cdaba5bdd5e53ac95f"
+        },
+        {
+          "char_end": 4377,
+          "char_start": 4128,
+          "chunk_id": "mdchk_9b580e6bdf09132a",
+          "document_char_end": 16086,
+          "document_char_start": 15837,
+          "evidence_id": "ev_993c534b672ed02d",
+          "paper_id": "DOI:10.15826_chimtech.9172",
+          "quote": "The solution was subsequently evaporated, the precipitate was recrys- tallized from a mixture of ethylacetate and ethanol, filtered, and the product was dried under vacuum at 100 °C to re- move traces of water, yielding white crystals (4.74 g, 52%).",
+          "source_sha256": "fea40dc6f95299f62bb1c9a86aa7db7c53e0478fd77a96cdaba5bdd5e53ac95f"
+        },
+        {
+          "char_end": 1391,
+          "char_start": 843,
+          "chunk_id": "mdchk_c281e5aefafc8667",
+          "document_char_end": 19035,
+          "document_char_start": 18487,
+          "evidence_id": "ev_2976937de793b7e4",
+          "paper_id": "DOI:10.15826_chimtech.9172",
+          "quote": "Ionic conductivity was characterized by impedance spectroscopy using an HP 4284A precision LCR meter (Hewlett-Packard, Japan). For the measurements, the OIPC sample was pressed by uniaxial compression at a pressure of 30 MPa, and silver powder electrodes were pressed onto the ends of the pellet also at 30 MPa. The measurements were performed using a two-electrode configuration in step-isotherm mode under the following conditions: low vacuum (residual pressure: 50 mTorr), a signal amplitude of 30 mV, and a frequency range of 3∙10¹ to 1∙10⁶ Hz.",
+          "source_sha256": "b93d0e5b0ee86252cc6f7b3932701248d921e0809df8244f9f9a666ae56793ed"
+        },
+        {
+          "char_end": 1154,
+          "char_start": 970,
+          "chunk_id": "mdchk_c281e5aefafc8667",
+          "document_char_end": 18798,
+          "document_char_start": 18614,
+          "evidence_id": "ev_7f02c0aed7a8e986",
+          "paper_id": "DOI:10.15826_chimtech.9172",
+          "quote": "For the measurements, the OIPC sample was pressed by uniaxial compression at a pressure of 30 MPa, and silver powder electrodes were pressed onto the ends of the pellet also at 30 MPa.",
+          "source_sha256": "b93d0e5b0ee86252cc6f7b3932701248d921e0809df8244f9f9a666ae56793ed"
+        },
+        {
+          "char_end": 2587,
+          "char_start": 2362,
+          "chunk_id": "mdchk_c88c46ac40c25893",
+          "document_char_end": 37049,
+          "document_char_start": 36824,
+          "evidence_id": "ev_93f0fdc8e391e634",
+          "paper_id": "DOI:10.15826_chimtech.9172",
+          "quote": "The better predictive ability of the melting en- thalpy compared to the volume ratio is probably related to the contribution of Coulomb interactions to the melting en- thalpy, which have a significant effect on ion transport.",
+          "source_sha256": "9068fb78272805a6263129a670fb82fe1f6a3ac7b61c5e4b694f23e0570b5ba4"
+        }
+      ],
+      "evidence_scope": "primary_report",
+      "instruments": [
+        {
+          "entity_id": "inst_0b0700e491edfa14",
+          "evidence_ids": [
+            "ev_2976937de793b7e4"
+          ],
+          "manufacturer": "Hewlett-Packard",
+          "model": "HP 4284A",
+          "name": "HP 4284A precision LCR meter",
+          "settings": {
+            "frequency_range": "3∙10¹ to 1∙10⁶ Hz",
+            "signal_amplitude": "30 mV"
+          }
+        }
+      ],
+      "materials": [
+        {
+          "amount": "10 mL, 91 mmol",
+          "entity_id": "mat_72304d8864a34d89",
+          "evidence_ids": [
+            "ev_0b4be2f50f8d89e4"
+          ],
+          "name": "N-Methylmorpholine",
+          "pretreatment": null,
+          "purity": "99%",
+          "role": null,
+          "supplier": "Chemcraft"
+        },
+        {
+          "amount": null,
+          "entity_id": "mat_924b0ddbbd761a67",
+          "evidence_ids": [
+            "ev_0b4be2f50f8d89e4"
+          ],
+          "name": "acetonitrile",
+          "pretreatment": null,
+          "purity": null,
+          "role": null,
+          "supplier": null
+        },
+        {
+          "amount": "21.00 mmol",
+          "entity_id": "mat_1ccb22651203ad32",
+          "evidence_ids": [
+            "ev_e96e7226bcc32d50"
+          ],
+          "name": "lead (II) tetrafluoroborate, Pb(BF₄)₂",
+          "pretreatment": "aqueous solution",
+          "purity": null,
+          "role": null,
+          "supplier": null
+        },
+        {
+          "amount": null,
+          "entity_id": "mat_55fc0ddba2856414",
+          "evidence_ids": [
+            "ev_75a89a235a694f6a"
+          ],
+          "name": "ethanol",
+          "pretreatment": null,
+          "purity": null,
+          "role": null,
+          "supplier": null
+        }
+      ],
+      "paper_id": "DOI:10.15826_chimtech.9172",
+      "protocol_id": "protocol_0343293256d18c9b",
+      "protocol_name": "Synthesis and characterization of N-methyl-N-ethylmorpholinium tetrafluoroborate ([C₂mmor][BF₄])",
+      "protocol_type": "synthesis and characterization",
+      "relations": [],
+      "results": [],
+      "scientific_chunk_ids": [],
+      "software": [],
+      "source_chunk_ids": [
+        "mdchk_9b580e6bdf09132a",
+        "mdchk_c281e5aefafc8667",
+        "mdchk_c88c46ac40c25893"
+      ],
+      "source_paper_tier": "primary_battery_electrolyte",
+      "steps": [
+        {
+          "action": "N-Methylmorpholine (10 mL, 91 mmol; purchased from Chemcraft, 99%) was dissolved in acetonitrile.",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_0b4be2f50f8d89e4"
+          ],
+          "notes": null,
+          "order": 1,
+          "step_id": "step_35e2246c402450ba"
+        },
+        {
+          "action": "The reaction mixture was stirred at 40 °C for 8 h, re- sulting in the formation of a white precipitate.",
+          "conditions": [
+            "40 °C",
+            "8 h"
+          ],
+          "evidence_ids": [
+            "ev_ed6a855182dc83f2"
+          ],
+          "notes": null,
+          "order": 2,
+          "step_id": "step_0ce9e11f4d4660b7"
+        },
+        {
+          "action": "An aqueous solution of lead (II) tetrafluoroborate, Pb(BF₄)₂ (21.00 mmol), was added dropwise to an aqueous solution 42.00 mmol).",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_7ccdfb59131b3fcd"
+          ],
+          "notes": null,
+          "order": 3,
+          "step_id": "step_bb1ce2bc58360dc2"
+        },
+        {
+          "action": "The reaction mixture was stirred for one hour at room temperature.",
+          "conditions": [
+            "room temperature"
+          ],
+          "evidence_ids": [
+            "ev_ae32d6a2c306746d"
+          ],
+          "notes": null,
+          "order": 4,
+          "step_id": "step_21d960139b4ec119"
+        },
+        {
+          "action": "The resulting precipitate of lead (II) bromide (PbBr₂) was removed by filtration and washed thoroughly with water.",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_098df5010b96c9f4"
+          ],
+          "notes": null,
+          "order": 5,
+          "step_id": "step_421e3a096a475fdd"
+        },
+        {
+          "action": "The filtrate was evaporated to dry- ness.",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_40af8f8e038075a4"
+          ],
+          "notes": null,
+          "order": 6,
+          "step_id": "step_11adfc6bfff16008"
+        },
+        {
+          "action": "The resulting solid was dissolved in an ethanol, and any residual PbBr₂ was removed by filtration.",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_75a89a235a694f6a"
+          ],
+          "notes": null,
+          "order": 7,
+          "step_id": "step_f0f66b8e09653759"
+        },
+        {
+          "action": "The solution was subsequently evaporated, the precipitate was recrys- tallized from a mixture of ethylacetate and ethanol, filtered, and the product was dried under vacuum at 100 °C to re- move traces of water, yielding white crystals (4.74 g, 52%).",
+          "conditions": [
+            "100 °C",
+            "vacuum"
+          ],
+          "evidence_ids": [
+            "ev_993c534b672ed02d"
+          ],
+          "notes": null,
+          "order": 8,
+          "step_id": "step_68bee6e452709f6d"
+        },
+        {
+          "action": "For the measurements, the OIPC sample was pressed by uniaxial compression at a pressure of 30 MPa, and silver powder electrodes were pressed onto the ends of the pellet also at 30 MPa.",
+          "conditions": [
+            "30 MPa"
+          ],
+          "evidence_ids": [
+            "ev_7f02c0aed7a8e986"
+          ],
+          "notes": null,
+          "order": 9,
+          "step_id": "step_1fd903b0e40478b2"
+        }
+      ]
+    }
+  ],
+  "region": "us-east-1",
+  "schema_version": "bedrock-teacher-paper-cache-v0.2",
+  "teacher_response": {
+    "diagnostic": null,
+    "invocation_count": 1,
+    "metrics": {
+      "latencyMs": 95002
+    },
+    "raw_text": " ```json\n{\n  \"protocols\": [\n    {\n      \"source_chunk_ids\": [\"mdchk_9b580e6bdf09132a\", \"mdchk_c281e5aefafc8667\", \"mdchk_c88c46ac40c25893\"],\n      \"protocol_name\": \"Synthesis and characterization of N-methyl-N-ethylmorpholinium tetrafluoroborate ([C₂mmor][BF₄])\",\n      \"protocol_type\": \"synthesis and characterization\",\n      \"materials\": [\n        {\n          \"source_chunk_id\": \"mdchk_9b580e6bdf09132a\",\n          \"name\": \"N-Methylmorpholine\",\n          \"role\": \"starting material\",\n          \"amount\": \"10 mL, 91 mmol\",\n          \"purity\": \"99%\",\n          \"supplier\": \"Chemcraft\",\n          \"pretreatment\": null,\n          \"evidence_quote\": \"N-Methylmorpholine (10 mL, 91 mmol; purchased from Chemcraft, 99%) was dissolved in acetonitrile.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_9b580e6bdf09132a\",\n          \"name\": \"ethyl bromide\",\n          \"role\": \"starting material\",\n          \"amount\": \"9 mL, 121 mmol\",\n          \"purity\": \"99%\",\n          \"supplier\": \"Vecton\",\n          \"pretreatment\": null,\n          \"evidence_quote\": \"ethyl bromide (9 mL, 121 mmol; purchased from Vecton, 99%) was added dropwise under a continuous argon flow.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_9b580e6bdf09132a\",\n          \"name\": \"acetonitrile\",\n          \"role\": \"solvent\",\n          \"amount\": null,\n          \"purity\": null,\n          \"supplier\": null,\n          \"pretreatment\": null,\n          \"evidence_quote\": \"N-Methylmorpholine (10 mL, 91 mmol; purchased from Chemcraft, 99%) was dissolved in acetonitrile.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_9b580e6bdf09132a\",\n          \"name\": \"diethyl ether\",\n          \"role\": \"washing solvent\",\n          \"amount\": null,\n          \"purity\": null,\n          \"supplier\": null,\n          \"pretreatment\": null,\n          \"evidence_quote\": \"The solid was collected by filtration, washed thoroughly with diethyl ether, and recrystallized from acetonitrile to afford the product as white crystals (10.78 g, 56% yield).\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_9b580e6bdf09132a\",\n          \"name\": \"lead (II) tetrafluoroborate, Pb(BF₄)₂\",\n          \"role\": \"starting material\",\n          \"amount\": \"21.00 mmol\",\n          \"purity\": null,\n          \"supplier\": null,\n          \"pretreatment\": \"aqueous solution\",\n          \"evidence_quote\": \"An aqueous solution of lead (II) tetrafluoroborate, Pb(BF₄)₂ (21.00 mmol), was added dropwise to an aqueous solution\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_9b580e6bdf09132a\",\n          \"name\": \"N-methyl-N-ethylmorpholinium bromide\",\n          \"role\": \"starting material\",\n          \"amount\": \"42.00 mmol\",\n          \"purity\": null,\n          \"supplier\": null,\n          \"pretreatment\": \"aqueous solution\",\n          \"evidence_quote\": \"An aqueous solution of lead (II) tetrafluoroborate, Pb(BF₄)₂ (21.00 mmol), was added dropwise to an aqueous solution 42.00 mmol).\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_9b580e6bdf09132a\",\n          \"name\": \"ethanol\",\n          \"role\": \"solvent\",\n          \"amount\": null,\n          \"purity\": null,\n          \"supplier\": null,\n          \"pretreatment\": null,\n          \"evidence_quote\": \"The resulting solid was dissolved in an ethanol, and any residual PbBr₂ was removed by filtration.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_9b580e6bdf09132a\",\n          \"name\": \"ethylacetate\",\n          \"role\": \"recrystallization solvent\",\n          \"amount\": null,\n          \"purity\": null,\n          \"supplier\": null,\n          \"pretreatment\": null,\n          \"evidence_quote\": \"The solution was subsequently evaporated, the precipitate was recrystallized from a mixture of ethylacetate and ethanol, filtered, and the product was dried under vacuum at 100 °C to remove traces of water, yielding white crystals (4.74 g, 52%).\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_9b580e6bdf09132a\",\n          \"name\": \"Acetone-d₆\",\n          \"role\": \"NMR solvent\",\n          \"amount\": null,\n          \"purity\": null,\n          \"supplier\": null,\n          \"pretreatment\": null,\n          \"evidence_quote\": \"Chemical shifts of residual solvent Acetone-d₆ (δH=2.05 ppm, δC=29.9 ppm) were used as internal refer-\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_9b580e6bdf09132a\",\n          \"name\": \"C₆F₆\",\n          \"role\": \"internal reference\",\n          \"amount\": null,\n          \"purity\": null,\n          \"supplier\": null,\n          \"pretreatment\": null,\n          \"evidence_quote\": \"of (δF = −163.0 ppm) was added as an internal reference. In- ternal Bruker programs for pulse sequences were used for\"\n        }\n      ],\n      \"instruments\": [\n        {\n          \"source_chunk_id\": \"mdchk_9b580e6bdf09132a\",\n          \"name\": \"Bruker Avance AV-600 spectrometer\",\n          \"model\": \"AV-600\",\n          \"manufacturer\": \"Bruker\",\n          \"settings\": {\"frequency_1H\": \"600.18 MHz\", \"frequency_13C\": \"150.93 MHz\"},\n          \"evidence_quote\": \"a Bruker Avance AV-600 spectrometer (600.18 MHz for 1H and 150.93 MHz for 13C),\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_9b580e6bdf09132a\",\n          \"name\": \"Bruker Avance AV-400 spectrometer\",\n          \"model\": \"AV-400\",\n          \"manufacturer\": \"Bruker\",\n          \"settings\": {\"frequency_19F\": \"376.44 MHz\"},\n          \"evidence_quote\": \"19F NMR spectra were measured using a Bruker Avance AV-400 spectrometer (376.44 MHz\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_c281e5aefafc8667\",\n          \"name\": \"DSC-500 calorimeter\",\n          \"model\": \"DSC-500\",\n          \"manufacturer\": \"SamSTU\",\n          \"settings\": {\"heating_rate\": \"10 °C/min\", \"atmosphere\": \"continuous argon flow\", \"sample_mass\": \"approximately 15 mg\", \"temperature_uncertainty\": \"±1 °C\", \"enthalpy_uncertainty\": \"5%\"},\n          \"evidence_quote\": \"Thermal properties were characterized using a DSC-500 calorimeter (SamSTU). A sample of approximately 15 mg was sealed in an aluminum crucible and heated at a rate of 10 °C/min under a continuous argon flow. The experimental uncertainty in temperature measurement was ±1 °C, and the uncertainty in enthalpy determination was 5%.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_c281e5aefafc8667\",\n          \"name\": \"HP 4284A precision LCR meter\",\n          \"model\": \"HP 4284A\",\n          \"manufacturer\": \"Hewlett-Packard\",\n          \"settings\": {\"signal_amplitude\": \"30 mV\", \"frequency_range\": \"3∙10¹ to 1∙10⁶ Hz\", \"residual_pressure\": \"50 mTorr (low vacuum)\"},\n          \"evidence_quote\": \"Ionic conductivity was characterized by impedance spectroscopy using an HP 4284A precision LCR meter (Hewlett-Packard, Japan). For the measurements, the OIPC sample was pressed by uniaxial compression at a pressure of 30 MPa, and silver powder electrodes were pressed onto the ends of the pellet also at 30 MPa. The measurements were performed using a two-electrode configuration in step-isotherm mode under the following conditions: low vacuum (residual pressure: 50 mTorr), a signal amplitude of 30 mV, and a frequency range of 3∙10¹ to 1∙10⁶ Hz.\"\n        }\n      ],\n      \"software\": [\n        {\n          \"source_chunk_id\": \"mdchk_9b580e6bdf09132a\",\n          \"name\": \"ChemOffice\",\n          \"version\": null,\n          \"settings\": {\"force_field\": \"MM2\"},\n          \"evidence_quote\": \"These calculations were performed using molecular dynamics simulations within the ChemOffice software package, following preliminary geometry optimi- zation of the ions using the MM2 force field.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_c281e5aefafc8667\",\n          \"name\": \"Zview\",\n          \"version\": null,\n          \"settings\": {},\n          \"evidence_quote\": \"The method of equivalent electrical circuits using the Zview program was used to analyze the hodographs.\"\n        }\n      ],\n      \"steps\": [\n        {\n          \"source_chunk_id\": \"mdchk_9b580e6bdf09132a\",\n          \"order\": 1,\n          \"action\": \"dissolve N-Methylmorpholine in acetonitrile\",\n          \"conditions\": [],\n          \"notes\": null,\n          \"evidence_quote\": \"N-Methylmorpholine (10 mL, 91 mmol; purchased from Chemcraft, 99%) was dissolved in acetonitrile.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_9b580e6bdf09132a\",\n          \"order\": 2,\n          \"action\": \"add ethyl bromide dropwise under continuous argon flow\",\n          \"conditions\": [],\n          \"notes\": null,\n          \"evidence_quote\": \"To this solution, ethyl bromide (9 mL, 121 mmol; purchased from Vecton, 99%) was added dropwise under a continuous argon flow.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_9b580e6bdf09132a\",\n          \"order\": 3,\n          \"action\": \"stir reaction mixture at 40 °C for 8 h\",\n          \"conditions\": [\"40 °C\", \"8 h\"],\n          \"notes\": \"formation of white precipitate\",\n          \"evidence_quote\": \"The reaction mixture was stirred at 40 °C for 8 h, re- sulting in the formation of a white precipitate.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_9b580e6bdf09132a\",\n          \"order\": 4,\n          \"action\": \"collect solid by filtration, wash with diethyl ether, and recrystallize from acetonitrile\",\n          \"conditions\": [],\n          \"notes\": \"yield: 10.78 g, 56%\",\n          \"evidence_quote\": \"The solid was collected by filtration, washed thoroughly with diethyl ether, and recrystallized from acetonitrile to afford the product as white crystals (10.78 g, 56% yield).\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_9b580e6bdf09132a\",\n          \"order\": 5,\n          \"action\": \"add aqueous Pb(BF₄)₂ dropwise to aqueous N-methyl-N-ethylmorpholinium bromide\",\n          \"conditions\": [],\n          \"notes\": null,\n          \"evidence_quote\": \"An aqueous solution of lead (II) tetrafluoroborate, Pb(BF₄)₂ (21.00 mmol), was added dropwise to an aqueous solution 42.00 mmol).\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_9b580e6bdf09132a\",\n          \"order\": 6,\n          \"action\": \"stir reaction mixture for one hour at room temperature\",\n          \"conditions\": [\"room temperature\", \"1 hour\"],\n          \"notes\": null,\n          \"evidence_quote\": \"The reaction mixture was stirred for one hour at room temperature.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_9b580e6bdf09132a\",\n          \"order\": 7,\n          \"action\": \"remove PbBr₂ precipitate by filtration and wash with water\",\n          \"conditions\": [],\n          \"notes\": null,\n          \"evidence_quote\": \"The resulting precipitate of lead (II) bromide (PbBr₂) was removed by filtration and washed thoroughly with water.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_9b580e6bdf09132a\",\n          \"order\": 8,\n          \"action\": \"evaporate filtrate to dryness\",\n          \"conditions\": [],\n          \"notes\": null,\n          \"evidence_quote\": \"The filtrate was evaporated to dry- ness.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_9b580e6bdf09132a\",\n          \"order\": 9,\n          \"action\": \"dissolve solid in ethanol and remove residual PbBr₂ by filtration\",\n          \"conditions\": [],\n          \"notes\": null,\n          \"evidence_quote\": \"The resulting solid was dissolved in an ethanol, and any residual PbBr₂ was removed by filtration.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_9b580e6bdf09132a\",\n          \"order\": 10,\n          \"action\": \"evaporate solution, recrystallize from ethylacetate/ethanol mixture, filter, and dry under vacuum at 100 °C\",\n          \"conditions\": [\"100 °C\", \"vacuum\"],\n          \"notes\": \"yield: 4.74 g, 52%\",\n          \"evidence_quote\": \"The solution was subsequently evaporated, the precipitate was recrys- tallized from a mixture of ethylacetate and ethanol, filtered, and the product was dried under vacuum at 100 °C to re- move traces of water, yielding white crystals (4.74 g, 52%).\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_c281e5aefafc8667\",\n          \"order\": 11,\n          \"action\": \"press OIPC sample by uniaxial compression at 30 MPa with silver powder electrodes\",\n          \"conditions\": [\"30 MPa\"],\n          \"notes\": \"silver powder electrodes pressed onto ends of pellet also at 30 MPa\",\n          \"evidence_quote\": \"For the measurements, the OIPC sample was pressed by uniaxial compression at a pressure of 30 MPa, and silver powder electrodes were pressed onto the ends of the pellet also at 30 MPa.\"\n        }\n      ],\n      \"characterization\": [\n        {\n          \"source_chunk_id\": \"mdchk_9b580e6bdf09132a\",\n          \"technique\": \"¹H NMR spectroscopy\",\n          \"settings\": {\"spectrometer\": \"Bruker Avance AV-600\", \"frequency\": \"600.18 MHz\", \"solvent\": \"Acetone-d₆\", \"internal_reference\": \"residual solvent peaks\"},\n          \"output\": null,\n          \"evidence_quote\": \"¹H, ¹³C, and ¹⁹F NMR spectroscopy were used to confirm the molecular structure and purity of the synthesized com- pound, [C₂mmor][BF₄]. NMR spectra were measured using a Bruker Avance AV-600 spectrometer (600.18 MHz for 1H\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_9b580e6bdf09132a\",\n          \"technique\": \"¹³C NMR spectroscopy\",\n          \"settings\": {\"spectrometer\": \"Bruker Avance AV-600\", \"frequency\": \"150.93 MHz\", \"decoupling\": \"C–H spin decoupling\"},\n          \"output\": null,\n          \"evidence_quote\": \"a Bruker Avance AV-600 spectrometer (600.18 MHz for 1H and 150.93 MHz for 13C), 13C NMR spectra were registered with C–H spin decoupling.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_9b580e6bdf09132a\",\n          \"technique\": \"¹⁹F NMR spectroscopy\",\n          \"settings\": {\"spectrometer\": \"Bruker Avance AV-400\", \"frequency\": \"376.44 MHz\", \"internal_reference\": \"C₆F₆ (δF = −163.0 ppm)\"},\n          \"output\": null,\n          \"evidence_quote\": \"19F NMR spectra were measured using a Bruker Avance AV-400 spectrometer (376.44 MHz\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_c281e5aefafc8667\",\n          \"technique\": \"differential scanning calorimetry (DSC)\",\n          \"settings\": {\"instrument\": \"DSC-500 calorimeter (SamSTU)\", \"sample_mass\": \"approximately 15 mg\", \"heating_rate\": \"10 °C/min\", \"atmosphere\": \"continuous argon flow\", \"crucible\": \"aluminum\"},\n          \"output\": null,\n          \"evidence_quote\": \"Thermal properties were characterized using a DSC-500 calorimeter (SamSTU). A sample of approximately 15 mg was sealed in an aluminum crucible and heated at a rate of 10 °C/min under a continuous argon flow.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_c281e5aefafc8667\",\n          \"technique\": \"electrochemical impedance spectroscopy\",\n          \"settings\": {\"instrument\": \"HP 4284A precision LCR meter (Hewlett-Packard, Japan)\", \"configuration\": \"two-electrode\", \"mode\": \"step-isotherm\", \"pressure\": \"30 MPa\", \"electrodes\": \"silver powder\", \"signal_amplitude\": \"30 mV\", \"frequency_range\": \"3∙10¹ to 1∙10⁶ Hz\", \"vacuum\": \"50 mTorr residual pressure\"},\n          \"output\": null,\n          \"evidence_quote\": \"Ionic conductivity was characterized by impedance spectroscopy using an HP 4284A precision LCR meter (Hewlett-Packard, Japan). For the measurements, the OIPC sample was pressed by uniaxial compression at a pressure of 30 MPa, and silver powder electrodes were pressed onto the ends of the pellet also at 30 MPa. The measurements were performed using a two-electrode configuration in step-isotherm mode under the following conditions: low vacuum (residual pressure: 50 mTorr), a signal amplitude of 30 mV, and a frequency range of 3∙10¹ to 1∙10⁶ Hz.\"\n        }\n      ],\n      \"results\": [\n        {\n          \"source_chunk_id\": \"mdchk_c88c46ac40c25893\",\n          \"metric\": \"anion-to-cation volume ratio\",\n          \"raw_value\": \"ρ = 0.29\",\n          \"context\": \"for [C₂mmor][BF₄]\",\n          \"evidence_quote\": \"For the synthesized salt [C₂mmor][BF₄], the anion-to-cation volume ratio is ρ = Vanion/Vcation = 0.29.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_c88c46ac40c25893\",\n          \"metric\": \"predicted log(ionic conductivity) at 100 °C from volume ratio\",\n          \"raw_value\": \"−3.0 ± 0.7\",\n          \"context\": \"S∙cm⁻¹, predicted from Equation 10\",\n          \"evidence_quote\": \"Based on the established correlation between conductivity and ρ (Equation 10), the predicted value for the logarithm of ionic conductivity in the plastic phase at 100 °C is: log(σ, S∙cm –1 ) = −3.0 ± 0.7.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_c88c46ac40c25893\",\n          \"metric\": \"solid-solid phase transition temperature to Phase I\",\n          \"raw_value\": \"85 °C\",\n          \"context\": \"transition to high-temperature plastic crystalline phase\",\n          \"evidence_quote\": \"The transition to the high-temperature plastic crystalline phase (Phase I) occurs at 85 °C,\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_c88c46ac40c25893\",\n          \"metric\": \"melting point\",\n          \"raw_value\": \"164 °C\",\n          \"context\": null,\n          \"evidence_quote\": \"and melting is observed at 164 °C\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_c88c46ac40c25893\",\n          \"metric\": \"enthalpy of melting\",\n          \"raw_value\": \"3.65 kJ∙mol⁻¹\",\n          \"context\": \"∆H⁰melt\",\n          \"evidence_quote\": \"with an enthalpy of melting of ∆Hmelt 0 = 3.65 kJ∙mol –1\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_c88c46ac40c25893\",\n          \"metric\": \"entropy of melting\",\n          \"raw_value\": \"8.3 J∙K⁻¹∙mol⁻¹\",\n          \"context\": \"∆S⁰melt, confirms classification as OIPC\",\n          \"evidence_quote\": \"and an entropy of melting of ∆Smelt 0 = 8.3 J∙K –1 ∙mol –1. The low entropy of melting value unambiguously confirms the classifi- cation of [C₂mmor][BF₄] as an organic ionic plastic crystal (OIPC).\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_c88c46ac40c25893\",\n          \"metric\": \"predicted log(ionic conductivity) at 100 °C from melting enthalpy\",\n          \"raw_value\": \"−4.0 ± 0.5\",\n          \"context\": \"S∙cm⁻¹, predicted from Equation 2\",\n          \"evidence_quote\": \"Based on the established correlation between ionic conductivity and enthalpy of melting (Equation 2), the pre- dicted value for the logarithm of ionic conductivity at 100 °C is: log(σ, S∙cm -1 ) = −4.0 ± 0.5.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_c88c46ac40c25893\",\n          \"metric\": \"activation energy for ion transport in Phase I\",\n          \"raw_value\": \"0.45 ± 0.01 eV\",\n          \"context\": \"Ea, Arrhenius behavior\",\n          \"evidence_quote\": \"In the plastic phase (Phase I), the temperature depend- ence of ionic conductivity follows the Arrhenius equation with an activation energy of Ea = 0.45 ± 0.01 eV\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_c88c46ac40c25893\",\n          \"metric\": \"pre-exponential factor\",\n          \"raw_value\": \"4.5 ± 0.1\",\n          \"context\": \"logA, S∙K∙cm⁻¹\",\n          \"evidence_quote\": \"and a pre- exponential factor of logA = 4.5 ± 0.1 S∙K∙cm -1\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_c88c46ac40c25893\",\n          \"metric\": \"experimental log(ionic conductivity) at 100 °C\",\n          \"raw_value\": \"−4.15 ± 0.23\",\n          \"context\": \"S∙cm⁻¹, interpolated\",\n          \"evidence_quote\": \"Consequently, the interpolated ionic conductivity at 100 °C is log(σ, S∙cm –1 ) = −4.15 ± 0.23.\"\n        }\n      ],\n      \"caveats\": [\n        {\n          \"source_chunk_id\": \"mdchk_c88c46ac40c25893\",\n          \"text\": \"The model based solely on the ionic volume ratio (ρ), which does not explicitly account for the nature of the Coulomb interaction, shows slightly overestimated values compared to with the experimental conductivity data.\",\n          \"evidence_quote\": \"The model based solely on the ionic volume ratio (ρ), which does not explicitly account for the nature of the Cou- lomb interaction, shows slightly overestimated values com- pared to with the experimental conductivity data.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_c88c46ac40c25893\",\n          \"text\": \"The better predictive ability of the melting enthalpy compared to the volume ratio is probably related to the contribution of Coulomb interactions to the melting enthalpy, which have a significant effect on ion transport.\",\n          \"evidence_quote\": \"The better predictive ability of the melting en- thalpy compared to the volume ratio is probably related to the contribution of Coulomb interactions to the melting en- thalpy, which have a significant effect on ion transport.\"\n        }\n      ]\n    }\n  ]\n}\n```",
+    "salvaged_protocol_count": 0,
+    "schema_invalid": false,
+    "stop_reason": "end_turn",
+    "usage": {
+      "inputTokens": 9853,
+      "outputTokens": 5652,
+      "totalTokens": 15505
+    }
+  }
+}

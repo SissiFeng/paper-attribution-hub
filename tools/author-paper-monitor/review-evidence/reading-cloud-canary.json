@@ -1,0 +1,33 @@
+{
+  "release": {
+    "previous": "arn:aws:ecs:ca-central-1:247893369214:task-definition/paper-attribution-pas-dev-backend:6",
+    "task_definition": "arn:aws:ecs:ca-central-1:247893369214:task-definition/paper-attribution-pas-dev-backend:7",
+    "canary": "arn:aws:ecs:ca-central-1:247893369214:task/paper-attribution-dev-cluster/ff5871c80c16471db0a1afdfa3949a67",
+    "sha256": "dc83aa75b9ecdf6b92c421eb76548bd5d8081a012a27df67b1a2ee88e0558886",
+    "files": {
+      "app/api/chat.py": "7ca36618faacf272c5d9f9d8c56da14040994b5cd8dfb9d5fe868b5e88a60feb",
+      "app/api/reader_auth.py": "0e58dfe25f019ef27aee7c8918b3ba90d0d68e6f3977918223e3caf569e08020",
+      "app/api/reading.py": "be3f2ed1af2e54f907ffe2ce70b7473f3d725dff5e5f767276dd5563921ae74b",
+      "app/models/chat.py": "f148722c8de62a13bdab8907945558d5f39973a0f7703bb252c74ae5f2f64753",
+      "app/models/reading.py": "eea4c293c802b21b98ef183a941b317c9ce142edc3a1c68b91f3d8bab63a8b77",
+      "app/services/chat_service.py": "ad24d90037e9ed363ebc6f23dd04083675a36c7a8155d332415c8a575f978039",
+      "app/services/grounded_answer_service.py": "a96dcaa8a6172c1d4c3302fac9bc53a3f99df175313ed2db86eaa9b1f07f4758",
+      "app/services/chat_access.py": "588ab17159f10881cc8264f5cd047dedaf22a188c7c5289c47458131c181b89b",
+      "app/services/reader_auth.py": "0fd0ad4fb66d707e35d537447c714a4136f6411c7fc503bf6a4c363b6bc167bf",
+      "app/services/reading_schema.py": "6b85bdacb61751cede63705bb03487c0fab93ecb2396b64e67c6aa6913f59bec",
+      "app/main.py": "e93138cb56d83ceaf5205cc84c585edd52dcc892289bc36fd3c676dba9b153e9",
+      "app/models/__init__.py": "98dd187eefcefee9a3dbd7e55afeab3d78372137729cab5241db1dff07b16ce7",
+      "paper_monitor/reading_smoke.py": "b92186f285c0be2681cbc2def746237c02b96cab4f6b5b0087f668406da25e4e"
+    }
+  },
+  "result": {
+    "isolation_canary": "passed",
+    "principals": 3,
+    "synthetic_data": "rolled_back",
+    "sample_paper": "monitor_0fee3349568b558e161eb4b26e836eb4",
+    "markdown_source": "original",
+    "answer_kind": "partial_evidence",
+    "answer_model": "retrieval-only",
+    "sources": 8
+  }
+}

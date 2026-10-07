@@ -16,7 +16,7 @@ resource "aws_ecs_cluster" "main" {
 # --- Task Definition ---
 
 resource "aws_ecs_task_definition" "backend" {
-  family                   = "${local.name_prefix}-backend"
+  family                   = "paper-attribution-pas-${var.environment}-backend"
   network_mode             = "awsvpc"
   requires_compatibilities = ["FARGATE"]
   cpu                      = var.backend_cpu
@@ -38,11 +38,28 @@ resource "aws_ecs_task_definition" "backend" {
 
       # Environment variables from plain text
       environment = [
+        { name = "PAS_ADMIN_ASSETS_BUCKET", value = aws_s3_bucket.frontend.id },
+        { name = "PAS_PUBLIC_URL", value = var.pas_public_url },
+        { name = "PAS_SLACK_TEAM_ID", value = var.pas_slack_team_id },
+        { name = "PAS_SLACK_APP_ID", value = var.pas_slack_app_id },
+        { name = "PAS_SLACK_TABLE", value = var.pas_slack_table },
         { name = "PAS_DATABASE_URL", value = local.db_connection_url },
         { name = "PAS_CORS_ORIGINS", value = jsonencode(var.cors_origins) },
         { name = "PAS_S3_ARTIFACTS_BUCKET", value = aws_s3_bucket.artifacts.id },
         { name = "PAS_AWS_REGION", value = var.aws_region },
         { name = "PAS_KIMI_MODEL", value = var.kimi_model },
+        { name = "PAS_ZOTERO_GROUP_ID", value = var.zotero_group_id },
+        { name = "PAS_ZOTERO_TIER1_COLLECTION", value = var.zotero_tier1_collection },
+        { name = "PAS_ZOTERO_TIER2_COLLECTION", value = var.zotero_tier2_collection },
+        { name = "PAS_ZOTERO_SYNC_ON_STARTUP", value = tostring(var.zotero_sync_on_startup) },
+        { name = "PAS_ZOTERO_DOWNLOAD_FULLTEXTS", value = tostring(var.zotero_download_fulltexts) },
+        { name = "PAS_ZOTERO_SOURCE_ONLY", value = tostring(var.zotero_source_only) },
+        { name = "PAS_SDL_STAGE1_ONLY", value = tostring(var.sdl_stage1_only) },
+        { name = "PAS_SDL_STAGE1_TRAINING_THROUGH_ROUND", value = "0" },
+        { name = "PAS_SDL_STAGE1_DERIVED_VIEWS_ENABLED", value = tostring(var.sdl_stage1_derived_views_enabled) },
+        { name = "PAS_SDL_STAGE1_DESCRIPTIVE_ANALYTICS_ENABLED", value = tostring(var.sdl_stage1_descriptive_analytics_enabled) },
+        { name = "PAS_ACTIVE_LEARNING", value = var.sdl_stage1_only || !var.active_learning_enabled ? "0" : "1" },
+        { name = "PAS_LEARNED_CLASSIFIER", value = var.sdl_stage1_only || !var.learned_classifier_enabled ? "0" : "1" },
       ]
 
       # Secrets from SSM Parameter Store (injected by ECS agent at startup)
@@ -51,6 +68,7 @@ resource "aws_ecs_task_definition" "backend" {
         { name = "PAS_KIMI_API_KEY", valueFrom = aws_ssm_parameter.kimi_api_key.arn },
         { name = "PAS_SEMANTIC_SCHOLAR_API_KEY", valueFrom = aws_ssm_parameter.semantic_scholar_api_key.arn },
         { name = "PAS_OPENALEX_MAILTO", valueFrom = aws_ssm_parameter.openalex_mailto.arn },
+        { name = "PAS_ZOTERO_API_KEY", valueFrom = aws_ssm_parameter.zotero_api_key.arn },
       ]
 
       logConfiguration = {

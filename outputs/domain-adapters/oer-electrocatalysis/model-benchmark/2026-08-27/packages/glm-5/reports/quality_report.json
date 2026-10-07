@@ -1,0 +1,149 @@
+{
+  "claims_boundary": "Heuristic output is a baseline unless extraction.mode is teacher. Tasks are extractive and do not advise future experiments.",
+  "eligible_corpus_chunk_count": 51,
+  "entity_counts": {
+    "caveats": 0,
+    "characterization": 0,
+    "instruments": 5,
+    "materials": 27,
+    "relations": 58,
+    "results": 0,
+    "software": 0,
+    "steps": 26
+  },
+  "evaluation_paper_count": 4,
+  "evaluation_task_count": 21,
+  "evaluation_task_paper_count": 1,
+  "evidence_span_count": 37,
+  "exact_duplicate_count": 0,
+  "excluded_or_low_information_chunk_count": 525,
+  "paper_count": 4,
+  "paper_coverage_by_selection_tier": {
+    "oer_case_study": {
+      "coverage_rate": 0.0,
+      "paper_count": 1,
+      "papers_with_protocols": 0
+    },
+    "oer_review": {
+      "coverage_rate": 0.0,
+      "paper_count": 1,
+      "papers_with_protocols": 0
+    },
+    "primary_oer": {
+      "coverage_rate": 0.5,
+      "paper_count": 2,
+      "papers_with_protocols": 1
+    }
+  },
+  "papers_with_protocols": 1,
+  "papers_without_protocols": [
+    "DOI:10.1021_acscentsci.3c01009",
+    "DOI:10.1039_d4dd00313f",
+    "DOI:10.1039_d5cc04220h"
+  ],
+  "protocol_count": 9,
+  "protocols_by_evidence_scope": {
+    "primary_report": 9
+  },
+  "protocols_by_selection_tier": {
+    "primary_oer": 9
+  },
+  "protocols_per_paper": {
+    "DOI:10.1038_s41467-024-50605-5": 9
+  },
+  "rejected_protocols": [],
+  "schema_version": "domain-adapter-quality-report-v0.2",
+  "source_chunk_count": 576,
+  "task_count": 21,
+  "task_type_counts": {
+    "instrument_software_grounding": 4,
+    "materials_extraction": 8,
+    "protocol_reconstruction": 9
+  },
+  "teacher_field_audit": {
+    "accepted_field_count": 82,
+    "field_acceptance_rate": 0.473988,
+    "proposed_field_count": 173,
+    "rejected_entity_type_counts": {
+      "materials": 32,
+      "steps": 59
+    },
+    "rejected_field_count": 91,
+    "rejection_reason_counts": {
+      "over_generalized": 58,
+      "schema_invalid": 28,
+      "value_elsewhere": 5
+    },
+    "repair_attempted_count": 0,
+    "repair_reason_counts": {},
+    "repair_succeeded_count": 0
+  },
+  "teacher_paper_diagnostics": [
+    {
+      "candidate_chunk_count": 3,
+      "candidate_input_char_count": 16675,
+      "outcome": "model_abstained",
+      "paper_id": "DOI:10.1021_acscentsci.3c01009",
+      "raw_protocol_count": 0,
+      "response_schema_invalid": false,
+      "retained_protocol_count": 0,
+      "salvaged_protocol_count": 0,
+      "selection_tier": "primary_oer",
+      "stop_reason": "end_turn"
+    },
+    {
+      "candidate_chunk_count": 8,
+      "candidate_input_char_count": 16311,
+      "outcome": "retained_protocols",
+      "paper_id": "DOI:10.1038_s41467-024-50605-5",
+      "raw_protocol_count": 9,
+      "response_schema_invalid": false,
+      "retained_protocol_count": 9,
+      "salvaged_protocol_count": 0,
+      "selection_tier": "primary_oer",
+      "stop_reason": "end_turn"
+    },
+    {
+      "candidate_chunk_count": 6,
+      "candidate_input_char_count": 5797,
+      "outcome": "model_abstained",
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "raw_protocol_count": 0,
+      "response_schema_invalid": false,
+      "retained_protocol_count": 0,
+      "salvaged_protocol_count": 0,
+      "selection_tier": "oer_case_study",
+      "stop_reason": "end_turn"
+    },
+    {
+      "candidate_chunk_count": 8,
+      "candidate_input_char_count": 18928,
+      "outcome": "model_abstained",
+      "paper_id": "DOI:10.1039_d5cc04220h",
+      "raw_protocol_count": 0,
+      "response_schema_invalid": false,
+      "retained_protocol_count": 0,
+      "salvaged_protocol_count": 0,
+      "selection_tier": "oer_review",
+      "stop_reason": "end_turn"
+    }
+  ],
+  "teacher_paper_outcome_counts": {
+    "model_abstained": 3,
+    "retained_protocols": 1
+  },
+  "teacher_runtime": {
+    "input_token_count": 18893,
+    "invocation_count": 4,
+    "latency_ms_total": 189080,
+    "output_token_count": 9176,
+    "response_failure_diagnostics": [],
+    "response_schema_failure_count": 0,
+    "salvaged_response_count": 0
+  },
+  "train_paper_count": 0,
+  "train_task_count": 0,
+  "train_task_paper_count": 0,
+  "unsupported_evidence_count": 91,
+  "unsupported_teacher_claim_count": 91
+}

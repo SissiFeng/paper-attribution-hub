@@ -1,6 +1,8 @@
 """Match an affiliation string against the institution alias table."""
 from __future__ import annotations
 
+import re
+
 from dataclasses import dataclass
 
 from rapidfuzz import fuzz
@@ -18,6 +20,10 @@ class InstitutionMatch:
     match_type: str
     score: float
     matched_text: str | None
+
+
+# Module-level cache for substring match regex patterns.
+_SUBSTRING_RE_CACHE: dict[str, "re.Pattern[str]"] = {}
 
 
 class InstitutionMatcher:
@@ -42,9 +48,19 @@ class InstitutionMatcher:
         if inst is not None:
             return self._build(inst, "exact_match", 1.0, raw_text)
 
-        # Substring containment (e.g. "Dept. of X, University of Toronto, Canada").
+        # Substring containment with word-boundary enforcement.
+        # A match only fires when the alias text is bounded by non-alphanumeric
+        # characters in the query, preventing false matches such as
+        # "eth" matching inside "methodology" or "cas" inside "case study".
         for key, inst in self.alias_index.items():
-            if key and key in normalized:
+            if not key or len(key) < 4:
+                continue
+            pat = _SUBSTRING_RE_CACHE.get(key)
+            if pat is None:
+                escaped = re.escape(key)
+                pat = re.compile(rf"(?<!\w){escaped}(?!\w)", flags=re.IGNORECASE | re.UNICODE)
+                _SUBSTRING_RE_CACHE[key] = pat
+            if pat.search(normalized):
                 return self._build(inst, "substring_match", 0.9, raw_text)
 
         best: tuple[Institution, float] | None = None

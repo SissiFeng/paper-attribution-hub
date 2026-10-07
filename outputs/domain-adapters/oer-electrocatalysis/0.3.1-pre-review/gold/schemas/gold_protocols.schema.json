@@ -1,0 +1,68 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "annotation_complete": {
+      "default": false,
+      "title": "Annotation Complete",
+      "type": "boolean"
+    },
+    "gold_protocol_id": {
+      "title": "Gold Protocol Id",
+      "type": "string"
+    },
+    "notes": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Notes"
+    },
+    "paper_id": {
+      "title": "Paper Id",
+      "type": "string"
+    },
+    "protocol_id": {
+      "title": "Protocol Id",
+      "type": "string"
+    },
+    "review_status": {
+      "default": "pending",
+      "enum": [
+        "pending",
+        "reviewed",
+        "rejected"
+      ],
+      "title": "Review Status",
+      "type": "string"
+    },
+    "reviewer": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Reviewer"
+    },
+    "schema_version": {
+      "default": "domain-adapter-gold-protocol-v0.1",
+      "title": "Schema Version",
+      "type": "string"
+    }
+  },
+  "required": [
+    "gold_protocol_id",
+    "paper_id",
+    "protocol_id"
+  ],
+  "title": "GoldProtocolAnnotation",
+  "type": "object"
+}

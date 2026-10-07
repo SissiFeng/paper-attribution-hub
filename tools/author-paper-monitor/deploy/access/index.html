@@ -1,0 +1,17 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="referrer" content="no-referrer"><title>PAS · Signing in</title></head><body><p role="status">Checking PAS access…</p><script>
+(async function () {
+  try {
+    const response = await fetch('/api/auth/me', {credentials:'same-origin',cache:'no-store'});
+    if (!response.ok) { location.replace('/reading/?return_to=' + encodeURIComponent(location.pathname + location.search)); return; }
+    const user = await response.json();
+    if (user.role !== 'admin') { location.replace('/reading/'); return; }
+    const entry = location.pathname.startsWith('/geographic') ? 'geographic' : 'index.html';
+    const html = await fetch('/api/access/files/' + entry, {credentials:'same-origin',cache:'no-store'});
+    if (!html.ok) throw new Error('Administrative page unavailable.');
+    const content = await html.text(); document.open(); document.write(content); document.close();
+  } catch (error) {
+    document.body.textContent = 'PAS could not verify access. Reload this page or open the reading room.';
+    const a=document.createElement('a');a.href='/reading/';a.textContent=' Open reading room';document.body.append(a);
+  }
+}());
+</script></body></html>

@@ -7,6 +7,8 @@ import pytest
 from app.services.pdf_parser import (
     ParsedDocument,
     ParsedSection,
+    PdfNeedsOcrError,
+    convert_file_to_markdown,
     parse_any,
     parse_text_file,
     split_into_sections,
@@ -126,6 +128,205 @@ Converted docx abstract.
     assert doc.source == "markitdown"
     assert doc.title == "Document Title"
     assert [s.section_type for s in doc.sections] == ["unknown", "abstract"]
+
+
+def test_convert_file_to_markdown_uses_pdf_inspector_with_diagnostics(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+):
+    monkeypatch.setitem(
+        sys.modules,
+        "pdf_inspector",
+        SimpleNamespace(
+            process_pdf=lambda _path: SimpleNamespace(
+                markdown="# Paper\n\nMethods\nConverted.",
+                pdf_type="text_based",
+                confidence=0.99,
+                page_count=2,
+                processing_time_ms=4,
+                pages_needing_ocr=[],
+                has_encoding_issues=False,
+                is_complex_layout=True,
+                pages_with_tables=[2],
+                pages_with_columns=[1],
+            )
+        ),
+    )
+    sample = tmp_path / "paper.pdf"
+    sample.write_bytes(b"%PDF-1.4 fake")
+
+    markdown, backend, _, diagnostics = convert_file_to_markdown(sample)
+
+    assert markdown == "# Paper\n\nMethods\nConverted."
+    assert backend == "pdf-inspector"
+    assert diagnostics == {
+        "quality_status": "complete_text",
+        "pdf_type": "text_based",
+        "confidence": 0.99,
+        "page_count": 2,
+        "processing_time_ms": 4,
+        "pages_needing_ocr": [],
+        "has_encoding_issues": False,
+        "is_complex_layout": True,
+        "pages_with_tables": [2],
+        "pages_with_columns": [1],
+    }
+
+
+def test_convert_file_to_markdown_falls_back_when_pdf_inspector_fails(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+):
+    import app.services.pdf_parser as pdf_parser
+
+    monkeypatch.setattr(
+        pdf_parser,
+        "_pdf_inspector_markdown",
+        lambda _path: (_ for _ in ()).throw(RuntimeError("failed")),
+    )
+    monkeypatch.setattr(
+        pdf_parser,
+        "_markitdown_text",
+        lambda _path: "# MarkItDown fallback",
+    )
+    sample = tmp_path / "paper.pdf"
+    sample.write_bytes(b"%PDF-1.4 fake")
+
+    markdown, backend, _, diagnostics = convert_file_to_markdown(sample)
+
+    assert markdown == "# MarkItDown fallback"
+    assert backend == "markitdown"
+    assert diagnostics["quality_status"] == "unverified_fallback"
+
+
+def test_convert_file_to_markdown_falls_back_to_rendered_pdf_sections(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+):
+    import app.services.pdf_parser as pdf_parser
+
+    monkeypatch.setattr(
+        pdf_parser,
+        "_pdf_inspector_markdown",
+        lambda _path: (_ for _ in ()).throw(RuntimeError("failed")),
+    )
+    monkeypatch.setattr(
+        pdf_parser,
+        "_markitdown_text",
+        lambda _path: (_ for _ in ()).throw(RuntimeError("failed")),
+    )
+    monkeypatch.setattr(
+        pdf_parser,
+        "parse_pdf_as_document",
+        lambda _path: ParsedDocument(
+            title="Fallback Paper",
+            sections=[
+                ParsedSection(
+                    section_type="methods",
+                    title="Methods",
+                    text="Fallback body.",
+                )
+            ],
+            source="pymupdf",
+        ),
+    )
+    sample = tmp_path / "paper.pdf"
+    sample.write_bytes(b"%PDF-1.4 fake")
+
+    markdown, backend, _, diagnostics = convert_file_to_markdown(sample)
+
+    assert markdown == "# Fallback Paper\n\n## Methods\n\nFallback body."
+    assert backend == "pymupdf"
+    assert diagnostics["quality_status"] == "unverified_fallback"
+
+
+def test_convert_file_to_markdown_fails_closed_when_ocr_is_required(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+):
+    monkeypatch.setitem(
+        sys.modules,
+        "pdf_inspector",
+        SimpleNamespace(
+            process_pdf=lambda _path: SimpleNamespace(
+                markdown="# Partial text",
+                pdf_type="mixed",
+                confidence=0.95,
+                page_count=3,
+                processing_time_ms=3,
+                pages_needing_ocr=[2],
+                has_encoding_issues=False,
+                is_complex_layout=False,
+                pages_with_tables=[],
+                pages_with_columns=[],
+            )
+        ),
+    )
+    sample = tmp_path / "paper.pdf"
+    sample.write_bytes(b"%PDF-1.4 fake")
+
+    with pytest.raises(ValueError, match="OCR-capable route"):
+        convert_file_to_markdown(sample)
+
+
+def test_convert_file_to_markdown_routes_ocr_to_docling(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+):
+    import app.services.pdf_parser as pdf_parser
+
+    monkeypatch.setattr(
+        pdf_parser,
+        "_pdf_inspector_markdown",
+        lambda _path: (_ for _ in ()).throw(
+            PdfNeedsOcrError("OCR required")
+        ),
+    )
+    monkeypatch.setattr(
+        pdf_parser,
+        "_docling_ocr_markdown",
+        lambda _path: (
+            "# OCR paper\n\nComplete full-page text.",
+            {
+                "quality_status": "complete_text",
+                "ocr_applied": True,
+                "ocr_engine": "rapidocr",
+            },
+        ),
+    )
+    sample = tmp_path / "paper.pdf"
+    sample.write_bytes(b"%PDF-1.4 fake")
+
+    markdown, backend, _, diagnostics = convert_file_to_markdown(
+        sample,
+        ocr_backend="docling",
+    )
+
+    assert markdown.startswith("# OCR paper")
+    assert backend == "docling-rapidocr"
+    assert diagnostics["quality_status"] == "complete_text"
+    assert diagnostics["ocr_applied"] is True
+
+
+def test_pdf_inspector_extracts_real_native_text_pdf(tmp_path: Path):
+    import pymupdf
+
+    sample = tmp_path / "native-text.pdf"
+    document = pymupdf.open()
+    page = document.new_page()
+    page.insert_text((72, 72), "Native PDF Title", fontsize=18)
+    page.insert_text((72, 110), "Methods", fontsize=14)
+    page.insert_text(
+        (72, 140),
+        "Bayesian optimization selected experiments.",
+        fontsize=11,
+    )
+    document.save(sample)
+    document.close()
+
+    markdown, backend, version, diagnostics = convert_file_to_markdown(sample)
+
+    assert "Native PDF Title" in markdown
+    assert "Bayesian optimization selected experiments." in markdown
+    assert backend == "pdf-inspector"
+    assert version == "0.2.6"
+    assert diagnostics["quality_status"] == "complete_text"
+    assert diagnostics["pages_needing_ocr"] == []
 
 
 def test_parse_pdf_falls_back_when_markitdown_fails(

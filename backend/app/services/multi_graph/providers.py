@@ -19,6 +19,7 @@ from typing import Iterable
 from sqlalchemy import select
 from sqlalchemy.orm import Session, selectinload
 
+from app.config import settings
 from app.country_normalization import (
     canonical_country_entries,
     canonical_country_values,
@@ -29,6 +30,7 @@ from app.models import (
     Institution,
     Paper,
     PaperAuthor,
+    PaperEntity,
     PaperProposition,
     PaperReference,
     Topic,
@@ -122,8 +124,99 @@ def _paper_id_set(session: Session, filt: MultiGraphFilter) -> set[str]:
     return {p.id for p in _filtered_papers(session, filt)}
 
 
+AUTHOR_GRAPH_MAX_PER_PAPER = 5
+AUTHOR_GRAPH_SELECTION_POLICY = (
+    "first_four_plus_confirmed_corresponding_else_last_listed_max_five"
+)
+
+
+def _confirmed_corresponding_author_ids(paper: Paper) -> set[str]:
+    evidence = (paper.raw_metadata or {}).get(
+        "corresponding_author_evidence"
+    )
+    if not isinstance(evidence, dict):
+        return set()
+    authors = evidence.get("authors")
+    if not isinstance(authors, list):
+        return set()
+    return {
+        str(author.get("author_id"))
+        for author in authors
+        if isinstance(author, dict) and author.get("author_id")
+    }
+
+
+def _selected_paper_authors(
+    paper: Paper,
+) -> list[tuple[PaperAuthor, str, bool]]:
+    """Return at most five evidence-backed authors for one graph paper.
+
+    Zotero preserves creator order but does not identify a corresponding
+    author. For long lists we retain the first four listed creators and the
+    last listed creator. The last creator is deliberately labelled
+    ``last_listed`` rather than ``corresponding``.
+    """
+    authors = sorted(
+        paper.authors,
+        key=lambda paper_author: (
+            paper_author.author_order,
+            paper_author.author_id,
+        ),
+    )
+    total_authors = len(authors)
+    confirmed_corresponding_ids = _confirmed_corresponding_author_ids(paper)
+    corresponding_authors = [
+        paper_author
+        for paper_author in authors
+        if paper_author.author_id in confirmed_corresponding_ids
+    ]
+    if total_authors > AUTHOR_GRAPH_MAX_PER_PAPER:
+        prefix = authors[: AUTHOR_GRAPH_MAX_PER_PAPER - 1]
+        last_confirmed_corresponding = (
+            corresponding_authors[-1] if corresponding_authors else None
+        )
+        if (
+            last_confirmed_corresponding is not None
+            and last_confirmed_corresponding not in prefix
+        ):
+            fifth = last_confirmed_corresponding
+        elif last_confirmed_corresponding is not None:
+            fifth = authors[AUTHOR_GRAPH_MAX_PER_PAPER - 1]
+        else:
+            fifth = authors[-1]
+        selected = [*prefix, fifth]
+    else:
+        selected = authors
+
+    positioned: list[tuple[PaperAuthor, str, bool]] = []
+    for paper_author in selected:
+        original_index = authors.index(paper_author)
+        if total_authors == 1:
+            position = "sole"
+        elif original_index == 0:
+            position = "first"
+        elif original_index == total_authors - 1:
+            position = "last_listed"
+        else:
+            position = "middle"
+        positioned.append(
+            (
+                paper_author,
+                position,
+                paper_author.author_id in confirmed_corresponding_ids,
+            )
+        )
+    return positioned
+
+
 def _author_ids_from_papers(papers: list[Paper]) -> set[str]:
-    return {pa.author_id for p in papers for pa in p.authors}
+    return {
+        paper_author.author_id
+        for paper in papers
+        for paper_author, _position, _is_corresponding in (
+            _selected_paper_authors(paper)
+        )
+    }
 
 
 def _institution_ids_from_papers(papers: list[Paper]) -> set[str]:
@@ -134,6 +227,82 @@ def _institution_ids_from_papers(papers: list[Paper]) -> set[str]:
             if inst is not None:
                 out.add(inst.id)
     return out
+
+
+def _stage1_institution_node_id(name: str) -> str:
+    identity = re.sub(r"\s+", " ", name.strip()).casefold()
+    digest = hashlib.sha1(identity.encode("utf-8")).hexdigest()[:16]
+    return f"institution:stage1:{digest}"
+
+
+def _paper_entity_node_id(entity_type: str, normalized_name: str) -> str:
+    identity = re.sub(r"\s+", " ", normalized_name.strip()).casefold()
+    digest = hashlib.sha1(identity.encode("utf-8")).hexdigest()[:16]
+    return f"{entity_type}:stage1:{digest}"
+
+
+def _paper_entities_for_type(
+    session: Session,
+    papers: list[Paper],
+    entity_type: str,
+) -> list[PaperEntity]:
+    paper_ids = {paper.id for paper in papers}
+    if not paper_ids:
+        return []
+    return list(
+        session.execute(
+            select(PaperEntity).where(
+                PaperEntity.paper_id.in_(paper_ids),
+                PaperEntity.entity_type == entity_type,
+            )
+        ).scalars()
+    )
+
+
+def _stage1_institutions_by_paper(
+    session: Session,
+    papers: list[Paper],
+) -> dict[str, dict[str, tuple[str, float, str]]]:
+    """Return paper-level Tier 1 affiliation mentions.
+
+    These entities come from verified Zotero Markdown front matter. They do
+    not resolve which author belongs to which institution.
+    """
+    paper_ids = {paper.id for paper in papers}
+    if not paper_ids:
+        return {}
+    rows = session.execute(
+        select(
+            PaperEntity.paper_id,
+            PaperEntity.normalized_name,
+            PaperEntity.confidence,
+            PaperEntity.extractor,
+        ).where(
+            PaperEntity.paper_id.in_(paper_ids),
+            PaperEntity.entity_type == "institution",
+        )
+    ).all()
+    by_paper: dict[str, dict[str, tuple[str, float, str]]] = defaultdict(dict)
+    for paper_id, normalized_name, confidence, extractor in rows:
+        label = str(normalized_name or "").strip()
+        if not label:
+            continue
+        node_id = _stage1_institution_node_id(label)
+        previous = by_paper[paper_id].get(node_id)
+        if previous is None:
+            by_paper[paper_id][node_id] = (
+                label,
+                float(confidence or 0.0),
+                str(extractor or ""),
+            )
+            continue
+        previous_label, previous_confidence, previous_extractor = previous
+        by_paper[paper_id][node_id] = (
+            min(previous_label, label, key=str.casefold),
+            max(previous_confidence, float(confidence or 0.0)),
+            min(previous_extractor, str(extractor or "")),
+        )
+    return dict(by_paper)
 
 
 _TOPIC_STOPWORDS = {
@@ -219,9 +388,26 @@ class AuthorNodes(NodeProvider):
         papers = _filtered_papers(session, filt)
         ids = _author_ids_from_papers(papers)
         author_paper_count: dict[str, int] = defaultdict(int)
-        for p in papers:
-            for pa in p.authors:
-                author_paper_count[pa.author_id] += 1
+        first_author_paper_count: dict[str, int] = defaultdict(int)
+        last_listed_author_paper_count: dict[str, int] = defaultdict(int)
+        sole_author_paper_count: dict[str, int] = defaultdict(int)
+        corresponding_author_paper_count: dict[str, int] = defaultdict(int)
+        for paper in papers:
+            for (
+                paper_author,
+                position,
+                is_corresponding,
+            ) in _selected_paper_authors(paper):
+                author_id = paper_author.author_id
+                author_paper_count[author_id] += 1
+                if position == "first":
+                    first_author_paper_count[author_id] += 1
+                elif position == "last_listed":
+                    last_listed_author_paper_count[author_id] += 1
+                elif position == "sole":
+                    sole_author_paper_count[author_id] += 1
+                if is_corresponding:
+                    corresponding_author_paper_count[author_id] += 1
         for a in session.execute(select(Author).where(Author.id.in_(ids))).scalars():
             yield GraphNode(
                 id=f"author:{a.id}",
@@ -233,6 +419,20 @@ class AuthorNodes(NodeProvider):
                     "institution": a.institution.canonical_name if a.institution else None,
                     "institution_id": a.institution_id,
                     "paper_count": author_paper_count[a.id],
+                    "first_author_paper_count": first_author_paper_count[a.id],
+                    "last_listed_author_paper_count": (
+                        last_listed_author_paper_count[a.id]
+                    ),
+                    "sole_author_paper_count": sole_author_paper_count[a.id],
+                    "corresponding_author_paper_count": (
+                        corresponding_author_paper_count[a.id]
+                    ),
+                    "authorship_selection_policy": (
+                        AUTHOR_GRAPH_SELECTION_POLICY
+                    ),
+                    "corresponding_author_evidence_available": bool(
+                        corresponding_author_paper_count[a.id]
+                    ),
                 },
             )
 
@@ -242,6 +442,54 @@ class InstitutionNodes(NodeProvider):
 
     def nodes(self, session, filt):
         papers = _filtered_papers(session, filt)
+        if settings.sdl_stage1_only:
+            by_paper = _stage1_institutions_by_paper(session, papers)
+            paper_ids_by_node: dict[str, set[str]] = defaultdict(set)
+            labels: dict[str, str] = {}
+            confidence_by_node: dict[str, list[float]] = defaultdict(list)
+            extractors_by_node: dict[str, set[str]] = defaultdict(set)
+            for paper_id, institutions in by_paper.items():
+                for node_id, (label, confidence, extractor) in institutions.items():
+                    paper_ids_by_node[node_id].add(paper_id)
+                    labels[node_id] = label
+                    confidence_by_node[node_id].append(confidence)
+                    extractors_by_node[node_id].add(extractor)
+            for node_id in sorted(labels):
+                confidences = confidence_by_node[node_id]
+                extractors = extractors_by_node[node_id]
+                ror_resolved = bool(extractors) and all(
+                    extractor.startswith("ror_affiliation_v2:")
+                    for extractor in extractors
+                )
+                yield GraphNode(
+                    id=node_id,
+                    type=self.type,
+                    label=labels[node_id],
+                    metadata={
+                        "is_partner": False,
+                        "country": None,
+                        "city": None,
+                        "paper_count": len(paper_ids_by_node[node_id]),
+                        "mean_extraction_confidence": round(
+                            sum(confidences) / len(confidences),
+                            4,
+                        ),
+                        "source": (
+                            "zotero_tier1_pdf_affiliation_ror_resolved"
+                            if ror_resolved
+                            else "zotero_tier1_markdown_frontmatter_candidate"
+                        ),
+                        "resolution_status": (
+                            "ror_resolved" if ror_resolved else "candidate"
+                        ),
+                        "extractors": sorted(extractors),
+                        "relationship_scope": (
+                            "paper_level_affiliation_mention"
+                        ),
+                        "author_affiliation_resolved": False,
+                    },
+                )
+            return
         ids = _institution_ids_from_papers(papers)
         paper_count: dict[str, int] = defaultdict(int)
         for p in papers:
@@ -361,6 +609,9 @@ class MethodNodes(NodeProvider):
     type = "method"
 
     def nodes(self, session, filt):
+        if settings.sdl_stage1_only:
+            yield from ExtractedEntityNodes(self.type).nodes(session, filt)
+            return
         paper_ids = _paper_id_set(session, filt)
         if not paper_ids:
             return
@@ -383,6 +634,55 @@ class MethodNodes(NodeProvider):
                 type=self.type,
                 label=label,
                 metadata={"paper_count": len(method_papers[key])},
+            )
+
+
+class ExtractedEntityNodes(NodeProvider):
+    """Entities extracted from the verified Tier 1 Markdown corpus."""
+
+    def __init__(self, entity_type: str):
+        self.type = entity_type
+
+    def nodes(self, session, filt):
+        rows = _paper_entities_for_type(
+            session,
+            _filtered_papers(session, filt),
+            self.type,
+        )
+        labels: dict[str, str] = {}
+        paper_ids: dict[str, set[str]] = defaultdict(set)
+        confidences: dict[str, list[float]] = defaultdict(list)
+        stages: dict[str, dict[str, int]] = defaultdict(lambda: defaultdict(int))
+        extractors: dict[str, set[str]] = defaultdict(set)
+        for entity in rows:
+            label = str(entity.normalized_name or entity.name or "").strip()
+            if not label:
+                continue
+            node_id = _paper_entity_node_id(self.type, label)
+            labels[node_id] = min(labels.get(node_id, label), label, key=str.casefold)
+            paper_ids[node_id].add(entity.paper_id)
+            confidences[node_id].append(float(entity.confidence or 0.0))
+            if entity.stage:
+                stages[node_id][entity.stage] += 1
+            if entity.extractor:
+                extractors[node_id].add(entity.extractor)
+        for node_id in sorted(labels):
+            entity_confidences = confidences[node_id]
+            yield GraphNode(
+                id=node_id,
+                type=self.type,
+                label=labels[node_id],
+                metadata={
+                    "paper_count": len(paper_ids[node_id]),
+                    "mean_extraction_confidence": round(
+                        sum(entity_confidences) / len(entity_confidences),
+                        4,
+                    ),
+                    "stage_counts": dict(sorted(stages[node_id].items())),
+                    "extractors": sorted(extractors[node_id]),
+                    "source": "verified_zotero_tier1_markdown_fulltext",
+                    "relationship_scope": "paper_level_fulltext_entity_mention",
+                },
             )
 
 
@@ -459,6 +759,9 @@ NODE_PROVIDERS: dict[str, NodeProvider] = {
         PaperNodes(),
         TopicNodes(),
         MethodNodes(),
+        ExtractedEntityNodes("material"),
+        ExtractedEntityNodes("instrument"),
+        ExtractedEntityNodes("software"),
         FunderNodes(),
         AcCoreNodes(),
     )
@@ -484,11 +787,40 @@ class AuthoredEdges(EdgeProvider):
             paper_node = f"paper:{p.id}"
             if paper_node not in active_node_ids:
                 continue
-            for pa in p.authors:
+            total_authors = len(p.authors)
+            corresponding_evidence_available = bool(
+                _confirmed_corresponding_author_ids(p)
+            )
+            for (
+                pa,
+                position,
+                is_corresponding,
+            ) in _selected_paper_authors(p):
                 author_node = f"author:{pa.author_id}"
                 if author_node in active_node_ids:
                     yield GraphEdge(
-                        source=author_node, target=paper_node, type=self.type, weight=1.0
+                        source=author_node,
+                        target=paper_node,
+                        type=self.type,
+                        weight=1.0,
+                        metadata={
+                            "paper_id": p.id,
+                            "author_order": pa.author_order,
+                            "author_position": position,
+                            "total_listed_authors": total_authors,
+                            "authorship_selection_policy": (
+                                AUTHOR_GRAPH_SELECTION_POLICY
+                            ),
+                            "corresponding_author_confirmed": is_corresponding,
+                            "corresponding_author_evidence_available": (
+                                corresponding_evidence_available
+                            ),
+                            "corresponding_author_evidence_source": (
+                                "pdf_frontmatter_corresponding_author_v1"
+                                if corresponding_evidence_available
+                                else None
+                            ),
+                        },
                     )
 
 
@@ -497,6 +829,10 @@ class AffiliatedWithEdges(EdgeProvider):
     requires_node_types = ("author", "institution")
 
     def edges(self, session, filt, active_node_ids):
+        if settings.sdl_stage1_only:
+            # Stage 1 entities are paper-level affiliation mentions. There is
+            # no evidence to resolve an individual author to an institution.
+            return
         seen: set[tuple[str, str]] = set()
         author_ids = {
             n.split(":", 1)[1] for n in active_node_ids if n.startswith("author:")
@@ -528,7 +864,9 @@ class CoauthoredEdges(EdgeProvider):
         for p in papers:
             ids = sorted(
                 f"author:{pa.author_id}"
-                for pa in p.authors
+                for pa, _position, _is_corresponding in (
+                    _selected_paper_authors(p)
+                )
                 if f"author:{pa.author_id}" in active_node_ids
             )
             for i, a in enumerate(ids):
@@ -549,6 +887,36 @@ class InstitutionCollabEdges(EdgeProvider):
 
     def edges(self, session, filt, active_node_ids):
         papers = _filtered_papers(session, filt)
+        if settings.sdl_stage1_only:
+            by_paper = _stage1_institutions_by_paper(session, papers)
+            weights: dict[tuple[str, str], int] = defaultdict(int)
+            shared: dict[tuple[str, str], list[str]] = defaultdict(list)
+            for paper in papers:
+                inst_ids = sorted(
+                    node_id
+                    for node_id in by_paper.get(paper.id, {})
+                    if node_id in active_node_ids
+                )
+                for index, source in enumerate(inst_ids):
+                    for target in inst_ids[index + 1 :]:
+                        key = (source, target)
+                        weights[key] += 1
+                        shared[key].append(paper.id)
+            for (source, target), weight in weights.items():
+                yield GraphEdge(
+                    source=source,
+                    target=target,
+                    type=self.type,
+                    weight=float(weight),
+                    metadata={
+                        "papers": shared[(source, target)],
+                        "relationship_scope": (
+                            "paper_level_affiliation_cooccurrence"
+                        ),
+                        "author_affiliation_resolved": False,
+                    },
+                )
+            return
         weights: dict[tuple[str, str], int] = defaultdict(int)
         for p in papers:
             inst_ids = sorted({
@@ -565,13 +933,61 @@ class InstitutionCollabEdges(EdgeProvider):
 
 
 class PublishedByEdges(EdgeProvider):
-    """Direct paper-to-institution authorship projection."""
+    """Direct paper-to-institution projection."""
 
     type = "published_by"
     requires_node_types = ("paper", "institution")
 
     def edges(self, session, filt, active_node_ids):
-        for paper in _filtered_papers(session, filt):
+        papers = _filtered_papers(session, filt)
+        if settings.sdl_stage1_only:
+            by_paper = _stage1_institutions_by_paper(session, papers)
+            for paper in papers:
+                paper_node = f"paper:{paper.id}"
+                if paper_node not in active_node_ids:
+                    continue
+                for institution_node, (
+                    _label,
+                    confidence,
+                    extractor,
+                ) in sorted(
+                    by_paper.get(paper.id, {}).items()
+                ):
+                    if institution_node not in active_node_ids:
+                        continue
+                    yield GraphEdge(
+                        source=paper_node,
+                        target=institution_node,
+                        type=self.type,
+                        weight=1.0,
+                        metadata={
+                            "paper_id": paper.id,
+                            "extraction_confidence": confidence,
+                            "source": (
+                                "zotero_tier1_pdf_affiliation_ror_resolved"
+                                if extractor.startswith(
+                                    "ror_affiliation_v2:"
+                                )
+                                else (
+                                    "zotero_tier1_markdown_"
+                                    "frontmatter_candidate"
+                                )
+                            ),
+                            "resolution_status": (
+                                "ror_resolved"
+                                if extractor.startswith(
+                                    "ror_affiliation_v2:"
+                                )
+                                else "candidate"
+                            ),
+                            "relationship_scope": (
+                                "paper_level_affiliation_mention"
+                            ),
+                            "author_affiliation_resolved": False,
+                        },
+                    )
+            return
+        for paper in papers:
             paper_node = f"paper:{paper.id}"
             if paper_node not in active_node_ids:
                 continue
@@ -693,6 +1109,13 @@ class UsesMethodEdges(EdgeProvider):
     requires_node_types = ("paper", "method")
 
     def edges(self, session, filt, active_node_ids):
+        if settings.sdl_stage1_only:
+            yield from PaperEntityMentionEdges(
+                "uses_method",
+                "method",
+                "paper_level_method_usage_evidence",
+            ).edges(session, filt, active_node_ids)
+            return
         best: dict[tuple[str, str], float] = {}
         for prop in session.execute(
             select(PaperProposition).where(PaperProposition.predicate == "uses_method")
@@ -710,6 +1133,55 @@ class UsesMethodEdges(EdgeProvider):
                 target=target,
                 type=self.type,
                 weight=weight,
+            )
+
+
+class PaperEntityMentionEdges(EdgeProvider):
+    """Paper-to-entity evidence links extracted from Tier 1 Markdown."""
+
+    def __init__(
+        self,
+        edge_type: str,
+        entity_type: str,
+        relationship_scope: str = "paper_level_fulltext_entity_mention",
+    ):
+        self.type = edge_type
+        self.entity_type = entity_type
+        self.requires_node_types = ("paper", entity_type)
+        self.relationship_scope = relationship_scope
+
+    def edges(self, session, filt, active_node_ids):
+        rows = _paper_entities_for_type(
+            session,
+            _filtered_papers(session, filt),
+            self.entity_type,
+        )
+        for entity in rows:
+            label = str(entity.normalized_name or entity.name or "").strip()
+            if not label:
+                continue
+            source = f"paper:{entity.paper_id}"
+            target = _paper_entity_node_id(self.entity_type, label)
+            if source not in active_node_ids or target not in active_node_ids:
+                continue
+            yield GraphEdge(
+                source=source,
+                target=target,
+                type=self.type,
+                weight=float(entity.confidence or 0.0),
+                metadata={
+                    "paper_id": entity.paper_id,
+                    "entity_type": self.entity_type,
+                    "normalized_name": label,
+                    "extraction_confidence": float(entity.confidence or 0.0),
+                    "evidence_chunk_id": entity.evidence_chunk_id,
+                    "section": entity.section,
+                    "extractor": entity.extractor,
+                    "stage": entity.stage,
+                    "usage_snippet": entity.usage_snippet,
+                    "source": "verified_zotero_tier1_markdown_fulltext",
+                    "relationship_scope": self.relationship_scope,
+                },
             )
 
 
@@ -853,6 +1325,9 @@ EDGE_PROVIDERS: dict[str, EdgeProvider] = {
         CitesAcCoreEdges(),
         BelongsToTopicEdges(),
         UsesMethodEdges(),
+        PaperEntityMentionEdges("mentions_material", "material"),
+        PaperEntityMentionEdges("mentions_instrument", "instrument"),
+        PaperEntityMentionEdges("mentions_software", "software"),
         FundedByEdges(),
         TopicCooccurrenceEdges(),
         SimilarityEdges(),
@@ -881,7 +1356,15 @@ class ByInstitutionGroup(GroupProvider):
                 inst_id = n.metadata.get("institution_id")
                 if inst_id:
                     out[n.id] = f"institution:{inst_id}"
-        # Papers inherit from the first authoring institution we saw.
+        # Papers inherit one deterministic institution group for coloring.
+        published_by: dict[str, list[str]] = defaultdict(list)
+        for edge in edges:
+            if edge.type == "published_by":
+                published_by[edge.source].append(edge.target)
+        for paper_id, institution_ids in published_by.items():
+            out[paper_id] = sorted(institution_ids)[0]
+
+        # Legacy papers without published_by edges inherit from an author.
         author_to_inst = {n.id: out.get(n.id) for n in nodes if n.type == "author"}
         for e in edges:
             if e.type != "authored":
@@ -998,6 +1481,13 @@ class ByCommunityGroup(GroupProvider):
         return out
 
 
+class ByEntityTypeGroup(GroupProvider):
+    key = "by_entity_type"
+
+    def assign(self, nodes, edges):
+        return {node.id: f"entity-type:{node.type}" for node in nodes}
+
+
 class NoGroup(GroupProvider):
     key = "none"
 
@@ -1014,6 +1504,7 @@ GROUP_PROVIDERS: dict[str, GroupProvider] = {
         ByYearBucketGroup(),
         ByLabelGroup(),
         ByCommunityGroup(),
+        ByEntityTypeGroup(),
         NoGroup(),
     )
 }

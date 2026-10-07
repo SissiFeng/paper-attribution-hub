@@ -1,0 +1,38 @@
+{
+  "artifacts": {
+    "match_audit.csv": {
+      "bytes": 51213,
+      "sha256": "8da69eff7778a444ae6705d10fa6bab343d5d8d4d089bc09bcfa631d47f7249c"
+    },
+    "merged_metadata.csv": {
+      "bytes": 485639,
+      "sha256": "8a80492dda308b7302d3cdac8dcc56abf1a1427ccabd3a6980cfc5e3a5ed1bc2"
+    },
+    "openalex_metadata.jsonl": {
+      "bytes": 3048736,
+      "sha256": "0303f7587cfdfabf8abe82bbadb8930dba6724a4146a01dbe8ef41b08ec55d75"
+    },
+    "scopus_results.jsonl": {
+      "bytes": 4034350,
+      "sha256": "cc2a5a71872cfdf25531f5f65e455d9e1997d52350cbc629c42b720e4b7a4b34"
+    }
+  },
+  "created_at": "2026-08-25T13:54:37.429968+00:00",
+  "expected_scopus_count": 176,
+  "match_methods": {
+    "doi": 169,
+    "title_near_year": 2,
+    "title_year": 3,
+    "unmatched": 2
+  },
+  "openalex_matched_records": 174,
+  "openalex_unmatched_records": 2,
+  "schema_version": "scopus_openalex_metadata.v1",
+  "scopus_count_matches_expected": true,
+  "scopus_input_sha256": "f8812dd040745482d9b548a25aebe9b68aa42662ec2488e674470fc4e16c760f",
+  "scopus_query": "ALL(\"self-driving lab*\") AND AFFIL(Toronto)",
+  "scopus_raw_entries_received": 176,
+  "scopus_source": "scopus_ui_csv",
+  "scopus_total_reported": 176,
+  "scopus_unique_records": 176
+}

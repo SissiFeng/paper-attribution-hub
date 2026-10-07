@@ -1,0 +1,33 @@
+{
+  "schema_version": "domain-teacher-benchmark-spec-v0.1",
+  "benchmark_id": "battery-electrolyte-teacher-models-2026-09",
+  "source_selection": "data/domain_adapters/battery_electrolyte_optimization_pilot.json",
+  "prompt_version": "scientific-protocol-teacher-v0.4-scope-aware",
+  "temperature": 0.0,
+  "models": [
+    {
+      "alias": "kimi-k2-5",
+      "provider": "amazon_bedrock",
+      "model_id": "moonshotai.kimi-k2.5",
+      "region": "us-east-1",
+      "max_output_tokens": 14000,
+      "required_for_final": true
+    },
+    {
+      "alias": "claude-opus-4-6",
+      "provider": "amazon_bedrock",
+      "model_id": "us.anthropic.claude-opus-4-6-v1",
+      "region": "us-east-1",
+      "max_output_tokens": 14000,
+      "required_for_final": true
+    },
+    {
+      "alias": "deepseek-v3-2",
+      "provider": "amazon_bedrock",
+      "model_id": "deepseek.v3.2",
+      "region": "us-east-1",
+      "max_output_tokens": 14000,
+      "required_for_final": true
+    }
+  ]
+}

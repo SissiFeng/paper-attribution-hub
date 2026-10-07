@@ -140,7 +140,7 @@ The first OER review should include:
 
 - 20 complete Protocol Units across different experiment types;
 - at least 100 field claims, including materials, instruments, software,
-  conditions, steps, characterization, results, and caveats;
+  atomic step verbs, targets, parameters, characterization, results, and caveats;
 - 30–50 RAG questions;
 - at least five answerable questions per major available question type;
 - at least five genuine abstention questions;

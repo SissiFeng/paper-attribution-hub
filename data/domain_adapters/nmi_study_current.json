@@ -1,0 +1,44 @@
+{
+  "schema_version": "domain-nmi-study-input-v0.1",
+  "domains": [
+    {
+      "schema_version": "domain-nmi-evidence-v0.1",
+      "domain": "oer-electrocatalysis",
+      "package": {
+        "package_id": "oer-electrocatalysis",
+        "package_version": "0.3.3-pre-review"
+      },
+      "total_paper_count": 20,
+      "primary_paper_count": 7,
+      "teacher_evaluated_paper_count": 4,
+      "independent_model_family_count": 3,
+      "occurrence_slot_count": 273,
+      "perturbation_tested_count": 95,
+      "tier_a_silver_count": 63,
+      "prompt_configuration_count": 1,
+      "negative_control_count": 0,
+      "deterministic_rebuild_verified": false,
+      "external_utility": null
+    },
+    {
+      "schema_version": "domain-nmi-evidence-v0.1",
+      "domain": "battery-electrolyte-optimization",
+      "package": {
+        "package_id": "battery-electrolyte-optimization",
+        "package_version": "0.1.1-chunk-coverage-kimi-k2.5"
+      },
+      "total_paper_count": 10,
+      "primary_paper_count": 6,
+      "teacher_evaluated_paper_count": 3,
+      "independent_model_family_count": 3,
+      "occurrence_slot_count": 167,
+      "perturbation_tested_count": 55,
+      "tier_a_silver_count": 34,
+      "prompt_configuration_count": 2,
+      "negative_control_count": 1,
+      "deterministic_rebuild_verified": false,
+      "external_utility": null
+    }
+  ],
+  "transfer_comparisons": []
+}

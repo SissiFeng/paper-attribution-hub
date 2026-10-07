@@ -1,0 +1,11 @@
+{
+  "by_entity_type": {},
+  "candidate_count": 0,
+  "gold_count": 0,
+  "precision": null,
+  "recall": null,
+  "reviewed_protocol_count": 0,
+  "schema_version": "domain-adapter-gold-score-v0.1",
+  "span_alignment_rate": null,
+  "true_positive_count": 0
+}

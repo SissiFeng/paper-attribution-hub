@@ -2,7 +2,7 @@
 from __future__ import annotations
 
 import pytest
-from fastapi.testclient import TestClient
+from tests.admin_client import AdminTestClient as TestClient
 
 
 @pytest.fixture()
@@ -35,7 +35,7 @@ def test_mutating_endpoint_requires_key_when_set(client, monkeypatch):
     assert r.status_code != 401  # 404: empty DB, but auth passed
 
 
-def test_mutating_endpoint_open_when_key_empty(client, monkeypatch):
+def test_admin_mutation_needs_no_extra_key_when_key_empty(client, monkeypatch):
     from app.config import settings
 
     monkeypatch.setattr(settings, "api_key", "")

@@ -1,0 +1,233 @@
+{
+  "claims_boundary": "This compares student agreement with package targets. It is not an independent human assessment of scientific completeness.",
+  "config": {
+    "correction_epochs": 1,
+    "correction_learning_rate": 2e-05,
+    "learning_rate": 5e-05,
+    "max_new_tokens": 256,
+    "max_sequence_length": 1536,
+    "sft_epochs": 2
+  },
+  "device": "mps",
+  "method_label": "student-error-conditioned sequence distillation with seed replay; not reverse-KL GKD",
+  "metrics": {
+    "base": {
+      "exact_match_rate": 0.0,
+      "field_f1": 0.05026455026455027,
+      "field_precision": 0.06481481481481481,
+      "field_recall": 0.04938271604938271,
+      "grounded_leaf_rate": 0.5925925925925926,
+      "json_valid_rate": 0.6666666666666666,
+      "task_count": 9
+    },
+    "matched_static_sft": {
+      "exact_match_rate": 0.1111111111111111,
+      "field_f1": 0.19682539682539685,
+      "field_precision": 0.18888888888888888,
+      "field_recall": 0.2074074074074074,
+      "grounded_leaf_rate": 0.7777777777777778,
+      "json_valid_rate": 1.0,
+      "task_count": 9
+    },
+    "on_policy_hard_sft": {
+      "exact_match_rate": 0.1111111111111111,
+      "field_f1": 0.19682539682539685,
+      "field_precision": 0.18888888888888888,
+      "field_recall": 0.2074074074074074,
+      "grounded_leaf_rate": 0.7777777777777778,
+      "json_valid_rate": 1.0,
+      "task_count": 9
+    },
+    "static_sft": {
+      "exact_match_rate": 0.1111111111111111,
+      "field_f1": 0.20634920634920637,
+      "field_precision": 0.2222222222222222,
+      "field_recall": 0.2074074074074074,
+      "grounded_leaf_rate": 0.6666666666666666,
+      "json_valid_rate": 0.8888888888888888,
+      "task_count": 9
+    }
+  },
+  "model_id": "HuggingFaceTB/SmolLM2-360M-Instruct",
+  "package": "../outputs/domain-adapters/oer-electrocatalysis/0.1.0-pilot/bedrock-kimi-teacher",
+  "package_extraction": {
+    "extractor": "amazon_bedrock_structured_teacher",
+    "mode": "teacher",
+    "model": "moonshotai.kimi-k2.5",
+    "prompt_version": "oer-protocol-teacher-v0.1"
+  },
+  "promotion": {
+    "comparison": "on_policy_hard_sft_vs_matched_static_sft",
+    "promoted": false,
+    "rule": "field_f1 must improve without reducing JSON validity or grounded leaf rate"
+  },
+  "schema_version": "domain-distillation-experiment-v0.1",
+  "seed": 23,
+  "selection": {
+    "eligible_evaluation_task_count": 17,
+    "eligible_train_task_count": 30,
+    "evaluation_task_ids": [
+      "04e8f27bda77a6170c49240a64dc840e6f5a47afa0cb06f0f625bc2ee6b3392c",
+      "c1cd88d10ca90677092f396bb383eb0d3dc66e21563129892360d5ed6f205574",
+      "4e58c22ee84f895aa0129dca5adb3ba65c019a5576303b677990d0bdb45e884d",
+      "53c96f8aa43fcba5836caca7897a2f8135300ac2152d50a6c533840995490473",
+      "1380eae67007ced3258a014626d86fb6a3b7be97d49a8b8acd9bab4412b89807",
+      "a6280c9d0174b9d9c731f98c8663916fa9c4e0ded8bb20f6d7cbd13bf450467e",
+      "2a9e9497cd65b213b5d7a052b0dce168de527dbe9f98c41e125a8c86bcd8ec4b",
+      "5f6946734043f542c28a96ac9e733f996ecd96dd63b0c26f8249c17fbfecb842",
+      "7befd6ccc865faffda8fdfb162dd88a125b27aee43650e871f38f3e3bd13ddc3"
+    ],
+    "hard_task_ids": [
+      "474d6098a7bfd110629ea3c201543f5b6c011641fd60610b5db3f00416ef63bb",
+      "643c42226fde42f1e9897e8ec746d829c4992ba184acb7e6b8683dc1e9252c46",
+      "919682a43613a3369d288c0bbd3707adf2c80f44cf8535cec946d5a39a7aec77",
+      "a793ef75f889209e25b836cada496ffa75041afa0922a3dd5b7776a0deab58a5",
+      "a11a0fb18ab9d790d2374b9d2d19dba7eae96bd4de1ca2d0a8aa05c975250961",
+      "c5bc7e9779b16bf0012c63be68d04e1db3089adf30a6a8eac145b939fca60a25",
+      "a93dc4d4f63421361ea1830104d653b8bde7d415d4546ae56011c198a42bcad2",
+      "be9dd5829d772ab5fa278961abab2c675acdc7b233ff5c4a0c23635a02b96b03",
+      "343c72345347081c568ab110b081379260b599de4071396980d6b4d87a4d5137",
+      "be7935155e7a18cbdfa036960ad75bd5f4dacaed58a4024af5fccdcc528a95ae",
+      "cf2d5cc1d83dc3d2e1675684935f28f1322a940c784f8d52d8510c4274e826ba"
+    ],
+    "matched_control_task_ids": [
+      "cf2d5cc1d83dc3d2e1675684935f28f1322a940c784f8d52d8510c4274e826ba",
+      "343c72345347081c568ab110b081379260b599de4071396980d6b4d87a4d5137",
+      "a11a0fb18ab9d790d2374b9d2d19dba7eae96bd4de1ca2d0a8aa05c975250961",
+      "e56af35c3d7dd31799fb3da1f5b4e78a53bc63df65f951124ddb7af8b9bc8618",
+      "474d6098a7bfd110629ea3c201543f5b6c011641fd60610b5db3f00416ef63bb",
+      "a793ef75f889209e25b836cada496ffa75041afa0922a3dd5b7776a0deab58a5",
+      "643c42226fde42f1e9897e8ec746d829c4992ba184acb7e6b8683dc1e9252c46",
+      "a93dc4d4f63421361ea1830104d653b8bde7d415d4546ae56011c198a42bcad2",
+      "919682a43613a3369d288c0bbd3707adf2c80f44cf8535cec946d5a39a7aec77",
+      "be9dd5829d772ab5fa278961abab2c675acdc7b233ff5c4a0c23635a02b96b03",
+      "be7935155e7a18cbdfa036960ad75bd5f4dacaed58a4024af5fccdcc528a95ae",
+      "2341895342ec4e677a0d83aa881a39e416f7c3f6e91a6bd66a79c41edbfaa40e",
+      "7282ed2bcbbace723dcdc55563c423d9ea5ac17968af85e011007272f424b9c1",
+      "0c79098cb5b95ccd1ca3ffae3bb9d9b8774a7b070cc4d8061f947618775ae0f9"
+    ],
+    "on_policy_adaptation_task_ids": [
+      "474d6098a7bfd110629ea3c201543f5b6c011641fd60610b5db3f00416ef63bb",
+      "643c42226fde42f1e9897e8ec746d829c4992ba184acb7e6b8683dc1e9252c46",
+      "919682a43613a3369d288c0bbd3707adf2c80f44cf8535cec946d5a39a7aec77",
+      "a793ef75f889209e25b836cada496ffa75041afa0922a3dd5b7776a0deab58a5",
+      "a11a0fb18ab9d790d2374b9d2d19dba7eae96bd4de1ca2d0a8aa05c975250961",
+      "c5bc7e9779b16bf0012c63be68d04e1db3089adf30a6a8eac145b939fca60a25",
+      "a93dc4d4f63421361ea1830104d653b8bde7d415d4546ae56011c198a42bcad2",
+      "be9dd5829d772ab5fa278961abab2c675acdc7b233ff5c4a0c23635a02b96b03",
+      "343c72345347081c568ab110b081379260b599de4071396980d6b4d87a4d5137",
+      "be7935155e7a18cbdfa036960ad75bd5f4dacaed58a4024af5fccdcc528a95ae",
+      "cf2d5cc1d83dc3d2e1675684935f28f1322a940c784f8d52d8510c4274e826ba",
+      "2341895342ec4e677a0d83aa881a39e416f7c3f6e91a6bd66a79c41edbfaa40e",
+      "7282ed2bcbbace723dcdc55563c423d9ea5ac17968af85e011007272f424b9c1",
+      "0c79098cb5b95ccd1ca3ffae3bb9d9b8774a7b070cc4d8061f947618775ae0f9"
+    ],
+    "raw_evaluation_task_count": 20,
+    "raw_train_task_count": 31,
+    "replay_task_ids": [
+      "2341895342ec4e677a0d83aa881a39e416f7c3f6e91a6bd66a79c41edbfaa40e",
+      "7282ed2bcbbace723dcdc55563c423d9ea5ac17968af85e011007272f424b9c1",
+      "0c79098cb5b95ccd1ca3ffae3bb9d9b8774a7b070cc4d8061f947618775ae0f9"
+    ],
+    "rollout_task_ids": [
+      "cf2d5cc1d83dc3d2e1675684935f28f1322a940c784f8d52d8510c4274e826ba",
+      "343c72345347081c568ab110b081379260b599de4071396980d6b4d87a4d5137",
+      "a11a0fb18ab9d790d2374b9d2d19dba7eae96bd4de1ca2d0a8aa05c975250961",
+      "e56af35c3d7dd31799fb3da1f5b4e78a53bc63df65f951124ddb7af8b9bc8618",
+      "474d6098a7bfd110629ea3c201543f5b6c011641fd60610b5db3f00416ef63bb",
+      "a793ef75f889209e25b836cada496ffa75041afa0922a3dd5b7776a0deab58a5",
+      "643c42226fde42f1e9897e8ec746d829c4992ba184acb7e6b8683dc1e9252c46",
+      "a93dc4d4f63421361ea1830104d653b8bde7d415d4546ae56011c198a42bcad2",
+      "919682a43613a3369d288c0bbd3707adf2c80f44cf8535cec946d5a39a7aec77",
+      "be9dd5829d772ab5fa278961abab2c675acdc7b233ff5c4a0c23635a02b96b03",
+      "be7935155e7a18cbdfa036960ad75bd5f4dacaed58a4024af5fccdcc528a95ae",
+      "c5bc7e9779b16bf0012c63be68d04e1db3089adf30a6a8eac145b939fca60a25"
+    ],
+    "train_task_ids": [
+      "2341895342ec4e677a0d83aa881a39e416f7c3f6e91a6bd66a79c41edbfaa40e",
+      "7282ed2bcbbace723dcdc55563c423d9ea5ac17968af85e011007272f424b9c1",
+      "0c79098cb5b95ccd1ca3ffae3bb9d9b8774a7b070cc4d8061f947618775ae0f9",
+      "1a54162449fc8fb6fa87948c9d496466dec9a8a71e9d25d9c9e99e9e9baf440b",
+      "271cdc30eef66e93404d364841ff6535c0af5abdf259dc4cf7c1d08cb1f87055",
+      "64a4eba142bc3cd52f62703a633ce4463e6f81eb84a3a0120d0c51c1c428fb35",
+      "d6b650aec259c742fcc81bcf1fdd10cdf7dd07133666a866a8dbd98367abef04",
+      "9b8ea0d67a618559f94996f30962a38b65e4d1fbdf4d6e06eec091508453233a",
+      "24191dde7590920378db1d2262391fa4695f865d3953eb1502d3db05e2e410d8",
+      "2aa0797ae0cd30956e0fc5b69766264d756ecdb850c3c6d0e9150d03d6f2ddf7",
+      "4db43b33faf7fa12ff62bddba0ee015959bc7a58f351b9eb6a594662b1071192",
+      "b660c397dfbeceec2070efc8c95007cc12fc25e0c77179a419caa6906616026f"
+    ]
+  },
+  "training": {
+    "matched_static_sft": {
+      "losses": [
+        0.22879499197006226,
+        0.2800326645374298,
+        0.4250487983226776,
+        0.3305988609790802,
+        0.21929848194122314,
+        0.4789925217628479,
+        0.2360486388206482,
+        0.17729417979717255,
+        0.16974805295467377,
+        0.52651447057724,
+        0.02306135557591915,
+        0.3719848692417145,
+        0.6510796546936035,
+        0.26474887132644653
+      ],
+      "mean_loss": 0.31308902946433853,
+      "steps": 14
+    },
+    "on_policy_hard_sft": {
+      "losses": [
+        0.5373300909996033,
+        0.6700538396835327,
+        0.23204383254051208,
+        0.36750274896621704,
+        0.21684163808822632,
+        0.4815988838672638,
+        0.17965924739837646,
+        0.2671602666378021,
+        0.3927142322063446,
+        0.2698442339897156,
+        0.18365579843521118,
+        0.23315636813640594,
+        0.29473406076431274,
+        0.2676524221897125
+      ],
+      "mean_loss": 0.32813911885023117,
+      "steps": 14
+    },
+    "static_sft": {
+      "losses": [
+        0.9657617807388306,
+        0.32229992747306824,
+        0.5482756495475769,
+        0.485380083322525,
+        0.22069117426872253,
+        0.15704794228076935,
+        0.09714671969413757,
+        0.4310004711151123,
+        0.40180641412734985,
+        0.3242028057575226,
+        0.15306948125362396,
+        0.786931574344635,
+        0.10690001398324966,
+        0.2998647093772888,
+        0.12949593365192413,
+        0.6862109899520874,
+        0.03563451021909714,
+        0.18968239426612854,
+        0.13232922554016113,
+        0.03465399518609047,
+        0.4107075333595276,
+        0.24897731840610504,
+        0.19020776450634003,
+        0.27418646216392517
+      ],
+      "mean_loss": 0.318019369772325,
+      "steps": 24
+    }
+  }
+}

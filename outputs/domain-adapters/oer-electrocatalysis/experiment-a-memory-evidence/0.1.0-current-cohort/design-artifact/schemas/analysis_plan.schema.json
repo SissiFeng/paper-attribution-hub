@@ -1,0 +1,51 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "claims_boundary": {
+      "default": "Publication before a reported knowledge cutoff is a training-exposure proxy, not proof that a paper was in training data. Temporal and citation effects are quasi-experimental associations unless exposure is independently verified.",
+      "title": "Claims Boundary",
+      "type": "string"
+    },
+    "confirmatory_contrasts": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Confirmatory Contrasts",
+      "type": "array"
+    },
+    "eligible_claim_rule": {
+      "default": "evidence_valid=true AND source_value_occurrence=exact_unique AND numeric_replacement_exists AND steps fields are restricted to param:*",
+      "title": "Eligible Claim Rule",
+      "type": "string"
+    },
+    "negative_control_outcome": {
+      "default": "evidence_deletion_following",
+      "title": "Negative Control Outcome",
+      "type": "string"
+    },
+    "primary_model": {
+      "default": "mixed-effects logistic regression: substitution_following ~ pre_cutoff + log1p(citation_count) + pre_cutoff:log1p(citation_count) + field_type + model_family; random intercepts for paper and claim",
+      "title": "Primary Model",
+      "type": "string"
+    },
+    "primary_outcome": {
+      "default": "numeric_substitution_following",
+      "title": "Primary Outcome",
+      "type": "string"
+    },
+    "required_sensitivity_analyses": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Required Sensitivity Analyses",
+      "type": "array"
+    },
+    "schema_version": {
+      "default": "memory-evidence-analysis-plan-v0.1",
+      "title": "Schema Version",
+      "type": "string"
+    }
+  },
+  "title": "ExperimentAAnalysisPlan",
+  "type": "object"
+}

@@ -1,0 +1,276 @@
+{
+  "model_id": "moonshotai.kimi-k2.5",
+  "paper_id": "DOI:10.1039_d0ta06441f",
+  "prompt_version": "oer-protocol-teacher-v0.1",
+  "protocols": [
+    {
+      "caveats": [
+        {
+          "caveat_id": "caveat_094c444f46cf10d0",
+          "evidence_ids": [
+            "ev_70183c33bbfc13ee"
+          ],
+          "text": "Meanwhile, one can see that, compared to the DFT+U method, DFT would reduce the TM's spin value"
+        },
+        {
+          "caveat_id": "caveat_3e60292f90570304",
+          "evidence_ids": [
+            "ev_bd3f56617c404804"
+          ],
+          "text": "This negative value is even lower than the theoretically ideal h (0\nV). Herein, a question was raised: is the OER activity of CrN₄(OH) dual-active sites equal to (even better than) that of the ideal catalyst? To answer this question, we rstly analyzed the underlying cause of this negative h"
+        },
+        {
+          "caveat_id": "caveat_62776d11c373f75f",
+          "evidence_ids": [
+            "ev_2da26f8c12f90510"
+          ],
+          "text": "As a result, for CrN₄(OH) with dual-active-sites mechanism, the nal step is eqn (4), which could not be comparable to the OER activity of the ideal catalyst"
+        },
+        {
+          "caveat_id": "caveat_34912114e44bf7b1",
+          "evidence_ids": [
+            "ev_a3faa9705cd6388a"
+          ],
+          "text": "This CNT diameter effect also indicates that both the thermodynamic descriptor of DG₅ and activity energy of O–O coupling should be considered in evaluating the feasibility of the dual-active-sites strategy"
+        },
+        {
+          "caveat_id": "caveat_273e243dc746efb9",
+          "evidence_ids": [
+            "ev_aa12ab9efc9a85da"
+          ],
+          "text": "The activation energy of *O₂ formation and *O₂ desorption should be considered to verify the feasibility of eqn (5)"
+        }
+      ],
+      "characterization": [],
+      "evidence": [
+        {
+          "char_end": 809,
+          "char_start": 517,
+          "chunk_id": "mdchk_01cadfe1bc3cd33a",
+          "document_char_end": 15442,
+          "document_char_start": 15150,
+          "evidence_id": "ev_bd3f56617c404804",
+          "paper_id": "DOI:10.1039_d0ta06441f",
+          "quote": "This negative value is even lower than the theoretically ideal h (0\nV). Herein, a question was raised: is the OER activity of CrN₄(OH) dual-active sites equal to (even better than) that of the ideal catalyst? To answer this question, we rstly analyzed the underlying cause of this negative h",
+          "source_sha256": "0bd415776b43e3bffa3799d0b779174e6afb41bb3f72c15c7f016d45a5424518"
+        },
+        {
+          "char_end": 1601,
+          "char_start": 1444,
+          "chunk_id": "mdchk_01cadfe1bc3cd33a",
+          "document_char_end": 16234,
+          "document_char_start": 16077,
+          "evidence_id": "ev_2da26f8c12f90510",
+          "paper_id": "DOI:10.1039_d0ta06441f",
+          "quote": "As a result, for CrN₄(OH) with dual-active-sites mechanism, the nal step is eqn (4), which could not be comparable to the OER activity of the ideal catalyst",
+          "source_sha256": "0bd415776b43e3bffa3799d0b779174e6afb41bb3f72c15c7f016d45a5424518"
+        },
+        {
+          "char_end": 3309,
+          "char_start": 3188,
+          "chunk_id": "mdchk_01cadfe1bc3cd33a",
+          "document_char_end": 17942,
+          "document_char_start": 17821,
+          "evidence_id": "ev_56d9d8df7dc6ea0d",
+          "paper_id": "DOI:10.1039_d0ta06441f",
+          "quote": "In this work, by spin-polarized density functional theory, all the structures were fully relaxed with the lowest energies",
+          "source_sha256": "0bd415776b43e3bffa3799d0b779174e6afb41bb3f72c15c7f016d45a5424518"
+        },
+        {
+          "char_end": 3957,
+          "char_start": 3862,
+          "chunk_id": "mdchk_01cadfe1bc3cd33a",
+          "document_char_end": 18590,
+          "document_char_start": 18495,
+          "evidence_id": "ev_70183c33bbfc13ee",
+          "paper_id": "DOI:10.1039_d0ta06441f",
+          "quote": "Meanwhile, one can see that, compared to the DFT+U method, DFT would reduce the TM's spin value",
+          "source_sha256": "0bd415776b43e3bffa3799d0b779174e6afb41bb3f72c15c7f016d45a5424518"
+        },
+        {
+          "char_end": 722,
+          "char_start": 607,
+          "chunk_id": "mdchk_0c2f8842abbcc51b",
+          "document_char_end": 27523,
+          "document_char_start": 27408,
+          "evidence_id": "ev_c0b0c64a33ac202d",
+          "paper_id": "DOI:10.1039_d0ta06441f",
+          "quote": "Therefore, the CNT diameter plays a critical role in the OER activity of single-active sites and dual- active sites",
+          "source_sha256": "f6c3da570de88557eac0c96662dd488f5908ce74e7110414b44d5122f4ee4ff2"
+        },
+        {
+          "char_end": 930,
+          "char_start": 724,
+          "chunk_id": "mdchk_0c2f8842abbcc51b",
+          "document_char_end": 27731,
+          "document_char_start": 27525,
+          "evidence_id": "ev_a3faa9705cd6388a",
+          "paper_id": "DOI:10.1039_d0ta06441f",
+          "quote": "This CNT diameter effect also indicates that both the thermodynamic descriptor of DG₅ and activity energy of O–O coupling should be considered in evaluating the feasibility of the dual-active-sites strategy",
+          "source_sha256": "f6c3da570de88557eac0c96662dd488f5908ce74e7110414b44d5122f4ee4ff2"
+        },
+        {
+          "char_end": 1094,
+          "char_start": 943,
+          "chunk_id": "mdchk_0c2f8842abbcc51b",
+          "document_char_end": 27895,
+          "document_char_start": 27744,
+          "evidence_id": "ev_29fabe829ce371b3",
+          "paper_id": "DOI:10.1039_d0ta06441f",
+          "quote": "we designed OER dual-active sites consisting of two adjacent TMN₄(OH) (TM ¼ Cr/Mn/Fe/Co/Ni/Cu) single- active sites conned in a carbon nanotube (8, 0)",
+          "source_sha256": "f6c3da570de88557eac0c96662dd488f5908ce74e7110414b44d5122f4ee4ff2"
+        },
+        {
+          "char_end": 1863,
+          "char_start": 1748,
+          "chunk_id": "mdchk_0c2f8842abbcc51b",
+          "document_char_end": 28664,
+          "document_char_start": 28549,
+          "evidence_id": "ev_aa12ab9efc9a85da",
+          "paper_id": "DOI:10.1039_d0ta06441f",
+          "quote": "The activation energy of *O₂ formation and *O₂ desorption should be considered to verify the feasibility of eqn (5)",
+          "source_sha256": "f6c3da570de88557eac0c96662dd488f5908ce74e7110414b44d5122f4ee4ff2"
+        },
+        {
+          "char_end": 117,
+          "char_start": 0,
+          "chunk_id": "mdchk_83739ce94980e573",
+          "document_char_end": 13850,
+          "document_char_start": 13733,
+          "evidence_id": "ev_5e15b9f871d4a2fd",
+          "paper_id": "DOI:10.1039_d0ta06441f",
+          "quote": "is 0.30 eV, implying the facile desorption of O₂. Water nucle- ophilic attack could further promote the O₂ desorption",
+          "source_sha256": "34c59f9266f77c12e883a57aa036805942ebc0f394d2c933e62fb0a0ed6e3379"
+        },
+        {
+          "char_end": 178,
+          "char_start": 0,
+          "chunk_id": "mdchk_d8ac21190e05e632",
+          "document_char_end": 11581,
+          "document_char_start": 11403,
+          "evidence_id": "ev_f359b573ba31e83d",
+          "paper_id": "DOI:10.1039_d0ta06441f",
+          "quote": "energy differences of each elementary step are 1.28, 1.17, 2.14 and 0.33 eV, respectively (U ¼ 0Vvs. RHE). This indicates that the PDS is contributed by eqn (3) of *OOH formation",
+          "source_sha256": "8e8449908f6b7d98460445a27cc0e55e0c0d34bea5bb23dad69a06ac283aa100"
+        },
+        {
+          "char_end": 1035,
+          "char_start": 790,
+          "chunk_id": "mdchk_d8ac21190e05e632",
+          "document_char_end": 12438,
+          "document_char_start": 12193,
+          "evidence_id": "ev_ecb668906ee89421",
+          "paper_id": "DOI:10.1039_d0ta06441f",
+          "quote": "We then investigated the free energy prole of OER process in the case of dual-active sites. As shown in Fig. 3d, the rst and second OH species are adsorbed on the two FeN₄(OH) single- active sites with the free-energy changes of 1.28 (DG₁) and",
+          "source_sha256": "8e8449908f6b7d98460445a27cc0e55e0c0d34bea5bb23dad69a06ac283aa100"
+        },
+        {
+          "char_end": 1083,
+          "char_start": 979,
+          "chunk_id": "mdchk_e3b8840cf3a521ba",
+          "document_char_end": 7506,
+          "document_char_start": 7402,
+          "evidence_id": "ev_bc9ab2e01061ead0",
+          "paper_id": "DOI:10.1039_d0ta06441f",
+          "quote": "To elaborate on these above analyses, we used rst- principles calculations and a computational hydrogen",
+          "source_sha256": "8d58872326d190dce2c7aa46dff4cf2717ee7cc4ac9acdbb84b7887b7d53c2fe"
+        }
+      ],
+      "evidence_scope": "primary_report",
+      "instruments": [],
+      "materials": [
+        {
+          "amount": null,
+          "entity_id": "mat_c917cabaa750d738",
+          "evidence_ids": [
+            "ev_29fabe829ce371b3"
+          ],
+          "name": "carbon nanotube (8, 0)",
+          "pretreatment": null,
+          "purity": null,
+          "role": null,
+          "supplier": null
+        }
+      ],
+      "paper_id": "DOI:10.1039_d0ta06441f",
+      "protocol_id": "protocol_cffc19b38f21a270",
+      "protocol_name": "DFT computational study of OER on TMN4(OH) single and dual-active sites",
+      "protocol_type": "computational",
+      "relations": [],
+      "results": [],
+      "software": [],
+      "source_chunk_ids": [
+        "mdchk_01cadfe1bc3cd33a",
+        "mdchk_0c2f8842abbcc51b",
+        "mdchk_83739ce94980e573",
+        "mdchk_d8ac21190e05e632",
+        "mdchk_e3b8840cf3a521ba"
+      ],
+      "source_paper_tier": "primary_oer",
+      "steps": [
+        {
+          "action": "To elaborate on these above analyses, we used rst- principles calculations and a computational hydrogen",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_bc9ab2e01061ead0"
+          ],
+          "notes": null,
+          "order": 1,
+          "step_id": "step_35da1d15704efb0c"
+        },
+        {
+          "action": "In this work, by spin-polarized density functional theory, all the structures were fully relaxed with the lowest energies",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_56d9d8df7dc6ea0d"
+          ],
+          "notes": null,
+          "order": 2,
+          "step_id": "step_094c444f46cf10d0"
+        },
+        {
+          "action": "energy differences of each elementary step are 1.28, 1.17, 2.14 and 0.33 eV, respectively (U ¼ 0Vvs. RHE). This indicates that the PDS is contributed by eqn (3) of *OOH formation",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_f359b573ba31e83d"
+          ],
+          "notes": null,
+          "order": 3,
+          "step_id": "step_fecb3e2872511d22"
+        },
+        {
+          "action": "We then investigated the free energy prole of OER process in the case of dual-active sites. As shown in Fig. 3d, the rst and second OH species are adsorbed on the two FeN₄(OH) single- active sites with the free-energy changes of 1.28 (DG₁) and",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_ecb668906ee89421"
+          ],
+          "notes": null,
+          "order": 4,
+          "step_id": "step_80c8f3adce3fe6ca"
+        },
+        {
+          "action": "is 0.30 eV, implying the facile desorption of O₂. Water nucle- ophilic attack could further promote the O₂ desorption",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_5e15b9f871d4a2fd"
+          ],
+          "notes": null,
+          "order": 5,
+          "step_id": "step_c924424060697006"
+        },
+        {
+          "action": "Therefore, the CNT diameter plays a critical role in the OER activity of single-active sites and dual- active sites",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_c0b0c64a33ac202d"
+          ],
+          "notes": null,
+          "order": 6,
+          "step_id": "step_273e243dc746efb9"
+        }
+      ]
+    }
+  ],
+  "schema_version": "bedrock-teacher-paper-cache-v0.1",
+  "unsupported_claim_count": 51
+}

@@ -1,7 +1,7 @@
 """Cross-SDL knowledge base: entity index/pages, lab profiles, summary."""
 from __future__ import annotations
 
-from fastapi.testclient import TestClient
+from tests.admin_client import AdminTestClient as TestClient
 
 from app.models import Paper, PaperChunk, PaperEntity, PaperLabLink, SdlLab
 from app.services.kb_service import entity_index, entity_page, kb_summary, lab_profile

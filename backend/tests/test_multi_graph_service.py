@@ -146,6 +146,204 @@ def test_single_type_networks_and_country_projection_are_supported(session):
     assert groups["author:author_canada"] == "country:Canada"
 
 
+def test_stage1_institution_graph_uses_fulltext_affiliation_mentions(
+    session,
+    monkeypatch,
+):
+    from app.config import settings
+    from app.models import Paper, PaperEntity
+    from app.services.multi_graph import MultiGraphFilter, build_multi_graph
+
+    monkeypatch.setattr(settings, "sdl_stage1_only", True)
+    papers = [
+        Paper(
+            id="stage1_inst_paper_1",
+            title="Stage 1 institution one",
+            full_text_available=True,
+        ),
+        Paper(
+            id="stage1_inst_paper_2",
+            title="Stage 1 institution two",
+            full_text_available=True,
+        ),
+    ]
+    session.add_all(papers)
+    session.flush()
+    session.add_all(
+        [
+            PaperEntity(
+                id="stage1_uoft_1",
+                paper_id=papers[0].id,
+                entity_type="institution",
+                name="University of Toronto",
+                normalized_name="University of Toronto",
+                confidence=0.95,
+                extractor="frontmatter_affiliation_v1",
+            ),
+            PaperEntity(
+                id="stage1_ubc_1",
+                paper_id=papers[0].id,
+                entity_type="institution",
+                name="University of British Columbia",
+                normalized_name="University of British Columbia",
+                confidence=0.91,
+                extractor="frontmatter_affiliation_v1",
+            ),
+            PaperEntity(
+                id="stage1_uoft_2",
+                paper_id=papers[1].id,
+                entity_type="institution",
+                name="University of Toronto",
+                normalized_name="University of Toronto",
+                confidence=0.93,
+                extractor="frontmatter_affiliation_v1",
+            ),
+        ]
+    )
+    session.commit()
+
+    graph = build_multi_graph(
+        session,
+        MultiGraphFilter(
+            node_types=["paper", "institution"],
+            edge_types=["published_by"],
+            group_by="by_institution",
+        ),
+    )
+
+    institutions = {
+        node.label: node for node in graph.nodes if node.type == "institution"
+    }
+    assert set(institutions) == {
+        "University of British Columbia",
+        "University of Toronto",
+    }
+    assert institutions["University of Toronto"].metadata["paper_count"] == 2
+    assert institutions["University of Toronto"].metadata["source"] == (
+        "zotero_tier1_markdown_frontmatter_candidate"
+    )
+    assert institutions["University of Toronto"].metadata[
+        "resolution_status"
+    ] == "candidate"
+    assert institutions["University of Toronto"].metadata[
+        "author_affiliation_resolved"
+    ] is False
+    assert len(graph.edges) == 3
+    assert all(
+        edge.metadata["relationship_scope"]
+        == "paper_level_affiliation_mention"
+        for edge in graph.edges
+    )
+    paper_nodes = [node for node in graph.nodes if node.type == "paper"]
+    assert all(node.group is not None for node in paper_nodes)
+
+    collaboration = build_multi_graph(
+        session,
+        MultiGraphFilter(
+            node_types=["institution"],
+            edge_types=["institution_collaboration"],
+        ),
+    )
+    assert len(collaboration.edges) == 1
+    assert collaboration.edges[0].weight == 1.0
+    assert collaboration.edges[0].metadata["relationship_scope"] == (
+        "paper_level_affiliation_cooccurrence"
+    )
+
+
+def test_stage1_graph_includes_all_extracted_entity_types_with_evidence(
+    session,
+    monkeypatch,
+):
+    from app.config import settings
+    from app.models import Paper, PaperEntity
+    from app.services.multi_graph import MultiGraphFilter, build_multi_graph
+
+    monkeypatch.setattr(settings, "sdl_stage1_only", True)
+    paper = Paper(
+        id="stage1_scientific_entities",
+        title="Tier 1 scientific entities",
+        year=2025,
+        full_text_available=True,
+    )
+    session.add(paper)
+    session.flush()
+    entity_specs = [
+        ("method", "Bayesian optimization", "property_prediction"),
+        ("material", "lithium metal", None),
+        ("instrument", "mass spectrometer", None),
+        ("software", "Python", None),
+    ]
+    for index, (entity_type, name, stage) in enumerate(entity_specs):
+        session.add(
+            PaperEntity(
+                id=f"stage1_entity_{index}",
+                paper_id=paper.id,
+                entity_type=entity_type,
+                name=name,
+                normalized_name=name,
+                evidence_chunk_id=None,
+                section="Methods",
+                confidence=0.86 + index / 100,
+                extractor="vocabulary_v1",
+                stage=stage,
+                usage_snippet=f"Evidence for {name}.",
+            )
+        )
+    session.commit()
+
+    graph = build_multi_graph(
+        session,
+        MultiGraphFilter(
+            node_types=[
+                "paper",
+                "method",
+                "material",
+                "instrument",
+                "software",
+            ],
+            edge_types=[
+                "uses_method",
+                "mentions_material",
+                "mentions_instrument",
+                "mentions_software",
+            ],
+            group_by="by_entity_type",
+        ),
+    )
+
+    assert {node.type for node in graph.nodes} == {
+        "paper",
+        "method",
+        "material",
+        "instrument",
+        "software",
+    }
+    assert {edge.type for edge in graph.edges} == {
+        "uses_method",
+        "mentions_material",
+        "mentions_instrument",
+        "mentions_software",
+    }
+    assert all(node.group == f"entity-type:{node.type}" for node in graph.nodes)
+    method = next(node for node in graph.nodes if node.type == "method")
+    assert method.metadata["stage_counts"] == {"property_prediction": 1}
+    material_edge = next(
+        edge for edge in graph.edges if edge.type == "mentions_material"
+    )
+    assert material_edge.metadata["paper_id"] == paper.id
+    assert material_edge.metadata["section"] == "Methods"
+    assert material_edge.metadata["usage_snippet"] == (
+        "Evidence for lithium metal."
+    )
+    assert material_edge.metadata["relationship_scope"] == (
+        "paper_level_fulltext_entity_mention"
+    )
+    assert "material" in graph.available_node_types
+    assert "mentions_material" in graph.available_edge_types
+    assert "by_entity_type" in graph.available_group_keys
+
+
 def test_graph_thresholds_remove_low_support_and_dangling_nodes(session):
     from app.models import Author, Paper, PaperAuthor
     from app.services.multi_graph import MultiGraphFilter, build_multi_graph
@@ -183,6 +381,190 @@ def test_graph_thresholds_remove_low_support_and_dangling_nodes(session):
     assert [node.label for node in graph.nodes] == ["Prolific"]
     assert graph.edges == []
     assert graph.audit["graph_filter"]["min_papers"] == 2
+
+
+def test_top_n_caps_entities_without_removing_tier1_paper_nodes(session):
+    from app.models import Author, Paper, PaperAuthor
+    from app.services.multi_graph import MultiGraphFilter, build_multi_graph
+
+    author = Author(
+        id="top_n_author",
+        canonical_name="Top N Author",
+        aliases=[],
+        normalized_name="top n author",
+    )
+    connected = Paper(id="top_n_connected", title="Connected Tier 1 paper")
+    connected.authors.append(PaperAuthor(author=author, author_order=0))
+    isolated = Paper(id="top_n_isolated", title="Isolated Tier 1 paper")
+    session.add_all([connected, isolated])
+    session.commit()
+
+    graph = build_multi_graph(
+        session,
+        MultiGraphFilter(
+            node_types=["author", "paper"],
+            edge_types=["authored"],
+            top_n=1,
+        ),
+    )
+
+    assert {node.id for node in graph.nodes if node.type == "paper"} == {
+        "paper:top_n_connected",
+        "paper:top_n_isolated",
+    }
+    assert graph.audit["projection"]["raw_node_counts_by_type"] == {
+        "author": 1,
+        "paper": 2,
+    }
+    assert graph.audit["projection"]["visible_node_counts_by_type"] == {
+        "author": 1,
+        "paper": 2,
+    }
+
+
+def test_author_graph_keeps_first_four_and_last_listed_without_claiming_corresponding(
+    session,
+):
+    from app.models import Author, Paper, PaperAuthor
+    from app.services.multi_graph import MultiGraphFilter, build_multi_graph
+
+    authors = [
+        Author(
+            id=f"ordered-author-{index}",
+            canonical_name=f"Ordered Author {index}",
+            aliases=[],
+            normalized_name=f"ordered author {index}",
+        )
+        for index in range(8)
+    ]
+    paper = Paper(id="ordered-author-paper", title="Ordered author paper")
+    paper.authors.extend(
+        PaperAuthor(author=author, author_order=index)
+        for index, author in enumerate(authors)
+    )
+    session.add(paper)
+    session.commit()
+
+    graph = build_multi_graph(
+        session,
+        MultiGraphFilter(
+            node_types=["author", "paper"],
+            edge_types=["authored"],
+        ),
+    )
+
+    author_nodes = {
+        node.id: node for node in graph.nodes if node.type == "author"
+    }
+    assert set(author_nodes) == {
+        "author:ordered-author-0",
+        "author:ordered-author-1",
+        "author:ordered-author-2",
+        "author:ordered-author-3",
+        "author:ordered-author-7",
+    }
+    edges_by_author = {
+        edge.source: edge for edge in graph.edges if edge.type == "authored"
+    }
+    assert edges_by_author["author:ordered-author-0"].metadata[
+        "author_position"
+    ] == "first"
+    assert edges_by_author["author:ordered-author-7"].metadata[
+        "author_position"
+    ] == "last_listed"
+    assert all(
+        edge.metadata["corresponding_author_confirmed"] is False
+        and edge.metadata["corresponding_author_evidence_available"] is False
+        for edge in edges_by_author.values()
+    )
+    assert author_nodes["author:ordered-author-7"].metadata[
+        "last_listed_author_paper_count"
+    ] == 1
+    assert graph.audit["projection"]["raw_node_counts_by_type"] == {
+        "author": 5,
+        "paper": 1,
+    }
+
+
+def test_author_graph_prefers_pdf_confirmed_corresponding_author_over_last_listed(
+    session,
+):
+    from app.models import Author, Paper, PaperAuthor
+    from app.services.multi_graph import MultiGraphFilter, build_multi_graph
+
+    authors = [
+        Author(
+            id=f"confirmed-author-{index}",
+            canonical_name=f"Confirmed Author {index}",
+            aliases=[],
+            normalized_name=f"confirmed author {index}",
+        )
+        for index in range(8)
+    ]
+    paper = Paper(
+        id="confirmed-author-paper",
+        title="Confirmed corresponding author",
+        raw_metadata={
+            "corresponding_author_evidence": {
+                "extractor": "pdf_frontmatter_corresponding_author_v1",
+                "evidence_available": True,
+                "authors": [
+                    {
+                        "author_id": "confirmed-author-6",
+                        "author_name": "Confirmed Author 6",
+                        "author_order": 6,
+                    }
+                ],
+            }
+        },
+    )
+    paper.authors.extend(
+        PaperAuthor(author=author, author_order=index)
+        for index, author in enumerate(authors)
+    )
+    session.add(paper)
+    session.commit()
+
+    graph = build_multi_graph(
+        session,
+        MultiGraphFilter(
+            node_types=["author", "paper"],
+            edge_types=["authored"],
+        ),
+    )
+
+    author_ids = {
+        node.id for node in graph.nodes if node.type == "author"
+    }
+    assert author_ids == {
+        "author:confirmed-author-0",
+        "author:confirmed-author-1",
+        "author:confirmed-author-2",
+        "author:confirmed-author-3",
+        "author:confirmed-author-6",
+    }
+    corresponding_edge = next(
+        edge
+        for edge in graph.edges
+        if edge.source == "author:confirmed-author-6"
+    )
+    assert corresponding_edge.metadata[
+        "corresponding_author_confirmed"
+    ] is True
+    assert corresponding_edge.metadata[
+        "corresponding_author_evidence_available"
+    ] is True
+    assert corresponding_edge.metadata[
+        "corresponding_author_evidence_source"
+    ] == "pdf_frontmatter_corresponding_author_v1"
+    corresponding_node = next(
+        node
+        for node in graph.nodes
+        if node.id == "author:confirmed-author-6"
+    )
+    assert corresponding_node.metadata[
+        "corresponding_author_paper_count"
+    ] == 1
 
 
 def test_minimum_degree_is_applied_as_an_iterative_core(session):
@@ -231,7 +613,7 @@ def test_minimum_degree_is_applied_as_an_iterative_core(session):
 def test_multi_graph_endpoint_rejects_unknown_axes_and_deduplicates_valid_axes(
     session,
 ):
-    from fastapi.testclient import TestClient
+    from tests.admin_client import AdminTestClient as TestClient
 
     from app.main import app
 

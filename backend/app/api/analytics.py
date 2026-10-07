@@ -7,7 +7,13 @@ from sqlalchemy import func, select
 from sqlalchemy.orm import Session
 
 from app.db import get_session
-from app.models import Author, Institution, Paper, PaperAuthor, PaperClassification
+from app.models import (
+    Author,
+    Institution,
+    Paper,
+    PaperAuthor,
+    PaperClassification,
+)
 from app.schemas import (
     AdoptionLagOut,
     AnalyticsOverviewOut,
@@ -63,6 +69,10 @@ from app.services.filter_spec import (
     paper_filter_query,
 )
 from app.services.missed_papers_service import build_missed_paper_groups
+from app.services.stage1_readiness import (
+    descriptive_analytics_available,
+    derived_views_available,
+)
 from app.services.multi_graph import (
     MultiGraphFilter,
     available_edge_types,
@@ -104,6 +114,34 @@ def analysis_scope(
             "reviewed_papers": "Included papers with a persisted human-review record.",
             "fulltext_papers": "Included papers with locally available full-text evidence.",
         },
+    )
+
+
+@router.get("/institution-comparison")
+def institution_comparison(
+    focus: str = Query(default="University of Toronto", min_length=2),
+    limit: int = Query(default=25, ge=1, le=100),
+    filt: PaperFilter = Depends(paper_filter_query),
+    session: Session = Depends(get_session),
+) -> dict:
+    """Compare paper-level front-matter affiliation mentions."""
+    if not descriptive_analytics_available(session):
+        raise HTTPException(
+            status_code=409,
+            detail=(
+                "Verified Tier 1 full texts are not yet available for "
+                "descriptive institution analysis."
+            ),
+        )
+    from app.services.stage1_institution_analytics import (
+        build_institution_comparison,
+    )
+
+    return build_institution_comparison(
+        session,
+        filt,
+        focus=focus,
+        limit=limit,
     )
 
 
@@ -251,6 +289,24 @@ def people_grid_endpoint(
     """Periodic-table view of AC members. Each cell carries the data needed
     to render an "element": symbol (2 letters from surname), atomic number
     (paper count), color group (top topic), institution, recent papers."""
+    from app.config import settings
+
+    if settings.sdl_stage1_only:
+        # This view is seeded from the AC member roster and is intentionally
+        # unavailable while the authoritative corpus is SDL Tier 1 only.
+        return {
+            "elements": [],
+            "categories": [],
+            "max_papers": 0,
+            "total_people": 0,
+        }
+    if not derived_views_available(session):
+        return {
+            "elements": [],
+            "categories": [],
+            "max_papers": 0,
+            "total_people": 0,
+        }
     from app.services.people_grid_service import build_people_grid
 
     return build_people_grid(session)
@@ -392,6 +448,18 @@ def network_growth(
     session: Session = Depends(get_session),
 ) -> dict:
     """Yearly and cumulative growth of papers, authors, institutions, countries, collaborations."""
+    from app.config import settings
+
+    if settings.sdl_stage1_only:
+        if not descriptive_analytics_available(session):
+            return {"yearly": [], "cumulative": []}
+        from app.services.stage1_institution_analytics import (
+            build_descriptive_network_growth,
+        )
+
+        return build_descriptive_network_growth(session, filt)
+    if not derived_views_available(session):
+        return {"yearly": [], "cumulative": []}
     id_subq = apply_filter(select(Paper.id, Paper.year), filt).where(Paper.year.is_not(None)).subquery()
 
     papers_by_year = dict(session.execute(
@@ -496,6 +564,8 @@ def topic_stream(
     session: Session = Depends(get_session),
 ) -> dict:
     """Topic frequency by year for ECharts themeRiver — returns {data, topics}."""
+    if not derived_views_available(session):
+        return {"data": [], "topics": []}
     id_subq = apply_filter(
         select(Paper.id, Paper.year).where(Paper.year.is_not(None)), filt
     ).subquery()
@@ -532,6 +602,8 @@ def inst_topic_heatmap(
     Middle axis uses sdl_tags (e.g. 'SDL 0 - AI & Automation') since
     matched_topics is populated only after topic-classification runs.
     """
+    if not derived_views_available(session):
+        return {"institutions": [], "topics": [], "cells": [], "year": year}
     from collections import Counter
 
     # Build filtered paper set with sdl_tags + institution in one query.
@@ -586,6 +658,8 @@ def hub_score(
     session: Session = Depends(get_session),
 ) -> dict:
     """Yearly hub metrics for a given institution (degree/betweenness centrality + partner/intl collab counts)."""
+    if not derived_views_available(session):
+        return {"institution": institution, "data": []}
     import networkx as nx
 
     # Find institution by partial name match
@@ -678,6 +752,8 @@ def sankey(
     filt: PaperFilter = Depends(paper_filter_query),
     session: Session = Depends(get_session),
 ) -> SankeyOut:
+    from app.config import settings
+
     data = institution_topic_label_sankey(session, filt,
                                           top_institutions=top_institutions,
                                           top_topics=top_topics)
@@ -694,11 +770,26 @@ def sankey(
         audit=build_filter_audit(
             session,
             filt,
-            algorithm="institution_topic_label_sankey.v2",
+            algorithm=(
+                "stage1_affiliation_topic_label_sankey.v1"
+                if settings.sdl_stage1_only
+                else "institution_topic_label_sankey.v2"
+            ),
             metric_definitions={
-                "institution_topic_value": "Distinct filtered papers connected to the institution and topic.",
+                "institution_topic_value": (
+                    "Distinct filtered papers whose front matter names the "
+                    "institution and whose classification names the topic."
+                    if settings.sdl_stage1_only
+                    else "Distinct filtered papers connected to the institution and topic."
+                ),
                 "topic_label_value": "Distinct filtered papers connected to the topic and effective classification label.",
                 "top_n_projection": "Institutions and topics are ranked by distinct-paper support before projection.",
+                "stage1_relationship_scope": (
+                    "Paper-level affiliation mention; no author-to-institution "
+                    "relationship is asserted."
+                    if settings.sdl_stage1_only
+                    else "Resolved author-to-institution relationship."
+                ),
             },
             projection={
                 "top_institutions": top_institutions,
@@ -752,6 +843,8 @@ def institution_network_endpoint(
     filt: PaperFilter = Depends(paper_filter_query),
     session: Session = Depends(get_session),
 ) -> InstitutionNetworkOut:
+    from app.config import settings
+
     nodes, edges = institution_network(session, filt, min_papers=min_papers, top_n=top_n)
     return InstitutionNetworkOut(
         nodes=[
@@ -778,10 +871,20 @@ def institution_network_endpoint(
         audit=build_filter_audit(
             session,
             filt,
-            algorithm="institution_collaboration_network.v1",
+            algorithm=(
+                "stage1_affiliation_cooccurrence_network.v1"
+                if settings.sdl_stage1_only
+                else "institution_collaboration_network.v1"
+            ),
             metric_definitions={
                 "node_paper_count": "Distinct filtered papers attached to the institution.",
-                "edge_weight": "Distinct filtered papers coauthored across the two institutions.",
+                "edge_weight": (
+                    "Distinct filtered papers whose Markdown front matter "
+                    "names both institutions; not an author-level "
+                    "collaboration claim."
+                    if settings.sdl_stage1_only
+                    else "Distinct filtered papers coauthored across the two institutions."
+                ),
                 "normalized_weight": "Shared-paper count divided by the smaller institution paper count.",
             },
             projection={"min_papers": min_papers, "top_n": top_n},

@@ -1,0 +1,94 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "candidate_claim_id": {
+      "title": "Candidate Claim Id",
+      "type": "string"
+    },
+    "char_end": {
+      "exclusiveMinimum": 0,
+      "title": "Char End",
+      "type": "integer"
+    },
+    "char_start": {
+      "minimum": 0,
+      "title": "Char Start",
+      "type": "integer"
+    },
+    "entity_type": {
+      "enum": [
+        "material",
+        "instrument",
+        "software",
+        "step",
+        "characterization",
+        "result",
+        "caveat"
+      ],
+      "title": "Entity Type",
+      "type": "string"
+    },
+    "evidence_chunk_id": {
+      "title": "Evidence Chunk Id",
+      "type": "string"
+    },
+    "evidence_ids": {
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "title": "Evidence Ids",
+      "type": "array"
+    },
+    "evidence_quote": {
+      "title": "Evidence Quote",
+      "type": "string"
+    },
+    "field_name": {
+      "title": "Field Name",
+      "type": "string"
+    },
+    "normalized_value": {
+      "title": "Normalized Value",
+      "type": "string"
+    },
+    "paper_id": {
+      "title": "Paper Id",
+      "type": "string"
+    },
+    "protocol_id": {
+      "title": "Protocol Id",
+      "type": "string"
+    },
+    "schema_version": {
+      "default": "domain-adapter-candidate-claim-v0.1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "source_entity_id": {
+      "title": "Source Entity Id",
+      "type": "string"
+    },
+    "source_value": {
+      "title": "Source Value",
+      "type": "string"
+    }
+  },
+  "required": [
+    "candidate_claim_id",
+    "paper_id",
+    "protocol_id",
+    "source_entity_id",
+    "entity_type",
+    "field_name",
+    "source_value",
+    "normalized_value",
+    "evidence_ids",
+    "evidence_chunk_id",
+    "evidence_quote",
+    "char_start",
+    "char_end"
+  ],
+  "title": "CandidateClaim",
+  "type": "object"
+}

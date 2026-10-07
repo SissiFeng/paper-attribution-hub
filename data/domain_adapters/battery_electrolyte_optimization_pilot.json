@@ -1,0 +1,91 @@
+{
+  "schema_version": "domain-adapter-selection-config-v0.2",
+  "package_id": "battery-electrolyte-optimization",
+  "package_version": "0.1.0-pilot",
+  "domain": "battery electrolyte discovery and optimization",
+  "papers": [
+    {
+      "paper_id": "DOI:10.1016_j.xcrp.2025.102548",
+      "selection_tier": "primary_battery_electrolyte",
+      "evidence_scope": "primary_report",
+      "task_split": "evaluation",
+      "selection_reasons": [
+        "Primary automated aqueous-electrolyte full-cell study with Bayesian optimization and experimental validation."
+      ]
+    },
+    {
+      "paper_id": "DOI:10.1039_d5dd00111k",
+      "selection_tier": "primary_battery_electrolyte",
+      "evidence_scope": "primary_report",
+      "selection_reasons": [
+        "Primary aqueous organic electrolyte discovery workflow combining virtual screening, simulation, and experimental testing."
+      ]
+    },
+    {
+      "paper_id": "DOI:10.1039_d5ta04197j",
+      "selection_tier": "primary_battery_electrolyte",
+      "evidence_scope": "primary_report",
+      "selection_reasons": [
+        "Primary machine-learning screening study for inorganic lithium solid-state electrolytes with explicit computational methods."
+      ]
+    },
+    {
+      "paper_id": "DOI:10.1002_aenm.202403263",
+      "selection_tier": "primary_battery_electrolyte",
+      "evidence_scope": "primary_report",
+      "selection_reasons": [
+        "Primary autonomous battery optimization study linking electrolyte formulation, characterization, cell assembly, and testing."
+      ]
+    },
+    {
+      "paper_id": "DOI:10.1016_j.cej.2022.140955",
+      "selection_tier": "primary_battery_electrolyte",
+      "evidence_scope": "primary_report",
+      "task_split": "evaluation",
+      "selection_reasons": [
+        "Primary robotized lithium-ion electrolyte screening and characterization platform study."
+      ]
+    },
+    {
+      "paper_id": "DOI:10.15826_chimtech.9172",
+      "selection_tier": "primary_battery_electrolyte",
+      "evidence_scope": "primary_report",
+      "selection_reasons": [
+        "Primary solid-electrolyte materials study with experimentally validated structure-property predictions."
+      ]
+    },
+    {
+      "paper_id": "DOI:10.3390_cryst15020114",
+      "selection_tier": "battery_electrolyte_review",
+      "evidence_scope": "secondary_report",
+      "task_split": "evaluation",
+      "selection_reasons": [
+        "Review of AI-enabled lithium-ion electrolyte discovery included as secondary evidence and an abstention control."
+      ]
+    },
+    {
+      "paper_id": "DOI:10.1039_d5ta00331h",
+      "selection_tier": "battery_electrolyte_review",
+      "evidence_scope": "secondary_report",
+      "selection_reasons": [
+        "Review of high-throughput electrochemical materials discovery that identifies electrolyte methods and evidence gaps."
+      ]
+    },
+    {
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "selection_tier": "battery_electrolyte_review",
+      "evidence_scope": "secondary_report",
+      "selection_reasons": [
+        "Review of AI-powered molecular discovery for batteries included to test separation of cited methods from primary protocols."
+      ]
+    },
+    {
+      "paper_id": "DOI:10.1007_s12598-025-03617-z",
+      "selection_tier": "battery_electrolyte_review",
+      "evidence_scope": "secondary_report",
+      "selection_reasons": [
+        "Broad lithium-battery AI review included as a sparse-domain negative control for protocol extraction."
+      ]
+    }
+  ]
+}

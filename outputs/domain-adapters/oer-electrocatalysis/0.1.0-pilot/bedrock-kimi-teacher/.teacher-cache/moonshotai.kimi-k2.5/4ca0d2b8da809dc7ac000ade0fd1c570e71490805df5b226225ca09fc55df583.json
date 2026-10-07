@@ -1,0 +1,573 @@
+{
+  "model_id": "moonshotai.kimi-k2.5",
+  "paper_id": "DOI:10.1016_j.matt.2022.11.031",
+  "prompt_version": "oer-protocol-teacher-v0.1",
+  "protocols": [
+    {
+      "caveats": [],
+      "characterization": [
+        {
+          "entity_id": "char_0ff16e924d6be75b",
+          "evidence_ids": [
+            "ev_3b3b12d842b5c767"
+          ],
+          "output": null,
+          "settings": {},
+          "technique": "X-ray diffraction (XRD)"
+        },
+        {
+          "entity_id": "char_8edb9952521d2c8e",
+          "evidence_ids": [
+            "ev_d98c78fe3479270a"
+          ],
+          "output": null,
+          "settings": {},
+          "technique": "electron diffraction"
+        }
+      ],
+      "evidence": [
+        {
+          "char_end": 187,
+          "char_start": 80,
+          "chunk_id": "mdchk_b747c37e34644c87",
+          "document_char_end": 40565,
+          "document_char_start": 40458,
+          "evidence_id": "ev_55b0746f2e2cce03",
+          "paper_id": "DOI:10.1016_j.matt.2022.11.031",
+          "quote": "completely dissolving a total amount of 2.7 mmol of the metal precursor mixture in 3.5 mL anhydrous ethanol",
+          "source_sha256": "d7bbb17d9ddcb863f0b3c7ef11afb1049e721f71d4fa699512ec153a95f835fb"
+        },
+        {
+          "char_end": 225,
+          "char_start": 189,
+          "chunk_id": "mdchk_b747c37e34644c87",
+          "document_char_end": 40603,
+          "document_char_start": 40567,
+          "evidence_id": "ev_6ea35123b1fdd802",
+          "paper_id": "DOI:10.1016_j.matt.2022.11.031",
+          "quote": "The solution was vortexed for 5 mins",
+          "source_sha256": "d7bbb17d9ddcb863f0b3c7ef11afb1049e721f71d4fa699512ec153a95f835fb"
+        },
+        {
+          "char_end": 284,
+          "char_start": 230,
+          "chunk_id": "mdchk_b747c37e34644c87",
+          "document_char_end": 40662,
+          "document_char_start": 40608,
+          "evidence_id": "ev_e5c9f8cd1eb8e953",
+          "paper_id": "DOI:10.1016_j.matt.2022.11.031",
+          "quote": "sonicated in a water bath for 1 hour until it is clear",
+          "source_sha256": "d7bbb17d9ddcb863f0b3c7ef11afb1049e721f71d4fa699512ec153a95f835fb"
+        },
+        {
+          "char_end": 427,
+          "char_start": 292,
+          "chunk_id": "mdchk_b747c37e34644c87",
+          "document_char_end": 40805,
+          "document_char_start": 40670,
+          "evidence_id": "ev_0e3d53b20dd9ba79",
+          "paper_id": "DOI:10.1016_j.matt.2022.11.031",
+          "quote": "it was chilled in a refrigerator for 2 hours to prevent any undesired hydrolysis and condensation which may affect the gelation process",
+          "source_sha256": "d7bbb17d9ddcb863f0b3c7ef11afb1049e721f71d4fa699512ec153a95f835fb"
+        },
+        {
+          "char_end": 562,
+          "char_start": 440,
+          "chunk_id": "mdchk_b747c37e34644c87",
+          "document_char_end": 40940,
+          "document_char_start": 40818,
+          "evidence_id": "ev_f38d26721c601305",
+          "paper_id": "DOI:10.1016_j.matt.2022.11.031",
+          "quote": "a magnetic stirrer was used to mix the solution vigorously while 2 mL of propylene oxide was added dropwise to the mixture",
+          "source_sha256": "d7bbb17d9ddcb863f0b3c7ef11afb1049e721f71d4fa699512ec153a95f835fb"
+        },
+        {
+          "char_end": 562,
+          "char_start": 505,
+          "chunk_id": "mdchk_b747c37e34644c87",
+          "document_char_end": 40940,
+          "document_char_start": 40883,
+          "evidence_id": "ev_90002fa8f6cc7355",
+          "paper_id": "DOI:10.1016_j.matt.2022.11.031",
+          "quote": "2 mL of propylene oxide was added dropwise to the mixture",
+          "source_sha256": "d7bbb17d9ddcb863f0b3c7ef11afb1049e721f71d4fa699512ec153a95f835fb"
+        },
+        {
+          "char_end": 610,
+          "char_start": 564,
+          "chunk_id": "mdchk_b747c37e34644c87",
+          "document_char_end": 40988,
+          "document_char_start": 40942,
+          "evidence_id": "ev_071d726a3f798190",
+          "paper_id": "DOI:10.1016_j.matt.2022.11.031",
+          "quote": "The solution was aged for 1 day to promote gel",
+          "source_sha256": "d7bbb17d9ddcb863f0b3c7ef11afb1049e721f71d4fa699512ec153a95f835fb"
+        },
+        {
+          "char_end": 804,
+          "char_start": 754,
+          "chunk_id": "mdchk_b747c37e34644c87",
+          "document_char_end": 41182,
+          "document_char_start": 41132,
+          "evidence_id": "ev_17a1674eafffb98b",
+          "paper_id": "DOI:10.1016_j.matt.2022.11.031",
+          "quote": "the dried powder was annealed at 400°C for 2 hours",
+          "source_sha256": "d7bbb17d9ddcb863f0b3c7ef11afb1049e721f71d4fa699512ec153a95f835fb"
+        },
+        {
+          "char_end": 531,
+          "char_start": 304,
+          "chunk_id": "mdchk_cef98994ec1f0d49",
+          "document_char_end": 20200,
+          "document_char_start": 19973,
+          "evidence_id": "ev_3b3b12d842b5c767",
+          "paper_id": "DOI:10.1016_j.matt.2022.11.031",
+          "quote": "The crystal structure of the synthesized samples was screened using X-ray diffraction (XRD). XRD patterns were collected and classified into two groups: pure rutile phase (21 compounds) and multiple phases groups (20 compounds)",
+          "source_sha256": "38f70de7a44e7dadf379b6aceb35e941d9dab6588279bc2cefcc5c27e041569f"
+        },
+        {
+          "char_end": 1592,
+          "char_start": 1488,
+          "chunk_id": "mdchk_cef98994ec1f0d49",
+          "document_char_end": 21261,
+          "document_char_start": 21157,
+          "evidence_id": "ev_d98c78fe3479270a",
+          "paper_id": "DOI:10.1016_j.matt.2022.11.031",
+          "quote": "The electron diffraction rings of the three samples confirm the formation of a strained rutile structure",
+          "source_sha256": "38f70de7a44e7dadf379b6aceb35e941d9dab6588279bc2cefcc5c27e041569f"
+        }
+      ],
+      "evidence_scope": "primary_report",
+      "instruments": [],
+      "materials": [
+        {
+          "amount": null,
+          "entity_id": "mat_3c591b2edf35dd47",
+          "evidence_ids": [
+            "ev_55b0746f2e2cce03"
+          ],
+          "name": "metal precursor mixture",
+          "pretreatment": null,
+          "purity": null,
+          "role": "precursor",
+          "supplier": null
+        },
+        {
+          "amount": "3.5 mL",
+          "entity_id": "mat_9d0a846d4c27e1e5",
+          "evidence_ids": [
+            "ev_55b0746f2e2cce03"
+          ],
+          "name": "anhydrous ethanol",
+          "pretreatment": null,
+          "purity": null,
+          "role": null,
+          "supplier": null
+        },
+        {
+          "amount": "2 mL",
+          "entity_id": "mat_f679c5a3be2d9c0d",
+          "evidence_ids": [
+            "ev_90002fa8f6cc7355"
+          ],
+          "name": "propylene oxide",
+          "pretreatment": null,
+          "purity": null,
+          "role": null,
+          "supplier": null
+        }
+      ],
+      "paper_id": "DOI:10.1016_j.matt.2022.11.031",
+      "protocol_id": "protocol_43442c8d8fbecc17",
+      "protocol_name": "Sol-gel synthesis of mixed metal oxide electrocatalysts",
+      "protocol_type": "synthesis",
+      "relations": [],
+      "results": [],
+      "software": [],
+      "source_chunk_ids": [
+        "mdchk_b747c37e34644c87",
+        "mdchk_cef98994ec1f0d49"
+      ],
+      "source_paper_tier": "primary_oer",
+      "steps": [
+        {
+          "action": "completely dissolving a total amount of 2.7 mmol of the metal precursor mixture in 3.5 mL anhydrous ethanol",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_55b0746f2e2cce03"
+          ],
+          "notes": null,
+          "order": 1,
+          "step_id": "step_202d5606da4c965d"
+        },
+        {
+          "action": "The solution was vortexed for 5 mins",
+          "conditions": [
+            "5 mins"
+          ],
+          "evidence_ids": [
+            "ev_6ea35123b1fdd802"
+          ],
+          "notes": null,
+          "order": 2,
+          "step_id": "step_1b7b78ed41b73350"
+        },
+        {
+          "action": "sonicated in a water bath for 1 hour until it is clear",
+          "conditions": [
+            "1 hour"
+          ],
+          "evidence_ids": [
+            "ev_e5c9f8cd1eb8e953"
+          ],
+          "notes": null,
+          "order": 3,
+          "step_id": "step_3f375b969ac100bb"
+        },
+        {
+          "action": "it was chilled in a refrigerator for 2 hours to prevent any undesired hydrolysis and condensation which may affect the gelation process",
+          "conditions": [
+            "2 hours"
+          ],
+          "evidence_ids": [
+            "ev_0e3d53b20dd9ba79"
+          ],
+          "notes": null,
+          "order": 4,
+          "step_id": "step_0d29579035de6582"
+        },
+        {
+          "action": "a magnetic stirrer was used to mix the solution vigorously while 2 mL of propylene oxide was added dropwise to the mixture",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_f38d26721c601305"
+          ],
+          "notes": null,
+          "order": 5,
+          "step_id": "step_3911eeb4cc8c3739"
+        },
+        {
+          "action": "The solution was aged for 1 day to promote gel",
+          "conditions": [
+            "1 day"
+          ],
+          "evidence_ids": [
+            "ev_071d726a3f798190"
+          ],
+          "notes": null,
+          "order": 6,
+          "step_id": "step_4c6f0dadf1622567"
+        },
+        {
+          "action": "the dried powder was annealed at 400°C for 2 hours",
+          "conditions": [
+            "400°C",
+            "2 hours"
+          ],
+          "evidence_ids": [
+            "ev_17a1674eafffb98b"
+          ],
+          "notes": null,
+          "order": 7,
+          "step_id": "step_83eaa251f681891f"
+        }
+      ]
+    },
+    {
+      "caveats": [],
+      "characterization": [],
+      "evidence": [
+        {
+          "char_end": 177,
+          "char_start": 124,
+          "chunk_id": "mdchk_7b0ade2930c8281b",
+          "document_char_end": 41362,
+          "document_char_start": 41309,
+          "evidence_id": "ev_4883df95c15bcc2b",
+          "paper_id": "DOI:10.1016_j.matt.2022.11.031",
+          "quote": "Then, the ink was sonicated in an ice bath for 1 hour",
+          "source_sha256": "3331dff49a3f1168593433a3bbfd9c85c892ca98b0cc67bb6551cc3b941c9660"
+        },
+        {
+          "char_end": 245,
+          "char_start": 216,
+          "chunk_id": "mdchk_7b0ade2930c8281b",
+          "document_char_end": 41430,
+          "document_char_start": 41401,
+          "evidence_id": "ev_d3ca42d86688b7a6",
+          "paper_id": "DOI:10.1016_j.matt.2022.11.031",
+          "quote": "deposited on the carbon paper",
+          "source_sha256": "3331dff49a3f1168593433a3bbfd9c85c892ca98b0cc67bb6551cc3b941c9660"
+        },
+        {
+          "char_end": 359,
+          "char_start": 340,
+          "chunk_id": "mdchk_7b0ade2930c8281b",
+          "document_char_end": 41544,
+          "document_char_start": 41525,
+          "evidence_id": "ev_3383c94918bb823c",
+          "paper_id": "DOI:10.1016_j.matt.2022.11.031",
+          "quote": "1 mL of isopropanol",
+          "source_sha256": "3331dff49a3f1168593433a3bbfd9c85c892ca98b0cc67bb6551cc3b941c9660"
+        },
+        {
+          "char_end": 420,
+          "char_start": 361,
+          "chunk_id": "mdchk_7b0ade2930c8281b",
+          "document_char_end": 41605,
+          "document_char_start": 41546,
+          "evidence_id": "ev_d95d34d4b187f577",
+          "paper_id": "DOI:10.1016_j.matt.2022.11.031",
+          "quote": "Then, the ink solution was sonicated in ice bath for 1 hour",
+          "source_sha256": "3331dff49a3f1168593433a3bbfd9c85c892ca98b0cc67bb6551cc3b941c9660"
+        },
+        {
+          "char_end": 485,
+          "char_start": 421,
+          "chunk_id": "mdchk_7b0ade2930c8281b",
+          "document_char_end": 41670,
+          "document_char_start": 41606,
+          "evidence_id": "ev_e08e4f4870c30893",
+          "paper_id": "DOI:10.1016_j.matt.2022.11.031",
+          "quote": "before spraying it on the carbon paper on the hot plate at 90 °C",
+          "source_sha256": "3331dff49a3f1168593433a3bbfd9c85c892ca98b0cc67bb6551cc3b941c9660"
+        }
+      ],
+      "evidence_scope": "primary_report",
+      "instruments": [],
+      "materials": [
+        {
+          "amount": "1 mL",
+          "entity_id": "mat_79302fc93a51e94a",
+          "evidence_ids": [
+            "ev_3383c94918bb823c"
+          ],
+          "name": "isopropanol",
+          "pretreatment": null,
+          "purity": null,
+          "role": null,
+          "supplier": null
+        },
+        {
+          "amount": null,
+          "entity_id": "mat_9e7a46f155706cc4",
+          "evidence_ids": [
+            "ev_d3ca42d86688b7a6"
+          ],
+          "name": "carbon paper",
+          "pretreatment": null,
+          "purity": null,
+          "role": null,
+          "supplier": null
+        }
+      ],
+      "paper_id": "DOI:10.1016_j.matt.2022.11.031",
+      "protocol_id": "protocol_6238f91a43e5aabb",
+      "protocol_name": "Electrocatalyst ink preparation and electrode fabrication",
+      "protocol_type": "sample preparation",
+      "relations": [],
+      "results": [],
+      "software": [],
+      "source_chunk_ids": [
+        "mdchk_7b0ade2930c8281b"
+      ],
+      "source_paper_tier": "primary_oer",
+      "steps": [
+        {
+          "action": "Then, the ink was sonicated in an ice bath for 1 hour",
+          "conditions": [
+            "1 hour"
+          ],
+          "evidence_ids": [
+            "ev_4883df95c15bcc2b"
+          ],
+          "notes": null,
+          "order": 1,
+          "step_id": "step_6238f91a43e5aabb"
+        },
+        {
+          "action": "Then, the ink solution was sonicated in ice bath for 1 hour",
+          "conditions": [
+            "1 hour"
+          ],
+          "evidence_ids": [
+            "ev_d95d34d4b187f577"
+          ],
+          "notes": null,
+          "order": 2,
+          "step_id": "step_4d8a1fc2c112c922"
+        },
+        {
+          "action": "before spraying it on the carbon paper on the hot plate at 90 °C",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_e08e4f4870c30893"
+          ],
+          "notes": null,
+          "order": 3,
+          "step_id": "step_18fcf8772e54786a"
+        }
+      ]
+    },
+    {
+      "caveats": [],
+      "characterization": [],
+      "evidence": [
+        {
+          "char_end": 199,
+          "char_start": 102,
+          "chunk_id": "mdchk_ac942f4bed448c5c",
+          "document_char_end": 21476,
+          "document_char_start": 21379,
+          "evidence_id": "ev_36fec3be52143eaa",
+          "paper_id": "DOI:10.1016_j.matt.2022.11.031",
+          "quote": "The overpotential of the electrocatalysts was measured in a three-electrode cell using 0.5M H₂SO₄",
+          "source_sha256": "1123cbfeecd5aeaa2924baccff8c48335307cddfff6a4753b2b7f3a6ae1f37db"
+        },
+        {
+          "char_end": 151,
+          "char_start": 0,
+          "chunk_id": "mdchk_ffc22b9eea2b18b5",
+          "document_char_end": 41852,
+          "document_char_start": 41701,
+          "evidence_id": "ev_f423efc088fa7f1d",
+          "paper_id": "DOI:10.1016_j.matt.2022.11.031",
+          "quote": "Electrochemical testing was conducted in a three-electrode setup using a Hg/Hg₂SO₄ as the reference electrode and graphite rod as the counter electrode",
+          "source_sha256": "521b5dd3537de466156df9b272d8186adbf6f5e91125f6ff70f1a9a4fb4e9b60"
+        },
+        {
+          "char_end": 109,
+          "char_start": 65,
+          "chunk_id": "mdchk_ffc22b9eea2b18b5",
+          "document_char_end": 41810,
+          "document_char_start": 41766,
+          "evidence_id": "ev_82072118d69a8375",
+          "paper_id": "DOI:10.1016_j.matt.2022.11.031",
+          "quote": "using a Hg/Hg₂SO₄ as the reference electrode",
+          "source_sha256": "521b5dd3537de466156df9b272d8186adbf6f5e91125f6ff70f1a9a4fb4e9b60"
+        },
+        {
+          "char_end": 151,
+          "char_start": 114,
+          "chunk_id": "mdchk_ffc22b9eea2b18b5",
+          "document_char_end": 41852,
+          "document_char_start": 41815,
+          "evidence_id": "ev_d2aeb11d5a8fed88",
+          "paper_id": "DOI:10.1016_j.matt.2022.11.031",
+          "quote": "graphite rod as the counter electrode",
+          "source_sha256": "521b5dd3537de466156df9b272d8186adbf6f5e91125f6ff70f1a9a4fb4e9b60"
+        },
+        {
+          "char_end": 247,
+          "char_start": 153,
+          "chunk_id": "mdchk_ffc22b9eea2b18b5",
+          "document_char_end": 41948,
+          "document_char_start": 41854,
+          "evidence_id": "ev_9500558634cdbd46",
+          "paper_id": "DOI:10.1016_j.matt.2022.11.031",
+          "quote": "The OER activity was evaluated by running linear sweep voltammetry (LSV) with a rate of 5 mV/s",
+          "source_sha256": "521b5dd3537de466156df9b272d8186adbf6f5e91125f6ff70f1a9a4fb4e9b60"
+        },
+        {
+          "char_end": 339,
+          "char_start": 249,
+          "chunk_id": "mdchk_ffc22b9eea2b18b5",
+          "document_char_end": 42040,
+          "document_char_start": 41950,
+          "evidence_id": "ev_ee5a25d06839d53a",
+          "paper_id": "DOI:10.1016_j.matt.2022.11.031",
+          "quote": "The stability of the catalyst was evaluated by conducting chronopotentiometry at 10 mA/cm²",
+          "source_sha256": "521b5dd3537de466156df9b272d8186adbf6f5e91125f6ff70f1a9a4fb4e9b60"
+        }
+      ],
+      "evidence_scope": "primary_report",
+      "instruments": [],
+      "materials": [
+        {
+          "amount": null,
+          "entity_id": "mat_dce541a5482e4f53",
+          "evidence_ids": [
+            "ev_82072118d69a8375"
+          ],
+          "name": "Hg/Hg₂SO₄",
+          "pretreatment": null,
+          "purity": null,
+          "role": "reference electrode",
+          "supplier": null
+        },
+        {
+          "amount": null,
+          "entity_id": "mat_efe78c3f146d15ce",
+          "evidence_ids": [
+            "ev_d2aeb11d5a8fed88"
+          ],
+          "name": "graphite rod",
+          "pretreatment": null,
+          "purity": null,
+          "role": "counter electrode",
+          "supplier": null
+        },
+        {
+          "amount": null,
+          "entity_id": "mat_988a0305884f2e5f",
+          "evidence_ids": [
+            "ev_36fec3be52143eaa"
+          ],
+          "name": "0.5M H₂SO₄",
+          "pretreatment": null,
+          "purity": null,
+          "role": null,
+          "supplier": null
+        }
+      ],
+      "paper_id": "DOI:10.1016_j.matt.2022.11.031",
+      "protocol_id": "protocol_98eafe51c3b7cac0",
+      "protocol_name": "Electrochemical oxygen evolution reaction (OER) testing",
+      "protocol_type": "electrochemical characterization",
+      "relations": [],
+      "results": [],
+      "software": [],
+      "source_chunk_ids": [
+        "mdchk_ac942f4bed448c5c",
+        "mdchk_ffc22b9eea2b18b5"
+      ],
+      "source_paper_tier": "primary_oer",
+      "steps": [
+        {
+          "action": "Electrochemical testing was conducted in a three-electrode setup using a Hg/Hg₂SO₄ as the reference electrode and graphite rod as the counter electrode",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_f423efc088fa7f1d"
+          ],
+          "notes": null,
+          "order": 1,
+          "step_id": "step_7fd640f018a2ca1b"
+        },
+        {
+          "action": "The OER activity was evaluated by running linear sweep voltammetry (LSV) with a rate of 5 mV/s",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_9500558634cdbd46"
+          ],
+          "notes": null,
+          "order": 2,
+          "step_id": "step_b5bcbe5d2f6de370"
+        },
+        {
+          "action": "The stability of the catalyst was evaluated by conducting chronopotentiometry at 10 mA/cm²",
+          "conditions": [
+            "10 mA/cm²"
+          ],
+          "evidence_ids": [
+            "ev_ee5a25d06839d53a"
+          ],
+          "notes": null,
+          "order": 3,
+          "step_id": "step_b9cee440b6cb4c26"
+        }
+      ]
+    }
+  ],
+  "schema_version": "bedrock-teacher-paper-cache-v0.1",
+  "unsupported_claim_count": 31
+}

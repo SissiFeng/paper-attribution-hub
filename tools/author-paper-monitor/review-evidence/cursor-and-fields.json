@@ -1,0 +1,116 @@
+[
+  {
+    "request": {
+      "filter": "author.id:A5071495561|A5088793872,from_publication_date:2026-07-07",
+      "select": "id,doi,title,publication_date,type,primary_location,authorships,ids,is_retracted,abstract_inverted_index",
+      "sort": "publication_date:desc",
+      "cursor": "*",
+      "per-page": 1
+    },
+    "meta": {
+      "count": 20,
+      "db_response_time_ms": 21,
+      "page": null,
+      "per_page": 1,
+      "next_cursor": "IlsxNzkwNzI2NDAwMDAwLCAnLUluZmluaXR5JywgMCwgJ2h0dHBzOi8vb3BlbmFsZXgub3JnL1c3MjE1MDU2NTQ0J10i",
+      "groups_count": null,
+      "x_query": {
+        "oql": "get works where date >= (2026-07-07) and author is (A5071495561 or A5088793872)",
+        "oqo": {
+          "get_rows": "works",
+          "filter_rows": [
+            {
+              "column_id": "from_publication_date",
+              "value": "2026-07-07"
+            },
+            {
+              "join": "or",
+              "filters": [
+                {
+                  "column_id": "authorships.author.id",
+                  "value": "A5071495561"
+                },
+                {
+                  "column_id": "authorships.author.id",
+                  "value": "A5088793872"
+                }
+              ]
+            }
+          ]
+        },
+        "url": "/works?filter=from_publication_date:2026-07-07,authorships.author.id:A5071495561|A5088793872&per_page=1&cursor=%2A"
+      },
+      "cost_usd": 0.0001
+    },
+    "fields": [
+      "id",
+      "doi",
+      "title",
+      "publication_date",
+      "type",
+      "primary_location",
+      "authorships",
+      "ids",
+      "is_retracted",
+      "abstract_inverted_index"
+    ],
+    "work_id": "https://openalex.org/W7215056544"
+  },
+  {
+    "request": {
+      "filter": "author.id:A5071495561|A5088793872,from_publication_date:2026-07-07",
+      "select": "id,doi,title,publication_date,type,primary_location,authorships,ids,is_retracted,abstract_inverted_index",
+      "sort": "publication_date:desc",
+      "cursor": "IlsxNzkwNzI2NDAwMDAwLCAnLUluZmluaXR5JywgMCwgJ2h0dHBzOi8vb3BlbmFsZXgub3JnL1c3MjE1MDU2NTQ0J10i",
+      "per-page": 1
+    },
+    "meta": {
+      "count": 20,
+      "db_response_time_ms": 19,
+      "page": null,
+      "per_page": 1,
+      "next_cursor": "IlsxNzkwNjQwMDAwMDAwLCAnLUluZmluaXR5JywgMCwgJ2h0dHBzOi8vb3BlbmFsZXgub3JnL1c3MjE0Nzc2Mzc3J10i",
+      "groups_count": null,
+      "x_query": {
+        "oql": "get works where date >= (2026-07-07) and author is (A5071495561 or A5088793872)",
+        "oqo": {
+          "get_rows": "works",
+          "filter_rows": [
+            {
+              "column_id": "from_publication_date",
+              "value": "2026-07-07"
+            },
+            {
+              "join": "or",
+              "filters": [
+                {
+                  "column_id": "authorships.author.id",
+                  "value": "A5071495561"
+                },
+                {
+                  "column_id": "authorships.author.id",
+                  "value": "A5088793872"
+                }
+              ]
+            }
+          ]
+        },
+        "url": "/works?filter=from_publication_date:2026-07-07,authorships.author.id:A5071495561|A5088793872&per_page=1&cursor=IlsxNzkwNzI2NDAwMDAwLCAnLUluZmluaXR5JywgMCwgJ2h0dHBzOi8vb3BlbmFsZXgub3JnL1c3MjE1MDU2NTQ0J10i"
+      },
+      "cost_usd": 0.0001
+    },
+    "fields": [
+      "id",
+      "doi",
+      "title",
+      "publication_date",
+      "type",
+      "primary_location",
+      "authorships",
+      "ids",
+      "is_retracted",
+      "abstract_inverted_index"
+    ],
+    "work_id": "https://openalex.org/W7214776377"
+  }
+]

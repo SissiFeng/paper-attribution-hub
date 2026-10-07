@@ -23,6 +23,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import uuid
 from collections import Counter, defaultdict
 from datetime import UTC, datetime
 from math import sqrt
@@ -31,7 +32,7 @@ from pathlib import Path
 import yaml
 from sqlalchemy import select
 
-from app.config import DATA_DIR, REPO_ROOT, settings
+from app.config import DATA_DIR, settings
 from app.db import SessionLocal
 from app.models import Paper, PaperEntity, PaperLabLink, SdlLab
 from app.scripts.export_kb_md import lab_citation_flows, slugify
@@ -42,6 +43,14 @@ from app.services.kb_service import (
     lab_classification_profile,
     lab_profile,
 )
+from app.services.llm_wiki_lifecycle import (
+    WIKI_MANIFEST_SCHEMA,
+    extract_wikilinks,
+    read_frontmatter,
+    read_wiki_manifest,
+    semantic_sha256,
+    sha256_text,
+)
 from app.services.transfer_service import fastest_spreading, lab_flow_matrix
 
 try:  # lands with fine-grained method extraction
@@ -49,7 +58,7 @@ try:  # lands with fine-grained method extraction
 except ImportError:
     load_sdl_entity_meta = None
 
-DEFAULT_OUTPUT_DIR = REPO_ROOT / "llm-wiki"
+DEFAULT_OUTPUT_DIR = settings.llm_wiki_root
 METHOD_STAGES_YAML = DATA_DIR / "method_stages.yaml"
 
 # entity_type → wiki subfolder
@@ -588,7 +597,7 @@ def _build_pages(data: dict) -> list[dict]:
     return pages
 
 
-def _render_index(pages: list[dict]) -> str:
+def _render_index(pages: list[dict], external_pages: list[dict] | None = None) -> str:
     lines = [
         "# Cross-SDL llm-wiki — Index",
         "",
@@ -614,6 +623,12 @@ def _render_index(pages: list[dict]) -> str:
         else:
             for p in section_pages:
                 lines.append(f"- {wikilink(p['path'], p['title'])} — {p['one_liner']}")
+    if external_pages:
+        lines += ["", "## Reviewed and workflow pages", ""]
+        for page in sorted(external_pages, key=lambda item: item["path"]):
+            lines.append(
+                f"- {wikilink(page['path'], page['title'])} — {page['one_liner']}"
+            )
     lines.append("")
     return front_matter({"type": "index", "name": "Cross-SDL llm-wiki"}) + "\n".join(lines)
 
@@ -809,21 +824,89 @@ Every wiki page starts with YAML front-matter containing at least `type`
 - **ingest** — rebuild the vault after new papers / extraction runs:
   run the pipeline (entity extraction, lab mapping), then
   `cd backend && python -m app.scripts.export_llm_wiki`.
-  Each run appends one `ingest` entry to log.md; wiki pages are regenerated
-  in place.
+  The compiler updates only affected pages, retires only pages it previously
+  managed, refreshes `manifest.json`, and appends an `ingest` entry to log.md.
 - **query** — answering questions from this vault: read `index.md` first to
   find the right page(s); follow wikilinks; `wiki/overview.md` has the
   headline numbers. Grep is reliable: pages are plain Markdown.
 - **lint** — consistency checks: every `[[target]]` should resolve to
   `<target>.md` under the vault root; every wiki page should be listed in
-  `index.md`; front-matter must parse as YAML. The exporter regenerates a
-  consistent state, so a failing lint means hand edits or a stale export —
-  re-run ingest.
+  `index.md`; front-matter must parse as YAML; managed content must match
+  `manifest.json`; stale pages and unresolved conflict markers are reported.
+  Run `python -m app.scripts.lint_llm_wiki --json` for a read-only report or
+  add `--fix` to rebuild deterministic projections before checking again.
 """
 
 
+def _atomic_write(path: Path, content: str) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    temporary = path.with_name(f".{path.name}.tmp-{uuid.uuid4().hex}")
+    temporary.write_text(content, encoding="utf-8")
+    temporary.replace(path)
+
+
+def _write_if_changed(
+    path: Path,
+    content: str,
+    *,
+    ignore_generated_date: bool = False,
+) -> tuple[bool, str]:
+    existing = None
+    if path.is_file() and not path.is_symlink():
+        existing = path.read_text(encoding="utf-8")
+    if existing is not None:
+        existing_hash = (
+            semantic_sha256(existing) if ignore_generated_date else sha256_text(existing)
+        )
+        new_hash = (
+            semantic_sha256(content) if ignore_generated_date else sha256_text(content)
+        )
+        if existing_hash == new_hash:
+            return False, existing
+    _atomic_write(path, content)
+    return True, content
+
+
+def _safe_managed_path(output_dir: Path, page_path: str) -> Path | None:
+    if not page_path.startswith("wiki/") or page_path.endswith("/"):
+        return None
+    target = (output_dir / f"{page_path}.md").resolve()
+    wiki_root = (output_dir / "wiki").resolve()
+    if not target.is_relative_to(wiki_root):
+        return None
+    return target
+
+
+def _external_pages(output_dir: Path, managed_paths: set[str]) -> list[dict]:
+    pages: list[dict] = []
+    wiki_root = output_dir / "wiki"
+    if not wiki_root.is_dir():
+        return pages
+    for path in sorted(wiki_root.rglob("*.md")):
+        if not path.is_file() or path.is_symlink():
+            continue
+        relative = path.relative_to(output_dir).as_posix()
+        page_path = relative[: -len(".md")]
+        if page_path in managed_paths:
+            continue
+        content = path.read_text(encoding="utf-8")
+        metadata = read_frontmatter(content) or {}
+        title = str(metadata.get("name") or path.stem.replace("-", " ").title())
+        page_type = str(metadata.get("type") or "external")
+        pages.append(
+            {
+                "path": page_path,
+                "title": title,
+                "one_liner": f"{page_type} page maintained outside the corpus exporter",
+                "content_sha256": sha256_text(content),
+            }
+        )
+    return pages
+
+
 def export_llm_wiki(output_dir: Path) -> dict:
-    """Write the vault; returns counts for reporting/logging."""
+    """Publish a content-addressed vault and report its affected pages."""
+    output_dir = Path(output_dir).resolve()
     output_dir.mkdir(parents=True, exist_ok=True)
     for sub in (*TYPE_DIRS.values(), "labs", "concepts"):
         (output_dir / "wiki" / sub).mkdir(parents=True, exist_ok=True)
@@ -832,19 +915,84 @@ def export_llm_wiki(output_dir: Path) -> dict:
         data = _collect(session)
 
     pages = _build_pages(data)
+    managed_paths = {page["path"] for page in pages}
+    previous_manifest = read_wiki_manifest(output_dir) or {}
+    previous_pages = previous_manifest.get("pages")
+    previous_managed = set(previous_pages) if isinstance(previous_pages, dict) else set()
+    removed_pages: list[str] = []
+    for page_path in sorted(previous_managed - managed_paths):
+        target = _safe_managed_path(output_dir, page_path)
+        if target is not None and target.is_file() and not target.is_symlink():
+            target.unlink()
+            removed_pages.append(page_path)
+
+    changed_pages: list[str] = []
+    unchanged_pages: list[str] = []
+    manifest_pages: dict[str, dict] = {}
     for page in pages:
-        (output_dir / f"{page['path']}.md").write_text(page["text"], encoding="utf-8")
-    (output_dir / "index.md").write_text(_render_index(pages), encoding="utf-8")
-    (output_dir / "CLAUDE.md").write_text(CLAUDE_MD, encoding="utf-8")
+        changed, effective_content = _write_if_changed(
+            output_dir / f"{page['path']}.md",
+            page["text"],
+            ignore_generated_date=True,
+        )
+        (changed_pages if changed else unchanged_pages).append(page["path"])
+        manifest_pages[page["path"]] = {
+            "content_sha256": sha256_text(effective_content),
+            "semantic_content_sha256": semantic_sha256(effective_content),
+            "dependencies": sorted(
+                target
+                for target in extract_wikilinks(effective_content)
+                if target.startswith("wiki/")
+            ),
+        }
+
+    external_pages = _external_pages(output_dir, managed_paths)
+    index_changed, index_content = _write_if_changed(
+        output_dir / "index.md",
+        _render_index(pages, external_pages),
+        ignore_generated_date=True,
+    )
+    schema_changed, schema_content = _write_if_changed(
+        output_dir / "CLAUDE.md", CLAUDE_MD
+    )
 
     graph = _build_graph(data, pages)
     graph_json = json.dumps(graph, ensure_ascii=False, separators=(",", ":"))
-    (output_dir / "graph.json").write_text(graph_json, encoding="utf-8")
-    (output_dir / "graph.html").write_text(
+    graph_changed, graph_content = _write_if_changed(
+        output_dir / "graph.json", graph_json
+    )
+    graph_html_changed, graph_html_content = _write_if_changed(
+        output_dir / "graph.html",
         GRAPH_HTML_TEMPLATE.replace(
             "/*__GRAPH_DATA__*/ null", graph_json.replace("</", "<\\/")
         ),
-        encoding="utf-8",
+    )
+
+    artifacts = {
+        "index.md": sha256_text(index_content),
+        "CLAUDE.md": sha256_text(schema_content),
+        "graph.json": sha256_text(graph_content),
+        "graph.html": sha256_text(graph_html_content),
+    }
+    manifest_projection = {
+        "pages": manifest_pages,
+        "external_pages": {
+            page["path"]: page["content_sha256"] for page in external_pages
+        },
+        "artifacts": artifacts,
+    }
+    manifest_hash = sha256_text(
+        json.dumps(manifest_projection, ensure_ascii=False, sort_keys=True)
+    )
+    manifest = {
+        "schema_version": WIKI_MANIFEST_SCHEMA,
+        "generated_at": datetime.now(UTC).isoformat(),
+        "manifest_hash": manifest_hash,
+        **manifest_projection,
+    }
+    _atomic_write(
+        output_dir / "manifest.json",
+        json.dumps(manifest, ensure_ascii=False, indent=2, sort_keys=True) + "\n",
     )
 
     summary = data["summary"]
@@ -854,14 +1002,29 @@ def export_llm_wiki(output_dir: Path) -> dict:
         output_dir / "log.md",
         "ingest",
         f"Rebuilt from {db_name} ({summary['labs']} labs, {entity_total} entities, "
-        f"{summary['linked_papers']} linked papers, {len(pages)} wiki pages)",
+        f"{summary['linked_papers']} linked papers; {len(changed_pages)} changed, "
+        f"{len(removed_pages)} retired, {len(external_pages)} externally managed)",
     )
     return {
         "pages": len(pages),
         "nodes": len(graph["nodes"]),
         "edges": len(graph["edges"]),
-        # +4: index.md, CLAUDE.md, graph.html, graph.json (log.md is appended)
-        "files": len(pages) + 4,
+        "files": len(pages) + len(external_pages) + 5,
+        "manifest_hash": manifest_hash,
+        "changed_pages": changed_pages,
+        "unchanged_pages": unchanged_pages,
+        "removed_pages": removed_pages,
+        "external_pages": [page["path"] for page in external_pages],
+        "changed_artifacts": [
+            name
+            for name, changed in (
+                ("index.md", index_changed),
+                ("CLAUDE.md", schema_changed),
+                ("graph.json", graph_changed),
+                ("graph.html", graph_html_changed),
+            )
+            if changed
+        ],
     }
 
 

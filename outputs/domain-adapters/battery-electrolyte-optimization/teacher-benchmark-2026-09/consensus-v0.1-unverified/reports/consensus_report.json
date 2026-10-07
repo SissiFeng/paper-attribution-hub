@@ -1,0 +1,29 @@
+{
+  "abstained_count": 0,
+  "accepted_count": 0,
+  "benchmark_id": "battery-electrolyte-teacher-models-2026-09",
+  "claims_boundary": "Source-grounded consensus produces auditable silver knowledge. It does not establish scientific precision or recall without an independent external truth source.",
+  "comparability": {
+    "final_matrix_complete": true,
+    "missing_required_models": [],
+    "prompt_version": "scientific-protocol-teacher-v0.4-scope-aware",
+    "same_inference_config": true,
+    "same_prompt_version": true,
+    "same_source_selection": true,
+    "source_selection_sha256": "0d3fb59f1a7012c5ca043e45d003e748463d65ca8b52be204c313c8713534e6c"
+  },
+  "disputed_count": 167,
+  "model_aliases": [
+    "claude-opus-4-6",
+    "deepseek-v3-2",
+    "kimi-k2-5"
+  ],
+  "proposal_count": 246,
+  "schema_version": "domain-teacher-consensus-artifact-report-v0.1",
+  "scientific_ranking": {
+    "eligible": false,
+    "reason": "shared_gold_required"
+  },
+  "slot_count": 167,
+  "training_eligible_count": 0
+}

@@ -61,6 +61,50 @@ def test_gold_queue_is_pending_and_preserves_evidence():
     assert all(item.char_start == 20 for item in entity_queue)
 
 
+def test_gold_queue_projects_only_atomic_step_fields():
+    from app.domain_adaptation.gold import build_candidate_claims
+    from app.domain_adaptation.models import EvidenceSpan, ProtocolStep, ProtocolUnit
+
+    quote = "The mixture was sonicated with 3 mg catalyst for 30 min."
+    evidence = EvidenceSpan(
+        evidence_id="ev-step",
+        paper_id="paper-step",
+        chunk_id="methods-1",
+        quote=quote,
+        char_start=0,
+        char_end=len(quote),
+        source_sha256="c" * 64,
+    )
+    protocol = ProtocolUnit(
+        protocol_id="protocol-step",
+        paper_id="paper-step",
+        protocol_name="Ink preparation",
+        protocol_type="sample_preparation",
+        source_chunk_ids=["methods-1"],
+        steps=[
+            ProtocolStep(
+                step_id="step-1",
+                order=1,
+                verb="sonicated",
+                targets=["mixture"],
+                params={"amount": "3 mg", "duration": "30 min"},
+                evidence_ids=["ev-step"],
+            )
+        ],
+        evidence=[evidence],
+    )
+
+    claims = build_candidate_claims([protocol])
+
+    assert {(item.field_name, item.source_value) for item in claims} == {
+        ("verb", "sonicated"),
+        ("targets[0]", "mixture"),
+        ("params.amount", "3 mg"),
+        ("params.duration", "30 min"),
+    }
+    assert all(item.field_name not in {"action", "conditions[0]"} for item in claims)
+
+
 def test_gold_score_uses_only_complete_reviewed_protocols():
     from app.domain_adaptation.gold import (
         GoldEntityAnnotation,

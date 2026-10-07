@@ -104,6 +104,7 @@ def put_file(
     content_type: str = "application/octet-stream",
     *,
     s3_client=None,
+    require_s3: bool = False,
 ) -> str | None:
     """Upload raw bytes to S3.
 
@@ -113,6 +114,7 @@ def put_file(
         content: Raw bytes to upload.
         content_type: MIME type for the object.
         s3_client: Optional pre-created S3 client.
+        require_s3: Return failure instead of falling back to local storage.
 
     Returns:
         The S3 object key on success, ``None`` on failure.
@@ -121,6 +123,9 @@ def put_file(
     key = f"{key_prefix.rstrip('/')}/{filename}"
 
     if client is None:
+        if require_s3:
+            logger.error("s3_storage: S3 is required but unavailable for %s", key)
+            return None
         local_path = _LOCAL_ARTIFACTS_DIR / key
         local_path.parent.mkdir(parents=True, exist_ok=True)
         local_path.write_bytes(content)
@@ -138,6 +143,34 @@ def put_file(
         return key
     except ClientError as exc:
         logger.error("s3_storage: failed to upload %s: %s", key, exc)
+        return None
+
+
+def get_file(
+    key: str,
+    *,
+    s3_client=None,
+    require_s3: bool = False,
+) -> bytes | None:
+    """Read an exact artifact key from S3 or the local development fallback."""
+    client = s3_client or _get_s3_client()
+    if client is None:
+        if require_s3:
+            logger.error("s3_storage: S3 is required but unavailable for %s", key)
+            return None
+        local_path = _LOCAL_ARTIFACTS_DIR / key
+        if not local_path.is_file():
+            return None
+        return local_path.read_bytes()
+
+    try:
+        response = client.get_object(
+            Bucket=settings.s3_artifacts_bucket,
+            Key=key,
+        )
+        return response["Body"].read()
+    except ClientError as exc:
+        logger.error("s3_storage: failed to download %s: %s", key, exc)
         return None
 
 

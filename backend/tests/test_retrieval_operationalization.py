@@ -7,6 +7,7 @@ from app.services.evidence_extractor import SDL_METHODOLOGY_TERMS
 from app.services.proposition_extractor import _METHOD_KEYWORDS
 from app.services.retrieval_operationalization import (
     architecture_terms,
+    retrieval_query,
     tier1_label_terms,
 )
 from app.services.topic_classifier import TopicClassifier
@@ -28,6 +29,16 @@ def test_operationalization_terms_cover_protocol_examples():
     assert "adaptive experimentation" in loop
     assert "design-build-test-learn" in loop
     assert "dbtl" in loop
+
+
+def test_operationalization_preserves_tier_queries():
+    tier1 = retrieval_query("tier1")
+    tier2 = retrieval_query("tier2")
+
+    assert '"self-driving laborator*"' in tier1
+    assert "AND LANGUAGE(english)" in tier1
+    assert '"Bayesian optimization"' in tier2
+    assert '"closed-loop"' in tier2
 
 
 def test_scopus_architecture_scores_use_canonical_terms():

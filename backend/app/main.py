@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from contextlib import asynccontextmanager
 
-from fastapi import FastAPI
+from fastapi import Depends, FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 
 from app import __version__
@@ -11,6 +11,7 @@ from app.api import (
     analytics,
     attribution_evidence_tree,
     attribution_skills,
+    chat,
     discovery,
     evaluation,
     graph_explain,
@@ -23,16 +24,26 @@ from app.api import (
     retrieval,
     review_queue,
     reviews,
+    stage1,
     transfer_studio,
     wiki,
 )
 from app.config import settings
 from app.db import init_database
+from app.api import jev
+from app.api import reader_auth, reading, access, research, catalog, exploration
+from app.services.access_control import authorize_route
 
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     init_database()
+    if settings.sdl_stage1_only:
+        from app.db import SessionLocal
+        from app.services.zotero_ingestion_service import validate_stage1_corpus
+
+        with SessionLocal() as session:
+            validate_stage1_corpus(session, require_nonempty=True)
     yield
 
 
@@ -46,6 +57,8 @@ app = FastAPI(
         "with confidence and reasons."
     ),
     lifespan=lifespan,
+    dependencies=[Depends(authorize_route)],
+    docs_url=None, redoc_url=None, openapi_url=None,
 )
 
 app.add_middleware(
@@ -57,8 +70,29 @@ app.add_middleware(
 )
 
 app.include_router(papers.router)
+app.include_router(jev.router)
 app.include_router(reviews.router)
 app.include_router(networks.router)
+app.include_router(chat.router)
+app.include_router(reader_auth.router)
+app.include_router(reading.router)
+app.include_router(catalog.router)
+app.include_router(research.router)
+app.include_router(exploration.router)
+from app.services.exploration_worker import install_worker
+install_worker(app)
+app.include_router(access.router)
+
+
+@app.middleware('http')
+async def private_response_cache(request, call_next):
+    response = await call_next(request)
+    if request.url.path != '/health':
+        response.headers['Cache-Control'] = 'no-store'
+        response.headers['Vary'] = 'Cookie'
+        response.headers['Referrer-Policy'] = 'no-referrer'
+    return response
+
 app.include_router(retrieval.router)
 app.include_router(evaluation.router)
 app.include_router(analytics.router)
@@ -74,6 +108,7 @@ app.include_router(labs.router)
 app.include_router(model_evolution.router)
 app.include_router(kb.router)
 app.include_router(transfer_studio.router)
+app.include_router(stage1.router)
 
 
 @app.get("/health", tags=["meta"])
@@ -81,7 +116,17 @@ def health() -> dict:
     return {"status": "ok", "version": __version__}
 
 
-@app.get("/debug/db", tags=["meta"])
+def _require_debug_endpoints() -> None:
+    if not settings.debug_endpoints_enabled:
+        raise HTTPException(status_code=404, detail="Not found")
+
+
+@app.get(
+    "/debug/db",
+    tags=["meta"],
+    include_in_schema=False,
+    dependencies=[Depends(_require_debug_endpoints)],
+)
 def debug_db() -> dict:
     """Diagnostic: test DB connectivity and return first error encountered."""
     from sqlalchemy import text
@@ -89,12 +134,17 @@ def debug_db() -> dict:
     try:
         with engine.connect() as conn:
             conn.execute(text("SELECT 1"))
-        return {"db": "ok", "url_prefix": settings.database_url[:40] + "..."}
+        return {"db": "ok"}
     except Exception as exc:
-        return {"db": "error", "error": type(exc).__name__, "detail": str(exc)[:400]}
+        return {"db": "error", "error": type(exc).__name__}
 
 
-@app.get("/debug/papers", tags=["meta"])
+@app.get(
+    "/debug/papers",
+    tags=["meta"],
+    include_in_schema=False,
+    dependencies=[Depends(_require_debug_endpoints)],
+)
 def debug_papers() -> dict:
     """Diagnostic: run the simplest possible papers query and return any error."""
     import traceback
@@ -110,7 +160,12 @@ def debug_papers() -> dict:
                 "trace": traceback.format_exc()[-1200:]}
 
 
-@app.get("/debug/multigraph", tags=["meta"])
+@app.get(
+    "/debug/multigraph",
+    tags=["meta"],
+    include_in_schema=False,
+    dependencies=[Depends(_require_debug_endpoints)],
+)
 def debug_multigraph() -> dict:
     """Diagnostic: run the multi-graph build and return any error with full traceback."""
     import traceback
@@ -134,7 +189,12 @@ def debug_multigraph() -> dict:
                 "trace": traceback.format_exc()[-2000:]}
 
 
-@app.get("/debug/cors", tags=["meta"])
+@app.get(
+    "/debug/cors",
+    tags=["meta"],
+    include_in_schema=False,
+    dependencies=[Depends(_require_debug_endpoints)],
+)
 def debug_cors() -> dict:
     """Show the CORS origins currently active on this instance."""
     return {"cors_origins": settings.cors_origins}

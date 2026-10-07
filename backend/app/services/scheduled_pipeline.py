@@ -1,25 +1,28 @@
 """Scheduled-pipeline orchestrator.
 
-The daily job glues six steps:
+The daily job glues seven steps:
 
-  1. **Discovery** — `run_discovery` pulls candidates from OpenAlex /
+  1. **Zotero sync** — when configured, synchronizes the authoritative Tier 1 /
+     Tier 2 group collections.
+
+  2. **Discovery** — `run_discovery` pulls candidates from OpenAlex /
      Semantic Scholar / Crossref. Auto-eligible candidates land in the
      `papers` table; the rest sit in `discovery_candidates`.
 
-  2. **Full-text evidence** — fetches and extracts eligible full text when
+  3. **Full-text evidence** — fetches and extracts eligible full text when
      enabled.
 
-  3. **Model evolution recovery** — claims any complete human-review batch
+  4. **Model evolution recovery** — claims any complete human-review batch
      whose response-time background task did not finish.
 
-  4. **Incremental classify** — `classify_new` scores every paper that
+  5. **Incremental classify** — `classify_new` scores every paper that
      wasn't already classified (and every paper whose model_version is
      out of date). Human-confirmed labels are never overwritten.
 
-  5. **Staged screening** — `refresh_queue` persists a route for every scored
+  6. **Staged screening** — `refresh_queue` persists a route for every scored
      paper and queues only positive, uncertain, or full-text-needed subsets.
 
-  6. **Audit log** — every run is persisted to the `pipeline_runs` table so
+  7. **Audit log** — every run is persisted to the `pipeline_runs` table so
      the API / dashboard can show "last run @ 06:00, classified 12 new
      papers, 3 routed to review, 9 screened out".
 
@@ -66,8 +69,10 @@ class PipelineResult:
 def run_daily_pipeline(
     session: Session,
     *,
+    do_zotero_sync: bool = True,
     do_discovery: bool | None = None,
     do_fulltext: bool | None = None,
+    force_reclassify: bool = False,
     use_learned: bool | None = None,
     use_judge: bool | None = None,
     triggered_by: str = "cron",
@@ -76,10 +81,14 @@ def run_daily_pipeline(
     stable corpus does nothing destructive.
 
     Args:
+      do_zotero_sync: synchronize the configured authoritative Zotero
+        collection before processing. Disable only for a corpus-locked replay.
       do_discovery: pull from external sources. Defaults to env
         `PAS_PIPELINE_DISCOVERY` (yes/no). Off in tests.
       do_fulltext: also extract full-text evidence for the new papers.
         Defaults to env `PAS_PIPELINE_FULLTEXT`.
+      force_reclassify: re-run the classifier for every non-human-confirmed
+        paper even when its stored model version is current.
       use_learned / use_judge: forwarded to classify_new.
       triggered_by: free-form string; goes into the audit log.
     """
@@ -100,7 +109,72 @@ def run_daily_pipeline(
     )
 
     try:
-        # 1. Discovery -------------------------------------------------
+        # 1. Authoritative Zotero sync --------------------------------
+        from app.config import settings
+
+        zotero_authoritative = (
+            settings.zotero_configured and settings.zotero_source_only
+        )
+        if settings.zotero_configured and do_zotero_sync:
+            step = {"name": "zotero_sync", "started_at": _isoformat_now()}
+            logger.info("stage=zotero_sync status=start run_id=%s", run_id)
+            stage_t0 = time.monotonic()
+            try:
+                from app.services.zotero_client import ZoteroClient
+                from app.services.zotero_ingestion_service import (
+                    configured_collection_specs,
+                    sync_zotero_corpus,
+                )
+
+                with ZoteroClient(
+                    api_key=settings.zotero_api_key,
+                    group_id=settings.zotero_group_id,
+                    base_url=settings.zotero_api_url,
+                ) as client:
+                    stats = sync_zotero_corpus(
+                        session,
+                        client,
+                        configured_collection_specs(),
+                        download_fulltexts=do_fulltext,
+                    )
+                result.auto_ingested += stats.inserted
+                step.update(stats.to_dict())
+                step["status"] = "ok"
+                logger.info(
+                    "stage=zotero_sync status=end seen=%d inserted=%d "
+                    "updated=%d elapsed_s=%.1f",
+                    stats.seen_items,
+                    stats.inserted,
+                    stats.updated,
+                    time.monotonic() - stage_t0,
+                )
+            except Exception as e:
+                step["status"] = "failed"
+                step["error"] = f"{type(e).__name__}: {e}"
+                result.steps.append(step)
+                logger.error(
+                    "stage=zotero_sync status=failed error=%r elapsed_s=%.1f",
+                    step["error"],
+                    time.monotonic() - stage_t0,
+                )
+                raise
+            result.steps.append(step)
+        elif settings.zotero_configured:
+            result.steps.append(
+                {
+                    "name": "zotero_sync",
+                    "status": "disabled",
+                    "reason": "explicit_corpus_lock",
+                }
+            )
+        else:
+            result.steps.append(
+                {"name": "zotero_sync", "status": "not_configured"}
+            )
+
+        # 2. Discovery -------------------------------------------------
+        if zotero_authoritative:
+            do_discovery = False
         if do_discovery:
             step = {"name": "discovery", "started_at": _isoformat_now()}
             logger.info("stage=discovery status=start run_id=%s", run_id)
@@ -130,10 +204,13 @@ def run_daily_pipeline(
                 )
             result.steps.append(step)
         else:
-            result.steps.append({"name": "discovery", "status": "disabled"})
+            discovery_step = {"name": "discovery", "status": "disabled"}
+            if zotero_authoritative:
+                discovery_step["reason"] = "zotero_source_only"
+            result.steps.append(discovery_step)
 
-        # 2. Full-text evidence for new papers (best-effort) -----------
-        if do_fulltext:
+        # 3. Full-text evidence for new papers (best-effort) -----------
+        if do_fulltext and not zotero_authoritative:
             step = {"name": "fulltext_evidence", "started_at": _isoformat_now()}
             logger.info("stage=ingest status=start run_id=%s", run_id)
             stage_t0 = time.monotonic()
@@ -155,9 +232,12 @@ def run_daily_pipeline(
                 )
             result.steps.append(step)
         else:
-            result.steps.append({"name": "fulltext_evidence", "status": "disabled"})
+            fulltext_step = {"name": "fulltext_evidence", "status": "disabled"}
+            if do_fulltext and zotero_authoritative:
+                fulltext_step["reason"] = "handled_by_zotero_sync"
+            result.steps.append(fulltext_step)
 
-        # 3. Recover/execute any complete model-evolution batch --------
+        # 4. Recover/execute any complete model-evolution batch --------
         step = {
             "name": "model_evolution",
             "started_at": _isoformat_now(),
@@ -207,7 +287,7 @@ def run_daily_pipeline(
             )
         result.steps.append(step)
 
-        # 4. Incremental classify -------------------------------------
+        # 5. Incremental classify -------------------------------------
         step = {"name": "classify_new", "started_at": _isoformat_now()}
         logger.info("stage=classify status=start run_id=%s", run_id)
         stage_t0 = time.monotonic()
@@ -216,6 +296,7 @@ def run_daily_pipeline(
 
             touched, new_count, refreshed = classify_new(
                 session,
+                force=force_reclassify,
                 use_learned=use_learned,
                 use_judge=use_judge,
             )
@@ -239,7 +320,7 @@ def run_daily_pipeline(
             raise
         result.steps.append(step)
 
-        # 5. Route the scored corpus into the human-review subset ------
+        # 6. Route the scored corpus into the human-review subset ------
         step = {"name": "staged_screening", "started_at": _isoformat_now()}
         logger.info("stage=review_queue_refresh status=start run_id=%s", run_id)
         stage_t0 = time.monotonic()

@@ -1,0 +1,1544 @@
+{
+  "audit_summary": {
+    "accepted_field_count": 14,
+    "proposed_field_count": 69,
+    "rejected_field_count": 55,
+    "repair_attempted_count": 1,
+    "repair_succeeded_count": 0,
+    "unsupported_claim_count": 55
+  },
+  "field_audit_records": [
+    {
+      "cited_span": "PFM is based on measuring the local strain induced by the converse piezoelectric effect when an AC voltage is applied through the SPM probe in contact with the surface of the material (Figure 4a,b). The use of lock-in selective registration techniques for measuring the piezoresponse enables a sensitivity to surface displacements in the vertical direction of better than 1 pm.",
+      "diagnostic": null,
+      "entity_type": "instruments",
+      "field_path": "instruments[0].settings.AC_voltage_application",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1063_5.0259851",
+      "proposed_value": "applied through SPM probe in contact with surface",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "PFM is based on measuring the local strain induced by the converse piezoelectric effect when an AC voltage is applied through the SPM probe in contact with the surface of the material (Figure 4a,b).",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[0].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1063_5.0259851",
+      "proposed_value": "apply AC voltage through SPM probe in contact with material surface",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "PFM is based on measuring the local strain induced by the converse piezoelectric effect when an AC voltage is applied through the SPM probe in contact with the surface of the material (Figure 4a,b).",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[0].conditions[0]",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1063_5.0259851",
+      "proposed_value": "contact mode",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "PFM is based on measuring the local strain induced by the converse piezoelectric effect when an AC voltage is applied through the SPM probe in contact with the surface of the material (Figure 4a,b).",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[0].conditions[1]",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1063_5.0259851",
+      "proposed_value": "reasonably smooth surface",
+      "protocol_index": 0,
+      "rejection_reason": "value_elsewhere",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "PFM is based on measuring the local strain induced by the converse piezoelectric effect when an AC voltage is applied through the SPM probe in contact with the surface of the material (Figure 4a,b).",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[0].notes",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1063_5.0259851",
+      "proposed_value": "measures local strain induced by converse piezoelectric effect",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The use of lock-in selective registration techniques for measuring the piezoresponse enables a sensitivity to surface displacements in the vertical direction of better than 1 pm.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[1].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1063_5.0259851",
+      "proposed_value": "measure piezoresponse using lock-in selective registration techniques",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The use of lock-in selective registration techniques for measuring the piezoresponse enables a sensitivity to surface displacements in the vertical direction of better than 1 pm.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[1].notes",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1063_5.0259851",
+      "proposed_value": "enables sensitivity to surface displacements better than 1 pm in vertical direction",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The development of resonance tracking PFM methods, such as Dual Resonance Amplitude Tracking (DART) 191 and Band-Excitation PFM (BE PFM), 192 significantly improved the signal-to-noise ratio in PFM measurements by utilizing resonance enhancement. The spatial resolution of PFM is determined by the contact tip radius and can reach a few nanometers.",
+      "diagnostic": null,
+      "entity_type": "characterization",
+      "field_path": "characterization[0].technique",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1063_5.0259851",
+      "proposed_value": "Piezoresponse Force Microscopy",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The primary issue is the difficulty in isolating the 'pure' piezoresponse from the raw measured signal, which is often affected by electrostatic, electrochemical, and other non-ferroelectric sources.",
+      "diagnostic": null,
+      "entity_type": "caveats",
+      "field_path": "caveats[0].text",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1063_5.0259851",
+      "proposed_value": "difficulty in isolating 'pure' piezoresponse from raw measured signal affected by electrostatic, electrochemical, and other non-ferroelectric sources",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The accumulation of charges near the tip-sample contact can result in hysteresis-like behavior during loop measurements, masking the true ferroelectric response and leading to potential misinterpretation of experimental results.",
+      "diagnostic": null,
+      "entity_type": "caveats",
+      "field_path": "caveats[1].text",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1063_5.0259851",
+      "proposed_value": "charge accumulation near tip-sample contact can result in hysteresis-like behavior masking true ferroelectric response",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "In ESM, when an electric field is applied via the AFM tip, the electric field is concentrated underneath the tip. This triggers ion migration within the material or ionic reactions resulting in a local strain, known as electrochemical strain. When an AC voltage is applied, this mechanical deformation induces oscillations of the tip, which can be detected using a lock-in amplifier that demodulates at the applied AC frequency.",
+      "diagnostic": null,
+      "entity_type": "instruments",
+      "field_path": "instruments[0].settings.electric_field_application",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1063_5.0259851",
+      "proposed_value": "via AFM tip",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "In ESM, when an electric field is applied via the AFM tip, the electric field is concentrated underneath the tip. This triggers ion migration within the material or ionic reactions resulting in a local strain, known as electrochemical strain. When an AC voltage is applied, this mechanical deformation induces oscillations of the tip, which can be detected using a lock-in amplifier that demodulates at the applied AC frequency.",
+      "diagnostic": null,
+      "entity_type": "instruments",
+      "field_path": "instruments[0].settings.detection",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1063_5.0259851",
+      "proposed_value": "lock-in amplifier demodulating at applied AC frequency",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "In ESM, when an electric field is applied via the AFM tip, the electric field is concentrated underneath the tip. This triggers ion migration within the material or ionic reactions resulting in a local strain, known as electrochemical strain.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[0].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1063_5.0259851",
+      "proposed_value": "apply electric field via AFM tip to concentrate field underneath tip",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "In ESM, when an electric field is applied via the AFM tip, the electric field is concentrated underneath the tip. This triggers ion migration within the material or ionic reactions resulting in a local strain, known as electrochemical strain.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[0].notes",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1063_5.0259851",
+      "proposed_value": "triggers ion migration or ionic reactions resulting in local electrochemical strain",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "When an AC voltage is applied, this mechanical deformation induces oscillations of the tip, which can be detected using a lock-in amplifier that demodulates at the applied AC frequency.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[1].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1063_5.0259851",
+      "proposed_value": "apply AC voltage to induce mechanical deformation and tip oscillations",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "which can be detected using a lock-in amplifier that demodulates at the applied AC frequency.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[2].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1063_5.0259851",
+      "proposed_value": "detect tip oscillations using lock-in amplifier demodulating at applied AC frequency",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "By varying the applied voltage and frequency, ESM can provide quantitative information about ionic diffusion coefficients, local ionic conductivity, and electrochemical strain coefficients.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[3].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1063_5.0259851",
+      "proposed_value": "vary applied voltage and frequency to obtain quantitative information",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "By varying the applied voltage and frequency, ESM can provide quantitative information about ionic diffusion coefficients, local ionic conductivity, and electrochemical strain coefficients.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[3].notes",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1063_5.0259851",
+      "proposed_value": "provides ionic diffusion coefficients, local ionic conductivity, and electrochemical strain coefficients",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The spatial resolution of ESM can typically achieve approximately 20 nm, determined by the size of the AFM tip. However, theoretically, its spatial resolution can be further refined to the order of 3 nm to 10 nm. In addition to the typical first harmonic ESM, second harmonic ESM can be used to probe electrochemical dipoles.",
+      "diagnostic": null,
+      "entity_type": "characterization",
+      "field_path": "characterization[0].technique",
+      "nearest_source_span": "253 In addition to the typical first harmonic ESM, second harmonic ESM can be used to probe electrochemical dipoles.",
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1063_5.0259851",
+      "proposed_value": "Electrochemical Strain Microscopy",
+      "protocol_index": 1,
+      "rejection_reason": "span_not_in_source",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "All sample transfers between these stations are performed using robotic arms, forming a fully automated sequence from chemical input to characterization.",
+      "diagnostic": null,
+      "entity_type": "instruments",
+      "field_path": "instruments[0].settings.function",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1063_5.0259851",
+      "proposed_value": "sample transfers between stations",
+      "protocol_index": 2,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "product characterization using X-ray diffraction (XRD). All sample transfers between these stations are performed using robotic arms, forming a fully automated sequence from chemical input to characterization. Phase purity is assessed using XRD, analyzed by ML models trained on structures from the Materials Project and the Inorganic Crystal Structure Database (ICSD), and confirmed with automated Rietveld refinement.",
+      "diagnostic": null,
+      "entity_type": "instruments",
+      "field_path": "instruments[1].settings.purpose",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1063_5.0259851",
+      "proposed_value": "product characterization and phase purity assessment",
+      "protocol_index": 2,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "product characterization using X-ray diffraction (XRD). All sample transfers between these stations are performed using robotic arms, forming a fully automated sequence from chemical input to characterization. Phase purity is assessed using XRD, analyzed by ML models trained on structures from the Materials Project and the Inorganic Crystal Structure Database (ICSD), and confirmed with automated Rietveld refinement.",
+      "diagnostic": null,
+      "entity_type": "instruments",
+      "field_path": "instruments[1].settings.analysis",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1063_5.0259851",
+      "proposed_value": "ML models trained on structures from Materials Project and ICSD, automated Rietveld refinement",
+      "protocol_index": 2,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The A-Lab identifies air-stable, unreported targets using density functional theory (DFT)-calculated convex hulls, consisting of ground states from the Materials Project and Google DeepMind.",
+      "diagnostic": null,
+      "entity_type": "software",
+      "field_path": "software[0].settings.purpose",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1063_5.0259851",
+      "proposed_value": "calculate convex hulls for target identification",
+      "protocol_index": 2,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The A-Lab identifies air-stable, unreported targets using density functional theory (DFT)-calculated convex hulls, consisting of ground states from the Materials Project and Google DeepMind.",
+      "diagnostic": null,
+      "entity_type": "software",
+      "field_path": "software[0].settings.data_sources",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1063_5.0259851",
+      "proposed_value": "['Materials Project', 'Google DeepMind']",
+      "protocol_index": 2,
+      "rejection_reason": "schema_invalid",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Synthesis recipes for each target are proposed using ML models trained on synthesis data from literature.",
+      "diagnostic": null,
+      "entity_type": "software",
+      "field_path": "software[1].name",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1063_5.0259851",
+      "proposed_value": "machine learning models",
+      "protocol_index": 2,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "If high (>50 %) target yield is not obtained, new synthesis recipes are proposed by an active-learning algorithm that identifies reaction pathways with maximal driving force to form the target.",
+      "diagnostic": null,
+      "entity_type": "software",
+      "field_path": "software[2].settings.purpose",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1063_5.0259851",
+      "proposed_value": "propose new synthesis recipes when target yield <50%",
+      "protocol_index": 2,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "If high (>50 %) target yield is not obtained, new synthesis recipes are proposed by an active-learning algorithm that identifies reaction pathways with maximal driving force to form the target.",
+      "diagnostic": null,
+      "entity_type": "software",
+      "field_path": "software[2].settings.strategy",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1063_5.0259851",
+      "proposed_value": "identifies reaction pathways with maximal driving force to form target",
+      "protocol_index": 2,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The A-Lab identifies air-stable, unreported targets using density functional theory (DFT)-calculated convex hulls, consisting of ground states from the Materials Project and Google DeepMind.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[0].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1063_5.0259851",
+      "proposed_value": "identify air-stable, unreported targets using DFT-calculated convex hulls",
+      "protocol_index": 2,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The A-Lab identifies air-stable, unreported targets using density functional theory (DFT)-calculated convex hulls, consisting of ground states from the Materials Project and Google DeepMind.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[0].notes",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1063_5.0259851",
+      "proposed_value": "ground states from Materials Project and Google DeepMind",
+      "protocol_index": 2,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Synthesis recipes for each target are proposed using ML models trained on synthesis data from literature.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[1].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1063_5.0259851",
+      "proposed_value": "propose synthesis recipes using ML models trained on literature synthesis data",
+      "protocol_index": 2,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The robotic laboratory automates several critical steps: precise powder dosing, controlled sample heating, and product characterization using X-ray diffraction (XRD).",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[2].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1063_5.0259851",
+      "proposed_value": "automate precise powder dosing",
+      "protocol_index": 2,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The robotic laboratory automates several critical steps: precise powder dosing, controlled sample heating, and product characterization using X-ray diffraction (XRD).",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[3].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1063_5.0259851",
+      "proposed_value": "perform controlled sample heating",
+      "protocol_index": 2,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The robotic laboratory automates several critical steps: precise powder dosing, controlled sample heating, and product characterization using X-ray diffraction (XRD).",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[4].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1063_5.0259851",
+      "proposed_value": "perform product characterization using XRD",
+      "protocol_index": 2,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "All sample transfers between these stations are performed using robotic arms, forming a fully automated sequence from chemical input to characterization.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[5].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1063_5.0259851",
+      "proposed_value": "transfer samples between stations using robotic arms",
+      "protocol_index": 2,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "All sample transfers between these stations are performed using robotic arms, forming a fully automated sequence from chemical input to characterization.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[5].notes",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1063_5.0259851",
+      "proposed_value": "forms fully automated sequence from chemical input to characterization",
+      "protocol_index": 2,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Phase purity is assessed using XRD, analyzed by ML models trained on structures from the Materials Project and the Inorganic Crystal Structure Database (ICSD), and confirmed with automated Rietveld refinement.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[6].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1063_5.0259851",
+      "proposed_value": "assess phase purity using XRD analyzed by ML models and automated Rietveld refinement",
+      "protocol_index": 2,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Phase purity is assessed using XRD, analyzed by ML models trained on structures from the Materials Project and the Inorganic Crystal Structure Database (ICSD), and confirmed with automated Rietveld refinement.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[6].notes",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1063_5.0259851",
+      "proposed_value": "ML models trained on structures from Materials Project and ICSD",
+      "protocol_index": 2,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "If high (>50 %) target yield is not obtained, new synthesis recipes are proposed by an active-learning algorithm that identifies reaction pathways with maximal driving force to form the target.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[7].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1063_5.0259851",
+      "proposed_value": "if target yield <50%, propose new synthesis recipes using active-learning algorithm",
+      "protocol_index": 2,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "If high (>50 %) target yield is not obtained, new synthesis recipes are proposed by an active-learning algorithm that identifies reaction pathways with maximal driving force to form the target.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[7].conditions[0]",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1063_5.0259851",
+      "proposed_value": "high (>50%) target yield not obtained",
+      "protocol_index": 2,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "If high (>50 %) target yield is not obtained, new synthesis recipes are proposed by an active-learning algorithm that identifies reaction pathways with maximal driving force to form the target.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[7].notes",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1063_5.0259851",
+      "proposed_value": "identifies reaction pathways with maximal driving force to form target",
+      "protocol_index": 2,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The A-Lab has demonstrated the ability to synthesize 41 materials within 17 days, showcasing the efficiency and scalability of fully automated systems combined with machine learning decision-making models.",
+      "diagnostic": null,
+      "entity_type": "results",
+      "field_path": "results[0].metric",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1063_5.0259851",
+      "proposed_value": "materials synthesized",
+      "protocol_index": 2,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Microfluidic devices allow precise control over reaction conditions, including mixing reactants, temperature, and flow rates within tiny channels.",
+      "diagnostic": null,
+      "entity_type": "instruments",
+      "field_path": "instruments[0].settings.controlled_parameters",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1063_5.0259851",
+      "proposed_value": "['mixing reactants', 'temperature', 'flow rates']",
+      "protocol_index": 3,
+      "rejection_reason": "schema_invalid",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Microfluidic devices allow precise control over reaction conditions, including mixing reactants, temperature, and flow rates within tiny channels.",
+      "diagnostic": null,
+      "entity_type": "instruments",
+      "field_path": "instruments[0].settings.scale",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1063_5.0259851",
+      "proposed_value": "microscale",
+      "protocol_index": 3,
+      "rejection_reason": "value_elsewhere",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Microfluidic systems can also be incorporated with ML methods to create rapid, high- throughput screenings of various applications",
+      "diagnostic": null,
+      "entity_type": "software",
+      "field_path": "software[0].name",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1063_5.0259851",
+      "proposed_value": "machine learning methods",
+      "protocol_index": 3,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "using a mask region-based convolutional neural network (Mask R-CNN) with ResNet-50, which is a library that provides image detection and 125 segmentation algorithms to analyze the obtained images.",
+      "diagnostic": null,
+      "entity_type": "software",
+      "field_path": "software[1].name",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1063_5.0259851",
+      "proposed_value": "Mask R-CNN with ResNet-50",
+      "protocol_index": 3,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "microfluidics 120, which manipulate fluids at the microscale and have emerged as powerful tools for synthesizing new materials.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[0].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1063_5.0259851",
+      "proposed_value": "manipulate fluids at microscale in microfluidic channels",
+      "protocol_index": 3,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "microfluidics 120, which manipulate fluids at the microscale and have emerged as powerful tools for synthesizing new materials.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[0].notes",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1063_5.0259851",
+      "proposed_value": "precise control over reaction conditions",
+      "protocol_index": 3,
+      "rejection_reason": "value_elsewhere",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Microfluidic devices allow precise control over reaction conditions, including mixing reactants, temperature, and flow rates within tiny channels. This control is beneficial for synthesizing materials with uniform properties and creating gradient libraries with systematic composition variations.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[1].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1063_5.0259851",
+      "proposed_value": "control mixing of reactants, temperature, and flow rates within tiny channels",
+      "protocol_index": 3,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "A key advantage of microfluidic systems is to be able to conduct multiple reactions in parallel on a single chip. Microchannels, individually controlled, perform distinct reactions simultaneously, significantly increasing material synthesis throughput.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[2].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1063_5.0259851",
+      "proposed_value": "conduct multiple reactions in parallel on single chip using individually controlled microchannels",
+      "protocol_index": 3,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "A key advantage of microfluidic systems is to be able to conduct multiple reactions in parallel on a single chip. Microchannels, individually controlled, perform distinct reactions simultaneously, significantly increasing material synthesis throughput.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[2].notes",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1063_5.0259851",
+      "proposed_value": "significantly increases material synthesis throughput",
+      "protocol_index": 3,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Microfluidic platforms integrate with analytical techniques like real-time spectroscopic monitoring, providing immediate feedback on reaction progress and outcomes. This integration enables rapid identification of promising material candidates and on-the-fly adjustments to synthesis",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[3].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1063_5.0259851",
+      "proposed_value": "integrate with real-time spectroscopic monitoring for immediate feedback",
+      "protocol_index": 3,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "In the automated settings, robots prepare and dispense precise reagent quantities, mix 97-100 solutions, and carry out complex synthesis procedures",
+      "diagnostic": null,
+      "entity_type": "instruments",
+      "field_path": "instruments[0].name",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1063_5.0259851",
+      "proposed_value": "liquid-handling robot",
+      "protocol_index": 4,
+      "rejection_reason": "value_elsewhere",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "robots prepare and dispense precise reagent quantities, mix 97-100 solutions, and carry out complex synthesis procedures",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[0].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1063_5.0259851",
+      "proposed_value": "prepare and dispense precise reagent quantities using robot",
+      "protocol_index": 4,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "robots prepare and dispense precise reagent quantities, mix 97-100 solutions, and carry out complex synthesis procedures",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[1].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1063_5.0259851",
+      "proposed_value": "mix solutions using robot",
+      "protocol_index": 4,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "carry out complex synthesis procedures as seen in Ahmadi et al., Brabec et 101-103 104-107 al. for solution-based processing of photovoltaic materials, and more.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[2].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1063_5.0259851",
+      "proposed_value": "carry out complex synthesis procedures using robot",
+      "protocol_index": 4,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    }
+  ],
+  "inference_config": {
+    "max_tokens": 14000,
+    "temperature": 0.0
+  },
+  "mapping_version": "evidence-field-mapper-v0.2",
+  "model_id": "moonshotai.kimi-k2.5",
+  "paper_id": "DOI:10.1063_5.0259851",
+  "prompt_version": "oer-protocol-teacher-v0.2",
+  "protocols": [
+    {
+      "caveats": [
+        {
+          "caveat_id": "caveat_4422ab947d737d0b",
+          "evidence_ids": [
+            "ev_989189e4b0c92e7d"
+          ],
+          "text": "The primary issue is the difficulty in isolating the 'pure' piezoresponse from the raw measured signal, which is often affected by electrostatic, electrochemical, and other non-ferroelectric sources."
+        },
+        {
+          "caveat_id": "caveat_56cdbab982f2c631",
+          "evidence_ids": [
+            "ev_e7b5c3c5e842a9af"
+          ],
+          "text": "The accumulation of charges near the tip-sample contact can result in hysteresis-like behavior during loop measurements, masking the true ferroelectric response and leading to potential misinterpretation of experimental results."
+        }
+      ],
+      "characterization": [],
+      "evidence": [
+        {
+          "char_end": 615,
+          "char_start": 238,
+          "chunk_id": "mdchk_b1cedf541261eb8d",
+          "document_char_end": 41881,
+          "document_char_start": 41504,
+          "evidence_id": "ev_447b0d2fe3e72bb0",
+          "paper_id": "DOI:10.1063_5.0259851",
+          "quote": "PFM is based on measuring the local strain induced by the converse piezoelectric effect when an AC voltage is applied through the SPM probe in contact with the surface of the material (Figure 4a,b). The use of lock-in selective registration techniques for measuring the piezoresponse enables a sensitivity to surface displacements in the vertical direction of better than 1 pm.",
+          "source_sha256": "e70b06e63d479f9658d256910d64ecc00a18e240fab8a084f8ec45b11d370b78"
+        },
+        {
+          "char_end": 436,
+          "char_start": 238,
+          "chunk_id": "mdchk_b1cedf541261eb8d",
+          "document_char_end": 41702,
+          "document_char_start": 41504,
+          "evidence_id": "ev_2daced7571921006",
+          "paper_id": "DOI:10.1063_5.0259851",
+          "quote": "PFM is based on measuring the local strain induced by the converse piezoelectric effect when an AC voltage is applied through the SPM probe in contact with the surface of the material (Figure 4a,b).",
+          "source_sha256": "e70b06e63d479f9658d256910d64ecc00a18e240fab8a084f8ec45b11d370b78"
+        },
+        {
+          "char_end": 615,
+          "char_start": 437,
+          "chunk_id": "mdchk_b1cedf541261eb8d",
+          "document_char_end": 41881,
+          "document_char_start": 41703,
+          "evidence_id": "ev_2b3c2f213510ef71",
+          "paper_id": "DOI:10.1063_5.0259851",
+          "quote": "The use of lock-in selective registration techniques for measuring the piezoresponse enables a sensitivity to surface displacements in the vertical direction of better than 1 pm.",
+          "source_sha256": "e70b06e63d479f9658d256910d64ecc00a18e240fab8a084f8ec45b11d370b78"
+        },
+        {
+          "char_end": 2284,
+          "char_start": 2085,
+          "chunk_id": "mdchk_b1cedf541261eb8d",
+          "document_char_end": 43550,
+          "document_char_start": 43351,
+          "evidence_id": "ev_989189e4b0c92e7d",
+          "paper_id": "DOI:10.1063_5.0259851",
+          "quote": "The primary issue is the difficulty in isolating the 'pure' piezoresponse from the raw measured signal, which is often affected by electrostatic, electrochemical, and other non-ferroelectric sources.",
+          "source_sha256": "e70b06e63d479f9658d256910d64ecc00a18e240fab8a084f8ec45b11d370b78"
+        },
+        {
+          "char_end": 2620,
+          "char_start": 2392,
+          "chunk_id": "mdchk_b1cedf541261eb8d",
+          "document_char_end": 43886,
+          "document_char_start": 43658,
+          "evidence_id": "ev_e7b5c3c5e842a9af",
+          "paper_id": "DOI:10.1063_5.0259851",
+          "quote": "The accumulation of charges near the tip-sample contact can result in hysteresis-like behavior during loop measurements, masking the true ferroelectric response and leading to potential misinterpretation of experimental results.",
+          "source_sha256": "e70b06e63d479f9658d256910d64ecc00a18e240fab8a084f8ec45b11d370b78"
+        }
+      ],
+      "evidence_scope": "secondary_report",
+      "instruments": [
+        {
+          "entity_id": "inst_d9e75dc603a177b4",
+          "evidence_ids": [
+            "ev_447b0d2fe3e72bb0"
+          ],
+          "manufacturer": null,
+          "model": null,
+          "name": "SPM probe",
+          "settings": {
+            "lock_in_detection": "selective registration techniques",
+            "vertical_displacement_sensitivity": "better than 1 pm"
+          }
+        }
+      ],
+      "materials": [],
+      "paper_id": "DOI:10.1063_5.0259851",
+      "protocol_id": "protocol_4422ab947d737d0b",
+      "protocol_name": "Piezoresponse Force Microscopy (PFM)",
+      "protocol_type": "characterization",
+      "relations": [],
+      "results": [],
+      "software": [],
+      "source_chunk_ids": [
+        "mdchk_b1cedf541261eb8d"
+      ],
+      "source_paper_tier": "oer_review",
+      "steps": [
+        {
+          "action": "PFM is based on measuring the local strain induced by the converse piezoelectric effect when an AC voltage is applied through the SPM probe in contact with the surface of the material (Figure 4a,b).",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_2daced7571921006"
+          ],
+          "notes": null,
+          "order": 1,
+          "step_id": "step_4422ab947d737d0b"
+        },
+        {
+          "action": "The use of lock-in selective registration techniques for measuring the piezoresponse enables a sensitivity to surface displacements in the vertical direction of better than 1 pm.",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_2b3c2f213510ef71"
+          ],
+          "notes": null,
+          "order": 2,
+          "step_id": "step_56cdbab982f2c631"
+        }
+      ]
+    },
+    {
+      "caveats": [],
+      "characterization": [],
+      "evidence": [
+        {
+          "char_end": 1030,
+          "char_start": 602,
+          "chunk_id": "mdchk_819957e02a915e0e",
+          "document_char_end": 48892,
+          "document_char_start": 48464,
+          "evidence_id": "ev_e876c13a43e5ce4f",
+          "paper_id": "DOI:10.1063_5.0259851",
+          "quote": "In ESM, when an electric field is applied via the AFM tip, the electric field is concentrated underneath the tip. This triggers ion migration within the material or ionic reactions resulting in a local strain, known as electrochemical strain. When an AC voltage is applied, this mechanical deformation induces oscillations of the tip, which can be detected using a lock-in amplifier that demodulates at the applied AC frequency.",
+          "source_sha256": "eb3a13fcc4a73c8f0f04ef162f9861e7288ec82f93ca2970115d795edd73809b"
+        },
+        {
+          "char_end": 844,
+          "char_start": 602,
+          "chunk_id": "mdchk_819957e02a915e0e",
+          "document_char_end": 48706,
+          "document_char_start": 48464,
+          "evidence_id": "ev_7dd349109c03a788",
+          "paper_id": "DOI:10.1063_5.0259851",
+          "quote": "In ESM, when an electric field is applied via the AFM tip, the electric field is concentrated underneath the tip. This triggers ion migration within the material or ionic reactions resulting in a local strain, known as electrochemical strain.",
+          "source_sha256": "eb3a13fcc4a73c8f0f04ef162f9861e7288ec82f93ca2970115d795edd73809b"
+        },
+        {
+          "char_end": 1030,
+          "char_start": 845,
+          "chunk_id": "mdchk_819957e02a915e0e",
+          "document_char_end": 48892,
+          "document_char_start": 48707,
+          "evidence_id": "ev_a4fd3775a2f052d7",
+          "paper_id": "DOI:10.1063_5.0259851",
+          "quote": "When an AC voltage is applied, this mechanical deformation induces oscillations of the tip, which can be detected using a lock-in amplifier that demodulates at the applied AC frequency.",
+          "source_sha256": "eb3a13fcc4a73c8f0f04ef162f9861e7288ec82f93ca2970115d795edd73809b"
+        },
+        {
+          "char_end": 1030,
+          "char_start": 937,
+          "chunk_id": "mdchk_819957e02a915e0e",
+          "document_char_end": 48892,
+          "document_char_start": 48799,
+          "evidence_id": "ev_fdf4a172cb7e23e2",
+          "paper_id": "DOI:10.1063_5.0259851",
+          "quote": "which can be detected using a lock-in amplifier that demodulates at the applied AC frequency.",
+          "source_sha256": "eb3a13fcc4a73c8f0f04ef162f9861e7288ec82f93ca2970115d795edd73809b"
+        },
+        {
+          "char_end": 1220,
+          "char_start": 1031,
+          "chunk_id": "mdchk_819957e02a915e0e",
+          "document_char_end": 49082,
+          "document_char_start": 48893,
+          "evidence_id": "ev_4de1affc9fc27daa",
+          "paper_id": "DOI:10.1063_5.0259851",
+          "quote": "By varying the applied voltage and frequency, ESM can provide quantitative information about ionic diffusion coefficients, local ionic conductivity, and electrochemical strain coefficients.",
+          "source_sha256": "eb3a13fcc4a73c8f0f04ef162f9861e7288ec82f93ca2970115d795edd73809b"
+        }
+      ],
+      "evidence_scope": "secondary_report",
+      "instruments": [
+        {
+          "entity_id": "inst_a1373deda825fab4",
+          "evidence_ids": [
+            "ev_e876c13a43e5ce4f"
+          ],
+          "manufacturer": null,
+          "model": null,
+          "name": "AFM tip",
+          "settings": {
+            "AC_voltage": "applied"
+          }
+        }
+      ],
+      "materials": [],
+      "paper_id": "DOI:10.1063_5.0259851",
+      "protocol_id": "protocol_84a814490623f96e",
+      "protocol_name": "Electrochemical Strain Microscopy (ESM)",
+      "protocol_type": "characterization",
+      "relations": [],
+      "results": [],
+      "software": [],
+      "source_chunk_ids": [
+        "mdchk_819957e02a915e0e"
+      ],
+      "source_paper_tier": "oer_review",
+      "steps": [
+        {
+          "action": "In ESM, when an electric field is applied via the AFM tip, the electric field is concentrated underneath the tip. This triggers ion migration within the material or ionic reactions resulting in a local strain, known as electrochemical strain.",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_7dd349109c03a788"
+          ],
+          "notes": null,
+          "order": 1,
+          "step_id": "step_28dfac42d0a820bb"
+        },
+        {
+          "action": "When an AC voltage is applied, this mechanical deformation induces oscillations of the tip, which can be detected using a lock-in amplifier that demodulates at the applied AC frequency.",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_a4fd3775a2f052d7"
+          ],
+          "notes": null,
+          "order": 2,
+          "step_id": "step_84a814490623f96e"
+        },
+        {
+          "action": "which can be detected using a lock-in amplifier that demodulates at the applied AC frequency.",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_fdf4a172cb7e23e2"
+          ],
+          "notes": null,
+          "order": 3,
+          "step_id": "step_4728ca4af9950fbe"
+        },
+        {
+          "action": "By varying the applied voltage and frequency, ESM can provide quantitative information about ionic diffusion coefficients, local ionic conductivity, and electrochemical strain coefficients.",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_4de1affc9fc27daa"
+          ],
+          "notes": null,
+          "order": 4,
+          "step_id": "step_b07dfc9eae150af3"
+        }
+      ]
+    },
+    {
+      "caveats": [],
+      "characterization": [],
+      "evidence": [
+        {
+          "char_end": 1277,
+          "char_start": 1087,
+          "chunk_id": "mdchk_d4c14252002b6d2f",
+          "document_char_end": 25298,
+          "document_char_start": 25108,
+          "evidence_id": "ev_58cb85cd5f53099a",
+          "paper_id": "DOI:10.1063_5.0259851",
+          "quote": "The A-Lab identifies air-stable, unreported targets using density functional theory (DFT)-calculated convex hulls, consisting of ground states from the Materials Project and Google DeepMind.",
+          "source_sha256": "6a2562015d4a4cd14442a67f70aecb5755091d23538e6610c1ae6dfd348d459a"
+        },
+        {
+          "char_end": 1383,
+          "char_start": 1278,
+          "chunk_id": "mdchk_d4c14252002b6d2f",
+          "document_char_end": 25404,
+          "document_char_start": 25299,
+          "evidence_id": "ev_a72ffe54031cc863",
+          "paper_id": "DOI:10.1063_5.0259851",
+          "quote": "Synthesis recipes for each target are proposed using ML models trained on synthesis data from literature.",
+          "source_sha256": "6a2562015d4a4cd14442a67f70aecb5755091d23538e6610c1ae6dfd348d459a"
+        },
+        {
+          "char_end": 1550,
+          "char_start": 1384,
+          "chunk_id": "mdchk_d4c14252002b6d2f",
+          "document_char_end": 25571,
+          "document_char_start": 25405,
+          "evidence_id": "ev_5a7d3205d9180480",
+          "paper_id": "DOI:10.1063_5.0259851",
+          "quote": "The robotic laboratory automates several critical steps: precise powder dosing, controlled sample heating, and product characterization using X-ray diffraction (XRD).",
+          "source_sha256": "6a2562015d4a4cd14442a67f70aecb5755091d23538e6610c1ae6dfd348d459a"
+        },
+        {
+          "char_end": 1914,
+          "char_start": 1495,
+          "chunk_id": "mdchk_d4c14252002b6d2f",
+          "document_char_end": 25935,
+          "document_char_start": 25516,
+          "evidence_id": "ev_b4c1e08064ec6803",
+          "paper_id": "DOI:10.1063_5.0259851",
+          "quote": "product characterization using X-ray diffraction (XRD). All sample transfers between these stations are performed using robotic arms, forming a fully automated sequence from chemical input to characterization. Phase purity is assessed using XRD, analyzed by ML models trained on structures from the Materials Project and the Inorganic Crystal Structure Database (ICSD), and confirmed with automated Rietveld refinement.",
+          "source_sha256": "6a2562015d4a4cd14442a67f70aecb5755091d23538e6610c1ae6dfd348d459a"
+        },
+        {
+          "char_end": 1704,
+          "char_start": 1551,
+          "chunk_id": "mdchk_d4c14252002b6d2f",
+          "document_char_end": 25725,
+          "document_char_start": 25572,
+          "evidence_id": "ev_bfaae1eb156e3d36",
+          "paper_id": "DOI:10.1063_5.0259851",
+          "quote": "All sample transfers between these stations are performed using robotic arms, forming a fully automated sequence from chemical input to characterization.",
+          "source_sha256": "6a2562015d4a4cd14442a67f70aecb5755091d23538e6610c1ae6dfd348d459a"
+        },
+        {
+          "char_end": 1914,
+          "char_start": 1705,
+          "chunk_id": "mdchk_d4c14252002b6d2f",
+          "document_char_end": 25935,
+          "document_char_start": 25726,
+          "evidence_id": "ev_8e349ead27534352",
+          "paper_id": "DOI:10.1063_5.0259851",
+          "quote": "Phase purity is assessed using XRD, analyzed by ML models trained on structures from the Materials Project and the Inorganic Crystal Structure Database (ICSD), and confirmed with automated Rietveld refinement.",
+          "source_sha256": "6a2562015d4a4cd14442a67f70aecb5755091d23538e6610c1ae6dfd348d459a"
+        },
+        {
+          "char_end": 2108,
+          "char_start": 1915,
+          "chunk_id": "mdchk_d4c14252002b6d2f",
+          "document_char_end": 26129,
+          "document_char_start": 25936,
+          "evidence_id": "ev_9c84ae8875ed6960",
+          "paper_id": "DOI:10.1063_5.0259851",
+          "quote": "If high (>50 %) target yield is not obtained, new synthesis recipes are proposed by an active-learning algorithm that identifies reaction pathways with maximal driving force to form the target.",
+          "source_sha256": "6a2562015d4a4cd14442a67f70aecb5755091d23538e6610c1ae6dfd348d459a"
+        }
+      ],
+      "evidence_scope": "secondary_report",
+      "instruments": [
+        {
+          "entity_id": "inst_d1c60a7a75d92ab8",
+          "evidence_ids": [
+            "ev_bfaae1eb156e3d36"
+          ],
+          "manufacturer": null,
+          "model": null,
+          "name": "robotic arms",
+          "settings": {}
+        },
+        {
+          "entity_id": "inst_1d234c00ec3e78c7",
+          "evidence_ids": [
+            "ev_b4c1e08064ec6803"
+          ],
+          "manufacturer": null,
+          "model": null,
+          "name": "X-ray diffraction (XRD)",
+          "settings": {}
+        }
+      ],
+      "materials": [],
+      "paper_id": "DOI:10.1063_5.0259851",
+      "protocol_id": "protocol_b633e1548ed0f69e",
+      "protocol_name": "A-Lab fully automated materials synthesis",
+      "protocol_type": "synthesis",
+      "relations": [],
+      "results": [],
+      "software": [
+        {
+          "entity_id": "soft_658532a9d54b32e7",
+          "evidence_ids": [
+            "ev_58cb85cd5f53099a"
+          ],
+          "name": "density functional theory (DFT)",
+          "settings": {},
+          "version": null
+        },
+        {
+          "entity_id": "soft_a2712a5177be0a01",
+          "evidence_ids": [
+            "ev_9c84ae8875ed6960"
+          ],
+          "name": "active-learning algorithm",
+          "settings": {},
+          "version": null
+        }
+      ],
+      "source_chunk_ids": [
+        "mdchk_d4c14252002b6d2f"
+      ],
+      "source_paper_tier": "oer_review",
+      "steps": [
+        {
+          "action": "The A-Lab identifies air-stable, unreported targets using density functional theory (DFT)-calculated convex hulls, consisting of ground states from the Materials Project and Google DeepMind.",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_58cb85cd5f53099a"
+          ],
+          "notes": null,
+          "order": 1,
+          "step_id": "step_546b02532d5526ac"
+        },
+        {
+          "action": "Synthesis recipes for each target are proposed using ML models trained on synthesis data from literature.",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_a72ffe54031cc863"
+          ],
+          "notes": null,
+          "order": 2,
+          "step_id": "step_218d97ef1c121aa7"
+        },
+        {
+          "action": "The robotic laboratory automates several critical steps: precise powder dosing, controlled sample heating, and product characterization using X-ray diffraction (XRD).",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_5a7d3205d9180480"
+          ],
+          "notes": null,
+          "order": 3,
+          "step_id": "step_b633e1548ed0f69e"
+        },
+        {
+          "action": "The robotic laboratory automates several critical steps: precise powder dosing, controlled sample heating, and product characterization using X-ray diffraction (XRD).",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_5a7d3205d9180480"
+          ],
+          "notes": null,
+          "order": 4,
+          "step_id": "step_84ab39379eb7e834"
+        },
+        {
+          "action": "The robotic laboratory automates several critical steps: precise powder dosing, controlled sample heating, and product characterization using X-ray diffraction (XRD).",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_5a7d3205d9180480"
+          ],
+          "notes": null,
+          "order": 5,
+          "step_id": "step_ae7e39d7997e8125"
+        },
+        {
+          "action": "All sample transfers between these stations are performed using robotic arms, forming a fully automated sequence from chemical input to characterization.",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_bfaae1eb156e3d36"
+          ],
+          "notes": null,
+          "order": 6,
+          "step_id": "step_fdecbb30f61ed041"
+        },
+        {
+          "action": "Phase purity is assessed using XRD, analyzed by ML models trained on structures from the Materials Project and the Inorganic Crystal Structure Database (ICSD), and confirmed with automated Rietveld refinement.",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_8e349ead27534352"
+          ],
+          "notes": null,
+          "order": 7,
+          "step_id": "step_2cb80d387072e5a5"
+        },
+        {
+          "action": "If high (>50 %) target yield is not obtained, new synthesis recipes are proposed by an active-learning algorithm that identifies reaction pathways with maximal driving force to form the target.",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_9c84ae8875ed6960"
+          ],
+          "notes": null,
+          "order": 8,
+          "step_id": "step_c3690c216cae5f6f"
+        }
+      ]
+    },
+    {
+      "caveats": [],
+      "characterization": [],
+      "evidence": [
+        {
+          "char_end": 202,
+          "char_start": 75,
+          "chunk_id": "mdchk_ec5923ec80a71821",
+          "document_char_end": 27304,
+          "document_char_start": 27177,
+          "evidence_id": "ev_f5c8aa6210480e38",
+          "paper_id": "DOI:10.1063_5.0259851",
+          "quote": "microfluidics 120, which manipulate fluids at the microscale and have emerged as powerful tools for synthesizing new materials.",
+          "source_sha256": "6d08594c5a34f45c760c820b84ac9b72947efbbad5327fcc71ea31ce392da227"
+        },
+        {
+          "char_end": 349,
+          "char_start": 203,
+          "chunk_id": "mdchk_ec5923ec80a71821",
+          "document_char_end": 27451,
+          "document_char_start": 27305,
+          "evidence_id": "ev_80bd1eed63bd7502",
+          "paper_id": "DOI:10.1063_5.0259851",
+          "quote": "Microfluidic devices allow precise control over reaction conditions, including mixing reactants, temperature, and flow rates within tiny channels.",
+          "source_sha256": "6d08594c5a34f45c760c820b84ac9b72947efbbad5327fcc71ea31ce392da227"
+        },
+        {
+          "char_end": 499,
+          "char_start": 203,
+          "chunk_id": "mdchk_ec5923ec80a71821",
+          "document_char_end": 27601,
+          "document_char_start": 27305,
+          "evidence_id": "ev_134731b571c0361b",
+          "paper_id": "DOI:10.1063_5.0259851",
+          "quote": "Microfluidic devices allow precise control over reaction conditions, including mixing reactants, temperature, and flow rates within tiny channels. This control is beneficial for synthesizing materials with uniform properties and creating gradient libraries with systematic composition variations.",
+          "source_sha256": "6d08594c5a34f45c760c820b84ac9b72947efbbad5327fcc71ea31ce392da227"
+        },
+        {
+          "char_end": 2259,
+          "char_start": 2007,
+          "chunk_id": "mdchk_ec5923ec80a71821",
+          "document_char_end": 29361,
+          "document_char_start": 29109,
+          "evidence_id": "ev_314f03fd21a18adc",
+          "paper_id": "DOI:10.1063_5.0259851",
+          "quote": "A key advantage of microfluidic systems is to be able to conduct multiple reactions in parallel on a single chip. Microchannels, individually controlled, perform distinct reactions simultaneously, significantly increasing material synthesis throughput.",
+          "source_sha256": "6d08594c5a34f45c760c820b84ac9b72947efbbad5327fcc71ea31ce392da227"
+        },
+        {
+          "char_end": 2543,
+          "char_start": 2260,
+          "chunk_id": "mdchk_ec5923ec80a71821",
+          "document_char_end": 29645,
+          "document_char_start": 29362,
+          "evidence_id": "ev_91e8b46701c8e11c",
+          "paper_id": "DOI:10.1063_5.0259851",
+          "quote": "Microfluidic platforms integrate with analytical techniques like real-time spectroscopic monitoring, providing immediate feedback on reaction progress and outcomes. This integration enables rapid identification of promising material candidates and on-the-fly adjustments to synthesis",
+          "source_sha256": "6d08594c5a34f45c760c820b84ac9b72947efbbad5327fcc71ea31ce392da227"
+        }
+      ],
+      "evidence_scope": "secondary_report",
+      "instruments": [
+        {
+          "entity_id": "inst_6bed7d396489355d",
+          "evidence_ids": [
+            "ev_80bd1eed63bd7502"
+          ],
+          "manufacturer": null,
+          "model": null,
+          "name": "microfluidic device",
+          "settings": {
+            "channel_type": "tiny channels"
+          }
+        }
+      ],
+      "materials": [],
+      "paper_id": "DOI:10.1063_5.0259851",
+      "protocol_id": "protocol_cdca6cf5e567e42c",
+      "protocol_name": "Microfluidic materials synthesis",
+      "protocol_type": "synthesis",
+      "relations": [],
+      "results": [],
+      "software": [],
+      "source_chunk_ids": [
+        "mdchk_ec5923ec80a71821"
+      ],
+      "source_paper_tier": "oer_review",
+      "steps": [
+        {
+          "action": "microfluidics 120, which manipulate fluids at the microscale and have emerged as powerful tools for synthesizing new materials.",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_f5c8aa6210480e38"
+          ],
+          "notes": null,
+          "order": 1,
+          "step_id": "step_d1cd612ba58c859d"
+        },
+        {
+          "action": "Microfluidic devices allow precise control over reaction conditions, including mixing reactants, temperature, and flow rates within tiny channels. This control is beneficial for synthesizing materials with uniform properties and creating gradient libraries with systematic composition variations.",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_134731b571c0361b"
+          ],
+          "notes": "beneficial for synthesizing materials with uniform properties and creating gradient libraries",
+          "order": 2,
+          "step_id": "step_f16592df5315e0b7"
+        },
+        {
+          "action": "A key advantage of microfluidic systems is to be able to conduct multiple reactions in parallel on a single chip. Microchannels, individually controlled, perform distinct reactions simultaneously, significantly increasing material synthesis throughput.",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_314f03fd21a18adc"
+          ],
+          "notes": null,
+          "order": 3,
+          "step_id": "step_a4988a93c1188671"
+        },
+        {
+          "action": "Microfluidic platforms integrate with analytical techniques like real-time spectroscopic monitoring, providing immediate feedback on reaction progress and outcomes. This integration enables rapid identification of promising material candidates and on-the-fly adjustments to synthesis",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_91e8b46701c8e11c"
+          ],
+          "notes": "enables rapid identification of promising material candidates and on-the-fly adjustments",
+          "order": 4,
+          "step_id": "step_cdca6cf5e567e42c"
+        }
+      ]
+    },
+    {
+      "caveats": [],
+      "characterization": [],
+      "evidence": [
+        {
+          "char_end": 147,
+          "char_start": 27,
+          "chunk_id": "mdchk_3ef45f0d5fa14e21",
+          "document_char_end": 20284,
+          "document_char_start": 20164,
+          "evidence_id": "ev_86157638cf10a3bf",
+          "paper_id": "DOI:10.1063_5.0259851",
+          "quote": "robots prepare and dispense precise reagent quantities, mix 97-100 solutions, and carry out complex synthesis procedures",
+          "source_sha256": "58e1425d28928350893df10d9f33824e0e6271b45b5384e4c7c2f7fd8f21c83c"
+        },
+        {
+          "char_end": 270,
+          "char_start": 109,
+          "chunk_id": "mdchk_3ef45f0d5fa14e21",
+          "document_char_end": 20407,
+          "document_char_start": 20246,
+          "evidence_id": "ev_3bc996380fbff28e",
+          "paper_id": "DOI:10.1063_5.0259851",
+          "quote": "carry out complex synthesis procedures as seen in Ahmadi et al., Brabec et 101-103 104-107 al. for solution-based processing of photovoltaic materials, and more.",
+          "source_sha256": "58e1425d28928350893df10d9f33824e0e6271b45b5384e4c7c2f7fd8f21c83c"
+        }
+      ],
+      "evidence_scope": "secondary_report",
+      "instruments": [],
+      "materials": [],
+      "paper_id": "DOI:10.1063_5.0259851",
+      "protocol_id": "protocol_d8fd3801d57ade8f",
+      "protocol_name": "Automated robotic solution-based materials synthesis",
+      "protocol_type": "synthesis",
+      "relations": [],
+      "results": [],
+      "software": [],
+      "source_chunk_ids": [
+        "mdchk_3ef45f0d5fa14e21"
+      ],
+      "source_paper_tier": "oer_review",
+      "steps": [
+        {
+          "action": "robots prepare and dispense precise reagent quantities, mix 97-100 solutions, and carry out complex synthesis procedures",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_86157638cf10a3bf"
+          ],
+          "notes": null,
+          "order": 1,
+          "step_id": "step_6a4562487b2a56cc"
+        },
+        {
+          "action": "robots prepare and dispense precise reagent quantities, mix 97-100 solutions, and carry out complex synthesis procedures",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_86157638cf10a3bf"
+          ],
+          "notes": null,
+          "order": 2,
+          "step_id": "step_5d17cf4a3ac20187"
+        },
+        {
+          "action": "carry out complex synthesis procedures as seen in Ahmadi et al., Brabec et 101-103 104-107 al. for solution-based processing of photovoltaic materials, and more.",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_3bc996380fbff28e"
+          ],
+          "notes": "for solution-based processing of photovoltaic materials",
+          "order": 3,
+          "step_id": "step_955377b01bb03e50"
+        }
+      ]
+    }
+  ],
+  "region": "us-east-1",
+  "schema_version": "bedrock-teacher-paper-cache-v0.2",
+  "teacher_response": {
+    "diagnostic": null,
+    "invocation_count": 1,
+    "metrics": {
+      "latencyMs": 71508
+    },
+    "raw_text": " ```json\n{\n  \"protocols\": [\n    {\n      \"source_chunk_ids\": [\"mdchk_b1cedf541261eb8d\"],\n      \"protocol_name\": \"Piezoresponse Force Microscopy (PFM)\",\n      \"protocol_type\": \"characterization\",\n      \"materials\": [],\n      \"instruments\": [\n        {\n          \"source_chunk_id\": \"mdchk_b1cedf541261eb8d\",\n          \"name\": \"SPM probe\",\n          \"model\": null,\n          \"manufacturer\": null,\n          \"settings\": {\n            \"AC_voltage_application\": \"applied through SPM probe in contact with surface\",\n            \"lock_in_detection\": \"selective registration techniques\",\n            \"vertical_displacement_sensitivity\": \"better than 1 pm\"\n          },\n          \"evidence_quote\": \"PFM is based on measuring the local strain induced by the converse piezoelectric effect when an AC voltage is applied through the SPM probe in contact with the surface of the material (Figure 4a,b). The use of lock-in selective registration techniques for measuring the piezoresponse enables a sensitivity to surface displacements in the vertical direction of better than 1 pm.\"\n        }\n      ],\n      \"software\": [],\n      \"steps\": [\n        {\n          \"source_chunk_id\": \"mdchk_b1cedf541261eb8d\",\n          \"order\": 1,\n          \"action\": \"apply AC voltage through SPM probe in contact with material surface\",\n          \"conditions\": [\"contact mode\", \"reasonably smooth surface\"],\n          \"notes\": \"measures local strain induced by converse piezoelectric effect\",\n          \"evidence_quote\": \"PFM is based on measuring the local strain induced by the converse piezoelectric effect when an AC voltage is applied through the SPM probe in contact with the surface of the material (Figure 4a,b).\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_b1cedf541261eb8d\",\n          \"order\": 2,\n          \"action\": \"measure piezoresponse using lock-in selective registration techniques\",\n          \"conditions\": [],\n          \"notes\": \"enables sensitivity to surface displacements better than 1 pm in vertical direction\",\n          \"evidence_quote\": \"The use of lock-in selective registration techniques for measuring the piezoresponse enables a sensitivity to surface displacements in the vertical direction of better than 1 pm.\"\n        }\n      ],\n      \"characterization\": [\n        {\n          \"source_chunk_id\": \"mdchk_b1cedf541261eb8d\",\n          \"technique\": \"Piezoresponse Force Microscopy\",\n          \"settings\": {\n            \"resonance_tracking_methods\": [\"Dual Resonance Amplitude Tracking (DART)\", \"Band-Excitation PFM (BE PFM)\"],\n            \"spatial_resolution\": \"few nanometers\",\n            \"spatial_resolution_determinant\": \"contact tip radius\"\n          },\n          \"output\": \"local ferroelectric and piezoelectric properties, ferroelectric domain structures, local electromechanical hysteresis loops\",\n          \"evidence_quote\": \"The development of resonance tracking PFM methods, such as Dual Resonance Amplitude Tracking (DART) 191 and Band-Excitation PFM (BE PFM), 192 significantly improved the signal-to-noise ratio in PFM measurements by utilizing resonance enhancement. The spatial resolution of PFM is determined by the contact tip radius and can reach a few nanometers.\"\n        }\n      ],\n      \"results\": [],\n      \"caveats\": [\n        {\n          \"source_chunk_id\": \"mdchk_b1cedf541261eb8d\",\n          \"text\": \"difficulty in isolating 'pure' piezoresponse from raw measured signal affected by electrostatic, electrochemical, and other non-ferroelectric sources\",\n          \"evidence_quote\": \"The primary issue is the difficulty in isolating the 'pure' piezoresponse from the raw measured signal, which is often affected by electrostatic, electrochemical, and other non-ferroelectric sources.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_b1cedf541261eb8d\",\n          \"text\": \"charge accumulation near tip-sample contact can result in hysteresis-like behavior masking true ferroelectric response\",\n          \"evidence_quote\": \"The accumulation of charges near the tip-sample contact can result in hysteresis-like behavior during loop measurements, masking the true ferroelectric response and leading to potential misinterpretation of experimental results.\"\n        }\n      ]\n    },\n    {\n      \"source_chunk_ids\": [\"mdchk_819957e02a915e0e\"],\n      \"protocol_name\": \"Electrochemical Strain Microscopy (ESM)\",\n      \"protocol_type\": \"characterization\",\n      \"materials\": [],\n      \"instruments\": [\n        {\n          \"source_chunk_id\": \"mdchk_819957e02a915e0e\",\n          \"name\": \"AFM tip\",\n          \"model\": null,\n          \"manufacturer\": null,\n          \"settings\": {\n            \"electric_field_application\": \"via AFM tip\",\n            \"AC_voltage\": \"applied\",\n            \"detection\": \"lock-in amplifier demodulating at applied AC frequency\"\n          },\n          \"evidence_quote\": \"In ESM, when an electric field is applied via the AFM tip, the electric field is concentrated underneath the tip. This triggers ion migration within the material or ionic reactions resulting in a local strain, known as electrochemical strain. When an AC voltage is applied, this mechanical deformation induces oscillations of the tip, which can be detected using a lock-in amplifier that demodulates at the applied AC frequency.\"\n        }\n      ],\n      \"software\": [],\n      \"steps\": [\n        {\n          \"source_chunk_id\": \"mdchk_819957e02a915e0e\",\n          \"order\": 1,\n          \"action\": \"apply electric field via AFM tip to concentrate field underneath tip\",\n          \"conditions\": [],\n          \"notes\": \"triggers ion migration or ionic reactions resulting in local electrochemical strain\",\n          \"evidence_quote\": \"In ESM, when an electric field is applied via the AFM tip, the electric field is concentrated underneath the tip. This triggers ion migration within the material or ionic reactions resulting in a local strain, known as electrochemical strain.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_819957e02a915e0e\",\n          \"order\": 2,\n          \"action\": \"apply AC voltage to induce mechanical deformation and tip oscillations\",\n          \"conditions\": [],\n          \"notes\": null,\n          \"evidence_quote\": \"When an AC voltage is applied, this mechanical deformation induces oscillations of the tip, which can be detected using a lock-in amplifier that demodulates at the applied AC frequency.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_819957e02a915e0e\",\n          \"order\": 3,\n          \"action\": \"detect tip oscillations using lock-in amplifier demodulating at applied AC frequency\",\n          \"conditions\": [],\n          \"notes\": null,\n          \"evidence_quote\": \"which can be detected using a lock-in amplifier that demodulates at the applied AC frequency.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_819957e02a915e0e\",\n          \"order\": 4,\n          \"action\": \"vary applied voltage and frequency to obtain quantitative information\",\n          \"conditions\": [],\n          \"notes\": \"provides ionic diffusion coefficients, local ionic conductivity, and electrochemical strain coefficients\",\n          \"evidence_quote\": \"By varying the applied voltage and frequency, ESM can provide quantitative information about ionic diffusion coefficients, local ionic conductivity, and electrochemical strain coefficients.\"\n        }\n      ],\n      \"characterization\": [\n        {\n          \"source_chunk_id\": \"mdchk_819957e02a915e0e\",\n          \"technique\": \"Electrochemical Strain Microscopy\",\n          \"settings\": {\n            \"spatial_resolution_typical\": \"approximately 20 nm\",\n            \"spatial_resolution_theoretical\": \"3 nm to 10 nm\",\n            \"spatial_resolution_determinant\": \"size of AFM tip\",\n            \"harmonic_modes\": [\"first harmonic ESM\", \"second harmonic ESM\"]\n          },\n          \"output\": \"ionic diffusion coefficients, local ionic conductivity, electrochemical strain coefficients, electrochemical dipoles (second harmonic)\",\n          \"evidence_quote\": \"The spatial resolution of ESM can typically achieve approximately 20 nm, determined by the size of the AFM tip. However, theoretically, its spatial resolution can be further refined to the order of 3 nm to 10 nm. In addition to the typical first harmonic ESM, second harmonic ESM can be used to probe electrochemical dipoles.\"\n        }\n      ],\n      \"results\": [],\n      \"caveats\": []\n    },\n    {\n      \"source_chunk_ids\": [\"mdchk_d4c14252002b6d2f\"],\n      \"protocol_name\": \"A-Lab fully automated materials synthesis\",\n      \"protocol_type\": \"synthesis\",\n      \"materials\": [],\n      \"instruments\": [\n        {\n          \"source_chunk_id\": \"mdchk_d4c14252002b6d2f\",\n          \"name\": \"robotic arms\",\n          \"model\": null,\n          \"manufacturer\": null,\n          \"settings\": {\n            \"function\": \"sample transfers between stations\"\n          },\n          \"evidence_quote\": \"All sample transfers between these stations are performed using robotic arms, forming a fully automated sequence from chemical input to characterization.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_d4c14252002b6d2f\",\n          \"name\": \"X-ray diffraction (XRD)\",\n          \"model\": null,\n          \"manufacturer\": null,\n          \"settings\": {\n            \"purpose\": \"product characterization and phase purity assessment\",\n            \"analysis\": \"ML models trained on structures from Materials Project and ICSD, automated Rietveld refinement\"\n          },\n          \"evidence_quote\": \"product characterization using X-ray diffraction (XRD). All sample transfers between these stations are performed using robotic arms, forming a fully automated sequence from chemical input to characterization. Phase purity is assessed using XRD, analyzed by ML models trained on structures from the Materials Project and the Inorganic Crystal Structure Database (ICSD), and confirmed with automated Rietveld refinement.\"\n        }\n      ],\n      \"software\": [\n        {\n          \"source_chunk_id\": \"mdchk_d4c14252002b6d2f\",\n          \"name\": \"density functional theory (DFT)\",\n          \"version\": null,\n          \"settings\": {\n            \"purpose\": \"calculate convex hulls for target identification\",\n            \"data_sources\": [\"Materials Project\", \"Google DeepMind\"]\n          },\n          \"evidence_quote\": \"The A-Lab identifies air-stable, unreported targets using density functional theory (DFT)-calculated convex hulls, consisting of ground states from the Materials Project and Google DeepMind.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_d4c14252002b6d2f\",\n          \"name\": \"machine learning models\",\n          \"version\": null,\n          \"settings\": {\n            \"purpose\": \"propose synthesis recipes\",\n            \"training_data\": \"synthesis data from literature\"\n          },\n          \"evidence_quote\": \"Synthesis recipes for each target are proposed using ML models trained on synthesis data from literature.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_d4c14252002b6d2f\",\n          \"name\": \"active-learning algorithm\",\n          \"version\": null,\n          \"settings\": {\n            \"purpose\": \"propose new synthesis recipes when target yield <50%\",\n            \"strategy\": \"identifies reaction pathways with maximal driving force to form target\"\n          },\n          \"evidence_quote\": \"If high (>50 %) target yield is not obtained, new synthesis recipes are proposed by an active-learning algorithm that identifies reaction pathways with maximal driving force to form the target.\"\n        }\n      ],\n      \"steps\": [\n        {\n          \"source_chunk_id\": \"mdchk_d4c14252002b6d2f\",\n          \"order\": 1,\n          \"action\": \"identify air-stable, unreported targets using DFT-calculated convex hulls\",\n          \"conditions\": [],\n          \"notes\": \"ground states from Materials Project and Google DeepMind\",\n          \"evidence_quote\": \"The A-Lab identifies air-stable, unreported targets using density functional theory (DFT)-calculated convex hulls, consisting of ground states from the Materials Project and Google DeepMind.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_d4c14252002b6d2f\",\n          \"order\": 2,\n          \"action\": \"propose synthesis recipes using ML models trained on literature synthesis data\",\n          \"conditions\": [],\n          \"notes\": null,\n          \"evidence_quote\": \"Synthesis recipes for each target are proposed using ML models trained on synthesis data from literature.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_d4c14252002b6d2f\",\n          \"order\": 3,\n          \"action\": \"automate precise powder dosing\",\n          \"conditions\": [],\n          \"notes\": null,\n          \"evidence_quote\": \"The robotic laboratory automates several critical steps: precise powder dosing, controlled sample heating, and product characterization using X-ray diffraction (XRD).\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_d4c14252002b6d2f\",\n          \"order\": 4,\n          \"action\": \"perform controlled sample heating\",\n          \"conditions\": [],\n          \"notes\": null,\n          \"evidence_quote\": \"The robotic laboratory automates several critical steps: precise powder dosing, controlled sample heating, and product characterization using X-ray diffraction (XRD).\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_d4c14252002b6d2f\",\n          \"order\": 5,\n          \"action\": \"perform product characterization using XRD\",\n          \"conditions\": [],\n          \"notes\": null,\n          \"evidence_quote\": \"The robotic laboratory automates several critical steps: precise powder dosing, controlled sample heating, and product characterization using X-ray diffraction (XRD).\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_d4c14252002b6d2f\",\n          \"order\": 6,\n          \"action\": \"transfer samples between stations using robotic arms\",\n          \"conditions\": [],\n          \"notes\": \"forms fully automated sequence from chemical input to characterization\",\n          \"evidence_quote\": \"All sample transfers between these stations are performed using robotic arms, forming a fully automated sequence from chemical input to characterization.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_d4c14252002b6d2f\",\n          \"order\": 7,\n          \"action\": \"assess phase purity using XRD analyzed by ML models and automated Rietveld refinement\",\n          \"conditions\": [],\n          \"notes\": \"ML models trained on structures from Materials Project and ICSD\",\n          \"evidence_quote\": \"Phase purity is assessed using XRD, analyzed by ML models trained on structures from the Materials Project and the Inorganic Crystal Structure Database (ICSD), and confirmed with automated Rietveld refinement.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_d4c14252002b6d2f\",\n          \"order\": 8,\n          \"action\": \"if target yield <50%, propose new synthesis recipes using active-learning algorithm\",\n          \"conditions\": [\"high (>50%) target yield not obtained\"],\n          \"notes\": \"identifies reaction pathways with maximal driving force to form target\",\n          \"evidence_quote\": \"If high (>50 %) target yield is not obtained, new synthesis recipes are proposed by an active-learning algorithm that identifies reaction pathways with maximal driving force to form the target.\"\n        }\n      ],\n      \"characterization\": [],\n      \"results\": [\n        {\n          \"source_chunk_id\": \"mdchk_d4c14252002b6d2f\",\n          \"metric\": \"materials synthesized\",\n          \"raw_value\": \"41 materials within 17 days\",\n          \"context\": \"demonstrated efficiency and scalability of fully automated systems combined with machine learning decision-making models\",\n          \"evidence_quote\": \"The A-Lab has demonstrated the ability to synthesize 41 materials within 17 days, showcasing the efficiency and scalability of fully automated systems combined with machine learning decision-making models.\"\n        }\n      ],\n      \"caveats\": []\n    },\n    {\n      \"source_chunk_ids\": [\"mdchk_ec5923ec80a71821\"],\n      \"protocol_name\": \"Microfluidic materials synthesis\",\n      \"protocol_type\": \"synthesis\",\n      \"materials\": [],\n      \"instruments\": [\n        {\n          \"source_chunk_id\": \"mdchk_ec5923ec80a71821\",\n          \"name\": \"microfluidic device\",\n          \"model\": null,\n          \"manufacturer\": null,\n          \"settings\": {\n            \"controlled_parameters\": [\"mixing reactants\", \"temperature\", \"flow rates\"],\n            \"scale\": \"microscale\",\n            \"channel_type\": \"tiny channels\"\n          },\n          \"evidence_quote\": \"Microfluidic devices allow precise control over reaction conditions, including mixing reactants, temperature, and flow rates within tiny channels.\"\n        }\n      ],\n      \"software\": [\n        {\n          \"source_chunk_id\": \"mdchk_ec5923ec80a71821\",\n          \"name\": \"machine learning methods\",\n          \"version\": null,\n          \"settings\": {\n            \"applications\": [\"rapid high-throughput screenings\", \"synthesis space exploration\", \"optimization\"],\n            \"specific_methods\": [\"gradient boosting (GB)\", \"random forest (RF)\"]\n          },\n          \"evidence_quote\": \"Microfluidic systems can also be incorporated with ML methods to create rapid, high- throughput screenings of various applications\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_ec5923ec80a71821\",\n          \"name\": \"Mask R-CNN with ResNet-50\",\n          \"version\": null,\n          \"settings\": {\n            \"purpose\": \"image detection and segmentation algorithms to analyze obtained images\",\n            \"application\": \"AI-accelerated high-throughput combinatorial drug evaluation\"\n          },\n          \"evidence_quote\": \"using a mask region-based convolutional neural network (Mask R-CNN) with ResNet-50, which is a library that provides image detection and 125 segmentation algorithms to analyze the obtained images.\"\n        }\n      ],\n      \"steps\": [\n        {\n          \"source_chunk_id\": \"mdchk_ec5923ec80a71821\",\n          \"order\": 1,\n          \"action\": \"manipulate fluids at microscale in microfluidic channels\",\n          \"conditions\": [],\n          \"notes\": \"precise control over reaction conditions\",\n          \"evidence_quote\": \"microfluidics 120, which manipulate fluids at the microscale and have emerged as powerful tools for synthesizing new materials.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_ec5923ec80a71821\",\n          \"order\": 2,\n          \"action\": \"control mixing of reactants, temperature, and flow rates within tiny channels\",\n          \"conditions\": [],\n          \"notes\": \"beneficial for synthesizing materials with uniform properties and creating gradient libraries\",\n          \"evidence_quote\": \"Microfluidic devices allow precise control over reaction conditions, including mixing reactants, temperature, and flow rates within tiny channels. This control is beneficial for synthesizing materials with uniform properties and creating gradient libraries with systematic composition variations.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_ec5923ec80a71821\",\n          \"order\": 3,\n          \"action\": \"conduct multiple reactions in parallel on single chip using individually controlled microchannels\",\n          \"conditions\": [],\n          \"notes\": \"significantly increases material synthesis throughput\",\n          \"evidence_quote\": \"A key advantage of microfluidic systems is to be able to conduct multiple reactions in parallel on a single chip. Microchannels, individually controlled, perform distinct reactions simultaneously, significantly increasing material synthesis throughput.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_ec5923ec80a71821\",\n          \"order\": 4,\n          \"action\": \"integrate with real-time spectroscopic monitoring for immediate feedback\",\n          \"conditions\": [],\n          \"notes\": \"enables rapid identification of promising material candidates and on-the-fly adjustments\",\n          \"evidence_quote\": \"Microfluidic platforms integrate with analytical techniques like real-time spectroscopic monitoring, providing immediate feedback on reaction progress and outcomes. This integration enables rapid identification of promising material candidates and on-the-fly adjustments to synthesis\"\n        }\n      ],\n      \"characterization\": [],\n      \"results\": [],\n      \"caveats\": []\n    },\n    {\n      \"source_chunk_ids\": [\"mdchk_3ef45f0d5fa14e21\"],\n      \"protocol_name\": \"Automated robotic solution-based materials synthesis\",\n      \"protocol_type\": \"synthesis\",\n      \"materials\": [],\n      \"instruments\": [\n        {\n          \"source_chunk_id\": \"mdchk_3ef45f0d5fa14e21\",\n          \"name\": \"liquid-handling robot\",\n          \"model\": null,\n          \"manufacturer\": null,\n          \"settings\": {\n            \"functions\": [\"prepare and dispense precise reagent quantities\", \"mix solutions\", \"carry out complex synthesis procedures\"]\n          },\n          \"evidence_quote\": \"In the automated settings, robots prepare and dispense precise reagent quantities, mix 97-100 solutions, and carry out complex synthesis procedures\"\n        }\n      ],\n      \"software\": [],\n      \"steps\": [\n        {\n          \"source_chunk_id\": \"mdchk_3ef45f0d5fa14e21\",\n          \"order\": 1,\n          \"action\": \"prepare and dispense precise reagent quantities using robot\",\n          \"conditions\": [],\n          \"notes\": null,\n          \"evidence_quote\": \"robots prepare and dispense precise reagent quantities, mix 97-100 solutions, and carry out complex synthesis procedures\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_3ef45f0d5fa14e21\",\n          \"order\": 2,\n          \"action\": \"mix solutions using robot\",\n          \"conditions\": [],\n          \"notes\": null,\n          \"evidence_quote\": \"robots prepare and dispense precise reagent quantities, mix 97-100 solutions, and carry out complex synthesis procedures\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_3ef45f0d5fa14e21\",\n          \"order\": 3,\n          \"action\": \"carry out complex synthesis procedures using robot\",\n          \"conditions\": [],\n          \"notes\": \"for solution-based processing of photovoltaic materials\",\n          \"evidence_quote\": \"carry out complex synthesis procedures as seen in Ahmadi et al., Brabec et 101-103 104-107 al. for solution-based processing of photovoltaic materials, and more.\"\n        }\n      ],\n      \"characterization\": [],\n      \"results\": [],\n      \"caveats\": []\n    }\n  ]\n}\n```",
+    "salvaged_protocol_count": 0,
+    "schema_invalid": false,
+    "stop_reason": "end_turn",
+    "usage": {
+      "inputTokens": 4759,
+      "outputTokens": 4900,
+      "totalTokens": 9659
+    }
+  }
+}

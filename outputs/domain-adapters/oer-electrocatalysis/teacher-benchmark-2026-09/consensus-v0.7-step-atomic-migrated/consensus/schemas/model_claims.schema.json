@@ -1,0 +1,219 @@
+{
+  "$defs": {
+    "ProposalEvidence": {
+      "additionalProperties": false,
+      "properties": {
+        "char_end": {
+          "exclusiveMinimum": 0,
+          "title": "Char End",
+          "type": "integer"
+        },
+        "char_start": {
+          "minimum": 0,
+          "title": "Char Start",
+          "type": "integer"
+        },
+        "document_char_end": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Document Char End"
+        },
+        "document_char_start": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Document Char Start"
+        },
+        "evidence_id": {
+          "title": "Evidence Id",
+          "type": "string"
+        },
+        "quote": {
+          "minLength": 1,
+          "title": "Quote",
+          "type": "string"
+        },
+        "source_chunk_id": {
+          "title": "Source Chunk Id",
+          "type": "string"
+        },
+        "source_sha256": {
+          "title": "Source Sha256",
+          "type": "string"
+        }
+      },
+      "required": [
+        "evidence_id",
+        "source_chunk_id",
+        "quote",
+        "char_start",
+        "char_end",
+        "source_sha256"
+      ],
+      "title": "ProposalEvidence",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "entity_key": {
+      "title": "Entity Key",
+      "type": "string"
+    },
+    "entity_type": {
+      "title": "Entity Type",
+      "type": "string"
+    },
+    "evidence": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/ProposalEvidence"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "evidence_scope": {
+      "enum": [
+        "primary_report",
+        "secondary_report",
+        "unknown"
+      ],
+      "title": "Evidence Scope",
+      "type": "string"
+    },
+    "evidence_valid": {
+      "title": "Evidence Valid",
+      "type": "boolean"
+    },
+    "field_name": {
+      "title": "Field Name",
+      "type": "string"
+    },
+    "field_path": {
+      "title": "Field Path",
+      "type": "string"
+    },
+    "model_alias": {
+      "title": "Model Alias",
+      "type": "string"
+    },
+    "model_family": {
+      "title": "Model Family",
+      "type": "string"
+    },
+    "model_id": {
+      "title": "Model Id",
+      "type": "string"
+    },
+    "paper_id": {
+      "title": "Paper Id",
+      "type": "string"
+    },
+    "perturbation_status": {
+      "default": "not_tested",
+      "enum": [
+        "not_tested",
+        "passed",
+        "failed"
+      ],
+      "title": "Perturbation Status",
+      "type": "string"
+    },
+    "protocol_name": {
+      "title": "Protocol Name",
+      "type": "string"
+    },
+    "schema_version": {
+      "default": "domain-teacher-field-proposal-v0.2",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "source_value": {
+      "title": "Source Value",
+      "type": "string"
+    },
+    "source_value_char_end": {
+      "anyOf": [
+        {
+          "exclusiveMinimum": 0,
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Source Value Char End"
+    },
+    "source_value_char_start": {
+      "anyOf": [
+        {
+          "minimum": 0,
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Source Value Char Start"
+    },
+    "source_value_occurrence": {
+      "default": "unlocated",
+      "enum": [
+        "exact_unique",
+        "ambiguous",
+        "not_exact",
+        "unlocated"
+      ],
+      "title": "Source Value Occurrence",
+      "type": "string"
+    },
+    "validation_reason": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Validation Reason"
+    }
+  },
+  "required": [
+    "model_alias",
+    "model_family",
+    "model_id",
+    "paper_id",
+    "evidence_scope",
+    "protocol_name",
+    "entity_type",
+    "entity_key",
+    "field_name",
+    "field_path",
+    "source_value",
+    "evidence_valid"
+  ],
+  "title": "ModelFieldProposal",
+  "type": "object"
+}

@@ -1,0 +1,80 @@
+{
+  "artifact_sha256": {
+    "corpus/continued_pretraining.jsonl": "969616050d9f3e328814c181115b2977dadabb281d281a0127a147b933e7fe96",
+    "knowledge/paper_records.jsonl": "f0b0c785d8840f67a5415a1e5cd778cea605fe32f65016e73c1f87518dc85ac7",
+    "knowledge/protocols.jsonl": "20651f990f4e2c66f5260bd89b9b04f9892f97a3dade6bd4ae531fcd93382790",
+    "knowledge/scientific_chunks.jsonl": "688af772280f809146fc7af14f6eaca8f327ec7018ae8b95ad759a0deaf4e2b4",
+    "reports/quality_report.json": "c55e1e068c2b85ffe2ae278a1caa00810d4935d2ee004138e101950c451d2040",
+    "reports/teacher_field_audit.jsonl": "f722c00e27e0933215c388eae33dbfbc1952348cc315f2d1552850127702d8b3",
+    "source/selection_manifest.json": "f67aa24722a96bee211d2dbf2e84bc03971073da283c3a620bbdf2ff8971ac35",
+    "tasks/evaluation/eval.jsonl": "32f8833a6d3eb988c3019f9ee1d5230c638b92ff348eecd76478d0368c3e9528",
+    "tasks/sft/train.jsonl": "95a83563a79a0622969b129c3b25a8262755903641014b8c17d13d32e03cdaa6"
+  },
+  "chunking": {
+    "exact_source_segment_provenance": true,
+    "max_chars_safety_limit": 6000,
+    "min_merge_chars": 800,
+    "schema_version": "domain-adapter-scientific-chunk-v0.1",
+    "source_blocks_immutable": true,
+    "strategy": "structure_first_semantic"
+  },
+  "classification_neutral": true,
+  "counts": {
+    "corpus_record_count": 184,
+    "paper_count": 20,
+    "protocol_count": 45,
+    "scientific_chunk_count": 184,
+    "task_count": 51
+  },
+  "domain": "oxygen evolution electrocatalysis",
+  "extraction": {
+    "extractor": "amazon_bedrock_structured_teacher",
+    "inference_config": {
+      "max_output_tokens": 14000,
+      "temperature": 0.0
+    },
+    "mode": "teacher",
+    "model": "moonshotai.kimi-k2.5",
+    "prompt_version": "oer-protocol-teacher-v0.2",
+    "region": "us-east-1",
+    "usage": {
+      "input_token_count": 95690,
+      "invocation_count": 20,
+      "latency_ms_total": 1097406,
+      "output_token_count": 76010,
+      "response_failure_diagnostics": [
+        {
+          "diagnostic": "Expecting property name enclosed in double quotes: line 1171 column 27 (char 59870)",
+          "paper_id": "DOI:10.1021_acs.chemrev.4c00055"
+        }
+      ],
+      "response_schema_failure_count": 1,
+      "salvaged_response_count": 1
+    }
+  },
+  "institution_entities_included": false,
+  "layers": [
+    "cleaned_corpus",
+    "scientific_chunks",
+    "structured_knowledge",
+    "task_suite"
+  ],
+  "package_descriptor": {
+    "dependencies": [],
+    "domain": "oxygen evolution electrocatalysis",
+    "facets": [],
+    "package_id": "oer-electrocatalysis",
+    "package_kind": "domain",
+    "package_version": "0.3.0-pre-review",
+    "schema_version": "domain-package-descriptor-v0.1"
+  },
+  "package_id": "oer-electrocatalysis",
+  "package_version": "0.3.0-pre-review",
+  "schema_version": "domain-adapter-package-v0.2",
+  "source_access": "s3_markdown",
+  "validation": {
+    "rejected_protocol_count": 0,
+    "rejected_teacher_field_count": 677,
+    "unsupported_evidence_count": 677
+  }
+}

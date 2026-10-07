@@ -23,7 +23,11 @@ from app.domain_adaptation.models import (
     SourceChunk,
     SourcePaper,
     SoftwareUse,
+    resolve_evidence_scope,
 )
+
+
+DEFAULT_OER_DOMAIN_TERMS = ("OER", "oxygen evolution", "water oxidation")
 
 
 class ProtocolExtractor(Protocol):
@@ -215,7 +219,10 @@ def is_high_information_chunk(chunk: SourceChunk) -> bool:
     return condition_count >= 1 and signals >= 2
 
 
-def extraction_chunk_score(chunk: SourceChunk) -> int:
+def extraction_chunk_score(
+    chunk: SourceChunk,
+    domain_terms: tuple[str, ...] = DEFAULT_OER_DOMAIN_TERMS,
+) -> int:
     """Rank high-information chunks for bounded teacher-model context."""
     if not is_high_information_chunk(chunk):
         return 0
@@ -223,7 +230,15 @@ def extraction_chunk_score(chunk: SourceChunk) -> int:
     score = min(len(_ACTION_RE.findall(text)), 6)
     score += min(len(_CONDITION_RE.findall(text)), 6)
     score += min(len(_METHOD_CUE_RE.findall(text)), 4)
-    if re.search(r"\b(?:OER|oxygen evolution|water oxidation)\b", text, re.I):
+    if any(
+        re.search(
+            rf"(?<!\w){re.escape(term.strip())}(?!\w)",
+            text,
+            re.IGNORECASE,
+        )
+        for term in domain_terms
+        if term.strip()
+    ):
         score += 2
     return score
 
@@ -467,10 +482,8 @@ class HeuristicOerExtractor:
             protocol_name=f"{paper.title}: {protocol_type.replace('_', ' ')}",
             protocol_type=protocol_type,
             source_paper_tier=paper.selection_tier,
-            evidence_scope=(
-                "primary_report"
-                if paper.selection_tier == "primary_oer"
-                else "secondary_report"
+            evidence_scope=resolve_evidence_scope(
+                paper.selection_tier, paper.evidence_scope
             ),
             source_chunk_ids=[chunk.chunk_id],
             materials=materials,

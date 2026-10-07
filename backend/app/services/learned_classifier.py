@@ -35,7 +35,7 @@ from app.classification_labels import (
     CLASSIFICATION_LABEL_ORDER,
     normalize_classification_label,
 )
-from app.config import DATA_DIR
+from app.config import DATA_DIR, settings
 from app.label_dataset import (
     ensure_disjoint_label_ids,
     ensure_distinct_label_paths,
@@ -447,7 +447,10 @@ def load_default_model(session=None) -> LearnedClassifier | None:
 
 
 def build_training_set(
-    session, training_labels_csv: Path | None = None
+    session,
+    training_labels_csv: Path | None = None,
+    *,
+    stage1_through_round: int | None = None,
 ) -> list[dict]:
     """Materialize feature rows for every paper with a training label.
 
@@ -460,6 +463,25 @@ def build_training_set(
     from app.models import HumanReview
 
     from app.config import settings as _settings
+
+    if _settings.sdl_stage1_only:
+        from app.services.sdl_stage1_service import stage1_label_map
+
+        round_limit = (
+            stage1_through_round
+            if stage1_through_round is not None
+            else _settings.sdl_stage1_training_through_round
+        )
+        if round_limit not in {1, 2, 3}:
+            return []
+        return build_examples_for_labels(
+            session,
+            stage1_label_map(
+                session,
+                role="train",
+                through_round=round_limit,
+            ),
+        )
 
     if training_labels_csv is None:
         training_labels_csv = _settings.training_labels_csv
@@ -503,6 +525,14 @@ def build_validation_set(
 ) -> list[dict]:
     """Materialize the dedicated validation set without using it for training."""
     from app.config import settings as _settings
+
+    if _settings.sdl_stage1_only:
+        from app.services.sdl_stage1_service import stage1_label_map
+
+        return build_examples_for_labels(
+            session,
+            stage1_label_map(session, role="validation"),
+        )
 
     validation_path = (
         Path(validation_labels_csv)
@@ -566,7 +596,9 @@ def build_examples_for_labels(
     evidence_index: dict[str, list] = {}
     for ev in session.execute(select(PaperEvidence)).scalars():
         evidence_index.setdefault(ev.paper_id, []).append(ev)
-    graph_signals = compute_graph_signals(session)
+    graph_signals = (
+        {} if settings.sdl_stage1_only else compute_graph_signals(session)
+    )
 
     examples: list[dict] = []
     for paper in session.execute(select(Paper)).scalars():

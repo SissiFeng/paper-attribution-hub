@@ -1,0 +1,236 @@
+{
+  "$defs": {
+    "MpuPrompt": {
+      "additionalProperties": false,
+      "properties": {
+        "condition": {
+          "enum": [
+            "closed_book_blind",
+            "closed_book_identified",
+            "fact_injected_probe",
+            "counterfactual",
+            "counterfactual_fact_injected"
+          ],
+          "title": "Condition",
+          "type": "string"
+        },
+        "domain": {
+          "maxLength": 200,
+          "minLength": 1,
+          "title": "Domain",
+          "type": "string"
+        },
+        "model_alias": {
+          "maxLength": 200,
+          "minLength": 1,
+          "title": "Model Alias",
+          "type": "string"
+        },
+        "model_id": {
+          "maxLength": 500,
+          "minLength": 1,
+          "title": "Model Id",
+          "type": "string"
+        },
+        "paper_id": {
+          "maxLength": 500,
+          "minLength": 1,
+          "title": "Paper Id",
+          "type": "string"
+        },
+        "prompt_id": {
+          "maxLength": 1000,
+          "minLength": 1,
+          "title": "Prompt Id",
+          "type": "string"
+        },
+        "prompt_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Prompt Sha256",
+          "type": "string"
+        },
+        "schema_version": {
+          "const": "evidence-following-mpu-prompt-v0.1",
+          "default": "evidence-following-mpu-prompt-v0.1",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "study_id": {
+          "maxLength": 500,
+          "minLength": 1,
+          "title": "Study Id",
+          "type": "string"
+        },
+        "system_instruction": {
+          "maxLength": 5000,
+          "minLength": 1,
+          "title": "System Instruction",
+          "type": "string"
+        },
+        "task_id": {
+          "maxLength": 500,
+          "minLength": 1,
+          "title": "Task Id",
+          "type": "string"
+        },
+        "user_payload": {
+          "$ref": "#/$defs/MpuPromptPayload"
+        }
+      },
+      "required": [
+        "prompt_id",
+        "prompt_sha256",
+        "study_id",
+        "task_id",
+        "paper_id",
+        "domain",
+        "model_alias",
+        "model_id",
+        "condition",
+        "system_instruction",
+        "user_payload"
+      ],
+      "title": "MpuPrompt",
+      "type": "object"
+    },
+    "MpuPromptPayload": {
+      "additionalProperties": false,
+      "properties": {
+        "blind_context": {
+          "anyOf": [
+            {
+              "maxLength": 5000,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Blind Context"
+        },
+        "current_source_evidence": {
+          "anyOf": [
+            {
+              "maxLength": 20000,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Current Source Evidence"
+        },
+        "paper_identity": {
+          "anyOf": [
+            {
+              "maxLength": 5000,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Paper Identity"
+        },
+        "prior_fact": {
+          "anyOf": [
+            {
+              "maxLength": 5000,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Prior Fact"
+        },
+        "question": {
+          "maxLength": 5000,
+          "minLength": 1,
+          "title": "Question",
+          "type": "string"
+        },
+        "schema_version": {
+          "const": "evidence-following-mpu-prompt-payload-v0.1",
+          "default": "evidence-following-mpu-prompt-payload-v0.1",
+          "title": "Schema Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "question"
+      ],
+      "title": "MpuPromptPayload",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "claims_boundary": {
+      "default": "This design measures observable evidence-following under controlled prompts. It does not measure chain-of-thought, prove training-set membership, or train adapters.",
+      "title": "Claims Boundary",
+      "type": "string"
+    },
+    "failed_gates": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Failed Gates",
+      "type": "array"
+    },
+    "model_count": {
+      "title": "Model Count",
+      "type": "integer"
+    },
+    "primary_paper_counts": {
+      "additionalProperties": {
+        "type": "integer"
+      },
+      "title": "Primary Paper Counts",
+      "type": "object"
+    },
+    "prompts": {
+      "items": {
+        "$ref": "#/$defs/MpuPrompt"
+      },
+      "title": "Prompts",
+      "type": "array"
+    },
+    "ready": {
+      "title": "Ready",
+      "type": "boolean"
+    },
+    "schema_version": {
+      "const": "evidence-following-mpu-design-v0.1",
+      "default": "evidence-following-mpu-design-v0.1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "study_id": {
+      "title": "Study Id",
+      "type": "string"
+    },
+    "task_counts": {
+      "additionalProperties": {
+        "type": "integer"
+      },
+      "title": "Task Counts",
+      "type": "object"
+    }
+  },
+  "required": [
+    "study_id",
+    "ready",
+    "failed_gates",
+    "primary_paper_counts",
+    "task_counts",
+    "model_count",
+    "prompts"
+  ],
+  "title": "MpuDesign",
+  "type": "object"
+}

@@ -8,7 +8,7 @@ from app.services.filter_spec import PaperFilter
 @dataclass
 class GraphNode:
     id: str
-    type: str        # "author" | "institution" | "paper" | "topic" | "method" | "funder" | "ac_core"
+    type: str        # author | institution | paper | topic | method | material | instrument | software | ...
     label: str
     group: str | None = None    # assigned by the active GroupProvider
     metadata: dict = field(default_factory=dict)

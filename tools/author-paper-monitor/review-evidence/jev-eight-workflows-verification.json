@@ -1,0 +1,204 @@
+{
+  "verified_at": "2026-10-05T23:35:15.298143+00:00",
+  "scope": "Eight advisory workflows; no automatic decision promotion",
+  "backend": {
+    "previous_task": "arn:aws:ecs:ca-central-1:247893369214:task-definition/paper-attribution-pas-dev-backend:4",
+    "task_definition": "arn:aws:ecs:ca-central-1:247893369214:task-definition/paper-attribution-pas-dev-backend:6",
+    "canary_task": "arn:aws:ecs:ca-central-1:247893369214:task/paper-attribution-dev-cluster/f7be2d8018cf4d5381cca3ba05c4919a",
+    "sha256": "49b8d2b4d5042f52b6851e7fefbd5cb6494794d0388035c3275fddbd68101fac",
+    "admin_parameter": "/paper-attribution-dev-author-monitor/jev-admin-key",
+    "reference_boundaries": {
+      "jev_reference/training_labels.csv": "8f6c596ee0abb178d734ff76092348a574cee573dde63c0b0b8b41ecde6fdeec",
+      "jev_reference/validation_labels.csv": "8f6c596ee0abb178d734ff76092348a574cee573dde63c0b0b8b41ecde6fdeec",
+      "jev_reference/eval_labels.csv": "6820bb8b3e48b442755ccb37e236c01c3a89ad460b7daa95aa3343f5ba28c470"
+    },
+    "reference_commit": "f065b226f35930f957f69bcdf6dd53020448bcd2",
+    "service_rollout": "COMPLETED",
+    "running": 1,
+    "canary_result": {
+      "canary": "passed",
+      "workflow_status": {
+        "author_identity": "needs_configuration",
+        "version_relation": "needs_configuration",
+        "reading_priority": "needs_configuration",
+        "analysis_route": "needs_configuration",
+        "retrieval_route": "needs_configuration",
+        "answer_evidence": "needs_configuration",
+        "review_priority": "needs_configuration",
+        "graph_relation": "needs_configuration"
+      },
+      "rag_hook": "verified",
+      "source": "actual PAS papers and indexed passage",
+      "paid_model_calls": 0
+    }
+  },
+  "public_api_acceptance": {
+    "auth_without_key": 401,
+    "configuration": {
+      "mode": "shadow",
+      "key_status": "needs_configuration",
+      "tasks": [
+        "author_identity",
+        "version_relation",
+        "reading_priority",
+        "analysis_route",
+        "retrieval_route",
+        "answer_evidence",
+        "review_priority",
+        "graph_relation"
+      ],
+      "daily_call_limit": 20,
+      "automatic_actions": false
+    },
+    "checks": {
+      "author_identity": {
+        "http": 200,
+        "status": "needs_configuration",
+        "automatic_action": false
+      },
+      "version_relation": {
+        "http": 200,
+        "status": "needs_configuration",
+        "automatic_action": false
+      },
+      "reading_priority": {
+        "http": 200,
+        "status": "needs_configuration",
+        "automatic_action": false
+      },
+      "analysis_route": {
+        "http": 200,
+        "status": "needs_configuration",
+        "automatic_action": false
+      },
+      "retrieval_route": {
+        "http": 200,
+        "status": "needs_configuration",
+        "automatic_action": false
+      },
+      "answer_evidence": {
+        "http": 200,
+        "status": "needs_configuration",
+        "automatic_action": false
+      },
+      "review_priority": {
+        "http": 200,
+        "status": "needs_configuration",
+        "automatic_action": false
+      },
+      "graph_relation": {
+        "http": 200,
+        "status": "needs_configuration",
+        "automatic_action": false
+      }
+    },
+    "fabricated_quote_http": 422,
+    "existing_papers_http": 200,
+    "health_http": 200,
+    "paid_model_calls": 0
+  },
+  "collector": {
+    "task": "arn:aws:ecs:ca-central-1:247893369214:task/paper-attribution-dev-cluster/faa624d52ddf45a2b58ddb71ffe08d0a",
+    "definition": "arn:aws:ecs:ca-central-1:247893369214:task-definition/paper-attribution-dev-author-monitor:9",
+    "exit_code": 0,
+    "bundle_sha256": "2acb0ff9b657f9ab6d7b46fc949beb5a1c74d3de3971d119dadb354ece1e3413",
+    "state_sha256": "f6797c3bd9b7b77bb873b0b8be747ef35d99e2177863aae36011fe6a2bad04c8",
+    "paper_status_counts": {
+      "seeded": 163
+    },
+    "pas_receipts": 163,
+    "reading_decisions": 0,
+    "workflow_report": {
+      "mode": "shadow",
+      "tasks": [
+        "author_identity",
+        "version_relation",
+        "reading_priority",
+        "analysis_route",
+        "retrieval_route",
+        "answer_evidence",
+        "review_priority",
+        "graph_relation"
+      ],
+      "version_candidates": 16,
+      "candidate_scope": "At most 200 recent records; heuristic shortlist, not exhaustive duplicate detection.",
+      "items": [
+        {
+          "paper_id": 1,
+          "advice": {
+            "task": "analysis_route",
+            "mode": "shadow",
+            "version": "ac-decisions-v1",
+            "automatic_action": false,
+            "status": "needs_configuration"
+          }
+        }
+      ],
+      "automatic_actions": false
+    }
+  },
+  "slack": {
+    "destination": "D0C6GC4H04F",
+    "notifications_enabled": true,
+    "tests": [
+      {
+        "command": "decisions",
+        "key": "b0a84b7c18423e1e7fa3cfb2c48e3cd78abee5d876025263c81c8f516ead0a97",
+        "job_key": "job:b0a84b7c18423e1e7fa3cfb2c48e3cd78abee5d876025263c81c8f516ead0a97:jev_decisions",
+        "status": "acknowledged",
+        "response": {
+          "response_type": "ephemeral",
+          "text": "Preparing experimental Jev suggestions in your private conversation. Regular updates stay unchanged."
+        },
+        "ack_ms": 1148,
+        "worker_result": {
+          "status": "complete",
+          "completed_at": 1791242748,
+          "kind": "jev_decisions"
+        }
+      },
+      {
+        "command": "home",
+        "key": "b429d1071ec88b1608f59498f90cd056e4d6a38a5020b5fc4d9528374f9fe7b0",
+        "job_key": "job:b429d1071ec88b1608f59498f90cd056e4d6a38a5020b5fc4d9528374f9fe7b0:home",
+        "status": "acknowledged",
+        "response": {
+          "response_type": "ephemeral",
+          "text": "Your author watchlist is available in the AC Papers Home tab."
+        },
+        "ack_ms": 244,
+        "worker_result": {
+          "status": "complete",
+          "completed_at": 1791242748,
+          "kind": "home"
+        }
+      }
+    ],
+    "authors_listed": 82,
+    "authors_active": 81
+  },
+  "schedule": {
+    "expression": "cron(17 12 * * ? *)",
+    "state": "ENABLED"
+  },
+  "stacks": {
+    "paper-attribution-dev-author-monitor": "UPDATE_COMPLETE",
+    "paper-attribution-dev-slack": "UPDATE_COMPLETE"
+  },
+  "tests": {
+    "monitor_and_jev": 132,
+    "related_backend_regression": 43,
+    "unique_passed_total": 175,
+    "ruff": "passed"
+  },
+  "live_jev_api_tested": false,
+  "paid_jev_calls": 0,
+  "reason": "No TypeSafe API key configured; real model quality and calibration remain unverified.",
+  "pricing": {
+    "official_url": "https://docs.typesafe.ai/models",
+    "checked_date": "2026-10-05",
+    "model": "jev-1.13.0",
+    "input_usd_per_million_tokens": 0.042,
+    "output_tokens_free": true
+  }
+}

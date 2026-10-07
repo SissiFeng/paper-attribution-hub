@@ -1,0 +1,49 @@
+{
+  "benchmark_id": "oer-teacher-models-step-atomic-2026-09",
+  "models": [
+    {
+      "alias": "kimi-k2-5",
+      "max_output_tokens": 14000,
+      "model_id": "moonshotai.kimi-k2.5",
+      "provider": "amazon_bedrock",
+      "region": "us-east-1",
+      "required_for_final": true
+    },
+    {
+      "alias": "claude-opus-5",
+      "max_output_tokens": 14000,
+      "model_id": "us.anthropic.claude-opus-5",
+      "provider": "amazon_bedrock",
+      "region": "us-east-1",
+      "required_for_final": true
+    },
+    {
+      "alias": "gpt-5-6-sol",
+      "max_output_tokens": 14000,
+      "model_id": "us.openai.gpt-5.6-sol",
+      "provider": "amazon_bedrock",
+      "region": "us-east-1",
+      "required_for_final": true
+    },
+    {
+      "alias": "claude-opus-4-6",
+      "max_output_tokens": 14000,
+      "model_id": "us.anthropic.claude-opus-4-6-v1",
+      "provider": "amazon_bedrock",
+      "region": "us-east-1",
+      "required_for_final": false
+    },
+    {
+      "alias": "deepseek-v3-2",
+      "max_output_tokens": 14000,
+      "model_id": "deepseek.v3.2",
+      "provider": "amazon_bedrock",
+      "region": "us-east-1",
+      "required_for_final": false
+    }
+  ],
+  "prompt_version": "scientific-protocol-teacher-v0.5-step-atomic",
+  "schema_version": "domain-teacher-benchmark-spec-v0.1",
+  "source_selection": "data/domain_adapters/oer_electrocatalysis_pilot.json",
+  "temperature": 0.0
+}

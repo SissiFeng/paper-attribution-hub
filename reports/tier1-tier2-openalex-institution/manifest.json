@@ -1,0 +1,105 @@
+{
+  "artifacts": {
+    "data_js": {
+      "bytes": 5370881,
+      "path": "frontend/public/data/tier1-tier2-openalex-institution-data.js",
+      "sha256": "48e7e0a95b8ed02a12ef8c63cb0e8507f7e285e1f051448ceafeb3bdc6b1b66a"
+    },
+    "institution_summary_default": {
+      "bytes": 304216,
+      "path": "reports/tier1-tier2-openalex-institution/institution_summary_default.csv",
+      "sha256": "e1e1a89807b0716f52e8026be2ceda2154329647e995a9d8082d5d2ad131808c"
+    },
+    "openalex_works": {
+      "bytes": 5493652,
+      "path": "reports/tier1-tier2-openalex-institution/openalex_works.jsonl.gz",
+      "sha256": "08a471d92444f3b14f3ce081e8a81cdab9bf24060fd334ef2b5cfd58d1b11d63"
+    },
+    "paper_match_audit": {
+      "bytes": 2603205,
+      "path": "reports/tier1-tier2-openalex-institution/paper_match_audit.csv",
+      "sha256": "ab10395044bd2d91c87093e6213a4ea087159b65f76e0a2df10edcc7fc3615e9"
+    }
+  },
+  "codebook": {
+    "author_position": {
+      "0": "middle",
+      "1": "first",
+      "2": "last"
+    },
+    "paper_membership": {
+      "1": "Tier 1 only",
+      "1+2": "Tier 1 and Tier 2",
+      "2": "Tier 2 only"
+    }
+  },
+  "counts": {
+    "affiliated_authorships": 51323,
+    "authorships": 54163,
+    "institutions": 6374,
+    "papers": 10874
+  },
+  "data_boundary": {
+    "excluded": [
+      "PDF or full text",
+      "classification outputs",
+      "PAS primary database",
+      "existing Tier 1 institution snapshot",
+      "Scopus affiliations as fallback"
+    ],
+    "included": [
+      "merged CSV bibliographic identity and tier membership",
+      "OpenAlex ordered authorships",
+      "OpenAlex institution and ROR assertions"
+    ],
+    "mode": "openalex_metadata_only_local_snapshot"
+  },
+  "default_report": {
+    "affiliation_credit_coverage": 0.943780145893951,
+    "corpus_papers": 10874,
+    "focus_paper_count": 104,
+    "focus_weighted_credit": 52.883884,
+    "other_paper_count": 9846,
+    "other_weighted_credit": 9579.791428,
+    "paper_institution_membership_coverage": 0.8352032370792717,
+    "papers_with_authorship_metadata": 10214,
+    "papers_with_complete_institution_membership": 9082
+  },
+  "generated_at": "2026-08-20T20:20:54.364889+00:00",
+  "input": {
+    "distinct_papers": 10874,
+    "duplicate_doi_groups": 16,
+    "duplicate_rows_beyond_first": 16,
+    "missing_doi_rows": 563,
+    "name": "tier1_tier2_merged_classification_ready (1).csv",
+    "raw_rows": 10890,
+    "rows_with_doi": 10327,
+    "sha256": "4bdaccfe3c91b50eb91119ddc8e18f85b2a4e25f5a802055e2fc8d4610adc922",
+    "tier_membership_rows": {
+      "1": 890,
+      "1+2": 165,
+      "2": 9835
+    },
+    "unique_dois": 10311
+  },
+  "openalex": {
+    "api_calls": 0,
+    "api_key_configured": false,
+    "cache_hits": 138,
+    "endpoint": "https://api.openalex.org/works",
+    "institution_coverage": {
+      "complete": 9082,
+      "incomplete": 1132,
+      "no_authorship_metadata": 660
+    },
+    "last_rate_limit": {},
+    "match_status": {
+      "doi_ambiguous": 25,
+      "doi_exact": 10239,
+      "missing_doi": 563,
+      "openalex_unmatched": 47
+    },
+    "select": "id,doi,title,publication_year,authorships,is_authors_truncated,is_retracted,updated_date"
+  },
+  "schema_version": "tier1_tier2_openalex_institution.v1"
+}

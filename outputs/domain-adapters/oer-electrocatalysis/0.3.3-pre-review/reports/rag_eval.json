@@ -1,0 +1,17 @@
+{
+  "abstain_accuracy": null,
+  "abstention_gold_question_count": 0,
+  "answer_f1": null,
+  "answer_precision": null,
+  "answer_recall": null,
+  "answered_gold_question_count": 0,
+  "citation_validity_rate": null,
+  "claims_boundary": "Only human-reviewed, annotation-complete questions contribute to metrics. Deterministic question proposals are not gold.",
+  "evidence_precision": null,
+  "evidence_recall": null,
+  "mean_reciprocal_rank": null,
+  "retrieval_k": 5,
+  "retrieval_recall_at_k": null,
+  "reviewed_question_count": 0,
+  "schema_version": "domain-adapter-rag-score-v0.1"
+}

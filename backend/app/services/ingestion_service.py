@@ -13,7 +13,7 @@ from app.adapters.base import PaperSource
 from app.config import settings
 from app.models import AcCorePaper, Author, Institution, Paper, PaperAuthor, Topic
 from app.review_contract import infer_corpus_sources
-from app.services.normalization_service import normalize_doi, normalize_name
+from app.services.normalization_service import normalize_doi, normalize_institution, normalize_name
 
 
 @dataclass
@@ -70,7 +70,16 @@ def ingest_people(session: Session, source: PaperSource) -> int:
         inst.canonical_name: inst for inst in session.execute(select(Institution)).scalars()
     }
     for rec in source.people():
-        institution = institutions_by_name.get(rec.institution) if rec.institution else None
+        inst_name = rec.institution.strip() if rec.institution else None
+        institution = None
+        if inst_name:
+            inst_norm = normalize_institution(inst_name)
+            institution = institutions_by_name.get(inst_name)
+            if institution is None:
+                for canon_name, inst_obj in institutions_by_name.items():
+                    if normalize_institution(canon_name) == inst_norm:
+                        institution = inst_obj
+                        break
         existing = session.execute(
             select(Author).where(Author.id == rec.person_id)
         ).scalar_one_or_none()

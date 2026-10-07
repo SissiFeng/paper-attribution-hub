@@ -1,0 +1,70 @@
+{
+  "verified_at": "2026-10-05T22:54:34.311366+00:00",
+  "collector_task": "arn:aws:ecs:ca-central-1:247893369214:task/paper-attribution-dev-cluster/51dfa21e286241fab4db93d4603df9c0",
+  "task_definition": "arn:aws:ecs:ca-central-1:247893369214:task-definition/paper-attribution-dev-author-monitor:8",
+  "exit_code": 0,
+  "bundle_sha256": "79d145c4d152ce5d00393e9e1de6d8210511b26224b75475ba52a8dbd6220870",
+  "paper_status_counts": {
+    "seeded": 163
+  },
+  "pas_receipts": 163,
+  "jev_decisions": 0,
+  "jev_status": {
+    "mode": "shadow",
+    "model": "jev-1.13.0",
+    "status": "needs_configuration",
+    "updated_at": 1791240785,
+    "attempted": 0,
+    "succeeded": 0,
+    "errors": 0
+  },
+  "report_papers": 163,
+  "report_scored": 0,
+  "daily_schedule": "cron(17 12 * * ? *)",
+  "schedule_state": "ENABLED",
+  "slack_destination": "D0C6GC4H04F",
+  "notifications_enabled": true,
+  "last_collection": "2026-10-05T22:53:05.949796+00:00",
+  "local_tests_passed": 88,
+  "live_jev_api_tested": false,
+  "reason": "User has not applied for an API key; config entry is ready.",
+  "report_sha256": "405cf8858fad38aafe7f68c029bac9b64aa1d257e4f0679b684dc2217f3676b0",
+  "slack_live_tests": [
+    {
+      "command": "review",
+      "key": "9871ed08a490a343d7824cda985e6f925232b3bee9440bafa8038bb284b96b33",
+      "job_key": "job:9871ed08a490a343d7824cda985e6f925232b3bee9440bafa8038bb284b96b33:jev_review",
+      "status": "acknowledged",
+      "response": {
+        "response_type": "ephemeral",
+        "text": "Preparing experimental Jev suggestions in your private conversation. Regular updates stay unchanged."
+      },
+      "ack_ms": 1246,
+      "worker_result": {
+        "status": "complete",
+        "completed_at": 1791240878,
+        "kind": "jev_review"
+      }
+    },
+    {
+      "command": "home",
+      "key": "83e6d7b29f28ba4edd88070e0252759cb2a9ba3ed6eb450069c58e95e3b06e96",
+      "job_key": "job:83e6d7b29f28ba4edd88070e0252759cb2a9ba3ed6eb450069c58e95e3b06e96:home",
+      "status": "acknowledged",
+      "response": {
+        "response_type": "ephemeral",
+        "text": "Your author watchlist is available in the AC Papers Home tab."
+      },
+      "ack_ms": 130,
+      "worker_result": {
+        "status": "complete",
+        "completed_at": 1791240878,
+        "kind": "home"
+      }
+    }
+  ],
+  "stacks": {
+    "paper-attribution-dev-author-monitor": "UPDATE_COMPLETE",
+    "paper-attribution-dev-slack": "UPDATE_COMPLETE"
+  }
+}

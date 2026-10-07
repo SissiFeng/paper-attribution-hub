@@ -1,0 +1,55 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "abstained": {
+      "title": "Abstained",
+      "type": "boolean"
+    },
+    "answer_items": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Answer Items",
+      "type": "array"
+    },
+    "answer_text": {
+      "title": "Answer Text",
+      "type": "string"
+    },
+    "cited_evidence_ids": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Cited Evidence Ids",
+      "type": "array"
+    },
+    "question_id": {
+      "title": "Question Id",
+      "type": "string"
+    },
+    "retrieved_scientific_chunk_ids": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Retrieved Scientific Chunk Ids",
+      "type": "array"
+    },
+    "schema_version": {
+      "default": "domain-adapter-rag-prediction-v0.1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "system_id": {
+      "title": "System Id",
+      "type": "string"
+    }
+  },
+  "required": [
+    "question_id",
+    "answer_text",
+    "abstained",
+    "system_id"
+  ],
+  "title": "RagPrediction",
+  "type": "object"
+}

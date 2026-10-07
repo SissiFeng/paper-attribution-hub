@@ -4,16 +4,21 @@ import { institutionTopicHeatmapTooltip } from "@/lib/chartTooltips";
 import { TimeSlider } from "@/components/TimeSlider";
 import {
   getNetworkGrowth,
+  getInstitutionComparison,
   getTopicStream,
   getInstTopicHeatmap,
   getHubScore,
+  getStage1Readiness,
 } from "@/lib/api";
+import { Stage1Unavailable } from "@/components/Stage1Unavailable";
 import type {
   NetworkGrowthPayload,
   TopicStreamPayload,
   InstTopicHeatmapPayload,
   HubScorePayload,
   GrowthPoint,
+  InstitutionComparisonPayload,
+  Stage1Readiness,
 } from "@/types";
 
 // ── Palette ───────────────────────────────────────────────────────────────────
@@ -44,7 +49,7 @@ const TOPIC_COLORS = [
 ];
 
 type GrowthMode = "cumulative" | "yearly" | "growth_rate";
-type ActiveTab = "growth" | "topics" | "heatmap" | "hub";
+type ActiveTab = "growth" | "institutions" | "topics" | "heatmap" | "hub";
 
 const BASE_ECHARTS_STYLE: React.CSSProperties = {
   height: "100%",
@@ -56,7 +61,8 @@ const BASE_ECHARTS_STYLE: React.CSSProperties = {
 function buildGrowthOption(
   data: NetworkGrowthPayload,
   mode: GrowthMode,
-  activeLines: Set<string>
+  activeLines: Set<string>,
+  descriptivePreview: boolean,
 ) {
   const rows = mode === "cumulative" ? data.cumulative : data.yearly;
   const years = rows.map((r) => String(r.year));
@@ -64,7 +70,14 @@ function buildGrowthOption(
   const pct = (curr: number, prev: number) =>
     prev === 0 ? 0 : Math.round(((curr - prev) / prev) * 100);
 
-  const series = GROWTH_SERIES.filter((s) => activeLines.has(s.key)).map((s) => {
+  const visibleSeries = GROWTH_SERIES
+    .filter((series) => !descriptivePreview || series.key !== "countries")
+    .map((series) => (
+      descriptivePreview && series.key === "collaborations"
+        ? { ...series, label: "Co-affiliation papers" }
+        : series
+    ));
+  const series = visibleSeries.filter((s) => activeLines.has(s.key)).map((s) => {
     const rawVals = rows.map((r) => r[s.key as keyof GrowthPoint] as number);
     const vals =
       mode === "growth_rate"
@@ -390,7 +403,7 @@ function buildHubOption(data: HubScorePayload) {
 
 export default function NetworkGrowthPage() {
   const currentYear = new Date().getFullYear();
-  const [yearFrom, setYearFrom] = useState(2021);
+  const [yearFrom, setYearFrom] = useState(2013);
   const [yearTo,   setYearTo]   = useState(currentYear);
   const [activeTab, setActiveTab] = useState<ActiveTab>("growth");
   const [growthMode, setGrowthMode] = useState<GrowthMode>("cumulative");
@@ -402,11 +415,43 @@ export default function NetworkGrowthPage() {
   const [stream,  setStream]  = useState<TopicStreamPayload | null>(null);
   const [heatmap, setHeatmap] = useState<InstTopicHeatmapPayload | null>(null);
   const [hub,     setHub]     = useState<HubScorePayload | null>(null);
+  const [institutionComparison, setInstitutionComparison] =
+    useState<InstitutionComparisonPayload | null>(null);
   const [loading, setLoading] = useState(false);
+  const [readiness, setReadiness] = useState<Stage1Readiness | null>(null);
 
   const load = useCallback(async () => {
     setLoading(true);
     try {
+      const stage1 = await getStage1Readiness();
+      setReadiness(stage1);
+      if (
+        !stage1.derived_views_enabled
+        && !stage1.descriptive_analytics_enabled
+      ) {
+        setGrowth(null);
+        setStream(null);
+        setHeatmap(null);
+        setHub(null);
+        setInstitutionComparison(null);
+        return;
+      }
+      if (stage1.stage1_only) {
+        const [g, comparison] = await Promise.all([
+          getNetworkGrowth({ year_from: yearFrom, year_to: yearTo }),
+          getInstitutionComparison("University of Toronto", {
+            year_from: yearFrom,
+            year_to: yearTo,
+            limit: 25,
+          }),
+        ]);
+        setGrowth(g);
+        setInstitutionComparison(comparison);
+        setStream(null);
+        setHeatmap(null);
+        setHub(null);
+        return;
+      }
       const [g, s, h, hs] = await Promise.all([
         getNetworkGrowth({ year_from: yearFrom, year_to: yearTo }),
         getTopicStream({ year_from: yearFrom, year_to: yearTo }),
@@ -417,6 +462,7 @@ export default function NetworkGrowthPage() {
       setStream(s);
       setHeatmap(h);
       setHub(hs);
+      setInstitutionComparison(null);
     } finally {
       setLoading(false);
     }
@@ -456,7 +502,21 @@ export default function NetworkGrowthPage() {
     };
   }, [growth, yearFrom, yearTo, currentYear]);
 
-  const growthOption  = useMemo(() => filteredGrowth ? buildGrowthOption(filteredGrowth, growthMode, activeLines) : null, [filteredGrowth, growthMode, activeLines]);
+  const descriptivePreview = Boolean(
+    readiness?.stage1_only
+    && readiness.descriptive_analytics_enabled
+  );
+  const growthOption  = useMemo(
+    () => filteredGrowth
+      ? buildGrowthOption(
+          filteredGrowth,
+          growthMode,
+          activeLines,
+          descriptivePreview,
+        )
+      : null,
+    [filteredGrowth, growthMode, activeLines, descriptivePreview],
+  );
   const streamOption  = useMemo(() => stream  ? buildStreamOption(stream)  : null, [stream]);
   const heatmapOption = useMemo(() => heatmap ? buildHeatmapOption(heatmap) : null, [heatmap]);
   const hubOption     = useMemo(() => hub     ? buildHubOption(hub)         : null, [hub]);
@@ -470,12 +530,33 @@ export default function NetworkGrowthPage() {
     });
   };
 
-  const TABS: { key: ActiveTab; label: string }[] = [
-    { key: "growth",  label: "Cumulative Growth" },
-    { key: "topics",  label: "Topic Streamgraph" },
-    { key: "heatmap", label: "Institution × Topic" },
-    { key: "hub",     label: "UofT Hub Score" },
-  ];
+  const TABS: { key: ActiveTab; label: string }[] = descriptivePreview
+    ? [
+        { key: "growth", label: "Corpus Growth" },
+        { key: "institutions", label: "UofT vs Institutions" },
+      ]
+    : [
+        { key: "growth",  label: "Cumulative Growth" },
+        { key: "topics",  label: "Topic Streamgraph" },
+        { key: "heatmap", label: "Institution × Topic" },
+        { key: "hub",     label: "UofT Hub Score" },
+      ];
+
+  if (
+    readiness
+    && !readiness.derived_views_enabled
+    && !readiness.descriptive_analytics_enabled
+  ) {
+    return (
+      <Stage1Unavailable
+        title="Research Network Growth"
+        description="Network analytics will be generated from the validated Tier 1 SDL corpus, not from incomplete metadata or AC-member seed data."
+        readiness={readiness}
+        loading={loading}
+        onRefresh={() => void load()}
+      />
+    );
+  }
 
   return (
     <div className="v7-page">
@@ -484,8 +565,9 @@ export default function NetworkGrowthPage() {
         <div>
           <h1>Research Network Growth</h1>
           <p>
-            How the SDL research network expands over time — growth curves, topic streams,
-            institution-topic coverage, and UofT's emerging hub position.
+            {descriptivePreview
+              ? "Verified Zotero Tier 1 full texts: corpus growth and paper-level UofT affiliation comparisons."
+              : "How the SDL research network expands over time — growth curves, topic streams, institution-topic coverage, and UofT's emerging hub position."}
           </p>
         </div>
         <div className="v7-hero-actions">
@@ -494,6 +576,28 @@ export default function NetworkGrowthPage() {
           </button>
         </div>
       </div>
+
+      {descriptivePreview && readiness && (
+        <div
+          className="v7-card"
+          style={{
+            marginBottom: 16,
+            padding: "14px 18px",
+            borderLeft: `4px solid ${PALETTE.pink}`,
+          }}
+        >
+          <div style={{ fontWeight: 700, color: PALETTE.navy }}>
+            Tier 1 descriptive preview · {readiness.fulltexts_imported} verified full texts
+          </div>
+          <div style={{ marginTop: 5, color: "var(--muted)", fontSize: 12 }}>
+            Institution counts come only from author-affiliation text in the
+            extracted Markdown front matter. “Shared papers” means two
+            institutions appear on the same paper; it is not an author-level
+            collaboration claim. Classification, review, and AC-member seed
+            data are not used.
+          </div>
+        </div>
+      )}
 
       {/* ── Year slider ──────────────────────────────────────────── */}
       <TimeSlider
@@ -505,9 +609,17 @@ export default function NetworkGrowthPage() {
       {/* ── KPI cards ────────────────────────────────────────────── */}
       <div className="v7-stat-grid">
         <div className="v7-stat">
-          <div className="label">AC-Relevant Papers</div>
-          <div className="value">{latestCumulative?.papers ?? "—"}</div>
-          <div className="delta">{yearFrom}–{yearTo} cumulative</div>
+          <div className="label">
+            {descriptivePreview ? "Verified Tier 1 Full Texts" : "Validated SDL Papers"}
+          </div>
+          <div className="value">
+            {descriptivePreview
+              ? readiness?.fulltexts_imported ?? "—"
+              : latestCumulative?.papers ?? "—"}
+          </div>
+          <div className="delta">
+            {descriptivePreview ? "Markdown ETL complete" : `${yearFrom}–${yearTo} cumulative`}
+          </div>
         </div>
         <div className="v7-stat">
           <div className="label">Active Authors</div>
@@ -515,22 +627,48 @@ export default function NetworkGrowthPage() {
           <div className="delta">unique contributors</div>
         </div>
         <div className="v7-stat">
-          <div className="label">Partner Institutions</div>
-          <div className="value">{latestCumulative?.institutions ?? "—"}</div>
-          <div className="delta">organizations</div>
-        </div>
-        <div className="v7-stat">
-          <div className="label">Countries</div>
-          <div className="value">{latestCumulative?.countries ?? "—"}</div>
-          <div className="delta">geographic reach</div>
-        </div>
-        <div className="v7-stat">
-          <div className="label">UofT Hub Score</div>
-          <div className="value" style={{ color: "#DDAED3" }}>
-            {latestHub ? latestHub.hub_score.toFixed(2) : "—"}
+          <div className="label">
+            {descriptivePreview ? "Identified Institutions" : "Partner Institutions"}
           </div>
-          <div className="delta up">
-            {latestHub ? `↑ ${Math.round(latestHub.degree_centrality * 100)}% centrality` : "composite score"}
+          <div className="value">{latestCumulative?.institutions ?? "—"}</div>
+          <div className="delta">
+            {descriptivePreview ? "front-matter affiliations" : "organizations"}
+          </div>
+        </div>
+        <div className="v7-stat">
+          <div className="label">
+            {descriptivePreview ? "UofT Papers" : "Countries"}
+          </div>
+          <div className="value">
+            {descriptivePreview
+              ? institutionComparison?.focus.paper_count ?? "—"
+              : latestCumulative?.countries ?? "—"}
+          </div>
+          <div className="delta">
+            {descriptivePreview
+              ? `${Math.round((institutionComparison?.focus.share_of_corpus ?? 0) * 100)}% of current corpus`
+              : "geographic reach"}
+          </div>
+        </div>
+        <div className="v7-stat">
+          <div className="label">
+            {descriptivePreview ? "Affiliation Coverage" : "UofT Hub Score"}
+          </div>
+          <div className="value" style={{ color: "#DDAED3" }}>
+            {descriptivePreview
+              ? institutionComparison
+                ? `${Math.round(institutionComparison.scope.extraction_coverage * 100)}%`
+                : "—"
+              : latestHub
+                ? latestHub.hub_score.toFixed(2)
+                : "—"}
+          </div>
+          <div className={descriptivePreview ? "delta" : "delta up"}>
+            {descriptivePreview
+              ? "papers with detected author affiliations"
+              : latestHub
+                ? `↑ ${Math.round(latestHub.degree_centrality * 100)}% centrality`
+                : "composite score"}
           </div>
         </div>
       </div>
@@ -579,7 +717,14 @@ export default function NetworkGrowthPage() {
 
             {/* Line toggles */}
             <div style={{ display: "flex", gap: 5, flexWrap: "wrap" }}>
-              {GROWTH_SERIES.map((s) => {
+              {GROWTH_SERIES
+                .filter((series) => !descriptivePreview || series.key !== "countries")
+                .map((series) => (
+                  descriptivePreview && series.key === "collaborations"
+                    ? { ...series, label: "Co-affiliation papers" }
+                    : series
+                ))
+                .map((s) => {
                 const on = activeLines.has(s.key);
                 return (
                   <button
@@ -610,6 +755,92 @@ export default function NetworkGrowthPage() {
               <EChart option={growthOption} style={BASE_ECHARTS_STYLE} />
             ) : null}
           </div>
+        </div>
+      )}
+
+      {activeTab === "institutions" && descriptivePreview && (
+        <div className="v7-card" style={{ padding: "18px 20px" }}>
+          <div style={{ marginBottom: 14 }}>
+            <h2 style={{ margin: 0, color: PALETTE.navy }}>
+              University of Toronto vs other institutions
+            </h2>
+            <p style={{ margin: "6px 0 0", color: "var(--muted)", fontSize: 12 }}>
+              Ranked by distinct papers in the current verified Tier 1
+              full-text corpus. The shared-paper column is a paper-level
+              affiliation co-occurrence.
+            </p>
+          </div>
+          {institutionComparison ? (
+            <>
+              <div
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "minmax(220px, 2fr) repeat(3, minmax(100px, 1fr))",
+                  gap: 10,
+                  padding: "8px 10px",
+                  borderBottom: "1px solid var(--border)",
+                  color: "var(--muted)",
+                  fontSize: 11,
+                  fontWeight: 700,
+                }}
+              >
+                <span>Institution</span>
+                <span>Papers</span>
+                <span>Corpus share</span>
+                <span>Shared with UofT</span>
+              </div>
+              {institutionComparison.institutions.map((row) => {
+                const maxCount = Math.max(
+                  ...institutionComparison.institutions.map((item) => item.paper_count),
+                  1,
+                );
+                return (
+                  <div
+                    key={row.name}
+                    style={{
+                      display: "grid",
+                      gridTemplateColumns: "minmax(220px, 2fr) repeat(3, minmax(100px, 1fr))",
+                      gap: 10,
+                      alignItems: "center",
+                      padding: "10px",
+                      borderBottom: "1px solid rgba(33,60,81,0.07)",
+                      fontSize: 12,
+                    }}
+                  >
+                    <div>
+                      <div style={{ fontWeight: 650, color: PALETTE.navy }}>
+                        {row.name}
+                      </div>
+                      <div
+                        style={{
+                          marginTop: 5,
+                          width: `${Math.max(4, (row.paper_count / maxCount) * 100)}%`,
+                          height: 5,
+                          borderRadius: 4,
+                          background:
+                            row.name === institutionComparison.focus.name
+                              ? PALETTE.pink
+                              : PALETTE.steel,
+                        }}
+                      />
+                    </div>
+                    <strong>{row.paper_count}</strong>
+                    <span>{(row.share_of_corpus * 100).toFixed(1)}%</span>
+                    <span>{row.shared_papers_with_focus}</span>
+                  </div>
+                );
+              })}
+              <div style={{ marginTop: 14, color: "var(--muted)", fontSize: 11 }}>
+                Coverage: {institutionComparison.scope.papers_with_affiliations} of{" "}
+                {institutionComparison.scope.fulltext_papers} full texts have at
+                least one detected front-matter institution. Extractor:{" "}
+                {institutionComparison.audit.extractor}. Classification used: no.
+                AC-member seed used: no.
+              </div>
+            </>
+          ) : (
+            <div className="v7-empty">Loading institution comparison…</div>
+          )}
         </div>
       )}
 

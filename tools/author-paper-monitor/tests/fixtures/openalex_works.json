@@ -1,0 +1,51 @@
+{
+  "meta": {"count": 4, "next_cursor": null, "per_page": 200},
+  "results": [
+    {
+      "id": "https://openalex.org/W4400000001",
+      "doi": "https://doi.org/10.1038/s41586-026-00001-1",
+      "title": "Self-driving laboratory for <i>accelerated</i> catalyst discovery",
+      "publication_date": "2026-09-28",
+      "type": "article",
+      "is_retracted": false,
+      "ids": {"openalex": "https://openalex.org/W4400000001", "doi": "https://doi.org/10.1038/s41586-026-00001-1"},
+      "primary_location": {"landing_page_url": "https://www.nature.com/articles/x", "source": {"display_name": "Nature"}},
+      "authorships": [
+        {"author": {"id": "https://openalex.org/A5000000001", "display_name": "Alán Aspuru‐Guzik", "orcid": "https://orcid.org/0000-0003-1024-3325"}},
+        {"author": {"id": "https://openalex.org/A5000000099", "display_name": "Jane Doe", "orcid": null}},
+        {"author": {"id": "https://openalex.org/A5000000002", "display_name": "Anatole von Lilienfeld", "orcid": null}}
+      ],
+      "abstract_inverted_index": {"We": [0], "built": [1], "a": [2], "lab.": [3]}
+    },
+    {
+      "id": "https://openalex.org/W4400000002",
+      "doi": "https://doi.org/10.48550/arxiv.2609.01234",
+      "title": "Bayesian optimization under budget constraints",
+      "publication_date": "2026-09-15",
+      "type": "preprint",
+      "is_retracted": false,
+      "primary_location": {"landing_page_url": "https://arxiv.org/abs/2609.01234", "source": {"display_name": "arXiv (Cornell University)"}},
+      "authorships": [{"author": {"id": "https://openalex.org/A5000000002", "display_name": "Anatole von Lilienfeld"}}],
+      "abstract_inverted_index": null
+    },
+    {
+      "id": "https://openalex.org/W4400000003",
+      "doi": "https://doi.org/10.1038/s41586-026-00001-9",
+      "title": "Correction: Something",
+      "publication_date": "2026-09-20",
+      "type": "erratum",
+      "is_retracted": false,
+      "primary_location": {"source": {"display_name": "Nature"}},
+      "authorships": [{"author": {"id": "https://openalex.org/A5000000001", "display_name": "A. Aspuru-Guzik"}}]
+    },
+    {
+      "id": "https://openalex.org/W4400000004",
+      "doi": null,
+      "title": null,
+      "publication_date": "2026-09-20",
+      "type": "article",
+      "primary_location": null,
+      "authorships": []
+    }
+  ]
+}

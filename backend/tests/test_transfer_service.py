@@ -1,7 +1,7 @@
 """Cross-SDL knowledge-transfer analytics: flows, adoption lags, summary."""
 from __future__ import annotations
 
-from fastapi.testclient import TestClient
+from tests.admin_client import AdminTestClient as TestClient
 
 from app.models import Paper, PaperEntity, PaperLabLink, PaperReference, SdlLab
 from app.services.transfer_service import (

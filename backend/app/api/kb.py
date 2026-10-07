@@ -9,8 +9,13 @@ from app.schemas import (
     KbEntityPageOut,
     KbLabProfileOut,
     KbSummaryOut,
+    ScientificKnowledgeOut,
 )
 from app.services.kb_service import entity_index, entity_page, kb_summary, lab_profile
+from app.services.scientific_knowledge_service import (
+    ScientificKnowledgeNotFoundError,
+    get_scientific_knowledge,
+)
 
 router = APIRouter(prefix="/kb", tags=["kb"])
 
@@ -19,6 +24,32 @@ router = APIRouter(prefix="/kb", tags=["kb"])
 def summary(session: Session = Depends(get_session)) -> KbSummaryOut:
     """Headline totals for the knowledge-base landing page."""
     return KbSummaryOut(**kb_summary(session))
+
+
+@router.get(
+    "/papers/{paper_id}/scientific-knowledge",
+    response_model=ScientificKnowledgeOut,
+)
+def scientific_knowledge(
+    paper_id: str,
+    session: Session = Depends(get_session),
+) -> ScientificKnowledgeOut:
+    """Read a compiled, classification-neutral scientific knowledge record."""
+    try:
+        record = get_scientific_knowledge(session, paper_id)
+    except ScientificKnowledgeNotFoundError as exc:
+        raise HTTPException(status_code=404, detail=str(exc)) from exc
+    return ScientificKnowledgeOut(
+        paper_id=record.paper_id,
+        schema_version=record.schema_version,
+        compiler_version=record.compiler_version,
+        source_snapshot_hash=record.source_snapshot_hash,
+        content_hash=record.content_hash,
+        entities=record.entities,
+        assertions=record.assertions,
+        source_metadata=record.source_metadata,
+        generated_at=record.generated_at,
+    )
 
 
 @router.get("/entities", response_model=list[KbEntityIndexOut])

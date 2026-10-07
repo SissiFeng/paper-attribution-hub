@@ -119,15 +119,12 @@ FRONTEND_URL="$(terraform -chdir="$TF_DIR" output -raw frontend_url)"
 echo "[7/8] Building and uploading the frontend"
 (
   cd "$REPO_ROOT/frontend"
-  VITE_API_BASE="$API_URL" VITE_USE_MOCK=false npm ci
-  VITE_API_BASE="$API_URL" VITE_USE_MOCK=false npm run build
+  VITE_API_BASE="/api" VITE_USE_MOCK=false npm ci
+  VITE_API_BASE="/api" VITE_USE_MOCK=false npm run build
+  npm run build:reading
 )
-aws s3 sync "$REPO_ROOT/frontend/dist/" "s3://${FRONTEND_BUCKET}/" \
-  --delete \
-  --cache-control "no-cache"
-aws s3 cp "$REPO_ROOT/frontend/dist/assets/" "s3://${FRONTEND_BUCKET}/assets/" \
-  --recursive \
-  --cache-control "max-age=31536000,public,immutable"
+bash "$REPO_ROOT/aws/scripts/publish_frontend.sh" \
+  "$REPO_ROOT/frontend/dist" "$REPO_ROOT/frontend/dist-reading" "$FRONTEND_BUCKET"
 aws cloudfront create-invalidation \
   --distribution-id "$CF_DIST_ID" \
   --paths "/*" >/dev/null

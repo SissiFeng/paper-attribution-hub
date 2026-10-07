@@ -14,9 +14,26 @@ export interface MultiGraphProjectionState {
 }
 
 export const DEFAULT_MULTI_GRAPH_PROJECTION: MultiGraphProjectionState = {
-  nodeTypes: ["author", "paper"],
-  edgeTypes: ["authored"],
-  groupBy: "by_institution",
+  nodeTypes: [
+    "author",
+    "paper",
+    "institution",
+    "topic",
+    "method",
+    "material",
+    "instrument",
+    "software",
+  ],
+  edgeTypes: [
+    "authored",
+    "published_by",
+    "belongs_to_topic",
+    "uses_method",
+    "mentions_material",
+    "mentions_instrument",
+    "mentions_software",
+  ],
+  groupBy: "by_entity_type",
   centerId: null,
   hopLimit: 2,
   similarityMin: 0.7,

@@ -33,7 +33,7 @@ def test_network_payload_exposes_normalized_bridge_score(session):
 
 
 def test_coauthor_endpoint_filters_nodes_and_audits_projection(session):
-    from fastapi.testclient import TestClient
+    from tests.admin_client import AdminTestClient as TestClient
 
     from app.main import app
 
@@ -102,7 +102,7 @@ def test_coauthor_endpoint_filters_nodes_and_audits_projection(session):
 
 
 def test_coauthor_endpoint_distinguishes_filtered_and_corpus_paper_counts(session):
-    from fastapi.testclient import TestClient
+    from tests.admin_client import AdminTestClient as TestClient
 
     from app.main import app
 
@@ -151,7 +151,7 @@ def test_coauthor_endpoint_distinguishes_filtered_and_corpus_paper_counts(sessio
     ],
 )
 def test_coauthor_endpoint_rejects_invalid_importance_configuration(session, query):
-    from fastapi.testclient import TestClient
+    from tests.admin_client import AdminTestClient as TestClient
 
     from app.main import app
 
@@ -164,7 +164,7 @@ def test_coauthor_endpoint_rejects_invalid_importance_configuration(session, que
 
 
 def test_coauthor_audit_records_effective_normalized_weights(session):
-    from fastapi.testclient import TestClient
+    from tests.admin_client import AdminTestClient as TestClient
 
     from app.main import app
 
@@ -185,7 +185,7 @@ def test_coauthor_audit_records_effective_normalized_weights(session):
 
 
 def test_coauthor_profile_changes_projection_not_evidence_scope(session):
-    from fastapi.testclient import TestClient
+    from tests.admin_client import AdminTestClient as TestClient
 
     from app.main import app
 

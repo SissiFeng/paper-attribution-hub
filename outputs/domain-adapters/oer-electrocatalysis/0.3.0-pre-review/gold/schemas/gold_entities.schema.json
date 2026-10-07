@@ -1,0 +1,121 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "char_end": {
+      "exclusiveMinimum": 0,
+      "title": "Char End",
+      "type": "integer"
+    },
+    "char_start": {
+      "minimum": 0,
+      "title": "Char Start",
+      "type": "integer"
+    },
+    "entity_type": {
+      "enum": [
+        "material",
+        "instrument",
+        "software",
+        "step",
+        "characterization",
+        "result",
+        "caveat"
+      ],
+      "title": "Entity Type",
+      "type": "string"
+    },
+    "evidence_chunk_id": {
+      "title": "Evidence Chunk Id",
+      "type": "string"
+    },
+    "evidence_quote": {
+      "title": "Evidence Quote",
+      "type": "string"
+    },
+    "field_name": {
+      "title": "Field Name",
+      "type": "string"
+    },
+    "gold_entity_id": {
+      "title": "Gold Entity Id",
+      "type": "string"
+    },
+    "normalized_value": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Normalized Value"
+    },
+    "notes": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Notes"
+    },
+    "paper_id": {
+      "title": "Paper Id",
+      "type": "string"
+    },
+    "protocol_id": {
+      "title": "Protocol Id",
+      "type": "string"
+    },
+    "review_status": {
+      "default": "pending",
+      "enum": [
+        "pending",
+        "reviewed",
+        "rejected"
+      ],
+      "title": "Review Status",
+      "type": "string"
+    },
+    "reviewer": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Reviewer"
+    },
+    "schema_version": {
+      "default": "domain-adapter-gold-entity-v0.1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "source_value": {
+      "title": "Source Value",
+      "type": "string"
+    }
+  },
+  "required": [
+    "gold_entity_id",
+    "paper_id",
+    "protocol_id",
+    "entity_type",
+    "field_name",
+    "source_value",
+    "evidence_chunk_id",
+    "evidence_quote",
+    "char_start",
+    "char_end"
+  ],
+  "title": "GoldEntityAnnotation",
+  "type": "object"
+}

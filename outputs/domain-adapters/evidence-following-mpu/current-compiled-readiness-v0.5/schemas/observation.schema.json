@@ -1,0 +1,91 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "condition": {
+      "enum": [
+        "closed_book_blind",
+        "closed_book_identified",
+        "fact_injected_probe",
+        "counterfactual",
+        "counterfactual_fact_injected"
+      ],
+      "title": "Condition",
+      "type": "string"
+    },
+    "model_alias": {
+      "maxLength": 200,
+      "minLength": 1,
+      "title": "Model Alias",
+      "type": "string"
+    },
+    "model_id": {
+      "maxLength": 500,
+      "minLength": 1,
+      "title": "Model Id",
+      "type": "string"
+    },
+    "prompt_id": {
+      "maxLength": 1000,
+      "minLength": 1,
+      "title": "Prompt Id",
+      "type": "string"
+    },
+    "prompt_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "title": "Prompt Sha256",
+      "type": "string"
+    },
+    "response_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "title": "Response Sha256",
+      "type": "string"
+    },
+    "run_id": {
+      "maxLength": 500,
+      "minLength": 1,
+      "title": "Run Id",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "evidence-following-mpu-observation-v0.1",
+      "default": "evidence-following-mpu-observation-v0.1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "study_id": {
+      "maxLength": 500,
+      "minLength": 1,
+      "title": "Study Id",
+      "type": "string"
+    },
+    "task_id": {
+      "maxLength": 500,
+      "minLength": 1,
+      "title": "Task Id",
+      "type": "string"
+    },
+    "values": {
+      "items": {
+        "maxLength": 2000,
+        "minLength": 1,
+        "type": "string"
+      },
+      "maxItems": 32,
+      "title": "Values",
+      "type": "array"
+    }
+  },
+  "required": [
+    "study_id",
+    "prompt_id",
+    "prompt_sha256",
+    "task_id",
+    "model_alias",
+    "model_id",
+    "condition",
+    "run_id",
+    "response_sha256"
+  ],
+  "title": "MpuObservation",
+  "type": "object"
+}

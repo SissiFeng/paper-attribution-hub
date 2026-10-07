@@ -221,6 +221,58 @@ def test_weight_consolidation_requires_adapter_replay_and_general_retention():
     assert "adapter_artifact" in rejected.failed_gates
 
 
+def test_experimental_feedback_promotion_requires_belief_update_utility():
+    from app.domain_adaptation.promotion import (
+        PromotionCandidate,
+        PromotionMetrics,
+        PromotionPolicy,
+        evaluate_promotion,
+    )
+
+    metrics = PromotionMetrics(
+        gold_precision=0.9,
+        evidence_validity=1.0,
+        rag_answer_f1=0.82,
+        retrieval_recall=0.9,
+        evaluated_question_count=40,
+        experimental_feedback_bundle_count=2,
+        belief_update_task_count=30,
+        belief_update_accuracy=0.9,
+        belief_update_evidence_validity=1.0,
+    )
+    candidate = PromotionCandidate(
+        promotion_id="promotion-experimental-knowledge-1",
+        promotion_kind="shared_knowledge",
+        promotion_basis="experimental_feedback",
+        target_layer="shared_knowledge",
+        source_package=_ref("oer-electrocatalysis", "0.4.0"),
+        target_package=_ref("scientific-core", "1.1.0"),
+        source_record_ids=["claim-update-1"],
+        evidence_ids=["exp-evidence-1"],
+        source_feedback_bundle_ids=["oer-feedback@2026.09.03"],
+        reviewed_gold_ids=["gold-1"],
+        human_reviewed=True,
+        deterministic_rebuild_verified=True,
+        metrics=metrics,
+    )
+
+    accepted = evaluate_promotion(candidate, PromotionPolicy())
+    rejected = evaluate_promotion(
+        candidate.model_copy(
+            update={
+                "metrics": metrics.model_copy(
+                    update={"belief_update_accuracy": 0.5}
+                )
+            }
+        ),
+        PromotionPolicy(),
+    )
+
+    assert accepted.eligible_for_human_approval is True
+    assert rejected.eligible_for_human_approval is False
+    assert "belief_update_accuracy" in rejected.failed_gates
+
+
 def test_incomplete_promotion_proposal_reports_all_missing_evidence_gates():
     from app.domain_adaptation.promotion import (
         PromotionCandidate,

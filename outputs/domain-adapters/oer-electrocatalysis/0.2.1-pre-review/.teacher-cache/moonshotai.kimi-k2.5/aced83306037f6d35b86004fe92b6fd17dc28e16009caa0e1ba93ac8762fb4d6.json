@@ -1,0 +1,951 @@
+{
+  "audit_summary": {
+    "accepted_field_count": 2,
+    "proposed_field_count": 42,
+    "rejected_field_count": 40,
+    "repair_attempted_count": 5,
+    "repair_succeeded_count": 0,
+    "unsupported_claim_count": 40
+  },
+  "field_audit_records": [
+    {
+      "cited_span": "approximately 10 hours, resulting in three tasks for synthe- sizing g-C₃N₄ samples",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[0].name",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "proposed_value": "precursors for g-C₃N₄",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "approximately 10 hours, resulting in three tasks for synthe- sizing g-C₃N₄ samples",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[0].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "proposed_value": "synthesize g-C₃N₄ samples",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "approximately 10 hours, resulting in three tasks for synthe- sizing g-C₃N₄ samples",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[0].conditions[0]",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "proposed_value": "duration: approximately 10 hours",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "approximately 10 hours, resulting in three tasks for synthe- sizing g-C₃N₄ samples",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[0].notes",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "proposed_value": "three tasks for synthesis",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "This experiment also included charac- terizing the g-C₃N₄ samples",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[1].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "proposed_value": "characterize g-C₃N₄ samples",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "assessing their photocatalytic hydrogen production performance",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[2].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "proposed_value": "assess photocatalytic hydrogen production performance",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "assessing their photocatalytic hydrogen production performance, as shown in ESI, Fig. S3.†",
+      "diagnostic": null,
+      "entity_type": "characterization",
+      "field_path": "characterization[0].technique",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "proposed_value": "photocatalytic hydrogen production assessment",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "ratios of metal ions—Co, Cu, Fe, Mn, and Ni—while maintaining a constant total metal feedstock",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[0].name",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "proposed_value": "Co metal ion",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "ratios of metal ions—Co, Cu, Fe, Mn, and Ni—while maintaining a constant total metal feedstock",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[1].name",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "proposed_value": "Cu metal ion",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "ratios of metal ions—Co, Cu, Fe, Mn, and Ni—while maintaining a constant total metal feedstock",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[2].name",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "proposed_value": "Fe metal ion",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "ratios of metal ions—Co, Cu, Fe, Mn, and Ni—while maintaining a constant total metal feedstock",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[3].name",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "proposed_value": "Mn metal ion",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "ratios of metal ions—Co, Cu, Fe, Mn, and Ni—while maintaining a constant total metal feedstock",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[4].name",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "proposed_value": "Ni metal ion",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Fourteen MO-HECs were synthe- sized by adjusting the ratios of metal ions—Co, Cu, Fe, Mn, and Ni—while maintaining a constant total metal feedstock of 0.434 mol",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[0].action",
+      "nearest_source_span": "Fourteen MO-HECs were synthe- sized by adjusting the ratios of metal ions—Co, Cu, Fe, Mn, and Ni—while maintaining a constant total metal feedstock of",
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "proposed_value": "synthesize quinary metal-organic high-entropy catalysts",
+      "protocol_index": 1,
+      "rejection_reason": "span_not_in_source",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The overpotential for each synthesized MO-HEC was measured, with results given in ESI, Fig. S4.†",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[1].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "proposed_value": "measure overpotential",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The overpotential for each synthesized MO-HEC was measured, with results given in ESI, Fig. S4.†",
+      "diagnostic": null,
+      "entity_type": "characterization",
+      "field_path": "characterization[0].technique",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "proposed_value": "overpotential measurement",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Fourteen MO-HECs were synthe- sized",
+      "diagnostic": null,
+      "entity_type": "results",
+      "field_path": "results[0].metric",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "proposed_value": "number of MO-HECs synthesized",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "maintaining a constant total metal feedstock of 0.434 mol",
+      "diagnostic": null,
+      "entity_type": "results",
+      "field_path": "results[1].metric",
+      "nearest_source_span": "Fourteen MO-HECs were synthe- sized by adjusting the ratios of metal ions—Co, Cu, Fe, Mn, and Ni—while maintaining a constant total metal feedstock of",
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "proposed_value": "total metal feedstock",
+      "protocol_index": 1,
+      "rejection_reason": "span_not_in_source",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "four binary layered double hydroxides (LDHs) with varying Ni 2+ / Fe 2+ ratios",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[0].name",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "proposed_value": "Ni²⁺",
+      "protocol_index": 2,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "four binary layered double hydroxides (LDHs) with varying Ni 2+ / Fe 2+ ratios",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[1].name",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "proposed_value": "Fe²⁺",
+      "protocol_index": 2,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "we investigated the performance of four binary layered double hydroxides (LDHs) with varying Ni 2+ / Fe 2+ ratios",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[0].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "proposed_value": "synthesize binary layered double hydroxides",
+      "protocol_index": 2,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "we investigated the performance of four binary layered double hydroxides (LDHs) with varying Ni\n2+ / Fe 2+ ratios",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[0].conditions[0]",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "proposed_value": "varying Ni²⁺/Fe²⁺ ratios",
+      "protocol_index": 2,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "we investigated the performance of four binary layered double hydroxides (LDHs) with varying Ni\n2+ / Fe 2+ ratios",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[0].conditions[1]",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "proposed_value": "four different compositions",
+      "protocol_index": 2,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The X- ray diffraction patterns and electrocatalytic urea oxidation properties of the LDHs were measured",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[1].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "proposed_value": "measure X-ray diffraction patterns",
+      "protocol_index": 2,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The X- ray diffraction patterns and electrocatalytic urea oxidation properties of the LDHs were measured",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[2].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "proposed_value": "measure electrocatalytic urea oxidation properties",
+      "protocol_index": 2,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The X- ray diffraction patterns and electrocatalytic urea oxidation properties of the LDHs were measured, as shown in ESI, Fig. S5– S9.†",
+      "diagnostic": null,
+      "entity_type": "characterization",
+      "field_path": "characterization[0].technique",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "proposed_value": "X-ray diffraction",
+      "protocol_index": 2,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "four binary layered double hydroxides (LDHs)",
+      "diagnostic": null,
+      "entity_type": "results",
+      "field_path": "results[0].metric",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "proposed_value": "number of LDH compositions",
+      "protocol_index": 2,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The nal experiment explored the aggregation-induced emission (AIE) properties of berberine chloride (BBR)",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[0].role",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "proposed_value": "analyte",
+      "protocol_index": 3,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "tetrahydro- furan volume fractions of 30%, 60%, and 90%",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[1].name",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "proposed_value": "tetrahydrofuran",
+      "protocol_index": 3,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "tetrahydro- furan volume fractions of 30%, 60%, and 90%",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[2].name",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "proposed_value": "tetrahydrofuran",
+      "protocol_index": 3,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "tetrahydro- furan volume fractions of 30%, 60%, and 90%",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[3].name",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "proposed_value": "tetrahydrofuran",
+      "protocol_index": 3,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "assess- ing AIE luminescence of BBR solutions at concentrations of 5, 10, 15, 20, and 25 mM within solvents containing tetrahydro- furan volume fractions of 30%, 60%, and 90%",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[0].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "proposed_value": "prepare BBR solutions",
+      "protocol_index": 3,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "assess- ing AIE luminescence of BBR solutions at concentrations of 5, 10, 15, 20, and 25 mM within solvents containing tetrahydro- furan volume fractions of 30%, 60%, and 90%",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[0].conditions[0]",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "proposed_value": "concentrations: 5, 10, 15, 20, 25 mM",
+      "protocol_index": 3,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "assess- ing AIE luminescence of BBR solutions at concentrations of 5, 10, 15, 20, and 25 mM within solvents containing tetrahydro- furan volume fractions of 30%, 60%, and 90%",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[0].conditions[1]",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "proposed_value": "tetrahydrofuran volume fractions: 30%, 60%, 90%",
+      "protocol_index": 3,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "assess- ing AIE luminescence of BBR solutions at concentrations of 5, 10, 15, 20, and 25 mM within solvents containing tetrahydro- furan volume fractions of 30%, 60%, and 90%",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[0].notes",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "proposed_value": "15 total tasks (5 concentrations × 3 solvent conditions)",
+      "protocol_index": 3,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "This resulted in 15 tasks, with photoluminescence spectra measured for each BBR solution",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[1].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "proposed_value": "measure photoluminescence spectra",
+      "protocol_index": 3,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "This resulted in 15 tasks, with photoluminescence spectra measured for each BBR solution",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[1].notes",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "proposed_value": "measured for each of 15 BBR solutions",
+      "protocol_index": 3,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "with photoluminescence spectra measured for each BBR solution, as illustrated in ESI, Fig. S10.†",
+      "diagnostic": null,
+      "entity_type": "characterization",
+      "field_path": "characterization[0].technique",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "proposed_value": "photoluminescence spectroscopy",
+      "protocol_index": 3,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "This resulted in 15 tasks",
+      "diagnostic": null,
+      "entity_type": "results",
+      "field_path": "results[0].metric",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "proposed_value": "number of BBR solution conditions",
+      "protocol_index": 3,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "concentrations of 5, 10, 15, 20, and 25 mM",
+      "diagnostic": null,
+      "entity_type": "results",
+      "field_path": "results[1].metric",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "proposed_value": "BBR concentrations tested",
+      "protocol_index": 3,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "tetrahydro- furan volume fractions of 30%, 60%, and 90%",
+      "diagnostic": null,
+      "entity_type": "results",
+      "field_path": "results[2].metric",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "proposed_value": "THF volume fractions tested",
+      "protocol_index": 3,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    }
+  ],
+  "inference_config": {
+    "max_tokens": 14000,
+    "temperature": 0.0
+  },
+  "mapping_version": "evidence-field-mapper-v0.2",
+  "model_id": "moonshotai.kimi-k2.5",
+  "paper_id": "DOI:10.1039_d4dd00313f",
+  "prompt_version": "oer-protocol-teacher-v0.2",
+  "protocols": [
+    {
+      "caveats": [],
+      "characterization": [],
+      "evidence": [
+        {
+          "char_end": 82,
+          "char_start": 0,
+          "chunk_id": "mdchk_1ebc77b7cd83e336",
+          "document_char_end": 34836,
+          "document_char_start": 34754,
+          "evidence_id": "ev_115964ca89a3316b",
+          "paper_id": "DOI:10.1039_d4dd00313f",
+          "quote": "approximately 10 hours, resulting in three tasks for synthe- sizing g-C₃N₄ samples",
+          "source_sha256": "6b427535d2ea8d17dcbb0a00b39eaa2090bb84d08c4c3181e34af73543f7006c"
+        },
+        {
+          "char_end": 149,
+          "char_start": 84,
+          "chunk_id": "mdchk_1ebc77b7cd83e336",
+          "document_char_end": 34903,
+          "document_char_start": 34838,
+          "evidence_id": "ev_1159aed1418937e4",
+          "paper_id": "DOI:10.1039_d4dd00313f",
+          "quote": "This experiment also included charac- terizing the g-C₃N₄ samples",
+          "source_sha256": "6b427535d2ea8d17dcbb0a00b39eaa2090bb84d08c4c3181e34af73543f7006c"
+        },
+        {
+          "char_end": 216,
+          "char_start": 154,
+          "chunk_id": "mdchk_1ebc77b7cd83e336",
+          "document_char_end": 34970,
+          "document_char_start": 34908,
+          "evidence_id": "ev_55c1bacc23aba6c6",
+          "paper_id": "DOI:10.1039_d4dd00313f",
+          "quote": "assessing their photocatalytic hydrogen production performance",
+          "source_sha256": "6b427535d2ea8d17dcbb0a00b39eaa2090bb84d08c4c3181e34af73543f7006c"
+        }
+      ],
+      "evidence_scope": "secondary_report",
+      "instruments": [],
+      "materials": [],
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "protocol_id": "protocol_275fdd24461eafb9",
+      "protocol_name": "g-C₃N₄ synthesis and photocatalytic hydrogen production",
+      "protocol_type": "synthesis and characterization",
+      "relations": [],
+      "results": [],
+      "software": [],
+      "source_chunk_ids": [
+        "mdchk_1ebc77b7cd83e336"
+      ],
+      "source_paper_tier": "oer_case_study",
+      "steps": [
+        {
+          "action": "approximately 10 hours, resulting in three tasks for synthe- sizing g-C₃N₄ samples",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_115964ca89a3316b"
+          ],
+          "notes": null,
+          "order": 1,
+          "step_id": "step_275fdd24461eafb9"
+        },
+        {
+          "action": "This experiment also included charac- terizing the g-C₃N₄ samples",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_1159aed1418937e4"
+          ],
+          "notes": null,
+          "order": 2,
+          "step_id": "step_d628a2004a175b08"
+        },
+        {
+          "action": "assessing their photocatalytic hydrogen production performance",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_55c1bacc23aba6c6"
+          ],
+          "notes": null,
+          "order": 3,
+          "step_id": "step_00adc78be6246367"
+        }
+      ]
+    },
+    {
+      "caveats": [],
+      "characterization": [],
+      "evidence": [
+        {
+          "char_end": 107,
+          "char_start": 11,
+          "chunk_id": "mdchk_3f47eab4f58e5788",
+          "document_char_end": 35409,
+          "document_char_start": 35313,
+          "evidence_id": "ev_8c6ed24a11253ce8",
+          "paper_id": "DOI:10.1039_d4dd00313f",
+          "quote": "The overpotential for each synthesized MO-HEC was measured, with results given in ESI, Fig. S4.†",
+          "source_sha256": "e97aba5ccbd1eecf0a48a72fa1baaaa97f359a702d25564c3666c0280dc5df3d"
+        }
+      ],
+      "evidence_scope": "secondary_report",
+      "instruments": [],
+      "materials": [],
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "protocol_id": "protocol_e61b6431557d9dcd",
+      "protocol_name": "MO-HEC synthesis for electrocatalytic oxygen evolution",
+      "protocol_type": "synthesis and electrochemical characterization",
+      "relations": [],
+      "results": [],
+      "software": [],
+      "source_chunk_ids": [
+        "mdchk_3f47eab4f58e5788"
+      ],
+      "source_paper_tier": "oer_case_study",
+      "steps": [
+        {
+          "action": "The overpotential for each synthesized MO-HEC was measured, with results given in ESI, Fig. S4.†",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_8c6ed24a11253ce8"
+          ],
+          "notes": null,
+          "order": 1,
+          "step_id": "step_e61b6431557d9dcd"
+        }
+      ]
+    },
+    {
+      "caveats": [],
+      "characterization": [
+        {
+          "entity_id": "char_49e11557033a5f1c",
+          "evidence_ids": [
+            "ev_2c39138f4b96d135"
+          ],
+          "output": null,
+          "settings": {},
+          "technique": "electrocatalytic urea oxidation"
+        }
+      ],
+      "evidence": [
+        {
+          "char_end": 246,
+          "char_start": 133,
+          "chunk_id": "mdchk_3f47eab4f58e5788",
+          "document_char_end": 35548,
+          "document_char_start": 35435,
+          "evidence_id": "ev_5dee8df7d2f7f76a",
+          "paper_id": "DOI:10.1039_d4dd00313f",
+          "quote": "we investigated the performance of four binary layered double hydroxides (LDHs) with varying Ni\n2+ / Fe 2+ ratios",
+          "source_sha256": "e97aba5ccbd1eecf0a48a72fa1baaaa97f359a702d25564c3666c0280dc5df3d"
+        },
+        {
+          "char_end": 398,
+          "char_start": 294,
+          "chunk_id": "mdchk_3f47eab4f58e5788",
+          "document_char_end": 35700,
+          "document_char_start": 35596,
+          "evidence_id": "ev_739de9ff9b3b8d5c",
+          "paper_id": "DOI:10.1039_d4dd00313f",
+          "quote": "The X- ray diffraction patterns and electrocatalytic urea oxidation properties of the LDHs were measured",
+          "source_sha256": "e97aba5ccbd1eecf0a48a72fa1baaaa97f359a702d25564c3666c0280dc5df3d"
+        },
+        {
+          "char_end": 430,
+          "char_start": 294,
+          "chunk_id": "mdchk_3f47eab4f58e5788",
+          "document_char_end": 35732,
+          "document_char_start": 35596,
+          "evidence_id": "ev_2c39138f4b96d135",
+          "paper_id": "DOI:10.1039_d4dd00313f",
+          "quote": "The X- ray diffraction patterns and electrocatalytic urea oxidation properties of the LDHs were measured, as shown in ESI, Fig. S5– S9.†",
+          "source_sha256": "e97aba5ccbd1eecf0a48a72fa1baaaa97f359a702d25564c3666c0280dc5df3d"
+        }
+      ],
+      "evidence_scope": "secondary_report",
+      "instruments": [],
+      "materials": [],
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "protocol_id": "protocol_3a5e0900308ae2f1",
+      "protocol_name": "Binary LDH synthesis and urea oxidation electrocatalysis",
+      "protocol_type": "synthesis and electrochemical characterization",
+      "relations": [],
+      "results": [],
+      "software": [],
+      "source_chunk_ids": [
+        "mdchk_3f47eab4f58e5788"
+      ],
+      "source_paper_tier": "oer_case_study",
+      "steps": [
+        {
+          "action": "we investigated the performance of four binary layered double hydroxides (LDHs) with varying Ni\n2+ / Fe 2+ ratios",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_5dee8df7d2f7f76a"
+          ],
+          "notes": null,
+          "order": 1,
+          "step_id": "step_f41f744f31cc4bfd"
+        },
+        {
+          "action": "The X- ray diffraction patterns and electrocatalytic urea oxidation properties of the LDHs were measured",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_739de9ff9b3b8d5c"
+          ],
+          "notes": null,
+          "order": 2,
+          "step_id": "step_e61b6431557d9dcd"
+        },
+        {
+          "action": "The X- ray diffraction patterns and electrocatalytic urea oxidation properties of the LDHs were measured",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_739de9ff9b3b8d5c"
+          ],
+          "notes": null,
+          "order": 3,
+          "step_id": "step_3a5e0900308ae2f1"
+        }
+      ]
+    },
+    {
+      "caveats": [],
+      "characterization": [],
+      "evidence": [
+        {
+          "char_end": 537,
+          "char_start": 431,
+          "chunk_id": "mdchk_3f47eab4f58e5788",
+          "document_char_end": 35839,
+          "document_char_start": 35733,
+          "evidence_id": "ev_422317709911c48e",
+          "paper_id": "DOI:10.1039_d4dd00313f",
+          "quote": "The nal experiment explored the aggregation-induced emission (AIE) properties of berberine chloride (BBR)",
+          "source_sha256": "e97aba5ccbd1eecf0a48a72fa1baaaa97f359a702d25564c3666c0280dc5df3d"
+        },
+        {
+          "char_end": 713,
+          "char_start": 539,
+          "chunk_id": "mdchk_3f47eab4f58e5788",
+          "document_char_end": 36015,
+          "document_char_start": 35841,
+          "evidence_id": "ev_665a1b38a91d27fd",
+          "paper_id": "DOI:10.1039_d4dd00313f",
+          "quote": "assess- ing AIE luminescence of BBR solutions at concentrations of 5, 10, 15, 20, and 25 mM within solvents containing tetrahydro- furan volume fractions of 30%, 60%, and 90%",
+          "source_sha256": "e97aba5ccbd1eecf0a48a72fa1baaaa97f359a702d25564c3666c0280dc5df3d"
+        },
+        {
+          "char_end": 803,
+          "char_start": 715,
+          "chunk_id": "mdchk_3f47eab4f58e5788",
+          "document_char_end": 36105,
+          "document_char_start": 36017,
+          "evidence_id": "ev_a7a7f8d52df6ce1b",
+          "paper_id": "DOI:10.1039_d4dd00313f",
+          "quote": "This resulted in 15 tasks, with photoluminescence spectra measured for each BBR solution",
+          "source_sha256": "e97aba5ccbd1eecf0a48a72fa1baaaa97f359a702d25564c3666c0280dc5df3d"
+        }
+      ],
+      "evidence_scope": "secondary_report",
+      "instruments": [],
+      "materials": [
+        {
+          "amount": null,
+          "entity_id": "mat_cb35ecdd47891106",
+          "evidence_ids": [
+            "ev_422317709911c48e"
+          ],
+          "name": "berberine chloride (BBR)",
+          "pretreatment": null,
+          "purity": null,
+          "role": null,
+          "supplier": null
+        }
+      ],
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "protocol_id": "protocol_139cfa3d36410117",
+      "protocol_name": "Berberine chloride AIE luminescence assessment",
+      "protocol_type": "spectroscopic characterization",
+      "relations": [],
+      "results": [],
+      "software": [],
+      "source_chunk_ids": [
+        "mdchk_3f47eab4f58e5788"
+      ],
+      "source_paper_tier": "oer_case_study",
+      "steps": [
+        {
+          "action": "assess- ing AIE luminescence of BBR solutions at concentrations of 5, 10, 15, 20, and 25 mM within solvents containing tetrahydro- furan volume fractions of 30%, 60%, and 90%",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_665a1b38a91d27fd"
+          ],
+          "notes": null,
+          "order": 1,
+          "step_id": "step_f41f744f31cc4bfd"
+        },
+        {
+          "action": "This resulted in 15 tasks, with photoluminescence spectra measured for each BBR solution",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_a7a7f8d52df6ce1b"
+          ],
+          "notes": null,
+          "order": 2,
+          "step_id": "step_e61b6431557d9dcd"
+        }
+      ]
+    }
+  ],
+  "region": "us-east-1",
+  "schema_version": "bedrock-teacher-paper-cache-v0.2",
+  "teacher_response": {
+    "diagnostic": null,
+    "invocation_count": 1,
+    "metrics": {
+      "latencyMs": 41109
+    },
+    "raw_text": " ```json\n{\n  \"protocols\": [\n    {\n      \"source_chunk_ids\": [\"mdchk_3f47eab4f58e5788\", \"mdchk_1ebc77b7cd83e336\"],\n      \"protocol_name\": \"g-C₃N₄ synthesis and photocatalytic hydrogen production\",\n      \"protocol_type\": \"synthesis and characterization\",\n      \"materials\": [\n        {\"source_chunk_id\": \"mdchk_1ebc77b7cd83e336\", \"name\": \"precursors for g-C₃N₄\", \"role\": \"synthesis\", \"amount\": null, \"purity\": null, \"supplier\": null, \"pretreatment\": null, \"evidence_quote\": \"approximately 10 hours, resulting in three tasks for synthe- sizing g-C₃N₄ samples\"}\n      ],\n      \"instruments\": [],\n      \"software\": [],\n      \"steps\": [\n        {\"source_chunk_id\": \"mdchk_1ebc77b7cd83e336\", \"order\": 1, \"action\": \"synthesize g-C₃N₄ samples\", \"conditions\": [\"duration: approximately 10 hours\"], \"notes\": \"three tasks for synthesis\", \"evidence_quote\": \"approximately 10 hours, resulting in three tasks for synthe- sizing g-C₃N₄ samples\"},\n        {\"source_chunk_id\": \"mdchk_1ebc77b7cd83e336\", \"order\": 2, \"action\": \"characterize g-C₃N₄ samples\", \"conditions\": [], \"notes\": null, \"evidence_quote\": \"This experiment also included charac- terizing the g-C₃N₄ samples\"},\n        {\"source_chunk_id\": \"mdchk_1ebc77b7cd83e336\", \"order\": 3, \"action\": \"assess photocatalytic hydrogen production performance\", \"conditions\": [], \"notes\": null, \"evidence_quote\": \"assessing their photocatalytic hydrogen production performance\"}\n      ],\n      \"characterization\": [\n        {\"source_chunk_id\": \"mdchk_1ebc77b7cd83e336\", \"technique\": \"photocatalytic hydrogen production assessment\", \"settings\": {}, \"output\": null, \"evidence_quote\": \"assessing their photocatalytic hydrogen production performance, as shown in ESI, Fig. S3.†\"}\n      ],\n      \"results\": [],\n      \"caveats\": []\n    },\n    {\n      \"source_chunk_ids\": [\"mdchk_3f47eab4f58e5788\", \"mdchk_1ebc77b7cd83e336\"],\n      \"protocol_name\": \"MO-HEC synthesis for electrocatalytic oxygen evolution\",\n      \"protocol_type\": \"synthesis and electrochemical characterization\",\n      \"materials\": [\n        {\"source_chunk_id\": \"mdchk_1ebc77b7cd83e336\", \"name\": \"Co metal ion\", \"role\": \"metal precursor\", \"amount\": null, \"purity\": null, \"supplier\": null, \"pretreatment\": null, \"evidence_quote\": \"ratios of metal ions—Co, Cu, Fe, Mn, and Ni—while maintaining a constant total metal feedstock\"},\n        {\"source_chunk_id\": \"mdchk_1ebc77b7cd83e336\", \"name\": \"Cu metal ion\", \"role\": \"metal precursor\", \"amount\": null, \"purity\": null, \"supplier\": null, \"pretreatment\": null, \"evidence_quote\": \"ratios of metal ions—Co, Cu, Fe, Mn, and Ni—while maintaining a constant total metal feedstock\"},\n        {\"source_chunk_id\": \"mdchk_1ebc77b7cd83e336\", \"name\": \"Fe metal ion\", \"role\": \"metal precursor\", \"amount\": null, \"purity\": null, \"supplier\": null, \"pretreatment\": null, \"evidence_quote\": \"ratios of metal ions—Co, Cu, Fe, Mn, and Ni—while maintaining a constant total metal feedstock\"},\n        {\"source_chunk_id\": \"mdchk_1ebc77b7cd83e336\", \"name\": \"Mn metal ion\", \"role\": \"metal precursor\", \"amount\": null, \"purity\": null, \"supplier\": null, \"pretreatment\": null, \"evidence_quote\": \"ratios of metal ions—Co, Cu, Fe, Mn, and Ni—while maintaining a constant total metal feedstock\"},\n        {\"source_chunk_id\": \"mdchk_1ebc77b7cd83e336\", \"name\": \"Ni metal ion\", \"role\": \"metal precursor\", \"amount\": null, \"purity\": null, \"supplier\": null, \"pretreatment\": null, \"evidence_quote\": \"ratios of metal ions—Co, Cu, Fe, Mn, and Ni—while maintaining a constant total metal feedstock\"}\n      ],\n      \"instruments\": [],\n      \"software\": [],\n      \"steps\": [\n        {\"source_chunk_id\": \"mdchk_1ebc77b7cd83e336\", \"order\": 1, \"action\": \"synthesize quinary metal-organic high-entropy catalysts\", \"conditions\": [\"14 MO-HECs synthesized\", \"varying ratios of Co, Cu, Fe, Mn, Ni\", \"constant total metal feedstock of 0.434 mol\"], \"notes\": null, \"evidence_quote\": \"Fourteen MO-HECs were synthe- sized by adjusting the ratios of metal ions—Co, Cu, Fe, Mn, and Ni—while maintaining a constant total metal feedstock of 0.434 mol\"},\n        {\"source_chunk_id\": \"mdchk_3f47eab4f58e5788\", \"order\": 2, \"action\": \"measure overpotential\", \"conditions\": [], \"notes\": null, \"evidence_quote\": \"The overpotential for each synthesized MO-HEC was measured, with results given in ESI, Fig. S4.†\"}\n      ],\n      \"characterization\": [\n        {\"source_chunk_id\": \"mdchk_3f47eab4f58e5788\", \"technique\": \"overpotential measurement\", \"settings\": {}, \"output\": null, \"evidence_quote\": \"The overpotential for each synthesized MO-HEC was measured, with results given in ESI, Fig. S4.†\"}\n      ],\n      \"results\": [\n        {\"source_chunk_id\": \"mdchk_1ebc77b7cd83e336\", \"metric\": \"number of MO-HECs synthesized\", \"raw_value\": \"14\", \"context\": \"quinary metal-organic high-entropy catalysts\", \"evidence_quote\": \"Fourteen MO-HECs were synthe- sized\"},\n        {\"source_chunk_id\": \"mdchk_1ebc77b7cd83e336\", \"metric\": \"total metal feedstock\", \"raw_value\": \"0.434 mol\", \"context\": \"constant for all syntheses\", \"evidence_quote\": \"maintaining a constant total metal feedstock of 0.434 mol\"}\n      ],\n      \"caveats\": []\n    },\n    {\n      \"source_chunk_ids\": [\"mdchk_3f47eab4f58e5788\"],\n      \"protocol_name\": \"Binary LDH synthesis and urea oxidation electrocatalysis\",\n      \"protocol_type\": \"synthesis and electrochemical characterization\",\n      \"materials\": [\n        {\"source_chunk_id\": \"mdchk_3f47eab4f58e5788\", \"name\": \"Ni²⁺\", \"role\": \"metal component\", \"amount\": null, \"purity\": null, \"supplier\": null, \"pretreatment\": null, \"evidence_quote\": \"four binary layered double hydroxides (LDHs) with varying Ni 2+ / Fe 2+ ratios\"},\n        {\"source_chunk_id\": \"mdchk_3f47eab4f58e5788\", \"name\": \"Fe²⁺\", \"role\": \"metal component\", \"amount\": null, \"purity\": null, \"supplier\": null, \"pretreatment\": null, \"evidence_quote\": \"four binary layered double hydroxides (LDHs) with varying Ni 2+ / Fe 2+ ratios\"}\n      ],\n      \"instruments\": [],\n      \"software\": [],\n      \"steps\": [\n        {\"source_chunk_id\": \"mdchk_3f47eab4f58e5788\", \"order\": 1, \"action\": \"synthesize binary layered double hydroxides\", \"conditions\": [\"varying Ni²⁺/Fe²⁺ ratios\", \"four different compositions\"], \"notes\": null, \"evidence_quote\": \"we investigated the performance of four binary layered double hydroxides (LDHs) with varying Ni 2+ / Fe 2+ ratios\"},\n        {\"source_chunk_id\": \"mdchk_3f47eab4f58e5788\", \"order\": 2, \"action\": \"measure X-ray diffraction patterns\", \"conditions\": [], \"notes\": null, \"evidence_quote\": \"The X- ray diffraction patterns and electrocatalytic urea oxidation properties of the LDHs were measured\"},\n        {\"source_chunk_id\": \"mdchk_3f47eab4f58e5788\", \"order\": 3, \"action\": \"measure electrocatalytic urea oxidation properties\", \"conditions\": [], \"notes\": null, \"evidence_quote\": \"The X- ray diffraction patterns and electrocatalytic urea oxidation properties of the LDHs were measured\"}\n      ],\n      \"characterization\": [\n        {\"source_chunk_id\": \"mdchk_3f47eab4f58e5788\", \"technique\": \"X-ray diffraction\", \"settings\": {}, \"output\": null, \"evidence_quote\": \"The X- ray diffraction patterns and electrocatalytic urea oxidation properties of the LDHs were measured, as shown in ESI, Fig. S5– S9.†\"},\n        {\"source_chunk_id\": \"mdchk_3f47eab4f58e5788\", \"technique\": \"electrocatalytic urea oxidation\", \"settings\": {}, \"output\": null, \"evidence_quote\": \"The X- ray diffraction patterns and electrocatalytic urea oxidation properties of the LDHs were measured, as shown in ESI, Fig. S5– S9.†\"}\n      ],\n      \"results\": [\n        {\"source_chunk_id\": \"mdchk_3f47eab4f58e5788\", \"metric\": \"number of LDH compositions\", \"raw_value\": \"4\", \"context\": \"binary LDHs with varying Ni²⁺/Fe²⁺ ratios\", \"evidence_quote\": \"four binary layered double hydroxides (LDHs)\"}\n      ],\n      \"caveats\": []\n    },\n    {\n      \"source_chunk_ids\": [\"mdchk_3f47eab4f58e5788\"],\n      \"protocol_name\": \"Berberine chloride AIE luminescence assessment\",\n      \"protocol_type\": \"spectroscopic characterization\",\n      \"materials\": [\n        {\"source_chunk_id\": \"mdchk_3f47eab4f58e5788\", \"name\": \"berberine chloride (BBR)\", \"role\": \"analyte\", \"amount\": null, \"purity\": null, \"supplier\": null, \"pretreatment\": null, \"evidence_quote\": \"The nal experiment explored the aggregation-induced emission (AIE) properties of berberine chloride (BBR)\"},\n        {\"source_chunk_id\": \"mdchk_3f47eab4f58e5788\", \"name\": \"tetrahydrofuran\", \"role\": \"solvent component\", \"amount\": \"30% volume fraction\", \"purity\": null, \"supplier\": null, \"pretreatment\": null, \"evidence_quote\": \"tetrahydro- furan volume fractions of 30%, 60%, and 90%\"},\n        {\"source_chunk_id\": \"mdchk_3f47eab4f58e5788\", \"name\": \"tetrahydrofuran\", \"role\": \"solvent component\", \"amount\": \"60% volume fraction\", \"purity\": null, \"supplier\": null, \"pretreatment\": null, \"evidence_quote\": \"tetrahydro- furan volume fractions of 30%, 60%, and 90%\"},\n        {\"source_chunk_id\": \"mdchk_3f47eab4f58e5788\", \"name\": \"tetrahydrofuran\", \"role\": \"solvent component\", \"amount\": \"90% volume fraction\", \"purity\": null, \"supplier\": null, \"pretreatment\": null, \"evidence_quote\": \"tetrahydro- furan volume fractions of 30%, 60%, and 90%\"}\n      ],\n      \"instruments\": [],\n      \"software\": [],\n      \"steps\": [\n        {\"source_chunk_id\": \"mdchk_3f47eab4f58e5788\", \"order\": 1, \"action\": \"prepare BBR solutions\", \"conditions\": [\"concentrations: 5, 10, 15, 20, 25 mM\", \"tetrahydrofuran volume fractions: 30%, 60%, 90%\"], \"notes\": \"15 total tasks (5 concentrations × 3 solvent conditions)\", \"evidence_quote\": \"assess- ing AIE luminescence of BBR solutions at concentrations of 5, 10, 15, 20, and 25 mM within solvents containing tetrahydro- furan volume fractions of 30%, 60%, and 90%\"},\n        {\"source_chunk_id\": \"mdchk_3f47eab4f58e5788\", \"order\": 2, \"action\": \"measure photoluminescence spectra\", \"conditions\": [], \"notes\": \"measured for each of 15 BBR solutions\", \"evidence_quote\": \"This resulted in 15 tasks, with photoluminescence spectra measured for each BBR solution\"}\n      ],\n      \"characterization\": [\n        {\"source_chunk_id\": \"mdchk_3f47eab4f58e5788\", \"technique\": \"photoluminescence spectroscopy\", \"settings\": {}, \"output\": \"AIE luminescence data\", \"evidence_quote\": \"with photoluminescence spectra measured for each BBR solution, as illustrated in ESI, Fig. S10.†\"}\n      ],\n      \"results\": [\n        {\"source_chunk_id\": \"mdchk_3f47eab4f58e5788\", \"metric\": \"number of BBR solution conditions\", \"raw_value\": \"15\", \"context\": \"5 concentrations × 3 THF volume fractions\", \"evidence_quote\": \"This resulted in 15 tasks\"},\n        {\"source_chunk_id\": \"mdchk_3f47eab4f58e5788\", \"metric\": \"BBR concentrations tested\", \"raw_value\": \"5, 10, 15, 20, 25 mM\", \"context\": null, \"evidence_quote\": \"concentrations of 5, 10, 15, 20, and 25 mM\"},\n        {\"source_chunk_id\": \"mdchk_3f47eab4f58e5788\", \"metric\": \"THF volume fractions tested\", \"raw_value\": \"30%, 60%, 90%\", \"context\": null, \"evidence_quote\": \"tetrahydro- furan volume fractions of 30%, 60%, and 90%\"}\n      ],\n      \"caveats\": []\n    }\n  ]\n}\n```",
+    "salvaged_protocol_count": 0,
+    "schema_invalid": false,
+    "stop_reason": "end_turn",
+    "usage": {
+      "inputTokens": 2025,
+      "outputTokens": 3334,
+      "totalTokens": 5359
+    }
+  }
+}

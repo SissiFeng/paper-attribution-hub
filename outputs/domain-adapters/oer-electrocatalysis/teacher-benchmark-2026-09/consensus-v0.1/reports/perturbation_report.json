@@ -1,0 +1,8 @@
+{
+  "claims_boundary": "Not-tested perturbations cannot enter training-eligible Tier A.",
+  "schema_version": "domain-teacher-perturbation-report-v0.1",
+  "status_counts": {
+    "not_tested": 430
+  },
+  "training_eligible_claim_count": 0
+}

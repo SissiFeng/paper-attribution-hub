@@ -1,0 +1,86 @@
+[
+  {
+    "source": "A1",
+    "target": "A2",
+    "relation": "motivates",
+    "status": "analyst_interpretation",
+    "basis": "rhetorical interpretation; not learned cooccurrence or causal evidence"
+  },
+  {
+    "source": "A2",
+    "target": "A3",
+    "relation": "evaluated_by",
+    "status": "analyst_interpretation",
+    "basis": "rhetorical interpretation; not learned cooccurrence or causal evidence"
+  },
+  {
+    "source": "A3",
+    "target": "A4",
+    "relation": "complements_with_scope_caveat",
+    "status": "analyst_interpretation",
+    "basis": "rhetorical interpretation; not learned cooccurrence or causal evidence"
+  },
+  {
+    "source": "B1",
+    "target": "B2",
+    "relation": "motivates",
+    "status": "analyst_interpretation",
+    "basis": "rhetorical interpretation; not learned cooccurrence or causal evidence"
+  },
+  {
+    "source": "B2",
+    "target": "B3",
+    "relation": "elaborated_by",
+    "status": "analyst_interpretation",
+    "basis": "rhetorical interpretation; not learned cooccurrence or causal evidence"
+  },
+  {
+    "source": "B3",
+    "target": "B4",
+    "relation": "summarized_by",
+    "status": "analyst_interpretation",
+    "basis": "rhetorical interpretation; not learned cooccurrence or causal evidence"
+  },
+  {
+    "source": "C1",
+    "target": "C2",
+    "relation": "addressed_by",
+    "status": "analyst_interpretation",
+    "basis": "rhetorical interpretation; not learned cooccurrence or causal evidence"
+  },
+  {
+    "source": "C2",
+    "target": "C3",
+    "relation": "followed_by_author_claim",
+    "status": "analyst_interpretation",
+    "basis": "rhetorical interpretation; not learned cooccurrence or causal evidence"
+  },
+  {
+    "source": "C3",
+    "target": "C4",
+    "relation": "complements_with_design_caveat",
+    "status": "analyst_interpretation",
+    "basis": "rhetorical interpretation; not learned cooccurrence or causal evidence"
+  },
+  {
+    "source": "A1",
+    "target": "B1",
+    "relation": "analogous_problem_framing",
+    "status": "analyst_interpretation",
+    "basis": "rhetorical interpretation; not learned cooccurrence or causal evidence"
+  },
+  {
+    "source": "B1",
+    "target": "C1",
+    "relation": "analogous_gap_framing",
+    "status": "analyst_interpretation",
+    "basis": "rhetorical interpretation; not learned cooccurrence or causal evidence"
+  },
+  {
+    "source": "A4",
+    "target": "C4",
+    "relation": "analogous_scope_control",
+    "status": "analyst_interpretation",
+    "basis": "rhetorical interpretation; not learned cooccurrence or causal evidence"
+  }
+]

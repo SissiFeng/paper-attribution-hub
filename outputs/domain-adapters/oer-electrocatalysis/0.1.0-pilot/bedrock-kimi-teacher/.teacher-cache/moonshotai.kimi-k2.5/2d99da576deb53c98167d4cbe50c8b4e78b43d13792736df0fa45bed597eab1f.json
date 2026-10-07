@@ -1,0 +1,267 @@
+{
+  "model_id": "moonshotai.kimi-k2.5",
+  "paper_id": "DOI:10.1039_d4dd00313f",
+  "prompt_version": "oer-protocol-teacher-v0.1",
+  "protocols": [
+    {
+      "caveats": [],
+      "characterization": [],
+      "evidence": [
+        {
+          "char_end": 83,
+          "char_start": 0,
+          "chunk_id": "mdchk_1ebc77b7cd83e336",
+          "document_char_end": 34837,
+          "document_char_start": 34754,
+          "evidence_id": "ev_d0a6229907b42514",
+          "paper_id": "DOI:10.1039_d4dd00313f",
+          "quote": "approximately 10 hours, resulting in three tasks for synthe- sizing g-C₃N₄ samples.",
+          "source_sha256": "6b427535d2ea8d17dcbb0a00b39eaa2090bb84d08c4c3181e34af73543f7006c"
+        },
+        {
+          "char_end": 244,
+          "char_start": 84,
+          "chunk_id": "mdchk_1ebc77b7cd83e336",
+          "document_char_end": 34998,
+          "document_char_start": 34838,
+          "evidence_id": "ev_840799528679e8ec",
+          "paper_id": "DOI:10.1039_d4dd00313f",
+          "quote": "This experiment also included charac- terizing the g-C₃N₄ samples and assessing their photocatalytic hydrogen production performance, as shown in ESI, Fig. S3.†",
+          "source_sha256": "6b427535d2ea8d17dcbb0a00b39eaa2090bb84d08c4c3181e34af73543f7006c"
+        }
+      ],
+      "evidence_scope": "secondary_report",
+      "instruments": [],
+      "materials": [],
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "protocol_id": "protocol_275fdd24461eafb9",
+      "protocol_name": "g-C₃N₄ synthesis and photocatalytic hydrogen production assessment",
+      "protocol_type": "synthesis and characterization",
+      "relations": [],
+      "results": [],
+      "software": [],
+      "source_chunk_ids": [
+        "mdchk_1ebc77b7cd83e336"
+      ],
+      "source_paper_tier": "oer_case_study",
+      "steps": [
+        {
+          "action": "approximately 10 hours, resulting in three tasks for synthe- sizing g-C₃N₄ samples.",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_d0a6229907b42514"
+          ],
+          "notes": null,
+          "order": 1,
+          "step_id": "step_275fdd24461eafb9"
+        },
+        {
+          "action": "This experiment also included charac- terizing the g-C₃N₄ samples and assessing their photocatalytic hydrogen production performance, as shown in ESI, Fig. S3.†",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_840799528679e8ec"
+          ],
+          "notes": null,
+          "order": 2,
+          "step_id": "step_d628a2004a175b08"
+        },
+        {
+          "action": "This experiment also included charac- terizing the g-C₃N₄ samples and assessing their photocatalytic hydrogen production performance, as shown in ESI, Fig. S3.†",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_840799528679e8ec"
+          ],
+          "notes": null,
+          "order": 3,
+          "step_id": "step_00adc78be6246367"
+        }
+      ]
+    },
+    {
+      "caveats": [],
+      "characterization": [],
+      "evidence": [
+        {
+          "char_end": 107,
+          "char_start": 11,
+          "chunk_id": "mdchk_3f47eab4f58e5788",
+          "document_char_end": 35409,
+          "document_char_start": 35313,
+          "evidence_id": "ev_8c6ed24a11253ce8",
+          "paper_id": "DOI:10.1039_d4dd00313f",
+          "quote": "The overpotential for each synthesized MO-HEC was measured, with results given in ESI, Fig. S4.†",
+          "source_sha256": "e97aba5ccbd1eecf0a48a72fa1baaaa97f359a702d25564c3666c0280dc5df3d"
+        }
+      ],
+      "evidence_scope": "secondary_report",
+      "instruments": [],
+      "materials": [],
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "protocol_id": "protocol_e61b6431557d9dcd",
+      "protocol_name": "quinary metal-organic high-entropy catalyst (MO-HEC) synthesis for electrocatalytic oxygen evolution",
+      "protocol_type": "synthesis and electrochemical characterization",
+      "relations": [],
+      "results": [],
+      "software": [],
+      "source_chunk_ids": [
+        "mdchk_3f47eab4f58e5788"
+      ],
+      "source_paper_tier": "oer_case_study",
+      "steps": [
+        {
+          "action": "The overpotential for each synthesized MO-HEC was measured, with results given in ESI, Fig. S4.†",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_8c6ed24a11253ce8"
+          ],
+          "notes": "results given in ESI, Fig. S4",
+          "order": 1,
+          "step_id": "step_e61b6431557d9dcd"
+        }
+      ]
+    },
+    {
+      "caveats": [],
+      "characterization": [],
+      "evidence": [
+        {
+          "char_end": 430,
+          "char_start": 294,
+          "chunk_id": "mdchk_3f47eab4f58e5788",
+          "document_char_end": 35732,
+          "document_char_start": 35596,
+          "evidence_id": "ev_2c39138f4b96d135",
+          "paper_id": "DOI:10.1039_d4dd00313f",
+          "quote": "The X- ray diffraction patterns and electrocatalytic urea oxidation properties of the LDHs were measured, as shown in ESI, Fig. S5– S9.†",
+          "source_sha256": "e97aba5ccbd1eecf0a48a72fa1baaaa97f359a702d25564c3666c0280dc5df3d"
+        }
+      ],
+      "evidence_scope": "secondary_report",
+      "instruments": [],
+      "materials": [],
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "protocol_id": "protocol_3a5e0900308ae2f1",
+      "protocol_name": "binary layered double hydroxide (LDH) synthesis and urea oxidation electrocatalysis",
+      "protocol_type": "synthesis and electrochemical characterization",
+      "relations": [],
+      "results": [],
+      "software": [],
+      "source_chunk_ids": [
+        "mdchk_3f47eab4f58e5788"
+      ],
+      "source_paper_tier": "oer_case_study",
+      "steps": [
+        {
+          "action": "The X- ray diffraction patterns and electrocatalytic urea oxidation properties of the LDHs were measured, as shown in ESI, Fig. S5– S9.†",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_2c39138f4b96d135"
+          ],
+          "notes": null,
+          "order": 1,
+          "step_id": "step_e61b6431557d9dcd"
+        },
+        {
+          "action": "The X- ray diffraction patterns and electrocatalytic urea oxidation properties of the LDHs were measured, as shown in ESI, Fig. S5– S9.†",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_2c39138f4b96d135"
+          ],
+          "notes": null,
+          "order": 2,
+          "step_id": "step_3a5e0900308ae2f1"
+        }
+      ]
+    },
+    {
+      "caveats": [],
+      "characterization": [],
+      "evidence": [
+        {
+          "char_end": 584,
+          "char_start": 431,
+          "chunk_id": "mdchk_3f47eab4f58e5788",
+          "document_char_end": 35886,
+          "document_char_start": 35733,
+          "evidence_id": "ev_6b53447ce37953e4",
+          "paper_id": "DOI:10.1039_d4dd00313f",
+          "quote": "The nal experiment explored the aggregation-induced emission (AIE) properties of berberine chloride (BBR), assess- ing AIE luminescence of BBR solutions",
+          "source_sha256": "e97aba5ccbd1eecf0a48a72fa1baaaa97f359a702d25564c3666c0280dc5df3d"
+        },
+        {
+          "char_end": 741,
+          "char_start": 539,
+          "chunk_id": "mdchk_3f47eab4f58e5788",
+          "document_char_end": 36043,
+          "document_char_start": 35841,
+          "evidence_id": "ev_30d582c6babf0a15",
+          "paper_id": "DOI:10.1039_d4dd00313f",
+          "quote": "assess- ing AIE luminescence of BBR solutions at concentrations of 5, 10, 15, 20, and 25 mM within solvents containing tetrahydro- furan volume fractions of 30%, 60%, and 90%. This resulted in 15 tasks,",
+          "source_sha256": "e97aba5ccbd1eecf0a48a72fa1baaaa97f359a702d25564c3666c0280dc5df3d"
+        },
+        {
+          "char_end": 838,
+          "char_start": 742,
+          "chunk_id": "mdchk_3f47eab4f58e5788",
+          "document_char_end": 36140,
+          "document_char_start": 36044,
+          "evidence_id": "ev_176fad793cd88e25",
+          "paper_id": "DOI:10.1039_d4dd00313f",
+          "quote": "with photoluminescence spectra measured for each BBR solution, as illustrated in ESI, Fig. S10.†",
+          "source_sha256": "e97aba5ccbd1eecf0a48a72fa1baaaa97f359a702d25564c3666c0280dc5df3d"
+        }
+      ],
+      "evidence_scope": "secondary_report",
+      "instruments": [],
+      "materials": [
+        {
+          "amount": null,
+          "entity_id": "mat_cb35ecdd47891106",
+          "evidence_ids": [
+            "ev_6b53447ce37953e4"
+          ],
+          "name": "berberine chloride (BBR)",
+          "pretreatment": null,
+          "purity": null,
+          "role": null,
+          "supplier": null
+        }
+      ],
+      "paper_id": "DOI:10.1039_d4dd00313f",
+      "protocol_id": "protocol_139cfa3d36410117",
+      "protocol_name": "berberine chloride aggregation-induced emission (AIE) property assessment",
+      "protocol_type": "photoluminescence characterization",
+      "relations": [],
+      "results": [],
+      "software": [],
+      "source_chunk_ids": [
+        "mdchk_3f47eab4f58e5788"
+      ],
+      "source_paper_tier": "oer_case_study",
+      "steps": [
+        {
+          "action": "assess- ing AIE luminescence of BBR solutions at concentrations of 5, 10, 15, 20, and 25 mM within solvents containing tetrahydro- furan volume fractions of 30%, 60%, and 90%. This resulted in 15 tasks,",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_30d582c6babf0a15"
+          ],
+          "notes": null,
+          "order": 1,
+          "step_id": "step_f41f744f31cc4bfd"
+        },
+        {
+          "action": "with photoluminescence spectra measured for each BBR solution, as illustrated in ESI, Fig. S10.†",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_176fad793cd88e25"
+          ],
+          "notes": null,
+          "order": 2,
+          "step_id": "step_e61b6431557d9dcd"
+        }
+      ]
+    }
+  ],
+  "schema_version": "bedrock-teacher-paper-cache-v0.1",
+  "unsupported_claim_count": 21
+}

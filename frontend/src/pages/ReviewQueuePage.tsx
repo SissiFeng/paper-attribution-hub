@@ -4,11 +4,13 @@ import {
   getModelEvolutionStatus,
   getReviewQueue,
   getReviewQueueSize,
+  getStage1Readiness,
   skipReview,
   submitReview,
   updateReviewAssignment,
 } from "@/lib/api";
 import { RagStatusBadge, RagStatusPanel } from "@/components/RagStatusBadge";
+import { Stage1Unavailable } from "@/components/Stage1Unavailable";
 import type {
   AcRelevanceJudgement,
   AiForScienceJudgement,
@@ -17,6 +19,7 @@ import type {
   QueueItem,
   RelevanceLabel,
   SdlJudgement,
+  Stage1Readiness,
 } from "@/types";
 
 const LABEL_OPTIONS: RelevanceLabel[] = [
@@ -57,6 +60,44 @@ interface Toast {
 }
 
 type QueueMode = "all" | "mine" | "unassigned";
+type Stage1Batch =
+  | "train-1"
+  | "train-2"
+  | "train-3"
+  | "validation"
+  | "frozen-test";
+
+const STAGE1_BATCHES: Array<{
+  value: Stage1Batch;
+  label: string;
+  role: NonNullable<QueueItem["stage1_role"]>;
+  round: number | null;
+}> = [
+  { value: "train-1", label: "Train · round 1", role: "train", round: 1 },
+  { value: "train-2", label: "Train · round 2", role: "train", round: 2 },
+  { value: "train-3", label: "Train · round 3", role: "train", round: 3 },
+  { value: "validation", label: "Validation", role: "validation", round: null },
+  { value: "frozen-test", label: "Frozen test", role: "frozen_test", round: null },
+];
+
+function matchesStage1Batch(item: QueueItem, batch: Stage1Batch): boolean {
+  const spec = STAGE1_BATCHES.find((candidate) => candidate.value === batch);
+  return Boolean(
+    spec &&
+      item.stage1_role === spec.role &&
+      (spec.round === null || item.stage1_round === spec.round),
+  );
+}
+
+function stage1BatchName(item: QueueItem): string {
+  const ordinal = item.stage1_ordinal ? ` · #${item.stage1_ordinal}` : "";
+  if (item.stage1_role === "train") {
+    return `Train · round ${item.stage1_round ?? "—"}${ordinal}`;
+  }
+  if (item.stage1_role === "frozen_test") return `Frozen test${ordinal}`;
+  if (item.stage1_role === "validation") return `Validation${ordinal}`;
+  return "Stage 1";
+}
 
 function relativeTime(iso: string | null): string {
   if (!iso) return "—";
@@ -87,6 +128,7 @@ export default function ReviewQueuePage() {
   const [size, setSize] = useState<number>(0);
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
+  const [readiness, setReadiness] = useState<Stage1Readiness | null>(null);
   const [working, setWorking] = useState(false);
   const [toast, setToast] = useState<Toast | null>(null);
   const [reviewerName, setReviewerName] = useState<string>(() => {
@@ -100,6 +142,7 @@ export default function ReviewQueuePage() {
   const [evidenceLevel, setEvidenceLevel] = useState<EvidenceLevel>("ABSTRACT");
   const [judgementBasis, setJudgementBasis] = useState<JudgementBasis>("DUAL_REVIEW");
   const [queueMode, setQueueMode] = useState<QueueMode>("all");
+  const [stage1Batch, setStage1Batch] = useState<Stage1Batch>("train-1");
   const queueParams = useMemo(() => ({
     assignee: queueMode === "mine" ? reviewerName.trim() || undefined : undefined,
     unassigned_only: queueMode === "unassigned",
@@ -108,23 +151,34 @@ export default function ReviewQueuePage() {
   const load = useCallback(async () => {
     setLoading(true);
     try {
+      const stage1 = await getStage1Readiness();
+      setReadiness(stage1);
+      if (!stage1.derived_views_enabled) {
+        setItems([]);
+        setSize(0);
+        setSelectedId(null);
+        return;
+      }
       const [queue, count] = await Promise.all([
-        getReviewQueue({ limit: 50, ...queueParams }),
+        getReviewQueue({ limit: stage1.stage1_only ? 200 : 50, ...queueParams }),
         getReviewQueueSize(queueParams),
       ]);
-      setItems(queue);
-      setSize(count.count);
+      const visibleQueue = stage1.stage1_only
+        ? queue.filter((item) => matchesStage1Batch(item, stage1Batch))
+        : queue;
+      setItems(visibleQueue);
+      setSize(stage1.stage1_only ? visibleQueue.length : count.count);
       setSelectedId((current) => (
-        current && queue.some((item) => item.paper_id === current)
+        current && visibleQueue.some((item) => item.paper_id === current)
           ? current
-          : queue[0]?.paper_id ?? null
+          : visibleQueue[0]?.paper_id ?? null
       ));
     } catch (e) {
       setToast({ text: e instanceof Error ? e.message : String(e), kind: "error" });
     } finally {
       setLoading(false);
     }
-  }, [queueParams]);
+  }, [queueParams, stage1Batch]);
 
   useEffect(() => {
     void load();
@@ -146,14 +200,15 @@ export default function ReviewQueuePage() {
   );
 
   useEffect(() => {
-    setPendingLabel(selected?.label ?? null);
+    const stage1 = Boolean(readiness?.stage1_only);
+    setPendingLabel(stage1 ? null : selected?.label ?? null);
     setNotes("");
     setSdlJudgement(selected?.sdl_judgement ?? null);
-    setAcJudgement(selected?.ac_relevance_judgement ?? null);
-    setAiJudgement(selected?.ai_for_science_judgement ?? null);
-    setEvidenceLevel(selected?.evidence_level ?? "ABSTRACT");
-    setJudgementBasis(selected?.judgement_basis ?? "DUAL_REVIEW");
-  }, [selectedId]);
+    setAcJudgement(stage1 ? null : selected?.ac_relevance_judgement ?? null);
+    setAiJudgement(stage1 ? null : selected?.ai_for_science_judgement ?? null);
+    setEvidenceLevel(selected?.evidence_level ?? (stage1 ? "FULLTEXT" : "ABSTRACT"));
+    setJudgementBasis(stage1 ? "STRICT_SDL" : selected?.judgement_basis ?? "DUAL_REVIEW");
+  }, [readiness?.stage1_only, selectedId]);
 
   const handleSelect = (paperId: string) => {
     setSelectedId(paperId);
@@ -175,26 +230,27 @@ export default function ReviewQueuePage() {
   };
 
   const handleSubmitReview = async () => {
-    if (!selected || !sdlJudgement || !acJudgement) return;
+    const stage1 = Boolean(readiness?.stage1_only);
+    if (!selected || !sdlJudgement || (!stage1 && !acJudgement)) return;
     const needsFulltext =
       sdlJudgement === "INSUFFICIENT_EVIDENCE" ||
-      acJudgement === "INSUFFICIENT_EVIDENCE";
+      (!stage1 && acJudgement === "INSUFFICIENT_EVIDENCE");
     setWorking(true);
     try {
       await submitReview(selected.paper_id, {
-        human_label: needsFulltext
+        human_label: stage1 || needsFulltext
           ? undefined
           : pendingLabel ?? selected.label,
         sdl_judgement: sdlJudgement,
-        ac_relevance_judgement: acJudgement,
-        ai_for_science_judgement: aiJudgement ?? undefined,
+        ac_relevance_judgement: stage1 ? undefined : acJudgement ?? undefined,
+        ai_for_science_judgement: stage1 ? undefined : aiJudgement ?? undefined,
         review_status: needsFulltext ? "NEEDS_FULLTEXT" : "COMPLETED",
         evidence_level: evidenceLevel,
-        judgement_basis: judgementBasis,
+        judgement_basis: stage1 ? "STRICT_SDL" : judgementBasis,
         reviewer: reviewerName || undefined,
         notes: notes || undefined,
       });
-      const evolutionStatus = needsFulltext
+      const evolutionStatus = stage1 || needsFulltext
         ? null
         : await getModelEvolutionStatus();
       const learningUpdate = evolutionStatus
@@ -208,6 +264,8 @@ export default function ReviewQueuePage() {
       setToast({
         text: needsFulltext
           ? `Saved ${selected.paper_id} for full-text review`
+          : stage1
+          ? `Saved blinded strict-SDL label · ${stage1BatchName(selected)}`
           : `Saved ${selected.paper_id} and added its label to the learning loop${learningUpdate}`,
         kind: "success",
       });
@@ -283,14 +341,27 @@ export default function ReviewQueuePage() {
     }
   };
 
+  if (readiness && !readiness.derived_views_enabled) {
+    return (
+      <Stage1Unavailable
+        title="Review Queue"
+        description="Human review begins only after the Tier 1 full-text corpus has been acquired and the classifier has completed its controlled training and validation rounds."
+        readiness={readiness}
+        loading={loading}
+        onRefresh={() => void load()}
+      />
+    );
+  }
+
   return (
     <div className="v7-page">
       <div className="v7-hero">
         <div>
           <h1>Review Queue</h1>
           <p>
-            Review SDL relevance and AC reporting relevance independently. Model-label corrections
-            are optional and only explicit corrections feed the training loop.
+            {readiness?.stage1_only
+              ? "Blinded strict-SDL annotation over the frozen Zotero Tier 1 batches. AC relevance and model predictions are excluded."
+              : "Review SDL relevance and AC reporting relevance independently. Model-label corrections are optional and only explicit corrections feed the training loop."}
           </p>
         </div>
         <div className="v7-hero-actions">
@@ -320,11 +391,31 @@ export default function ReviewQueuePage() {
           </div>
         </div>
         <div className="v7-stat">
-          <div className="label">Top priority</div>
+          <div className="label">{readiness?.stage1_only ? "Current batch" : "Top priority"}</div>
           <div className="value">
-            {items[0] ? items[0].priority.toFixed(2) : "—"}
+            {readiness?.stage1_only
+              ? items[0]
+                ? stage1BatchName(items[0])
+                : "—"
+              : items[0]
+                ? items[0].priority.toFixed(2)
+                : "—"}
           </div>
-          <div className="delta">highest-priority score in queue</div>
+          <div className="delta">
+            {readiness?.stage1_only
+              ? `${readiness.completed_label_counts?.[
+                  stage1Batch === "train-1"
+                    ? "train_round_1"
+                    : stage1Batch === "train-2"
+                      ? "train_round_2"
+                      : stage1Batch === "train-3"
+                        ? "train_round_3"
+                        : stage1Batch === "validation"
+                          ? "validation"
+                          : "frozen_test"
+                ] ?? 0} completed`
+              : "highest-priority score in queue"}
+          </div>
         </div>
         <div className="v7-stat">
           <div className="label">Loaded</div>
@@ -334,7 +425,29 @@ export default function ReviewQueuePage() {
       </div>
 
       <div className="v7-graph-toolbar" aria-label="Review queue ownership">
-        <span className="toolbar-label">Queue</span>
+        <span className="toolbar-label">
+          {readiness?.stage1_only ? "Review batch" : "Queue"}
+        </span>
+        {readiness?.stage1_only && (
+          <select
+            className="v7-btn ghost"
+            value={stage1Batch}
+            aria-label="Select frozen Stage 1 review batch"
+            onChange={(event) => setStage1Batch(event.target.value as Stage1Batch)}
+          >
+            {STAGE1_BATCHES.map((batch) => {
+              const configuredCount =
+                batch.role === "train" && batch.round !== null
+                  ? readiness.train_round_counts?.[String(batch.round)]
+                  : readiness.split_role_counts?.[batch.role];
+              return (
+                <option key={batch.value} value={batch.value}>
+                  {batch.label} · {configuredCount ?? 0}
+                </option>
+              );
+            })}
+          </select>
+        )}
         {(["all", "mine", "unassigned"] as QueueMode[]).map((mode) => (
           <button
             type="button"
@@ -352,7 +465,9 @@ export default function ReviewQueuePage() {
           </button>
         ))}
         <span className="metric-note">
-          Claims divide the workload; the final review records the actual reviewer.
+          {readiness?.stage1_only
+            ? "Predictions are hidden while annotating. Training reads only completed train-round labels."
+            : "Claims divide the workload; the final review records the actual reviewer."}
         </span>
       </div>
 
@@ -381,14 +496,24 @@ export default function ReviewQueuePage() {
                 style={{ textAlign: "left" }}
               >
                 <div className="item-row">
-                  <span className="priority-pill">⚡ {it.priority.toFixed(2)}</span>
-                  <span className={`v7-label ${it.label}`}>{it.label.replace("_", " ")}</span>
+                  {readiness?.stage1_only ? (
+                    <span className="priority-pill">{stage1BatchName(it)}</span>
+                  ) : (
+                    <>
+                      <span className="priority-pill">⚡ {it.priority.toFixed(2)}</span>
+                      <span className={`v7-label ${it.label}`}>{it.label.replace("_", " ")}</span>
+                    </>
+                  )}
                   <RagStatusBadge status={it.rag_status} compact />
                 </div>
                 <div className="item-title">{it.title}</div>
                 <div className="item-meta">
-                  <span>conf {it.confidence.toFixed(2)}</span>
-                  <span>·</span>
+                  {!readiness?.stage1_only && (
+                    <>
+                      <span>conf {it.confidence.toFixed(2)}</span>
+                      <span>·</span>
+                    </>
+                  )}
                   <span>{relativeTime(it.last_classified_at)}</span>
                   {it.provenance && (
                     <>
@@ -434,27 +559,33 @@ export default function ReviewQueuePage() {
                   )}
                 </div>
               </div>
-              <span className={`v7-label ${selected.label}`}>
-                {selected.label.replace("_", " ")}
-              </span>
+              {readiness?.stage1_only ? (
+                <span className="priority-pill">{stage1BatchName(selected)}</span>
+              ) : (
+                <span className={`v7-label ${selected.label}`}>
+                  {selected.label.replace("_", " ")}
+                </span>
+              )}
             </div>
 
-            <div className="v7-score-grid">
-              <div className="v7-score-cell">
-                <div className="label">Confidence</div>
-                <div className="value">{selected.confidence.toFixed(2)}</div>
-                <div className="bar">
-                  <i style={{ width: `${selected.confidence * 100}%` }} />
+            {!readiness?.stage1_only && (
+              <div className="v7-score-grid">
+                <div className="v7-score-cell">
+                  <div className="label">Confidence</div>
+                  <div className="value">{selected.confidence.toFixed(2)}</div>
+                  <div className="bar">
+                    <i style={{ width: `${selected.confidence * 100}%` }} />
+                  </div>
+                </div>
+                <div className="v7-score-cell">
+                  <div className="label">Priority</div>
+                  <div className="value">{selected.priority.toFixed(2)}</div>
+                  <div className="bar">
+                    <i style={{ width: `${selected.priority * 100}%` }} />
+                  </div>
                 </div>
               </div>
-              <div className="v7-score-cell">
-                <div className="label">Priority</div>
-                <div className="value">{selected.priority.toFixed(2)}</div>
-                <div className="bar">
-                  <i style={{ width: `${selected.priority * 100}%` }} />
-                </div>
-              </div>
-            </div>
+            )}
 
             <RagStatusPanel status={selected.rag_status} />
 
@@ -563,28 +694,38 @@ export default function ReviewQueuePage() {
               </div>
             </section>
 
-            <div>
-              <h2 style={{ fontSize: "1rem", margin: "0 0 0.5rem" }}>Why this is flagged</h2>
-              <ul className="v7-reasons">
-                {selected.reasons.length === 0 ? (
-                  <li>No specific reasons recorded.</li>
-                ) : (
-                  selected.reasons.map((r, i) => (
-                    <li key={i} className={reasonClass(r)}>
-                      {r}
-                    </li>
-                  ))
-                )}
-              </ul>
-            </div>
+            {!readiness?.stage1_only && (
+              <div>
+                <h2 style={{ fontSize: "1rem", margin: "0 0 0.5rem" }}>Why this is flagged</h2>
+                <ul className="v7-reasons">
+                  {selected.reasons.length === 0 ? (
+                    <li>No specific reasons recorded.</li>
+                  ) : (
+                    selected.reasons.map((r, i) => (
+                      <li key={i} className={reasonClass(r)}>
+                        {r}
+                      </li>
+                    ))
+                  )}
+                </ul>
+              </div>
+            )}
 
             <section className="dual-review" aria-labelledby="dual-review-heading">
               <div className="review-section-heading">
                 <div>
-                  <span className="review-kicker">Independent judgements</span>
-                  <h2 id="dual-review-heading">Separate SDL from AC relevance</h2>
+                  <span className="review-kicker">
+                    {readiness?.stage1_only ? "Blinded gold annotation" : "Independent judgements"}
+                  </span>
+                  <h2 id="dual-review-heading">
+                    {readiness?.stage1_only
+                      ? "Strict SDL relevance only"
+                      : "Separate SDL from AC relevance"}
+                  </h2>
                 </div>
-                <span className="review-required">SDL + AC required</span>
+                <span className="review-required">
+                  {readiness?.stage1_only ? "SDL required" : "SDL + AC required"}
+                </span>
               </div>
               <div className="dual-review-grid">
                 <fieldset>
@@ -603,42 +744,46 @@ export default function ReviewQueuePage() {
                     ))}
                   </div>
                 </fieldset>
-                <fieldset>
-                  <legend>Is this AC relevant?</legend>
-                  <div className="review-choice-stack">
-                    {AC_OPTIONS.map((option) => (
-                      <button
-                        type="button"
-                        key={option.value}
-                        aria-pressed={acJudgement === option.value}
-                        className={acJudgement === option.value ? "active" : ""}
-                        onClick={() => setAcJudgement(option.value)}
-                      >
-                        {option.label}
-                      </button>
-                    ))}
-                  </div>
-                </fieldset>
+                {!readiness?.stage1_only && (
+                  <fieldset>
+                    <legend>Is this AC relevant?</legend>
+                    <div className="review-choice-stack">
+                      {AC_OPTIONS.map((option) => (
+                        <button
+                          type="button"
+                          key={option.value}
+                          aria-pressed={acJudgement === option.value}
+                          className={acJudgement === option.value ? "active" : ""}
+                          onClick={() => setAcJudgement(option.value)}
+                        >
+                          {option.label}
+                        </button>
+                      ))}
+                    </div>
+                  </fieldset>
+                )}
               </div>
               <div className="review-secondary-row">
-                <label>
-                  <span>AI for science (optional)</span>
-                  <select
-                    value={aiJudgement ?? ""}
-                    onChange={(event) =>
-                      setAiJudgement(
-                        (event.target.value || null) as AiForScienceJudgement | null
-                      )
-                    }
-                  >
-                    <option value="">Not assessed</option>
-                    {AI_OPTIONS.map((option) => (
-                      <option key={option.value} value={option.value}>
-                        {option.label}
-                      </option>
-                    ))}
-                  </select>
-                </label>
+                {!readiness?.stage1_only && (
+                  <label>
+                    <span>AI for science (optional)</span>
+                    <select
+                      value={aiJudgement ?? ""}
+                      onChange={(event) =>
+                        setAiJudgement(
+                          (event.target.value || null) as AiForScienceJudgement | null
+                        )
+                      }
+                    >
+                      <option value="">Not assessed</option>
+                      {AI_OPTIONS.map((option) => (
+                        <option key={option.value} value={option.value}>
+                          {option.label}
+                        </option>
+                      ))}
+                    </select>
+                  </label>
+                )}
                 <label>
                   <span>Evidence reviewed</span>
                   <select
@@ -654,24 +799,31 @@ export default function ReviewQueuePage() {
                     ))}
                   </select>
                 </label>
-                <label>
-                  <span>Judgement basis</span>
-                  <select
-                    value={judgementBasis}
-                    onChange={(event) =>
-                      setJudgementBasis(event.target.value as JudgementBasis)
-                    }
-                  >
-                    <option value="DUAL_REVIEW">Dual SDL + AC review</option>
-                    <option value="AC_REPORTING">AC reporting judgement</option>
-                    <option value="STRICT_SDL">Strict SDL judgement</option>
-                    <option value="OTHER">Other documented basis</option>
-                  </select>
-                </label>
+                {readiness?.stage1_only ? (
+                  <div>
+                    <span>Judgement basis</span>
+                    <strong>Strict SDL · model-blinded</strong>
+                  </div>
+                ) : (
+                  <label>
+                    <span>Judgement basis</span>
+                    <select
+                      value={judgementBasis}
+                      onChange={(event) =>
+                        setJudgementBasis(event.target.value as JudgementBasis)
+                      }
+                    >
+                      <option value="DUAL_REVIEW">Dual SDL + AC review</option>
+                      <option value="AC_REPORTING">AC reporting judgement</option>
+                      <option value="STRICT_SDL">Strict SDL judgement</option>
+                      <option value="OTHER">Other documented basis</option>
+                    </select>
+                  </label>
+                )}
               </div>
             </section>
 
-            <div>
+            {!readiness?.stage1_only && <div>
               <h2 style={{ fontSize: "1rem", margin: "0 0 0.5rem" }}>
                 Classifier training label
               </h2>
@@ -709,15 +861,19 @@ export default function ReviewQueuePage() {
                   resize: "vertical",
                 }}
               />
-            </div>
+            </div>}
 
             <div className="v7-action-bar">
               <button
                 className="v7-btn primary review-submit"
                 onClick={handleSubmitReview}
-                disabled={!sdlJudgement || !acJudgement || working}
+                disabled={!sdlJudgement || (!readiness?.stage1_only && !acJudgement) || working}
               >
-                {working ? "Saving…" : "Save independent review"}
+                {working
+                  ? "Saving…"
+                  : readiness?.stage1_only
+                    ? "Save blinded SDL label"
+                    : "Save independent review"}
               </button>
               <button className="v7-btn ghost" onClick={handleSkip} disabled={working}>
                 ⤳ Defer 7d

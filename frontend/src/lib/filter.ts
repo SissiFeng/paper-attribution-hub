@@ -36,7 +36,7 @@ const FILTER_QUERY_KEYS = [
 
 /** Decode the filter state out of a URLSearchParams object.
  *  When no labels are present in the URL (fresh page load), defaults to
- *  DEFAULT_FILTER.labels (CORE + RELATED) so the page is meaningful out-of-the-box.
+ *  DEFAULT_FILTER.labels (all Stage 1 classifications).
  */
 export function filterFromSearchParams(params: URLSearchParams): PaperFilterState {
   const rawLabels = params.getAll("labels");

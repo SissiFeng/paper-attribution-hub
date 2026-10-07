@@ -1,0 +1,394 @@
+{
+  "model_id": "moonshotai.kimi-k2.5",
+  "paper_id": "DOI:10.1021_acs.chemrev.4c00055",
+  "prompt_version": "oer-protocol-teacher-v0.1",
+  "protocols": [
+    {
+      "caveats": [],
+      "characterization": [
+        {
+          "entity_id": "char_c48f3303e996f4c0",
+          "evidence_ids": [
+            "ev_65c53a93630aaa61"
+          ],
+          "output": null,
+          "settings": {},
+          "technique": "UV-Vis spectroscopy"
+        }
+      ],
+      "evidence": [
+        {
+          "char_end": 313,
+          "char_start": 140,
+          "chunk_id": "mdchk_a47734224b112c9e",
+          "document_char_end": 209657,
+          "document_char_start": 209484,
+          "evidence_id": "ev_8504a86d14fc8cd2",
+          "paper_id": "DOI:10.1021_acs.chemrev.4c00055",
+          "quote": "The catalytic system, which can be prepared by mixing all ingredients in an aqueous solution, is composed of three components: the active metal, a co-catalyst, and a ligand.",
+          "source_sha256": "72df12cc7703f744bc4a77c6cd38d238d61d1fcd2a8c056e6ee02381a82de537"
+        },
+        {
+          "char_end": 658,
+          "char_start": 519,
+          "chunk_id": "mdchk_a47734224b112c9e",
+          "document_char_end": 210002,
+          "document_char_start": 209863,
+          "evidence_id": "ev_765fd067a3e340d1",
+          "paper_id": "DOI:10.1021_acs.chemrev.4c00055",
+          "quote": "Solutions containing the different catalyst compositions are prepared in 96-well plates, and are then injected into a microfluidic reactor.",
+          "source_sha256": "72df12cc7703f744bc4a77c6cd38d238d61d1fcd2a8c056e6ee02381a82de537"
+        },
+        {
+          "char_end": 751,
+          "char_start": 659,
+          "chunk_id": "mdchk_a47734224b112c9e",
+          "document_char_end": 210095,
+          "document_char_start": 210003,
+          "evidence_id": "ev_a87170ec3b3acc90",
+          "paper_id": "DOI:10.1021_acs.chemrev.4c00055",
+          "quote": "Both methane and oxygen are added by diffusion through the teflon walls of the flow reactor.",
+          "source_sha256": "72df12cc7703f744bc4a77c6cd38d238d61d1fcd2a8c056e6ee02381a82de537"
+        },
+        {
+          "char_end": 951,
+          "char_start": 752,
+          "chunk_id": "mdchk_a47734224b112c9e",
+          "document_char_end": 210295,
+          "document_char_start": 210096,
+          "evidence_id": "ev_65c53a93630aaa61",
+          "paper_id": "DOI:10.1021_acs.chemrev.4c00055",
+          "quote": "The formed methanol was quantified by diffusion into neighboring microdroplets that contained a methanol-selective indicator, thereby allowing for semiquantitative analysis using UV-Vis spectroscopy.",
+          "source_sha256": "72df12cc7703f744bc4a77c6cd38d238d61d1fcd2a8c056e6ee02381a82de537"
+        }
+      ],
+      "evidence_scope": "secondary_report",
+      "instruments": [],
+      "materials": [
+        {
+          "amount": null,
+          "entity_id": "mat_df3fa335963324ef",
+          "evidence_ids": [
+            "ev_8504a86d14fc8cd2"
+          ],
+          "name": "active metal",
+          "pretreatment": null,
+          "purity": null,
+          "role": null,
+          "supplier": null
+        },
+        {
+          "amount": null,
+          "entity_id": "mat_40e4d4828ffe965f",
+          "evidence_ids": [
+            "ev_8504a86d14fc8cd2"
+          ],
+          "name": "co-catalyst",
+          "pretreatment": null,
+          "purity": null,
+          "role": null,
+          "supplier": null
+        },
+        {
+          "amount": null,
+          "entity_id": "mat_dba26846e1b9621e",
+          "evidence_ids": [
+            "ev_8504a86d14fc8cd2"
+          ],
+          "name": "ligand",
+          "pretreatment": null,
+          "purity": null,
+          "role": null,
+          "supplier": null
+        },
+        {
+          "amount": null,
+          "entity_id": "mat_53d4ee23b6368869",
+          "evidence_ids": [
+            "ev_a87170ec3b3acc90"
+          ],
+          "name": "methane",
+          "pretreatment": null,
+          "purity": null,
+          "role": null,
+          "supplier": null
+        },
+        {
+          "amount": null,
+          "entity_id": "mat_bf9f4fe352ce471b",
+          "evidence_ids": [
+            "ev_a87170ec3b3acc90"
+          ],
+          "name": "oxygen",
+          "pretreatment": null,
+          "purity": null,
+          "role": null,
+          "supplier": null
+        },
+        {
+          "amount": null,
+          "entity_id": "mat_3c87552ce916ba71",
+          "evidence_ids": [
+            "ev_65c53a93630aaa61"
+          ],
+          "name": "methanol-selective indicator",
+          "pretreatment": null,
+          "purity": null,
+          "role": null,
+          "supplier": null
+        }
+      ],
+      "paper_id": "DOI:10.1021_acs.chemrev.4c00055",
+      "protocol_id": "protocol_365f572a108ef171",
+      "protocol_name": "Homogeneous Catalyst Discovery for Methane Partial Oxidation",
+      "protocol_type": "catalysis",
+      "relations": [],
+      "results": [],
+      "software": [],
+      "source_chunk_ids": [
+        "mdchk_a47734224b112c9e"
+      ],
+      "source_paper_tier": "oer_review",
+      "steps": [
+        {
+          "action": "Solutions containing the different catalyst compositions are prepared in 96-well plates, and are then injected into a microfluidic reactor.",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_765fd067a3e340d1"
+          ],
+          "notes": null,
+          "order": 1,
+          "step_id": "step_365f572a108ef171"
+        },
+        {
+          "action": "Solutions containing the different catalyst compositions are prepared in 96-well plates, and are then injected into a microfluidic reactor.",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_765fd067a3e340d1"
+          ],
+          "notes": null,
+          "order": 2,
+          "step_id": "step_33b0ed680981e743"
+        },
+        {
+          "action": "Both methane and oxygen are added by diffusion through the teflon walls of the flow reactor.",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_a87170ec3b3acc90"
+          ],
+          "notes": null,
+          "order": 3,
+          "step_id": "step_d4179239abe69819"
+        },
+        {
+          "action": "The formed methanol was quantified by diffusion into neighboring microdroplets that contained a methanol-selective indicator, thereby allowing for semiquantitative analysis using UV-Vis spectroscopy.",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_65c53a93630aaa61"
+          ],
+          "notes": "semiquantitative analysis",
+          "order": 4,
+          "step_id": "step_b08ab9466c45d240"
+        }
+      ]
+    },
+    {
+      "caveats": [],
+      "characterization": [
+        {
+          "entity_id": "char_75cec58dbe4c37f9",
+          "evidence_ids": [
+            "ev_1ddaa57d5c32172c"
+          ],
+          "output": null,
+          "settings": {},
+          "technique": "automated atomic emission spectroscopy"
+        },
+        {
+          "entity_id": "char_e70d9344c31057c3",
+          "evidence_ids": [
+            "ev_fddb9a09ce2f3d79"
+          ],
+          "output": "catalytic activity",
+          "settings": {},
+          "technique": "electrochemical measurement"
+        }
+      ],
+      "evidence": [
+        {
+          "char_end": 1741,
+          "char_start": 1536,
+          "chunk_id": "mdchk_a47734224b112c9e",
+          "document_char_end": 211085,
+          "document_char_start": 210880,
+          "evidence_id": "ev_1ddaa57d5c32172c",
+          "paper_id": "DOI:10.1021_acs.chemrev.4c00055",
+          "quote": "By analyzing the available Martian ores through automated atomic emission spectroscopy, the available elementsand therefore, the accessible materials search spaceare defined autonomously by the platform.",
+          "source_sha256": "72df12cc7703f744bc4a77c6cd38d238d61d1fcd2a8c056e6ee02381a82de537"
+        },
+        {
+          "char_end": 1968,
+          "char_start": 1742,
+          "chunk_id": "mdchk_a47734224b112c9e",
+          "document_char_end": 211312,
+          "document_char_start": 211086,
+          "evidence_id": "ev_5d98231662b1aec4",
+          "paper_id": "DOI:10.1021_acs.chemrev.4c00055",
+          "quote": "Within this search space (>3 million combinations of 6 metals in discrete quantity steps), a diverse set of ∼30,000 possible catalyst compositions are first screened computationally, by molecular dynamics and DFT calculations.",
+          "source_sha256": "72df12cc7703f744bc4a77c6cd38d238d61d1fcd2a8c056e6ee02381a82de537"
+        },
+        {
+          "char_end": 2110,
+          "char_start": 1969,
+          "chunk_id": "mdchk_a47734224b112c9e",
+          "document_char_end": 211454,
+          "document_char_start": 211313,
+          "evidence_id": "ev_5236214ca1b18be3",
+          "paper_id": "DOI:10.1021_acs.chemrev.4c00055",
+          "quote": "This data is used to train a surrogate neural network model for the computed catalytic properties as a function of the elemental composition.",
+          "source_sha256": "72df12cc7703f744bc4a77c6cd38d238d61d1fcd2a8c056e6ee02381a82de537"
+        },
+        {
+          "char_end": 2652,
+          "char_start": 2282,
+          "chunk_id": "mdchk_a47734224b112c9e",
+          "document_char_end": 211996,
+          "document_char_start": 211626,
+          "evidence_id": "ev_a3fd35678da8c389",
+          "paper_id": "DOI:10.1021_acs.chemrev.4c00055",
+          "quote": "The latter network was trained on a small seed dataset of < 300 experiments, which were conducted in a fully automated fashion using a robotic arm operating multiple workstations for dissolving the raw ores, creating reagent stock solutions, precipitating, drying and formulating the catalysts, and determining their catalytic activity in an electrochemical measurement.",
+          "source_sha256": "72df12cc7703f744bc4a77c6cd38d238d61d1fcd2a8c056e6ee02381a82de537"
+        },
+        {
+          "char_end": 2652,
+          "char_start": 2359,
+          "chunk_id": "mdchk_a47734224b112c9e",
+          "document_char_end": 211996,
+          "document_char_start": 211703,
+          "evidence_id": "ev_fddb9a09ce2f3d79",
+          "paper_id": "DOI:10.1021_acs.chemrev.4c00055",
+          "quote": "which were conducted in a fully automated fashion using a robotic arm operating multiple workstations for dissolving the raw ores, creating reagent stock solutions, precipitating, drying and formulating the catalysts, and determining their catalytic activity in an electrochemical measurement.",
+          "source_sha256": "72df12cc7703f744bc4a77c6cd38d238d61d1fcd2a8c056e6ee02381a82de537"
+        },
+        {
+          "char_end": 2759,
+          "char_start": 2653,
+          "chunk_id": "mdchk_a47734224b112c9e",
+          "document_char_end": 212103,
+          "document_char_start": 211997,
+          "evidence_id": "ev_121d35beb23ae287",
+          "paper_id": "DOI:10.1021_acs.chemrev.4c00055",
+          "quote": "The authors then performed virtual BO within the entire search space, using the predictions of the trained",
+          "source_sha256": "72df12cc7703f744bc4a77c6cd38d238d61d1fcd2a8c056e6ee02381a82de537"
+        }
+      ],
+      "evidence_scope": "secondary_report",
+      "instruments": [
+        {
+          "entity_id": "inst_776c3fad0dbc5e94",
+          "evidence_ids": [
+            "ev_fddb9a09ce2f3d79"
+          ],
+          "manufacturer": null,
+          "model": null,
+          "name": "robotic arm",
+          "settings": {}
+        }
+      ],
+      "materials": [],
+      "paper_id": "DOI:10.1021_acs.chemrev.4c00055",
+      "protocol_id": "protocol_33b0ed680981e743",
+      "protocol_name": "Autonomous Catalyst Discovery for Electrochemical Oxygen Evolution Reaction from Martian Meteorites",
+      "protocol_type": "catalysis",
+      "relations": [],
+      "results": [],
+      "software": [
+        {
+          "entity_id": "soft_804c5bd08a4e41de",
+          "evidence_ids": [
+            "ev_5d98231662b1aec4"
+          ],
+          "name": "molecular dynamics",
+          "settings": {},
+          "version": null
+        },
+        {
+          "entity_id": "soft_0c52535e70bff5dc",
+          "evidence_ids": [
+            "ev_5d98231662b1aec4"
+          ],
+          "name": "DFT calculations",
+          "settings": {},
+          "version": null
+        },
+        {
+          "entity_id": "soft_c2815881e8b4b33c",
+          "evidence_ids": [
+            "ev_5236214ca1b18be3"
+          ],
+          "name": "surrogate neural network model",
+          "settings": {},
+          "version": null
+        }
+      ],
+      "source_chunk_ids": [
+        "mdchk_a47734224b112c9e"
+      ],
+      "source_paper_tier": "oer_review",
+      "steps": [
+        {
+          "action": "By analyzing the available Martian ores through automated atomic emission spectroscopy, the available elementsand therefore, the accessible materials search spaceare defined autonomously by the platform.",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_1ddaa57d5c32172c"
+          ],
+          "notes": null,
+          "order": 1,
+          "step_id": "step_365f572a108ef171"
+        },
+        {
+          "action": "Within this search space (>3 million combinations of 6 metals in discrete quantity steps), a diverse set of ∼30,000 possible catalyst compositions are first screened computationally, by molecular dynamics and DFT calculations.",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_5d98231662b1aec4"
+          ],
+          "notes": null,
+          "order": 2,
+          "step_id": "step_33b0ed680981e743"
+        },
+        {
+          "action": "This data is used to train a surrogate neural network model for the computed catalytic properties as a function of the elemental composition.",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_5236214ca1b18be3"
+          ],
+          "notes": null,
+          "order": 3,
+          "step_id": "step_d4179239abe69819"
+        },
+        {
+          "action": "The latter network was trained on a small seed dataset of < 300 experiments, which were conducted in a fully automated fashion using a robotic arm operating multiple workstations for dissolving the raw ores, creating reagent stock solutions, precipitating, drying and formulating the catalysts, and determining their catalytic activity in an electrochemical measurement.",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_a3fd35678da8c389"
+          ],
+          "notes": null,
+          "order": 4,
+          "step_id": "step_b08ab9466c45d240"
+        },
+        {
+          "action": "The authors then performed virtual BO within the entire search space, using the predictions of the trained",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_121d35beb23ae287"
+          ],
+          "notes": null,
+          "order": 5,
+          "step_id": "step_941144c76962dcef"
+        }
+      ]
+    }
+  ],
+  "schema_version": "bedrock-teacher-paper-cache-v0.1",
+  "unsupported_claim_count": 20
+}

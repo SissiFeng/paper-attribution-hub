@@ -1,0 +1,131 @@
+{
+  "verified_at": "2026-10-06T15:56:07.460835+00:00",
+  "scope": "P1 source anchors, private annotations, evidence matrices, project folders, selected sharing and model readiness",
+  "tests": {
+    "related_regressions": 496,
+    "typescript_build": "passed",
+    "ruff_scoped": "passed",
+    "git_diff_check": "passed"
+  },
+  "browser": {
+    "passed": true,
+    "checks": [
+      "private project creation",
+      "explicit project membership",
+      "paper folder without personal data copy",
+      "exact private passage annotation",
+      "explicit annotation copy",
+      "saved evidence matrix and cited interpretation",
+      "manual missing-cell evidence from an exact saved annotation",
+      "private evidence answer",
+      "answer citation opens highlighted original passage",
+      "selected message copy to project",
+      "second member sees only project copies",
+      "revocation blocks project and historical discussion",
+      "mobile layout has no page overflow"
+    ],
+    "console_errors": [],
+    "environment": "Isolated local HTTPS app, real backend and browser, two synthetic users and two clearly labelled paper fixtures",
+    "rerun_command": "backend/.venv/bin/python tools/author-paper-monitor/deploy/check_research_browser.py --playwright-module <installed module> --browser-executable <installed browser>"
+  },
+  "backend": {
+    "sha256": "4701713191e8e7a4fb86e579d2d381f2aa930afb0f9f54e5c57d0e8aec3e0206",
+    "release": "arn:aws:ecs:ca-central-1:247893369214:task-definition/paper-attribution-pas-dev-backend:12",
+    "previous": "arn:aws:ecs:ca-central-1:247893369214:task-definition/paper-attribution-pas-dev-backend:9",
+    "service": {
+      "paper-attribution-dev-backend-svc": {
+        "task_definition": "arn:aws:ecs:ca-central-1:247893369214:task-definition/paper-attribution-pas-dev-backend:12",
+        "running": 1,
+        "state": "COMPLETED"
+      },
+      "paper-attribution-dev-institution-svc": {
+        "task_definition": "arn:aws:ecs:ca-central-1:247893369214:task-definition/paper-attribution-dev-institution:10",
+        "running": 1,
+        "state": "COMPLETED"
+      }
+    }
+  },
+  "canary": {
+    "task": "arn:aws:ecs:ca-central-1:247893369214:task/paper-attribution-dev-cluster/1649e631564248e6b10ce454966c5f12",
+    "definition": "arn:aws:ecs:ca-central-1:247893369214:task-definition/paper-attribution-pas-dev-backend:12",
+    "logs": [
+      {
+        "isolation_canary": "passed",
+        "principals": 3,
+        "synthetic_data": "rolled_back",
+        "sample_paper": "monitor_ca2f0551ca0d760ce4c1120c22d65612",
+        "markdown_source": "original",
+        "answer_kind": "partial_evidence",
+        "answer_model": "retrieval-only",
+        "sources": 8
+      },
+      {
+        "access_canary": "passed",
+        "principals": 3,
+        "synthetic_data": "rolled_back",
+        "default_deny": true,
+        "admin_private_bypass": false,
+        "revoke_immediate": true
+      },
+      {
+        "research_canary": "passed",
+        "checks": 78,
+        "real_papers": 20,
+        "matrices": 10,
+        "exact_quotes": 152,
+        "model": {
+          "mode": "evidence_only",
+          "provider": null,
+          "health": "not_checked",
+          "message": "Source passages are available. Generated explanations need a model credential configured by an administrator."
+        },
+        "answer_model": "retrieval-only",
+        "answer_sources": 8,
+        "boundary": "Exact source offsets and access were tested; scientific entailment and fair ranking are not automatically certified.",
+        "synthetic_data": "rolled_back"
+      }
+    ]
+  },
+  "live_https": {
+    "task": "arn:aws:ecs:ca-central-1:247893369214:task/paper-attribution-dev-cluster/ce715b61dc4842f9aed391d159daa206",
+    "definition": "arn:aws:ecs:ca-central-1:247893369214:task-definition/paper-attribution-pas-dev-backend:12",
+    "logs": [
+      {
+        "research_live_cleanup": "passed",
+        "synthetic_identities": 3
+      },
+      {
+        "research_live": "passed",
+        "checks": 78,
+        "real_papers": 20,
+        "matrices": 10,
+        "exact_quotes": 152,
+        "model": {
+          "mode": "evidence_only",
+          "provider": null,
+          "health": "not_checked",
+          "message": "Source passages are available. Generated explanations need a model credential configured by an administrator."
+        },
+        "answer_model": "retrieval-only",
+        "answer_sources": 8,
+        "boundary": "Exact source offsets and access were tested; scientific entailment and fair ranking are not automatically certified.",
+        "additional_gate_checks": 6
+      }
+    ]
+  },
+  "frontend": {
+    "artifacts": {
+      "reading/assets/reading-Ba4GiqGt.css": "db21baf89d77bd0d087bd0f896b59d1ac75a9a62eea54a151597c1aa75f0a249",
+      "reading/assets/reading-D8B-G5jn.js": "0f0f9756297d62cb83840dbd91b08e770fd078a1f05275b2a2a8d83e110b037c",
+      "reading/index.html": "0844c319da0c4288d25aaa279079b85d3bafdae137bda63f53df82506e6f717c"
+    },
+    "invalidation": "I2FBP76VTIZFBJ4PMM4US6OSAX",
+    "url": "https://d1ai8ldqsh81fz.cloudfront.net/reading/"
+  },
+  "frontend_https_hashes": "all three artifacts matched",
+  "source_boundary": "Twenty real papers; exact quotation positions checked. Scientific entailment, automatic metric extraction and comparative rankings are not certified.",
+  "remaining_external_step": "Provide a generation-provider credential via hidden input or an existing SSM SecureString, then validate real cited generation. Current deployed mode is evidence_only.",
+  "sharing_boundary": "A project member sees only project artifacts; personal bookmarks and unselected messages are never copied. Admin does not bypass private/project access. Revoked project discussion creators also lose access.",
+  "slack_test_messages_sent": 0,
+  "git_commit_or_push": false
+}

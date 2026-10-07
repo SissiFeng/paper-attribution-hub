@@ -14,6 +14,7 @@ from pydantic import Field
 from app.domain_adaptation.gold import ReviewStatus, normalize_gold_value
 from app.domain_adaptation.models import (
     DomainModel,
+    EvidenceScope,
     ProtocolUnit,
     ScientificChunk,
     ScientificSemanticRole,
@@ -59,7 +60,7 @@ def _tokens(text: str) -> list[str]:
 
 
 class RagQuestion(DomainModel):
-    schema_version: str = "domain-adapter-rag-question-v0.1"
+    schema_version: str = "domain-adapter-rag-question-v0.2"
     question_id: str
     text: str = Field(min_length=1)
     question_type: RagQuestionType
@@ -67,6 +68,7 @@ class RagQuestion(DomainModel):
     semantic_role_filters: list[ScientificSemanticRole] = Field(
         default_factory=list
     )
+    evidence_scope_filters: list[EvidenceScope] = Field(default_factory=list)
 
 
 class ProposedRagAnswerItem(DomainModel):
@@ -76,7 +78,7 @@ class ProposedRagAnswerItem(DomainModel):
 
 
 class RagQuestionCandidate(DomainModel):
-    schema_version: str = "domain-adapter-rag-question-candidate-v0.1"
+    schema_version: str = "domain-adapter-rag-question-candidate-v0.2"
     question: RagQuestion
     source_protocol_ids: list[str] = Field(min_length=1)
     proposed_answer_items: list[ProposedRagAnswerItem] = Field(min_length=1)
@@ -86,7 +88,7 @@ class RagQuestionCandidate(DomainModel):
 
 
 class RagGoldQuestion(DomainModel):
-    schema_version: str = "domain-adapter-rag-gold-v0.1"
+    schema_version: str = "domain-adapter-rag-gold-v0.2"
     question: RagQuestion
     review_status: ReviewStatus = "pending"
     annotation_complete: bool = False
@@ -154,8 +156,11 @@ def _format_settings(settings: dict[str, str]) -> str:
 
 
 def _format_step(item) -> str:
-    conditions = ", ".join(item.conditions)
-    return f"{item.action} [{conditions}]" if conditions else item.action
+    if item.verb is None or not item.targets:
+        return ""
+    action = f"{item.verb} {', '.join(item.targets)}"
+    params = _format_settings(item.params)
+    return f"{action} [{params}]" if params else action
 
 
 def _format_characterization(item) -> str:
@@ -187,9 +192,10 @@ def _answer_payload(
             [item.evidence_ids for item in protocol.software],
         )
     if question_type == "protocol_step_lookup":
+        structured_steps = [item for item in protocol.steps if _format_step(item)]
         return (
-            [_format_step(item) for item in protocol.steps],
-            [item.evidence_ids for item in protocol.steps],
+            [_format_step(item) for item in structured_steps],
+            [item.evidence_ids for item in structured_steps],
         )
     if question_type == "characterization_lookup":
         return (
@@ -213,7 +219,15 @@ def _answer_payload(
 
 
 def _question_text(protocol: ProtocolUnit, question_type: RagQuestionType) -> str:
-    subject = f"the {protocol.protocol_name} protocol in {protocol.paper_id}"
+    scope_label = {
+        "primary_report": "a primary report",
+        "secondary_report": "a secondary report",
+        "unknown": "an evidence report of unknown origin",
+    }[protocol.evidence_scope]
+    subject = (
+        f"the {protocol.protocol_name} protocol in {protocol.paper_id}, "
+        f"classified as {scope_label}"
+    )
     templates: dict[RagQuestionType, str] = {
         "material_lookup": (
             f"Which materials and explicitly reported quantities are used in {subject}?"
@@ -269,12 +283,8 @@ def build_rag_review_queue(
                 chunk.scientific_chunk_id
             )
 
-    candidates_by_type: dict[RagQuestionType, list[RagQuestionCandidate]] = (
-        defaultdict(list)
-    )
+    candidates: list[RagQuestionCandidate] = []
     for protocol in sorted(protocols, key=lambda item: item.protocol_id):
-        if protocol.evidence_scope != "primary_report":
-            continue
         evidence_by_id = {item.evidence_id: item for item in protocol.evidence}
         for question_type in _QUESTION_TYPE_ORDER:
             answer_values, answer_evidence_ids = _answer_payload(
@@ -318,8 +328,9 @@ def build_rag_review_queue(
                 question_type=question_type,
                 paper_ids=[protocol.paper_id],
                 semantic_role_filters=_role_filters(question_type),
+                evidence_scope_filters=[protocol.evidence_scope],
             )
-            candidates_by_type[question_type].append(
+            candidates.append(
                 RagQuestionCandidate(
                     question=question,
                     source_protocol_ids=[protocol.protocol_id],
@@ -341,21 +352,31 @@ def build_rag_review_queue(
             )
 
     selected: list[RagQuestionCandidate] = []
-    positions: Counter[RagQuestionType] = Counter()
-    while len(selected) < limit:
-        added = False
-        for question_type in _QUESTION_TYPE_ORDER:
-            values = candidates_by_type.get(question_type, [])
-            position = positions[question_type]
-            if position >= len(values):
-                continue
-            selected.append(values[position])
-            positions[question_type] += 1
-            added = True
-            if len(selected) == limit:
-                break
-        if not added:
-            break
+    remaining = list(candidates)
+    paper_counts: Counter[str] = Counter()
+    type_counts: Counter[RagQuestionType] = Counter()
+    scope_counts: Counter[EvidenceScope] = Counter()
+    question_type_order = {
+        question_type: index
+        for index, question_type in enumerate(_QUESTION_TYPE_ORDER)
+    }
+    while remaining and len(selected) < limit:
+        candidate = min(
+            remaining,
+            key=lambda item: (
+                paper_counts[item.question.paper_ids[0]] > 0,
+                type_counts[item.question.question_type],
+                scope_counts[item.question.evidence_scope_filters[0]],
+                paper_counts[item.question.paper_ids[0]],
+                question_type_order[item.question.question_type],
+                item.question.question_id,
+            ),
+        )
+        selected.append(candidate)
+        remaining.remove(candidate)
+        paper_counts[candidate.question.paper_ids[0]] += 1
+        type_counts[candidate.question.question_type] += 1
+        scope_counts[candidate.question.evidence_scope_filters[0]] += 1
 
     gold = [RagGoldQuestion(question=item.question) for item in selected]
     return selected, gold
@@ -437,7 +458,7 @@ class ScientificChunkIndex:
 class StructuredRagBaseline:
     """Retrieve semantic chunks, then answer from linked structured protocols."""
 
-    system_id = "structured-bm25-protocol-baseline-v0.1"
+    system_id = "structured-bm25-protocol-baseline-v0.2"
 
     def __init__(
         self, chunks: list[ScientificChunk], protocols: list[ProtocolUnit]
@@ -452,14 +473,35 @@ class StructuredRagBaseline:
             semantic_roles=question.semantic_role_filters,
             limit=top_k,
         )
+        if question.semantic_role_filters and len(hits) < top_k:
+            seen_chunk_ids = {item.scientific_chunk_id for item in hits}
+            fallback_hits = self.index.search(
+                question.text,
+                paper_ids=question.paper_ids,
+                limit=top_k,
+            )
+            hits.extend(
+                item
+                for item in fallback_hits
+                if item.scientific_chunk_id not in seen_chunk_ids
+            )
+            hits = hits[:top_k]
+            for rank, hit in enumerate(hits, start=1):
+                hit.rank = rank
         retrieved_ids = [item.scientific_chunk_id for item in hits]
         retrieved_ranks = {
             item.scientific_chunk_id: item.rank for item in hits
         }
         question_tokens = set(_tokens(question.text))
+        evidence_scope_filter = set(question.evidence_scope_filters)
         eligible: list[tuple[int, int, ProtocolUnit]] = []
         for protocol in self.protocols:
             if protocol.paper_id not in question.paper_ids:
+                continue
+            if (
+                evidence_scope_filter
+                and protocol.evidence_scope not in evidence_scope_filter
+            ):
                 continue
             linked_ranks = [
                 retrieved_ranks[item]

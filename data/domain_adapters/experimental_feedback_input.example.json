@@ -1,0 +1,40 @@
+{
+  "package_id": "oer-experimental-feedback",
+  "package_version": "2026.09.03",
+  "runs": [
+    {
+      "conditions": {
+        "electrolyte": "1 M KOH",
+        "temperature": "25 degC"
+      },
+      "domain": "oer-electrocatalysis",
+      "failure_reason": null,
+      "instrument_ids": [
+        "potentiostat-1"
+      ],
+      "measurements": [
+        {
+          "measurement_id": "measurement-1",
+          "metric": "overpotential_at_10_mA_cm2",
+          "normalized_unit": "V",
+          "normalized_value": 0.287,
+          "raw_value": "287 mV",
+          "uncertainty": 0.004
+        }
+      ],
+      "performed_at": "2026-09-03T14:00:00Z",
+      "protocol_id": "protocol-1",
+      "protocol_package": {
+        "package_id": "oer-electrocatalysis",
+        "package_version": "0.3.3-pre-review"
+      },
+      "replicate_group_id": "replicate-group-1",
+      "run_id": "run-1",
+      "schema_version": "domain-experiment-run-v0.1",
+      "source_artifact_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "source_uri": "s3://your-experimental-results/run-1.json",
+      "status": "completed"
+    }
+  ],
+  "schema_version": "domain-experimental-evidence-input-v0.1"
+}

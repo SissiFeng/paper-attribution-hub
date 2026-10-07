@@ -1,0 +1,260 @@
+{
+  "$defs": {
+    "ExperimentADesignPolicy": {
+      "additionalProperties": false,
+      "properties": {
+        "cutoff_buffer_days": {
+          "default": 180,
+          "minimum": 0,
+          "title": "Cutoff Buffer Days",
+          "type": "integer"
+        },
+        "max_primary_papers": {
+          "default": 200,
+          "minimum": 2,
+          "title": "Max Primary Papers",
+          "type": "integer"
+        },
+        "min_post_cutoff_papers_per_model": {
+          "default": 50,
+          "minimum": 1,
+          "title": "Min Post Cutoff Papers Per Model",
+          "type": "integer"
+        },
+        "min_pre_cutoff_papers_per_model": {
+          "default": 50,
+          "minimum": 1,
+          "title": "Min Pre Cutoff Papers Per Model",
+          "type": "integer"
+        },
+        "min_primary_papers": {
+          "default": 150,
+          "minimum": 2,
+          "title": "Min Primary Papers",
+          "type": "integer"
+        },
+        "schema_version": {
+          "default": "memory-evidence-design-policy-v0.1",
+          "title": "Schema Version",
+          "type": "string"
+        }
+      },
+      "title": "ExperimentADesignPolicy",
+      "type": "object"
+    },
+    "ExperimentAPaper": {
+      "additionalProperties": false,
+      "description": "One immutable paper candidate for the temporal exposure design.",
+      "properties": {
+        "citation_count": {
+          "minimum": 0,
+          "title": "Citation Count",
+          "type": "integer"
+        },
+        "citation_snapshot_date": {
+          "format": "date",
+          "title": "Citation Snapshot Date",
+          "type": "string"
+        },
+        "citation_source": {
+          "minLength": 1,
+          "title": "Citation Source",
+          "type": "string"
+        },
+        "doi": {
+          "minLength": 1,
+          "title": "Doi",
+          "type": "string"
+        },
+        "paper_id": {
+          "minLength": 1,
+          "title": "Paper Id",
+          "type": "string"
+        },
+        "publication_date": {
+          "format": "date",
+          "title": "Publication Date",
+          "type": "string"
+        },
+        "publication_date_precision": {
+          "default": "day",
+          "enum": [
+            "day",
+            "month",
+            "year"
+          ],
+          "title": "Publication Date Precision",
+          "type": "string"
+        },
+        "publication_date_source": {
+          "default": "declared_metadata",
+          "minLength": 1,
+          "title": "Publication Date Source",
+          "type": "string"
+        },
+        "report_type": {
+          "enum": [
+            "primary_experiment",
+            "review",
+            "case_study",
+            "perspective",
+            "unknown"
+          ],
+          "title": "Report Type",
+          "type": "string"
+        },
+        "schema_version": {
+          "default": "memory-evidence-paper-v0.1",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "source_markdown_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Source Markdown Sha256",
+          "type": "string"
+        }
+      },
+      "required": [
+        "paper_id",
+        "doi",
+        "publication_date",
+        "report_type",
+        "citation_count",
+        "citation_source",
+        "citation_snapshot_date",
+        "source_markdown_sha256"
+      ],
+      "title": "ExperimentAPaper",
+      "type": "object"
+    },
+    "ModelCutoffEvidence": {
+      "additionalProperties": false,
+      "description": "A model knowledge cutoff with an auditable provider source.",
+      "properties": {
+        "evidence_status": {
+          "enum": [
+            "provider_documented",
+            "provider_reported",
+            "unknown"
+          ],
+          "title": "Evidence Status",
+          "type": "string"
+        },
+        "knowledge_cutoff_date": {
+          "anyOf": [
+            {
+              "format": "date",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Knowledge Cutoff Date"
+        },
+        "model_alias": {
+          "minLength": 1,
+          "title": "Model Alias",
+          "type": "string"
+        },
+        "model_family": {
+          "minLength": 1,
+          "title": "Model Family",
+          "type": "string"
+        },
+        "model_id": {
+          "minLength": 1,
+          "title": "Model Id",
+          "type": "string"
+        },
+        "schema_version": {
+          "default": "memory-evidence-model-cutoff-v0.1",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "source_retrieved_date": {
+          "anyOf": [
+            {
+              "format": "date",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source Retrieved Date"
+        },
+        "source_url": {
+          "anyOf": [
+            {
+              "format": "uri",
+              "maxLength": 2083,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source Url"
+        }
+      },
+      "required": [
+        "model_alias",
+        "model_family",
+        "model_id",
+        "evidence_status"
+      ],
+      "title": "ModelCutoffEvidence",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "domain": {
+      "minLength": 1,
+      "title": "Domain",
+      "type": "string"
+    },
+    "experiment_id": {
+      "minLength": 1,
+      "title": "Experiment Id",
+      "type": "string"
+    },
+    "model_cutoffs": {
+      "items": {
+        "$ref": "#/$defs/ModelCutoffEvidence"
+      },
+      "minItems": 1,
+      "title": "Model Cutoffs",
+      "type": "array"
+    },
+    "papers": {
+      "items": {
+        "$ref": "#/$defs/ExperimentAPaper"
+      },
+      "minItems": 1,
+      "title": "Papers",
+      "type": "array"
+    },
+    "policy": {
+      "$ref": "#/$defs/ExperimentADesignPolicy"
+    },
+    "schema_version": {
+      "default": "memory-evidence-design-input-v0.1",
+      "title": "Schema Version",
+      "type": "string"
+    }
+  },
+  "required": [
+    "experiment_id",
+    "domain",
+    "model_cutoffs",
+    "papers"
+  ],
+  "title": "ExperimentADesignInput",
+  "type": "object"
+}

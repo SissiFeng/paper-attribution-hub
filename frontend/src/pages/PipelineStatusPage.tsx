@@ -2,6 +2,8 @@ import { useCallback, useEffect, useState } from "react";
 
 import {
   getModelEvolutionStatus,
+  getReviewQueueSize,
+  getStage1Readiness,
   listPipelineRuns,
   runPipeline,
 } from "@/lib/api";
@@ -11,6 +13,7 @@ import type {
   PipelineRun,
   PipelineRunInput,
   PipelineStepLog,
+  Stage1Readiness,
 } from "@/types";
 
 interface Toast {
@@ -85,6 +88,8 @@ function metricDelta(
 export default function PipelineStatusPage() {
   const [runs, setRuns] = useState<PipelineRun[]>([]);
   const [evolution, setEvolution] = useState<ModelEvolutionStatus | null>(null);
+  const [stage1, setStage1] = useState<Stage1Readiness | null>(null);
+  const [queueCount, setQueueCount] = useState<number | null>(null);
   const [loading, setLoading] = useState(false);
   const [triggering, setTriggering] = useState(false);
   const [expandedId, setExpandedId] = useState<string | null>(null);
@@ -100,12 +105,16 @@ export default function PipelineStatusPage() {
   const load = useCallback(async () => {
     setLoading(true);
     try {
-      const [rows, modelStatus] = await Promise.all([
+      const [rows, modelStatus, readiness, queueSize] = await Promise.all([
         listPipelineRuns(30),
         getModelEvolutionStatus(),
+        getStage1Readiness(),
+        getReviewQueueSize(),
       ]);
       setRuns(rows);
       setEvolution(modelStatus);
+      setStage1(readiness);
+      setQueueCount(queueSize.count);
     } catch (e) {
       setToast({ text: e instanceof Error ? e.message : String(e), kind: "error" });
     } finally {
@@ -200,14 +209,18 @@ export default function PipelineStatusPage() {
           </div>
         </div>
         <div className="v7-stat">
-          <div className="label">Papers classified</div>
-          <div className="value">{totalClassified}</div>
-          <div className="delta">across {runs.length} runs</div>
+          <div className="label">Corpus digested</div>
+          <div className="value">{stage1?.metadata_papers ?? totalClassified}</div>
+          <div className="delta">
+            {stage1 ? `${stage1.fulltexts_imported} full texts · current database` : `across ${runs.length} runs`}
+          </div>
         </div>
         <div className="v7-stat">
-          <div className="label">Flagged for review</div>
-          <div className="value">{totalFlagged}</div>
-          <div className="delta">total queued by pipeline</div>
+          <div className="label">Review queue</div>
+          <div className="value">{queueCount ?? totalFlagged}</div>
+          <div className="delta">
+            {queueCount == null ? "total queued by pipeline" : "current Stage 1 assignments"}
+          </div>
         </div>
       </div>
 

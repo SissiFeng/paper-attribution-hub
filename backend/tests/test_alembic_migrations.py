@@ -46,6 +46,12 @@ def test_fresh_sqlite_migrations_round_trip(tmp_path, monkeypatch):
         "training_feedback_events",
         "model_training_runs",
         "model_training_state",
+        "paper_authorship_metadata",
+        "metadata_enrichment_runs",
+        "chat_sessions",
+        "chat_messages",
+        "scientific_knowledge_records",
+        "pas_readers", "pas_reader_sessions", "pas_bookmarks", "chat_participants",
     } <= set(inspect(engine).get_table_names())
     invocation_columns = {
         column["name"]
@@ -71,6 +77,16 @@ def test_fresh_sqlite_migrations_round_trip(tmp_path, monkeypatch):
     paper_columns = {
         column["name"] for column in inspect(engine).get_columns("papers")
     }
+    wiki_columns = {
+        column["name"] for column in inspect(engine).get_columns("wiki_pages")
+    }
+    assert {
+        "source_snapshot_hash",
+        "content_hash",
+        "source_metadata",
+        "compile_status",
+        "compile_error",
+    } <= wiki_columns
     assert "corpus_sources" in paper_columns
     review_columns = {
         column["name"]
@@ -126,7 +142,7 @@ def test_fresh_sqlite_migrations_round_trip(tmp_path, monkeypatch):
     assert "country_keys" in institution_columns
     with engine.connect() as connection:
         assert (
-            connection.scalar(text("SELECT version_num FROM alembic_version")) == "0018"
+            connection.scalar(text("SELECT version_num FROM alembic_version")) == "0026"
         )
     command.check(config)
 
@@ -328,3 +344,26 @@ def test_tku_alignment_upgrades_existing_0009_database(tmp_path, monkeypatch):
         for index in inspect(engine).get_indexes("transfer_knowledge_units")
     }
     assert indexes["ix_transfer_knowledge_units_paper_id"]["unique"] == 1
+
+
+def test_scoped_cloud_reading_schema_is_adopted_by_full_migrations(tmp_path, monkeypatch):
+    from app.db import Base
+    from app.services.reading_schema import ensure_reading_schema
+    database_url = f"sqlite:///{tmp_path / 'adoption.db'}"
+    config = _config(monkeypatch, database_url)
+    engine = create_engine(database_url)
+    command.upgrade(config, '0018')
+    ensure_reading_schema(engine, Base.metadata)
+    ensure_reading_schema(engine, Base.metadata)
+    from app.services.access_schema import ensure_access_schema
+    ensure_access_schema(engine, Base.metadata)
+    ensure_access_schema(engine, Base.metadata)
+    from app.services.research_schema import ensure_research_schema
+    ensure_research_schema(engine, Base.metadata)
+    ensure_research_schema(engine, Base.metadata)
+    from app.services.exploration_schema import ensure_exploration_schema
+    ensure_exploration_schema(engine, Base.metadata)
+    ensure_exploration_schema(engine, Base.metadata)
+    command.upgrade(config, 'head')
+    with engine.connect() as connection:
+        assert connection.execute(text('SELECT version_num FROM alembic_version')).scalar_one() == '0026'

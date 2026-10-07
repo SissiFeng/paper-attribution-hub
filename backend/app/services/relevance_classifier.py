@@ -101,6 +101,7 @@ def _classify_paper(
     entity_index: dict[str, list[PaperEntity]] | None = None,
     use_attribution_evidence: bool = False,
 ) -> ClassificationResult:
+    stage1_only = settings.sdl_stage1_only
     # ---- Authors with contextual disambiguation -----------------------
     raw_author_names = [
         pa.author.canonical_name for pa in paper.authors if pa.author
@@ -156,6 +157,9 @@ def _classify_paper(
     author_score = max(
         (m.score for m in matched_people if m.is_ac_member), default=0.0
     )
+    if stage1_only:
+        matched_people = []
+        author_score = 0.0
 
     # ---- Institutions -------------------------------------------------
     matched_institutions: list[InstitutionMatch] = []
@@ -169,6 +173,9 @@ def _classify_paper(
     institution_score = max(
         (m.score for m in matched_institutions if m.is_partner), default=0.0
     )
+    if stage1_only:
+        matched_institutions = []
+        institution_score = 0.0
 
     # ---- Topics with density ------------------------------------------
     keyword_text = " ".join(paper.keywords or []) if paper.keywords else ""
@@ -180,7 +187,7 @@ def _classify_paper(
     topic_density = topic_result.topic_density
 
     # ---- Graph signals ------------------------------------------------
-    if graph_signals is not None:
+    if graph_signals is not None and not stage1_only:
         network_score = graph_signals.network_score
         citation_score = graph_signals.citation_score
         has_second_degree = bool(graph_signals.second_degree_paths)
@@ -195,6 +202,13 @@ def _classify_paper(
     fulltext_records: list[PaperEvidence] = (
         (evidence_index or {}).get(paper.id, []) if evidence_index else []
     )
+    if stage1_only:
+        fulltext_records = [
+            row
+            for row in fulltext_records
+            if row.evidence_type
+            in {"sdl_methodology", "figure_caption_sdl", "disqualifying"}
+        ]
     fulltext_score = _aggregate_score_from_rows(fulltext_records)
     fulltext_snapshots = [
         FulltextEvidenceSnapshot(
@@ -211,7 +225,7 @@ def _classify_paper(
     )
 
     # Full-text funding evidence (from PDF extraction)
-    has_funding_evidence = any(
+    has_funding_evidence = not stage1_only and any(
         r.evidence_type == "funding_acknowledgement" and r.score > 0
         for r in fulltext_records
     )
@@ -219,7 +233,7 @@ def _classify_paper(
     # ── Metadata-based AC funding signal ─────────────────────────────────
     # Use Scopus metadata funding fields when no full-text is available.
     # ac_acknowledged is set by ingest; also scan funding_text directly.
-    if not has_funding_evidence:
+    if not stage1_only and not has_funding_evidence:
         has_funding_evidence = bool(paper.ac_acknowledged) or has_ac_funding_in_text(
             paper.funding_text, paper.ac_programs
         )
@@ -232,22 +246,32 @@ def _classify_paper(
     has_core_topic_match = any(
         match.is_core and match.score > 0 for match in matched_topics
     )
-    label, confidence = _apply_rules(
-        author_score=author_score,
-        institution_score=institution_score,
-        topic_score=topic_score,
-        fulltext_score=fulltext_score,
-        network_score=network_score,
-        citation_score=citation_score,
-        has_funding_evidence=has_funding_evidence,
-        has_second_degree=has_second_degree,
-        cites_ac_core=cites_ac_core,
-        topic_density=topic_density,
-        disqualifying_count=disqualifying_count,
-        has_core_topic_match=has_core_topic_match,
-        ac_known_publication=bool(paper.ac_known_publication),
-        entity_score=entity_score,
-    )
+    if stage1_only:
+        label, confidence = _apply_sdl_stage1_rules(
+            topic_score=topic_score,
+            fulltext_score=fulltext_score,
+            entity_score=entity_score,
+            topic_density=topic_density,
+            disqualifying_count=disqualifying_count,
+        )
+        use_attribution_evidence = False
+    else:
+        label, confidence = _apply_rules(
+            author_score=author_score,
+            institution_score=institution_score,
+            topic_score=topic_score,
+            fulltext_score=fulltext_score,
+            network_score=network_score,
+            citation_score=citation_score,
+            has_funding_evidence=has_funding_evidence,
+            has_second_degree=has_second_degree,
+            cites_ac_core=cites_ac_core,
+            topic_density=topic_density,
+            disqualifying_count=disqualifying_count,
+            has_core_topic_match=has_core_topic_match,
+            ac_known_publication=bool(paper.ac_known_publication),
+            entity_score=entity_score,
+        )
     attribution_evidence: AttributionEvidenceSignals | None = None
     aet_reason: str | None = None
     if use_attribution_evidence:
@@ -273,7 +297,7 @@ def _classify_paper(
         matched_institutions=matched_institutions,
         matched_topics=matched_topics,
         fulltext_records=fulltext_records,
-        graph_signals=graph_signals,
+        graph_signals=None if stage1_only else graph_signals,
         topic_density=topic_density,
         disqualifying_count=disqualifying_count,
         entity_summary=entity_summary,
@@ -300,7 +324,7 @@ def _classify_paper(
         matched_topics=matched_topics,
         fulltext_evidence=fulltext_snapshots,
         reasons=reasons,
-        graph_signals=graph_signals,
+        graph_signals=None if stage1_only else graph_signals,
         topic_density=topic_density,
         negated_topic_hits=topic_result.negated_hit_count,
         disqualifying_count=disqualifying_count,
@@ -531,6 +555,31 @@ def _apply_rules(
     return LABEL_EXCLUDE, confidence
 
 
+def _apply_sdl_stage1_rules(
+    *,
+    topic_score: float,
+    fulltext_score: float,
+    entity_score: float,
+    topic_density: int,
+    disqualifying_count: int,
+) -> tuple[str, float]:
+    """AC-independent baseline used only to prioritize strict SDL review."""
+    sdl_score = max(topic_score, fulltext_score, entity_score)
+    if disqualifying_count and sdl_score < 0.8:
+        return LABEL_EXCLUDE, max(0.6, round(1.0 - sdl_score, 3))
+    if (
+        sdl_score >= 0.65
+        or fulltext_score >= 0.5
+        or (topic_density >= 2 and topic_score >= 0.45)
+    ):
+        return LABEL_SDL_FIELD, max(0.65, round(sdl_score, 3))
+    if sdl_score >= 0.3:
+        return LABEL_ADJACENT, max(0.5, round(sdl_score, 3))
+    if sdl_score >= 0.15:
+        return LABEL_UNCERTAIN, 0.4
+    return LABEL_EXCLUDE, max(0.7, round(1.0 - sdl_score, 3))
+
+
 # ---------------------------------------------------------------------------
 # Borderline rerank using the cross-encoder
 # ---------------------------------------------------------------------------
@@ -694,7 +743,7 @@ def _build_reasons(
     if disqualifying_count > 0:
         reasons.append(
             f"{disqualifying_count} disqualifying-evidence row(s) recorded "
-            f"(LLM judge or active learning)."
+            f"for conservative review."
         )
 
     # Typed-entity evidence (PaperEntity rows from entity extraction).
@@ -786,6 +835,10 @@ def classify_all(
       use_attribution_evidence: apply AET path scoring when explicitly enabled
         or when PAS_ATTRIBUTION_EVIDENCE_CLASSIFIER_ENABLED=1.
     """
+    if settings.sdl_stage1_only:
+        from app.services.zotero_ingestion_service import validate_stage1_corpus
+
+        validate_stage1_corpus(session)
     if use_attribution_evidence is None:
         use_attribution_evidence = (
             settings.attribution_evidence_classifier_enabled
@@ -815,12 +868,17 @@ def classify_all(
     # Graph signals: try to compute but degrade gracefully if OOM or missing scipy.
     # Papers still get classified via author/institution/topic/funding signals.
     graph_signals_by_paper: dict = {}
-    try:
-        graph_signals_by_paper = compute_graph_signals(session)
-    except Exception as exc:
-        import sys
-        print(f"[classify_all] graph signals skipped ({type(exc).__name__}: {exc})",
-              file=sys.stderr)
+    if not settings.sdl_stage1_only:
+        try:
+            graph_signals_by_paper = compute_graph_signals(session)
+        except Exception as exc:
+            import sys
+
+            print(
+                f"[classify_all] graph signals skipped "
+                f"({type(exc).__name__}: {exc})",
+                file=sys.stderr,
+            )
 
     # --- Batch processing to avoid loading all 10K papers at once ---
     # Get all paper IDs first (lean), then process in batches of 300.
@@ -892,10 +950,23 @@ def classify_all(
             cls.graph_signals = (
                 result.graph_signals.to_dict() if result.graph_signals else None
             )
-            cls.sdl_relevance_label = _sdl_memory_label(result.topic_score, result.fulltext_evidence_score)
-            cls.ac_attribution_label = _ac_memory_label(
-                result.author_score, result.institution_score,
-                result.network_score, result.citation_score,
+            cls.sdl_relevance_label = (
+                result.label
+                if settings.sdl_stage1_only
+                else _sdl_memory_label(
+                    result.topic_score,
+                    result.fulltext_evidence_score,
+                )
+            )
+            cls.ac_attribution_label = (
+                None
+                if settings.sdl_stage1_only
+                else _ac_memory_label(
+                    result.author_score,
+                    result.institution_score,
+                    result.network_score,
+                    result.citation_score,
+                )
             )
             cls.model_agreement_status = cls.model_agreement_status or "single_model"
             cls.evidence_summary = merge_dimensions_into_evidence_summary(
@@ -919,18 +990,19 @@ def classify_all(
         session.commit()   # ← commit each batch; progress is durable
 
     # v0.7: cross-encoder rerank for borderline cases (operates on in-memory results).
-    _apply_rerank_to_borderline(papers, results)
+    if not settings.sdl_stage1_only:
+        _apply_rerank_to_borderline(papers, results)
 
     # v0.7: LLM judge for what's still UNCERTAIN.
     if use_judge is None:
         use_judge = os.environ.get("PAS_LLM_JUDGE", "0") == "1"
-    if use_judge or judge is not None:
+    if not settings.sdl_stage1_only and (use_judge or judge is not None):
         _apply_judge_to_uncertain(papers, results, judge=judge, session=session)
 
     # v0.7: learned classifier post-hoc soft override.
     if use_learned is None:
         use_learned = os.environ.get("PAS_LEARNED_CLASSIFIER", "1") == "1"
-    if use_learned:
+    if not settings.sdl_stage1_only and use_learned:
         _apply_learned_override(papers, results, session=session)
 
     # All papers already persisted per-batch above.
@@ -958,17 +1030,21 @@ def _configured_model_version(
     use_learned: bool | None = None,
     session: Session | None = None,
 ) -> str:
-    attribution_enabled = (
+    attribution_enabled = not settings.sdl_stage1_only and (
         settings.attribution_evidence_classifier_enabled
         if use_attribution_evidence is None
         else use_attribution_evidence
     )
-    learned_enabled = (
+    learned_enabled = not settings.sdl_stage1_only and (
         os.environ.get("PAS_LEARNED_CLASSIFIER", "1") == "1"
         if use_learned is None
         else use_learned
     )
-    base = CURRENT_MODEL_VERSION
+    base = (
+        "sdl-stage1-rules-v0.1"
+        if settings.sdl_stage1_only
+        else CURRENT_MODEL_VERSION
+    )
     if learned_enabled:
         from app.services.learned_classifier import load_default_model
 
@@ -1046,6 +1122,10 @@ def classify_new(
     If `force=True`, behaves identically to `classify_all` (still skips
     human-confirmed labels).
     """
+    if settings.sdl_stage1_only:
+        from app.services.zotero_ingestion_service import validate_stage1_corpus
+
+        validate_stage1_corpus(session)
     if force:
         before_versions: dict[str, str | None] = {}
         for p in session.execute(select(Paper)).scalars():
@@ -1142,7 +1222,9 @@ def _classify_subset(
 
     # Graph signals depend on the whole corpus but the result map covers
     # all papers, so we can index into it for our subset.
-    graph_signals = compute_graph_signals(session)
+    graph_signals = (
+        {} if settings.sdl_stage1_only else compute_graph_signals(session)
+    )
 
     results: dict[str, ClassificationResult] = {}
     for paper in papers:
@@ -1157,16 +1239,17 @@ def _classify_subset(
             use_attribution_evidence=use_attribution_evidence,
         )
 
-    _apply_rerank_to_borderline(papers, results)
+    if not settings.sdl_stage1_only:
+        _apply_rerank_to_borderline(papers, results)
 
     if use_judge is None:
         use_judge = os.environ.get("PAS_LLM_JUDGE", "0") == "1"
-    if use_judge or judge is not None:
+    if not settings.sdl_stage1_only and (use_judge or judge is not None):
         _apply_judge_to_uncertain(papers, results, judge=judge, session=session)
 
     if use_learned is None:
         use_learned = os.environ.get("PAS_LEARNED_CLASSIFIER", "1") == "1"
-    if use_learned:
+    if not settings.sdl_stage1_only and use_learned:
         _apply_learned_override(papers, results, session=session)
 
     for paper in papers:
@@ -1191,12 +1274,23 @@ def _classify_subset(
         cls.graph_signals = (
             result.graph_signals.to_dict() if result.graph_signals else None
         )
-        cls.sdl_relevance_label = _sdl_memory_label(result.topic_score, result.fulltext_evidence_score)
-        cls.ac_attribution_label = _ac_memory_label(
-            result.author_score,
-            result.institution_score,
-            result.network_score,
-            result.citation_score,
+        cls.sdl_relevance_label = (
+            result.label
+            if settings.sdl_stage1_only
+            else _sdl_memory_label(
+                result.topic_score,
+                result.fulltext_evidence_score,
+            )
+        )
+        cls.ac_attribution_label = (
+            None
+            if settings.sdl_stage1_only
+            else _ac_memory_label(
+                result.author_score,
+                result.institution_score,
+                result.network_score,
+                result.citation_score,
+            )
         )
         cls.model_agreement_status = cls.model_agreement_status or "single_model"
         cls.evidence_summary = merge_dimensions_into_evidence_summary(
@@ -1313,7 +1407,11 @@ def _model_version_for(result: ClassificationResult) -> str:
     if result.learned_label is not None:
         base = result.learned_model_version or "learned-v0.7"
     else:
-        base = CURRENT_MODEL_VERSION
+        base = (
+            "sdl-stage1-rules-v0.1"
+            if settings.sdl_stage1_only
+            else CURRENT_MODEL_VERSION
+        )
     suffixes: list[str] = []
     if result.aet_applied:
         suffixes.append(SCORING_VERSION)

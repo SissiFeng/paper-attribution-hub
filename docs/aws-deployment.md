@@ -87,6 +87,7 @@ Authentication uses OIDC — no AWS access keys stored in GitHub.
 | `/paper-attribution-{env}/kimi-api-key` | SecureString | Kimi (MoonShot) API key |
 | `/paper-attribution-{env}/semantic-scholar-api-key` | SecureString | Semantic Scholar API key |
 | `/paper-attribution-{env}/openalex-mailto` | String | OpenAlex polite email |
+| `/paper-attribution-{env}/zotero-api-key` | SecureString | Read-only Zotero group-library API key |
 
 ### ECS Container Environment (auto-set by Terraform)
 
@@ -97,6 +98,10 @@ Authentication uses OIDC — no AWS access keys stored in GitHub.
 | `PAS_S3_ARTIFACTS_BUCKET` | S3 bucket name |
 | `PAS_AWS_REGION` | Primary region |
 | `PAS_KIMI_MODEL` | From `var.kimi_model` tfvars |
+| `PAS_ZOTERO_GROUP_ID` | From `var.zotero_group_id` tfvars |
+| `PAS_ZOTERO_TIER1_COLLECTION` | From `var.zotero_tier1_collection` tfvars |
+| `PAS_ZOTERO_TIER2_COLLECTION` | From `var.zotero_tier2_collection` tfvars |
+| `PAS_ZOTERO_API_KEY` | SSM SecureString |
 
 ## S3 Artifact Storage
 
@@ -117,6 +122,9 @@ s3://paper-attribution-artifacts-{env}-{account_id}/
 │       └── embeddings.npy
 ├── pipeline-runs/{run_id}/
 │   └── summary.json
+├── database-backups/{timestamp}/
+│   ├── paper_attribution.dump
+│   └── manifest.json
 └── logs/daily-pipeline/YYYY/MM/DD/
     └── run.log
 ```
@@ -191,12 +199,17 @@ psql -h localhost -p 5433 -U pas_admin -d paper_attribution
 ### Backup and Restore
 
 ```bash
-# Export from RDS
-pg_dump -h <rds-endpoint> -U pas_admin -d paper_attribution -Fc -f backup.dump
+# Fail-closed export to the private artifact bucket; prints a verified s3:// URI
+python -m app.scripts.backup_database_to_s3
 
-# Import to local
+# Import a downloaded backup to an empty local database
 pg_restore -h localhost -U pas -d paper_attribution backup.dump
 ```
+
+For corpus replacement, follow
+[`backend/docs/zotero_cutover.md`](../backend/docs/zotero_cutover.md). Do not clear production until
+the backup command has returned a verified reference and Zotero dry-run counts
+are non-zero.
 
 ### Infrastructure Changes
 

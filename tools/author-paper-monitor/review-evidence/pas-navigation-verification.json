@@ -1,0 +1,63 @@
+{
+  "url": "https://d1ai8ldqsh81fz.cloudfront.net/",
+  "artifacts": {
+    "assets/EditorialInsightsPage-Bvl086A6.js": "58a8f8b0f2cf57b237a392bf642f805eeeb644149c90ebff67a2623867766abb",
+    "assets/index-8S2iDYwW.js": "f8159c7d27ae8eabb412642484b94df6e785996c8596e05209f9414da58fb03e",
+    "assets/index-CMBFfmgn.css": "3d8cf692631899170859e84c436b6dfd7ba1ca185d3c5134c42f485b0821ed25",
+    "index.html": "1dad51096ecc6c2ff4227c52c1e1d457e81049e3f7ef8f950e347077085ae1ca",
+    "reading/assets/reading-DUip-bwM.js": "f4c14327a3304b731dbd8667dda03acde42851914116fd698c4d80bda0293089",
+    "reading/assets/reading-Dspq3YMv.css": "93fc6401645f4402c944c13ae976a2118bb836feb79e36fd19951b086a4496e5",
+    "reading/index.html": "8b592889a1903939d4de7ae5244623f660dbc10a719dda198628ab0aaf51920c"
+  },
+  "invalidation": "I95QUC7SQCLWI9TPW8U82FDOLG",
+  "invalidation_status": "Completed",
+  "https_artifacts": [
+    {
+      "path": "assets/EditorialInsightsPage-Bvl086A6.js",
+      "sha256_matches": true
+    },
+    {
+      "path": "assets/index-8S2iDYwW.js",
+      "sha256_matches": true
+    },
+    {
+      "path": "assets/index-CMBFfmgn.css",
+      "sha256_matches": true
+    },
+    {
+      "path": "index.html",
+      "sha256_matches": true
+    },
+    {
+      "path": "reading/assets/reading-DUip-bwM.js",
+      "sha256_matches": true
+    },
+    {
+      "path": "reading/assets/reading-Dspq3YMv.css",
+      "sha256_matches": true
+    },
+    {
+      "path": "reading/index.html",
+      "sha256_matches": true
+    }
+  ],
+  "original_page_components": 29,
+  "scoped_permission_tests": 24,
+  "local_browser": [
+    "anonymous full navigation",
+    "empty reading link returns to PAS",
+    "admin original home table",
+    "admin attribution alias table",
+    "member institutional access denied",
+    "390px menu expansion"
+  ],
+  "legacy_snapshot": {
+    "bytes": 904,
+    "last_modified": "2026-10-06T13:10:27+00:00"
+  },
+  "live_browser": {
+    "complete_navigation": true,
+    "anonymous_admin_page_requires_login": true,
+    "screenshot": "pas-full-navigation-live.png"
+  }
+}

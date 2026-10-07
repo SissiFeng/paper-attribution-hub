@@ -1,0 +1,273 @@
+{
+  "phase": "complete",
+  "date": "2026-10-06",
+  "release": {
+    "previous": "arn:aws:ecs:ca-central-1:247893369214:task-definition/paper-attribution-pas-dev-backend:15",
+    "task_definition": "arn:aws:ecs:ca-central-1:247893369214:task-definition/paper-attribution-pas-dev-backend:16",
+    "canary": "arn:aws:ecs:ca-central-1:247893369214:task/paper-attribution-dev-cluster/d943bef2c7884d688b06a19736e157b3",
+    "sha256": "41e20f750aa698653e8a7f579f7ae707c35d207d1ff11071e5391e5aac1fba8f"
+  },
+  "local_tests": {
+    "passed": 51,
+    "command": "backend/.venv/bin/python -m pytest backend/tests/test_research_exploration.py backend/tests/test_research_workspace.py backend/tests/test_private_reading.py backend/tests/test_access_control.py backend/tests/test_catalog.py backend/tests/test_alembic_migrations.py -q --disable-warnings --maxfail=1 --tb=short"
+  },
+  "frontend": {
+    "build": "passed",
+    "reading_build": "passed",
+    "navigation_routes": 29,
+    "paper_view_check": "passed"
+  },
+  "canary": [
+    {
+      "isolation_canary": "passed",
+      "principals": 3,
+      "synthetic_data": "rolled_back",
+      "sample_paper": "monitor_ca2f0551ca0d760ce4c1120c22d65612",
+      "markdown_source": "original",
+      "answer_kind": "partial_evidence",
+      "answer_model": "retrieval-only",
+      "sources": 8
+    },
+    {
+      "access_canary": "passed",
+      "principals": 3,
+      "synthetic_data": "rolled_back",
+      "default_deny": true,
+      "admin_private_bypass": false,
+      "revoke_immediate": true
+    },
+    {
+      "shared_original_paper_view": "passed",
+      "real_wikis": 5
+    },
+    {
+      "public_catalogue": "passed",
+      "sample_id": "monitor_ca2f0551ca0d760ce4c1120c22d65612",
+      "private_routes_protected": true
+    },
+    {
+      "research_canary": "passed",
+      "checks": 78,
+      "real_papers": 20,
+      "matrices": 10,
+      "exact_quotes": 152,
+      "model": {
+        "mode": "evidence_only",
+        "provider": null,
+        "health": "not_checked",
+        "message": "Source passages are available. Generated explanations need a model credential configured by an administrator."
+      },
+      "answer_model": "retrieval-only",
+      "answer_sources": 8,
+      "boundary": "Exact source offsets and access were tested; scientific entailment and fair ranking are not automatically certified.",
+      "synthetic_data": "rolled_back"
+    },
+    {
+      "exploration_canary": "passed",
+      "checks": 83,
+      "real_papers": 20,
+      "exact_method_quotes": 37,
+      "related_candidates": 50,
+      "boundary": "Literal source matches and access verified; no claim of semantic retrieval, method adoption or scientific validation.",
+      "synthetic_data": "rolled_back"
+    }
+  ],
+  "public_https": {
+    "checks": [
+      {
+        "asset": "assets/EditorialInsightsPage-DuLsOu1m.js",
+        "sha256": "812db9e3da98c42a2516723ed90775dcbee701f46f2639896980e295deaa09e0"
+      },
+      {
+        "asset": "assets/index-CcZLrHa3.js",
+        "sha256": "c3ff1eefbeeb60bc47814dcb6b3d78de2dba64dff0eeea32399ac6bc8abab3ee"
+      },
+      {
+        "asset": "assets/index-CMBFfmgn.css",
+        "sha256": "3d8cf692631899170859e84c436b6dfd7ba1ca185d3c5134c42f485b0821ed25"
+      },
+      {
+        "asset": "index.html",
+        "sha256": "4be5a429a51898abd7d6797f8b8b5d24c2d09f70aa2162fd25d3ac5e01ee4054"
+      },
+      {
+        "asset": "reading/assets/reading-CMuSxr0l.js",
+        "sha256": "6ba43f13e828be58666a261fe51c01466a0fb1f3e1693803c5bf46f9c36eb9b6"
+      },
+      {
+        "asset": "reading/assets/reading-CgaUX4ne.css",
+        "sha256": "fc3aded803c5495347ffe6c82ba8fe29e292c60f6b2c60d4370e17f55f5d9707"
+      },
+      {
+        "asset": "reading/index.html",
+        "sha256": "c74f1630d81d72fbc9cf3263212ddd41ef31a3298a57cd63a79d55ae8496514b"
+      },
+      {
+        "path": "/api/research/projects/unknown/exploration",
+        "status": 401
+      },
+      {
+        "path": "/api/research/projects/unknown/exploration/related?q=catalyst",
+        "status": 401
+      },
+      {
+        "path": "/api/research/projects",
+        "status": 401
+      },
+      {
+        "path": "/api/access/members",
+        "status": 401
+      },
+      {
+        "path": "/api/reading/papers/unknown",
+        "status": 401
+      },
+      {
+        "path": "/api/catalog/paper-view",
+        "status": 200
+      },
+      {
+        "path": "/api/catalog/papers/p2_live_paper_748858ea2ac85e8040bf3d9f/view",
+        "status": 200
+      },
+      {
+        "path": "/api/catalog/papers/p2_live_paper_748858ea2ac85e8040bf3d9f/wiki",
+        "status": 200
+      },
+      {
+        "path": "/api/catalog/papers/p2_live_paper_c7c79281ad7394ea7e39afa9/view",
+        "status": 200
+      },
+      {
+        "path": "/api/catalog/papers/p2_live_paper_c7c79281ad7394ea7e39afa9/wiki",
+        "status": 200
+      },
+      {
+        "path": "/api/catalog/papers/monitor_ca2f0551ca0d760ce4c1120c22d65612/view",
+        "status": 200
+      },
+      {
+        "path": "/api/catalog/papers/monitor_ca2f0551ca0d760ce4c1120c22d65612/wiki",
+        "status": 200
+      },
+      {
+        "path": "/api/catalog/papers/monitor_eab8469712faee87e76831ce5d12b2d9/view",
+        "status": 200
+      },
+      {
+        "path": "/api/catalog/papers/monitor_eab8469712faee87e76831ce5d12b2d9/wiki",
+        "status": 200
+      },
+      {
+        "path": "/api/catalog/papers/monitor_7ea453c6350b1830c51993f7e58f4469/view",
+        "status": 200
+      },
+      {
+        "path": "/api/catalog/papers/monitor_7ea453c6350b1830c51993f7e58f4469/wiki",
+        "status": 200
+      },
+      {
+        "path": "/protected-legacy/index.html",
+        "status": 404,
+        "final_path": "/protected-legacy/index.html"
+      },
+      {
+        "path": "/data/institution_comparison.json",
+        "status": 401,
+        "final_path": "/api/access/files/data/institution_comparison.json"
+      }
+    ],
+    "invalidation": "Completed",
+    "task_definition": "arn:aws:ecs:ca-central-1:247893369214:task-definition/paper-attribution-pas-dev-backend:16",
+    "rollout": "COMPLETED"
+  },
+  "browser": {
+    "data": "local synthetic users and papers",
+    "checks": [
+      "related title/abstract search",
+      "add candidates to project",
+      "method source opens original passage",
+      "save labelled hypothesis",
+      "independent inclusion/exclusion and visible disagreement",
+      "screening persists across reload/login",
+      "new arrivals produce one alert",
+      "repeat check deduplicates",
+      "read status isolated per user",
+      "shared project link retains main PAS shell",
+      "revocation clears the existing project view",
+      "390px controls usable",
+      "method nodes exposed as accessible buttons"
+    ],
+    "screenshots": [
+      "p2-method-map-local.png",
+      "p2-mobile-local.png"
+    ],
+    "cleanup": "temporary server stopped, synthetic database and credentials removed"
+  },
+  "boundaries": [
+    "Related work is literal matching within the PAS catalogue, not global semantic retrieval.",
+    "Method mentions, reference records and researcher hypotheses are distinct.",
+    "Scientific relevance and entailment remain human judgements.",
+    "Project updates remain inside PAS; existing author Slack delivery is unchanged.",
+    "No new paid model API calls.",
+    "No git commit or push."
+  ],
+  "live_https": {
+    "task": "arn:aws:ecs:ca-central-1:247893369214:task/paper-attribution-dev-cluster/260fa859f1f447e8afba1a1c1bc90f15",
+    "exit_code": 0,
+    "results": [
+      {
+        "exploration_https": "passed",
+        "checks": 83,
+        "real_papers": 20,
+        "exact_method_quotes": 37,
+        "related_candidates": 50,
+        "boundary": "Literal source matches and access verified; no claim of semantic retrieval, method adoption or scientific validation.",
+        "scheduler": "waiting for deployed service; no manual check"
+      },
+      {
+        "exploration_live_cleanup": "passed",
+        "synthetic_identities": 3,
+        "synthetic_papers": 2
+      },
+      {
+        "exploration_live": "passed",
+        "checks": 83,
+        "real_papers": 20,
+        "exact_method_quotes": 37,
+        "related_candidates": 50,
+        "boundary": "Literal source matches and access verified; no claim of semantic retrieval, method adoption or scientific validation.",
+        "deployed_scheduler_seconds": 737
+      }
+    ]
+  },
+  "services": [
+    {
+      "name": "paper-attribution-dev-backend-svc",
+      "task_definition": "arn:aws:ecs:ca-central-1:247893369214:task-definition/paper-attribution-pas-dev-backend:16",
+      "running": 1,
+      "deployments": [
+        {
+          "state": "COMPLETED",
+          "task_definition": "arn:aws:ecs:ca-central-1:247893369214:task-definition/paper-attribution-pas-dev-backend:16"
+        }
+      ]
+    },
+    {
+      "name": "paper-attribution-dev-institution-svc",
+      "task_definition": "arn:aws:ecs:ca-central-1:247893369214:task-definition/paper-attribution-dev-institution:10",
+      "running": 1,
+      "deployments": [
+        {
+          "state": "COMPLETED",
+          "task_definition": "arn:aws:ecs:ca-central-1:247893369214:task-definition/paper-attribution-dev-institution:10"
+        }
+      ]
+    }
+  ],
+  "git": {
+    "head": "f065b226f35930f957f69bcdf6dd53020448bcd2",
+    "committed_this_turn": false,
+    "pushed_this_turn": false
+  }
+}

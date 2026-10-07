@@ -428,7 +428,10 @@ def _protocol_tasks(protocols: list[ProtocolUnit]) -> list[dict]:
                     for eid in item.evidence_ids
                 ],
             )
-        if protocol.steps:
+        structured_steps = [
+            item for item in protocol.steps if item.verb is not None and item.targets
+        ]
+        if structured_steps:
             append_task(
                 protocol,
                 "protocol_reconstruction",
@@ -436,18 +439,19 @@ def _protocol_tasks(protocols: list[ProtocolUnit]) -> list[dict]:
                 [
                     {
                         "order": item.order,
-                        "action": item.action,
-                        "conditions": item.conditions,
+                        "verb": item.verb,
+                        "targets": item.targets,
+                        "params": item.params,
                     }
-                    for item in protocol.steps
+                    for item in structured_steps
                 ],
-                [eid for item in protocol.steps for eid in item.evidence_ids],
+                [eid for item in structured_steps for eid in item.evidence_ids],
             )
         if protocol.characterization:
             append_task(
                 protocol,
                 "characterization_grounding",
-                "Extract the reported characterization or electrochemical techniques and settings.",
+                "Extract the reported characterization or measurement techniques and settings.",
                 [
                     {"technique": item.technique, "settings": item.settings}
                     for item in protocol.characterization
@@ -809,8 +813,8 @@ def build_domain_adapter_package(
         ),
     }
     selection_manifest = {
-        "schema_version": "domain-adapter-selection-v0.1",
-        "selection_method": "curated_full_text_oer_evidence",
+        "schema_version": "domain-adapter-selection-v0.2",
+        "selection_method": "curated_full_text_scientific_evidence",
         "classification_tables_used": False,
         "papers": [
             {
@@ -819,6 +823,7 @@ def build_domain_adapter_package(
                 "year": paper.year,
                 "doi": paper.doi,
                 "selection_tier": paper.selection_tier,
+                "evidence_scope": paper.evidence_scope,
                 "selection_reasons": paper.selection_reasons,
                 "task_split": paper.task_split,
                 "source_manifest_key": paper.source_manifest_key,
@@ -887,6 +892,13 @@ def build_domain_adapter_package(
             "mode": extractor.mode,
             "model": extractor.model,
             "prompt_version": extractor.prompt_version,
+            "candidate_domain_terms": list(
+                getattr(extractor, "domain_terms", ())
+            ),
+            "minimum_chunk_score": getattr(
+                extractor, "minimum_chunk_score", None
+            ),
+            "scope_aware": getattr(extractor, "scope_aware", False),
             "region": getattr(extractor, "region", None),
             "inference_config": (
                 {

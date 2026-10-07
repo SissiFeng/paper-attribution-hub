@@ -1,0 +1,147 @@
+{
+  "classification_tables_used": false,
+  "papers": [
+    {
+      "doi": "10.1002/aenm.202403263",
+      "paper_id": "DOI:10.1002_aenm.202403263",
+      "selection_reasons": [
+        "Primary autonomous battery optimization study linking electrolyte formulation, characterization, cell assembly, and testing."
+      ],
+      "selection_tier": "primary_battery_electrolyte",
+      "source_manifest_key": "manifests/zotero/group=6631056/item=4CX6T5G9/attachment=2GRINLTI/version=32487/document-manifest.json",
+      "source_markdown_key": "raw/zotero/group=6631056/item=4CX6T5G9/attachment=2GRINLTI/version=32487/document.md",
+      "source_markdown_sha256": "cf256f9fc59549bfbe33d61d8e24dc6b041b04fc588c53a6182f2bdee3d47167",
+      "task_split": "train",
+      "title": "Autonomous Battery Optimization by Deploying Distributed Experiments and Simulations",
+      "year": 2024
+    },
+    {
+      "doi": "10.1007/s12598-025-03617-z",
+      "paper_id": "DOI:10.1007_s12598-025-03617-z",
+      "selection_reasons": [
+        "Broad lithium-battery AI review included as a sparse-domain negative control for protocol extraction."
+      ],
+      "selection_tier": "battery_electrolyte_review",
+      "source_manifest_key": "manifests/zotero/group=6631056/item=7YP4547G/attachment=ACQ_A10DF809EBE69D61/version=1786560480/document-manifest.json",
+      "source_markdown_key": "raw/zotero/group=6631056/item=7YP4547G/attachment=ACQ_A10DF809EBE69D61/version=1786560480/document.md",
+      "source_markdown_sha256": "618f9df4417fc0c28e75370f3666b428b4704d2f5b969059df58f94eefd81800",
+      "task_split": "train",
+      "title": "Transformative applications of artificial intelligence in lithium battery materials science: advancements and future prospects",
+      "year": 2025
+    },
+    {
+      "doi": "10.1016/j.cej.2022.140955",
+      "paper_id": "DOI:10.1016_j.cej.2022.140955",
+      "selection_reasons": [
+        "Primary robotized lithium-ion electrolyte screening and characterization platform study."
+      ],
+      "selection_tier": "primary_battery_electrolyte",
+      "source_manifest_key": "manifests/zotero/group=6631056/item=4R7LRRHS/attachment=ACQ_DA9A20879C695524/version=1786560530/document-manifest.json",
+      "source_markdown_key": "raw/zotero/group=6631056/item=4R7LRRHS/attachment=ACQ_DA9A20879C695524/version=1786560530/document.md",
+      "source_markdown_sha256": "fb4027624bc2d7bee8b1edfd52ed9fc16f364a0ba5af26447b5c659a83fd5216",
+      "task_split": "evaluation",
+      "title": "Robotised screening and characterisation for accelerated discovery of novel Lithium-ion battery electrolytes: Building a platform and proof of principle studies",
+      "year": 2023
+    },
+    {
+      "doi": "10.1016/j.xcrp.2025.102548",
+      "paper_id": "DOI:10.1016_j.xcrp.2025.102548",
+      "selection_reasons": [
+        "Primary automated aqueous-electrolyte full-cell study with Bayesian optimization and experimental validation."
+      ],
+      "selection_tier": "primary_battery_electrolyte",
+      "source_manifest_key": "manifests/zotero/group=6631056/item=UP8HR64L/attachment=ACQ_B109FF6076E9045C/version=1786560543/document-manifest.json",
+      "source_markdown_key": "raw/zotero/group=6631056/item=UP8HR64L/attachment=ACQ_B109FF6076E9045C/version=1786560543/document.md",
+      "source_markdown_sha256": "bb8a49cfb07b1213af5732a0aea8b0cd21b268403c43a15a68f9f71600260dd2",
+      "task_split": "evaluation",
+      "title": "Accelerating aqueous electrolyte design with automated full-cell battery experimentation and Bayesian optimization",
+      "year": 2025
+    },
+    {
+      "doi": "10.1039/d5cs00053j",
+      "paper_id": "DOI:10.1039_d5cs00053j",
+      "selection_reasons": [
+        "Review of AI-powered molecular discovery for batteries included to test separation of cited methods from primary protocols."
+      ],
+      "selection_tier": "battery_electrolyte_review",
+      "source_manifest_key": "manifests/zotero/group=6631056/item=SCVGBTSP/attachment=verified-094dcc74a1df52da/version=0/document-manifest.json",
+      "source_markdown_key": "raw/zotero/group=6631056/item=SCVGBTSP/attachment=verified-094dcc74a1df52da/version=0/document.md",
+      "source_markdown_sha256": "1e58d32382661ef9c66a7a4598dfb40e9658b8bd884c4ae704f4dfdb665e6e7b",
+      "task_split": "train",
+      "title": "Accelerating battery innovation: AI-powered molecular discovery",
+      "year": 2025
+    },
+    {
+      "doi": "10.1039/d5dd00111k",
+      "paper_id": "DOI:10.1039_d5dd00111k",
+      "selection_reasons": [
+        "Primary aqueous organic electrolyte discovery workflow combining virtual screening, simulation, and experimental testing."
+      ],
+      "selection_tier": "primary_battery_electrolyte",
+      "source_manifest_key": "manifests/zotero/group=6631056/item=49IB3H2Q/attachment=GDRIVE_1sZAIWNZkH2b2gpRhSQ06CXW2JpCq9-Su/version=1786188773/document-manifest.json",
+      "source_markdown_key": "raw/zotero/group=6631056/item=49IB3H2Q/attachment=GDRIVE_1sZAIWNZkH2b2gpRhSQ06CXW2JpCq9-Su/version=1786188773/document.md",
+      "source_markdown_sha256": "d30d621039a9f5c3e1f5073b1ad92318d409c96c7edc0cb19f01eaab8337dd3a",
+      "task_split": "train",
+      "title": "RedCat, an automated discovery workflow for aqueous organic electrolytes",
+      "year": 2025
+    },
+    {
+      "doi": "10.1039/d5ta00331h",
+      "paper_id": "DOI:10.1039_d5ta00331h",
+      "selection_reasons": [
+        "Review of high-throughput electrochemical materials discovery that identifies electrolyte methods and evidence gaps."
+      ],
+      "selection_tier": "battery_electrolyte_review",
+      "source_manifest_key": "manifests/zotero/group=6631056/item=IMB3N45G/attachment=verified-4dd952248b2d4797/version=0/document-manifest.json",
+      "source_markdown_key": "raw/zotero/group=6631056/item=IMB3N45G/attachment=verified-4dd952248b2d4797/version=0/document.md",
+      "source_markdown_sha256": "cebf6cb2ee2f3ddb0a6d96832b75a9c99f0170dd868acb043aa9243d7e75ce35",
+      "task_split": "train",
+      "title": "High throughput computational and experimental methods for accelerated electrochemical materials discovery",
+      "year": 2025
+    },
+    {
+      "doi": "10.1039/d5ta04197j",
+      "paper_id": "DOI:10.1039_d5ta04197j",
+      "selection_reasons": [
+        "Primary machine-learning screening study for inorganic lithium solid-state electrolytes with explicit computational methods."
+      ],
+      "selection_tier": "primary_battery_electrolyte",
+      "source_manifest_key": "manifests/zotero/group=6631056/item=3N3ZAX3D/attachment=verified-c375801ac2acacba/version=0/document-manifest.json",
+      "source_markdown_key": "raw/zotero/group=6631056/item=3N3ZAX3D/attachment=verified-c375801ac2acacba/version=0/document.md",
+      "source_markdown_sha256": "20591312e507c47eb8b89cb8b6b9354902ab34624a41273b8de597a413c3ca5a",
+      "task_split": "train",
+      "title": "Machine-learning-aided screening of inorganic lithium solid-state electrolytes with a wide electrochemical window",
+      "year": 2025
+    },
+    {
+      "doi": "10.15826/chimtech.9172",
+      "paper_id": "DOI:10.15826_chimtech.9172",
+      "selection_reasons": [
+        "Primary solid-electrolyte materials study with experimentally validated structure-property predictions."
+      ],
+      "selection_tier": "primary_battery_electrolyte",
+      "source_manifest_key": "manifests/zotero/group=6631056/item=4IBLU2UY/attachment=GDRIVE_1DtQqOUHauUpRRonQ8xJ7M1SQk2vh_tlR/version=1786188732/document-manifest.json",
+      "source_markdown_key": "raw/zotero/group=6631056/item=4IBLU2UY/attachment=GDRIVE_1DtQqOUHauUpRRonQ8xJ7M1SQk2vh_tlR/version=1786188732/document.md",
+      "source_markdown_sha256": "fe58dc2e4800a114c8cc1a9c78f53d611cf9f5b879675869e0fefcbb475859a8",
+      "task_split": "train",
+      "title": "«Structure–property» correlations and rational design of organic ionic plastic crystals",
+      "year": 2025
+    },
+    {
+      "doi": "10.3390/cryst15020114",
+      "paper_id": "DOI:10.3390_cryst15020114",
+      "selection_reasons": [
+        "Review of AI-enabled lithium-ion electrolyte discovery included as secondary evidence and an abstention control."
+      ],
+      "selection_tier": "battery_electrolyte_review",
+      "source_manifest_key": "manifests/zotero/group=6631056/item=ICJAYJAM/attachment=verified-794e4b334af98871/version=0/document-manifest.json",
+      "source_markdown_key": "raw/zotero/group=6631056/item=ICJAYJAM/attachment=verified-794e4b334af98871/version=0/document.md",
+      "source_markdown_sha256": "8b95a01e6dec23883072717506e7e638aba4de39e363e1caee0b62d3e919060d",
+      "task_split": "evaluation",
+      "title": "Artificial Intelligence and Li Ion Batteries: Basics and Breakthroughs in Electrolyte Materials Discovery",
+      "year": 2025
+    }
+  ],
+  "schema_version": "domain-adapter-selection-v0.1",
+  "selection_method": "curated_full_text_oer_evidence"
+}

@@ -6,7 +6,7 @@ from datetime import UTC, datetime, timedelta
 from threading import Barrier
 
 import pytest
-from fastapi.testclient import TestClient
+from tests.admin_client import AdminTestClient as TestClient
 from sqlalchemy import select
 
 from app.main import app
@@ -974,6 +974,39 @@ def test_model_evolution_status_api_reports_pending_progress(
     assert body["latest_run"] is None
     assert body["validation_gate"]["ready"] is False
     assert body["validation_gate"]["required_examples"] == 20
+
+
+def test_model_evolution_status_stage1_does_not_require_legacy_label_csvs(
+    seeded_session,
+    tmp_path,
+    monkeypatch,
+):
+    from app.config import settings
+
+    monkeypatch.setattr(settings, "sdl_stage1_only", True)
+    monkeypatch.setattr(
+        settings,
+        "validation_labels_csv",
+        tmp_path / "missing-validation.csv",
+    )
+    monkeypatch.setattr(
+        settings,
+        "eval_labels_csv",
+        tmp_path / "missing-holdout.csv",
+    )
+    monkeypatch.setattr(
+        "app.services.sdl_stage1_service.stage1_label_map",
+        lambda _session, *, role, through_round=None: {},
+    )
+
+    response = TestClient(app).get("/model-evolution/status")
+
+    assert response.status_code == 200
+    body = response.json()
+    assert body["production_authority"]["status"] == "RULES_ONLY"
+    assert body["pending_reviews"] == 0
+    assert body["validation_gate"]["observed_examples"] == 0
+    assert body["validation_gate"]["ready"] is False
 
 
 def test_review_api_schedules_model_training_after_feedback_commit(

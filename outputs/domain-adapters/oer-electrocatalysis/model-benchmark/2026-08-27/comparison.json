@@ -1,0 +1,333 @@
+{
+  "benchmark_id": "oer-teacher-models-2026-08",
+  "claims_boundary": "Validator acceptance, coverage, tokens, and latency are operational metrics. Scientific accuracy ranking requires a shared, source-first human gold set that is independent of every candidate model.",
+  "comparability": {
+    "final_matrix_complete": false,
+    "missing_required_models": [
+      "claude-opus-5",
+      "gpt-5-6-sol"
+    ],
+    "prompt_version": "oer-protocol-teacher-v0.2",
+    "same_inference_config": true,
+    "same_prompt_version": true,
+    "same_source_selection": true,
+    "source_selection_sha256": "9a1d6483fed9dcfc9c067d4af01beb2e753409dd82ed11addae22eb5a568c488"
+  },
+  "runs": [
+    {
+      "alias": "kimi-k2-5",
+      "metrics": {
+        "accepted_field_count": 150,
+        "entity_count": 105,
+        "evidence_span_count": 71,
+        "field_acceptance_rate": 0.437318,
+        "input_token_count": 18589,
+        "latency_ms_total": 325576,
+        "output_token_count": 21890,
+        "paper_count": 4,
+        "paper_coverage_by_selection_tier": {
+          "oer_case_study": {
+            "coverage_rate": 1.0,
+            "paper_count": 1,
+            "papers_with_protocols": 1
+          },
+          "oer_review": {
+            "coverage_rate": 1.0,
+            "paper_count": 1,
+            "papers_with_protocols": 1
+          },
+          "primary_oer": {
+            "coverage_rate": 1.0,
+            "paper_count": 2,
+            "papers_with_protocols": 2
+          }
+        },
+        "papers_with_protocols": 4,
+        "proposed_field_count": 343,
+        "protocol_count": 15,
+        "rejected_field_count": 193,
+        "rejection_reason_counts": {
+          "over_generalized": 157,
+          "schema_invalid": 2,
+          "span_not_in_source": 23,
+          "value_elsewhere": 11
+        },
+        "response_schema_failure_count": 0,
+        "salvaged_response_count": 0,
+        "task_count": 28,
+        "teacher_paper_outcome_counts": {
+          "retained_protocols": 4
+        }
+      },
+      "model_id": "moonshotai.kimi-k2.5",
+      "package_dir": "../outputs/domain-adapters/oer-electrocatalysis/model-benchmark/2026-08-27/packages/kimi-k2-5",
+      "provider": "amazon_bedrock",
+      "region": "us-east-1",
+      "required_for_final": true
+    },
+    {
+      "alias": "claude-opus-4-6",
+      "metrics": {
+        "accepted_field_count": 73,
+        "entity_count": 54,
+        "evidence_span_count": 38,
+        "field_acceptance_rate": 0.365,
+        "input_token_count": 21229,
+        "latency_ms_total": 192795,
+        "output_token_count": 17244,
+        "paper_count": 4,
+        "paper_coverage_by_selection_tier": {
+          "oer_case_study": {
+            "coverage_rate": 0.0,
+            "paper_count": 1,
+            "papers_with_protocols": 0
+          },
+          "oer_review": {
+            "coverage_rate": 0.0,
+            "paper_count": 1,
+            "papers_with_protocols": 0
+          },
+          "primary_oer": {
+            "coverage_rate": 1.0,
+            "paper_count": 2,
+            "papers_with_protocols": 2
+          }
+        },
+        "papers_with_protocols": 2,
+        "proposed_field_count": 200,
+        "protocol_count": 10,
+        "rejected_field_count": 127,
+        "rejection_reason_counts": {
+          "over_generalized": 92,
+          "span_not_in_source": 27,
+          "value_elsewhere": 8
+        },
+        "response_schema_failure_count": 1,
+        "salvaged_response_count": 1,
+        "task_count": 23,
+        "teacher_paper_outcome_counts": {
+          "model_abstained": 2,
+          "partial_salvage": 1,
+          "retained_protocols": 1
+        }
+      },
+      "model_id": "us.anthropic.claude-opus-4-6-v1",
+      "package_dir": "../outputs/domain-adapters/oer-electrocatalysis/model-benchmark/2026-08-27/packages/claude-opus-4-6",
+      "provider": "amazon_bedrock",
+      "region": "us-east-1",
+      "required_for_final": false
+    },
+    {
+      "alias": "claude-sonnet-4-6",
+      "metrics": {
+        "accepted_field_count": 92,
+        "entity_count": 72,
+        "evidence_span_count": 57,
+        "field_acceptance_rate": 0.323944,
+        "input_token_count": 21229,
+        "latency_ms_total": 265855,
+        "output_token_count": 26095,
+        "paper_count": 4,
+        "paper_coverage_by_selection_tier": {
+          "oer_case_study": {
+            "coverage_rate": 1.0,
+            "paper_count": 1,
+            "papers_with_protocols": 1
+          },
+          "oer_review": {
+            "coverage_rate": 0.0,
+            "paper_count": 1,
+            "papers_with_protocols": 0
+          },
+          "primary_oer": {
+            "coverage_rate": 1.0,
+            "paper_count": 2,
+            "papers_with_protocols": 2
+          }
+        },
+        "papers_with_protocols": 3,
+        "proposed_field_count": 284,
+        "protocol_count": 12,
+        "rejected_field_count": 192,
+        "rejection_reason_counts": {
+          "over_generalized": 118,
+          "schema_invalid": 14,
+          "span_not_in_source": 58,
+          "value_elsewhere": 2
+        },
+        "response_schema_failure_count": 1,
+        "salvaged_response_count": 1,
+        "task_count": 18,
+        "teacher_paper_outcome_counts": {
+          "model_abstained": 1,
+          "partial_salvage": 1,
+          "retained_protocols": 2
+        }
+      },
+      "model_id": "us.anthropic.claude-sonnet-4-6",
+      "package_dir": "../outputs/domain-adapters/oer-electrocatalysis/model-benchmark/2026-08-27/packages/claude-sonnet-4-6",
+      "provider": "amazon_bedrock",
+      "region": "us-east-1",
+      "required_for_final": false
+    },
+    {
+      "alias": "deepseek-v3-2",
+      "metrics": {
+        "accepted_field_count": 65,
+        "entity_count": 47,
+        "evidence_span_count": 44,
+        "field_acceptance_rate": 0.706522,
+        "input_token_count": 18387,
+        "latency_ms_total": 71709,
+        "output_token_count": 5738,
+        "paper_count": 4,
+        "paper_coverage_by_selection_tier": {
+          "oer_case_study": {
+            "coverage_rate": 0.0,
+            "paper_count": 1,
+            "papers_with_protocols": 0
+          },
+          "oer_review": {
+            "coverage_rate": 0.0,
+            "paper_count": 1,
+            "papers_with_protocols": 0
+          },
+          "primary_oer": {
+            "coverage_rate": 1.0,
+            "paper_count": 2,
+            "papers_with_protocols": 2
+          }
+        },
+        "papers_with_protocols": 2,
+        "proposed_field_count": 92,
+        "protocol_count": 2,
+        "rejected_field_count": 27,
+        "rejection_reason_counts": {
+          "over_generalized": 22,
+          "span_not_in_source": 4,
+          "value_elsewhere": 1
+        },
+        "response_schema_failure_count": 0,
+        "salvaged_response_count": 0,
+        "task_count": 7,
+        "teacher_paper_outcome_counts": {
+          "model_abstained": 2,
+          "retained_protocols": 2
+        }
+      },
+      "model_id": "deepseek.v3.2",
+      "package_dir": "../outputs/domain-adapters/oer-electrocatalysis/model-benchmark/2026-08-27/packages/deepseek-v3-2",
+      "provider": "amazon_bedrock",
+      "region": "us-east-1",
+      "required_for_final": false
+    },
+    {
+      "alias": "qwen3-next-80b",
+      "metrics": {
+        "accepted_field_count": 55,
+        "entity_count": 38,
+        "evidence_span_count": 26,
+        "field_acceptance_rate": 0.37931,
+        "input_token_count": 20146,
+        "latency_ms_total": 391296,
+        "output_token_count": 25884,
+        "paper_count": 4,
+        "paper_coverage_by_selection_tier": {
+          "oer_case_study": {
+            "coverage_rate": 0.0,
+            "paper_count": 1,
+            "papers_with_protocols": 0
+          },
+          "oer_review": {
+            "coverage_rate": 0.0,
+            "paper_count": 1,
+            "papers_with_protocols": 0
+          },
+          "primary_oer": {
+            "coverage_rate": 0.5,
+            "paper_count": 2,
+            "papers_with_protocols": 1
+          }
+        },
+        "papers_with_protocols": 1,
+        "proposed_field_count": 145,
+        "protocol_count": 1,
+        "rejected_field_count": 90,
+        "rejection_reason_counts": {
+          "over_generalized": 55,
+          "span_not_in_source": 31,
+          "value_elsewhere": 4
+        },
+        "response_schema_failure_count": 1,
+        "salvaged_response_count": 0,
+        "task_count": 6,
+        "teacher_paper_outcome_counts": {
+          "model_abstained": 2,
+          "response_schema_failure": 1,
+          "retained_protocols": 1
+        }
+      },
+      "model_id": "qwen.qwen3-next-80b-a3b",
+      "package_dir": "../outputs/domain-adapters/oer-electrocatalysis/model-benchmark/2026-08-27/packages/qwen3-next-80b",
+      "provider": "amazon_bedrock",
+      "region": "us-east-1",
+      "required_for_final": false
+    },
+    {
+      "alias": "glm-5",
+      "metrics": {
+        "accepted_field_count": 82,
+        "entity_count": 58,
+        "evidence_span_count": 37,
+        "field_acceptance_rate": 0.473988,
+        "input_token_count": 18893,
+        "latency_ms_total": 189080,
+        "output_token_count": 9176,
+        "paper_count": 4,
+        "paper_coverage_by_selection_tier": {
+          "oer_case_study": {
+            "coverage_rate": 0.0,
+            "paper_count": 1,
+            "papers_with_protocols": 0
+          },
+          "oer_review": {
+            "coverage_rate": 0.0,
+            "paper_count": 1,
+            "papers_with_protocols": 0
+          },
+          "primary_oer": {
+            "coverage_rate": 0.5,
+            "paper_count": 2,
+            "papers_with_protocols": 1
+          }
+        },
+        "papers_with_protocols": 1,
+        "proposed_field_count": 173,
+        "protocol_count": 9,
+        "rejected_field_count": 91,
+        "rejection_reason_counts": {
+          "over_generalized": 58,
+          "schema_invalid": 28,
+          "value_elsewhere": 5
+        },
+        "response_schema_failure_count": 0,
+        "salvaged_response_count": 0,
+        "task_count": 21,
+        "teacher_paper_outcome_counts": {
+          "model_abstained": 3,
+          "retained_protocols": 1
+        }
+      },
+      "model_id": "zai.glm-5",
+      "package_dir": "../outputs/domain-adapters/oer-electrocatalysis/model-benchmark/2026-08-27/packages/glm-5",
+      "provider": "amazon_bedrock",
+      "region": "us-east-1",
+      "required_for_final": false
+    }
+  ],
+  "schema_version": "domain-teacher-comparison-v0.1",
+  "scientific_ranking": {
+    "eligible": false,
+    "reason": "shared_gold_required"
+  }
+}

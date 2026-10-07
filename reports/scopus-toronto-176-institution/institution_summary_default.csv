@@ -1,0 +1,496 @@
+﻿rank,institution,weighted_credit,paper_count
+1,University of Toronto,69.817134,145
+2,Vector Institute,13.573941,83
+3,University of British Columbia,11.753212,26
+4,Canadian Institute for Advanced Research,6.046496,60
+5,Structural Genomics Consortium,4.626316,29
+6,Harvard University,2.211161,15
+7,Canada Research Chairs,1.583333,5
+8,National Research Council Canada,1.428939,7
+9,University of Ottawa,1.27803,2
+10,University of Vienna,1.225,4
+11,University of Kassel,1.2,4
+12,Technical University of Denmark,1.175789,3
+13,Northwestern University,1.089586,7
+14,Swiss Federal Laboratories for Materials Science and Technology,0.9,1
+15,University of Strathclyde,0.85,1
+16,Technical University of Munich,0.81,3
+17,"University of Maryland, College Park",0.802727,2
+18,North Carolina State University,0.76702,7
+19,Artificial Intelligence in Medicine (Canada),0.746591,3
+20,"Merck & Co., Inc., Rahway, NJ, USA (United States)",0.728708,5
+21,"University of California, Berkeley",0.714485,4
+22,Stanford University,0.699705,5
+23,Friedrich-Alexander-Universität Erlangen-Nürnberg,0.675397,5
+24,"Agency for Science, Technology and Research",0.657501,5
+25,University of Oxford,0.657215,4
+26,University of Waterloo,0.645141,6
+27,Google (United States),0.642317,4
+28,Institute of Materials Research and Engineering,0.625501,3
+29,University of Bergen,0.564329,7
+30,University of Liverpool,0.522283,4
+31,Toronto Public Health,0.50049,2
+32,Discovery Centre,0.489394,2
+33,Nanyang Technological University,0.487674,8
+34,Institut de Recerca en Energia de Catalunya,0.484909,2
+35,Harvard University Press,0.484273,3
+36,Institute of Micro and Nanotechnology,0.466667,2
+37,Universidad Autónoma de Madrid,0.466667,2
+38,McMaster University,0.463838,3
+39,Humboldt-Universität zu Berlin,0.445378,2
+40,ETH Zurich,0.426418,5
+41,Massachusetts Institute of Technology,0.424456,11
+42,Federal Institute For Materials Research and Testing,0.413636,2
+43,Lawrence Livermore National Laboratory,0.41,1
+44,Georgia Institute of Technology,0.39421,6
+45,3M (United States),0.391667,3
+46,McGill University,0.386364,2
+47,University of South Australia,0.381579,1
+48,Intel (United States),0.375,2
+49,Jiangsu Industry Technology Research Institute,0.366667,1
+50,Wright-Patterson Air Force Base,0.366667,1
+51,Pfizer (United States),0.364815,4
+52,Toronto Metropolitan University,0.363636,2
+53,University of Warsaw,0.361111,1
+54,Technische Universität Berlin,0.36049,6
+55,University of Bremen,0.36,1
+56,Institució Catalana de Recerca i Estudis Avançats,0.35,2
+57,Foton Motors (China),0.35,1
+58,IIT@MIT,0.35,1
+59,International Food Policy Research Institute,0.35,1
+60,Luliang University,0.35,1
+61,Open Molecular Software Foundation,0.35,1
+62,Sogang University,0.35,1
+63,University of Insubria,0.35,1
+64,Toronto Rehabilitation Institute,0.348333,4
+65,University of North Carolina at Chapel Hill,0.341399,2
+66,Communities In Schools of Orange County,0.30049,1
+67,"University of Nevada, Reno",0.3,1
+68,Johns Hopkins University,0.298636,3
+69,Princess Margaret Cancer Centre,0.298561,4
+70,Imperial College London,0.29125,3
+71,Nvidia (United States),0.274762,5
+72,Broad Institute,0.266071,2
+73,Natural Resources Canada,0.26,3
+74,Karlsruhe Institute of Technology,0.247,4
+75,American Institutes for Research,0.241667,1
+76,Argonne National Laboratory,0.230195,3
+77,Lawrence Berkeley National Laboratory,0.224615,5
+78,Hong Kong Polytechnic University,0.214474,1
+79,University of Chicago,0.209545,3
+80,Indiana University,0.201136,2
+81,University of Connecticut,0.2,1
+82,Sustainability Institute,0.196078,3
+83,Kyushu University,0.193588,4
+84,Pacific Northwest National Laboratory,0.191455,4
+85,Institute of Urban Environment,0.19,1
+86,University of Chinese Academy of Sciences,0.19,1
+87,Indiana University Bloomington,0.1875,1
+88,Institut Català de Nanociència i Nanotecnologia,0.187,1
+89,International Institute for Nanotechnology,0.185758,1
+90,Fleming College,0.183333,1
+91,Duke University,0.181532,4
+92,Blue Marble Space,0.178598,1
+93,Nvidia (United Kingdom),0.175,2
+94,Baewha Women's University,0.175,1
+95,Hochschule Campus Wien,0.175,1
+96,Karolinska Institutet,0.175,1
+97,Karolinska University Hospital,0.175,1
+98,Public Health Ontario,0.175,1
+99,Shanghai Jiao Tong University,0.175,1
+100,University Medical Center Groningen,0.175,1
+101,University of British Columbia Hospital,0.175,1
+102,University of Helsinki,0.175,1
+103,University Health Network,0.174475,5
+104,University of Alberta,0.174123,3
+105,University of Cambridge,0.168286,4
+106,Cornell University,0.167064,4
+107,Muscular Dystrophy Canada,0.166667,1
+108,National Institute of Standards and Technology,0.162,2
+109,Open University of Israel,0.15,1
+110,University of Victoria,0.15,1
+111,Clinical Research Institute,0.140351,1
+112,Chinese Academy of Sciences,0.140302,3
+113,Brown University,0.138095,2
+114,Institute of Science Tokyo,0.130952,2
+115,Shenzhen Institutes of Advanced Technology,0.128509,1
+116,Chalmers University of Technology,0.127652,4
+117,Jilin University,0.1275,2
+118,Singapore Institute for Clinical Sciences,0.127381,1
+119,Helmholtz Institute Erlangen-Nürnberg,0.124206,5
+120,King Abdullah University of Science and Technology,0.12,1
+121,Chan Zuckerberg Biohub Chicago,0.118485,1
+122,Chan Zuckerberg Initiative (United States),0.118485,1
+123,Tri-Institutional PhD Program in Chemical Biology,0.118293,1
+124,Weill Cornell Medicine,0.117073,1
+125,Duke Medical Center,0.116667,1
+126,Hologic (Germany),0.116667,1
+127,MaRS Innovation,0.116667,1
+128,Max Planck Institute of Microstructure Physics,0.116667,1
+129,Osnabrück University,0.116667,1
+130,Universidade Federal da Paraíba,0.116667,1
+131,Forschungszentrum Jülich,0.102778,4
+132,University of Utah,0.096667,3
+133,University of New Brunswick,0.09375,2
+134,California Institute of Technology,0.092857,1
+135,Quantitative BioSciences,0.088045,2
+136,Dana-Farber/Harvard Cancer Center,0.0875,1
+137,ScienceSouth,0.0875,1
+138,Carnegie Mellon University,0.084296,5
+139,University of Illinois Urbana-Champaign,0.081558,4
+140,Icesi University,0.081429,2
+141,Fudan University,0.076364,2
+142,Commissariat à l'Énergie Atomique et aux Énergies Alternatives,0.075,1
+143,Indian Institute of Technology Delhi,0.075,1
+144,Laboratoire d’Innovation pour les Technologies des Énergies Nouvelles et les nanomatériaux,0.075,1
+145,South China Normal University,0.075,1
+146,University of Groningen,0.075,1
+147,University of Göttingen,0.075,1
+148,Université Grenoble Alpes,0.075,1
+149,AstraZeneca (Sweden),0.074522,2
+150,Institute of Photonic Sciences,0.074444,2
+151,Universidad Nacional Autónoma de México,0.073636,2
+152,Research Canada,0.07,1
+153,Schwartz/Reisman Emergency Medicine Institute,0.07,1
+154,State Key Laboratory of Supramolecular Structure and Materials,0.0675,2
+155,École Polytechnique Fédérale de Lausanne,0.067411,5
+156,Dow Chemical (United States),0.066667,1
+157,SmartFactory (Germany),0.066667,1
+158,University of Wisconsin–Madison,0.065085,2
+159,University of Glasgow,0.064634,1
+160,Universidad del Valle,0.064286,1
+161,Hamamatsu Photonics (Japan),0.06,1
+162,Justus-Liebig-Universität Gießen,0.06,1
+163,Menlo School,0.06,1
+164,Texas Fertility Center,0.06,1
+165,Universidad Politécnica de Madrid,0.06,1
+166,University of Technology Sydney,0.06,1
+167,Xerox (Canada),0.06,1
+168,Max-Planck-Institut für Nachhaltige Materialien,0.059938,2
+169,University of Washington,0.055,3
+170,Fritz Haber Institute of the Max Planck Society,0.053768,3
+171,Institute of Materials Science,0.05,1
+172,Toronto General Hospital,0.045833,1
+173,University of Wuppertal,0.044048,2
+174,AstraZeneca (United Kingdom),0.043062,2
+175,London School of Economics and Political Science,0.0375,1
+176,Ottawa University,0.0375,1
+177,Tufts University,0.035789,2
+178,Princeton University,0.035476,2
+179,Institute of Biomedical Chemistry,0.035294,1
+180,UNSW Sydney,0.035263,2
+181,Institute of Macromolecular Chemistry,0.034697,2
+182,University of Hong Kong,0.034306,2
+183,European Bioinformatics Institute,0.034091,1
+184,Pfizer (Germany),0.034091,1
+185,University of Nottingham Ningbo China,0.033947,2
+186,FX Palo Alto Laboratory,0.033333,1
+187,University Centre of Legal Medicine,0.033333,1
+188,Wacker (United States),0.033333,1
+189,University of California System,0.033048,3
+190,LG (South Korea),0.031579,1
+191,Sanofi (United States),0.031579,1
+192,University of Science and Technology of China,0.031579,1
+193,The University of Texas at Austin,0.030455,2
+194,Fuzhou University,0.03,1
+195,Institute of Science and Technology,0.03,1
+196,Kebotix (United States),0.03,1
+197,Rutherford Appleton Laboratory,0.03,1
+198,Sydney Water,0.03,1
+199,Technische Universität Darmstadt,0.03,1
+200,Yanshan University,0.03,1
+201,Bayer (Germany),0.029426,2
+202,University of Bonn,0.028758,2
+203,Goethe University Frankfurt,0.027273,1
+204,United States Air Force Research Laboratory,0.027273,1
+205,Université de Strasbourg,0.026471,1
+206,Cardiff University,0.025424,1
+207,Mitsubishi Chemical (Japan),0.025087,2
+208,Los Angeles Mission College,0.025,1
+209,University of Edinburgh,0.025,1
+210,University of Manchester,0.025,1
+211,Australian National University,0.024,1
+212,Technische Universität Dresden,0.024,1
+213,Korea Advanced Institute of Science and Technology,0.023684,1
+214,The University of Queensland,0.023684,1
+215,Centre National de la Recherche Scientifique,0.023214,2
+216,University of Missouri,0.022727,2
+217,Institut Polytechnique de Paris,0.022222,1
+218,Leiden University,0.022222,1
+219,Fordham University,0.021531,2
+220,The Bronx Defenders,0.021531,2
+221,National University of Singapore,0.021455,2
+222,Bavarian Center for Applied Energy Research,0.021429,1
+223,IBM Research - Zurich,0.021429,1
+224,Universidad de Los Andes,0.021429,1
+225,Max Planck Computing and Data Facility,0.020339,1
+226,Ames Research Center,0.020061,1
+227,ISCO International (United States),0.02,1
+228,"University of California, Davis",0.02,1
+229,University of Leeds,0.02,1
+230,University of Southern Denmark,0.02,1
+231,"University of California, Los Angeles",0.019888,4
+232,Mila - Quebec Artificial Intelligence Institute,0.019643,1
+233,The University of Tokyo,0.019549,2
+234,Colorado State University,0.019448,2
+235,Aalto University,0.019444,2
+236,Business School Lausanne,0.019444,1
+237,University of Amsterdam,0.019228,3
+238,Silpakorn University,0.019048,1
+239,Pharmacology Research Institute,0.01875,1
+240,Monash University,0.018195,2
+241,Mohamed bin Zayed University of Artificial Intelligence,0.017857,2
+242,Massachusetts Department of Public Health,0.016667,1
+243,University School of Milwaukee,0.016667,1
+244,University of Wisconsin–Milwaukee,0.016667,1
+245,Université de Montréal,0.016071,1
+246,Boehringer Ingelheim (Canada),0.015789,1
+247,Cristal Therapeutics (Netherlands),0.015789,1
+248,Korea Research Institute of Chemical Technology,0.015789,1
+249,Microsoft (United States),0.015789,1
+250,Nanobiotix (France),0.015789,1
+251,SINTEF,0.015789,1
+252,Sanofi (France),0.015789,1
+253,Technion – Israel Institute of Technology,0.015789,1
+254,Zhejiang Normal University,0.015789,1
+255,New York University,0.015122,3
+256,University of Tennessee at Knoxville,0.015091,2
+257,St. Michael's Hospital,0.015,1
+258,Florida State University,0.014286,1
+259,Unchained Labs (United States),0.014286,1
+260,University of Rostock,0.014286,1
+261,University of Salento,0.014286,1
+262,Heinrich Heine University Düsseldorf,0.014269,2
+263,American Chemical Society,0.013636,1
+264,Boston College,0.013636,1
+265,Clarkson University,0.013636,1
+266,Friedrich Schiller University Jena,0.013636,1
+267,Green Chemistry,0.013636,1
+268,Lehigh University,0.013636,1
+269,Meta (United States),0.013636,1
+270,National Institutes of Health,0.013636,1
+271,Novo Nordisk (Denmark),0.013636,1
+272,United States National Library of Medicine,0.013636,1
+273,Universidad Autónoma de la Ciudad de México,0.013636,1
+274,University of Delaware,0.013636,1
+275,University of Minnesota System,0.013636,1
+276,University of Toledo,0.013636,1
+277,University of Florida,0.012914,2
+278,CentraleSupélec,0.0125,1
+279,Science North,0.0125,1
+280,University of Roehampton,0.0125,1
+281,Université Paris-Saclay,0.0125,1
+282,RMIT Europe,0.012,1
+283,University of Trieste,0.012,1
+284,University of Southern California,0.011835,2
+285,Texas A&M University,0.01128,1
+286,Barcelona Supercomputing Center,0.011111,1
+287,Bayer (United States),0.011111,1
+288,Delft University of Technology,0.011111,1
+289,Gdańsk University of Technology,0.011111,1
+290,Max Planck Institute for the Science of Light,0.011111,1
+291,Tinbergen Institute,0.011111,1
+292,University of Basel,0.011111,1
+293,University of Freiburg,0.011111,1
+294,Universität Innsbruck,0.011111,1
+295,Chimie ParisTech,0.010714,1
+296,Harvard–MIT Division of Health Sciences and Technology,0.010714,1
+297,Microsoft Research Asia (China),0.010714,1
+298,National Training Service,0.010714,1
+299,Serviço Nacional de Aprendizagem Comercial,0.010714,1
+300,Université Paris Sciences et Lettres,0.010714,1
+301,Institute of Organic Chemistry,0.010655,2
+302,Polish Academy of Sciences,0.010655,2
+303,Seoul National University,0.010622,2
+304,Physical Sciences (United States),0.010455,2
+305,Max Planck Institute for Dynamics of Complex Technical Systems,0.010169,1
+306,Max Planck Institute for the Physics of Complex Systems,0.010169,1
+307,Heidelberg Institute for Theoretical Studies,0.00959,2
+308,Heidelberg University,0.00959,2
+309,Instituto de Ciencia de Materiales de Madrid,0.009375,1
+310,Boston Fusion (United States),0.009091,1
+311,Helmholtz-Zentrum Berlin für Materialien und Energie,0.009091,1
+312,KU Leuven,0.009091,1
+313,London South Bank University,0.009091,1
+314,University of Houston,0.009091,1
+315,Google (United Kingdom),0.008929,1
+316,Google DeepMind (United Kingdom),0.008929,1
+317,Durham Technical Community College,0.008824,1
+318,Gainesville Obstetrics & Gynecology,0.008824,1
+319,Helmholtz Munich,0.008824,1
+320,Institute of Structural and Molecular Biology,0.008824,1
+321,Lomonosov Moscow State University,0.008824,1
+322,Novartis (Switzerland),0.008824,1
+323,Novartis Institutes for BioMedical Research,0.008824,1
+324,Center for Research in Molecular Medicine and Chronic Diseases,0.007895,1
+325,Courant Institute of Mathematical Sciences,0.007895,1
+326,Molecular Innovations (United States),0.007895,1
+327,The University of Adelaide,0.007895,1
+328,Universidade de Santiago de Compostela,0.007895,1
+329,Universidade do Porto,0.007895,1
+330,"i3S - Instituto de Investigação e Inovação em Saúde, Universidade do Porto",0.007895,1
+331,University of Colorado Boulder,0.007829,2
+332,Jet Propulsion Laboratory,0.007317,1
+333,Paracelsus Medical University,0.007317,1
+334,Universidad San Francisco de Quito,0.007317,1
+335,University College London,0.007317,1
+336,University of Malta,0.007317,1
+337,University of Pennsylvania,0.007317,1
+338,CS Diagnostics,0.007143,1
+339,Roche Pharma AG (Germany),0.007143,1
+340,Institute for Basic Science,0.00714,3
+341,Dakota State University,0.006818,1
+342,Drug Discovery Laboratory (Norway),0.006818,1
+343,Houston Community College System,0.006818,1
+344,Lone Star College,0.006818,1
+345,Memorial,0.006818,1
+346,Memorial University of Newfoundland,0.006818,1
+347,North Dakota State University,0.006818,1
+348,Open Targets,0.006818,1
+349,Oregon State University,0.006818,1
+350,University of Kansas,0.006818,1
+351,University of Petroleum,0.006818,1
+352,Board of the Swiss Federal Institutes of Technology,0.006,1
+353,Donostia International Physics Center,0.006,1
+354,Material Physics Center,0.006,1
+355,National Laboratory of the Rockies,0.006,1
+356,The Prostate Centre,0.005882,1
+357,Vancouver Biotech (Canada),0.005882,1
+358,Buck Institute for Research on Aging,0.005793,1
+359,Ulsan National Institute of Science and Technology,0.005777,2
+360,Délégation Paris 7,0.005556,1
+361,Université Paris Cité,0.005556,1
+362,Gdańsk Medical University,0.005488,1
+363,The University of Texas Medical Branch at Galveston,0.005488,1
+364,California NanoSystems Institute,0.005455,1
+365,Virginia Tech,0.005455,1
+366,Cancer Institute of New South Wales,0.005263,1
+367,Children's Cancer Institute Australia,0.005263,1
+368,National Institute for Materials Science,0.005263,1
+369,RIKEN Center for Advanced Intelligence Project,0.005263,1
+370,Citrine Informatics (United States),0.005085,1
+371,Health Data Research UK,0.005085,1
+372,Lenovo (China),0.005085,1
+373,Max Planck Institute for Informatics,0.005085,1
+374,Max Planck Institute for Polymer Research,0.005085,1
+375,Max Planck Institute for the Structure and Dynamics of Matter,0.005085,1
+376,Max Planck Institute of Colloids and Interfaces,0.005085,1
+377,Highland Community College - Illinois,0.004878,1
+378,Obuda University,0.004762,1
+379,Takeda (Switzerland),0.004762,1
+380,Ann Arbor Center for Independent Living,0.004545,1
+381,AstraZeneca (Germany),0.004545,1
+382,AstraZeneca (Japan),0.004545,1
+383,TiGenix (Spain),0.004545,1
+384,UCLouvain,0.004545,1
+385,University of Michigan,0.004545,1
+386,RWTH Aachen University,0.004522,2
+387,Los Angeles City College,0.004412,1
+388,New Mexico Cancer Center,0.004412,1
+389,Novo Nordisk Foundation,0.004412,1
+390,University of Gothenburg,0.004412,1
+391,University of New Mexico,0.004412,1
+392,Constructing Excellence,0.004,1
+393,Berlin Institute for the Foundations of Learning and Data,0.003947,1
+394,Georgetown University,0.003659,1
+395,Jagiellonian University,0.003659,1
+396,Johnson Space Center,0.003659,1
+397,King Faisal Specialist Hospital & Research Centre,0.003659,1
+398,Meta Vision Systems (United Kingdom),0.003659,1
+399,Southwest Research Institute,0.003659,1
+400,SpaceX (United States),0.003659,1
+401,Spectral Labs (United States),0.003659,1
+402,"Universidad de Los Andes, Chile",0.003659,1
+403,"University of California, Irvine",0.003659,1
+404,University of Tsukuba,0.003659,1
+405,University of Zurich,0.003659,1
+406,Zagazig University,0.003659,1
+407,Amsterdam University of the Arts,0.003571,1
+408,Center for Systems Biology,0.003571,1
+409,HEC Montréal,0.003571,1
+410,Microsoft (Netherlands),0.003571,1
+411,Düsseldorf University Hospital,0.003158,1
+412,Integrated Oncology (United States),0.003158,1
+413,Universitätsklinikum Aachen,0.003158,1
+414,Australian Regenerative Medicine Institute,0.002941,1
+415,CSIRO Manufacturing,0.002941,1
+416,Institute for Molecular Science,0.002941,1
+417,La Trobe University,0.002941,1
+418,University of Nottingham,0.002941,1
+419,Blue Marble Space Institute of Science,0.002866,1
+420,Alma College,0.002727,1
+421,BC Platforms (Finland),0.002727,1
+422,Cancer Genetics (United States),0.002727,1
+423,Chinese University of Hong Kong,0.002727,1
+424,City University of Hong Kong,0.002727,1
+425,Convergence,0.002727,1
+426,Ewha Womans University Medical Center,0.002727,1
+427,FHNW University of Applied Sciences and Arts Northwestern Switzerland,0.002727,1
+428,Huaibei Mining (China),0.002727,1
+429,Nanjing Tech University,0.002727,1
+430,Nanjing University,0.002727,1
+431,Quanterix (United States),0.002727,1
+432,Sandia National Laboratories,0.002727,1
+433,South China University of Technology,0.002727,1
+434,Universidad del Noreste,0.002727,1
+435,University of Iowa,0.002727,1
+436,University of Massachusetts Lowell,0.002727,1
+437,University of Münster,0.002727,1
+438,University of Pittsburgh,0.002727,1
+439,University of Rochester,0.002727,1
+440,University of Virginia,0.002727,1
+441,Weinberg Medical Physics (United States),0.002727,1
+442,Naval Research Laboratory Information Technology Division,0.002542,1
+443,Oak Ridge National Laboratory,0.002542,1
+444,Statistical Research (United States),0.002542,1
+445,Flatiron Health (United States),0.002143,1
+446,Flatiron Institute,0.002143,1
+447,Campbell Institute,0.001829,1
+448,Embry–Riddle Aeronautical University,0.001829,1
+449,Illinois College,0.001829,1
+450,Iowa State University,0.001829,1
+451,Jaguar Land Rover (United Kingdom),0.001829,1
+452,KBR (United States),0.001829,1
+453,KTH Royal Institute of Technology,0.001829,1
+454,McLean Hospital,0.001829,1
+455,Science for Life Laboratory,0.001829,1
+456,Seattle University,0.001829,1
+457,"University of Maryland, Baltimore",0.001829,1
+458,Ursa Astronomical Association,0.001829,1
+459,Wake Forest University,0.001829,1
+460,Inspire,0.001773,1
+461,Instituto de Física Teórica,0.001695,1
+462,Arizona State University,0.001364,1
+463,Centre for Biomedical Engineering and Physics,0.001364,1
+464,Comprehensive Cancer Centers of Nevada,0.001364,1
+465,"Department of Physics, Mathematics and Informatics",0.001364,1
+466,Institute of Catalysis and Petrochemistry,0.001364,1
+467,Institute of Inorganic Chemistry of the Slovak Academy of Sciences,0.001364,1
+468,Institute of Materials and Environmental Chemistry,0.001364,1
+469,Max Planck Society,0.001364,1
+470,New Jersey Institute of Technology,0.001364,1
+471,Pediatric Brain Tumor Foundation,0.001364,1
+472,Yonsei University,0.001364,1
+473,Austral University,0.00122,1
+474,Woman's Hospital,0.001091,1
+475,New York School of Regional Anesthesia,0.000915,1
+476,Calumet College of Saint Joseph,0.000909,1
+477,Emory University,0.000909,1
+478,Innovation Center of NanoMedicine,0.000909,1
+479,The Wallace H. Coulter Department of Biomedical Engineering,0.000909,1
+480,Baylor College of Medicine,0.000732,1
+481,Laboratory for Atmospheric and Space Physics,0.000732,1
+482,Malin Space Science Systems (United States),0.000732,1
+483,National Technical University of Athens,0.000732,1
+484,National and Kapodistrian University of Athens,0.000732,1
+485,Brigham and Women's Hospital,0.000682,1
+486,Hunan University,0.000682,1
+487,State Key Laboratory of Chemobiosensing and Chemometrics,0.000682,1
+488,Zhejiang Cancer Hospital,0.000682,1
+489,Boeing (Spain),0.000545,1
+490,CIC biomaGUNE,0.000545,1
+491,Digital Research Alliance of Canada,0.000545,1
+492,Ikerbasque,0.000545,1
+493,Joint BioEnergy Institute,0.000545,1
+494,QB3,0.000545,1
+495,Universidade de Vigo,0.000545,1

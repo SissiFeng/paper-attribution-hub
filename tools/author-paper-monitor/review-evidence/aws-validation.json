@@ -1,0 +1,71 @@
+{
+  "recorded_at": "2026-10-05T21:21:02.655258+00:00",
+  "tasks": [
+    {
+      "arn": "arn:aws:ecs:ca-central-1:247893369214:task/paper-attribution-dev-cluster/7961d901d2564f4abb01ef590dc7021b",
+      "definition": "arn:aws:ecs:ca-central-1:247893369214:task-definition/paper-attribution-dev-author-monitor:1",
+      "status": "STOPPED",
+      "exit_codes": [
+        0
+      ]
+    },
+    {
+      "arn": "arn:aws:ecs:ca-central-1:247893369214:task/paper-attribution-dev-cluster/6d9b8c3df7ac47b997cc200d1902ba43",
+      "definition": "arn:aws:ecs:ca-central-1:247893369214:task-definition/paper-attribution-dev-author-monitor:3",
+      "status": "STOPPED",
+      "exit_codes": [
+        0
+      ]
+    },
+    {
+      "arn": "arn:aws:ecs:ca-central-1:247893369214:task/paper-attribution-dev-cluster/403b86435cb24360ad5061e5d8d50cb8",
+      "definition": "arn:aws:ecs:ca-central-1:247893369214:task-definition/paper-attribution-dev-author-monitor:3",
+      "status": "STOPPED",
+      "exit_codes": [
+        0
+      ]
+    },
+    {
+      "arn": "arn:aws:ecs:ca-central-1:247893369214:task/paper-attribution-dev-cluster/c7ba5b4569054c6aa12eb4e6368cd2fd",
+      "definition": "arn:aws:ecs:ca-central-1:247893369214:task-definition/paper-attribution-dev-author-monitor:4",
+      "status": "STOPPED",
+      "exit_codes": [
+        0
+      ]
+    }
+  ],
+  "backend": {
+    "task": "arn:aws:ecs:ca-central-1:247893369214:task-definition/paper-attribution-pas-dev-backend:2",
+    "rollouts": [
+      {
+        "status": "PRIMARY",
+        "rolloutState": "COMPLETED",
+        "runningCount": 1
+      }
+    ],
+    "corpus_policy": {
+      "PAS_ZOTERO_SOURCE_ONLY": "false",
+      "PAS_SDL_STAGE1_ONLY": "false"
+    }
+  },
+  "schedule": "DISABLED",
+  "s3_versioning": "Enabled",
+  "health": {
+    "status": "ok",
+    "version": "0.1.0"
+  },
+  "slack_verified": false,
+  "production_authors_confirmed": false,
+  "deployed_monitor": {
+    "task": "arn:aws:ecs:ca-central-1:247893369214:task-definition/paper-attribution-dev-author-monitor:4",
+    "bundle_sha256": "a5af667dd29bea9b4fd1e63124e0bf7a0edaeeb11dea55e178ac2e05bbacc1ab",
+    "image": "247893369214.dkr.ecr.ca-central-1.amazonaws.com/paper-attribution-dev-backend@sha256:42fe12262bc8c1fedf1c5332774db301537ccfc96811077df033cc7954dd9978"
+  },
+  "stack_status": "UPDATE_COMPLETE",
+  "pas_transaction_test": {
+    "passed": true,
+    "count_before": 535,
+    "count_after_rollback": 535,
+    "durable_insert": false
+  }
+}

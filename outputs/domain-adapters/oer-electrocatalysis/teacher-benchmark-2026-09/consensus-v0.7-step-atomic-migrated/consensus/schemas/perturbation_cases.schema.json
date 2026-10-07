@@ -1,0 +1,134 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "case_id": {
+      "title": "Case Id",
+      "type": "string"
+    },
+    "claim_key": {
+      "title": "Claim Key",
+      "type": "string"
+    },
+    "decision_id": {
+      "title": "Decision Id",
+      "type": "string"
+    },
+    "entity_key": {
+      "title": "Entity Key",
+      "type": "string"
+    },
+    "entity_type": {
+      "title": "Entity Type",
+      "type": "string"
+    },
+    "expected_behavior": {
+      "enum": [
+        "omit_or_abstain",
+        "extract_replacement"
+      ],
+      "title": "Expected Behavior",
+      "type": "string"
+    },
+    "expected_source_value": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Expected Source Value"
+    },
+    "field_name": {
+      "title": "Field Name",
+      "type": "string"
+    },
+    "mutated_quote": {
+      "title": "Mutated Quote",
+      "type": "string"
+    },
+    "original_quote": {
+      "title": "Original Quote",
+      "type": "string"
+    },
+    "original_source_value": {
+      "title": "Original Source Value",
+      "type": "string"
+    },
+    "paper_id": {
+      "title": "Paper Id",
+      "type": "string"
+    },
+    "perturbation_type": {
+      "enum": [
+        "evidence_deletion",
+        "numeric_replacement"
+      ],
+      "title": "Perturbation Type",
+      "type": "string"
+    },
+    "schema_version": {
+      "default": "domain-teacher-claim-perturbation-case-v0.2",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "source_chunk_id": {
+      "title": "Source Chunk Id",
+      "type": "string"
+    },
+    "source_value_char_end": {
+      "anyOf": [
+        {
+          "exclusiveMinimum": 0,
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Source Value Char End"
+    },
+    "source_value_char_start": {
+      "anyOf": [
+        {
+          "minimum": 0,
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Source Value Char Start"
+    },
+    "target_model_aliases": {
+      "items": {
+        "type": "string"
+      },
+      "minItems": 2,
+      "title": "Target Model Aliases",
+      "type": "array"
+    }
+  },
+  "required": [
+    "case_id",
+    "claim_key",
+    "decision_id",
+    "perturbation_type",
+    "expected_behavior",
+    "target_model_aliases",
+    "paper_id",
+    "source_chunk_id",
+    "entity_type",
+    "entity_key",
+    "field_name",
+    "original_source_value",
+    "original_quote",
+    "mutated_quote"
+  ],
+  "title": "ClaimPerturbationCase",
+  "type": "object"
+}

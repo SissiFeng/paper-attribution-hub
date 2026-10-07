@@ -93,7 +93,19 @@ class ScreeningSummary:
         }
 
 
-def _screening_boundaries() -> tuple[set[str], set[str]]:
+def _screening_boundaries(session: Session) -> tuple[set[str], set[str]]:
+    if settings.sdl_stage1_only:
+        from app.services.sdl_stage1_service import (
+            stage1_assignment_ids,
+            stage1_label_map,
+        )
+
+        training_ids = set(stage1_label_map(session, role="train"))
+        reserved_ids = stage1_assignment_ids(
+            session,
+            roles={"validation", "frozen_test"},
+        )
+        return training_ids, reserved_ids
     ensure_distinct_label_paths(
         training=settings.training_labels_csv,
         validation=settings.validation_labels_csv,
@@ -158,6 +170,33 @@ def decide_screening_route(
             "Human judgement is complete; excluded from automated re-routing.",
         )
 
+    if settings.sdl_stage1_only:
+        from app.services.sdl_stage1_service import stage1_assignment
+
+        assignment = stage1_assignment(paper)
+        if not assignment:
+            return ScreeningDecision(
+                STAGE_BROAD_SCORED,
+                ROUTE_SCREENED_OUT,
+                "SDL Stage 1 split manifest is not frozen; do not send this "
+                "paper to human review yet.",
+            )
+        role = str(assignment.get("role") or "")
+        if role == "pool":
+            return ScreeningDecision(
+                STAGE_BROAD_SCORED,
+                ROUTE_SCREENED_OUT,
+                "Unlabelled SDL Stage 1 reserve-pool paper; excluded from the "
+                "current review batches.",
+            )
+        round_number = assignment.get("round")
+        suffix = f" round {round_number}" if round_number is not None else ""
+        return ScreeningDecision(
+            STAGE_HUMAN_REVIEW,
+            ROUTE_UNCERTAIN_REVIEW,
+            f"Selected for the frozen SDL Stage 1 {role}{suffix} review batch.",
+        )
+
     normalized_label = normalize_classification_label(classification.label)
     confidence = classification.confidence
     if (
@@ -206,7 +245,7 @@ def apply_staged_screening(
     uncertainty_threshold: float = DEFAULT_UNCERTAINTY_THRESHOLD,
     commit: bool = True,
 ) -> ScreeningSummary:
-    training_ids, reserved_ids = _screening_boundaries()
+    training_ids, reserved_ids = _screening_boundaries(session)
     stage_counts: Counter[str] = Counter()
     route_counts: Counter[str] = Counter()
     scored = 0
@@ -259,7 +298,7 @@ def apply_paper_screening(
     if classification is None:
         return None
     try:
-        training_ids, reserved_ids = _screening_boundaries()
+        training_ids, reserved_ids = _screening_boundaries(session)
     except (OSError, ValueError):
         training_ids, reserved_ids = set(), {paper.id}
     decision = _apply_decision(

@@ -1,0 +1,1269 @@
+{
+  "audit_summary": {
+    "accepted_field_count": 6,
+    "proposed_field_count": 57,
+    "rejected_field_count": 51,
+    "repair_attempted_count": 32,
+    "repair_succeeded_count": 1,
+    "unsupported_claim_count": 51
+  },
+  "candidate_domain_terms": [
+    "electrolyte",
+    "lithium-ion",
+    "ionic conductivity",
+    "solubility",
+    "redox"
+  ],
+  "field_audit_records": [
+    {
+      "cited_span": "the optimum composition to achieve high capacity was 1.1 M LiPF₆ in FEC: EC: EMC (0.7: 2.8: 6.5) (%v) with a combination of 0.6 %wt. LiBOB and 0.01 %wt. VC",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[0].name",
+      "nearest_source_span": "1 M LiPF the optimum composition to achieve high capacity was 1.",
+      "outcome": "rejected",
+      "paper_id": "DOI:10.3390_cryst15020114",
+      "proposed_value": "LiPF₆",
+      "protocol_index": 0,
+      "rejection_reason": "span_not_in_source",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "the optimum composition to achieve high capacity was 1.1 M LiPF₆ in FEC: EC: EMC (0.7: 2.8: 6.5) (%v) with a combination of 0.6 %wt. LiBOB and 0.01 %wt. VC",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[1].name",
+      "nearest_source_span": "1 M LiPF the optimum composition to achieve high capacity was 1.",
+      "outcome": "rejected",
+      "paper_id": "DOI:10.3390_cryst15020114",
+      "proposed_value": "FEC:EC:EMC solvent mixture",
+      "protocol_index": 0,
+      "rejection_reason": "span_not_in_source",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "the optimum composition to achieve high capacity was 1.1 M LiPF₆ in FEC: EC: EMC (0.7: 2.8: 6.5) (%v) with a combination of 0.6 %wt. LiBOB and 0.01 %wt. VC",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[2].name",
+      "nearest_source_span": "1 M LiPF the optimum composition to achieve high capacity was 1.",
+      "outcome": "rejected",
+      "paper_id": "DOI:10.3390_cryst15020114",
+      "proposed_value": "LiBOB",
+      "protocol_index": 0,
+      "rejection_reason": "span_not_in_source",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "the optimum composition to achieve high capacity was 1.1 M LiPF₆ in FEC: EC: EMC (0.7: 2.8: 6.5) (%v) with a combination of 0.6 %wt. LiBOB and 0.01 %wt. VC",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[3].name",
+      "nearest_source_span": "1 M LiPF the optimum composition to achieve high capacity was 1.",
+      "outcome": "rejected",
+      "paper_id": "DOI:10.3390_cryst15020114",
+      "proposed_value": "VC",
+      "protocol_index": 0,
+      "rejection_reason": "span_not_in_source",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "two other features included as input: the ratio of negative and positive electrodes (N/P ratio) and the number of cycles",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[0].action",
+      "nearest_source_span": "In addition, two other features\nincluded as input: the ratio of negative and positive electrodes (N/P ratio) and the number were included as input: the ratio of negative and positive electrodes (N/P ratio) and the of cycles.",
+      "outcome": "rejected",
+      "paper_id": "DOI:10.3390_cryst15020114",
+      "proposed_value": "include N/P ratio and number of cycles as input features",
+      "protocol_index": 0,
+      "rejection_reason": "span_not_in_source",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "As an output, capacities of assembled cells were determined through electrochemical tests",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[1].action",
+      "nearest_source_span": "As an output, capacities of assembled cells were determined through chemical tests.",
+      "outcome": "rejected",
+      "paper_id": "DOI:10.3390_cryst15020114",
+      "proposed_value": "determine capacities of assembled cells through electrochemical tests as output",
+      "protocol_index": 0,
+      "rejection_reason": "span_not_in_source",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "An artificial neural network (ANN) technique was used to train the model that could relate between the additives type and amounts with the performance of the cell (capacity)",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[2].action",
+      "nearest_source_span": "An arti fi cial neural network (ANN) technique was used to train the that could relate between the additives type and amounts with the performance of the model that could relate between the additives type and amounts with the performance of the cell (capacity).",
+      "outcome": "rejected",
+      "paper_id": "DOI:10.3390_cryst15020114",
+      "proposed_value": "train model using artificial neural network (ANN) technique",
+      "protocol_index": 0,
+      "rejection_reason": "span_not_in_source",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "capacities of assembled cells were determined through electrochemical tests",
+      "diagnostic": null,
+      "entity_type": "characterization",
+      "field_path": "characterization[0].technique",
+      "nearest_source_span": "As an output, capacities of assembled cells were determined through chemical tests.",
+      "outcome": "rejected",
+      "paper_id": "DOI:10.3390_cryst15020114",
+      "proposed_value": "electrochemical tests",
+      "protocol_index": 0,
+      "rejection_reason": "span_not_in_source",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "the optimum composition to achieve high capacity was 1.1 M LiPF₆ in FEC: EC: EMC (0.7: 2.8: 6.5) (%v) with a combination of 0.6 %wt. LiBOB and 0.01 %wt. VC",
+      "diagnostic": null,
+      "entity_type": "results",
+      "field_path": "results[0].metric",
+      "nearest_source_span": "1 M LiPF the optimum composition to achieve high capacity was 1.",
+      "outcome": "rejected",
+      "paper_id": "DOI:10.3390_cryst15020114",
+      "proposed_value": "optimum electrolyte composition",
+      "protocol_index": 0,
+      "rejection_reason": "span_not_in_source",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "the concentration of LiPF₆ in an organic solvent of EC and dimethyl carbonate (DMC) are determined through the Fourier transform infrared (FTIR) spectrum of the electrolyte",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[0].name",
+      "nearest_source_span": "[65] who built a learning model by which the concentration of LiPF6in an organic solvent of EC and dimethyl carbonate (DMC) are determined through 6 in an organic solvent of EC and dimethyl carbonate (DMC) are determined the Fourier transform infrared (FTIR) spectrum of the electrolyte (Figure9).",
+      "outcome": "rejected",
+      "paper_id": "DOI:10.3390_cryst15020114",
+      "proposed_value": "LiPF₆",
+      "protocol_index": 1,
+      "rejection_reason": "span_not_in_source",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "LiPF₆ in an organic solvent of EC and dimethyl carbonate (DMC)",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[1].name",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.3390_cryst15020114",
+      "proposed_value": "EC and DMC solvent mixture",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "the Fourier transform infrared (FTIR) spectrum of the electrolyte",
+      "diagnostic": null,
+      "entity_type": "instruments",
+      "field_path": "instruments[0].name",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.3390_cryst15020114",
+      "proposed_value": "Fourier transform infrared spectrometer",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "the FTIR spectra of LiPF₆-based electrolyte with various compositions were recorded",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[0].action",
+      "nearest_source_span": "Ini- FTIR spectra of LiPF -based electrolyte with various compositions were recorded, and6 6-based electrolyte with various compositions were rec-tially, the FTIR spectra of LiPF then features were extracted from the spectra.",
+      "outcome": "rejected",
+      "paper_id": "DOI:10.3390_cryst15020114",
+      "proposed_value": "record FTIR spectra of LiPF₆-based electrolyte with various compositions",
+      "protocol_index": 1,
+      "rejection_reason": "span_not_in_source",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "then features were extracted from the spectra",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[1].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.3390_cryst15020114",
+      "proposed_value": "extract features from the spectra",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The model was trained using the extracted features (input) and the concentration of the related electrolyte (output), and this was conducted using a linear algorithm",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[2].action",
+      "nearest_source_span": "The model was trained using features (input) and the concentration of the related electrolyte (output), and this was conducted using a linear algorithm.",
+      "outcome": "rejected",
+      "paper_id": "DOI:10.3390_cryst15020114",
+      "proposed_value": "train model using extracted features as input and electrolyte concentration as output",
+      "protocol_index": 1,
+      "rejection_reason": "span_not_in_source",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "the Fourier transform infrared (FTIR) spectrum of the electrolyte",
+      "diagnostic": null,
+      "entity_type": "characterization",
+      "field_path": "characterization[0].technique",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.3390_cryst15020114",
+      "proposed_value": "Fourier transform infrared spectroscopy (FTIR)",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The learning process resulted in a simple predictive",
+      "diagnostic": null,
+      "entity_type": "results",
+      "field_path": "results[0].metric",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.3390_cryst15020114",
+      "proposed_value": "model type",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The predictive model was built using the LightGBM algorithm with R² values of 0.819 and 0.863 for G and K, respectively",
+      "diagnostic": null,
+      "entity_type": "software",
+      "field_path": "software[0].name",
+      "nearest_source_span": null,
+      "outcome": "repaired",
+      "paper_id": "DOI:10.3390_cryst15020114",
+      "proposed_value": "LightGBM",
+      "protocol_index": 2,
+      "rejection_reason": "normalization",
+      "repair_attempted": true,
+      "repair_succeeded": true,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "the elastic moduli (shear (G) and bulk (K)) calculated by DFT of 15,986 compounds listed in MP were extracted",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[0].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.3390_cryst15020114",
+      "proposed_value": "extract elastic moduli (shear G and bulk K) calculated by DFT of 15,986 compounds from Materials Project",
+      "protocol_index": 2,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "and the composition features of these compounds were generated",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[1].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.3390_cryst15020114",
+      "proposed_value": "generate composition features of extracted compounds",
+      "protocol_index": 2,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The predictive model was built using the LightGBM algorithm with R² values of 0.819 and 0.863 for G and K, respectively",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[2].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.3390_cryst15020114",
+      "proposed_value": "build predictive model using LightGBM algorithm",
+      "protocol_index": 2,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The predictive model was built using the LightGBM algorithm with R 2 values of 0.819 and 0.863 for G and K, respectively",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[2].notes",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.3390_cryst15020114",
+      "proposed_value": "R² values of 0.819 for G and 0.863 for K",
+      "protocol_index": 2,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "this model was then employed in a prediction process to find the moduli of 2845 stable Li compounds that have no active elements (K, Na, and Ca)",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[3].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.3390_cryst15020114",
+      "proposed_value": "predict moduli of 2845 stable Li compounds with no active elements (K, Na, Ca)",
+      "protocol_index": 2,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "R² values of 0.819 and 0.863 for G and K, respectively",
+      "diagnostic": null,
+      "entity_type": "results",
+      "field_path": "results[0].metric",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.3390_cryst15020114",
+      "proposed_value": "R² value for shear modulus G",
+      "protocol_index": 2,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "R² values of 0.819 and 0.863 for G and K, respectively",
+      "diagnostic": null,
+      "entity_type": "results",
+      "field_path": "results[1].metric",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.3390_cryst15020114",
+      "proposed_value": "R² value for bulk modulus K",
+      "protocol_index": 2,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The results showed that the oxide-based electrolytes showed superior mechanical properties for this application",
+      "diagnostic": null,
+      "entity_type": "results",
+      "field_path": "results[2].metric",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.3390_cryst15020114",
+      "proposed_value": "prediction result",
+      "protocol_index": 2,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "a learning model was built based on moduli data involving the G and elastic constant (C₁₁, C₁₂, and C₄₄) of crystalline materials obtained from Materials Projects",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[0].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.3390_cryst15020114",
+      "proposed_value": "obtain moduli data involving G, C₁₁, C₁₂, and C₄₄ of crystalline materials from Materials Project",
+      "protocol_index": 3,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "the structures of the materials in the initial dataset alongside the outputs (G, C11, C12, and C44) were involved in a learning process using a graph convolutional neural network (GCNN)",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[1].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.3390_cryst15020114",
+      "proposed_value": "include material structures and outputs (G, C11, C12, C44) in learning process",
+      "protocol_index": 3,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "the features of the materials included in the initial dataset are extracted and learned by the neural network to build the model",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[2].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.3390_cryst15020114",
+      "proposed_value": "extract and learn material features using neural network to build model",
+      "protocol_index": 3,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "the synthesis conditions of LATP were adjusted through a Gaussian process (GP)-based",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[0].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.3390_cryst15020114",
+      "proposed_value": "adjust synthesis conditions of LATP through Gaussian process (GP)-based optimization",
+      "protocol_index": 4,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "the synthesis conditions of LATP were adjusted through a Gaussian process (GP)-based",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[0].notes",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.3390_cryst15020114",
+      "proposed_value": "three experimental parameters including concentration of precursors mentioned but cut off",
+      "protocol_index": 4,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "S/cm) were found",
+      "diagnostic": null,
+      "entity_type": "results",
+      "field_path": "results[0].metric",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.3390_cryst15020114",
+      "proposed_value": "ionic conductivity",
+      "protocol_index": 4,
+      "rejection_reason": "value_elsewhere",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Here, three experimental pa- rameters including the concentration of prec",
+      "diagnostic": null,
+      "entity_type": "caveats",
+      "field_path": "caveats[0].text",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.3390_cryst15020114",
+      "proposed_value": "Protocol description is incomplete; text cuts off after mentioning three experimental parameters including concentration of precursors",
+      "protocol_index": 4,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The model was successfully built using an RF algorithm",
+      "diagnostic": null,
+      "entity_type": "software",
+      "field_path": "software[0].name",
+      "nearest_source_span": "The model was successfully built using an RF *Crystals* **2025**, *15*, x FOR PEER REVIEW 14 of 24 algorithm, and this model was used to find solid electrolytes that are expected to show high ionic conductivity at room temperature.",
+      "outcome": "rejected",
+      "paper_id": "DOI:10.3390_cryst15020114",
+      "proposed_value": "random forest (RF)",
+      "protocol_index": 5,
+      "rejection_reason": "span_not_in_source",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "an ML model has been built based on data collected from other works reported on the preparation and characterization of solid electrolytes for LIBs",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[0].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.3390_cryst15020114",
+      "proposed_value": "collect data from works on preparation and characterization of solid electrolytes for LIBs",
+      "protocol_index": 5,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "an ML model has been built based on data collected from other works reported on the preparation and characterization of solid electrolytes for LIBs",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[0].notes",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.3390_cryst15020114",
+      "proposed_value": "focused on ceramic-based electrolytes",
+      "protocol_index": 5,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "to calculate the activation energy, working temperature was also used in the model as a feature alongside the composition features",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[1].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.3390_cryst15020114",
+      "proposed_value": "use working temperature and composition features to calculate activation energy",
+      "protocol_index": 5,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The model was successfully built using an RF algorithm",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[2].action",
+      "nearest_source_span": "The model was successfully built using an RF *Crystals* **2025**, *15*, x FOR PEER REVIEW 14 of 24 algorithm, and this model was used to find solid electrolytes that are expected to show high ionic conductivity at room temperature.",
+      "outcome": "rejected",
+      "paper_id": "DOI:10.3390_cryst15020114",
+      "proposed_value": "build model using RF algorithm",
+      "protocol_index": 5,
+      "rejection_reason": "span_not_in_source",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "screening 30,000 compositions presented in the ICSD database",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[3].action",
+      "nearest_source_span": "Indeed, screening 30,000 compositions pre- sented in the ICSD database reached 67 Li-S based compounds with high ionic conductivity (>0.",
+      "outcome": "rejected",
+      "paper_id": "DOI:10.3390_cryst15020114",
+      "proposed_value": "screen 30,000 compositions from ICSD database",
+      "protocol_index": 5,
+      "rejection_reason": "span_not_in_source",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "reached 67 Li-S based compounds with high ionic conductivity (>0.01 S/cm) at room temperature",
+      "diagnostic": null,
+      "entity_type": "results",
+      "field_path": "results[0].context",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.3390_cryst15020114",
+      "proposed_value": "at room temperature, >0.01 S/cm",
+      "protocol_index": 5,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "extra tree (XT), random forest (RF), extreme gradient boost (XGB), and gradient boosting (GB) were optimized for prediction and compared. The XT-based model showed the best performance compared to other models",
+      "diagnostic": null,
+      "entity_type": "software",
+      "field_path": "software[0].name",
+      "nearest_source_span": "To assess the performance of various algorithms, extra tree (XT), random treme gradient boost (XGB), and gradient b oosting (GB) were optimized for prediction forest (RF), extreme gradient boost (XGB), and gradient boosting (GB) were optimized and compared.",
+      "outcome": "rejected",
+      "paper_id": "DOI:10.3390_cryst15020114",
+      "proposed_value": "extra tree (XT)",
+      "protocol_index": 6,
+      "rejection_reason": "span_not_in_source",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "extra tree (XT), random forest (RF), extreme gradient boost (XGB), and gradient boosting (GB) were optimized for prediction and compared",
+      "diagnostic": null,
+      "entity_type": "software",
+      "field_path": "software[1].name",
+      "nearest_source_span": "To assess the performance of various algorithms, extra tree (XT), random treme gradient boost (XGB), and gradient b oosting (GB) were optimized for prediction forest (RF), extreme gradient boost (XGB), and gradient boosting (GB) were optimized and compared.",
+      "outcome": "rejected",
+      "paper_id": "DOI:10.3390_cryst15020114",
+      "proposed_value": "random forest (RF)",
+      "protocol_index": 6,
+      "rejection_reason": "span_not_in_source",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "extra tree (XT), random forest (RF), extreme gradient boost (XGB), and gradient boosting (GB) were optimized for prediction and compared",
+      "diagnostic": null,
+      "entity_type": "software",
+      "field_path": "software[2].name",
+      "nearest_source_span": "To assess the performance of various algorithms, extra tree (XT), random treme gradient boost (XGB), and gradient b oosting (GB) were optimized for prediction forest (RF), extreme gradient boost (XGB), and gradient boosting (GB) were optimized and compared.",
+      "outcome": "rejected",
+      "paper_id": "DOI:10.3390_cryst15020114",
+      "proposed_value": "extreme gradient boost (XGB)",
+      "protocol_index": 6,
+      "rejection_reason": "span_not_in_source",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "extra tree (XT), random forest (RF), extreme gradient boost (XGB), and gradient boosting (GB) were optimized for prediction and compared",
+      "diagnostic": null,
+      "entity_type": "software",
+      "field_path": "software[3].name",
+      "nearest_source_span": "To assess the performance of various algorithms, extra tree (XT), random treme gradient boost (XGB), and gradient b oosting (GB) were optimized for prediction forest (RF), extreme gradient boost (XGB), and gradient boosting (GB) were optimized and compared.",
+      "outcome": "rejected",
+      "paper_id": "DOI:10.3390_cryst15020114",
+      "proposed_value": "gradient boosting (GB)",
+      "protocol_index": 6,
+      "rejection_reason": "span_not_in_source",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The learning data used in the work contained the thermal expansion coefficient value of solid materials (5578) presented in AFLOW",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[0].action",
+      "nearest_source_span": "The learning data used in the work contained the thermal coe ffi cient value of solid materials (5578) pres ented in AFLOW.",
+      "outcome": "rejected",
+      "paper_id": "DOI:10.3390_cryst15020114",
+      "proposed_value": "obtain thermal expansion coefficient values of 5578 solid materials from AFLOW",
+      "protocol_index": 6,
+      "rejection_reason": "span_not_in_source",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The composition and crystal structure of these materials were used to generate a set of 272 features for one material",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[1].action",
+      "nearest_source_span": "The composition tal structure of these materials were used to ge nerate a set of 272 features for one material.",
+      "outcome": "rejected",
+      "paper_id": "DOI:10.3390_cryst15020114",
+      "proposed_value": "generate 272 features from composition and crystal structure for each material",
+      "protocol_index": 6,
+      "rejection_reason": "span_not_in_source",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "To assess the performance of various algorithms, extra tree (XT), random forest (RF), extreme gradient boost (XGB), and gradient boosting (GB) were optimized for prediction and compared",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[2].action",
+      "nearest_source_span": "To assess the performance of various algorithms, extra tree (XT), random treme gradient boost (XGB), and gradient b oosting (GB) were optimized for prediction forest (RF), extreme gradient boost (XGB), and gradient boosting (GB) were optimized and compared.",
+      "outcome": "rejected",
+      "paper_id": "DOI:10.3390_cryst15020114",
+      "proposed_value": "optimize and compare XT, RF, XGB, and GB algorithms for prediction",
+      "protocol_index": 6,
+      "rejection_reason": "span_not_in_source",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The XT-based model showed the best performance compared to other models",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[3].action",
+      "nearest_source_span": "The XT-based model showed the best performance com-models.",
+      "outcome": "rejected",
+      "paper_id": "DOI:10.3390_cryst15020114",
+      "proposed_value": "select XT-based model as best performer",
+      "protocol_index": 6,
+      "rejection_reason": "span_not_in_source",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Further validations were presented using the calculations of the electron localization function (ELF) based on DFT. The ELF results obtained for MgBe₁₃ and MgPd₂ were consistent with the predictions made based on the XT-based model built in this study",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[4].action",
+      "nearest_source_span": "Further validations were presented using the calculations of the zation function (ELF) based on DFT.",
+      "outcome": "rejected",
+      "paper_id": "DOI:10.3390_cryst15020114",
+      "proposed_value": "validate predictions using DFT calculations of electron localization function (ELF)",
+      "protocol_index": 6,
+      "rejection_reason": "span_not_in_source",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The built model was then used to predict electrolyte–cathode pairs that are highly thermomechanically compatible",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[5].action",
+      "nearest_source_span": "The built model was then used to predict electrolyte–cathode pairs that are built model was then used to predict electrol yte–cathode pairs that are highly thermome- highly thermomechanically compatible.",
+      "outcome": "rejected",
+      "paper_id": "DOI:10.3390_cryst15020114",
+      "proposed_value": "use built model to predict electrolyte-cathode pairs with high thermomechanical compatibility",
+      "protocol_index": 6,
+      "rejection_reason": "span_not_in_source",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "the calculations of the electron localization function (ELF) based on DFT. The ELF results obtained for MgBe₁₃ and MgPd₂ were consistent with the predictions",
+      "diagnostic": null,
+      "entity_type": "characterization",
+      "field_path": "characterization[0].technique",
+      "nearest_source_span": "The ELF results obtained for MgBe electron localization function (ELF) based on DFT.",
+      "outcome": "rejected",
+      "paper_id": "DOI:10.3390_cryst15020114",
+      "proposed_value": "DFT calculation of electron localization function (ELF)",
+      "protocol_index": 6,
+      "rejection_reason": "span_not_in_source",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The XT-based model showed the best performance compared to other models",
+      "diagnostic": null,
+      "entity_type": "results",
+      "field_path": "results[0].metric",
+      "nearest_source_span": "The XT-based model showed the best performance com-models.",
+      "outcome": "rejected",
+      "paper_id": "DOI:10.3390_cryst15020114",
+      "proposed_value": "best performing algorithm",
+      "protocol_index": 6,
+      "rejection_reason": "span_not_in_source",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    }
+  ],
+  "inference_config": {
+    "max_tokens": 14000,
+    "temperature": 0.0
+  },
+  "mapping_version": "evidence-field-mapper-v0.2",
+  "minimum_chunk_score": 2,
+  "model_id": "moonshotai.kimi-k2.5",
+  "paper_id": "DOI:10.3390_cryst15020114",
+  "prompt_version": "scientific-protocol-teacher-v0.3",
+  "protocols": [
+    {
+      "caveats": [],
+      "characterization": [],
+      "evidence": [
+        {
+          "char_end": 2382,
+          "char_start": 2337,
+          "chunk_id": "mdchk_f3e7d59de4537241",
+          "document_char_end": 57315,
+          "document_char_start": 57270,
+          "evidence_id": "ev_c4f2bc2e6c6e8b17",
+          "paper_id": "DOI:10.3390_cryst15020114",
+          "quote": "then features were extracted from the spectra",
+          "source_sha256": "1a7758d34cf795ab5b48b34523586af0514b890f50dc63300454e1690cc4c050"
+        }
+      ],
+      "evidence_scope": "secondary_report",
+      "instruments": [],
+      "materials": [],
+      "paper_id": "DOI:10.3390_cryst15020114",
+      "protocol_id": "protocol_e0080505495f9a8b",
+      "protocol_name": "FTIR-based machine learning for LiPF₆ concentration determination",
+      "protocol_type": "computational",
+      "relations": [],
+      "results": [],
+      "scientific_chunk_ids": [],
+      "software": [],
+      "source_chunk_ids": [
+        "mdchk_f3e7d59de4537241"
+      ],
+      "source_paper_tier": "battery_electrolyte_review",
+      "steps": [
+        {
+          "action": "then features were extracted from the spectra",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_c4f2bc2e6c6e8b17"
+          ],
+          "notes": null,
+          "order": 1,
+          "step_id": "step_e0080505495f9a8b"
+        }
+      ]
+    },
+    {
+      "caveats": [],
+      "characterization": [],
+      "evidence": [
+        {
+          "char_end": 1137,
+          "char_start": 1028,
+          "chunk_id": "mdchk_6dbf42bfb667572a",
+          "document_char_end": 39857,
+          "document_char_start": 39748,
+          "evidence_id": "ev_c53cac8348a01c7a",
+          "paper_id": "DOI:10.3390_cryst15020114",
+          "quote": "the elastic moduli (shear (G) and bulk (K)) calculated by DFT of 15,986 compounds listed in MP were extracted",
+          "source_sha256": "c29fa4a882bc8bc90ef1fac527393a1ae6e49dae78b170ac0f7d85c797db485f"
+        },
+        {
+          "char_end": 1201,
+          "char_start": 1139,
+          "chunk_id": "mdchk_6dbf42bfb667572a",
+          "document_char_end": 39921,
+          "document_char_start": 39859,
+          "evidence_id": "ev_66b66aa7935360fc",
+          "paper_id": "DOI:10.3390_cryst15020114",
+          "quote": "and the composition features of these compounds were generated",
+          "source_sha256": "c29fa4a882bc8bc90ef1fac527393a1ae6e49dae78b170ac0f7d85c797db485f"
+        },
+        {
+          "char_end": 1323,
+          "char_start": 1203,
+          "chunk_id": "mdchk_6dbf42bfb667572a",
+          "document_char_end": 40043,
+          "document_char_start": 39923,
+          "evidence_id": "ev_43ef774ca6280ff3",
+          "paper_id": "DOI:10.3390_cryst15020114",
+          "quote": "The predictive model was built using the LightGBM algorithm with R 2 values of 0.819 and 0.863 for G and K, respectively",
+          "source_sha256": "c29fa4a882bc8bc90ef1fac527393a1ae6e49dae78b170ac0f7d85c797db485f"
+        },
+        {
+          "char_end": 1473,
+          "char_start": 1329,
+          "chunk_id": "mdchk_6dbf42bfb667572a",
+          "document_char_end": 40193,
+          "document_char_start": 40049,
+          "evidence_id": "ev_f6089e9972a96338",
+          "paper_id": "DOI:10.3390_cryst15020114",
+          "quote": "this model was then employed in a prediction process to find the moduli of 2845 stable Li compounds that have no active elements (K, Na, and Ca)",
+          "source_sha256": "c29fa4a882bc8bc90ef1fac527393a1ae6e49dae78b170ac0f7d85c797db485f"
+        }
+      ],
+      "evidence_scope": "secondary_report",
+      "instruments": [],
+      "materials": [],
+      "paper_id": "DOI:10.3390_cryst15020114",
+      "protocol_id": "protocol_455ae87d959b2964",
+      "protocol_name": "LightGBM model for elastic moduli prediction of solid-state electrolytes",
+      "protocol_type": "computational",
+      "relations": [],
+      "results": [],
+      "scientific_chunk_ids": [],
+      "software": [
+        {
+          "entity_id": "soft_6de7c9800d393daa",
+          "evidence_ids": [
+            "ev_43ef774ca6280ff3"
+          ],
+          "name": "LightGBM",
+          "settings": {},
+          "version": null
+        }
+      ],
+      "source_chunk_ids": [
+        "mdchk_6dbf42bfb667572a"
+      ],
+      "source_paper_tier": "battery_electrolyte_review",
+      "steps": [
+        {
+          "action": "the elastic moduli (shear (G) and bulk (K)) calculated by DFT of 15,986 compounds listed in MP were extracted",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_c53cac8348a01c7a"
+          ],
+          "notes": null,
+          "order": 1,
+          "step_id": "step_87d9adbb18208bfd"
+        },
+        {
+          "action": "and the composition features of these compounds were generated",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_66b66aa7935360fc"
+          ],
+          "notes": null,
+          "order": 2,
+          "step_id": "step_5392ffa9583fabf3"
+        },
+        {
+          "action": "The predictive model was built using the LightGBM algorithm with R 2 values of 0.819 and 0.863 for G and K, respectively",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_43ef774ca6280ff3"
+          ],
+          "notes": null,
+          "order": 3,
+          "step_id": "step_455ae87d959b2964"
+        },
+        {
+          "action": "this model was then employed in a prediction process to find the moduli of 2845 stable Li compounds that have no active elements (K, Na, and Ca)",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_f6089e9972a96338"
+          ],
+          "notes": null,
+          "order": 4,
+          "step_id": "step_259f2fb0012da3f2"
+        }
+      ]
+    },
+    {
+      "caveats": [],
+      "characterization": [],
+      "evidence": [
+        {
+          "char_end": 2146,
+          "char_start": 1984,
+          "chunk_id": "mdchk_6dbf42bfb667572a",
+          "document_char_end": 40866,
+          "document_char_start": 40704,
+          "evidence_id": "ev_486bc10b840ccc12",
+          "paper_id": "DOI:10.3390_cryst15020114",
+          "quote": "a learning model was built based on moduli data involving the G and elastic constant (C₁₁, C₁₂, and C₄₄) of crystalline materials obtained from Materials Projects",
+          "source_sha256": "c29fa4a882bc8bc90ef1fac527393a1ae6e49dae78b170ac0f7d85c797db485f"
+        },
+        {
+          "char_end": 2357,
+          "char_start": 2172,
+          "chunk_id": "mdchk_6dbf42bfb667572a",
+          "document_char_end": 41077,
+          "document_char_start": 40892,
+          "evidence_id": "ev_9c6cebe4c0326cf0",
+          "paper_id": "DOI:10.3390_cryst15020114",
+          "quote": "the structures of the materials in the initial dataset alongside the outputs (G, C11, C12, and C44) were involved in a learning process using a graph convolutional neural network (GCNN)",
+          "source_sha256": "c29fa4a882bc8bc90ef1fac527393a1ae6e49dae78b170ac0f7d85c797db485f"
+        },
+        {
+          "char_end": 2357,
+          "char_start": 2289,
+          "chunk_id": "mdchk_6dbf42bfb667572a",
+          "document_char_end": 41077,
+          "document_char_start": 41009,
+          "evidence_id": "ev_f6da72d62652f934",
+          "paper_id": "DOI:10.3390_cryst15020114",
+          "quote": "a learning process using a graph convolutional neural network (GCNN)",
+          "source_sha256": "c29fa4a882bc8bc90ef1fac527393a1ae6e49dae78b170ac0f7d85c797db485f"
+        },
+        {
+          "char_end": 2512,
+          "char_start": 2384,
+          "chunk_id": "mdchk_6dbf42bfb667572a",
+          "document_char_end": 41232,
+          "document_char_start": 41104,
+          "evidence_id": "ev_92072442a9094bd2",
+          "paper_id": "DOI:10.3390_cryst15020114",
+          "quote": "the features of the materials included in the initial dataset are extracted and learned by the neural network to build the model",
+          "source_sha256": "c29fa4a882bc8bc90ef1fac527393a1ae6e49dae78b170ac0f7d85c797db485f"
+        }
+      ],
+      "evidence_scope": "secondary_report",
+      "instruments": [],
+      "materials": [],
+      "paper_id": "DOI:10.3390_cryst15020114",
+      "protocol_id": "protocol_259f2fb0012da3f2",
+      "protocol_name": "GCNN deep learning model for mechanical moduli prediction",
+      "protocol_type": "computational",
+      "relations": [],
+      "results": [],
+      "scientific_chunk_ids": [],
+      "software": [
+        {
+          "entity_id": "soft_721ebfab9b3ca701",
+          "evidence_ids": [
+            "ev_f6da72d62652f934"
+          ],
+          "name": "graph convolutional neural network (GCNN)",
+          "settings": {},
+          "version": null
+        }
+      ],
+      "source_chunk_ids": [
+        "mdchk_6dbf42bfb667572a"
+      ],
+      "source_paper_tier": "battery_electrolyte_review",
+      "steps": [
+        {
+          "action": "a learning model was built based on moduli data involving the G and elastic constant (C₁₁, C₁₂, and C₄₄) of crystalline materials obtained from Materials Projects",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_486bc10b840ccc12"
+          ],
+          "notes": null,
+          "order": 1,
+          "step_id": "step_87d9adbb18208bfd"
+        },
+        {
+          "action": "the structures of the materials in the initial dataset alongside the outputs (G, C11, C12, and C44) were involved in a learning process using a graph convolutional neural network (GCNN)",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_9c6cebe4c0326cf0"
+          ],
+          "notes": null,
+          "order": 2,
+          "step_id": "step_5392ffa9583fabf3"
+        },
+        {
+          "action": "the features of the materials included in the initial dataset are extracted and learned by the neural network to build the model",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_92072442a9094bd2"
+          ],
+          "notes": null,
+          "order": 3,
+          "step_id": "step_455ae87d959b2964"
+        }
+      ]
+    },
+    {
+      "caveats": [
+        {
+          "caveat_id": "caveat_949fa6dfd4184404",
+          "evidence_ids": [
+            "ev_0e32d5bc34b7e51a"
+          ],
+          "text": "Here, three experimental pa- rameters including the concentration of prec"
+        }
+      ],
+      "characterization": [],
+      "evidence": [
+        {
+          "char_end": 978,
+          "char_start": 787,
+          "chunk_id": "mdchk_8a3e0cc18f10577c",
+          "document_char_end": 43614,
+          "document_char_start": 43423,
+          "evidence_id": "ev_5af4050dbd9ccb7e",
+          "paper_id": "DOI:10.3390_cryst15020114",
+          "quote": "the application of ML to assist the design experiments of lithium aluminum titanium phosphate (LATP) as a solid electrolyte in LIBs, where LATP was selected due to its high ionic conductivity",
+          "source_sha256": "b5fc29505f0779aca593a212bcd6eb2ddf0a22fa9f466ef3dc579a517c4cc783"
+        },
+        {
+          "char_end": 1088,
+          "char_start": 1004,
+          "chunk_id": "mdchk_8a3e0cc18f10577c",
+          "document_char_end": 43724,
+          "document_char_start": 43640,
+          "evidence_id": "ev_e680608fd1877a5e",
+          "paper_id": "DOI:10.3390_cryst15020114",
+          "quote": "the synthesis conditions of LATP were adjusted through a Gaussian process (GP)-based",
+          "source_sha256": "b5fc29505f0779aca593a212bcd6eb2ddf0a22fa9f466ef3dc579a517c4cc783"
+        },
+        {
+          "char_end": 1184,
+          "char_start": 1111,
+          "chunk_id": "mdchk_8a3e0cc18f10577c",
+          "document_char_end": 43820,
+          "document_char_start": 43747,
+          "evidence_id": "ev_0e32d5bc34b7e51a",
+          "paper_id": "DOI:10.3390_cryst15020114",
+          "quote": "Here, three experimental pa- rameters including the concentration of prec",
+          "source_sha256": "b5fc29505f0779aca593a212bcd6eb2ddf0a22fa9f466ef3dc579a517c4cc783"
+        }
+      ],
+      "evidence_scope": "secondary_report",
+      "instruments": [],
+      "materials": [
+        {
+          "amount": null,
+          "entity_id": "mat_b9f684b52be06a4e",
+          "evidence_ids": [
+            "ev_5af4050dbd9ccb7e"
+          ],
+          "name": "lithium aluminum titanium phosphate (LATP)",
+          "pretreatment": null,
+          "purity": null,
+          "role": "solid electrolyte",
+          "supplier": null
+        }
+      ],
+      "paper_id": "DOI:10.3390_cryst15020114",
+      "protocol_id": "protocol_b347b013304b8ead",
+      "protocol_name": "Gaussian process-based optimization of LATP synthesis conditions",
+      "protocol_type": "computational",
+      "relations": [],
+      "results": [],
+      "scientific_chunk_ids": [],
+      "software": [],
+      "source_chunk_ids": [
+        "mdchk_8a3e0cc18f10577c"
+      ],
+      "source_paper_tier": "battery_electrolyte_review",
+      "steps": [
+        {
+          "action": "the synthesis conditions of LATP were adjusted through a Gaussian process (GP)-based",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_e680608fd1877a5e"
+          ],
+          "notes": null,
+          "order": 1,
+          "step_id": "step_949fa6dfd4184404"
+        }
+      ]
+    },
+    {
+      "caveats": [],
+      "characterization": [],
+      "evidence": [
+        {
+          "char_end": 157,
+          "char_start": 10,
+          "chunk_id": "mdchk_4664976371fab501",
+          "document_char_end": 47130,
+          "document_char_start": 46983,
+          "evidence_id": "ev_8ca9fd97faee833e",
+          "paper_id": "DOI:10.3390_cryst15020114",
+          "quote": "an ML model has been built based on data collected from other works reported on the preparation and characterization of solid electrolytes for LIBs",
+          "source_sha256": "cbc7d9b506b08a0cfbb9e8b0447ce8bf52c7e99e85b7a0309b68b4a45b011e52"
+        },
+        {
+          "char_end": 374,
+          "char_start": 244,
+          "chunk_id": "mdchk_4664976371fab501",
+          "document_char_end": 47347,
+          "document_char_start": 47217,
+          "evidence_id": "ev_abd404d03c6a3abe",
+          "paper_id": "DOI:10.3390_cryst15020114",
+          "quote": "to calculate the activation energy, working temperature was also used in the model as a feature alongside the composition features",
+          "source_sha256": "cbc7d9b506b08a0cfbb9e8b0447ce8bf52c7e99e85b7a0309b68b4a45b011e52"
+        },
+        {
+          "char_end": 772,
+          "char_start": 679,
+          "chunk_id": "mdchk_4664976371fab501",
+          "document_char_end": 47745,
+          "document_char_start": 47652,
+          "evidence_id": "ev_81bd63b18776a222",
+          "paper_id": "DOI:10.3390_cryst15020114",
+          "quote": "reached 67 Li-S based compounds with high ionic conductivity (>0.01 S/cm) at room temperature",
+          "source_sha256": "cbc7d9b506b08a0cfbb9e8b0447ce8bf52c7e99e85b7a0309b68b4a45b011e52"
+        }
+      ],
+      "evidence_scope": "secondary_report",
+      "instruments": [],
+      "materials": [],
+      "paper_id": "DOI:10.3390_cryst15020114",
+      "protocol_id": "protocol_270452ff1f205763",
+      "protocol_name": "Random forest model for solid electrolyte ionic conductivity prediction",
+      "protocol_type": "computational",
+      "relations": [],
+      "results": [
+        {
+          "context": "reached 67 Li-S based compounds with high ionic conductivity (>0.01 S/cm) at room temperature",
+          "evidence_ids": [
+            "ev_81bd63b18776a222"
+          ],
+          "metric": "Li-S based compounds with high ionic conductivity",
+          "raw_value": "67",
+          "result_id": "result_1685b094bc99f617"
+        }
+      ],
+      "scientific_chunk_ids": [],
+      "software": [],
+      "source_chunk_ids": [
+        "mdchk_4664976371fab501"
+      ],
+      "source_paper_tier": "battery_electrolyte_review",
+      "steps": [
+        {
+          "action": "an ML model has been built based on data collected from other works reported on the preparation and characterization of solid electrolytes for LIBs",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_8ca9fd97faee833e"
+          ],
+          "notes": null,
+          "order": 1,
+          "step_id": "step_1685b094bc99f617"
+        },
+        {
+          "action": "to calculate the activation energy, working temperature was also used in the model as a feature alongside the composition features",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_abd404d03c6a3abe"
+          ],
+          "notes": null,
+          "order": 2,
+          "step_id": "step_501e29e2c28da113"
+        }
+      ]
+    }
+  ],
+  "region": "us-east-1",
+  "schema_version": "bedrock-teacher-paper-cache-v0.2",
+  "teacher_response": {
+    "diagnostic": null,
+    "invocation_count": 1,
+    "metrics": {
+      "latencyMs": 92567
+    },
+    "raw_text": " ```json\n{\n  \"protocols\": [\n    {\n      \"source_chunk_ids\": [\"mdchk_f3e7d59de4537241\"],\n      \"protocol_name\": \"ANN model for liquid electrolyte composition optimization\",\n      \"protocol_type\": \"computational\",\n      \"materials\": [\n        {\n          \"source_chunk_id\": \"mdchk_f3e7d59de4537241\",\n          \"name\": \"LiPF₆\",\n          \"role\": \"conducting salt\",\n          \"amount\": \"1.1 M\",\n          \"purity\": null,\n          \"supplier\": null,\n          \"pretreatment\": null,\n          \"evidence_quote\": \"the optimum composition to achieve high capacity was 1.1 M LiPF₆ in FEC: EC: EMC (0.7: 2.8: 6.5) (%v) with a combination of 0.6 %wt. LiBOB and 0.01 %wt. VC\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_f3e7d59de4537241\",\n          \"name\": \"FEC:EC:EMC solvent mixture\",\n          \"role\": \"solvent\",\n          \"amount\": \"0.7:2.8:6.5 (%v)\",\n          \"purity\": null,\n          \"supplier\": null,\n          \"pretreatment\": null,\n          \"evidence_quote\": \"the optimum composition to achieve high capacity was 1.1 M LiPF₆ in FEC: EC: EMC (0.7: 2.8: 6.5) (%v) with a combination of 0.6 %wt. LiBOB and 0.01 %wt. VC\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_f3e7d59de4537241\",\n          \"name\": \"LiBOB\",\n          \"role\": \"additive\",\n          \"amount\": \"0.6 %wt.\",\n          \"purity\": null,\n          \"supplier\": null,\n          \"pretreatment\": null,\n          \"evidence_quote\": \"the optimum composition to achieve high capacity was 1.1 M LiPF₆ in FEC: EC: EMC (0.7: 2.8: 6.5) (%v) with a combination of 0.6 %wt. LiBOB and 0.01 %wt. VC\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_f3e7d59de4537241\",\n          \"name\": \"VC\",\n          \"role\": \"additive\",\n          \"amount\": \"0.01 %wt.\",\n          \"purity\": null,\n          \"supplier\": null,\n          \"pretreatment\": null,\n          \"evidence_quote\": \"the optimum composition to achieve high capacity was 1.1 M LiPF₆ in FEC: EC: EMC (0.7: 2.8: 6.5) (%v) with a combination of 0.6 %wt. LiBOB and 0.01 %wt. VC\"\n        }\n      ],\n      \"instruments\": [],\n      \"software\": [],\n      \"steps\": [\n        {\n          \"source_chunk_id\": \"mdchk_f3e7d59de4537241\",\n          \"order\": 1,\n          \"action\": \"include N/P ratio and number of cycles as input features\",\n          \"conditions\": [],\n          \"notes\": null,\n          \"evidence_quote\": \"two other features included as input: the ratio of negative and positive electrodes (N/P ratio) and the number of cycles\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_f3e7d59de4537241\",\n          \"order\": 2,\n          \"action\": \"determine capacities of assembled cells through electrochemical tests as output\",\n          \"conditions\": [],\n          \"notes\": null,\n          \"evidence_quote\": \"As an output, capacities of assembled cells were determined through electrochemical tests\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_f3e7d59de4537241\",\n          \"order\": 3,\n          \"action\": \"train model using artificial neural network (ANN) technique\",\n          \"conditions\": [],\n          \"notes\": \"model relates additives type and amounts with cell performance (capacity)\",\n          \"evidence_quote\": \"An artificial neural network (ANN) technique was used to train the model that could relate between the additives type and amounts with the performance of the cell (capacity)\"\n        }\n      ],\n      \"characterization\": [\n        {\n          \"source_chunk_id\": \"mdchk_f3e7d59de4537241\",\n          \"technique\": \"electrochemical tests\",\n          \"settings\": {},\n          \"output\": \"capacities of assembled cells\",\n          \"evidence_quote\": \"capacities of assembled cells were determined through electrochemical tests\"\n        }\n      ],\n      \"results\": [\n        {\n          \"source_chunk_id\": \"mdchk_f3e7d59de4537241\",\n          \"metric\": \"optimum electrolyte composition\",\n          \"raw_value\": \"1.1 M LiPF₆ in FEC: EC: EMC (0.7: 2.8: 6.5) (%v) with 0.6 %wt. LiBOB and 0.01 %wt. VC\",\n          \"context\": \"for high capacity\",\n          \"evidence_quote\": \"the optimum composition to achieve high capacity was 1.1 M LiPF₆ in FEC: EC: EMC (0.7: 2.8: 6.5) (%v) with a combination of 0.6 %wt. LiBOB and 0.01 %wt. VC\"\n        }\n      ],\n      \"caveats\": []\n    },\n    {\n      \"source_chunk_ids\": [\"mdchk_f3e7d59de4537241\"],\n      \"protocol_name\": \"FTIR-based machine learning for LiPF₆ concentration determination\",\n      \"protocol_type\": \"computational\",\n      \"materials\": [\n        {\n          \"source_chunk_id\": \"mdchk_f3e7d59de4537241\",\n          \"name\": \"LiPF₆\",\n          \"role\": \"analyte\",\n          \"amount\": null,\n          \"purity\": null,\n          \"supplier\": null,\n          \"pretreatment\": null,\n          \"evidence_quote\": \"the concentration of LiPF₆ in an organic solvent of EC and dimethyl carbonate (DMC) are determined through the Fourier transform infrared (FTIR) spectrum of the electrolyte\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_f3e7d59de4537241\",\n          \"name\": \"EC and DMC solvent mixture\",\n          \"role\": \"solvent\",\n          \"amount\": null,\n          \"purity\": null,\n          \"supplier\": null,\n          \"pretreatment\": null,\n          \"evidence_quote\": \"LiPF₆ in an organic solvent of EC and dimethyl carbonate (DMC)\"\n        }\n      ],\n      \"instruments\": [\n        {\n          \"source_chunk_id\": \"mdchk_f3e7d59de4537241\",\n          \"name\": \"Fourier transform infrared spectrometer\",\n          \"model\": null,\n          \"manufacturer\": null,\n          \"settings\": {},\n          \"evidence_quote\": \"the Fourier transform infrared (FTIR) spectrum of the electrolyte\"\n        }\n      ],\n      \"software\": [],\n      \"steps\": [\n        {\n          \"source_chunk_id\": \"mdchk_f3e7d59de4537241\",\n          \"order\": 1,\n          \"action\": \"record FTIR spectra of LiPF₆-based electrolyte with various compositions\",\n          \"conditions\": [],\n          \"notes\": null,\n          \"evidence_quote\": \"the FTIR spectra of LiPF₆-based electrolyte with various compositions were recorded\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_f3e7d59de4537241\",\n          \"order\": 2,\n          \"action\": \"extract features from the spectra\",\n          \"conditions\": [],\n          \"notes\": null,\n          \"evidence_quote\": \"then features were extracted from the spectra\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_f3e7d59de4537241\",\n          \"order\": 3,\n          \"action\": \"train model using extracted features as input and electrolyte concentration as output\",\n          \"conditions\": [],\n          \"notes\": \"conducted using a linear algorithm\",\n          \"evidence_quote\": \"The model was trained using the extracted features (input) and the concentration of the related electrolyte (output), and this was conducted using a linear algorithm\"\n        }\n      ],\n      \"characterization\": [\n        {\n          \"source_chunk_id\": \"mdchk_f3e7d59de4537241\",\n          \"technique\": \"Fourier transform infrared spectroscopy (FTIR)\",\n          \"settings\": {},\n          \"output\": \"spectra for feature extraction\",\n          \"evidence_quote\": \"the Fourier transform infrared (FTIR) spectrum of the electrolyte\"\n        }\n      ],\n      \"results\": [\n        {\n          \"source_chunk_id\": \"mdchk_f3e7d59de4537241\",\n          \"metric\": \"model type\",\n          \"raw_value\": \"simple predictive model using linear algorithm\",\n          \"context\": \"for LiPF₆ concentration prediction\",\n          \"evidence_quote\": \"The learning process resulted in a simple predictive\"\n        }\n      ],\n      \"caveats\": []\n    },\n    {\n      \"source_chunk_ids\": [\"mdchk_6dbf42bfb667572a\"],\n      \"protocol_name\": \"LightGBM model for elastic moduli prediction of solid-state electrolytes\",\n      \"protocol_type\": \"computational\",\n      \"materials\": [],\n      \"instruments\": [],\n      \"software\": [\n        {\n          \"source_chunk_id\": \"mdchk_6dbf42bfb667572a\",\n          \"name\": \"LightGBM\",\n          \"version\": null,\n          \"settings\": {},\n          \"evidence_quote\": \"The predictive model was built using the LightGBM algorithm with R² values of 0.819 and 0.863 for G and K, respectively\"\n        }\n      ],\n      \"steps\": [\n        {\n          \"source_chunk_id\": \"mdchk_6dbf42bfb667572a\",\n          \"order\": 1,\n          \"action\": \"extract elastic moduli (shear G and bulk K) calculated by DFT of 15,986 compounds from Materials Project\",\n          \"conditions\": [],\n          \"notes\": null,\n          \"evidence_quote\": \"the elastic moduli (shear (G) and bulk (K)) calculated by DFT of 15,986 compounds listed in MP were extracted\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_6dbf42bfb667572a\",\n          \"order\": 2,\n          \"action\": \"generate composition features of extracted compounds\",\n          \"conditions\": [],\n          \"notes\": null,\n          \"evidence_quote\": \"and the composition features of these compounds were generated\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_6dbf42bfb667572a\",\n          \"order\": 3,\n          \"action\": \"build predictive model using LightGBM algorithm\",\n          \"conditions\": [],\n          \"notes\": \"R² values of 0.819 for G and 0.863 for K\",\n          \"evidence_quote\": \"The predictive model was built using the LightGBM algorithm with R² values of 0.819 and 0.863 for G and K, respectively\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_6dbf42bfb667572a\",\n          \"order\": 4,\n          \"action\": \"predict moduli of 2845 stable Li compounds with no active elements (K, Na, Ca)\",\n          \"conditions\": [],\n          \"notes\": null,\n          \"evidence_quote\": \"this model was then employed in a prediction process to find the moduli of 2845 stable Li compounds that have no active elements (K, Na, and Ca)\"\n        }\n      ],\n      \"characterization\": [],\n      \"results\": [\n        {\n          \"source_chunk_id\": \"mdchk_6dbf42bfb667572a\",\n          \"metric\": \"R² value for shear modulus G\",\n          \"raw_value\": \"0.819\",\n          \"context\": \"LightGBM model performance\",\n          \"evidence_quote\": \"R² values of 0.819 and 0.863 for G and K, respectively\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_6dbf42bfb667572a\",\n          \"metric\": \"R² value for bulk modulus K\",\n          \"raw_value\": \"0.863\",\n          \"context\": \"LightGBM model performance\",\n          \"evidence_quote\": \"R² values of 0.819 and 0.863 for G and K, respectively\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_6dbf42bfb667572a\",\n          \"metric\": \"prediction result\",\n          \"raw_value\": \"oxide-based electrolytes showed superior mechanical properties\",\n          \"context\": \"for solid-state electrolyte application requiring shear modulus >17 GPa (twice Li metal)\",\n          \"evidence_quote\": \"The results showed that the oxide-based electrolytes showed superior mechanical properties for this application\"\n        }\n      ],\n      \"caveats\": []\n    },\n    {\n      \"source_chunk_ids\": [\"mdchk_6dbf42bfb667572a\"],\n      \"protocol_name\": \"GCNN deep learning model for mechanical moduli prediction\",\n      \"protocol_type\": \"computational\",\n      \"materials\": [],\n      \"instruments\": [],\n      \"software\": [\n        {\n          \"source_chunk_id\": \"mdchk_6dbf42bfb667572a\",\n          \"name\": \"graph convolutional neural network (GCNN)\",\n          \"version\": null,\n          \"settings\": {},\n          \"evidence_quote\": \"a learning process using a graph convolutional neural network (GCNN)\"\n        }\n      ],\n      \"steps\": [\n        {\n          \"source_chunk_id\": \"mdchk_6dbf42bfb667572a\",\n          \"order\": 1,\n          \"action\": \"obtain moduli data involving G, C₁₁, C₁₂, and C₄₄ of crystalline materials from Materials Project\",\n          \"conditions\": [],\n          \"notes\": null,\n          \"evidence_quote\": \"a learning model was built based on moduli data involving the G and elastic constant (C₁₁, C₁₂, and C₄₄) of crystalline materials obtained from Materials Projects\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_6dbf42bfb667572a\",\n          \"order\": 2,\n          \"action\": \"include material structures and outputs (G, C11, C12, C44) in learning process\",\n          \"conditions\": [],\n          \"notes\": null,\n          \"evidence_quote\": \"the structures of the materials in the initial dataset alongside the outputs (G, C11, C12, and C44) were involved in a learning process using a graph convolutional neural network (GCNN)\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_6dbf42bfb667572a\",\n          \"order\": 3,\n          \"action\": \"extract and learn material features using neural network to build model\",\n          \"conditions\": [],\n          \"notes\": null,\n          \"evidence_quote\": \"the features of the materials included in the initial dataset are extracted and learned by the neural network to build the model\"\n        }\n      ],\n      \"characterization\": [],\n      \"results\": [],\n      \"caveats\": []\n    },\n    {\n      \"source_chunk_ids\": [\"mdchk_8a3e0cc18f10577c\"],\n      \"protocol_name\": \"Gaussian process-based optimization of LATP synthesis conditions\",\n      \"protocol_type\": \"computational\",\n      \"materials\": [\n        {\n          \"source_chunk_id\": \"mdchk_8a3e0cc18f10577c\",\n          \"name\": \"lithium aluminum titanium phosphate (LATP)\",\n          \"role\": \"solid electrolyte\",\n          \"amount\": null,\n          \"purity\": null,\n          \"supplier\": null,\n          \"pretreatment\": null,\n          \"evidence_quote\": \"the application of ML to assist the design experiments of lithium aluminum titanium phosphate (LATP) as a solid electrolyte in LIBs, where LATP was selected due to its high ionic conductivity\"\n        }\n      ],\n      \"instruments\": [],\n      \"software\": [],\n      \"steps\": [\n        {\n          \"source_chunk_id\": \"mdchk_8a3e0cc18f10577c\",\n          \"order\": 1,\n          \"action\": \"adjust synthesis conditions of LATP through Gaussian process (GP)-based optimization\",\n          \"conditions\": [],\n          \"notes\": \"three experimental parameters including concentration of precursors mentioned but cut off\",\n          \"evidence_quote\": \"the synthesis conditions of LATP were adjusted through a Gaussian process (GP)-based\"\n        }\n      ],\n      \"characterization\": [],\n      \"results\": [\n        {\n          \"source_chunk_id\": \"mdchk_8a3e0cc18f10577c\",\n          \"metric\": \"ionic conductivity\",\n          \"raw_value\": \">10⁻³ S/cm\",\n          \"context\": \"achieved through optimized synthesis\",\n          \"evidence_quote\": \"S/cm) were found\"\n        }\n      ],\n      \"caveats\": [\n        {\n          \"source_chunk_id\": \"mdchk_8a3e0cc18f10577c\",\n          \"text\": \"Protocol description is incomplete; text cuts off after mentioning three experimental parameters including concentration of precursors\",\n          \"evidence_quote\": \"Here, three experimental pa- rameters including the concentration of prec\"\n        }\n      ]\n    },\n    {\n      \"source_chunk_ids\": [\"mdchk_4664976371fab501\"],\n      \"protocol_name\": \"Random forest model for solid electrolyte ionic conductivity prediction\",\n      \"protocol_type\": \"computational\",\n      \"materials\": [],\n      \"instruments\": [],\n      \"software\": [\n        {\n          \"source_chunk_id\": \"mdchk_4664976371fab501\",\n          \"name\": \"random forest (RF)\",\n          \"version\": null,\n          \"settings\": {},\n          \"evidence_quote\": \"The model was successfully built using an RF algorithm\"\n        }\n      ],\n      \"steps\": [\n        {\n          \"source_chunk_id\": \"mdchk_4664976371fab501\",\n          \"order\": 1,\n          \"action\": \"collect data from works on preparation and characterization of solid electrolytes for LIBs\",\n          \"conditions\": [],\n          \"notes\": \"focused on ceramic-based electrolytes\",\n          \"evidence_quote\": \"an ML model has been built based on data collected from other works reported on the preparation and characterization of solid electrolytes for LIBs\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_4664976371fab501\",\n          \"order\": 2,\n          \"action\": \"use working temperature and composition features to calculate activation energy\",\n          \"conditions\": [],\n          \"notes\": null,\n          \"evidence_quote\": \"to calculate the activation energy, working temperature was also used in the model as a feature alongside the composition features\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_4664976371fab501\",\n          \"order\": 3,\n          \"action\": \"build model using RF algorithm\",\n          \"conditions\": [],\n          \"notes\": null,\n          \"evidence_quote\": \"The model was successfully built using an RF algorithm\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_4664976371fab501\",\n          \"order\": 4,\n          \"action\": \"screen 30,000 compositions from ICSD database\",\n          \"conditions\": [],\n          \"notes\": null,\n          \"evidence_quote\": \"screening 30,000 compositions presented in the ICSD database\"\n        }\n      ],\n      \"characterization\": [],\n      \"results\": [\n        {\n          \"source_chunk_id\": \"mdchk_4664976371fab501\",\n          \"metric\": \"Li-S based compounds with high ionic conductivity\",\n          \"raw_value\": \"67\",\n          \"context\": \"at room temperature, >0.01 S/cm\",\n          \"evidence_quote\": \"reached 67 Li-S based compounds with high ionic conductivity (>0.01 S/cm) at room temperature\"\n        }\n      ],\n      \"caveats\": []\n    },\n    {\n      \"source_chunk_ids\": [\"mdchk_4664976371fab501\"],\n      \"protocol_name\": \"Extra tree model for thermal expansion coefficient prediction of solid electrolytes\",\n      \"protocol_type\": \"computational\",\n      \"materials\": [],\n      \"instruments\": [],\n      \"software\": [\n        {\n          \"source_chunk_id\": \"mdchk_4664976371fab501\",\n          \"name\": \"extra tree (XT)\",\n          \"version\": null,\n          \"settings\": {},\n          \"evidence_quote\": \"extra tree (XT), random forest (RF), extreme gradient boost (XGB), and gradient boosting (GB) were optimized for prediction and compared. The XT-based model showed the best performance compared to other models\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_4664976371fab501\",\n          \"name\": \"random forest (RF)\",\n          \"version\": null,\n          \"settings\": {},\n          \"evidence_quote\": \"extra tree (XT), random forest (RF), extreme gradient boost (XGB), and gradient boosting (GB) were optimized for prediction and compared\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_4664976371fab501\",\n          \"name\": \"extreme gradient boost (XGB)\",\n          \"version\": null,\n          \"settings\": {},\n          \"evidence_quote\": \"extra tree (XT), random forest (RF), extreme gradient boost (XGB), and gradient boosting (GB) were optimized for prediction and compared\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_4664976371fab501\",\n          \"name\": \"gradient boosting (GB)\",\n          \"version\": null,\n          \"settings\": {},\n          \"evidence_quote\": \"extra tree (XT), random forest (RF), extreme gradient boost (XGB), and gradient boosting (GB) were optimized for prediction and compared\"\n        }\n      ],\n      \"steps\": [\n        {\n          \"source_chunk_id\": \"mdchk_4664976371fab501\",\n          \"order\": 1,\n          \"action\": \"obtain thermal expansion coefficient values of 5578 solid materials from AFLOW\",\n          \"conditions\": [],\n          \"notes\": null,\n          \"evidence_quote\": \"The learning data used in the work contained the thermal expansion coefficient value of solid materials (5578) presented in AFLOW\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_4664976371fab501\",\n          \"order\": 2,\n          \"action\": \"generate 272 features from composition and crystal structure for each material\",\n          \"conditions\": [],\n          \"notes\": null,\n          \"evidence_quote\": \"The composition and crystal structure of these materials were used to generate a set of 272 features for one material\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_4664976371fab501\",\n          \"order\": 3,\n          \"action\": \"optimize and compare XT, RF, XGB, and GB algorithms for prediction\",\n          \"conditions\": [],\n          \"notes\": null,\n          \"evidence_quote\": \"To assess the performance of various algorithms, extra tree (XT), random forest (RF), extreme gradient boost (XGB), and gradient boosting (GB) were optimized for prediction and compared\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_4664976371fab501\",\n          \"order\": 4,\n          \"action\": \"select XT-based model as best performer\",\n          \"conditions\": [],\n          \"notes\": null,\n          \"evidence_quote\": \"The XT-based model showed the best performance compared to other models\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_4664976371fab501\",\n          \"order\": 5,\n          \"action\": \"validate predictions using DFT calculations of electron localization function (ELF)\",\n          \"conditions\": [],\n          \"notes\": \"validated for MgBe₁₃ and MgPd₂\",\n          \"evidence_quote\": \"Further validations were presented using the calculations of the electron localization function (ELF) based on DFT. The ELF results obtained for MgBe₁₃ and MgPd₂ were consistent with the predictions made based on the XT-based model built in this study\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_4664976371fab501\",\n          \"order\": 6,\n          \"action\": \"use built model to predict electrolyte-cathode pairs with high thermomechanical compatibility\",\n          \"conditions\": [],\n          \"notes\": null,\n          \"evidence_quote\": \"The built model was then used to predict electrolyte–cathode pairs that are highly thermomechanically compatible\"\n        }\n      ],\n      \"characterization\": [\n        {\n          \"source_chunk_id\": \"mdchk_4664976371fab501\",\n          \"technique\": \"DFT calculation of electron localization function (ELF)\",\n          \"settings\": {},\n          \"output\": \"validation of XT model predictions\",\n          \"evidence_quote\": \"the calculations of the electron localization function (ELF) based on DFT. The ELF results obtained for MgBe₁₃ and MgPd₂ were consistent with the predictions\"\n        }\n      ],\n      \"results\": [\n        {\n          \"source_chunk_id\": \"mdchk_4664976371fab501\",\n          \"metric\": \"best performing algorithm\",\n          \"raw_value\": \"extra tree (XT)\",\n          \"context\": \"for thermal expansion coefficient prediction\",\n          \"evidence_quote\": \"The XT-based model showed the best performance compared to other models\"\n        }\n      ],\n      \"caveats\": []\n    }\n  ]\n}\n```",
+    "salvaged_protocol_count": 0,
+    "schema_invalid": false,
+    "stop_reason": "end_turn",
+    "usage": {
+      "inputTokens": 4376,
+      "outputTokens": 5527,
+      "totalTokens": 9903
+    }
+  }
+}

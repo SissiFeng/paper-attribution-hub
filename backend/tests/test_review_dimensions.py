@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import pytest
 
-from fastapi.testclient import TestClient
+from tests.admin_client import AdminTestClient as TestClient
 
 from app.main import app
 from app.models import Paper

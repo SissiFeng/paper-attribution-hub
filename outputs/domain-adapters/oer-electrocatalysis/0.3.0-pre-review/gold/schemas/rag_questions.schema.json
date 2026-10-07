@@ -1,0 +1,154 @@
+{
+  "$defs": {
+    "RagQuestion": {
+      "additionalProperties": false,
+      "properties": {
+        "paper_ids": {
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Paper Ids",
+          "type": "array"
+        },
+        "question_id": {
+          "title": "Question Id",
+          "type": "string"
+        },
+        "question_type": {
+          "enum": [
+            "material_lookup",
+            "instrument_lookup",
+            "software_lookup",
+            "protocol_step_lookup",
+            "characterization_lookup",
+            "reported_result_lookup",
+            "caveat_lookup",
+            "cross_protocol_comparison",
+            "abstention"
+          ],
+          "title": "Question Type",
+          "type": "string"
+        },
+        "schema_version": {
+          "default": "domain-adapter-rag-question-v0.1",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "semantic_role_filters": {
+          "items": {
+            "enum": [
+              "protocol",
+              "characterization",
+              "computation",
+              "result",
+              "caveat",
+              "scientific_context"
+            ],
+            "type": "string"
+          },
+          "title": "Semantic Role Filters",
+          "type": "array"
+        },
+        "text": {
+          "minLength": 1,
+          "title": "Text",
+          "type": "string"
+        }
+      },
+      "required": [
+        "question_id",
+        "text",
+        "question_type",
+        "paper_ids"
+      ],
+      "title": "RagQuestion",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "accepted_answer_items": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Accepted Answer Items",
+      "type": "array"
+    },
+    "accepted_evidence_ids": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Accepted Evidence Ids",
+      "type": "array"
+    },
+    "accepted_scientific_chunk_ids": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Accepted Scientific Chunk Ids",
+      "type": "array"
+    },
+    "annotation_complete": {
+      "default": false,
+      "title": "Annotation Complete",
+      "type": "boolean"
+    },
+    "expected_behavior": {
+      "default": "answer",
+      "enum": [
+        "answer",
+        "abstain"
+      ],
+      "title": "Expected Behavior",
+      "type": "string"
+    },
+    "notes": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Notes"
+    },
+    "question": {
+      "$ref": "#/$defs/RagQuestion"
+    },
+    "review_status": {
+      "default": "pending",
+      "enum": [
+        "pending",
+        "reviewed",
+        "rejected"
+      ],
+      "title": "Review Status",
+      "type": "string"
+    },
+    "reviewer": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Reviewer"
+    },
+    "schema_version": {
+      "default": "domain-adapter-rag-gold-v0.1",
+      "title": "Schema Version",
+      "type": "string"
+    }
+  },
+  "required": [
+    "question"
+  ],
+  "title": "RagGoldQuestion",
+  "type": "object"
+}

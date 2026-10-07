@@ -50,3 +50,16 @@ resource "aws_ssm_parameter" "openalex_mailto" {
 
   tags = local.common_tags
 }
+
+resource "aws_ssm_parameter" "zotero_api_key" {
+  name        = "/${local.name_prefix}/zotero-api-key"
+  description = "Read-only Zotero group-library Web API key"
+  type        = "SecureString"
+  value       = "PLACEHOLDER" # Set manually in AWS Console
+
+  lifecycle {
+    ignore_changes = [value]
+  }
+
+  tags = local.common_tags
+}

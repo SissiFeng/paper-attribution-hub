@@ -1,0 +1,536 @@
+{
+  "model_id": "moonshotai.kimi-k2.5",
+  "paper_id": "DOI:10.1021_acs.chemmater.2c01455",
+  "prompt_version": "oer-protocol-teacher-v0.1",
+  "protocols": [
+    {
+      "caveats": [],
+      "characterization": [],
+      "evidence": [
+        {
+          "char_end": 4148,
+          "char_start": 4014,
+          "chunk_id": "mdchk_453f79e203df998d",
+          "document_char_end": 20469,
+          "document_char_start": 20335,
+          "evidence_id": "ev_6e57cd4d16aafa4a",
+          "paper_id": "DOI:10.1021_acs.chemmater.2c01455",
+          "quote": "The first prepared MLs 1, 2-1, and 3 were sputtered at 573, 773, and 973 K, respectively, with the target arrangement of permutation 1",
+          "source_sha256": "3a71f60c48135e316531bd66ac9e56fbac9b0f5c3c52c2cbcf425842ec70c5e3"
+        },
+        {
+          "char_end": 539,
+          "char_start": 333,
+          "chunk_id": "mdchk_eb96d6b1f8cacfbb",
+          "document_char_end": 11434,
+          "document_char_start": 11228,
+          "evidence_id": "ev_f7026c47f92098da",
+          "paper_id": "DOI:10.1021_acs.chemmater.2c01455",
+          "quote": "For the SDC analyses, the investigated ML was nominally 50 nm thick and was deposited on a previously sputtered 50 nm Pt electrode layer on a 10 nm Ta adhesion layer also on a 100 mm diameter Si/SiO₂ wafer.",
+          "source_sha256": "f9d8c6850aa1ce02e9991403d6be9dc420a0cd5eefb0afb47bc93053fbc6b3f5"
+        },
+        {
+          "char_end": 930,
+          "char_start": 741,
+          "chunk_id": "mdchk_eb96d6b1f8cacfbb",
+          "document_char_end": 11825,
+          "document_char_start": 11636,
+          "evidence_id": "ev_090b07b8d95edd5a",
+          "paper_id": "DOI:10.1021_acs.chemmater.2c01455",
+          "quote": "100 W DC power for both Ta and Pt, sputtered from elemental targets (99.99 atom %), a process pressure of 0.13 Pa, and a flux of 40 sccm Ar. The process was carried out at room temperature.",
+          "source_sha256": "f9d8c6850aa1ce02e9991403d6be9dc420a0cd5eefb0afb47bc93053fbc6b3f5"
+        }
+      ],
+      "evidence_scope": "primary_report",
+      "instruments": [],
+      "materials": [
+        {
+          "amount": "10 nm",
+          "entity_id": "mat_96980080b37d3e0d",
+          "evidence_ids": [
+            "ev_f7026c47f92098da"
+          ],
+          "name": "Ta adhesion layer",
+          "pretreatment": null,
+          "purity": null,
+          "role": "adhesion layer",
+          "supplier": null
+        },
+        {
+          "amount": "50 nm",
+          "entity_id": "mat_b52ae2f275038067",
+          "evidence_ids": [
+            "ev_f7026c47f92098da"
+          ],
+          "name": "Pt electrode layer",
+          "pretreatment": null,
+          "purity": null,
+          "role": null,
+          "supplier": null
+        }
+      ],
+      "paper_id": "DOI:10.1021_acs.chemmater.2c01455",
+      "protocol_id": "protocol_df1ec51fb24af988",
+      "protocol_name": "Thin-film material library synthesis by combinatorial sputter deposition",
+      "protocol_type": "material_synthesis",
+      "relations": [],
+      "results": [],
+      "software": [],
+      "source_chunk_ids": [
+        "mdchk_453f79e203df998d",
+        "mdchk_eb96d6b1f8cacfbb"
+      ],
+      "source_paper_tier": "primary_oer",
+      "steps": [
+        {
+          "action": "100 W DC power for both Ta and Pt, sputtered from elemental targets (99.99 atom %), a process pressure of 0.13 Pa, and a flux of 40 sccm Ar. The process was carried out at room temperature.",
+          "conditions": [
+            "100 W DC power",
+            "room temperature"
+          ],
+          "evidence_ids": [
+            "ev_090b07b8d95edd5a"
+          ],
+          "notes": null,
+          "order": 1,
+          "step_id": "step_a5dd2813adb7dd28"
+        },
+        {
+          "action": "100 W DC power for both Ta and Pt, sputtered from elemental targets (99.99 atom %), a process pressure of 0.13 Pa, and a flux of 40 sccm Ar. The process was carried out at room temperature.",
+          "conditions": [
+            "100 W DC power",
+            "room temperature"
+          ],
+          "evidence_ids": [
+            "ev_090b07b8d95edd5a"
+          ],
+          "notes": null,
+          "order": 2,
+          "step_id": "step_38a77a8a39c2e359"
+        },
+        {
+          "action": "The first prepared MLs 1, 2-1, and 3 were sputtered at 573, 773, and 973 K, respectively, with the target arrangement of permutation 1",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_6e57cd4d16aafa4a"
+          ],
+          "notes": null,
+          "order": 3,
+          "step_id": "step_8b8bba6f7fa63c91"
+        }
+      ]
+    },
+    {
+      "caveats": [
+        {
+          "caveat_id": "caveat_8570928f55aea8ca",
+          "evidence_ids": [
+            "ev_05052115a35db94f"
+          ],
+          "text": "the additional peaks marked in Figure S4, SI can be attributed to CaCO₃, which is due to residues of the filter paper used for the collection of the particles"
+        }
+      ],
+      "characterization": [
+        {
+          "entity_id": "char_c4d9220a6725cbca",
+          "evidence_ids": [
+            "ev_7396809b18d58500"
+          ],
+          "output": null,
+          "settings": {},
+          "technique": "XRD"
+        }
+      ],
+      "evidence": [
+        {
+          "char_end": 1953,
+          "char_start": 1934,
+          "chunk_id": "mdchk_b3fbd8cd44d9b9a8",
+          "document_char_end": 13913,
+          "document_char_start": 13894,
+          "evidence_id": "ev_56222f77916aac88",
+          "paper_id": "DOI:10.1021_acs.chemmater.2c01455",
+          "quote": "prepared in ethanol",
+          "source_sha256": "09d7277fa4c1e616a379533756f302e8e417ad13659ce38a2cc5f2f0062a3768"
+        },
+        {
+          "char_end": 2551,
+          "char_start": 2450,
+          "chunk_id": "mdchk_b3fbd8cd44d9b9a8",
+          "document_char_end": 14511,
+          "document_char_start": 14410,
+          "evidence_id": "ev_9f3de723f8ffd264",
+          "paper_id": "DOI:10.1021_acs.chemmater.2c01455",
+          "quote": "allowing the collection of the dried particles on the ashless filter papers located after the furnace",
+          "source_sha256": "09d7277fa4c1e616a379533756f302e8e417ad13659ce38a2cc5f2f0062a3768"
+        },
+        {
+          "char_end": 1080,
+          "char_start": 1017,
+          "chunk_id": "mdchk_e1af5c5cd3028d74",
+          "document_char_end": 36329,
+          "document_char_start": 36266,
+          "evidence_id": "ev_19a74dc376c9f85e",
+          "paper_id": "DOI:10.1021_acs.chemmater.2c01455",
+          "quote": "the filter paper was burned away in an oven in a flow of oxygen",
+          "source_sha256": "d83f8f33a52f596f46935891af27b856859835b9abf618cca0fd0023f77e9dd7"
+        },
+        {
+          "char_end": 1161,
+          "char_start": 1086,
+          "chunk_id": "mdchk_e1af5c5cd3028d74",
+          "document_char_end": 36410,
+          "document_char_start": 36335,
+          "evidence_id": "ev_be1f628d58c0c003",
+          "paper_id": "DOI:10.1021_acs.chemmater.2c01455",
+          "quote": "particles were annealed to form the desired spinel oxide structure at 773 K",
+          "source_sha256": "d83f8f33a52f596f46935891af27b856859835b9abf618cca0fd0023f77e9dd7"
+        },
+        {
+          "char_end": 2480,
+          "char_start": 2428,
+          "chunk_id": "mdchk_e1af5c5cd3028d74",
+          "document_char_end": 37729,
+          "document_char_start": 37677,
+          "evidence_id": "ev_7396809b18d58500",
+          "paper_id": "DOI:10.1021_acs.chemmater.2c01455",
+          "quote": "The XRD analysis of the particles shows spinel oxide",
+          "source_sha256": "d83f8f33a52f596f46935891af27b856859835b9abf618cca0fd0023f77e9dd7"
+        },
+        {
+          "char_end": 2643,
+          "char_start": 2485,
+          "chunk_id": "mdchk_e1af5c5cd3028d74",
+          "document_char_end": 37892,
+          "document_char_start": 37734,
+          "evidence_id": "ev_05052115a35db94f",
+          "paper_id": "DOI:10.1021_acs.chemmater.2c01455",
+          "quote": "the additional peaks marked in Figure S4, SI can be attributed to CaCO₃, which is due to residues of the filter paper used for the collection of the particles",
+          "source_sha256": "d83f8f33a52f596f46935891af27b856859835b9abf618cca0fd0023f77e9dd7"
+        }
+      ],
+      "evidence_scope": "primary_report",
+      "instruments": [
+        {
+          "entity_id": "inst_65f47952b68cc585",
+          "evidence_ids": [
+            "ev_19a74dc376c9f85e"
+          ],
+          "manufacturer": null,
+          "model": null,
+          "name": "oven",
+          "settings": {
+            "atmosphere": "flow of oxygen"
+          }
+        }
+      ],
+      "materials": [
+        {
+          "amount": null,
+          "entity_id": "mat_7e1c4482633ecbd1",
+          "evidence_ids": [
+            "ev_56222f77916aac88"
+          ],
+          "name": "ethanol",
+          "pretreatment": null,
+          "purity": null,
+          "role": null,
+          "supplier": null
+        }
+      ],
+      "paper_id": "DOI:10.1021_acs.chemmater.2c01455",
+      "protocol_id": "protocol_72d373543aa9d4af",
+      "protocol_name": "Aerosol-based synthesis of HEO particles",
+      "protocol_type": "material_synthesis",
+      "relations": [],
+      "results": [],
+      "software": [],
+      "source_chunk_ids": [
+        "mdchk_b3fbd8cd44d9b9a8",
+        "mdchk_e1af5c5cd3028d74"
+      ],
+      "source_paper_tier": "primary_oer",
+      "steps": [
+        {
+          "action": "allowing the collection of the dried particles on the ashless filter papers located after the furnace",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_9f3de723f8ffd264"
+          ],
+          "notes": null,
+          "order": 1,
+          "step_id": "step_afe042e5b6022e56"
+        },
+        {
+          "action": "particles were annealed to form the desired spinel oxide structure at 773 K",
+          "conditions": [
+            "773 K"
+          ],
+          "evidence_ids": [
+            "ev_be1f628d58c0c003"
+          ],
+          "notes": null,
+          "order": 2,
+          "step_id": "step_f1048da059f1cd58"
+        }
+      ]
+    },
+    {
+      "caveats": [
+        {
+          "caveat_id": "caveat_cfac6d8fb6e63523",
+          "evidence_ids": [
+            "ev_839f157266bddd51"
+          ],
+          "text": "Due to the different measurement conditions, such as the diffusion profile, mass transport, etc., resulting from the measurement geometry, electrolyte stirring, and electrolyte concentration, a comparison of current density values in thin-film analysis with SDC and measurement of particles with RDE is not reliable"
+        }
+      ],
+      "characterization": [],
+      "evidence": [
+        {
+          "char_end": 747,
+          "char_start": 432,
+          "chunk_id": "mdchk_1cec4fab6561020d",
+          "document_char_end": 38901,
+          "document_char_start": 38586,
+          "evidence_id": "ev_839f157266bddd51",
+          "paper_id": "DOI:10.1021_acs.chemmater.2c01455",
+          "quote": "Due to the different measurement conditions, such as the diffusion profile, mass transport, etc., resulting from the measurement geometry, electrolyte stirring, and electrolyte concentration, a comparison of current density values in thin-film analysis with SDC and measurement of particles with RDE is not reliable",
+          "source_sha256": "d93aed936d67df9fcbc023d252fdd794debf74154d773e149c91150e889666fe"
+        },
+        {
+          "char_end": 2329,
+          "char_start": 2281,
+          "chunk_id": "mdchk_453f79e203df998d",
+          "document_char_end": 18650,
+          "document_char_start": 18602,
+          "evidence_id": "ev_512ddfa77301603e",
+          "paper_id": "DOI:10.1021_acs.chemmater.2c01455",
+          "quote": "catalyst suspension consisting of 2 vol % Nafion",
+          "source_sha256": "3a71f60c48135e316531bd66ac9e56fbac9b0f5c3c52c2cbcf425842ec70c5e3"
+        },
+        {
+          "char_end": 2371,
+          "char_start": 2334,
+          "chunk_id": "mdchk_453f79e203df998d",
+          "document_char_end": 18692,
+          "document_char_start": 18655,
+          "evidence_id": "ev_c1ff6e5ed231a3fd",
+          "paper_id": "DOI:10.1021_acs.chemmater.2c01455",
+          "quote": "equal volume parts of deionized water",
+          "source_sha256": "3a71f60c48135e316531bd66ac9e56fbac9b0f5c3c52c2cbcf425842ec70c5e3"
+        },
+        {
+          "char_end": 3071,
+          "char_start": 3010,
+          "chunk_id": "mdchk_453f79e203df998d",
+          "document_char_end": 19392,
+          "document_char_start": 19331,
+          "evidence_id": "ev_1e7372ae42bf0a2e",
+          "paper_id": "DOI:10.1021_acs.chemmater.2c01455",
+          "quote": "and left to dry in air prior to measuring for at least 20 min",
+          "source_sha256": "3a71f60c48135e316531bd66ac9e56fbac9b0f5c3c52c2cbcf425842ec70c5e3"
+        }
+      ],
+      "evidence_scope": "primary_report",
+      "instruments": [],
+      "materials": [
+        {
+          "amount": "2 vol %",
+          "entity_id": "mat_987c96c198c1fd6b",
+          "evidence_ids": [
+            "ev_512ddfa77301603e"
+          ],
+          "name": "Nafion",
+          "pretreatment": null,
+          "purity": null,
+          "role": null,
+          "supplier": null
+        },
+        {
+          "amount": "equal volume parts",
+          "entity_id": "mat_9a9ca8e3f53fcf24",
+          "evidence_ids": [
+            "ev_c1ff6e5ed231a3fd"
+          ],
+          "name": "deionized water",
+          "pretreatment": null,
+          "purity": null,
+          "role": null,
+          "supplier": null
+        }
+      ],
+      "paper_id": "DOI:10.1021_acs.chemmater.2c01455",
+      "protocol_id": "protocol_f34a7bc300c596fe",
+      "protocol_name": "Rotating disk electrode (RDE) electrochemical characterization for OER",
+      "protocol_type": "electrochemical_measurement",
+      "relations": [],
+      "results": [],
+      "software": [],
+      "source_chunk_ids": [
+        "mdchk_1cec4fab6561020d",
+        "mdchk_453f79e203df998d"
+      ],
+      "source_paper_tier": "primary_oer",
+      "steps": [
+        {
+          "action": "and left to dry in air prior to measuring for at least 20 min",
+          "conditions": [
+            "at least 20 min"
+          ],
+          "evidence_ids": [
+            "ev_1e7372ae42bf0a2e"
+          ],
+          "notes": null,
+          "order": 1,
+          "step_id": "step_8b8bba6f7fa63c91"
+        }
+      ]
+    },
+    {
+      "caveats": [],
+      "characterization": [],
+      "evidence": [
+        {
+          "char_end": 4093,
+          "char_start": 4036,
+          "chunk_id": "mdchk_b3fbd8cd44d9b9a8",
+          "document_char_end": 16053,
+          "document_char_start": 15996,
+          "evidence_id": "ev_8e910afa1d5b3b37",
+          "paper_id": "DOI:10.1021_acs.chemmater.2c01455",
+          "quote": "The measurements were conducted in 0.05 M KOH electrolyte",
+          "source_sha256": "09d7277fa4c1e616a379533756f302e8e417ad13659ce38a2cc5f2f0062a3768"
+        }
+      ],
+      "evidence_scope": "primary_report",
+      "instruments": [],
+      "materials": [
+        {
+          "amount": "0.05 M",
+          "entity_id": "mat_b30cddce612bc1c3",
+          "evidence_ids": [
+            "ev_8e910afa1d5b3b37"
+          ],
+          "name": "KOH electrolyte",
+          "pretreatment": null,
+          "purity": null,
+          "role": "electrolyte",
+          "supplier": null
+        }
+      ],
+      "paper_id": "DOI:10.1021_acs.chemmater.2c01455",
+      "protocol_id": "protocol_afe042e5b6022e56",
+      "protocol_name": "Scanning droplet cell (SDC) electrochemical characterization",
+      "protocol_type": "electrochemical_measurement",
+      "relations": [],
+      "results": [],
+      "software": [],
+      "source_chunk_ids": [
+        "mdchk_b3fbd8cd44d9b9a8"
+      ],
+      "source_paper_tier": "primary_oer",
+      "steps": []
+    },
+    {
+      "caveats": [],
+      "characterization": [],
+      "evidence": [
+        {
+          "char_end": 2617,
+          "char_start": 2579,
+          "chunk_id": "mdchk_b3fbd8cd44d9b9a8",
+          "document_char_end": 14577,
+          "document_char_start": 14539,
+          "evidence_id": "ev_54b54d5593937a2b",
+          "paper_id": "DOI:10.1021_acs.chemmater.2c01455",
+          "quote": "For each MA, four frames were recorded",
+          "source_sha256": "09d7277fa4c1e616a379533756f302e8e417ad13659ce38a2cc5f2f0062a3768"
+        }
+      ],
+      "evidence_scope": "primary_report",
+      "instruments": [],
+      "materials": [],
+      "paper_id": "DOI:10.1021_acs.chemmater.2c01455",
+      "protocol_id": "protocol_05f25c5d099e8a7c",
+      "protocol_name": "X-ray diffraction (XRD) characterization",
+      "protocol_type": "characterization",
+      "relations": [],
+      "results": [],
+      "software": [],
+      "source_chunk_ids": [
+        "mdchk_b3fbd8cd44d9b9a8"
+      ],
+      "source_paper_tier": "primary_oer",
+      "steps": [
+        {
+          "action": "For each MA, four frames were recorded",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_54b54d5593937a2b"
+          ],
+          "notes": null,
+          "order": 1,
+          "step_id": "step_d42a077c6759bce0"
+        }
+      ]
+    },
+    {
+      "caveats": [],
+      "characterization": [],
+      "evidence": [
+        {
+          "char_end": 3255,
+          "char_start": 3062,
+          "chunk_id": "mdchk_b3fbd8cd44d9b9a8",
+          "document_char_end": 15215,
+          "document_char_start": 15022,
+          "evidence_id": "ev_25884e2db2ebc696",
+          "paper_id": "DOI:10.1021_acs.chemmater.2c01455",
+          "quote": "Quantification and peak fitting of the different components in the XPS spectra were performed using the software ESCApe (Kratos, U.K.). The Shirley algorithm was used for background subtraction",
+          "source_sha256": "09d7277fa4c1e616a379533756f302e8e417ad13659ce38a2cc5f2f0062a3768"
+        }
+      ],
+      "evidence_scope": "primary_report",
+      "instruments": [],
+      "materials": [],
+      "paper_id": "DOI:10.1021_acs.chemmater.2c01455",
+      "protocol_id": "protocol_5f46cdaa03d11e51",
+      "protocol_name": "X-ray photoelectron spectroscopy (XPS) characterization",
+      "protocol_type": "characterization",
+      "relations": [],
+      "results": [],
+      "software": [
+        {
+          "entity_id": "soft_e0a82254348e82d9",
+          "evidence_ids": [
+            "ev_25884e2db2ebc696"
+          ],
+          "name": "ESCApe",
+          "settings": {
+            "background subtraction": "Shirley algorithm"
+          },
+          "version": null
+        }
+      ],
+      "source_chunk_ids": [
+        "mdchk_b3fbd8cd44d9b9a8"
+      ],
+      "source_paper_tier": "primary_oer",
+      "steps": [
+        {
+          "action": "Quantification and peak fitting of the different components in the XPS spectra were performed using the software ESCApe (Kratos, U.K.). The Shirley algorithm was used for background subtraction",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_25884e2db2ebc696"
+          ],
+          "notes": null,
+          "order": 1,
+          "step_id": "step_a2ab149dc4d24f99"
+        }
+      ]
+    }
+  ],
+  "schema_version": "bedrock-teacher-paper-cache-v0.1",
+  "unsupported_claim_count": 64
+}

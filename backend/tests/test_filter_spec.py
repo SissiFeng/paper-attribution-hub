@@ -1,6 +1,6 @@
 import pytest
 from urllib.parse import parse_qs
-from fastapi.testclient import TestClient
+from tests.admin_client import AdminTestClient as TestClient
 from pydantic import ValidationError
 from sqlalchemy import select
 

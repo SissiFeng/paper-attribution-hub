@@ -1,0 +1,73 @@
+{
+  "claims_boundary": "Heuristic output is a baseline unless extraction.mode is teacher. Tasks are extractive and do not advise future experiments.",
+  "eligible_corpus_chunk_count": 284,
+  "entity_counts": {
+    "caveats": 92,
+    "characterization": 62,
+    "instruments": 3,
+    "materials": 20,
+    "relations": 467,
+    "results": 17,
+    "software": 3,
+    "steps": 270
+  },
+  "evaluation_paper_count": 4,
+  "evaluation_task_count": 41,
+  "evaluation_task_paper_count": 2,
+  "evidence_span_count": 374,
+  "exact_duplicate_count": 1,
+  "excluded_or_low_information_chunk_count": 2736,
+  "paper_count": 20,
+  "papers_with_protocols": 11,
+  "papers_without_protocols": [
+    "DOI:10.1016_j.xcrp.2022.101200",
+    "DOI:10.1021_acs.chemmater.0c01894",
+    "DOI:10.1038_s41467-023-40177-1",
+    "DOI:10.1039_d0ta06441f",
+    "DOI:10.1039_d3dd00166k",
+    "DOI:10.1039_d4dd00115j",
+    "DOI:10.1039_d5cc01959a",
+    "DOI:10.1039_d5dd00072f",
+    "DOI:10.1093_ce_zkaf036"
+  ],
+  "protocol_count": 73,
+  "protocols_by_evidence_scope": {
+    "primary_report": 23,
+    "secondary_report": 50
+  },
+  "protocols_by_selection_tier": {
+    "oer_case_study": 1,
+    "oer_review": 49,
+    "primary_oer": 23
+  },
+  "protocols_per_paper": {
+    "DOI:10.1016_j.matt.2022.11.031": 3,
+    "DOI:10.1021_acs.chemmater.2c01455": 8,
+    "DOI:10.1021_acs.chemrev.4c00055": 30,
+    "DOI:10.1021_acscentsci.3c01009": 1,
+    "DOI:10.1038_s41467-024-50605-5": 11,
+    "DOI:10.1039_d4dd00313f": 1,
+    "DOI:10.1039_d5cc04220h": 1,
+    "DOI:10.1039_d5mh01247c": 2,
+    "DOI:10.1039_d5ta00331h": 8,
+    "DOI:10.1063_5.0259851": 7,
+    "DOI:10.32604_cmc.2025.067427": 1
+  },
+  "rejected_protocols": [],
+  "schema_version": "domain-adapter-quality-report-v0.1",
+  "source_chunk_count": 3021,
+  "task_count": 71,
+  "task_type_counts": {
+    "characterization_grounding": 16,
+    "failure_mode_grounding": 7,
+    "instrument_software_grounding": 4,
+    "materials_extraction": 12,
+    "protocol_reconstruction": 23,
+    "reported_result_grounding": 9
+  },
+  "train_paper_count": 16,
+  "train_task_count": 30,
+  "train_task_paper_count": 2,
+  "unsupported_evidence_count": 0,
+  "unsupported_teacher_claim_count": 0
+}

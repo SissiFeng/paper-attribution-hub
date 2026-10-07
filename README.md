@@ -144,12 +144,15 @@ power per-entity and per-lab knowledge pages and lab-to-lab transfer analytics.
 
 ```bash
 # Build / refresh the KB (idempotent):
-python -m app.scripts.ingest_scopus_batch --reset   # corpus (11,268 papers incl. 483 AC gold)
+python -m app.scripts.sync_zotero --dry-run --tier all --json
+python -m app.scripts.sync_zotero --classify       # authoritative Zotero corpus
 python -m app.scripts.build_lab_registry            # regenerate data/sdl_labs.yaml from ac_members.csv
 python -m app.scripts.seed_sdl_labs                 # upsert labs + map papers to labs
 python -m app.scripts.run_entity_extraction         # typed entities with evidence links
 python -m app.scripts.backfill_references           # citation edges via OpenAlex (network required)
 python -m app.scripts.export_kb_md                  # OKF-compatible Markdown KB → outputs/kb/
+python -m app.scripts.export_llm_wiki               # content-addressed ingest into llm-wiki/
+python -m app.scripts.lint_llm_wiki --json          # read-only live-vault health report
 python -m app.scripts.run_evolutionary_transfer_search --target sdl4
 python -m app.scripts.export_graph_ml_dataset       # GNN-ready graph JSONL → outputs/graph_ml/
 ```
@@ -160,6 +163,39 @@ APIs: `/kb/summary`, `/kb/entities`, `/kb/entities/{type}/{name}`, `/kb/labs/{id
 evolutionary search over DB TKUs plus the 483 AC focused `knowledge_json` files, then the CLI
 writes Karpathy-style autosearch run cards under `llm-wiki/autosearch/`. Gold-label expansion
 workflow: see `docs/labeling_workflow.md`.
+
+The knowledge lifecycle is explicit: **ingest** updates only affected generated
+pages and records a manifest; **query** uses reviewed syntheses and generated
+pages only to plan retrieval while final claims still require paper/chunk
+evidence; **lint** checks the complete live vault, including pages written by
+other workflows. Chat answers may be archived as synthesis drafts through
+`POST /wiki/syntheses`; curators can read the draft queue through
+`GET /wiki/syntheses?review_status=draft`. Only citation-grounded or verified
+read-only structured answers can be promoted through
+`POST /wiki/syntheses/{id}/review`. `GET /wiki/lint` exposes the same live-vault
+health report as the CLI. Mutating synthesis routes follow the existing
+`PAS_API_KEY` / `X-API-Key` policy.
+
+Paper-content knowledge is available as a separate, classification-neutral
+pipeline. It compiles only methods, materials, instruments, and software with
+chunk evidence; exports deterministic JSONL for domain adaptation; and audits
+real model-tokenizer fragmentation before any vocabulary change:
+
+```bash
+python -m app.scripts.build_scientific_knowledge --json
+python -m app.scripts.export_domain_training_corpus \
+  --output-dir ../outputs/domain-training-corpus --json
+python -m app.scripts.audit_scientific_tokenizer \
+  --corpus ../outputs/domain-training-corpus/domain_corpus.jsonl \
+  --tokenizer huggingface --model path/to/base-tokenizer
+```
+
+Read one compiled record at
+`GET /kb/papers/{paper_id}/scientific-knowledge`. The scientific ontology does
+not include institutions, and these commands do not read classifications or
+human reviews. See
+[`backend/docs/scientific_knowledge.md`](backend/docs/scientific_knowledge.md)
+for the evidence contract, corpus format, and model-adaptation boundary.
 
 The KB Markdown export now follows the Open Knowledge Format shape: each page has
 YAML front matter with `type`, `title`, `description`, `resource`, `tags`, and

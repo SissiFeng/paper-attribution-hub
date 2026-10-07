@@ -59,14 +59,17 @@ class PaperLabLink(Base):
 class PaperEntity(Base):
     """A typed entity extracted from a paper.
 
-    entity_type is one of method | material | instrument | software.
+    entity_type is one of method | material | instrument | software |
+    institution.
     `name` is the surface form as matched; `normalized_name` is the vocab
     canonical, which is what cross-lab transfer analytics should join on.
 
     For method entities, `stage` is the pipeline stage the method is used in
     (a stage id from data/method_stages.yaml, e.g. "property_prediction") and
     `usage_snippet` is the sentence the method was matched in (≤250 chars).
-    Both are NULL for non-method entity types.
+    Both are NULL for non-method entity types. Institution rows are
+    paper-level front-matter affiliation mentions; they do not assert a
+    resolved author-to-institution relationship.
     """
 
     __tablename__ = "paper_entities"

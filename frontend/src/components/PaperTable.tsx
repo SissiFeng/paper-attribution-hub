@@ -16,15 +16,59 @@ interface Props {
   papers: Paper[];
   selectedId: string | null;
   onSelect: (paper: Paper) => void;
+  metadataOnly?: boolean;
+  readOnly?: boolean;
 }
 
-export function PaperTable({ papers, selectedId, onSelect }: Props) {
+export function PaperTable({
+  papers,
+  selectedId,
+  onSelect,
+  metadataOnly = false,
+  readOnly = false,
+}: Props) {
   const [sorting, setSorting] = useState<SortingState>([
     { id: "confidence", desc: true },
   ]);
 
   const columns = useMemo<ColumnDef<Paper>[]>(
-    () => [
+    () => metadataOnly ? [
+      {
+        id: "markdown",
+        header: "Markdown",
+        accessorFn: (row) => row.full_text_available,
+        cell: ({ getValue }) => (
+          <span className={`status-chip ${getValue<boolean>() ? "success" : ""}`}>
+            {getValue<boolean>() ? "Imported from S3" : "Pending"}
+          </span>
+        ),
+      },
+      {
+        id: "title",
+        header: "Title",
+        accessorFn: (row) => row.title,
+        cell: ({ row }) => (
+          <div>
+            <div style={{ fontWeight: 500 }}>{row.original.title}</div>
+            <div style={{ color: "var(--muted)", fontSize: "0.8rem" }}>
+              {row.original.year} · {row.original.venue ?? "—"}
+            </div>
+          </div>
+        ),
+      },
+      {
+        id: "authors",
+        header: "Authors",
+        accessorFn: (row) => row.authors.map((author) => author.name).join(", "),
+        cell: ({ getValue }) => getValue<string>() || "—",
+      },
+      {
+        id: "doi",
+        header: "DOI",
+        accessorFn: (row) => row.doi ?? "",
+        cell: ({ getValue }) => getValue<string>() || "—",
+      },
+    ] : [
       {
         id: "label",
         header: "Label",
@@ -48,13 +92,13 @@ export function PaperTable({ papers, selectedId, onSelect }: Props) {
         id: "confidence",
         header: "Confidence",
         accessorFn: (row) => row.classification?.confidence ?? 0,
-        cell: ({ getValue }) => <ConfidenceBar value={getValue<number>()} />,
+        cell: ({ getValue, row }) => readOnly && !row.original.classification ? <span>—</span> : <ConfidenceBar value={getValue<number>()} />,
       },
       {
         id: "rag",
-        header: "RAG",
+        header: readOnly ? "Source" : "RAG",
         accessorFn: (row) => row.rag_status?.status ?? "missing_fulltext",
-        cell: ({ row }) => <RagStatusBadge status={row.original.rag_status} compact />,
+        cell: ({ row }) => readOnly ? <span>{row.original.full_text_available ? 'Full text' : row.original.abstract ? 'Abstract' : 'Metadata'}</span> : <RagStatusBadge status={row.original.rag_status} compact />,
       },
       {
         id: "title",
@@ -110,13 +154,13 @@ export function PaperTable({ papers, selectedId, onSelect }: Props) {
         },
       },
     ],
-    []
+    [metadataOnly, readOnly]
   );
 
   const table = useReactTable({
     data: papers,
     columns,
-    state: { sorting },
+    state: { sorting, columnVisibility: { review: !readOnly } },
     onSortingChange: setSorting,
     getCoreRowModel: getCoreRowModel(),
     getSortedRowModel: getSortedRowModel(),

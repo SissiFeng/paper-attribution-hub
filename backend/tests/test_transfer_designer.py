@@ -1,7 +1,7 @@
 """Cross-SDL transfer engine: matching, design generation, export, API."""
 from __future__ import annotations
 
-from fastapi.testclient import TestClient
+from tests.admin_client import AdminTestClient as TestClient
 
 from app.models import Paper, PaperLabLink, TransferKnowledgeUnit
 from app.services.transfer_designer import (

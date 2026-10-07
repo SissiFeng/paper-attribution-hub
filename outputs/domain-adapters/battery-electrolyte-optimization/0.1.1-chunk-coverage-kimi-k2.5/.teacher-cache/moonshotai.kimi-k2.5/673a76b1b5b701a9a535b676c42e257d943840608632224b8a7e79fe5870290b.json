@@ -1,0 +1,2022 @@
+{
+  "audit_summary": {
+    "accepted_field_count": 39,
+    "proposed_field_count": 108,
+    "rejected_field_count": 69,
+    "repair_attempted_count": 6,
+    "repair_succeeded_count": 2,
+    "unsupported_claim_count": 69
+  },
+  "candidate_domain_terms": [
+    "electrolyte",
+    "lithium-ion",
+    "ionic conductivity",
+    "solubility",
+    "redox"
+  ],
+  "field_audit_records": [
+    {
+      "cited_span": "Potassium hydroxide (Supelco, EMSURE) and potassium chloride ($99.0%, Bioreagent) were purchased from Merck.",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[0].name",
+      "nearest_source_span": null,
+      "outcome": "repaired",
+      "paper_id": "DOI:10.1039_d5dd00111k",
+      "proposed_value": "potassium hydroxide",
+      "protocol_index": 0,
+      "rejection_reason": "whitespace_mismatch",
+      "repair_attempted": true,
+      "repair_succeeded": true,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Potassium hydroxide (Supelco, EMSURE)\nand potassium chloride ($99.0%, Bioreagent) were purchased from Merck.",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[0].role",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5dd00111k",
+      "proposed_value": "electrolyte component",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "potassium chloride ($99.0%, Bioreagent) were purchased from Merck.",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[1].role",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5dd00111k",
+      "proposed_value": "supporting electrolyte",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "potassium chloride ($99.0%, Bioreagent) were purchased from Merck.",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[1].amount",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5dd00111k",
+      "proposed_value": "1 M",
+      "protocol_index": 0,
+      "rejection_reason": "value_elsewhere",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "N-[(pyrazin-2-yl)methyl]formamide (95%) and (2- aminoethyl)[(pyrazin-2-yl)methyl]amine dihydrochloride (95%) were obtained from Enamine Ltd.",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[2].role",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5dd00111k",
+      "proposed_value": "analyte",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "N-[(pyrazin-2-yl)methyl]formamide (95%) and (2- aminoethyl)[(pyrazin-2-yl)methyl]amine dihydrochloride (95%) were obtained from Enamine Ltd.",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[2].amount",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5dd00111k",
+      "proposed_value": "1 mM",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "N-[(pyrazin-2-yl)methyl]formamide (95%) and (2- aminoethyl)[(pyrazin-2-yl)methyl]amine dihydrochloride (95%) were obtained from Enamine Ltd.",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[3].name",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5dd00111k",
+      "proposed_value": "(2-aminoethyl)[(pyrazin-2-yl)methyl]amine dihydrochloride",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Electrolyte solutions were prepared with ultra-pure water (Type 1, 18.2 MU cm at 25 ° C, Ultrapure water system A series, Avantor). All experiments were conducted with 30 mL of 1 mM solute in 1 M KCl elec- trolytes, with solutions sparged with wet N₂ for 30 minutes before initiating any experiments.",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[4].role",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5dd00111k",
+      "proposed_value": "solvent",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Electrolyte solutions were prepared with ultra-pure water (Type 1, 18.2 MU cm at 25 ° C, Ultrapure water system A series, Avantor). All experiments were conducted with 30 mL of 1 mM solute in 1 M KCl elec- trolytes, with solutions sparged with wet N₂ for 30 minutes before initiating any experiments.",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[4].purity",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5dd00111k",
+      "proposed_value": "Type 1, 18.2 MU cm at 25 °C",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Electrochemical tests were con- ducted using an Ivium Octostat 200 (Ivium Technologies)",
+      "diagnostic": null,
+      "entity_type": "instruments",
+      "field_path": "instruments[0].name",
+      "nearest_source_span": null,
+      "outcome": "repaired",
+      "paper_id": "DOI:10.1039_d5dd00111k",
+      "proposed_value": "Ivium Octostat 200",
+      "protocol_index": 0,
+      "rejection_reason": "whitespace_mismatch",
+      "repair_attempted": true,
+      "repair_succeeded": true,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "ultrasonication (Branson 5510) for 20 minutes",
+      "diagnostic": null,
+      "entity_type": "instruments",
+      "field_path": "instruments[4].name",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5dd00111k",
+      "proposed_value": "ultrasonicator",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Before conducting any experiments, all equipment was thoroughly cleaned with ultra-pure water (Type 1, 18.2 MU cm at 25 °C, Ultrapure water system A series, Avantor) using ultrasonication (Branson 5510) for 20 minutes.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[0].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5dd00111k",
+      "proposed_value": "clean all equipment with ultra-pure water using ultrasonication",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Before\nconducting any experiments, all equipment was thoroughly cleaned with ultra-pure water (Type 1, 18.2 MU cm at 25 °C, Ultrapure water system A series, Avantor) using ultrasonication (Branson 5510) for 20 minutes.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[0].conditions[0]",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5dd00111k",
+      "proposed_value": "ultra-pure water (Type 1, 18.2 MU cm at 25 °C)",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Before\nconducting any experiments, all equipment was thoroughly cleaned with ultra-pure water (Type 1, 18.2 MU cm at 25 °C, Ultrapure water system A series, Avantor) using ultrasonication (Branson 5510) for 20 minutes.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[0].notes",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5dd00111k",
+      "proposed_value": "20 minutes duration",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Electrodes were polished to a mirror finish with diamond and alumina slurries (PK-4, BASMF2060, Bioanalytical Systems Inc.)",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[1].action",
+      "nearest_source_span": "Electrodes were polished to a mirror nish with diamond and alumina slurries (PK-4, BASMF2060, Bioanalytical Systems Inc.",
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5dd00111k",
+      "proposed_value": "polish electrodes to mirror finish with diamond and alumina slurries",
+      "protocol_index": 0,
+      "rejection_reason": "span_not_in_source",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "followed by an addi- tional 10 minutes of ultrasonication.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[2].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5dd00111k",
+      "proposed_value": "ultrasonicate polished electrodes",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "followed by an addi- tional 10 minutes of ultrasonication.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[2].notes",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5dd00111k",
+      "proposed_value": "10 minutes additional ultrasonication",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "All components were then dried at room temperature for one day.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[3].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5dd00111k",
+      "proposed_value": "dry all components at room temperature",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "All components were then dried at room temperature for one day.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[3].notes",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5dd00111k",
+      "proposed_value": "one day drying time",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "All experiments were conducted with 30 mL of 1 mM solute in 1 M KCl elec- trolytes",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[4].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5dd00111k",
+      "proposed_value": "prepare electrolyte solution with 1 mM solute in 1 M KCl",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "All experiments were conducted with 30 mL of 1 mM solute in 1 M KCl elec- trolytes",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[4].conditions[0]",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5dd00111k",
+      "proposed_value": "30 mL volume",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "with solutions sparged with wet N₂ for 30 minutes before initiating any experiments.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[5].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5dd00111k",
+      "proposed_value": "sparge solution with wet N₂",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "with solutions sparged with wet N₂ for 30 minutes before initiating any experiments.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[5].notes",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5dd00111k",
+      "proposed_value": "30 minutes before initiating experiments",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Cyclic voltammetry (CV) measurements were performed at a scan rate of 20 mV s −1 using a glassy carbon working electrode (2 mm active diameter, PEEK body 6 mm diameter, Redoxme AB), a platinum sheet counter electrode (10 × 10 × 0.1 mm, Dek Research Instrumentation) and an Ag/AgCl reference electrode (6 mm body diameter, Redox.me AB). The electrochemical cells had a glass chamber with a total volume of 50 mL, equipped with a PEEK lid, gas inlet/outlet, and three terminals for electrodes (Redox.me AB).",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[6].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5dd00111k",
+      "proposed_value": "perform cyclic voltammetry measurements",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Cyclic voltammetry (CV) measurements were performed at a scan rate of 20 mV s −1 using a glassy carbon working electrode (2 mm active diameter, PEEK body 6 mm diameter, Redoxme AB), a platinum sheet counter electrode (10 × 10 × 0.1 mm, Dek Research Instrumentation) and an Ag/AgCl reference electrode (6 mm body diameter, Redox.me AB). The electrochemical cells had a glass chamber with a total volume of 50 mL, equipped with a PEEK lid, gas inlet/outlet, and three terminals for electrodes (Redox.me AB).",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[6].conditions[0]",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5dd00111k",
+      "proposed_value": "scan rate of 20 mV s⁻¹",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Cyclic voltammetry (CV) measurements were performed at a scan rate of 20 mV s −1 using a glassy carbon working electrode (2 mm active diameter, PEEK body 6 mm diameter, Redoxme AB), a platinum sheet counter electrode (10 × 10 × 0.1 mm, Dek Research Instrumentation) and an Ag/AgCl reference electrode (6 mm body diameter, Redox.me AB). The electrochemical cells had a glass chamber with a total volume of 50 mL, equipped with a PEEK lid, gas inlet/outlet, and three terminals for electrodes (Redox.me AB).",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[6].conditions[1]",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5dd00111k",
+      "proposed_value": "nitrogen atmosphere",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Cyclic voltammetry (CV) measurements were performed at a scan rate of 20 mV s −1 using a glassy carbon working electrode (2 mm active diameter, PEEK body 6 mm diameter, Redoxme AB), a platinum sheet counter electrode (10 × 10 × 0.1 mm, Dek Research Instrumentation) and an Ag/AgCl reference electrode (6 mm body diameter, Redox.me AB). The electrochemical cells had a glass chamber with a total volume of 50 mL, equipped with a PEEK lid, gas inlet/outlet, and three terminals for electrodes (Redox.me AB).",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[6].conditions[2]",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5dd00111k",
+      "proposed_value": "22.7 °C",
+      "protocol_index": 0,
+      "rejection_reason": "value_elsewhere",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Cyclic voltammetry (CV) measurements were performed at a scan rate of 20 mV s −1 using a glassy carbon working electrode (2 mm active diameter, PEEK body 6 mm diameter, Redoxme AB), a platinum sheet counter electrode (10 × 10 × 0.1 mm, Dek Research Instrumentation) and an Ag/AgCl reference electrode (6 mm body diameter, Redox.me AB). The electrochemical cells had a glass chamber with a total volume of 50 mL, equipped with a PEEK lid, gas inlet/outlet, and three terminals for electrodes (Redox.me AB).",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[6].conditions[3]",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5dd00111k",
+      "proposed_value": "gas bubbler filled with water",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Cyclic voltammetry (CV) measurements were performed at a scan rate of 20 mV s −1 using a glassy carbon working electrode (2 mm active diameter, PEEK body 6 mm diameter, Redoxme AB), a platinum sheet counter electrode (10 × 10 × 0.1 mm, Dek Research Instrumentation) and an Ag/AgCl reference electrode (6 mm body diameter, Redox.me AB).",
+      "diagnostic": null,
+      "entity_type": "characterization",
+      "field_path": "characterization[0].settings.scan_rate",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5dd00111k",
+      "proposed_value": "20 mV s⁻¹",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Cyclic voltammetry (CV) measurements were performed at a scan rate of 20 mV s −1 using a glassy carbon working electrode (2 mm active diameter, PEEK body 6 mm diameter, Redoxme AB), a platinum sheet counter electrode (10 × 10 × 0.1 mm, Dek Research Instrumentation) and an Ag/AgCl reference electrode (6 mm body diameter, Redox.me AB).",
+      "diagnostic": null,
+      "entity_type": "characterization",
+      "field_path": "characterization[0].settings.temperature",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5dd00111k",
+      "proposed_value": "22.7 °C",
+      "protocol_index": 0,
+      "rejection_reason": "value_elsewhere",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Cyclic voltammetry (CV) measurements were performed at a scan rate of 20 mV s −1 using a glassy carbon working electrode (2 mm active diameter, PEEK body 6 mm diameter, Redoxme AB), a platinum sheet counter electrode (10 × 10 × 0.1 mm, Dek Research Instrumentation) and an Ag/AgCl reference electrode (6 mm body diameter, Redox.me AB).",
+      "diagnostic": null,
+      "entity_type": "characterization",
+      "field_path": "characterization[0].settings.atmosphere",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5dd00111k",
+      "proposed_value": "nitrogen with water-filled gas bubbler",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "the calculated redox potentials align well with the experimentally determined values, with differences of less than 0.1 V (Table 1).",
+      "diagnostic": null,
+      "entity_type": "results",
+      "field_path": "results[0].metric",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5dd00111k",
+      "proposed_value": "redox potential difference between calculated and experimental values",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Additionally, a peak separation greater than 0.4 V is observed in the CV, indicating sluggish electron transfer",
+      "diagnostic": null,
+      "entity_type": "results",
+      "field_path": "results[1].context",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5dd00111k",
+      "proposed_value": "in CV measurements of pyrazines",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "It is worthwhile noting that heterogeneous electron transfers for pyrazines can occur at potentials outside the thermodynamic stability for water, resulting in reactions at carbon surfaces (e.g., partial reduction of oxidized species, hydrogen adsorption and evolu- tion 30,31 ) that produce background currents overlapping with the CV response of the pyrazines.",
+      "diagnostic": null,
+      "entity_type": "caveats",
+      "field_path": "caveats[0].text",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5dd00111k",
+      "proposed_value": "Heterogeneous electron transfers for pyrazines can occur at potentials outside the thermodynamic stability for water, resulting in reactions at carbon surfaces that produce background currents overlapping with the CV response",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Additionally, a peak separation greater than 0.4 V is observed in the CV, indicating sluggish electron transfer, which could lead to lower voltaic efficiencies in an AORFB.",
+      "diagnostic": null,
+      "entity_type": "caveats",
+      "field_path": "caveats[1].text",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5dd00111k",
+      "proposed_value": "Peak separation greater than 0.4 V indicates sluggish electron transfer, which could lead to lower voltaic efficiencies in an AORFB",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Nonetheless, a slight increase in peak separation for both species and a tendency toward hydrogen gas evolution (particularly for (2-aminoethyl) [(pyrazin-2-yl)methyl]amine) may result in lower round-trip efficiency in a working AORFB system.",
+      "diagnostic": null,
+      "entity_type": "caveats",
+      "field_path": "caveats[2].text",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5dd00111k",
+      "proposed_value": "Slight increase in peak separation and tendency toward hydrogen gas evolution may result in lower round-trip efficiency in a working AORFB system",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Precisely quantifying energy storage charac- teristics, including any evolution in overpotentials or hydrogen gas, is beyond the scope of this study and will require further analysis in a ow cell conguration under appropriate conditions.",
+      "diagnostic": null,
+      "entity_type": "caveats",
+      "field_path": "caveats[3].text",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5dd00111k",
+      "proposed_value": "Precisely quantifying energy storage characteristics is beyond the scope of this study and will require further analysis in a flow cell configuration",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Quartz cuvettes (10 mm, Avantor) were cleaned with ethanol (absolute, $99.5%, Merck) and dried with an N₂ ow.",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[0].role",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5dd00111k",
+      "proposed_value": "sample container",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Quartz cuvettes (10 mm, Avantor) were cleaned with ethanol (absolute, $99.5%, Merck) and dried with an N₂ ow.",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[0].pretreatment",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5dd00111k",
+      "proposed_value": "cleaned with ethanol and dried with N₂ flow",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "cleaned with ethanol (absolute, $99.5%, Merck)",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[1].role",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5dd00111k",
+      "proposed_value": "cleaning solvent",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "cleaned with ethanol (absolute, $99.5%, Merck)",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[1].purity",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5dd00111k",
+      "proposed_value": "absolute, ≥99.5%",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "0.1 mL of these solutions were ltered using hydrophilic PTFE lters (0.22 mm, Avantor)",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[2].name",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5dd00111k",
+      "proposed_value": "hydrophilic PTFE filters",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Quartz cuvettes (10 mm, Avantor) were cleaned with ethanol (absolute, $99.5%, Merck)",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[0].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5dd00111k",
+      "proposed_value": "clean quartz cuvettes with ethanol",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Quartz cuvettes (10 mm, Avantor) were cleaned with ethanol (absolute, $99.5%, Merck)",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[0].notes",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5dd00111k",
+      "proposed_value": "absolute ethanol, ≥99.5% purity",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "and dried with an N₂ ow.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[1].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5dd00111k",
+      "proposed_value": "dry cuvettes with N₂ flow",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Calibration curves were constructed by preparing stock solu- tions of 1 mM solute in three different electrolytes.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[2].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5dd00111k",
+      "proposed_value": "prepare stock solutions of 1 mM solute in three different electrolytes",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "From each stock solution, 0.1, 0.2, 0.3, 0.4, and 0.5 mL were aliquoted into new samples",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[3].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5dd00111k",
+      "proposed_value": "aliquot 0.1, 0.2, 0.3, 0.4, and 0.5 mL from each stock solution into new samples",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "and diluted with 3 mL of the corresponding electrolyte.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[4].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5dd00111k",
+      "proposed_value": "dilute aliquots with corresponding electrolyte",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "and diluted with 3 mL of the corresponding electrolyte.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[4].conditions[0]",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5dd00111k",
+      "proposed_value": "3 mL volume",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "These diluted solutions were measured with the UV- vis spectrophotometer",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[5].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5dd00111k",
+      "proposed_value": "measure diluted solutions with UV-vis spectrophotometer",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "and calibration curves were plotted based on maximum absorbance as a function of concentration.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[6].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5dd00111k",
+      "proposed_value": "plot calibration curves based on maximum absorbance as function of concentration",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "For saturated solutions, 1–2 mL of each electrolyte was used, and solutes were gradually added and le to stir overnight. The following day, any remaining solid indicated saturation.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[7].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5dd00111k",
+      "proposed_value": "prepare saturated solutions by gradually adding solutes to electrolyte",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "For saturated solutions, 1–2 mL of each electrolyte was used, and solutes were gradually added and le to stir overnight. The following day, any remaining solid indicated saturation.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[7].conditions[0]",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5dd00111k",
+      "proposed_value": "1–2 mL electrolyte",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "For saturated solutions, 1–2 mL of each electrolyte was used, and solutes were gradually added and le to stir overnight. The following day, any remaining solid indicated saturation.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[7].notes",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5dd00111k",
+      "proposed_value": "remaining solid indicates saturation",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "0.1 mL of these solutions were ltered using hydrophilic PTFE lters (0.22 mm, Avantor)",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[8].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5dd00111k",
+      "proposed_value": "filter saturated solutions using hydrophilic PTFE filters",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "0.1 mL of these solutions were ltered using hydrophilic PTFE lters (0.22 mm, Avantor)",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[8].conditions[0]",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5dd00111k",
+      "proposed_value": "0.1 mL volume",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "0.1 mL of these solutions were ltered using hydrophilic PTFE lters (0.22 mm, Avantor)",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[8].conditions[1]",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5dd00111k",
+      "proposed_value": "0.22 mm filter pore size",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "and diluted until their maximum absor- bance fell within the calibration curve range.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[9].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5dd00111k",
+      "proposed_value": "dilute filtered solutions until maximum absorbance falls within calibration curve range",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "These diluted solutions were measured with the UV- vis spectrophotometer, and calibration curves were plotted based on maximum absorbance as a function of concentration.",
+      "diagnostic": null,
+      "entity_type": "characterization",
+      "field_path": "characterization[0].technique",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5dd00111k",
+      "proposed_value": "UV-vis spectroscopy",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "All molecular dynamics (MD) simulations were performed using the Des- mond⁵⁶ package, within SMSS.",
+      "diagnostic": null,
+      "entity_type": "software",
+      "field_path": "software[0].name",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5dd00111k",
+      "proposed_value": "Desmond",
+      "protocol_index": 2,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "All molecular dynamics (MD) simulations were performed using the Des- mond⁵⁶ package, within SMSS.",
+      "diagnostic": null,
+      "entity_type": "software",
+      "field_path": "software[1].name",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5dd00111k",
+      "proposed_value": "Schrödinger Materials Science Suite",
+      "protocol_index": 2,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Each molecule was placed in a cubic box with an edge length of 50 Å",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[0].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5dd00111k",
+      "proposed_value": "place each molecule in cubic box",
+      "protocol_index": 2,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "and the OPLS4 50 force eld was applied to calculate the atomistic interactions.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[1].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5dd00111k",
+      "proposed_value": "apply OPLS4 force field for atomistic interactions",
+      "protocol_index": 2,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The simulations were performed in the canonical NVT⁵⁷ ensemble at a temperature of 300 K and a pressure of 1 atm.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[2].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5dd00111k",
+      "proposed_value": "perform MD simulations in NVT ensemble",
+      "protocol_index": 2,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Temperature control was managed using the Nose–Hoover chain thermo- stat⁵⁸ with a relaxation time of 1.0 ps.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[3].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5dd00111k",
+      "proposed_value": "control temperature using Nose-Hoover chain thermostat",
+      "protocol_index": 2,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "A cut-off radius of 9 Å was set for Coulomb interactions.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[4].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5dd00111k",
+      "proposed_value": "set cut-off radius for Coulomb interactions",
+      "protocol_index": 2,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Each system underwent 100 ns of MD simulations, with trajectory frames saved at 100 ps inter- vals.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[5].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5dd00111k",
+      "proposed_value": "run MD simulations",
+      "protocol_index": 2,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Each system underwent 100 ns of MD simulations, with trajectory frames saved at 100 ps inter- vals.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[5].conditions[0]",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5dd00111k",
+      "proposed_value": "100 ns duration",
+      "protocol_index": 2,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Each system underwent 100 ns of MD simulations, with trajectory frames saved at 100 ps inter- vals.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[5].notes",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5dd00111k",
+      "proposed_value": "trajectory frames saved at 100 ps intervals",
+      "protocol_index": 2,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "MD data analysis was performed using the Simulation",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[6].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5dd00111k",
+      "proposed_value": "perform MD data analysis using Simulation",
+      "protocol_index": 2,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "MD data analysis was performed using the Simulation",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[6].notes",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1039_d5dd00111k",
+      "proposed_value": "text cuts off, likely Simulation Interaction Diagram tool",
+      "protocol_index": 2,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    }
+  ],
+  "inference_config": {
+    "max_tokens": 14000,
+    "temperature": 0.0
+  },
+  "mapping_version": "evidence-field-mapper-v0.2",
+  "minimum_chunk_score": 2,
+  "model_id": "moonshotai.kimi-k2.5",
+  "paper_id": "DOI:10.1039_d5dd00111k",
+  "prompt_version": "scientific-protocol-teacher-v0.3",
+  "protocols": [
+    {
+      "caveats": [
+        {
+          "caveat_id": "caveat_5760111ca1c66bfb",
+          "evidence_ids": [
+            "ev_1f03f2718077cc65"
+          ],
+          "text": "It is worthwhile noting that heterogeneous electron transfers for pyrazines can occur at potentials outside the thermodynamic stability for water, resulting in reactions at carbon surfaces (e.g., partial reduction of oxidized species, hydrogen adsorption and evolu- tion 30,31 ) that produce background currents overlapping with the CV response of the pyrazines."
+        },
+        {
+          "caveat_id": "caveat_582caa84d260ab76",
+          "evidence_ids": [
+            "ev_8d646d0ad0eacf76"
+          ],
+          "text": "Additionally, a peak separation greater than 0.4 V is observed in the CV, indicating sluggish electron transfer, which could lead to lower voltaic efficiencies in an AORFB."
+        },
+        {
+          "caveat_id": "caveat_9b90833082b98fd5",
+          "evidence_ids": [
+            "ev_e489cdb0f961b39c"
+          ],
+          "text": "Nonetheless, a slight increase in peak separation for both species and a tendency toward hydrogen gas evolution (particularly for (2-aminoethyl) [(pyrazin-2-yl)methyl]amine) may result in lower round-trip efficiency in a working AORFB system."
+        },
+        {
+          "caveat_id": "caveat_233b68a8715274af",
+          "evidence_ids": [
+            "ev_81d659843cb976a5"
+          ],
+          "text": "Precisely quantifying energy storage charac- teristics, including any evolution in overpotentials or hydrogen gas, is beyond the scope of this study and will require further analysis in a ow cell conguration under appropriate conditions."
+        }
+      ],
+      "characterization": [
+        {
+          "entity_id": "char_b383fe16d35b1686",
+          "evidence_ids": [
+            "ev_7e7e3ddd71e14275"
+          ],
+          "output": null,
+          "settings": {},
+          "technique": "cyclic voltammetry"
+        }
+      ],
+      "evidence": [
+        {
+          "char_end": 113,
+          "char_start": 26,
+          "chunk_id": "mdchk_064092def9767f1d",
+          "document_char_end": 41784,
+          "document_char_start": 41697,
+          "evidence_id": "ev_97085ee26880bea9",
+          "paper_id": "DOI:10.1039_d5dd00111k",
+          "quote": "Electrochemical tests were con-\nducted using an Ivium Octostat 200 (Ivium Technologies)",
+          "source_sha256": "83ef45546eff6966ee24b8dc397f4cade64140c6f867d19d5ab280e3ea463fff"
+        },
+        {
+          "char_end": 387,
+          "char_start": 207,
+          "chunk_id": "mdchk_064092def9767f1d",
+          "document_char_end": 42058,
+          "document_char_start": 41878,
+          "evidence_id": "ev_c207646962d2a533",
+          "paper_id": "DOI:10.1039_d5dd00111k",
+          "quote": "Cyclic voltammetry (CV) measurements were performed at a scan rate of 20 mV s −1 using a glassy carbon working electrode (2 mm active diameter, PEEK body 6 mm diameter, Redoxme AB)",
+          "source_sha256": "83ef45546eff6966ee24b8dc397f4cade64140c6f867d19d5ab280e3ea463fff"
+        },
+        {
+          "char_end": 712,
+          "char_start": 207,
+          "chunk_id": "mdchk_064092def9767f1d",
+          "document_char_end": 42383,
+          "document_char_start": 41878,
+          "evidence_id": "ev_59fbb07ac31f83a7",
+          "paper_id": "DOI:10.1039_d5dd00111k",
+          "quote": "Cyclic voltammetry (CV) measurements were performed at a scan rate of 20 mV s −1 using a glassy carbon working electrode (2 mm active diameter, PEEK body 6 mm diameter, Redoxme AB), a platinum sheet counter electrode (10 × 10 × 0.1 mm, Dek Research Instrumentation) and an Ag/AgCl reference electrode (6 mm body diameter, Redox.me AB). The electrochemical cells had a glass chamber with a total volume of 50 mL, equipped with a PEEK lid, gas inlet/outlet, and three terminals for electrodes (Redox.me AB).",
+          "source_sha256": "83ef45546eff6966ee24b8dc397f4cade64140c6f867d19d5ab280e3ea463fff"
+        },
+        {
+          "char_end": 542,
+          "char_start": 207,
+          "chunk_id": "mdchk_064092def9767f1d",
+          "document_char_end": 42213,
+          "document_char_start": 41878,
+          "evidence_id": "ev_7e7e3ddd71e14275",
+          "paper_id": "DOI:10.1039_d5dd00111k",
+          "quote": "Cyclic voltammetry (CV) measurements were performed at a scan rate of 20 mV s −1 using a glassy carbon working electrode (2 mm active diameter, PEEK body 6 mm diameter, Redoxme AB), a platinum sheet counter electrode (10 × 10 × 0.1 mm, Dek Research Instrumentation) and an Ag/AgCl reference electrode (6 mm body diameter, Redox.me AB).",
+          "source_sha256": "83ef45546eff6966ee24b8dc397f4cade64140c6f867d19d5ab280e3ea463fff"
+        },
+        {
+          "char_end": 472,
+          "char_start": 389,
+          "chunk_id": "mdchk_064092def9767f1d",
+          "document_char_end": 42143,
+          "document_char_start": 42060,
+          "evidence_id": "ev_d738ece2c2c5169f",
+          "paper_id": "DOI:10.1039_d5dd00111k",
+          "quote": "a platinum sheet counter electrode (10 × 10 × 0.1 mm, Dek Research Instrumentation)",
+          "source_sha256": "83ef45546eff6966ee24b8dc397f4cade64140c6f867d19d5ab280e3ea463fff"
+        },
+        {
+          "char_end": 541,
+          "char_start": 477,
+          "chunk_id": "mdchk_064092def9767f1d",
+          "document_char_end": 42212,
+          "document_char_start": 42148,
+          "evidence_id": "ev_b88a865c23da1164",
+          "paper_id": "DOI:10.1039_d5dd00111k",
+          "quote": "an Ag/AgCl reference electrode (6 mm body diameter, Redox.me AB)",
+          "source_sha256": "83ef45546eff6966ee24b8dc397f4cade64140c6f867d19d5ab280e3ea463fff"
+        },
+        {
+          "char_end": 1013,
+          "char_start": 713,
+          "chunk_id": "mdchk_064092def9767f1d",
+          "document_char_end": 42684,
+          "document_char_start": 42384,
+          "evidence_id": "ev_edb81e0b4a8f4a12",
+          "paper_id": "DOI:10.1039_d5dd00111k",
+          "quote": "Electrolyte solutions were prepared with ultra-pure water (Type 1, 18.2 MU cm at 25 ° C, Ultrapure water system A series, Avantor). All experiments were conducted with 30 mL of 1 mM solute in 1 M KCl elec- trolytes, with solutions sparged with wet N₂ for 30 minutes before initiating any experiments.",
+          "source_sha256": "83ef45546eff6966ee24b8dc397f4cade64140c6f867d19d5ab280e3ea463fff"
+        },
+        {
+          "char_end": 927,
+          "char_start": 845,
+          "chunk_id": "mdchk_064092def9767f1d",
+          "document_char_end": 42598,
+          "document_char_start": 42516,
+          "evidence_id": "ev_9cb80b45e7307e14",
+          "paper_id": "DOI:10.1039_d5dd00111k",
+          "quote": "All experiments were conducted with 30 mL of 1 mM solute in 1 M KCl elec- trolytes",
+          "source_sha256": "83ef45546eff6966ee24b8dc397f4cade64140c6f867d19d5ab280e3ea463fff"
+        },
+        {
+          "char_end": 1013,
+          "char_start": 929,
+          "chunk_id": "mdchk_064092def9767f1d",
+          "document_char_end": 42684,
+          "document_char_start": 42600,
+          "evidence_id": "ev_77a63f264a2d6046",
+          "paper_id": "DOI:10.1039_d5dd00111k",
+          "quote": "with solutions sparged with wet N₂ for 30 minutes before initiating any experiments.",
+          "source_sha256": "83ef45546eff6966ee24b8dc397f4cade64140c6f867d19d5ab280e3ea463fff"
+        },
+        {
+          "char_end": 2016,
+          "char_start": 1654,
+          "chunk_id": "mdchk_109a0370e601ab2f",
+          "document_char_end": 19829,
+          "document_char_start": 19467,
+          "evidence_id": "ev_1f03f2718077cc65",
+          "paper_id": "DOI:10.1039_d5dd00111k",
+          "quote": "It is worthwhile noting that heterogeneous electron transfers for pyrazines can occur at potentials outside the thermodynamic stability for water, resulting in reactions at carbon surfaces (e.g., partial reduction of oxidized species, hydrogen adsorption and evolu- tion 30,31 ) that produce background currents overlapping with the CV response of the pyrazines.",
+          "source_sha256": "cfb31ac48b671b40a2aba5c6b066f6cc4fd3cfe8602f09fd0bb63cdf483fb31e"
+        },
+        {
+          "char_end": 2289,
+          "char_start": 2178,
+          "chunk_id": "mdchk_109a0370e601ab2f",
+          "document_char_end": 20102,
+          "document_char_start": 19991,
+          "evidence_id": "ev_bf33443c279a4871",
+          "paper_id": "DOI:10.1039_d5dd00111k",
+          "quote": "Additionally, a peak separation greater than 0.4 V is observed in the CV, indicating sluggish electron transfer",
+          "source_sha256": "cfb31ac48b671b40a2aba5c6b066f6cc4fd3cfe8602f09fd0bb63cdf483fb31e"
+        },
+        {
+          "char_end": 2350,
+          "char_start": 2178,
+          "chunk_id": "mdchk_109a0370e601ab2f",
+          "document_char_end": 20163,
+          "document_char_start": 19991,
+          "evidence_id": "ev_8d646d0ad0eacf76",
+          "paper_id": "DOI:10.1039_d5dd00111k",
+          "quote": "Additionally, a peak separation greater than 0.4 V is observed in the CV, indicating sluggish electron transfer, which could lead to lower voltaic efficiencies in an AORFB.",
+          "source_sha256": "cfb31ac48b671b40a2aba5c6b066f6cc4fd3cfe8602f09fd0bb63cdf483fb31e"
+        },
+        {
+          "char_end": 343,
+          "char_start": 101,
+          "chunk_id": "mdchk_14ee5e8538bad281",
+          "document_char_end": 20827,
+          "document_char_start": 20585,
+          "evidence_id": "ev_e489cdb0f961b39c",
+          "paper_id": "DOI:10.1039_d5dd00111k",
+          "quote": "Nonetheless, a slight increase in peak separation for both species and a tendency toward hydrogen gas evolution (particularly for (2-aminoethyl) [(pyrazin-2-yl)methyl]amine) may result in lower round-trip efficiency in a working AORFB system.",
+          "source_sha256": "ea70c8c940f256473bc262b0e1a00d235b96692f69942e6633b1b9261ca0a18c"
+        },
+        {
+          "char_end": 874,
+          "char_start": 635,
+          "chunk_id": "mdchk_14ee5e8538bad281",
+          "document_char_end": 21358,
+          "document_char_start": 21119,
+          "evidence_id": "ev_81d659843cb976a5",
+          "paper_id": "DOI:10.1039_d5dd00111k",
+          "quote": "Precisely quantifying energy storage charac- teristics, including any evolution in overpotentials or hydrogen gas, is beyond the scope of this study and will require further analysis in a ow cell conguration under appropriate conditions.",
+          "source_sha256": "ea70c8c940f256473bc262b0e1a00d235b96692f69942e6633b1b9261ca0a18c"
+        },
+        {
+          "char_end": 150,
+          "char_start": 42,
+          "chunk_id": "mdchk_300fa6f36b4b93aa",
+          "document_char_end": 40002,
+          "document_char_start": 39894,
+          "evidence_id": "ev_579ab3e68a8b53bc",
+          "paper_id": "DOI:10.1039_d5dd00111k",
+          "quote": "Potassium hydroxide (Supelco, EMSURE)\nand potassium chloride ($99.0%, Bioreagent) were purchased from Merck.",
+          "source_sha256": "5c867647683b874d814657163720a5257f9bc8cd3db7f45938acf956d7ef8113"
+        },
+        {
+          "char_end": 150,
+          "char_start": 84,
+          "chunk_id": "mdchk_300fa6f36b4b93aa",
+          "document_char_end": 40002,
+          "document_char_start": 39936,
+          "evidence_id": "ev_190245fd1c008b4e",
+          "paper_id": "DOI:10.1039_d5dd00111k",
+          "quote": "potassium chloride ($99.0%, Bioreagent) were purchased from Merck.",
+          "source_sha256": "5c867647683b874d814657163720a5257f9bc8cd3db7f45938acf956d7ef8113"
+        },
+        {
+          "char_end": 291,
+          "char_start": 151,
+          "chunk_id": "mdchk_300fa6f36b4b93aa",
+          "document_char_end": 40143,
+          "document_char_start": 40003,
+          "evidence_id": "ev_7182a3ecdd4a2ad7",
+          "paper_id": "DOI:10.1039_d5dd00111k",
+          "quote": "N-[(pyrazin-2-yl)methyl]formamide (95%) and (2- aminoethyl)[(pyrazin-2-yl)methyl]amine dihydrochloride (95%) were obtained from Enamine Ltd.",
+          "source_sha256": "5c867647683b874d814657163720a5257f9bc8cd3db7f45938acf956d7ef8113"
+        },
+        {
+          "char_end": 268,
+          "char_start": 50,
+          "chunk_id": "mdchk_8ca4eb8c33de9b48",
+          "document_char_end": 41422,
+          "document_char_start": 41204,
+          "evidence_id": "ev_344a5e1217a7dbb6",
+          "paper_id": "DOI:10.1039_d5dd00111k",
+          "quote": "Before\nconducting any experiments, all equipment was thoroughly cleaned with ultra-pure water (Type 1, 18.2 MU cm at 25 °C, Ultrapure water system A series, Avantor) using ultrasonication (Branson 5510) for 20 minutes.",
+          "source_sha256": "b7b43fb7cbcbd5e193ff890a19c559612880219cba8040a2572fe0152502ee70"
+        },
+        {
+          "char_end": 451,
+          "char_start": 393,
+          "chunk_id": "mdchk_8ca4eb8c33de9b48",
+          "document_char_end": 41605,
+          "document_char_start": 41547,
+          "evidence_id": "ev_02d269f33e38d92c",
+          "paper_id": "DOI:10.1039_d5dd00111k",
+          "quote": "followed by an addi- tional 10 minutes of ultrasonication.",
+          "source_sha256": "b7b43fb7cbcbd5e193ff890a19c559612880219cba8040a2572fe0152502ee70"
+        },
+        {
+          "char_end": 515,
+          "char_start": 452,
+          "chunk_id": "mdchk_8ca4eb8c33de9b48",
+          "document_char_end": 41669,
+          "document_char_start": 41606,
+          "evidence_id": "ev_28efe2367d5a87ef",
+          "paper_id": "DOI:10.1039_d5dd00111k",
+          "quote": "All components were then dried at room temperature for one day.",
+          "source_sha256": "b7b43fb7cbcbd5e193ff890a19c559612880219cba8040a2572fe0152502ee70"
+        }
+      ],
+      "evidence_scope": "primary_report",
+      "instruments": [
+        {
+          "entity_id": "inst_6ff4f33c7a419ece",
+          "evidence_ids": [
+            "ev_97085ee26880bea9"
+          ],
+          "manufacturer": "Ivium Technologies",
+          "model": "Octostat 200",
+          "name": "Ivium Octostat 200",
+          "settings": {}
+        },
+        {
+          "entity_id": "inst_7479948e868b5eb9",
+          "evidence_ids": [
+            "ev_c207646962d2a533"
+          ],
+          "manufacturer": "Redoxme AB",
+          "model": "2 mm active diameter, PEEK body 6 mm diameter",
+          "name": "glassy carbon working electrode",
+          "settings": {}
+        },
+        {
+          "entity_id": "inst_910efa5370ffc5cb",
+          "evidence_ids": [
+            "ev_d738ece2c2c5169f"
+          ],
+          "manufacturer": "Dek Research Instrumentation",
+          "model": "10 × 10 × 0.1 mm",
+          "name": "platinum sheet counter electrode",
+          "settings": {}
+        },
+        {
+          "entity_id": "inst_5904ae68bfa6f53e",
+          "evidence_ids": [
+            "ev_b88a865c23da1164"
+          ],
+          "manufacturer": "Redox.me AB",
+          "model": "6 mm body diameter",
+          "name": "Ag/AgCl reference electrode",
+          "settings": {}
+        }
+      ],
+      "materials": [
+        {
+          "amount": null,
+          "entity_id": "mat_65f7e661001ee4ef",
+          "evidence_ids": [
+            "ev_579ab3e68a8b53bc"
+          ],
+          "name": "potassium hydroxide",
+          "pretreatment": null,
+          "purity": null,
+          "role": null,
+          "supplier": "Merck"
+        },
+        {
+          "amount": null,
+          "entity_id": "mat_39e8704abca843f0",
+          "evidence_ids": [
+            "ev_190245fd1c008b4e"
+          ],
+          "name": "potassium chloride",
+          "pretreatment": null,
+          "purity": "99.0%",
+          "role": null,
+          "supplier": "Merck"
+        },
+        {
+          "amount": null,
+          "entity_id": "mat_2110e6ae31c49122",
+          "evidence_ids": [
+            "ev_7182a3ecdd4a2ad7"
+          ],
+          "name": "N-[(pyrazin-2-yl)methyl]formamide",
+          "pretreatment": null,
+          "purity": "95%",
+          "role": null,
+          "supplier": "Enamine Ltd"
+        },
+        {
+          "amount": "30 mL",
+          "entity_id": "mat_54e723c7bd9be930",
+          "evidence_ids": [
+            "ev_edb81e0b4a8f4a12"
+          ],
+          "name": "ultra-pure water",
+          "pretreatment": "sparged with wet N₂ for 30 minutes",
+          "purity": null,
+          "role": null,
+          "supplier": "Avantor"
+        }
+      ],
+      "paper_id": "DOI:10.1039_d5dd00111k",
+      "protocol_id": "protocol_4bed892ef8e4c3c9",
+      "protocol_name": "Cyclic voltammetry for aqueous organic electrolyte characterization",
+      "protocol_type": "electrochemical characterization",
+      "relations": [],
+      "results": [
+        {
+          "context": "Additionally, a peak separation greater than 0.4 V is observed in the CV, indicating sluggish electron transfer",
+          "evidence_ids": [
+            "ev_bf33443c279a4871"
+          ],
+          "metric": "peak separation",
+          "raw_value": "greater than 0.4 V",
+          "result_id": "result_582caa84d260ab76"
+        }
+      ],
+      "scientific_chunk_ids": [],
+      "software": [],
+      "source_chunk_ids": [
+        "mdchk_064092def9767f1d",
+        "mdchk_109a0370e601ab2f",
+        "mdchk_14ee5e8538bad281",
+        "mdchk_300fa6f36b4b93aa",
+        "mdchk_8ca4eb8c33de9b48"
+      ],
+      "source_paper_tier": "primary_battery_electrolyte",
+      "steps": [
+        {
+          "action": "Before\nconducting any experiments, all equipment was thoroughly cleaned with ultra-pure water (Type 1, 18.2 MU cm at 25 °C, Ultrapure water system A series, Avantor) using ultrasonication (Branson 5510) for 20 minutes.",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_344a5e1217a7dbb6"
+          ],
+          "notes": null,
+          "order": 1,
+          "step_id": "step_f978ff24b9869ae0"
+        },
+        {
+          "action": "followed by an addi- tional 10 minutes of ultrasonication.",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_02d269f33e38d92c"
+          ],
+          "notes": null,
+          "order": 2,
+          "step_id": "step_fc830574c5bc6799"
+        },
+        {
+          "action": "All components were then dried at room temperature for one day.",
+          "conditions": [
+            "room temperature"
+          ],
+          "evidence_ids": [
+            "ev_28efe2367d5a87ef"
+          ],
+          "notes": null,
+          "order": 3,
+          "step_id": "step_9c6dcf6f26a34e64"
+        },
+        {
+          "action": "All experiments were conducted with 30 mL of 1 mM solute in 1 M KCl elec- trolytes",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_9cb80b45e7307e14"
+          ],
+          "notes": null,
+          "order": 4,
+          "step_id": "step_d1c71b7b063a4822"
+        },
+        {
+          "action": "with solutions sparged with wet N₂ for 30 minutes before initiating any experiments.",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_77a63f264a2d6046"
+          ],
+          "notes": null,
+          "order": 5,
+          "step_id": "step_cc47de50ee63c609"
+        },
+        {
+          "action": "Cyclic voltammetry (CV) measurements were performed at a scan rate of 20 mV s −1 using a glassy carbon working electrode (2 mm active diameter, PEEK body 6 mm diameter, Redoxme AB), a platinum sheet counter electrode (10 × 10 × 0.1 mm, Dek Research Instrumentation) and an Ag/AgCl reference electrode (6 mm body diameter, Redox.me AB). The electrochemical cells had a glass chamber with a total volume of 50 mL, equipped with a PEEK lid, gas inlet/outlet, and three terminals for electrodes (Redox.me AB).",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_59fbb07ac31f83a7"
+          ],
+          "notes": null,
+          "order": 6,
+          "step_id": "step_4142818867dcba87"
+        }
+      ]
+    },
+    {
+      "caveats": [],
+      "characterization": [],
+      "evidence": [
+        {
+          "char_end": 119,
+          "char_start": 9,
+          "chunk_id": "mdchk_1d40562348a9f5c0",
+          "document_char_end": 42917,
+          "document_char_start": 42807,
+          "evidence_id": "ev_157d52fe4a85211a",
+          "paper_id": "DOI:10.1039_d5dd00111k",
+          "quote": "Quartz cuvettes (10 mm, Avantor) were cleaned with ethanol (absolute, $99.5%, Merck) and dried with an N₂ ow.",
+          "source_sha256": "03d6217d9d3bff88fa75bf25f9904a96e100b8cf648b30cd2a455f7526d235fa"
+        },
+        {
+          "char_end": 93,
+          "char_start": 9,
+          "chunk_id": "mdchk_1d40562348a9f5c0",
+          "document_char_end": 42891,
+          "document_char_start": 42807,
+          "evidence_id": "ev_ad716cb7ede7e696",
+          "paper_id": "DOI:10.1039_d5dd00111k",
+          "quote": "Quartz cuvettes (10 mm, Avantor) were cleaned with ethanol (absolute, $99.5%, Merck)",
+          "source_sha256": "03d6217d9d3bff88fa75bf25f9904a96e100b8cf648b30cd2a455f7526d235fa"
+        },
+        {
+          "char_end": 93,
+          "char_start": 47,
+          "chunk_id": "mdchk_1d40562348a9f5c0",
+          "document_char_end": 42891,
+          "document_char_start": 42845,
+          "evidence_id": "ev_761da1a69a2cf172",
+          "paper_id": "DOI:10.1039_d5dd00111k",
+          "quote": "cleaned with ethanol (absolute, $99.5%, Merck)",
+          "source_sha256": "03d6217d9d3bff88fa75bf25f9904a96e100b8cf648b30cd2a455f7526d235fa"
+        },
+        {
+          "char_end": 119,
+          "char_start": 94,
+          "chunk_id": "mdchk_1d40562348a9f5c0",
+          "document_char_end": 42917,
+          "document_char_start": 42892,
+          "evidence_id": "ev_d19b803206615d03",
+          "paper_id": "DOI:10.1039_d5dd00111k",
+          "quote": "and dried with an N₂ ow.",
+          "source_sha256": "03d6217d9d3bff88fa75bf25f9904a96e100b8cf648b30cd2a455f7526d235fa"
+        },
+        {
+          "char_end": 234,
+          "char_start": 120,
+          "chunk_id": "mdchk_1d40562348a9f5c0",
+          "document_char_end": 43032,
+          "document_char_start": 42918,
+          "evidence_id": "ev_cb5432fb1671aad8",
+          "paper_id": "DOI:10.1039_d5dd00111k",
+          "quote": "Calibration curves were constructed by preparing stock solu- tions of 1 mM solute in three different electrolytes.",
+          "source_sha256": "03d6217d9d3bff88fa75bf25f9904a96e100b8cf648b30cd2a455f7526d235fa"
+        },
+        {
+          "char_end": 323,
+          "char_start": 235,
+          "chunk_id": "mdchk_1d40562348a9f5c0",
+          "document_char_end": 43121,
+          "document_char_start": 43033,
+          "evidence_id": "ev_75516860dd95b7d7",
+          "paper_id": "DOI:10.1039_d5dd00111k",
+          "quote": "From each stock solution, 0.1, 0.2, 0.3, 0.4, and 0.5 mL were aliquoted into new samples",
+          "source_sha256": "03d6217d9d3bff88fa75bf25f9904a96e100b8cf648b30cd2a455f7526d235fa"
+        },
+        {
+          "char_end": 379,
+          "char_start": 324,
+          "chunk_id": "mdchk_1d40562348a9f5c0",
+          "document_char_end": 43177,
+          "document_char_start": 43122,
+          "evidence_id": "ev_cf78d2333e43b02a",
+          "paper_id": "DOI:10.1039_d5dd00111k",
+          "quote": "and diluted with 3 mL of the corresponding electrolyte.",
+          "source_sha256": "03d6217d9d3bff88fa75bf25f9904a96e100b8cf648b30cd2a455f7526d235fa"
+        },
+        {
+          "char_end": 452,
+          "char_start": 380,
+          "chunk_id": "mdchk_1d40562348a9f5c0",
+          "document_char_end": 43250,
+          "document_char_start": 43178,
+          "evidence_id": "ev_6eef774730cbcb50",
+          "paper_id": "DOI:10.1039_d5dd00111k",
+          "quote": "These diluted solutions were measured with the UV- vis spectrophotometer",
+          "source_sha256": "03d6217d9d3bff88fa75bf25f9904a96e100b8cf648b30cd2a455f7526d235fa"
+        },
+        {
+          "char_end": 549,
+          "char_start": 454,
+          "chunk_id": "mdchk_1d40562348a9f5c0",
+          "document_char_end": 43347,
+          "document_char_start": 43252,
+          "evidence_id": "ev_832b25113964898a",
+          "paper_id": "DOI:10.1039_d5dd00111k",
+          "quote": "and calibration curves were plotted based on maximum absorbance as a function of concentration.",
+          "source_sha256": "03d6217d9d3bff88fa75bf25f9904a96e100b8cf648b30cd2a455f7526d235fa"
+        },
+        {
+          "char_end": 732,
+          "char_start": 550,
+          "chunk_id": "mdchk_1d40562348a9f5c0",
+          "document_char_end": 43530,
+          "document_char_start": 43348,
+          "evidence_id": "ev_1f281f3c3367e5cd",
+          "paper_id": "DOI:10.1039_d5dd00111k",
+          "quote": "For saturated solutions, 1–2 mL of each electrolyte was used, and solutes were gradually added and le to stir overnight. The following day, any remaining solid indicated saturation.",
+          "source_sha256": "03d6217d9d3bff88fa75bf25f9904a96e100b8cf648b30cd2a455f7526d235fa"
+        },
+        {
+          "char_end": 820,
+          "char_start": 733,
+          "chunk_id": "mdchk_1d40562348a9f5c0",
+          "document_char_end": 43618,
+          "document_char_start": 43531,
+          "evidence_id": "ev_bd3f03e0d2881df5",
+          "paper_id": "DOI:10.1039_d5dd00111k",
+          "quote": "0.1 mL of these solutions were ltered using hydrophilic PTFE lters (0.22 mm, Avantor)",
+          "source_sha256": "03d6217d9d3bff88fa75bf25f9904a96e100b8cf648b30cd2a455f7526d235fa"
+        },
+        {
+          "char_end": 906,
+          "char_start": 821,
+          "chunk_id": "mdchk_1d40562348a9f5c0",
+          "document_char_end": 43704,
+          "document_char_start": 43619,
+          "evidence_id": "ev_2d890af77109bea6",
+          "paper_id": "DOI:10.1039_d5dd00111k",
+          "quote": "and diluted until their maximum absor- bance fell within the calibration curve range.",
+          "source_sha256": "03d6217d9d3bff88fa75bf25f9904a96e100b8cf648b30cd2a455f7526d235fa"
+        }
+      ],
+      "evidence_scope": "primary_report",
+      "instruments": [],
+      "materials": [
+        {
+          "amount": "10 mm",
+          "entity_id": "mat_f2ee6cd780bee8db",
+          "evidence_ids": [
+            "ev_157d52fe4a85211a"
+          ],
+          "name": "quartz cuvettes",
+          "pretreatment": null,
+          "purity": null,
+          "role": null,
+          "supplier": "Avantor"
+        },
+        {
+          "amount": null,
+          "entity_id": "mat_d38df37966ef2c56",
+          "evidence_ids": [
+            "ev_761da1a69a2cf172"
+          ],
+          "name": "ethanol",
+          "pretreatment": null,
+          "purity": null,
+          "role": null,
+          "supplier": "Merck"
+        }
+      ],
+      "paper_id": "DOI:10.1039_d5dd00111k",
+      "protocol_id": "protocol_154c3f6a4c753896",
+      "protocol_name": "UV-vis spectroscopy for solubility determination",
+      "protocol_type": "spectroscopic characterization",
+      "relations": [],
+      "results": [],
+      "scientific_chunk_ids": [],
+      "software": [],
+      "source_chunk_ids": [
+        "mdchk_1d40562348a9f5c0"
+      ],
+      "source_paper_tier": "primary_battery_electrolyte",
+      "steps": [
+        {
+          "action": "Quartz cuvettes (10 mm, Avantor) were cleaned with ethanol (absolute, $99.5%, Merck)",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_ad716cb7ede7e696"
+          ],
+          "notes": null,
+          "order": 1,
+          "step_id": "step_f7a4e0a52311f7cb"
+        },
+        {
+          "action": "and dried with an N₂ ow.",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_d19b803206615d03"
+          ],
+          "notes": null,
+          "order": 2,
+          "step_id": "step_154c3f6a4c753896"
+        },
+        {
+          "action": "Calibration curves were constructed by preparing stock solu- tions of 1 mM solute in three different electrolytes.",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_cb5432fb1671aad8"
+          ],
+          "notes": null,
+          "order": 3,
+          "step_id": "step_7d06f1030c4a9233"
+        },
+        {
+          "action": "From each stock solution, 0.1, 0.2, 0.3, 0.4, and 0.5 mL were aliquoted into new samples",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_75516860dd95b7d7"
+          ],
+          "notes": null,
+          "order": 4,
+          "step_id": "step_992e9d9f4e855027"
+        },
+        {
+          "action": "and diluted with 3 mL of the corresponding electrolyte.",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_cf78d2333e43b02a"
+          ],
+          "notes": null,
+          "order": 5,
+          "step_id": "step_7b0f467b0713ca19"
+        },
+        {
+          "action": "These diluted solutions were measured with the UV- vis spectrophotometer",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_6eef774730cbcb50"
+          ],
+          "notes": null,
+          "order": 6,
+          "step_id": "step_2c31ea0aa085e814"
+        },
+        {
+          "action": "and calibration curves were plotted based on maximum absorbance as a function of concentration.",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_832b25113964898a"
+          ],
+          "notes": null,
+          "order": 7,
+          "step_id": "step_6bf9fa34750ec921"
+        },
+        {
+          "action": "For saturated solutions, 1–2 mL of each electrolyte was used, and solutes were gradually added and le to stir overnight. The following day, any remaining solid indicated saturation.",
+          "conditions": [
+            "stir overnight"
+          ],
+          "evidence_ids": [
+            "ev_1f281f3c3367e5cd"
+          ],
+          "notes": null,
+          "order": 8,
+          "step_id": "step_c6633b8379ade817"
+        },
+        {
+          "action": "0.1 mL of these solutions were ltered using hydrophilic PTFE lters (0.22 mm, Avantor)",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_bd3f03e0d2881df5"
+          ],
+          "notes": null,
+          "order": 9,
+          "step_id": "step_e8bb5b851c32cd95"
+        },
+        {
+          "action": "and diluted until their maximum absor- bance fell within the calibration curve range.",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_2d890af77109bea6"
+          ],
+          "notes": null,
+          "order": 10,
+          "step_id": "step_cbaa8389ddd34d55"
+        }
+      ]
+    },
+    {
+      "caveats": [],
+      "characterization": [],
+      "evidence": [
+        {
+          "char_end": 204,
+          "char_start": 137,
+          "chunk_id": "mdchk_19adf92deeef468d",
+          "document_char_end": 37404,
+          "document_char_start": 37337,
+          "evidence_id": "ev_6204d5f8d7ccfe67",
+          "paper_id": "DOI:10.1039_d5dd00111k",
+          "quote": "Each molecule was placed in a cubic box with an edge length of 50 Å",
+          "source_sha256": "2a973b023bf5823639365188f86723a240cdadff0700b8dfddb3c553ca3abeea"
+        },
+        {
+          "char_end": 286,
+          "char_start": 206,
+          "chunk_id": "mdchk_19adf92deeef468d",
+          "document_char_end": 37486,
+          "document_char_start": 37406,
+          "evidence_id": "ev_e0391d8639d8dfd2",
+          "paper_id": "DOI:10.1039_d5dd00111k",
+          "quote": "and the OPLS4 50 force eld was applied to calculate the atomistic interactions.",
+          "source_sha256": "2a973b023bf5823639365188f86723a240cdadff0700b8dfddb3c553ca3abeea"
+        },
+        {
+          "char_end": 400,
+          "char_start": 287,
+          "chunk_id": "mdchk_19adf92deeef468d",
+          "document_char_end": 37600,
+          "document_char_start": 37487,
+          "evidence_id": "ev_04fbda67f2784f81",
+          "paper_id": "DOI:10.1039_d5dd00111k",
+          "quote": "The simulations were performed in the canonical NVT⁵⁷ ensemble at a temperature of 300 K and a pressure of 1 atm.",
+          "source_sha256": "2a973b023bf5823639365188f86723a240cdadff0700b8dfddb3c553ca3abeea"
+        },
+        {
+          "char_end": 509,
+          "char_start": 401,
+          "chunk_id": "mdchk_19adf92deeef468d",
+          "document_char_end": 37709,
+          "document_char_start": 37601,
+          "evidence_id": "ev_9e209b2d4d51e0a3",
+          "paper_id": "DOI:10.1039_d5dd00111k",
+          "quote": "Temperature control was managed using the Nose–Hoover chain thermo- stat⁵⁸ with a relaxation time of 1.0 ps.",
+          "source_sha256": "2a973b023bf5823639365188f86723a240cdadff0700b8dfddb3c553ca3abeea"
+        },
+        {
+          "char_end": 567,
+          "char_start": 510,
+          "chunk_id": "mdchk_19adf92deeef468d",
+          "document_char_end": 37767,
+          "document_char_start": 37710,
+          "evidence_id": "ev_af52201238693741",
+          "paper_id": "DOI:10.1039_d5dd00111k",
+          "quote": "A cut-off radius of 9 Å was set for Coulomb interactions.",
+          "source_sha256": "2a973b023bf5823639365188f86723a240cdadff0700b8dfddb3c553ca3abeea"
+        },
+        {
+          "char_end": 667,
+          "char_start": 568,
+          "chunk_id": "mdchk_19adf92deeef468d",
+          "document_char_end": 37867,
+          "document_char_start": 37768,
+          "evidence_id": "ev_f8edf1abbf79df6a",
+          "paper_id": "DOI:10.1039_d5dd00111k",
+          "quote": "Each system underwent 100 ns of MD simulations, with trajectory frames saved at 100 ps inter- vals.",
+          "source_sha256": "2a973b023bf5823639365188f86723a240cdadff0700b8dfddb3c553ca3abeea"
+        },
+        {
+          "char_end": 719,
+          "char_start": 668,
+          "chunk_id": "mdchk_19adf92deeef468d",
+          "document_char_end": 37919,
+          "document_char_start": 37868,
+          "evidence_id": "ev_ffa538acd97a9777",
+          "paper_id": "DOI:10.1039_d5dd00111k",
+          "quote": "MD data analysis was performed using the Simulation",
+          "source_sha256": "2a973b023bf5823639365188f86723a240cdadff0700b8dfddb3c553ca3abeea"
+        }
+      ],
+      "evidence_scope": "primary_report",
+      "instruments": [],
+      "materials": [],
+      "paper_id": "DOI:10.1039_d5dd00111k",
+      "protocol_id": "protocol_a49a2af057f12492",
+      "protocol_name": "Molecular dynamics simulations for stability evaluation",
+      "protocol_type": "computational simulation",
+      "relations": [],
+      "results": [],
+      "scientific_chunk_ids": [],
+      "software": [],
+      "source_chunk_ids": [
+        "mdchk_19adf92deeef468d"
+      ],
+      "source_paper_tier": "primary_battery_electrolyte",
+      "steps": [
+        {
+          "action": "Each molecule was placed in a cubic box with an edge length of 50 Å",
+          "conditions": [
+            "edge length of 50 Å"
+          ],
+          "evidence_ids": [
+            "ev_6204d5f8d7ccfe67"
+          ],
+          "notes": null,
+          "order": 1,
+          "step_id": "step_78da9bbe1f283f98"
+        },
+        {
+          "action": "and the OPLS4 50 force eld was applied to calculate the atomistic interactions.",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_e0391d8639d8dfd2"
+          ],
+          "notes": null,
+          "order": 2,
+          "step_id": "step_5242fb9d475010b7"
+        },
+        {
+          "action": "The simulations were performed in the canonical NVT⁵⁷ ensemble at a temperature of 300 K and a pressure of 1 atm.",
+          "conditions": [
+            "temperature of 300 K",
+            "pressure of 1 atm"
+          ],
+          "evidence_ids": [
+            "ev_04fbda67f2784f81"
+          ],
+          "notes": null,
+          "order": 3,
+          "step_id": "step_a49a2af057f12492"
+        },
+        {
+          "action": "Temperature control was managed using the Nose–Hoover chain thermo- stat⁵⁸ with a relaxation time of 1.0 ps.",
+          "conditions": [
+            "relaxation time of 1.0 ps"
+          ],
+          "evidence_ids": [
+            "ev_9e209b2d4d51e0a3"
+          ],
+          "notes": null,
+          "order": 4,
+          "step_id": "step_fe5f9d3f4df8ff51"
+        },
+        {
+          "action": "A cut-off radius of 9 Å was set for Coulomb interactions.",
+          "conditions": [
+            "9 Å"
+          ],
+          "evidence_ids": [
+            "ev_af52201238693741"
+          ],
+          "notes": null,
+          "order": 5,
+          "step_id": "step_c37b9cbfe4f29a04"
+        },
+        {
+          "action": "Each system underwent 100 ns of MD simulations, with trajectory frames saved at 100 ps inter- vals.",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_f8edf1abbf79df6a"
+          ],
+          "notes": null,
+          "order": 6,
+          "step_id": "step_b371bfdc9c1f47e0"
+        },
+        {
+          "action": "MD data analysis was performed using the Simulation",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_ffa538acd97a9777"
+          ],
+          "notes": null,
+          "order": 7,
+          "step_id": "step_da217c3156dd77c2"
+        }
+      ]
+    }
+  ],
+  "region": "us-east-1",
+  "schema_version": "bedrock-teacher-paper-cache-v0.2",
+  "teacher_response": {
+    "diagnostic": null,
+    "invocation_count": 1,
+    "metrics": {
+      "latencyMs": 86998
+    },
+    "raw_text": " ```json\n{\n  \"protocols\": [\n    {\n      \"source_chunk_ids\": [\"mdchk_064092def9767f1d\", \"mdchk_300fa6f36b4b93aa\", \"mdchk_8ca4eb8c33de9b48\"],\n      \"protocol_name\": \"Cyclic voltammetry for aqueous organic electrolyte characterization\",\n      \"protocol_type\": \"electrochemical characterization\",\n      \"materials\": [\n        {\n          \"source_chunk_id\": \"mdchk_300fa6f36b4b93aa\",\n          \"name\": \"potassium hydroxide\",\n          \"role\": \"electrolyte component\",\n          \"amount\": null,\n          \"purity\": null,\n          \"supplier\": \"Merck\",\n          \"pretreatment\": null,\n          \"evidence_quote\": \"Potassium hydroxide (Supelco, EMSURE) and potassium chloride ($99.0%, Bioreagent) were purchased from Merck.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_300fa6f36b4b93aa\",\n          \"name\": \"potassium chloride\",\n          \"role\": \"supporting electrolyte\",\n          \"amount\": \"1 M\",\n          \"purity\": \"99.0%\",\n          \"supplier\": \"Merck\",\n          \"pretreatment\": null,\n          \"evidence_quote\": \"potassium chloride ($99.0%, Bioreagent) were purchased from Merck.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_300fa6f36b4b93aa\",\n          \"name\": \"N-[(pyrazin-2-yl)methyl]formamide\",\n          \"role\": \"analyte\",\n          \"amount\": \"1 mM\",\n          \"purity\": \"95%\",\n          \"supplier\": \"Enamine Ltd\",\n          \"pretreatment\": null,\n          \"evidence_quote\": \"N-[(pyrazin-2-yl)methyl]formamide (95%) and (2- aminoethyl)[(pyrazin-2-yl)methyl]amine dihydrochloride (95%) were obtained from Enamine Ltd.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_300fa6f36b4b93aa\",\n          \"name\": \"(2-aminoethyl)[(pyrazin-2-yl)methyl]amine dihydrochloride\",\n          \"role\": \"analyte\",\n          \"amount\": \"1 mM\",\n          \"purity\": \"95%\",\n          \"supplier\": \"Enamine Ltd\",\n          \"pretreatment\": null,\n          \"evidence_quote\": \"N-[(pyrazin-2-yl)methyl]formamide (95%) and (2- aminoethyl)[(pyrazin-2-yl)methyl]amine dihydrochloride (95%) were obtained from Enamine Ltd.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_064092def9767f1d\",\n          \"name\": \"ultra-pure water\",\n          \"role\": \"solvent\",\n          \"amount\": \"30 mL\",\n          \"purity\": \"Type 1, 18.2 MU cm at 25 °C\",\n          \"supplier\": \"Avantor\",\n          \"pretreatment\": \"sparged with wet N₂ for 30 minutes\",\n          \"evidence_quote\": \"Electrolyte solutions were prepared with ultra-pure water (Type 1, 18.2 MU cm at 25 ° C, Ultrapure water system A series, Avantor). All experiments were conducted with 30 mL of 1 mM solute in 1 M KCl elec- trolytes, with solutions sparged with wet N₂ for 30 minutes before initiating any experiments.\"\n        }\n      ],\n      \"instruments\": [\n        {\n          \"source_chunk_id\": \"mdchk_064092def9767f1d\",\n          \"name\": \"Ivium Octostat 200\",\n          \"model\": \"Octostat 200\",\n          \"manufacturer\": \"Ivium Technologies\",\n          \"settings\": {},\n          \"evidence_quote\": \"Electrochemical tests were con- ducted using an Ivium Octostat 200 (Ivium Technologies)\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_064092def9767f1d\",\n          \"name\": \"glassy carbon working electrode\",\n          \"model\": \"2 mm active diameter, PEEK body 6 mm diameter\",\n          \"manufacturer\": \"Redoxme AB\",\n          \"settings\": {},\n          \"evidence_quote\": \"Cyclic voltammetry (CV) measurements were performed at a scan rate of 20 mV s −1 using a glassy carbon working electrode (2 mm active diameter, PEEK body 6 mm diameter, Redoxme AB)\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_064092def9767f1d\",\n          \"name\": \"platinum sheet counter electrode\",\n          \"model\": \"10 × 10 × 0.1 mm\",\n          \"manufacturer\": \"Dek Research Instrumentation\",\n          \"settings\": {},\n          \"evidence_quote\": \"a platinum sheet counter electrode (10 × 10 × 0.1 mm, Dek Research Instrumentation)\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_064092def9767f1d\",\n          \"name\": \"Ag/AgCl reference electrode\",\n          \"model\": \"6 mm body diameter\",\n          \"manufacturer\": \"Redox.me AB\",\n          \"settings\": {},\n          \"evidence_quote\": \"an Ag/AgCl reference electrode (6 mm body diameter, Redox.me AB)\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_8ca4eb8c33de9b48\",\n          \"name\": \"ultrasonicator\",\n          \"model\": \"Branson 5510\",\n          \"manufacturer\": \"Branson\",\n          \"settings\": {\"duration\": \"20 minutes\"},\n          \"evidence_quote\": \"ultrasonication (Branson 5510) for 20 minutes\"\n        }\n      ],\n      \"software\": [],\n      \"steps\": [\n        {\n          \"source_chunk_id\": \"mdchk_8ca4eb8c33de9b48\",\n          \"order\": 1,\n          \"action\": \"clean all equipment with ultra-pure water using ultrasonication\",\n          \"conditions\": [\"ultra-pure water (Type 1, 18.2 MU cm at 25 °C)\"],\n          \"notes\": \"20 minutes duration\",\n          \"evidence_quote\": \"Before conducting any experiments, all equipment was thoroughly cleaned with ultra-pure water (Type 1, 18.2 MU cm at 25 °C, Ultrapure water system A series, Avantor) using ultrasonication (Branson 5510) for 20 minutes.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_8ca4eb8c33de9b48\",\n          \"order\": 2,\n          \"action\": \"polish electrodes to mirror finish with diamond and alumina slurries\",\n          \"conditions\": [],\n          \"notes\": \"PK-4, BASMF2060 slurries from Bioanalytical Systems Inc.\",\n          \"evidence_quote\": \"Electrodes were polished to a mirror finish with diamond and alumina slurries (PK-4, BASMF2060, Bioanalytical Systems Inc.)\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_8ca4eb8c33de9b48\",\n          \"order\": 3,\n          \"action\": \"ultrasonicate polished electrodes\",\n          \"conditions\": [],\n          \"notes\": \"10 minutes additional ultrasonication\",\n          \"evidence_quote\": \"followed by an addi- tional 10 minutes of ultrasonication.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_8ca4eb8c33de9b48\",\n          \"order\": 4,\n          \"action\": \"dry all components at room temperature\",\n          \"conditions\": [\"room temperature\"],\n          \"notes\": \"one day drying time\",\n          \"evidence_quote\": \"All components were then dried at room temperature for one day.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_064092def9767f1d\",\n          \"order\": 5,\n          \"action\": \"prepare electrolyte solution with 1 mM solute in 1 M KCl\",\n          \"conditions\": [\"30 mL volume\"],\n          \"notes\": null,\n          \"evidence_quote\": \"All experiments were conducted with 30 mL of 1 mM solute in 1 M KCl elec- trolytes\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_064092def9767f1d\",\n          \"order\": 6,\n          \"action\": \"sparge solution with wet N₂\",\n          \"conditions\": [],\n          \"notes\": \"30 minutes before initiating experiments\",\n          \"evidence_quote\": \"with solutions sparged with wet N₂ for 30 minutes before initiating any experiments.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_064092def9767f1d\",\n          \"order\": 7,\n          \"action\": \"perform cyclic voltammetry measurements\",\n          \"conditions\": [\"scan rate of 20 mV s⁻¹\", \"nitrogen atmosphere\", \"22.7 °C\", \"gas bubbler filled with water\"],\n          \"notes\": null,\n          \"evidence_quote\": \"Cyclic voltammetry (CV) measurements were performed at a scan rate of 20 mV s −1 using a glassy carbon working electrode (2 mm active diameter, PEEK body 6 mm diameter, Redoxme AB), a platinum sheet counter electrode (10 × 10 × 0.1 mm, Dek Research Instrumentation) and an Ag/AgCl reference electrode (6 mm body diameter, Redox.me AB). The electrochemical cells had a glass chamber with a total volume of 50 mL, equipped with a PEEK lid, gas inlet/outlet, and three terminals for electrodes (Redox.me AB).\"\n        }\n      ],\n      \"characterization\": [\n        {\n          \"source_chunk_id\": \"mdchk_064092def9767f1d\",\n          \"technique\": \"cyclic voltammetry\",\n          \"settings\": {\"scan_rate\": \"20 mV s⁻¹\", \"temperature\": \"22.7 °C\", \"atmosphere\": \"nitrogen with water-filled gas bubbler\"},\n          \"output\": null,\n          \"evidence_quote\": \"Cyclic voltammetry (CV) measurements were performed at a scan rate of 20 mV s −1 using a glassy carbon working electrode (2 mm active diameter, PEEK body 6 mm diameter, Redoxme AB), a platinum sheet counter electrode (10 × 10 × 0.1 mm, Dek Research Instrumentation) and an Ag/AgCl reference electrode (6 mm body diameter, Redox.me AB).\"\n        }\n      ],\n      \"results\": [\n        {\n          \"source_chunk_id\": \"mdchk_109a0370e601ab2f\",\n          \"metric\": \"redox potential difference between calculated and experimental values\",\n          \"raw_value\": \"less than 0.1 V\",\n          \"context\": \"for pyrazine compounds\",\n          \"evidence_quote\": \"the calculated redox potentials align well with the experimentally determined values, with differences of less than 0.1 V (Table 1).\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_109a0370e601ab2f\",\n          \"metric\": \"peak separation\",\n          \"raw_value\": \"greater than 0.4 V\",\n          \"context\": \"in CV measurements of pyrazines\",\n          \"evidence_quote\": \"Additionally, a peak separation greater than 0.4 V is observed in the CV, indicating sluggish electron transfer\"\n        }\n      ],\n      \"caveats\": [\n        {\n          \"source_chunk_id\": \"mdchk_109a0370e601ab2f\",\n          \"text\": \"Heterogeneous electron transfers for pyrazines can occur at potentials outside the thermodynamic stability for water, resulting in reactions at carbon surfaces that produce background currents overlapping with the CV response\",\n          \"evidence_quote\": \"It is worthwhile noting that heterogeneous electron transfers for pyrazines can occur at potentials outside the thermodynamic stability for water, resulting in reactions at carbon surfaces (e.g., partial reduction of oxidized species, hydrogen adsorption and evolu- tion 30,31 ) that produce background currents overlapping with the CV response of the pyrazines.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_109a0370e601ab2f\",\n          \"text\": \"Peak separation greater than 0.4 V indicates sluggish electron transfer, which could lead to lower voltaic efficiencies in an AORFB\",\n          \"evidence_quote\": \"Additionally, a peak separation greater than 0.4 V is observed in the CV, indicating sluggish electron transfer, which could lead to lower voltaic efficiencies in an AORFB.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_14ee5e8538bad281\",\n          \"text\": \"Slight increase in peak separation and tendency toward hydrogen gas evolution may result in lower round-trip efficiency in a working AORFB system\",\n          \"evidence_quote\": \"Nonetheless, a slight increase in peak separation for both species and a tendency toward hydrogen gas evolution (particularly for (2-aminoethyl) [(pyrazin-2-yl)methyl]amine) may result in lower round-trip efficiency in a working AORFB system.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_14ee5e8538bad281\",\n          \"text\": \"Precisely quantifying energy storage characteristics is beyond the scope of this study and will require further analysis in a flow cell configuration\",\n          \"evidence_quote\": \"Precisely quantifying energy storage charac- teristics, including any evolution in overpotentials or hydrogen gas, is beyond the scope of this study and will require further analysis in a ow cell conguration under appropriate conditions.\"\n        }\n      ]\n    },\n    {\n      \"source_chunk_ids\": [\"mdchk_1d40562348a9f5c0\"],\n      \"protocol_name\": \"UV-vis spectroscopy for solubility determination\",\n      \"protocol_type\": \"spectroscopic characterization\",\n      \"materials\": [\n        {\n          \"source_chunk_id\": \"mdchk_1d40562348a9f5c0\",\n          \"name\": \"quartz cuvettes\",\n          \"role\": \"sample container\",\n          \"amount\": \"10 mm\",\n          \"purity\": null,\n          \"supplier\": \"Avantor\",\n          \"pretreatment\": \"cleaned with ethanol and dried with N₂ flow\",\n          \"evidence_quote\": \"Quartz cuvettes (10 mm, Avantor) were cleaned with ethanol (absolute, $99.5%, Merck) and dried with an N₂ ow.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_1d40562348a9f5c0\",\n          \"name\": \"ethanol\",\n          \"role\": \"cleaning solvent\",\n          \"amount\": null,\n          \"purity\": \"absolute, ≥99.5%\",\n          \"supplier\": \"Merck\",\n          \"pretreatment\": null,\n          \"evidence_quote\": \"cleaned with ethanol (absolute, $99.5%, Merck)\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_1d40562348a9f5c0\",\n          \"name\": \"hydrophilic PTFE filters\",\n          \"role\": \"filtration\",\n          \"amount\": \"0.22 mm\",\n          \"purity\": null,\n          \"supplier\": \"Avantor\",\n          \"pretreatment\": null,\n          \"evidence_quote\": \"0.1 mL of these solutions were ltered using hydrophilic PTFE lters (0.22 mm, Avantor)\"\n        }\n      ],\n      \"instruments\": [],\n      \"software\": [],\n      \"steps\": [\n        {\n          \"source_chunk_id\": \"mdchk_1d40562348a9f5c0\",\n          \"order\": 1,\n          \"action\": \"clean quartz cuvettes with ethanol\",\n          \"conditions\": [],\n          \"notes\": \"absolute ethanol, ≥99.5% purity\",\n          \"evidence_quote\": \"Quartz cuvettes (10 mm, Avantor) were cleaned with ethanol (absolute, $99.5%, Merck)\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_1d40562348a9f5c0\",\n          \"order\": 2,\n          \"action\": \"dry cuvettes with N₂ flow\",\n          \"conditions\": [],\n          \"notes\": null,\n          \"evidence_quote\": \"and dried with an N₂ ow.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_1d40562348a9f5c0\",\n          \"order\": 3,\n          \"action\": \"prepare stock solutions of 1 mM solute in three different electrolytes\",\n          \"conditions\": [],\n          \"notes\": null,\n          \"evidence_quote\": \"Calibration curves were constructed by preparing stock solu- tions of 1 mM solute in three different electrolytes.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_1d40562348a9f5c0\",\n          \"order\": 4,\n          \"action\": \"aliquot 0.1, 0.2, 0.3, 0.4, and 0.5 mL from each stock solution into new samples\",\n          \"conditions\": [],\n          \"notes\": null,\n          \"evidence_quote\": \"From each stock solution, 0.1, 0.2, 0.3, 0.4, and 0.5 mL were aliquoted into new samples\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_1d40562348a9f5c0\",\n          \"order\": 5,\n          \"action\": \"dilute aliquots with corresponding electrolyte\",\n          \"conditions\": [\"3 mL volume\"],\n          \"notes\": null,\n          \"evidence_quote\": \"and diluted with 3 mL of the corresponding electrolyte.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_1d40562348a9f5c0\",\n          \"order\": 6,\n          \"action\": \"measure diluted solutions with UV-vis spectrophotometer\",\n          \"conditions\": [],\n          \"notes\": null,\n          \"evidence_quote\": \"These diluted solutions were measured with the UV- vis spectrophotometer\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_1d40562348a9f5c0\",\n          \"order\": 7,\n          \"action\": \"plot calibration curves based on maximum absorbance as function of concentration\",\n          \"conditions\": [],\n          \"notes\": null,\n          \"evidence_quote\": \"and calibration curves were plotted based on maximum absorbance as a function of concentration.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_1d40562348a9f5c0\",\n          \"order\": 8,\n          \"action\": \"prepare saturated solutions by gradually adding solutes to electrolyte\",\n          \"conditions\": [\"1–2 mL electrolyte\", \"stir overnight\"],\n          \"notes\": \"remaining solid indicates saturation\",\n          \"evidence_quote\": \"For saturated solutions, 1–2 mL of each electrolyte was used, and solutes were gradually added and le to stir overnight. The following day, any remaining solid indicated saturation.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_1d40562348a9f5c0\",\n          \"order\": 9,\n          \"action\": \"filter saturated solutions using hydrophilic PTFE filters\",\n          \"conditions\": [\"0.1 mL volume\", \"0.22 mm filter pore size\"],\n          \"notes\": null,\n          \"evidence_quote\": \"0.1 mL of these solutions were ltered using hydrophilic PTFE lters (0.22 mm, Avantor)\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_1d40562348a9f5c0\",\n          \"order\": 10,\n          \"action\": \"dilute filtered solutions until maximum absorbance falls within calibration curve range\",\n          \"conditions\": [],\n          \"notes\": null,\n          \"evidence_quote\": \"and diluted until their maximum absor- bance fell within the calibration curve range.\"\n        }\n      ],\n      \"characterization\": [\n        {\n          \"source_chunk_id\": \"mdchk_1d40562348a9f5c0\",\n          \"technique\": \"UV-vis spectroscopy\",\n          \"settings\": {},\n          \"output\": \"calibration curves based on maximum absorbance as function of concentration\",\n          \"evidence_quote\": \"These diluted solutions were measured with the UV- vis spectrophotometer, and calibration curves were plotted based on maximum absorbance as a function of concentration.\"\n        }\n      ],\n      \"results\": [],\n      \"caveats\": []\n    },\n    {\n      \"source_chunk_ids\": [\"mdchk_19adf92deeef468d\"],\n      \"protocol_name\": \"Molecular dynamics simulations for stability evaluation\",\n      \"protocol_type\": \"computational simulation\",\n      \"materials\": [],\n      \"instruments\": [],\n      \"software\": [\n        {\n          \"source_chunk_id\": \"mdchk_19adf92deeef468d\",\n          \"name\": \"Desmond\",\n          \"version\": null,\n          \"settings\": {\"package\": \"within SMSS\", \"simulation_time\": \"100 ns\", \"trajectory_frame_interval\": \"100 ps\"},\n          \"evidence_quote\": \"All molecular dynamics (MD) simulations were performed using the Des- mond⁵⁶ package, within SMSS.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_19adf92deeef468d\",\n          \"name\": \"Schrödinger Materials Science Suite\",\n          \"version\": null,\n          \"settings\": {},\n          \"evidence_quote\": \"All molecular dynamics (MD) simulations were performed using the Des- mond⁵⁶ package, within SMSS.\"\n        }\n      ],\n      \"steps\": [\n        {\n          \"source_chunk_id\": \"mdchk_19adf92deeef468d\",\n          \"order\": 1,\n          \"action\": \"place each molecule in cubic box\",\n          \"conditions\": [\"edge length of 50 Å\"],\n          \"notes\": null,\n          \"evidence_quote\": \"Each molecule was placed in a cubic box with an edge length of 50 Å\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_19adf92deeef468d\",\n          \"order\": 2,\n          \"action\": \"apply OPLS4 force field for atomistic interactions\",\n          \"conditions\": [],\n          \"notes\": null,\n          \"evidence_quote\": \"and the OPLS4 50 force eld was applied to calculate the atomistic interactions.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_19adf92deeef468d\",\n          \"order\": 3,\n          \"action\": \"perform MD simulations in NVT ensemble\",\n          \"conditions\": [\"temperature of 300 K\", \"pressure of 1 atm\"],\n          \"notes\": null,\n          \"evidence_quote\": \"The simulations were performed in the canonical NVT⁵⁷ ensemble at a temperature of 300 K and a pressure of 1 atm.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_19adf92deeef468d\",\n          \"order\": 4,\n          \"action\": \"control temperature using Nose-Hoover chain thermostat\",\n          \"conditions\": [\"relaxation time of 1.0 ps\"],\n          \"notes\": null,\n          \"evidence_quote\": \"Temperature control was managed using the Nose–Hoover chain thermo- stat⁵⁸ with a relaxation time of 1.0 ps.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_19adf92deeef468d\",\n          \"order\": 5,\n          \"action\": \"set cut-off radius for Coulomb interactions\",\n          \"conditions\": [\"9 Å\"],\n          \"notes\": null,\n          \"evidence_quote\": \"A cut-off radius of 9 Å was set for Coulomb interactions.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_19adf92deeef468d\",\n          \"order\": 6,\n          \"action\": \"run MD simulations\",\n          \"conditions\": [\"100 ns duration\"],\n          \"notes\": \"trajectory frames saved at 100 ps intervals\",\n          \"evidence_quote\": \"Each system underwent 100 ns of MD simulations, with trajectory frames saved at 100 ps inter- vals.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_19adf92deeef468d\",\n          \"order\": 7,\n          \"action\": \"perform MD data analysis using Simulation\",\n          \"conditions\": [],\n          \"notes\": \"text cuts off, likely Simulation Interaction Diagram tool\",\n          \"evidence_quote\": \"MD data analysis was performed using the Simulation\"\n        }\n      ],\n      \"characterization\": [],\n      \"results\": [],\n      \"caveats\": []\n    }\n  ]\n}\n```",
+    "salvaged_protocol_count": 0,
+    "schema_invalid": false,
+    "stop_reason": "end_turn",
+    "usage": {
+      "inputTokens": 3353,
+      "outputTokens": 5477,
+      "totalTokens": 8830
+    }
+  }
+}

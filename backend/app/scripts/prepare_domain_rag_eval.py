@@ -86,7 +86,7 @@ def prepare_rag_evaluation(
         for candidate in candidates
     ]
     readiness = {
-        "schema_version": "domain-adapter-rag-readiness-v0.1",
+        "schema_version": "domain-adapter-rag-readiness-v0.2",
         "candidate_question_count": len(candidates),
         "human_reviewed_question_count": 0,
         "pending_gold_question_count": len(gold_questions),
@@ -96,6 +96,22 @@ def prepare_rag_evaluation(
                     item.question.question_type for item in candidates
                 ).items()
             )
+        ),
+        "evidence_scope_counts": dict(
+            sorted(
+                Counter(
+                    evidence_scope
+                    for item in candidates
+                    for evidence_scope in item.question.evidence_scope_filters
+                ).items()
+            )
+        ),
+        "protocol_count": len(
+            {
+                protocol_id
+                for item in candidates
+                for protocol_id in item.source_protocol_ids
+            }
         ),
         "paper_count": len(
             {

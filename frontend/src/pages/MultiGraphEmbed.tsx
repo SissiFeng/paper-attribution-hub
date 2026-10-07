@@ -22,7 +22,8 @@ import type { MultiGraphPayload } from "@/types";
 
 const TYPE_COLOR: Record<string, string> = {
   author: "#6594B1", institution: "#213C51", country: "#8b5cf6", paper: "#DDAED3",
-  topic: "#22c55e", method: "#f59e0b", funder: "#a78bfa", ac_core: "#ec4899",
+  topic: "#22c55e", method: "#f59e0b", material: "#f0712c", instrument: "#5e4e96",
+  software: "#0f766e", funder: "#a78bfa", ac_core: "#ec4899",
 };
 const EDGE_COLOR: Record<string, string> = {
   authored: "rgba(101,148,177,0.55)", affiliated_with: "rgba(33,60,81,0.40)",
@@ -33,10 +34,18 @@ const EDGE_COLOR: Record<string, string> = {
   cites: "rgba(221,174,211,0.55)",
   cites_ac_core: "rgba(236,72,153,0.65)",
   uses_method: "rgba(245,158,11,0.45)",
+  mentions_material: "rgba(240,113,44,0.45)",
+  mentions_instrument: "rgba(94,78,150,0.45)",
+  mentions_software: "rgba(15,118,110,0.45)",
   covers_topic: "rgba(34,197,94,0.45)",
 };
-const DEFAULT_NODE_TYPES = ["author", "institution", "paper", "topic"];
-const DEFAULT_EDGE_TYPES = ["authored", "affiliated_with", "belongs_to_topic"];
+const DEFAULT_NODE_TYPES = [
+  "author", "paper", "institution", "topic", "method", "material", "instrument", "software",
+];
+const DEFAULT_EDGE_TYPES = [
+  "authored", "published_by", "belongs_to_topic", "uses_method",
+  "mentions_material", "mentions_instrument", "mentions_software",
+];
 
 export default function MultiGraphEmbed() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -48,8 +57,8 @@ export default function MultiGraphEmbed() {
   const layoutKey = useRef(0);
   const requestGeneration = useRef(0);
 
-  const yearFrom = Number(searchParams.get("year_from")) || 2021;
-  const yearTo   = Number(searchParams.get("year_to"))   || 2025;
+  const yearFrom = Number(searchParams.get("year_from")) || 2013;
+  const yearTo   = Number(searchParams.get("year_to"))   || 2026;
   const searchKey = searchParams.toString();
   const payload = resultForScope(payloadResult, searchKey);
   const filter = useMemo(

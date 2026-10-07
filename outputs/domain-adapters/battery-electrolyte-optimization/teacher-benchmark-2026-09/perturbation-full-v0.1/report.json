@@ -1,0 +1,22 @@
+{
+  "case_count": 78,
+  "claims_boundary": "Counterfactual checks measure claim-level evidence dependence, not scientific precision or recall.",
+  "failed_model_claim_count": 32,
+  "failed_observation_count": 31,
+  "input_token_count": 13026,
+  "invalid_observation_count": 3,
+  "invocation_count": 10,
+  "model_aliases": [
+    "claude-opus-4-6",
+    "deepseek-v3-2",
+    "kimi-k2-5"
+  ],
+  "model_claim_count": 129,
+  "observation_count": 181,
+  "output_token_count": 5690,
+  "passed_model_claim_count": 97,
+  "passed_observation_count": 147,
+  "schema_version": "domain-teacher-perturbation-evaluation-report-v0.1",
+  "selected_decision_count": 55,
+  "targeted_model_case_count": 181
+}

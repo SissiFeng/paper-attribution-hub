@@ -14,6 +14,7 @@ from app.schemas import (
     DiscoveryTriggerOut,
 )
 from app.services.discovery_service import (
+    CorpusSourcePolicyError,
     approve_candidate,
     reject_candidate,
     run_discovery,
@@ -52,11 +53,14 @@ def run(
     session: Session = Depends(get_session),
 ) -> DiscoveryRunResult:
     """Kick off a discovery cycle. Hits external APIs (cached). May take seconds."""
-    result = run_discovery(
-        session,
-        strategies=payload.strategies,
-        max_candidates=payload.max_candidates,
-    )
+    try:
+        result = run_discovery(
+            session,
+            strategies=payload.strategies,
+            max_candidates=payload.max_candidates,
+        )
+    except CorpusSourcePolicyError as exc:
+        raise HTTPException(status_code=409, detail=str(exc)) from exc
     return DiscoveryRunResult(
         candidates_seen=result.candidates_seen,
         auto_ingested=result.auto_ingested,
@@ -91,6 +95,8 @@ def approve(
         approve_candidate(
             session, candidate_id, reviewer=payload.reviewer, notes=payload.notes
         )
+    except CorpusSourcePolicyError as exc:
+        raise HTTPException(status_code=409, detail=str(exc)) from exc
     except ValueError as e:
         raise HTTPException(status_code=404, detail=str(e))
     row = session.get(DiscoveryCandidate, candidate_id)

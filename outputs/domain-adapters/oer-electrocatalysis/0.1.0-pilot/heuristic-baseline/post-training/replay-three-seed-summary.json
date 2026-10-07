@@ -1,0 +1,40 @@
+{
+  "schema_version": "domain-distillation-multiseed-summary-v0.1",
+  "seeds": [23, 41, 67],
+  "evaluation_tasks_per_seed": 9,
+  "model_id": "HuggingFaceTB/SmolLM2-360M-Instruct",
+  "method_label": "student-error-conditioned sequence distillation with seed replay; not reverse-KL GKD",
+  "package_extraction_mode": "heuristic_baseline",
+  "aggregate_metrics": {
+    "base": {
+      "field_f1": 0.0,
+      "json_valid_rate": 0.0,
+      "grounded_leaf_rate": 0.0
+    },
+    "static_sft": {
+      "field_f1": 0.2897990897990898,
+      "json_valid_rate": 1.0,
+      "grounded_leaf_rate": 0.6364785420340976
+    },
+    "matched_static_sft": {
+      "field_f1": 0.31024531024531027,
+      "json_valid_rate": 1.0,
+      "grounded_leaf_rate": 0.6675925925925927
+    },
+    "on_policy_hard_sft": {
+      "field_f1": 0.31635031635031635,
+      "json_valid_rate": 1.0,
+      "grounded_leaf_rate": 0.6502645502645503
+    }
+  },
+  "on_policy_minus_matched_control": {
+    "field_f1": 0.00610500610500608,
+    "json_valid_rate": 0.0,
+    "grounded_leaf_rate": -0.01732804232804237
+  },
+  "promotion": {
+    "promoted": false,
+    "reason": "The small field-F1 increase did not preserve evidence grounding relative to the equal-compute control."
+  },
+  "claims_boundary": "Targets came from the heuristic baseline, and each seed used nine held-out tasks. This is a mechanism experiment, not independent evidence of scientific extraction quality."
+}

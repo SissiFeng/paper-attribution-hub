@@ -1,0 +1,2515 @@
+{
+  "audit_summary": {
+    "accepted_field_count": 34,
+    "proposed_field_count": 128,
+    "rejected_field_count": 94,
+    "repair_attempted_count": 18,
+    "repair_succeeded_count": 0,
+    "unsupported_claim_count": 94
+  },
+  "candidate_domain_terms": [
+    "electrolyte",
+    "lithium-ion",
+    "ionic conductivity",
+    "solubility",
+    "redox"
+  ],
+  "field_audit_records": [
+    {
+      "cited_span": "The electrode materials Li[Mn2O4] (LMO) and V2O5were provided by Sigma Aldrich and used as an active material without further treat ment.",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[0].role",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.cej.2022.140955",
+      "proposed_value": "cathode active material",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The electrode materials Li[Mn2O4] (LMO) and V2O5were provided by Sigma Aldrich and used as an active material without further treat ment.",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[0].pretreatment",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.cej.2022.140955",
+      "proposed_value": "used as received without further treatment",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The electrode materials Li[Mn2O4] (LMO) and V2O5were provided by Sigma Aldrich and used as an active material without further treat ment.",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[1].role",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.cej.2022.140955",
+      "proposed_value": "anode active material",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The electrode materials Li[Mn2O4] (LMO) and V2O5were provided by Sigma Aldrich and used as an active material without further treat ment.",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[1].pretreatment",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.cej.2022.140955",
+      "proposed_value": "used as received without further treatment",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "In order to prepare electrode films of LMO and V2O5, the active material was mixed with conductive carbon super C65(MTI Corpora tion) and polyvinylidene fluoride (PVDF, 5 wt% in N-methyl-2-pyrroli done, NMP) binder in a weight ratio of 80:10:10.",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[2].name",
+      "nearest_source_span": "In order to prepare electrode films of LMO and V2O5, the active material was mixed with conductive carbon super C65(MTI Corpora tion) and polyvinylidene fluoride (PVDF, 5 wt% in *N*-methyl-2-pyrroli done, NMP) binder in a weight ratio of 80:10:10.",
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.cej.2022.140955",
+      "proposed_value": "conductive carbon super C65",
+      "protocol_index": 0,
+      "rejection_reason": "span_not_in_source",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "In order to prepare electrode films of LMO and V2O5, the active material was mixed with conductive carbon super C65(MTI Corpora tion) and polyvinylidene fluoride (PVDF, 5 wt% in N-methyl-2-pyrroli done, NMP) binder in a weight ratio of 80:10:10.",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[3].name",
+      "nearest_source_span": "In order to prepare electrode films of LMO and V2O5, the active material was mixed with conductive carbon super C65(MTI Corpora tion) and polyvinylidene fluoride (PVDF, 5 wt% in *N*-methyl-2-pyrroli done, NMP) binder in a weight ratio of 80:10:10.",
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.cej.2022.140955",
+      "proposed_value": "polyvinylidene fluoride (PVDF)",
+      "protocol_index": 0,
+      "rejection_reason": "span_not_in_source",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "A viscous slurry was prepared as follows, a small amount of NMP was added and afterwards pasted onto a stainless-steel foil.",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[4].name",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.cej.2022.140955",
+      "proposed_value": "N-methyl-2-pyrrolidone (NMP)",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "A viscous slurry was prepared as follows, a small amount of NMP was added and afterwards pasted onto a stainless-steel foil.",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[5].role",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.cej.2022.140955",
+      "proposed_value": "current collector substrate",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "For the electrolyte preparation, firstly a stock solution of 10 mol⋅kg -1 Li[TFSI] (Sigma Aldrich) in deionized water was prepared. Before the preparation of the solution, Li[TFSI] was dried, and the water content was determined by Karl Fisher titration.",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[7].role",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.cej.2022.140955",
+      "proposed_value": "lithium salt for electrolyte",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "For the electrolyte preparation, firstly a stock solution of 10 mol⋅kg -1 Li[TFSI] (Sigma Aldrich) in deionized water was prepared. Before the preparation of the solution, Li[TFSI] was dried, and the water content was determined by Karl Fisher titration.",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[7].amount",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.cej.2022.140955",
+      "proposed_value": "10 mol·kg⁻¹ stock solution, diluted to 2 mol·kg⁻¹",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "For the electrolyte preparation, firstly a stock solution of 10 mol⋅kg -1 Li[TFSI] (Sigma Aldrich) in deionized water was prepared. Before the preparation of the solution, Li[TFSI] was dried, and the water content was determined by Karl Fisher titration.",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[7].pretreatment",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.cej.2022.140955",
+      "proposed_value": "dried before preparation, water content determined by Karl Fisher titration",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "For the electrolyte preparation, firstly a stock solution of 10 mol⋅kg -1 Li[TFSI] (Sigma Aldrich) in deionized water was prepared.",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[8].role",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.cej.2022.140955",
+      "proposed_value": "solvent for electrolyte",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "In order to prepare electrode films of LMO and V2O5, the active material was mixed with conductive carbon super C65(MTI Corpora tion) and polyvinylidene fluoride (PVDF, 5 wt% in N-methyl-2-pyrroli done, NMP) binder in a weight ratio of 80:10:10.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[0].action",
+      "nearest_source_span": "In order to prepare electrode films of LMO and V2O5, the active material was mixed with conductive carbon super C65(MTI Corpora tion) and polyvinylidene fluoride (PVDF, 5 wt% in *N*-methyl-2-pyrroli done, NMP) binder in a weight ratio of 80:10:10.",
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.cej.2022.140955",
+      "proposed_value": "Mix active material with conductive carbon and PVDF binder in weight ratio 80:10:10",
+      "protocol_index": 0,
+      "rejection_reason": "span_not_in_source",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "A viscous slurry was prepared as follows, a small amount of NMP was added and afterwards pasted onto a stainless-steel foil.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[1].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.cej.2022.140955",
+      "proposed_value": "Add small amount of NMP to prepare viscous slurry",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "A viscous slurry was prepared as follows, a small amount of NMP was added and afterwards pasted onto a stainless-steel foil.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[2].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.cej.2022.140955",
+      "proposed_value": "Paste slurry onto stainless-steel foil",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The prepared electrodes were dried in vacuum at 70◦C for 12 h.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[3].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.cej.2022.140955",
+      "proposed_value": "Dry prepared electrodes in vacuum",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The prepared electrodes were dried in vacuum at 70◦C for 12 h.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[3].conditions[0]",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.cej.2022.140955",
+      "proposed_value": "70°C",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The disc electrodes were punched out in a diameter of 13 mm. The mass loadings were ≈2.2 mg for LMO and ≈1.1 mg for V2O5.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[4].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.cej.2022.140955",
+      "proposed_value": "Punch out disc electrodes",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The disc electrodes were punched out in a diameter of 13 mm. The mass loadings were ≈2.2 mg for LMO and ≈1.1 mg for V2O5.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[4].notes",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.cej.2022.140955",
+      "proposed_value": "Mass loadings: ≈2.2 mg for LMO and ≈1.1 mg for V2O5",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The full coin cell was assembled as a CR 2030-type coin cell. The used separator was a Whatman glass fiber GF/A, with a diameter of 16 mm.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[5].action",
+      "nearest_source_span": "The used separator was a Whatman glass fiber GF/A, with a diameter of 16 mm.",
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.cej.2022.140955",
+      "proposed_value": "Assemble full coin cell as CR 2030-type coin cell",
+      "protocol_index": 0,
+      "rejection_reason": "span_not_in_source",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "For the electrolyte preparation, firstly a stock solution of 10 mol⋅kg -1 Li[TFSI] (Sigma Aldrich) in deionized water was prepared. Before the preparation of the solution, Li[TFSI] was dried, and the water content was determined by Karl Fisher titration.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[6].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.cej.2022.140955",
+      "proposed_value": "Prepare Li[TFSI] stock solution",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "For the electrolyte preparation, firstly a stock solution of 10 mol⋅kg -1 Li[TFSI] (Sigma Aldrich) in deionized water was prepared. Before the preparation of the solution, Li[TFSI] was dried, and the water content was determined by Karl Fisher titration.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[6].conditions[0]",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.cej.2022.140955",
+      "proposed_value": "10 mol·kg⁻¹ in deionized water",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "For the electrolyte preparation, firstly a stock solution of 10 mol⋅kg -1 Li[TFSI] (Sigma Aldrich) in deionized water was prepared. Before the preparation of the solution, Li[TFSI] was dried, and the water content was determined by Karl Fisher titration.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[6].notes",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.cej.2022.140955",
+      "proposed_value": "Li[TFSI] dried beforehand, water content determined by Karl Fisher titration",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The stock solution was further diluted with deionized water to obtain 2 mol⋅kg -1 Li[TFSI] and used in the coin cell assembly.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[7].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.cej.2022.140955",
+      "proposed_value": "Dilute stock solution to obtain 2 mol·kg⁻¹ Li[TFSI] electrolyte",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "In each coin cell 50 μL of electrolyte was added.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[8].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.cej.2022.140955",
+      "proposed_value": "Add electrolyte to coin cell",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "In each coin cell 50 μL of electrolyte was added.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[8].conditions[0]",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.cej.2022.140955",
+      "proposed_value": "50 μL per cell",
+      "protocol_index": 0,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Stock solutions of A and B were typically prepared in 60 ml vials and fed to the robot.",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[0].role",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.cej.2022.140955",
+      "proposed_value": "electrolyte precursors",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Stock solutions of A and B were typically prepared in 60 ml vials and fed to the robot.",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[0].pretreatment",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.cej.2022.140955",
+      "proposed_value": "pre-mixed",
+      "protocol_index": 1,
+      "rejection_reason": "value_elsewhere",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The reaction vessels are provided with magnetic stirrers, septa and screw caps, Fig. 3.",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[1].role",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.cej.2022.140955",
+      "proposed_value": "mixing aid",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The reaction vessels are provided with magnetic stirrers, septa and screw caps, Fig. 3.",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[2].role",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.cej.2022.140955",
+      "proposed_value": "sealing",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The reaction vessels are provided with magnetic stirrers, septa and screw caps, Fig. 3.",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[3].role",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.cej.2022.140955",
+      "proposed_value": "sealing",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Before dispensing the stock solutions, the test tubes are purged with nitrogen gas.",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[4].role",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.cej.2022.140955",
+      "proposed_value": "inert atmosphere",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "If precipitation occurs, the screening cycle proceeds with addition of more solvent and repeated turbidity check.",
+      "diagnostic": null,
+      "entity_type": "materials",
+      "field_path": "materials[5].role",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.cej.2022.140955",
+      "proposed_value": "precipitation mitigation",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The reaction vessels are verified by the Proteus system and subsequently automatically placed in thermal blocks with the requested temperature.",
+      "diagnostic": null,
+      "entity_type": "instruments",
+      "field_path": "instruments[1].name",
+      "nearest_source_span": "The checked-in, bar-coded\nreaction vessels are verified by the Proteus system and subsequently automatically placed in thermal blocks with the requested temperature.",
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.cej.2022.140955",
+      "proposed_value": "thermal blocks",
+      "protocol_index": 1,
+      "rejection_reason": "span_not_in_source",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "An analytical chain, utilizing turbidity, controls if a precipitate has formed or not.",
+      "diagnostic": null,
+      "entity_type": "instruments",
+      "field_path": "instruments[2].name",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.cej.2022.140955",
+      "proposed_value": "turbidity sensor",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "If no precipitation can be detected, the analytical sequence continues to the next step involving Raman spec troscopy for characterisation of the electrolyte system.",
+      "diagnostic": null,
+      "entity_type": "instruments",
+      "field_path": "instruments[3].name",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.cej.2022.140955",
+      "proposed_value": "Raman spectrometer",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The electrolyte is dispensed directly onto the anode on the half coin cell prepared by the Eioneus systems.",
+      "diagnostic": null,
+      "entity_type": "instruments",
+      "field_path": "instruments[4].name",
+      "nearest_source_span": "The dispensing of the electrolyte is only made once, and onto the centre of the anode electrode.",
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.cej.2022.140955",
+      "proposed_value": "Eioneus system",
+      "protocol_index": 1,
+      "rejection_reason": "span_not_in_source",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Bar-coded reaction vessels are checked in and fed to the Proteus robot conveyor in tube rackets.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[0].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.cej.2022.140955",
+      "proposed_value": "Check in bar-coded reaction vessels and feed to Proteus robot conveyor in tube rackets",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The reaction vessels are provided with magnetic stirrers, septa and screw caps, Fig. 3.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[1].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.cej.2022.140955",
+      "proposed_value": "Provide reaction vessels with magnetic stirrers, septa and screw caps",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The checked-in, bar-coded reaction vessels are verified by the Proteus system",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[2].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.cej.2022.140955",
+      "proposed_value": "Verify reaction vessels by Proteus system",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "and subsequently automatically placed in thermal blocks with the requested temperature.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[3].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.cej.2022.140955",
+      "proposed_value": "Automatically place reaction vessels in thermal blocks",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Successively, the Proteus system moves the reaction vessels to the sampling preparation superblock",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[4].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.cej.2022.140955",
+      "proposed_value": "Move reaction vessels to sampling preparation superblock",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Before dispensing the stock solutions, the test tubes are purged with nitrogen gas.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[5].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.cej.2022.140955",
+      "proposed_value": "Purge test tubes with nitrogen gas",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Before dispensing the stock solutions, the test tubes are purged with nitrogen gas.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[5].notes",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.cej.2022.140955",
+      "proposed_value": "Before dispensing stock solutions",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "where it starts to dispense the correct volumes of the pre-mixed stock solutions of A and B.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[6].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.cej.2022.140955",
+      "proposed_value": "Dispense correct volumes of pre-mixed stock solutions of A and B",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Here after, the solutions of A and B are mixed by stirring for a pre-defined time, which was set to about 1 min.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[7].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.cej.2022.140955",
+      "proposed_value": "Mix solutions of A and B by stirring",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Here after, the solutions of A and B are mixed by stirring for a pre-defined time, which was set to about 1 min.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[7].conditions[0]",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.cej.2022.140955",
+      "proposed_value": "pre-defined time, set to about 1 min",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "An analytical chain, utilizing turbidity, controls if a precipitate has formed or not. If precipitation occurs, the screening cycle proceeds with addition of more solvent and repeated turbidity check.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[8].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.cej.2022.140955",
+      "proposed_value": "Check for precipitation using turbidity",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "An analytical chain, utilizing turbidity, controls if a precipitate has formed or not. If precipitation occurs, the screening cycle proceeds with addition of more solvent and repeated turbidity check.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[8].notes",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.cej.2022.140955",
+      "proposed_value": "If precipitation occurs, add more solvent and repeat turbidity check",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "If no precipitation can be detected, the analytical sequence continues to the next step involving Raman spec troscopy for characterisation of the electrolyte system.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[9].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.cej.2022.140955",
+      "proposed_value": "Perform Raman spectroscopy for electrolyte characterization",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "If no precipitation can be detected, the analytical sequence continues to the next step involving Raman spec troscopy for characterisation of the electrolyte system.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[9].notes",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.cej.2022.140955",
+      "proposed_value": "Only if no precipitation detected",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Subsequently, sampling of 100 μL, 50 μL and 10 μL of the reaction solution is performed onto a 96-well plate at three different positions for further characteri sation, crystallisation and evaluation.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[10].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.cej.2022.140955",
+      "proposed_value": "Sample reaction solution onto 96-well plate at three different positions",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Subsequently, sampling of 100 μL, 50 μL and 10 μL of the reaction solution is performed onto a 96-well plate at three different positions for further characteri sation, crystallisation and evaluation.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[10].notes",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.cej.2022.140955",
+      "proposed_value": "For further characterization, crystallisation and evaluation",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The prepared electrolyte is here after ready for dispensing onto the prepared half-cell of the coin cell. Our initial investigations show that 50 μL is an appropriate electrolyte vol ume. The electrolyte is dispensed directly onto the anode on the half coin cell prepared by the Eioneus systems.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[11].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.cej.2022.140955",
+      "proposed_value": "Dispense electrolyte onto prepared half-cell of coin cell",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The prepared electrolyte is here after ready for dispensing onto the prepared half-cell of the coin cell. Our initial investigations show that 50 μL is an appropriate electrolyte vol ume. The electrolyte is dispensed directly onto the anode on the half coin cell prepared by the Eioneus systems.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[11].notes",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.cej.2022.140955",
+      "proposed_value": "Dispensed directly onto the anode on the half coin cell prepared by Eioneus systems",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The preparation of the investigated electrolyte systems was made at (25.0 ± 0.1)◦C. This temperature was also kept during all preparatory and characterization steps in the Proteus system.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[12].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.cej.2022.140955",
+      "proposed_value": "Prepare electrolyte systems at controlled temperature",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The preparation of the investigated electrolyte systems was made at (25.0 ± 0.1)◦C. This temperature was also kept during all preparatory and characterization steps in the Proteus system.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[12].conditions[0]",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.cej.2022.140955",
+      "proposed_value": "(25.0 ± 0.1)°C",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The preparation of the investigated electrolyte systems was made at (25.0 ± 0.1)◦C. This temperature was also kept during all preparatory and characterization steps in the Proteus system.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[12].notes",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.cej.2022.140955",
+      "proposed_value": "Temperature maintained during all preparatory and characterization steps",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The dispensing of the electrolyte is only made once, and onto the centre of the anode electrode. The assessment shows that this procedure is satisfactorily for screening purposes. In the literature, it is more common to first dispense half the volume on the anode electrode, and subsequently the other half on the separator. This procedure risks to become a workflow bottleneck and has therefore been omitted.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[13].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.cej.2022.140955",
+      "proposed_value": "Dispense electrolyte once onto centre of anode electrode",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The dispensing of the electrolyte is only made once, and onto the centre of the anode electrode. The assessment shows that this procedure is satisfactorily for screening purposes. In the literature, it is more common to first dispense half the volume on the anode electrode, and subsequently the other half on the separator. This procedure risks to become a workflow bottleneck and has therefore been omitted.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[13].notes",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.cej.2022.140955",
+      "proposed_value": "Alternative literature method (half on anode, half on separator) omitted to avoid workflow bottleneck",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "An analytical chain, utilizing turbidity, controls if a precipitate has formed or not.",
+      "diagnostic": null,
+      "entity_type": "characterization",
+      "field_path": "characterization[0].technique",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.cej.2022.140955",
+      "proposed_value": "turbidity analysis",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "If no precipitation can be detected, the analytical sequence continues to the next step involving Raman spec troscopy for characterisation of the electrolyte system.",
+      "diagnostic": null,
+      "entity_type": "characterization",
+      "field_path": "characterization[1].technique",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.cej.2022.140955",
+      "proposed_value": "Raman spectroscopy",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The dispensing of the prepared electrolytes into the well plate wells represents a helpful tool for investigation with a light microscope and to document any type of precipitation.",
+      "diagnostic": null,
+      "entity_type": "characterization",
+      "field_path": "characterization[2].technique",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.cej.2022.140955",
+      "proposed_value": "light microscopy",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The battery performance using different electrolyte volumes was evaluated, and it was found that if volumes above 60 μL were utilized there was a risk of leakage during coin cell crimping.",
+      "diagnostic": null,
+      "entity_type": "results",
+      "field_path": "results[0].metric",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.cej.2022.140955",
+      "proposed_value": "electrolyte volume limit for leakage",
+      "protocol_index": 1,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Notable is that the electrode coatings are manually prepared and are robust and uniform",
+      "diagnostic": null,
+      "entity_type": "caveats",
+      "field_path": "caveats[0].text",
+      "nearest_source_span": "6, the Raman spectrum of a one of the prepared electrolytes containing Li [TFSI], is shown.",
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.cej.2022.140955",
+      "proposed_value": "Electrode coatings are manually prepared",
+      "protocol_index": 1,
+      "rejection_reason": "span_not_in_source",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The Eioneus system consists of a platform with coin cell mounting and supply area, crimping and decrimping stations, a potentiostat-based electrochemical evaluation station and a control board, see Figs. 1-2.",
+      "diagnostic": null,
+      "entity_type": "instruments",
+      "field_path": "instruments[0].name",
+      "nearest_source_span": "Furthermore, in order to implement a fully automatized coin cell component separation workflow for a subsequent post-mortem analysis an additional robot arm will be needed.",
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.cej.2022.140955",
+      "proposed_value": "Eioneus system",
+      "protocol_index": 2,
+      "rejection_reason": "span_not_in_source",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "A swap robot and a robotic arm manages all steps connected to the transport and storage of the evaluated coin cells.",
+      "diagnostic": null,
+      "entity_type": "instruments",
+      "field_path": "instruments[1].name",
+      "nearest_source_span": "The disassembly procedure also works well, however additional tuning and modifications will be needed to secure a stable automated handling of the disassembled coin cell com ponents for automated post-mortem analysis.",
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.cej.2022.140955",
+      "proposed_value": "swap robot",
+      "protocol_index": 2,
+      "rejection_reason": "span_not_in_source",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "A swap robot and a robotic arm manages all steps connected to the transport and storage of the evaluated coin cells.",
+      "diagnostic": null,
+      "entity_type": "instruments",
+      "field_path": "instruments[2].name",
+      "nearest_source_span": "The disassembly procedure also works well, however additional tuning and modifications will be needed to secure a stable automated handling of the disassembled coin cell com ponents for automated post-mortem analysis.",
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.cej.2022.140955",
+      "proposed_value": "robotic arm",
+      "protocol_index": 2,
+      "rejection_reason": "span_not_in_source",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The approach of having the coin cell horizontally placed with one contact placed in the gripper and the other in a fixed position in the potentiostat setup results in stable and reproducible results.",
+      "diagnostic": null,
+      "entity_type": "instruments",
+      "field_path": "instruments[4].name",
+      "nearest_source_span": "The approach of having the coin ence in the specific capacity and energy density, and it was therefore cell horizontally placed with one contact placed in the gripper and the considered qualified as the ‘production’ cycle.",
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.cej.2022.140955",
+      "proposed_value": "potentiostat",
+      "protocol_index": 2,
+      "rejection_reason": "span_not_in_source",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Overall, the pickup and the assembly of the coin cell cases and spacer proceeds very smoothly.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[0].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.cej.2022.140955",
+      "proposed_value": "Pickup and assembly of coin cell cases and spacer",
+      "protocol_index": 2,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The handling of the device springs was the most challenging the initial stages of the robot development. However, after having constructed a special three-part suction device, also this step works efficiently.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[1].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.cej.2022.140955",
+      "proposed_value": "Handle device springs using special three-part suction device",
+      "protocol_index": 2,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The handling of the device springs was the most challenging the initial stages of the robot development. However, after having constructed a special three-part suction device, also this step works efficiently.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[1].notes",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.cej.2022.140955",
+      "proposed_value": "Most challenging step in initial development stages",
+      "protocol_index": 2,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The tapping procedure before crimping secures alignment and complete cell closure, which in turn ensures a well- functioning coin cell crimping.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[2].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.cej.2022.140955",
+      "proposed_value": "Perform tapping procedure before crimping",
+      "protocol_index": 2,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The tapping procedure before crimping secures alignment and complete cell closure, which in turn ensures a well- functioning coin cell crimping.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[3].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.cej.2022.140955",
+      "proposed_value": "Crimp coin cell",
+      "protocol_index": 2,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The approach of having the coin cell horizontally placed with one contact placed in the gripper and the other in a fixed position in the potentiostat setup results in stable and reproducible results.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[4].action",
+      "nearest_source_span": "From the results of the electrochemical cycling described below, it can be concluded that the accuracy is adequate and results in excellent reproducibility.",
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.cej.2022.140955",
+      "proposed_value": "Place coin cell horizontally with one contact in gripper and other in fixed potentiostat position",
+      "protocol_index": 2,
+      "rejection_reason": "span_not_in_source",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The disassembly procedure also works well, however additional tuning and modifications will be needed to secure a stable automated handling of the disassembled coin cell com ponents for automated post-mortem analysis.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[5].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.cej.2022.140955",
+      "proposed_value": "Disassemble coin cell",
+      "protocol_index": 2,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The disassembly procedure also works well, however additional tuning and modifications will be needed to secure a stable automated handling of the disassembled coin cell com ponents for automated post-mortem analysis.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[5].notes",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.cej.2022.140955",
+      "proposed_value": "Additional tuning needed for stable automated handling of disassembled components",
+      "protocol_index": 2,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "robust and uniform, with a relative deviation of 11 % in the 1st cycle and 6 % in the 2nd cycle (Fig. 11).",
+      "diagnostic": null,
+      "entity_type": "results",
+      "field_path": "results[0].metric",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.cej.2022.140955",
+      "proposed_value": "relative deviation in 1st cycle",
+      "protocol_index": 2,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "robust and uniform, with a relative deviation of 11 % in the 1st cycle and 6 % in the 2nd cycle (Fig. 11).",
+      "diagnostic": null,
+      "entity_type": "results",
+      "field_path": "results[1].metric",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.cej.2022.140955",
+      "proposed_value": "relative deviation in 2nd cycle",
+      "protocol_index": 2,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Comparing the values for Coulombic efficiency(Fig. 12), it can be observed that after the 3rd cycle, as 92 % efficiency is obtained, with a relative deviation of 1.5 % suggesting that the applied procedure is of high accuracy and reproducibility.",
+      "diagnostic": null,
+      "entity_type": "results",
+      "field_path": "results[2].metric",
+      "nearest_source_span": "5 % suggesting sembly parameters (electrode or separator placement, image embed that the applied procedure is of high accuracy and reproducibility.",
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.cej.2022.140955",
+      "proposed_value": "Coulombic efficiency after 3rd cycle",
+      "protocol_index": 2,
+      "rejection_reason": "span_not_in_source",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Comparing the values for Coulombic efficiency(Fig. 12), it can be observed that after the 3rd cycle, as 92 % efficiency is obtained, with a relative deviation of 1.5 % suggesting that the applied procedure is of high accuracy and reproducibility.",
+      "diagnostic": null,
+      "entity_type": "results",
+      "field_path": "results[3].metric",
+      "nearest_source_span": "5 % suggesting sembly parameters (electrode or separator placement, image embed that the applied procedure is of high accuracy and reproducibility.",
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.cej.2022.140955",
+      "proposed_value": "relative deviation of Coulombic efficiency",
+      "protocol_index": 2,
+      "rejection_reason": "span_not_in_source",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "This is a result of that the disassembly not always results in a uniformly disassembled coin cell geometry, which in turn can create issues with half-cell separation and component handling.",
+      "diagnostic": null,
+      "entity_type": "caveats",
+      "field_path": "caveats[0].text",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.cej.2022.140955",
+      "proposed_value": "Disassembly does not always result in uniformly disassembled coin cell geometry, creating issues with half-cell separation and component handling",
+      "protocol_index": 2,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Currently, the post-mortem analyses are per formed off-line.",
+      "diagnostic": null,
+      "entity_type": "caveats",
+      "field_path": "caveats[1].text",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.cej.2022.140955",
+      "proposed_value": "Post-mortem analyses currently performed off-line",
+      "protocol_index": 2,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "However, to avoid any contamination in the coin cell assembly, a step where the suction cups can be rinsed will be implemented in the future.",
+      "diagnostic": null,
+      "entity_type": "caveats",
+      "field_path": "caveats[2].text",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.cej.2022.140955",
+      "proposed_value": "Suction cups need rinsing step to avoid contamination in future implementation",
+      "protocol_index": 2,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Furthermore, in order to implement a fully automatized coin cell component separation workflow for a subsequent post-mortem analysis an additional robot arm will be needed.",
+      "diagnostic": null,
+      "entity_type": "caveats",
+      "field_path": "caveats[3].text",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.cej.2022.140955",
+      "proposed_value": "Additional robot arm needed for fully automatized coin cell component separation workflow",
+      "protocol_index": 2,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "No significant correlation between any of the as sembly parameters (electrode or separator placement, image embed dings, wetting time etc.) and electrochemical results (charge/discharge energy capacity, shape of the cycling curves) were detected.",
+      "diagnostic": null,
+      "entity_type": "caveats",
+      "field_path": "caveats[4].text",
+      "nearest_source_span": "*) and electrochemical results (charge/discharge Notable is that the electrode coatings are manually prepared and are energy capacity, shape of the cycling curves) were detected.",
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.cej.2022.140955",
+      "proposed_value": "No significant correlation detected between assembly parameters and electrochemical results",
+      "protocol_index": 2,
+      "rejection_reason": "span_not_in_source",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Initially, 50 charge/discharge cycles were performed on the assem bled coin cells to collect benchmark data (Fig. 7) and to determine from which cycle consistent results can be extracted.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[0].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.cej.2022.140955",
+      "proposed_value": "Perform initial charge/discharge cycles to collect benchmark data",
+      "protocol_index": 3,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Initially, 50 charge/discharge cycles were performed on the assem bled coin cells to collect benchmark data (Fig. 7) and to determine from which cycle consistent results can be extracted.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[0].conditions[0]",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.cej.2022.140955",
+      "proposed_value": "50 cycles",
+      "protocol_index": 3,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The charge/discharge cycling of all batteries was performed with a constant current of 0.5 mA in the voltage range from 0.01 to 1.00 V, which represents a 10C-rate.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[1].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.cej.2022.140955",
+      "proposed_value": "Perform galvanostatic cycling with constant current",
+      "protocol_index": 3,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The charge/discharge cycling of all batteries was performed with a constant current of 0.5 mA in the voltage range from 0.01 to 1.00 V, which represents a 10C-rate.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[1].conditions[1]",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.cej.2022.140955",
+      "proposed_value": "voltage range 0.01 to 1.00 V",
+      "protocol_index": 3,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Also, the increase in specific energy ca observed after the 3rd cycle, and therefore all subsequent experiments1 pacity during discharging was less pronounced (from 50 mAh⋅g to 52 were performed up to the 3rd cycle only.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[2].action",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.cej.2022.140955",
+      "proposed_value": "Limit experiments to 3rd cycle for subsequent studies",
+      "protocol_index": 3,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Also, the increase in specific energy ca observed after the 3rd cycle, and therefore all subsequent experiments1 pacity during discharging was less pronounced (from 50 mAh⋅g to 52 were performed up to the 3rd cycle only.",
+      "diagnostic": null,
+      "entity_type": "steps",
+      "field_path": "steps[2].notes",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.cej.2022.140955",
+      "proposed_value": "3rd cycle considered qualified as 'production' cycle due to smaller difference in specific capacity and energy density",
+      "protocol_index": 3,
+      "rejection_reason": "over_generalized",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "The charge/discharge cycling of all batteries was performed with a constant current of 0.5 mA in the voltage range from 0.01 to 1.00 V, which represents a 10C-rate.",
+      "diagnostic": null,
+      "entity_type": "characterization",
+      "field_path": "characterization[0].technique",
+      "nearest_source_span": null,
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.cej.2022.140955",
+      "proposed_value": "galvanostatic cycling",
+      "protocol_index": 3,
+      "rejection_reason": "value_elsewhere",
+      "repair_attempted": false,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    },
+    {
+      "cited_span": "Also, the increase in specific energy ca observed after the 3rd cycle, and therefore all subsequent experiments1 pacity during discharging was less pronounced (from 50 mAh⋅g to 52 mAh⋅g).",
+      "diagnostic": null,
+      "entity_type": "results",
+      "field_path": "results[0].metric",
+      "nearest_source_span": "Also, the increase in specific energy ca observed after the 3rd cycle, and therefore all subsequent experiments1 pacity during discharging was less pronounced (from 50 mAh⋅g to 52 were performed up to the 3rd cycle only.",
+      "outcome": "rejected",
+      "paper_id": "DOI:10.1016_j.cej.2022.140955",
+      "proposed_value": "specific capacity during discharging",
+      "protocol_index": 3,
+      "rejection_reason": "span_not_in_source",
+      "repair_attempted": true,
+      "repair_succeeded": false,
+      "schema_version": "teacher-field-audit-v0.1"
+    }
+  ],
+  "inference_config": {
+    "max_tokens": 14000,
+    "temperature": 0.0
+  },
+  "mapping_version": "evidence-field-mapper-v0.2",
+  "model_id": "moonshotai.kimi-k2.5",
+  "paper_id": "DOI:10.1016_j.cej.2022.140955",
+  "prompt_version": "scientific-protocol-teacher-v0.3",
+  "protocols": [
+    {
+      "caveats": [],
+      "characterization": [],
+      "evidence": [
+        {
+          "char_end": 183,
+          "char_start": 46,
+          "chunk_id": "mdchk_d5ed12b60892cb04",
+          "document_char_end": 28978,
+          "document_char_start": 28841,
+          "evidence_id": "ev_c8fc1d45c925b229",
+          "paper_id": "DOI:10.1016_j.cej.2022.140955",
+          "quote": "The electrode materials Li[Mn2O4] (LMO) and V2O5were provided by Sigma Aldrich and used as an active material without further treat ment.",
+          "source_sha256": "a75b4c4f315f4d5a50ad9a73a6c66ef30fcbe02f7a26585bfaf49520545382b1"
+        },
+        {
+          "char_end": 556,
+          "char_start": 432,
+          "chunk_id": "mdchk_d5ed12b60892cb04",
+          "document_char_end": 29351,
+          "document_char_start": 29227,
+          "evidence_id": "ev_fbd6a1b349eed5a6",
+          "paper_id": "DOI:10.1016_j.cej.2022.140955",
+          "quote": "A viscous slurry was prepared as follows, a small amount of NMP was added and afterwards pasted onto a stainless-steel foil.",
+          "source_sha256": "a75b4c4f315f4d5a50ad9a73a6c66ef30fcbe02f7a26585bfaf49520545382b1"
+        },
+        {
+          "char_end": 619,
+          "char_start": 557,
+          "chunk_id": "mdchk_d5ed12b60892cb04",
+          "document_char_end": 29414,
+          "document_char_start": 29352,
+          "evidence_id": "ev_33a2aac8f979ef92",
+          "paper_id": "DOI:10.1016_j.cej.2022.140955",
+          "quote": "The prepared electrodes were dried in vacuum at 70◦C for 12 h.",
+          "source_sha256": "a75b4c4f315f4d5a50ad9a73a6c66ef30fcbe02f7a26585bfaf49520545382b1"
+        },
+        {
+          "char_end": 741,
+          "char_start": 620,
+          "chunk_id": "mdchk_d5ed12b60892cb04",
+          "document_char_end": 29536,
+          "document_char_start": 29415,
+          "evidence_id": "ev_eefc9ca19428983a",
+          "paper_id": "DOI:10.1016_j.cej.2022.140955",
+          "quote": "The disc electrodes were punched out in a diameter of 13 mm. The mass loadings were ≈2.2 mg for LMO and ≈1.1 mg for V2O5.",
+          "source_sha256": "a75b4c4f315f4d5a50ad9a73a6c66ef30fcbe02f7a26585bfaf49520545382b1"
+        },
+        {
+          "char_end": 818,
+          "char_start": 742,
+          "chunk_id": "mdchk_d5ed12b60892cb04",
+          "document_char_end": 29613,
+          "document_char_start": 29537,
+          "evidence_id": "ev_3e19ffe7f8fb2117",
+          "paper_id": "DOI:10.1016_j.cej.2022.140955",
+          "quote": "The used separator was a Whatman glass fiber GF/A, with a diameter of 16 mm.",
+          "source_sha256": "a75b4c4f315f4d5a50ad9a73a6c66ef30fcbe02f7a26585bfaf49520545382b1"
+        },
+        {
+          "char_end": 1135,
+          "char_start": 881,
+          "chunk_id": "mdchk_d5ed12b60892cb04",
+          "document_char_end": 29930,
+          "document_char_start": 29676,
+          "evidence_id": "ev_d8ebb221cadbe003",
+          "paper_id": "DOI:10.1016_j.cej.2022.140955",
+          "quote": "For the electrolyte preparation, firstly a stock solution of 10 mol⋅kg -1 Li[TFSI] (Sigma Aldrich) in deionized water was prepared. Before the preparation of the solution, Li[TFSI] was dried, and the water content was determined by Karl Fisher titration.",
+          "source_sha256": "a75b4c4f315f4d5a50ad9a73a6c66ef30fcbe02f7a26585bfaf49520545382b1"
+        },
+        {
+          "char_end": 1012,
+          "char_start": 881,
+          "chunk_id": "mdchk_d5ed12b60892cb04",
+          "document_char_end": 29807,
+          "document_char_start": 29676,
+          "evidence_id": "ev_1721e90beac7b306",
+          "paper_id": "DOI:10.1016_j.cej.2022.140955",
+          "quote": "For the electrolyte preparation, firstly a stock solution of 10 mol⋅kg -1 Li[TFSI] (Sigma Aldrich) in deionized water was prepared.",
+          "source_sha256": "a75b4c4f315f4d5a50ad9a73a6c66ef30fcbe02f7a26585bfaf49520545382b1"
+        },
+        {
+          "char_end": 1262,
+          "char_start": 1136,
+          "chunk_id": "mdchk_d5ed12b60892cb04",
+          "document_char_end": 30057,
+          "document_char_start": 29931,
+          "evidence_id": "ev_c10adb573150819e",
+          "paper_id": "DOI:10.1016_j.cej.2022.140955",
+          "quote": "The stock solution was further diluted with deionized water to obtain 2 mol⋅kg\n-1 Li[TFSI] and used in the coin cell assembly.",
+          "source_sha256": "a75b4c4f315f4d5a50ad9a73a6c66ef30fcbe02f7a26585bfaf49520545382b1"
+        },
+        {
+          "char_end": 1312,
+          "char_start": 1263,
+          "chunk_id": "mdchk_d5ed12b60892cb04",
+          "document_char_end": 30107,
+          "document_char_start": 30058,
+          "evidence_id": "ev_61f2d468d947d452",
+          "paper_id": "DOI:10.1016_j.cej.2022.140955",
+          "quote": "In each coin cell 50 μL of electrolyte was added.",
+          "source_sha256": "a75b4c4f315f4d5a50ad9a73a6c66ef30fcbe02f7a26585bfaf49520545382b1"
+        }
+      ],
+      "evidence_scope": "primary_report",
+      "instruments": [],
+      "materials": [
+        {
+          "amount": null,
+          "entity_id": "mat_73e8de513134218f",
+          "evidence_ids": [
+            "ev_c8fc1d45c925b229"
+          ],
+          "name": "Li[Mn2O4] (LMO)",
+          "pretreatment": null,
+          "purity": null,
+          "role": null,
+          "supplier": "Sigma Aldrich"
+        },
+        {
+          "amount": null,
+          "entity_id": "mat_1df729ab4cb23ed2",
+          "evidence_ids": [
+            "ev_c8fc1d45c925b229"
+          ],
+          "name": "V2O5",
+          "pretreatment": null,
+          "purity": null,
+          "role": null,
+          "supplier": "Sigma Aldrich"
+        },
+        {
+          "amount": null,
+          "entity_id": "mat_57e72386a86cab2a",
+          "evidence_ids": [
+            "ev_fbd6a1b349eed5a6"
+          ],
+          "name": "stainless-steel foil",
+          "pretreatment": null,
+          "purity": null,
+          "role": null,
+          "supplier": null
+        },
+        {
+          "amount": "diameter of 16 mm",
+          "entity_id": "mat_89e4a557257bde87",
+          "evidence_ids": [
+            "ev_3e19ffe7f8fb2117"
+          ],
+          "name": "Whatman glass fiber GF/A",
+          "pretreatment": null,
+          "purity": null,
+          "role": "separator",
+          "supplier": null
+        },
+        {
+          "amount": null,
+          "entity_id": "mat_b5d2ef73ae3a1aa1",
+          "evidence_ids": [
+            "ev_d8ebb221cadbe003"
+          ],
+          "name": "Li[TFSI]",
+          "pretreatment": null,
+          "purity": null,
+          "role": null,
+          "supplier": "Sigma Aldrich"
+        },
+        {
+          "amount": null,
+          "entity_id": "mat_87aafcf6110b9b20",
+          "evidence_ids": [
+            "ev_1721e90beac7b306"
+          ],
+          "name": "deionized water",
+          "pretreatment": null,
+          "purity": null,
+          "role": null,
+          "supplier": null
+        }
+      ],
+      "paper_id": "DOI:10.1016_j.cej.2022.140955",
+      "protocol_id": "protocol_7fab07bcc054c396",
+      "protocol_name": "Electrode and electrolyte preparation for coin cell assembly",
+      "protocol_type": "materials_preparation",
+      "relations": [],
+      "results": [],
+      "scientific_chunk_ids": [],
+      "software": [],
+      "source_chunk_ids": [
+        "mdchk_d5ed12b60892cb04"
+      ],
+      "source_paper_tier": "primary_battery_electrolyte",
+      "steps": [
+        {
+          "action": "A viscous slurry was prepared as follows, a small amount of NMP was added and afterwards pasted onto a stainless-steel foil.",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_fbd6a1b349eed5a6"
+          ],
+          "notes": null,
+          "order": 1,
+          "step_id": "step_8b9f51a1fb8201c3"
+        },
+        {
+          "action": "A viscous slurry was prepared as follows, a small amount of NMP was added and afterwards pasted onto a stainless-steel foil.",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_fbd6a1b349eed5a6"
+          ],
+          "notes": null,
+          "order": 2,
+          "step_id": "step_3fc78d59dd33b0c1"
+        },
+        {
+          "action": "The prepared electrodes were dried in vacuum at 70◦C for 12 h.",
+          "conditions": [
+            "12 h"
+          ],
+          "evidence_ids": [
+            "ev_33a2aac8f979ef92"
+          ],
+          "notes": null,
+          "order": 3,
+          "step_id": "step_010a820bdcabf24d"
+        },
+        {
+          "action": "The disc electrodes were punched out in a diameter of 13 mm. The mass loadings were ≈2.2 mg for LMO and ≈1.1 mg for V2O5.",
+          "conditions": [
+            "diameter of 13 mm"
+          ],
+          "evidence_ids": [
+            "ev_eefc9ca19428983a"
+          ],
+          "notes": null,
+          "order": 4,
+          "step_id": "step_5ebb1c59188c4f5f"
+        },
+        {
+          "action": "For the electrolyte preparation, firstly a stock solution of 10 mol⋅kg -1 Li[TFSI] (Sigma Aldrich) in deionized water was prepared. Before the preparation of the solution, Li[TFSI] was dried, and the water content was determined by Karl Fisher titration.",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_d8ebb221cadbe003"
+          ],
+          "notes": null,
+          "order": 5,
+          "step_id": "step_5fbbe2c9985e136e"
+        },
+        {
+          "action": "The stock solution was further diluted with deionized water to obtain 2 mol⋅kg\n-1 Li[TFSI] and used in the coin cell assembly.",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_c10adb573150819e"
+          ],
+          "notes": null,
+          "order": 6,
+          "step_id": "step_ed63be4bc53ba2c0"
+        },
+        {
+          "action": "In each coin cell 50 μL of electrolyte was added.",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_61f2d468d947d452"
+          ],
+          "notes": null,
+          "order": 7,
+          "step_id": "step_4e5bf0c7f816ac7d"
+        }
+      ]
+    },
+    {
+      "caveats": [],
+      "characterization": [],
+      "evidence": [
+        {
+          "char_end": 374,
+          "char_start": 187,
+          "chunk_id": "mdchk_0885d8ef29fb894e",
+          "document_char_end": 17457,
+          "document_char_start": 17270,
+          "evidence_id": "ev_6baf3b4adca20db5",
+          "paper_id": "DOI:10.1016_j.cej.2022.140955",
+          "quote": "The preparation of the investigated electrolyte systems was made at (25.0 ± 0.1)◦C. This temperature was also kept during all preparatory and characterization steps in the Proteus system.",
+          "source_sha256": "2c3fb5bbc54919dd839d7e5a57a93726b7d417bc0af378457b461ef9a0e4ff15"
+        },
+        {
+          "char_end": 784,
+          "char_start": 375,
+          "chunk_id": "mdchk_0885d8ef29fb894e",
+          "document_char_end": 17867,
+          "document_char_start": 17458,
+          "evidence_id": "ev_fc87923616fdd954",
+          "paper_id": "DOI:10.1016_j.cej.2022.140955",
+          "quote": "The dispensing of the electrolyte is only made once, and onto the centre of the anode electrode. The assessment shows that this procedure is satisfactorily for screening purposes. In the literature, it is more common to first dispense half the volume on the anode electrode, and subsequently the other half on the separator. This procedure risks to become a workflow bottleneck and has therefore been omitted.",
+          "source_sha256": "2c3fb5bbc54919dd839d7e5a57a93726b7d417bc0af378457b461ef9a0e4ff15"
+        },
+        {
+          "char_end": 106,
+          "char_start": 19,
+          "chunk_id": "mdchk_b941c6f24fc3bb41",
+          "document_char_end": 11005,
+          "document_char_start": 10918,
+          "evidence_id": "ev_d3e4d77f5a106626",
+          "paper_id": "DOI:10.1016_j.cej.2022.140955",
+          "quote": "Stock solutions of A and B were typically prepared in 60 ml vials and fed to the robot.",
+          "source_sha256": "728064f55fc3b9a4f4c209dfc765a350ec05467093090c7777c73a323dac8cd3"
+        },
+        {
+          "char_end": 347,
+          "char_start": 107,
+          "chunk_id": "mdchk_b941c6f24fc3bb41",
+          "document_char_end": 11246,
+          "document_char_start": 11006,
+          "evidence_id": "ev_924174f7426965bc",
+          "paper_id": "DOI:10.1016_j.cej.2022.140955",
+          "quote": "Upon initiating the screening experiment, including the experimental parameters, the robotic system starts the fully automated screening cycle. Bar-coded reaction vessels are checked in and fed to the Proteus robot conveyor in tube rackets.",
+          "source_sha256": "728064f55fc3b9a4f4c209dfc765a350ec05467093090c7777c73a323dac8cd3"
+        },
+        {
+          "char_end": 347,
+          "char_start": 251,
+          "chunk_id": "mdchk_b941c6f24fc3bb41",
+          "document_char_end": 11246,
+          "document_char_start": 11150,
+          "evidence_id": "ev_c01d5f169e64f63e",
+          "paper_id": "DOI:10.1016_j.cej.2022.140955",
+          "quote": "Bar-coded reaction vessels are checked in and fed to the Proteus robot conveyor in tube rackets.",
+          "source_sha256": "728064f55fc3b9a4f4c209dfc765a350ec05467093090c7777c73a323dac8cd3"
+        },
+        {
+          "char_end": 435,
+          "char_start": 348,
+          "chunk_id": "mdchk_b941c6f24fc3bb41",
+          "document_char_end": 11334,
+          "document_char_start": 11247,
+          "evidence_id": "ev_506ee19cfe463a7b",
+          "paper_id": "DOI:10.1016_j.cej.2022.140955",
+          "quote": "The reaction vessels are provided with magnetic stirrers, septa and screw caps, Fig. 3.",
+          "source_sha256": "728064f55fc3b9a4f4c209dfc765a350ec05467093090c7777c73a323dac8cd3"
+        },
+        {
+          "char_end": 554,
+          "char_start": 477,
+          "chunk_id": "mdchk_b941c6f24fc3bb41",
+          "document_char_end": 11453,
+          "document_char_start": 11376,
+          "evidence_id": "ev_3ead5fdf99d72698",
+          "paper_id": "DOI:10.1016_j.cej.2022.140955",
+          "quote": "The checked-in, bar-coded\nreaction vessels are verified by the Proteus system",
+          "source_sha256": "728064f55fc3b9a4f4c209dfc765a350ec05467093090c7777c73a323dac8cd3"
+        },
+        {
+          "char_end": 642,
+          "char_start": 555,
+          "chunk_id": "mdchk_b941c6f24fc3bb41",
+          "document_char_end": 11541,
+          "document_char_start": 11454,
+          "evidence_id": "ev_2385df5e581af213",
+          "paper_id": "DOI:10.1016_j.cej.2022.140955",
+          "quote": "and subsequently automatically placed in thermal blocks with the requested temperature.",
+          "source_sha256": "728064f55fc3b9a4f4c209dfc765a350ec05467093090c7777c73a323dac8cd3"
+        },
+        {
+          "char_end": 741,
+          "char_start": 643,
+          "chunk_id": "mdchk_b941c6f24fc3bb41",
+          "document_char_end": 11640,
+          "document_char_start": 11542,
+          "evidence_id": "ev_b7c700eb371f38f4",
+          "paper_id": "DOI:10.1016_j.cej.2022.140955",
+          "quote": "Successively, the Proteus system moves the reaction vessels to the sampling preparation superblock",
+          "source_sha256": "728064f55fc3b9a4f4c209dfc765a350ec05467093090c7777c73a323dac8cd3"
+        },
+        {
+          "char_end": 835,
+          "char_start": 743,
+          "chunk_id": "mdchk_b941c6f24fc3bb41",
+          "document_char_end": 11734,
+          "document_char_start": 11642,
+          "evidence_id": "ev_b46260c5abd9f3ad",
+          "paper_id": "DOI:10.1016_j.cej.2022.140955",
+          "quote": "where it starts to dispense the correct volumes of the pre-mixed stock solutions of A and B.",
+          "source_sha256": "728064f55fc3b9a4f4c209dfc765a350ec05467093090c7777c73a323dac8cd3"
+        },
+        {
+          "char_end": 919,
+          "char_start": 836,
+          "chunk_id": "mdchk_b941c6f24fc3bb41",
+          "document_char_end": 11818,
+          "document_char_start": 11735,
+          "evidence_id": "ev_f17119e94f53150f",
+          "paper_id": "DOI:10.1016_j.cej.2022.140955",
+          "quote": "Before dispensing the stock solutions, the test tubes are purged with nitrogen gas.",
+          "source_sha256": "728064f55fc3b9a4f4c209dfc765a350ec05467093090c7777c73a323dac8cd3"
+        },
+        {
+          "char_end": 1032,
+          "char_start": 920,
+          "chunk_id": "mdchk_b941c6f24fc3bb41",
+          "document_char_end": 11931,
+          "document_char_start": 11819,
+          "evidence_id": "ev_64220a5e863ad777",
+          "paper_id": "DOI:10.1016_j.cej.2022.140955",
+          "quote": "Here after, the solutions of A and B are mixed by stirring for a pre-defined time, which was set to about 1 min.",
+          "source_sha256": "728064f55fc3b9a4f4c209dfc765a350ec05467093090c7777c73a323dac8cd3"
+        },
+        {
+          "char_end": 1233,
+          "char_start": 1033,
+          "chunk_id": "mdchk_b941c6f24fc3bb41",
+          "document_char_end": 12132,
+          "document_char_start": 11932,
+          "evidence_id": "ev_6c79086bf0b88221",
+          "paper_id": "DOI:10.1016_j.cej.2022.140955",
+          "quote": "An analytical chain, utilizing turbidity, controls if a precipitate has formed or not. If precipitation occurs, the screening cycle proceeds with addition of more solvent and repeated turbidity check.",
+          "source_sha256": "728064f55fc3b9a4f4c209dfc765a350ec05467093090c7777c73a323dac8cd3"
+        },
+        {
+          "char_end": 1233,
+          "char_start": 1120,
+          "chunk_id": "mdchk_b941c6f24fc3bb41",
+          "document_char_end": 12132,
+          "document_char_start": 12019,
+          "evidence_id": "ev_3178678e6677704b",
+          "paper_id": "DOI:10.1016_j.cej.2022.140955",
+          "quote": "If precipitation occurs, the screening cycle proceeds with addition of more solvent and repeated turbidity check.",
+          "source_sha256": "728064f55fc3b9a4f4c209dfc765a350ec05467093090c7777c73a323dac8cd3"
+        },
+        {
+          "char_end": 1399,
+          "char_start": 1234,
+          "chunk_id": "mdchk_b941c6f24fc3bb41",
+          "document_char_end": 12298,
+          "document_char_start": 12133,
+          "evidence_id": "ev_0a244585992a95ab",
+          "paper_id": "DOI:10.1016_j.cej.2022.140955",
+          "quote": "If no precipitation can be detected, the analytical sequence continues to the next step involving Raman spec troscopy for characterisation of the electrolyte system.",
+          "source_sha256": "728064f55fc3b9a4f4c209dfc765a350ec05467093090c7777c73a323dac8cd3"
+        },
+        {
+          "char_end": 1600,
+          "char_start": 1400,
+          "chunk_id": "mdchk_b941c6f24fc3bb41",
+          "document_char_end": 12499,
+          "document_char_start": 12299,
+          "evidence_id": "ev_66bd4aa647589196",
+          "paper_id": "DOI:10.1016_j.cej.2022.140955",
+          "quote": "Subsequently, sampling of 100 μL, 50 μL and 10 μL of the reaction solution is performed onto a 96-well plate at three different positions for further characteri sation, crystallisation and evaluation.",
+          "source_sha256": "728064f55fc3b9a4f4c209dfc765a350ec05467093090c7777c73a323dac8cd3"
+        },
+        {
+          "char_end": 1896,
+          "char_start": 1601,
+          "chunk_id": "mdchk_b941c6f24fc3bb41",
+          "document_char_end": 12795,
+          "document_char_start": 12500,
+          "evidence_id": "ev_22d2ce5696fd1974",
+          "paper_id": "DOI:10.1016_j.cej.2022.140955",
+          "quote": "The prepared electrolyte is here after ready for dispensing onto the prepared half-cell of the coin cell. Our initial investigations show that 50 μL is an appropriate electrolyte vol ume. The electrolyte is dispensed directly onto the anode on the half coin cell prepared by the Eioneus systems.",
+          "source_sha256": "728064f55fc3b9a4f4c209dfc765a350ec05467093090c7777c73a323dac8cd3"
+        },
+        {
+          "char_end": 2045,
+          "char_start": 1897,
+          "chunk_id": "mdchk_b941c6f24fc3bb41",
+          "document_char_end": 12944,
+          "document_char_start": 12796,
+          "evidence_id": "ev_68a02d178660e26c",
+          "paper_id": "DOI:10.1016_j.cej.2022.140955",
+          "quote": "An option available for handling precipitation of the mixed electrolyte is filtration, which is performed with a workflow utilizing syringe filters.",
+          "source_sha256": "728064f55fc3b9a4f4c209dfc765a350ec05467093090c7777c73a323dac8cd3"
+        }
+      ],
+      "evidence_scope": "primary_report",
+      "instruments": [
+        {
+          "entity_id": "inst_4bd0f7a2e56e2cdc",
+          "evidence_ids": [
+            "ev_924174f7426965bc"
+          ],
+          "manufacturer": null,
+          "model": null,
+          "name": "Proteus robot",
+          "settings": {}
+        }
+      ],
+      "materials": [
+        {
+          "amount": "typically prepared in 60 ml vials",
+          "entity_id": "mat_bcbfa503c66269c5",
+          "evidence_ids": [
+            "ev_d3e4d77f5a106626"
+          ],
+          "name": "stock solutions of A and B",
+          "pretreatment": null,
+          "purity": null,
+          "role": null,
+          "supplier": null
+        },
+        {
+          "amount": null,
+          "entity_id": "mat_a2189fb2e5c431e2",
+          "evidence_ids": [
+            "ev_506ee19cfe463a7b"
+          ],
+          "name": "magnetic stirrers",
+          "pretreatment": null,
+          "purity": null,
+          "role": null,
+          "supplier": null
+        },
+        {
+          "amount": null,
+          "entity_id": "mat_7d03f43a6b3e5612",
+          "evidence_ids": [
+            "ev_506ee19cfe463a7b"
+          ],
+          "name": "septa",
+          "pretreatment": null,
+          "purity": null,
+          "role": null,
+          "supplier": null
+        },
+        {
+          "amount": null,
+          "entity_id": "mat_2b94d5feca0e1155",
+          "evidence_ids": [
+            "ev_506ee19cfe463a7b"
+          ],
+          "name": "screw caps",
+          "pretreatment": null,
+          "purity": null,
+          "role": null,
+          "supplier": null
+        },
+        {
+          "amount": null,
+          "entity_id": "mat_552bd6ec68134075",
+          "evidence_ids": [
+            "ev_f17119e94f53150f"
+          ],
+          "name": "nitrogen gas",
+          "pretreatment": null,
+          "purity": null,
+          "role": null,
+          "supplier": null
+        },
+        {
+          "amount": null,
+          "entity_id": "mat_997bb8cd3693252d",
+          "evidence_ids": [
+            "ev_3178678e6677704b"
+          ],
+          "name": "solvent",
+          "pretreatment": null,
+          "purity": null,
+          "role": null,
+          "supplier": null
+        },
+        {
+          "amount": null,
+          "entity_id": "mat_5c8e9515171a2bc2",
+          "evidence_ids": [
+            "ev_68a02d178660e26c"
+          ],
+          "name": "syringe filters",
+          "pretreatment": null,
+          "purity": null,
+          "role": "filtration",
+          "supplier": null
+        }
+      ],
+      "paper_id": "DOI:10.1016_j.cej.2022.140955",
+      "protocol_id": "protocol_7f9b6e94ad6f166a",
+      "protocol_name": "Robotic electrolyte screening and dispensing workflow",
+      "protocol_type": "automated_screening",
+      "relations": [],
+      "results": [],
+      "scientific_chunk_ids": [],
+      "software": [],
+      "source_chunk_ids": [
+        "mdchk_0885d8ef29fb894e",
+        "mdchk_b941c6f24fc3bb41"
+      ],
+      "source_paper_tier": "primary_battery_electrolyte",
+      "steps": [
+        {
+          "action": "Bar-coded reaction vessels are checked in and fed to the Proteus robot conveyor in tube rackets.",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_c01d5f169e64f63e"
+          ],
+          "notes": null,
+          "order": 1,
+          "step_id": "step_2095a1d7ad0333f6"
+        },
+        {
+          "action": "The reaction vessels are provided with magnetic stirrers, septa and screw caps, Fig. 3.",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_506ee19cfe463a7b"
+          ],
+          "notes": null,
+          "order": 2,
+          "step_id": "step_e53332b42772349f"
+        },
+        {
+          "action": "The checked-in, bar-coded\nreaction vessels are verified by the Proteus system",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_3ead5fdf99d72698"
+          ],
+          "notes": null,
+          "order": 3,
+          "step_id": "step_0a40471f16f96261"
+        },
+        {
+          "action": "and subsequently automatically placed in thermal blocks with the requested temperature.",
+          "conditions": [
+            "requested temperature"
+          ],
+          "evidence_ids": [
+            "ev_2385df5e581af213"
+          ],
+          "notes": null,
+          "order": 4,
+          "step_id": "step_b702d34f19a7efe9"
+        },
+        {
+          "action": "Successively, the Proteus system moves the reaction vessels to the sampling preparation superblock",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_b7c700eb371f38f4"
+          ],
+          "notes": null,
+          "order": 5,
+          "step_id": "step_b3d6c30148676a67"
+        },
+        {
+          "action": "Before dispensing the stock solutions, the test tubes are purged with nitrogen gas.",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_f17119e94f53150f"
+          ],
+          "notes": null,
+          "order": 6,
+          "step_id": "step_9ca5c6d248145377"
+        },
+        {
+          "action": "where it starts to dispense the correct volumes of the pre-mixed stock solutions of A and B.",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_b46260c5abd9f3ad"
+          ],
+          "notes": null,
+          "order": 7,
+          "step_id": "step_b8a31f0ae710725c"
+        },
+        {
+          "action": "Here after, the solutions of A and B are mixed by stirring for a pre-defined time, which was set to about 1 min.",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_64220a5e863ad777"
+          ],
+          "notes": null,
+          "order": 8,
+          "step_id": "step_7fabca3a220437c1"
+        },
+        {
+          "action": "An analytical chain, utilizing turbidity, controls if a precipitate has formed or not. If precipitation occurs, the screening cycle proceeds with addition of more solvent and repeated turbidity check.",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_6c79086bf0b88221"
+          ],
+          "notes": null,
+          "order": 9,
+          "step_id": "step_924cf36842b48438"
+        },
+        {
+          "action": "If no precipitation can be detected, the analytical sequence continues to the next step involving Raman spec troscopy for characterisation of the electrolyte system.",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_0a244585992a95ab"
+          ],
+          "notes": null,
+          "order": 10,
+          "step_id": "step_f19b7e3775b6a763"
+        },
+        {
+          "action": "Subsequently, sampling of 100 μL, 50 μL and 10 μL of the reaction solution is performed onto a 96-well plate at three different positions for further characteri sation, crystallisation and evaluation.",
+          "conditions": [
+            "100 μL, 50 μL and 10 μL"
+          ],
+          "evidence_ids": [
+            "ev_66bd4aa647589196"
+          ],
+          "notes": null,
+          "order": 11,
+          "step_id": "step_d0f18f9b3bbe05b7"
+        },
+        {
+          "action": "The prepared electrolyte is here after ready for dispensing onto the prepared half-cell of the coin cell. Our initial investigations show that 50 μL is an appropriate electrolyte vol ume. The electrolyte is dispensed directly onto the anode on the half coin cell prepared by the Eioneus systems.",
+          "conditions": [
+            "50 μL"
+          ],
+          "evidence_ids": [
+            "ev_22d2ce5696fd1974"
+          ],
+          "notes": null,
+          "order": 12,
+          "step_id": "step_5109d806b233a08b"
+        },
+        {
+          "action": "The preparation of the investigated electrolyte systems was made at (25.0 ± 0.1)◦C. This temperature was also kept during all preparatory and characterization steps in the Proteus system.",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_6baf3b4adca20db5"
+          ],
+          "notes": null,
+          "order": 13,
+          "step_id": "step_1d6b675bd14be2a7"
+        },
+        {
+          "action": "The dispensing of the electrolyte is only made once, and onto the centre of the anode electrode. The assessment shows that this procedure is satisfactorily for screening purposes. In the literature, it is more common to first dispense half the volume on the anode electrode, and subsequently the other half on the separator. This procedure risks to become a workflow bottleneck and has therefore been omitted.",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_fc87923616fdd954"
+          ],
+          "notes": null,
+          "order": 14,
+          "step_id": "step_af24b18874f8e790"
+        }
+      ]
+    },
+    {
+      "caveats": [
+        {
+          "caveat_id": "caveat_d2323ad206bc5aae",
+          "evidence_ids": [
+            "ev_b1c03f9be674dc02"
+          ],
+          "text": "This is a result of that the disassembly not always results in a uniformly disassembled coin cell geometry, which in turn can create issues with half-cell separation and component handling."
+        },
+        {
+          "caveat_id": "caveat_a3e40373a6131a45",
+          "evidence_ids": [
+            "ev_357b27879de53ae9"
+          ],
+          "text": "Currently, the post-mortem analyses are per formed off-line."
+        },
+        {
+          "caveat_id": "caveat_bb8e277747ec4f30",
+          "evidence_ids": [
+            "ev_c6e9f28e67f8c212"
+          ],
+          "text": "However, to avoid any contamination in the coin cell assembly, a step where the suction cups can be rinsed will be implemented in the future."
+        },
+        {
+          "caveat_id": "caveat_09e3a4757617188d",
+          "evidence_ids": [
+            "ev_982270c0e9a036e7"
+          ],
+          "text": "Furthermore, in order to implement a fully automatized coin cell component separation workflow for a subsequent post-mortem analysis an additional robot arm will be needed."
+        }
+      ],
+      "characterization": [],
+      "evidence": [
+        {
+          "char_end": 1864,
+          "char_start": 1770,
+          "chunk_id": "mdchk_0885d8ef29fb894e",
+          "document_char_end": 18947,
+          "document_char_start": 18853,
+          "evidence_id": "ev_6af51fb03c122696",
+          "paper_id": "DOI:10.1016_j.cej.2022.140955",
+          "quote": "Overall, the pickup and the assembly of the coin cell cases and spacer proceeds very smoothly.",
+          "source_sha256": "2c3fb5bbc54919dd839d7e5a57a93726b7d417bc0af378457b461ef9a0e4ff15"
+        },
+        {
+          "char_end": 2074,
+          "char_start": 1865,
+          "chunk_id": "mdchk_0885d8ef29fb894e",
+          "document_char_end": 19157,
+          "document_char_start": 18948,
+          "evidence_id": "ev_0c758792179d64ff",
+          "paper_id": "DOI:10.1016_j.cej.2022.140955",
+          "quote": "The handling of the device springs was the most challenging the initial stages of the robot development. However, after having constructed a special three-part suction device, also this step works efficiently.",
+          "source_sha256": "2c3fb5bbc54919dd839d7e5a57a93726b7d417bc0af378457b461ef9a0e4ff15"
+        },
+        {
+          "char_end": 2074,
+          "char_start": 1970,
+          "chunk_id": "mdchk_0885d8ef29fb894e",
+          "document_char_end": 19157,
+          "document_char_start": 19053,
+          "evidence_id": "ev_444d2789ec989b6b",
+          "paper_id": "DOI:10.1016_j.cej.2022.140955",
+          "quote": "However, after having constructed a special three-part suction device, also this step works efficiently.",
+          "source_sha256": "2c3fb5bbc54919dd839d7e5a57a93726b7d417bc0af378457b461ef9a0e4ff15"
+        },
+        {
+          "char_end": 2219,
+          "char_start": 2075,
+          "chunk_id": "mdchk_0885d8ef29fb894e",
+          "document_char_end": 19302,
+          "document_char_start": 19158,
+          "evidence_id": "ev_4191e359f17548b0",
+          "paper_id": "DOI:10.1016_j.cej.2022.140955",
+          "quote": "The tapping procedure before crimping secures alignment and complete cell closure, which in turn ensures a well- functioning coin cell crimping.",
+          "source_sha256": "2c3fb5bbc54919dd839d7e5a57a93726b7d417bc0af378457b461ef9a0e4ff15"
+        },
+        {
+          "char_end": 2437,
+          "char_start": 2220,
+          "chunk_id": "mdchk_0885d8ef29fb894e",
+          "document_char_end": 19520,
+          "document_char_start": 19303,
+          "evidence_id": "ev_b36096e174028b5d",
+          "paper_id": "DOI:10.1016_j.cej.2022.140955",
+          "quote": "The disassembly procedure also works well, however additional tuning and modifications will be needed to secure a stable automated handling of the disassembled coin cell com ponents for automated post-mortem analysis.",
+          "source_sha256": "2c3fb5bbc54919dd839d7e5a57a93726b7d417bc0af378457b461ef9a0e4ff15"
+        },
+        {
+          "char_end": 2627,
+          "char_start": 2438,
+          "chunk_id": "mdchk_0885d8ef29fb894e",
+          "document_char_end": 19710,
+          "document_char_start": 19521,
+          "evidence_id": "ev_b1c03f9be674dc02",
+          "paper_id": "DOI:10.1016_j.cej.2022.140955",
+          "quote": "This is a result of that the disassembly not always results in a uniformly disassembled coin cell geometry, which in turn can create issues with half-cell separation and component handling.",
+          "source_sha256": "2c3fb5bbc54919dd839d7e5a57a93726b7d417bc0af378457b461ef9a0e4ff15"
+        },
+        {
+          "char_end": 2688,
+          "char_start": 2628,
+          "chunk_id": "mdchk_0885d8ef29fb894e",
+          "document_char_end": 19771,
+          "document_char_start": 19711,
+          "evidence_id": "ev_357b27879de53ae9",
+          "paper_id": "DOI:10.1016_j.cej.2022.140955",
+          "quote": "Currently, the post-mortem analyses are per formed off-line.",
+          "source_sha256": "2c3fb5bbc54919dd839d7e5a57a93726b7d417bc0af378457b461ef9a0e4ff15"
+        },
+        {
+          "char_end": 3257,
+          "char_start": 3116,
+          "chunk_id": "mdchk_0885d8ef29fb894e",
+          "document_char_end": 20340,
+          "document_char_start": 20199,
+          "evidence_id": "ev_c6e9f28e67f8c212",
+          "paper_id": "DOI:10.1016_j.cej.2022.140955",
+          "quote": "However, to avoid any contamination in the coin cell assembly, a step where the suction cups can be rinsed will be implemented in the future.",
+          "source_sha256": "2c3fb5bbc54919dd839d7e5a57a93726b7d417bc0af378457b461ef9a0e4ff15"
+        },
+        {
+          "char_end": 3430,
+          "char_start": 3258,
+          "chunk_id": "mdchk_0885d8ef29fb894e",
+          "document_char_end": 20513,
+          "document_char_start": 20341,
+          "evidence_id": "ev_982270c0e9a036e7",
+          "paper_id": "DOI:10.1016_j.cej.2022.140955",
+          "quote": "Furthermore, in order to implement a fully automatized coin cell component separation workflow for a subsequent post-mortem analysis an additional robot arm will be needed.",
+          "source_sha256": "2c3fb5bbc54919dd839d7e5a57a93726b7d417bc0af378457b461ef9a0e4ff15"
+        }
+      ],
+      "evidence_scope": "primary_report",
+      "instruments": [
+        {
+          "entity_id": "inst_59ef90c4cc043282",
+          "evidence_ids": [
+            "ev_444d2789ec989b6b"
+          ],
+          "manufacturer": null,
+          "model": null,
+          "name": "three-part suction device",
+          "settings": {}
+        }
+      ],
+      "materials": [],
+      "paper_id": "DOI:10.1016_j.cej.2022.140955",
+      "protocol_id": "protocol_bb8e277747ec4f30",
+      "protocol_name": "Coin cell assembly and disassembly workflow",
+      "protocol_type": "device_assembly",
+      "relations": [],
+      "results": [],
+      "scientific_chunk_ids": [],
+      "software": [],
+      "source_chunk_ids": [
+        "mdchk_0885d8ef29fb894e"
+      ],
+      "source_paper_tier": "primary_battery_electrolyte",
+      "steps": [
+        {
+          "action": "Overall, the pickup and the assembly of the coin cell cases and spacer proceeds very smoothly.",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_6af51fb03c122696"
+          ],
+          "notes": "Proceeds very smoothly",
+          "order": 1,
+          "step_id": "step_d2323ad206bc5aae"
+        },
+        {
+          "action": "The handling of the device springs was the most challenging the initial stages of the robot development. However, after having constructed a special three-part suction device, also this step works efficiently.",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_0c758792179d64ff"
+          ],
+          "notes": null,
+          "order": 2,
+          "step_id": "step_a3e40373a6131a45"
+        },
+        {
+          "action": "The tapping procedure before crimping secures alignment and complete cell closure, which in turn ensures a well- functioning coin cell crimping.",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_4191e359f17548b0"
+          ],
+          "notes": "Secures alignment and complete cell closure",
+          "order": 3,
+          "step_id": "step_bb8e277747ec4f30"
+        },
+        {
+          "action": "The tapping procedure before crimping secures alignment and complete cell closure, which in turn ensures a well- functioning coin cell crimping.",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_4191e359f17548b0"
+          ],
+          "notes": null,
+          "order": 4,
+          "step_id": "step_09e3a4757617188d"
+        },
+        {
+          "action": "The disassembly procedure also works well, however additional tuning and modifications will be needed to secure a stable automated handling of the disassembled coin cell com ponents for automated post-mortem analysis.",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_b36096e174028b5d"
+          ],
+          "notes": null,
+          "order": 5,
+          "step_id": "step_d1b0550fff913a7b"
+        }
+      ]
+    },
+    {
+      "caveats": [],
+      "characterization": [],
+      "evidence": [
+        {
+          "char_end": 3660,
+          "char_start": 3473,
+          "chunk_id": "mdchk_0885d8ef29fb894e",
+          "document_char_end": 20743,
+          "document_char_start": 20556,
+          "evidence_id": "ev_5c54d2e37a1203cd",
+          "paper_id": "DOI:10.1016_j.cej.2022.140955",
+          "quote": "Initially, 50 charge/discharge cycles were performed on the assem bled coin cells to collect benchmark data (Fig. 7) and to determine from which cycle consistent results can be extracted.",
+          "source_sha256": "2c3fb5bbc54919dd839d7e5a57a93726b7d417bc0af378457b461ef9a0e4ff15"
+        },
+        {
+          "char_end": 149,
+          "char_start": 40,
+          "chunk_id": "mdchk_0e8714da456aa819",
+          "document_char_end": 30258,
+          "document_char_start": 30149,
+          "evidence_id": "ev_caa6ea431dc40460",
+          "paper_id": "DOI:10.1016_j.cej.2022.140955",
+          "quote": "The galvanostatic cycling was performed using an EmStat4S instru mentation (see Instrumentation section 4.3).",
+          "source_sha256": "e62a41501b7873a661196ca3dc1cf1130bb532e25a6e345558e1bccb939a416c"
+        },
+        {
+          "char_end": 314,
+          "char_start": 150,
+          "chunk_id": "mdchk_0e8714da456aa819",
+          "document_char_end": 30423,
+          "document_char_start": 30259,
+          "evidence_id": "ev_661934f0ba284f71",
+          "paper_id": "DOI:10.1016_j.cej.2022.140955",
+          "quote": "The charge/discharge cycling of all batteries was performed with a constant current of 0.5 mA in the voltage range from 0.01 to 1.00 V, which represents a 10C-rate.",
+          "source_sha256": "e62a41501b7873a661196ca3dc1cf1130bb532e25a6e345558e1bccb939a416c"
+        },
+        {
+          "char_end": 327,
+          "char_start": 107,
+          "chunk_id": "mdchk_7cc1095fafb934bf",
+          "document_char_end": 23917,
+          "document_char_start": 23697,
+          "evidence_id": "ev_9f8d4a01b7ae6ec2",
+          "paper_id": "DOI:10.1016_j.cej.2022.140955",
+          "quote": "Also, the increase in specific energy ca observed after the 3rd cycle, and therefore all subsequent experiments1 pacity during discharging was less pronounced (from 50 mAh⋅g to 52 were performed up to the 3rd cycle only.",
+          "source_sha256": "a011dd0f3e7b699dfb28e45ec0510e5b7953a940ca28212e61a4aeeeff277aba"
+        }
+      ],
+      "evidence_scope": "primary_report",
+      "instruments": [
+        {
+          "entity_id": "inst_8b98ce5ea8870ea7",
+          "evidence_ids": [
+            "ev_caa6ea431dc40460"
+          ],
+          "manufacturer": null,
+          "model": "EmStat4S",
+          "name": "EmStat4S",
+          "settings": {}
+        }
+      ],
+      "materials": [],
+      "paper_id": "DOI:10.1016_j.cej.2022.140955",
+      "protocol_id": "protocol_5b1a853c1eb573a9",
+      "protocol_name": "Battery charge/discharge cycling and electrochemical characterization",
+      "protocol_type": "electrochemical_testing",
+      "relations": [],
+      "results": [],
+      "scientific_chunk_ids": [],
+      "software": [],
+      "source_chunk_ids": [
+        "mdchk_0885d8ef29fb894e",
+        "mdchk_0e8714da456aa819",
+        "mdchk_7cc1095fafb934bf"
+      ],
+      "source_paper_tier": "primary_battery_electrolyte",
+      "steps": [
+        {
+          "action": "Initially, 50 charge/discharge cycles were performed on the assem bled coin cells to collect benchmark data (Fig. 7) and to determine from which cycle consistent results can be extracted.",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_5c54d2e37a1203cd"
+          ],
+          "notes": "To determine from which cycle consistent results can be extracted",
+          "order": 1,
+          "step_id": "step_d2323ad206bc5aae"
+        },
+        {
+          "action": "The charge/discharge cycling of all batteries was performed with a constant current of 0.5 mA in the voltage range from 0.01 to 1.00 V, which represents a 10C-rate.",
+          "conditions": [
+            "0.5 mA",
+            "10C-rate"
+          ],
+          "evidence_ids": [
+            "ev_661934f0ba284f71"
+          ],
+          "notes": null,
+          "order": 2,
+          "step_id": "step_fde05a94168be025"
+        },
+        {
+          "action": "Also, the increase in specific energy ca observed after the 3rd cycle, and therefore all subsequent experiments1 pacity during discharging was less pronounced (from 50 mAh⋅g to 52 were performed up to the 3rd cycle only.",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_9f8d4a01b7ae6ec2"
+          ],
+          "notes": null,
+          "order": 3,
+          "step_id": "step_b7a1d5ef5c77b260"
+        }
+      ]
+    }
+  ],
+  "region": "us-east-1",
+  "schema_version": "bedrock-teacher-paper-cache-v0.2",
+  "teacher_response": {
+    "diagnostic": null,
+    "invocation_count": 1,
+    "metrics": {
+      "latencyMs": 109425
+    },
+    "raw_text": " ```json\n{\n  \"protocols\": [\n    {\n      \"source_chunk_ids\": [\"mdchk_d5ed12b60892cb04\"],\n      \"protocol_name\": \"Electrode and electrolyte preparation for coin cell assembly\",\n      \"protocol_type\": \"materials_preparation\",\n      \"materials\": [\n        {\n          \"source_chunk_id\": \"mdchk_d5ed12b60892cb04\",\n          \"name\": \"Li[Mn2O4] (LMO)\",\n          \"role\": \"cathode active material\",\n          \"amount\": null,\n          \"purity\": null,\n          \"supplier\": \"Sigma Aldrich\",\n          \"pretreatment\": \"used as received without further treatment\",\n          \"evidence_quote\": \"The electrode materials Li[Mn2O4] (LMO) and V2O5were provided by Sigma Aldrich and used as an active material without further treat ment.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_d5ed12b60892cb04\",\n          \"name\": \"V2O5\",\n          \"role\": \"anode active material\",\n          \"amount\": null,\n          \"purity\": null,\n          \"supplier\": \"Sigma Aldrich\",\n          \"pretreatment\": \"used as received without further treatment\",\n          \"evidence_quote\": \"The electrode materials Li[Mn2O4] (LMO) and V2O5were provided by Sigma Aldrich and used as an active material without further treat ment.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_d5ed12b60892cb04\",\n          \"name\": \"conductive carbon super C65\",\n          \"role\": \"conductive additive\",\n          \"amount\": null,\n          \"purity\": null,\n          \"supplier\": \"MTI Corporation\",\n          \"pretreatment\": null,\n          \"evidence_quote\": \"In order to prepare electrode films of LMO and V2O5, the active material was mixed with conductive carbon super C65(MTI Corpora tion) and polyvinylidene fluoride (PVDF, 5 wt% in N-methyl-2-pyrroli done, NMP) binder in a weight ratio of 80:10:10.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_d5ed12b60892cb04\",\n          \"name\": \"polyvinylidene fluoride (PVDF)\",\n          \"role\": \"binder\",\n          \"amount\": \"5 wt% in N-methyl-2-pyrrolidone (NMP)\",\n          \"purity\": null,\n          \"supplier\": null,\n          \"pretreatment\": null,\n          \"evidence_quote\": \"In order to prepare electrode films of LMO and V2O5, the active material was mixed with conductive carbon super C65(MTI Corpora tion) and polyvinylidene fluoride (PVDF, 5 wt% in N-methyl-2-pyrroli done, NMP) binder in a weight ratio of 80:10:10.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_d5ed12b60892cb04\",\n          \"name\": \"N-methyl-2-pyrrolidone (NMP)\",\n          \"role\": \"solvent\",\n          \"amount\": \"small amount\",\n          \"purity\": null,\n          \"supplier\": null,\n          \"pretreatment\": null,\n          \"evidence_quote\": \"A viscous slurry was prepared as follows, a small amount of NMP was added and afterwards pasted onto a stainless-steel foil.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_d5ed12b60892cb04\",\n          \"name\": \"stainless-steel foil\",\n          \"role\": \"current collector substrate\",\n          \"amount\": null,\n          \"purity\": null,\n          \"supplier\": null,\n          \"pretreatment\": null,\n          \"evidence_quote\": \"A viscous slurry was prepared as follows, a small amount of NMP was added and afterwards pasted onto a stainless-steel foil.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_d5ed12b60892cb04\",\n          \"name\": \"Whatman glass fiber GF/A\",\n          \"role\": \"separator\",\n          \"amount\": \"diameter of 16 mm\",\n          \"purity\": null,\n          \"supplier\": null,\n          \"pretreatment\": null,\n          \"evidence_quote\": \"The used separator was a Whatman glass fiber GF/A, with a diameter of 16 mm.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_d5ed12b60892cb04\",\n          \"name\": \"Li[TFSI]\",\n          \"role\": \"lithium salt for electrolyte\",\n          \"amount\": \"10 mol·kg⁻¹ stock solution, diluted to 2 mol·kg⁻¹\",\n          \"purity\": null,\n          \"supplier\": \"Sigma Aldrich\",\n          \"pretreatment\": \"dried before preparation, water content determined by Karl Fisher titration\",\n          \"evidence_quote\": \"For the electrolyte preparation, firstly a stock solution of 10 mol⋅kg -1 Li[TFSI] (Sigma Aldrich) in deionized water was prepared. Before the preparation of the solution, Li[TFSI] was dried, and the water content was determined by Karl Fisher titration.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_d5ed12b60892cb04\",\n          \"name\": \"deionized water\",\n          \"role\": \"solvent for electrolyte\",\n          \"amount\": null,\n          \"purity\": null,\n          \"supplier\": null,\n          \"pretreatment\": null,\n          \"evidence_quote\": \"For the electrolyte preparation, firstly a stock solution of 10 mol⋅kg -1 Li[TFSI] (Sigma Aldrich) in deionized water was prepared.\"\n        }\n      ],\n      \"instruments\": [],\n      \"software\": [],\n      \"steps\": [\n        {\n          \"source_chunk_id\": \"mdchk_d5ed12b60892cb04\",\n          \"order\": 1,\n          \"action\": \"Mix active material with conductive carbon and PVDF binder in weight ratio 80:10:10\",\n          \"conditions\": [],\n          \"notes\": \"For both LMO and V2O5 electrodes\",\n          \"evidence_quote\": \"In order to prepare electrode films of LMO and V2O5, the active material was mixed with conductive carbon super C65(MTI Corpora tion) and polyvinylidene fluoride (PVDF, 5 wt% in N-methyl-2-pyrroli done, NMP) binder in a weight ratio of 80:10:10.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_d5ed12b60892cb04\",\n          \"order\": 2,\n          \"action\": \"Add small amount of NMP to prepare viscous slurry\",\n          \"conditions\": [],\n          \"notes\": null,\n          \"evidence_quote\": \"A viscous slurry was prepared as follows, a small amount of NMP was added and afterwards pasted onto a stainless-steel foil.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_d5ed12b60892cb04\",\n          \"order\": 3,\n          \"action\": \"Paste slurry onto stainless-steel foil\",\n          \"conditions\": [],\n          \"notes\": null,\n          \"evidence_quote\": \"A viscous slurry was prepared as follows, a small amount of NMP was added and afterwards pasted onto a stainless-steel foil.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_d5ed12b60892cb04\",\n          \"order\": 4,\n          \"action\": \"Dry prepared electrodes in vacuum\",\n          \"conditions\": [\"70°C\", \"12 h\"],\n          \"notes\": null,\n          \"evidence_quote\": \"The prepared electrodes were dried in vacuum at 70◦C for 12 h.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_d5ed12b60892cb04\",\n          \"order\": 5,\n          \"action\": \"Punch out disc electrodes\",\n          \"conditions\": [\"diameter of 13 mm\"],\n          \"notes\": \"Mass loadings: ≈2.2 mg for LMO and ≈1.1 mg for V2O5\",\n          \"evidence_quote\": \"The disc electrodes were punched out in a diameter of 13 mm. The mass loadings were ≈2.2 mg for LMO and ≈1.1 mg for V2O5.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_d5ed12b60892cb04\",\n          \"order\": 6,\n          \"action\": \"Assemble full coin cell as CR 2030-type coin cell\",\n          \"conditions\": [],\n          \"notes\": \"Using Whatman glass fiber GF/A separator (16 mm diameter)\",\n          \"evidence_quote\": \"The full coin cell was assembled as a CR 2030-type coin cell. The used separator was a Whatman glass fiber GF/A, with a diameter of 16 mm.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_d5ed12b60892cb04\",\n          \"order\": 7,\n          \"action\": \"Prepare Li[TFSI] stock solution\",\n          \"conditions\": [\"10 mol·kg⁻¹ in deionized water\"],\n          \"notes\": \"Li[TFSI] dried beforehand, water content determined by Karl Fisher titration\",\n          \"evidence_quote\": \"For the electrolyte preparation, firstly a stock solution of 10 mol⋅kg -1 Li[TFSI] (Sigma Aldrich) in deionized water was prepared. Before the preparation of the solution, Li[TFSI] was dried, and the water content was determined by Karl Fisher titration.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_d5ed12b60892cb04\",\n          \"order\": 8,\n          \"action\": \"Dilute stock solution to obtain 2 mol·kg⁻¹ Li[TFSI] electrolyte\",\n          \"conditions\": [],\n          \"notes\": null,\n          \"evidence_quote\": \"The stock solution was further diluted with deionized water to obtain 2 mol⋅kg -1 Li[TFSI] and used in the coin cell assembly.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_d5ed12b60892cb04\",\n          \"order\": 9,\n          \"action\": \"Add electrolyte to coin cell\",\n          \"conditions\": [\"50 μL per cell\"],\n          \"notes\": null,\n          \"evidence_quote\": \"In each coin cell 50 μL of electrolyte was added.\"\n        }\n      ],\n      \"characterization\": [],\n      \"results\": [],\n      \"caveats\": []\n    },\n    {\n      \"source_chunk_ids\": [\"mdchk_b941c6f24fc3bb41\", \"mdchk_0885d8ef29fb894e\"],\n      \"protocol_name\": \"Robotic electrolyte screening and dispensing workflow\",\n      \"protocol_type\": \"automated_screening\",\n      \"materials\": [\n        {\n          \"source_chunk_id\": \"mdchk_b941c6f24fc3bb41\",\n          \"name\": \"stock solutions of A and B\",\n          \"role\": \"electrolyte precursors\",\n          \"amount\": \"typically prepared in 60 ml vials\",\n          \"purity\": null,\n          \"supplier\": null,\n          \"pretreatment\": \"pre-mixed\",\n          \"evidence_quote\": \"Stock solutions of A and B were typically prepared in 60 ml vials and fed to the robot.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_b941c6f24fc3bb41\",\n          \"name\": \"magnetic stirrers\",\n          \"role\": \"mixing aid\",\n          \"amount\": null,\n          \"purity\": null,\n          \"supplier\": null,\n          \"pretreatment\": null,\n          \"evidence_quote\": \"The reaction vessels are provided with magnetic stirrers, septa and screw caps, Fig. 3.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_b941c6f24fc3bb41\",\n          \"name\": \"septa\",\n          \"role\": \"sealing\",\n          \"amount\": null,\n          \"purity\": null,\n          \"supplier\": null,\n          \"pretreatment\": null,\n          \"evidence_quote\": \"The reaction vessels are provided with magnetic stirrers, septa and screw caps, Fig. 3.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_b941c6f24fc3bb41\",\n          \"name\": \"screw caps\",\n          \"role\": \"sealing\",\n          \"amount\": null,\n          \"purity\": null,\n          \"supplier\": null,\n          \"pretreatment\": null,\n          \"evidence_quote\": \"The reaction vessels are provided with magnetic stirrers, septa and screw caps, Fig. 3.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_b941c6f24fc3bb41\",\n          \"name\": \"nitrogen gas\",\n          \"role\": \"inert atmosphere\",\n          \"amount\": null,\n          \"purity\": null,\n          \"supplier\": null,\n          \"pretreatment\": null,\n          \"evidence_quote\": \"Before dispensing the stock solutions, the test tubes are purged with nitrogen gas.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_b941c6f24fc3bb41\",\n          \"name\": \"solvent\",\n          \"role\": \"precipitation mitigation\",\n          \"amount\": null,\n          \"purity\": null,\n          \"supplier\": null,\n          \"pretreatment\": null,\n          \"evidence_quote\": \"If precipitation occurs, the screening cycle proceeds with addition of more solvent and repeated turbidity check.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_b941c6f24fc3bb41\",\n          \"name\": \"syringe filters\",\n          \"role\": \"filtration\",\n          \"amount\": null,\n          \"purity\": null,\n          \"supplier\": null,\n          \"pretreatment\": null,\n          \"evidence_quote\": \"An option available for handling precipitation of the mixed electrolyte is filtration, which is performed with a workflow utilizing syringe filters.\"\n        }\n      ],\n      \"instruments\": [\n        {\n          \"source_chunk_id\": \"mdchk_b941c6f24fc3bb41\",\n          \"name\": \"Proteus robot\",\n          \"model\": null,\n          \"manufacturer\": null,\n          \"settings\": {},\n          \"evidence_quote\": \"Upon initiating the screening experiment, including the experimental parameters, the robotic system starts the fully automated screening cycle. Bar-coded reaction vessels are checked in and fed to the Proteus robot conveyor in tube rackets.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_b941c6f24fc3bb41\",\n          \"name\": \"thermal blocks\",\n          \"model\": null,\n          \"manufacturer\": null,\n          \"settings\": {\"temperature\": \"requested temperature\"},\n          \"evidence_quote\": \"The reaction vessels are verified by the Proteus system and subsequently automatically placed in thermal blocks with the requested temperature.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_b941c6f24fc3bb41\",\n          \"name\": \"turbidity sensor\",\n          \"model\": null,\n          \"manufacturer\": null,\n          \"settings\": {},\n          \"evidence_quote\": \"An analytical chain, utilizing turbidity, controls if a precipitate has formed or not.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_b941c6f24fc3bb41\",\n          \"name\": \"Raman spectrometer\",\n          \"model\": null,\n          \"manufacturer\": null,\n          \"settings\": {},\n          \"evidence_quote\": \"If no precipitation can be detected, the analytical sequence continues to the next step involving Raman spec troscopy for characterisation of the electrolyte system.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_0885d8ef29fb894e\",\n          \"name\": \"Eioneus system\",\n          \"model\": null,\n          \"manufacturer\": null,\n          \"settings\": {},\n          \"evidence_quote\": \"The electrolyte is dispensed directly onto the anode on the half coin cell prepared by the Eioneus systems.\"\n        }\n      ],\n      \"software\": [],\n      \"steps\": [\n        {\n          \"source_chunk_id\": \"mdchk_b941c6f24fc3bb41\",\n          \"order\": 1,\n          \"action\": \"Check in bar-coded reaction vessels and feed to Proteus robot conveyor in tube rackets\",\n          \"conditions\": [],\n          \"notes\": null,\n          \"evidence_quote\": \"Bar-coded reaction vessels are checked in and fed to the Proteus robot conveyor in tube rackets.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_b941c6f24fc3bb41\",\n          \"order\": 2,\n          \"action\": \"Provide reaction vessels with magnetic stirrers, septa and screw caps\",\n          \"conditions\": [],\n          \"notes\": null,\n          \"evidence_quote\": \"The reaction vessels are provided with magnetic stirrers, septa and screw caps, Fig. 3.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_b941c6f24fc3bb41\",\n          \"order\": 3,\n          \"action\": \"Verify reaction vessels by Proteus system\",\n          \"conditions\": [],\n          \"notes\": null,\n          \"evidence_quote\": \"The checked-in, bar-coded reaction vessels are verified by the Proteus system\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_b941c6f24fc3bb41\",\n          \"order\": 4,\n          \"action\": \"Automatically place reaction vessels in thermal blocks\",\n          \"conditions\": [\"requested temperature\"],\n          \"notes\": null,\n          \"evidence_quote\": \"and subsequently automatically placed in thermal blocks with the requested temperature.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_b941c6f24fc3bb41\",\n          \"order\": 5,\n          \"action\": \"Move reaction vessels to sampling preparation superblock\",\n          \"conditions\": [],\n          \"notes\": null,\n          \"evidence_quote\": \"Successively, the Proteus system moves the reaction vessels to the sampling preparation superblock\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_b941c6f24fc3bb41\",\n          \"order\": 6,\n          \"action\": \"Purge test tubes with nitrogen gas\",\n          \"conditions\": [],\n          \"notes\": \"Before dispensing stock solutions\",\n          \"evidence_quote\": \"Before dispensing the stock solutions, the test tubes are purged with nitrogen gas.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_b941c6f24fc3bb41\",\n          \"order\": 7,\n          \"action\": \"Dispense correct volumes of pre-mixed stock solutions of A and B\",\n          \"conditions\": [],\n          \"notes\": null,\n          \"evidence_quote\": \"where it starts to dispense the correct volumes of the pre-mixed stock solutions of A and B.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_b941c6f24fc3bb41\",\n          \"order\": 8,\n          \"action\": \"Mix solutions of A and B by stirring\",\n          \"conditions\": [\"pre-defined time, set to about 1 min\"],\n          \"notes\": null,\n          \"evidence_quote\": \"Here after, the solutions of A and B are mixed by stirring for a pre-defined time, which was set to about 1 min.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_b941c6f24fc3bb41\",\n          \"order\": 9,\n          \"action\": \"Check for precipitation using turbidity\",\n          \"conditions\": [],\n          \"notes\": \"If precipitation occurs, add more solvent and repeat turbidity check\",\n          \"evidence_quote\": \"An analytical chain, utilizing turbidity, controls if a precipitate has formed or not. If precipitation occurs, the screening cycle proceeds with addition of more solvent and repeated turbidity check.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_b941c6f24fc3bb41\",\n          \"order\": 10,\n          \"action\": \"Perform Raman spectroscopy for electrolyte characterization\",\n          \"conditions\": [],\n          \"notes\": \"Only if no precipitation detected\",\n          \"evidence_quote\": \"If no precipitation can be detected, the analytical sequence continues to the next step involving Raman spec troscopy for characterisation of the electrolyte system.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_b941c6f24fc3bb41\",\n          \"order\": 11,\n          \"action\": \"Sample reaction solution onto 96-well plate at three different positions\",\n          \"conditions\": [\"100 μL, 50 μL and 10 μL\"],\n          \"notes\": \"For further characterization, crystallisation and evaluation\",\n          \"evidence_quote\": \"Subsequently, sampling of 100 μL, 50 μL and 10 μL of the reaction solution is performed onto a 96-well plate at three different positions for further characteri sation, crystallisation and evaluation.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_b941c6f24fc3bb41\",\n          \"order\": 12,\n          \"action\": \"Dispense electrolyte onto prepared half-cell of coin cell\",\n          \"conditions\": [\"50 μL\"],\n          \"notes\": \"Dispensed directly onto the anode on the half coin cell prepared by Eioneus systems\",\n          \"evidence_quote\": \"The prepared electrolyte is here after ready for dispensing onto the prepared half-cell of the coin cell. Our initial investigations show that 50 μL is an appropriate electrolyte vol ume. The electrolyte is dispensed directly onto the anode on the half coin cell prepared by the Eioneus systems.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_0885d8ef29fb894e\",\n          \"order\": 13,\n          \"action\": \"Prepare electrolyte systems at controlled temperature\",\n          \"conditions\": [\"(25.0 ± 0.1)°C\"],\n          \"notes\": \"Temperature maintained during all preparatory and characterization steps\",\n          \"evidence_quote\": \"The preparation of the investigated electrolyte systems was made at (25.0 ± 0.1)◦C. This temperature was also kept during all preparatory and characterization steps in the Proteus system.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_0885d8ef29fb894e\",\n          \"order\": 14,\n          \"action\": \"Dispense electrolyte once onto centre of anode electrode\",\n          \"conditions\": [],\n          \"notes\": \"Alternative literature method (half on anode, half on separator) omitted to avoid workflow bottleneck\",\n          \"evidence_quote\": \"The dispensing of the electrolyte is only made once, and onto the centre of the anode electrode. The assessment shows that this procedure is satisfactorily for screening purposes. In the literature, it is more common to first dispense half the volume on the anode electrode, and subsequently the other half on the separator. This procedure risks to become a workflow bottleneck and has therefore been omitted.\"\n        }\n      ],\n      \"characterization\": [\n        {\n          \"source_chunk_id\": \"mdchk_b941c6f24fc3bb41\",\n          \"technique\": \"turbidity analysis\",\n          \"settings\": {},\n          \"output\": \"detection of precipitate formation\",\n          \"evidence_quote\": \"An analytical chain, utilizing turbidity, controls if a precipitate has formed or not.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_b941c6f24fc3bb41\",\n          \"technique\": \"Raman spectroscopy\",\n          \"settings\": {},\n          \"output\": \"electrolyte solvation structure characterization\",\n          \"evidence_quote\": \"If no precipitation can be detected, the analytical sequence continues to the next step involving Raman spec troscopy for characterisation of the electrolyte system.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_0885d8ef29fb894e\",\n          \"technique\": \"light microscopy\",\n          \"settings\": {},\n          \"output\": \"documentation of precipitation\",\n          \"evidence_quote\": \"The dispensing of the prepared electrolytes into the well plate wells represents a helpful tool for investigation with a light microscope and to document any type of precipitation.\"\n        }\n      ],\n      \"results\": [\n        {\n          \"source_chunk_id\": \"mdchk_0885d8ef29fb894e\",\n          \"metric\": \"electrolyte volume limit for leakage\",\n          \"raw_value\": \"above 60 μL\",\n          \"context\": \"risk of leakage during coin cell crimping\",\n          \"evidence_quote\": \"The battery performance using different electrolyte volumes was evaluated, and it was found that if volumes above 60 μL were utilized there was a risk of leakage during coin cell crimping.\"\n        }\n      ],\n      \"caveats\": [\n        {\n          \"source_chunk_id\": \"mdchk_0885d8ef29fb894e\",\n          \"text\": \"Electrode coatings are manually prepared\",\n          \"evidence_quote\": \"Notable is that the electrode coatings are manually prepared and are robust and uniform\"\n        }\n      ]\n    },\n    {\n      \"source_chunk_ids\": [\"mdchk_0885d8ef29fb894e\", \"mdchk_7cc1095fafb934bf\"],\n      \"protocol_name\": \"Coin cell assembly and disassembly workflow\",\n      \"protocol_type\": \"device_assembly\",\n      \"materials\": [],\n      \"instruments\": [\n        {\n          \"source_chunk_id\": \"mdchk_0885d8ef29fb894e\",\n          \"name\": \"Eioneus system\",\n          \"model\": null,\n          \"manufacturer\": null,\n          \"settings\": {},\n          \"evidence_quote\": \"The Eioneus system consists of a platform with coin cell mounting and supply area, crimping and decrimping stations, a potentiostat-based electrochemical evaluation station and a control board, see Figs. 1-2.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_0885d8ef29fb894e\",\n          \"name\": \"swap robot\",\n          \"model\": null,\n          \"manufacturer\": null,\n          \"settings\": {},\n          \"evidence_quote\": \"A swap robot and a robotic arm manages all steps connected to the transport and storage of the evaluated coin cells.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_0885d8ef29fb894e\",\n          \"name\": \"robotic arm\",\n          \"model\": null,\n          \"manufacturer\": null,\n          \"settings\": {},\n          \"evidence_quote\": \"A swap robot and a robotic arm manages all steps connected to the transport and storage of the evaluated coin cells.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_0885d8ef29fb894e\",\n          \"name\": \"three-part suction device\",\n          \"model\": null,\n          \"manufacturer\": null,\n          \"settings\": {},\n          \"evidence_quote\": \"However, after having constructed a special three-part suction device, also this step works efficiently.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_7cc1095fafb934bf\",\n          \"name\": \"potentiostat\",\n          \"model\": null,\n          \"manufacturer\": null,\n          \"settings\": {},\n          \"evidence_quote\": \"The approach of having the coin cell horizontally placed with one contact placed in the gripper and the other in a fixed position in the potentiostat setup results in stable and reproducible results.\"\n        }\n      ],\n      \"software\": [],\n      \"steps\": [\n        {\n          \"source_chunk_id\": \"mdchk_0885d8ef29fb894e\",\n          \"order\": 1,\n          \"action\": \"Pickup and assembly of coin cell cases and spacer\",\n          \"conditions\": [],\n          \"notes\": \"Proceeds very smoothly\",\n          \"evidence_quote\": \"Overall, the pickup and the assembly of the coin cell cases and spacer proceeds very smoothly.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_0885d8ef29fb894e\",\n          \"order\": 2,\n          \"action\": \"Handle device springs using special three-part suction device\",\n          \"conditions\": [],\n          \"notes\": \"Most challenging step in initial development stages\",\n          \"evidence_quote\": \"The handling of the device springs was the most challenging the initial stages of the robot development. However, after having constructed a special three-part suction device, also this step works efficiently.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_0885d8ef29fb894e\",\n          \"order\": 3,\n          \"action\": \"Perform tapping procedure before crimping\",\n          \"conditions\": [],\n          \"notes\": \"Secures alignment and complete cell closure\",\n          \"evidence_quote\": \"The tapping procedure before crimping secures alignment and complete cell closure, which in turn ensures a well- functioning coin cell crimping.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_0885d8ef29fb894e\",\n          \"order\": 4,\n          \"action\": \"Crimp coin cell\",\n          \"conditions\": [],\n          \"notes\": null,\n          \"evidence_quote\": \"The tapping procedure before crimping secures alignment and complete cell closure, which in turn ensures a well- functioning coin cell crimping.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_0885d8ef29fb894e\",\n          \"order\": 5,\n          \"action\": \"Place coin cell horizontally with one contact in gripper and other in fixed potentiostat position\",\n          \"conditions\": [],\n          \"notes\": null,\n          \"evidence_quote\": \"The approach of having the coin cell horizontally placed with one contact placed in the gripper and the other in a fixed position in the potentiostat setup results in stable and reproducible results.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_0885d8ef29fb894e\",\n          \"order\": 6,\n          \"action\": \"Disassemble coin cell\",\n          \"conditions\": [],\n          \"notes\": \"Additional tuning needed for stable automated handling of disassembled components\",\n          \"evidence_quote\": \"The disassembly procedure also works well, however additional tuning and modifications will be needed to secure a stable automated handling of the disassembled coin cell com ponents for automated post-mortem analysis.\"\n        }\n      ],\n      \"characterization\": [],\n      \"results\": [\n        {\n          \"source_chunk_id\": \"mdchk_7cc1095fafb934bf\",\n          \"metric\": \"relative deviation in 1st cycle\",\n          \"raw_value\": \"11%\",\n          \"context\": \"specific capacity\",\n          \"evidence_quote\": \"robust and uniform, with a relative deviation of 11 % in the 1st cycle and 6 % in the 2nd cycle (Fig. 11).\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_7cc1095fafb934bf\",\n          \"metric\": \"relative deviation in 2nd cycle\",\n          \"raw_value\": \"6%\",\n          \"context\": \"specific capacity\",\n          \"evidence_quote\": \"robust and uniform, with a relative deviation of 11 % in the 1st cycle and 6 % in the 2nd cycle (Fig. 11).\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_7cc1095fafb934bf\",\n          \"metric\": \"Coulombic efficiency after 3rd cycle\",\n          \"raw_value\": \"92%\",\n          \"context\": \"with relative deviation of 1.5%\",\n          \"evidence_quote\": \"Comparing the values for Coulombic efficiency(Fig. 12), it can be observed that after the 3rd cycle, as 92 % efficiency is obtained, with a relative deviation of 1.5 % suggesting that the applied procedure is of high accuracy and reproducibility.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_7cc1095fafb934bf\",\n          \"metric\": \"relative deviation of Coulombic efficiency\",\n          \"raw_value\": \"1.5%\",\n          \"context\": \"after 3rd cycle\",\n          \"evidence_quote\": \"Comparing the values for Coulombic efficiency(Fig. 12), it can be observed that after the 3rd cycle, as 92 % efficiency is obtained, with a relative deviation of 1.5 % suggesting that the applied procedure is of high accuracy and reproducibility.\"\n        }\n      ],\n      \"caveats\": [\n        {\n          \"source_chunk_id\": \"mdchk_0885d8ef29fb894e\",\n          \"text\": \"Disassembly does not always result in uniformly disassembled coin cell geometry, creating issues with half-cell separation and component handling\",\n          \"evidence_quote\": \"This is a result of that the disassembly not always results in a uniformly disassembled coin cell geometry, which in turn can create issues with half-cell separation and component handling.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_0885d8ef29fb894e\",\n          \"text\": \"Post-mortem analyses currently performed off-line\",\n          \"evidence_quote\": \"Currently, the post-mortem analyses are per formed off-line.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_0885d8ef29fb894e\",\n          \"text\": \"Suction cups need rinsing step to avoid contamination in future implementation\",\n          \"evidence_quote\": \"However, to avoid any contamination in the coin cell assembly, a step where the suction cups can be rinsed will be implemented in the future.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_0885d8ef29fb894e\",\n          \"text\": \"Additional robot arm needed for fully automatized coin cell component separation workflow\",\n          \"evidence_quote\": \"Furthermore, in order to implement a fully automatized coin cell component separation workflow for a subsequent post-mortem analysis an additional robot arm will be needed.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_7cc1095fafb934bf\",\n          \"text\": \"No significant correlation detected between assembly parameters and electrochemical results\",\n          \"evidence_quote\": \"No significant correlation between any of the as sembly parameters (electrode or separator placement, image embed dings, wetting time etc.) and electrochemical results (charge/discharge energy capacity, shape of the cycling curves) were detected.\"\n        }\n      ]\n    },\n    {\n      \"source_chunk_ids\": [\"mdchk_0885d8ef29fb894e\", \"mdchk_0e8714da456aa819\", \"mdchk_7cc1095fafb934bf\"],\n      \"protocol_name\": \"Battery charge/discharge cycling and electrochemical characterization\",\n      \"protocol_type\": \"electrochemical_testing\",\n      \"materials\": [],\n      \"instruments\": [\n        {\n          \"source_chunk_id\": \"mdchk_0e8714da456aa819\",\n          \"name\": \"EmStat4S\",\n          \"model\": \"EmStat4S\",\n          \"manufacturer\": null,\n          \"settings\": {},\n          \"evidence_quote\": \"The galvanostatic cycling was performed using an EmStat4S instru mentation (see Instrumentation section 4.3).\"\n        }\n      ],\n      \"software\": [],\n      \"steps\": [\n        {\n          \"source_chunk_id\": \"mdchk_0885d8ef29fb894e\",\n          \"order\": 1,\n          \"action\": \"Perform initial charge/discharge cycles to collect benchmark data\",\n          \"conditions\": [\"50 cycles\"],\n          \"notes\": \"To determine from which cycle consistent results can be extracted\",\n          \"evidence_quote\": \"Initially, 50 charge/discharge cycles were performed on the assem bled coin cells to collect benchmark data (Fig. 7) and to determine from which cycle consistent results can be extracted.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_0e8714da456aa819\",\n          \"order\": 2,\n          \"action\": \"Perform galvanostatic cycling with constant current\",\n          \"conditions\": [\"0.5 mA\", \"voltage range 0.01 to 1.00 V\", \"10C-rate\"],\n          \"notes\": null,\n          \"evidence_quote\": \"The charge/discharge cycling of all batteries was performed with a constant current of 0.5 mA in the voltage range from 0.01 to 1.00 V, which represents a 10C-rate.\"\n        },\n        {\n          \"source_chunk_id\": \"mdchk_7cc1095fafb934bf\",\n          \"order\": 3,\n          \"action\": \"Limit experiments to 3rd cycle for subsequent studies\",\n          \"conditions\": [],\n          \"notes\": \"3rd cycle considered qualified as 'production' cycle due to smaller difference in specific capacity and energy density\",\n          \"evidence_quote\": \"Also, the increase in specific energy ca observed after the 3rd cycle, and therefore all subsequent experiments1 pacity during discharging was less pronounced (from 50 mAh⋅g to 52 were performed up to the 3rd cycle only.\"\n        }\n      ],\n      \"characterization\": [\n        {\n          \"source_chunk_id\": \"mdchk_0e8714da456aa819\",\n          \"technique\": \"galvanostatic cycling\",\n          \"settings\": {\"current\": \"0.5 mA\", \"voltage_range\": \"0.01 to 1.00 V\", \"C-rate\": \"10C\"},\n          \"output\": \"charge/discharge curves, specific energy and capacity\",\n          \"evidence_quote\": \"The charge/discharge cycling of all batteries was performed with a constant current of 0.5 mA in the voltage range from 0.01 to 1.00 V, which represents a 10C-rate.\"\n        }\n      ],\n      \"results\": [\n        {\n          \"source_chunk_id\": \"mdchk_7cc1095fafb934bf\",\n          \"metric\": \"specific capacity during discharging\",\n          \"raw_value\": \"50 mAh·g⁻¹ to 52 mAh·g⁻¹\",\n          \"context\": \"increase after 3rd cycle\",\n          \"evidence_quote\": \"Also, the increase in specific energy ca observed after the 3rd cycle, and therefore all subsequent experiments1 pacity during discharging was less pronounced (from 50 mAh⋅g to 52 mAh⋅g).\"\n        }\n      ],\n      \"caveats\": []\n    }\n  ]\n}\n```",
+    "salvaged_protocol_count": 0,
+    "schema_invalid": false,
+    "stop_reason": "end_turn",
+    "usage": {
+      "inputTokens": 3017,
+      "outputTokens": 8308,
+      "totalTokens": 11325
+    }
+  }
+}

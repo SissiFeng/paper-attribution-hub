@@ -1,0 +1,31 @@
+{
+  "date": "2026-10-06",
+  "issue": "Anonymous Slack pairing was cancelled by signed-in session refresh on focus or the 60-second timer.",
+  "fix": "Run focus/timer session revalidation only for a signed-in reader. Preserve pending pairing, add connecting state and explicit sign-in instructions.",
+  "tests": {
+    "auth_access_pytest": 22,
+    "frontend_typecheck_build": "passed",
+    "live_browser_pairing_survived_seconds": 98,
+    "live_pending_poll_status": 200,
+    "auth_me_checks_during_pending": 0,
+    "actual_user_sign_in": "awaiting user Slack confirmation"
+  },
+  "invalidation": "IBF7OBOC6Q9ABPIKNEOLWY6BMH",
+  "artifacts": [
+    {
+      "path": "reading/assets/reading-69axcdwb.js",
+      "sha256": "f863693e898d798fdc0261ab91c44bf7a4cefdd2f27fa5920d98a88c7c6c55b1",
+      "verified": true
+    },
+    {
+      "path": "reading/assets/reading-Ba4GiqGt.css",
+      "sha256": "db21baf89d77bd0d087bd0f896b59d1ac75a9a62eea54a151597c1aa75f0a249",
+      "verified": true
+    },
+    {
+      "path": "reading/index.html",
+      "sha256": "103d7f077bc4ffc8a436e9420bab05dcfb8fce63b632325a64ce69eb12b0f853",
+      "verified": true
+    }
+  ]
+}

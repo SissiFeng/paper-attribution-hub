@@ -34,6 +34,7 @@ from app.attribution_evidence_contract import (
     ATTRIBUTION_EVIDENCE_METADATA_NAMESPACE,
     AttributionEvidenceMetadata,
 )
+from app.config import settings
 from app.models import PaperChunk, PaperEvidence
 from app.services.text_utils import (
     TermHit,
@@ -205,7 +206,7 @@ def extract_evidence_for_paper(
         lower = text.lower()
         section = chunk.section_type
 
-        if section == "acknowledgements":
+        if section == "acknowledgements" and not settings.sdl_stage1_only:
             for term, hit, mult in _scan_with_context(
                 lower, FUNDING_TERMS, require_funding_cue=True
             ):
@@ -273,7 +274,13 @@ def _aggregate_score(records: list[EvidenceRecord]) -> float:
             # Negative evidence subtracts; floor at -cap (which is 0 for
             # disqualifying — making it a strict subtractive penalty).
             capped += max(total, -1.0)
-    # Combine into [0, 1]; funding alone is enough to dominate.
+    # Combine into [0, 1].
+    # Divisor 1.5 was tuned against the evidence-weight caps: the max theoretical
+    # capped total of all positive evidence types (funding 1.0 + partner 0.6 +
+    # sdl_methodology 0.7 + figure_caption_sdl 0.5 = 2.8) is divided by 1.5 so
+    # the fulltext_evidence_score asymptotically approaches but never exceeds 1.0
+    # for a paper that hits every signal. A paper with only AC funding reaches
+    # ~0.67 (still dominant for the classification threshold gates).
     score = max(0.0, min(capped / 1.5, 1.0))
     return round(score, 3)
 

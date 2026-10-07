@@ -10,13 +10,21 @@ const CoauthorNetworkPage = lazy(() => import("@/pages/CoauthorNetworkPage"));
 const TimelinePage = lazy(() => import("@/pages/TimelinePage"));
 const DriftPage = lazy(() => import("@/pages/DriftPage"));
 const ImpactPage = lazy(() => import("@/pages/ImpactPage"));
+const EditorialInsightsPage = lazy(() => import("@/pages/EditorialInsightsPage"));
 
 const TABS = [
+  {
+    key: "editorial",
+    label: "Data Stories",
+    icon: "◴",
+    desc: "Publication rhythms and overlapping research themes, with exact values and source audits.",
+    component: EditorialInsightsPage,
+  },
   {
     key: "people",
     label: "People",
     icon: "🧪",
-    desc: "Periodic table of AC members — symbol from surname, atomic number = paper count, color = top topic.",
+    desc: "The AC-member roster view is quarantined during the SDL Tier 1 pilot.",
     component: PeopleGridPage,
   },
   {
@@ -30,7 +38,7 @@ const TABS = [
     key: "geographic",
     label: "Geographic",
     icon: "🌐",
-    desc: "International collaboration network — partner countries highlighted, animated arcs for cross-border ties.",
+    desc: "Metadata-only country coverage and cross-border authorship, with 3D/2D views and country institution drill-down.",
     component: GeographicPage,
   },
   {
@@ -74,9 +82,9 @@ type TabKey = (typeof TABS)[number]["key"];
 
 export default function InsightsPage() {
   const [searchParams, setSearchParams] = useSearchParams();
-  const initialTab = (searchParams.get("tab") as TabKey | null) ?? "people";
+  const initialTab = (searchParams.get("tab") as TabKey | null) ?? "network";
   const [active, setActive] = useState<TabKey>(
-    TABS.some((t) => t.key === initialTab) ? initialTab : "people"
+    TABS.some((t) => t.key === initialTab) ? initialTab : "network"
   );
 
   useEffect(() => {
@@ -95,9 +103,9 @@ export default function InsightsPage() {
         <div>
           <h1>Research Insights</h1>
           <p>
-            Structured analytics across the AC-attributed corpus. Charts come
-            from SQL aggregations; the evidence/RAG layer is reachable from
-            each paper card.
+            Structured analytics across the authoritative Zotero SDL Tier 1
+            pilot corpus. Charts come from SQL aggregations; source scope and
+            projection evidence remain auditable.
           </p>
         </div>
       </div>

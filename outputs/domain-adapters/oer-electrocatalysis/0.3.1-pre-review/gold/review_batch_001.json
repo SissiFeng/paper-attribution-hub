@@ -1,0 +1,38 @@
+{
+  "candidate_claim_count": 275,
+  "paper_ids": [
+    "DOI:10.1016_j.matt.2022.11.031",
+    "DOI:10.1021_acs.chemmater.0c01894",
+    "DOI:10.1021_acs.chemmater.2c01455",
+    "DOI:10.1021_acscentsci.3c01009",
+    "DOI:10.1038_s41467-024-50605-5",
+    "DOI:10.1039_d0ta06441f",
+    "DOI:10.1039_d4dd00313f",
+    "DOI:10.1039_d5cc01959a"
+  ],
+  "protocol_count": 20,
+  "protocol_ids": [
+    "protocol_240cc932d4d59a8e",
+    "protocol_1ba022621a3d3467",
+    "protocol_622746d402418dff",
+    "protocol_6f01db10eb568dba",
+    "protocol_0aab198e7b966f0c",
+    "protocol_cffc19b38f21a270",
+    "protocol_43442c8d8fbecc17",
+    "protocol_95048b5680e4931e",
+    "protocol_df1ec51fb24af988",
+    "protocol_1bbd14b29b0b483e",
+    "protocol_6238f91a43e5aabb",
+    "protocol_60690a45dfe9f537",
+    "protocol_75b33f268cce5458",
+    "protocol_a37c211434bf96f0",
+    "protocol_d49ffbd3cc2b33e5",
+    "protocol_ddfa620205b4b75f",
+    "protocol_e98c32b262691cbd",
+    "protocol_e61b6431557d9dcd",
+    "protocol_cea86ed006a47d51",
+    "protocol_139cfa3d36410117"
+  ],
+  "schema_version": "domain-adapter-gold-review-batch-v0.1",
+  "selection_strategy": "primary-report protocols round-robin by paper, then lowest-claim-count controls"
+}

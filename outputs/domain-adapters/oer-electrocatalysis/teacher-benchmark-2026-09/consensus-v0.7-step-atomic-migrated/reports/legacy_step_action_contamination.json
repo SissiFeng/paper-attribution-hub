@@ -1,0 +1,85 @@
+{
+  "claims_boundary": "Legacy whole-sentence steps.action results are contaminated by a field-granularity bug and must not support scientific claims. Non-action and non-step slices are descriptive re-analyses, not gold accuracy.",
+  "consensus_slots": {
+    "action": {
+      "accepted": 3,
+      "evaluated_slot_count": 22,
+      "failure_share_of_evaluated": 0.863636,
+      "perturbation_failed": 19,
+      "perturbation_not_verified": 0
+    },
+    "legacy_step_non_action": {
+      "accepted": 5,
+      "evaluated_slot_count": 6,
+      "failure_share_of_evaluated": 0.166667,
+      "perturbation_failed": 1,
+      "perturbation_not_verified": 0
+    },
+    "non_action": {
+      "accepted": 60,
+      "evaluated_slot_count": 75,
+      "failure_share_of_evaluated": 0.173333,
+      "perturbation_failed": 13,
+      "perturbation_not_verified": 2
+    },
+    "non_steps": {
+      "accepted": 55,
+      "evaluated_slot_count": 69,
+      "failure_share_of_evaluated": 0.173913,
+      "perturbation_failed": 12,
+      "perturbation_not_verified": 2
+    }
+  },
+  "counterfactual_results": {
+    "action": {
+      "evidence_deletion": {
+        "passed": 58,
+        "rate": 1.0,
+        "total": 58
+      },
+      "numeric_replacement": {
+        "passed": 11,
+        "rate": 0.22,
+        "total": 50
+      }
+    },
+    "legacy_step_non_action": {
+      "evidence_deletion": {
+        "passed": 12,
+        "rate": 1.0,
+        "total": 12
+      },
+      "numeric_replacement": {
+        "passed": 1,
+        "rate": 0.5,
+        "total": 2
+      }
+    },
+    "non_action": {
+      "evidence_deletion": {
+        "passed": 179,
+        "rate": 0.952128,
+        "total": 188
+      },
+      "numeric_replacement": {
+        "passed": 62,
+        "rate": 0.815789,
+        "total": 76
+      }
+    },
+    "non_steps": {
+      "evidence_deletion": {
+        "passed": 167,
+        "rate": 0.948864,
+        "total": 176
+      },
+      "numeric_replacement": {
+        "passed": 61,
+        "rate": 0.824324,
+        "total": 74
+      }
+    }
+  },
+  "legacy_artifact_dir": "outputs/domain-adapters/oer-electrocatalysis/teacher-benchmark-2026-09/consensus-v0.6-full-verified",
+  "schema_version": "legacy-step-action-contamination-audit-v0.1"
+}

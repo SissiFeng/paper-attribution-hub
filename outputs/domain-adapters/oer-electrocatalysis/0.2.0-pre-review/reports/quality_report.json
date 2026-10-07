@@ -1,0 +1,110 @@
+{
+  "claims_boundary": "Heuristic output is a baseline unless extraction.mode is teacher. Tasks are extractive and do not advise future experiments.",
+  "eligible_corpus_chunk_count": 284,
+  "entity_counts": {
+    "caveats": 1,
+    "characterization": 8,
+    "instruments": 44,
+    "materials": 78,
+    "relations": 146,
+    "results": 2,
+    "software": 12,
+    "steps": 1
+  },
+  "evaluation_paper_count": 4,
+  "evaluation_task_count": 17,
+  "evaluation_task_paper_count": 2,
+  "evidence_span_count": 97,
+  "exact_duplicate_count": 1,
+  "excluded_or_low_information_chunk_count": 2736,
+  "paper_count": 20,
+  "papers_with_protocols": 13,
+  "papers_without_protocols": [
+    "DOI:10.1016_j.xcrp.2022.101200",
+    "DOI:10.1038_s41467-023-40177-1",
+    "DOI:10.1039_d3dd00166k",
+    "DOI:10.1039_d5dd00072f",
+    "DOI:10.1039_d5mh01247c",
+    "DOI:10.1093_ce_zkaf036",
+    "DOI:10.32604_cmc.2025.067427"
+  ],
+  "protocol_count": 36,
+  "protocols_by_evidence_scope": {
+    "primary_report": 15,
+    "secondary_report": 21
+  },
+  "protocols_by_selection_tier": {
+    "oer_case_study": 2,
+    "oer_review": 19,
+    "primary_oer": 15
+  },
+  "protocols_per_paper": {
+    "DOI:10.1016_j.matt.2022.11.031": 3,
+    "DOI:10.1021_acs.chemmater.0c01894": 2,
+    "DOI:10.1021_acs.chemmater.2c01455": 1,
+    "DOI:10.1021_acs.chemrev.4c00055": 7,
+    "DOI:10.1021_acscentsci.3c01009": 1,
+    "DOI:10.1038_s41467-024-50605-5": 7,
+    "DOI:10.1039_d0ta06441f": 1,
+    "DOI:10.1039_d4dd00115j": 1,
+    "DOI:10.1039_d4dd00313f": 1,
+    "DOI:10.1039_d5cc01959a": 2,
+    "DOI:10.1039_d5cc04220h": 2,
+    "DOI:10.1039_d5ta00331h": 4,
+    "DOI:10.1063_5.0259851": 4
+  },
+  "rejected_protocols": [],
+  "schema_version": "domain-adapter-quality-report-v0.2",
+  "source_chunk_count": 3021,
+  "task_count": 29,
+  "task_type_counts": {
+    "characterization_grounding": 2,
+    "instrument_software_grounding": 11,
+    "materials_extraction": 15,
+    "reported_result_grounding": 1
+  },
+  "teacher_field_audit": {
+    "accepted_field_count": 259,
+    "field_acceptance_rate": 0.312048,
+    "proposed_field_count": 830,
+    "rejected_entity_type_counts": {
+      "caveats": 19,
+      "characterization": 57,
+      "instruments": 54,
+      "materials": 131,
+      "results": 76,
+      "software": 31,
+      "steps": 203
+    },
+    "rejected_field_count": 571,
+    "rejection_reason_counts": {
+      "over_generalized": 411,
+      "schema_invalid": 4,
+      "span_not_in_source": 129,
+      "value_elsewhere": 27
+    },
+    "repair_attempted_count": 145,
+    "repair_reason_counts": {
+      "whitespace_mismatch": 2
+    },
+    "repair_succeeded_count": 2
+  },
+  "teacher_runtime": {
+    "input_token_count": 95690,
+    "invocation_count": 20,
+    "output_token_count": 76010,
+    "response_failure_diagnostics": [
+      {
+        "diagnostic": "Expecting property name enclosed in double quotes: line 1171 column 27 (char 59870)",
+        "paper_id": "DOI:10.1021_acs.chemrev.4c00055"
+      }
+    ],
+    "response_schema_failure_count": 1,
+    "salvaged_response_count": 1
+  },
+  "train_paper_count": 16,
+  "train_task_count": 12,
+  "train_task_paper_count": 4,
+  "unsupported_evidence_count": 571,
+  "unsupported_teacher_claim_count": 571
+}

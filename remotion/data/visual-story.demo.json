@@ -1,0 +1,107 @@
+{
+  "contract_version": "visual_story.v1",
+  "story_id": "pas-attribution-evidence-poc",
+  "title": "Attribution, made inspectable",
+  "subtitle": "A frozen local demonstration of evidence-led scientific reporting",
+  "period_label": "Illustrative 2019–2025 window",
+  "generated_at": "2026-08-09T20:00:00-04:00",
+  "data_status": "illustrative_poc",
+  "scope": {
+    "label": "Illustrative AC + SDL evidence scope",
+    "included_papers": 128,
+    "reviewed_papers": 74,
+    "fulltext_papers": 81,
+    "classified_papers": 128
+  },
+  "timeline": {
+    "years": [2019, 2020, 2021, 2022, 2023, 2024, 2025],
+    "series": [
+      {
+        "name": "Core relevant",
+        "color": "#f0c76a",
+        "values": [2, 3, 5, 8, 13, 19, 27]
+      },
+      {
+        "name": "Related relevant",
+        "color": "#65c8bf",
+        "values": [3, 5, 7, 11, 16, 23, 31]
+      },
+      {
+        "name": "Adjacent",
+        "color": "#d99aad",
+        "values": [1, 2, 4, 5, 7, 9, 12]
+      }
+    ],
+    "annotation": "The rising profile is a descriptive replay of the frozen snapshot, not a causal claim."
+  },
+  "flow": {
+    "nodes": [
+      {"id": "inst-utoronto", "name": "University of Toronto", "layer": "institution", "color": "#6594b1"},
+      {"id": "inst-nrc", "name": "NRC Canada", "layer": "institution", "color": "#6594b1"},
+      {"id": "inst-mit", "name": "MIT", "layer": "institution", "color": "#6594b1"},
+      {"id": "topic-closed-loop", "name": "Closed-loop experimentation", "layer": "topic", "color": "#65c8bf"},
+      {"id": "topic-automation", "name": "Laboratory automation", "layer": "topic", "color": "#65c8bf"},
+      {"id": "topic-materials", "name": "Materials discovery", "layer": "topic", "color": "#65c8bf"},
+      {"id": "label-core", "name": "Core relevant", "layer": "label", "color": "#f0c76a"},
+      {"id": "label-related", "name": "Related relevant", "layer": "label", "color": "#9fc7e0"},
+      {"id": "label-adjacent", "name": "Adjacent", "layer": "label", "color": "#d99aad"}
+    ],
+    "links": [
+      {"source": "inst-utoronto", "target": "topic-closed-loop", "value": 21},
+      {"source": "inst-utoronto", "target": "topic-automation", "value": 14},
+      {"source": "inst-nrc", "target": "topic-materials", "value": 13},
+      {"source": "inst-nrc", "target": "topic-automation", "value": 8},
+      {"source": "inst-mit", "target": "topic-closed-loop", "value": 11},
+      {"source": "inst-mit", "target": "topic-materials", "value": 7},
+      {"source": "topic-closed-loop", "target": "label-core", "value": 22},
+      {"source": "topic-closed-loop", "target": "label-related", "value": 10},
+      {"source": "topic-automation", "target": "label-core", "value": 9},
+      {"source": "topic-automation", "target": "label-related", "value": 13},
+      {"source": "topic-materials", "target": "label-related", "value": 14},
+      {"source": "topic-materials", "target": "label-adjacent", "value": 6}
+    ],
+    "annotation": "Each ribbon represents distinct-paper support in this illustrative snapshot."
+  },
+  "evidence_cards": [
+    {
+      "eyebrow": "Scope",
+      "value": "128",
+      "label": "distinct papers",
+      "detail": "Every count is tied to one frozen filter fingerprint.",
+      "source_link": "/analytics/timeline?by=label&top_n=5",
+      "tone": "gold"
+    },
+    {
+      "eyebrow": "Human review",
+      "value": "74",
+      "label": "papers reviewed",
+      "detail": "Model output remains distinguishable from human confirmation.",
+      "source_link": "/analytics/report-metric?metric_key=overview.reviewed_papers",
+      "tone": "teal"
+    },
+    {
+      "eyebrow": "Evidence depth",
+      "value": "81",
+      "label": "full-text records",
+      "detail": "Abstract-only and missing-fulltext states stay visible.",
+      "source_link": "/analytics/report-metric?metric_key=overview.fulltext_papers",
+      "tone": "rose"
+    }
+  ],
+  "audit": {
+    "filter_fingerprint": "f4a510b1e6c5df173230d8531a8dac422b5c94de818e4e7de11eabe9af84cb51",
+    "paper_set_sha256": "8b34ebc4bb9c671535602c025dec200792941a00d07e0e72c234510964580c40",
+    "algorithm": "pas_remotion_evidence_story.v1",
+    "metric_definitions": {
+      "timeline_value": "Illustrative distinct-paper count by year and effective label.",
+      "flow_value": "Illustrative distinct-paper support between adjacent flow layers.",
+      "reviewed_papers": "Illustrative number of papers with completed human review."
+    },
+    "source_endpoints": [
+      "/analytics/timeline?by=label&top_n=5",
+      "/analytics/sankey?top_institutions=5&top_topics=4",
+      "/analytics/report"
+    ]
+  }
+}
+

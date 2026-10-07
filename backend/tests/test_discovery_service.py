@@ -1,8 +1,10 @@
 """End-to-end discovery tests with fully mocked HTTP."""
 import httpx
+import pytest
 
 from app.models import DiscoveryCandidate, Paper
 from app.services.discovery_service import (
+    CorpusSourcePolicyError,
     approve_candidate,
     reject_candidate,
     run_discovery,
@@ -201,3 +203,17 @@ def test_triggers_merge_when_same_paper_hit_by_multiple_strategies(seeded_sessio
     # The same paper appearing via multiple strategies still collapses to a
     # single candidate row.
     assert cnt == 0 or cnt == 1
+
+
+def test_zotero_source_only_blocks_external_discovery(
+    seeded_session,
+    monkeypatch,
+):
+    from app.config import settings
+
+    monkeypatch.setattr(settings, "zotero_group_id", "42")
+    monkeypatch.setattr(settings, "zotero_tier1_collection", "TIER1")
+    monkeypatch.setattr(settings, "zotero_source_only", True)
+
+    with pytest.raises(CorpusSourcePolicyError, match="Zotero is authoritative"):
+        run_discovery(seeded_session)

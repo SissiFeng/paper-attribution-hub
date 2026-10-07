@@ -4,6 +4,89 @@
 # Keep this file synchronized with the protocol so ingestion, evidence
 # extraction, topic matching, and tests do not drift apart.
 
+tier_definitions:
+  tier1:
+    corpus_source: STRICT_SDL_KEYWORD
+    scopus_query: |-
+      TITLE-ABS-KEY(
+        "self-driving laborator*" OR
+        "self driving laborator*" OR
+        "self-driven laborator*" OR
+        "self-driving lab*" OR
+        "self driving lab*" OR
+        "self-driven lab*" OR
+        "autonomous laborator*" OR
+        "autonomous lab*" OR
+        "autonomous experiment*" OR
+        "autonomous discovery" OR
+        "accelerated discovery" OR
+        "accelerated experiment*" OR
+        "accelerated scientific discovery" OR
+        "materials acceleration platform" OR
+        "discovery acceleration"
+      )
+      AND SUBJAREA(CHEM OR MATE OR ENER OR CENG OR PHYS OR ENGI)
+      AND PUBYEAR > 2009 AND PUBYEAR < 2026
+      AND LANGUAGE(english)
+  tier2:
+    corpus_source: ARCHITECTURE_BROAD_RETRIEVAL
+    scopus_query: |-
+      TITLE-ABS-KEY(
+        (
+          (
+            "machine learning" OR "artificial intelligence" OR
+            "Bayesian optimization" OR "active learning" OR
+            "reinforcement learning" OR "Gaussian process" OR
+            "data-driven" OR "algorithm-guided"
+          )
+          AND
+          (
+            "high-throughput" OR "high throughput experiment*" OR "HTE" OR
+            "robotic synthesis" OR "robotic platform" OR
+            "robotic experiment*" OR "robotic laborator*" OR
+            "automated synthesis" OR "automated experimentation" OR
+            "robot scientist*"
+          )
+        )
+        OR
+        (
+          (
+            "machine learning" OR "artificial intelligence" OR
+            "Bayesian optimization" OR "active learning" OR
+            "reinforcement learning" OR "Gaussian process"
+          )
+          AND
+          (
+            "closed-loop" OR "closed loop" OR "feedback loop" OR
+            "iterative optimization" OR "sequential optimization" OR
+            "self-optimizing" OR "adaptive optimization" OR
+            "experiment planning" OR "adaptive experimentation" OR
+            "design-build-test-learn" OR "DBTL"
+          )
+        )
+        OR
+        (
+          (
+            "high-throughput" OR "high throughput experiment*" OR "HTE" OR
+            "robotic synthesis" OR "robotic platform" OR
+            "robotic experiment*" OR "robotic laborator*" OR
+            "automated synthesis" OR "automated experimentation" OR
+            "robot scientist*"
+          )
+          AND
+          (
+            "closed-loop" OR "closed loop" OR "feedback loop" OR
+            "iterative optimization" OR "sequential optimization" OR
+            "adaptive optimization" OR "self-optimizing" OR
+            "experiment planning" OR "adaptive experimentation" OR
+            "design-build-test-learn" OR "DBTL"
+          )
+        )
+      )
+      AND SUBJAREA(CHEM OR MATE OR ENER OR CENG OR PHYS OR ENGI)
+      AND PUBYEAR > 2009 AND PUBYEAR < 2026
+      AND LANGUAGE(english)
+
 tier1_label_terms:
   - self-driving laboratory
   - self driving laboratory

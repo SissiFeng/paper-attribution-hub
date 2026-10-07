@@ -4,13 +4,31 @@ from __future__ import annotations
 
 from typing import Literal
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict, Field, model_validator
 
 from app.domain_adaptation.package_graph import PackageDependency, PackageKind
 
 
 class DomainModel(BaseModel):
     model_config = ConfigDict(extra="forbid")
+
+
+EvidenceScope = Literal["primary_report", "secondary_report", "unknown"]
+
+
+def resolve_evidence_scope(
+    selection_tier: str,
+    declared_scope: EvidenceScope | None = None,
+) -> EvidenceScope:
+    """Resolve domain-neutral evidence scope while preserving legacy manifests."""
+    if declared_scope in {"primary_report", "secondary_report"}:
+        return declared_scope
+    normalized_tier = selection_tier.strip().casefold()
+    if normalized_tier.startswith("primary_"):
+        return "primary_report"
+    if "review" in normalized_tier or "case_study" in normalized_tier:
+        return "secondary_report"
+    return "unknown"
 
 
 class SourceChunk(DomainModel):
@@ -29,6 +47,7 @@ class SourcePaper(DomainModel):
     year: int | None = None
     doi: str | None = None
     selection_tier: str
+    evidence_scope: EvidenceScope = "unknown"
     selection_reasons: list[str]
     task_split: Literal["train", "evaluation"] = "train"
     source_bucket: str
@@ -37,6 +56,13 @@ class SourcePaper(DomainModel):
     source_markdown_key: str | None = None
     source_markdown_sha256: str | None = None
     chunks: list[SourceChunk]
+
+    @model_validator(mode="after")
+    def infer_legacy_evidence_scope(self) -> "SourcePaper":
+        self.evidence_scope = resolve_evidence_scope(
+            self.selection_tier, self.evidence_scope
+        )
+        return self
 
 
 ScientificSemanticRole = Literal[
@@ -75,7 +101,8 @@ class ScientificChunk(DomainModel):
 
 class PilotSelectionItem(DomainModel):
     paper_id: str
-    selection_tier: Literal["primary_oer", "oer_case_study", "oer_review"]
+    selection_tier: str = Field(min_length=1)
+    evidence_scope: EvidenceScope | None = None
     selection_reasons: list[str] = Field(min_length=1)
     task_split: Literal["train", "evaluation"] = "train"
     source_manifest_key: str | None = None
@@ -143,10 +170,33 @@ class SoftwareUse(DomainModel):
 class ProtocolStep(DomainModel):
     step_id: str
     order: int = Field(ge=1)
-    action: str
+    action: str | None = None
+    verb: str | None = None
+    targets: list[str] = Field(default_factory=list)
+    params: dict[str, str] = Field(default_factory=dict)
     conditions: list[str] = Field(default_factory=list)
     notes: str | None = None
     evidence_ids: list[str] = Field(default_factory=list)
+
+    @model_validator(mode="after")
+    def validate_atomic_or_legacy_step(self) -> "ProtocolStep":
+        if self.verb is None:
+            if self.action is None or not self.action.strip():
+                raise ValueError("A legacy step requires action")
+            return self
+        if not self.verb.strip() or not self.targets:
+            raise ValueError("An atomic step requires verb and targets")
+        if any(not item.strip() for item in self.targets):
+            raise ValueError("Atomic step targets must be non-empty")
+        if any(
+            not key.strip() or not value.strip()
+            for key, value in self.params.items()
+        ):
+            raise ValueError("Atomic step params must have non-empty keys and values")
+        if self.action is not None and self.action != self.verb:
+            raise ValueError("Structured step action must equal verb")
+        self.action = self.verb
+        return self
 
 
 class CharacterizationUse(DomainModel):
@@ -185,9 +235,7 @@ class ProtocolUnit(DomainModel):
     protocol_name: str
     protocol_type: str
     source_paper_tier: str = "unknown"
-    evidence_scope: Literal["primary_report", "secondary_report", "unknown"] = (
-        "unknown"
-    )
+    evidence_scope: EvidenceScope = "unknown"
     source_chunk_ids: list[str]
     scientific_chunk_ids: list[str] = Field(default_factory=list)
     materials: list[MaterialInput] = Field(default_factory=list)

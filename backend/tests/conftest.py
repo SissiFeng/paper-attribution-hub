@@ -1,24 +1,32 @@
 """Shared pytest fixtures: in-memory DB seeded with sample data."""
+
 from __future__ import annotations
 
 import os
+import shutil
+import tempfile
 from pathlib import Path
 
 import pytest
 
 FULLTEXT_FIXTURES = Path(__file__).parent / "fixtures" / "fulltexts"
 
+# Configure the throwaway database during conftest import, before pytest imports
+# test modules that import ``app.db`` and bind the SQLAlchemy engine. Setting the
+# URL inside the fixture body is too late and can reset a developer database.
+_TEST_DATABASE_DIR: Path | None = None
+if "PAS_DATABASE_URL" not in os.environ:
+    _TEST_DATABASE_DIR = Path(tempfile.mkdtemp(prefix="pas-pytest-"))
+    os.environ["PAS_DATABASE_URL"] = f"sqlite:///{_TEST_DATABASE_DIR / 'test.db'}"
+os.environ.setdefault("PAS_ACTIVE_LEARNING", "0")
+
 
 @pytest.fixture(scope="session", autouse=True)
-def isolate_database(tmp_path_factory: pytest.TempPathFactory):
-    """Force tests to use a throwaway sqlite file before app modules import settings."""
-    # If env var is already set (sandbox / CI), respect it. Otherwise pick a
-    # tmp dir managed by pytest.
-    if "PAS_DATABASE_URL" not in os.environ:
-        db_path = tmp_path_factory.mktemp("pas") / "test.db"
-        os.environ["PAS_DATABASE_URL"] = f"sqlite:///{db_path}"
-    os.environ.setdefault("PAS_ACTIVE_LEARNING", "0")
+def isolate_database():
+    """Clean up the import-time throwaway database after the test session."""
     yield
+    if _TEST_DATABASE_DIR is not None:
+        shutil.rmtree(_TEST_DATABASE_DIR, ignore_errors=True)
 
 
 @pytest.fixture()

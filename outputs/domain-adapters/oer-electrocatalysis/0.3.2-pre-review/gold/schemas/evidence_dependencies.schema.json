@@ -1,0 +1,259 @@
+{
+  "$defs": {
+    "DirectEvidenceReference": {
+      "additionalProperties": false,
+      "properties": {
+        "char_end": {
+          "exclusiveMinimum": 0,
+          "title": "Char End",
+          "type": "integer"
+        },
+        "char_start": {
+          "minimum": 0,
+          "title": "Char Start",
+          "type": "integer"
+        },
+        "chunk_id": {
+          "title": "Chunk Id",
+          "type": "string"
+        },
+        "evidence_id": {
+          "title": "Evidence Id",
+          "type": "string"
+        },
+        "quote": {
+          "title": "Quote",
+          "type": "string"
+        },
+        "source_sha256": {
+          "title": "Source Sha256",
+          "type": "string"
+        }
+      },
+      "required": [
+        "evidence_id",
+        "chunk_id",
+        "quote",
+        "char_start",
+        "char_end",
+        "source_sha256"
+      ],
+      "title": "DirectEvidenceReference",
+      "type": "object"
+    },
+    "EvidenceDependencyLabels": {
+      "additionalProperties": false,
+      "properties": {
+        "modification": {
+          "enum": [
+            "none",
+            "explicitly_modified",
+            "unspecified"
+          ],
+          "title": "Modification",
+          "type": "string"
+        },
+        "origin": {
+          "enum": [
+            "author_reported_primary_experiment",
+            "cited_method",
+            "secondary_summary",
+            "unknown"
+          ],
+          "title": "Origin",
+          "type": "string"
+        },
+        "support": {
+          "enum": [
+            "exact",
+            "deterministically_aligned",
+            "explicitly_derived",
+            "unsupported"
+          ],
+          "title": "Support",
+          "type": "string"
+        }
+      },
+      "required": [
+        "origin",
+        "support",
+        "modification"
+      ],
+      "title": "EvidenceDependencyLabels",
+      "type": "object"
+    },
+    "FieldDerivation": {
+      "additionalProperties": false,
+      "properties": {
+        "assumptions": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Assumptions",
+          "type": "array"
+        },
+        "expression": {
+          "minLength": 1,
+          "title": "Expression",
+          "type": "string"
+        },
+        "input_dependency_ids": {
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Input Dependency Ids",
+          "type": "array"
+        },
+        "rule_id": {
+          "minLength": 1,
+          "title": "Rule Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "rule_id",
+        "expression",
+        "input_dependency_ids"
+      ],
+      "title": "FieldDerivation",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "candidate_claim_id": {
+      "title": "Candidate Claim Id",
+      "type": "string"
+    },
+    "depends_on_dependency_ids": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Depends On Dependency Ids",
+      "type": "array"
+    },
+    "derivation": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/FieldDerivation"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "direct_evidence": {
+      "items": {
+        "$ref": "#/$defs/DirectEvidenceReference"
+      },
+      "title": "Direct Evidence",
+      "type": "array"
+    },
+    "entity_type": {
+      "title": "Entity Type",
+      "type": "string"
+    },
+    "evidence_dependency_id": {
+      "title": "Evidence Dependency Id",
+      "type": "string"
+    },
+    "field_name": {
+      "title": "Field Name",
+      "type": "string"
+    },
+    "normalized_value": {
+      "title": "Normalized Value",
+      "type": "string"
+    },
+    "notes": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Notes"
+    },
+    "paper_id": {
+      "title": "Paper Id",
+      "type": "string"
+    },
+    "proposal_method": {
+      "default": "deterministic_evidence_dependency_v0.1",
+      "title": "Proposal Method",
+      "type": "string"
+    },
+    "proposed_labels": {
+      "$ref": "#/$defs/EvidenceDependencyLabels"
+    },
+    "protocol_id": {
+      "title": "Protocol Id",
+      "type": "string"
+    },
+    "review_status": {
+      "default": "pending",
+      "enum": [
+        "pending",
+        "reviewed"
+      ],
+      "title": "Review Status",
+      "type": "string"
+    },
+    "reviewed_labels": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/EvidenceDependencyLabels"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "reviewer": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Reviewer"
+    },
+    "schema_version": {
+      "default": "domain-adapter-evidence-dependency-v0.1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "source_entity_id": {
+      "title": "Source Entity Id",
+      "type": "string"
+    },
+    "source_value": {
+      "title": "Source Value",
+      "type": "string"
+    }
+  },
+  "required": [
+    "evidence_dependency_id",
+    "candidate_claim_id",
+    "paper_id",
+    "protocol_id",
+    "source_entity_id",
+    "entity_type",
+    "field_name",
+    "source_value",
+    "normalized_value",
+    "direct_evidence",
+    "proposed_labels"
+  ],
+  "title": "EvidenceDependencyAnnotation",
+  "type": "object"
+}
