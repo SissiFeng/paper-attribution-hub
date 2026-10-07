@@ -67,8 +67,6 @@ pgdata/
 .claude/
 .codex/
 skills-lock.json
-.vercel/
-.vercel
 .gstack/
 
 # Isolated PAS private-reading build

@@ -119,7 +119,7 @@ class HybridIndex:
         load_graph_scores: bool = False,
     ) -> "HybridIndex":
         # Graph scores are expensive (loads ALL PaperClassification rows).
-        # Disabled by default on Render 512 MB to prevent OOM.
+        # Disabled by default to keep index memory bounded.
         graph_scores: dict[str, float] = {}
         if load_graph_scores:
             from app.models import PaperClassification

@@ -102,8 +102,8 @@ def build_coauthor_graph(
 ) -> nx.Graph:
     """Author-level co-authorship graph (used by v0.1 endpoint + graph signals).
 
-    Uses lean SQL queries instead of loading full Paper ORM objects to stay
-    within Render's 512 MB memory limit.
+    Uses lean SQL queries instead of loading full Paper ORM objects to limit
+    memory usage.
     """
     from collections import defaultdict
     from app.models import PaperClassification
@@ -303,8 +303,8 @@ def _normalized_diversity(count: int) -> float:
 def build_institution_graph(session: Session) -> nx.Graph:
     """Institution-level collaboration graph (figure.md §recommended-MVP-set).
 
-    Uses lean SQL JOINs instead of loading full Paper ORM objects to stay
-    within Render's 512 MB memory limit.
+    Uses lean SQL JOINs instead of loading full Paper ORM objects to limit
+    memory usage.
     """
     from collections import defaultdict
 

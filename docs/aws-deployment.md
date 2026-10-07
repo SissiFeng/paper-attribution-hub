@@ -241,12 +241,15 @@ terraform apply tfplan
 - Use single NAT Gateway for dev
 - Set CloudFront price class to `PriceClass_100` (US/Canada/Europe only)
 
-## Backup Plan (Render + Vercel)
+## Rollback Within AWS
 
-The existing Render + Vercel deployment is preserved as a fallback. The files are not touched:
-- `render.yaml` (Render backend)
-- `frontend/vercel.json` (Vercel frontend)
+AWS is the only supported deployment target. Keep the previous ECS task
+definition and immutable ECR image tag before releasing a backend change.
+Rollback uses that task definition, followed by ECS service stability and
+API health/data checks.
 
-To switch back:
-1. Point DNS to Render/Vercel endpoints
-2. Dump RDS data and restore to Render's PostgreSQL
+For a frontend rollback, publish the previously verified main and reading
+builds to S3 and invalidate CloudFront. Database recovery is separate: use a
+verified RDS snapshot or S3 database backup, and check schema compatibility
+before changing the active database. Do not overwrite production data as
+part of an application rollback.

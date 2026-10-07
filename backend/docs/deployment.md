@@ -1,95 +1,53 @@
-# Deployment Checklist
+# AWS Deployment Checklist
 
-Three platforms, one stack:
+AWS is the only supported deployment target. Use the
+[AWS deployment guide](../../docs/aws-deployment.md) for provisioning, releases
+and rollback, and the [Codespaces guide](../../docs/cloud-development.zh.md)
+for development. Local Docker Compose remains available for development.
 
-| Platform | Role | Config |
-|---|---|---|
-| **Vercel** | Frontend SPA (React + Vite) | `frontend/vercel.json`, build `npm run build` → `dist/` |
-| **Render** | Backend API (FastAPI in Docker) | `render.yaml` → `backend/Dockerfile` |
-| **Supabase** | Postgres database | connection string → Render `PAS_DATABASE_URL` |
+## Runtime
 
-Data flow: Vercel frontend → (HTTPS) → Render API → (Postgres) → Supabase.
+CloudFront serves both frontend builds from S3 and routes `/api/*` through the
+ALB to ECS Fargate. The backend uses RDS PostgreSQL; private artifacts use S3.
+SSM Parameter Store and Secrets Manager supply production credentials.
 
-## Pre-demo verification (run locally)
+| Variable | Configuration |
+|---|---|
+| `PAS_DATABASE_URL` | RDS PostgreSQL URL supplied to the ECS task; do not commit credentials. |
+| `PAS_CORS_ORIGINS` | Explicit allowed frontend origins when cross-origin requests are needed. JSON arrays and comma-separated values are supported. |
+| `PAS_S3_ARTIFACTS_BUCKET` / `PAS_AWS_REGION` | Artifact bucket and region for the target AWS environment. |
+| `PAS_KIMI_API_KEY` / `PAS_ANTHROPIC_API_KEY` | Optional model credentials supplied through SSM. |
+| `PAS_OPENALEX_API_KEY` / `PAS_SEMANTIC_SCHOLAR_API_KEY` | Optional external data credentials supplied through SSM. |
+| `VITE_API_BASE` | Build-time frontend API base; production defaults to `/api`. |
+| `VITE_USE_MOCK` | Production defaults to `false`; sample data is for development only. |
 
-Last verified 2026-07-23, all green:
+Changing a `VITE_*` setting requires rebuilding the frontend. Publish both
+`frontend/dist` and `frontend/dist-reading` through
+`aws/scripts/publish_frontend.sh` so the main PAS and reading pages are retained.
 
-```bash
-# Backend boots, health/CORS/DB endpoints respond
-cd backend && PYTHONPATH="$PWD" python -c "from fastapi.testclient import TestClient; \
-from app.main import app; c=TestClient(app); print(c.get('/health').json())"
+## Container startup
 
-# Fresh-DB bootstrap (create_all + stamp head; never replays 0001)
-python -m pytest tests/test_db_bootstrap.py tests/test_config_cors.py -q
+`backend/Dockerfile` starts `python -m app.scripts.serve`. This runs database
+bootstrap, optionally syncs Zotero when enabled, and starts Uvicorn on
+`PORT` (default `8000`). PostgreSQL schema changes are managed by Alembic.
 
-# Frontend production build (same command Vercel runs)
-cd ../frontend && npm install && npm run build   # → dist/, exit 0
-```
+Bootstrap failures are logged but do not prevent Uvicorn from starting.
+Zotero sync is also best-effort except when strict SDL Stage 1 validation is
+enabled. Check CloudWatch startup logs and actual data responses in addition
+to `/health`; a healthy process alone does not verify the corpus.
 
-## Required environment variables
+Zotero-only corpus policies are separate from deployment configuration. Keep
+the active environment's corpus policy when releasing changes; author-monitor
+ingestion uses the open-corpus deployment. Destructive corpus replacement is
+covered separately in [zotero_cutover.md](zotero_cutover.md).
 
-### Render (backend) — set in dashboard, most are `sync: false`
+## Verification
 
-| Var | Required | Notes |
-|---|---|---|
-| `PAS_DATABASE_URL` | **Yes** | Supabase Postgres URL (`postgresql://...`). Fresh DB is auto-bootstrapped on first boot. |
-| `PAS_CORS_ORIGINS` | **Yes** | Must include the Vercel frontend origin. Accepts JSON (`["https://app.vercel.app"]`) **or** comma-separated (`https://app.vercel.app,https://x.io`). |
-| `PORT` | auto | Render injects it; Dockerfile honors `${PORT:-8000}`. |
-| `PAS_OPENALEX_MAILTO` | optional | Polite pool for OpenAlex. |
-| `PAS_SEMANTIC_SCHOLAR_API_KEY` | optional | Higher S2 rate limits. |
-| `PAS_KIMI_API_KEY` / `PAS_ANTHROPIC_API_KEY` | optional | LLM answer generation. Without either, `/retrieve/answer` returns grounded retrieval-only answers (no crash). |
-| `PAS_ZOTERO_API_KEY` | **Yes** | Read-only key for the authoritative Zotero group library. |
-| `PAS_ZOTERO_GROUP_ID` | **Yes** | Zotero group-library ID. |
-| `PAS_ZOTERO_TIER1_COLLECTION` | **Yes** | Immutable Tier 1 collection key. |
-| `PAS_ZOTERO_TIER2_COLLECTION` | optional | Immutable Tier 2 key; leave empty for the Tier 1-only pilot. |
-| `PAS_ZOTERO_SYNC_ON_STARTUP` | recommended | Set `true` after the one-time cutover. |
-| `PAS_ZOTERO_SOURCE_ONLY` | **Yes** | Keep `true` to prevent discovery APIs from adding papers outside Zotero. |
+Run `bash scripts/cloud/check.sh` in Codespaces before releasing. It builds
+both frontends and tests CORS configuration, preserved navigation, author
+monitoring, public paper access and private research permissions.
 
-### Vercel (frontend) — set as build-time env vars
-
-| Var | Required | Notes |
-|---|---|---|
-| `VITE_API_BASE` | **Yes** | The Render backend URL, no trailing slash. **Inlined at build time** — a rebuild is required after changing it. Defaults to `http://localhost:8000`, so if unset the deployed site cannot reach the API. |
-| `VITE_USE_MOCK` | recommended | Set `false` for the demo (real API). `true` serves built-in mock data with no backend. |
-
-### Supabase (database)
-
-- Create a Postgres instance; copy the connection string into Render's `PAS_DATABASE_URL`.
-- No manual schema step: the container's `db_bootstrap` builds the schema on an
-  empty DB (`create_all` + `alembic stamp head`) and only runs incremental
-  `alembic upgrade head` on an already-versioned DB.
-
-## Container boot sequence (`backend/Dockerfile` CMD)
-
-`CMD ["python", "-m", "app.scripts.serve"]` — a demo-safe entrypoint that runs:
-
-```
-db_bootstrap                                   # schema: create+stamp | stamp | upgrade
-sync_zotero --seed-if-empty --classify         # only when startup sync is enabled
-exec uvicorn app.main:app --host 0.0.0.0 --port ${PORT:-8000}
-```
-
-Bootstrap and Zotero sync are **best-effort**: a non-zero exit is logged as a
-`[serve] WARNING` but uvicorn still starts, so `/health` and `/debug/db` stay
-reachable for diagnosis. `uvicorn` is exec'd (replaces the process) so it
-receives container signals.
-
-The one-time backup and destructive replacement procedure is documented in
-[`zotero_cutover.md`](zotero_cutover.md).
-
-## Known risks / caveats
-
-1. **Startup sync is best-effort, not fail-fast.** If Zotero sync fails, the API still
-   boots but may serve an empty/partial dataset — check the `[serve] WARNING`
-   lines in the Render logs and `/debug/papers` if the demo data looks thin.
-   Retry with `python -m app.scripts.sync_zotero --seed-if-empty --classify`.
-2. **`VITE_API_BASE` is build-time.** Changing it in Vercel requires a redeploy,
-   not just an env update.
-3. **pgvector on a *fresh* Postgres:** `db_bootstrap` stamps head, so migration
-   `0002` (JSON→`vector(1536)`) does not run and the `embedding` column stays
-   JSON. Harmless with the default `tfidf` embedder; only matters if you switch
-   to `PAS_EMBEDDING_BACKEND=sbert` + pgvector, which then needs `0002` applied.
-4. **Frontend bundle is ~3.3 MB (~1 MB gzip)**, single chunk. Loads fine; a
-   code-split would speed first paint but is not demo-blocking.
-5. **Render free plan cold starts** (~30–60 s) after idle — warm the API before
-   the demo by hitting `/health`.
+After an AWS release, verify ECS service stability, the public paper API,
+paper/Wiki links, and rejection of unauthenticated requests to admin or private
+data endpoints. Keep the previously verified ECS task definition and frontend
+builds for rollback within AWS.

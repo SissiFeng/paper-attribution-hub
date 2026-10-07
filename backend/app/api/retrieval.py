@@ -392,9 +392,9 @@ def retrieve_answer(
     Set PAS_LLM_PROVIDER=kimi|anthropic|auto (default: auto).
 
     OOM fix: limits chunk loading to MAX_CHUNKS most-recently-embedded chunks
-    so the TF-IDF fit stays within Render's 512 MB limit.
+    to bound the memory used by the TF-IDF fit.
     """
-    MAX_CHUNKS = 2000  # safe for Render 512 MB; covers ~1000 papers × 2 chunks
+    MAX_CHUNKS = 2000  # bounds index memory; covers ~1000 papers × 2 chunks
 
     retrieval_query = payload.search_query or _contextualized_retrieval_query(
         payload.query, payload.conversation

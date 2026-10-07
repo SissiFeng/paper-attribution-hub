@@ -291,7 +291,7 @@ Thresholds live in `backend/app/services/relevance_classifier.py` and `docs/clas
 
 ## AWS Deployment
 
-The system can be deployed to AWS using ECS Fargate (backend), RDS PostgreSQL with pgvector (database), S3 + CloudFront (frontend), and S3 (artifact storage).
+AWS is the only supported deployment target: ECS Fargate (backend), RDS PostgreSQL with pgvector (database), S3 + CloudFront (frontend), and S3 (artifact storage). Codespaces and Docker Compose are development environments.
 
 ### Quick Deploy
 
@@ -318,10 +318,6 @@ The system can be deployed to AWS using ECS Fargate (backend), RDS PostgreSQL wi
 
 - **Setup**: `docs/aws-console-setup.md` — Manual AWS console steps (one-time)
 - **Operations**: `docs/aws-deployment.md` — Full deployment guide, cost estimates, backup procedures
-
-### Existing Deploy (Backup)
-
-The Render + Vercel deployment (`render.yaml`, `frontend/vercel.json`) is preserved as a fallback option.
 
 ---
 

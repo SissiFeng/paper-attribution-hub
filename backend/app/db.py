@@ -23,8 +23,8 @@ engine = create_engine(
 )
 
 # Register pgvector types so SQLAlchemy can read vector columns back as lists.
-# Wrapped in try/except: if the extension isn't enabled in this PostgreSQL instance
-# (e.g. Supabase free tier before the extension is activated), we degrade gracefully.
+# Wrapped in try/except: if the extension isn't enabled in this PostgreSQL
+# instance, we degrade gracefully.
 if _is_postgres:
     try:
         from pgvector.sqlalchemy import Vector  # noqa: F401 — side-effect: registers type

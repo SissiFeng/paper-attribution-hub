@@ -140,7 +140,7 @@ class Settings(BaseSettings):
     # Diagnostic routes may expose internal state and are disabled by default.
     debug_endpoints_enabled: bool = False
     anthropic_api_key: str = ""
-    # Kimi (MoonShot AI) — OpenAI-compatible, set PAS_KIMI_API_KEY in Render
+    # Kimi (MoonShot AI) — OpenAI-compatible, supplied by AWS SSM in production
     kimi_api_key: str = ""
     kimi_model: str = "moonshot-v1-32k"
     kimi_base_url: str = "https://api.moonshot.ai/v1"
@@ -156,7 +156,6 @@ class Settings(BaseSettings):
         "http://127.0.0.1:5173",
         "http://localhost:3000",
         "http://127.0.0.1:3000",
-        "https://frontend-delta-three-38.vercel.app",
     ]
 
     # AWS S3 artifact storage. Empty string disables S3 (fallback to local filesystem).

@@ -31,7 +31,7 @@ def graph_explanation(
     """Return graph-based explanation for a paper using pre-computed signals.
 
     Uses the graph_signals JSON already stored on PaperClassification rather
-    than rebuilding the entire coauthor graph — avoids OOM on Render free tier.
+    than rebuilding the entire coauthor graph, keeping request memory bounded.
     """
     paper = session.get(Paper, paper_id)
     if paper is None:
