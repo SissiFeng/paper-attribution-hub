@@ -9,9 +9,11 @@ GitHub 保存代码和已纳入版本控制的研究产物。AWS 继续承载线
 
 ## 开始开发
 
-1. 从迁移分支创建 Codespace，使用仓库内 `.devcontainer/devcontainer.json`。
-   初始化自动安装 Python 3.12、Node 22 和依赖，构建两个前端，并运行监控及
-   科研权限相关测试。终端出现 `PAS setup complete` 才算初始化成功。
+1. 打开已经验证的 [PAS Codespace](https://pas-research-development-x9qp6vv9r7qf69p7.github.dev)，
+   用 `SissiFeng` 的 GitHub 身份登录。停止的实例会恢复启动，无需再建一台。
+   如需重新创建，选择迁移分支及 `.devcontainer/devcontainer.json`：初始化
+   自动安装 Python 3.12、Node 22 和依赖，构建两个前端并运行测试，终端
+   出现 `PAS setup complete` 才算成功。工作目录为 `/workspaces/paper-attribution-hub`。
 2. 运行 `bash scripts/cloud/preview.sh`，从 Ports 打开 8877 端口的 `/fixture`。
    保持端口 **Private**。选择示例成员或管理员，可验证论文、Wiki、个人科研
    和管理页面；该预览使用独立 SQLite 和两篇明确标注的合成论文。
@@ -42,11 +44,20 @@ GitHub 保存代码和已纳入版本控制的研究产物。AWS 继续承载线
   Codespaces 远程终端支持补丁为 `2c5b1c8`。没有合并到会自动部署的 `main`。
 - GitHub 云端验收：`37644889130`、`37645456851` 均成功，监控测试 165 项、
   论文与科研权限测试 45 项，另有两个前端构建和导航契约检查。
+- 最终容器配置 `3735146` 的 [CI 验收](https://github.com/SissiFeng/paper-attribution-hub/actions/runs/37647427147)
+  成功。Codespace 本机也完成了同样的 210 项测试，Python 3.12.11、Node 22.23.3，
+  并实际打开了普通成员的论文列表与 Wiki。8877 端口已确认是 Private，
+  未登录调用管理接口返回 401。迁移保留检查覆盖全部 29 个原始页面组件。
+- 开发镜像已移除不使用的旧 Yarn apt 软件源，避免签名过期导致容器进入
+  recovery 模式；包签名校验保持启用。Git 已验证能够直接访问原私有仓库。
 - 独立文件备份（包含本地论文和数据库，不含凭据/依赖/缓存）：
   `s3://paper-attribution-artifacts-dev-247893369214/workspace-backups/20261007T153551Z/workspace.tar.gz`。
   共 3,387 个文件，659,201,259 字节。逐文件清单位于同一路径加
   `.manifest.json`。下载验证的 SHA-256：
   `e4cf353e7cc30331ac9d973120a5be486a5bfc51f6f4774d5e295506e6cab5f0`。
+- 仅清理本地 `backend/.venv`、`frontend/node_modules`、`remotion/node_modules`，
+  实测释放 2,708,893,696 字节（约 2.7 GB）。源码、论文、数据库、报告和 Git
+  历史保留。后续优先在 Codespace 开发，避免重新占满本地磁盘。
 
 恢复备份时，先以获准的 AWS SSO 身份下载到一个独立目录，验证 SHA-256，
 再解压。不要直接覆盖正在开发的 checkout，也不要把其中的本地数据库
@@ -56,6 +67,10 @@ GitHub 保存代码和已纳入版本控制的研究产物。AWS 继续承载线
 云端首次访问 AWS 时运行 `aws configure sso --profile pas-sdl0-dev`，按组织
 要求登录既有账号。SSO 起始地址为 `https://d-9d67418437.awsapps.com/start`，
 区域为 `ca-central-1`。不要从本机复制凭据缓存。
+
+从本机用 `gh codespace ssh` 执行远端 Git 命令时，用 `bash -lc` 启动登录
+shell，让 Codespaces 自带的短期仓库凭据生效；无需复制本地 GitHub token。
+浏览器内的集成终端按正常方式使用即可。
 
 ## 接续开发的上下文
 
