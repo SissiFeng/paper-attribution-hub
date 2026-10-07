@@ -1,3 +1,20 @@
+# Default Development Environment
+
+Use GitHub Codespaces for PAS builds, tests, dependency installation, and runtime
+debugging. Read `docs/cloud-development.zh.md` for the workspace and commands.
+The repository is `SissiFeng/paper-attribution-hub`; discover and reuse its existing
+Codespace with `gh codespace list` before considering a new instance.
+
+Local source inspection and lightweight edits are fine. Keep large dependencies
+and build caches in Codespaces to preserve local disk space. Use a login shell
+(`bash -lc`) for remote commands so Codespaces' Git authentication is available.
+Check both checkouts for uncommitted work before synchronizing; preserve concurrent
+edits and verify the tested commit. Reuse the existing idle-stop configuration.
+
+AWS is the only production deployment target. Codespaces is a development
+environment; production data and credentials stay in AWS. Request user sign-in
+when authentication expires rather than copying credential caches between hosts.
+
 # 1. Think Before Coding
 Don't assume. Don't hide confusion. Surface tradeoffs.
 
