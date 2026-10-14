@@ -16,6 +16,48 @@ WORK_FIELDS = ("id,doi,title,publication_date,type,primary_location,"
                "authorships,ids,is_retracted,abstract_inverted_index,keywords")
 
 
+class AuthenticationError(RuntimeError):
+    pass
+
+
+def _get_json(path: str, params: dict) -> dict:
+    try:
+        return http.get_json(f"{BASE}/{path}", params)
+    except urllib.error.HTTPError as exc:
+        if exc.code == 401:
+            # Do not include request URLs, response bodies or credentials in logs.
+            raise AuthenticationError(
+                "OpenAlex authentication failed (HTTP 401). Complete cursor paging "
+                "requires a valid free API key. Configure OPENALEX_API_KEY or the "
+                "AWS SSM parameter named by OPENALEX_PARAMETER; obtain a key at "
+                "https://openalex.org/settings/api."
+            ) from None
+        raise
+
+
+def validate_api_key(key: str) -> None:
+    """Validate the second cursor page, which anonymous first-page checks miss."""
+    if not key.strip():
+        raise ValueError("An OpenAlex API key is required")
+    params = {"api_key": key.strip(), "filter": "author.id:A5071495561",
+              "select": "id", "per-page": 1, "cursor": "*"}
+    first_id = None
+    for page in range(2):
+        data = _get_json("works", params)
+        results = data.get("results")
+        if (not isinstance(results, list) or len(results) != 1
+                or not isinstance(results[0], dict) or not results[0].get("id")):
+            raise ValueError("OpenAlex key validation did not return a complete page")
+        if page == 0:
+            first_id = results[0]["id"]
+            cursor = (data.get("meta") or {}).get("next_cursor")
+            if not isinstance(cursor, str) or cursor == "*" or not cursor:
+                raise ValueError("OpenAlex key validation did not return a next cursor")
+            params["cursor"] = cursor
+        elif results[0]["id"] == first_id:
+            raise ValueError("OpenAlex key validation repeated the first page")
+
+
 def _params(**kw) -> dict:
     p = dict(kw)
     if os.environ.get("OPENALEX_API_KEY"):
@@ -31,7 +73,7 @@ def short_id(openalex_id: str) -> str:
 
 def author_by_orcid(orcid: str) -> dict | None:
     try:
-        return http.get_json(f"{BASE}/authors/orcid:{orcid}", _params())
+        return _get_json(f"authors/orcid:{orcid}", _params())
     except urllib.error.HTTPError as e:
         if e.code == 404:
             return None
@@ -39,7 +81,7 @@ def author_by_orcid(orcid: str) -> dict | None:
 
 
 def search_authors(name: str, limit: int = 5) -> list[dict]:
-    data = http.get_json(f"{BASE}/authors", _params(search=name, **{"per-page": limit}))
+    data = _get_json("authors", _params(search=name, **{"per-page": limit}))
     return data.get("results", [])
 
 
@@ -98,7 +140,7 @@ def recent_works(id_to_name: dict[str, str], since: str) -> Iterator[Paper]:
             if cursor in seen_cursors:
                 raise ValueError("OpenAlex repeated a cursor; refusing an incomplete baseline")
             seen_cursors.add(cursor)
-            data = http.get_json(f"{BASE}/works", _params(
+            data = _get_json("works", _params(
                 filter=f"author.id:{batch},from_publication_date:{since},to_publication_date:{until},type:article|review|preprint|book-chapter",
                 sort="publication_date:desc",
                 select=WORK_FIELDS,

@@ -197,7 +197,7 @@ same production prefix. Do not edit state.db while a job holds the advisory lock
 
 | Environment variable | Default | Purpose |
 | --- | --- | --- |
-| OPENALEX_API_KEY | unset | Optional API key; recommended for larger lists |
+| OPENALEX_API_KEY | unset | Required for complete cursor paging; use a free OpenAlex key |
 | CONTACT_EMAIL | unset | API contact in query/User-Agent |
 | LOOKBACK_DAYS | 90 | Publication-date rescan window |
 | MAX_POSTS_PER_RUN | 20 | Standalone send limit; subscriber mode uses 20 per member and 200 total |
@@ -218,10 +218,15 @@ same production prefix. Do not edit state.db while a job holds the advisory lock
 | JEV_FOCUS | AC lab automation / scientific discovery | Public research focus, at most 2,000 characters |
 | JEV_CONFIG_PARAMETER | unset | AWS SSM SecureString JSON; set by `--jev-shadow` deployment |
 
-For a dedicated OpenAlex quota, run `deploy/configure_openalex.py`; it validates a
-free API key and stores it as an SSM SecureString. The cloud runner loads it without
-a redeployment. Anonymous calls worked in AWS, but the local shared IP exhausted
-its daily quota during roster research; a dedicated key is recommended.
+Configure a free key from <https://openalex.org/settings/api> before production
+monitoring. OpenAlex permits anonymous first-page queries but requires a key for
+subsequent cursor pages. An anonymous lookup is not a full collection health check.
+Run `python3 tools/author-paper-monitor/deploy/configure_openalex.py` on the machine
+where you completed AWS SSO login. It uses Python's standard library and the AWS
+CLI, asks for the key invisibly, validates two distinct cursor pages, then stores
+it as an SSM SecureString. It does not save rejected or unverified keys. No Python
+dependencies or production credentials need to be installed in Codespaces.
+The cloud runner loads the key on its next run without a redeployment.
 
 The LLM fails open. A changed brief/model/enabled setting reconsiders records marked
 irrelevant. Unclassified new papers are retained in PAS regardless of Slack filtering.

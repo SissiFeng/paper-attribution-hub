@@ -51,6 +51,19 @@ Scholar 显示名与名单不一致时，可显式传入 `--author-map /path/ali
 
 ## 部署与故障恢复
 
+生产监控需要 OpenAlex 免费 API key：匿名请求可以读取第一页，但后续游标
+分页会返回 401。不能以作者查询或第一页成功代替完整采集验证。请在
+<https://openalex.org/settings/api> 获取密钥，在完成 AWS SSO 登录的机器上运行：
+
+```bash
+python3 tools/author-paper-monitor/deploy/configure_openalex.py
+```
+
+工具隐藏输入密钥，验证两个不同的游标页面，再加密保存到 AWS SSM。下一轮
+任务自动加载，无需重建镜像。不要把密钥粘贴到聊天、Git 或 Codespaces。
+修复认证后应补跑完整采集，确认 `last_success_at` 更新、入库与投递没有积压，
+再归档并确认移除对应的失败队列消息，最后核对 watchdog 的恢复回执。
+
 ```bash
 backend/.venv/bin/python tools/author-paper-monitor/deploy/aws.py --apply \
   --authors tools/author-paper-monitor/config/ac_authors.csv \
