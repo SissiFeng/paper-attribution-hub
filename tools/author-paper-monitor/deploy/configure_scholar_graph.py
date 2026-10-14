@@ -14,6 +14,7 @@ import json
 from pathlib import Path
 import subprocess
 import sys
+import tempfile
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from paper_monitor import scholar_graph
@@ -23,9 +24,15 @@ from paper_monitor.store import Store
 
 
 def aws(args, service, operation, payload):
-    result = subprocess.run(['aws', '--profile', args.profile, '--region', args.region,
-        service, operation, '--cli-input-json', 'file:///dev/stdin', '--output', 'json'],
-        input=json.dumps(payload), text=True, capture_output=True)
+    # AWS CLI on macOS cannot reliably load /dev/stdin or inherited /dev/fd.
+    # NamedTemporaryFile is mode 0600 and unlinked on success or failure; keep
+    # credential values out of argv, shell history and repository files.
+    with tempfile.NamedTemporaryFile(mode='w+', suffix='.json') as private:
+        json.dump(payload, private)
+        private.flush()
+        result = subprocess.run(['aws', '--profile', args.profile, '--region', args.region,
+            service, operation, '--cli-input-json', 'file://' + private.name, '--output', 'json'],
+            text=True, capture_output=True)
     if result.returncode:
         raise ValueError('AWS request failed; check SSO and parameter permissions')
     return json.loads(result.stdout or '{}')

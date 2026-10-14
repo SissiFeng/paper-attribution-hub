@@ -193,3 +193,26 @@ def test_graph_registry_accepts_only_verified_config(monkeypatch):
     assert scholar_email.configuration()['provider'] == 'graph'
     with pytest.raises(scholar_email.MailboxError):
         scholar_graph.validate_config({**CONFIG, 'verified_at': None})
+
+
+@pytest.mark.parametrize('returncode', [0, 1])
+def test_setup_aws_secret_is_not_in_argv_and_temp_file_is_removed(monkeypatch, returncode):
+    from types import SimpleNamespace
+    monkeypatch.syspath_prepend(str(Path(__file__).parents[1] / 'deploy'))
+    setup = importlib.import_module('configure_scholar_graph')
+    paths = []
+    def run(argv, **kwargs):
+        assert 'never-print-me' not in ' '.join(argv)
+        path = Path(argv[argv.index('--cli-input-json') + 1].removeprefix('file://'))
+        assert path.stat().st_mode & 0o777 == 0o600
+        assert json.loads(path.read_text()) == {'Value': 'never-print-me'}
+        paths.append(path)
+        return SimpleNamespace(returncode=returncode, stdout='{}', stderr='private-error')
+    monkeypatch.setattr(setup.subprocess, 'run', run)
+    args = SimpleNamespace(profile='test', region='ca-central-1')
+    if returncode:
+        with pytest.raises(ValueError, match='AWS request failed'):
+            setup.aws(args, 'ssm', 'put-parameter', {'Value': 'never-print-me'})
+    else:
+        assert setup.aws(args, 'ssm', 'put-parameter', {'Value': 'never-print-me'}) == {}
+    assert all(not path.exists() for path in paths)
