@@ -94,9 +94,11 @@ def handle(payload, config, key):
             rows = registry.authors()
             count = sum(r.get('status') == 'active' for r in rows)
             return ephemeral(f"{len(rows)} authors listed; {count} active. Notifications: {'enabled' if settings.get('enabled') else 'paused'}. "
-                             f"Last successful collection: {settings.get('last_collection', 'not run yet')}. Checks every 4 hours; new-paper messages plus a Monday 12:17 UTC recap.\n" + slack_app.monitor_status(settings) + '\n' + slack_app.jev_status(settings))
+                             f"Last successful collection: {settings.get('last_collection', 'not run yet')}.\n" + slack_app.monitor_status(settings) + '\n' + slack_app.jev_status(settings))
         if command == 'add':
             require_owner(settings, user)
+            if settings.get('monitoring', {}).get('source') == 'scholar':
+                return ephemeral('Scholar monitoring requires a confirmed author-page new-articles email subscription and an exact watchlist name. Ask the operator to configure both; adding an OpenAlex profile would not subscribe to Scholar.')
         if command == 'add':
             slack_app.api(config['bot_token'], 'views.open', {'trigger_id': payload['trigger_id'], 'view': slack_app.add_modal()}, timeout=1.6)
             return response()
@@ -142,6 +144,8 @@ def handle(payload, config, key):
             return handle({'team_id': team, 'user_id': user, 'text': 'review' if name == 'jev_review' else 'decisions'}, config, key)
         elif name in ('author_pause', 'author_resume'):
             require_owner(settings, user)
+            if settings.get('monitoring', {}).get('source') == 'scholar':
+                return ephemeral('Ask the operator to coordinate the Scholar subscription and watchlist. Your personal /papers pause control remains available.')
             def toggle_author(row):
                 if not row.get('openalex_ids'):
                     raise ValueError('Verify the author identity before activation.')
@@ -152,6 +156,8 @@ def handle(payload, config, key):
             return handle({'team_id': team, 'user_id': user, 'text': 'test'}, config, key)
         elif name == 'add_author':
             require_owner(settings, user)
+            if settings.get('monitoring', {}).get('source') == 'scholar':
+                return ephemeral('Configure the Scholar author email subscription and watchlist name with the operator.')
             slack_app.api(config['bot_token'], 'views.open', {'trigger_id': payload['trigger_id'], 'view': slack_app.add_modal()}, timeout=1.6)
         return response()
     if kind == 'view_submission':

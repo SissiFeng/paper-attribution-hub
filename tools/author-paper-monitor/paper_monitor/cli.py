@@ -27,8 +27,17 @@ def log(msg: str) -> None:
     print(msg, file=sys.stderr, flush=True)
 
 
+def source_mode():
+    mode = os.environ.get('MONITOR_SOURCE', 'openalex')
+    if mode not in ('openalex', 'scholar'):
+        raise ValueError('MONITOR_SOURCE must be openalex or scholar')
+    return mode
+
+
 def collect(authors: list[authors_mod.Author], since: str) -> tuple[list[Paper], list[str]]:
     """Run every configured source; a failing source is reported, not fatal."""
+    if source_mode() == 'scholar':
+        return [], []
     id_to_name = {i: a.name for a in authors for i in a.openalex_ids}
     arxiv_q = {a.name: a.arxiv_query for a in authors if a.arxiv_query}
     sources = [("openalex", lambda: openalex.recent_works(id_to_name, since))]
@@ -72,7 +81,7 @@ def cmd_resolve(args) -> int:
 
 def cmd_run(args) -> int:
     rows = authors_mod.load(Path(args.authors))
-    unresolved = [a.name for a in rows if not a.openalex_ids]
+    unresolved = [a.name for a in rows if not a.openalex_ids] if source_mode() == 'openalex' else []
     if not rows or unresolved:
         log(f"ERROR empty/unresolved author list; run resolve first: {', '.join(unresolved)}")
         return 1
@@ -91,7 +100,9 @@ def cmd_run(args) -> int:
 def run_locked(args, rows, store) -> int:
     policy_window = collection_policy.window(store)
     since = policy_window['since']
-    seeding = not store.meta("initialized") and not args.post_backlog
+    mode = source_mode()
+    # Mail alerts are queued discoveries, not a historical API baseline.
+    seeding = mode != 'scholar' and not store.meta("initialized") and not args.post_backlog
     papers, errors = collect(rows, since)
     mail_cursor = None
     if scholar_email.configured():
@@ -102,6 +113,8 @@ def run_locked(args, rows, store) -> int:
             errors.append('scholar_alert: '+(str(exc) if isinstance(exc, scholar_email.MailboxError) else type(exc).__name__))
     if os.environ.get("SCHOLAR_CONFIG_ERROR"):
         errors.append("scholar_alert: mailbox configuration could not be loaded")
+    elif mode == 'scholar' and not scholar_email.configured():
+        errors.append('scholar_alert: verified mailbox configuration is required')
     collection_ok = not errors
     if not store.meta("initialized") and errors:
         log("First run aborted: a source failed; baseline must be complete.")
@@ -207,6 +220,8 @@ def run_locked(args, rows, store) -> int:
     oldest = store.db.execute("SELECT min(first_seen) FROM papers WHERE status='pending'").fetchone()[0]
     distribution = json.loads(store.meta('fanout_summary') or '{}') if os.environ.get('SLACK_DELIVERY_MODE') == 'subscribers' else {}
     store.set_meta('last_run_summary', json.dumps({'collected_at': policy_window['at'], 'collection_ok': collection_ok,
+        'source': mode, 'mailbox_provider': (scholar_email.configuration() or {}).get('provider', 'imap'),
+        'mailbox_poll_ok': bool(mail_cursor) and not any(e.startswith('scholar_alert:') for e in errors),
         'deep_scan': policy_window['deep'], 'since': since, 'new_records': new, 'historical_seeded': historical,
         'counts': store.counts(), 'unsynced': len(store.unsynced()), 'oldest_pending': oldest, **distribution,
         'mailbox': 'enabled' if scholar_email.configured() else 'needs_configuration',

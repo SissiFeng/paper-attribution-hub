@@ -23,6 +23,7 @@ def template(args, account, key, alarms):
         "SLACK_TABLE": args.slack_stack,
         "SLACK_CONFIG_PARAMETER": "/" + args.slack_stack + "/credentials",
         "MONITOR_ALARMS": json.dumps(alarms),
+        "MONITOR_COLLECTOR_ALARM_PREFIX": args.monitor_stack + '-',
     }
     resources = {
         "Role": {

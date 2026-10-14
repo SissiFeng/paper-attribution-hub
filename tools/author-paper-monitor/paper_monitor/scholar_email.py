@@ -1,4 +1,4 @@
-"""Google Scholar alert emails over IMAP - optional secondary signal.
+"""Google Scholar author alerts over Microsoft Graph or read-only IMAP.
 
 Optional verified mailbox configuration. Uses read-only IMAP and durable UIDs;
 unknown author-alert layouts fail visibly without advancing the read cursor.
@@ -115,6 +115,8 @@ def number(box, field):
 
 def alert_author(subject, authors, aliases=None):
     from .models import normalize_title
+    if subject.strip().casefold() == 'confirm your scholar alert':
+        return None  # Subscription confirmation is not a new-paper message.
     match = re.fullmatch(r'(?:New articles by (.+)|(.+) - new articles)', subject.strip(), re.I)
     if not match:
         if re.search(r'new citations|new related research|new results|Google Scholar Alert', subject, re.I):
@@ -163,6 +165,9 @@ def fetch_pending(store, authors, config=None):
     config = config or configuration()
     if not config:
         return [], None
+    if config.get('provider') == 'graph':
+        from . import scholar_graph
+        return scholar_graph.fetch_pending(store, authors, config)
     identity = hashlib.sha256(json.dumps([config['host'], config['user'], config.get('folder', 'INBOX')]).encode()).hexdigest()
     key = 'scholar_cursor:'+identity
     cursor = json.loads(store.meta(key) or '{}')

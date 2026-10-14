@@ -129,6 +129,11 @@ def configure_scholar():
             return
         raise
     config = json.loads(raw['Parameter']['Value'])
+    if isinstance(config, dict) and config.get('provider') == 'graph':
+        from .scholar_graph import validate_config
+        validate_config(config)
+        scholar_email.configure(config)
+        return
     if (not isinstance(config, dict) or not config.get('verified_at')
             or not all(isinstance(config.get(k), str) and config[k] for k in ('host', 'user', 'password', 'folder'))
             or type(config.get('uidvalidity')) is not int or type(config.get('start_uid')) is not int):

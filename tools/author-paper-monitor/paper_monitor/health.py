@@ -17,27 +17,36 @@ def epoch(value):
     return dt.datetime.fromisoformat(value).timestamp() if value else 0
 
 
+def collection_paused(settings):
+    return settings.get('monitoring', {}).get('state') in ('awaiting_mailbox', 'paused')
+
+
 def problems(health, settings, alarms, *, now=None):
     now = time.time() if now is None else now
     found = {}
+    paused = collection_paused(settings)
+    scholar = settings.get('monitoring', {}).get('source') == 'scholar'
+    max_age = 45 * 60 if scholar else 4 * 3600 + 45 * 60
+    age_label = '45 minutes' if scholar else '4 hours 45 minutes'
     last = epoch(
         health.get("last_success_at")
         or settings.get("last_collection")
         or health.get("installed_at")
     )
-    if not last or now - last > 4 * 3600 + 45 * 60:
+    if not paused and (not last or now - last > max_age):
         found["stale"] = (
-            "No complete successful collection in the last 4 hours 45 minutes."
+            f"No complete successful collection in the last {age_label}."
         )
-    if epoch(health.get("failed_task_at")) > last:
+    if not paused and epoch(health.get("failed_task_at")) > last:
         found["task_failed"] = (
             "AWS reported a failed collection task; a later successful run is still pending."
         )
-    if health.get("last_exit", 0) != 0:
+    summary = health.get("summary", {})
+    non_collection_errors = set(summary.get('errors', [])) - {'openalex', 'arxiv', 'scholar_alert'}
+    if health.get("last_exit", 0) != 0 and (not paused or non_collection_errors):
         found["run_failed"] = (
             "The most recent collection or delivery failed. Check /papers status and AWS logs."
         )
-    summary = health.get("summary", {})
     if summary.get("delivery_counts", summary.get("counts", {})).get("sending"):
         found["delivery_uncertain"] = (
             "A paper delivery is uncertain. Check the existing Slack message before retrying."
@@ -52,6 +61,9 @@ def problems(health, settings, alarms, *, now=None):
             "Paper records are waiting for their paper-system storage receipt."
         )
     for alarm in alarms:
+        collector_prefix = os.environ.get('MONITOR_COLLECTOR_ALARM_PREFIX')
+        if paused and collector_prefix and alarm['AlarmName'].startswith(collector_prefix):
+            continue
         if alarm["StateValue"] == "ALARM":
             found["alarm:" + alarm["AlarmName"]] = (
                 "AWS reports a collector or Slack delivery failure."
@@ -186,7 +198,9 @@ def handler(event, context):
         else []
     )
     issues = problems(health, settings, alarms)
-    result = notify(issues)
+    # An intentional pause is not recovery; preserve the previous incident.
+    result = ({'status': settings['monitoring']['state'], 'sent': False}
+              if collection_paused(settings) and not issues else notify(issues))
     registry.put(
         "monitor-watchdog",
         {"checked_at": int(time.time()), "issues": list(issues), **result},

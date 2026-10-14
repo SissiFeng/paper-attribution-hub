@@ -43,10 +43,11 @@ def _run(argv=None):
     os.environ["PAS_MONITOR_INGEST"] = "1"
     os.environ.setdefault("PAS_MONITOR_MODE", "main")
     os.environ.setdefault("CONTACT_EMAIL", os.environ.get("PAS_OPENALEX_MAILTO", ""))
-    signal.alarm(1500)  # Bound crashed/slow runs; interrupted sends remain 'sending'.
+    signal.alarm(700 if cli.source_mode() == 'scholar' else 1500)  # Stay within the polling interval.
     s3 = boto3.client("s3")
     from . import registry
-    registry.configure_openalex()
+    if cli.source_mode() != 'scholar':
+        registry.configure_openalex()
     os.environ.pop('SCHOLAR_CONFIG_ERROR', None)
     try:
         registry.configure_scholar()
@@ -91,7 +92,7 @@ def _run(argv=None):
                 from .authors import Author, save
                 active = [r for r in registry.authors() if r.get("status") == "active"]
                 save(root / "authors.csv", [Author(name=r["name"], orcid=r.get("orcid", ""),
-                    openalex_ids=r["openalex_ids"]) for r in active])
+                    openalex_ids=r.get("openalex_ids", [])) for r in active])
 
             if args.verify_ingestion:
                 from .verify_pas import verify

@@ -77,7 +77,7 @@ def welcome(user, token):
             result = slack_app.api(token, 'chat.postMessage', {'channel': personal['channel_id'],
                 'text': 'Welcome to AC Papers. Your private paper subscription is ready. ' +
                         ('Automatic updates are on.' if personal['enabled'] else 'Your updates are paused.') +
-                        ' We check the shared AC author list every 4 hours and send a weekly recap. '
+                        '\n' + slack_app.monitor_status(registry.get('settings')) + '\n' +
                         'Use `/papers test` for a real-paper preview, `/papers pause` to pause only your updates, '
                         'or `/papers start` to resume. Historical papers are not sent as new discoveries.'})
             if not result.get('ts'):

@@ -80,8 +80,10 @@ shell，让 Codespaces 自带的短期仓库凭据生效；无需复制本地 Gi
 所有原始 PAS 分析页面应保留；公开论文页面复用旧版论文与 Wiki UI；
 机构分析仍仅对管理员开放，管理员身份不赋予读取他人私人笔记的权限。
 
-尚待接入的服务：Microsoft 365 共享邮箱需要新增 OAuth/Graph 支持，现有
-Scholar 连接器只有只读 IMAP 密码认证，不可直接用于 Exchange Online。
+Microsoft 365 共享邮箱已新增 Graph 应用身份连接器及隐藏输入配置入口；
+学校 IT 的共享邮箱范围授权与真实论文邮件验收仍待完成。OpenAlex 定时采集
+已暂停；不能把 Outlook 网页登录视为 AWS 后台授权。详见
+`tools/author-paper-monitor/SCHOLAR_MICROSOFT365.zh.md`。
 Jev 配置入口已存在，但未配置模型 API key。不要把这两项写成已经启用。
 
 迁移前诊断：多伦多时间 10 月 7 日 00:18、04:18、08:18 的三次监控均新增

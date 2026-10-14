@@ -154,6 +154,17 @@ def manifest(base):
 
 
 def monitor_status(settings):
+    monitoring = settings.get('monitoring', {})
+    if monitoring.get('source') == 'scholar':
+        state = monitoring.get('state', 'awaiting_mailbox')
+        if state != 'active':
+            return ('Google Scholar author alerts: waiting for shared-mailbox application authorization.\n'
+                    'Automatic collection is paused. OpenAlex polling is disabled.\n'
+                    'Planned checks: every 15 minutes; subscriptions and stored papers are preserved.')
+        return ('Source: Google Scholar author-alert emails, read from the designated Microsoft 365 folder.\n'
+                'Mailbox checks: every 15 minutes; delivery follows storage in PAS.\n'
+                'Timing depends on when Google sends the alert. OpenAlex polling is disabled.\n'
+                'Operational alerts cover mailbox failures and delivery backlog.')
     summary = settings.get('monitor_summary', {})
     mailbox = 'connected' if summary.get('mailbox') == 'enabled' else 'waiting for mailbox setup'
     return ('Sources: OpenAlex; Google Scholar email: '+mailbox+'.\n'
@@ -167,11 +178,12 @@ def home(settings, rows, page=0):
     status = 'Updates enabled' if settings.get('enabled') else 'Updates paused'
     destination = 'Private messages to you' if settings.get('channel_id', '').startswith('D') else 'Not connected'
     admin = settings.get('can_manage_authors', False)
-    controls = ([button('Add an author', 'add_author')] if admin else []) + [button('Send me a test', 'test'),
+    scholar = settings.get('monitoring', {}).get('source') == 'scholar'
+    controls = ([button('Add an author', 'add_author')] if admin and not scholar else []) + [button('Send me a test', 'test'),
         button('Pause my updates' if settings.get('enabled') else 'Start my updates',
                'notifications_pause' if settings.get('enabled') else 'notifications_start'), button('Refresh', 'home', str(page))]
     blocks = [{'type': 'header', 'text': {'type': 'plain_text', 'text': 'AC · Publication watchlist'}},
-        section(f'*{status}* · {destination}\n{len(rows)} authors in the list · {active} active · {pending} need identity review\nChecked every 4 hours; new papers are sent after storage. A weekly recap arrives on Mondays at 12:17 UTC.'),
+        section(f'*{status}* · {destination}\n{len(rows)} authors in the list · {active} active · {pending} need identity review\nNew papers are sent after storage. Weekly recaps run with the collector. Watchlist membership does not confirm a Scholar alert subscription.'),
         {'type': 'actions', 'elements': controls},
         section(monitor_status(settings)),
         section(jev_status(settings) + '\nExperimental suggestions only; regular paper collection and delivery continue as usual.'),
@@ -182,14 +194,14 @@ def home(settings, rows, page=0):
         blocks.insert(3, {'type': 'actions', 'elements': [button('Open PAS ↗', 'open_pas', url=base + '/')]})
     page = max(0, min(page, max(0, (len(rows) - 1) // 20)))
     for row in rows[page * 20:(page + 1) * 20]:
-        label = {'active': 'Monitoring', 'paused': 'Paused', 'needs_review': 'Identity review needed'}[row['status']]
+        label = {'active': 'Watchlist active' if scholar else 'Monitoring', 'paused': 'Paused', 'needs_review': 'Identity review needed'}[row['status']]
         text = f"*{_esc(row['name'])}* · {label}\n{_esc(row.get('institution', ''))}"
         if row.get('openalex_ids'):
             text += f" · <https://openalex.org/{row['openalex_ids'][0]}|Author profile>"
         if row.get('note') and row['status'] == 'needs_review':
             text += '\n' + _esc(row['note'])[:500]
         block = section(text)
-        if admin and row['status'] != 'needs_review':
+        if admin and not scholar and row['status'] != 'needs_review':
             action = 'author_pause' if row['status'] == 'active' else 'author_resume'
             block['accessory'] = button('Pause' if action == 'author_pause' else 'Resume', action, row['person_id'])
         blocks.append(block)

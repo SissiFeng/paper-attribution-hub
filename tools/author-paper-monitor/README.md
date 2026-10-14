@@ -1,13 +1,17 @@
 # Author paper monitor
 
-Four-hour OpenAlex author monitoring, durable deduplication, direct PAS ingestion,
-and a native Slack App. Members of the installed workspace subscribe by opening
+Google Scholar author-email monitoring, durable deduplication, direct PAS ingestion,
+and a native Slack App. The 2026-10-14 switch disables OpenAlex polling. Microsoft
+365 application authorization and a real publication email are still required
+before enabling the 15-minute mailbox schedule. See
+[Microsoft 365 setup and acceptance](SCHOLAR_MICROSOFT365.zh.md).
+Members of the installed workspace subscribe by opening
 AC Papers or running `/papers start`; each receives their own private messages.
 Read [MULTIUSER.zh.md](MULTIUSER.zh.md) for colleague onboarding and personal delivery,
 and [FRESHNESS.zh.md](FRESHNESS.zh.md) for backfill, alerts and mailbox setup.
 `REVIEW_RESULT.zh.md` records the initial pilot.
 
-## Slack pilot
+## Original OpenAlex pilot (historical; polling disabled)
 
 The watchlist contains all 82 AC members: 81 verified profiles are active; Alan
 Veerman remains visible as needing identity review. The registry is in DynamoDB;
@@ -57,7 +61,7 @@ personal subscriptions and feedback. This uses the existing AWS environment with
 Socket Mode server. Slack retries are deduplicated; uncertain sends are retained
 for inspection rather than replayed blindly.
 
-## Local use
+## Standalone OpenAlex use (explicit opt-in; not the current production source)
 
 Python 3.10+ for the standalone monitor; the PAS integration uses the backend
 runtime (Python 3.12, SQLAlchemy). The production ECS task reuses the running
@@ -66,7 +70,7 @@ backend image, pinned by digest, with a checksummed monitor code bundle.
 ```bash
 cp authors.example.csv authors.csv
 python -m paper_monitor resolve authors.csv
-python -m paper_monitor run --authors authors.csv --db state.db --dry-run
+MONITOR_SOURCE=openalex python -m paper_monitor run --authors authors.csv --db state.db --dry-run
 ```
 
 Resolve all authors before polling. An ORCID response is accepted only if its

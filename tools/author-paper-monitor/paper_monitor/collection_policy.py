@@ -9,7 +9,7 @@ def window(store, *, now=None):
     recent = max(1, int(os.environ.get("LOOKBACK_DAYS", "90")))
     deep = max(recent, int(os.environ.get("DEEP_LOOKBACK_DAYS", str(recent))))
     previous = store.meta("last_deep_collection")
-    due = deep > recent and (
+    due = os.environ.get('MONITOR_SOURCE') != 'scholar' and deep > recent and (
         not previous
         or (now - dt.datetime.fromisoformat(previous)).total_seconds() >= 7 * 86400
     )

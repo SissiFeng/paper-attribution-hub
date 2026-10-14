@@ -11,6 +11,7 @@ import copy
 import hashlib
 import io
 import json
+import time
 from pathlib import Path
 import zipfile
 
@@ -56,6 +57,7 @@ def template(args, account, task, network, digest, bundle_key, bundle_hash, db_p
            "PAS_MONITOR_INGEST": "1", "PAS_MONITOR_MODE": "main",
            "PAS_ACTIVE_LEARNING": "0", "PYTHONUNBUFFERED": "1",
            "SLACK_DELIVERY_MODE": "subscribers", "DEEP_LOOKBACK_DAYS": "365",
+           "MONITOR_SOURCE": getattr(args, 'source', 'openalex'),
            "SCHOLAR_CONFIG_PARAMETER": f"/{args.stack}/scholar-mailbox",
            "OPENALEX_PARAMETER": f"/{args.stack}/openalex-api-key"}
     if args.jev_shadow:
@@ -91,7 +93,7 @@ def template(args, account, task, network, digest, bundle_key, bundle_hash, db_p
             ]}}]}},
         "Failures": {"Type": "AWS::SQS::Queue", "Properties": {"MessageRetentionPeriod": 1209600, "SqsManagedSseEnabled": True}},
         "Schedule": {"Type": "AWS::Events::Rule", "Properties": {
-            "Name": prefix, "ScheduleExpression": "cron(17 0/4 * * ? *)", "State": "ENABLED" if args.enable_schedule else "DISABLED",
+            "Name": prefix, "ScheduleExpression": "rate(15 minutes)" if getattr(args, 'source', 'openalex') == 'scholar' else "cron(17 0/4 * * ? *)", "State": "ENABLED" if args.enable_schedule else "DISABLED",
             "Targets": [{"Id": "monitor", "Arn": f"arn:aws:ecs:{args.region}:{account}:cluster/{args.cluster}",
                 "RoleArn": {"Fn::GetAtt": ["ScheduleRole", "Arn"]},
                 "EcsParameters": {"TaskDefinitionArn": {"Ref": "Task"}, "LaunchType": "FARGATE", "TaskCount": 1,
@@ -160,6 +162,7 @@ def main():
     ap.add_argument("--slack-app", help="DynamoDB registry / Slack App stack name")
     ap.add_argument('--jev-shadow', action='store_true', help='Enable bounded advisory-only Jev evaluation; credentials are optional')
     ap.add_argument("--enable-schedule", action="store_true")
+    ap.add_argument('--source', choices=['openalex', 'scholar'], default='scholar')
     ap.add_argument("--open-corpus", action="store_true")
     ap.add_argument("--apply", action="store_true")
     ap.add_argument("--run", choices=["dry-run", "baseline", "backlog", "verify-ingestion"])
@@ -172,6 +175,14 @@ def main():
     session = boto3.Session(profile_name=args.profile, region_name=args.region)
     account = session.client("sts").get_caller_identity()["Account"]
     ecs, s3, cfn, ssm = [session.client(n) for n in ["ecs", "s3", "cloudformation", "ssm"]]
+    if args.enable_schedule and args.source == 'scholar':
+        import sys
+        sys.path.insert(0, str(ROOT))
+        from paper_monitor.scholar_graph import validate_config
+        mailbox = json.loads(ssm.get_parameter(Name=f'/{args.stack}/scholar-mailbox', WithDecryption=True)['Parameter']['Value'])
+        validate_config(mailbox)
+        if not mailbox.get('publication_sample_verified'):
+            ap.error('Validate a real Scholar publication email before enabling the schedule')
     service = ecs.describe_services(cluster=args.cluster, services=[args.service])["services"][0]
     task = ecs.describe_task_definition(taskDefinition=service["taskDefinition"])["taskDefinition"]
     network = service["networkConfiguration"]["awsvpcConfiguration"]
@@ -197,7 +208,7 @@ def main():
         sys.path.insert(0, str(ROOT))
         from paper_monitor.authors import load
         rows = load(args.authors)
-        if not rows or any(not a.openalex_ids for a in rows):
+        if not rows or (args.source == 'openalex' and any(not a.openalex_ids for a in rows)):
             ap.error("Resolve every author before uploading the list")
     doc = template(args, account, task, network, image, key, sha, db_param)
     body = json.dumps(doc, indent=2)
@@ -230,6 +241,18 @@ def main():
             waiter = None
     if waiter:
         cfn.get_waiter(waiter).wait(StackName=args.stack, WaiterConfig={"Delay": 10, "MaxAttempts": 90})
+    if args.slack_app:
+        table = session.resource('dynamodb').Table(args.slack_app)
+        item = table.get_item(Key={'pk': 'settings'}, ConsistentRead=True).get('Item')
+        if not item:
+            raise ValueError('Configure Slack settings before enabling monitoring')
+        settings = json.loads(item['payload'])
+        settings['monitoring'] = {'source': args.source,
+            'state': 'active' if args.enable_schedule else 'paused',
+            'interval_minutes': 15 if args.source == 'scholar' else 240}
+        table.put_item(Item={**item, 'payload': json.dumps(settings), 'version': time.time_ns()},
+            ConditionExpression='#v = :v', ExpressionAttributeNames={'#v': 'version'},
+            ExpressionAttributeValues={':v': item['version']})
     outputs = {o["OutputKey"]: o["OutputValue"] for o in cfn.describe_stacks(StackName=args.stack)["Stacks"][0]["Outputs"]}
     if args.open_corpus:
         open_corpus(ecs, args, task)
