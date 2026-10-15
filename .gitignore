@@ -61,5 +61,3 @@ pgdata/
 .claude/
 .codex/
 skills-lock.json
-.vercel/
-.vercel

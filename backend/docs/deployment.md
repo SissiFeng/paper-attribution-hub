@@ -1,86 +1,34 @@
-# Deployment Checklist
+# AWS Deployment Checklist
 
-Three platforms, one stack:
+AWS is the only production deployment target. See the
+[AWS deployment guide](../../docs/aws-deployment.md) for provisioning, releases,
+backup and rollback. Docker Compose and GitHub Codespaces are development
+environments.
 
-| Platform | Role | Config |
-|---|---|---|
-| **Vercel** | Frontend SPA (React + Vite) | `frontend/vercel.json`, build `npm run build` → `dist/` |
-| **Render** | Backend API (FastAPI in Docker) | `render.yaml` → `backend/Dockerfile` |
-| **Supabase** | Postgres database | connection string → Render `PAS_DATABASE_URL` |
+## Runtime configuration
 
-Data flow: Vercel frontend → (HTTPS) → Render API → (Postgres) → Supabase.
+The frontend is served through S3 and CloudFront. The backend runs on ECS
+Fargate behind an ALB and uses RDS PostgreSQL. Private artifacts use S3.
+Production credentials belong in AWS SSM Parameter Store or Secrets Manager.
 
-## Pre-demo verification (run locally)
+| Variable | Configuration |
+|---|---|
+| `PAS_DATABASE_URL` | RDS connection string supplied to the ECS task. |
+| `PAS_CORS_ORIGINS` | Explicit frontend origins if cross-origin access is required; JSON arrays and comma-separated values are supported. |
+| `PAS_S3_ARTIFACTS_BUCKET` / `PAS_AWS_REGION` | Artifact bucket and region for the deployment. |
+| `PAS_KIMI_API_KEY` / `PAS_ANTHROPIC_API_KEY` | Optional model credentials supplied securely at runtime. |
+| `VITE_API_BASE` | Build-time API base; production defaults to `/api`. |
+| `VITE_USE_MOCK` | Production defaults to `false`; sample data is for development. |
 
-Last verified 2026-07-23, all green:
+Rebuild the frontend after changing any `VITE_*` setting. Keep production
+credentials and data out of the development workspace.
 
-```bash
-# Backend boots, health/CORS/DB endpoints respond
-cd backend && PYTHONPATH="$PWD" python -c "from fastapi.testclient import TestClient; \
-from app.main import app; c=TestClient(app); print(c.get('/health').json())"
+## Verification and rollback
 
-# Fresh-DB bootstrap (create_all + stamp head; never replays 0001)
-python -m pytest tests/test_db_bootstrap.py tests/test_config_cors.py -q
+Before release, build the frontend and run relevant backend tests in Codespaces.
+After release, check ECS service stability, CloudWatch logs, API health and actual
+paper responses. A healthy process alone does not verify the data.
 
-# Frontend production build (same command Vercel runs)
-cd ../frontend && npm install && npm run build   # → dist/, exit 0
-```
-
-## Required environment variables
-
-### Render (backend) — set in dashboard, most are `sync: false`
-
-| Var | Required | Notes |
-|---|---|---|
-| `PAS_DATABASE_URL` | **Yes** | Supabase Postgres URL (`postgresql://...`). Fresh DB is auto-bootstrapped on first boot. |
-| `PAS_CORS_ORIGINS` | **Yes** | Must include the Vercel frontend origin. Accepts JSON (`["https://app.vercel.app"]`) **or** comma-separated (`https://app.vercel.app,https://x.io`). |
-| `PORT` | auto | Render injects it; Dockerfile honors `${PORT:-8000}`. |
-| `PAS_OPENALEX_MAILTO` | optional | Polite pool for OpenAlex. |
-| `PAS_SEMANTIC_SCHOLAR_API_KEY` | optional | Higher S2 rate limits. |
-| `PAS_KIMI_API_KEY` / `PAS_ANTHROPIC_API_KEY` | optional | LLM answer generation. Without either, `/retrieve/answer` returns grounded retrieval-only answers (no crash). |
-
-### Vercel (frontend) — set as build-time env vars
-
-| Var | Required | Notes |
-|---|---|---|
-| `VITE_API_BASE` | **Yes** | The Render backend URL, no trailing slash. **Inlined at build time** — a rebuild is required after changing it. Defaults to `http://localhost:8000`, so if unset the deployed site cannot reach the API. |
-| `VITE_USE_MOCK` | recommended | Set `false` for the demo (real API). `true` serves built-in mock data with no backend. |
-
-### Supabase (database)
-
-- Create a Postgres instance; copy the connection string into Render's `PAS_DATABASE_URL`.
-- No manual schema step: the container's `db_bootstrap` builds the schema on an
-  empty DB (`create_all` + `alembic stamp head`) and only runs incremental
-  `alembic upgrade head` on an already-versioned DB.
-
-## Container boot sequence (`backend/Dockerfile` CMD)
-
-`CMD ["python", "-m", "app.scripts.serve"]` — a demo-safe entrypoint that runs:
-
-```
-db_bootstrap                                   # schema: create+stamp | stamp | upgrade
-ingest_scopus_batch --seed-if-under 1000 ...   # best-effort seed
-exec uvicorn app.main:app --host 0.0.0.0 --port ${PORT:-8000}
-```
-
-Bootstrap and seed are **best-effort**: a non-zero exit is logged as a
-`[serve] WARNING` but uvicorn still starts, so `/health` and `/debug/db` stay
-reachable for diagnosis. `uvicorn` is exec'd (replaces the process) so it
-receives container signals.
-
-## Known risks / caveats
-
-1. **Seeding is best-effort, not fail-fast.** If seeding fails, the API still
-   boots but may serve an empty/partial dataset — check the `[serve] WARNING`
-   lines in the Render logs and `/debug/papers` if the demo data looks thin.
-   (Re-seed manually with `python -m app.scripts.ingest_scopus_batch`.)
-2. **`VITE_API_BASE` is build-time.** Changing it in Vercel requires a redeploy,
-   not just an env update.
-3. **pgvector on a *fresh* Postgres:** `db_bootstrap` stamps head, so migration
-   `0002` (JSON→`vector(1536)`) does not run and the `embedding` column stays
-   JSON. Harmless with the default `tfidf` embedder; only matters if you switch
-   to `PAS_EMBEDDING_BACKEND=sbert` + pgvector, which then needs `0002` applied.
-4. **Frontend bundle is ~3.3 MB (~1 MB gzip)**, single chunk. Loads fine; a
-   code-split would speed first paint but is not demo-blocking.
-5. **Render free plan cold starts** (~30–60 s) after idle — warm the API before
-   the demo by hitting `/health`.
+Keep the previous ECS task definition, ECR image tag and S3 frontend build for
+rollback within AWS. Database restore is a separate operation and requires a
+verified RDS snapshot or backup plus schema compatibility checks.
