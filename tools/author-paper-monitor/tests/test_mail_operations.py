@@ -138,6 +138,22 @@ def test_coverage_import_cannot_claim_confirmation_without_profile(tmp_path, mon
     assert coverage.changes(path, [{'person_id': 'a', 'name': 'A'}])[0][1]['subscription_confirmed']
 
 
+def test_storage_deploy_accepts_aws_rule_reordering(tmp_path, monkeypatch):
+    monkeypatch.syspath_prepend(str(Path(__file__).parents[1] / 'deploy'))
+    module = importlib.import_module('storage_policy')
+    deployed = []
+    def read(**kwargs):
+        return {'Rules': list(reversed(deployed))}
+    def write(**kwargs):
+        deployed.extend(kwargs['LifecycleConfiguration']['Rules'])
+    s3 = SimpleNamespace(get_bucket_lifecycle_configuration=read, put_bucket_lifecycle_configuration=write)
+    monkeypatch.setattr(module.boto3, 'Session', lambda **kwargs: SimpleNamespace(client=lambda _: s3))
+    monkeypatch.setattr(module, '__file__', str(tmp_path / 'storage_policy.py'))
+    monkeypatch.setattr('sys.argv', ['storage_policy', '--apply'])
+    module.main()
+    assert deployed
+
+
 def test_independent_alert_does_not_depend_on_slack_lambda(monkeypatch):
     monkeypatch.syspath_prepend(str(Path(__file__).parents[1] / 'deploy'))
     module = importlib.import_module('health_aws')

@@ -62,7 +62,8 @@ def main():
         s3.put_bucket_lifecycle_configuration(Bucket=args.bucket, LifecycleConfiguration=after,
             TransitionDefaultMinimumObjectSize=before.get('TransitionDefaultMinimumObjectSize', 'all_storage_classes_128K'))
         actual = s3.get_bucket_lifecycle_configuration(Bucket=args.bucket)
-        if actual['Rules'] != after['Rules']:
+        # S3 may reorder rules; IDs, filters and actions must still match exactly.
+        if {r['ID']: r for r in actual['Rules']} != {r['ID']: r for r in after['Rules']}:
             raise RuntimeError('Lifecycle readback differs from the reviewed rules')
 
 
