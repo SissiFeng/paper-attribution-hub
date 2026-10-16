@@ -3,6 +3,27 @@
 这份手册对应 2026-10-16 的修复。真实 Microsoft 365 接入仍需要 IT 的应用授权、
 凭据及真实论文邮件验收。测试和代码部署不能代替这个验收，采集规则在此前保持关闭。
 
+## 本轮发布验收
+
+- 验证代码提交：`ac288486e6d695e0a197d892e2046a7d1a9f1543`。
+  [GitHub CI](https://github.com/SissiFeng/paper-attribution-hub/actions/runs/38897972329)
+  通过 218 项监控测试、49 项后端测试、两个前端构建，以及 29 个原有页面保留检查。
+- AWS 监控任务更新至 revision 21；监控、Slack、看门狗三个 CloudFormation
+  stack 均为 UPDATE_COMPLETE，运行代码包 SHA-256 已逐项核对一致。
+- 真实 AWS 合成 canary 验证 S3 原件与检查点恢复、邮件隔离/重放、RDS 稳定 ID。
+  数据库事务已回滚。它不代表真实 Microsoft 邮件已经接通。
+- 只向已验证的运维本人私聊发送两条 TEST 告警/恢复消息，均有 Slack 回执；
+  各自重复调用未再次发送。生产监控状态仍为 awaiting_mailbox，没有虚报恢复。
+- 旧 OpenAlex 401 失败事件已核对后续成功记录，存入私有 S3 后逐条确认处理；
+  失败队列为空，原告警恢复 OK。没有清空队列或改写成功时间。
+- S3 保留策略已回读核对，当前检查点已另存备份。清理由生命周期异步执行，
+  不声称所有旧版本已经立即回收。验证前缀下测试产物保留 7 天。
+- 独立 SNS 告警主题已部署；收件地址仍待用户选择，尚无邮件订阅。
+  Microsoft 应用凭据仍待 IT，真实论文邮件端到端验收未完成，15 分钟规则保持 DISABLED。
+
+机器可读证据：[部署与验收记录](review-evidence/scholar-reliability-verification.json)。
+作者覆盖表：[82 位成员 CSV](review-evidence/scholar-alert-coverage.csv)。
+
 ## 数据流和恢复边界
 
 1. 固定共享邮箱、固定文件夹的 Graph delta 查询，只读，不改邮件。

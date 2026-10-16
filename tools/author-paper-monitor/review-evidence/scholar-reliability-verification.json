@@ -1,0 +1,114 @@
+{
+  "checked_at_utc": "2026-10-16T12:08:43.231926+00:00",
+  "source_commit": "ac288486e6d695e0a197d892e2046a7d1a9f1543",
+  "bundle_sha256": "74c795789eb9d12c849b3efa038354ac008a6393f337c3d4156dc03121bb2085",
+  "ci": {
+    "conclusion": "success",
+    "headSha": "ac288486e6d695e0a197d892e2046a7d1a9f1543",
+    "status": "completed",
+    "url": "https://github.com/SissiFeng/paper-attribution-hub/actions/runs/38897972329",
+    "monitor_tests_passed": 218,
+    "backend_tests_passed": 49,
+    "frontend_builds": 2,
+    "original_pages_preserved": 29
+  },
+  "codespaces": {
+    "reused": "pas-research-development-x9qp6vv9r7qf69p7",
+    "scoped_combined_tests_passed": 244,
+    "final_runtime_scoped_tests_passed": 23,
+    "s3_terraform_hcl_parsed": true
+  },
+  "aws": {
+    "stacks": {
+      "paper-attribution-dev-author-monitor": "UPDATE_COMPLETE",
+      "paper-attribution-dev-slack": "UPDATE_COMPLETE",
+      "paper-attribution-dev-monitor-health": "UPDATE_COMPLETE"
+    },
+    "functions": {
+      "paper-attribution-dev-slack-ingress": {
+        "state": "Active",
+        "code_sha256": "74c795789eb9d12c849b3efa038354ac008a6393f337c3d4156dc03121bb2085"
+      },
+      "paper-attribution-dev-slack-worker": {
+        "state": "Active",
+        "code_sha256": "74c795789eb9d12c849b3efa038354ac008a6393f337c3d4156dc03121bb2085"
+      },
+      "paper-attribution-dev-monitor-health-watchdog": {
+        "state": "Active",
+        "code_sha256": "74c795789eb9d12c849b3efa038354ac008a6393f337c3d4156dc03121bb2085"
+      }
+    },
+    "monitor_task": "arn:aws:ecs:ca-central-1:247893369214:task-definition/paper-attribution-dev-author-monitor:21",
+    "schedule": {
+      "state": "DISABLED",
+      "expression": "rate(15 minutes)"
+    },
+    "monitoring": {
+      "source": "scholar",
+      "state": "awaiting_mailbox",
+      "interval_minutes": 15
+    },
+    "s3_lifecycle_matches": true,
+    "s3_rule_count": 14,
+    "s3_public_access_blocked": true,
+    "pre_migration_backup": "s3://paper-attribution-artifacts-dev-247893369214/author-monitor/state-backups/20261016-pre-reliability-state.db",
+    "failure_queue": {
+      "ApproximateNumberOfMessages": "0",
+      "ApproximateNumberOfMessagesNotVisible": "0"
+    }
+  },
+  "synthetic_canary": {
+    "synthetic": true,
+    "graph_live_test": false,
+    "s3_mail_roundtrip": true,
+    "s3_checkpoint_restore": true,
+    "poison_mail_isolated": true,
+    "replay_deduplicated": true,
+    "rds_stable_id": true,
+    "rds_rolled_back": true,
+    "slack_auth_ok": true,
+    "slack_messages_sent": 0,
+    "schedule_enabled": false,
+    "evidence": "s3://paper-attribution-artifacts-dev-247893369214/author-monitor/verification/reliability-20261016-ac28848/result.json",
+    "ecs_task": "0cb5d17e8d5e4f1aaf980309f2a1d042",
+    "exit_code": 0
+  },
+  "slack_live_test": {
+    "recipient": "configured_private_operator",
+    "messages_sent": 2,
+    "results": [
+      {
+        "recovery": false,
+        "status": "notified",
+        "sent": true
+      },
+      {
+        "recovery": false,
+        "status": "unchanged",
+        "sent": false
+      },
+      {
+        "recovery": true,
+        "status": "recovered",
+        "sent": true
+      },
+      {
+        "recovery": true,
+        "status": "unchanged",
+        "sent": false
+      }
+    ]
+  },
+  "pending_external_gates": {
+    "microsoft_application_credentials": "awaiting IT",
+    "real_publication_email_end_to_end": "not yet verified",
+    "sns_operator_email": "awaiting recipient selection and SNS confirmation",
+    "sns_subscriptions": 0
+  },
+  "author_coverage": {
+    "exported_rows": 82,
+    "active_watchlist": 81,
+    "identity_review": 1,
+    "scholar_subscription_status": "requires explicit setup evidence, not inferred from watchlist"
+  }
+}
