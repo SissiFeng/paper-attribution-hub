@@ -4,7 +4,9 @@ from __future__ import annotations
 import dataclasses
 import datetime
 import json
+import hashlib
 import sqlite3
+import tempfile
 from pathlib import Path
 
 from .models import Paper, title_matches
@@ -44,8 +46,16 @@ def keys(p: Paper):
 
 class Store:
     def __init__(self, path: Path):
+        self._archive_tmp = tempfile.TemporaryDirectory() if str(path) == ':memory:' else None
+        self.archive = Path(self._archive_tmp.name) if self._archive_tmp else Path(path).parent / 'mail-raw'
         self.db = sqlite3.connect(path)
         self.db.executescript(SCHEMA)
+        from .mailbox_state import SCHEMA as MAIL_SCHEMA
+        self.db.executescript(MAIL_SCHEMA)
+        columns = {r[1] for r in self.db.execute('PRAGMA table_info(ingestion)')}
+        for name, declaration in [('needs_sync', 'INTEGER NOT NULL DEFAULT 0'), ('canonical_id', 'TEXT')]:
+            if name not in columns:
+                self.db.execute(f'ALTER TABLE ingestion ADD COLUMN {name} {declaration}')
         self.db.execute(
             "INSERT OR IGNORE INTO ingestion(paper_id) "
             "SELECT id FROM papers WHERE status!='seeded'"
@@ -60,9 +70,37 @@ class Store:
                 self.set_meta("initialized", "1")
             self.set_meta("alias_schema", "1")
             self.commit()
+        from .pas import paper_id
+        for row_id, data, pas_id in self.db.execute('SELECT p.id,p.data,i.pas_id FROM papers p JOIN ingestion i ON p.id=i.paper_id WHERE i.canonical_id IS NULL').fetchall():
+            self.db.execute('UPDATE ingestion SET canonical_id=? WHERE paper_id=?', (pas_id or paper_id(Paper(**json.loads(data))), row_id))
+
+    def archive_mail(self, raw: bytes) -> str:
+        digest = hashlib.sha256(raw).hexdigest()
+        self.archive.mkdir(parents=True, exist_ok=True, mode=0o700)
+        path = self.archive / (digest + '.eml')
+        if not path.exists():
+            with path.open('wb') as out:
+                path.chmod(0o600)
+                out.write(raw)
+        return digest
+
+    def read_mail(self, digest: str) -> bytes:
+        if len(digest) != 64 or any(c not in '0123456789abcdef' for c in digest):
+            raise ValueError('Invalid mail content hash')
+        raw = (self.archive / (digest + '.eml')).read_bytes()
+        if hashlib.sha256(raw).hexdigest() != digest:
+            raise ValueError('Mail content checksum mismatch')
+        return raw
+
+    def delete_mail(self, digest: str):
+        if len(digest) != 64 or any(c not in '0123456789abcdef' for c in digest):
+            raise ValueError('Invalid mail content hash')
+        (self.archive / (digest + '.eml')).unlink(missing_ok=True)
 
     def close(self):
         self.db.close()
+        if self._archive_tmp:
+            self._archive_tmp.cleanup()
 
     def meta(self, key: str) -> str | None:
         row = self.db.execute("SELECT value FROM metadata WHERE key=?", (key,)).fetchone()
@@ -93,7 +131,7 @@ class Store:
         if p.summary:
             merged.summary = p.summary
         if dataclasses.asdict(merged) != json.loads(old[0]):
-            self.db.execute("UPDATE ingestion SET pas_id=NULL WHERE paper_id=?", (row_id,))
+            self.db.execute("UPDATE ingestion SET needs_sync=1 WHERE paper_id=?", (row_id,))
         for kind, value in keys(merged) + keys(p):
             self.db.execute("INSERT OR IGNORE INTO identifiers VALUES (?,?,?)", (kind, value, row_id))
         self.db.execute("UPDATE papers SET doi=?,arxiv_id=?,data=? WHERE id=?",
@@ -105,7 +143,8 @@ class Store:
             (p.doi, p.arxiv_id, p.title_key, json.dumps(dataclasses.asdict(p)), status, _now()))
         row_id = row.lastrowid
         self.add_ids(row_id, p)
-        self.db.execute("INSERT INTO ingestion(paper_id) VALUES (?)", (row_id,))
+        from .pas import paper_id
+        self.db.execute("INSERT INTO ingestion(paper_id,canonical_id) VALUES (?,?)", (row_id, paper_id(p)))
         return row_id
 
     def pending(self, limit: int) -> list[tuple[int, Paper]]:
@@ -118,10 +157,14 @@ class Store:
         return self.rows("SELECT id,data FROM papers WHERE status='posted' AND posted_at>=? AND posted_at<? ORDER BY posted_at,id", (start, end))
 
     def unsynced(self):
-        return self.rows("SELECT p.id,p.data FROM papers p JOIN ingestion i ON i.paper_id=p.id WHERE i.pas_id IS NULL ORDER BY p.id")
+        return self.rows("SELECT p.id,p.data FROM papers p JOIN ingestion i ON i.paper_id=p.id WHERE i.pas_id IS NULL OR i.needs_sync=1 ORDER BY p.id")
+
+    def ingestion_id(self, row_id):
+        row = self.db.execute('SELECT COALESCE(pas_id,canonical_id) FROM ingestion WHERE paper_id=?', (row_id,)).fetchone()
+        return row[0] if row else None
 
     def mark_synced(self, row_id: int, pas_id: str):
-        self.db.execute("UPDATE ingestion SET pas_id=? WHERE paper_id=?", (pas_id, row_id))
+        self.db.execute("UPDATE ingestion SET pas_id=?,canonical_id=?,needs_sync=0 WHERE paper_id=?", (pas_id, pas_id, row_id))
         self.commit()
 
     def set_status(self, row_id: int, status: str):

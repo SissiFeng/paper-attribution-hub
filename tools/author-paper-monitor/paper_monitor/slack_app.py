@@ -4,6 +4,7 @@ from __future__ import annotations
 import hashlib
 import json
 import os
+import urllib.error
 import urllib.parse
 import urllib.request
 
@@ -14,6 +15,18 @@ SCOPES = ['chat:write', 'commands', 'im:write']
 
 class SlackRejected(ValueError):
     """Slack explicitly rejected a request (safe to retry after fixing cause)."""
+
+
+def retry_delay(exc):
+    """Only explicit rejection is safe to retry; 5xx/timeouts may be accepted."""
+    if isinstance(exc, urllib.error.HTTPError) and exc.code == 429:
+        try:
+            return max(1, int((exc.headers or {}).get('Retry-After', '60')))
+        except (TypeError, ValueError):
+            return 60
+    if isinstance(exc, SlackRejected) or isinstance(exc, urllib.error.HTTPError) and exc.code < 500:
+        return 900
+    return None
 
 
 def api(token, method, payload, timeout=8):
@@ -155,16 +168,23 @@ def manifest(base):
 
 def monitor_status(settings):
     monitoring = settings.get('monitoring', {})
+    summary = settings.get('monitor_summary', {})
     if monitoring.get('source') == 'scholar':
         state = monitoring.get('state', 'awaiting_mailbox')
         if state != 'active':
             return ('Google Scholar author alerts: waiting for shared-mailbox application authorization.\n'
                     'Automatic collection is paused. OpenAlex polling is disabled.\n'
                     'Planned checks: every 15 minutes; subscriptions and stored papers are preserved.')
+        stages = '\n'.join(label + ': ' + str(summary.get(key) or 'not verified yet') for label, key in (
+            ('Last successful mailbox check', 'last_mailbox_poll_ok_at'),
+            ('Last successful PAS sync', 'last_pas_sync_ok_at'),
+            ('Last successful delivery check', 'last_delivery_ok_at')))
+        review = summary.get('mail_quarantined', 0) + summary.get('mail_fetch_pending', 0)
         return ('Source: Google Scholar author-alert emails, read from the designated Microsoft 365 folder.\n'
                 'Mailbox checks: every 15 minutes; delivery follows storage in PAS.\n'
                 'Timing depends on when Google sends the alert. OpenAlex polling is disabled.\n'
-                'Operational alerts cover mailbox failures and delivery backlog.')
+                f'{stages}\nEmails needing review/retry: {review}.\n'
+                'An empty successful mailbox check means no new alert, not a connection failure.')
     summary = settings.get('monitor_summary', {})
     mailbox = 'connected' if summary.get('mailbox') == 'enabled' else 'waiting for mailbox setup'
     return ('Sources: OpenAlex; Google Scholar email: '+mailbox+'.\n'
@@ -198,6 +218,18 @@ def home(settings, rows, page=0):
         text = f"*{_esc(row['name'])}* · {label}\n{_esc(row.get('institution', ''))}"
         if row.get('openalex_ids'):
             text += f" · <https://openalex.org/{row['openalex_ids'][0]}|Author profile>"
+        if scholar:
+            coverage = row.get('scholar', {})
+            label = ('Publication email received' if coverage.get('publication_messages') else
+                     'Subscription confirmed' if coverage.get('subscription_confirmed') else
+                     'Alert created; confirmation pending' if coverage.get('alert_created') else
+                     'Alert setup not verified')
+            text += '\nScholar: ' + label
+            profile = coverage.get('profile_url', '')
+            if profile.startswith('https://scholar.google.com/citations?'):
+                text += f' · <{_esc(profile)}|Scholar profile>'
+            if coverage.get('last_received_at'):
+                text += '\nLast publication email: ' + _esc(coverage['last_received_at'])
         if row.get('note') and row['status'] == 'needs_review':
             text += '\n' + _esc(row['note'])[:500]
         block = section(text)

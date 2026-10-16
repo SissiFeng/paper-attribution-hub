@@ -27,6 +27,7 @@ def _run(argv=None):
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--post-backlog", action="store_true")
     ap.add_argument("--verify-ingestion", action="store_true")
+    ap.add_argument('--verify-reliability', action='store_true')
     ap.add_argument("--reconcile-id", type=int)
     ap.add_argument("--reconcile-digest", action="store_true")
     ap.add_argument("--reconcile-recap", action="store_true")
@@ -35,10 +36,12 @@ def _run(argv=None):
     ap.add_argument("--thread-ts")
     ap.add_argument("--delivered", action="store_true")
     ap.add_argument("--retry", action="store_true")
+    ap.add_argument('--mail-report', action='store_true')
+    ap.add_argument('--retry-mail', help='Quarantined message ID to reprocess on the next scheduled run')
     args = ap.parse_args(argv)
     bucket = os.environ["MONITOR_BUCKET"]
     prefix = os.environ.get("MONITOR_PREFIX", "author-monitor/production").strip("/")
-    if (args.dry_run or args.verify_ingestion) and prefix == "author-monitor/production":
+    if (args.dry_run or args.verify_ingestion or args.verify_reliability) and prefix == "author-monitor/production":
         raise ValueError("Cloud dry-run requires a separate MONITOR_PREFIX")
     os.environ["PAS_MONITOR_INGEST"] = "1"
     os.environ.setdefault("PAS_MONITOR_MODE", "main")
@@ -82,6 +85,8 @@ def _run(argv=None):
             db = root / "state.db"
             for name in ("authors.csv", "state.db", "relevance_brief.txt"):
                 key = f"{prefix}/{name}"
+                if args.verify_reliability and name == 'authors.csv':
+                    continue
                 found = s3.list_objects_v2(Bucket=bucket, Prefix=key, MaxKeys=1)
                 if any(obj["Key"] == key for obj in found.get("Contents", [])):
                     s3.download_file(bucket, key, str(root / name))
@@ -102,13 +107,42 @@ def _run(argv=None):
             class CheckpointStore(Store):
                 def __init__(self, path):
                     self.checkpoint_enabled = str(path) != ":memory:"
+                    self.uploaded_changes = -1
                     super().__init__(path)
 
                 def commit(self):
                     check_lock()
                     super().commit()
-                    if self.checkpoint_enabled:
+                    if self.checkpoint_enabled and self.db.total_changes != self.uploaded_changes:
                         s3.upload_file(str(db), bucket, f"{prefix}/state.db")
+                        self.uploaded_changes = self.db.total_changes
+
+                def archive_mail(self, raw):
+                    import hashlib
+                    digest = hashlib.sha256(raw).hexdigest()
+                    cached = (self.archive / (digest + '.eml')).exists()
+                    check_lock()
+                    if not cached:
+                        s3.put_object(Bucket=bucket, Key=f'{prefix}/mail-raw/{digest}.eml',
+                                      Body=raw, ServerSideEncryption='AES256')
+                    return super().archive_mail(raw)
+
+                def read_mail(self, digest):
+                    if len(digest) != 64 or any(c not in '0123456789abcdef' for c in digest):
+                        raise ValueError('Invalid mail content hash')
+                    path = self.archive / (digest + '.eml')
+                    if not path.exists():
+                        self.archive.mkdir(parents=True, exist_ok=True, mode=0o700)
+                        s3.download_file(bucket, f'{prefix}/mail-raw/{digest}.eml', str(path))
+                        path.chmod(0o600)
+                    return super().read_mail(digest)
+
+                def delete_mail(self, digest):
+                    if len(digest) != 64 or any(c not in '0123456789abcdef' for c in digest):
+                        raise ValueError('Invalid mail content hash')
+                    check_lock()
+                    s3.delete_object(Bucket=bucket, Key=f'{prefix}/mail-raw/{digest}.eml')
+                    (self.archive / (digest + '.eml')).unlink(missing_ok=True)
 
             original_store, original_post = cli.Store, slack.post
             original_api = slack_app.api
@@ -122,7 +156,13 @@ def _run(argv=None):
                 return original_api(*args, **kwargs)
             slack_app.api = guarded_api
             try:
-                if args.reconcile_digest or args.reconcile_recap:
+                if args.verify_reliability:
+                    from .reliability_smoke import verify
+                    return verify(CheckpointStore, db, s3, bucket, prefix)
+                maintenance = args.mail_report or args.retry_mail or args.reconcile_id or args.reconcile_digest or args.reconcile_recap
+                if args.mail_report or args.retry_mail:
+                    result = cli.main(['mail', '--db', str(db), *(['--retry-id', args.retry_mail] if args.retry_mail else [])])
+                elif args.reconcile_digest or args.reconcile_recap:
                     if bool(args.thread_ts) == args.retry:
                         raise ValueError("Choose --thread-ts or --retry after checking Slack")
                     decision = ["--thread-ts", args.thread_ts] if args.thread_ts else ["--retry"]
@@ -152,7 +192,7 @@ def _run(argv=None):
                     artifact = root / 'outbox' / name
                     if artifact.exists():
                         s3.upload_file(str(artifact), bucket, f'{prefix}/outbox/{name}')
-                if use_registry and not (args.reconcile_id or args.reconcile_digest or args.reconcile_recap):
+                if use_registry and not maintenance:
                     import datetime
                     with contextlib.closing(sqlite3.connect(f'file:{db}?mode=ro', uri=True)) as state:
                         row = state.execute("SELECT value FROM metadata WHERE key='jev_shadow_status'").fetchone()
@@ -164,11 +204,20 @@ def _run(argv=None):
                     def record_run(current):
                         current["last_run_exit"] = result
                         current["monitor_summary"] = summary
-                        if result == 0:
-                            current["last_collection"] = datetime.datetime.now(datetime.timezone.utc).isoformat()
+                        if summary.get('last_collection_ok_at'):
+                            current['last_collection'] = summary['last_collection_ok_at']
                         current['jev_shadow'] = shadow_status
                     registry.change("settings", record_run)
                     registry.change('monitor-health', lambda current: current.update(summary=summary))
+                    from . import mailbox_state
+                    with contextlib.closing(Store(db)) as state:
+                        observed = mailbox_state.coverage(state, registry.authors())
+                    for author in observed:
+                        if author.get('scholar', {}).get('publication_messages'):
+                            observation = {k: v for k, v in author['scholar'].items()
+                                           if k in ('last_received_at', 'last_processed_at', 'publication_messages')}
+                            registry.change('author:' + author['person_id'],
+                                lambda current, observation=observation: current.setdefault('scholar', {}).update(observation))
                 return result
             finally:
                 cli.Store, slack.post = original_store, original_post
@@ -182,7 +231,7 @@ def main(argv=None):
     import time
     from . import registry
     argv = list(sys.argv[1:] if argv is None else argv)
-    collection = not any(a.split('=')[0] in {'--dry-run', '--verify-ingestion', '--reconcile-id', '--reconcile-digest', '--reconcile-recap'} for a in argv)
+    collection = not any(a.split('=')[0] in {'--dry-run', '--verify-ingestion', '--verify-reliability', '--reconcile-id', '--reconcile-digest', '--reconcile-recap', '--mail-report', '--retry-mail'} for a in argv)
     live = collection and bool(os.environ.get('SLACK_TABLE')) and os.environ.get('MONITOR_PREFIX', 'author-monitor/production').strip('/') == 'author-monitor/production'
     if live:
         registry.change('monitor-health', lambda h: h.update(last_started_at=int(time.time())))

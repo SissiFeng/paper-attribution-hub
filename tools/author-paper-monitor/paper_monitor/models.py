@@ -48,6 +48,7 @@ class Paper:
     openalex_id: str | None = None
     doi_aliases: list[str] = field(default_factory=list)
     keywords: list[str] = field(default_factory=list)
+    alert_received_at: str | None = None  # Email arrival, distinct from publication date.
 
     def __post_init__(self) -> None:
         self.doi = normalize_doi(self.doi)
@@ -69,6 +70,8 @@ class Paper:
                 setattr(self, name, getattr(other, name))
         if not self.authors:
             self.authors = other.authors
+        if other.alert_received_at:
+            self.alert_received_at = max(self.alert_received_at or '', other.alert_received_at)
         for lst, extra in ((self.tracked_authors, other.tracked_authors),
                            (self.doi_aliases, other.doi_aliases),
                            (self.sources, other.sources),

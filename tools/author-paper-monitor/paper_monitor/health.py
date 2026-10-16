@@ -7,6 +7,7 @@ import hashlib
 import json
 import os
 import time
+import urllib.error
 
 from . import registry, slack_app
 
@@ -28,20 +29,22 @@ def problems(health, settings, alarms, *, now=None):
     scholar = settings.get('monitoring', {}).get('source') == 'scholar'
     max_age = 45 * 60 if scholar else 4 * 3600 + 45 * 60
     age_label = '45 minutes' if scholar else '4 hours 45 minutes'
+    summary = health.get("summary", {})
     last = epoch(
-        health.get("last_success_at")
+        summary.get('last_mailbox_poll_ok_at' if scholar else 'last_collection_ok_at')
+        or health.get("last_success_at")
         or settings.get("last_collection")
         or health.get("installed_at")
     )
     if not paused and (not last or now - last > max_age):
         found["stale"] = (
+            f"No successful mailbox check in the last {age_label}." if scholar else
             f"No complete successful collection in the last {age_label}."
         )
-    if not paused and epoch(health.get("failed_task_at")) > last:
+    if not paused and epoch(health.get("failed_task_at")) > epoch(health.get('last_finished_at') or last):
         found["task_failed"] = (
             "AWS reported a failed collection task; a later successful run is still pending."
         )
-    summary = health.get("summary", {})
     non_collection_errors = set(summary.get('errors', [])) - {'openalex', 'arxiv', 'scholar_alert'}
     if health.get("last_exit", 0) != 0 and (not paused or non_collection_errors):
         found["run_failed"] = (
@@ -60,6 +63,13 @@ def problems(health, settings, alarms, *, now=None):
         found["ingestion_pending"] = (
             "Paper records are waiting for their paper-system storage receipt."
         )
+    if summary.get('mail_quarantined') or summary.get('mail_fetch_pending'):
+        found['mail_review'] = 'Some Scholar emails are retained for retry or review; other emails continue processing.'
+    if summary.get('mail_processing_pending'):
+        found['mail_processing'] = 'Captured Scholar emails are waiting for catalogue processing.'
+    expires = epoch(summary.get('secret_expires_at'))
+    if expires and expires - now < 30 * 86400:
+        found['mail_credential_expiry'] = 'Microsoft application credentials expire within 30 days or have expired; arrange rotation with IT.'
     for alarm in alarms:
         collector_prefix = os.environ.get('MONITOR_COLLECTOR_ALARM_PREFIX')
         if paused and collector_prefix and alarm['AlarmName'].startswith(collector_prefix):
@@ -91,6 +101,11 @@ def notify(issues, *, key="monitor-incident", test=False, now=None):
     if previous.get("fingerprint") == fingerprint:
         if previous.get("status") == "posted" or now < previous.get("retry_after", 0):
             return {"status": "unchanged", "sent": False}
+    # Credential lookup cannot have delivered a message. Do it before claiming
+    # 'sending', so an SSM failure does not create a false ambiguous receipt.
+    config = registry.credentials()
+    if not config:
+        raise ValueError("Missing Slack credentials")
 
     class AlreadyClaimed(Exception):
         pass
@@ -124,9 +139,6 @@ def notify(issues, *, key="monitor-incident", test=False, now=None):
     if test:
         body += "\nThis is a labelled delivery test; it does not indicate a real system failure."
     try:
-        config = registry.credentials()
-        if not config:
-            raise ValueError("Missing Slack credentials")
         result = slack_app.api(
             config["bot_token"],
             "chat.postMessage",
@@ -138,14 +150,17 @@ def notify(issues, *, key="monitor-incident", test=False, now=None):
         )
         if not result.get("ts"):
             raise ValueError("Missing Slack receipt")
-    except slack_app.SlackRejected:
+    except (slack_app.SlackRejected, urllib.error.HTTPError) as exc:
+        delay = slack_app.retry_delay(exc)
+        if delay is None:
+            raise
         registry.put(
             key,
             {
                 "status": "retryable",
                 "fingerprint": fingerprint,
                 "issues": issues,
-                "retry_after": now + 900,
+                "retry_after": now + delay,
             },
         )
         raise

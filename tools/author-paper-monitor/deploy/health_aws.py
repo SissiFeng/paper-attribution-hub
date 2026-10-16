@@ -114,7 +114,8 @@ def template(args, account, key, alarms):
                     "detail-type": ["CloudWatch Alarm State Change"],
                     "detail": {"alarmName": alarms, "state": {"value": ["ALARM"]}},
                 },
-                "Targets": [{"Id": "watchdog", "Arn": function_arn}],
+                "Targets": [{"Id": "watchdog", "Arn": function_arn},
+                            {"Id": "independent-alert", "Arn": {"Ref": "Alerts"}}],
             },
         },
         "WatchdogAlarm": {
@@ -130,8 +131,23 @@ def template(args, account, key, alarms):
                 "Threshold": 0,
                 "ComparisonOperator": "GreaterThanThreshold",
                 "TreatMissingData": "notBreaching",
+                "AlarmActions": [{"Ref": "Alerts"}],
             },
         },
+        'Alerts': {'Type': 'AWS::SNS::Topic', 'Properties': {
+            'TopicName': args.stack + '-alerts'}},
+        'AlertPolicy': {'Type': 'AWS::SNS::TopicPolicy', 'Properties': {
+            'Topics': [{'Ref': 'Alerts'}], 'PolicyDocument': {'Version': '2012-10-17',
+                'Statement': [
+                    {'Effect': 'Allow', 'Principal': {'Service': 'events.amazonaws.com'},
+                     'Action': 'sns:Publish', 'Resource': {'Ref': 'Alerts'},
+                     'Condition': {'ArnEquals': {'aws:SourceArn': {'Fn::GetAtt': ['AlarmEvents', 'Arn']}}}},
+                    {'Effect': 'Allow', 'Principal': {'Service': 'cloudwatch.amazonaws.com'},
+                     'Action': 'sns:Publish', 'Resource': {'Ref': 'Alerts'},
+                     'Condition': {'StringEquals': {'aws:SourceAccount': account}}}
+                ]}}},
+        'EmailAlerts': {'Type': 'AWS::SNS::Subscription', 'Condition': 'HasAlertEmail',
+            'Properties': {'TopicArn': {'Ref': 'Alerts'}, 'Protocol': 'email', 'Endpoint': {'Ref': 'AlertEmail'}}},
     }
     for name in ("Schedule", "TaskFailures", "AlarmEvents"):
         resources[name + "Permission"] = {
@@ -145,8 +161,12 @@ def template(args, account, key, alarms):
         }
     return {
         "AWSTemplateFormatVersion": "2010-09-09",
+        'Parameters': {'AlertEmail': {'Type': 'String', 'Default': '',
+            'Description': 'Operator email; SNS requires the recipient to confirm its subscription'}},
+        'Conditions': {'HasAlertEmail': {'Fn::Not': [{'Fn::Equals': [{'Ref': 'AlertEmail'}, '']}]}},
         "Resources": resources,
-        "Outputs": {"Watchdog": {"Value": {"Ref": "Watchdog"}}},
+        "Outputs": {"Watchdog": {"Value": {"Ref": "Watchdog"}},
+                    'AlertTopic': {'Value': {'Ref': 'Alerts'}}},
     }
 
 
@@ -163,6 +183,7 @@ def main():
         "--bucket", default="paper-attribution-artifacts-dev-247893369214"
     )
     parser.add_argument("--apply", action="store_true")
+    parser.add_argument('--alert-email', help='Authorized operator email for independent AWS alerts; omit to preserve the existing subscription')
     args = parser.parse_args()
     session = boto3.Session(profile_name=args.profile, region_name=args.region)
     account = session.client("sts").get_caller_identity()["Account"]
@@ -207,18 +228,23 @@ def main():
         Bucket=args.bucket, Key=key, Body=data, ServerSideEncryption="AES256"
     )
     try:
-        cfn.describe_stacks(StackName=args.stack)
+        previous_stack = cfn.describe_stacks(StackName=args.stack)['Stacks'][0]
     except ClientError as exc:
         if "does not exist" not in str(exc):
             raise
         cfn.create_stack(
             StackName=args.stack, TemplateBody=body, Capabilities=["CAPABILITY_IAM"]
+            , Parameters=[{'ParameterKey': 'AlertEmail', 'ParameterValue': args.alert_email or ''}]
         )
         waiter = "stack_create_complete"
     else:
         try:
             cfn.update_stack(
                 StackName=args.stack, TemplateBody=body, Capabilities=["CAPABILITY_IAM"]
+                , Parameters=[{'ParameterKey': 'AlertEmail', **(
+                    {'UsePreviousValue': True} if args.alert_email is None and any(
+                        p['ParameterKey'] == 'AlertEmail' for p in previous_stack.get('Parameters', []))
+                    else {'ParameterValue': args.alert_email or ''})}]
             )
             waiter = "stack_update_complete"
         except ClientError as exc:

@@ -69,28 +69,51 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "artifacts" {
 resource "aws_s3_bucket_lifecycle_configuration" "artifacts" {
   bucket = aws_s3_bucket.artifacts.id
 
-  # Transition to Infrequent Access after 90 days
-  rule {
-    id     = "transition-to-ia"
-    status = "Enabled"
-    filter { prefix = "" }
-
-    transition {
-      days          = 90
-      storage_class = "STANDARD_IA"
+  # Explicit data prefixes keep monitor release bundles and live state online.
+  dynamic "rule" {
+    for_each = toset(["database-backups/", "etl-runs/", "manifests/", "raw/",
+                     "workspace-backups/", "model-snapshots/", "pipeline-runs/", "logs/"])
+    content {
+      id     = "archive-${trimsuffix(rule.value, "/")}"
+      status = "Enabled"
+      filter { prefix = rule.value }
+      transition {
+        days          = 90
+        storage_class = "STANDARD_IA"
+      }
+      transition {
+        days          = 365
+        storage_class = "GLACIER"
+      }
     }
   }
 
-  # Transition to Glacier after 365 days
   rule {
-    id     = "transition-to-glacier"
+    id     = "monitor-verification"
     status = "Enabled"
-    filter { prefix = "" }
+    filter { prefix = "author-monitor/verification/" }
+    expiration { days = 7 }
+    noncurrent_version_expiration { noncurrent_days = 7 }
+  }
 
-    transition {
-      days          = 365
-      storage_class = "GLACIER"
+  rule {
+    id     = "monitor-state-versions"
+    status = "Enabled"
+    filter { prefix = "author-monitor/production/state.db" }
+    noncurrent_version_expiration {
+      noncurrent_days           = 7
+      newer_noncurrent_versions = 10
     }
+  }
+
+  # Only processed raw messages older than 90 days are deleted by the worker.
+  # Unprocessed/quarantined originals remain available for replay.
+  rule {
+    id     = "monitor-mail-versions"
+    status = "Enabled"
+    filter { prefix = "author-monitor/production/mail-raw/" }
+    noncurrent_version_expiration { noncurrent_days = 7 }
+    expiration { expired_object_delete_marker = true }
   }
 
   # Expire old model snapshots after 2 years

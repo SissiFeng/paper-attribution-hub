@@ -11,24 +11,35 @@ import urllib.error
 from . import slack_app
 
 
-def _post(store, payload, before, success, rejected):
+def _post(store, payload, before, success, rejected, *, callbacks_commit=False):
+    retry_at = float(store.meta('slack_retry_after') or 0)
+    if time.time() < retry_at:
+        return ['Slack rate limit: waiting for Retry-After before delivery']
+    token = os.environ.get('SLACK_BOT_TOKEN')
+    if not token:
+        return ['Slack credentials unavailable; no delivery was attempted']
     before()
-    store.commit()  # The cloud store checkpoints this before the external write.
+    if not callbacks_commit:
+        store.commit()  # The cloud store checkpoints this before the external write.
     try:
         result = slack_app.api(
-            os.environ["SLACK_BOT_TOKEN"], "chat.postMessage", payload
+            token, "chat.postMessage", payload
         )
         if not result.get("ts"):
             raise ValueError("Missing Slack receipt")
     except (slack_app.SlackRejected, urllib.error.HTTPError) as exc:
-        if isinstance(exc, slack_app.SlackRejected) or exc.code < 500:
+        delay = slack_app.retry_delay(exc)
+        if delay is not None:
+            store.set_meta('slack_retry_after', str(time.time() + delay))
             rejected()
-            store.commit()
+            if not callbacks_commit:
+                store.commit()
         return ["Slack rejected or failed delivery; inspect the saved delivery state"]
     except (OSError, ValueError):
         return ["Slack delivery uncertain; inspect Slack before reconciliation"]
     success(result["ts"])
-    store.commit()
+    if not callbacks_commit:
+        store.commit()
     time.sleep(1.1)
     return []
 
@@ -59,6 +70,7 @@ def send(store, queue, unsynced, *, now=None):
                 lambda row_id=row_id: store.set_status(row_id, "sending"),
                 lambda ts, row_id=row_id: store.mark_notified(row_id, channel, ts),
                 lambda row_id=row_id: store.set_status(row_id, "pending"),
+                callbacks_commit=True,
             )
         )
         if errors:

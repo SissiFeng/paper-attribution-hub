@@ -79,6 +79,7 @@ def main():
     ap.add_argument('--stack', default='paper-attribution-dev-slack')
     ap.add_argument('--bucket', default='paper-attribution-artifacts-dev-247893369214')
     ap.add_argument('--apply', action='store_true')
+    ap.add_argument('--code-only', action='store_true', help='Preserve deployed access-control/IAM settings and update only the two Lambda bundles')
     ap.add_argument('--seed-roster', action='store_true')
     ap.add_argument('--pas-public-url', default='https://d1ai8ldqsh81fz.cloudfront.net')
     args = ap.parse_args()
@@ -90,12 +91,19 @@ def main():
             z.writestr(zipfile.ZipInfo(str(p.relative_to(ROOT)), date_time=(2026, 1, 1, 0, 0, 0)), p.read_bytes())
     data = archive.getvalue()
     key = 'author-monitor/slack-releases/' + hashlib.sha256(data).hexdigest() + '.zip'
-    doc = template(args, account, key)
+    cfn = session.client('cloudformation')
+    if args.code_only:
+        doc = cfn.get_template(StackName=args.stack)['TemplateBody']
+        if isinstance(doc, str):
+            doc = json.loads(doc)
+        for name in ('Ingress', 'Worker'):
+            doc['Resources'][name]['Properties']['Code'] = {'S3Bucket': args.bucket, 'S3Key': key}
+    else:
+        doc = template(args, account, key)
     body = json.dumps(doc, indent=2)
     build = ROOT / 'deploy' / 'build'
     build.mkdir(exist_ok=True)
     (build / 'slack-stack.json').write_text(body)
-    cfn = session.client('cloudformation')
     cfn.validate_template(TemplateBody=body)
     if not args.apply:
         print('Validated', build / 'slack-stack.json')

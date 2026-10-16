@@ -54,7 +54,7 @@ def test_lost_cloud_checkpoint_never_blindly_replays_slack(monkeypatch, tmp_path
     paper = Paper("New paper", doi="10.1/x", authors=["A"])
     monkeypatch.setattr(cli, "collect", lambda *_: ([paper], []))
     monkeypatch.setattr(crossref, "enrich", lambda _: None)
-    monkeypatch.setattr(pas, "ingest", lambda _: "pas_123")
+    monkeypatch.setattr(pas, "ingest", lambda _, **kw: "pas_123")
     posts = []
     monkeypatch.setattr(slack, "post", posts.append)
     if immediate:

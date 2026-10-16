@@ -28,7 +28,8 @@ Scholar 作者主页 / New articles 订阅
 邮箱可以继续用于其他工作。规则应移动原邮件到专用文件夹，不要人工转发、
 修改发件人或正文。仅使用 Google Scholar **作者的新论文**提醒，不能用
 普通 Google Alerts 关键词搜索、引用增加通知替代。不要将无关邮件移入该
-文件夹。确认邮件会忽略；不认识的作者、主题或论文正文会报错并保留游标。
+文件夹。确认邮件会忽略；不认识的作者、主题或论文正文会逐封保留并告警，
+不会阻塞正常邮件。详见 [可靠性运维手册](SCHOLAR_RELIABILITY.zh.md)。
 
 名单中的 82 位成员不等于 82 个已确认的 Scholar 订阅。目前只确认了 Alán
 的订阅。先等第一封真实论文邮件通过验收，再让实习生逐个核对作者主页，
@@ -84,14 +85,18 @@ IT 交付：client ID、该文件夹的 Graph folder ID、只读范围验证结�
 ```bash
 python3 tools/author-paper-monitor/deploy/configure_scholar_graph.py \
   --client-id '<IT 提供的 client ID>' \
-  --folder-id '<IT 提供的 Graph folder ID>'
+  --folder-id '<IT 提供的 Graph folder ID>' \
+  --secret-expires-at '<IT 提供的 ISO 到期时间，含时区>'
 # 核对只读检查报告后加 --save，把配置保存为 AWS SSM SecureString。
 ```
 
 工具核对文件夹名、读取增量分页并解析真实邮件，但不写论文、不发 Slack、
 不启用定时任务、不保存测试 delta 游标。只有确认邮件时会明确报告
 `publication_sample_verified: false`。这仍可保存连接配置，但启用部署检查
-要求有真实论文样本。已有游标保存在生产检查点，轮换 secret 不会重置它。
+要求有真实论文样本。先核对预览及原邮件，再使用 `--accept-publication-sample`
+与 `--expected-paper-count N` 完成验收；部分解析或隔离邮件不能通过。
+`notify_after` 默认设为验证时间；更早的邮件只入库不推送。轮换 secret 时
+传入原来的 `--notify-after`；已有增量游标不因轮换而重置。
 
 最后由运维完成：
 
@@ -100,9 +105,9 @@ python3 tools/author-paper-monitor/deploy/configure_scholar_graph.py \
    验证日志中无 OpenAlex/arXiv 采集调用，且没有 PAS/Slack 写入。
 3. 保留当前生产检查点，手动执行一次 Scholar 生产任务。确认 PAS 存储回执、
    用户 Slack 投递回执、无解析错误；已有论文应合并且不重复通知。
-4. 重跑同一批邮件，确认无重复论文或投递。核对首轮历史文件夹范围：本连接器
-   会导入文件夹快照，已存在的论文去重，尚未见过的旧邮件论文也会进入通知队列。
-   启用前整理该专用文件夹，避免把多年历史邮件一次性加入。
+4. 重跑同一批邮件，确认无重复论文或投递。预览并保存首轮通知边界
+   `notify_after`：更早的邮件导入 PAS，但不向 Slack 补发。需验证推送时，
+   明确选择测试样本到达前的边界，并先检查该范围内会推送的全部论文。
 5. 更新现有 CloudFormation 的 Scholar 任务与 15 分钟规则为 ENABLED，并将
    DynamoDB settings.monitoring.state 改为 active。部署工具 `deploy/aws.py`
    的 `--source scholar --enable-schedule --apply` 会校验样本并同步状态；现有
@@ -112,17 +117,18 @@ python3 tools/author-paper-monitor/deploy/configure_scholar_graph.py \
 
 ## 可靠性边界
 
-- Graph deltaLink 和论文记录一起提交到现有 S3 检查点。任何分页或解析失败，
-  整批不推进游标；下次可重复读取，论文和每人投递记录继续去重。
-- MIME 只针对 Scholar 新论文主题获取；分页链接限制在固定 Graph 主机、
-  共享邮箱和文件夹，拒绝重定向；错误不打印 secret、token、正文或 cursor。
-- 超时/429/临时故障留待下一轮重试。delta 过期需核对后重扫，不能悄悄跳过。
-- 每次最多 50 页、每页请求 100 条，单响应最多 2 MB。超限会报错而不是截断。
+- 原始提醒先写入私有 S3，逐封处理记录进入检查点，然后才能推进分页游标。
+  正常邮件的论文记录与处理完成状态一起提交；异常邮件保留原件、原因和重试入口。
+- MIME 只对专用文件夹中的 Scholar 发件人获取；确认邮件只记元数据。
+  分页链接限制在固定 Graph 主机、共享邮箱和文件夹，拒绝重定向；日志不含凭据、原文或 cursor。
+- 429/503 按 Retry-After 留待下一轮；失效 delta 自动重扫，已处理的 ImmutableId 不再重复处理。
+- 每轮最多 20 页，每页 100 条，邮件抓取预算 450 秒，单响应最多 2 MB。
+  未完成页面从检查点继续，超大/暂时不可读邮件单独保留重试记录，不静默丢弃。
 - 已有 DOI/arXiv/标题加作者去重、先入库后通知和不确定发送人工核对继续生效。
   标题变化且没有共同标识符、作者缩写等仍可能产生重复，不能保证绝对零重复。
 - Scholar 模式不执行 OpenAlex、arXiv 定时扫描，也不要求 OpenAlex ID 或 API key。
   新论文可调用 Crossref 补充元数据；这不是另一个周期性监控源。
-- 正式启用后 45 分钟无完整成功任务告警。等待授权期间不把旧采集失败当作
+- 正式启用后 45 分钟无成功邮箱检查告警；解析隔离、PAS 积压、Slack 失败分别显示。等待授权期间不把旧采集失败当作
   新故障，也不发送虚假的恢复通知；Slack 不确定投递、入库积压等仍保留。
 
 ## 可转发给同事

@@ -9,23 +9,30 @@ import dataclasses
 import hashlib
 import os
 
-from .models import Paper
+from .models import Paper, normalize_title, title_matches
 
 
 def configured() -> bool:
     return os.environ.get("PAS_MONITOR_INGEST") == "1"
 
 
-def ingest(p: Paper) -> str:
+def paper_id(p: Paper) -> str:
+    identity = p.doi or p.openalex_id or p.arxiv_id
+    if not identity:
+        identity = "title:" + (p.title_key or "") + "|" + "|".join(sorted(p.authors))
+    return "monitor_" + hashlib.sha256(identity.encode()).hexdigest()[:32]
+
+
+def ingest(p: Paper, *, existing_id: str | None = None) -> str:
     from app.db import SessionLocal
 
     with SessionLocal() as session:
-        receipt = ingest_session(session, p, os.environ.get("PAS_MONITOR_MODE", "inbox"))
+        receipt = ingest_session(session, p, os.environ.get("PAS_MONITOR_MODE", "inbox"), existing_id=existing_id)
         session.commit()
         return receipt
 
 
-def ingest_session(session, p: Paper, mode: str = "inbox") -> str:
+def ingest_session(session, p: Paper, mode: str = "inbox", *, existing_id: str | None = None) -> str:
     from sqlalchemy import or_, select
     from app.config import settings
     from app.models import DiscoveryCandidate, Paper as PasPaper
@@ -37,22 +44,45 @@ def ingest_session(session, p: Paper, mode: str = "inbox") -> str:
     identity = p.doi or p.openalex_id or p.arxiv_id
     if not identity:
         identity = "title:" + (p.title_key or "") + "|" + "|".join(sorted(p.authors))
-    key = "monitor_" + hashlib.sha256(identity.encode()).hexdigest()[:32]
-    clauses = [PasPaper.id == key]
+    key = existing_id or paper_id(p)
+    clauses = [PasPaper.id.in_([key, paper_id(p)])]
     if p.doi_aliases:
         clauses.append(PasPaper.doi.in_(p.doi_aliases))
-    existing = session.scalar(select(PasPaper).where(or_(*clauses)))
+    matches = list(session.scalars(select(PasPaper).where(or_(*clauses))))
+    if not matches:
+        # Match the existing PAS corpus too, not only monitor-created rows. A
+        # title alone is never sufficient; use the same conservative ID/author rules.
+        ids = [i for i, title in session.execute(select(PasPaper.id, PasPaper.title))
+               if normalize_title(title) == p.title_key]
+        for candidate in session.scalars(select(PasPaper).where(PasPaper.id.in_(ids))):
+            data = (candidate.raw_metadata or {}).get('author_monitor')
+            previous = Paper(**data) if data else Paper(candidate.title, doi=candidate.doi,
+                authors=[link.author.canonical_name for link in candidate.authors])
+            if title_matches(previous, p):
+                matches.append(candidate)
+    if len(matches) > 1:
+        raise ValueError('Multiple PAS identities require reconciliation; no records were merged')
+    existing = matches[0] if matches else None
     if existing:
+        if existing_id and existing_id != existing.id and session.get(PasPaper, existing_id):
+            raise ValueError('PAS identity conflict requires reconciliation')
         if existing.provenance == "author_monitor":
             existing.raw_metadata = {
                 **(existing.raw_metadata or {}), "author_monitor": dataclasses.asdict(p)
             }
+            for field in ('doi', 'abstract', 'venue'):
+                if not getattr(existing, field) and getattr(p, field):
+                    setattr(existing, field, getattr(p, field))
+            if not existing.year and p.date:
+                existing.year = int(p.date[:4])
+            if not existing.keywords and p.keywords:
+                existing.keywords = p.keywords
             session.flush()
         return existing.id
 
     payload = dataclasses.asdict(p)
     if mode == "inbox":
-        clauses = [DiscoveryCandidate.external_id == identity]
+        clauses = [DiscoveryCandidate.id == key, DiscoveryCandidate.external_id == identity]
         if p.doi_aliases:
             clauses.append(DiscoveryCandidate.doi.in_(p.doi_aliases))
         row = session.scalar(select(DiscoveryCandidate).where(or_(*clauses)))
@@ -68,6 +98,9 @@ def ingest_session(session, p: Paper, mode: str = "inbox") -> str:
                 raw_payload=payload,
             )
             session.add(row)
+        else:
+            row.raw_payload = payload
+            row.doi = row.doi or p.doi
         session.flush()
         return row.id
 

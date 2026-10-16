@@ -6,7 +6,7 @@ from pathlib import Path
 
 import pytest
 
-from paper_monitor import cli, health, registry, scholar_email, scholar_graph, slack_app
+from paper_monitor import cli, health, registry, scholar_email, scholar_graph, slack_app, mailbox_state
 from paper_monitor.store import Store
 from test_scholar_mailbox import AUTHORS, message
 
@@ -17,7 +17,8 @@ CONFIG = {'provider': 'graph', 'tenant_id': '78aac226-2f03-4b4d-9037-b46d56c5521
 
 
 def item(id='1', subject='Anatole von Lilienfeld - new articles', sender=scholar_email.SENDER):
-    return {'id': id, 'subject': subject, 'from': {'emailAddress': {'address': sender}}}
+    return {'id': id, 'subject': subject, 'from': {'emailAddress': {'address': sender}},
+            'receivedDateTime': '2026-10-15T12:00:00Z'}
 
 
 def graph(monkeypatch, pages, *, body=None):
@@ -45,17 +46,19 @@ def test_graph_pages_replay_and_atomic_cursor(tmp_path, monkeypatch):
     calls = graph(monkeypatch, copy.deepcopy(pages))
     store = Store(tmp_path / 's.db')
     papers, cursor = scholar_graph.fetch_pending(store, AUTHORS, CONFIG)
-    assert len(papers) == 2 and store.meta(cursor[0]) is None
+    assert len(papers) == 2 and store.meta(cursor[0])
+    assert store.db.execute("SELECT COUNT(*) FROM mail_messages WHERE content_hash IS NOT NULL").fetchone()[0] == 1
     assert json.loads(cursor[1])['ignored'] == 2
     assert len([url for url, _ in calls if url.endswith('/$value')]) == 1
     assert all(call[1]['token'] == 'private-token' for call in calls)
     # Crash before commit replays all papers without losing the cursor boundary.
     graph(monkeypatch, copy.deepcopy(pages))
     again, same = scholar_graph.fetch_pending(store, AUTHORS, CONFIG)
-    assert same == cursor and len(again) == 2
+    assert json.loads(same[1])['delta_link'] == json.loads(cursor[1])['delta_link'] and len(again) == 2
     for paper in papers:
         store.insert(paper, 'pending')
     store.set_meta(*cursor)
+    mailbox_state.acknowledge(store, json.loads(cursor[1])['ready_message_ids'])
     store.commit()
     calls = graph(monkeypatch, [{'value': [], '@odata.deltaLink': base + '?delta=4'}])
     assert not scholar_graph.fetch_pending(store, AUTHORS, {**CONFIG, 'client_secret': 'rotated'})[0]
@@ -73,8 +76,9 @@ def test_graph_pages_replay_and_atomic_cursor(tmp_path, monkeypatch):
 def test_delta_cannot_escape_folder(tmp_path, monkeypatch, url):
     graph(monkeypatch, [{'value': [], '@odata.nextLink': url}])
     store = Store(tmp_path / 's.db')
-    with pytest.raises(scholar_email.MailboxError, match='escaped'):
-        scholar_graph.fetch_pending(store, AUTHORS, CONFIG)
+    papers, cursor = scholar_graph.fetch_pending(store, AUTHORS, CONFIG)
+    assert not papers and 'escaped' in json.loads(cursor[1])['poll_error']
+    assert not json.loads(cursor[1])['poll_ok']
     assert not store.db.execute("SELECT 1 FROM metadata WHERE key LIKE 'scholar_graph_cursor:%'").fetchone()
     store.close()
 
@@ -86,19 +90,21 @@ def test_delta_cannot_escape_folder(tmp_path, monkeypatch, url):
 def test_bad_graph_page_does_not_advance(tmp_path, monkeypatch, page):
     graph(monkeypatch, [page])
     store = Store(tmp_path / 's.db')
-    with pytest.raises(scholar_email.MailboxError):
-        scholar_graph.fetch_pending(store, AUTHORS, CONFIG)
+    papers, cursor = scholar_graph.fetch_pending(store, AUTHORS, CONFIG)
+    assert not papers and not json.loads(cursor[1])['poll_ok']
     assert not store.meta('initialized')
     store.close()
 
 
-def test_later_malformed_mail_rolls_back_entire_batch(tmp_path, monkeypatch):
+def test_malformed_mail_is_durable_before_advancing_cursor(tmp_path, monkeypatch):
     base = scholar_graph.delta_url(CONFIG)
     graph(monkeypatch, [{'value': [item()], '@odata.deltaLink': base + '?delta=1'}], body='<html>Changed</html>')
     store = Store(tmp_path / 's.db')
-    with pytest.raises(scholar_email.MailboxError, match='layout'):
-        scholar_graph.fetch_pending(store, AUTHORS, CONFIG)
-    assert not store.db.execute("SELECT 1 FROM metadata WHERE key LIKE 'scholar_graph_cursor:%'").fetchone()
+    papers, cursor = scholar_graph.fetch_pending(store, AUTHORS, CONFIG)
+    assert not papers and json.loads(cursor[1])['poll_ok']
+    row = store.db.execute("SELECT content_hash,error FROM mail_messages WHERE status='quarantined'").fetchone()
+    assert row[0] and 'layout' in row[1] and store.read_mail(row[0])
+    assert store.meta(cursor[0])
     store.close()
 
 
@@ -168,7 +174,7 @@ def test_scholar_stale_after_three_missed_polls():
     settings = {'monitoring': {'source': 'scholar', 'state': 'active'}}
     assert not health.problems({'last_success_at': 10000}, settings, [], now=12000)
     assert health.problems({'last_success_at': 10000}, settings, [], now=13000) == {
-        'stale': 'No complete successful collection in the last 45 minutes.'}
+        'stale': 'No successful mailbox check in the last 45 minutes.'}
 
 
 def test_setup_empty_folder_is_not_real_publication_acceptance(monkeypatch):

@@ -55,20 +55,33 @@ def active_authors(args):
 
 
 def verify(config, authors):
+    from paper_monitor import mailbox_state
     scholar_graph.validate_config(config, verified=False)
     token = scholar_graph.access_token(config)
     folder = scholar_graph.request(scholar_graph.folder_url(config) + '?$select=id,displayName', token=token)
     if folder.get('displayName') != config['folder']:
         raise MailboxError('Configured folder ID does not match the expected folder name')
-    verified = {**config, 'verified_at': dt.datetime.now(dt.timezone.utc).isoformat()}
+    now = dt.datetime.now(dt.timezone.utc).isoformat()
+    verified = {**config, 'verified_at': now, 'notify_after': mailbox_state.received_at(config.get('notify_after') or now)}
     with contextlib.closing(Store(Path(':memory:'))) as store:
         papers, cursor = scholar_graph.fetch_pending(store, authors, verified, token=token)
+        status = mailbox_state.summary(store)
     counts = json.loads(cursor[1])
-    verified['publication_sample_verified'] = bool(papers)
+    complete = bool(counts.get('poll_ok') and papers and not status['mail_quarantined']
+                    and not status['mail_fetch_pending'] and not status['mail_counts'].get('captured'))
+    verified['publication_sample_verified'] = bool(complete and config.get('sample_accepted') and
+        config.get('expected_paper_count') == len(papers))
+    if config.get('sample_accepted') and not verified['publication_sample_verified']:
+        raise MailboxError('Publication acceptance requires a complete poll and the expected paper count; inspect the preview first')
     return verified, {'mailbox_access_verified': True, 'parsed_papers': len(papers),
-        'publication_sample_verified': bool(papers),
+        'publication_sample_verified': verified['publication_sample_verified'], **status,
+        'poll_ok': counts.get('poll_ok'), 'poll_error': counts.get('poll_error'),
         'messages_scanned': counts['messages'], 'ignored_messages': counts['ignored'],
-        'initial_mail_history': 'Folder snapshot will be imported with existing paper deduplication',
+        'notify_after': verified['notify_after'],
+        'preview': [{'title': p.title, 'url': p.url, 'tracked_authors': p.tracked_authors,
+                     'received_at': p.alert_received_at,
+                     'notification': 'future' if p.alert_received_at and p.alert_received_at >= verified['notify_after'] else 'history_only'} for p in papers],
+        'initial_mail_history': 'Older mail is imported into PAS without Slack notifications',
         'schedule_enabled': False}
 
 
@@ -84,6 +97,10 @@ def main():
     parser.add_argument('--folder', default='Google Scholar Alerts')
     parser.add_argument('--folder-id', required=True, help='Graph ID of the dedicated folder, from IT')
     parser.add_argument('--author-map', type=Path, help='JSON: Scholar display name -> active watchlist name')
+    parser.add_argument('--notify-after', help='ISO timestamp with timezone; earlier mail is stored without notification (default: verification time)')
+    parser.add_argument('--secret-expires-at', required=True, help='ISO expiration timestamp supplied by IT, for advance warnings')
+    parser.add_argument('--accept-publication-sample', action='store_true', help='After inspecting the preview and real email, confirm the paper count')
+    parser.add_argument('--expected-paper-count', type=int)
     parser.add_argument('--save', action='store_true', help='Save verified credentials encrypted in AWS SSM')
     args = parser.parse_args()
     authors = active_authors(args)
@@ -96,7 +113,10 @@ def main():
     config, report = verify({'provider': 'graph', 'tenant_id': args.tenant_id,
         'client_id': args.client_id, 'client_secret': getpass.getpass('Microsoft app client secret (hidden): ').strip(),
         'mailbox': args.mailbox, 'folder': args.folder, 'folder_id': args.folder_id,
-        'author_aliases': aliases}, authors)
+        'author_aliases': aliases, 'notify_after': args.notify_after,
+        'secret_expires_at': args.secret_expires_at,
+        'sample_accepted': args.accept_publication_sample,
+        'expected_paper_count': args.expected_paper_count}, authors)
     if args.save:
         aws(args, 'ssm', 'put-parameter', {'Name': args.parameter, 'Type': 'SecureString',
                                         'Value': json.dumps(config), 'Overwrite': True})

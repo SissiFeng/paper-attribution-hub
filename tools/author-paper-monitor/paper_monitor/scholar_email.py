@@ -17,15 +17,72 @@ import re
 import ssl
 import urllib.parse
 from email.header import decode_header, make_header
+from html.parser import HTMLParser
 
 from .models import Paper
 
 SENDER = "scholaralerts-noreply@google.com"
-TITLE_RE = re.compile(
-    r'<a\b(?=[^>]*\bclass=[\"\'][^\"\']*\bgse_alrt_title\b[^\"\']*[\"\'])'
-    r'[^>]*\bhref=[\"\']([^\"\']+)[\"\'][^>]*>(.*?)</a>\s*(?:</h3>)?\s*'
-    r'<div[^>]*>(.*?)</div>', re.S | re.I)
 SUBJECT_RE = re.compile(r"^(?:New articles by |New citations to |)(.*?)(?: - new articles| - new related research)?$", re.I)
+
+
+class AlertHTML(HTMLParser):
+    """Small DOM reader: every title must have its own complete metadata block."""
+    def __init__(self):
+        super().__init__(convert_charrefs=True)
+        self.root = {'tag': 'root', 'children': [], 'parent': None, 'attrs': {}}
+        self.current = self.root
+        self.titles = []
+
+    def handle_starttag(self, tag, attrs):
+        node = {'tag': tag, 'attrs': dict(attrs), 'children': [], 'parent': self.current}
+        self.current['children'].append(node)
+        if tag == 'a':
+            ancestor, heading = self.current, False
+            while ancestor:
+                heading = heading or ancestor['tag'] == 'h3'
+                ancestor = ancestor['parent']
+            href = urllib.parse.urlsplit(node['attrs'].get('href') or '')
+            scholar_link = href.hostname == 'scholar.google.com' and href.path == '/scholar_url'
+            if 'gse_alrt_title' in (node['attrs'].get('class') or '').split() or heading or scholar_link:
+                self.titles.append(node)
+        if tag not in {'br', 'hr', 'img', 'meta', 'link', 'input', 'wbr', 'source'}:
+            self.current = node
+
+    def handle_startendtag(self, tag, attrs):
+        self.handle_starttag(tag, attrs)
+        self.handle_endtag(tag)
+
+    def handle_endtag(self, tag):
+        node = self.current
+        while node['parent']:
+            if node['tag'] == tag:
+                self.current = node['parent']
+                return
+            node = node['parent']
+
+    def handle_data(self, data):
+        self.current['children'].append(data)
+
+    @staticmethod
+    def text(node):
+        if isinstance(node, str):
+            return node
+        return ''.join(AlertHTML.text(child) for child in node['children'])
+
+    def metadata(self, title):
+        block = title
+        # The title may contain spans/bold text or be wrapped in a heading.
+        while block['parent'] and block['parent']['tag'] in {'h3', 'span', 'b', 'strong'}:
+            block = block['parent']
+        siblings = block['parent']['children']
+        index = next(i for i, node in enumerate(siblings) if node is block)
+        for sibling in siblings[index + 1:]:
+            if isinstance(sibling, str) and not sibling.strip():
+                continue
+            if isinstance(sibling, dict) and sibling['tag'] in {'div', 'p'}:
+                return ' '.join(self.text(sibling).split())
+            break
+        raise MailboxError('Incomplete Scholar author-alert layout: title metadata missing')
 
 
 def _text(fragment: str) -> str:
@@ -41,15 +98,19 @@ def _real_url(href: str) -> str:
 def parse_alert(html_body: str, subject: str) -> list[Paper]:
     m = SUBJECT_RE.match(subject.strip())
     who = m.group(1).strip() if m else subject.strip()
+    document = AlertHTML()
+    document.feed(html_body)
     out = []
-    for href, title_html, meta_html in TITLE_RE.findall(html_body):
-        meta = _text(meta_html)              # "A Smith, B Jones - Nature, 2026"
-        authors_part, _, venue_part = meta.partition(" - ")
-        url = _real_url(href)
+    for title in document.titles:
+        meta = document.metadata(title)  # "A Smith, B Jones - Nature, 2026"
+        authors_part, separator, venue_part = meta.partition(" - ")
+        if not separator or not authors_part.strip() or not venue_part.strip():
+            raise MailboxError('Incomplete Scholar author-alert layout: author metadata missing')
+        url = _real_url(title['attrs'].get('href') or '')
         doi = re.search(r"10\.\d{4,9}/[^\s?#&]+", url)
         arxiv = re.search(r"arxiv\.org/(?:abs|pdf)/([\w.\-/]+?)(?:\.pdf)?$", url)
         out.append(Paper(
-            title=re.sub(r"^(?:\[(?:PDF|HTML|BOOK|CITATION|DOC)\]\s*)+", "", _text(title_html), flags=re.I),
+            title=re.sub(r"^(?:\[(?:PDF|HTML|BOOK|CITATION|DOC)\]\s*)+", "", ' '.join(document.text(title).split()), flags=re.I),
             url=url,
             doi=doi.group(0) if doi else None,
             arxiv_id=arxiv.group(1) if arxiv else None,

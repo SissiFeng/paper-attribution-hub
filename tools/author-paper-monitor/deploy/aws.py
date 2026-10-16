@@ -69,7 +69,9 @@ def template(args, account, task, network, digest, bundle_key, bundle_hash, db_p
         "TaskRole": {"Type": "AWS::IAM::Role", "Properties": {
             "AssumeRolePolicyDocument": role("ecs-tasks.amazonaws.com"),
             "Policies": [{"PolicyName": "MonitorState", "PolicyDocument": {"Version": "2012-10-17", "Statement": [
-                policy(["s3:GetObject", "s3:PutObject"], f"{bucket_arn}/author-monitor/*"),
+                policy('s3:GetObject', f'{bucket_arn}/author-monitor/releases/*'),
+                policy(["s3:GetObject", "s3:PutObject"], [f"{bucket_arn}/author-monitor/production/*", f"{bucket_arn}/author-monitor/verification/*"]),
+                policy('s3:DeleteObject', f'{bucket_arn}/author-monitor/production/mail-raw/*'),
                 policy("ssm:GetParameter", f"arn:aws:ssm:{args.region}:{account}:parameter/{args.stack}/openalex-api-key"),
                 policy("ssm:GetParameter", f"arn:aws:ssm:{args.region}:{account}:parameter/{args.stack}/scholar-mailbox"),
                 {**policy("s3:ListBucket", bucket_arn), "Condition": {"StringLike": {"s3:prefix": "author-monitor/*"}}}
@@ -165,12 +167,12 @@ def main():
     ap.add_argument('--source', choices=['openalex', 'scholar'], default='scholar')
     ap.add_argument("--open-corpus", action="store_true")
     ap.add_argument("--apply", action="store_true")
-    ap.add_argument("--run", choices=["dry-run", "baseline", "backlog", "verify-ingestion"])
+    ap.add_argument("--run", choices=["dry-run", "baseline", "backlog", "verify-ingestion", "verify-reliability"])
     ap.add_argument('--pas-public-url', default='https://d1ai8ldqsh81fz.cloudfront.net')
     args = ap.parse_args()
     if args.enable_schedule and (not args.authors or (not args.slack_parameter and not args.slack_app) or args.prefix != "author-monitor/production"):
         ap.error("Enabling schedule requires verified production authors and a Slack parameter")
-    if args.run in {"dry-run", "verify-ingestion"} and args.prefix == "author-monitor/production":
+    if args.run in {"dry-run", "verify-ingestion", "verify-reliability"} and args.prefix == "author-monitor/production":
         ap.error("Use a separate prefix for cloud dry-run")
     session = boto3.Session(profile_name=args.profile, region_name=args.region)
     account = session.client("sts").get_caller_identity()["Account"]
@@ -183,6 +185,8 @@ def main():
         validate_config(mailbox)
         if not mailbox.get('publication_sample_verified'):
             ap.error('Validate a real Scholar publication email before enabling the schedule')
+        if not mailbox.get('notify_after') or not mailbox.get('secret_expires_at'):
+            ap.error('Review the initial notification boundary and credential expiration before enabling the schedule')
     service = ecs.describe_services(cluster=args.cluster, services=[args.service])["services"][0]
     task = ecs.describe_task_definition(taskDefinition=service["taskDefinition"])["taskDefinition"]
     network = service["networkConfiguration"]["awsvpcConfiguration"]
@@ -247,8 +251,9 @@ def main():
         if not item:
             raise ValueError('Configure Slack settings before enabling monitoring')
         settings = json.loads(item['payload'])
+        waiting = settings.get('monitoring', {}).get('state') == 'awaiting_mailbox' and args.source == 'scholar'
         settings['monitoring'] = {'source': args.source,
-            'state': 'active' if args.enable_schedule else 'paused',
+            'state': 'active' if args.enable_schedule else 'awaiting_mailbox' if waiting else 'paused',
             'interval_minutes': 15 if args.source == 'scholar' else 240}
         table.put_item(Item={**item, 'payload': json.dumps(settings), 'version': time.time_ns()},
             ConditionExpression='#v = :v', ExpressionAttributeNames={'#v': 'version'},
@@ -262,6 +267,8 @@ def main():
             command.append("--dry-run")
         elif args.run == "verify-ingestion":
             command.append("--verify-ingestion")
+        elif args.run == 'verify-reliability':
+            command.append('--verify-reliability')
         elif args.run == "backlog":
             command.append("--post-backlog")
         result = ecs.run_task(cluster=args.cluster, taskDefinition=outputs["TaskArn"], launchType="FARGATE", networkConfiguration={"awsvpcConfiguration": network},

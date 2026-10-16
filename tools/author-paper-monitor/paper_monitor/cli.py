@@ -19,6 +19,7 @@ from pathlib import Path
 from . import arxiv, authors as authors_mod, collection_policy, crossref, openalex, relevance, scholar_email, slack, pas
 from .models import Paper
 from .store import Store
+from . import mailbox_state
 
 MAX_POSTS_PER_RUN = int(os.environ.get("MAX_POSTS_PER_RUN", "20"))
 
@@ -105,10 +106,15 @@ def run_locked(args, rows, store) -> int:
     seeding = mode != 'scholar' and not store.meta("initialized") and not args.post_backlog
     papers, errors = collect(rows, since)
     mail_cursor = None
+    mail_report = {}
     if scholar_email.configured():
         try:
             mail_papers, mail_cursor = scholar_email.fetch_pending(store, rows)
             papers.extend(mail_papers)
+            if (scholar_email.configuration() or {}).get('provider') == 'graph' and mail_cursor:
+                mail_report = json.loads(mail_cursor[1])
+                if not mail_report.get('poll_ok'):
+                    errors.append('scholar_alert: ' + (mail_report.get('poll_error') or 'Mailbox poll incomplete'))
         except Exception as exc:
             errors.append('scholar_alert: '+(str(exc) if isinstance(exc, scholar_email.MailboxError) else type(exc).__name__))
     if os.environ.get("SCHOLAR_CONFIG_ERROR"):
@@ -116,7 +122,7 @@ def run_locked(args, rows, store) -> int:
     elif mode == 'scholar' and not scholar_email.configured():
         errors.append('scholar_alert: verified mailbox configuration is required')
     collection_ok = not errors
-    if not store.meta("initialized") and errors:
+    if not store.meta("initialized") and errors and mode != 'scholar':
         log("First run aborted: a source failed; baseline must be complete.")
         return 1
     papers = dedup_batch(papers)
@@ -134,7 +140,10 @@ def run_locked(args, rows, store) -> int:
         if row_id is not None:
             store.add_ids(row_id, p)
             continue
-        old_history = collection_policy.silent_history(p, policy_window)
+        boundary = (scholar_email.configuration() or {}).get('notify_after')
+        old_history = (bool(boundary and p.alert_received_at and
+                            mailbox_state.received_at(p.alert_received_at) < mailbox_state.received_at(boundary))
+                       if mode == 'scholar' else collection_policy.silent_history(p, policy_window))
         if not seeding and not old_history:
             crossref.enrich(p)
             # Enrichment may canonicalize a title into an already stored record.
@@ -149,9 +158,15 @@ def run_locked(args, rows, store) -> int:
         else:
             keep = relevance.judge(p, brief) if relevance.enabled() else True
             store.insert(p, "pending" if keep else "irrelevant")
-    store.set_meta("initialized", "1")
+    if collection_ok or papers:
+        store.set_meta("initialized", "1")
     if mail_cursor:
         store.set_meta(*mail_cursor)
+    mailbox_state.acknowledge(store, mail_report.get('ready_message_ids', []))
+    if collection_ok:
+        store.set_meta('last_collection_ok_at', policy_window['at'])
+    if mail_cursor and mail_report.get('poll_ok', True):
+        store.set_meta('last_mailbox_poll_ok_at', policy_window['at'])
     if policy_window['deep'] and collection_ok:
         store.set_meta('deep_initialized', '1')
         store.set_meta('last_deep_collection', policy_window['at'])
@@ -164,11 +179,12 @@ def run_locked(args, rows, store) -> int:
     if not args.dry_run and pas.configured():
         for row_id, p in store.unsynced():
             try:
-                receipt = pas.ingest(p)
+                receipt = pas.ingest(p, existing_id=store.ingestion_id(row_id))
                 store.mark_synced(row_id, receipt)
             except Exception as e:
-                errors.append(f"pas: {type(e).__name__}: {e}")
-                break
+                errors.append(f"pas: record {row_id}: {type(e).__name__}")
+                # Independent outbox rows: one invalid paper must not block the rest.
+                continue
     unsynced = {i for i, _ in store.unsynced()} if pas.configured() else set()
     queue = store.pending(MAX_POSTS_PER_RUN)
     if not args.dry_run and os.environ.get('SLACK_DELIVERY_MODE') == 'subscribers':
@@ -204,6 +220,15 @@ def run_locked(args, rows, store) -> int:
             time.sleep(1.1)
     if store.counts().get("sending"):
         errors.append("Uncertain Slack delivery: use reconcile after checking the channel")
+    mail_status = mailbox_state.summary(store)
+    if not args.dry_run:
+        mailbox_state.prune_processed(store)
+    if any(mail_status[k] for k in ('mail_quarantined', 'mail_fetch_pending', 'mail_processing_pending')):
+        errors.append('mail_processing: retained messages need retry or review')
+    if not args.dry_run and pas.configured() and not store.unsynced():
+        store.set_meta('last_pas_sync_ok_at', policy_window['at'])
+    if not args.dry_run and slack.configured() and not any(e.startswith(('slack', 'Slack', 'subscriber', 'Uncertain', 'Weekly', 'Legacy')) for e in errors):
+        store.set_meta('last_delivery_ok_at', policy_window['at'])
     # Shadow evaluation follows delivery and is never allowed to alter its outcome.
     if not args.dry_run and os.environ.get('JEV_MODE', 'off') != 'off':
         from . import jev, jev_monitor, jev_report
@@ -222,14 +247,22 @@ def run_locked(args, rows, store) -> int:
     store.set_meta('last_run_summary', json.dumps({'collected_at': policy_window['at'], 'collection_ok': collection_ok,
         'source': mode, 'mailbox_provider': (scholar_email.configuration() or {}).get('provider', 'imap'),
         'mailbox_poll_ok': bool(mail_cursor) and not any(e.startswith('scholar_alert:') for e in errors),
+        'last_collection_ok_at': store.meta('last_collection_ok_at'),
+        'last_mailbox_poll_ok_at': store.meta('last_mailbox_poll_ok_at'),
+        'last_pas_sync_ok_at': store.meta('last_pas_sync_ok_at'),
+        'last_delivery_ok_at': store.meta('last_delivery_ok_at'),
+        'secret_expires_at': (scholar_email.configuration() or {}).get('secret_expires_at'),
+        **mail_status,
         'deep_scan': policy_window['deep'], 'since': since, 'new_records': new, 'historical_seeded': historical,
         'counts': store.counts(), 'unsynced': len(store.unsynced()), 'oldest_pending': oldest, **distribution,
         'mailbox': 'enabled' if scholar_email.configured() else 'needs_configuration',
         'errors': [e.split(':', 1)[0] for e in errors]}))
     store.commit()
     for e in errors:
-        log(f"ERROR {e}")
-    return 1 if errors else 0
+        log(f"{'WARNING' if e.startswith('mail_processing:') else 'ERROR'} {e}")
+    # Quarantine is durable work for review, not a crashed ECS task. The watchdog
+    # reports it separately without filling the failed-task queue every 15 minutes.
+    return 1 if any(not e.startswith('mail_processing:') for e in errors) else 0
 
 
 def cmd_reconcile(args) -> int:
@@ -249,7 +282,7 @@ def cmd_reconcile(args) -> int:
                 target.mark_posted(args.id)
             else:
                 target.set_status(args.id, "pending")
-    return 0
+            return 0
 
 
 def cmd_reconcile_digest(args) -> int:
@@ -300,9 +333,28 @@ def cmd_reconcile_recap(args) -> int:
     return 0
 
 
+def cmd_mail(args):
+    with open(str(args.db) + '.lock', 'a') as lock:
+        fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+        with contextlib.closing(Store(Path(args.db))) as store:
+            if args.retry_id:
+                changed = store.db.execute("UPDATE mail_messages SET status=CASE WHEN content_hash IS NULL THEN 'fetch_retry' ELSE 'captured' END,retry_at=0,error=NULL WHERE id=? AND status IN ('quarantined','fetch_retry')", (args.retry_id,)).rowcount
+                if not changed:
+                    raise ValueError('Choose an existing quarantined/fetch-retry message ID')
+                store.commit()
+            rows = store.db.execute("SELECT id,status,received_at,error,attempts FROM mail_messages WHERE status NOT IN ('processed','ignored') ORDER BY captured_at LIMIT 100").fetchall()
+            print(json.dumps({**mailbox_state.summary(store), 'review': [dict(zip(
+                ['id', 'status', 'received_at', 'error', 'attempts'], row)) for row in rows]}, indent=2))
+    return 0
+
+
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(prog="paper_monitor")
     sub = ap.add_subparsers(dest="cmd", required=True)
+    mail = sub.add_parser('mail', help='Inspect retained mail or request a retry; no messages are sent')
+    mail.add_argument('--db', required=True)
+    mail.add_argument('--retry-id')
+    mail.set_defaults(func=cmd_mail)
     r = sub.add_parser("resolve", help="fill OpenAlex ids in authors.csv")
     r.add_argument("authors")
     r.set_defaults(func=cmd_resolve)

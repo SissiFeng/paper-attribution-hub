@@ -110,15 +110,15 @@ def test_pas_retry_before_slack_and_dry_run_has_no_external_writes(env):
     mp.setenv("SLACK_WEBHOOK_URL", "https://hooks.slack.com/services/T/B/X")
     web.works["results"].append(new_work("Database before notification", "10.1/pas"))
     calls = []
-    def failing(p):
+    def failing(p, **kwargs):
         calls.append(p)
         raise RuntimeError("DB unavailable")
     mp.setattr(pas, "ingest", failing)
     assert run("--dry-run") == 0 and not calls and not web.slack_posts
-    assert run() == 1 and len(calls) == 1 and not web.slack_posts
-    mp.setattr(pas, "ingest", lambda p: calls.append(p) or "pas_123")
-    assert run() == 0 and len(calls) == 5 and len(web.slack_posts) == 1  # three baseline records also ingest
-    assert run() == 0 and len(calls) == 5 and len(web.slack_posts) == 1  # three baseline records also ingest
+    assert run() == 1 and len(calls) == 4 and not web.slack_posts
+    mp.setattr(pas, "ingest", lambda p, **kwargs: calls.append(p) or "pas_123")
+    assert run() == 0 and len(calls) == 8 and len(web.slack_posts) == 1  # three baseline records also ingest
+    assert run() == 0 and len(calls) == 8 and len(web.slack_posts) == 1  # three baseline records also ingest
 
 
 def test_unicode_title_preserved():
