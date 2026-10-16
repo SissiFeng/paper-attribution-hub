@@ -139,10 +139,10 @@ def template(args, account, key, alarms):
         'AlertPolicy': {'Type': 'AWS::SNS::TopicPolicy', 'Properties': {
             'Topics': [{'Ref': 'Alerts'}], 'PolicyDocument': {'Version': '2012-10-17',
                 'Statement': [
-                    {'Effect': 'Allow', 'Principal': {'Service': 'events.amazonaws.com'},
+                    {'Sid': 'EventBridgeAlerts', 'Effect': 'Allow', 'Principal': {'Service': 'events.amazonaws.com'},
                      'Action': 'sns:Publish', 'Resource': {'Ref': 'Alerts'},
                      'Condition': {'ArnEquals': {'aws:SourceArn': {'Fn::GetAtt': ['AlarmEvents', 'Arn']}}}},
-                    {'Effect': 'Allow', 'Principal': {'Service': 'cloudwatch.amazonaws.com'},
+                    {'Sid': 'CloudWatchWatchdog', 'Effect': 'Allow', 'Principal': {'Service': 'cloudwatch.amazonaws.com'},
                      'Action': 'sns:Publish', 'Resource': {'Ref': 'Alerts'},
                      'Condition': {'StringEquals': {'aws:SourceAccount': account}}}
                 ]}}},

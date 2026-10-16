@@ -147,3 +147,5 @@ def test_independent_alert_does_not_depend_on_slack_lambda(monkeypatch):
     assert resources['WatchdogAlarm']['Properties']['AlarmActions'] == [{'Ref': 'Alerts'}]
     assert {'Id': 'independent-alert', 'Arn': {'Ref': 'Alerts'}} in resources['AlarmEvents']['Properties']['Targets']
     assert resources['EmailAlerts']['Condition'] == 'HasAlertEmail'
+    statements = resources['AlertPolicy']['Properties']['PolicyDocument']['Statement']
+    assert len({s['Sid'] for s in statements}) == len(statements)
