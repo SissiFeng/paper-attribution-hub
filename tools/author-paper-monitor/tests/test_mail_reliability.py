@@ -1,7 +1,5 @@
-import copy
 import json
 import urllib.error
-from pathlib import Path
 
 import pytest
 from sqlalchemy import func, select
@@ -10,7 +8,7 @@ from paper_monitor import health, mailbox_state, notifications, pas, scholar_ema
 from paper_monitor.models import Paper
 from paper_monitor.store import Store
 from test_freshness import fake_registry
-from test_pas_integration import session
+from test_pas_integration import session  # noqa: F401 - shared pytest fixture
 from test_scholar_graph import CONFIG, item
 from test_scholar_mailbox import AUTHORS, FX, message
 

@@ -7,7 +7,6 @@ from types import SimpleNamespace
 import pytest
 
 from paper_monitor import health, mailbox_state, scholar_graph, scholar_email, cli
-from paper_monitor.models import Paper
 from paper_monitor.store import Store
 from test_mail_reliability import mock_mail
 from test_scholar_graph import CONFIG, item

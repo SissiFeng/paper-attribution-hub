@@ -5,6 +5,9 @@ and a native Slack App. The 2026-10-14 switch disables OpenAlex polling. Microso
 365 application authorization and a real publication email are still required
 before enabling the 15-minute mailbox schedule. See
 [Microsoft 365 setup and acceptance](SCHOLAR_MICROSOFT365.zh.md).
+The [reliability runbook](SCHOLAR_RELIABILITY.zh.md) covers durable per-email
+capture, quarantine/replay, historical-notification boundaries, author coverage,
+separate processing/delivery health, and AWS storage retention.
 Members of the installed workspace subscribe by opening
 AC Papers or running `/papers start`; each receives their own private messages.
 Read [MULTIUSER.zh.md](MULTIUSER.zh.md) for colleague onboarding and personal delivery,
@@ -295,8 +298,10 @@ The protected PAS `/jev` API uses a separate operator credential;
 - Source metadata can be wrong; ORCID, author identity and type still require care.
 - Generic/mismatched-title cases favor avoiding false merges; some duplicate versions
   may consequently be announced separately.
-- Scholar HTML parsing supports attribute-order changes and common prefixes but has
-  only synthetic fixtures; leave IMAP disabled until tested on real alerts.
+- Scholar HTML parsing validates each candidate title and its metadata. Unexpected
+  mail is retained for review rather than silently accepted or blocking its neighbours.
+  Tests use synthetic fixtures; the real Microsoft mailbox/publication acceptance
+  gate remains required before enabling collection.
 - arXiv requests are paginated and spaced by at least 3.1 seconds between pages/queries.
 - The legacy GitHub Actions example is not the AWS deployment mechanism and was not
   executed. GitHub's inactive-public-repository schedule rule does not affect ECS.

@@ -193,7 +193,6 @@ def _run(argv=None):
                     if artifact.exists():
                         s3.upload_file(str(artifact), bucket, f'{prefix}/outbox/{name}')
                 if use_registry and not maintenance:
-                    import datetime
                     with contextlib.closing(sqlite3.connect(f'file:{db}?mode=ro', uri=True)) as state:
                         row = state.execute("SELECT value FROM metadata WHERE key='jev_shadow_status'").fetchone()
                         shadow_status = json.loads(row[0]) if row else {}
