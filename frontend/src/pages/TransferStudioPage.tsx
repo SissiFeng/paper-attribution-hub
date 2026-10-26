@@ -25,7 +25,7 @@ function renderInline(text: string): string {
     );
 }
 
-function MarkdownView({ md }: { md: string }) {
+export function MarkdownView({ md }: { md: string }) {
   const lines = md.split("\n");
   const blocks: JSX.Element[] = [];
   let i = 0;
@@ -109,6 +109,7 @@ function MarkdownView({ md }: { md: string }) {
           dangerouslySetInnerHTML={{ __html: renderInline(line) }}
         />
       );
+      i++;
     }
   }
   return <div>{blocks}</div>;

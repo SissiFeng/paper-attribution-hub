@@ -33,9 +33,9 @@ resource "aws_ecr_lifecycle_policy" "backend" {
       },
       {
         rulePriority = 2
-        description  = "Keep maximum 10 tagged images"
+        description  = "Keep maximum 10 images"
         selection = {
-          tagStatus   = "tagged"
+          tagStatus   = "any"
           countType   = "imageCountMoreThan"
           countNumber = 10
         }

@@ -25,7 +25,7 @@ jobs:
       - name: Ruff
         run: ruff check backend
       - name: Full backend test suite
-        run: pytest -q
+        run: pytest -vv --maxfail=1 --timeout=60
         working-directory: backend
 
   postgres-migrations:
@@ -81,4 +81,6 @@ jobs:
       - run: npm run check:filter
         working-directory: frontend
       - run: npm run check:chat
+        working-directory: frontend
+      - run: npm run check:transfer
         working-directory: frontend

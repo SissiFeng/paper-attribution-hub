@@ -1,0 +1,29 @@
+Autonomous closed-loop discovery of organic laser materials
+
+Abstract
+We present a self-driving laboratory that combines robotic synthesis with Bayesian optimization to autonomously discover organic laser materials. The platform performs closed-loop experimentation across thousands of candidate molecules and identifies six new gain media within three weeks of operation.
+
+Introduction
+The discovery of high-performance organic laser molecules has traditionally relied on intuition-driven synthesis followed by manual characterization. Closed-loop autonomous laboratories promise to compress this iteration cycle by integrating active learning, robotic chemistry, and on-line characterization.
+
+Methods
+Our autonomous platform comprises a six-axis robotic arm, an on-line UV/Vis-fluorescence module, and a workflow orchestration layer based on the open-source ChemOS package. We integrate Bayesian optimization over a 12-dimensional reaction-condition space; the surrogate model is a Gaussian process with an anisotropic Matern-5/2 kernel. Each closed-loop experimentation cycle synthesizes one candidate, measures gain via amplified spontaneous emission, and updates the posterior.
+
+Results
+The closed-loop campaign converged within 482 experiments. We report six molecules with gain coefficients exceeding 80 cm^-1. A control experiment using random sampling required >3000 experiments to recover equivalent performance.
+
+Figure 1. Autonomous closed-loop platform for materials discovery. The schematic shows the integration of robotic synthesis, automated characterization, and Bayesian optimization in a self-driving laboratory configuration.
+
+Figure 2. Discovered organic laser molecules ranked by gain coefficient.
+
+Discussion
+This work demonstrates that closed-loop optimization combined with high-throughput experimentation can accelerate organic materials discovery by an order of magnitude over conventional approaches.
+
+Acknowledgements
+This work was supported by the Acceleration Consortium at the University of Toronto, the CIFAR Catalyst program, and the NSERC Discovery program. The authors thank the Vector Institute for compute access. A.A.-G. holds the Canada Council Killam Research Fellowship.
+
+References
+1. Schrier, J. et al. In Pursuit of the Exceptional. Nature 2024. doi: 10.1038/s41586-024-09999-1
+2. Häse, F.; Roch, L.; Aspuru-Guzik, A. ChemOS: Orchestrating Autonomous Experimentation. Science Robotics 2019. doi: 10.1126/scirobotics.aax9876
+3. MacLeod, B.; Berlinguette, C. Self-driving laboratory for accelerated discovery of thin-film materials. Science Advances 2020. doi: 10.1126/sciadv.aaz4244
+4. Aspuru-Guzik, A.; Häse, F. Bayesian optimization framework for autonomous chemistry. Nature 2021. doi: 10.1038/s41586-021-04157-z

@@ -260,12 +260,12 @@ AWS is the only supported deployment target: ECS Fargate (backend), RDS PostgreS
 ### Quick Deploy
 
 ```bash
-# 1. Run the one-time AWS console setup (see docs/aws-console-setup.md)
-# 2. Deploy infrastructure
-./aws/scripts/deploy.sh prod
+# 1. Authenticate with the target AWS SSO profile
+# 2. Bootstrap state, build, deploy, and verify
+./aws/scripts/deploy.sh dev
 
-# 3. Set API keys in SSM (see docs/aws-console-setup.md Step 6)
-# 4. Set GitHub Actions secrets (see docs/aws-console-setup.md Step 7)
+# 3. Set API keys in SSM (see docs/aws-console-setup.md Step 4)
+# 4. Set GitHub Actions secrets (see docs/aws-console-setup.md Step 5)
 # 5. Push to main → CI/CD auto-deploys
 ```
 

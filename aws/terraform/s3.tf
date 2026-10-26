@@ -7,7 +7,7 @@
 # =============================================
 
 resource "aws_s3_bucket" "frontend" {
-  bucket = "paper-attribution-frontend-${var.environment}"
+  bucket = "paper-attribution-frontend-${var.environment}-${data.aws_caller_identity.current.account_id}"
   tags   = merge(local.common_tags, { Name = "${local.name_prefix}-frontend" })
 }
 
@@ -35,7 +35,7 @@ resource "aws_s3_bucket_versioning" "frontend" {
 # =============================================
 
 resource "aws_s3_bucket" "artifacts" {
-  bucket = "paper-attribution-artifacts-${var.environment}"
+  bucket = "paper-attribution-artifacts-${var.environment}-${data.aws_caller_identity.current.account_id}"
   tags   = merge(local.common_tags, { Name = "${local.name_prefix}-artifacts" })
 }
 

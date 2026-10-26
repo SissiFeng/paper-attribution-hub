@@ -7,9 +7,9 @@ This document describes the full AWS deployment architecture and operational pro
 ```
 Internet
     │
-    ├── api.example.com → Route53 → ACM → ALB (public) → ECS Fargate (private) → RDS PostgreSQL + pgvector (private)
-    │
-    └── app.example.com → Route53 → ACM → CloudFront → S3 (static React SPA)
+    └── app.example.com → Route53 → ACM → CloudFront
+                                      ├── S3 (static React SPA)
+                                      └── /api/* → ALB → ECS Fargate → RDS PostgreSQL + pgvector
 
 Side services:
     S3 (review artifacts, model snapshots, exports)
@@ -45,8 +45,6 @@ aws/
 │   └── variables/
 │       ├── dev.tfvars
 │       └── prod.tfvars
-├── ecs/
-│   └── task-definition.json  # Template for CI/CD
 └── scripts/
     └── deploy.sh             # One-command deploy
 ```
@@ -55,30 +53,15 @@ aws/
 
 ### Prerequisites
 
-1. AWS account with IAM admin user
+1. AWS account with an AdministratorAccess SSO role
 2. Terraform >= 1.5 installed
 3. Docker installed (for image builds)
 4. Domain name (optional — use auto-generated AWS URLs instead)
 
 ### One-Time Setup
 
-Follow [aws-console-setup.md](./aws-console-setup.md) for the manual AWS console steps, then:
-
-```bash
-# Deploy infrastructure
-cd aws/terraform
-terraform init
-terraform plan -var-file="variables/dev.tfvars" -out=tfplan
-terraform apply tfplan
-
-# Push initial Docker image
-ECR_REPO=$(terraform output -raw ecr_repository_url)
-aws ecr get-login-password | docker login --username AWS --password-stdin "$ECR_REPO"
-docker build -t "$ECR_REPO:latest" -f ../../backend/Dockerfile ../..
-docker push "$ECR_REPO:latest"
-```
-
-Or use the deploy script:
+Follow [aws-console-setup.md](./aws-console-setup.md) for SSO and optional
+domain setup, then use the deployment script:
 ```bash
 ./aws/scripts/deploy.sh dev
 ```
@@ -120,7 +103,7 @@ Authentication uses OIDC — no AWS access keys stored in GitHub.
 ### Bucket Structure
 
 ```
-s3://paper-attribution-artifacts-{env}/
+s3://paper-attribution-artifacts-{env}-{account_id}/
 ├── reviews/{paper_id}/
 │   ├── review_{timestamp}.json
 │   └── evidence_tree_{timestamp}.json

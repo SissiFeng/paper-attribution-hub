@@ -86,6 +86,7 @@ resource "aws_ecs_service" "backend" {
   # Rolling update: keep at least 1 healthy task during deploy
   deployment_minimum_healthy_percent = 100
   deployment_maximum_percent         = 200
+  health_check_grace_period_seconds  = 300
 
   network_configuration {
     subnets          = aws_subnet.private[*].id

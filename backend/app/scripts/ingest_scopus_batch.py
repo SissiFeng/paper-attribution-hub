@@ -749,6 +749,18 @@ def _build_ac_only_rows(
 # entry point
 # ---------------------------------------------------------------------------
 
+def _configured_csv_source():
+    from app.adapters import CsvPaperSource
+    from app.config import settings
+
+    return CsvPaperSource(
+        papers_csv=settings.papers_csv,
+        people_csv=settings.people_csv,
+        institutions_csv=settings.institutions_csv,
+        topics_yaml=settings.topics_yaml,
+    )
+
+
 def run(
     dry_run: bool = False,
     reset: bool = False,
@@ -840,10 +852,9 @@ def run(
     with SessionLocal() as session:
         # Seed the topic taxonomy first — without it every topic_score is 0.0
         # and the relevance classifier can never reach CORE_RELEVANT.
-        from app.adapters import CsvPaperSource
         from app.services.ingestion_service import ingest_topics
 
-        topics_seeded = ingest_topics(session, CsvPaperSource())
+        topics_seeded = ingest_topics(session, _configured_csv_source())
         print(f"      topics_seeded={topics_seeded}", file=sys.stderr)
         inserted, updated, authors, institutions, links = _upsert_papers(session, all_rows)
         if prune_non_real:
